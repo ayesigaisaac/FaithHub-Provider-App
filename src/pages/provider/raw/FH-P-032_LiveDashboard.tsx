@@ -622,7 +622,7 @@ function SoftButton({
       onClick={onClick}
       disabled={disabled}
       className={cx(
-        "inline-flex items-center gap-2 rounded-2xl border px-4 py-2 text-[12px] font-semibold transition-colors",
+        "inline-flex items-center gap-2 rounded-xl border px-4 py-2 text-[12px] font-semibold transition-colors",
         disabled
           ? "cursor-not-allowed border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-slate-400 dark:text-slate-600"
           : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800",
@@ -656,7 +656,7 @@ function PrimaryButton({
       onClick={onClick}
       disabled={disabled}
       className={cx(
-        "inline-flex items-center gap-2 rounded-2xl border border-transparent px-4 py-2 text-[12px] font-semibold text-white transition-opacity",
+        "inline-flex items-center gap-2 rounded-xl border border-transparent px-4 py-2 text-[12px] font-semibold text-white transition-opacity",
         disabled ? "cursor-not-allowed opacity-60" : "hover:opacity-95",
         className,
       )}
@@ -681,7 +681,7 @@ function Card({
   className?: string;
 }) {
   return (
-    <div className={cx("rounded-[28px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 transition-colors", className)}>
+    <div className={cx("rounded-[16px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 transition-colors", className)}>
       <div className="flex items-start justify-between gap-3">
         <div>
           <div className="text-[13px] font-semibold text-slate-900 dark:text-slate-100">{title}</div>
@@ -752,7 +752,7 @@ function Drawer({
                 <button
                   type="button"
                   onClick={onClose}
-                  className="grid h-9 w-9 place-items-center rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 transition-colors hover:bg-slate-50 dark:hover:bg-slate-700"
+                  className="grid h-9 w-9 place-items-center rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 transition-colors hover:bg-slate-50 dark:hover:bg-slate-700"
                 >
                   <X className="h-4 w-4" />
                 </button>
@@ -768,7 +768,7 @@ function Drawer({
 
 function Toast({ text }: { text: string }) {
   return (
-    <div className="fixed bottom-4 left-1/2 z-[140] -translate-x-1/2 rounded-2xl bg-slate-900 px-4 py-3 text-[12px] font-semibold text-white shadow-2xl dark:bg-slate-100 dark:text-slate-900">
+    <div className="fixed bottom-4 left-1/2 z-[140] -translate-x-1/2 rounded-xl bg-slate-900 px-4 py-3 text-[12px] font-semibold text-white shadow-lg dark:bg-slate-100 dark:text-slate-900">
       {text}
     </div>
   );
@@ -818,7 +818,7 @@ function MetricTile({
           : "text-slate-900 dark:text-slate-100";
 
   return (
-    <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3 transition-colors">
+    <div className="rounded-[14px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 p-3 transition-colors">
       <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">{label}</div>
       <div className={cx("mt-1 text-[20px] font-black", accent)}>{value}</div>
       {hint ? <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">{hint}</div> : null}
@@ -861,7 +861,7 @@ function TimeBadge({
 }) {
   const pad = (value: number) => String(Math.max(0, value)).padStart(2, "0");
   return (
-    <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3 py-2 transition-colors">
+    <div className="rounded-[14px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3 py-2 transition-colors">
       <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">{label}</div>
       <div className="mt-1 font-mono text-[20px] font-black text-slate-900 dark:text-slate-100">
         {pad(values.hours)}:{pad(values.minutes)}:{pad(values.seconds)}
@@ -872,7 +872,7 @@ function TimeBadge({
 
 function SessionArtwork({ gradient }: { gradient: string }) {
   return (
-    <div className="relative overflow-hidden rounded-[26px]" style={{ background: gradient }}>
+    <div className="relative overflow-hidden rounded-[14px]" style={{ background: gradient }}>
       <div className="aspect-[16/10] w-full">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.18),transparent_34%),radial-gradient(circle_at_76%_30%,rgba(255,255,255,0.12),transparent_32%),radial-gradient(circle_at_68%_72%,rgba(255,255,255,0.08),transparent_35%)]" />
         <div className="absolute left-5 top-5 flex items-center gap-2">
@@ -880,8 +880,8 @@ function SessionArtwork({ gradient }: { gradient: string }) {
           <div className="h-4 w-10 rounded-full bg-white/18" />
         </div>
         <div className="absolute right-5 top-5 flex gap-2">
-          <div className="h-10 w-10 rounded-2xl bg-white/18" />
-          <div className="h-10 w-10 rounded-2xl bg-white/12" />
+          <div className="h-10 w-10 rounded-xl bg-white/18" />
+          <div className="h-10 w-10 rounded-xl bg-white/12" />
         </div>
         <div className="absolute bottom-5 left-5 right-5">
           <div className="h-5 w-48 rounded-full bg-white/80 mb-3" />
@@ -909,7 +909,7 @@ function QuickToggle({
       type="button"
       onClick={onClick}
       className={cx(
-        "w-full rounded-3xl border p-3 text-left transition-colors",
+        "w-full rounded-[14px] border p-3 text-left transition-colors",
         active
           ? "border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-900/20"
           : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800",
@@ -948,11 +948,11 @@ function RouteButton({
     <button
       type="button"
       onClick={onClick}
-      className="w-full rounded-3xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-3 text-left transition-colors hover:bg-slate-50 dark:hover:bg-slate-800"
+      className="w-full rounded-[14px] border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-3 text-left transition-colors hover:bg-slate-50 dark:hover:bg-slate-800"
     >
       <div className="flex items-center justify-between gap-2">
         <div className="flex items-center gap-2 min-w-0">
-          <div className="grid h-9 w-9 place-items-center rounded-2xl bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200">
+          <div className="grid h-9 w-9 place-items-center rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200">
             {icon}
           </div>
           <div className="min-w-0">
@@ -1001,7 +1001,7 @@ function ControlRoomPreview({
         <MetricTile label="Giving" value={formatMoney(session.conversion.donationTotal)} hint="Live-response total" tone="orange" />
       </div>
 
-      <div className="mt-4 rounded-3xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3 transition-colors">
+      <div className="mt-4 rounded-[14px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 p-3 transition-colors">
         <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">Active tools</div>
         <div className="mt-3 flex flex-wrap gap-2">
           {slowMode ? <Pill text="Slow mode" tone="warn" /> : null}
@@ -1014,7 +1014,7 @@ function ControlRoomPreview({
 
       <div className="mt-4 grid grid-cols-3 gap-2">
         {session.destinations.map((dest) => (
-          <div key={dest.name} className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-2 text-center transition-colors">
+          <div key={dest.name} className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-2 text-center transition-colors">
             <div className="text-[11px] font-semibold text-slate-900 dark:text-slate-100 truncate">{dest.name}</div>
             <div className="mt-1 flex justify-center">
               <Pill text={dest.status} tone={destinationTone(dest.status)} />
@@ -1050,7 +1050,7 @@ function PostLiveLaunchPad({ session }: { session: SessionData }) {
 
       <div className="mt-4 space-y-2">
         {session.postLive.nextActions.map((action) => (
-          <div key={action} className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3 text-[12px] text-slate-700 dark:text-slate-300 transition-colors">
+          <div key={action} className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 p-3 text-[12px] text-slate-700 dark:text-slate-300 transition-colors">
             {action}
           </div>
         ))}
@@ -1232,7 +1232,7 @@ export default function FaithHubLiveDashboardPage() {
                 <select
                   value={activeSessionId}
                   onChange={(e) => setActiveSessionId(e.target.value)}
-                  className="mt-2 w-full rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-[13px] font-semibold text-slate-900 dark:text-slate-100 transition-colors"
+                  className="mt-2 w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-[13px] font-semibold text-slate-900 dark:text-slate-100 transition-colors"
                 >
                   {SESSIONS.map((item) => (
                     <option key={item.id} value={item.id}>
@@ -1252,7 +1252,7 @@ export default function FaithHubLiveDashboardPage() {
                 <TimeBadge label={session.state === "Ended" ? "Replay window" : "Ends in"} values={session.state === "Ended" ? sinceEnd : untilEnd} />
               </div>
 
-              <div className="mt-4 rounded-3xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3 transition-colors">
+              <div className="mt-4 rounded-[14px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 p-3 transition-colors">
                 <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">Session context</div>
                 <div className="mt-2 text-[12px] font-semibold text-slate-900 dark:text-slate-100">{session.title}</div>
                 <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">{session.audienceLabel}</div>
@@ -1261,12 +1261,12 @@ export default function FaithHubLiveDashboardPage() {
               </div>
 
               <div className="mt-4 grid grid-cols-2 gap-2">
-                <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3 transition-colors">
+                <div className="rounded-[14px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3 transition-colors">
                   <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">Host</div>
                   <div className="mt-1 text-[13px] font-semibold text-slate-900 dark:text-slate-100">{session.hosts.host}</div>
                   <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">On stage and checked</div>
                 </div>
-                <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3 transition-colors">
+                <div className="rounded-[14px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3 transition-colors">
                   <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">Producer</div>
                   <div className="mt-1 text-[13px] font-semibold text-slate-900 dark:text-slate-100">{session.hosts.producer}</div>
                   <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">Backstage operations</div>
@@ -1284,7 +1284,7 @@ export default function FaithHubLiveDashboardPage() {
               <div className="space-y-3">
                 {firstPlaybooks.length ? (
                   firstPlaybooks.map((alert) => (
-                    <div key={alert.id} className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3 transition-colors">
+                    <div key={alert.id} className="rounded-[14px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 p-3 transition-colors">
                       <div className="flex items-start justify-between gap-2">
                         <div>
                           <div className="flex items-center gap-2">
@@ -1305,7 +1305,7 @@ export default function FaithHubLiveDashboardPage() {
                     </div>
                   ))
                 ) : (
-                  <div className="rounded-3xl border border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-900/20 p-3 text-[12px] text-emerald-800 dark:text-emerald-300 transition-colors">
+                  <div className="rounded-[14px] border border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-900/20 p-3 text-[12px] text-emerald-800 dark:text-emerald-300 transition-colors">
                     No active playbooks right now. This session is operating within safe thresholds.
                   </div>
                 )}
@@ -1344,7 +1344,7 @@ export default function FaithHubLiveDashboardPage() {
                 <MetricTile label="Latency" value={`${session.health.latencySec.toFixed(1)}s`} hint="Observed delivery delay" tone={session.health.latencySec <= 3 ? "green" : session.health.latencySec <= 5 ? "orange" : "red"} />
               </div>
 
-              <div className="mt-4 rounded-3xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3 transition-colors">
+              <div className="mt-4 rounded-[14px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 p-3 transition-colors">
                 <div className="flex items-center justify-between gap-2">
                   <div>
                     <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">Health telemetry trend</div>
@@ -1378,7 +1378,7 @@ export default function FaithHubLiveDashboardPage() {
 
               <div className="mt-4 grid md:grid-cols-2 xl:grid-cols-3 gap-3">
                 {session.team.map((member) => (
-                  <div key={`${member.role}-${member.name}`} className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3 transition-colors">
+                  <div key={`${member.role}-${member.name}`} className="rounded-[14px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 p-3 transition-colors">
                     <div className="flex items-start justify-between gap-2">
                       <div>
                         <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">{member.role}</div>
@@ -1404,7 +1404,7 @@ export default function FaithHubLiveDashboardPage() {
                 <MetricTile label="Chat velocity" value={`${session.audience.chatVelocity}/min`} hint="Current message rate" tone={session.audience.chatVelocity > 120 ? "orange" : "green"} />
               </div>
 
-              <div className="mt-4 rounded-3xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3 transition-colors">
+              <div className="mt-4 rounded-[14px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 p-3 transition-colors">
                 <div className="flex items-center justify-between gap-2">
                   <div>
                     <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">Arrival and audience trend</div>
@@ -1418,17 +1418,17 @@ export default function FaithHubLiveDashboardPage() {
               </div>
 
               <div className="mt-4 grid sm:grid-cols-3 gap-3">
-                <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3 transition-colors">
+                <div className="rounded-[14px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3 transition-colors">
                   <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">Q&A load</div>
                   <div className="mt-1 text-[18px] font-black text-slate-900 dark:text-slate-100">{session.audience.qnaLoad}</div>
                   <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">Open questions needing review.</div>
                 </div>
-                <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3 transition-colors">
+                <div className="rounded-[14px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3 transition-colors">
                   <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">Prayer requests</div>
                   <div className="mt-1 text-[18px] font-black text-slate-900 dark:text-slate-100">{session.audience.prayerRequests}</div>
                   <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">Requests flowing into triage.</div>
                 </div>
-                <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3 transition-colors">
+                <div className="rounded-[14px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3 transition-colors">
                   <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">Drop-off risk</div>
                   <div className="mt-1 flex items-center gap-2">
                     <Pill text={session.audience.dropOffRisk} tone={session.audience.dropOffRisk === "Low" ? "good" : session.audience.dropOffRisk === "Watch" ? "warn" : "danger"} />
@@ -1453,7 +1453,7 @@ export default function FaithHubLiveDashboardPage() {
                 <ProgressRail label="Crowdfund movement" value={percent(session.conversion.crowdfundRaised, session.conversion.crowdfundTarget)} suffix="of target" tone="green" />
               </div>
 
-              <div className="mt-4 rounded-3xl border border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-900/20 p-3 text-[12px] text-amber-900 dark:text-amber-200 transition-colors">
+              <div className="mt-4 rounded-[14px] border border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-900/20 p-3 text-[12px] text-amber-900 dark:text-amber-200 transition-colors">
                 {session.conversion.responseLabel}
               </div>
             </Card>
@@ -1464,7 +1464,7 @@ export default function FaithHubLiveDashboardPage() {
               <div className="space-y-3">
                 {activeAlerts.length ? (
                   activeAlerts.map((alert) => (
-                    <div key={alert.id} className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3 transition-colors">
+                    <div key={alert.id} className="rounded-[14px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 p-3 transition-colors">
                       <div className="flex items-start justify-between gap-3">
                         <div className="min-w-0">
                           <div className="flex flex-wrap items-center gap-2">
@@ -1484,7 +1484,7 @@ export default function FaithHubLiveDashboardPage() {
                     </div>
                   ))
                 ) : (
-                  <div className="rounded-3xl border border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-900/20 p-4 text-[12px] text-emerald-800 dark:text-emerald-300 transition-colors">
+                  <div className="rounded-[14px] border border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-900/20 p-4 text-[12px] text-emerald-800 dark:text-emerald-300 transition-colors">
                     No unresolved alerts. Stream health, destinations, moderation, and caption readiness are all within expected thresholds.
                   </div>
                 )}
@@ -1532,3 +1532,4 @@ export default function FaithHubLiveDashboardPage() {
     </div>
   );
 }
+

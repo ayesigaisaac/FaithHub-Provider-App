@@ -574,7 +574,7 @@ function Modal({
   return (
     <div className="fixed inset-0 z-[90] flex items-end justify-center p-0 sm:items-center sm:p-4">
       <div className="absolute inset-0 bg-black/45 backdrop-blur-sm" onClick={onClose} />
-      <div className="relative flex h-[92vh] w-full max-w-6xl flex-col overflow-hidden rounded-t-3xl bg-white shadow-2xl ring-1 ring-slate-200 transition dark:bg-slate-900 dark:ring-slate-800 sm:h-auto sm:max-h-[90vh] sm:rounded-3xl">
+      <div className="relative flex h-[92vh] w-full max-w-6xl flex-col overflow-hidden rounded-t-3xl bg-white shadow-2xl ring-1 ring-slate-200 transition dark:bg-slate-900 dark:ring-slate-800 sm:h-auto sm:max-h-[90vh] sm:rounded-[14px]">
         <div className="flex items-start justify-between gap-3 border-b border-slate-200 px-5 py-4 dark:border-slate-800">
           <div className="min-w-0">
             <div className="truncate text-base font-semibold text-slate-900 dark:text-slate-50">{title}</div>
@@ -608,7 +608,7 @@ function SectionTitle({
   return (
     <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
       <div className="flex items-start gap-3">
-        <div className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-2xl bg-slate-900 text-white shadow-sm dark:bg-slate-100 dark:text-slate-900">
+        <div className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-slate-900 text-white shadow-sm dark:bg-slate-100 dark:text-slate-900">
           {icon}
         </div>
         <div className="min-w-0">
@@ -634,7 +634,7 @@ function MetricCard({
 }) {
   const color = tone === "orange" ? EV_ORANGE : tone === "navy" ? EV_NAVY : EV_GREEN;
   return (
-    <div className="rounded-3xl bg-slate-50 p-3 ring-1 ring-slate-200 transition dark:bg-slate-800/50 dark:ring-slate-800">
+    <div className="rounded-[14px] bg-slate-50 p-3 ring-1 ring-slate-200 transition dark:bg-slate-800/50 dark:ring-slate-800">
       <div className="text-[11px] uppercase tracking-wide text-slate-400 dark:text-slate-500">{label}</div>
       <div className="mt-1 text-xl font-extrabold" style={{ color }}>{value}</div>
       {hint ? <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{hint}</div> : null}
@@ -659,7 +659,7 @@ function RegistryRow({
       type="button"
       onClick={onSelect}
       className={cx(
-        "w-full rounded-3xl border p-3 text-left transition-all",
+        "w-full rounded-[14px] border p-3 text-left transition-all",
         active
           ? "border-slate-300 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-900"
           : "border-slate-200 bg-slate-50 hover:bg-white dark:border-slate-800 dark:bg-slate-800/50 dark:hover:bg-slate-900",
@@ -712,7 +712,7 @@ function BrowserPreview({
   donorCopy: string;
 }) {
   return (
-    <div className="overflow-hidden rounded-[28px] bg-white shadow-2xl ring-1 ring-slate-200 dark:ring-slate-800">
+    <div className="overflow-hidden rounded-[16px] bg-white shadow-2xl ring-1 ring-slate-200 dark:ring-slate-800">
       <div className="flex items-center gap-2 border-b border-slate-200 bg-slate-50 px-4 py-3 dark:border-slate-800 dark:bg-slate-950">
         <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
         <span className="h-2.5 w-2.5 rounded-full bg-amber-400" />
@@ -749,13 +749,13 @@ function BrowserPreview({
               <button
                 type="button"
                 key={amount}
-                className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-3 text-center text-sm font-extrabold text-slate-900 transition hover:bg-white dark:border-slate-700 dark:bg-slate-800 dark:text-slate-50 dark:hover:bg-slate-700"
+                className="rounded-xl border border-slate-200 bg-slate-50 px-3 py-3 text-center text-sm font-extrabold text-slate-900 transition hover:bg-white dark:border-slate-700 dark:bg-slate-800 dark:text-slate-50 dark:hover:bg-slate-700"
               >
                 {fmtCurrency(amount)}
               </button>
             ))}
           </div>
-          <div className="mt-4 rounded-2xl bg-slate-50 p-3 ring-1 ring-slate-200 dark:bg-slate-800/50 dark:ring-slate-800">
+          <div className="mt-4 rounded-xl bg-slate-50 p-3 ring-1 ring-slate-200 dark:bg-slate-800/50 dark:ring-slate-800">
             <div className="flex items-center justify-between gap-3">
               <div>
                 <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Monthly support</div>
@@ -764,11 +764,11 @@ function BrowserPreview({
               <span className={cx("rounded-full px-3 py-1 text-xs font-bold", recurringDefault ? "bg-emerald-500 text-white" : "bg-slate-200 text-slate-700 dark:bg-slate-700 dark:text-slate-200")}>{recurringDefault ? "On" : "Off"}</span>
             </div>
           </div>
-          <div className="mt-4 rounded-2xl bg-slate-50 p-3 ring-1 ring-slate-200 dark:bg-slate-800/50 dark:ring-slate-800">
+          <div className="mt-4 rounded-xl bg-slate-50 p-3 ring-1 ring-slate-200 dark:bg-slate-800/50 dark:ring-slate-800">
             <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Trust & privacy</div>
             <div className="mt-2 text-xs text-slate-500 dark:text-slate-400">{privacyWall ? "Donor recognition requires explicit opt-in." : record.donorPrivacy}</div>
           </div>
-          <button type="button" className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-2xl px-4 py-3 text-sm font-extrabold text-white" style={{ background: EV_GREEN }}>
+          <button type="button" className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-extrabold text-white" style={{ background: EV_GREEN }}>
             <HeartHandshake className="h-4 w-4" /> Complete donation
           </button>
         </div>
@@ -789,7 +789,7 @@ function PhonePreview({
   return (
     <div className="mx-auto w-full max-w-[360px]">
       <div className="rounded-[34px] bg-slate-900 p-3 shadow-2xl">
-        <div className="overflow-hidden rounded-[26px] bg-white dark:bg-slate-900">
+        <div className="overflow-hidden rounded-[14px] bg-white dark:bg-slate-900">
           <div className="relative aspect-[9/12] overflow-y-auto bg-slate-50 dark:bg-slate-950">
             <div className="sticky top-0 z-10 flex items-center justify-between bg-white/95 px-4 py-3 shadow-sm backdrop-blur dark:bg-slate-900/95">
               <div>
@@ -799,7 +799,7 @@ function PhonePreview({
               <div className="rounded-full bg-slate-100 px-2 py-1 text-[10px] font-bold text-slate-700 dark:bg-slate-800 dark:text-slate-200">{record.recordType}</div>
             </div>
             <div className="p-4">
-              <div className="overflow-hidden rounded-3xl bg-slate-950 text-white">
+              <div className="overflow-hidden rounded-[14px] bg-slate-950 text-white">
                 <div className="relative aspect-[4/3]">
                   <img src={record.heroImageUrl} alt={record.title} className="absolute inset-0 h-full w-full object-cover opacity-60" />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
@@ -814,13 +814,13 @@ function PhonePreview({
                   <button
                     key={amount}
                     type="button"
-                    className="rounded-2xl border border-slate-200 bg-white px-3 py-3 text-sm font-extrabold text-slate-900 shadow-sm dark:border-slate-700 dark:bg-slate-900 dark:text-slate-50"
+                    className="rounded-xl border border-slate-200 bg-white px-3 py-3 text-sm font-extrabold text-slate-900 shadow-sm dark:border-slate-700 dark:bg-slate-900 dark:text-slate-50"
                   >
                     {fmtCurrency(amount)}
                   </button>
                 ))}
               </div>
-              <div className="mt-4 rounded-2xl bg-white p-3 shadow-sm ring-1 ring-slate-200 dark:bg-slate-900 dark:ring-slate-800">
+              <div className="mt-4 rounded-xl bg-white p-3 shadow-sm ring-1 ring-slate-200 dark:bg-slate-900 dark:ring-slate-800">
                 <div className="flex items-center justify-between gap-3">
                   <div>
                     <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Monthly support</div>
@@ -829,13 +829,13 @@ function PhonePreview({
                   <span className={cx("rounded-full px-3 py-1 text-[10px] font-bold", recurringDefault ? "bg-emerald-500 text-white" : "bg-slate-200 text-slate-700 dark:bg-slate-700 dark:text-slate-200")}>{recurringDefault ? "Monthly" : "Once"}</span>
                 </div>
               </div>
-              <div className="mt-3 rounded-2xl bg-white p-3 shadow-sm ring-1 ring-slate-200 dark:bg-slate-900 dark:ring-slate-800">
+              <div className="mt-3 rounded-xl bg-white p-3 shadow-sm ring-1 ring-slate-200 dark:bg-slate-900 dark:ring-slate-800">
                 <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Trust note</div>
                 <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{privacyWall ? "Recognition requires donor opt-in." : record.donorPrivacy}</div>
               </div>
             </div>
             <div className="sticky bottom-0 bg-white/95 px-4 pb-4 pt-2 backdrop-blur dark:bg-slate-900/95">
-              <button type="button" className="inline-flex w-full items-center justify-center gap-2 rounded-2xl px-4 py-3 text-sm font-extrabold text-white shadow-lg" style={{ background: EV_GREEN }}>
+              <button type="button" className="inline-flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-extrabold text-white shadow-lg" style={{ background: EV_GREEN }}>
                 <HeartHandshake className="h-4 w-4" /> Give now
               </button>
             </div>
@@ -869,7 +869,7 @@ function CampaignComposer({
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder={mode === "Fund" ? "e.g. General Missions Fund" : mode === "Campaign" ? "e.g. Easter Appeal" : mode === "Recurring support" ? "e.g. Partner Circle" : "e.g. Clean Water Charity Drive"}
-            className="mt-1 w-full rounded-2xl border border-slate-200 bg-white px-3 py-3 text-sm text-slate-900 outline-none transition focus:ring-2 focus:ring-slate-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-50 dark:focus:ring-slate-700"
+            className="mt-1 w-full rounded-xl border border-slate-200 bg-white px-3 py-3 text-sm text-slate-900 outline-none transition focus:ring-2 focus:ring-slate-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-50 dark:focus:ring-slate-700"
           />
         </div>
         <div>
@@ -877,7 +877,7 @@ function CampaignComposer({
           <input
             value={owner}
             onChange={(e) => setOwner(e.target.value)}
-            className="mt-1 w-full rounded-2xl border border-slate-200 bg-white px-3 py-3 text-sm text-slate-900 outline-none transition focus:ring-2 focus:ring-slate-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-50 dark:focus:ring-slate-700"
+            className="mt-1 w-full rounded-xl border border-slate-200 bg-white px-3 py-3 text-sm text-slate-900 outline-none transition focus:ring-2 focus:ring-slate-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-50 dark:focus:ring-slate-700"
           />
         </div>
         <div>
@@ -885,13 +885,13 @@ function CampaignComposer({
           <input
             value={goal}
             onChange={(e) => setGoal(e.target.value.replace(/[^\d]/g, ""))}
-            className="mt-1 w-full rounded-2xl border border-slate-200 bg-white px-3 py-3 text-sm text-slate-900 outline-none transition focus:ring-2 focus:ring-slate-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-50 dark:focus:ring-slate-700"
+            className="mt-1 w-full rounded-xl border border-slate-200 bg-white px-3 py-3 text-sm text-slate-900 outline-none transition focus:ring-2 focus:ring-slate-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-50 dark:focus:ring-slate-700"
           />
         </div>
         <div>
           <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Launch strategy</div>
           <div className="mt-1 grid gap-2">
-            <div className="flex items-center justify-between rounded-2xl bg-slate-50 px-3 py-3 ring-1 ring-slate-200 dark:bg-slate-800/50 dark:ring-slate-800">
+            <div className="flex items-center justify-between rounded-xl bg-slate-50 px-3 py-3 ring-1 ring-slate-200 dark:bg-slate-800/50 dark:ring-slate-800">
               <div>
                 <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Launch now</div>
                 <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">Create a ready-to-use donor surface immediately.</div>
@@ -903,7 +903,7 @@ function CampaignComposer({
       </div>
 
       <div className="grid gap-3 md:grid-cols-2">
-        <div className="rounded-3xl bg-slate-50 p-4 ring-1 ring-slate-200 dark:bg-slate-800/40 dark:ring-slate-800">
+        <div className="rounded-[14px] bg-slate-50 p-4 ring-1 ring-slate-200 dark:bg-slate-800/40 dark:ring-slate-800">
           <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Connected surfaces</div>
           <div className="mt-3 space-y-3">
             <div className="flex items-center justify-between">
@@ -922,7 +922,7 @@ function CampaignComposer({
             </div>
           </div>
         </div>
-        <div className="rounded-3xl bg-slate-50 p-4 ring-1 ring-slate-200 dark:bg-slate-800/40 dark:ring-slate-800">
+        <div className="rounded-[14px] bg-slate-50 p-4 ring-1 ring-slate-200 dark:bg-slate-800/40 dark:ring-slate-800">
           <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Mode summary</div>
           <div className="mt-3 text-sm text-slate-600 dark:text-slate-300">
             {mode === "Fund" && "Standard fund for steady, always-on giving across the ministry."}
@@ -931,7 +931,7 @@ function CampaignComposer({
             {mode === "Crowdfund" && "Charity crowdfunding is managed in the dedicated workbench because it needs storytelling, public updates, beneficiaries, and momentum features."}
           </div>
           {mode === "Crowdfund" ? (
-            <div className="mt-3 rounded-2xl border border-dashed border-amber-300 bg-amber-50 px-3 py-3 text-sm text-amber-800 dark:border-amber-800 dark:bg-amber-900/20 dark:text-amber-300">
+            <div className="mt-3 rounded-xl border border-dashed border-amber-300 bg-amber-50 px-3 py-3 text-sm text-amber-800 dark:border-amber-800 dark:bg-amber-900/20 dark:text-amber-300">
               This mode continues in the Charity Crowdfunding Workbench so the Provider can manage goals, proof-of-impact updates, beneficiary stories, and public momentum properly.
             </div>
           ) : null}
@@ -1106,7 +1106,7 @@ export default function DonationsAndFundsPage() {
           <div className="w-full px-4 md:px-6 lg:px-8 py-3">
             <div className="flex flex-col gap-3 xl:flex-row xl:items-center xl:justify-between">
               <div className="flex flex-wrap items-center gap-2">
-                <div className="rounded-2xl bg-slate-50 dark:bg-slate-800 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800 text-sm font-bold text-slate-900 dark:text-slate-100">
+                <div className="rounded-xl bg-slate-50 dark:bg-slate-800 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800 text-sm font-bold text-slate-900 dark:text-slate-100">
                   {selectedRecord?.title}
                 </div>
                 <Pill tone="good">Trust {selectedRecord?.trustScore ?? 0}%</Pill>
@@ -1134,7 +1134,7 @@ export default function DonationsAndFundsPage() {
       <div className="flex-1 w-full px-3 sm:px-4 md:px-6 lg:px-8 py-6">
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-12">
           <div className="lg:col-span-4 space-y-4">
-            <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <div className="rounded-[14px] bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
               <SectionTitle
                 icon={<Layers className="h-5 w-5" />}
                 title="Funds registry"
@@ -1147,7 +1147,7 @@ export default function DonationsAndFundsPage() {
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                     placeholder="Search funds, owners, or donor journeys"
-                    className="w-full rounded-2xl bg-slate-50 dark:bg-slate-800 px-10 py-3 text-sm text-slate-900 dark:text-slate-50 ring-1 ring-slate-200 dark:ring-slate-800 outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600"
+                    className="w-full rounded-xl bg-slate-50 dark:bg-slate-800 px-10 py-3 text-sm text-slate-900 dark:text-slate-50 ring-1 ring-slate-200 dark:ring-slate-800 outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600"
                   />
                 </div>
 
@@ -1192,7 +1192,7 @@ export default function DonationsAndFundsPage() {
           </div>
 
           <div className="lg:col-span-4 space-y-4">
-            <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <div className="rounded-[14px] bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
               <SectionTitle
                 icon={<Plus className="h-5 w-5" />}
                 title="Campaign creation rail"
@@ -1210,9 +1210,9 @@ export default function DonationsAndFundsPage() {
                           ? safeNav(ROUTES.charityCrowdfund)
                           : openComposer(preset.mode)
                       }
-                      className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 p-4 text-left hover:bg-white dark:hover:bg-slate-800 transition-colors"
+                      className="rounded-[14px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 p-4 text-left hover:bg-white dark:hover:bg-slate-800 transition-colors"
                     >
-                      <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl text-white shadow-sm" style={{ background: accent }}>
+                      <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl text-white shadow-sm" style={{ background: accent }}>
                         {preset.mode === "Recurring support" ? <HeartHandshake className="h-5 w-5" /> : preset.mode === "Crowdfund" ? <Zap className="h-5 w-5" /> : <Gift className="h-5 w-5" />}
                       </div>
                       <div className="mt-3 text-sm font-bold text-slate-900 dark:text-slate-50">{preset.label}</div>
@@ -1227,21 +1227,21 @@ export default function DonationsAndFundsPage() {
               </div>
             </div>
 
-            <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <div className="rounded-[14px] bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
               <SectionTitle
                 icon={<HeartHandshake className="h-5 w-5" />}
                 title="Giving experience settings"
                 subtitle="Configure suggested amounts, recurring defaults, donor-visible copy, receipts, and privacy options."
               />
               <div className="mt-4 space-y-4">
-                <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                <div className="rounded-[14px] bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
                   <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Suggested amounts</div>
                   <div className="mt-3 grid grid-cols-5 gap-2">
                     {(selectedRecord?.defaultAmounts || []).map((amount) => (
                       <button
                         type="button"
                         key={amount}
-                        className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-2 py-2 text-sm font-extrabold text-slate-900 dark:text-slate-50"
+                        className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-2 py-2 text-sm font-extrabold text-slate-900 dark:text-slate-50"
                       >
                         {fmtCurrency(amount)}
                       </button>
@@ -1250,7 +1250,7 @@ export default function DonationsAndFundsPage() {
                 </div>
 
                 <div className="grid gap-3 md:grid-cols-2">
-                  <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div className="rounded-[14px] bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
                     <div className="flex items-center justify-between gap-3">
                       <div>
                         <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Recurring default</div>
@@ -1274,14 +1274,14 @@ export default function DonationsAndFundsPage() {
                     </div>
                   </div>
 
-                  <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div className="rounded-[14px] bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
                     <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Receipt & confirmation</div>
                     <label className="mt-3 block text-[11px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
                       Receipt language
                       <select
                         value={receiptLanguage}
                         onChange={(e) => setReceiptLanguage(e.target.value)}
-                        className="mt-1 w-full rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-sm text-slate-900 dark:text-slate-50"
+                        className="mt-1 w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-sm text-slate-900 dark:text-slate-50"
                       >
                         <option>Standard ministry receipt</option>
                         <option>Missions campaign receipt</option>
@@ -1295,25 +1295,25 @@ export default function DonationsAndFundsPage() {
                       <input
                         value={confirmationJourney}
                         onChange={(e) => setConfirmationJourney(e.target.value)}
-                        className="mt-1 w-full rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-sm text-slate-900 dark:text-slate-50"
+                        className="mt-1 w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-sm text-slate-900 dark:text-slate-50"
                       />
                     </label>
                   </div>
                 </div>
 
-                <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                <div className="rounded-[14px] bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
                   <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Donor-visible copy</div>
                   <textarea
                     value={donorCopy}
                     onChange={(e) => setDonorCopy(e.target.value)}
                     rows={4}
-                    className="mt-3 w-full rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-3 text-sm text-slate-900 dark:text-slate-50"
+                    className="mt-3 w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-3 text-sm text-slate-900 dark:text-slate-50"
                   />
                 </div>
               </div>
             </div>
 
-            <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <div className="rounded-[14px] bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
               <SectionTitle
                 icon={<MonitorPlay className="h-5 w-5" />}
                 title="Live and content bridge"
@@ -1321,7 +1321,7 @@ export default function DonationsAndFundsPage() {
               />
               <div className="mt-4 space-y-3">
                 {BRIDGE_SEED.map((item) => (
-                  <div key={item.id} className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div key={item.id} className="rounded-[14px] bg-slate-50 dark:bg-slate-800/50 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0">
                         <div className="text-sm font-bold text-slate-900 dark:text-slate-50">{item.label}</div>
@@ -1350,14 +1350,14 @@ export default function DonationsAndFundsPage() {
           </div>
 
           <div className="lg:col-span-4 space-y-4">
-            <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <div className="rounded-[14px] bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
               <SectionTitle
                 icon={<Eye className="h-5 w-5" />}
                 title="Preview + donor experience"
                 subtitle="Desktop and mobile giving surfaces with donor trust, amounts, recurring, and promotion hooks."
                 right={<Pill tone="good">Preview-ready</Pill>}
               />
-              <div className="mt-4 rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+              <div className="mt-4 rounded-[14px] bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
                 <div className="flex items-center justify-between gap-2">
                   <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Current donor surface</div>
                   <div className="flex items-center gap-2">
@@ -1412,7 +1412,7 @@ export default function DonationsAndFundsPage() {
               </div>
             </div>
 
-            <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <div className="rounded-[14px] bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
               <SectionTitle
                 icon={<BarChart3 className="h-5 w-5" />}
                 title="Donor intelligence dashboard"
@@ -1426,15 +1426,15 @@ export default function DonationsAndFundsPage() {
               </div>
 
               <div className="mt-4 grid gap-3 md:grid-cols-3">
-                <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                <div className="rounded-[14px] bg-slate-50 dark:bg-slate-800/50 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
                   <div className="text-xs font-bold text-slate-900 dark:text-slate-50">Donor growth</div>
                   <div className="mt-2"><MiniLine values={donorGrowthSeries} tone="green" /></div>
                 </div>
-                <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                <div className="rounded-[14px] bg-slate-50 dark:bg-slate-800/50 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
                   <div className="text-xs font-bold text-slate-900 dark:text-slate-50">Recurring retention</div>
                   <div className="mt-2"><MiniLine values={recurringRetentionSeries} tone="orange" /></div>
                 </div>
-                <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                <div className="rounded-[14px] bg-slate-50 dark:bg-slate-800/50 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
                   <div className="text-xs font-bold text-slate-900 dark:text-slate-50">Content influence</div>
                   <div className="mt-2"><MiniLine values={contentInfluenceSeries} tone="navy" /></div>
                 </div>
@@ -1442,7 +1442,7 @@ export default function DonationsAndFundsPage() {
 
               <div className="mt-4 space-y-3">
                 {attributionBars.map((item) => (
-                  <div key={item.label} className="rounded-2xl bg-slate-50 dark:bg-slate-800/50 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div key={item.label} className="rounded-xl bg-slate-50 dark:bg-slate-800/50 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
                     <div className="flex items-center justify-between gap-2">
                       <div>
                         <div className="text-sm font-bold text-slate-900 dark:text-slate-50">{item.label}</div>
@@ -1456,7 +1456,7 @@ export default function DonationsAndFundsPage() {
               </div>
             </div>
 
-            <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <div className="rounded-[14px] bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
               <SectionTitle
                 icon={<CalendarClock className="h-5 w-5" />}
                 title="Payout and finance panel"
@@ -1464,18 +1464,18 @@ export default function DonationsAndFundsPage() {
               />
               <div className="mt-4 space-y-3">
                 <div className="grid gap-3 sm:grid-cols-2">
-                  <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div className="rounded-[14px] bg-slate-50 dark:bg-slate-800/50 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
                     <div className="text-[11px] uppercase tracking-wide text-slate-400">Next payout</div>
                     <div className="mt-1 text-lg font-extrabold text-slate-900 dark:text-slate-50">{fmtDate(selectedRecord.nextPayoutISO)}</div>
                     <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">Transfers route to finance owners after reconciliation checks.</div>
                   </div>
-                  <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div className="rounded-[14px] bg-slate-50 dark:bg-slate-800/50 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
                     <div className="text-[11px] uppercase tracking-wide text-slate-400">Reconciliation</div>
                     <div className="mt-1 text-lg font-extrabold text-slate-900 dark:text-slate-50">{selectedRecord.reconciliationPct}%</div>
                     <div className="mt-2"><ProgressBar value={selectedRecord.reconciliationPct} tone={selectedRecord.reconciliationPct >= 90 ? "green" : "orange"} /></div>
                   </div>
                 </div>
-                <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                <div className="rounded-[14px] bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
                   <div className="flex items-center justify-between gap-2">
                     <div>
                       <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Finance ownership</div>
@@ -1484,22 +1484,22 @@ export default function DonationsAndFundsPage() {
                     <Pill tone={badgeToneForFinance(selectedRecord.financeHealth)}>{selectedRecord.financeHealth}</Pill>
                   </div>
                   <div className="mt-3 space-y-2 text-sm text-slate-600 dark:text-slate-300">
-                    <div className="rounded-2xl bg-white dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800">Transfer timing aligned to provider payout schedule</div>
-                    <div className="rounded-2xl bg-white dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800">Internal finance notes available for restricted funds and emergency appeals</div>
-                    <div className="rounded-2xl bg-white dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800">Audit-friendly ownership chain from donor experience to payout</div>
+                    <div className="rounded-xl bg-white dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800">Transfer timing aligned to provider payout schedule</div>
+                    <div className="rounded-xl bg-white dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800">Internal finance notes available for restricted funds and emergency appeals</div>
+                    <div className="rounded-xl bg-white dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800">Audit-friendly ownership chain from donor experience to payout</div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <div className="rounded-[14px] bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
               <SectionTitle
                 icon={<ShieldCheck className="h-5 w-5" />}
                 title="Compliance and trust controls"
                 subtitle="Legal copy, receipts, campaign accountability notes, and assets that explain where money is going."
               />
               <div className="mt-4 space-y-3">
-                <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                <div className="rounded-[14px] bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
                   <div className="flex items-center justify-between gap-2">
                     <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Active controls</div>
                     <Pill tone={selectedRecord.legalCopyReady && selectedRecord.accountabilityReady ? "good" : "warn"}>
@@ -1507,28 +1507,28 @@ export default function DonationsAndFundsPage() {
                     </Pill>
                   </div>
                   <div className="mt-3 space-y-2">
-                    <div className="flex items-center justify-between rounded-2xl bg-white dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800 text-sm">
+                    <div className="flex items-center justify-between rounded-xl bg-white dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800 text-sm">
                       <span>Legal copy & campaign explanation</span>
                       {selectedRecord.legalCopyReady ? <CheckCircle2 className="h-4 w-4 text-emerald-500" /> : <Clock3 className="h-4 w-4 text-amber-500" />}
                     </div>
-                    <div className="flex items-center justify-between rounded-2xl bg-white dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800 text-sm">
+                    <div className="flex items-center justify-between rounded-xl bg-white dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800 text-sm">
                       <span>Accountability notes & where-money-goes assets</span>
                       {selectedRecord.accountabilityReady ? <CheckCircle2 className="h-4 w-4 text-emerald-500" /> : <Clock3 className="h-4 w-4 text-amber-500" />}
                     </div>
-                    <div className="flex items-center justify-between rounded-2xl bg-white dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800 text-sm">
+                    <div className="flex items-center justify-between rounded-xl bg-white dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800 text-sm">
                       <span>Child-safe restrictions and privacy defaults</span>
                       <CheckCircle2 className="h-4 w-4 text-emerald-500" />
                     </div>
                   </div>
                 </div>
 
-                <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 text-sm text-slate-600 dark:text-slate-300">
+                <div className="rounded-[14px] bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 text-sm text-slate-600 dark:text-slate-300">
                   {selectedRecord.statusHint}
                 </div>
               </div>
             </div>
 
-            <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <div className="rounded-[14px] bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
               <SectionTitle
                 icon={<Workflow className="h-5 w-5" />}
                 title="Campaign lifecycle tools"
@@ -1603,16 +1603,16 @@ export default function DonationsAndFundsPage() {
           </div>
 
           <div className="space-y-4">
-            <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+            <div className="rounded-[14px] bg-slate-50 dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
               <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Preview notes</div>
               <div className="mt-3 space-y-3 text-sm text-slate-600 dark:text-slate-300">
-                <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                <div className="rounded-xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
                   Suggested amounts, recurring defaults, donor privacy, and confirmation journeys are mirrored from the page controls.
                 </div>
-                <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                <div className="rounded-xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
                   Premium donor pages should feel warm and trustworthy, with clear evidence of where money goes and strong post-give reassurance.
                 </div>
-                <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                <div className="rounded-xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
                   Use Live Sessionz, replay surfaces, events, and Beacon hooks to keep the giving journey connected to ministry moments.
                 </div>
               </div>
@@ -1646,7 +1646,7 @@ export default function DonationsAndFundsPage() {
               <MetricCard label="Replay-influenced gifts" value="18%" hint="Post-live discovery contribution" tone="navy" />
               <MetricCard label="Beacon conversions" value="22%" hint="Promotion-assisted giving share" tone="orange" />
             </div>
-            <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+            <div className="rounded-[14px] bg-slate-50 dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
               <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Trend monitors</div>
               <div className="mt-4 grid gap-4 md:grid-cols-3">
                 <div>
@@ -1666,7 +1666,7 @@ export default function DonationsAndFundsPage() {
           </div>
 
           <div className="space-y-4">
-            <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+            <div className="rounded-[14px] bg-slate-50 dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
               <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Top donor segments</div>
               <div className="mt-3 space-y-3">
                 {[
@@ -1675,7 +1675,7 @@ export default function DonationsAndFundsPage() {
                   ["Recurring supporters", 22, "Best-performing retention group and Beacon audience"],
                   ["High-intent viewers", 17, "Convert when replay and live prompts are both attached"],
                 ].map(([label, value, hint]) => (
-                  <div key={label as string} className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div key={label as string} className="rounded-xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
                     <div className="flex items-center justify-between gap-2">
                       <div>
                         <div className="text-sm font-bold text-slate-900 dark:text-slate-50">{label as string}</div>
@@ -1709,3 +1709,4 @@ export default function DonationsAndFundsPage() {
     </div>
   );
 }
+
