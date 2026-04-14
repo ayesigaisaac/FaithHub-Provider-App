@@ -5,6 +5,8 @@ import { findProviderPageByPath } from '@/navigation/providerPages';
 import { ProviderSidebar, providerDrawerWidth } from './ProviderSidebar';
 import { ProviderTopbar } from './ProviderTopbar';
 import { SearchCommandDialog } from './SearchCommandDialog';
+import { QuickCreateDial } from './QuickCreateDial';
+import { MobileBottomNav } from './MobileBottomNav';
 import { PageLoader } from '@/components/PageLoader';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { MediaFallbackContainer } from '@/components/MediaFallbackContainer';
@@ -52,6 +54,8 @@ export function ProviderShellLayout() {
       </Box>
 
       <SearchCommandDialog open={searchOpen} onClose={() => setSearchOpen(false)} />
+      <QuickCreateDial />
+      <MobileBottomNav />
     </Box>
   );
 }

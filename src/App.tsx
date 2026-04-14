@@ -30,8 +30,9 @@ export default function App() {
     <Fragment>
       <ScrollToTop />
       <Routes>
-        <Route path="/" element={<LandingMount />} />
-        <Route path="/faithhub/home" element={<Navigate to="/" replace />} />
+        <Route path="/" element={<Navigate to="/faithhub/provider/dashboard" replace />} />
+        <Route path="/faithhub/home" element={<Navigate to="/faithhub/provider/dashboard" replace />} />
+        <Route path="/faithhub/home-landing" element={<LandingMount />} />
 
         <Route path="/faithhub/provider" element={<ProviderShellLayout />}>
           <Route index element={<Navigate to="/faithhub/provider/dashboard" replace />} />

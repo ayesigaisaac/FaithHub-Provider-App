@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import {
   ArrowRight,
   BookOpen,
@@ -195,6 +196,8 @@ function SectionHeading({ eyebrow, title, body }: { eyebrow: string; title: stri
 }
 
 export default function FaithHubHomeLandingPageV3Fixed() {
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen overflow-hidden bg-[#f2f2f2] text-slate-900">
       <div className="relative">
@@ -221,10 +224,16 @@ export default function FaithHubHomeLandingPageV3Fixed() {
           </nav>
 
           <div className="flex items-center gap-3">
-            <button className="hidden rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-black shadow-sm transition hover:bg-slate-50 lg:inline-flex">
+            <button
+              className="hidden rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-black shadow-sm transition hover:bg-slate-50 lg:inline-flex"
+              onClick={() => navigate("/faithhub/provider")}
+            >
               Sign in
             </button>
-            <button className="rounded-2xl bg-[#03cd8c] px-5 py-3 text-sm font-black text-white shadow-[0_16px_40px_rgba(3,205,140,0.28)] transition hover:-translate-y-0.5 hover:shadow-[0_20px_50px_rgba(3,205,140,0.34)]">
+            <button
+              className="rounded-2xl bg-[#03cd8c] px-5 py-3 text-sm font-black text-white shadow-[0_16px_40px_rgba(3,205,140,0.28)] transition hover:-translate-y-0.5 hover:shadow-[0_20px_50px_rgba(3,205,140,0.34)]"
+              onClick={() => navigate("/faithhub/provider/onboarding")}
+            >
               Join FaithHub
             </button>
           </div>
@@ -241,13 +250,22 @@ export default function FaithHubHomeLandingPageV3Fixed() {
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <button className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[#03cd8c] px-6 py-4 text-base font-black text-white shadow-[0_16px_40px_rgba(3,205,140,0.28)] transition hover:-translate-y-0.5 hover:shadow-[0_20px_50px_rgba(3,205,140,0.34)]">
+              <button
+                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[#03cd8c] px-6 py-4 text-base font-black text-white shadow-[0_16px_40px_rgba(3,205,140,0.28)] transition hover:-translate-y-0.5 hover:shadow-[0_20px_50px_rgba(3,205,140,0.34)]"
+                onClick={() => navigate("/faithhub/provider/onboarding")}
+              >
                 Start with FaithHub
                 <ArrowRight className="h-5 w-5" />
               </button>
               <button className="inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-6 py-4 text-base font-black shadow-sm transition hover:bg-slate-50">
                 <Play className="h-5 w-5" />
                 Watch the experience
+              </button>
+              <button
+                className="inline-flex items-center justify-center gap-2 rounded-2xl border border-[#03cd8c]/30 bg-white px-6 py-4 text-base font-black text-[#047857] shadow-sm transition hover:bg-emerald-50"
+                onClick={() => navigate("/faithhub/provider/dashboard")}
+              >
+                Open Provider Dashboard
               </button>
             </div>
 
@@ -532,10 +550,16 @@ export default function FaithHubHomeLandingPageV3Fixed() {
                 </p>
               </div>
               <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
-                <button className="rounded-2xl bg-[#03cd8c] px-6 py-4 text-base font-black text-white shadow-[0_16px_35px_rgba(3,205,140,0.28)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_40px_rgba(3,205,140,0.34)]">
+                <button
+                  className="rounded-2xl bg-[#03cd8c] px-6 py-4 text-base font-black text-white shadow-[0_16px_35px_rgba(3,205,140,0.28)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_40px_rgba(3,205,140,0.34)]"
+                  onClick={() => navigate("/faithhub/provider/onboarding")}
+                >
                   Get started
                 </button>
-                <button className="rounded-2xl border border-white/15 bg-white/5 px-6 py-4 text-base font-black text-white backdrop-blur transition hover:bg-white/10">
+                <button
+                  className="rounded-2xl border border-white/15 bg-white/5 px-6 py-4 text-base font-black text-white backdrop-blur transition hover:bg-white/10"
+                  onClick={() => navigate("/faithhub/provider/dashboard")}
+                >
                   Book a demo
                 </button>
               </div>
