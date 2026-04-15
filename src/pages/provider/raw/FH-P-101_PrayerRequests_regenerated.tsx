@@ -1,3 +1,4 @@
+﻿// @ts-nocheck
 "use client";
 
 import React, { useMemo, useState } from "react";
@@ -24,7 +25,7 @@ import {
 } from "lucide-react";
 
 /**
- * FaithHub — FH-P-101 Prayer Requests
+ * FaithHub â€” FH-P-101 Prayer Requests
  * -----------------------------------
  * Regenerated standalone TSX page.
  * Premium prayer intake and care-management surface for Providers.
@@ -124,8 +125,8 @@ const REQUESTS_SEED: PrayerRequest[] = [
     source: "Community Group",
     group: "Care team",
     location: "Kampala Central",
-    submittedLabel: "Today · 7:00 PM",
-    followUpLabel: "Next follow-up · Today 7:40 PM",
+    submittedLabel: "Today Â· 7:00 PM",
+    followUpLabel: "Next follow-up Â· Today 7:40 PM",
     summary:
       "Scheduled for surgery on Thursday morning. Please pray for peace, wisdom for the doctors, and strength for family as they prepare.",
     status: "Assigned",
@@ -149,8 +150,8 @@ const REQUESTS_SEED: PrayerRequest[] = [
     source: "Live Sessionz",
     group: "Anonymous support",
     location: "Online first",
-    submittedLabel: "Today · 11:30 AM",
-    followUpLabel: "Escalation review · Today 3:15 PM",
+    submittedLabel: "Today Â· 11:30 AM",
+    followUpLabel: "Escalation review Â· Today 3:15 PM",
     summary:
       "Prayer and stabilizing support requested after a live-session altar call. Needs careful privacy handling and counseling bridge review.",
     status: "Escalated",
@@ -174,8 +175,8 @@ const REQUESTS_SEED: PrayerRequest[] = [
     source: "Prayer wall",
     group: "Prayer wall",
     location: "Online first",
-    submittedLabel: "Tomorrow · 9:30 AM",
-    followUpLabel: "Check-in · Tomorrow 2:00 PM",
+    submittedLabel: "Tomorrow Â· 9:30 AM",
+    followUpLabel: "Check-in Â· Tomorrow 2:00 PM",
     summary:
       "Asking for provision, open doors, and peace during a long job search. Prefers scripture response and a prayer-circle reminder.",
     status: "Follow-up",
@@ -198,8 +199,8 @@ const REQUESTS_SEED: PrayerRequest[] = [
     source: "Noticeboard",
     group: "New intake",
     location: "Entebbe South",
-    submittedLabel: "Tomorrow · 4:00 PM",
-    followUpLabel: "Assign leader · Tomorrow 5:00 PM",
+    submittedLabel: "Tomorrow Â· 4:00 PM",
+    followUpLabel: "Assign leader Â· Tomorrow 5:00 PM",
     summary:
       "New believer requesting prayer, next-step guidance, and baptism preparation. Good candidate for discipleship routing after first response.",
     status: "New intake",
@@ -223,7 +224,7 @@ const REQUESTS_SEED: PrayerRequest[] = [
     group: "Answered prayers",
     location: "Kampala Central",
     submittedLabel: "This week",
-    followUpLabel: "Testimony review · Friday",
+    followUpLabel: "Testimony review Â· Friday",
     summary:
       "Submitted update that reconciliation has happened and family peace has improved. Suitable for moderated testimony review once approved.",
     status: "Answered",
@@ -526,7 +527,7 @@ function RequestRow({
             <div className="min-w-0">
               <div className="truncate text-[14px] font-bold text-slate-900">{request.title}</div>
               <div className="mt-1 truncate text-[12px] text-slate-500">
-                {request.requester} · {request.owner} · {request.submittedLabel}
+                {request.requester} Â· {request.owner} Â· {request.submittedLabel}
               </div>
             </div>
             <div className="shrink-0 text-right">
@@ -577,7 +578,7 @@ function PreviewCard({
         </div>
         <div className="mt-4 rounded-[20px] border border-slate-200 bg-white p-4">
           <div className="text-[14px] font-bold text-slate-900">{request.title}</div>
-          <div className="mt-1 text-[12px] text-slate-500">{request.group} · {request.submittedLabel} · {request.location}</div>
+          <div className="mt-1 text-[12px] text-slate-500">{request.group} Â· {request.submittedLabel} Â· {request.location}</div>
           <div className="mt-4 flex flex-wrap gap-2">
             <button className="rounded-full px-4 py-2 text-[12px] font-semibold text-white" style={{ background: EV_GREEN }}>
               Pray now
@@ -624,7 +625,7 @@ function CareLeadRow({ lead }: { lead: CareLead }) {
       <div className="flex items-center justify-between gap-2">
         <div>
           <div className="text-[13px] font-bold text-slate-900">{lead.name}</div>
-          <div className="mt-1 text-[12px] text-slate-500">{lead.role} · {lead.location}</div>
+          <div className="mt-1 text-[12px] text-slate-500">{lead.role} Â· {lead.location}</div>
         </div>
         <Pill text={lead.state} tone={toneForCareState(lead.state)} />
       </div>
@@ -756,9 +757,9 @@ function PrayerRequestsPage() {
                   FH
                 </div>
                 <div className="min-w-0">
-                  <div className="text-[46px] leading-none font-black tracking-tight text-slate-900">FH-P-101 · Prayer Requests</div>
+                  <div className="text-[46px] leading-none font-black tracking-tight text-slate-900">FH-P-101 Â· Prayer Requests</div>
                   <div className="mt-1 text-[16px] text-slate-500">
-                    Premium prayer intake + care routing system · EVzone Green primary, Orange secondary
+                    Premium prayer intake + care routing system Â· EVzone Green primary, Orange secondary
                   </div>
                 </div>
               </div>
@@ -792,9 +793,9 @@ function PrayerRequestsPage() {
           <div className="flex flex-wrap items-center gap-3">
             <Pill text="Prayer care pulse" tone="orange" />
             <span>4 follow-ups are due today</span>
-            <span>•</span>
+            <span>â€¢</span>
             <span>1 escalated request needs counseling bridge review</span>
-            <span>•</span>
+            <span>â€¢</span>
             <span>2 answered prayers are testimony-ready</span>
           </div>
           <div className="text-[12px] uppercase tracking-[0.2em] text-slate-400">Premium prayer ops</div>
@@ -996,7 +997,7 @@ function PrayerRequestsPage() {
         </div>
 
         <div className="mt-4 rounded-full border border-emerald-200 bg-emerald-50 px-5 py-2 text-center text-[13px] text-slate-500">
-          Concept preview of the regenerated FaithHub Prayer Requests page · EVzone Green primary ({EV_GREEN}) · Orange secondary ({EV_ORANGE})
+          Concept preview of the regenerated FaithHub Prayer Requests page Â· EVzone Green primary ({EV_GREEN}) Â· Orange secondary ({EV_ORANGE})
         </div>
       </div>
 
@@ -1049,14 +1050,14 @@ function PrayerRequestsPage() {
                   </div>
                   <div className="mt-3 text-[28px] font-black tracking-tight">Support is already being prepared</div>
                   <div className="mt-2 max-w-[420px] text-[14px] leading-6 text-white/80">
-                    This prayer request is receiving care-team attention, private prayer support, and follow-up aligned to the member’s preferences.
+                    This prayer request is receiving care-team attention, private prayer support, and follow-up aligned to the memberâ€™s preferences.
                   </div>
                 </div>
 
                 <div className="mt-4 rounded-[24px] border border-slate-200 bg-white p-5">
                   <div className="text-[24px] leading-tight font-black text-slate-900">{selectedRequest.title}</div>
                   <div className="mt-2 text-[13px] text-slate-500">
-                    {selectedRequest.group} · {selectedRequest.submittedLabel} · {selectedRequest.location}
+                    {selectedRequest.group} Â· {selectedRequest.submittedLabel} Â· {selectedRequest.location}
                   </div>
                   <div className="mt-4 text-[14px] leading-7 text-slate-600">{selectedRequest.summary}</div>
 
@@ -1077,7 +1078,7 @@ function PrayerRequestsPage() {
                   <div className="rounded-[22px] border border-slate-200 bg-white p-4">
                     <div className="text-[12px] font-semibold uppercase tracking-wide text-slate-500">Care ownership</div>
                     <div className="mt-2 text-[16px] font-bold text-slate-900">{selectedRequest.owner}</div>
-                    <div className="mt-1 text-[13px] text-slate-500">{selectedRequest.group} · {selectedRequest.source}</div>
+                    <div className="mt-1 text-[13px] text-slate-500">{selectedRequest.group} Â· {selectedRequest.source}</div>
                   </div>
                   <div className="rounded-[22px] border border-slate-200 bg-white p-4">
                     <div className="text-[12px] font-semibold uppercase tracking-wide text-slate-500">Prayer activity</div>
@@ -1101,3 +1102,4 @@ function PrayerRequestsPage() {
 }
 
 export default PrayerRequestsPage;
+

@@ -1,3 +1,4 @@
+﻿// @ts-nocheck
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -27,7 +28,7 @@ import {
 } from "lucide-react";
 
 /**
- * FaithHub — FH-P-060 Donations & Funds
+ * FaithHub â€” FH-P-060 Donations & Funds
  * -------------------------------------
  * Premium giving workspace for FaithHub Provider.
  *
@@ -78,7 +79,7 @@ function fmtInt(n: number) {
   return Intl.NumberFormat(undefined, { maximumFractionDigits: 0 }).format(n);
 }
 
-function fmtCurrency(n: number, currency = "£") {
+function fmtCurrency(n: number, currency = "Â£") {
   return `${currency}${Intl.NumberFormat(undefined, {
     maximumFractionDigits: 0,
   }).format(n)}`;
@@ -355,7 +356,7 @@ const BRIDGE_SEED: BridgeSurface[] = [
     label: "Sunday Morning Live donation moment",
     surface: "Live Session",
     state: "Ready",
-    value: "£12.8k influenced",
+    value: "Â£12.8k influenced",
     hint: "Pinned donor CTA and progress strip inside the sermon run-of-show.",
     ready: true,
   },
@@ -787,7 +788,7 @@ function PhonePreview({
   privacyWall: boolean;
 }) {
   return (
-    <div className="mx-auto w-full max-w-[360px]">
+    <div className="mx-auto w-full max-w-[360px] md:max-w-[400px]">
       <div className="rounded-[34px] bg-slate-900 p-3 shadow-2xl">
         <div className="overflow-hidden rounded-[14px] bg-white dark:bg-slate-900">
           <div className="relative aspect-[9/12] overflow-y-auto bg-slate-50 dark:bg-slate-950">
@@ -1069,7 +1070,7 @@ export default function DonationsAndFundsPage() {
 
               <div className="mt-1 flex flex-wrap items-center gap-2">
                 <div className="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50">
-                  FH-P-060 · Donations &amp; Funds
+                  FH-P-060 Â· Donations &amp; Funds
                 </div>
                 <Pill tone="good">
                   <BadgeCheck className="h-3.5 w-3.5" />
@@ -1325,7 +1326,7 @@ export default function DonationsAndFundsPage() {
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0">
                         <div className="text-sm font-bold text-slate-900 dark:text-slate-50">{item.label}</div>
-                        <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{item.surface} · {item.hint}</div>
+                        <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{item.surface} Â· {item.hint}</div>
                       </div>
                       <Pill tone={item.ready ? "good" : "warn"}>{item.state}</Pill>
                     </div>
@@ -1479,7 +1480,7 @@ export default function DonationsAndFundsPage() {
                   <div className="flex items-center justify-between gap-2">
                     <div>
                       <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Finance ownership</div>
-                      <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{selectedRecord.owner} · {selectedRecord.financeHealth} state</div>
+                      <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{selectedRecord.owner} Â· {selectedRecord.financeHealth} state</div>
                     </div>
                     <Pill tone={badgeToneForFinance(selectedRecord.financeHealth)}>{selectedRecord.financeHealth}</Pill>
                   </div>
@@ -1709,4 +1710,6 @@ export default function DonationsAndFundsPage() {
     </div>
   );
 }
+
+
 

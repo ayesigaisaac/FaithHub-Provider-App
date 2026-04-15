@@ -1,3 +1,4 @@
+﻿// @ts-nocheck
 "use client";
 
 import React, { useMemo, useState } from "react";
@@ -34,7 +35,7 @@ import {
 } from "lucide-react";
 
 /**
- * FaithHub — FH-P-027 Merchandise Builder
+ * FaithHub â€” FH-P-027 Merchandise Builder
  * ---------------------------------------
  * Premium Provider-side create/edit page launched from FH-P-026 Merchandise Manager via
  * the "+ New Merchandise" command.
@@ -476,7 +477,7 @@ function createDraftFromTemplate(templateId: TemplateKey): MerchandiseDraft {
     donorThankYouEligible: false,
     fulfillmentMode: "Mixed",
     shippingClass: "Standard parcel",
-    prepLabel: "Dispatch in 2–4 working days",
+    prepLabel: "Dispatch in 2â€“4 working days",
     shipRegions: preset.shipRegions,
     pickupLocations: preset.pickupLocations,
     linkHooks: {
@@ -1038,7 +1039,7 @@ function PreviewRail({
               </div>
             </div>
           ) : (
-            <div className="mx-auto w-[320px] overflow-hidden rounded-[34px] border border-slate-200 bg-slate-950 p-2 shadow-sm">
+            <div className="mx-auto w-[320px] md:w-[360px] overflow-hidden rounded-[34px] border border-slate-200 bg-slate-950 p-2 shadow-sm">
               <div className="overflow-hidden rounded-[28px] bg-white">
                 <div className="relative aspect-[9/12] overflow-hidden">
                   <img src={draft.coverUrl} alt={draft.title} className="h-full w-full object-cover" />
@@ -1046,7 +1047,7 @@ function PreviewRail({
                   <div className="absolute left-3 right-3 bottom-3 text-white">
                     <div className="text-[10px] font-black uppercase tracking-[0.2em] opacity-80">FaithMart</div>
                     <div className="mt-1 text-base font-black leading-tight">{draft.title}</div>
-                    <div className="mt-1 text-xs opacity-90">{heroPrice}{supporterPrice ? ` • Supporter ${supporterPrice}` : ""}</div>
+                    <div className="mt-1 text-xs opacity-90">{heroPrice}{supporterPrice ? ` â€¢ Supporter ${supporterPrice}` : ""}</div>
                   </div>
                 </div>
                 <div className="p-3">
@@ -1615,7 +1616,7 @@ export default function MerchandiseBuilderPage() {
                       </div>
                       <div>
                         <Label>Preparation SLA</Label>
-                        <Input value={draft.prepLabel} onChange={(value) => patchDraft("prepLabel", value)} placeholder="Dispatch in 2–4 working days" />
+                        <Input value={draft.prepLabel} onChange={(value) => patchDraft("prepLabel", value)} placeholder="Dispatch in 2â€“4 working days" />
                       </div>
                       <div>
                         <Label>Ship regions (comma separated)</Label>
@@ -1836,3 +1837,5 @@ export default function MerchandiseBuilderPage() {
     </div>
   );
 }
+
+

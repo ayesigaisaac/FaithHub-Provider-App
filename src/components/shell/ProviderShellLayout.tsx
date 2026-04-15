@@ -10,7 +10,6 @@ import { MobileBottomNav } from './MobileBottomNav';
 import { PageLoader } from '@/components/PageLoader';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { MediaFallbackContainer } from '@/components/MediaFallbackContainer';
-import { spacing } from '@/theme/spacing';
 
 export function ProviderShellLayout() {
   const location = useLocation();
@@ -18,7 +17,6 @@ export function ProviderShellLayout() {
   const [searchOpen, setSearchOpen] = useState(false);
 
   const current = useMemo(() => findProviderPageByPath(location.pathname), [location.pathname]);
-  const density = spacing.compact.mui;
 
   return (
     <Box sx={{ display: 'flex', minHeight: '100vh', bgcolor: '#f3f4f6' }}>

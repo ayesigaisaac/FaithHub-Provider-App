@@ -1,10 +1,8 @@
-"use client";
+﻿"use client";
 
 import React, { useMemo, useState } from "react";
 import {
-  AlertTriangle,
   Bot,
-  CheckCircle2,
   ChevronRight,
   Eye,
   Lock,
@@ -13,12 +11,11 @@ import {
   Shield,
   ShieldCheck,
   Siren,
-  Sparkles,
   Workflow,
 } from "lucide-react";
 
 /**
- * FaithHub — FH-P-121 Moderation Settings
+ * FaithHub â€” FH-P-121 Moderation Settings
  * ---------------------------------------
  * Distinct from FH-P-070 Reviews & Moderation.
  * FH-P-121 controls policy rules, thresholds, child-safe defaults,
@@ -37,7 +34,6 @@ import {
 const GREEN = "#03cd8c";
 const ORANGE = "#f77f00";
 const MEDIUM = "#a6a6a6";
-const LIGHT = "#f2f2f2";
 const INDIGO = "#2f3f9f";
 
 type PolicySection =
@@ -309,7 +305,7 @@ function SafeguardTile({
         <div>
           <div className="text-[13px] font-extrabold leading-tight text-slate-900 dark:text-slate-100">{safeguard.title}</div>
           <div className="mt-1 text-[11px] leading-snug text-slate-500 dark:text-slate-400">{safeguard.detail}</div>
-          <div className="mt-1 text-[11px] font-semibold text-slate-400 dark:text-slate-500">High-trust safeguard for minors,…</div>
+          <div className="mt-1 text-[11px] font-semibold text-slate-400 dark:text-slate-500">High-trust safeguard for minors,â€¦</div>
         </div>
         <Toggle checked={safeguard.enabled} onChange={() => onToggle(safeguard.id)} />
       </div>
@@ -372,37 +368,37 @@ export default function FH_P_121_ModerationSettings() {
   const [safeguards, setSafeguards] = useState<Safeguard[]>([
     {
       id: "sg_1",
-      title: "Disable anonymous replies…",
+      title: "Disable anonymous repliesâ€¦",
       detail: "Reduce hidden participation in child-facing or highly sensitive flows.",
       enabled: true,
     },
     {
       id: "sg_2",
-      title: "Block adult-to-child…",
+      title: "Block adult-to-childâ€¦",
       detail: "Prevent direct adult-to-child routing outside approved care flows.",
       enabled: true,
     },
     {
       id: "sg_3",
-      title: "Require dual approval for…",
+      title: "Require dual approval forâ€¦",
       detail: "Mandate an extra reviewer for child-linked moderation actions.",
       enabled: true,
     },
     {
       id: "sg_4",
-      title: "Disable direct messaging for…",
+      title: "Disable direct messaging forâ€¦",
       detail: "Keep child-safe conversation surfaces group-led and audited.",
       enabled: true,
     },
     {
       id: "sg_5",
-      title: "Require media consent on…",
+      title: "Require media consent onâ€¦",
       detail: "Add stricter consent checks for testimony and prayer uploads.",
       enabled: true,
     },
     {
       id: "sg_6",
-      title: "Freeze public sort order duri…",
+      title: "Freeze public sort order duriâ€¦",
       detail: "Reduce rapid public amplification when risk signals spike.",
       enabled: true,
     },
@@ -463,7 +459,7 @@ export default function FH_P_121_ModerationSettings() {
     {
       id: "p_1",
       title: "Live chat message with repeated links",
-      surface: "Live Sessionz · Chat",
+      surface: "Live Sessionz Â· Chat",
       outcome: "Hold",
     },
     {
@@ -548,7 +544,7 @@ export default function FH_P_121_ModerationSettings() {
                   Trust &amp; Safety Governance
                 </div>
                 <div className="mt-1 text-[26px] md:text-[32px] leading-none font-black tracking-tight text-slate-900 dark:text-slate-50">
-                  FH-P-121 · Moderation Settings
+                  FH-P-121 Â· Moderation Settings
                 </div>
                 <div className="mt-2 max-w-[920px] text-[15px] leading-relaxed text-slate-500 dark:text-slate-400">
                   Institution-wide policy rules, filters, defaults, thresholds, child-safe settings, and automation rules.
@@ -586,7 +582,7 @@ export default function FH_P_121_ModerationSettings() {
             </div>
           </div>
           <div className="text-[12px] font-extrabold uppercase tracking-[0.12em] text-slate-400 dark:text-slate-500">
-            Surface engine · Safeguards · Automation
+            Surface engine Â· Safeguards Â· Automation
           </div>
         </div>
 
@@ -785,3 +781,5 @@ export default function FH_P_121_ModerationSettings() {
     </div>
   );
 }
+
+

@@ -7,7 +7,7 @@ import FaithHubHomeLandingPage from '@/pages/public/FaithHubHomeLandingPage';
 import { usePageTitle } from '@/hooks/usePageTitle';
 import Dashboard from '@/pages/Dashboard';
 
-function ScrollToTop() {
+function ScrollToTop(): null {
   const location = useLocation();
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' });

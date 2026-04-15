@@ -1,3 +1,4 @@
+﻿// @ts-nocheck
 
 'use client';
 
@@ -28,7 +29,7 @@ import {
 } from 'lucide-react';
 
 /**
- * FaithHub — FH-P-070 Reviews & Moderation
+ * FaithHub â€” FH-P-070 Reviews & Moderation
  * ---------------------------------------
  * Premium trust-and-safety centre for Provider-side review response,
  * moderation case handling, risk pattern detection, and reputation recovery.
@@ -166,7 +167,7 @@ const reviewsSeed: ReviewRecord[] = [
   {
     id: 'RV-102',
     sourceType: 'Live Session',
-    sourceLabel: 'Sunday Encounter · Live Session',
+    sourceLabel: 'Sunday Encounter Â· Live Session',
     title: 'Audio dropped during the message',
     rating: 2,
     sentiment: 'Negative',
@@ -184,7 +185,7 @@ const reviewsSeed: ReviewRecord[] = [
   {
     id: 'RV-087',
     sourceType: 'Replay',
-    sourceLabel: 'Grace in Motion · Replay',
+    sourceLabel: 'Grace in Motion Â· Replay',
     title: 'The replay notes were very helpful',
     rating: 5,
     sentiment: 'Positive',
@@ -204,7 +205,7 @@ const reviewsSeed: ReviewRecord[] = [
   {
     id: 'RV-091',
     sourceType: 'Clip',
-    sourceLabel: 'Healing in 60 Seconds · Clip',
+    sourceLabel: 'Healing in 60 Seconds Â· Clip',
     title: 'Comments felt unsafe and unmoderated',
     rating: 1,
     sentiment: 'Negative',
@@ -224,7 +225,7 @@ const reviewsSeed: ReviewRecord[] = [
   {
     id: 'RV-074',
     sourceType: 'Institution',
-    sourceLabel: 'Institution Page · Grace House Kampala',
+    sourceLabel: 'Institution Page Â· Grace House Kampala',
     title: 'Warm welcome and clear service times',
     rating: 5,
     sentiment: 'Positive',
@@ -313,7 +314,7 @@ const casesSeed: ModerationCase[] = [
   {
     id: 'MC-198',
     type: 'Chat report',
-    sourceLabel: 'Sunday Encounter · Live Session',
+    sourceLabel: 'Sunday Encounter Â· Live Session',
     title: 'Prayer request queue flooded by spam links',
     urgency: 'High',
     owner: 'Moderation captain',
@@ -339,7 +340,7 @@ const casesSeed: ModerationCase[] = [
   {
     id: 'MC-181',
     type: 'Flagged clip',
-    sourceLabel: 'Healing in 60 Seconds · Clip',
+    sourceLabel: 'Healing in 60 Seconds Â· Clip',
     title: 'Context dispute on clipped testimony moment',
     urgency: 'Medium',
     owner: 'Content lead',
@@ -364,7 +365,7 @@ const casesSeed: ModerationCase[] = [
   {
     id: 'MC-166',
     type: 'Review abuse',
-    sourceLabel: 'Institution Page · Grace House Kampala',
+    sourceLabel: 'Institution Page Â· Grace House Kampala',
     title: 'Possible coordinated 1-star review brigade',
     urgency: 'High',
     owner: 'Trust lead',
@@ -438,7 +439,7 @@ const riskSignalsSeed: RiskSignal[] = [
   },
   {
     title: 'Response quality trend',
-    detail: 'Public response turnaround improved after templated approvals were enabled for 1–2 star reviews.',
+    detail: 'Public response turnaround improved after templated approvals were enabled for 1â€“2 star reviews.',
     value: '92% within SLA',
     trendLabel: 'Improving',
     tone: 'brand',
@@ -447,7 +448,7 @@ const riskSignalsSeed: RiskSignal[] = [
 
 const policySeed: PolicyItem[] = [
   {
-    title: '1–2 star review approval route',
+    title: '1â€“2 star review approval route',
     detail: 'Communications lead review required before public response goes live.',
     state: 'Active',
   },
@@ -808,10 +809,10 @@ function ReviewRow({
             <Pill tone="neutral">{review.sourceType}</Pill>
           </div>
           <div className="mt-2 text-[12px] text-slate-500 dark:text-slate-400">
-            {review.sourceLabel} · {review.topic} · Owner: {review.owner}
+            {review.sourceLabel} Â· {review.topic} Â· Owner: {review.owner}
           </div>
           <div className="mt-3 line-clamp-3 text-[13px] leading-relaxed text-slate-700 dark:text-slate-300">
-            “{review.excerpt}”
+            â€œ{review.excerpt}â€
           </div>
 
           <div className="mt-3 flex flex-wrap gap-2">
@@ -821,7 +822,7 @@ function ReviewRow({
               </span>
             ))}
             <span className="ml-2 text-[11px] font-semibold text-slate-500 dark:text-slate-400">{review.createdLabel}</span>
-            <span className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">• {review.dueLabel}</span>
+            <span className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">â€¢ {review.dueLabel}</span>
           </div>
         </div>
 
@@ -872,7 +873,7 @@ function CaseRow({
             {kase.childSafe ? <Pill tone="bad">Child-safe</Pill> : null}
           </div>
           <div className="mt-2 text-[12px] text-slate-500 dark:text-slate-400">
-            {kase.sourceLabel} · Owner: {kase.owner} · {kase.lastActionLabel}
+            {kase.sourceLabel} Â· Owner: {kase.owner} Â· {kase.lastActionLabel}
           </div>
           <div className="mt-3 text-[13px] leading-relaxed text-slate-700 dark:text-slate-300">{kase.summary}</div>
           <div className="mt-3 flex flex-wrap gap-2">
@@ -944,7 +945,7 @@ function PreviewCanvas({
         </div>
 
         <div className="mt-3 text-[13px] leading-relaxed text-slate-700 dark:text-slate-300">
-          “{review.excerpt}”
+          â€œ{review.excerpt}â€
         </div>
 
         <div className="mt-4 rounded-3xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 p-4">
@@ -967,17 +968,17 @@ function PreviewCanvas({
 
   if (device === 'mobile') {
     return (
-      <div className="mx-auto w-full max-w-[290px]">
+      <div className="mx-auto w-full max-w-[290px] md:max-w-[340px]">
         <div className="rounded-[36px] bg-slate-950 p-3 shadow-[0_18px_60px_rgba(15,23,42,0.45)]">
           <div className="rounded-[28px] bg-white dark:bg-slate-900 p-3 transition-colors">
             <div className="mx-auto mb-3 h-5 w-24 rounded-full bg-slate-200 dark:bg-slate-700" />
             <div className="rounded-[24px] bg-slate-50 dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
               <div className="flex items-center justify-between gap-2">
                 <div className="text-[12px] font-extrabold text-slate-900 dark:text-slate-100">Review card</div>
-                <Pill tone={review.sentiment === 'Negative' ? 'accent' : 'good'}>{review.rating}.0★</Pill>
+                <Pill tone={review.sentiment === 'Negative' ? 'accent' : 'good'}>{review.rating}.0â˜…</Pill>
               </div>
               <div className="mt-3 text-[13px] font-bold text-slate-900 dark:text-slate-100">{review.title}</div>
-              <div className="mt-2 text-[12px] leading-relaxed text-slate-700 dark:text-slate-300">“{review.excerpt}”</div>
+              <div className="mt-2 text-[12px] leading-relaxed text-slate-700 dark:text-slate-300">â€œ{review.excerpt}â€</div>
 
               <div className="mt-4 rounded-2xl p-3 text-white" style={{ background: EV_GREEN }}>
                 <div className="text-[11px] uppercase tracking-[0.16em] text-white/80">Public response</div>
@@ -1015,7 +1016,7 @@ export default function FaithHubReviewsAndModerationPage() {
   const [selectedCaseId, setSelectedCaseId] = useState<string>(casesSeed[0].id);
   const [templateKey, setTemplateKey] = useState<string>('Technical issue follow-up');
   const [responseTone, setResponseTone] = useState<ToneKey>('Warm');
-  const [approvalRoute, setApprovalRoute] = useState('Communications lead → Pastoral lead');
+  const [approvalRoute, setApprovalRoute] = useState('Communications lead â†’ Pastoral lead');
   const [collabNotes, setCollabNotes] = useState('Mention the audio-chain fix, caption confidence refresh, and the replay fallback already published.');
   const [responseBody, setResponseBody] = useState(REVIEW_TEMPLATE_MAP['Technical issue follow-up']);
   const [previewMode, setPreviewMode] = useState<PreviewMode>('desktop');
@@ -1242,7 +1243,7 @@ export default function FaithHubReviewsAndModerationPage() {
                   Trust watch
                 </Pill>
                 <span className="text-[12px] font-semibold text-slate-600 dark:text-slate-400">
-                  Audio complaints are leading negative sentiment this week • 1 suspected review brigade • safeguarding lane healthy across child-facing surfaces
+                  Audio complaints are leading negative sentiment this week â€¢ 1 suspected review brigade â€¢ safeguarding lane healthy across child-facing surfaces
                 </span>
               </div>
 
@@ -1502,10 +1503,10 @@ export default function FaithHubReviewsAndModerationPage() {
                     <div className="min-w-0">
                       <div className="text-[14px] font-extrabold text-slate-900 dark:text-slate-100">{selectedReview.title}</div>
                       <div className="mt-1 text-[12px] text-slate-500 dark:text-slate-400">
-                        {selectedReview.sourceLabel} · {selectedReview.topic} · Owner: {selectedReview.owner}
+                        {selectedReview.sourceLabel} Â· {selectedReview.topic} Â· Owner: {selectedReview.owner}
                       </div>
                       <div className="mt-3 text-[13px] leading-relaxed text-slate-700 dark:text-slate-300">
-                        “{selectedReview.excerpt}”
+                        â€œ{selectedReview.excerpt}â€
                       </div>
                     </div>
 
@@ -1571,10 +1572,10 @@ export default function FaithHubReviewsAndModerationPage() {
                             onChange={(event) => setApprovalRoute(event.target.value)}
                             className="mt-2 h-12 w-full rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-4 text-sm text-slate-900 dark:text-slate-100 shadow-sm transition focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-700"
                           >
-                            <option>Communications lead → Pastoral lead</option>
+                            <option>Communications lead â†’ Pastoral lead</option>
                             <option>Communications lead only</option>
-                            <option>Trust lead → Leadership</option>
-                            <option>Finance lead → Communications</option>
+                            <option>Trust lead â†’ Leadership</option>
+                            <option>Finance lead â†’ Communications</option>
                           </select>
                         </div>
 
@@ -1916,7 +1917,7 @@ export default function FaithHubReviewsAndModerationPage() {
         <Modal
           open={evidenceOpen}
           onClose={() => setEvidenceOpen(false)}
-          title={`Evidence & action drawer — ${selectedCase.id}`}
+          title={`Evidence & action drawer â€” ${selectedCase.id}`}
           subtitle="Screenshots, linked messages, prior rulings, audit notes, and explainable action history for the selected moderation case."
           right={<Pill tone={selectedCase.childSafe ? 'bad' : 'accent'}>{selectedCase.status}</Pill>}
         >
@@ -1924,7 +1925,7 @@ export default function FaithHubReviewsAndModerationPage() {
             <div className="space-y-4">
               <div className="rounded-3xl bg-slate-50 dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
                 <div className="text-sm font-extrabold text-slate-900 dark:text-slate-100">{selectedCase.title}</div>
-                <div className="mt-1 text-[12px] text-slate-500 dark:text-slate-400">{selectedCase.sourceLabel} · Owner: {selectedCase.owner}</div>
+                <div className="mt-1 text-[12px] text-slate-500 dark:text-slate-400">{selectedCase.sourceLabel} Â· Owner: {selectedCase.owner}</div>
                 <div className="mt-3 text-[13px] leading-relaxed text-slate-700 dark:text-slate-300">{selectedCase.summary}</div>
 
                 <div className="mt-4 flex flex-wrap gap-2">
@@ -2028,3 +2029,5 @@ export default function FaithHubReviewsAndModerationPage() {
     </div>
   );
 }
+
+

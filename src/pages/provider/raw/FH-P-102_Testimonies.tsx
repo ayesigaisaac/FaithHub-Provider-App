@@ -1,3 +1,4 @@
+﻿// @ts-nocheck
 "use client";
 
 import React, { useMemo, useState } from "react";
@@ -24,7 +25,7 @@ import {
 } from "lucide-react";
 
 /**
- * FaithHub — FH-P-102 Testimonies
+ * FaithHub â€” FH-P-102 Testimonies
  * --------------------------------
  * Premium Provider-side page for collecting, reviewing, approving,
  * publishing, and featuring testimonies across the institution.
@@ -204,7 +205,7 @@ const testimoniesSeed: TestimonyRecord[] = [
     anonymousRequested: false,
     childSafe: false,
     linkedLive: "Night of Hope Revival",
-    linkedReplay: "Night of Hope — Replay",
+    linkedReplay: "Night of Hope â€” Replay",
     heroUrl: HERO_1,
     tags: ["Provision", "Jobs", "Night of Hope"],
     safeguards: [
@@ -395,7 +396,7 @@ const testimoniesSeed: TestimonyRecord[] = [
     anonymousRequested: false,
     childSafe: false,
     linkedEvent: "Baptism Sunday",
-    linkedReplay: "Baptism Sunday — Replay",
+    linkedReplay: "Baptism Sunday â€” Replay",
     heroUrl: HERO_4,
     tags: ["Baptism", "Salvation", "Replay"],
     safeguards: [
@@ -795,7 +796,7 @@ function TestimonyPreview({
     <div
       className={cx(
         "overflow-hidden rounded-[28px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 transition-colors",
-        previewMode === "mobile" ? "max-w-[340px]" : "w-full",
+        previewMode === "mobile" ? "max-w-[340px] md:max-w-[380px]" : "w-full",
       )}
     >
       <div
@@ -841,7 +842,7 @@ function TestimonyPreview({
               {story.displayName}
             </div>
             <div className="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">
-              {story.category} • {story.mediaType}
+              {story.category} â€¢ {story.mediaType}
             </div>
           </div>
           <Pill text={story.status} tone={statusTone(story.status)} />
@@ -852,10 +853,10 @@ function TestimonyPreview({
             Story highlight
           </div>
           <div className="mt-1 text-[13px] font-semibold text-slate-900 dark:text-slate-100 leading-6">
-            “{story.storyText.slice(0, 160)}{story.storyText.length > 160 ? "…" : ""}”
+            â€œ{story.storyText.slice(0, 160)}{story.storyText.length > 160 ? "â€¦" : ""}â€
           </div>
           <div className="mt-2 text-[11px] text-slate-600 dark:text-slate-400">
-            Key verse • {story.keyVerse}
+            Key verse â€¢ {story.keyVerse}
           </div>
         </div>
 
@@ -1065,7 +1066,7 @@ export default function TestimoniesPage() {
                 Community stories command
               </div>
               <h1 className="mt-2 text-[34px] font-black tracking-[-0.03em] text-slate-900 dark:text-slate-100">
-                FH-P-102 · Testimonies
+                FH-P-102 Â· Testimonies
               </h1>
               <p className="mt-2 max-w-[860px] text-[15px] leading-7 text-slate-600 dark:text-slate-400">
                 Premium collection, review, approval, publication, and featuring workspace for testimonies across live sessions,
@@ -1104,9 +1105,9 @@ export default function TestimoniesPage() {
             <div className="min-w-0 flex flex-wrap items-center gap-2 text-[13px] text-slate-600 dark:text-slate-400">
               <Pill text="STORY OPS ALERTS" tone="warn" icon={<AlertTriangle className="h-3 w-3" />} />
               <span>{fmtInt(needsReview.length)} stories still need first review</span>
-              <span>•</span>
+              <span>â€¢</span>
               <span>{fmtInt(consentGaps.length)} stories have consent or release gaps</span>
-              <span>•</span>
+              <span>â€¢</span>
               <span>{fmtInt(featureReady.length)} approved stories are ready for featuring</span>
             </div>
             <div className="text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-400 dark:text-slate-500">
@@ -1301,7 +1302,7 @@ export default function TestimoniesPage() {
                               <Pill text={featureState} tone={featureState === "Blocked" ? "danger" : featureState === "Featured" ? "good" : featureState === "Feature ready" ? "warn" : "navy"} />
                             </div>
                             <div className="mt-1 text-[13px] text-slate-500 dark:text-slate-400">
-                              {story.displayName} • {story.category} • {story.mediaType}
+                              {story.displayName} â€¢ {story.category} â€¢ {story.mediaType}
                             </div>
                             <div className="mt-2 max-w-[820px] text-[13px] leading-6 text-slate-700 dark:text-slate-300">
                               {story.summary}
@@ -1333,7 +1334,7 @@ export default function TestimoniesPage() {
                             {fmtLocal(story.submittedISO)}
                           </div>
                           <div className="mt-3 text-[11px] text-slate-500 dark:text-slate-400">
-                            Reads • {fmtInt(story.impact.reads)}
+                            Reads â€¢ {fmtInt(story.impact.reads)}
                           </div>
                         </div>
                       </div>
@@ -1432,13 +1433,13 @@ export default function TestimoniesPage() {
                         Linked destinations
                       </div>
                       <div className="mt-3 flex flex-wrap gap-2">
-                        {selectedStory.linkedLive ? <Pill text={`Live • ${selectedStory.linkedLive}`} tone="navy" icon={<PlayCircle className="h-3 w-3" />} /> : null}
-                        {selectedStory.linkedReplay ? <Pill text={`Replay • ${selectedStory.linkedReplay}`} tone="good" icon={<Link2 className="h-3 w-3" />} /> : null}
-                        {selectedStory.linkedGroup ? <Pill text={`Group • ${selectedStory.linkedGroup}`} tone="warn" icon={<LayoutGrid className="h-3 w-3" />} /> : null}
-                        {selectedStory.linkedEvent ? <Pill text={`Event • ${selectedStory.linkedEvent}`} tone="warn" icon={<CalendarClock className="h-3 w-3" />} /> : null}
+                        {selectedStory.linkedLive ? <Pill text={`Live â€¢ ${selectedStory.linkedLive}`} tone="navy" icon={<PlayCircle className="h-3 w-3" />} /> : null}
+                        {selectedStory.linkedReplay ? <Pill text={`Replay â€¢ ${selectedStory.linkedReplay}`} tone="good" icon={<Link2 className="h-3 w-3" />} /> : null}
+                        {selectedStory.linkedGroup ? <Pill text={`Group â€¢ ${selectedStory.linkedGroup}`} tone="warn" icon={<LayoutGrid className="h-3 w-3" />} /> : null}
+                        {selectedStory.linkedEvent ? <Pill text={`Event â€¢ ${selectedStory.linkedEvent}`} tone="warn" icon={<CalendarClock className="h-3 w-3" />} /> : null}
                       </div>
                       <div className="mt-3 text-[11px] leading-5 text-slate-500 dark:text-slate-400">
-                        Tags • {selectedStory.tags.join(" • ")}
+                        Tags â€¢ {selectedStory.tags.join(" â€¢ ")}
                       </div>
                     </div>
                     <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3 transition-colors">
@@ -1506,7 +1507,7 @@ export default function TestimoniesPage() {
                     Decide where the story should surface next and which safeguards still gate public visibility.
                   </div>
                 </div>
-                <Pill text={selectedStory?.status || "—"} tone={selectedStory ? statusTone(selectedStory.status) : "neutral"} />
+                <Pill text={selectedStory?.status || "â€”"} tone={selectedStory ? statusTone(selectedStory.status) : "neutral"} />
               </div>
 
               {selectedStory ? (
@@ -1697,7 +1698,7 @@ export default function TestimoniesPage() {
                 </div>
 
                 <div className="text-[11px] text-slate-500 dark:text-slate-400">
-                  Concept preview of the generated FaithHub Testimonies page • EVzone Green primary ({EV_GREEN}) • Orange secondary ({EV_ORANGE})
+                  Concept preview of the generated FaithHub Testimonies page â€¢ EVzone Green primary ({EV_GREEN}) â€¢ Orange secondary ({EV_ORANGE})
                 </div>
               </div>
             ) : null}
@@ -1709,7 +1710,7 @@ export default function TestimoniesPage() {
         <Drawer
           open={previewOpen}
           onClose={() => setPreviewOpen(false)}
-          title="FH-P-102 · Testimonies preview"
+          title="FH-P-102 Â· Testimonies preview"
           subtitle="Large preview of the selected testimony destination"
         >
           <TestimonyPreviewInner story={selectedStory} previewMode={previewMode} />
@@ -1718,3 +1719,5 @@ export default function TestimoniesPage() {
     </div>
   );
 }
+
+

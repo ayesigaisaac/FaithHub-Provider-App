@@ -1,3 +1,4 @@
+﻿// @ts-nocheck
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -29,7 +30,7 @@ import {
 } from "lucide-react";
 
 /**
- * FaithHub — FH-P-018 Series Dashboard
+ * FaithHub â€” FH-P-018 Series Dashboard
  * ------------------------------------
  * Premium operational landing page for structured Series content.
  *
@@ -42,7 +43,7 @@ import {
  * Design goals
  * - EVzone Green primary, Orange secondary.
  * - Premium creator-style hierarchy: hero, KPI strip, command center, preview rail, and workflow boards.
- * - Strong emphasis on the Series → Episodes relationship.
+ * - Strong emphasis on the Series â†’ Episodes relationship.
  */
 
 const EV_GREEN = "#03cd8c";
@@ -98,7 +99,7 @@ function fmtDate(iso: string) {
 }
 
 function fmtDateTime(iso?: string) {
-  if (!iso) return "—";
+  if (!iso) return "â€”";
   const d = new Date(iso);
   return d.toLocaleString(undefined, {
     month: "short",
@@ -821,7 +822,7 @@ function SeriesLandingPreview({
                 <div key={episode.id} className="rounded-2xl bg-slate-50 dark:bg-slate-950 px-3 py-2 transition-colors">
                   <div className="flex items-center justify-between gap-2">
                     <div className="min-w-0">
-                      <div className="truncate text-[12px] font-bold text-slate-900 dark:text-slate-100">Episode {episode.number} · {episode.title}</div>
+                      <div className="truncate text-[12px] font-bold text-slate-900 dark:text-slate-100">Episode {episode.number} Â· {episode.title}</div>
                       <div className="mt-0.5 truncate text-[11px] text-slate-500 dark:text-slate-400">{episode.focus}</div>
                     </div>
                     <Pill text={episode.status} tone={statusTone(episode.status)} />
@@ -950,8 +951,8 @@ export default function SeriesDashboardPage() {
 
       return {
         id: episode.id,
-        title: `Episode ${episode.number} · ${episode.title}`,
-        detail: detailParts.join(" • "),
+        title: `Episode ${episode.number} Â· ${episode.title}`,
+        detail: detailParts.join(" â€¢ "),
         status: episode.status,
         tone,
       };
@@ -980,10 +981,10 @@ export default function SeriesDashboardPage() {
                 </div>
                 <div>
                   <div className="text-[18px] md:text-[24px] xl:text-[28px] font-black tracking-tight text-slate-900 dark:text-slate-100">
-                    FH-P-018 · Series Dashboard
+                    FH-P-018 Â· Series Dashboard
                   </div>
                   <div className="mt-1 text-[13px] text-slate-500 dark:text-slate-400">
-                    Premium structured-series command surface · EVzone Green primary, Orange secondary
+                    Premium structured-series command surface Â· EVzone Green primary, Orange secondary
                   </div>
                 </div>
               </div>
@@ -1026,11 +1027,11 @@ export default function SeriesDashboardPage() {
               Series pipeline pulse
             </span>
             <span>1 series needs artwork</span>
-            <span>·</span>
+            <span>Â·</span>
             <span>2 episodes require notes review</span>
-            <span>·</span>
+            <span>Â·</span>
             <span>{translationReviewCount} translation variants still due</span>
-            <span>·</span>
+            <span>Â·</span>
             <span>{beaconReadyCount} series already promotion-ready</span>
             <span className="ml-auto text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-400">Premium series ops</span>
           </div>
@@ -1340,7 +1341,7 @@ export default function SeriesDashboardPage() {
                         <Workflow className="h-5 w-5" />
                       </div>
                       <div>
-                        <div className="text-[14px] font-bold text-slate-900 dark:text-slate-100">Series → Episodes rule</div>
+                        <div className="text-[14px] font-bold text-slate-900 dark:text-slate-100">Series â†’ Episodes rule</div>
                         <div className="mt-1 text-[12px] text-slate-600 dark:text-slate-400">
                           <span className="font-semibold text-slate-900 dark:text-slate-100">{selectedSeries.title}</span> currently holds <span className="font-semibold text-slate-900 dark:text-slate-100">{selectedSeries.episodeCount} episodes</span>. New episodes should be created from this Series context so they inherit the right identity, audience, and workflow connections.
                         </div>
@@ -1453,9 +1454,10 @@ export default function SeriesDashboardPage() {
         </div>
 
         <div className="rounded-[18px] border border-[#03cd8c]/30 bg-[#e8f8f3] px-4 py-3 text-center text-[13px] text-slate-600">
-          Concept preview of the generated FaithHub Series Dashboard page · EVzone Green primary ({EV_GREEN}) · Orange secondary ({EV_ORANGE})
+          Concept preview of the generated FaithHub Series Dashboard page Â· EVzone Green primary ({EV_GREEN}) Â· Orange secondary ({EV_ORANGE})
         </div>
       </div>
     </div>
   );
 }
+

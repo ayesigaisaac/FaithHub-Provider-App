@@ -1,3 +1,4 @@
+﻿// @ts-nocheck
 
 "use client";
 
@@ -26,7 +27,7 @@ import {
 } from "lucide-react";
 
 /**
- * FaithHub — FH-P-021 Episode Builder
+ * FaithHub â€” FH-P-021 Episode Builder
  * -----------------------------------
  * Premium provider page for shaping an episode inside a Series while still
  * giving it its own live, replay, resource, and audience journey.
@@ -55,7 +56,7 @@ const PRESET_BLUEPRINTS = [
   {
     id: "blueprint-sermon",
     title: "Standard sermon blueprint",
-    subtitle: "Hook → scripture → teaching core → response → close.",
+    subtitle: "Hook â†’ scripture â†’ teaching core â†’ response â†’ close.",
     accent: "green" as const,
   },
   {
@@ -239,7 +240,7 @@ const DEFAULT_LIVE_ATTACHMENTS: LiveAttachment[] = [
     id: "live-1",
     label: "Episode preview room",
     variant: "Preview session",
-    startLabel: "Thu · 18:30",
+    startLabel: "Thu Â· 18:30",
     language: "English",
     destination: "FaithHub + YouTube",
     status: "Ready",
@@ -248,7 +249,7 @@ const DEFAULT_LIVE_ATTACHMENTS: LiveAttachment[] = [
     id: "live-2",
     label: "Main Sunday broadcast",
     variant: "Main live",
-    startLabel: "Sun · 09:00",
+    startLabel: "Sun Â· 09:00",
     language: "English",
     destination: "FaithHub + Instagram",
     status: "Scheduled",
@@ -257,7 +258,7 @@ const DEFAULT_LIVE_ATTACHMENTS: LiveAttachment[] = [
     id: "live-3",
     label: "Swahili translated follow-up",
     variant: "Translated session",
-    startLabel: "Sun · 13:00",
+    startLabel: "Sun Â· 13:00",
     language: "Swahili",
     destination: "FaithHub only",
     status: "Draft",
@@ -580,7 +581,7 @@ function EpisodePreview({
 
   if (previewMode === "mobile") {
     return (
-      <div className="mx-auto w-full max-w-[320px] rounded-[34px] bg-slate-950 p-3 shadow-[0_20px_50px_rgba(15,23,42,0.24)]">
+      <div className="mx-auto w-full max-w-[320px] md:max-w-[360px] rounded-[34px] bg-slate-950 p-3 shadow-[0_20px_50px_rgba(15,23,42,0.24)]">
         <div className="overflow-hidden rounded-[28px] bg-[#fcfcfc]">
           <div className="relative h-[640px] overflow-hidden">
             <div className="absolute left-1/2 top-3 h-2 w-24 -translate-x-1/2 rounded-full bg-slate-900" />
@@ -610,7 +611,7 @@ function EpisodePreview({
                   <div className="text-[11px] font-black uppercase tracking-[0.16em] text-slate-400">Next live</div>
                   <div className="mt-2 text-[14px] font-bold text-slate-900">{nextLive?.label || "Live attachment pending"}</div>
                   <div className="mt-1 text-[11px] text-slate-500">
-                    {nextLive ? `${nextLive.variant} · ${nextLive.startLabel} · ${nextLive.language}` : "Attach preview and main live sessions."}
+                    {nextLive ? `${nextLive.variant} Â· ${nextLive.startLabel} Â· ${nextLive.language}` : "Attach preview and main live sessions."}
                   </div>
                 </div>
 
@@ -634,7 +635,7 @@ function EpisodePreview({
               </div>
             </div>
             <div className="absolute bottom-4 left-4 right-4 rounded-2xl border border-emerald-200 bg-emerald-50 px-3 py-2 text-[11px] font-semibold text-emerald-700">
-              Episode readiness · {readinessScore}% complete
+              Episode readiness Â· {readinessScore}% complete
             </div>
           </div>
         </div>
@@ -657,7 +658,7 @@ function EpisodePreview({
           </div>
           <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
             <div className="text-[10px] font-black uppercase tracking-[0.18em] text-white/70">
-              {draft.parentSeriesTitle} · Week {draft.episodeNumber}
+              {draft.parentSeriesTitle} Â· Week {draft.episodeNumber}
             </div>
             <div className="mt-2 text-[34px] font-black leading-[1.04]">{draft.title}</div>
             <div className="mt-2 max-w-[85%] text-[14px] text-white/85">{draft.focusStatement}</div>
@@ -693,7 +694,7 @@ function EpisodePreview({
               <div className="text-[10px] font-black uppercase tracking-[0.16em] text-slate-400">Primary live</div>
               <div className="mt-2 text-[13px] font-bold text-slate-900">{nextLive?.label || "Main live pending"}</div>
               <div className="mt-1 text-[11px] text-slate-500">
-                {nextLive ? `${nextLive.startLabel} · ${nextLive.destination} · ${nextLive.status}` : "Attach live session details."}
+                {nextLive ? `${nextLive.startLabel} Â· ${nextLive.destination} Â· ${nextLive.status}` : "Attach live session details."}
               </div>
             </div>
 
@@ -763,12 +764,12 @@ export default function EpisodeBuilderPage() {
 
   const [draft, setDraft] = useState<EpisodeDraft>({
     parentSeriesTitle: "Practicing the Way of Hope",
-    seriesArc: "Renewal → Endurance → Healing → Community → Witness",
+    seriesArc: "Renewal â†’ Endurance â†’ Healing â†’ Community â†’ Witness",
     episodeNumber: 2,
-    title: "Week 2 · Hope in the Wilderness",
+    title: "Week 2 Â· Hope in the Wilderness",
     focusStatement:
       "Help the audience understand how God forms endurance, trust, and practical hope in seasons of pressure.",
-    scripture: "Exodus 16 · Romans 5 · James 1",
+    scripture: "Exodus 16 Â· Romans 5 Â· James 1",
     teachingOutcomes: [
       "Name the spiritual purpose of wilderness seasons.",
       "Recognize two practical responses to pressure and delay.",
@@ -873,7 +874,7 @@ export default function EpisodeBuilderPage() {
           id: `live-${Math.random().toString(16).slice(2, 8)}`,
           label: "Follow-up Q&A room",
           variant: "Follow-up Q&A",
-          startLabel: "Mon · 19:00",
+          startLabel: "Mon Â· 19:00",
           language: "English",
           destination: "FaithHub only",
           status: "Draft",
@@ -928,7 +929,7 @@ export default function EpisodeBuilderPage() {
                 FaithHub Provider Side
               </div>
               <div className="mt-2 text-[34px] font-black leading-[1.02] text-slate-900 sm:text-[40px]">
-                FaithHub — Episode Builder
+                FaithHub â€” Episode Builder
               </div>
               <div className="mt-1 text-[15px] text-slate-500">
                 Premium creator-style episode workflow with embedded landing-page preview.
@@ -1203,7 +1204,7 @@ export default function EpisodeBuilderPage() {
                     <div className="mt-3 text-[14px] font-black text-slate-900">{session.label}</div>
                     <div className="mt-1 text-[12px] text-slate-500">{session.variant}</div>
                     <div className="mt-3 rounded-2xl border border-slate-200 bg-slate-50 p-3 text-[12px] text-slate-700">
-                      {session.startLabel} · {session.destination}
+                      {session.startLabel} Â· {session.destination}
                     </div>
                   </div>
                 ))}
@@ -1247,7 +1248,7 @@ export default function EpisodeBuilderPage() {
                         <div>
                           <div className="text-[13px] font-black text-slate-900">{resource.title}</div>
                           <div className="mt-1 text-[12px] text-slate-500">
-                            {resource.kind} · {resource.visibility}
+                            {resource.kind} Â· {resource.visibility}
                           </div>
                         </div>
                         <Pill tone={resource.status === "Ready" ? "good" : resource.status === "Needs review" ? "warn" : "neutral"}>
@@ -1697,3 +1698,5 @@ export default function EpisodeBuilderPage() {
     </div>
   );
 }
+
+

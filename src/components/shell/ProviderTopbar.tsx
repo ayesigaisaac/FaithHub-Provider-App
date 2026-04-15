@@ -10,7 +10,6 @@ import {
   MenuItem,
   Stack,
   Toolbar,
-  Typography,
 } from '@mui/material';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import NotificationsRoundedIcon from '@mui/icons-material/NotificationsRounded';
@@ -26,7 +25,7 @@ type ProviderTopbarProps = {
   onOpenSearch: () => void;
 };
 
-export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: ProviderTopbarProps) {
+export function ProviderTopbar({ current: _current, onOpenSidebar, onOpenSearch }: ProviderTopbarProps) {
   const [filterAnchor, setFilterAnchor] = useState<null | HTMLElement>(null);
   const [userAnchor, setUserAnchor] = useState<null | HTMLElement>(null);
   const density = spacing.compact.mui;

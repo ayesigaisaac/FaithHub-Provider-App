@@ -1,8 +1,8 @@
 import { ArrowUpRight, BookOpen, CalendarCheck, Clock3, Plus, Users } from 'lucide-react';
-import { AppLayout } from '@/layout/AppLayout';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { SectionHeader } from '@/components/ui/SectionHeader';
+import { ProviderStandaloneLayout } from '@/components/shell/ProviderStandaloneLayout';
 
 const stats = [
   {
@@ -39,8 +39,8 @@ const upcoming = [
 
 export default function Dashboard() {
   return (
-    <AppLayout>
-      <div className="space-y-6">
+    <ProviderStandaloneLayout pagePath="/faithhub/provider/dashboard" pageTitle="Provider Dashboard">
+      <div className="space-y-6 p-4 sm:p-6">
         <SectionHeader
           title="Provider Dashboard"
           subtitle="Track sessions, teaching performance, and community momentum in one place."
@@ -119,6 +119,6 @@ export default function Dashboard() {
           </Card>
         </section>
       </div>
-    </AppLayout>
+    </ProviderStandaloneLayout>
   );
 }

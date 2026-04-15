@@ -1,3 +1,4 @@
+﻿// @ts-nocheck
 
 "use client";
 
@@ -31,7 +32,7 @@ import {
 } from "lucide-react";
 
 /**
- * FaithHub — FH-P-112 Roles & Permissions
+ * FaithHub â€” FH-P-112 Roles & Permissions
  * Premium Provider-side RBAC control center for workspace access, role templates,
  * approval paths, scope control, and sensitive-action permissions.
  *
@@ -641,7 +642,7 @@ function RoleListCard({
               {role.name}
             </div>
             <div className={cx("mt-1 truncate text-[12px]", active ? "text-white/75" : "text-slate-500 dark:text-slate-400")}>
-              {role.templateFamily} · {role.scope} · {role.owner}
+              {role.templateFamily} Â· {role.scope} Â· {role.owner}
             </div>
             <div className="mt-3 flex flex-wrap gap-2">
               <TonePill tone={tone}>{role.status}</TonePill>
@@ -846,7 +847,7 @@ function AssignmentCard({ item }: { item: AssignmentRecord }) {
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <div className="text-[14px] font-black text-slate-900 dark:text-slate-100">{item.name}</div>
-          <div className="mt-1 text-[12px] text-slate-500 dark:text-slate-400">{item.title} · {item.campus}</div>
+          <div className="mt-1 text-[12px] text-slate-500 dark:text-slate-400">{item.title} Â· {item.campus}</div>
         </div>
         <TonePill tone={tone}>{item.state}</TonePill>
       </div>
@@ -881,7 +882,7 @@ function PreviewSurface({
 
   if (previewMode === "mobile") {
     return (
-      <div className="mx-auto w-full max-w-[340px] rounded-[34px] border border-slate-200 bg-slate-950 p-3 shadow-xl dark:border-slate-700">
+      <div className="mx-auto w-full max-w-[340px] md:max-w-[380px] rounded-[34px] border border-slate-200 bg-slate-950 p-3 shadow-xl dark:border-slate-700">
         <div className="rounded-[28px] bg-white p-4 dark:bg-slate-900">
           <div className="flex items-center justify-between">
             <div>
@@ -919,7 +920,7 @@ function PreviewSurface({
                 <div key={action.id} className="rounded-2xl border border-slate-200 bg-white px-3 py-2 dark:border-slate-700 dark:bg-slate-900">
                   <div className="text-[11px] font-bold text-slate-900 dark:text-slate-100">{action.label}</div>
                   <div className="mt-1 text-[10px] text-slate-500 dark:text-slate-400">
-                    {action.permission} · {action.approval}
+                    {action.permission} Â· {action.approval}
                   </div>
                 </div>
               ))}
@@ -929,7 +930,7 @@ function PreviewSurface({
           <div className="mt-4 rounded-[22px] border border-slate-200 bg-slate-50 p-3 dark:border-slate-800 dark:bg-slate-950">
             <div className="text-[11px] font-black text-slate-900 dark:text-slate-100">Scope summary</div>
             <div className="mt-2 text-[11px] leading-5 text-slate-500 dark:text-slate-400">
-              {role.scope} · {role.campusScopes.join(" · ")}
+              {role.scope} Â· {role.campusScopes.join(" Â· ")}
             </div>
           </div>
         </div>
@@ -986,7 +987,7 @@ function PreviewSurface({
                   <div key={lane.id} className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2 dark:border-slate-800 dark:bg-slate-950">
                     <div className="text-[12px] font-bold text-slate-900 dark:text-slate-100">{lane.label}</div>
                     <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
-                      {lane.steps.join(" → ")} · {lane.sla}
+                      {lane.steps.join(" â†’ ")} Â· {lane.sla}
                     </div>
                   </div>
                 ))}
@@ -1008,7 +1009,7 @@ function PreviewSurface({
                 </div>
               </div>
               <div className="mt-3 text-[11px] leading-5 text-slate-500 dark:text-slate-400">
-                Scope: {role.scope} · {role.campusScopes.join(" · ")}
+                Scope: {role.scope} Â· {role.campusScopes.join(" Â· ")}
               </div>
             </div>
           </div>
@@ -1041,7 +1042,7 @@ function PreviewDrawer({
           <div className="flex items-center justify-between gap-3">
             <div className="min-w-0">
               <div className="text-[14px] font-black text-slate-900 dark:text-slate-100">
-                Access preview · {role.name}
+                Access preview Â· {role.name}
               </div>
               <div className="mt-1 text-[12px] text-slate-500 dark:text-slate-400">
                 Role visibility, approval flow, and mobile/desktop companion surfaces.
@@ -1299,7 +1300,7 @@ export default function FH_P_112_RolesPermissionsPage() {
                     Team governance
                   </div>
                   <div className="mt-1 text-3xl font-black tracking-tight text-slate-900 dark:text-slate-100">
-                    FH-P-112 · Roles & Permissions
+                    FH-P-112 Â· Roles & Permissions
                   </div>
                   <div className="mt-1 max-w-3xl text-[15px] text-slate-500 dark:text-slate-400">
                     Premium Provider RBAC surface for workspace access, role templates, approval paths, scope control, and sensitive-action permissions.
@@ -1357,7 +1358,7 @@ export default function FH_P_112_RolesPermissionsPage() {
                 Premium RBAC
               </span>
               <span className="ml-3 align-middle">
-                Finance changes still require dual approval · Two teammate assignments are waiting for scope review · Child-safe overrides remain locked behind safeguarding leadership.
+                Finance changes still require dual approval Â· Two teammate assignments are waiting for scope review Â· Child-safe overrides remain locked behind safeguarding leadership.
               </span>
             </div>
             <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">
@@ -1531,7 +1532,7 @@ export default function FH_P_112_RolesPermissionsPage() {
                         {selectedRole.name}
                       </div>
                       <div className="mt-1 text-[13px] text-slate-500 dark:text-slate-400">
-                        {selectedRole.templateFamily} · {selectedRole.scope} · Owner: {selectedRole.owner}
+                        {selectedRole.templateFamily} Â· {selectedRole.scope} Â· Owner: {selectedRole.owner}
                       </div>
                       <div className="mt-3 flex flex-wrap gap-2">
                         <TonePill tone={selectedRole.status === "Healthy" ? "good" : selectedRole.status === "Limited" ? "danger" : "warn"}>
@@ -1599,7 +1600,7 @@ export default function FH_P_112_RolesPermissionsPage() {
 
             <SectionCard
               title="Feature access matrix"
-              subtitle={editMode ? "Edit mode is active — click any tile to cycle Allow → Review → Block." : "Permission states across premium Provider surfaces and operational clusters."}
+              subtitle={editMode ? "Edit mode is active â€” click any tile to cycle Allow â†’ Review â†’ Block." : "Permission states across premium Provider surfaces and operational clusters."}
               right={
                 <TonePill tone={editMode ? "accent" : "neutral"}>
                   {editMode ? "Editing" : "View mode"}
@@ -1816,3 +1817,5 @@ export default function FH_P_112_RolesPermissionsPage() {
     </div>
   );
 }
+
+

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Button, IconButton, Menu, MenuItem, Stack, Typography } from '@mui/material';
+import { Box, IconButton, Menu, MenuItem, Stack, Typography } from '@mui/material';
 import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
 
 export type PageHeaderProps = {
