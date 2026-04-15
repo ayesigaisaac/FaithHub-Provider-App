@@ -10,6 +10,7 @@ import { MobileBottomNav } from './MobileBottomNav';
 import { PageLoader } from '@/components/PageLoader';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { MediaFallbackContainer } from '@/components/MediaFallbackContainer';
+import { spacing } from '@/theme/spacing';
 
 export function ProviderShellLayout() {
   const location = useLocation();
@@ -17,6 +18,7 @@ export function ProviderShellLayout() {
   const [searchOpen, setSearchOpen] = useState(false);
 
   const current = useMemo(() => findProviderPageByPath(location.pathname), [location.pathname]);
+  const density = spacing.compact.mui;
 
   return (
     <Box sx={{ display: 'flex', minHeight: '100vh', bgcolor: '#f3f4f6' }}>
@@ -31,15 +33,16 @@ export function ProviderShellLayout() {
           />
         </Box>
 
-        <Toolbar sx={{ minHeight: { xs: 168, md: 172 } }} />
-        <Box sx={{ px: { xs: 1.25, md: 2.5 }, pb: { xs: 10, md: 3 }, pt: 1.5 }}>
+        <Toolbar sx={{ minHeight: { xs: 72, md: 72 } }} />
+        <Box sx={{ px: 0, pb: { xs: 8, md: 0 }, pt: 0 }}>
           <Box
+            className="provider-shell-surface"
             sx={{
               borderRadius: 2.5,
               border: '1px solid #e5e7eb',
               bgcolor: '#ffffff',
-              p: { xs: 1, md: 1.5 },
-              minHeight: 'calc(100vh - 212px)',
+              p: 0,
+              minHeight: 'calc(100vh - 188px)',
             }}
           >
             <ErrorBoundary label={current?.title}>

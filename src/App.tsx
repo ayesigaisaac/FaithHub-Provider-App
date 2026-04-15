@@ -5,6 +5,7 @@ import { providerPages, type ProviderPageMeta } from '@/navigation/providerPages
 import NotFoundPage from '@/pages/public/NotFoundPage';
 import FaithHubHomeLandingPage from '@/pages/public/FaithHubHomeLandingPage';
 import { usePageTitle } from '@/hooks/usePageTitle';
+import Dashboard from '@/pages/Dashboard';
 
 function ScrollToTop() {
   const location = useLocation();
@@ -17,7 +18,11 @@ function ScrollToTop() {
 function ProviderPageMount({ page }: { page: ProviderPageMeta }) {
   usePageTitle(page.title);
   const Component = page.component;
-  return <Component />;
+  return (
+    <div className="provider-page-density provider-page-density--compact">
+      <Component />
+    </div>
+  );
 }
 
 function LandingMount() {
@@ -33,6 +38,7 @@ export default function App() {
         <Route path="/" element={<Navigate to="/faithhub/provider/dashboard" replace />} />
         <Route path="/faithhub/home" element={<Navigate to="/faithhub/provider/dashboard" replace />} />
         <Route path="/faithhub/home-landing" element={<LandingMount />} />
+        <Route path="/dashboard-ui" element={<Dashboard />} />
 
         <Route path="/faithhub/provider" element={<ProviderShellLayout />}>
           <Route index element={<Navigate to="/faithhub/provider/dashboard" replace />} />

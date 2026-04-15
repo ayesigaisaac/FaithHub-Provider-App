@@ -3,13 +3,11 @@ import {
   Avatar,
   Badge,
   Box,
-  Breadcrumbs,
   Button,
   IconButton,
   InputBase,
   Menu,
   MenuItem,
-  Select,
   Stack,
   Toolbar,
   Typography,
@@ -18,9 +16,9 @@ import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import NotificationsRoundedIcon from '@mui/icons-material/NotificationsRounded';
 import AutoAwesomeRoundedIcon from '@mui/icons-material/AutoAwesomeRounded';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
-import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded';
 import { useState, type MouseEvent } from 'react';
 import type { ProviderPageMeta } from '@/navigation/providerPages';
+import { spacing } from '@/theme/spacing';
 
 type ProviderTopbarProps = {
   current?: ProviderPageMeta;
@@ -31,6 +29,7 @@ type ProviderTopbarProps = {
 export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: ProviderTopbarProps) {
   const [filterAnchor, setFilterAnchor] = useState<null | HTMLElement>(null);
   const [userAnchor, setUserAnchor] = useState<null | HTMLElement>(null);
+  const density = spacing.compact.mui;
 
   const openFilters = (event: MouseEvent<HTMLButtonElement>) => setFilterAnchor(event.currentTarget);
   const closeFilters = () => setFilterAnchor(null);
@@ -47,27 +46,10 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
         bgcolor: '#ffffff',
       }}
     >
-      <Toolbar sx={{ minHeight: 68, px: { xs: 1.5, md: 2.5 }, gap: 1.25 }}>
+      <Toolbar sx={{ minHeight: density.topbarToolbarMinHeight, px: density.topbarHeaderX, gap: 1 }}>
         <IconButton sx={{ display: { md: 'none' } }} onClick={onOpenSidebar}>
           <MenuRoundedIcon />
         </IconButton>
-
-        <Box sx={{ minWidth: 220, display: { xs: 'none', md: 'block' } }}>
-          <Typography variant="subtitle1" sx={{ fontWeight: 700, color: '#111827' }}>
-            Dashboard
-          </Typography>
-          <Breadcrumbs separator=">" sx={{ mt: -0.75 }}>
-            <Typography variant="body2" color="text.secondary">
-              Home
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {current?.section ?? 'Provider'}
-            </Typography>
-            <Typography variant="body2" color="text.primary" fontWeight={600}>
-              {current?.title ?? 'Dashboard'}
-            </Typography>
-          </Breadcrumbs>
-        </Box>
 
         <Stack direction="row" alignItems="center" spacing={1} sx={{ flex: 1, minWidth: 0 }}>
           <Button
@@ -131,44 +113,6 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
           <Avatar sx={{ width: 38, height: 38, bgcolor: '#10b981', fontWeight: 800 }}>A</Avatar>
         </IconButton>
       </Toolbar>
-
-      <Box
-        sx={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          px: { xs: 2, md: 3 },
-          py: 2,
-          borderTop: '1px solid #f3f4f6',
-          bgcolor: '#f9fafb',
-        }}
-      >
-        <Box>
-          <Typography variant="h4" sx={{ fontSize: { xs: 24, md: 34 }, fontWeight: 700 }}>
-            {current?.title ?? 'Provider Dashboard'}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {current?.description ?? 'Daily overview for FaithHub provider operations.'}
-          </Typography>
-        </Box>
-        <Stack direction="row" alignItems="flex-end" spacing={1} sx={{ display: { xs: 'none', md: 'flex' } }}>
-          <Box>
-            <Typography variant="caption" color="text.secondary">
-              Period
-            </Typography>
-            <Select
-              size="small"
-              value="today"
-              IconComponent={KeyboardArrowDownRoundedIcon}
-              sx={{ minWidth: 152, bgcolor: '#fff' }}
-            >
-              <MenuItem value="today">Today</MenuItem>
-              <MenuItem value="week">Last 7 days</MenuItem>
-              <MenuItem value="month">Last 30 days</MenuItem>
-            </Select>
-          </Box>
-        </Stack>
-      </Box>
 
       <Menu anchorEl={filterAnchor} open={Boolean(filterAnchor)} onClose={closeFilters}>
         <MenuItem onClick={closeFilters}>Live operations only</MenuItem>

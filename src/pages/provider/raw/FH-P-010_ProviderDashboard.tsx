@@ -1214,7 +1214,7 @@ export default function ProviderDashboardPage() {
       className="min-h-screen w-full text-slate-900"
       style={{ background: EV_LIGHT }}
     >
-      <div className="mx-auto max-w-[1680px] px-3 py-4 sm:px-5 lg:px-6">
+      <div className="w-full max-w-none px-0 py-0">
         <div className="space-y-4">
           {/* Top hero / mission command */}
           <section className="rounded-[16px] border border-slate-200 bg-white p-4 shadow-sm">
