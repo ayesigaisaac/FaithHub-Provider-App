@@ -86,3 +86,44 @@ video {
     padding-right: 1.25rem !important;
   }
 }
+
+/* Uniform dark skin for imported provider pages that still carry light-only styles. */
+html.dark .provider-page-density--compact > :is(div, main)[class*='min-h-screen'] {
+  background-color: #020617 !important;
+  color: #e2e8f0 !important;
+}
+
+html.dark .provider-page-density--compact :is(
+    [class*='bg-white'],
+    [class*='bg-slate-50'],
+    [class*='bg-slate-100'],
+    [class*='bg-[#f2f2f2]'],
+    [class*='bg-[#f7f7f5]'],
+    [class*='bg-[#f7f7f7]']
+  ) {
+  background-color: #0f172a !important;
+}
+
+html.dark .provider-page-density--compact :is(
+    [class*='text-slate-900'],
+    [class*='text-slate-800'],
+    [class*='text-slate-700']
+  ) {
+  color: #e2e8f0 !important;
+}
+
+html.dark .provider-page-density--compact :is(
+    [class*='text-slate-600'],
+    [class*='text-slate-500'],
+    [class*='text-slate-400']
+  ) {
+  color: #94a3b8 !important;
+}
+
+html.dark .provider-page-density--compact :is(
+    [class*='border-slate-200'],
+    [class*='border-slate-300'],
+    [class*='border-slate-100']
+  ) {
+  border-color: #334155 !important;
+}
