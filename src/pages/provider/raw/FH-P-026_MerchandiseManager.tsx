@@ -1,4 +1,4 @@
-﻿// @ts-nocheck
+// @ts-nocheck
 
 "use client";
 
@@ -1076,10 +1076,10 @@ function MerchandiseStorefrontPreview({
                   <button
                     className="flex-1 rounded-2xl px-3 py-2 text-[12px] font-bold text-white"
                     style={{ background: EV_ORANGE }}
-                  >
+                   onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
                     View item
                   </button>
-                  <button className="flex-1 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-[12px] font-bold text-slate-700 dark:text-slate-200 transition-colors">
+                  <button className="flex-1 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-[12px] font-bold text-slate-700 dark:text-slate-200 transition-colors" onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
                     Save
                   </button>
                 </div>
@@ -1167,10 +1167,10 @@ function MerchandiseStorefrontPreview({
             <button
               className="rounded-2xl px-4 py-2 text-[12px] font-bold text-white"
               style={{ background: EV_ORANGE }}
-            >
+             onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
               View item
             </button>
-            <button className="rounded-2xl border border-white/25 bg-white/10 px-4 py-2 text-[12px] font-bold text-white backdrop-blur">
+            <button className="rounded-2xl border border-white/25 bg-white/10 px-4 py-2 text-[12px] font-bold text-white backdrop-blur" onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
               Save for later
             </button>
           </div>

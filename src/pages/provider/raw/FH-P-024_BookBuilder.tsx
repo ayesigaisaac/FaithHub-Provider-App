@@ -1,4 +1,4 @@
-﻿// @ts-nocheck
+// @ts-nocheck
 
 "use client";
 
@@ -1011,7 +1011,7 @@ function StorefrontPreview({
                 type="button"
                 className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-2xl px-4 py-3 text-sm font-black text-white"
                 style={{ background: accentColor }}
-              >
+               onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
                 <BookOpen className="h-4 w-4" />
                 {primaryAction}
               </button>
@@ -1110,7 +1110,7 @@ function StorefrontPreview({
                 type="button"
                 className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-2xl px-4 py-3 text-sm font-black text-white"
                 style={{ background: accentColor }}
-              >
+               onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
                 <BookOpen className="h-4 w-4" />
                 {primaryAction}
               </button>

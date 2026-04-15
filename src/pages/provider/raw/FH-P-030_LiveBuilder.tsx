@@ -1,4 +1,4 @@
-﻿// @ts-nocheck
+// @ts-nocheck
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -1383,7 +1383,7 @@ function PreviewPhone({ draft, readiness }: { draft: LiveBuilderDraft; readiness
                 type="button"
                 className="rounded-xl border-2 px-2 py-1 text-[11px] font-bold"
                 style={{ borderColor: EV_GREEN, color: EV_GREEN }}
-              >
+               onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
                 Share
               </button>
             </div>
@@ -1505,16 +1505,16 @@ function PreviewPhone({ draft, readiness }: { draft: LiveBuilderDraft; readiness
 
             <div className="sticky bottom-0 border-t border-slate-200 bg-white/95 px-3 py-3 backdrop-blur dark:border-slate-800 dark:bg-slate-950/95">
               <div className="flex gap-2">
-                <button className="flex-1 rounded-2xl px-3 py-3 text-[12px] font-extrabold text-white" style={{ background: EV_GREEN }}>
+                <button className="flex-1 rounded-2xl px-3 py-3 text-[12px] font-extrabold text-white" style={{ background: EV_GREEN }} onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
                   Join live
                 </button>
                 {draft.engagement.donationPromptEnabled ? (
-                  <button className="flex-1 rounded-2xl px-3 py-3 text-[12px] font-extrabold text-white" style={{ background: EV_ORANGE }}>
+                  <button className="flex-1 rounded-2xl px-3 py-3 text-[12px] font-extrabold text-white" style={{ background: EV_ORANGE }} onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
                     {draft.engagement.donationPromptLabel || "Donate"}
                   </button>
                 ) : null}
                 {draft.engagement.prayerRequestsEnabled ? (
-                  <button className="rounded-2xl border-2 px-3 py-3 text-[12px] font-extrabold" style={{ borderColor: EV_GREEN, color: EV_GREEN }}>
+                  <button className="rounded-2xl border-2 px-3 py-3 text-[12px] font-extrabold" style={{ borderColor: EV_GREEN, color: EV_GREEN }} onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
                     Prayer
                   </button>
                 ) : null}

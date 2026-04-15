@@ -198,6 +198,36 @@ function SectionHeading({ eyebrow, title, body }: { eyebrow: string; title: stri
 
 export default function FaithHubHomeLandingPageV3Fixed() {
   const navigate = useNavigate();
+  const footerRouteMap: Record<string, string> = {
+    "Live Sessionz": "/faithhub/provider/live-dashboard",
+    Teachings: "/faithhub/provider/teachings-dashboard",
+    Giving: "/faithhub/provider/donations-and-funds",
+    Events: "/faithhub/provider/events-manager",
+    Beacon: "/faithhub/provider/beacon-dashboard",
+    Community: "/faithhub/provider/community-groups",
+    "Provider onboarding": "/faithhub/provider/onboarding",
+    "Provider dashboard": "/faithhub/provider/dashboard",
+    "Audience tools": "/faithhub/provider/audience-notifications",
+    "Books & resources": "/faithhub/provider/books-manager",
+    Merchandise: "/faithhub/provider/merchandise-manager",
+    "Wallet & payouts": "/faithhub/provider/wallet-payouts",
+    "Faith communities": "/faithhub/provider/community-groups",
+    "Series & replays": "/faithhub/provider/replays-and-clips",
+    Prayer: "/faithhub/provider/prayer-requests",
+    Testimonies: "/faithhub/provider/testimonies",
+    Crowdfunding: "/faithhub/provider/charity-crowdfunding-workbench",
+    Noticeboard: "/faithhub/provider/noticeboard",
+    "About FaithHub": "/faithhub/home",
+    "Get started": "/faithhub/provider/onboarding",
+    "Book a demo": "/faithhub/provider/dashboard",
+    Support: "/faithhub/home#footer",
+    Privacy: "/faithhub/provider/workspace-settings",
+    Terms: "/faithhub/provider/workspace-settings",
+  };
+
+  const navigateFooterLink = (label: string) => {
+    navigate(footerRouteMap[label] ?? "/faithhub/provider/dashboard");
+  };
 
   return (
     <div className="min-h-screen overflow-hidden bg-[#f2f2f2] text-slate-900">
@@ -259,7 +289,10 @@ export default function FaithHubHomeLandingPageV3Fixed() {
                 Start with FaithHub
                 <ArrowRight className="h-5 w-5" />
               </button>
-              <button className="inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-6 py-4 text-base font-black shadow-sm transition hover:bg-slate-50">
+              <button
+                className="inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-6 py-4 text-base font-black shadow-sm transition hover:bg-slate-50"
+                onClick={() => navigate("/faithhub/provider/live-dashboard")}
+              >
                 <Play className="h-5 w-5" />
                 Watch the experience
               </button>
@@ -548,7 +581,7 @@ export default function FaithHubHomeLandingPageV3Fixed() {
                   Launch your institution, ministry, or creator presence on FaithHub.
                 </h2>
                 <p className="mt-5 max-w-3xl text-lg leading-8 text-white/75">
-                  Build a persuasive digital presence for live ministry, teachings, books, resources, community, events, giving, and Beacon promotion — all in one premium destination.
+                  Build a persuasive digital presence for live ministry, teachings, books, resources, community, events, giving, and Beacon promotion - all in one premium destination.
                 </p>
               </div>
               <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
@@ -588,16 +621,16 @@ export default function FaithHubHomeLandingPageV3Fixed() {
               </p>
 
               <div className="mt-6 flex flex-wrap gap-3">
-                <SocialIconButton label="Instagram">
+                <SocialIconButton label="Instagram" href="https://www.instagram.com/">
                   <InstagramBrandIcon className="h-5 w-5" />
                 </SocialIconButton>
-                <SocialIconButton label="YouTube">
+                <SocialIconButton label="YouTube" href="https://www.youtube.com/">
                   <YoutubeBrandIcon className="h-5 w-5" />
                 </SocialIconButton>
-                <SocialIconButton label="Facebook">
+                <SocialIconButton label="Facebook" href="https://www.facebook.com/">
                   <FacebookBrandIcon className="h-5 w-5" />
                 </SocialIconButton>
-                <SocialIconButton label="Email">
+                <SocialIconButton label="Email" href="mailto:support@faithhub.app">
                   <Mail className="h-5 w-5" />
                 </SocialIconButton>
               </div>
@@ -608,9 +641,14 @@ export default function FaithHubHomeLandingPageV3Fixed() {
                 <div className="text-sm font-black uppercase tracking-[0.18em] text-slate-400">{col.title}</div>
                 <div className="mt-4 space-y-3">
                   {col.links.map((link) => (
-                    <a key={link} href="#" className="block text-sm font-semibold text-slate-600 transition hover:text-[#03cd8c]">
+                    <button
+                      key={link}
+                      type="button"
+                      onClick={() => navigateFooterLink(link)}
+                      className="block text-left text-sm font-semibold text-slate-600 transition hover:text-[#03cd8c]"
+                    >
                       {link}
-                    </a>
+                    </button>
                   ))}
                 </div>
               </div>
@@ -618,12 +656,12 @@ export default function FaithHubHomeLandingPageV3Fixed() {
           </div>
 
           <div className="mt-12 flex flex-col gap-4 border-t border-slate-200 pt-6 text-sm text-slate-500 md:flex-row md:items-center md:justify-between">
-            <div>© 2026 FaithHub. All rights reserved.</div>
+            <div>&copy; 2026 FaithHub. All rights reserved.</div>
             <div className="flex flex-wrap items-center gap-5">
-              <a href="#" className="transition hover:text-[#03cd8c]">Privacy</a>
-              <a href="#" className="transition hover:text-[#03cd8c]">Terms</a>
-              <a href="#" className="transition hover:text-[#03cd8c]">Support</a>
-              <a href="#" className="transition hover:text-[#03cd8c]">Contact</a>
+              <button type="button" onClick={() => navigateFooterLink("Privacy")} className="transition hover:text-[#03cd8c]">Privacy</button>
+              <button type="button" onClick={() => navigateFooterLink("Terms")} className="transition hover:text-[#03cd8c]">Terms</button>
+              <button type="button" onClick={() => navigateFooterLink("Support")} className="transition hover:text-[#03cd8c]">Support</button>
+              <button type="button" onClick={() => navigate("/faithhub/home#footer")} className="transition hover:text-[#03cd8c]">Contact</button>
             </div>
           </div>
         </div>
@@ -631,3 +669,4 @@ export default function FaithHubHomeLandingPageV3Fixed() {
     </div>
   );
 }
+

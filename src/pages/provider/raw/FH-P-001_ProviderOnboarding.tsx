@@ -1,4 +1,4 @@
-﻿// @ts-nocheck
+// @ts-nocheck
 
 "use client";
 
@@ -686,13 +686,13 @@ function PhonePreview({
               <button
                 className="flex-1 rounded-2xl px-3 py-2 text-[12px] font-bold text-white"
                 style={{ background: EV_GREEN }}
-              >
+               onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
                 Preview live page
               </button>
               <button
                 className="flex-1 rounded-2xl px-3 py-2 text-[12px] font-bold text-white"
                 style={{ background: EV_ORANGE }}
-              >
+               onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
                 View giving
               </button>
             </div>

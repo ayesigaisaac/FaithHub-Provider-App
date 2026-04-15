@@ -1,4 +1,4 @@
-﻿// @ts-nocheck
+// @ts-nocheck
 "use client";
 
 import React, { useMemo, useState } from "react";
@@ -934,13 +934,13 @@ function PreviewRail({
               type="button"
               className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-2xl text-[13px] font-black text-white"
               style={{ background: EV_GREEN }}
-            >
+             onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
               <Eye className="h-4 w-4" /> Open details
             </button>
             <button
               type="button"
               className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white text-[13px] font-black text-slate-800"
-            >
+             onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
               <Download className="h-4 w-4" /> Download
             </button>
           </div>

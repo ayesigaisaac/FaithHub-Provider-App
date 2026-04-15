@@ -1,4 +1,4 @@
-﻿// @ts-nocheck
+// @ts-nocheck
 
 "use client";
 
@@ -670,7 +670,7 @@ function EmailPreview({
             type="button"
             className="inline-flex items-center justify-center rounded-2xl px-4 py-2 text-xs font-black text-white"
             style={{ backgroundColor: GREEN }}
-          >
+           onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
             {cta}
           </button>
         </div>

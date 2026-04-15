@@ -1,4 +1,4 @@
-﻿// @ts-nocheck
+// @ts-nocheck
 "use client";
 
 import React, { useMemo, useState } from "react";
@@ -970,7 +970,7 @@ function BoardPreviewMobile({ draft }: { draft: ComposerState }) {
               type="button"
               className="inline-flex w-full items-center justify-center gap-2 rounded-[18px] px-4 py-3 text-[12px] font-black text-white"
               style={{ background: EV_GREEN }}
-            >
+             onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
               <Bell className="h-4 w-4" />
               Open full notice
             </button>
@@ -1889,7 +1889,7 @@ export default function FaithHubNoticeboardPage() {
                       type="button"
                       className="mt-3 rounded-full px-4 py-2 text-[11px] font-semibold text-white"
                       style={{ background: item.accent }}
-                    >
+                     onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
                       {item.action}
                     </button>
                   </div>

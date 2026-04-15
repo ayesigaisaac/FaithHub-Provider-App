@@ -1,4 +1,4 @@
-﻿// @ts-nocheck
+// @ts-nocheck
 "use client";
 
 import React, { useMemo, useState } from "react";
@@ -706,7 +706,7 @@ function GroupExperiencePreview({
               "rounded-full px-3 py-1 text-[11px] font-bold",
               desktop ? "bg-slate-900 text-white" : "text-slate-500",
             )}
-          >
+           onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
             Desktop
           </button>
           <button
@@ -715,7 +715,7 @@ function GroupExperiencePreview({
               "rounded-full px-3 py-1 text-[11px] font-bold",
               !desktop ? "bg-slate-900 text-white" : "text-slate-500",
             )}
-          >
+           onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
             Mobile
           </button>
         </div>
@@ -847,7 +847,7 @@ function GroupExperiencePreview({
                 type="button"
                 className="mt-3 w-full rounded-2xl px-3 py-2 text-[12px] font-black text-white"
                 style={{ background: EV_GREEN }}
-              >
+               onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
                 Join circle
               </button>
             </div>

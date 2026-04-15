@@ -1,4 +1,4 @@
-﻿// @ts-nocheck
+// @ts-nocheck
 
 "use client";
 
@@ -1432,13 +1432,13 @@ function PreviewSurface({
             <button
               className="inline-flex flex-1 items-center justify-center rounded-2xl px-3 py-2 text-[12px] font-extrabold text-white"
               style={{ background: EV_GREEN }}
-            >
+             onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
               Open preview
             </button>
             <button
               className="inline-flex flex-1 items-center justify-center rounded-2xl px-3 py-2 text-[12px] font-extrabold text-white"
               style={{ background: EV_ORANGE }}
-            >
+             onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
               Launch CTA
             </button>
           </div>

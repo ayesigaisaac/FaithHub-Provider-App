@@ -1,4 +1,4 @@
-﻿// @ts-nocheck
+// @ts-nocheck
 "use client";
 
 import React, { useMemo, useState } from "react";
@@ -807,14 +807,14 @@ function PreviewRail({ mode, onModeChange }: { mode: PreviewMode; onModeChange: 
                 type="button"
                 className="mt-4 w-full rounded-full px-4 py-3 text-[16px] font-bold text-white"
                 style={{ background: EV_GREEN }}
-              >
+               onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
                 Transfer now
               </button>
               <button
                 type="button"
                 className="mt-3 w-full rounded-full px-4 py-3 text-[16px] font-bold text-white"
                 style={{ background: EV_ORANGE }}
-              >
+               onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
                 Add payout method
               </button>
             </div>
@@ -1025,7 +1025,7 @@ export default function WalletAndPayoutsPage() {
                 className="w-full bg-transparent text-[13px] text-slate-800 outline-none placeholder:text-slate-400"
               />
             </div>
-            <button className="rounded-[24px] border border-slate-200 bg-white px-4 py-3 text-[12px] font-semibold text-slate-700 inline-flex items-center justify-center gap-2 hover:bg-slate-50">
+            <button className="rounded-[24px] border border-slate-200 bg-white px-4 py-3 text-[12px] font-semibold text-slate-700 inline-flex items-center justify-center gap-2 hover:bg-slate-50" onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
               <Filter className="h-4 w-4" /> More filters
             </button>
           </div>
@@ -1283,7 +1283,7 @@ export default function WalletAndPayoutsPage() {
                 <div key={block.id} className="rounded-[24px] border border-slate-200 bg-white p-4">
                   <div className="text-[13px] font-semibold text-slate-900">{block.label}</div>
                   <div className="mt-1 text-[11px] leading-5 text-slate-500">{block.hint}</div>
-                  <button className="mt-3 rounded-full border border-slate-200 px-3 py-1.5 text-[11px] font-semibold text-slate-700 hover:bg-slate-50">
+                  <button className="mt-3 rounded-full border border-slate-200 px-3 py-1.5 text-[11px] font-semibold text-slate-700 hover:bg-slate-50" onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
                     {block.cta}
                   </button>
                 </div>

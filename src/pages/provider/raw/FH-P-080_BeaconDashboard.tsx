@@ -1,4 +1,4 @@
-﻿// @ts-nocheck
+// @ts-nocheck
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -881,13 +881,13 @@ function BrowserPreview({ campaign }: { campaign: BeaconCampaign }) {
               type="button"
               className="inline-flex items-center gap-2 rounded-2xl px-3 py-2 text-[12px] font-extrabold text-white"
               style={{ background: accentColor(campaign.accent) }}
-            >
+             onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
               {primaryCTA}
             </button>
             <button
               type="button"
               className="inline-flex items-center gap-2 rounded-2xl border border-white/20 bg-white/10 px-3 py-2 text-[12px] font-extrabold text-white backdrop-blur"
-            >
+             onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
               Learn more
             </button>
           </div>
@@ -965,13 +965,13 @@ function PhonePreview({ campaign }: { campaign: BeaconCampaign }) {
                     type="button"
                     className="inline-flex flex-1 items-center justify-center rounded-2xl px-3 py-2.5 text-[12px] font-black text-white"
                     style={{ background: accentColor(campaign.accent) }}
-                  >
+                   onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
                     {primaryLabel}
                   </button>
                   <button
                     type="button"
                     className="inline-flex items-center justify-center rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2.5 text-[12px] font-black text-slate-900 dark:text-slate-100"
-                  >
+                   onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
                     Save
                   </button>
                 </div>

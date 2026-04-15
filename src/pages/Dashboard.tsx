@@ -1,4 +1,5 @@
 import { ArrowUpRight, BookOpen, CalendarCheck, Clock3, Plus, Users } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { SectionHeader } from '@/components/ui/SectionHeader';
@@ -38,6 +39,8 @@ const upcoming = [
 ];
 
 export default function Dashboard() {
+  const navigate = useNavigate();
+
   return (
     <ProviderStandaloneLayout pagePath="/faithhub/provider/dashboard" pageTitle="Provider Dashboard">
       <div className="space-y-6 p-4 sm:p-6">
@@ -46,12 +49,14 @@ export default function Dashboard() {
           subtitle="Track sessions, teaching performance, and community momentum in one place."
           actions={
             <>
-              <Button variant="outline">Export</Button>
-              <Button variant="secondary">
+              <Button variant="outline" onClick={() => window.print()}>
+                Export
+              </Button>
+              <Button variant="secondary" onClick={() => navigate('/faithhub/provider/live-builder')}>
                 <Plus className="mr-2 h-4 w-4" />
                 New Session
               </Button>
-              <Button>
+              <Button onClick={() => navigate('/faithhub/provider/standalone-teaching-builder')}>
                 <Plus className="mr-2 h-4 w-4" />
                 Teaching
               </Button>
@@ -111,6 +116,7 @@ export default function Dashboard() {
               <button
                 type="button"
                 className="inline-flex items-center text-sm font-medium text-emerald-700 hover:text-emerald-800"
+                onClick={() => navigate('/faithhub/provider/teachings-dashboard')}
               >
                 View full analytics
                 <ArrowUpRight className="ml-1 h-4 w-4" />

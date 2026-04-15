@@ -8,6 +8,7 @@ import {
   Wallet,
   X,
 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { NavItem } from '@/components/ui/NavItem';
 
 interface SidebarProps {
@@ -15,19 +16,26 @@ interface SidebarProps {
 }
 
 const primaryNav = [
-  { label: 'Dashboard', icon: <Home className="h-5 w-5" />, active: true },
-  { label: 'Sessions', icon: <CalendarDays className="h-5 w-5" /> },
-  { label: 'Teachings', icon: <Radio className="h-5 w-5" /> },
-  { label: 'Resources', icon: <Layers className="h-5 w-5" /> },
-  { label: 'Payouts', icon: <Wallet className="h-5 w-5" /> },
+  { label: 'Dashboard', icon: <Home className="h-5 w-5" />, active: true, path: '/faithhub/provider/dashboard' },
+  { label: 'Sessions', icon: <CalendarDays className="h-5 w-5" />, path: '/faithhub/provider/live-schedule' },
+  { label: 'Teachings', icon: <Radio className="h-5 w-5" />, path: '/faithhub/provider/teachings-dashboard' },
+  { label: 'Resources', icon: <Layers className="h-5 w-5" />, path: '/faithhub/provider/resources-manager' },
+  { label: 'Payouts', icon: <Wallet className="h-5 w-5" />, path: '/faithhub/provider/wallet-payouts' },
 ];
 
 const secondaryNav = [
-  { label: 'Settings', icon: <Settings className="h-5 w-5" /> },
-  { label: 'Support', icon: <LifeBuoy className="h-5 w-5" /> },
+  { label: 'Settings', icon: <Settings className="h-5 w-5" />, path: '/faithhub/provider/workspace-settings' },
+  { label: 'Support', icon: <LifeBuoy className="h-5 w-5" />, path: '/faithhub/home#footer' },
 ];
 
 export function Sidebar({ onClose }: SidebarProps) {
+  const navigate = useNavigate();
+
+  const handleNavigate = (path: string) => {
+    navigate(path);
+    onClose?.();
+  };
+
   return (
     <aside className="flex h-full w-full flex-col border-r border-slate-200 bg-white">
       <div className="flex items-center justify-between px-4 py-5 lg:px-5">
@@ -48,13 +56,19 @@ export function Sidebar({ onClose }: SidebarProps) {
       <nav className="flex-1 space-y-8 overflow-y-auto px-3 pb-5 lg:px-4">
         <div className="space-y-1">
           {primaryNav.map((item) => (
-            <NavItem key={item.label} icon={item.icon} label={item.label} active={item.active} />
+            <NavItem
+              key={item.label}
+              icon={item.icon}
+              label={item.label}
+              active={item.active}
+              onClick={() => handleNavigate(item.path)}
+            />
           ))}
         </div>
 
         <div className="space-y-1 border-t border-slate-200 pt-4">
           {secondaryNav.map((item) => (
-            <NavItem key={item.label} icon={item.icon} label={item.label} />
+            <NavItem key={item.label} icon={item.icon} label={item.label} onClick={() => handleNavigate(item.path)} />
           ))}
         </div>
       </nav>

@@ -1,4 +1,4 @@
-﻿// @ts-nocheck
+// @ts-nocheck
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -844,14 +844,14 @@ function TeachingPreview({
               type="button"
               className="rounded-full px-5 py-2 text-[13px] font-bold text-white"
               style={{ background: EV_GREEN }}
-            >
+             onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
               {primaryCta}
             </button>
             <button
               type="button"
               className="rounded-full px-5 py-2 text-[13px] font-bold text-white"
               style={{ background: EV_ORANGE }}
-            >
+             onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
               {secondaryCta}
             </button>
           </div>

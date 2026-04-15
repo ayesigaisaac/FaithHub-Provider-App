@@ -1,4 +1,4 @@
-﻿// @ts-nocheck
+// @ts-nocheck
 "use client";
 
 import React, { useMemo, useState } from "react";
@@ -1681,7 +1681,7 @@ function ProjectsPage() {
                           type="button"
                           className="inline-flex items-center gap-2 text-[12px] font-black"
                           style={{ color: EV_ORANGE }}
-                        >
+                         onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
                           Use template
                           <ChevronRight className="h-4 w-4" />
                         </button>

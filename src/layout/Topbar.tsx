@@ -1,10 +1,13 @@
 import { Bell, Menu, Search } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 interface TopbarProps {
   onOpenSidebar: () => void;
 }
 
 export function Topbar({ onOpenSidebar }: TopbarProps) {
+  const navigate = useNavigate();
+
   return (
     <header className="sticky top-0 z-10 border-b border-slate-200 bg-white/95 backdrop-blur">
       <div className="flex h-16 items-center gap-3 px-4 sm:px-6">
@@ -30,6 +33,7 @@ export function Topbar({ onOpenSidebar }: TopbarProps) {
           type="button"
           className="relative inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-600 transition hover:bg-slate-50"
           aria-label="Notifications"
+          onClick={() => navigate('/faithhub/provider/audience-notifications')}
         >
           <Bell className="h-4 w-4" />
           <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-emerald-500" />
@@ -39,6 +43,7 @@ export function Topbar({ onOpenSidebar }: TopbarProps) {
           type="button"
           className="inline-flex items-center gap-3 rounded-xl border border-slate-200 px-2 py-1.5 transition hover:bg-slate-50"
           aria-label="Profile menu"
+          onClick={() => navigate('/faithhub/provider/workspace-settings')}
         >
           <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-100 text-sm font-semibold text-emerald-700">
             IA

@@ -1,4 +1,4 @@
-﻿// @ts-nocheck
+// @ts-nocheck
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -789,8 +789,8 @@ function SeriesLandingPreview({
             <div className="text-[15px] font-black tracking-tight">{series.title}</div>
             <div className="mt-2 max-w-[90%] text-[12px] leading-relaxed text-white/90">{series.subtitle}</div>
             <div className="mt-4 flex flex-wrap items-center gap-2">
-              <button className="rounded-full bg-[#03cd8c] px-4 py-2 text-[12px] font-black text-white">Follow series</button>
-              <button className="rounded-full bg-[#f77f00] px-4 py-2 text-[12px] font-black text-white">Watch trailer</button>
+              <button className="rounded-full bg-[#03cd8c] px-4 py-2 text-[12px] font-black text-white" onClick={() => window.location.assign('/faithhub/provider/dashboard')}>Follow series</button>
+              <button className="rounded-full bg-[#f77f00] px-4 py-2 text-[12px] font-black text-white" onClick={() => window.location.assign('/faithhub/provider/dashboard')}>Watch trailer</button>
             </div>
           </div>
         </div>
