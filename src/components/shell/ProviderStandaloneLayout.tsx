@@ -27,7 +27,7 @@ export function ProviderStandaloneLayout({ children, pagePath, pageTitle }: Prov
   }, [location.pathname, pagePath]);
 
   return (
-    <Box sx={{ display: 'flex', minHeight: '100vh', bgcolor: '#f3f4f6' }}>
+    <Box sx={{ display: 'flex', minHeight: '100vh', bgcolor: 'background.default' }}>
       <ProviderSidebar open={mobileOpen} onClose={() => setMobileOpen(false)} />
 
       <Box component="main" sx={{ flex: 1, minWidth: 0, width: '100%' }}>
@@ -45,8 +45,9 @@ export function ProviderStandaloneLayout({ children, pagePath, pageTitle }: Prov
             className="provider-shell-surface"
             sx={{
               borderRadius: 2.5,
-              border: '1px solid #e5e7eb',
-              bgcolor: '#ffffff',
+              border: '1px solid',
+              borderColor: 'divider',
+              bgcolor: 'background.paper',
               p: 0,
               minHeight: 'calc(100vh - 188px)',
             }}

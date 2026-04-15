@@ -1,20 +1,18 @@
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import { CssBaseline, ThemeProvider } from '@mui/material';
 import App from './App';
 import { NotificationProvider } from './contexts/NotificationContext';
-import { theme } from './theme';
+import { ThemeModeProvider } from './contexts/ThemeModeContext';
 
 function renderApp(initialEntries: string[]) {
   return render(
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
+    <ThemeModeProvider>
       <NotificationProvider>
         <MemoryRouter initialEntries={initialEntries}>
           <App />
         </MemoryRouter>
       </NotificationProvider>
-    </ThemeProvider>,
+    </ThemeModeProvider>,
   );
 }
 

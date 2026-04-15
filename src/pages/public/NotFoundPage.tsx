@@ -1,12 +1,16 @@
 import { Box, Button, Stack, Typography } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import { usePageTitle } from '@/hooks/usePageTitle';
+import { ThemeModeToggle } from '@/components/theme/ThemeModeToggle';
 
 export default function NotFoundPage() {
   usePageTitle('Page not found');
 
   return (
     <Box sx={{ minHeight: '100vh', display: 'grid', placeItems: 'center', px: 2 }}>
+      <Box sx={{ position: 'fixed', top: 16, right: 16 }}>
+        <ThemeModeToggle />
+      </Box>
       <Box className="page-surface" sx={{ p: { xs: 3, md: 5 }, maxWidth: 720, textAlign: 'center' }}>
         <Typography variant="overline" color="primary.main" fontWeight={800}>
           FaithHub Provider App

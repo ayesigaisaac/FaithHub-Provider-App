@@ -22,12 +22,12 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
   const density = spacing.compact.mui;
 
   const content = (
-    <Box sx={{ display: 'flex', height: '100%', flexDirection: 'column', bgcolor: '#f8fafc' }}>
+    <Box sx={{ display: 'flex', height: '100%', flexDirection: 'column', bgcolor: 'background.paper' }}>
       <Stack
         direction="row"
         alignItems="center"
         justifyContent="space-between"
-        sx={{ px: 2, py: density.sidebarHeaderY, borderBottom: '1px solid #e5e7eb' }}
+        sx={{ px: 2, py: density.sidebarHeaderY, borderBottom: '1px solid', borderColor: 'divider' }}
       >
         <Stack direction="row" spacing={1.25} alignItems="center">
           <Avatar src="/assets/logo.svg" alt="FaithHub" sx={{ width: 34, height: 34 }} />
@@ -57,7 +57,7 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
                     display: 'block',
                     px: 1.25,
                     pb: 0.5,
-                    color: '#9ca3af',
+                  color: 'text.secondary',
                     fontWeight: 700,
                     letterSpacing: '0.08em',
                   }}
@@ -81,15 +81,15 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
                           px: 1.25,
                           mb: 0.2,
                           '&.Mui-selected': {
-                            bgcolor: '#d1fae5',
-                            color: '#064e3b',
+                            bgcolor: 'rgba(16, 185, 129, 0.18)',
+                            color: 'text.primary',
                           },
                           '&.Mui-selected:hover': {
-                            bgcolor: '#bbf7d0',
+                            bgcolor: 'rgba(16, 185, 129, 0.26)',
                           },
                         }}
                       >
-                        <ListItemIcon sx={{ minWidth: 34, color: selected ? '#059669' : '#6b7280' }}>
+                        <ListItemIcon sx={{ minWidth: 34, color: selected ? 'primary.main' : 'text.secondary' }}>
                           <Icon size={17} />
                         </ListItemIcon>
                         <ListItemText
@@ -98,14 +98,14 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
                               sx={{
                                 fontSize: 14,
                                 fontWeight: selected ? 700 : 600,
-                                color: selected ? '#064e3b' : '#334155',
+                                color: selected ? 'text.primary' : 'text.primary',
                               }}
                             >
                               {page.shortTitle ?? page.title}
                             </Typography>
                           }
                         />
-                        {selected ? <FiberManualRecordRoundedIcon sx={{ fontSize: 10, color: '#10b981' }} /> : null}
+                        {selected ? <FiberManualRecordRoundedIcon sx={{ fontSize: 10, color: 'primary.main' }} /> : null}
                       </ListItemButton>
                     );
                   })}
@@ -129,7 +129,8 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
           '& .MuiDrawer-paper': {
             width: drawerWidth,
             maxWidth: '100vw',
-            borderRight: '1px solid #e5e7eb',
+            borderRight: '1px solid',
+            borderColor: 'divider',
           },
         }}
       >
@@ -145,7 +146,8 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
           '& .MuiDrawer-paper': {
             width: drawerWidth,
             boxSizing: 'border-box',
-            borderRight: '1px solid #e5e7eb',
+            borderRight: '1px solid',
+            borderColor: 'divider',
           },
         }}
       >

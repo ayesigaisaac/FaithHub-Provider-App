@@ -18,6 +18,7 @@ import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import { useState, type MouseEvent } from 'react';
 import type { ProviderPageMeta } from '@/navigation/providerPages';
 import { spacing } from '@/theme/spacing';
+import { ThemeModeToggle } from '@/components/theme/ThemeModeToggle';
 
 type ProviderTopbarProps = {
   current?: ProviderPageMeta;
@@ -41,8 +42,9 @@ export function ProviderTopbar({ current: _current, onOpenSidebar, onOpenSearch 
       color="inherit"
       elevation={0}
       sx={{
-        borderBottom: '1px solid #e5e7eb',
-        bgcolor: '#ffffff',
+        borderBottom: '1px solid',
+        borderColor: 'divider',
+        bgcolor: 'background.paper',
       }}
     >
       <Toolbar sx={{ minHeight: density.topbarToolbarMinHeight, px: density.topbarHeaderX, gap: 1 }}>
@@ -57,8 +59,8 @@ export function ProviderTopbar({ current: _current, onOpenSidebar, onOpenSearch 
             sx={{
               minWidth: 46,
               px: 1.5,
-              bgcolor: '#10b981',
-              '&:hover': { bgcolor: '#059669' },
+              bgcolor: 'primary.main',
+              '&:hover': { bgcolor: 'primary.dark' },
               boxShadow: 'none',
             }}
           >
@@ -69,11 +71,12 @@ export function ProviderTopbar({ current: _current, onOpenSidebar, onOpenSearch 
               display: 'flex',
               alignItems: 'center',
               flex: 1,
-              border: '1px solid #e5e7eb',
+              border: '1px solid',
+              borderColor: 'divider',
               borderRadius: 2,
               px: 1.5,
               height: 38,
-              bgcolor: '#f3f4f6',
+              bgcolor: 'action.hover',
             }}
           >
             <SearchRoundedIcon sx={{ color: 'text.secondary', mr: 1, fontSize: 20 }} />
@@ -91,8 +94,8 @@ export function ProviderTopbar({ current: _current, onOpenSidebar, onOpenSearch 
           onClick={openFilters}
           sx={{
             display: { xs: 'none', lg: 'inline-flex' },
-            borderColor: '#d1d5db',
-            color: '#111827',
+            borderColor: 'divider',
+            color: 'text.primary',
             textTransform: 'none',
             fontWeight: 600,
           }}
@@ -108,8 +111,9 @@ export function ProviderTopbar({ current: _current, onOpenSidebar, onOpenSearch 
         <IconButton aria-label="Workspace controls">
           <AutoAwesomeRoundedIcon />
         </IconButton>
+        <ThemeModeToggle />
         <IconButton aria-label="User menu" onClick={openUserMenu} sx={{ p: 0.25 }}>
-          <Avatar sx={{ width: 38, height: 38, bgcolor: '#10b981', fontWeight: 800 }}>A</Avatar>
+          <Avatar sx={{ width: 38, height: 38, bgcolor: 'primary.main', fontWeight: 800 }}>A</Avatar>
         </IconButton>
       </Toolbar>
 
