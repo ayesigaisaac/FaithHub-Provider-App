@@ -24,7 +24,7 @@ export function ProviderShellLayout() {
     <Box sx={{ display: 'flex', minHeight: '100vh', bgcolor: '#f3f4f6' }}>
       <ProviderSidebar open={mobileOpen} onClose={() => setMobileOpen(false)} />
 
-      <Box component="main" sx={{ flex: 1, minWidth: 0, ml: { md: `${providerDrawerWidth}px` } }}>
+      <Box component="main" sx={{ flex: 1, minWidth: 0, width: '100%' }}>
         <Box sx={{ position: 'fixed', top: 0, left: { md: `${providerDrawerWidth}px` }, right: 0, zIndex: 1200 }}>
           <ProviderTopbar
             current={current}
