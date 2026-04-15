@@ -1,14 +1,10 @@
 import { Bell, Menu, Search } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
-import { ROUTES } from '@/routes/routes';
 
 interface TopbarProps {
   onOpenSidebar: () => void;
 }
 
 export function Topbar({ onOpenSidebar }: TopbarProps) {
-  const navigate = useNavigate();
-
   return (
     <header className="sticky top-0 z-10 border-b border-slate-200 bg-white/95 backdrop-blur">
       <div className="flex h-16 items-center gap-3 px-4 sm:px-6">
@@ -32,7 +28,6 @@ export function Topbar({ onOpenSidebar }: TopbarProps) {
 
         <button
           type="button"
-          onClick={() => navigate(ROUTES.campaigns)}
           className="relative inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-600 transition hover:bg-slate-50"
           aria-label="Notifications"
         >
@@ -42,7 +37,6 @@ export function Topbar({ onOpenSidebar }: TopbarProps) {
 
         <button
           type="button"
-          onClick={() => navigate(ROUTES.teachings)}
           className="inline-flex items-center gap-3 rounded-xl border border-slate-200 px-2 py-1.5 transition hover:bg-slate-50"
           aria-label="Profile menu"
         >

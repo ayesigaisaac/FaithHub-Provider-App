@@ -1,30 +1,30 @@
 import {
-  BadgePlus,
-  Megaphone,
+  CalendarDays,
   Home,
+  Layers,
+  LifeBuoy,
   Radio,
-  Shapes,
-  Video,
+  Settings,
+  Wallet,
   X,
 } from 'lucide-react';
 import { NavItem } from '@/components/ui/NavItem';
-import { ROUTES, SIDEBAR_ROUTES } from '@/routes/routes';
 
 interface SidebarProps {
   onClose?: () => void;
 }
 
-const navIcons = {
-  [ROUTES.dashboard]: <Home className="h-5 w-5" />,
-  [ROUTES.series]: <Shapes className="h-5 w-5" />,
-  [ROUTES.teachings]: <Radio className="h-5 w-5" />,
-  [ROUTES.campaigns]: <BadgePlus className="h-5 w-5" />,
-  [ROUTES.ads]: <Megaphone className="h-5 w-5" />,
-} as const;
+const primaryNav = [
+  { label: 'Dashboard', icon: <Home className="h-5 w-5" />, active: true },
+  { label: 'Sessions', icon: <CalendarDays className="h-5 w-5" /> },
+  { label: 'Teachings', icon: <Radio className="h-5 w-5" /> },
+  { label: 'Resources', icon: <Layers className="h-5 w-5" /> },
+  { label: 'Payouts', icon: <Wallet className="h-5 w-5" /> },
+];
 
-const quickActions = [
-  { label: 'New Live Session', path: ROUTES.liveNew, icon: <Video className="h-5 w-5" /> },
-  { label: 'New Teaching', path: ROUTES.teachingNew, icon: <Radio className="h-5 w-5" /> },
+const secondaryNav = [
+  { label: 'Settings', icon: <Settings className="h-5 w-5" /> },
+  { label: 'Support', icon: <LifeBuoy className="h-5 w-5" /> },
 ];
 
 export function Sidebar({ onClose }: SidebarProps) {
@@ -47,21 +47,14 @@ export function Sidebar({ onClose }: SidebarProps) {
 
       <nav className="flex-1 space-y-8 overflow-y-auto px-3 pb-5 lg:px-4">
         <div className="space-y-1">
-          {SIDEBAR_ROUTES.map((item) => (
-            <NavItem
-              key={item.path}
-              to={item.path}
-              icon={navIcons[item.path]}
-              label={item.label}
-              end={item.path === ROUTES.dashboard}
-              onClick={onClose}
-            />
+          {primaryNav.map((item) => (
+            <NavItem key={item.label} icon={item.icon} label={item.label} active={item.active} />
           ))}
         </div>
 
         <div className="space-y-1 border-t border-slate-200 pt-4">
-          {quickActions.map((item) => (
-            <NavItem key={item.path} to={item.path} icon={item.icon} label={item.label} onClick={onClose} />
+          {secondaryNav.map((item) => (
+            <NavItem key={item.label} icon={item.icon} label={item.label} />
           ))}
         </div>
       </nav>

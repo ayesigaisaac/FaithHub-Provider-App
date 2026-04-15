@@ -1,10 +1,8 @@
 import { ArrowUpRight, BookOpen, CalendarCheck, Clock3, Plus, Users } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
 import { AppLayout } from '@/layout/AppLayout';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { SectionHeader } from '@/components/ui/SectionHeader';
-import { ROUTES } from '@/routes/routes';
 
 const stats = [
   {
@@ -40,8 +38,6 @@ const upcoming = [
 ];
 
 export default function Dashboard() {
-  const navigate = useNavigate();
-
   return (
     <AppLayout>
       <div className="space-y-6">
@@ -50,24 +46,14 @@ export default function Dashboard() {
           subtitle="Track sessions, teaching performance, and community momentum in one place."
           actions={
             <>
-              <Button variant="outline" onClick={() => navigate(ROUTES.campaigns)}>
-                Campaigns
-              </Button>
-              <Button variant="secondary" onClick={() => navigate(ROUTES.liveNew)}>
+              <Button variant="outline">Export</Button>
+              <Button variant="secondary">
                 <Plus className="mr-2 h-4 w-4" />
-                New Live Session
+                New Session
               </Button>
-              <Button onClick={() => navigate(ROUTES.teachingNew)}>
+              <Button>
                 <Plus className="mr-2 h-4 w-4" />
-                New Teaching
-              </Button>
-              <Button variant="outline" onClick={() => navigate(ROUTES.campaigns)}>
-                <Plus className="mr-2 h-4 w-4" />
-                New Campaign
-              </Button>
-              <Button variant="outline" onClick={() => navigate(ROUTES.ads)}>
-                <Plus className="mr-2 h-4 w-4" />
-                New Ad
+                Teaching
               </Button>
             </>
           }
@@ -124,8 +110,7 @@ export default function Dashboard() {
               </div>
               <button
                 type="button"
-                onClick={() => navigate(ROUTES.teachings)}
-                className="inline-flex cursor-pointer items-center text-sm font-medium text-emerald-700 hover:text-emerald-800"
+                className="inline-flex items-center text-sm font-medium text-emerald-700 hover:text-emerald-800"
               >
                 View full analytics
                 <ArrowUpRight className="ml-1 h-4 w-4" />

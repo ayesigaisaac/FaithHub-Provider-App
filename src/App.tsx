@@ -1,22 +1,33 @@
 import { Fragment, useEffect } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
+import { ProviderShellLayout } from '@/components/shell/ProviderShellLayout';
+import { providerPages, type ProviderPageMeta } from '@/navigation/providerPages';
+import NotFoundPage from '@/pages/public/NotFoundPage';
+import FaithHubHomeLandingPage from '@/pages/public/FaithHubHomeLandingPage';
+import { usePageTitle } from '@/hooks/usePageTitle';
 import Dashboard from '@/pages/Dashboard';
-import SeriesPage from '@/pages/SeriesPage';
-import TeachingsPage from '@/pages/TeachingsPage';
-import NewLiveSessionPage from '@/pages/NewLiveSessionPage';
-import NewTeachingPage from '@/pages/NewTeachingPage';
-import CampaignsPage from '@/pages/CampaignsPage';
-import AdsPage from '@/pages/AdsPage';
-import { ROUTES } from '@/routes/routes';
 
 function ScrollToTop() {
   const location = useLocation();
-
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
   }, [location.pathname, location.search]);
-
   return null;
+}
+
+function ProviderPageMount({ page }: { page: ProviderPageMeta }) {
+  usePageTitle(page.title);
+  const Component = page.component;
+  return (
+    <div className="provider-page-density provider-page-density--compact">
+      <Component />
+    </div>
+  );
+}
+
+function LandingMount() {
+  usePageTitle('FaithHub Home');
+  return <FaithHubHomeLandingPage />;
 }
 
 export default function App() {
@@ -24,14 +35,25 @@ export default function App() {
     <Fragment>
       <ScrollToTop />
       <Routes>
-        <Route path={ROUTES.dashboard} element={<Dashboard />} />
-        <Route path={ROUTES.series} element={<SeriesPage />} />
-        <Route path={ROUTES.teachings} element={<TeachingsPage />} />
-        <Route path={ROUTES.liveNew} element={<NewLiveSessionPage />} />
-        <Route path={ROUTES.teachingNew} element={<NewTeachingPage />} />
-        <Route path={ROUTES.campaigns} element={<CampaignsPage />} />
-        <Route path={ROUTES.ads} element={<AdsPage />} />
-        <Route path="*" element={<Navigate to={ROUTES.dashboard} replace />} />
+        <Route path="/" element={<Navigate to="/faithhub/provider/dashboard" replace />} />
+        <Route path="/faithhub/home" element={<Navigate to="/faithhub/provider/dashboard" replace />} />
+        <Route path="/faithhub/home-landing" element={<LandingMount />} />
+        <Route path="/dashboard-ui" element={<Dashboard />} />
+
+        <Route path="/faithhub/provider" element={<ProviderShellLayout />}>
+          <Route index element={<Navigate to="/faithhub/provider/dashboard" replace />} />
+        </Route>
+
+        <Route element={<ProviderShellLayout />}>
+          {providerPages.flatMap((page) => {
+            const paths = [page.path, ...(page.aliases ?? [])];
+            return paths.map((path) => (
+              <Route key={`${page.key}:${path}`} path={path} element={<ProviderPageMount page={page} />} />
+            ));
+          })}
+        </Route>
+
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Fragment>
   );
