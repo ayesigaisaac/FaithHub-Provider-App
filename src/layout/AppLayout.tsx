@@ -10,10 +10,12 @@ export function AppLayout({ children }: AppLayoutProps) {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900">
-      <div className="fixed inset-y-0 left-0 z-30 hidden w-64 lg:block">
-        <Sidebar />
-      </div>
+    <div className="min-h-screen bg-slate-50 text-slate-900 lg:flex">
+      <aside className="hidden w-64 shrink-0 lg:block">
+        <div className="sticky top-0 h-screen">
+          <Sidebar />
+        </div>
+      </aside>
 
       {mobileNavOpen ? (
         <div className="fixed inset-0 z-40 bg-slate-900/30 lg:hidden" onClick={() => setMobileNavOpen(false)}>
@@ -23,7 +25,7 @@ export function AppLayout({ children }: AppLayoutProps) {
         </div>
       ) : null}
 
-      <div className="lg:pl-64">
+      <div className="flex-1 w-full">
         <Topbar onOpenSidebar={() => setMobileNavOpen(true)} />
         <main className="p-4 sm:p-6">{children}</main>
       </div>
