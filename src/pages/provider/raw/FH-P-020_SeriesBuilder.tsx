@@ -37,7 +37,7 @@ import {
 } from "lucide-react";
 
 /**
- * FaithHub â€” FH-P-020 Series Builder
+ * FaithHub Ã¢â‚¬â€ FH-P-020 Series Builder
  * ----------------------------------
  * Premium teaching-series control surface for the Provider side.
  *
@@ -172,7 +172,7 @@ const EMBARGO_RULES = [
 ];
 
 const APPROVAL_FLOWS = [
-  "Pastoral review â†’ editor sign-off â†’ publish",
+  "Pastoral review Ã¢â€ â€™ editor sign-off Ã¢â€ â€™ publish",
   "Content lead only",
   "Leadership review board",
   "Multi-campus approval chain",
@@ -255,7 +255,7 @@ type SeriesDraft = {
 const DEFAULT_EPISODES: EpisodeItem[] = [
   {
     id: "ep-1",
-    title: "Week 1 Â· The Call to Hope",
+    title: "Week 1 Ã‚Â· The Call to Hope",
     summary: "Set the series promise and begin with renewal, witness, and spiritual confidence.",
     theme: "Renewal",
     durationLabel: "55 min",
@@ -264,7 +264,7 @@ const DEFAULT_EPISODES: EpisodeItem[] = [
   },
   {
     id: "ep-2",
-    title: "Week 2 Â· Hope in the Wilderness",
+    title: "Week 2 Ã‚Â· Hope in the Wilderness",
     summary: "Address uncertainty, endurance, and faithful obedience under pressure.",
     theme: "Endurance",
     durationLabel: "60 min",
@@ -273,7 +273,7 @@ const DEFAULT_EPISODES: EpisodeItem[] = [
   },
   {
     id: "ep-3",
-    title: "Week 3 Â· Healing and Restoration",
+    title: "Week 3 Ã‚Â· Healing and Restoration",
     summary: "Move into personal healing, prayer ministry, and practical support.",
     theme: "Healing",
     durationLabel: "70 min",
@@ -282,7 +282,7 @@ const DEFAULT_EPISODES: EpisodeItem[] = [
   },
   {
     id: "ep-4",
-    title: "Week 4 Â· Hope in Community",
+    title: "Week 4 Ã‚Â· Hope in Community",
     summary: "Focus on serving, community, care, and local mission response.",
     theme: "Community",
     durationLabel: "50 min",
@@ -291,7 +291,7 @@ const DEFAULT_EPISODES: EpisodeItem[] = [
   },
   {
     id: "ep-5",
-    title: "Week 5 Â· Witness and Courage",
+    title: "Week 5 Ã‚Â· Witness and Courage",
     summary: "Build toward outward witness, boldness, and testimony.",
     theme: "Witness",
     durationLabel: "65 min",
@@ -300,7 +300,7 @@ const DEFAULT_EPISODES: EpisodeItem[] = [
   },
   {
     id: "ep-6",
-    title: "Week 6 Â· Living the Hope",
+    title: "Week 6 Ã‚Â· Living the Hope",
     summary: "Land the series with commitments, next steps, and follow-through resources.",
     theme: "Next steps",
     durationLabel: "60 min",
@@ -314,21 +314,21 @@ const DEFAULT_LOCALES: LocaleVariant[] = [
     code: "en-UG",
     title: "Practicing the Way of Hope",
     description: "A six-week teaching journey on faithful living, healing, and witness.",
-    artworkVariant: "Hero A Â· English",
+    artworkVariant: "Hero A Ã‚Â· English",
     notesState: "Ready",
   },
   {
     code: "sw-UG",
     title: "Kuishi Njia ya Tumaini",
     description: "Mfululizo wa wiki sita kuhusu matumaini, uponyaji, na ushuhuda.",
-    artworkVariant: "Hero B Â· Swahili",
+    artworkVariant: "Hero B Ã‚Â· Swahili",
     notesState: "Translating",
   },
   {
     code: "fr-FR",
-    title: "Vivre le chemin de l'espÃ©rance",
-    description: "Une sÃ©rie de six semaines sur l'espÃ©rance, la guÃ©rison et le tÃ©moignage.",
-    artworkVariant: "Hero C Â· French",
+    title: "Vivre le chemin de l'espÃƒÂ©rance",
+    description: "Une sÃƒÂ©rie de six semaines sur l'espÃƒÂ©rance, la guÃƒÂ©rison et le tÃƒÂ©moignage.",
+    artworkVariant: "Hero C Ã‚Â· French",
     notesState: "Draft",
   },
 ];
@@ -746,7 +746,7 @@ function SeriesLandingPreview({
               <div className="rounded-[26px] border border-slate-200 bg-white p-4 shadow-sm">
                 <div className="flex items-center justify-between gap-2">
                   <Pill tone="brand">Series live</Pill>
-                  <button className="text-[11px] font-semibold text-emerald-600" onClick={() => window.location.assign('/faithhub/provider/dashboard')}>Share</button>
+                  <button className="text-[11px] font-semibold text-emerald-600" onClick={handleRawPlaceholderAction}>Share</button>
                 </div>
                 <div className="mt-3 text-[22px] font-black leading-tight text-slate-900">{draft.title}</div>
                 <div className="mt-1 text-[12px] text-slate-500">{draft.subtitle}</div>
@@ -774,14 +774,14 @@ function SeriesLandingPreview({
                     type="button"
                     className="flex-1 rounded-2xl bg-amber-500 px-3 py-2 text-[12px] font-bold text-white"
                     style={{ background: EV_ORANGE }}
-                   onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
+                   onClick={handleRawPlaceholderAction}>
                     Notify me
                   </button>
                 </div>
               </div>
             </div>
             <div className="absolute bottom-4 left-4 right-4 rounded-2xl border border-emerald-200 bg-emerald-50 px-3 py-2 text-[11px] font-semibold text-emerald-700">
-              Preview confidence Â· {readinessScore}% complete
+              Preview confidence Ã‚Â· {readinessScore}% complete
             </div>
           </div>
         </div>
@@ -813,10 +813,10 @@ function SeriesLandingPreview({
               ))}
             </div>
             <div className="mt-5 flex gap-3">
-              <button className="rounded-2xl px-4 py-2 text-[12px] font-bold text-white" style={{ background: EV_GREEN }} onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
+              <button className="rounded-2xl px-4 py-2 text-[12px] font-bold text-white" style={{ background: EV_GREEN }} onClick={handleRawPlaceholderAction}>
                 Follow series
               </button>
-              <button className="rounded-2xl px-4 py-2 text-[12px] font-bold text-white" style={{ background: EV_ORANGE }} onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
+              <button className="rounded-2xl px-4 py-2 text-[12px] font-bold text-white" style={{ background: EV_ORANGE }} onClick={handleRawPlaceholderAction}>
                 Get reminders
               </button>
             </div>
@@ -839,7 +839,7 @@ function SeriesLandingPreview({
                     <Pill tone={episode.status === "Ready" || episode.status === "Scheduled" ? "good" : "warn"}>{episode.status}</Pill>
                   </div>
                   <div className="mt-2 text-[13px] font-bold text-slate-900">{episode.title}</div>
-                  <div className="mt-1 text-[11px] text-slate-500">{episode.theme} Â· {episode.durationLabel}</div>
+                  <div className="mt-1 text-[11px] text-slate-500">{episode.theme} Ã‚Â· {episode.durationLabel}</div>
                 </div>
               ))}
             </div>
@@ -871,13 +871,13 @@ export default function SeriesBuilderPage() {
     subtitle: "A six-week teaching journey on faithful living, healing, and witness.",
     description:
       "Build a structured discipleship path that moves from renewal into healing, witness, and next-step commitment across live teaching, replay, and group resources.",
-    scriptureTheme: "Romans 12 Â· Isaiah 61 Â· Matthew 5",
+    scriptureTheme: "Romans 12 Ã‚Â· Isaiah 61 Ã‚Â· Matthew 5",
     promise: "A clear, hope-filled pathway for prayer, formation, and public witness.",
-    durationWindow: "6 weeks Â· April to May",
+    durationWindow: "6 weeks Ã‚Â· April to May",
     audienceFit: "Adults, young professionals, family ministry",
     speakers: ["Pastor Daniel M.", "Minister Ruth K."],
     coverId: "cover-hope",
-    trailerLabel: "Series trailer cut Â· 45s",
+    trailerLabel: "Series trailer cut Ã‚Â· 45s",
     bannerStyle: "Immersive hero with layered scripture quote",
     graphicRule: GRAPHIC_RULES[2],
     accessModel: "Public",
@@ -926,7 +926,7 @@ export default function SeriesBuilderPage() {
         ...current.episodes,
         {
           id: `ep-${Math.random().toString(16).slice(2, 8)}`,
-          title: `Week ${index} Â· New Episode`,
+          title: `Week ${index} Ã‚Â· New Episode`,
           summary: "Add the episode purpose, live plan, and resource pack.",
           theme: "New theme",
           durationLabel: "60 min",
@@ -972,7 +972,7 @@ export default function SeriesBuilderPage() {
           code: next.code,
           title: `${current.title} (${next.label})`,
           description: current.description,
-          artworkVariant: `Localized art Â· ${next.label}`,
+          artworkVariant: `Localized art Ã‚Â· ${next.label}`,
           notesState: "Draft",
         },
       ],
@@ -1055,7 +1055,7 @@ export default function SeriesBuilderPage() {
                 <TextInput
                   value={draft.scriptureTheme}
                   onChange={(scriptureTheme) => setDraft((current) => ({ ...current, scriptureTheme }))}
-                  placeholder="Romans 12 Â· Isaiah 61 Â· Matthew 5"
+                  placeholder="Romans 12 Ã‚Â· Isaiah 61 Ã‚Â· Matthew 5"
                 />
               </div>
               <div>
@@ -1236,11 +1236,11 @@ export default function SeriesBuilderPage() {
                   <div className="text-[11px] font-black uppercase tracking-[0.16em] text-slate-400">Variant set</div>
                   <div className="mt-2 grid gap-2 md:grid-cols-2">
                     <div className="rounded-2xl border border-slate-200 bg-white p-3">
-                      <div className="text-[12px] font-bold text-slate-900">Cover A Â· Sanctuary Light</div>
+                      <div className="text-[12px] font-bold text-slate-900">Cover A Ã‚Â· Sanctuary Light</div>
                       <div className="mt-1 text-[11px] text-slate-500">For followers and returning viewers.</div>
                     </div>
                     <div className="rounded-2xl border border-slate-200 bg-white p-3">
-                      <div className="text-[12px] font-bold text-slate-900">Cover B Â· Scripture Close-up</div>
+                      <div className="text-[12px] font-bold text-slate-900">Cover B Ã‚Â· Scripture Close-up</div>
                       <div className="mt-1 text-[11px] text-slate-500">For new guests and broad discovery shelves.</div>
                     </div>
                   </div>
@@ -1356,7 +1356,7 @@ export default function SeriesBuilderPage() {
                     {draft.episodes.map((episode, index) => (
                       <div key={episode.id} className="rounded-2xl border border-slate-200 bg-white px-3 py-3">
                         <div className="flex items-center justify-between gap-2">
-                          <div className="text-[12px] font-bold text-slate-900">{String(index + 1).padStart(2, "0")} Â· {episode.theme}</div>
+                          <div className="text-[12px] font-bold text-slate-900">{String(index + 1).padStart(2, "0")} Ã‚Â· {episode.theme}</div>
                           <span className="text-[11px] font-semibold text-slate-500">{episode.durationLabel}</span>
                         </div>
                         <div className="mt-1 text-[11px] text-slate-500">{episode.title}</div>
@@ -1817,10 +1817,10 @@ export default function SeriesBuilderPage() {
                 <span className="font-semibold text-slate-700">Series Builder</span>
               </div>
               <div className="mt-2 text-[38px] font-black leading-none tracking-[-0.03em] text-slate-900">
-                FaithHub â€” Series Builder
+                FaithHub Ã¢â‚¬â€ Series Builder
               </div>
               <div className="mt-2 max-w-[920px] text-[14px] text-slate-500">
-                Premium provider teaching workflow inspired by the creator base layout â€” now rebuilt for Series, Episodes, linked Live Sessionz, localized discovery, and Beacon-ready promotion.
+                Premium provider teaching workflow inspired by the creator base layout Ã¢â‚¬â€ now rebuilt for Series, Episodes, linked Live Sessionz, localized discovery, and Beacon-ready promotion.
               </div>
               <div className="mt-4 flex flex-wrap gap-2">
                 <Pill tone="brand"><BookOpen className="h-3 w-3" /> Series engine</Pill>

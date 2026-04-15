@@ -33,7 +33,7 @@ import {
 } from "lucide-react";
 
 /**
- * FaithHub â€” FH-P-037 Noticeboard
+ * FaithHub ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â FH-P-037 Noticeboard
  * --------------------------------
  * Premium Provider-side noticeboard / announcements operating surface.
  *
@@ -219,8 +219,8 @@ const INITIAL_NOTICES: NoticeItem[] = [
     surfaces: ["Noticeboard", "Live Sessionz", "Events", "Notification"],
     pinned: true,
     approvalRequired: false,
-    scheduledAt: "Today Â· 2:30 PM",
-    expiresAt: "Today Â· 8:00 PM",
+    scheduledAt: "Today Ãƒâ€šÃ‚Â· 2:30 PM",
+    expiresAt: "Today Ãƒâ€šÃ‚Â· 8:00 PM",
     reads: 2480,
     taps: 641,
     conversions: 318,
@@ -243,8 +243,8 @@ const INITIAL_NOTICES: NoticeItem[] = [
     surfaces: ["Noticeboard", "Giving", "Notification", "Beacon"],
     pinned: true,
     approvalRequired: true,
-    scheduledAt: "Today Â· 9:00 AM",
-    expiresAt: "Tomorrow Â· 9:00 AM",
+    scheduledAt: "Today Ãƒâ€šÃ‚Â· 9:00 AM",
+    expiresAt: "Tomorrow Ãƒâ€šÃ‚Â· 9:00 AM",
     reads: 1682,
     taps: 430,
     conversions: 216,
@@ -267,8 +267,8 @@ const INITIAL_NOTICES: NoticeItem[] = [
     surfaces: ["Noticeboard", "Notification"],
     pinned: false,
     approvalRequired: true,
-    scheduledAt: "Today Â· 3:15 PM",
-    expiresAt: "Today Â· 6:00 PM",
+    scheduledAt: "Today Ãƒâ€šÃ‚Â· 3:15 PM",
+    expiresAt: "Today Ãƒâ€šÃ‚Â· 6:00 PM",
     reads: 690,
     taps: 180,
     conversions: 72,
@@ -291,8 +291,8 @@ const INITIAL_NOTICES: NoticeItem[] = [
     surfaces: ["Noticeboard", "Notification"],
     pinned: false,
     approvalRequired: true,
-    scheduledAt: "Tomorrow Â· 6:00 AM",
-    expiresAt: "Tomorrow Â· 11:15 AM",
+    scheduledAt: "Tomorrow Ãƒâ€šÃ‚Â· 6:00 AM",
+    expiresAt: "Tomorrow Ãƒâ€šÃ‚Â· 11:15 AM",
     reads: 0,
     taps: 0,
     conversions: 0,
@@ -318,8 +318,8 @@ function makeBlankComposer(): ComposerState {
     commentsEnabled: false,
     sendToJourney: true,
     boostWithBeacon: false,
-    scheduledAt: "Today Â· 4:45 PM",
-    expiresAt: "Tomorrow Â· 11:30 PM",
+    scheduledAt: "Today Ãƒâ€šÃ‚Â· 4:45 PM",
+    expiresAt: "Tomorrow Ãƒâ€šÃ‚Â· 11:30 PM",
   };
 }
 
@@ -826,13 +826,13 @@ function BoardPreviewDesktop({ draft }: { draft: ComposerState }) {
                 ))}
               </div>
               <div className="mt-3 text-[12px] text-slate-500">
-                {draft.campus} â€¢ {draft.audience} â€¢ {draft.language}
+                {draft.campus} ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ {draft.audience} ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ {draft.language}
               </div>
               <div className="mt-1 text-[12px] text-slate-500">
                 Linked to: {draft.linkedTo}
               </div>
               <div className="mt-1 text-[12px] text-slate-500">
-                Window: {draft.scheduledAt} â†’ {draft.expiresAt}
+                Window: {draft.scheduledAt} ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ {draft.expiresAt}
               </div>
             </div>
           </div>
@@ -852,7 +852,7 @@ function BoardPreviewDesktop({ draft }: { draft: ComposerState }) {
               label: "Board sections",
               items: [
                 "Pinned notice lane",
-                "Todayâ€™s notices",
+                "TodayÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢s notices",
                 "Campus-only updates",
               ],
             },
@@ -970,7 +970,7 @@ function BoardPreviewMobile({ draft }: { draft: ComposerState }) {
               type="button"
               className="inline-flex w-full items-center justify-center gap-2 rounded-[18px] px-4 py-3 text-[12px] font-black text-white"
               style={{ background: EV_GREEN }}
-             onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
+             onClick={handleRawPlaceholderAction}>
               <Bell className="h-4 w-4" />
               Open full notice
             </button>
@@ -1068,7 +1068,7 @@ export default function FaithHubNoticeboardPage() {
       },
       {
         label: "Top conversion path",
-        value: "Notice â†’ Event",
+        value: "Notice ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ Event",
         hint: "Event-linked notices are producing the strongest taps this week",
       },
     ],
@@ -1187,16 +1187,16 @@ export default function FaithHubNoticeboardPage() {
                   FH
                 </span>
                 <span>Audience & Outreach</span>
-                <span>â€¢</span>
+                <span>ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢</span>
                 <span>Premium Provider Noticeboard</span>
               </div>
 
               <div className="mt-4 text-[44px] font-black leading-[1.02] tracking-[-0.03em] text-slate-900">
-                FH-P-037 Â· Noticeboard
+                FH-P-037 Ãƒâ€šÃ‚Â· Noticeboard
               </div>
               <div className="mt-3 max-w-4xl text-[16px] leading-relaxed text-slate-500">
                 Run institution-wide announcements, campus updates, prayer alerts, volunteer calls,
-                event reminders, and giving notices from one premium board â€” then route them into
+                event reminders, and giving notices from one premium board ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â then route them into
                 Live Sessionz, notifications, events, giving, and Beacon without losing control.
               </div>
 
@@ -1225,7 +1225,7 @@ export default function FaithHubNoticeboardPage() {
                   Ayesigai921
                 </div>
                 <div className="mt-2 text-[12px] leading-relaxed text-slate-500">
-                  FaithHub Provider Workspace Â· role-aware notice publishing with campus, audience,
+                  FaithHub Provider Workspace Ãƒâ€šÃ‚Â· role-aware notice publishing with campus, audience,
                   language, and safety routing.
                 </div>
                 <div className="mt-3">
@@ -1606,7 +1606,7 @@ export default function FaithHubNoticeboardPage() {
                       onChange={(value) =>
                         setComposer((prev) => ({ ...prev, scheduledAt: value }))
                       }
-                      placeholder="Today Â· 4:45 PM"
+                      placeholder="Today Ãƒâ€šÃ‚Â· 4:45 PM"
                     />
                   </div>
                   <div>
@@ -1616,7 +1616,7 @@ export default function FaithHubNoticeboardPage() {
                       onChange={(value) =>
                         setComposer((prev) => ({ ...prev, expiresAt: value }))
                       }
-                      placeholder="Tomorrow Â· 11:30 PM"
+                      placeholder="Tomorrow Ãƒâ€šÃ‚Â· 11:30 PM"
                     />
                   </div>
                 </div>
@@ -1752,7 +1752,7 @@ export default function FaithHubNoticeboardPage() {
                           {notice.title}
                         </div>
                         <div className="mt-1 text-[12px] text-slate-500">
-                          {notice.category} â€¢ {notice.campus} â€¢ {notice.owner}
+                          {notice.category} ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ {notice.campus} ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ {notice.owner}
                         </div>
                       </div>
                       <Pill tone="warn">
@@ -1799,7 +1799,7 @@ export default function FaithHubNoticeboardPage() {
                     tone: "good" as Tone,
                   },
                   {
-                    time: "Today Â· 6:15 PM",
+                    time: "Today Ãƒâ€šÃ‚Â· 6:15 PM",
                     label: "Live Session overlay sync",
                     detail: composer.surfaces.includes("Live Sessionz")
                       ? "Armed for waiting room and live viewer surface"
@@ -1809,7 +1809,7 @@ export default function FaithHubNoticeboardPage() {
                       : ("neutral" as Tone),
                   },
                   {
-                    time: "Today Â· 7:00 PM",
+                    time: "Today Ãƒâ€šÃ‚Â· 7:00 PM",
                     label: "Notification handoff",
                     detail: composer.sendToJourney
                       ? "Journey builder can inherit this notice"
@@ -1889,7 +1889,7 @@ export default function FaithHubNoticeboardPage() {
                       type="button"
                       className="mt-3 rounded-full px-4 py-2 text-[11px] font-semibold text-white"
                       style={{ background: item.accent }}
-                     onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
+                     onClick={handleRawPlaceholderAction}>
                       {item.action}
                     </button>
                   </div>
@@ -1900,7 +1900,7 @@ export default function FaithHubNoticeboardPage() {
         </div>
 
         <div className="rounded-[24px] border border-emerald-200 bg-emerald-50 px-6 py-3 text-center text-[13px] font-medium text-slate-700">
-          Concept preview of the generated FaithHub Noticeboard page Â· EVzone Green primary ({EV_GREEN}) Â· Orange secondary ({EV_ORANGE})
+          Concept preview of the generated FaithHub Noticeboard page Ãƒâ€šÃ‚Â· EVzone Green primary ({EV_GREEN}) Ãƒâ€šÃ‚Â· Orange secondary ({EV_ORANGE})
         </div>
       </div>
     </div>

@@ -31,7 +31,7 @@ import {
 } from "lucide-react";
 
 /**
- * FaithHub â€” FH-P-025 Resources Manager
+ * FaithHub Ã¢â‚¬â€ FH-P-025 Resources Manager
  * -------------------------------------
  * Premium Provider-side control surface for free learning resources,
  * downloadable PDFs, devotionals, prayer guides, study packs, and audio teachings.
@@ -506,7 +506,7 @@ function ResourceFeatureCard({
               {resource.providerUploaded ? <Pill tone="soft">PROVIDER</Pill> : null}
             </div>
             <div className="mt-1 text-sm text-slate-600">
-              {resource.author} Â· {resource.type} Â· {resource.category}
+              {resource.author} Ã‚Â· {resource.type} Ã‚Â· {resource.category}
             </div>
           </div>
           <div
@@ -585,7 +585,7 @@ function ResourceMiniRow({
           {resource.title}
         </div>
         <div className="truncate text-sm text-slate-500">
-          {resource.type} Â· {fmtInt(resource.downloads)} downloads
+          {resource.type} Ã‚Â· {fmtInt(resource.downloads)} downloads
         </div>
       </div>
       <ChevronRight className="h-4 w-4 shrink-0 text-slate-400" />
@@ -616,7 +616,7 @@ function LibraryCard({
             {resource.title}
           </div>
           <div className="mt-1 text-sm text-slate-500">
-            {resource.author} Â· {resource.type} Â· {resource.category}
+            {resource.author} Ã‚Â· {resource.type} Ã‚Â· {resource.category}
           </div>
         </div>
         <div className="inline-flex flex-wrap items-center justify-end gap-2">
@@ -697,7 +697,7 @@ function ManageRow({
     <div className="rounded-[24px] border border-slate-200 bg-white p-4 shadow-sm">
       <div className="text-[17px] font-black tracking-tight text-slate-900">{resource.title}</div>
       <div className="mt-1 text-sm text-slate-500">
-        {fmtInt(resource.downloads)} downloads Â· {resource.category}
+        {fmtInt(resource.downloads)} downloads Ã‚Â· {resource.category}
       </div>
       <div className="mt-3 text-[11px] font-bold uppercase tracking-[0.18em] text-slate-500">
         Tags
@@ -870,7 +870,7 @@ function PreviewRail({
           <div className="mt-3 text-[20px] font-black tracking-tight text-slate-900">
             {resource.title}
           </div>
-          <div className="mt-1 text-sm text-slate-500">{resource.author} Â· {resource.type}</div>
+          <div className="mt-1 text-sm text-slate-500">{resource.author} Ã‚Â· {resource.type}</div>
           <div className="mt-4 text-sm leading-6 text-slate-700">{resource.summary}</div>
         </div>
         <div className="grid grid-cols-2 gap-3">
@@ -934,13 +934,13 @@ function PreviewRail({
               type="button"
               className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-2xl text-[13px] font-black text-white"
               style={{ background: EV_GREEN }}
-             onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
+             onClick={handleRawPlaceholderAction}>
               <Eye className="h-4 w-4" /> Open details
             </button>
             <button
               type="button"
               className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white text-[13px] font-black text-slate-800"
-             onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
+             onClick={handleRawPlaceholderAction}>
               <Download className="h-4 w-4" /> Download
             </button>
           </div>

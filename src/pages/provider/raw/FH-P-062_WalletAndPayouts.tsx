@@ -33,7 +33,7 @@ import {
 } from "lucide-react";
 
 /**
- * FaithHub â€” FH-P-062 Wallet & Payouts
+ * FaithHub Ã¢â‚¬â€ FH-P-062 Wallet & Payouts
  * ------------------------------------
  * Premium Provider-side treasury surface for wallet visibility, payout methods,
  * transfer controls, settlement sources, compliance health, and reconciliation.
@@ -67,7 +67,7 @@ function safeNav(url: string) {
   window.location.assign(url);
 }
 
-function fmtMoney(n: number, currency = "Â£") {
+function fmtMoney(n: number, currency = "Ã‚Â£") {
   return `${currency}${Intl.NumberFormat(undefined, {
     maximumFractionDigits: 0,
   }).format(n)}`;
@@ -658,7 +658,7 @@ function Drawer({
                 onClick={onClose}
                 className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-slate-200 bg-white text-slate-700 hover:bg-slate-50"
               >
-                Ã—
+                Ãƒâ€”
               </button>
             </div>
           </div>
@@ -752,7 +752,7 @@ function PreviewRail({ mode, onModeChange }: { mode: PreviewMode; onModeChange: 
               <Wallet className="h-3.5 w-3.5" /> Treasury desk
             </div>
             <div className="mt-4 text-[28px] font-black">{fmtMoney(18420)}</div>
-            <div className="mt-1 text-[12px] text-slate-300">Available to transfer â€¢ Trust-ready 96%</div>
+            <div className="mt-1 text-[12px] text-slate-300">Available to transfer Ã¢â‚¬Â¢ Trust-ready 96%</div>
             <div className="mt-4 h-3 rounded-full bg-white/10 overflow-hidden">
               <div className="h-full rounded-full" style={{ width: "74%", background: EV_GREEN }} />
             </div>
@@ -807,14 +807,14 @@ function PreviewRail({ mode, onModeChange }: { mode: PreviewMode; onModeChange: 
                 type="button"
                 className="mt-4 w-full rounded-full px-4 py-3 text-[16px] font-bold text-white"
                 style={{ background: EV_GREEN }}
-               onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
+               onClick={handleRawPlaceholderAction}>
                 Transfer now
               </button>
               <button
                 type="button"
                 className="mt-3 w-full rounded-full px-4 py-3 text-[16px] font-bold text-white"
                 style={{ background: EV_ORANGE }}
-               onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
+               onClick={handleRawPlaceholderAction}>
                 Add payout method
               </button>
             </div>
@@ -932,14 +932,14 @@ export default function WalletAndPayoutsPage() {
           <div className="grid gap-4 xl:grid-cols-[1.45fr_0.75fr]">
             <div>
               <div className="text-[12px] font-semibold uppercase tracking-[0.14em] text-slate-400">
-                Events & Giving Â· Treasury Operations
+                Events & Giving Ã‚Â· Treasury Operations
               </div>
               <h1 className="mt-2 max-w-[860px] text-[38px] leading-[1.04] font-black tracking-[-0.03em] text-slate-900 md:text-[54px]">
                 Move ministry funds, reserves, and payouts with premium financial control.
               </h1>
               <p className="mt-3 max-w-[900px] text-[15px] leading-7 text-slate-600">
                 A dedicated wallet and payouts command surface for donations, charity crowdfunding, event registrations,
-                supporter memberships, and FaithMart-linked revenue â€” with finance trust, payout readiness, and reconciliation all in one place.
+                supporter memberships, and FaithMart-linked revenue Ã¢â‚¬â€ with finance trust, payout readiness, and reconciliation all in one place.
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
                 <Pill text="Treasury-ready" tone="good" icon={<BadgeCheck className="h-3.5 w-3.5" />} />
@@ -1025,7 +1025,7 @@ export default function WalletAndPayoutsPage() {
                 className="w-full bg-transparent text-[13px] text-slate-800 outline-none placeholder:text-slate-400"
               />
             </div>
-            <button className="rounded-[24px] border border-slate-200 bg-white px-4 py-3 text-[12px] font-semibold text-slate-700 inline-flex items-center justify-center gap-2 hover:bg-slate-50" onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
+            <button className="rounded-[24px] border border-slate-200 bg-white px-4 py-3 text-[12px] font-semibold text-slate-700 inline-flex items-center justify-center gap-2 hover:bg-slate-50" onClick={handleRawPlaceholderAction}>
               <Filter className="h-4 w-4" /> More filters
             </button>
           </div>
@@ -1095,7 +1095,7 @@ export default function WalletAndPayoutsPage() {
                         </div>
                         <div>
                           <div className="text-[13px] font-semibold text-slate-900">{method.label}</div>
-                          <div className="text-[11px] text-slate-500">{method.kind} Â· {method.owner}</div>
+                          <div className="text-[11px] text-slate-500">{method.kind} Ã‚Â· {method.owner}</div>
                         </div>
                       </div>
                     </div>
@@ -1135,7 +1135,7 @@ export default function WalletAndPayoutsPage() {
                 <div className="flex items-start justify-between gap-3">
                   <div>
                     <div className="text-[12px] font-semibold text-slate-900">Primary auto payout</div>
-                    <div className="mt-1 text-[22px] font-black text-slate-900">Thursday Â· 14:00</div>
+                    <div className="mt-1 text-[22px] font-black text-slate-900">Thursday Ã‚Â· 14:00</div>
                     <div className="mt-1 text-[11px] text-slate-500">Weekly treasury sweep into the main ministry current account.</div>
                   </div>
                   <Pill text="Auto" tone="good" icon={<RefreshCcw className="h-3.5 w-3.5" />} />
@@ -1223,7 +1223,7 @@ export default function WalletAndPayoutsPage() {
             right={
               <div className="text-right">
                 <div className="text-[11px] uppercase tracking-[0.14em] text-slate-400">Filtered totals</div>
-                <div className="mt-1 text-[12px] font-semibold text-slate-700">+{fmtMoney(totalIn)} / âˆ’{fmtMoney(totalOut)}</div>
+                <div className="mt-1 text-[12px] font-semibold text-slate-700">+{fmtMoney(totalIn)} / Ã¢Ë†â€™{fmtMoney(totalOut)}</div>
               </div>
             }
             className="xl:col-span-2"
@@ -1244,7 +1244,7 @@ export default function WalletAndPayoutsPage() {
                         </div>
                         <div className="min-w-0">
                           <div className="text-[13px] font-semibold text-slate-900 truncate">{tx.title}</div>
-                          <div className="text-[11px] text-slate-500 truncate">{tx.source} Â· {tx.reference} Â· {tx.campus}</div>
+                          <div className="text-[11px] text-slate-500 truncate">{tx.source} Ã‚Â· {tx.reference} Ã‚Â· {tx.campus}</div>
                         </div>
                       </div>
                       <div className="mt-2 text-[11px] leading-5 text-slate-500 line-clamp-2">{tx.note}</div>
@@ -1283,7 +1283,7 @@ export default function WalletAndPayoutsPage() {
                 <div key={block.id} className="rounded-[24px] border border-slate-200 bg-white p-4">
                   <div className="text-[13px] font-semibold text-slate-900">{block.label}</div>
                   <div className="mt-1 text-[11px] leading-5 text-slate-500">{block.hint}</div>
-                  <button className="mt-3 rounded-full border border-slate-200 px-3 py-1.5 text-[11px] font-semibold text-slate-700 hover:bg-slate-50" onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
+                  <button className="mt-3 rounded-full border border-slate-200 px-3 py-1.5 text-[11px] font-semibold text-slate-700 hover:bg-slate-50" onClick={handleRawPlaceholderAction}>
                     {block.cta}
                   </button>
                 </div>
@@ -1325,7 +1325,7 @@ export default function WalletAndPayoutsPage() {
                     <div className="flex items-start justify-between gap-3">
                       <div>
                         <div className="text-[13px] font-semibold text-slate-900">{method.label}</div>
-                        <div className="mt-1 text-[11px] text-slate-500">{method.kind} Â· {method.currency}</div>
+                        <div className="mt-1 text-[11px] text-slate-500">{method.kind} Ã‚Â· {method.currency}</div>
                       </div>
                       <Pill
                         text={method.status}
@@ -1443,7 +1443,7 @@ export default function WalletAndPayoutsPage() {
         open={!!selectedTx}
         onClose={() => setSelectedTx(null)}
         title={selectedTx?.title || "Transaction details"}
-        subtitle={selectedTx ? `${selectedTx.reference} Â· ${selectedTx.source}` : undefined}
+        subtitle={selectedTx ? `${selectedTx.reference} Ã‚Â· ${selectedTx.source}` : undefined}
       >
         {selectedTx ? (
           <div className="space-y-4">

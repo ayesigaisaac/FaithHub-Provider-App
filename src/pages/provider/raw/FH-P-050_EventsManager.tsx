@@ -35,7 +35,7 @@ import {
 } from "lucide-react";
 
 /**
- * FaithHub â€” FH-P-050 Events Manager
+ * FaithHub ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â FH-P-050 Events Manager
  * ----------------------------------
  * Premium event operating system for FaithHub Provider.
  *
@@ -252,7 +252,7 @@ const EVENTS_SEED: EventRecord[] = [
     status: "Upcoming",
     campus: "City Campus",
     owner: "Miriam Okello",
-    language: "English Â· Swahili",
+    language: "English Ãƒâ€šÃ‚Â· Swahili",
     locationLabel: "FaithHub Arena, Kampala",
     venueType: "Hybrid",
     startISO: "2026-07-18T08:30:00Z",
@@ -469,7 +469,7 @@ const EVENTS_SEED: EventRecord[] = [
     status: "Live now",
     campus: "Lakeside Campus",
     owner: "Grace N.",
-    language: "English Â· Luganda",
+    language: "English Ãƒâ€šÃ‚Â· Luganda",
     locationLabel: "Lakeside Prayer Gardens",
     venueType: "Hybrid",
     startISO: "2026-06-28T11:00:00Z",
@@ -1005,11 +1005,11 @@ function EventListItem({
           </div>
           <div className="mt-2 flex flex-wrap items-center gap-2 text-[11px] text-slate-500 dark:text-slate-400">
             <span>{fmtShortDate(event.startISO)}</span>
-            <span>â€¢</span>
+            <span>ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢</span>
             <span>{event.campus}</span>
-            <span>â€¢</span>
+            <span>ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢</span>
             <span>{event.ticketingState}</span>
-            <span>â€¢</span>
+            <span>ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢</span>
             <span>
               {fmtInt(event.registrations)} / {fmtInt(event.capacity)} registered
             </span>
@@ -1088,7 +1088,7 @@ function EventPreviewSurface({
           </div>
           <div className="mt-2 flex flex-wrap items-center gap-2 text-[11px] text-white/85">
             <span>{fmtShortDate(event.startISO)}</span>
-            <span>â€¢</span>
+            <span>ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢</span>
             <span>{event.locationLabel}</span>
           </div>
         </div>
@@ -1154,10 +1154,10 @@ function EventPreviewSurface({
         </div>
 
         <div className="grid grid-cols-2 gap-2">
-          <button className="inline-flex items-center justify-center gap-2 rounded-2xl bg-slate-900 dark:bg-slate-100 px-4 py-2.5 text-[12px] font-extrabold text-white dark:text-slate-900 shadow-sm" onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
+          <button className="inline-flex items-center justify-center gap-2 rounded-2xl bg-slate-900 dark:bg-slate-100 px-4 py-2.5 text-[12px] font-extrabold text-white dark:text-slate-900 shadow-sm" onClick={handleRawPlaceholderAction}>
             <Ticket className="h-4 w-4" /> Get ticket
           </button>
-          <button className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white dark:bg-slate-900 px-4 py-2.5 text-[12px] font-extrabold text-slate-900 dark:text-slate-100 ring-1 ring-slate-200 dark:ring-slate-700 shadow-sm" onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
+          <button className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white dark:bg-slate-900 px-4 py-2.5 text-[12px] font-extrabold text-slate-900 dark:text-slate-100 ring-1 ring-slate-200 dark:ring-slate-700 shadow-sm" onClick={handleRawPlaceholderAction}>
             <HeartHandshake className="h-4 w-4" /> Support
           </button>
         </div>
@@ -1431,7 +1431,7 @@ export default function FaithHubEventsManagerPage() {
     const clone: EventRecord = {
       ...selectedEvent,
       id: `EV-${Math.random().toString(16).slice(2, 6).toUpperCase()}`,
-      title: `${selectedEvent.title} Â· Copy`,
+      title: `${selectedEvent.title} Ãƒâ€šÃ‚Â· Copy`,
       status: "Draft",
       registrations: 0,
       waitlist: 0,
@@ -1496,7 +1496,7 @@ export default function FaithHubEventsManagerPage() {
 
   const copyPlanningCard = async () => {
     if (!selectedEvent) return;
-    const summary = `${selectedEvent.title}\n${fmtLocal(selectedEvent.startISO)}\n${selectedEvent.locationLabel}\n${selectedEvent.ticketingState} Â· ${selectedEvent.registrations}/${selectedEvent.capacity} registered`;
+    const summary = `${selectedEvent.title}\n${fmtLocal(selectedEvent.startISO)}\n${selectedEvent.locationLabel}\n${selectedEvent.ticketingState} Ãƒâ€šÃ‚Â· ${selectedEvent.registrations}/${selectedEvent.capacity} registered`;
     try {
       await navigator.clipboard.writeText(summary);
       setToast("Planning card copied.");
@@ -1511,17 +1511,17 @@ export default function FaithHubEventsManagerPage() {
       "FAITHHUB EVENT RUN SHEET",
       "------------------------",
       `Event: ${selectedEvent.title}`,
-      `Window: ${fmtLocal(selectedEvent.startISO)} â†’ ${fmtLocal(selectedEvent.endISO)}`,
+      `Window: ${fmtLocal(selectedEvent.startISO)} ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ ${fmtLocal(selectedEvent.endISO)}`,
       `Venue: ${selectedEvent.locationLabel}`,
       `Owner: ${selectedEvent.owner}`,
       `Ticketing: ${selectedEvent.ticketingState}`,
       "",
       "AGENDA",
-      ...selectedEvent.agenda.map((item) => `${item.time} Â· ${item.title} (${item.owner})`),
+      ...selectedEvent.agenda.map((item) => `${item.time} Ãƒâ€šÃ‚Â· ${item.title} (${item.owner})`),
       "",
       "LOGISTICS",
       ...selectedEvent.logistics.map(
-        (item) => `${item.label} â€” ${item.status} â€” ${item.note}`,
+        (item) => `${item.label} ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â ${item.status} ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â ${item.note}`,
       ),
       "",
       "VOLUNTEER COVERAGE",
@@ -1573,13 +1573,13 @@ export default function FaithHubEventsManagerPage() {
 
               <div className="mt-2 flex flex-wrap items-center gap-2 text-[11px] sm:text-xs text-slate-500 dark:text-slate-400">
                 <span>{fmtInt(filteredEvents.length)} visible events</span>
-                <span>â€¢</span>
+                <span>ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢</span>
                 <span>{selectedEvent.campus}</span>
-                <span>â€¢</span>
+                <span>ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢</span>
                 <span>{selectedEvent.ticketingState}</span>
-                <span>â€¢</span>
+                <span>ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢</span>
                 <span>{capacityFill}% registration fill</span>
-                <span>â€¢</span>
+                <span>ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢</span>
                 <span>{liveTieCount} content ties active</span>
               </div>
             </div>
@@ -1600,7 +1600,7 @@ export default function FaithHubEventsManagerPage() {
                 left={<Plus className="h-4 w-4" />}
                 disabled={workingAction === "create"}
               >
-                {workingAction === "create" ? "Creatingâ€¦" : "+ New Event"}
+                {workingAction === "create" ? "CreatingÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦" : "+ New Event"}
               </Btn>
             </div>
           </div>
@@ -1670,7 +1670,7 @@ export default function FaithHubEventsManagerPage() {
                       className="px-3 py-2 text-[12px]"
                       disabled={workingAction === "duplicate"}
                     >
-                      {workingAction === "duplicate" ? "Duplicatingâ€¦" : "Duplicate"}
+                      {workingAction === "duplicate" ? "DuplicatingÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦" : "Duplicate"}
                     </Btn>
                   </div>
                 </div>
@@ -1935,7 +1935,7 @@ export default function FaithHubEventsManagerPage() {
                                 {item.title}
                               </div>
                               <div className="text-[11px] text-slate-500 dark:text-slate-400 truncate">
-                                {item.owner} Â· {item.kind}
+                                {item.owner} Ãƒâ€šÃ‚Â· {item.kind}
                               </div>
                             </div>
                             <div className="shrink-0 rounded-full bg-slate-100 dark:bg-slate-800 px-2 py-1 text-[11px] font-bold text-slate-900 dark:text-slate-100">
@@ -1947,7 +1947,7 @@ export default function FaithHubEventsManagerPage() {
                       <div className="mt-3 flex flex-wrap items-center gap-2">
                         {selectedEvent.speakers.map((speaker) => (
                           <Pill key={speaker.id} tone={speaker.confirmed ? "good" : "warn"}>
-                            {speaker.name} Â· {speaker.role}
+                            {speaker.name} Ãƒâ€šÃ‚Â· {speaker.role}
                           </Pill>
                         ))}
                       </div>
@@ -2224,7 +2224,7 @@ export default function FaithHubEventsManagerPage() {
                   </div>
                   <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] text-slate-500 dark:text-slate-400">
                     <span>Check-in mode: <span className="font-semibold text-slate-900 dark:text-slate-100">{selectedEvent.checkInMode}</span></span>
-                    <span>â€¢</span>
+                    <span>ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢</span>
                     <span>Waiver: <span className="font-semibold text-slate-900 dark:text-slate-100">{selectedEvent.waiverRequired ? "Required" : "Not required"}</span></span>
                   </div>
                 </div>
@@ -2286,7 +2286,7 @@ export default function FaithHubEventsManagerPage() {
                             {channel.label}
                           </div>
                           <div className="text-[11px] text-slate-500 dark:text-slate-400 truncate">
-                            {channel.hint} Â· {channel.health}
+                            {channel.hint} Ãƒâ€šÃ‚Â· {channel.health}
                           </div>
                         </div>
                         <Toggle
@@ -2360,7 +2360,7 @@ export default function FaithHubEventsManagerPage() {
                                 {line.label}
                               </div>
                               <div className="text-[11px] text-slate-500 dark:text-slate-400">
-                                {line.type} Â· {line.status}
+                                {line.type} Ãƒâ€šÃ‚Â· {line.status}
                               </div>
                             </div>
                           </div>
@@ -2453,7 +2453,7 @@ export default function FaithHubEventsManagerPage() {
                       onClick={publishEventPlan}
                       disabled={workingAction === "publish"}
                     >
-                      {workingAction === "publish" ? "Publishingâ€¦" : "Mark operationally ready"}
+                      {workingAction === "publish" ? "PublishingÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦" : "Mark operationally ready"}
                     </Btn>
                     <Btn
                       tone="accent"
@@ -2611,7 +2611,7 @@ export default function FaithHubEventsManagerPage() {
       <Drawer
         open={previewOpen}
         onClose={() => setPreviewOpen(false)}
-        title="FH-P-050 Â· Event preview suite"
+        title="FH-P-050 Ãƒâ€šÃ‚Â· Event preview suite"
         right={
           <div className="inline-flex rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-1">
             <button
@@ -2670,7 +2670,7 @@ export default function FaithHubEventsManagerPage() {
       <Drawer
         open={checkInOpen}
         onClose={() => setCheckInOpen(false)}
-        title="FH-P-050 Â· Check-in mode"
+        title="FH-P-050 Ãƒâ€šÃ‚Â· Check-in mode"
       >
         <div className="space-y-4">
           <CheckInConsolePreview event={selectedEvent} />

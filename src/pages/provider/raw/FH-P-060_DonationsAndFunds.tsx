@@ -28,7 +28,7 @@ import {
 } from "lucide-react";
 
 /**
- * FaithHub â€” FH-P-060 Donations & Funds
+ * FaithHub Ã¢â‚¬â€ FH-P-060 Donations & Funds
  * -------------------------------------
  * Premium giving workspace for FaithHub Provider.
  *
@@ -79,7 +79,7 @@ function fmtInt(n: number) {
   return Intl.NumberFormat(undefined, { maximumFractionDigits: 0 }).format(n);
 }
 
-function fmtCurrency(n: number, currency = "Â£") {
+function fmtCurrency(n: number, currency = "Ã‚Â£") {
   return `${currency}${Intl.NumberFormat(undefined, {
     maximumFractionDigits: 0,
   }).format(n)}`;
@@ -356,7 +356,7 @@ const BRIDGE_SEED: BridgeSurface[] = [
     label: "Sunday Morning Live donation moment",
     surface: "Live Session",
     state: "Ready",
-    value: "Â£12.8k influenced",
+    value: "Ã‚Â£12.8k influenced",
     hint: "Pinned donor CTA and progress strip inside the sermon run-of-show.",
     ready: true,
   },
@@ -751,7 +751,7 @@ function BrowserPreview({
                 type="button"
                 key={amount}
                 className="rounded-xl border border-slate-200 bg-slate-50 px-3 py-3 text-center text-sm font-extrabold text-slate-900 transition hover:bg-white dark:border-slate-700 dark:bg-slate-800 dark:text-slate-50 dark:hover:bg-slate-700"
-               onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
+               onClick={handleRawPlaceholderAction}>
                 {fmtCurrency(amount)}
               </button>
             ))}
@@ -769,7 +769,7 @@ function BrowserPreview({
             <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Trust & privacy</div>
             <div className="mt-2 text-xs text-slate-500 dark:text-slate-400">{privacyWall ? "Donor recognition requires explicit opt-in." : record.donorPrivacy}</div>
           </div>
-          <button type="button" className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-extrabold text-white" style={{ background: EV_GREEN }} onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
+          <button type="button" className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-extrabold text-white" style={{ background: EV_GREEN }} onClick={handleRawPlaceholderAction}>
             <HeartHandshake className="h-4 w-4" /> Complete donation
           </button>
         </div>
@@ -816,7 +816,7 @@ function PhonePreview({
                     key={amount}
                     type="button"
                     className="rounded-xl border border-slate-200 bg-white px-3 py-3 text-sm font-extrabold text-slate-900 shadow-sm dark:border-slate-700 dark:bg-slate-900 dark:text-slate-50"
-                   onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
+                   onClick={handleRawPlaceholderAction}>
                     {fmtCurrency(amount)}
                   </button>
                 ))}
@@ -836,7 +836,7 @@ function PhonePreview({
               </div>
             </div>
             <div className="sticky bottom-0 bg-white/95 px-4 pb-4 pt-2 backdrop-blur dark:bg-slate-900/95">
-              <button type="button" className="inline-flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-extrabold text-white shadow-lg" style={{ background: EV_GREEN }} onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
+              <button type="button" className="inline-flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-extrabold text-white shadow-lg" style={{ background: EV_GREEN }} onClick={handleRawPlaceholderAction}>
                 <HeartHandshake className="h-4 w-4" /> Give now
               </button>
             </div>
@@ -1070,7 +1070,7 @@ export default function DonationsAndFundsPage() {
 
               <div className="mt-1 flex flex-wrap items-center gap-2">
                 <div className="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50">
-                  FH-P-060 Â· Donations &amp; Funds
+                  FH-P-060 Ã‚Â· Donations &amp; Funds
                 </div>
                 <Pill tone="good">
                   <BadgeCheck className="h-3.5 w-3.5" />
@@ -1243,7 +1243,7 @@ export default function DonationsAndFundsPage() {
                         type="button"
                         key={amount}
                         className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-2 py-2 text-sm font-extrabold text-slate-900 dark:text-slate-50"
-                       onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
+                       onClick={handleRawPlaceholderAction}>
                         {fmtCurrency(amount)}
                       </button>
                     ))}
@@ -1326,7 +1326,7 @@ export default function DonationsAndFundsPage() {
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0">
                         <div className="text-sm font-bold text-slate-900 dark:text-slate-50">{item.label}</div>
-                        <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{item.surface} Â· {item.hint}</div>
+                        <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{item.surface} Ã‚Â· {item.hint}</div>
                       </div>
                       <Pill tone={item.ready ? "good" : "warn"}>{item.state}</Pill>
                     </div>
@@ -1480,7 +1480,7 @@ export default function DonationsAndFundsPage() {
                   <div className="flex items-center justify-between gap-2">
                     <div>
                       <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Finance ownership</div>
-                      <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{selectedRecord.owner} Â· {selectedRecord.financeHealth} state</div>
+                      <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{selectedRecord.owner} Ã‚Â· {selectedRecord.financeHealth} state</div>
                     </div>
                     <Pill tone={badgeToneForFinance(selectedRecord.financeHealth)}>{selectedRecord.financeHealth}</Pill>
                   </div>

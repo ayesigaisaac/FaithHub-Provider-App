@@ -33,7 +33,7 @@ import {
 } from "lucide-react";
 
 /**
- * FaithHub â€” FH-P-001 Provider Onboarding
+ * FaithHub Ã¢â‚¬â€ FH-P-001 Provider Onboarding
  * ---------------------------------------
  * Premium provider onboarding surface for institutions, ministries,
  * faith creators, and multi-campus organizations.
@@ -137,8 +137,8 @@ const DASHBOARD_PRESETS = [
 ];
 
 const APPROVAL_PRESETS = [
-  "Owner â†’ Admin â†’ Publish",
-  "Pastoral review â†’ Editor sign-off",
+  "Owner Ã¢â€ â€™ Admin Ã¢â€ â€™ Publish",
+  "Pastoral review Ã¢â€ â€™ Editor sign-off",
   "Owner + Finance check",
   "Multi-campus approval chain",
 ];
@@ -227,7 +227,7 @@ function createCampus(id: string, overrides?: Partial<Campus>): Campus {
     city: "Kampala",
     region: "Central Region",
     timezone: "Africa/Kampala",
-    accessibility: "Wheelchair access â€¢ family seating â€¢ livestream crew point",
+    accessibility: "Wheelchair access Ã¢â‚¬Â¢ family seating Ã¢â‚¬Â¢ livestream crew point",
     onlineFirst: false,
     ...overrides,
   };
@@ -629,7 +629,7 @@ function PhonePreview({
                 {institutionName || "Your institution"}
               </div>
               <div className="mt-1 text-[12px] font-semibold text-white/80">
-                {handle || "@provider"} Â· {faithFamily || "Faith family"} Â· {tradition || "Tradition"}
+                {handle || "@provider"} Ã‚Â· {faithFamily || "Faith family"} Ã‚Â· {tradition || "Tradition"}
               </div>
             </div>
           </div>
@@ -686,13 +686,13 @@ function PhonePreview({
               <button
                 className="flex-1 rounded-2xl px-3 py-2 text-[12px] font-bold text-white"
                 style={{ background: EV_GREEN }}
-               onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
+               onClick={handleRawPlaceholderAction}>
                 Preview live page
               </button>
               <button
                 className="flex-1 rounded-2xl px-3 py-2 text-[12px] font-bold text-white"
                 style={{ background: EV_ORANGE }}
-               onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
+               onClick={handleRawPlaceholderAction}>
                 View giving
               </button>
             </div>
@@ -739,14 +739,14 @@ export default function ProviderOnboardingPage() {
       name: "Central Campus",
       city: "Kampala",
       region: "Central Uganda",
-      accessibility: "Wheelchair access â€¢ family room â€¢ hearing loop",
+      accessibility: "Wheelchair access Ã¢â‚¬Â¢ family room Ã¢â‚¬Â¢ hearing loop",
     }),
     createCampus("campus-2", {
       name: "Online Studio",
       city: "Remote",
       region: "Global stream footprint",
       onlineFirst: true,
-      accessibility: "Captions enabled â€¢ translation-ready",
+      accessibility: "Captions enabled Ã¢â‚¬Â¢ translation-ready",
     }),
   ]);
 
@@ -768,7 +768,7 @@ export default function ProviderOnboardingPage() {
     "Giving campaigns",
   ]);
   const [dashboardPreset, setDashboardPreset] = useState("Mixed model workspace");
-  const [defaultLocale, setDefaultLocale] = useState("English Â· Africa/Kampala");
+  const [defaultLocale, setDefaultLocale] = useState("English Ã‚Â· Africa/Kampala");
   const [localizedVariant, setLocalizedVariant] = useState(true);
 
   const [payoutReady, setPayoutReady] = useState(false);
@@ -1262,7 +1262,7 @@ export default function ProviderOnboardingPage() {
                   {institutionName}
                 </div>
                 <div className="mt-0.5 text-[12px] text-slate-500 dark:text-slate-400">
-                  {handle} Â· {faithFamily} Â· {tradition}
+                  {handle} Ã‚Â· {faithFamily} Ã‚Â· {tradition}
                 </div>
                 <div className="mt-2 text-[12px] leading-relaxed text-slate-600 dark:text-slate-400">
                   {mission}
@@ -1588,7 +1588,7 @@ export default function ProviderOnboardingPage() {
                     {campus.name}
                   </div>
                   <div className="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">
-                    {campus.city} Â· {campus.region}
+                    {campus.city} Ã‚Â· {campus.region}
                   </div>
                 </div>
                 <Pill
@@ -1827,7 +1827,7 @@ export default function ProviderOnboardingPage() {
 
           <div>
             <Label>Default locale / launch focus</Label>
-            <Input value={defaultLocale} onChange={setDefaultLocale} placeholder="English Â· Africa/Kampala" />
+            <Input value={defaultLocale} onChange={setDefaultLocale} placeholder="English Ã‚Â· Africa/Kampala" />
             <div className="mt-3">
               <Toggle
                 checked={localizedVariant}
@@ -2001,7 +2001,7 @@ export default function ProviderOnboardingPage() {
                       {channel.label}
                     </div>
                     <div className="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">
-                      {channel.kind} Â· {state.senderLabel}
+                      {channel.kind} Ã‚Â· {state.senderLabel}
                     </div>
                   </div>
                   <div className="flex flex-wrap gap-2">
@@ -2253,7 +2253,7 @@ export default function ProviderOnboardingPage() {
                 </div>
                 <div>
                   <div className="text-[44px] font-black leading-none tracking-[-0.04em] text-slate-900 dark:text-slate-100">
-                    FH-P-001 Â· Provider Onboarding
+                    FH-P-001 Ã‚Â· Provider Onboarding
                   </div>
                   <div className="mt-1 text-[14px] text-slate-500 dark:text-slate-400">
                     Premium verified-provider setup for brand, structure, permissions, channels, and production readiness.
@@ -2401,7 +2401,7 @@ export default function ProviderOnboardingPage() {
         </div>
 
         <div className="mt-5 rounded-full border border-emerald-200 bg-emerald-50 px-5 py-3 text-center text-[12px] font-semibold text-emerald-700 dark:border-emerald-800 dark:bg-emerald-900/20 dark:text-emerald-300">
-          Concept preview of the generated FaithHub Provider Onboarding page Â· EVzone Green primary (#03cd8c) Â· Orange secondary (#f77f00)
+          Concept preview of the generated FaithHub Provider Onboarding page Ã‚Â· EVzone Green primary (#03cd8c) Ã‚Â· Orange secondary (#f77f00)
         </div>
       </div>
 

@@ -27,7 +27,7 @@ import {
 } from "lucide-react";
 
 /**
- * FaithHub â€” FH-P-021 Episode Builder
+ * FaithHub Ã¢â‚¬â€ FH-P-021 Episode Builder
  * -----------------------------------
  * Premium provider page for shaping an episode inside a Series while still
  * giving it its own live, replay, resource, and audience journey.
@@ -56,7 +56,7 @@ const PRESET_BLUEPRINTS = [
   {
     id: "blueprint-sermon",
     title: "Standard sermon blueprint",
-    subtitle: "Hook â†’ scripture â†’ teaching core â†’ response â†’ close.",
+    subtitle: "Hook Ã¢â€ â€™ scripture Ã¢â€ â€™ teaching core Ã¢â€ â€™ response Ã¢â€ â€™ close.",
     accent: "green" as const,
   },
   {
@@ -240,7 +240,7 @@ const DEFAULT_LIVE_ATTACHMENTS: LiveAttachment[] = [
     id: "live-1",
     label: "Episode preview room",
     variant: "Preview session",
-    startLabel: "Thu Â· 18:30",
+    startLabel: "Thu Ã‚Â· 18:30",
     language: "English",
     destination: "FaithHub + YouTube",
     status: "Ready",
@@ -249,7 +249,7 @@ const DEFAULT_LIVE_ATTACHMENTS: LiveAttachment[] = [
     id: "live-2",
     label: "Main Sunday broadcast",
     variant: "Main live",
-    startLabel: "Sun Â· 09:00",
+    startLabel: "Sun Ã‚Â· 09:00",
     language: "English",
     destination: "FaithHub + Instagram",
     status: "Scheduled",
@@ -258,7 +258,7 @@ const DEFAULT_LIVE_ATTACHMENTS: LiveAttachment[] = [
     id: "live-3",
     label: "Swahili translated follow-up",
     variant: "Translated session",
-    startLabel: "Sun Â· 13:00",
+    startLabel: "Sun Ã‚Â· 13:00",
     language: "Swahili",
     destination: "FaithHub only",
     status: "Draft",
@@ -594,7 +594,7 @@ function EpisodePreview({
                   <Pill tone="brand" icon={<Sparkles className="h-3 w-3" />}>
                     Episode live
                   </Pill>
-                  <button className="text-[11px] font-semibold text-emerald-600" onClick={() => window.location.assign('/faithhub/provider/dashboard')}>Share</button>
+                  <button className="text-[11px] font-semibold text-emerald-600" onClick={handleRawPlaceholderAction}>Share</button>
                 </div>
                 <div className="mt-3 text-[10px] font-black uppercase tracking-[0.16em] text-slate-400">
                   {draft.parentSeriesTitle}
@@ -611,7 +611,7 @@ function EpisodePreview({
                   <div className="text-[11px] font-black uppercase tracking-[0.16em] text-slate-400">Next live</div>
                   <div className="mt-2 text-[14px] font-bold text-slate-900">{nextLive?.label || "Live attachment pending"}</div>
                   <div className="mt-1 text-[11px] text-slate-500">
-                    {nextLive ? `${nextLive.variant} Â· ${nextLive.startLabel} Â· ${nextLive.language}` : "Attach preview and main live sessions."}
+                    {nextLive ? `${nextLive.variant} Ã‚Â· ${nextLive.startLabel} Ã‚Â· ${nextLive.language}` : "Attach preview and main live sessions."}
                   </div>
                 </div>
 
@@ -625,17 +625,17 @@ function EpisodePreview({
                 </div>
 
                 <div className="mt-4 flex gap-2">
-                  <button className="flex-1 rounded-2xl px-3 py-2 text-[12px] font-bold text-white" style={{ background: EV_GREEN }} onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
+                  <button className="flex-1 rounded-2xl px-3 py-2 text-[12px] font-bold text-white" style={{ background: EV_GREEN }} onClick={handleRawPlaceholderAction}>
                     Join live
                   </button>
-                  <button className="flex-1 rounded-2xl px-3 py-2 text-[12px] font-bold text-white" style={{ background: EV_ORANGE }} onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
+                  <button className="flex-1 rounded-2xl px-3 py-2 text-[12px] font-bold text-white" style={{ background: EV_ORANGE }} onClick={handleRawPlaceholderAction}>
                     Save reminder
                   </button>
                 </div>
               </div>
             </div>
             <div className="absolute bottom-4 left-4 right-4 rounded-2xl border border-emerald-200 bg-emerald-50 px-3 py-2 text-[11px] font-semibold text-emerald-700">
-              Episode readiness Â· {readinessScore}% complete
+              Episode readiness Ã‚Â· {readinessScore}% complete
             </div>
           </div>
         </div>
@@ -658,7 +658,7 @@ function EpisodePreview({
           </div>
           <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
             <div className="text-[10px] font-black uppercase tracking-[0.18em] text-white/70">
-              {draft.parentSeriesTitle} Â· Week {draft.episodeNumber}
+              {draft.parentSeriesTitle} Ã‚Â· Week {draft.episodeNumber}
             </div>
             <div className="mt-2 text-[34px] font-black leading-[1.04]">{draft.title}</div>
             <div className="mt-2 max-w-[85%] text-[14px] text-white/85">{draft.focusStatement}</div>
@@ -670,10 +670,10 @@ function EpisodePreview({
               ))}
             </div>
             <div className="mt-4 flex gap-3">
-              <button className="rounded-2xl px-4 py-2 text-[12px] font-bold text-white" style={{ background: EV_GREEN }} onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
+              <button className="rounded-2xl px-4 py-2 text-[12px] font-bold text-white" style={{ background: EV_GREEN }} onClick={handleRawPlaceholderAction}>
                 Join session
               </button>
-              <button className="rounded-2xl px-4 py-2 text-[12px] font-bold text-white" style={{ background: EV_ORANGE }} onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
+              <button className="rounded-2xl px-4 py-2 text-[12px] font-bold text-white" style={{ background: EV_ORANGE }} onClick={handleRawPlaceholderAction}>
                 Episode resources
               </button>
             </div>
@@ -694,7 +694,7 @@ function EpisodePreview({
               <div className="text-[10px] font-black uppercase tracking-[0.16em] text-slate-400">Primary live</div>
               <div className="mt-2 text-[13px] font-bold text-slate-900">{nextLive?.label || "Main live pending"}</div>
               <div className="mt-1 text-[11px] text-slate-500">
-                {nextLive ? `${nextLive.startLabel} Â· ${nextLive.destination} Â· ${nextLive.status}` : "Attach live session details."}
+                {nextLive ? `${nextLive.startLabel} Ã‚Â· ${nextLive.destination} Ã‚Â· ${nextLive.status}` : "Attach live session details."}
               </div>
             </div>
 
@@ -764,12 +764,12 @@ export default function EpisodeBuilderPage() {
 
   const [draft, setDraft] = useState<EpisodeDraft>({
     parentSeriesTitle: "Practicing the Way of Hope",
-    seriesArc: "Renewal â†’ Endurance â†’ Healing â†’ Community â†’ Witness",
+    seriesArc: "Renewal Ã¢â€ â€™ Endurance Ã¢â€ â€™ Healing Ã¢â€ â€™ Community Ã¢â€ â€™ Witness",
     episodeNumber: 2,
-    title: "Week 2 Â· Hope in the Wilderness",
+    title: "Week 2 Ã‚Â· Hope in the Wilderness",
     focusStatement:
       "Help the audience understand how God forms endurance, trust, and practical hope in seasons of pressure.",
-    scripture: "Exodus 16 Â· Romans 5 Â· James 1",
+    scripture: "Exodus 16 Ã‚Â· Romans 5 Ã‚Â· James 1",
     teachingOutcomes: [
       "Name the spiritual purpose of wilderness seasons.",
       "Recognize two practical responses to pressure and delay.",
@@ -874,7 +874,7 @@ export default function EpisodeBuilderPage() {
           id: `live-${Math.random().toString(16).slice(2, 8)}`,
           label: "Follow-up Q&A room",
           variant: "Follow-up Q&A",
-          startLabel: "Mon Â· 19:00",
+          startLabel: "Mon Ã‚Â· 19:00",
           language: "English",
           destination: "FaithHub only",
           status: "Draft",
@@ -929,7 +929,7 @@ export default function EpisodeBuilderPage() {
                 FaithHub Provider Side
               </div>
               <div className="mt-2 text-[34px] font-black leading-[1.02] text-slate-900 sm:text-[40px]">
-                FaithHub â€” Episode Builder
+                FaithHub Ã¢â‚¬â€ Episode Builder
               </div>
               <div className="mt-1 text-[15px] text-slate-500">
                 Premium creator-style episode workflow with embedded landing-page preview.
@@ -1204,7 +1204,7 @@ export default function EpisodeBuilderPage() {
                     <div className="mt-3 text-[14px] font-black text-slate-900">{session.label}</div>
                     <div className="mt-1 text-[12px] text-slate-500">{session.variant}</div>
                     <div className="mt-3 rounded-2xl border border-slate-200 bg-slate-50 p-3 text-[12px] text-slate-700">
-                      {session.startLabel} Â· {session.destination}
+                      {session.startLabel} Ã‚Â· {session.destination}
                     </div>
                   </div>
                 ))}
@@ -1248,7 +1248,7 @@ export default function EpisodeBuilderPage() {
                         <div>
                           <div className="text-[13px] font-black text-slate-900">{resource.title}</div>
                           <div className="mt-1 text-[12px] text-slate-500">
-                            {resource.kind} Â· {resource.visibility}
+                            {resource.kind} Ã‚Â· {resource.visibility}
                           </div>
                         </div>
                         <Pill tone={resource.status === "Ready" ? "good" : resource.status === "Needs review" ? "warn" : "neutral"}>

@@ -31,7 +31,7 @@ import {
 } from "lucide-react";
 
 /**
- * FaithHub â€” FH-P-026 Merchandise Manager
+ * FaithHub Ã¢â‚¬â€ FH-P-026 Merchandise Manager
  * ---------------------------------------
  * Premium Provider-side control surface for FaithMart merchandise:
  * apparel, gifts, journals, worship essentials, event kits, and community bundles.
@@ -1076,10 +1076,10 @@ function MerchandiseStorefrontPreview({
                   <button
                     className="flex-1 rounded-2xl px-3 py-2 text-[12px] font-bold text-white"
                     style={{ background: EV_ORANGE }}
-                   onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
+                   onClick={handleRawPlaceholderAction}>
                     View item
                   </button>
-                  <button className="flex-1 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-[12px] font-bold text-slate-700 dark:text-slate-200 transition-colors" onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
+                  <button className="flex-1 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-[12px] font-bold text-slate-700 dark:text-slate-200 transition-colors" onClick={handleRawPlaceholderAction}>
                     Save
                   </button>
                 </div>
@@ -1167,10 +1167,10 @@ function MerchandiseStorefrontPreview({
             <button
               className="rounded-2xl px-4 py-2 text-[12px] font-bold text-white"
               style={{ background: EV_ORANGE }}
-             onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
+             onClick={handleRawPlaceholderAction}>
               View item
             </button>
-            <button className="rounded-2xl border border-white/25 bg-white/10 px-4 py-2 text-[12px] font-bold text-white backdrop-blur" onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
+            <button className="rounded-2xl border border-white/25 bg-white/10 px-4 py-2 text-[12px] font-bold text-white backdrop-blur" onClick={handleRawPlaceholderAction}>
               Save for later
             </button>
           </div>
@@ -1416,7 +1416,7 @@ export default function MerchandiseManagerPage() {
         ? `${low.length} merchandise item${low.length > 1 ? "s" : ""} running low`
         : "Inventory is healthy",
       hint: low.length
-        ? `${low.map((item) => item.title).slice(0, 2).join(" â€¢ ")}${low.length > 2 ? "â€¦" : ""}`
+        ? `${low.map((item) => item.title).slice(0, 2).join(" Ã¢â‚¬Â¢ ")}${low.length > 2 ? "Ã¢â‚¬Â¦" : ""}`
         : "No urgent low-stock merch issues right now.",
       tone: low.length ? "warn" : "good",
     });
@@ -1493,7 +1493,7 @@ export default function MerchandiseManagerPage() {
               </h1>
               <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-slate-500 dark:text-slate-400">
                 Manage gifts, apparel, journals, worship essentials, and event kits from one
-                premium Provider-side surface â€” with direct links into Live Sessionz, events,
+                premium Provider-side surface Ã¢â‚¬â€ with direct links into Live Sessionz, events,
                 giving journeys, and Beacon promotion.
               </p>
 
@@ -1549,7 +1549,7 @@ export default function MerchandiseManagerPage() {
                     },
                     {
                       label: "Conference Welcome Pack",
-                      hint: "Strong event performance â€” consider a new Beacon push.",
+                      hint: "Strong event performance Ã¢â‚¬â€ consider a new Beacon push.",
                     },
                     {
                       label: "Prayer Journal Gift Set",
@@ -1593,7 +1593,7 @@ export default function MerchandiseManagerPage() {
                 Search and filter merchandise
               </div>
               <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
-                Find apparel, gifts, event kits, or worship essentials fast â€” then jump straight into details or preview.
+                Find apparel, gifts, event kits, or worship essentials fast Ã¢â‚¬â€ then jump straight into details or preview.
               </div>
               <div className="mt-4 flex items-center gap-3 rounded-[24px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-4 py-3 transition-colors">
                 <Search className="h-4 w-4 text-slate-400" />
@@ -1882,7 +1882,7 @@ export default function MerchandiseManagerPage() {
         open={drawerOpen}
         onClose={() => setDrawerOpen(false)}
         title={selected.title}
-        subtitle={`${selected.kind} â€¢ ${selected.collection} â€¢ Updated ${fmtDate(selected.updatedISO)}`}
+        subtitle={`${selected.kind} Ã¢â‚¬Â¢ ${selected.collection} Ã¢â‚¬Â¢ Updated ${fmtDate(selected.updatedISO)}`}
       >
         <div className="space-y-4">
           <div className="flex flex-wrap gap-2">

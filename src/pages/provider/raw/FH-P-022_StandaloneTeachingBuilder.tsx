@@ -36,7 +36,7 @@ import {
 } from "lucide-react";
 
 /**
- * FaithHub â€” FH-P-022 Standalone Teaching Builder
+ * FaithHub Ã¢â‚¬â€ FH-P-022 Standalone Teaching Builder
  * ------------------------------------------------
  * Premium creator-style page for building sermons/teachings that do not
  * belong to any Series or Episode while still supporting Live Sessionz,
@@ -218,7 +218,7 @@ const CONTENT_ASSET_LIBRARY = [
   {
     id: "asset-hero",
     type: "Artwork",
-    name: "Hero artwork Â· Sanctuary Light",
+    name: "Hero artwork Ã‚Â· Sanctuary Light",
     status: "Ready" as const,
     hint: "Landing image, replay cover, and promo thumbnail treatment.",
   },
@@ -335,8 +335,8 @@ const STEPS: Array<{ key: StepKey; label: string }> = [
 ];
 
 const DEFAULT_LOCALES: LocaleVariant[] = [
-  { code: "en-UG", title: "Sunday Fire Â· English", state: "Ready" },
-  { code: "sw-UG", title: "Sunday Fire Â· Swahili", state: "Draft" },
+  { code: "en-UG", title: "Sunday Fire Ã‚Â· English", state: "Ready" },
+  { code: "sw-UG", title: "Sunday Fire Ã‚Â· Swahili", state: "Draft" },
 ];
 
 const DEFAULT_CROSS_LINKS: TeachingDraft["crossLinks"] = {
@@ -348,12 +348,12 @@ const DEFAULT_CROSS_LINKS: TeachingDraft["crossLinks"] = {
 };
 
 const DEFAULT_DRAFT: TeachingDraft = {
-  title: "Sunday Fire Â· Hope for the Waiting Heart",
+  title: "Sunday Fire Ã‚Â· Hope for the Waiting Heart",
   subtitle: "A standalone sermon for courage, patience, and faithful action in uncertain seasons.",
   speaker: "Pastor Daniel M.",
   ministryContext: "Sunday service",
   theme: "Hope and endurance",
-  scriptureSource: "Romans 8 Â· Isaiah 40 Â· Psalm 27",
+  scriptureSource: "Romans 8 Ã‚Â· Isaiah 40 Ã‚Â· Psalm 27",
   intendedAudience: "Open to everyone",
   promise: "Help the audience find language for waiting faithfully without losing spiritual confidence.",
   description:
@@ -364,7 +364,7 @@ const DEFAULT_DRAFT: TeachingDraft = {
   liveEnabled: true,
   linkedLiveTitle: "Sunday Fire Live Session",
   linkedLiveState: "Scheduled",
-  linkedLiveTime: "Sun 09:00 Â· FaithHub + YouTube",
+  linkedLiveTime: "Sun 09:00 Ã‚Â· FaithHub + YouTube",
   releaseTiming: "Publish after the linked live ends",
   visibility: "Public",
   region: "Global",
@@ -763,10 +763,10 @@ function DesktopTeachingPreview({ draft }: { draft: TeachingDraft }) {
             <div className="text-[28px] font-black leading-tight text-white">{draft.title}</div>
             <div className="mt-1 max-w-[520px] text-[13px] text-white/80">{draft.subtitle}</div>
             <div className="mt-3 flex flex-wrap gap-2">
-              <button className="inline-flex items-center gap-2 rounded-full bg-[#03cd8c] px-4 py-2 text-[12px] font-black text-white" onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
+              <button className="inline-flex items-center gap-2 rounded-full bg-[#03cd8c] px-4 py-2 text-[12px] font-black text-white" onClick={handleRawPlaceholderAction}>
                 {draft.liveEnabled ? "Join teaching" : "Watch teaching"}
               </button>
-              <button className="inline-flex items-center gap-2 rounded-full bg-[#f77f00] px-4 py-2 text-[12px] font-black text-white" onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
+              <button className="inline-flex items-center gap-2 rounded-full bg-[#f77f00] px-4 py-2 text-[12px] font-black text-white" onClick={handleRawPlaceholderAction}>
                 Open notes
               </button>
             </div>
@@ -854,7 +854,7 @@ function MobileTeachingPreview({ draft }: { draft: TeachingDraft }) {
             <div className="rounded-[26px] border border-slate-200 bg-white p-4 shadow-sm">
               <div className="flex items-center justify-between gap-2">
                 <Pill tone="brand">Standalone</Pill>
-                <button className="text-[11px] font-semibold text-emerald-600" onClick={() => window.location.assign('/faithhub/provider/dashboard')}>Share</button>
+                <button className="text-[11px] font-semibold text-emerald-600" onClick={handleRawPlaceholderAction}>Share</button>
               </div>
               <div className="mt-3 text-[22px] font-black leading-tight text-slate-900">{draft.title}</div>
               <div className="mt-1 text-[12px] text-slate-500">{draft.subtitle}</div>
@@ -868,10 +868,10 @@ function MobileTeachingPreview({ draft }: { draft: TeachingDraft }) {
                 <div className="mt-1 text-[11px] text-slate-500">{draft.scriptureSource}</div>
               </div>
               <div className="mt-3 space-y-2">
-                <button className="inline-flex w-full items-center justify-center rounded-2xl bg-[#03cd8c] px-4 py-3 text-[13px] font-black text-white" onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
+                <button className="inline-flex w-full items-center justify-center rounded-2xl bg-[#03cd8c] px-4 py-3 text-[13px] font-black text-white" onClick={handleRawPlaceholderAction}>
                   {draft.liveEnabled ? "Join linked live" : "Watch teaching"}
                 </button>
-                <button className="inline-flex w-full items-center justify-center rounded-2xl bg-[#f77f00] px-4 py-3 text-[13px] font-black text-white" onClick={() => window.location.assign('/faithhub/provider/dashboard')}>
+                <button className="inline-flex w-full items-center justify-center rounded-2xl bg-[#f77f00] px-4 py-3 text-[13px] font-black text-white" onClick={handleRawPlaceholderAction}>
                   Open notes & resources
                 </button>
               </div>
@@ -1051,7 +1051,7 @@ export default function StandaloneTeachingBuilderPage() {
                   <div className="flex items-center justify-between gap-3">
                     <div>
                       <div className="text-[14px] font-black text-slate-900">{draft.speaker}</div>
-                      <div className="mt-1 text-[11px] text-slate-500">{draft.ministryContext} Â· {draft.theme}</div>
+                      <div className="mt-1 text-[11px] text-slate-500">{draft.ministryContext} Ã‚Â· {draft.theme}</div>
                     </div>
                     <Pill tone="brand">Lead teacher</Pill>
                   </div>
@@ -1185,7 +1185,7 @@ export default function StandaloneTeachingBuilderPage() {
                   <TextInput
                     value={draft.linkedLiveTime}
                     onChange={(linkedLiveTime) => setDraft((current) => ({ ...current, linkedLiveTime }))}
-                    placeholder="Sun 09:00 Â· FaithHub + YouTube"
+                    placeholder="Sun 09:00 Ã‚Â· FaithHub + YouTube"
                   />
                 </div>
                 <div className="flex flex-wrap gap-2">
@@ -1276,7 +1276,7 @@ export default function StandaloneTeachingBuilderPage() {
                     <div className="flex items-start justify-between gap-3">
                       <div>
                         <div className="text-[12px] font-bold text-slate-900">{asset.name}</div>
-                        <div className="mt-1 text-[11px] text-slate-500">{asset.type} Â· {asset.hint}</div>
+                        <div className="mt-1 text-[11px] text-slate-500">{asset.type} Ã‚Â· {asset.hint}</div>
                       </div>
                       <Pill tone={statusTone(asset.status)}>{asset.status}</Pill>
                     </div>
@@ -1502,7 +1502,7 @@ export default function StandaloneTeachingBuilderPage() {
             <SectionHeader
               eyebrow="Connected journeys"
               title="Attach downstream destinations"
-              subtitle="Cross-links deepen the teachingâ€™s usefulness while preserving it as a standalone message."
+              subtitle="Cross-links deepen the teachingÃ¢â‚¬â„¢s usefulness while preserving it as a standalone message."
             />
             <div className="mt-4 grid gap-3 xl:grid-cols-2">
               {CROSS_LINK_TYPES.map((item) => {
@@ -1581,7 +1581,7 @@ export default function StandaloneTeachingBuilderPage() {
             <SectionHeader
               eyebrow="Future flexibility"
               title="Decide how this teaching could evolve later"
-              subtitle="Ministries often preach one-off messages that later deserve a broader campaign. Preserve that path without disturbing todayâ€™s publishing workflow."
+              subtitle="Ministries often preach one-off messages that later deserve a broader campaign. Preserve that path without disturbing todayÃ¢â‚¬â„¢s publishing workflow."
             />
             <div className="mt-4 grid gap-3 md:grid-cols-3">
               {MIGRATION_MODES.map((mode) => {
@@ -1744,7 +1744,7 @@ export default function StandaloneTeachingBuilderPage() {
             <div className="min-w-0">
               <div className="text-[11px] font-black uppercase tracking-[0.18em] text-slate-400">FaithHub Provider Side</div>
               <div className="mt-2 flex flex-col gap-2 lg:flex-row lg:items-center lg:gap-4">
-                <h1 className="text-[46px] font-black leading-none tracking-[-0.03em] text-slate-900">FH-P-022 â€” Standalone Teaching Builder</h1>
+                <h1 className="text-[46px] font-black leading-none tracking-[-0.03em] text-slate-900">FH-P-022 Ã¢â‚¬â€ Standalone Teaching Builder</h1>
                 <Pill tone="good">Standalone-first</Pill>
               </div>
               <p className="mt-2 max-w-[920px] text-[15px] leading-7 text-slate-500">
