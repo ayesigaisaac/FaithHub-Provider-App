@@ -42,7 +42,7 @@ They are defined in:
 
 ```bash
 npm install
-npm run dev
+d othinfoer7mfaethfaaiotherco7mponentsred utheplpone
 ```
 
 Open the local Vite URL shown in the terminal.
@@ -51,7 +51,7 @@ Open the local Vite URL shown in the terminal.
 
 ```bash
 npm run build
-npm run preview
+npm run preview     
 ```
 
 A production build was generated successfully in `dist/` during packaging.

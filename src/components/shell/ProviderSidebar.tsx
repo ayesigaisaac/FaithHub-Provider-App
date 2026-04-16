@@ -1,118 +1,130 @@
 import {
   Avatar,
   Box,
+  Divider,
   Drawer,
   List,
+  ListSubheader,
   ListItemButton,
   ListItemIcon,
   ListItemText,
   Stack,
   Typography,
 } from '@mui/material';
-import ChevronLeftRoundedIcon from '@mui/icons-material/ChevronLeftRounded';
-import FiberManualRecordRoundedIcon from '@mui/icons-material/FiberManualRecordRounded';
+import KeyboardArrowRightRoundedIcon from '@mui/icons-material/KeyboardArrowRightRounded';
+import KeyboardDoubleArrowLeftRoundedIcon from '@mui/icons-material/KeyboardDoubleArrowLeftRounded';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { getProviderPagesBySection, providerSections } from '@/navigation/providerPages';
-import { spacing } from '@/theme/spacing';
 
-const drawerWidth = 252;
+const drawerWidth = 318;
+
+const sectionLabelMap: Partial<Record<(typeof providerSections)[number], string>> = {
+  'Foundation & Mission Control': 'Core',
+  'Content Structure & Teaching Creation': 'Content',
+  'Live Sessionz Operations': 'Streams',
+  'Audience & Outreach': 'Outreach',
+  'Post-live & Trust': 'Post-live',
+  'Events & Giving': 'Giving',
+  Beacon: 'Beacon',
+  'Community & Care': 'Community',
+  'Leadership & Team': 'Leadership',
+  'Workspace Settings': 'Settings',
+};
 
 export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () => void }) {
   const location = useLocation();
-  const density = spacing.compact.mui;
+  const sections = providerSections
+    .map((section) => ({
+      section,
+      label: sectionLabelMap[section] ?? section,
+      pages: getProviderPagesBySection(section),
+    }))
+    .filter((group) => group.pages.length > 0);
 
   const content = (
-    <Box sx={{ display: 'flex', height: '100%', flexDirection: 'column', bgcolor: 'background.paper' }}>
-      <Stack
-        direction="row"
-        alignItems="center"
-        justifyContent="space-between"
-        sx={{ px: 2, py: density.sidebarHeaderY, borderBottom: '1px solid', borderColor: 'divider' }}
-      >
-        <Stack direction="row" spacing={1.25} alignItems="center">
-          <Avatar src="/assets/logo.svg" alt="FaithHub" sx={{ width: 34, height: 34 }} />
-          <Box>
-            <Typography sx={{ fontWeight: 800, letterSpacing: '0.03em', lineHeight: 1 }}>
-              FAITHHUB
-            </Typography>
-            <Typography variant="caption" color="text.secondary" sx={{ lineHeight: 1 }}>
-              PROVIDER PORTAL
-            </Typography>
-          </Box>
-        </Stack>
-        <ChevronLeftRoundedIcon sx={{ color: 'text.secondary' }} />
-      </Stack>
+    <Box sx={{ display: 'flex', height: '100%', flexDirection: 'column', bgcolor: '#eef3f3' }}>
+      <Box sx={{ p: 1.5 }}>
+        <Box sx={{ borderRadius: 2.5, border: '1px solid #d1d5db', bgcolor: '#fff', overflow: 'hidden' }}>
+          <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ px: 1.5, py: 1.25 }}>
+            <Box>
+              <Typography sx={{ fontWeight: 800, fontSize: 30, lineHeight: 0.95 }}>FaithHub Provider</Typography>
+              <Typography color="text.secondary" sx={{ fontSize: 18, lineHeight: 1 }}>
+                Navigation
+              </Typography>
+            </Box>
+            <Avatar sx={{ bgcolor: '#fff', color: '#111827', border: '1px solid #d1d5db', width: 40, height: 40 }}>
+              <KeyboardDoubleArrowLeftRoundedIcon />
+            </Avatar>
+          </Stack>
 
-      <Box sx={{ flex: 1, overflowY: 'auto', px: 1.1, py: density.sidebarBodyY }}>
-        {providerSections
-          .filter((section) => section !== 'Previews')
-          .map((section) => {
-            const pages = getProviderPagesBySection(section);
-            if (!pages.length) return null;
-            return (
-              <Box key={section} sx={{ mb: 1 }}>
-                <Typography
-                  variant="overline"
+          <Divider />
+
+          <List sx={{ p: 1, maxHeight: 'calc(100vh - 160px)', overflowY: 'auto' }}>
+            {sections.map((group) => (
+              <Box key={group.section} sx={{ mb: 0.75 }}>
+                <ListSubheader
+                  disableSticky
                   sx={{
-                    display: 'block',
+                    bgcolor: 'transparent',
                     px: 1.25,
-                    pb: 0.5,
-                  color: 'text.secondary',
-                    fontWeight: 700,
-                    letterSpacing: '0.08em',
+                    py: 0.25,
+                    color: '#6b7280',
+                    fontSize: 11,
+                    lineHeight: 1.4,
+                    letterSpacing: '0.09em',
+                    textTransform: 'uppercase',
+                    fontWeight: 800,
                   }}
                 >
-                  {section}
-                </Typography>
-                <List disablePadding>
-                  {pages.map((page) => {
-                    const Icon = page.icon;
-                    const selected = page.path === location.pathname || page.aliases?.includes(location.pathname);
-                    return (
-                      <ListItemButton
-                        key={page.key}
-                        component={RouterLink}
-                        to={page.path}
-                        onClick={onClose}
-                        selected={selected}
-                        sx={{
-                          borderRadius: 2,
-                          py: 0.85,
-                          px: 1.25,
-                          mb: 0.2,
-                          '&.Mui-selected': {
-                            bgcolor: 'rgba(16, 185, 129, 0.18)',
-                            color: 'text.primary',
-                          },
-                          '&.Mui-selected:hover': {
-                            bgcolor: 'rgba(16, 185, 129, 0.26)',
-                          },
-                        }}
-                      >
-                        <ListItemIcon sx={{ minWidth: 34, color: selected ? 'primary.main' : 'text.secondary' }}>
-                          <Icon size={17} />
-                        </ListItemIcon>
-                        <ListItemText
-                          primary={
-                            <Typography
-                              sx={{
-                                fontSize: 14,
-                                fontWeight: selected ? 700 : 600,
-                                color: selected ? 'text.primary' : 'text.primary',
-                              }}
-                            >
-                              {page.shortTitle ?? page.title}
-                            </Typography>
-                          }
-                        />
-                        {selected ? <FiberManualRecordRoundedIcon sx={{ fontSize: 10, color: 'primary.main' }} /> : null}
-                      </ListItemButton>
-                    );
-                  })}
-                </List>
+                  {group.label}
+                </ListSubheader>
+
+                {group.pages.map((page) => {
+                  const Icon = page.icon;
+                  const active = page.path === location.pathname || Boolean(page.aliases?.includes(location.pathname));
+
+                  return (
+                    <ListItemButton
+                      key={page.key}
+                      component={RouterLink}
+                      to={page.path}
+                      onClick={onClose}
+                      sx={{
+                        mb: 0.75,
+                        px: 1.25,
+                        py: 1,
+                        borderRadius: 2,
+                        border: active ? '1.5px solid #111827' : '1px solid #d1d5db',
+                        bgcolor: active ? '#f8fafc' : '#fff',
+                      }}
+                    >
+                      <ListItemIcon sx={{ minWidth: 44 }}>
+                        <Avatar
+                          sx={{
+                            width: 30,
+                            height: 30,
+                            bgcolor: active ? '#dcfce7' : '#f3f4f6',
+                            color: active ? '#047857' : '#64748b',
+                          }}
+                        >
+                          <Icon size={16} />
+                        </Avatar>
+                      </ListItemIcon>
+                      <ListItemText
+                        primary={
+                          <Typography sx={{ fontWeight: active ? 800 : 700, fontSize: 13.5, lineHeight: 1.2, color: '#334155' }}>
+                            {page.shortTitle ?? page.title}
+                          </Typography>
+                        }
+                      />
+                      <KeyboardArrowRightRoundedIcon sx={{ fontSize: 22, color: '#94a3b8' }} />
+                    </ListItemButton>
+                  );
+                })}
               </Box>
-            );
-          })}
+            ))}
+          </List>
+        </Box>
       </Box>
     </Box>
   );

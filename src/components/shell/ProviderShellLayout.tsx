@@ -19,7 +19,7 @@ export function ProviderShellLayout() {
   const current = useMemo(() => findProviderPageByPath(location.pathname), [location.pathname]);
 
   return (
-    <Box sx={{ display: 'flex', minHeight: '100vh', bgcolor: 'background.default' }}>
+    <Box sx={{ display: 'flex', minHeight: '100vh', bgcolor: '#dde9e8' }}>
       <ProviderSidebar open={mobileOpen} onClose={() => setMobileOpen(false)} />
 
       <Box component="main" sx={{ flex: 1, minWidth: 0, width: '100%' }}>
@@ -31,17 +31,17 @@ export function ProviderShellLayout() {
           />
         </Box>
 
-        <Toolbar sx={{ minHeight: { xs: 72, md: 72 } }} />
-        <Box sx={{ px: 0, pb: { xs: 8, md: 0 }, pt: 0 }}>
+        <Toolbar sx={{ minHeight: { xs: 160, md: 160 } }} />
+        <Box sx={{ px: { xs: 1.25, md: 1.75 }, pb: { xs: 8, md: 1.75 }, pt: 1.25 }}>
           <Box
             className="provider-shell-surface"
             sx={{
-              borderRadius: 2.5,
+              borderRadius: 3.5,
               border: '1px solid',
               borderColor: 'divider',
-              bgcolor: 'background.paper',
-              p: 0,
-              minHeight: 'calc(100vh - 188px)',
+              bgcolor: '#f7f8f8',
+              p: 1.25,
+              minHeight: 'calc(100vh - 185px)',
             }}
           >
             <ErrorBoundary label={current?.title}>

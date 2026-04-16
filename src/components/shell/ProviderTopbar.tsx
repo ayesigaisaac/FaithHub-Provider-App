@@ -5,7 +5,6 @@ import {
   Box,
   Button,
   IconButton,
-  InputBase,
   Menu,
   MenuItem,
   Stack,
@@ -13,14 +12,22 @@ import {
   Typography,
 } from '@mui/material';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
-import NotificationsRoundedIcon from '@mui/icons-material/NotificationsRounded';
-import AutoAwesomeRoundedIcon from '@mui/icons-material/AutoAwesomeRounded';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
-import { useState, type MouseEvent } from 'react';
-import type { ProviderPageMeta } from '@/navigation/providerPages';
-import { spacing } from '@/theme/spacing';
-import { ThemeModeToggle } from '@/components/theme/ThemeModeToggle';
+import NotificationsRoundedIcon from '@mui/icons-material/NotificationsRounded';
+import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded';
+import PlayCircleOutlineRoundedIcon from '@mui/icons-material/PlayCircleOutlineRounded';
+import EventNoteRoundedIcon from '@mui/icons-material/EventNoteRounded';
+import GroupsRoundedIcon from '@mui/icons-material/GroupsRounded';
+import VolunteerActivismRoundedIcon from '@mui/icons-material/VolunteerActivismRounded';
+import AppsRoundedIcon from '@mui/icons-material/AppsRounded';
+import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
+import KeyboardDoubleArrowLeftRoundedIcon from '@mui/icons-material/KeyboardDoubleArrowLeftRounded';
+import DomainRoundedIcon from '@mui/icons-material/DomainRounded';
+import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded';
+import { useMemo, useState, type MouseEvent } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/auth/useAuth';
+import type { ProviderPageMeta } from '@/navigation/providerPages';
 
 type ProviderTopbarProps = {
   current?: ProviderPageMeta;
@@ -28,23 +35,75 @@ type ProviderTopbarProps = {
   onOpenSearch: () => void;
 };
 
-export function ProviderTopbar({ current: _current, onOpenSidebar, onOpenSearch }: ProviderTopbarProps) {
+const secondaryTabs = [
+  {
+    label: 'Dashboard',
+    to: '/faithhub/provider/dashboard',
+    sections: ['Foundation & Mission Control', 'Content Structure & Teaching Creation'],
+    icon: <DashboardRoundedIcon fontSize="small" />,
+  },
+  {
+    label: 'Streams',
+    to: '/faithhub/provider/live-dashboard',
+    sections: ['Live Sessionz Operations'],
+    icon: <PlayCircleOutlineRoundedIcon fontSize="small" />,
+  },
+  {
+    label: 'Community',
+    to: '/faithhub/provider/community-groups',
+    sections: ['Audience & Outreach', 'Community & Care'],
+    icon: <GroupsRoundedIcon fontSize="small" />,
+  },
+  {
+    label: 'Giving',
+    to: '/faithhub/provider/donations-and-funds',
+    sections: ['Events & Giving'],
+    icon: <VolunteerActivismRoundedIcon fontSize="small" />,
+  },
+  {
+    label: 'Reports',
+    to: '/faithhub/provider/reviews-and-moderation',
+    sections: ['Post-live & Trust', 'Leadership & Team', 'Workspace Settings', 'Beacon', 'Previews'],
+    icon: <EventNoteRoundedIcon fontSize="small" />,
+  },
+];
+
+export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: ProviderTopbarProps) {
+  const navigate = useNavigate();
   const { user, role, workspace, logout, setWorkspace } = useAuth();
-  const [filterAnchor, setFilterAnchor] = useState<null | HTMLElement>(null);
   const [userAnchor, setUserAnchor] = useState<null | HTMLElement>(null);
-  const density = spacing.compact.mui;
-
-  const openFilters = (event: MouseEvent<HTMLButtonElement>) => setFilterAnchor(event.currentTarget);
-  const closeFilters = () => setFilterAnchor(null);
-  const openUserMenu = (event: MouseEvent<HTMLButtonElement>) => setUserAnchor(event.currentTarget);
-  const closeUserMenu = () => setUserAnchor(null);
-
+  const utilityButtonSx = {
+    borderRadius: 3,
+    px: 1.2,
+    minHeight: 48,
+    borderColor: '#cfe3db',
+    color: '#334155',
+    textTransform: 'none',
+    '&:hover': { borderColor: '#9fd7c5', bgcolor: '#f8fbfa' },
+  } as const;
+  const utilityIconSx = {
+    border: '1px solid',
+    borderColor: '#d9e1ec',
+    borderRadius: 3,
+    width: 48,
+    height: 48,
+    bgcolor: '#fff',
+    color: '#475569',
+    '&:hover': { borderColor: '#c1ccda', bgcolor: '#f8fafc' },
+  } as const;
+  const activeTopTab = useMemo(
+    () => secondaryTabs.find((tab) => tab.sections.includes(current?.section ?? '')),
+    [current?.section]
+  );
   const initials = user?.name
     ?.split(' ')
     .map((part) => part[0])
     .join('')
     .slice(0, 2)
     .toUpperCase() || 'U';
+
+  const openUserMenu = (event: MouseEvent<HTMLButtonElement>) => setUserAnchor(event.currentTarget);
+  const closeUserMenu = () => setUserAnchor(null);
 
   return (
     <AppBar
@@ -57,81 +116,103 @@ export function ProviderTopbar({ current: _current, onOpenSidebar, onOpenSearch 
         bgcolor: 'background.paper',
       }}
     >
-      <Toolbar sx={{ minHeight: density.topbarToolbarMinHeight, px: density.topbarHeaderX, gap: 1 }}>
-        <IconButton sx={{ display: { md: 'none' } }} onClick={onOpenSidebar}>
-          <MenuRoundedIcon />
-        </IconButton>
-
-        <Stack direction="row" alignItems="center" spacing={1} sx={{ flex: 1, minWidth: 0 }}>
-          <Button
-            variant="contained"
-            onClick={onOpenSearch}
-            sx={{
-              minWidth: 46,
-              px: 1.5,
-              bgcolor: 'primary.main',
-              '&:hover': { bgcolor: 'primary.dark' },
-              boxShadow: 'none',
-            }}
-          >
-            Go
-          </Button>
-          <Box
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-              flex: 1,
-              border: '1px solid',
-              borderColor: 'divider',
-              borderRadius: 2,
-              px: 1.5,
-              height: 38,
-              bgcolor: 'action.hover',
-            }}
-          >
-            <SearchRoundedIcon sx={{ color: 'text.secondary', mr: 1, fontSize: 20 }} />
-            <InputBase
-              placeholder="Search providers, streams, reports..."
-              sx={{ width: '100%', fontSize: 14 }}
-              onFocus={onOpenSearch}
-            />
+      <Toolbar sx={{ minHeight: 86, px: { xs: 1.2, md: 2.5 }, borderBottom: '1px solid', borderColor: 'divider' }}>
+        <Stack direction="row" alignItems="center" spacing={1.25} sx={{ flex: 1 }}>
+          <IconButton sx={{ display: { md: 'none' } }} onClick={onOpenSidebar}>
+            <MenuRoundedIcon />
+          </IconButton>
+          <Avatar src="/assets/logo.svg" alt="FaithHub" sx={{ width: 46, height: 46 }} />
+          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+            <Typography sx={{ fontWeight: 900, fontSize: 30, lineHeight: 0.9, color: '#13b981' }}>FaithHub</Typography>
+            <Typography sx={{ fontWeight: 800, fontSize: 28, lineHeight: 0.9, color: '#111827' }}>Provider</Typography>
           </Box>
         </Stack>
 
-        <Button
-          variant="outlined"
-          size="small"
-          onClick={openFilters}
-          sx={{
-            display: { xs: 'none', lg: 'inline-flex' },
-            borderColor: 'divider',
-            color: 'text.primary',
-            textTransform: 'none',
-            fontWeight: 600,
-          }}
-        >
-          Quick filters
-        </Button>
-
-        <IconButton aria-label="Notifications">
-          <Badge badgeContent={3} color="error">
-            <NotificationsRoundedIcon />
-          </Badge>
-        </IconButton>
-        <IconButton aria-label="Workspace controls">
-          <AutoAwesomeRoundedIcon />
-        </IconButton>
-        <ThemeModeToggle />
-        <IconButton aria-label="User menu" onClick={openUserMenu} sx={{ p: 0.25 }}>
-          <Avatar sx={{ width: 38, height: 38, bgcolor: 'primary.main', fontWeight: 800 }}>{initials}</Avatar>
-        </IconButton>
+        <Stack direction="row" spacing={0.9} alignItems="center">
+          <Button variant="outlined" endIcon={<KeyboardArrowDownRoundedIcon />} sx={utilityButtonSx}>
+            <Avatar sx={{ width: 30, height: 30 }} />
+          </Button>
+          <Button variant="outlined" endIcon={<KeyboardArrowDownRoundedIcon />} sx={utilityButtonSx}>
+            <DomainRoundedIcon />
+          </Button>
+          <Button variant="outlined" endIcon={<KeyboardArrowDownRoundedIcon />} sx={utilityButtonSx}>
+            <Avatar sx={{ width: 32, height: 32, bgcolor: '#111827' }}>{initials}</Avatar>
+          </Button>
+          <IconButton onClick={onOpenSearch} sx={utilityIconSx}>
+            <SearchRoundedIcon />
+          </IconButton>
+          <IconButton sx={utilityIconSx}>
+            <AppsRoundedIcon />
+          </IconButton>
+          <IconButton sx={utilityIconSx}>
+            <MoreHorizRoundedIcon />
+          </IconButton>
+          <IconButton sx={utilityIconSx}>
+            <Badge badgeContent={2} color="success">
+              <NotificationsRoundedIcon />
+            </Badge>
+          </IconButton>
+          <IconButton aria-label="User menu" onClick={openUserMenu} sx={utilityIconSx}>
+            <Avatar />
+          </IconButton>
+        </Stack>
       </Toolbar>
 
-      <Menu anchorEl={filterAnchor} open={Boolean(filterAnchor)} onClose={closeFilters}>
-        <MenuItem onClick={closeFilters}>Live operations only</MenuItem>
-        <MenuItem onClick={closeFilters}>Community pages only</MenuItem>
-        <MenuItem onClick={closeFilters}>Giving and finance pages</MenuItem>
-      </Menu>
+      <Toolbar sx={{ minHeight: 74, px: { xs: 1.25, md: 2.5 }, bgcolor: '#f8fafc' }}>
+        <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ width: '100%' }}>
+          <Stack direction="row" spacing={1} alignItems="center" sx={{ overflowX: 'auto', py: 0.25 }}>
+            <Box
+              sx={{
+                bgcolor: '#10b981',
+                color: '#ffffff',
+                borderRadius: 999,
+                px: 2,
+                py: 0.75,
+                fontSize: 18,
+                lineHeight: 1,
+                fontWeight: 800,
+                border: '1px solid #0ea673',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              FaithHub Provider
+            </Box>
+            {secondaryTabs.map((tab) => (
+              <Button
+                key={tab.label}
+                startIcon={tab.icon}
+                variant="outlined"
+                onClick={() => navigate(tab.to)}
+                sx={{
+                  borderRadius: 999,
+                  textTransform: 'none',
+                  fontWeight: 800,
+                  minHeight: 44,
+                  px: 2.1,
+                  borderWidth: 1,
+                  borderColor: activeTopTab?.label === tab.label ? '#10b981' : '#cfd8e3',
+                  bgcolor: activeTopTab?.label === tab.label ? '#10b981' : '#ffffff',
+                  color: activeTopTab?.label === tab.label ? '#ffffff' : '#111827',
+                  whiteSpace: 'nowrap',
+                  '& .MuiButton-startIcon': {
+                    color: activeTopTab?.label === tab.label ? '#ffffff' : '#0f172a',
+                    mr: 0.9,
+                  },
+                  '&:hover': {
+                    borderColor: activeTopTab?.label === tab.label ? '#0f9f72' : '#b9c6d8',
+                    bgcolor: activeTopTab?.label === tab.label ? '#0f9f72' : '#f3f6fa',
+                  },
+                }}
+              >
+                {tab.label}
+              </Button>
+            ))}
+          </Stack>
+          <IconButton sx={{ border: '1px solid', borderColor: '#cfd8e3', bgcolor: '#fff', width: 48, height: 48 }}>
+            <KeyboardDoubleArrowLeftRoundedIcon />
+          </IconButton>
+        </Stack>
+      </Toolbar>
 
       <Menu anchorEl={userAnchor} open={Boolean(userAnchor)} onClose={closeUserMenu}>
         <MenuItem disabled>
@@ -146,7 +227,7 @@ export function ProviderTopbar({ current: _current, onOpenSidebar, onOpenSearch 
         </MenuItem>
         <MenuItem disabled>
           <Typography variant="body2">
-            Role: {role || 'leadership'} · {workspace?.campus || 'Kampala Central'}
+            Role: {role || 'leadership'} - {workspace?.campus || 'Kampala Central'}
           </Typography>
         </MenuItem>
         <MenuItem
@@ -169,7 +250,6 @@ export function ProviderTopbar({ current: _current, onOpenSidebar, onOpenSearch 
         >
           Switch brand
         </MenuItem>
-        <MenuItem onClick={closeUserMenu}>Workspace settings</MenuItem>
         <MenuItem
           onClick={async () => {
             closeUserMenu();
@@ -182,3 +262,4 @@ export function ProviderTopbar({ current: _current, onOpenSidebar, onOpenSearch 
     </AppBar>
   );
 }
+
