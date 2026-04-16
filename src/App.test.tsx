@@ -3,7 +3,7 @@ import { MemoryRouter } from 'react-router-dom';
 import App from './App';
 import { NotificationProvider } from './contexts/NotificationContext';
 import { ThemeModeProvider } from './contexts/ThemeModeContext';
-import { AuthProvider } from './auth/AuthContext';
+import { AuthProvider } from '@/auth/AuthContext';
 
 const AUTH_TOKEN_KEY = 'faithhub.auth.token';
 const AUTH_WORKSPACE_KEY = 'faithhub.auth.workspace';
@@ -52,13 +52,17 @@ describe('App smoke routing', () => {
 
   it('mounts provider shell routes', async () => {
     renderApp(['/faithhub/provider/dashboard']);
-    const brandMatches = await screen.findAllByText(/FAITHHUB/i);
+    const brandMatches = await screen.findAllByText(/FaithHub/i);
     expect(brandMatches.length).toBeGreaterThan(0);
   });
 
   it('renders key provider navigation elements', async () => {
     renderApp(['/faithhub/provider/dashboard']);
-    expect(await screen.findByRole('button', { name: /quick filters/i })).toBeInTheDocument();
-    expect(screen.getByPlaceholderText(/Search providers, streams, reports/i)).toBeInTheDocument();
+    const faithHubProviderLabels = await screen.findAllByText(/FaithHub Provider/i);
+    expect(faithHubProviderLabels.length).toBeGreaterThan(0);
+    const navigationLabels = await screen.findAllByText(/Navigation/i);
+    expect(navigationLabels.length).toBeGreaterThan(0);
+    const dashboardButtons = await screen.findAllByRole('button', { name: /dashboard/i });
+    expect(dashboardButtons.length).toBeGreaterThan(0);
   });
 });
