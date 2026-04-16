@@ -10,6 +10,7 @@ import {
   MenuItem,
   Stack,
   Toolbar,
+  Typography,
 } from '@mui/material';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import NotificationsRoundedIcon from '@mui/icons-material/NotificationsRounded';
@@ -19,6 +20,7 @@ import { useState, type MouseEvent } from 'react';
 import type { ProviderPageMeta } from '@/navigation/providerPages';
 import { spacing } from '@/theme/spacing';
 import { ThemeModeToggle } from '@/components/theme/ThemeModeToggle';
+import { useAuth } from '@/auth/useAuth';
 
 type ProviderTopbarProps = {
   current?: ProviderPageMeta;
@@ -27,6 +29,7 @@ type ProviderTopbarProps = {
 };
 
 export function ProviderTopbar({ current: _current, onOpenSidebar, onOpenSearch }: ProviderTopbarProps) {
+  const { user, role, workspace, logout, setWorkspace } = useAuth();
   const [filterAnchor, setFilterAnchor] = useState<null | HTMLElement>(null);
   const [userAnchor, setUserAnchor] = useState<null | HTMLElement>(null);
   const density = spacing.compact.mui;
@@ -35,6 +38,13 @@ export function ProviderTopbar({ current: _current, onOpenSidebar, onOpenSearch 
   const closeFilters = () => setFilterAnchor(null);
   const openUserMenu = (event: MouseEvent<HTMLButtonElement>) => setUserAnchor(event.currentTarget);
   const closeUserMenu = () => setUserAnchor(null);
+
+  const initials = user?.name
+    ?.split(' ')
+    .map((part) => part[0])
+    .join('')
+    .slice(0, 2)
+    .toUpperCase() || 'U';
 
   return (
     <AppBar
@@ -113,7 +123,7 @@ export function ProviderTopbar({ current: _current, onOpenSidebar, onOpenSearch 
         </IconButton>
         <ThemeModeToggle />
         <IconButton aria-label="User menu" onClick={openUserMenu} sx={{ p: 0.25 }}>
-          <Avatar sx={{ width: 38, height: 38, bgcolor: 'primary.main', fontWeight: 800 }}>A</Avatar>
+          <Avatar sx={{ width: 38, height: 38, bgcolor: 'primary.main', fontWeight: 800 }}>{initials}</Avatar>
         </IconButton>
       </Toolbar>
 
@@ -124,9 +134,50 @@ export function ProviderTopbar({ current: _current, onOpenSidebar, onOpenSearch 
       </Menu>
 
       <Menu anchorEl={userAnchor} open={Boolean(userAnchor)} onClose={closeUserMenu}>
-        <MenuItem onClick={closeUserMenu}>Profile</MenuItem>
+        <MenuItem disabled>
+          <Box>
+            <Typography variant="body2" fontWeight={700}>
+              {user?.name || 'Provider User'}
+            </Typography>
+            <Typography variant="caption" color="text.secondary">
+              {user?.email || 'unknown@faithhub.dev'}
+            </Typography>
+          </Box>
+        </MenuItem>
+        <MenuItem disabled>
+          <Typography variant="body2">
+            Role: {role || 'leadership'} · {workspace?.campus || 'Kampala Central'}
+          </Typography>
+        </MenuItem>
+        <MenuItem
+          onClick={() =>
+            setWorkspace({
+              campus: workspace?.campus === 'Kampala Central' ? 'Online Studio' : 'Kampala Central',
+              brand: workspace?.brand || 'FaithHub',
+            })
+          }
+        >
+          Switch campus
+        </MenuItem>
+        <MenuItem
+          onClick={() =>
+            setWorkspace({
+              campus: workspace?.campus || 'Kampala Central',
+              brand: workspace?.brand === 'FaithHub' ? 'FaithHub Plus' : 'FaithHub',
+            })
+          }
+        >
+          Switch brand
+        </MenuItem>
         <MenuItem onClick={closeUserMenu}>Workspace settings</MenuItem>
-        <MenuItem onClick={closeUserMenu}>Logout</MenuItem>
+        <MenuItem
+          onClick={async () => {
+            closeUserMenu();
+            await logout();
+          }}
+        >
+          Logout
+        </MenuItem>
       </Menu>
     </AppBar>
   );
