@@ -31,6 +31,7 @@ import {
   Wallet,
   Wand2,
 } from "lucide-react";
+import { handleRawPlaceholderAction } from "./placeholderActions";
 
 /**
  * FaithHub Ã¢â‚¬â€ FH-P-001 Provider Onboarding

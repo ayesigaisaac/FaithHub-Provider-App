@@ -31,6 +31,7 @@ import {
   Sparkles,
   Wallet,
 } from "lucide-react";
+import { handleRawPlaceholderAction } from "./placeholderActions";
 
 /**
  * FaithHub Ã¢â‚¬â€ FH-P-062 Wallet & Payouts

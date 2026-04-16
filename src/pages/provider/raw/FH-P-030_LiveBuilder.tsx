@@ -40,6 +40,7 @@ import {
   X,
   Zap,
 } from "lucide-react";
+import { handleRawPlaceholderAction } from "./placeholderActions";
 
 /**
  * FaithHub ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Live Builder (Provider)

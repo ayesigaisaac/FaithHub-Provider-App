@@ -24,6 +24,7 @@ import {
   Workflow,
   X,
 } from "lucide-react";
+import { handleRawPlaceholderAction } from "./placeholderActions";
 
 /**
  * FaithHub Ã¢â‚¬â€ FH-P-105 Counseling

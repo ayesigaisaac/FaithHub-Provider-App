@@ -23,6 +23,7 @@ import {
   X,
   Zap,
 } from "lucide-react";
+import { handleRawPlaceholderAction } from "./placeholderActions";
 
 /**
  * FaithHub Ã¢â‚¬â€ FH-P-101 Prayer Requests
