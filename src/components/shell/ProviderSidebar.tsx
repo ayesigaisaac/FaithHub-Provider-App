@@ -44,11 +44,11 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
   const content = (
     <Box sx={{ display: 'flex', height: '100%', flexDirection: 'column', bgcolor: '#eef3f3' }}>
       <Box sx={{ p: 1.5 }}>
-        <Box sx={{ borderRadius: 2.5, border: '1px solid #d1d5db', bgcolor: '#fff', overflow: 'hidden' }}>
+        <Box sx={{ borderRadius: 2.5, border: '1px solid #d1d5db', bgcolor: '#fff', overflow: 'hidden', boxShadow: '0 16px 32px -28px rgba(15, 23, 42, 0.42)' }}>
           <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ px: 1.5, py: 1.25 }}>
             <Box>
-              <Typography sx={{ fontWeight: 800, fontSize: 30, lineHeight: 0.95 }}>FaithHub Provider</Typography>
-              <Typography color="text.secondary" sx={{ fontSize: 18, lineHeight: 1 }}>
+              <Typography sx={{ fontWeight: 800, fontSize: 24, lineHeight: 1 }}>FaithHub Provider</Typography>
+              <Typography color="text.secondary" sx={{ fontSize: 13, lineHeight: 1.1, letterSpacing: '0.02em' }}>
                 Navigation
               </Typography>
             </Box>
@@ -59,7 +59,16 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
 
           <Divider />
 
-          <List sx={{ p: 1, maxHeight: 'calc(100vh - 160px)', overflowY: 'auto' }}>
+          <List
+            sx={{
+              p: 1,
+              maxHeight: 'calc(100vh - 160px)',
+              overflowY: 'auto',
+              '&::-webkit-scrollbar': { width: 8 },
+              '&::-webkit-scrollbar-thumb': { backgroundColor: '#cbd5e1', borderRadius: 10 },
+              '&::-webkit-scrollbar-track': { backgroundColor: 'transparent' },
+            }}
+          >
             {sections.map((group) => (
               <Box key={group.section} sx={{ mb: 0.75 }}>
                 <ListSubheader

@@ -98,21 +98,21 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
 
   return (
     <AppBar
-      position="fixed"
+      position="static"
       color="inherit"
       elevation={0}
       sx={{
         borderBottom: '1px solid',
         borderColor: 'divider',
         bgcolor: 'background.paper',
+        boxShadow: '0 12px 28px -26px rgba(15, 23, 42, 0.55)',
       }}
     >
       <Toolbar
         sx={{
-          minHeight: 86,
+          minHeight: 76,
           px: { xs: 2, md: 3 },
-          pt: 1.25,
-          pb: 1.75,
+          py: 0.75,
           borderBottom: '1px solid',
           borderColor: 'divider',
         }}
@@ -160,16 +160,29 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
 
       <Toolbar
         sx={{
-          minHeight: 74,
+          minHeight: 62,
           px: { xs: 2, md: 3 },
-          pt: 0.5,
-          pb: 0.5,
+          py: 0.25,
           mt: 0,
           bgcolor: '#f8fafc',
+          borderTop: '1px solid',
+          borderColor: '#e5e7eb',
         }}
       >
         <Stack direction="row" alignItems="center" sx={{ width: '100%' }}>
-          <Stack direction="row" spacing={1.25} alignItems="center" sx={{ overflowX: 'auto', py: 0.25, pl: 0.25 }}>
+          <Stack
+            direction="row"
+            spacing={1.25}
+            alignItems="center"
+            sx={{
+              overflowX: 'auto',
+              py: 0.25,
+              pl: 0.25,
+              '&::-webkit-scrollbar': { height: 7 },
+              '&::-webkit-scrollbar-thumb': { backgroundColor: '#cbd5e1', borderRadius: 10 },
+              '&::-webkit-scrollbar-track': { backgroundColor: 'transparent' },
+            }}
+          >
             {secondaryTabs.map((tab) => (
               <Button
                 key={tab.label}
