@@ -15,7 +15,6 @@ import {
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import NotificationsRoundedIcon from '@mui/icons-material/NotificationsRounded';
-import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded';
 import PlayCircleOutlineRoundedIcon from '@mui/icons-material/PlayCircleOutlineRounded';
 import EventNoteRoundedIcon from '@mui/icons-material/EventNoteRounded';
 import GroupsRoundedIcon from '@mui/icons-material/GroupsRounded';
@@ -35,12 +34,6 @@ type ProviderTopbarProps = {
 };
 
 const secondaryTabs = [
-  {
-    label: 'Dashboard',
-    to: '/faithhub/provider/dashboard',
-    sections: ['Foundation & Mission Control', 'Content Structure & Teaching Creation'],
-    icon: <DashboardRoundedIcon fontSize="small" />,
-  },
   {
     label: 'Streams',
     to: '/faithhub/provider/live-dashboard',
@@ -178,22 +171,6 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
       >
         <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ width: '100%' }}>
           <Stack direction="row" spacing={1.25} alignItems="center" sx={{ overflowX: 'auto', py: 0.25, pl: 0.25 }}>
-            <Box
-              sx={{
-                bgcolor: '#10b981',
-                color: '#ffffff',
-                borderRadius: 999,
-                px: 2,
-                py: 0.75,
-                fontSize: 18,
-                lineHeight: 1,
-                fontWeight: 800,
-                border: '1px solid #0ea673',
-                whiteSpace: 'nowrap',
-              }}
-            >
-              FaithHub Provider
-            </Box>
             {secondaryTabs.map((tab) => (
               <Button
                 key={tab.label}
