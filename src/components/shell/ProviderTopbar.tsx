@@ -19,7 +19,6 @@ import PlayCircleOutlineRoundedIcon from '@mui/icons-material/PlayCircleOutlineR
 import EventNoteRoundedIcon from '@mui/icons-material/EventNoteRounded';
 import GroupsRoundedIcon from '@mui/icons-material/GroupsRounded';
 import VolunteerActivismRoundedIcon from '@mui/icons-material/VolunteerActivismRounded';
-import KeyboardDoubleArrowLeftRoundedIcon from '@mui/icons-material/KeyboardDoubleArrowLeftRounded';
 import DomainRoundedIcon from '@mui/icons-material/DomainRounded';
 import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded';
 import { useMemo, useState, type MouseEvent } from 'react';
@@ -169,7 +168,7 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
           bgcolor: '#f8fafc',
         }}
       >
-        <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ width: '100%' }}>
+        <Stack direction="row" alignItems="center" sx={{ width: '100%' }}>
           <Stack direction="row" spacing={1.25} alignItems="center" sx={{ overflowX: 'auto', py: 0.25, pl: 0.25 }}>
             {secondaryTabs.map((tab) => (
               <Button
@@ -202,9 +201,6 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
               </Button>
             ))}
           </Stack>
-          <IconButton sx={{ border: '1px solid', borderColor: '#cfd8e3', bgcolor: '#fff', width: 48, height: 48 }}>
-            <KeyboardDoubleArrowLeftRoundedIcon />
-          </IconButton>
         </Stack>
       </Toolbar>
 
