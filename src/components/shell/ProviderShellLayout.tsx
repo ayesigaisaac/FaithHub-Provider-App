@@ -31,8 +31,8 @@ export function ProviderShellLayout() {
           />
         </Box>
 
-        <Toolbar sx={{ minHeight: { xs: 160, md: 160 } }} />
-        <Box sx={{ px: { xs: 1.25, md: 1.75 }, pb: { xs: 8, md: 1.75 }, pt: 1.25 }}>
+        <Toolbar sx={{ minHeight: { xs: 152, md: 156 } }} />
+        <Box sx={{ px: { xs: 1, md: 1.5 }, pb: { xs: 8, md: 2.5 }, pt: { xs: 0.5, md: 0.5 } }}>
           <Box
             className="provider-shell-surface"
             sx={{
@@ -40,8 +40,8 @@ export function ProviderShellLayout() {
               border: '1px solid',
               borderColor: 'divider',
               bgcolor: '#f7f8f8',
-              p: 1.25,
-              minHeight: 'calc(100vh - 185px)',
+              p: { xs: 1.5, md: 1.75 },
+              minHeight: 'calc(100vh - 188px)',
             }}
           >
             <ErrorBoundary label={current?.title}>

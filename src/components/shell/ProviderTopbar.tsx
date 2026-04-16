@@ -4,6 +4,7 @@ import {
   Badge,
   Box,
   Button,
+  Divider,
   IconButton,
   Menu,
   MenuItem,
@@ -19,8 +20,6 @@ import PlayCircleOutlineRoundedIcon from '@mui/icons-material/PlayCircleOutlineR
 import EventNoteRoundedIcon from '@mui/icons-material/EventNoteRounded';
 import GroupsRoundedIcon from '@mui/icons-material/GroupsRounded';
 import VolunteerActivismRoundedIcon from '@mui/icons-material/VolunteerActivismRounded';
-import AppsRoundedIcon from '@mui/icons-material/AppsRounded';
-import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
 import KeyboardDoubleArrowLeftRoundedIcon from '@mui/icons-material/KeyboardDoubleArrowLeftRounded';
 import DomainRoundedIcon from '@mui/icons-material/DomainRounded';
 import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded';
@@ -116,7 +115,16 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
         bgcolor: 'background.paper',
       }}
     >
-      <Toolbar sx={{ minHeight: 86, px: { xs: 1.2, md: 2.5 }, borderBottom: '1px solid', borderColor: 'divider' }}>
+      <Toolbar
+        sx={{
+          minHeight: 86,
+          px: { xs: 2, md: 3 },
+          pt: 1.25,
+          pb: 1.75,
+          borderBottom: '1px solid',
+          borderColor: 'divider',
+        }}
+      >
         <Stack direction="row" alignItems="center" spacing={1.25} sx={{ flex: 1 }}>
           <IconButton sx={{ display: { md: 'none' } }} onClick={onOpenSidebar}>
             <MenuRoundedIcon />
@@ -128,39 +136,48 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
           </Box>
         </Stack>
 
-        <Stack direction="row" spacing={0.9} alignItems="center">
-          <Button variant="outlined" endIcon={<KeyboardArrowDownRoundedIcon />} sx={utilityButtonSx}>
-            <Avatar sx={{ width: 30, height: 30 }} />
-          </Button>
-          <Button variant="outlined" endIcon={<KeyboardArrowDownRoundedIcon />} sx={utilityButtonSx}>
-            <DomainRoundedIcon />
-          </Button>
-          <Button variant="outlined" endIcon={<KeyboardArrowDownRoundedIcon />} sx={utilityButtonSx}>
-            <Avatar sx={{ width: 32, height: 32, bgcolor: '#111827' }}>{initials}</Avatar>
-          </Button>
+        <Stack direction="row" alignItems="center" spacing={1.5}>
+          <Stack direction="row" spacing={1.5} alignItems="center">
+            <Button variant="outlined" endIcon={<KeyboardArrowDownRoundedIcon />} sx={utilityButtonSx}>
+              <DomainRoundedIcon />
+            </Button>
+            <Button variant="outlined" endIcon={<KeyboardArrowDownRoundedIcon />} sx={utilityButtonSx}>
+              <Avatar sx={{ width: 32, height: 32, bgcolor: '#111827' }}>{initials}</Avatar>
+            </Button>
+          </Stack>
+
+          <Divider orientation="vertical" flexItem sx={{ borderColor: '#d9e1ec', mx: 0.25 }} />
           <IconButton onClick={onOpenSearch} sx={utilityIconSx}>
             <SearchRoundedIcon />
           </IconButton>
-          <IconButton sx={utilityIconSx}>
-            <AppsRoundedIcon />
-          </IconButton>
-          <IconButton sx={utilityIconSx}>
-            <MoreHorizRoundedIcon />
-          </IconButton>
-          <IconButton sx={utilityIconSx}>
-            <Badge badgeContent={2} color="success">
-              <NotificationsRoundedIcon />
-            </Badge>
-          </IconButton>
-          <IconButton aria-label="User menu" onClick={openUserMenu} sx={utilityIconSx}>
-            <Avatar />
-          </IconButton>
+
+          <Divider orientation="vertical" flexItem sx={{ borderColor: '#d9e1ec', mx: 0.25 }} />
+
+          <Stack direction="row" spacing={1.5} alignItems="center">
+            <IconButton sx={utilityIconSx}>
+              <Badge badgeContent={2} color="success">
+                <NotificationsRoundedIcon />
+              </Badge>
+            </IconButton>
+            <IconButton aria-label="User menu" onClick={openUserMenu} sx={utilityIconSx}>
+              <Avatar />
+            </IconButton>
+          </Stack>
         </Stack>
       </Toolbar>
 
-      <Toolbar sx={{ minHeight: 74, px: { xs: 1.25, md: 2.5 }, bgcolor: '#f8fafc' }}>
+      <Toolbar
+        sx={{
+          minHeight: 74,
+          px: { xs: 2, md: 3 },
+          pt: 0.5,
+          pb: 0.5,
+          mt: 0,
+          bgcolor: '#f8fafc',
+        }}
+      >
         <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ width: '100%' }}>
-          <Stack direction="row" spacing={1} alignItems="center" sx={{ overflowX: 'auto', py: 0.25 }}>
+          <Stack direction="row" spacing={1.25} alignItems="center" sx={{ overflowX: 'auto', py: 0.25, pl: 0.25 }}>
             <Box
               sx={{
                 bgcolor: '#10b981',

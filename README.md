@@ -49,13 +49,9 @@ Open the local Vite URL shown in the terminal.
 
 ## Production build
 
-
-
-
-
 ```bash
 npm run build
-npm run preview     h
+npm run preview
 ```
 
 A production build was generated successfully in `dist/` during packaging.
