@@ -3,20 +3,43 @@ import { MemoryRouter } from 'react-router-dom';
 import App from './App';
 import { NotificationProvider } from './contexts/NotificationContext';
 import { ThemeModeProvider } from './contexts/ThemeModeContext';
+import { AuthProvider } from './auth/AuthContext';
+
+const AUTH_TOKEN_KEY = 'faithhub.auth.token';
+const AUTH_WORKSPACE_KEY = 'faithhub.auth.workspace';
+
+function seedAuthSession() {
+  localStorage.setItem(AUTH_TOKEN_KEY, 'mock-token-leadership@faithhub.dev');
+  localStorage.setItem(
+    AUTH_WORKSPACE_KEY,
+    JSON.stringify({
+      campus: 'Kampala Central',
+      brand: 'FaithHub',
+    }),
+  );
+}
 
 function renderApp(initialEntries: string[]) {
+  seedAuthSession();
+
   return render(
     <ThemeModeProvider>
-      <NotificationProvider>
-        <MemoryRouter initialEntries={initialEntries}>
-          <App />
-        </MemoryRouter>
-      </NotificationProvider>
+      <AuthProvider>
+        <NotificationProvider>
+          <MemoryRouter initialEntries={initialEntries}>
+            <App />
+          </MemoryRouter>
+        </NotificationProvider>
+      </AuthProvider>
     </ThemeModeProvider>,
   );
 }
 
 describe('App smoke routing', () => {
+  beforeEach(() => {
+    localStorage.clear();
+  });
+
   it('renders the app successfully', async () => {
     renderApp(['/faithhub/home-landing']);
     expect(await screen.findByText(/A premium digital home for faith, teaching, community, and giving/i)).toBeInTheDocument();
