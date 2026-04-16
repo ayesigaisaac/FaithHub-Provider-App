@@ -15,10 +15,14 @@ import {
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import NotificationsRoundedIcon from '@mui/icons-material/NotificationsRounded';
+import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded';
 import PlayCircleOutlineRoundedIcon from '@mui/icons-material/PlayCircleOutlineRounded';
 import EventNoteRoundedIcon from '@mui/icons-material/EventNoteRounded';
 import GroupsRoundedIcon from '@mui/icons-material/GroupsRounded';
 import VolunteerActivismRoundedIcon from '@mui/icons-material/VolunteerActivismRounded';
+import AppsRoundedIcon from '@mui/icons-material/AppsRounded';
+import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
+import KeyboardDoubleArrowLeftRoundedIcon from '@mui/icons-material/KeyboardDoubleArrowLeftRounded';
 import DomainRoundedIcon from '@mui/icons-material/DomainRounded';
 import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded';
 import { useMemo, useState, type MouseEvent } from 'react';
@@ -33,6 +37,12 @@ type ProviderTopbarProps = {
 };
 
 const secondaryTabs = [
+  {
+    label: 'Dashboard',
+    to: '/faithhub/provider/dashboard',
+    sections: ['Foundation & Mission Control', 'Content Structure & Teaching Creation'],
+    icon: <DashboardRoundedIcon fontSize="small" />,
+  },
   {
     label: 'Streams',
     to: '/faithhub/provider/live-dashboard',
@@ -112,7 +122,7 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
         sx={{
           minHeight: 76,
           px: { xs: 2, md: 3 },
-          py: 0.75,
+          py: 0.9,
           borderBottom: '1px solid',
           borderColor: 'divider',
         }}
@@ -139,9 +149,17 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
           </Stack>
 
           <Divider orientation="vertical" flexItem sx={{ borderColor: '#d9e1ec', mx: 0.25 }} />
-          <IconButton onClick={onOpenSearch} sx={utilityIconSx}>
-            <SearchRoundedIcon />
-          </IconButton>
+          <Stack direction="row" spacing={1.5} alignItems="center">
+            <IconButton onClick={onOpenSearch} sx={utilityIconSx}>
+              <SearchRoundedIcon />
+            </IconButton>
+            <IconButton sx={utilityIconSx}>
+              <AppsRoundedIcon />
+            </IconButton>
+            <IconButton sx={utilityIconSx}>
+              <MoreHorizRoundedIcon />
+            </IconButton>
+          </Stack>
 
           <Divider orientation="vertical" flexItem sx={{ borderColor: '#d9e1ec', mx: 0.25 }} />
 
@@ -162,14 +180,14 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
         sx={{
           minHeight: 62,
           px: { xs: 2, md: 3 },
-          py: 0.25,
+          py: 0.35,
           mt: 0,
           bgcolor: '#f8fafc',
           borderTop: '1px solid',
           borderColor: '#e5e7eb',
         }}
       >
-        <Stack direction="row" alignItems="center" sx={{ width: '100%' }}>
+        <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ width: '100%' }}>
           <Stack
             direction="row"
             spacing={1.25}
@@ -183,6 +201,22 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
               '&::-webkit-scrollbar-track': { backgroundColor: 'transparent' },
             }}
           >
+            <Box
+              sx={{
+                bgcolor: '#10b981',
+                color: '#fff',
+                borderRadius: 999,
+                px: 1.9,
+                py: 0.6,
+                fontSize: 17,
+                fontWeight: 800,
+                lineHeight: 1,
+                border: '1px solid #0ea673',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              FaithHub Provider
+            </Box>
             {secondaryTabs.map((tab) => (
               <Button
                 key={tab.label}
@@ -214,6 +248,9 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
               </Button>
             ))}
           </Stack>
+          <IconButton sx={{ border: '1px solid', borderColor: '#cfd8e3', bgcolor: '#fff', width: 48, height: 48 }}>
+            <KeyboardDoubleArrowLeftRoundedIcon />
+          </IconButton>
         </Stack>
       </Toolbar>
 
