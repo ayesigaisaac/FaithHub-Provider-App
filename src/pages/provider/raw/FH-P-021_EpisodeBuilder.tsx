@@ -755,6 +755,62 @@ function scoreReadiness(draft: EpisodeDraft) {
   return Math.round((hits / checks.length) * 100);
 }
 
+function sanitizeEpisodeDraft(draft: EpisodeDraft): EpisodeDraft {
+  let mutated = false;
+  const next: EpisodeDraft = { ...draft };
+
+  if (!Array.isArray(draft.teachingOutcomes)) {
+    next.teachingOutcomes = [];
+    mutated = true;
+  }
+  if (!Array.isArray(draft.structure)) {
+    next.structure = [];
+    mutated = true;
+  }
+  if (!Array.isArray(draft.liveAttachments)) {
+    next.liveAttachments = [];
+    mutated = true;
+  }
+  if (!Array.isArray(draft.resources)) {
+    next.resources = [];
+    mutated = true;
+  }
+  if (!Array.isArray(draft.collaborators)) {
+    next.collaborators = [];
+    mutated = true;
+  }
+  if (!Array.isArray(draft.tags)) {
+    next.tags = [];
+    mutated = true;
+  }
+  if (!Array.isArray(draft.searchHints)) {
+    next.searchHints = [];
+    mutated = true;
+  }
+  if (!Array.isArray(draft.aiSummary)) {
+    next.aiSummary = [];
+    mutated = true;
+  }
+  if (!Array.isArray(draft.audienceTarget)) {
+    next.audienceTarget = [];
+    mutated = true;
+  }
+  if (typeof draft.accessModel !== "string") {
+    next.accessModel = ACCESS_MODELS[0];
+    mutated = true;
+  }
+  if (typeof draft.releaseWindow !== "string") {
+    next.releaseWindow = RELEASE_WINDOWS[0];
+    mutated = true;
+  }
+  if (typeof draft.blueprintId !== "string") {
+    next.blueprintId = PRESET_BLUEPRINTS[0].id;
+    mutated = true;
+  }
+
+  return mutated ? next : draft;
+}
+
 export default function EpisodeBuilderPage() {
   const [step, setStep] = useState<StepKey>("structure");
   const [previewMode, setPreviewMode] = useState<PreviewMode>("desktop");
@@ -800,6 +856,10 @@ export default function EpisodeBuilderPage() {
       "Mark the prayer response as the cleanest replay-to-clip transition point.",
     ],
   });
+
+  useEffect(() => {
+    setDraft((current) => sanitizeEpisodeDraft(current));
+  }, []);
 
   useEffect(() => {
     if (!toast) return;

@@ -22,35 +22,28 @@ export function ProviderShellLayout() {
     <Box
       sx={{
         display: 'flex',
+        flexDirection: 'column',
         minHeight: '100vh',
+        maxHeight: '100vh',
+        overflow: 'hidden',
         bgcolor: '#dfe9e8',
         backgroundImage: 'linear-gradient(180deg, #edf3f2 0%, #dfe9e8 45%, #d7e4e3 100%)',
       }}
     >
-      <ProviderSidebar open={mobileOpen} onClose={() => setMobileOpen(false)} />
+      <ProviderTopbar
+        current={current}
+        onOpenSidebar={() => setMobileOpen(true)}
+        onOpenSearch={() => setSearchOpen(true)}
+      />
 
-      <Box
-        component="main"
-        sx={{
-          flex: 1,
-          minWidth: 0,
-          width: '100%',
-          minHeight: '100vh',
-          maxHeight: '100vh',
-          display: 'flex',
-          flexDirection: 'column',
-          overflow: 'hidden',
-        }}
-      >
-        <ProviderTopbar
-          current={current}
-          onOpenSidebar={() => setMobileOpen(true)}
-          onOpenSearch={() => setSearchOpen(true)}
-        />
+      <Box sx={{ flex: 1, minHeight: 0, display: 'flex', minWidth: 0 }}>
+        <ProviderSidebar open={mobileOpen} onClose={() => setMobileOpen(false)} />
 
         <Box
+          component="main"
           sx={{
             flex: 1,
+            minWidth: 0,
             minHeight: 0,
             overflowY: 'auto',
             overflowX: 'hidden',
@@ -72,7 +65,7 @@ export function ProviderShellLayout() {
               boxShadow: '0 20px 40px -36px rgba(15, 23, 42, 0.55)',
             }}
           >
-            <ErrorBoundary label={current?.title}>
+            <ErrorBoundary key={location.pathname} label={current?.title}>
               <MediaFallbackContainer>
                 <Suspense fallback={<PageLoader title={`Loading ${current?.title ?? 'workspace page'}...`} />}>
                   <Outlet />

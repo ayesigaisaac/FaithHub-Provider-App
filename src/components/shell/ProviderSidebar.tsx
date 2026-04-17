@@ -17,6 +17,8 @@ import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { getProviderPagesBySection, providerSections } from '@/navigation/providerPages';
 
 const drawerWidth = 318;
+const topbarOffsetMobile = 110;
+const topbarOffsetDesktop = 138;
 
 const sectionLabelMap: Partial<Record<(typeof providerSections)[number], string>> = {
   'Foundation & Mission Control': 'Core',
@@ -163,6 +165,8 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
           '& .MuiDrawer-paper': {
             width: drawerWidth,
             maxWidth: '100vw',
+            top: `${topbarOffsetMobile}px`,
+            height: `calc(100% - ${topbarOffsetMobile}px)`,
             borderRight: '1px solid',
             borderColor: 'divider',
           },
@@ -180,6 +184,8 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
           '& .MuiDrawer-paper': {
             width: drawerWidth,
             boxSizing: 'border-box',
+            top: `${topbarOffsetDesktop}px`,
+            height: `calc(100% - ${topbarOffsetDesktop}px)`,
             borderRight: '1px solid',
             borderColor: 'divider',
           },
