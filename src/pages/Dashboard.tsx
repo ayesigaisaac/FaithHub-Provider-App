@@ -78,7 +78,7 @@ const badgeToneClass: Record<AlertBadge['tone'], string> = {
 
 function DashboardHeader() {
   return (
-    <header className="flex flex-col gap-4 rounded-xl border border-slate-200 bg-white p-6 sm:flex-row sm:items-end sm:justify-between">
+    <header className="flex flex-col gap-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_8px_24px_rgba(15,23,42,0.04)] sm:flex-row sm:items-end sm:justify-between">
       <div>
         <h1 className="text-2xl font-semibold tracking-tight text-slate-900">Overview Dashboard</h1>
         <p className="mt-1 text-sm text-slate-500">
@@ -87,7 +87,7 @@ function DashboardHeader() {
       </div>
       <button
         type="button"
-        className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-emerald-700"
+        className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-emerald-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2"
       >
         <Sparkles className="h-4 w-4" />
         Create Report
@@ -98,7 +98,7 @@ function DashboardHeader() {
 
 function AlertsRow() {
   return (
-    <section className="flex flex-wrap items-center gap-3">
+    <section className="flex flex-wrap items-center gap-3" aria-label="Status alerts" aria-live="polite">
       {alerts.map((alert) => (
         <span
           key={alert.label}
@@ -113,9 +113,12 @@ function AlertsRow() {
 
 function OverviewGrid() {
   return (
-    <section className="grid gap-6 md:grid-cols-2 2xl:grid-cols-4">
+    <section className="grid gap-6 md:grid-cols-2 2xl:grid-cols-4" aria-label="Overview metrics">
       {overviewCards.map((card) => (
-        <article key={card.title} className="rounded-xl border border-slate-200 bg-white p-6">
+        <article
+          key={card.title}
+          className="rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_8px_24px_rgba(15,23,42,0.04)] transition hover:-translate-y-0.5 hover:shadow-[0_16px_36px_rgba(15,23,42,0.08)]"
+        >
           <div className="flex items-start justify-between gap-3">
             <div>
               <p className="text-sm font-medium text-slate-500">{card.title}</p>
@@ -132,15 +135,18 @@ function OverviewGrid() {
 
 function PipelineGrid() {
   return (
-    <section className="grid gap-6 xl:grid-cols-3">
+    <section className="grid gap-6 xl:grid-cols-3" aria-label="Operational pipeline cards">
       {pipelineCards.map((card) => (
-        <article key={card.title} className="rounded-xl border border-slate-200 bg-white p-6">
+        <article
+          key={card.title}
+          className="rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_8px_24px_rgba(15,23,42,0.04)] transition hover:-translate-y-0.5 hover:shadow-[0_16px_36px_rgba(15,23,42,0.08)]"
+        >
           <p className="text-sm font-medium text-slate-500">{card.caption}</p>
           <h2 className="mt-2 text-lg font-semibold text-slate-900">{card.title}</h2>
           <p className="mt-2 text-2xl font-semibold tracking-tight text-slate-900">{card.metric}</p>
           <button
             type="button"
-            className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-emerald-700 hover:text-emerald-800"
+            className="mt-5 inline-flex items-center gap-1 rounded-lg text-sm font-medium text-emerald-700 hover:text-emerald-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2"
           >
             View details
             <ArrowRight className="h-4 w-4" />
