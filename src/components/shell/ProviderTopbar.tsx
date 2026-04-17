@@ -4,7 +4,6 @@ import {
   Badge,
   Box,
   Button,
-  Divider,
   IconButton,
   Menu,
   MenuItem,
@@ -13,18 +12,13 @@ import {
   Typography,
 } from '@mui/material';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
-import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import NotificationsRoundedIcon from '@mui/icons-material/NotificationsRounded';
 import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded';
 import PlayCircleOutlineRoundedIcon from '@mui/icons-material/PlayCircleOutlineRounded';
 import EventNoteRoundedIcon from '@mui/icons-material/EventNoteRounded';
 import GroupsRoundedIcon from '@mui/icons-material/GroupsRounded';
 import VolunteerActivismRoundedIcon from '@mui/icons-material/VolunteerActivismRounded';
-import AppsRoundedIcon from '@mui/icons-material/AppsRounded';
-import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
 import KeyboardDoubleArrowLeftRoundedIcon from '@mui/icons-material/KeyboardDoubleArrowLeftRounded';
-import DomainRoundedIcon from '@mui/icons-material/DomainRounded';
-import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded';
 import { useMemo, useState, type MouseEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/auth/useAuth';
@@ -73,15 +67,6 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
   const navigate = useNavigate();
   const { user, role, workspace, logout, setWorkspace } = useAuth();
   const [userAnchor, setUserAnchor] = useState<null | HTMLElement>(null);
-  const utilityButtonSx = {
-    borderRadius: 3,
-    px: 1.2,
-    minHeight: 48,
-    borderColor: '#cfe3db',
-    color: '#334155',
-    textTransform: 'none',
-    '&:hover': { borderColor: '#9fd7c5', bgcolor: '#f8fbfa' },
-  } as const;
   const utilityIconSx = {
     border: '1px solid',
     borderColor: '#d9e1ec',
@@ -102,6 +87,7 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
     .join('')
     .slice(0, 2)
     .toUpperCase() || 'U';
+  void onOpenSearch;
 
   const openUserMenu = (event: MouseEvent<HTMLButtonElement>) => setUserAnchor(event.currentTarget);
   const closeUserMenu = () => setUserAnchor(null);
@@ -138,41 +124,15 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
           </Box>
         </Stack>
 
-        <Stack direction="row" alignItems="center" spacing={1.5}>
-          <Stack direction="row" spacing={1.5} alignItems="center">
-            <Button variant="outlined" endIcon={<KeyboardArrowDownRoundedIcon />} sx={utilityButtonSx}>
-              <DomainRoundedIcon />
-            </Button>
-            <Button variant="outlined" endIcon={<KeyboardArrowDownRoundedIcon />} sx={utilityButtonSx}>
-              <Avatar sx={{ width: 32, height: 32, bgcolor: '#111827' }}>{initials}</Avatar>
-            </Button>
-          </Stack>
-
-          <Divider orientation="vertical" flexItem sx={{ borderColor: '#d9e1ec', mx: 0.25 }} />
-          <Stack direction="row" spacing={1.5} alignItems="center">
-            <IconButton onClick={onOpenSearch} sx={utilityIconSx}>
-              <SearchRoundedIcon />
-            </IconButton>
-            <IconButton sx={utilityIconSx}>
-              <AppsRoundedIcon />
-            </IconButton>
-            <IconButton sx={utilityIconSx}>
-              <MoreHorizRoundedIcon />
-            </IconButton>
-          </Stack>
-
-          <Divider orientation="vertical" flexItem sx={{ borderColor: '#d9e1ec', mx: 0.25 }} />
-
-          <Stack direction="row" spacing={1.5} alignItems="center">
-            <IconButton sx={utilityIconSx}>
-              <Badge badgeContent={2} color="success">
-                <NotificationsRoundedIcon />
-              </Badge>
-            </IconButton>
-            <IconButton aria-label="User menu" onClick={openUserMenu} sx={utilityIconSx}>
-              <Avatar />
-            </IconButton>
-          </Stack>
+        <Stack direction="row" spacing={1.5} alignItems="center">
+          <IconButton sx={utilityIconSx}>
+            <Badge badgeContent={2} color="success">
+              <NotificationsRoundedIcon />
+            </Badge>
+          </IconButton>
+          <IconButton aria-label="User menu" onClick={openUserMenu} sx={utilityIconSx}>
+            <Avatar sx={{ width: 32, height: 32, bgcolor: '#111827' }}>{initials}</Avatar>
+          </IconButton>
         </Stack>
       </Toolbar>
 

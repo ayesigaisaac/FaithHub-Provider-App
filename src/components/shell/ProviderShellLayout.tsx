@@ -1,10 +1,9 @@
-import { Box, Toolbar } from '@mui/material';
+import { Box, IconButton } from '@mui/material';
+import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import { Suspense, useMemo, useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { findProviderPageByPath } from '@/navigation/providerPages';
-import { ProviderSidebar, providerDrawerWidth } from './ProviderSidebar';
-import { ProviderTopbar } from './ProviderTopbar';
-import { SearchCommandDialog } from './SearchCommandDialog';
+import { ProviderSidebar } from './ProviderSidebar';
 import { QuickCreateDial } from './QuickCreateDial';
 import { MobileBottomNav } from './MobileBottomNav';
 import { PageLoader } from '@/components/PageLoader';
@@ -14,7 +13,6 @@ import { MediaFallbackContainer } from '@/components/MediaFallbackContainer';
 export function ProviderShellLayout() {
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
 
   const current = useMemo(() => findProviderPageByPath(location.pathname), [location.pathname]);
 
@@ -30,30 +28,29 @@ export function ProviderShellLayout() {
       <ProviderSidebar open={mobileOpen} onClose={() => setMobileOpen(false)} />
 
       <Box component="main" sx={{ flex: 1, minWidth: 0, width: '100%' }}>
-        <Box
+        <IconButton
+          onClick={() => setMobileOpen(true)}
+          aria-label="Open navigation"
           sx={{
+            display: { xs: 'inline-flex', md: 'none' },
             position: 'fixed',
-            top: 0,
-            left: { md: `${providerDrawerWidth}px` },
-            right: 0,
+            top: 12,
+            left: 12,
             zIndex: 1200,
-            backdropFilter: 'saturate(130%) blur(4px)',
-            boxShadow: '0 10px 24px -22px rgba(15, 23, 42, 0.45)',
+            bgcolor: '#ffffff',
+            border: '1px solid #dbe2ea',
+            boxShadow: '0 8px 16px -12px rgba(15, 23, 42, 0.45)',
+            '&:hover': { bgcolor: '#f8fafc' },
           }}
         >
-          <ProviderTopbar
-            current={current}
-            onOpenSidebar={() => setMobileOpen(true)}
-            onOpenSearch={() => setSearchOpen(true)}
-          />
-        </Box>
+          <MenuRoundedIcon />
+        </IconButton>
 
-        <Toolbar sx={{ minHeight: { xs: 132, md: 136 } }} />
         <Box
           sx={{
             px: { xs: 0.75, md: 1 },
             pb: { xs: 8, md: 2.5 },
-            pt: { xs: 0.25, md: 0.25 },
+            pt: { xs: 0.75, md: 0.75 },
             maxWidth: 1700,
             mx: 'auto',
           }}
@@ -66,7 +63,7 @@ export function ProviderShellLayout() {
               borderColor: 'divider',
               bgcolor: '#f8faf9',
               p: { xs: 1.5, md: 1.75 },
-              minHeight: 'calc(100vh - 164px)',
+              minHeight: 'calc(100vh - 40px)',
               boxShadow: '0 20px 40px -36px rgba(15, 23, 42, 0.55)',
             }}
           >
@@ -81,7 +78,6 @@ export function ProviderShellLayout() {
         </Box>
       </Box>
 
-      <SearchCommandDialog open={searchOpen} onClose={() => setSearchOpen(false)} />
       <QuickCreateDial />
       <MobileBottomNav />
     </Box>
