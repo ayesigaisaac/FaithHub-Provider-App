@@ -182,6 +182,8 @@ const COVER_LIBRARY = [
 type StepKey = (typeof STEP_ORDER)[number]["key"];
 type ProviderProfile = (typeof PROVIDER_PROFILES)[number]["id"];
 type ChannelId = (typeof CHANNEL_LIBRARY)[number]["id"];
+type StepStatus = "not_started" | "in_progress" | "blocked" | "complete";
+type PreviewViewport = "mobile" | "tablet" | "desktop";
 
 type Campus = {
   id: string;
@@ -493,12 +495,16 @@ function StepRail({
   step,
   setStep,
   sectionScores,
+  stepStatuses,
+  blockersByStep,
   overallProgress,
   blockers,
 }: {
   step: StepKey;
   setStep: (s: StepKey) => void;
   sectionScores: Record<StepKey, number>;
+  stepStatuses: Record<StepKey, StepStatus>;
+  blockersByStep: Record<StepKey, string[]>;
   overallProgress: number;
   blockers: string[];
 }) {
@@ -524,7 +530,16 @@ function StepRail({
         {STEP_ORDER.map((item) => {
           const score = Math.round(sectionScores[item.key] * 100);
           const isActive = step === item.key;
-          const done = score >= 90;
+          const status = stepStatuses[item.key];
+          const firstBlocker = blockersByStep[item.key][0];
+          const statusLabel =
+            status === "complete"
+              ? "Done"
+              : status === "blocked"
+                ? "Blocked"
+                : status === "in_progress"
+                  ? "In progress"
+                  : "Not started";
           return (
             <button
               key={item.key}
@@ -543,19 +558,26 @@ function StepRail({
                     {item.label}
                   </div>
                   <div className="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">
-                    {done ? "Ready" : score >= 50 ? "In progress" : "Needs setup"}
+                    {statusLabel}
                   </div>
+                  {firstBlocker ? (
+                    <div className="mt-1 truncate text-[10px] font-medium text-orange-700 dark:text-orange-300">
+                      {firstBlocker}
+                    </div>
+                  ) : null}
                 </div>
                 <div className="flex items-center gap-2">
                   <span
                     className={cx(
                       "rounded-full px-2 py-0.5 text-[10px] font-bold",
-                      done
+                      status === "complete"
                         ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300"
-                        : "bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300",
+                        : status === "blocked"
+                          ? "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300"
+                          : "bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300",
                     )}
                   >
-                    {score}%
+                    {status === "complete" ? "Done" : `${score}%`}
                   </span>
                   <ChevronRight className="h-4 w-4 text-slate-400" />
                 </div>
@@ -593,6 +615,8 @@ function PhonePreview({
   campuses,
   givingVisible,
   liveEnabled,
+  viewport,
+  launchState = "Draft",
 }: {
   institutionName: string;
   handle: string;
@@ -604,9 +628,18 @@ function PhonePreview({
   campuses: Campus[];
   givingVisible: boolean;
   liveEnabled: boolean;
+  viewport: PreviewViewport;
+  launchState?: string;
 }) {
+  const viewportMaxWidth =
+    viewport === "desktop"
+      ? "max-w-[520px]"
+      : viewport === "tablet"
+        ? "max-w-[440px]"
+        : "max-w-[360px]";
+
   return (
-    <div className="mx-auto w-full max-w-[360px] md:max-w-[400px]">
+    <div className={`mx-auto w-full ${viewportMaxWidth}`}>
       <div className="rounded-[34px] bg-slate-950 p-3 shadow-[0_18px_60px_rgba(15,23,42,0.28)]">
         <div className="overflow-hidden rounded-[28px] bg-white dark:bg-slate-900">
           <div className="relative">
@@ -659,7 +692,7 @@ function PhonePreview({
                   Launch state
                 </div>
                 <div className="mt-1 text-[18px] font-black text-slate-900 dark:text-slate-100">
-                  Draft
+                  {launchState}
                 </div>
               </div>
             </div>
@@ -832,10 +865,46 @@ export default function ProviderOnboardingPage() {
 
   const [toast, setToast] = useState<string | null>(null);
   const [lastSaved, setLastSaved] = useState("Autosaved moments ago");
+  const [previewPaneWidth, setPreviewPaneWidth] = useState<number>(() => {
+    if (typeof window === "undefined") return 360;
+    const raw = window.localStorage.getItem("fh.provider.onboarding.previewWidth");
+    const parsed = raw ? Number(raw) : 360;
+    return Number.isFinite(parsed) ? Math.min(520, Math.max(320, parsed)) : 360;
+  });
+  const [editorMinWidth, setEditorMinWidth] = useState<number>(() => {
+    if (typeof window === "undefined") return 700;
+    const raw = window.localStorage.getItem("fh.provider.onboarding.editorMinWidth");
+    const parsed = raw ? Number(raw) : 700;
+    return Number.isFinite(parsed) ? Math.min(980, Math.max(620, parsed)) : 700;
+  });
+  const [previewViewport, setPreviewViewport] = useState<PreviewViewport>(() => {
+    if (typeof window === "undefined") return "mobile";
+    const raw = window.localStorage.getItem("fh.provider.onboarding.previewViewport") as PreviewViewport | null;
+    return raw === "mobile" || raw === "tablet" || raw === "desktop" ? raw : "mobile";
+  });
+  const [compareWithPublished, setCompareWithPublished] = useState(false);
+
+  const isPreviewSynced = lastSaved.toLowerCase().includes("autosaved") || lastSaved.toLowerCase().includes("saved");
 
   const coverOption = useMemo(
     () => COVER_LIBRARY.find((item) => item.id === coverId) || COVER_LIBRARY[0],
     [coverId],
+  );
+
+  const publishedSnapshot = useMemo(
+    () => ({
+      institutionName: "Kampala Hope Cathedral",
+      handle: "@kampalahope",
+      faithFamily: "Christianity",
+      tradition: "Pentecostal",
+      mission:
+        "Raise disciples, serve families, and broadcast hope across Kampala, campuses, and online spaces.",
+      logoLetter: "KH",
+      givingVisible: true,
+      liveEnabled: true,
+      launchState: "Published",
+    }),
+    [],
   );
 
   const readinessSummary = useMemo(() => {
@@ -921,12 +990,35 @@ export default function ProviderOnboardingPage() {
       verification: verificationScore,
     };
 
-    const blockers: string[] = [];
-    if (identity < 0.85) blockers.push("Complete the institution identity block and public profile details.");
-    if (!roleSet.has("Owner") || !roleSet.has("Admin")) blockers.push("Assign at least one owner and one admin.");
-    if (!payoutReady || !payoutDocUploaded) blockers.push("Finish payout setup and upload the payout verification document.");
-    if (connectedChannels < 3) blockers.push("Connect at least three audience channels before launch.");
-    if (childFacingMinistry && !childPolicyReady) blockers.push("Enable child-facing safety defaults and upload the ministry safeguarding policy.");
+    const blockersByStep: Record<StepKey, string[]> = {
+      identity: [],
+      brand: [],
+      campuses: [],
+      team: [],
+      model: [],
+      giving: [],
+      channels: [],
+      verification: [],
+    };
+
+    if (identity < 0.85) {
+      blockersByStep.identity.push("Complete institution identity and public profile details.");
+    }
+    if (!roleSet.has("Owner") || !roleSet.has("Admin")) {
+      blockersByStep.team.push("Assign at least one owner and one admin.");
+    }
+    if (!payoutReady || !payoutDocUploaded) {
+      blockersByStep.giving.push("Finish payout setup and upload payout verification.");
+      blockersByStep.verification.push("Payout verification document is still pending.");
+    }
+    if (connectedChannels < 3) {
+      blockersByStep.channels.push("Connect at least three audience channels before launch.");
+    }
+    if (childFacingMinistry && !childPolicyReady) {
+      blockersByStep.verification.push("Enable child-safety defaults and upload safeguarding policy.");
+    }
+
+    const blockers = Object.values(blockersByStep).flat();
 
     const overallProgress = Math.round(
       (Object.values(sectionScores).reduce((sum, value) => sum + value, 0) /
@@ -934,7 +1026,7 @@ export default function ProviderOnboardingPage() {
         100,
     );
 
-    return { sectionScores, overallProgress, blockers, connectedChannels, consentReady };
+    return { sectionScores, overallProgress, blockers, blockersByStep, connectedChannels, consentReady };
   }, [
     institutionName,
     handle,
@@ -969,6 +1061,40 @@ export default function ProviderOnboardingPage() {
     childFacingMinistry,
     childPolicyReady,
   ]);
+
+  const stepStatuses = useMemo<Record<StepKey, StepStatus>>(() => {
+    const out = {} as Record<StepKey, StepStatus>;
+    STEP_ORDER.forEach((item) => {
+      const score = readinessSummary.sectionScores[item.key];
+      const blockers = readinessSummary.blockersByStep[item.key];
+      if (blockers.length > 0) {
+        out[item.key] = "blocked";
+        return;
+      }
+      if (score >= 0.9) {
+        out[item.key] = "complete";
+        return;
+      }
+      if (score <= 0.25) {
+        out[item.key] = "not_started";
+        return;
+      }
+      out[item.key] = "in_progress";
+    });
+    return out;
+  }, [readinessSummary.sectionScores, readinessSummary.blockersByStep]);
+
+  const continueStep = useMemo<StepKey>(() => {
+    const blocked = STEP_ORDER.find((item) => stepStatuses[item.key] === "blocked");
+    if (blocked) return blocked.key;
+    const nextIncomplete = STEP_ORDER.find((item) => stepStatuses[item.key] !== "complete");
+    return nextIncomplete?.key ?? step;
+  }, [stepStatuses, step]);
+
+  const continueStepMeta = useMemo(
+    () => STEP_ORDER.find((item) => item.key === continueStep) ?? STEP_ORDER[0],
+    [continueStep],
+  );
 
   const quickStatusChips = useMemo(
     () => [
@@ -1065,6 +1191,18 @@ export default function ProviderOnboardingPage() {
     const timer = window.setTimeout(() => setToast(null), 2400);
     return () => window.clearTimeout(timer);
   }, [toast]);
+
+  useEffect(() => {
+    window.localStorage.setItem("fh.provider.onboarding.previewWidth", String(previewPaneWidth));
+  }, [previewPaneWidth]);
+
+  useEffect(() => {
+    window.localStorage.setItem("fh.provider.onboarding.editorMinWidth", String(editorMinWidth));
+  }, [editorMinWidth]);
+
+  useEffect(() => {
+    window.localStorage.setItem("fh.provider.onboarding.previewViewport", previewViewport);
+  }, [previewViewport]);
 
   const canSubmit =
     readinessSummary.overallProgress >= 85 &&
@@ -2306,35 +2444,179 @@ export default function ProviderOnboardingPage() {
           </div>
         </div>
 
-        <div className="mt-5 grid gap-5 xl:grid-cols-[280px_minmax(0,1fr)_390px]">
+        <div
+          className="mt-5 grid gap-5 xl:grid-cols-[280px_minmax(var(--editor-min),1fr)_var(--preview-pane)]"
+          style={{ ["--preview-pane" as any]: `${previewPaneWidth}px`, ["--editor-min" as any]: `${editorMinWidth}px` }}
+        >
           <StepRail
             step={step}
             setStep={setStep}
             sectionScores={readinessSummary.sectionScores}
+            stepStatuses={stepStatuses}
+            blockersByStep={readinessSummary.blockersByStep}
             overallProgress={readinessSummary.overallProgress}
             blockers={readinessSummary.blockers}
           />
 
-          <div className="space-y-5">{renderCenter()}</div>
+          <div className="space-y-5">
+            <div className="sticky top-3 z-10 rounded-3xl border border-emerald-200 bg-emerald-50/95 p-4 backdrop-blur dark:border-emerald-900/40 dark:bg-emerald-900/20">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <div className="min-w-0">
+                  <div className="text-[12px] font-semibold uppercase tracking-[0.12em] text-emerald-700 dark:text-emerald-300">
+                    Continue where you left off
+                  </div>
+                  <div className="mt-1 text-[14px] font-semibold text-slate-900 dark:text-slate-100">
+                    {continueStepMeta.label}
+                  </div>
+                  <div className="mt-1 text-[11px] text-slate-600 dark:text-slate-400">
+                    {readinessSummary.blockersByStep[continueStep].length > 0
+                      ? readinessSummary.blockersByStep[continueStep][0]
+                      : "No blocker here. Finish this step to move onboarding forward."}
+                  </div>
+                </div>
+                <PrimaryButton onClick={() => setStep(continueStep)}>
+                  Continue setup
+                </PrimaryButton>
+              </div>
+            </div>
+            {renderCenter()}
+          </div>
 
           <div className="space-y-5">
             <Card
+              title="Preview controls"
+              subtitle="Tune layout width, viewport, and comparison while you edit onboarding."
+            >
+              <div className="space-y-4">
+                <div>
+                  <div className="mb-2 flex items-center justify-between text-[11px] font-semibold text-slate-700 dark:text-slate-300">
+                    <span>Preview pane width</span>
+                    <span>{previewPaneWidth}px</span>
+                  </div>
+                  <input
+                    type="range"
+                    min={320}
+                    max={520}
+                    step={10}
+                    value={previewPaneWidth}
+                    onChange={(event) => setPreviewPaneWidth(Number(event.target.value))}
+                    className="w-full accent-emerald-600"
+                  />
+                </div>
+
+                <div>
+                  <div className="mb-2 flex items-center justify-between text-[11px] font-semibold text-slate-700 dark:text-slate-300">
+                    <span>Editor minimum width</span>
+                    <span>{editorMinWidth}px</span>
+                  </div>
+                  <input
+                    type="range"
+                    min={620}
+                    max={980}
+                    step={20}
+                    value={editorMinWidth}
+                    onChange={(event) => setEditorMinWidth(Number(event.target.value))}
+                    className="w-full accent-emerald-600"
+                  />
+                </div>
+
+                <div className="flex flex-wrap gap-2">
+                  {(["mobile", "tablet", "desktop"] as const).map((viewport) => (
+                    <button
+                      key={viewport}
+                      type="button"
+                      onClick={() => setPreviewViewport(viewport)}
+                      className={cx(
+                        "rounded-xl border px-3 py-1.5 text-[11px] font-semibold transition-colors",
+                        previewViewport === viewport
+                          ? "border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-800 dark:bg-emerald-900/20 dark:text-emerald-300"
+                          : "border-slate-200 bg-white text-slate-600 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300",
+                      )}
+                    >
+                      {viewport}
+                    </button>
+                  ))}
+                </div>
+
+                <div className="flex flex-wrap gap-2">
+                  <SoftButton onClick={() => setCompareWithPublished((prev) => !prev)}>
+                    {compareWithPublished ? "Single preview" : "Compare with published"}
+                  </SoftButton>
+                  <PrimaryButton onClick={() => setToast("Opened full preview panel")}>
+                    Open full preview
+                  </PrimaryButton>
+                </div>
+              </div>
+            </Card>
+
+            <Card
               title="Provider preview"
               subtitle="See how the institution profile and provider workspace will feel before launch."
-              right={<Pill text="Live preview" tone="navy" icon={<Eye className="h-3.5 w-3.5" />} />}
+              right={
+                <Pill
+                  text={isPreviewSynced ? "Synced preview" : "Unsaved changes"}
+                  tone={isPreviewSynced ? "good" : "warn"}
+                  icon={<Eye className="h-3.5 w-3.5" />}
+                />
+              }
             >
-              <PhonePreview
-                institutionName={institutionName}
-                handle={handle}
-                faithFamily={faithFamily}
-                tradition={tradition}
-                mission={mission}
-                coverUrl={coverOption.url}
-                logoLetter={logoLetter}
-                campuses={campuses}
-                givingVisible={donationButtonsVisible}
-                liveEnabled={contentModes.includes("Live Sessions")}
-              />
+              {compareWithPublished ? (
+                <div className="grid gap-4 xl:grid-cols-2">
+                  <div>
+                    <div className="mb-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">
+                      Current draft
+                    </div>
+                    <PhonePreview
+                      institutionName={institutionName}
+                      handle={handle}
+                      faithFamily={faithFamily}
+                      tradition={tradition}
+                      mission={mission}
+                      coverUrl={coverOption.url}
+                      logoLetter={logoLetter}
+                      campuses={campuses}
+                      givingVisible={donationButtonsVisible}
+                      liveEnabled={contentModes.includes("Live Sessions")}
+                      viewport={previewViewport}
+                      launchState="Draft"
+                    />
+                  </div>
+                  <div>
+                    <div className="mb-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">
+                      Published profile
+                    </div>
+                    <PhonePreview
+                      institutionName={publishedSnapshot.institutionName}
+                      handle={publishedSnapshot.handle}
+                      faithFamily={publishedSnapshot.faithFamily}
+                      tradition={publishedSnapshot.tradition}
+                      mission={publishedSnapshot.mission}
+                      coverUrl={coverOption.url}
+                      logoLetter={publishedSnapshot.logoLetter}
+                      campuses={campuses}
+                      givingVisible={publishedSnapshot.givingVisible}
+                      liveEnabled={publishedSnapshot.liveEnabled}
+                      viewport={previewViewport}
+                      launchState={publishedSnapshot.launchState}
+                    />
+                  </div>
+                </div>
+              ) : (
+                <PhonePreview
+                  institutionName={institutionName}
+                  handle={handle}
+                  faithFamily={faithFamily}
+                  tradition={tradition}
+                  mission={mission}
+                  coverUrl={coverOption.url}
+                  logoLetter={logoLetter}
+                  campuses={campuses}
+                  givingVisible={donationButtonsVisible}
+                  liveEnabled={contentModes.includes("Live Sessions")}
+                  viewport={previewViewport}
+                  launchState="Draft"
+                />
+              )}
             </Card>
 
             <Card
