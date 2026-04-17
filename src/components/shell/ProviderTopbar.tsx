@@ -10,15 +10,18 @@ import {
   Stack,
   Toolbar,
   Typography,
+  useMediaQuery,
 } from '@mui/material';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import NotificationsRoundedIcon from '@mui/icons-material/NotificationsRounded';
+import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded';
 import PlayCircleOutlineRoundedIcon from '@mui/icons-material/PlayCircleOutlineRounded';
 import EventNoteRoundedIcon from '@mui/icons-material/EventNoteRounded';
 import GroupsRoundedIcon from '@mui/icons-material/GroupsRounded';
 import VolunteerActivismRoundedIcon from '@mui/icons-material/VolunteerActivismRounded';
 import KeyboardDoubleArrowLeftRoundedIcon from '@mui/icons-material/KeyboardDoubleArrowLeftRounded';
+import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
 import { useMemo, useState, type MouseEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/auth/useAuth';
@@ -67,16 +70,18 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
   const navigate = useNavigate();
   const { user, role, workspace, logout, setWorkspace } = useAuth();
   const [userAnchor, setUserAnchor] = useState<null | HTMLElement>(null);
+  const [sectionAnchor, setSectionAnchor] = useState<null | HTMLElement>(null);
+  const isTinyScreen = useMediaQuery('(max-width:399.95px)');
   const utilityIconSx = {
     border: '1px solid',
     borderColor: '#d9e1ec',
     borderRadius: 3,
-    width: 48,
-    height: 48,
+    width: { xs: 40, md: 48 },
+    height: { xs: 40, md: 48 },
     bgcolor: '#fff',
     color: '#475569',
     '&:hover': { borderColor: '#c1ccda', bgcolor: '#f8fafc' },
-  } as const;
+  };
   const activeTopTab = useMemo(
     () => secondaryTabs.find((tab) => tab.sections.includes(current?.section ?? '')),
     [current?.section]
@@ -87,17 +92,20 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
     .join('')
     .slice(0, 2)
     .toUpperCase() || 'U';
-  void onOpenSearch;
 
   const openUserMenu = (event: MouseEvent<HTMLButtonElement>) => setUserAnchor(event.currentTarget);
   const closeUserMenu = () => setUserAnchor(null);
+  const openSectionMenu = (event: MouseEvent<HTMLButtonElement>) => setSectionAnchor(event.currentTarget);
+  const closeSectionMenu = () => setSectionAnchor(null);
 
   return (
     <AppBar
-      position="static"
+      position="sticky"
       color="inherit"
       elevation={0}
       sx={{
+        top: 0,
+        zIndex: 1100,
         borderBottom: '1px solid',
         borderColor: 'divider',
         bgcolor: 'background.paper',
@@ -106,9 +114,9 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
     >
       <Toolbar
         sx={{
-          minHeight: 76,
-          px: { xs: 2, md: 3 },
-          py: 0.9,
+          minHeight: { xs: 60, md: 76 },
+          px: { xs: 1.25, md: 3 },
+          py: { xs: 0.35, md: 0.9 },
           borderBottom: '1px solid',
           borderColor: 'divider',
         }}
@@ -117,30 +125,33 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
           <IconButton sx={{ display: { md: 'none' } }} onClick={onOpenSidebar}>
             <MenuRoundedIcon />
           </IconButton>
-          <Avatar src="/assets/logo.svg" alt="FaithHub" sx={{ width: 46, height: 46 }} />
+          <Avatar src="/assets/logo.svg" alt="FaithHub" sx={{ width: { xs: 34, md: 46 }, height: { xs: 34, md: 46 } }} />
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            <Typography sx={{ fontWeight: 900, fontSize: 30, lineHeight: 0.9, color: '#13b981' }}>FaithHub</Typography>
-            <Typography sx={{ fontWeight: 800, fontSize: 28, lineHeight: 0.9, color: '#111827' }}>Provider</Typography>
+            <Typography sx={{ fontWeight: 900, fontSize: { sm: 22, md: 30 }, lineHeight: 0.9, color: '#13b981' }}>FaithHub</Typography>
+            <Typography sx={{ fontWeight: 800, fontSize: { sm: 20, md: 28 }, lineHeight: 0.9, color: '#111827' }}>Provider</Typography>
           </Box>
         </Stack>
 
-        <Stack direction="row" spacing={1.5} alignItems="center">
+        <Stack direction="row" spacing={{ xs: 0.75, md: 1.5 }} alignItems="center">
+          <IconButton aria-label="Open search" sx={utilityIconSx} onClick={onOpenSearch}>
+            <SearchRoundedIcon />
+          </IconButton>
           <IconButton sx={utilityIconSx}>
             <Badge badgeContent={2} color="success">
               <NotificationsRoundedIcon />
             </Badge>
           </IconButton>
           <IconButton aria-label="User menu" onClick={openUserMenu} sx={utilityIconSx}>
-            <Avatar sx={{ width: 32, height: 32, bgcolor: '#111827' }}>{initials}</Avatar>
+            <Avatar sx={{ width: { xs: 28, md: 32 }, height: { xs: 28, md: 32 }, bgcolor: '#111827' }}>{initials}</Avatar>
           </IconButton>
         </Stack>
       </Toolbar>
 
       <Toolbar
         sx={{
-          minHeight: 62,
-          px: { xs: 2, md: 3 },
-          py: 0.35,
+          minHeight: { xs: 50, md: 62 },
+          px: { xs: 1.25, md: 3 },
+          py: { xs: 0.2, md: 0.35 },
           mt: 0,
           bgcolor: '#f8fafc',
           borderTop: '1px solid',
@@ -148,71 +159,135 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
         }}
       >
         <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ width: '100%' }}>
-          <Stack
-            direction="row"
-            spacing={1.25}
-            alignItems="center"
-            sx={{
-              overflowX: 'auto',
-              py: 0.25,
-              pl: 0.25,
-              '&::-webkit-scrollbar': { height: 7 },
-              '&::-webkit-scrollbar-thumb': { backgroundColor: '#cbd5e1', borderRadius: 10 },
-              '&::-webkit-scrollbar-track': { backgroundColor: 'transparent' },
-            }}
-          >
-            <Box
-              sx={{
-                bgcolor: '#10b981',
-                color: '#fff',
-                borderRadius: 999,
-                px: 1.9,
-                py: 0.6,
-                fontSize: 17,
-                fontWeight: 800,
-                lineHeight: 1,
-                border: '1px solid #0ea673',
-                whiteSpace: 'nowrap',
-              }}
-            >
-              FaithHub Provider
-            </Box>
-            {secondaryTabs.map((tab) => (
+          {isTinyScreen ? (
+            <Stack direction="row" spacing={1} alignItems="center" sx={{ width: '100%' }}>
               <Button
-                key={tab.label}
-                startIcon={tab.icon}
+                fullWidth
                 variant="outlined"
-                onClick={() => navigate(tab.to)}
+                startIcon={activeTopTab?.icon ?? secondaryTabs[0].icon}
+                onClick={() => navigate(activeTopTab?.to ?? secondaryTabs[0].to)}
                 sx={{
+                  justifyContent: 'flex-start',
                   borderRadius: 999,
                   textTransform: 'none',
                   fontWeight: 800,
-                  minHeight: 44,
-                  px: 2.1,
+                  minHeight: 34,
+                  px: 1.3,
                   borderWidth: 1,
-                  borderColor: activeTopTab?.label === tab.label ? '#10b981' : '#cfd8e3',
-                  bgcolor: activeTopTab?.label === tab.label ? '#10b981' : '#ffffff',
-                  color: activeTopTab?.label === tab.label ? '#ffffff' : '#111827',
-                  whiteSpace: 'nowrap',
-                  '& .MuiButton-startIcon': {
-                    color: activeTopTab?.label === tab.label ? '#ffffff' : '#0f172a',
-                    mr: 0.9,
-                  },
-                  '&:hover': {
-                    borderColor: activeTopTab?.label === tab.label ? '#0f9f72' : '#b9c6d8',
-                    bgcolor: activeTopTab?.label === tab.label ? '#0f9f72' : '#f3f6fa',
-                  },
+                  borderColor: '#cfd8e3',
+                  bgcolor: '#fff',
+                  color: '#111827',
                 }}
               >
-                {tab.label}
+                {activeTopTab?.label ?? 'Dashboard'}
               </Button>
-            ))}
-          </Stack>
-          <IconButton sx={{ border: '1px solid', borderColor: '#cfd8e3', bgcolor: '#fff', width: 48, height: 48 }}>
-            <KeyboardDoubleArrowLeftRoundedIcon />
-          </IconButton>
+              <IconButton
+                aria-label="Open sections menu"
+                onClick={openSectionMenu}
+                sx={{
+                  border: '1px solid',
+                  borderColor: '#cfd8e3',
+                  bgcolor: '#fff',
+                  width: 34,
+                  height: 34,
+                }}
+              >
+                <MoreHorizRoundedIcon fontSize="small" />
+              </IconButton>
+            </Stack>
+          ) : (
+            <>
+              <Stack
+                direction="row"
+                spacing={1.25}
+                alignItems="center"
+                sx={{
+                  overflowX: 'auto',
+                  py: 0.25,
+                  pl: 0.25,
+                  '&::-webkit-scrollbar': { height: 7 },
+                  '&::-webkit-scrollbar-thumb': { backgroundColor: '#cbd5e1', borderRadius: 10 },
+                  '&::-webkit-scrollbar-track': { backgroundColor: 'transparent' },
+                }}
+              >
+                <Box
+                  sx={{
+                    bgcolor: '#10b981',
+                    color: '#fff',
+                    borderRadius: 999,
+                    px: { xs: 1.35, md: 1.9 },
+                    py: { xs: 0.45, md: 0.6 },
+                    fontSize: { xs: 14, md: 17 },
+                    fontWeight: 800,
+                    lineHeight: 1,
+                    border: '1px solid #0ea673',
+                    whiteSpace: 'nowrap',
+                  }}
+                >
+                  FaithHub Provider
+                </Box>
+                {secondaryTabs.map((tab) => (
+                  <Button
+                    key={tab.label}
+                    startIcon={tab.icon}
+                    variant="outlined"
+                    onClick={() => navigate(tab.to)}
+                    sx={{
+                      borderRadius: 999,
+                      textTransform: 'none',
+                      fontWeight: 800,
+                      minHeight: { xs: 36, md: 44 },
+                      px: { xs: 1.35, md: 2.1 },
+                      fontSize: { xs: 13, md: 16 },
+                      borderWidth: 1,
+                      borderColor: activeTopTab?.label === tab.label ? '#10b981' : '#cfd8e3',
+                      bgcolor: activeTopTab?.label === tab.label ? '#10b981' : '#ffffff',
+                      color: activeTopTab?.label === tab.label ? '#ffffff' : '#111827',
+                      whiteSpace: 'nowrap',
+                      '& .MuiButton-startIcon': {
+                        color: activeTopTab?.label === tab.label ? '#ffffff' : '#0f172a',
+                        mr: 0.9,
+                      },
+                      '&:hover': {
+                        borderColor: activeTopTab?.label === tab.label ? '#0f9f72' : '#b9c6d8',
+                        bgcolor: activeTopTab?.label === tab.label ? '#0f9f72' : '#f3f6fa',
+                      },
+                    }}
+                  >
+                    {tab.label}
+                  </Button>
+                ))}
+              </Stack>
+              <IconButton
+                sx={{
+                  display: { xs: 'none', md: 'inline-flex' },
+                  border: '1px solid',
+                  borderColor: '#cfd8e3',
+                  bgcolor: '#fff',
+                  width: 48,
+                  height: 48,
+                }}
+              >
+                <KeyboardDoubleArrowLeftRoundedIcon />
+              </IconButton>
+            </>
+          )}
         </Stack>
       </Toolbar>
+      <Menu anchorEl={sectionAnchor} open={Boolean(sectionAnchor)} onClose={closeSectionMenu}>
+        {secondaryTabs.map((tab) => (
+          <MenuItem
+            key={`tiny-${tab.label}`}
+            onClick={() => {
+              navigate(tab.to);
+              closeSectionMenu();
+            }}
+            selected={activeTopTab?.label === tab.label}
+          >
+            {tab.label}
+          </MenuItem>
+        ))}
+      </Menu>
 
       <Menu anchorEl={userAnchor} open={Boolean(userAnchor)} onClose={closeUserMenu}>
         <MenuItem disabled>
