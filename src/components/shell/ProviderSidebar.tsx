@@ -43,8 +43,20 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
 
   const content = (
     <Box sx={{ display: 'flex', height: '100%', flexDirection: 'column', bgcolor: '#eef3f3' }}>
-      <Box sx={{ p: 1.5 }}>
-        <Box sx={{ borderRadius: 2.5, border: '1px solid #d1d5db', bgcolor: '#fff', overflow: 'hidden', boxShadow: '0 16px 32px -28px rgba(15, 23, 42, 0.42)' }}>
+      <Box sx={{ p: 1.25, height: '100%', minHeight: 0 }}>
+        <Box
+          sx={{
+            borderRadius: 2.5,
+            border: '1px solid #d1d5db',
+            bgcolor: '#fff',
+            overflow: 'hidden',
+            boxShadow: '0 16px 32px -28px rgba(15, 23, 42, 0.42)',
+            display: 'flex',
+            flexDirection: 'column',
+            height: '100%',
+            minHeight: 0,
+          }}
+        >
           <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ px: 1.5, py: 1.25 }}>
             <Box>
               <Typography sx={{ fontWeight: 800, fontSize: 24, lineHeight: 1 }}>FaithHub Provider</Typography>
@@ -62,7 +74,8 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
           <List
             sx={{
               p: 1,
-              maxHeight: 'calc(100vh - 160px)',
+              flex: 1,
+              minHeight: 0,
               overflowY: 'auto',
               '&::-webkit-scrollbar': { width: 8 },
               '&::-webkit-scrollbar-thumb': { backgroundColor: '#cbd5e1', borderRadius: 10 },
