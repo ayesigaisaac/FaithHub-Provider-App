@@ -1,4 +1,4 @@
-ï»¿// @ts-nocheck
+// @ts-nocheck
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -36,9 +36,10 @@ import {
   X,
   Zap,
 } from "lucide-react";
+import { KpiTile } from "../../../components/ui/KpiTile";
 
 /**
- * FaithHub â€” FH-P-041 Replays & Clips
+ * FaithHub — FH-P-041 Replays & Clips
  * -----------------------------------
  * Premium replay library and clip engine for FaithHub Provider.
  *
@@ -160,7 +161,7 @@ type TaskItem = {
 const REPLAYS_SEED: ReplayRecord[] = [
   {
     id: "RP-041",
-    title: "Sunday Encounter Replay Â· Grace in Motion",
+    title: "Sunday Encounter Replay · Grace in Motion",
     parentKind: "Series",
     parentTitle: "Grace in Motion",
     language: "English",
@@ -186,7 +187,7 @@ const REPLAYS_SEED: ReplayRecord[] = [
   },
   {
     id: "RP-042",
-    title: "Prayer That Stays Â· Standalone Teaching",
+    title: "Prayer That Stays · Standalone Teaching",
     parentKind: "Standalone teaching",
     parentTitle: "Prayer That Stays",
     language: "Luganda",
@@ -208,7 +209,7 @@ const REPLAYS_SEED: ReplayRecord[] = [
     clipOpportunities: 4,
     performanceSeries: [6, 7, 9, 10, 13, 15, 17, 18, 21, 25, 27, 29],
     rightsState: "Thumbnail approval pending",
-    highlightHook: "Prayer is not a moment â€” it is a staying place.",
+    highlightHook: "Prayer is not a moment — it is a staying place.",
   },
   {
     id: "RP-043",
@@ -417,13 +418,13 @@ const APPROVALS: ApprovalItem[] = [
 const COMMENTS_SEED: CommentItem[] = [
   {
     id: "cm-1",
-    author: "Ruth Â· Editor",
+    author: "Ruth · Editor",
     time: "12 min ago",
     body: "The closing prayer moment is strong, but the subtitle block needs one more line-break pass for vertical surfaces.",
   },
   {
     id: "cm-2",
-    author: "Ben Â· Outreach",
+    author: "Ben · Outreach",
     time: "33 min ago",
     body: "If we package this as a follow prompt, Beacon should land on the replay, not the institution homepage.",
   },
@@ -709,7 +710,7 @@ function PreviewCanvas({
       <div className="absolute left-3 right-3 bottom-4">
         <div className="text-lg font-extrabold text-white line-clamp-2 drop-shadow-sm">{clipTitle || replay.title}</div>
         <div className="mt-1 text-[12px] text-white/85 line-clamp-2">
-          {replay.parentTitle} Â· {replay.speaker}
+          {replay.parentTitle} · {replay.speaker}
         </div>
 
         <div className={cx("mt-3", ctaPlacement === "End card" ? "" : "")}> 
@@ -795,7 +796,7 @@ function ReplayRow({
             <div className="min-w-0">
               <div className="text-sm font-bold text-slate-900 dark:text-slate-100 line-clamp-2">{replay.title}</div>
               <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400 line-clamp-2">
-                {replay.parentKind} Â· {replay.parentTitle} Â· {replay.speaker} Â· {replay.language}
+                {replay.parentKind} · {replay.parentTitle} · {replay.speaker} · {replay.language}
               </div>
             </div>
             <div className="flex flex-wrap items-center justify-end gap-2">
@@ -871,8 +872,8 @@ export default function FaithHubReplaysAndClipsPage() {
   const [quoteCard, setQuoteCard] = useState("");
   const [deepLink, setDeepLink] = useState("https://faithhub.app/replay/RP-041");
   const [batchClips, setBatchClips] = useState<BatchClip[]>([
-    { id: "bc-1", label: "Grace opener Â· 9:16", startSec: 42, endSec: 78, variant: "9:16", intent: "Follow", status: "Ready" },
-    { id: "bc-2", label: "Donation testimony Â· 1:1", startSec: 1510, endSec: 1570, variant: "1:1", intent: "Donate", status: "Draft" },
+    { id: "bc-1", label: "Grace opener · 9:16", startSec: 42, endSec: 78, variant: "9:16", intent: "Follow", status: "Ready" },
+    { id: "bc-2", label: "Donation testimony · 1:1", startSec: 1510, endSec: 1570, variant: "1:1", intent: "Donate", status: "Draft" },
   ]);
   const [previewMode, setPreviewMode] = useState<PreviewMode>("desktop");
   const [previewOpen, setPreviewOpen] = useState(false);
@@ -957,7 +958,7 @@ export default function FaithHubReplaysAndClipsPage() {
     setBatchClips((current) => [
       {
         id: `bc-${Date.now()}`,
-        label: `${clipTitle || "New clip"} Â· ${selectedVariant}`,
+        label: `${clipTitle || "New clip"} · ${selectedVariant}`,
         startSec: clipStart,
         endSec: clipEnd,
         variant: selectedVariant,
@@ -998,7 +999,7 @@ export default function FaithHubReplaysAndClipsPage() {
       "",
       "CURRENT CLIP",
       `Title: ${clipTitle}`,
-      `Range: ${secondsToClock(clipStart)} â†’ ${secondsToClock(clipEnd)}`,
+      `Range: ${secondsToClock(clipStart)} ? ${secondsToClock(clipEnd)}`,
       `Variant: ${selectedVariant}`,
       `Caption style: ${captionStyle}`,
       `CTA placement: ${ctaPlacement}`,
@@ -1006,7 +1007,7 @@ export default function FaithHubReplaysAndClipsPage() {
       `Deep link: ${deepLink}`,
       "",
       "BATCH QUEUE",
-      ...batchClips.map((clip, idx) => `${idx + 1}. ${clip.label} Â· ${secondsToClock(clip.startSec)} â†’ ${secondsToClock(clip.endSec)} Â· ${clip.variant} Â· ${clip.status}`),
+      ...batchClips.map((clip, idx) => `${idx + 1}. ${clip.label} · ${secondsToClock(clip.startSec)} ? ${secondsToClock(clip.endSec)} · ${clip.variant} · ${clip.status}`),
     ].join("\n");
 
     const blob = new Blob([lines], { type: "text/plain" });
@@ -1026,7 +1027,7 @@ export default function FaithHubReplaysAndClipsPage() {
     setComments((current) => [
       {
         id: `cm-${Date.now()}`,
-        author: "You Â· Editor",
+        author: "You · Editor",
         time: "Just now",
         body: commentDraft.trim(),
       },
@@ -1066,15 +1067,15 @@ export default function FaithHubReplaysAndClipsPage() {
               <div className="mt-2 flex flex-wrap items-center gap-3">
                 <div className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50">Replays & Clips</div>
                 <Pill tone="brand">Premium replay growth surface</Pill>
-                <Pill tone="accent">EVzone Green primary Â· Orange secondary</Pill>
+                <Pill tone="accent">EVzone Green primary · Orange secondary</Pill>
               </div>
               <div className="mt-2 flex flex-wrap items-center gap-2 text-[11px] sm:text-xs text-slate-500 dark:text-slate-400">
                 <span>Replay catalog ready</span>
-                <span>â€¢</span>
+                <span>•</span>
                 <span>{fmtInt(filteredReplays.length)} visible replays</span>
-                <span>â€¢</span>
+                <span>•</span>
                 <span>{smartMoments.length} smart highlight suggestions</span>
-                <span>â€¢</span>
+                <span>•</span>
                 <span>{batchClips.length} batch clips in queue</span>
               </div>
             </div>
@@ -1266,7 +1267,7 @@ export default function FaithHubReplaysAndClipsPage() {
                             <div className="flex items-start justify-between gap-3">
                               <div>
                                 <div className="text-sm font-bold text-slate-900 dark:text-slate-100">{moment.label}</div>
-                                <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">{secondsToClock(moment.startSec)} â†’ {secondsToClock(moment.endSec)} Â· {moment.reason}</div>
+                                <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">{secondsToClock(moment.startSec)} ? {secondsToClock(moment.endSec)} · {moment.reason}</div>
                               </div>
                               <Pill tone="good">{moment.confidence}%</Pill>
                             </div>
@@ -1353,7 +1354,7 @@ export default function FaithHubReplaysAndClipsPage() {
                         <div key={clip.id} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 rounded-2xl bg-white dark:bg-slate-900 px-3 py-3 ring-1 ring-slate-200 dark:ring-slate-800">
                           <div>
                             <div className="text-sm font-bold text-slate-900 dark:text-slate-100">{clip.label}</div>
-                            <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">{secondsToClock(clip.startSec)} â†’ {secondsToClock(clip.endSec)} Â· {clip.intent}</div>
+                            <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">{secondsToClock(clip.startSec)} ? {secondsToClock(clip.endSec)} · {clip.intent}</div>
                           </div>
                           <div className="flex flex-wrap items-center gap-2">
                             <Pill tone="neutral">{clip.variant}</Pill>
@@ -1465,7 +1466,7 @@ export default function FaithHubReplaysAndClipsPage() {
                     <div className="flex flex-wrap items-center justify-between gap-3">
                       <div>
                         <div className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">Clip packaging summary</div>
-                        <div className="mt-1 text-sm font-bold text-slate-900 dark:text-slate-100">{secondsToClock(clipStart)} â†’ {secondsToClock(clipEnd)} Â· {secondsToClock(clipDuration)} clip length</div>
+                        <div className="mt-1 text-sm font-bold text-slate-900 dark:text-slate-100">{secondsToClock(clipStart)} ? {secondsToClock(clipEnd)} · {secondsToClock(clipDuration)} clip length</div>
                       </div>
                       <div className="flex flex-wrap items-center gap-2">
                         <Pill tone="brand">{selectedVariant}</Pill>
@@ -1474,11 +1475,11 @@ export default function FaithHubReplaysAndClipsPage() {
                     </div>
                     <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] text-slate-500 dark:text-slate-400">
                       <span>{captionStyle}</span>
-                      <span>â€¢</span>
+                      <span>•</span>
                       <span>{ctaPlacement}</span>
-                      <span>â€¢</span>
+                      <span>•</span>
                       <span>{introCard ? "Intro on" : "Intro off"}</span>
-                      <span>â€¢</span>
+                      <span>•</span>
                       <span>{outroCard ? "Outro on" : "Outro off"}</span>
                     </div>
                     <div className="mt-4 flex flex-wrap gap-2">
@@ -1595,7 +1596,7 @@ export default function FaithHubReplaysAndClipsPage() {
                       <div key={approval.label} className="flex items-center justify-between gap-2 rounded-2xl bg-white dark:bg-slate-900 px-3 py-3 ring-1 ring-slate-200 dark:ring-slate-800">
                         <div>
                           <div className="text-sm font-bold text-slate-900 dark:text-slate-100">{approval.label}</div>
-                          <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">Owner Â· {approval.owner}</div>
+                          <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">Owner · {approval.owner}</div>
                         </div>
                         <Pill tone={toneForStatus(approval.status)}>{approval.status}</Pill>
                       </div>
@@ -1632,7 +1633,7 @@ export default function FaithHubReplaysAndClipsPage() {
                         <div className="flex items-start justify-between gap-2">
                           <div>
                             <div className="text-sm font-bold text-slate-900 dark:text-slate-100">{task.label}</div>
-                            <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">{task.owner} Â· due {task.due}</div>
+                            <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">{task.owner} · due {task.due}</div>
                           </div>
                           <Pill tone={toneForStatus(task.status)}>{task.status}</Pill>
                         </div>
@@ -1783,13 +1784,7 @@ export default function FaithHubReplaysAndClipsPage() {
 }
 
 function MetricCard({ label, value, hint }: { label: string; value: string; hint: string }) {
-  return (
-    <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-      <div className="text-[10px] uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">{label}</div>
-      <div className="mt-2 text-xl font-extrabold text-slate-900 dark:text-slate-100">{value}</div>
-      <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">{hint}</div>
-    </div>
-  );
+  return <KpiTile label={label} value={value} hint={hint} tone="gray" className="min-h-[140px]" />;
 }
 
 function LifecycleAction({ label, hint, onClick }: { label: string; hint: string; onClick: () => void }) {
@@ -1808,6 +1803,9 @@ function HeartIconPlaceholder(props: any) {
     </svg>
   );
 }
+
+
+
 
 
 

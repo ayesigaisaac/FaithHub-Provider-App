@@ -1,4 +1,4 @@
-ï»¿// @ts-nocheck
+// @ts-nocheck
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -27,9 +27,10 @@ import {
   Zap,
 } from "lucide-react";
 import { handleRawPlaceholderAction } from "./placeholderActions";
+import { KpiTile } from "../../../components/ui/KpiTile";
 
 /**
- * FaithHub â€” FH-P-060 Donations & Funds
+ * FaithHub — FH-P-060 Donations & Funds
  * -------------------------------------
  * Premium giving workspace for FaithHub Provider.
  *
@@ -80,7 +81,7 @@ function fmtInt(n: number) {
   return Intl.NumberFormat(undefined, { maximumFractionDigits: 0 }).format(n);
 }
 
-function fmtCurrency(n: number, currency = "Â£") {
+function fmtCurrency(n: number, currency = "£") {
   return `${currency}${Intl.NumberFormat(undefined, {
     maximumFractionDigits: 0,
   }).format(n)}`;
@@ -357,7 +358,7 @@ const BRIDGE_SEED: BridgeSurface[] = [
     label: "Sunday Morning Live donation moment",
     surface: "Live Session",
     state: "Ready",
-    value: "Â£12.8k influenced",
+    value: "£12.8k influenced",
     hint: "Pinned donor CTA and progress strip inside the sermon run-of-show.",
     ready: true,
   },
@@ -634,14 +635,7 @@ function MetricCard({
   hint?: string;
   tone?: "green" | "orange" | "navy";
 }) {
-  const color = tone === "orange" ? EV_ORANGE : tone === "navy" ? EV_NAVY : EV_GREEN;
-  return (
-    <div className="rounded-[14px] bg-slate-50 p-3 ring-1 ring-slate-200 transition dark:bg-slate-800/50 dark:ring-slate-800">
-      <div className="text-[11px] uppercase tracking-wide text-slate-400 dark:text-slate-500">{label}</div>
-      <div className="mt-1 text-xl font-extrabold" style={{ color }}>{value}</div>
-      {hint ? <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{hint}</div> : null}
-    </div>
-  );
+  return <KpiTile label={label} value={value} hint={hint} tone={tone} className="min-h-[140px]" />;
 }
 
 function RegistryRow({
@@ -1071,7 +1065,7 @@ export default function DonationsAndFundsPage() {
 
               <div className="mt-1 flex flex-wrap items-center gap-2">
                 <div className="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50">
-                  FH-P-060 Â· Donations &amp; Funds
+                  FH-P-060 · Donations &amp; Funds
                 </div>
                 <Pill tone="good">
                   <BadgeCheck className="h-3.5 w-3.5" />
@@ -1327,7 +1321,7 @@ export default function DonationsAndFundsPage() {
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0">
                         <div className="text-sm font-bold text-slate-900 dark:text-slate-50">{item.label}</div>
-                        <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{item.surface} Â· {item.hint}</div>
+                        <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{item.surface} · {item.hint}</div>
                       </div>
                       <Pill tone={item.ready ? "good" : "warn"}>{item.state}</Pill>
                     </div>
@@ -1481,7 +1475,7 @@ export default function DonationsAndFundsPage() {
                   <div className="flex items-center justify-between gap-2">
                     <div>
                       <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Finance ownership</div>
-                      <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{selectedRecord.owner} Â· {selectedRecord.financeHealth} state</div>
+                      <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{selectedRecord.owner} · {selectedRecord.financeHealth} state</div>
                     </div>
                     <Pill tone={badgeToneForFinance(selectedRecord.financeHealth)}>{selectedRecord.financeHealth}</Pill>
                   </div>
@@ -1711,6 +1705,9 @@ export default function DonationsAndFundsPage() {
     </div>
   );
 }
+
+
+
 
 
 

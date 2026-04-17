@@ -1,4 +1,4 @@
-ï»¿// @ts-nocheck
+// @ts-nocheck
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -29,9 +29,10 @@ import {
   X,
   Zap,
 } from "lucide-react";
+import { KpiTile } from "../../../components/ui/KpiTile";
 
 /**
- * FaithHub â€” FH-P-104 Community Forum
+ * FaithHub — FH-P-104 Community Forum
  * -----------------------------------
  * Premium Provider-side moderated discussion space for threads, categories,
  * leader posts, and faith-community engagement.
@@ -192,7 +193,7 @@ const INITIAL_THREADS: ThreadRecord[] = [
     id: "CF-201",
     title: "Sunday message follow-up: grace in daily work",
     excerpt:
-      "Continue the conversation from this weekâ€™s teaching with practical stories, scripture reflections, and leader prompts.",
+      "Continue the conversation from this week’s teaching with practical stories, scripture reflections, and leader prompts.",
     body:
       "This leader-led thread is linked to the Everyday Grace series and the Sunday replay. Members are invited to share what stood out, where they need prayer, and how the teaching intersects with work, family, and service this week.",
     category: "Series Follow-up",
@@ -202,7 +203,7 @@ const INITIAL_THREADS: ThreadRecord[] = [
     owner: "Pastor Ada N.",
     campus: "Kampala Central",
     languages: ["English", "Luganda"],
-    linkedObject: "Series â€¢ Everyday Grace",
+    linkedObject: "Series • Everyday Grace",
     liveLinked: true,
     leaderPost: true,
     pinned: true,
@@ -243,7 +244,7 @@ const INITIAL_THREADS: ThreadRecord[] = [
     owner: "Care Team",
     campus: "Online First",
     languages: ["English"],
-    linkedObject: "Prayer lane â€¢ Care routing",
+    linkedObject: "Prayer lane • Care routing",
     liveLinked: false,
     leaderPost: false,
     pinned: false,
@@ -284,7 +285,7 @@ const INITIAL_THREADS: ThreadRecord[] = [
     owner: "Youth Desk",
     campus: "Entebbe South",
     languages: ["English", "Swahili"],
-    linkedObject: "Event â€¢ Youth Camp Weekend",
+    linkedObject: "Event • Youth Camp Weekend",
     liveLinked: false,
     leaderPost: true,
     pinned: false,
@@ -325,7 +326,7 @@ const INITIAL_THREADS: ThreadRecord[] = [
     owner: "Outreach Desk",
     campus: "All campuses",
     languages: ["English"],
-    linkedObject: "Event â€¢ Community Outreach Saturday",
+    linkedObject: "Event • Community Outreach Saturday",
     liveLinked: true,
     leaderPost: true,
     pinned: false,
@@ -360,7 +361,7 @@ const INITIAL_THREADS: ThreadRecord[] = [
     owner: "Story Team",
     campus: "Kampala Central",
     languages: ["English"],
-    linkedObject: "Series â€¢ 40 Days of Renewal",
+    linkedObject: "Series • 40 Days of Renewal",
     liveLinked: true,
     leaderPost: false,
     pinned: true,
@@ -395,7 +396,7 @@ const INITIAL_THREADS: ThreadRecord[] = [
     owner: "Moderation Desk",
     campus: "Online Studio",
     languages: ["English", "French"],
-    linkedObject: "Live Session â€¢ Baptism Q&A",
+    linkedObject: "Live Session • Baptism Q&A",
     liveLinked: true,
     leaderPost: false,
     pinned: false,
@@ -462,25 +463,25 @@ const LEADER_POSTS: LeaderPost[] = [
     id: "LP-1",
     title: "Leader summary: grace in daily work",
     owner: "Pastor Ada N.",
-    scheduledAt: "Today Â· 7:30 PM",
+    scheduledAt: "Today · 7:30 PM",
     status: "Ready",
-    linkedObject: "Series â€¢ Everyday Grace",
+    linkedObject: "Series • Everyday Grace",
   },
   {
     id: "LP-2",
     title: "Youth camp parent update and arrival checklist",
     owner: "Youth Desk",
-    scheduledAt: "Tomorrow Â· 9:00 AM",
+    scheduledAt: "Tomorrow · 9:00 AM",
     status: "Awaiting review",
-    linkedObject: "Event â€¢ Youth Camp Weekend",
+    linkedObject: "Event • Youth Camp Weekend",
   },
   {
     id: "LP-3",
     title: "Pinned answer: baptism next steps",
     owner: "Pastoral Office",
-    scheduledAt: "Tomorrow Â· 12:30 PM",
+    scheduledAt: "Tomorrow · 12:30 PM",
     status: "Scheduled",
-    linkedObject: "Live Session â€¢ Baptism Q&A",
+    linkedObject: "Live Session • Baptism Q&A",
   },
 ];
 
@@ -637,28 +638,7 @@ function MetricCard({
   hint: string;
   accent: "green" | "orange" | "navy";
 }) {
-  const dotColor =
-    accent === "green" ? EV_GREEN : accent === "orange" ? EV_ORANGE : EV_NAVY;
-
-  return (
-    <div className="rounded-[28px] border border-slate-200 bg-white p-4 shadow-sm">
-      <div className="flex items-start justify-between gap-3">
-        <div>
-          <div className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">
-            {label}
-          </div>
-          <div className="mt-2 text-[28px] font-black leading-none text-slate-900">
-            {value}
-          </div>
-          <div className="mt-2 text-[12px] leading-snug text-slate-500">{hint}</div>
-        </div>
-        <div
-          className="h-10 w-10 shrink-0 rounded-full"
-          style={{ background: dotColor, opacity: 0.14 }}
-        />
-      </div>
-    </div>
-  );
+  return <KpiTile label={label} value={value} hint={hint} tone={accent} />;
 }
 
 function ThreadRow({
@@ -704,7 +684,7 @@ function ThreadRow({
             {thread.childSafe ? <Pill tone="good">Child-safe</Pill> : null}
           </div>
           <div className="mt-1 text-[12px] text-slate-500">
-            {thread.category} â€¢ {thread.campus} â€¢ {thread.languages.join(" + ")}
+            {thread.category} • {thread.campus} • {thread.languages.join(" + ")}
           </div>
           <div className="mt-2 line-clamp-2 text-[13px] leading-snug text-slate-700">
             {thread.excerpt}
@@ -768,7 +748,7 @@ function ModerationDrawer({
                         <Pill tone={toneForSeverity(item.severity)}>{item.severity}</Pill>
                       </div>
                       <div className="mt-1 text-[12px] text-slate-500">
-                        {thread?.title || item.lane} â€¢ {item.owner} â€¢ {item.ageLabel}
+                        {thread?.title || item.lane} • {item.owner} • {item.ageLabel}
                       </div>
                       <div className="mt-2 text-[13px] leading-snug text-slate-700">
                         {item.reason}
@@ -895,13 +875,13 @@ function PreviewDrawer({
                 </div>
                 <div className="mt-3 grid gap-2 text-[13px] text-slate-700">
                   <div className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2">
-                    Linked object â€¢ <span className="font-bold">{thread.linkedObject}</span>
+                    Linked object • <span className="font-bold">{thread.linkedObject}</span>
                   </div>
                   <div className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2">
-                    Last active â€¢ <span className="font-bold">{fmtLocal(thread.lastActiveISO)}</span>
+                    Last active • <span className="font-bold">{fmtLocal(thread.lastActiveISO)}</span>
                   </div>
                   <div className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2">
-                    Owner â€¢ <span className="font-bold">{thread.owner}</span>
+                    Owner • <span className="font-bold">{thread.owner}</span>
                   </div>
                 </div>
               </div>
@@ -947,7 +927,7 @@ export default function CommunityForumPage() {
   const [moderationOpen, setModerationOpen] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
   const [composerTitle, setComposerTitle] = useState(
-    "Leader prompt: what is your takeaway from this weekâ€™s live session?",
+    "Leader prompt: what is your takeaway from this week’s live session?",
   );
   const [composerExcerpt, setComposerExcerpt] = useState(
     "Invite the community to share one insight, one question, and one prayer point.",
@@ -1080,10 +1060,10 @@ export default function CommunityForumPage() {
                 </div>
                 <div className="min-w-0">
                   <div className="truncate text-[28px] font-black leading-none tracking-[-0.03em] text-slate-900 md:text-[44px]">
-                    FH-P-104 Â· Community Forum
+                    FH-P-104 · Community Forum
                   </div>
                   <div className="mt-1 text-[14px] text-slate-500 md:text-[15px]">
-                    Premium moderated discussion space â€¢ EVzone Green primary, Orange secondary
+                    Premium moderated discussion space • EVzone Green primary, Orange secondary
                   </div>
                 </div>
               </div>
@@ -1119,9 +1099,9 @@ export default function CommunityForumPage() {
             <div className="flex min-w-0 flex-wrap items-center gap-3">
               <Pill tone="brand">FORUM TRUST PULSE</Pill>
               <span>{metrics.moderation} threads need moderation review</span>
-              <span>â€¢</span>
+              <span>•</span>
               <span>{LEADER_POSTS.filter((post) => post.status === "Ready").length} leader posts are ready to publish</span>
-              <span>â€¢</span>
+              <span>•</span>
               <span>{moderationCounts.liveLinked} discussion lanes are linked to live follow-up</span>
             </div>
             <div className="text-[11px] uppercase tracking-[0.08em] text-slate-400">
@@ -1403,7 +1383,7 @@ export default function CommunityForumPage() {
                             : "border-rose-200 bg-rose-50 text-rose-800",
                         )}
                       >
-                        <span className="font-black">{signal.label}</span> â€¢ {signal.hint}
+                        <span className="font-black">{signal.label}</span> • {signal.hint}
                       </div>
                     ))}
                   </div>
@@ -1482,7 +1462,7 @@ export default function CommunityForumPage() {
                       <div className="text-[11px] text-slate-400">{previewMode === "desktop" ? "Desktop forum preview" : "Mobile preview"}</div>
                       <div className="mt-2 text-[14px] font-black text-slate-900">{selectedThread.excerpt}</div>
                       <div className="mt-2 text-[12px] text-slate-500">
-                        {selectedThread.owner} â€¢ {selectedThread.category} â€¢ {selectedThread.campus}
+                        {selectedThread.owner} • {selectedThread.category} • {selectedThread.campus}
                       </div>
                       <div className="mt-4 flex flex-wrap items-center gap-2">
                         <Button tone="primary" left={<MessageSquare className="h-4 w-4" />}>
@@ -1614,7 +1594,7 @@ export default function CommunityForumPage() {
                         {post.title}
                       </div>
                       <div className="mt-1 text-[12px] text-slate-500">
-                        {post.owner} â€¢ {post.scheduledAt} â€¢ {post.linkedObject}
+                        {post.owner} • {post.scheduledAt} • {post.linkedObject}
                       </div>
                     </div>
                     <Pill
@@ -1636,7 +1616,7 @@ export default function CommunityForumPage() {
         </div>
 
         <div className="mt-3 rounded-full border border-[rgba(3,205,140,0.35)] bg-[rgba(3,205,140,0.10)] px-4 py-2 text-center text-[12px] text-slate-600 shadow-sm">
-          Concept preview of the generated FaithHub Community Forum page â€¢ EVzone Green primary ({EV_GREEN}) â€¢ Orange secondary ({EV_ORANGE}) â€¢ Medium grey ({EV_GREY}) â€¢ Light surface ({EV_LIGHT})
+          Concept preview of the generated FaithHub Community Forum page • EVzone Green primary ({EV_GREEN}) • Orange secondary ({EV_ORANGE}) • Medium grey ({EV_GREY}) • Light surface ({EV_LIGHT})
         </div>
       </div>
 
@@ -1660,5 +1640,8 @@ export default function CommunityForumPage() {
     </div>
   );
 }
+
+
+
 
 

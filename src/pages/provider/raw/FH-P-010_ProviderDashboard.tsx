@@ -1,4 +1,4 @@
-ï»¿// @ts-nocheck
+// @ts-nocheck
 
 "use client";
 
@@ -36,9 +36,10 @@ import {
   Wallet,
   Zap,
 } from "lucide-react";
+import { KpiTile } from "../../../components/ui/KpiTile";
 
 /**
- * FaithHub â€” FH-P-010 Provider Dashboard
+ * FaithHub — FH-P-010 Provider Dashboard
  * --------------------------------------
  * Premium provider-side mission control page.
  *
@@ -401,7 +402,7 @@ const EXECUTIVE_METRICS: Record<RoleKey, MetricCard[]> = {
     {
       id: "spend",
       label: "Beacon spend",
-      value: "Â£3.9k",
+      value: "£3.9k",
       hint: "Current spend against plan and placement pacing",
       delta: "64% pace",
       accent: "orange",
@@ -467,7 +468,7 @@ const EXECUTIVE_METRICS: Record<RoleKey, MetricCard[]> = {
     {
       id: "sentiment",
       label: "Sentiment drift",
-      value: "âˆ’4%",
+      value: "-4%",
       hint: "Recent movement in review tone and complaint clusters",
       delta: "Watch audio complaints",
       accent: "orange",
@@ -584,20 +585,20 @@ const LIVE_SESSIONS: LiveSessionRow[] = [
   {
     id: "ls-1",
     title: "Evening Prayer Revival",
-    time: "18:30 â€” 19:45",
+    time: "18:30 — 19:45",
     campus: "Kampala Central",
-    audience: "Prayer community Â· Public",
+    audience: "Prayer community · Public",
     readiness: "At risk",
     health: "Watching",
-    backstage: "Host joined Â· Captioner pending",
+    backstage: "Host joined · Captioner pending",
     warning: "Caption operator check still open",
   },
   {
     id: "ls-2",
     title: "Faith & Work Midweek Class",
-    time: "20:00 â€” 21:00",
+    time: "20:00 — 21:00",
     campus: "Online Studio",
-    audience: "Series audience Â· Members first",
+    audience: "Series audience · Members first",
     readiness: "Ready",
     health: "Healthy",
     backstage: "All roles confirmed",
@@ -607,10 +608,10 @@ const LIVE_SESSIONS: LiveSessionRow[] = [
     title: "Youth Outreach Q&A",
     time: "Sat 15:00",
     campus: "Youth Hall",
-    audience: "Youth ministry Â· RSVP",
+    audience: "Youth ministry · RSVP",
     readiness: "Blocked",
     health: "Watching",
-    backstage: "Moderator gap Â· venue AV unresolved",
+    backstage: "Moderator gap · venue AV unresolved",
     warning: "Venue mic routing conflict detected",
   },
 ];
@@ -618,7 +619,7 @@ const LIVE_SESSIONS: LiveSessionRow[] = [
 const PIPELINE_ITEMS: PipelineItem[] = [
   {
     id: "p-1",
-    title: "Hope in the Wilderness â€” Episode 02",
+    title: "Hope in the Wilderness — Episode 02",
     type: "Episode draft",
     status: "Missing assets",
     owner: "Content editor",
@@ -626,7 +627,7 @@ const PIPELINE_ITEMS: PipelineItem[] = [
   },
   {
     id: "p-2",
-    title: "Stand Firm â€” Standalone Teaching",
+    title: "Stand Firm — Standalone Teaching",
     type: "Standalone teaching",
     status: "Awaiting review",
     owner: "Pastoral review",
@@ -712,7 +713,7 @@ const BEACON_ITEMS: BeaconItem[] = [
     id: "b-1",
     title: "Sunday Encounter replay boost",
     mode: "Linked",
-    spend: "Â£1.2k",
+    spend: "£1.2k",
     outcome: "784 watch starts",
     status: "Healthy",
   },
@@ -720,7 +721,7 @@ const BEACON_ITEMS: BeaconItem[] = [
     id: "b-2",
     title: "Youth Camp registration push",
     mode: "Linked",
-    spend: "Â£820",
+    spend: "£820",
     outcome: "41 registrations",
     status: "Learning",
   },
@@ -728,7 +729,7 @@ const BEACON_ITEMS: BeaconItem[] = [
     id: "b-3",
     title: "Care & Missions awareness",
     mode: "Standalone",
-    spend: "Â£460",
+    spend: "£460",
     outcome: "183 giving clicks",
     status: "Needs approval",
   },
@@ -736,7 +737,7 @@ const BEACON_ITEMS: BeaconItem[] = [
     id: "b-4",
     title: "Prayer Night announcement",
     mode: "Standalone",
-    spend: "Â£210",
+    spend: "£210",
     outcome: "CTR softening",
     status: "Fatigue risk",
   },
@@ -746,21 +747,21 @@ const TRUST_CASES: TrustCase[] = [
   {
     id: "t-1",
     title: "Audio complaint cluster on Prayer Night replay",
-    source: "Reviews Â· Replay",
+    source: "Reviews · Replay",
     priority: "High",
     owner: "Production team",
   },
   {
     id: "t-2",
     title: "Reported chat messages during Youth Outreach live",
-    source: "Moderation Â· Live chat",
+    source: "Moderation · Live chat",
     priority: "Critical",
     owner: "Moderator lead",
   },
   {
     id: "t-3",
     title: "Flagged clip comment thread",
-    source: "Clips Â· Public comments",
+    source: "Clips · Public comments",
     priority: "Medium",
     owner: "Community manager",
   },
@@ -788,7 +789,7 @@ const RECOMMENDATIONS_BY_ROLE: Record<
     {
       id: "r-2",
       title: "Convert Flood Relief into a live fundraiser moment",
-      detail: "Tonightâ€™s prayer stream is the strongest fit for donor urgency and public momentum.",
+      detail: "Tonight’s prayer stream is the strongest fit for donor urgency and public momentum.",
       cta: "Open Live Builder",
       tone: "good",
     },
@@ -863,7 +864,7 @@ const RECOMMENDATIONS_BY_ROLE: Record<
     },
     {
       id: "r-3",
-      title: "Insert a giving moment into tonightâ€™s live",
+      title: "Insert a giving moment into tonight’s live",
       detail: "Prayer Night already has strong attendance forecasts and could support a clear donor CTA.",
       cta: "Open Live Builder",
       tone: "good",
@@ -1059,46 +1060,22 @@ function SolidButton({
 }
 
 function MetricTile({ metric }: { metric: MetricCard }) {
-  const tint =
-    metric.accent === "green"
-      ? "bg-white border-emerald-200/80"
-      : metric.accent === "orange"
-        ? "bg-white border-amber-200/80"
-        : "bg-white border-slate-200";
-
   return (
-    <div className={cx("rounded-[24px] border p-4 shadow-sm min-h-[170px]", tint)}>
-      <div className="flex h-full flex-col">
-        <div className="flex items-start justify-between gap-2">
-          <div className="min-w-0">
-            <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
-              {metric.label}
-            </div>
-            <div className="mt-2 text-[30px] font-black leading-none tracking-[-0.02em] text-slate-900">
-              {metric.value}
-            </div>
-          </div>
-          <div
-            className="h-12 w-12 shrink-0 rounded-2xl"
-            style={{
-              background:
-                metric.accent === "green"
-                  ? "rgba(3,205,140,0.12)"
-                  : metric.accent === "orange"
-                    ? "rgba(247,127,0,0.12)"
-                    : "rgba(22,36,76,0.10)",
-            }}
-          />
-        </div>
-        <div className="mt-2 text-[13px] leading-5 text-slate-600">{metric.hint}</div>
-        {metric.delta ? (
-          <div className="mt-auto pt-3 inline-flex items-center gap-1 rounded-full bg-slate-50 px-2.5 py-1 text-[11px] font-semibold text-emerald-700">
+    <KpiTile
+      label={metric.label}
+      value={metric.value}
+      hint={metric.hint}
+      tone={metric.accent}
+      className="min-h-[170px]"
+      footer={
+        metric.delta ? (
+          <div className="inline-flex items-center gap-1 rounded-full bg-slate-50 px-2.5 py-1 text-[11px] font-semibold text-emerald-700 dark:bg-slate-800 dark:text-emerald-300">
             <TrendingUp className="h-3.5 w-3.5" />
             {metric.delta}
           </div>
-        ) : null}
-      </div>
-    </div>
+        ) : null
+      }
+    />
   );
 }
 
@@ -1224,7 +1201,7 @@ export default function ProviderDashboardPage() {
             <div className="grid gap-5 xl:grid-cols-[1.25fr,0.9fr]">
               <div className="min-w-0">
                 <div className="text-[11px] font-bold uppercase tracking-[0.22em] text-slate-400">
-                  Home Â· Global dashboard
+                  Home · Global dashboard
                 </div>
                 <div className="mt-2 max-w-4xl text-[32px] font-black leading-[1.02] tracking-[-0.03em] text-slate-900 sm:text-[42px]">
                   FaithHub Provider Dashboard
@@ -1246,7 +1223,7 @@ export default function ProviderDashboardPage() {
                     left={<AlertTriangle className="h-3.5 w-3.5" />}
                   />
                   <Pill
-                    text={`${readinessSummary.ready} ready Â· ${readinessSummary.atRisk} at risk Â· ${readinessSummary.blocked} blocked`}
+                    text={`${readinessSummary.ready} ready · ${readinessSummary.atRisk} at risk · ${readinessSummary.blocked} blocked`}
                     tone="brand"
                     left={<Radio className="h-3.5 w-3.5" />}
                   />
@@ -1565,7 +1542,7 @@ export default function ProviderDashboardPage() {
           <div className="grid gap-4 xl:grid-cols-12">
             <SectionCard
               title="Live Sessions command center"
-              subtitle="Todayâ€™s schedule, readiness state, late-start warnings, stream health, backstage availability, and one-click handoff into operations."
+              subtitle="Today’s schedule, readiness state, late-start warnings, stream health, backstage availability, and one-click handoff into operations."
               className="xl:col-span-7"
               right={
                 <div className="flex flex-wrap gap-2">
@@ -1619,9 +1596,9 @@ export default function ProviderDashboardPage() {
                         </div>
                         <div className="mt-2 flex flex-wrap items-center gap-2 text-[12px] text-slate-500">
                           <span>{item.time}</span>
-                          <span>â€¢</span>
+                          <span>•</span>
                           <span>{item.campus}</span>
-                          <span>â€¢</span>
+                          <span>•</span>
                           <span>{item.audience}</span>
                         </div>
                         <div className="mt-2 text-[12px] font-medium text-slate-700">
@@ -1679,7 +1656,7 @@ export default function ProviderDashboardPage() {
                           {item.title}
                         </div>
                         <div className="mt-1 text-[12px] text-slate-500">
-                          {item.type} Â· {item.owner} Â· Due {item.due}
+                          {item.type} · {item.owner} · Due {item.due}
                         </div>
                       </div>
                       <Pill
@@ -1819,7 +1796,7 @@ export default function ProviderDashboardPage() {
                           {item.title}
                         </div>
                         <div className="mt-1 text-[12px] text-slate-500">
-                          {item.mode} campaign Â· {item.spend}
+                          {item.mode} campaign · {item.spend}
                         </div>
                       </div>
                       <Pill
@@ -1876,7 +1853,7 @@ export default function ProviderDashboardPage() {
                           {item.title}
                         </div>
                         <div className="mt-1 text-[12px] text-slate-500">
-                          {item.source} Â· {item.owner}
+                          {item.source} · {item.owner}
                         </div>
                       </div>
                       <Pill
@@ -2019,6 +1996,9 @@ export default function ProviderDashboardPage() {
     </div>
   );
 }
+
+
+
 
 
 

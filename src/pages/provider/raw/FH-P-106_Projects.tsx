@@ -1,4 +1,4 @@
-ï»¿// @ts-nocheck
+// @ts-nocheck
 "use client";
 
 import React, { useMemo, useState } from "react";
@@ -31,9 +31,10 @@ import {
   Zap,
 } from "lucide-react";
 import { handleRawPlaceholderAction } from "./placeholderActions";
+import { KpiTile } from "../../../components/ui/KpiTile";
 
 /**
- * FaithHub â€” FH-P-106 Projects
+ * FaithHub — FH-P-106 Projects
  * ----------------------------
  * Premium Provider-side operating surface for community missions, outreach drives,
  * volunteer mobilization, build projects, charity actions, and progress tracking.
@@ -88,7 +89,7 @@ function fmtInt(n: number) {
   return Intl.NumberFormat(undefined, { maximumFractionDigits: 0 }).format(n);
 }
 
-function money(n: number, currency = "Â£") {
+function money(n: number, currency = "£") {
   return `${currency}${Intl.NumberFormat(undefined, {
     maximumFractionDigits: 0,
   }).format(n)}`;
@@ -300,7 +301,7 @@ const INITIAL_PROJECTS: ProjectRecord[] = [
       {
         id: "sig-relief-2",
         label: "Crowdfund momentum remains healthy",
-        hint: "Daily donor movement is ahead of last weekâ€™s forecast.",
+        hint: "Daily donor movement is ahead of last week’s forecast.",
         tone: "good",
       },
       {
@@ -344,21 +345,21 @@ const INITIAL_PROJECTS: ProjectRecord[] = [
       {
         id: "role-relief-1",
         label: "Distribution volunteers",
-        shift: "Sat Â· 08:00â€“15:00",
+        shift: "Sat · 08:00–15:00",
         needed: 24,
         filled: 18,
       },
       {
         id: "role-relief-2",
         label: "Prayer response desk",
-        shift: "Thuâ€“Sat Â· rotating",
+        shift: "Thu–Sat · rotating",
         needed: 8,
         filled: 7,
       },
       {
         id: "role-relief-3",
         label: "Transport & loading",
-        shift: "Fri Â· 15:00â€“20:00",
+        shift: "Fri · 15:00–20:00",
         needed: 10,
         filled: 6,
       },
@@ -464,14 +465,14 @@ const INITIAL_PROJECTS: ProjectRecord[] = [
       {
         id: "role-youth-1",
         label: "Campus ambassadors",
-        shift: "Monâ€“Thu Â· afternoon",
+        shift: "Mon–Thu · afternoon",
         needed: 12,
         filled: 6,
       },
       {
         id: "role-youth-2",
         label: "Transport volunteers",
-        shift: "Project week Â· daily",
+        shift: "Project week · daily",
         needed: 8,
         filled: 3,
       },
@@ -888,25 +889,7 @@ function Card({
 }
 
 function MetricTile({ item }: { item: ProjectMetricCard }) {
-  return (
-    <div className="rounded-[28px] border border-slate-200 bg-white px-4 py-3 shadow-sm">
-      <div className="flex items-start justify-between gap-3">
-        <div>
-          <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-500">
-            {item.label}
-          </div>
-          <div className="mt-2 text-[20px] font-black text-slate-900">
-            {item.value}
-          </div>
-        </div>
-        <div
-          className="h-10 w-10 rounded-full"
-          style={{ background: accentColor(item.accent), opacity: 0.15 }}
-        />
-      </div>
-      <div className="mt-2 text-[12px] leading-5 text-slate-500">{item.hint}</div>
-    </div>
-  );
+  return <KpiTile label={item.label} value={item.value} hint={item.hint} tone={item.accent} className="min-h-[140px]" />;
 }
 
 function SearchInput({
@@ -1025,9 +1008,9 @@ function ProjectDestinationPreview({
 
           <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] text-slate-500">
             <span>{fmtLocal(project.startISO)}</span>
-            <span>â€¢</span>
+            <span>•</span>
             <span>{project.campus}</span>
-            <span>â€¢</span>
+            <span>•</span>
             <span>{project.language.join(" + ")}</span>
           </div>
 
@@ -1080,7 +1063,7 @@ function ProjectDestinationPreview({
                     <Pill tone={toneForMilestoneState(milestone.state)}>{milestone.state}</Pill>
                   </div>
                   <div className="mt-1 text-[11px] text-slate-500">
-                    {fmtLocal(milestone.dueISO)} â€¢ {milestone.owner}
+                    {fmtLocal(milestone.dueISO)} • {milestone.owner}
                   </div>
                 </div>
               ))}
@@ -1163,11 +1146,11 @@ function ProjectCard({
 
           <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] text-slate-500">
             <span>{project.type}</span>
-            <span>â€¢</span>
+            <span>•</span>
             <span>{project.campus}</span>
-            <span>â€¢</span>
+            <span>•</span>
             <span>{project.owner}</span>
-            <span>â€¢</span>
+            <span>•</span>
             <span>{project.language.join(" + ")}</span>
           </div>
 
@@ -1266,7 +1249,7 @@ function ProjectsPage() {
   const [milestoneState, setMilestoneState] = useState<MilestoneState>("Ready");
 
   const [roleLabel, setRoleLabel] = useState("");
-  const [roleShift, setRoleShift] = useState("Sat Â· 09:00â€“14:00");
+  const [roleShift, setRoleShift] = useState("Sat · 09:00–14:00");
   const [roleNeeded, setRoleNeeded] = useState("6");
   const [roleFilled, setRoleFilled] = useState("0");
   const [publishToAudience, setPublishToAudience] = useState(true);
@@ -1447,7 +1430,7 @@ function ProjectsPage() {
 
     setRecruitOpen(false);
     setRoleLabel("");
-    setRoleShift("Sat Â· 09:00â€“14:00");
+    setRoleShift("Sat · 09:00–14:00");
     setRoleNeeded("6");
     setRoleFilled("0");
     setPublishToAudience(true);
@@ -1475,11 +1458,11 @@ function ProjectsPage() {
                   </div>
                   <div>
                     <div className="text-[22px] font-black leading-tight text-slate-900">
-                      FH-P-106 Â· Projects
+                      FH-P-106 · Projects
                     </div>
                     <div className="mt-1 max-w-3xl text-[14px] leading-6 text-slate-500">
                       Premium command page for missions, outreach, volunteer drives, build projects,
-                      charity actions, and impact progress â€” tightly linked to giving, audience journeys,
+                      charity actions, and impact progress — tightly linked to giving, audience journeys,
                       Beacon promotion, Live Sessions, and events.
                     </div>
                   </div>
@@ -1531,11 +1514,11 @@ function ProjectsPage() {
                 <span>
                   2 projects need volunteer reinforcement
                 </span>
-                <span>â€¢</span>
+                <span>•</span>
                 <span>
                   1 charity action is ready for Beacon amplification
                 </span>
-                <span>â€¢</span>
+                <span>•</span>
                 <span>
                   3 milestones are due within the next 48 hours
                 </span>
@@ -1742,7 +1725,7 @@ function ProjectsPage() {
                               {milestone.label}
                             </div>
                             <div className="mt-1 text-[11px] text-slate-500">
-                              {fmtLocal(milestone.dueISO)} â€¢ {milestone.owner}
+                              {fmtLocal(milestone.dueISO)} • {milestone.owner}
                             </div>
                           </div>
                           <Pill tone={toneForMilestoneState(milestone.state)}>
@@ -1966,7 +1949,7 @@ function ProjectsPage() {
           </Card>
 
           <div className="rounded-full border border-emerald-200 bg-emerald-50 px-4 py-1.5 text-center text-[12px] text-slate-500">
-            Concept preview of the generated FaithHub Projects page Â· EVzone Green primary (#03cd8c) Â· Orange secondary (#f77f00)
+            Concept preview of the generated FaithHub Projects page · EVzone Green primary (#03cd8c) · Orange secondary (#f77f00)
           </div>
         </div>
       </div>
@@ -1975,7 +1958,7 @@ function ProjectsPage() {
       <Drawer
         open={previewOpen}
         onClose={() => setPreviewOpen(false)}
-        title="FH-P-106 Â· Projects Â· Large preview"
+        title="FH-P-106 · Projects · Large preview"
         subtitle="Premium preview of the selected project destination, impact story, volunteer CTA, and funding path."
       >
         <div className="grid gap-6 xl:grid-cols-[minmax(0,1.2fr)_420px]">
@@ -2297,6 +2280,9 @@ function ProjectsPage() {
 }
 
 export default ProjectsPage;
+
+
+
 
 
 

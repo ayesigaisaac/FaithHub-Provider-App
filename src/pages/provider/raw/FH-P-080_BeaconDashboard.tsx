@@ -1,4 +1,4 @@
-ï»¿// @ts-nocheck
+// @ts-nocheck
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -27,9 +27,10 @@ import {
   Zap,
 } from "lucide-react";
 import { handleRawPlaceholderAction } from "./placeholderActions";
+import { KpiTile } from "../../../components/ui/KpiTile";
 
 /**
- * FaithHub â€” FH-P-080 Beacon Dashboard
+ * FaithHub — FH-P-080 Beacon Dashboard
  * ------------------------------------
  * Premium promotional control center for FaithHub Provider.
  *
@@ -88,7 +89,7 @@ function fmtInt(n: number) {
   return Intl.NumberFormat(undefined, { maximumFractionDigits: 0 }).format(n);
 }
 
-function fmtCurrency(n: number, currency = "Â£") {
+function fmtCurrency(n: number, currency = "£") {
   return `${currency}${Intl.NumberFormat(undefined, {
     maximumFractionDigits: 0,
   }).format(n)}`;
@@ -219,7 +220,7 @@ const CAMPAIGNS_SEED: BeaconCampaign[] = [
     eventRegistrations: 34,
     productClicks: 0,
     followAdds: 228,
-    efficiencyLabel: "Â£0.14 per watch start",
+    efficiencyLabel: "£0.14 per watch start",
     creativeHealth: 92,
     fatigueRisk: 38,
     copyStrength: 88,
@@ -239,7 +240,7 @@ const CAMPAIGNS_SEED: BeaconCampaign[] = [
   {
     id: "bc_midweek_live",
     title: "Faith & Work Midweek Reminder",
-    subtitle: "Drive attendance into tonightâ€™s live session before the countdown window closes.",
+    subtitle: "Drive attendance into tonight’s live session before the countdown window closes.",
     state: "Learning",
     mode: "Linked",
     sourceType: "Live Session",
@@ -257,7 +258,7 @@ const CAMPAIGNS_SEED: BeaconCampaign[] = [
     eventRegistrations: 12,
     productClicks: 0,
     followAdds: 74,
-    efficiencyLabel: "Â£0.16 per watch start",
+    efficiencyLabel: "£0.16 per watch start",
     creativeHealth: 84,
     fatigueRisk: 19,
     copyStrength: 79,
@@ -295,7 +296,7 @@ const CAMPAIGNS_SEED: BeaconCampaign[] = [
     eventRegistrations: 62,
     productClicks: 0,
     followAdds: 36,
-    efficiencyLabel: "Â£14.68 per registration",
+    efficiencyLabel: "£14.68 per registration",
     creativeHealth: 61,
     fatigueRisk: 71,
     copyStrength: 58,
@@ -333,14 +334,14 @@ const CAMPAIGNS_SEED: BeaconCampaign[] = [
     eventRegistrations: 0,
     productClicks: 0,
     followAdds: 92,
-    efficiencyLabel: "Â£4.83 per donor action",
+    efficiencyLabel: "£4.83 per donor action",
     creativeHealth: 89,
     fatigueRisk: 27,
     copyStrength: 91,
     ctaAlignment: 93,
     pacingPct: 63,
     recommendedBudgetDelta: 300,
-    forecastLabel: "Projected +Â£18.4k movement if spend increases modestly into the strongest diaspora audience.",
+    forecastLabel: "Projected +£18.4k movement if spend increases modestly into the strongest diaspora audience.",
     audienceLeads: ["Donors", "Care team followers", "Diaspora supporters"],
     regionLeads: ["Nairobi", "Kampala", "Johannesburg diaspora"],
     placementLeads: ["Giving surfaces", "Home hero", "Replay companion cards"],
@@ -371,7 +372,7 @@ const CAMPAIGNS_SEED: BeaconCampaign[] = [
     eventRegistrations: 0,
     productClicks: 0,
     followAdds: 164,
-    efficiencyLabel: "Â£3.78 per follow",
+    efficiencyLabel: "£3.78 per follow",
     creativeHealth: 73,
     fatigueRisk: 54,
     copyStrength: 69,
@@ -409,7 +410,7 @@ const CAMPAIGNS_SEED: BeaconCampaign[] = [
     eventRegistrations: 0,
     productClicks: 0,
     followAdds: 412,
-    efficiencyLabel: "Â£2.38 per follow",
+    efficiencyLabel: "£2.38 per follow",
     creativeHealth: 90,
     fatigueRisk: 35,
     copyStrength: 87,
@@ -484,7 +485,7 @@ const CAMPAIGNS_SEED: BeaconCampaign[] = [
     eventRegistrations: 0,
     productClicks: 0,
     followAdds: 62,
-    efficiencyLabel: "Â£0.15 per watch start",
+    efficiencyLabel: "£0.15 per watch start",
     creativeHealth: 68,
     fatigueRisk: 82,
     copyStrength: 73,
@@ -568,7 +569,7 @@ const RECOMMENDATIONS_SEED: Recommendation[] = [
     sourceType: "Crowdfund",
     mode: "Linked",
     why: "Diaspora donor conversion remains strong and current spend is below the efficient range.",
-    projectedLift: "+Â£18.4k campaign movement",
+    projectedLift: "+£18.4k campaign movement",
     accent: "green",
     route: ROUTES.charityCrowdfund,
   },
@@ -806,13 +807,7 @@ function MetricCard({
   hint?: string;
   tone?: Accent;
 }) {
-  return (
-    <div className="rounded-3xl bg-slate-50 p-3 ring-1 ring-slate-200 transition dark:bg-slate-800/50 dark:ring-slate-800">
-      <div className="text-[11px] uppercase tracking-wide text-slate-400 dark:text-slate-500">{label}</div>
-      <div className="mt-1 text-xl font-extrabold" style={{ color: accentColor(tone) }}>{value}</div>
-      {hint ? <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{hint}</div> : null}
-    </div>
-  );
+  return <KpiTile label={label} value={value} hint={hint} tone={tone} className="min-h-[140px]" />;
 }
 
 function ProgressBar({ value, accent = "green" }: { value: number; accent?: Accent }) {
@@ -1094,7 +1089,7 @@ function CampaignRow({
         </div>
       </div>
       <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
-        <div className="text-[11px] text-slate-500 dark:text-slate-400">{campaign.lastUpdatedLabel} Â· From {campaign.createdFrom}</div>
+        <div className="text-[11px] text-slate-500 dark:text-slate-400">{campaign.lastUpdatedLabel} · From {campaign.createdFrom}</div>
         <div className="flex items-center gap-2">
           <Btn tone="ghost" onClick={onDuplicate} left={<Copy className="h-4 w-4" />}>
             Duplicate
@@ -1269,7 +1264,7 @@ export default function BeaconDashboardPage() {
                 <span className="font-medium text-slate-700 dark:text-slate-300">Dashboard</span>
               </div>
               <div className="mt-2 flex flex-wrap items-center gap-3">
-                <div className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-slate-50 tracking-tight">FH-P-080 Â· Beacon Dashboard</div>
+                <div className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-slate-50 tracking-tight">FH-P-080 · Beacon Dashboard</div>
                 <Pill tone="pro">
                   <Sparkles className="h-3.5 w-3.5" /> Premium promotion engine
                 </Pill>
@@ -1468,7 +1463,7 @@ export default function BeaconDashboardPage() {
                       <div className="flex items-start justify-between gap-3">
                         <div className="min-w-0">
                           <div className="text-sm font-bold text-slate-900 dark:text-slate-50">{campaign.title}</div>
-                          <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{campaign.sourceType} Â· {campaign.mode} Â· {campaign.objective}</div>
+                          <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{campaign.sourceType} · {campaign.mode} · {campaign.objective}</div>
                         </div>
                         <Pill tone={healthTone(campaign.creativeHealth)}>Health {campaign.creativeHealth}%</Pill>
                       </div>
@@ -1538,7 +1533,7 @@ export default function BeaconDashboardPage() {
                       <div className="flex items-start justify-between gap-3">
                         <div className="min-w-0">
                           <div className="text-sm font-bold text-slate-900 dark:text-slate-50">{item.title}</div>
-                          <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{item.sourceType} Â· {item.mode}</div>
+                          <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{item.sourceType} · {item.mode}</div>
                         </div>
                         <div className="rounded-full px-2 py-1 text-[10px] font-bold text-white" style={{ background: accentColor(item.accent) }}>
                           {item.projectedLift}
@@ -1588,7 +1583,7 @@ export default function BeaconDashboardPage() {
                   <div className="mt-3 flex items-center justify-between gap-3">
                     <div>
                       <div className="text-sm font-bold text-slate-900 dark:text-slate-50">{selectedCampaign.title}</div>
-                      <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{selectedCampaign.mode} Â· {selectedCampaign.sourceType}</div>
+                      <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{selectedCampaign.mode} · {selectedCampaign.sourceType}</div>
                     </div>
                     <Btn tone="primary" onClick={() => setToast(`Duplicated ${selectedCampaign.title} into a new draft.`)} left={<Copy className="h-4 w-4" />}>
                       Duplicate now
@@ -1694,8 +1689,8 @@ export default function BeaconDashboardPage() {
                       <Pill key={surface} tone="neutral">{surface}</Pill>
                     ))}
                   </div>
-                  <div className="mt-3 text-xs text-slate-500 dark:text-slate-400">Top audiences: {selectedCampaign.audienceLeads.join(" Â· ")}</div>
-                  <div className="mt-2 text-xs text-slate-500 dark:text-slate-400">Languages: {selectedCampaign.languageMix.join(" Â· ")}</div>
+                  <div className="mt-3 text-xs text-slate-500 dark:text-slate-400">Top audiences: {selectedCampaign.audienceLeads.join(" · ")}</div>
+                  <div className="mt-2 text-xs text-slate-500 dark:text-slate-400">Languages: {selectedCampaign.languageMix.join(" · ")}</div>
                   <div className="mt-3 flex items-center gap-2">
                     <Btn tone="neutral" onClick={copySummary} left={<Copy className="h-4 w-4" />}>
                       Copy summary
@@ -1714,7 +1709,7 @@ export default function BeaconDashboardPage() {
       <Modal
         open={previewOpen}
         onClose={() => setPreviewOpen(false)}
-        title={`${selectedCampaign.title} Â· Full preview`}
+        title={`${selectedCampaign.title} · Full preview`}
         subtitle="Preview how the selected Beacon campaign appears across premium FaithHub promotion surfaces."
       >
         <div className="grid grid-cols-1 gap-6 xl:grid-cols-[1.15fr_0.85fr]">
@@ -1751,9 +1746,9 @@ export default function BeaconDashboardPage() {
             <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
               <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Preview notes</div>
               <div className="mt-3 space-y-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-                <div>â€¢ Linked and standalone Beacon campaigns use the same premium preview system so teams can compare quality consistently.</div>
-                <div>â€¢ Creative health warnings and pacing forecasts are preserved beside the preview, so optimization happens with context still visible.</div>
-                <div>â€¢ Surfaces, languages, and audience mixes should feel native rather than copied blindly across every placement.</div>
+                <div>• Linked and standalone Beacon campaigns use the same premium preview system so teams can compare quality consistently.</div>
+                <div>• Creative health warnings and pacing forecasts are preserved beside the preview, so optimization happens with context still visible.</div>
+                <div>• Surfaces, languages, and audience mixes should feel native rather than copied blindly across every placement.</div>
               </div>
             </div>
 
@@ -1784,6 +1779,9 @@ export default function BeaconDashboardPage() {
     </div>
   );
 }
+
+
+
 
 
 

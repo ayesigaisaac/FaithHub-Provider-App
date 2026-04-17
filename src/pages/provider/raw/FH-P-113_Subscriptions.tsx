@@ -1,4 +1,4 @@
-ï»¿// @ts-nocheck
+// @ts-nocheck
 
 "use client";
 
@@ -24,9 +24,10 @@ import {
   Wallet,
   Zap,
 } from "lucide-react";
+import { KpiTile } from "../../../components/ui/KpiTile";
 
 /**
- * FaithHub â€” FH-P-113 Subscriptions
+ * FaithHub — FH-P-113 Subscriptions
  * ---------------------------------
  * Workspace / team subscriptions surface for billing plans, seats, entitlements,
  * add-ons, renewals, invoices, and feature access.
@@ -58,7 +59,7 @@ function safeNav(url: string) {
   window.location.assign(url);
 }
 
-function fmtMoney(n: number, currency = "Â£") {
+function fmtMoney(n: number, currency = "£") {
   return `${currency}${Intl.NumberFormat(undefined, {
     maximumFractionDigits: 0,
   }).format(n)}`;
@@ -567,33 +568,14 @@ function SectionCard({
 }
 
 function KPIBox({ item }: { item: KPI }) {
-  const bg =
-    item.tone === "good"
-      ? "bg-emerald-50 dark:bg-emerald-900/20"
-      : item.tone === "warn"
-        ? "bg-amber-50 dark:bg-amber-900/20"
-        : item.tone === "danger"
-          ? "bg-rose-50 dark:bg-rose-900/20"
-          : item.tone === "info"
-            ? "bg-sky-50 dark:bg-sky-900/20"
-            : "bg-white dark:bg-slate-900";
   return (
-    <div
-      className={cx(
-        "rounded-[22px] border border-slate-200 dark:border-slate-800 p-4 transition-colors",
-        bg,
-      )}
-    >
-      <div className="text-[11px] uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">
-        {item.label}
-      </div>
-      <div className="mt-2 text-[18px] font-black text-slate-900 dark:text-slate-100">
-        {item.value}
-      </div>
-      <div className="mt-1 text-[12px] leading-snug text-slate-600 dark:text-slate-400">
-        {item.hint}
-      </div>
-    </div>
+    <KpiTile
+      label={item.label}
+      value={item.value}
+      hint={item.hint}
+      tone={item.tone}
+      className="min-h-[140px]"
+    />
   );
 }
 
@@ -735,13 +717,13 @@ export default function SubscriptionsPage() {
                 </div>
                 <div className="min-w-0">
                   <div className="text-[12px] font-semibold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">
-                    TEAM OPERATIONS Â· BILLING & ACCESS
+                    TEAM OPERATIONS · BILLING & ACCESS
                   </div>
                   <h1 className="mt-1 text-[36px] leading-[1.05] font-black tracking-[-0.03em] text-slate-900 dark:text-slate-100 md:text-[52px]">
                     Manage plans, seats, and premium access without losing control.
                   </h1>
                   <p className="mt-3 max-w-[980px] text-[18px] leading-snug text-slate-600 dark:text-slate-400">
-                    Workspace/team subscriptions for FaithHub providers â€” covering billing plans,
+                    Workspace/team subscriptions for FaithHub providers — covering billing plans,
                     seats, entitlements, add-ons, renewals, invoices, and feature access in one premium surface.
                   </p>
                   <div className="mt-4 flex flex-wrap gap-2">
@@ -1151,7 +1133,7 @@ export default function SubscriptionsPage() {
                     </div>
                     <div className="mt-1 text-[24px] font-black">Growth Workspace</div>
                     <div className="mt-1 text-[12px] text-white/75">
-                      38 / 45 seats Â· 4 premium add-ons Â· renewal May 28
+                      38 / 45 seats · 4 premium add-ons · renewal May 28
                     </div>
                     <div className="mt-3">
                       <ProgressBar value={38} total={45} tone="good" />
@@ -1188,7 +1170,7 @@ export default function SubscriptionsPage() {
                       Growth Workspace
                     </div>
                     <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
-                      38 / 45 seats Â· renewal in 18 days
+                      38 / 45 seats · renewal in 18 days
                     </div>
                     <div className="mt-3 space-y-2">
                       {["Live Sessions", "Beacon", "Translation", "Invoices"].map((label, idx) => (
@@ -1221,7 +1203,7 @@ export default function SubscriptionsPage() {
                     Primary card: <span className="font-semibold text-slate-900 dark:text-slate-100">Visa ending 4831</span>
                   </div>
                   <div className="mt-1 text-[12px] text-slate-600 dark:text-slate-400">
-                    Backup: <span className="font-semibold text-slate-900 dark:text-slate-100">ACH account Â· verified</span>
+                    Backup: <span className="font-semibold text-slate-900 dark:text-slate-100">ACH account · verified</span>
                   </div>
                 </div>
                 <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-4 transition-colors">
@@ -1274,10 +1256,10 @@ export default function SubscriptionsPage() {
                         {invoice.period}
                       </div>
                       <div className="mt-1 text-[12px] text-slate-600 dark:text-slate-400">
-                        {invoice.reference} Â· {invoice.method}
+                        {invoice.reference} · {invoice.method}
                       </div>
                       <div className="mt-1 text-[12px] text-slate-500 dark:text-slate-400">
-                        Due {fmtDate(invoice.dueISO)} Â· {invoice.seats} billed seats
+                        Due {fmtDate(invoice.dueISO)} · {invoice.seats} billed seats
                       </div>
                     </div>
                     <div className="text-right">
@@ -1551,11 +1533,14 @@ export default function SubscriptionsPage() {
       ) : null}
 
       <div className="mx-auto mt-4 max-w-[1550px] rounded-[18px] bg-emerald-50 px-4 py-3 text-[12px] text-emerald-700">
-        Concept preview of the generated FaithHub Subscriptions page Â· EVzone Green primary ({EV_GREEN}) Â· Orange secondary ({EV_ORANGE}) Â· Medium gray ({EV_GREY})
+        Concept preview of the generated FaithHub Subscriptions page · EVzone Green primary ({EV_GREEN}) · Orange secondary ({EV_ORANGE}) · Medium gray ({EV_GREY})
       </div>
     </div>
   );
 }
+
+
+
 
 
 
