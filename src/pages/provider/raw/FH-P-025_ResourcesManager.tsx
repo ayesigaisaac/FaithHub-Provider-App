@@ -1,4 +1,4 @@
-// @ts-nocheck
+﻿// @ts-nocheck
 "use client";
 
 import React, { useMemo, useState } from "react";
@@ -32,7 +32,7 @@ import {
 import { handleRawPlaceholderAction } from "./placeholderActions";
 
 /**
- * FaithHub Ã¢â‚¬â€ FH-P-025 Resources Manager
+ * FaithHub — FH-P-025 Resources Manager
  * -------------------------------------
  * Premium Provider-side control surface for free learning resources,
  * downloadable PDFs, devotionals, prayer guides, study packs, and audio teachings.
@@ -507,7 +507,7 @@ function ResourceFeatureCard({
               {resource.providerUploaded ? <Pill tone="soft">PROVIDER</Pill> : null}
             </div>
             <div className="mt-1 text-sm text-slate-600">
-              {resource.author} Ã‚Â· {resource.type} Ã‚Â· {resource.category}
+              {resource.author} · {resource.type} · {resource.category}
             </div>
           </div>
           <div
@@ -586,7 +586,7 @@ function ResourceMiniRow({
           {resource.title}
         </div>
         <div className="truncate text-sm text-slate-500">
-          {resource.type} Ã‚Â· {fmtInt(resource.downloads)} downloads
+          {resource.type} · {fmtInt(resource.downloads)} downloads
         </div>
       </div>
       <ChevronRight className="h-4 w-4 shrink-0 text-slate-400" />
@@ -617,7 +617,7 @@ function LibraryCard({
             {resource.title}
           </div>
           <div className="mt-1 text-sm text-slate-500">
-            {resource.author} Ã‚Â· {resource.type} Ã‚Â· {resource.category}
+            {resource.author} · {resource.type} · {resource.category}
           </div>
         </div>
         <div className="inline-flex flex-wrap items-center justify-end gap-2">
@@ -698,7 +698,7 @@ function ManageRow({
     <div className="rounded-[24px] border border-slate-200 bg-white p-4 shadow-sm">
       <div className="text-[17px] font-black tracking-tight text-slate-900">{resource.title}</div>
       <div className="mt-1 text-sm text-slate-500">
-        {fmtInt(resource.downloads)} downloads Ã‚Â· {resource.category}
+        {fmtInt(resource.downloads)} downloads · {resource.category}
       </div>
       <div className="mt-3 text-[11px] font-bold uppercase tracking-[0.18em] text-slate-500">
         Tags
@@ -871,7 +871,7 @@ function PreviewRail({
           <div className="mt-3 text-[20px] font-black tracking-tight text-slate-900">
             {resource.title}
           </div>
-          <div className="mt-1 text-sm text-slate-500">{resource.author} Ã‚Â· {resource.type}</div>
+          <div className="mt-1 text-sm text-slate-500">{resource.author} · {resource.type}</div>
           <div className="mt-4 text-sm leading-6 text-slate-700">{resource.summary}</div>
         </div>
         <div className="grid grid-cols-2 gap-3">
@@ -1591,5 +1591,6 @@ export default function ResourcesManagerPage() {
     </div>
   );
 }
+
 
 

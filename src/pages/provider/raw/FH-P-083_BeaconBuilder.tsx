@@ -1,4 +1,4 @@
-// @ts-nocheck
+﻿// @ts-nocheck
 
 "use client";
 
@@ -37,7 +37,7 @@ import {
 import { handleRawPlaceholderAction } from "./placeholderActions";
 
 /**
- * FaithHub ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â FH-P-083 Beacon Builder
+ * FaithHub — FH-P-083 Beacon Builder
  * ----------------------------------
  * Premium dual-path campaign builder for linked and standalone Beacon campaigns.
  *
@@ -91,7 +91,7 @@ function fmtInt(n: number) {
   return Intl.NumberFormat(undefined, { maximumFractionDigits: 0 }).format(n);
 }
 
-function fmtCurrency(n: number, currency = "Ãƒâ€šÃ‚Â£") {
+function fmtCurrency(n: number, currency = "£") {
   return `${currency}${Intl.NumberFormat(undefined, {
     maximumFractionDigits: 0,
   }).format(n)}`;
@@ -1231,7 +1231,7 @@ function BeaconPreviewCard({
               {showQuote ? (
                 <div className="absolute inset-x-0 bottom-0 p-4 text-white">
                   <div className="max-w-[85%] text-lg font-black leading-tight drop-shadow">
-                    ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œ{builder.quoteText || "The next faithful move may be the one you almost postponed."}ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â
+                    “{builder.quoteText || "The next faithful move may be the one you almost postponed."}”
                   </div>
                 </div>
               ) : null}
@@ -1250,7 +1250,7 @@ function BeaconPreviewCard({
 
               {builder.creativeLayout === "Story card" ? (
                 <div className="mt-3 rounded-2xl p-3 text-sm font-semibold" style={{ background: `${EV_GREEN}16`, color: isDark ? "#d1fae5" : EV_NAVY }}>
-                  {builder.storyCardLabel || "Story card narrative Ãƒâ€šÃ‚Â· Why this message matters now"}
+                  {builder.storyCardLabel || "Story card narrative � Why this message matters now"}
                 </div>
               ) : null}
 
@@ -1275,8 +1275,8 @@ function BeaconPreviewCard({
               </div>
 
               <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
-                <Pill>{builder.languages.join(" Ãƒâ€šÃ‚Â· ") || "English"}</Pill>
-                <Pill>{builder.regions.slice(0, 2).join(" Ãƒâ€šÃ‚Â· ") || "Uganda"}</Pill>
+                <Pill>{builder.languages.join(" � ") || "English"}</Pill>
+                <Pill>{builder.regions.slice(0, 2).join(" � ") || "Uganda"}</Pill>
                 <Pill tone={builder.ageRule === "Child-safe" ? "good" : builder.ageRule === "Youth-safe" ? "warn" : "neutral"}>{builder.ageRule}</Pill>
               </div>
             </div>
@@ -1334,12 +1334,12 @@ export default function BeaconBuilderPage({
     heroVideoId: "asset_replay_video",
     headline: "Catch the message that moved the room.",
     body: "Replay the full teaching, share it with someone who needs it, and step into the next response moment while the message is still fresh.",
-    quoteText: "Grace doesnÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢t wait for strength before it shows up.",
+    quoteText: "Grace doesn’t wait for strength before it shows up.",
     storyCardLabel: "Why this replay matters now",
     countdownEnabled: false,
     countdownEndISO: countdownDefault.toISOString(),
     carouselCards: ["Key teaching moment", "Community response", "Watch the full replay"],
-    subtitleMode: "Auto subtitles Ãƒâ€šÃ‚Â· English + Luganda",
+    subtitleMode: "Auto subtitles � English + Luganda",
     variantTesting: true,
     duplicateWinningCreative: true,
 
@@ -1544,16 +1544,16 @@ export default function BeaconBuilderPage({
   }
 
   function handleSaveDraft() {
-    setToast(`Draft saved Ãƒâ€šÃ‚Â· ${summaryName}`);
+    setToast(`Draft saved � ${summaryName}`);
   }
 
   function handleLaunch() {
     if (!launchReady) {
-      setToast("Launch blocked Ãƒâ€šÃ‚Â· finish the launch gate checks first.");
+      setToast("Launch blocked � finish the launch gate checks first.");
       setStep("review");
       return;
     }
-    setToast(`Beacon launched Ãƒâ€šÃ‚Â· ${summaryName}`);
+    setToast(`Beacon launched � ${summaryName}`);
   }
 
   function copyPreviewLink() {
@@ -1818,11 +1818,11 @@ export default function BeaconBuilderPage({
                           type="button"
                           onClick={() => {
                             setField("sourceId", src.id);
-                            setField("campaignName", `${src.title} Ãƒâ€šÃ‚Â· Beacon`);
+                            setField("campaignName", `${src.title} � Beacon`);
                             setField(
                               "headline",
                               src.recommendedObjective === "Live attendance"
-                                ? `DonÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢t miss ${src.title}.`
+                                ? `Don’t miss ${src.title}.`
                                 : src.recommendedObjective === "Giving" || src.recommendedObjective === "Charity momentum"
                                   ? `Support ${src.title}.`
                                   : `Explore ${src.title}.`,
@@ -2023,7 +2023,7 @@ export default function BeaconBuilderPage({
                 </div>
                 <div>
                   <FieldLabel label="Subtitle mode" hint="How subtitles or localization notes appear in the creative package" />
-                  <TextInput value={builder.subtitleMode} onChange={(v) => setField("subtitleMode", v)} placeholder="Auto subtitles Ãƒâ€šÃ‚Â· English + Luganda" />
+                  <TextInput value={builder.subtitleMode} onChange={(v) => setField("subtitleMode", v)} placeholder="Auto subtitles � English + Luganda" />
                 </div>
                 <div className="md:col-span-2">
                   <FieldLabel label="Body copy" hint="Supportive message, context, or conversion framing" />
@@ -2104,9 +2104,9 @@ export default function BeaconBuilderPage({
               <Card>
                 <div className="text-sm font-black text-slate-900 dark:text-slate-100">Creative strategy notes</div>
                 <div className="mt-2 space-y-2 text-xs text-slate-600 dark:text-slate-400">
-                  <div>ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ Countdown, quote cards, story cards, and carousel packages all stay available in both linked and standalone mode.</div>
-                  <div>ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ Mixed layout lets you combine hero motion with multi-card support for modern feed surfaces.</div>
-                  <div>ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ Preview is always live, so the Provider can understand exactly what audiences will see before spend begins.</div>
+                  <div>� Countdown, quote cards, story cards, and carousel packages all stay available in both linked and standalone mode.</div>
+                  <div>� Mixed layout lets you combine hero motion with multi-card support for modern feed surfaces.</div>
+                  <div>� Preview is always live, so the Provider can understand exactly what audiences will see before spend begins.</div>
                 </div>
               </Card>
             </div>
@@ -2438,7 +2438,7 @@ export default function BeaconBuilderPage({
               </Card>
               <Card>
                 <div className="text-sm font-black text-slate-900 dark:text-slate-100">Budget pacing summary</div>
-                <div className="mt-2 text-xs text-slate-500 dark:text-slate-400">{fmtCurrency(builder.budget)} total budget Ãƒâ€šÃ‚Â· {fmtCurrency(builder.dailyCap)} daily cap Ãƒâ€šÃ‚Â· {builder.placementSurfaces.length} selected surface(s)</div>
+                <div className="mt-2 text-xs text-slate-500 dark:text-slate-400">{fmtCurrency(builder.budget)} total budget � {fmtCurrency(builder.dailyCap)} daily cap � {builder.placementSurfaces.length} selected surface(s)</div>
                 <div className="mt-3 h-2 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
                   <div className="h-full rounded-full" style={{ width: `${clamp((builder.dailyCap / Math.max(builder.budget, 1)) * 100, 5, 100)}%`, background: builder.pacing === "Accelerated" ? EV_ORANGE : builder.pacing === "Guarded" ? EV_NAVY : EV_GREEN }} />
                 </div>
@@ -2532,7 +2532,7 @@ export default function BeaconBuilderPage({
                 </div>
                 <div className="mt-4 grid gap-2 text-xs text-slate-500 dark:text-slate-400">
                   <div>Budget: <span className="font-semibold text-slate-900 dark:text-slate-100">{fmtCurrency(builder.budget)}</span></div>
-                  <div>Dates: <span className="font-semibold text-slate-900 dark:text-slate-100">{builder.startDate} {builder.startTime} ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ {builder.endDate} {builder.endTime}</span></div>
+                  <div>Dates: <span className="font-semibold text-slate-900 dark:text-slate-100">{builder.startDate} {builder.startTime} �?? � {builder.endDate} {builder.endTime}</span></div>
                   <div>Primary CTA: <span className="font-semibold text-slate-900 dark:text-slate-100">{builder.ctaLabel}</span></div>
                   <div>Source mode: <span className="font-semibold text-slate-900 dark:text-slate-100">{builder.sourceMode}</span></div>
                 </div>
@@ -2606,14 +2606,14 @@ export default function BeaconBuilderPage({
               </div>
               <div className="mt-2 flex flex-wrap items-center gap-2">
                 <div className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50">
-                  FH-P-083 Ãƒâ€šÃ‚Â· Beacon Builder
+                  FH-P-083 � Beacon Builder
                 </div>
                 <Pill tone="brand"><Zap className="h-3.5 w-3.5" /> Beacon</Pill>
                 <Pill tone="good">{builder.sourceMode}</Pill>
                 <Pill tone="pro">Preview-first workflow</Pill>
               </div>
               <div className="mt-1 text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-4xl">
-                Create a premium Beacon campaign from scratch ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â linked to FaithHub content or fully standalone ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â with rich creative, audience logic, placement planning, and a launch-ready review flow.
+                Create a premium Beacon campaign from scratch — linked to FaithHub content or fully standalone — with rich creative, audience logic, placement planning, and a launch-ready review flow.
               </div>
             </div>
             <div className="flex flex-wrap items-center gap-2">
@@ -2672,7 +2672,7 @@ export default function BeaconBuilderPage({
                 Previous step
               </Btn>
               <div className="text-xs text-slate-500 dark:text-slate-400">
-                {STEPS.findIndex((entry) => entry.id === step) + 1} of {STEPS.length} Ãƒâ€šÃ‚Â· {STEPS.find((entry) => entry.id === step)?.label}
+                {STEPS.findIndex((entry) => entry.id === step) + 1} of {STEPS.length} � {STEPS.find((entry) => entry.id === step)?.label}
               </div>
               <Btn tone="primary" left={<ChevronRight className="h-4 w-4" />} onClick={step === "review" ? handleLaunch : goToNext}>
                 {step === "review" ? "Launch Beacon" : "Next step"}
@@ -2739,7 +2739,7 @@ export default function BeaconBuilderPage({
       <DrawerShell
         open={assetDrawerTarget !== null}
         onClose={() => setAssetDrawerTarget(null)}
-        title={assetDrawerTarget === "heroImage" ? "Asset bank Ãƒâ€šÃ‚Â· Hero image" : "Asset bank Ãƒâ€šÃ‚Â· Hero video"}
+        title={assetDrawerTarget === "heroImage" ? "Asset bank � Hero image" : "Asset bank � Hero video"}
         subtitle="Pick approved Beacon assets without breaking the current build context."
       >
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -2754,7 +2754,7 @@ export default function BeaconBuilderPage({
                 if (assetDrawerTarget === "heroImage") setField("heroImageId", asset.id);
                 if (assetDrawerTarget === "heroVideo") setField("heroVideoId", asset.id);
                 setAssetDrawerTarget(null);
-                setToast(`Asset selected Ãƒâ€šÃ‚Â· ${asset.title}`);
+                setToast(`Asset selected � ${asset.title}`);
               }}
             />
           ))}
@@ -2780,5 +2780,8 @@ export default function BeaconBuilderPage({
 
   return content;
 }
+
+
+
 
 

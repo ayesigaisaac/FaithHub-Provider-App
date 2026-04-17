@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 
 /**
- * FaithHub â€” FH-P-121 Moderation Settings
+ * FaithHub — FH-P-121 Moderation Settings
  * ---------------------------------------
  * Distinct from FH-P-070 Reviews & Moderation.
  * FH-P-121 controls policy rules, thresholds, child-safe defaults,
@@ -305,7 +305,7 @@ function SafeguardTile({
         <div>
           <div className="text-[13px] font-extrabold leading-tight text-slate-900 dark:text-slate-100">{safeguard.title}</div>
           <div className="mt-1 text-[11px] leading-snug text-slate-500 dark:text-slate-400">{safeguard.detail}</div>
-          <div className="mt-1 text-[11px] font-semibold text-slate-400 dark:text-slate-500">High-trust safeguard for minors,â€¦</div>
+          <div className="mt-1 text-[11px] font-semibold text-slate-400 dark:text-slate-500">High-trust safeguard for minors,…</div>
         </div>
         <Toggle checked={safeguard.enabled} onChange={() => onToggle(safeguard.id)} />
       </div>
@@ -368,37 +368,37 @@ export default function FH_P_121_ModerationSettings() {
   const [safeguards, setSafeguards] = useState<Safeguard[]>([
     {
       id: "sg_1",
-      title: "Disable anonymous repliesâ€¦",
+      title: "Disable anonymous replies…",
       detail: "Reduce hidden participation in child-facing or highly sensitive flows.",
       enabled: true,
     },
     {
       id: "sg_2",
-      title: "Block adult-to-childâ€¦",
+      title: "Block adult-to-child…",
       detail: "Prevent direct adult-to-child routing outside approved care flows.",
       enabled: true,
     },
     {
       id: "sg_3",
-      title: "Require dual approval forâ€¦",
+      title: "Require dual approval for…",
       detail: "Mandate an extra reviewer for child-linked moderation actions.",
       enabled: true,
     },
     {
       id: "sg_4",
-      title: "Disable direct messaging forâ€¦",
+      title: "Disable direct messaging for…",
       detail: "Keep child-safe conversation surfaces group-led and audited.",
       enabled: true,
     },
     {
       id: "sg_5",
-      title: "Require media consent onâ€¦",
+      title: "Require media consent on…",
       detail: "Add stricter consent checks for testimony and prayer uploads.",
       enabled: true,
     },
     {
       id: "sg_6",
-      title: "Freeze public sort order duriâ€¦",
+      title: "Freeze public sort order duri…",
       detail: "Reduce rapid public amplification when risk signals spike.",
       enabled: true,
     },
@@ -444,7 +444,7 @@ export default function FH_P_121_ModerationSettings() {
     {
       id: "a_1",
       title: "3 flagged live-chat messages in 90 sec",
-      detail: "Live Sessionz",
+      detail: "Live Sessions",
       state: "Active",
     },
     {
@@ -459,7 +459,7 @@ export default function FH_P_121_ModerationSettings() {
     {
       id: "p_1",
       title: "Live chat message with repeated links",
-      surface: "Live Sessionz Â· Chat",
+      surface: "Live Sessions · Chat",
       outcome: "Hold",
     },
     {
@@ -544,7 +544,7 @@ export default function FH_P_121_ModerationSettings() {
                   Trust &amp; Safety Governance
                 </div>
                 <div className="mt-1 text-[26px] md:text-[32px] leading-none font-black tracking-tight text-slate-900 dark:text-slate-50">
-                  FH-P-121 Â· Moderation Settings
+                  FH-P-121 · Moderation Settings
                 </div>
                 <div className="mt-2 max-w-[920px] text-[15px] leading-relaxed text-slate-500 dark:text-slate-400">
                   Institution-wide policy rules, filters, defaults, thresholds, child-safe settings, and automation rules.
@@ -578,11 +578,11 @@ export default function FH_P_121_ModerationSettings() {
           <div className="flex flex-wrap items-center gap-2 min-w-0">
             <Pill tone="brand">Premium moderation defaults</Pill>
             <div className="text-[12px] font-extrabold text-slate-500 dark:text-slate-400 truncate">
-              Rule definitions here shape Live Sessionz, Community, Prayer, Counseling, Reviews, and all linked trust surfaces.
+              Rule definitions here shape Live Sessions, Community, Prayer, Counseling, Reviews, and all linked trust surfaces.
             </div>
           </div>
           <div className="text-[12px] font-extrabold uppercase tracking-[0.12em] text-slate-400 dark:text-slate-500">
-            Surface engine Â· Safeguards Â· Automation
+            Surface engine · Safeguards · Automation
           </div>
         </div>
 
@@ -781,5 +781,7 @@ export default function FH_P_121_ModerationSettings() {
     </div>
   );
 }
+
+
 
 

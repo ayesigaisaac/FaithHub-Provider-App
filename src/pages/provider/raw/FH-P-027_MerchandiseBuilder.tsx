@@ -35,7 +35,7 @@ import {
 } from "lucide-react";
 
 /**
- * FaithHub â€” FH-P-027 Merchandise Builder
+ * FaithHub — FH-P-027 Merchandise Builder
  * ---------------------------------------
  * Premium Provider-side create/edit page launched from FH-P-026 Merchandise Manager via
  * the "+ New Merchandise" command.
@@ -43,7 +43,7 @@ import {
  * Product intent
  * - Build premium FaithMart-ready merchandise without leaving the Provider flow.
  * - Support apparel, journals, gifts, event kits, accessories, and merch bundles.
- * - Keep Live Sessionz, Events, Giving, Audience journeys, and Beacon promotion close to
+ * - Keep Live Sessions, Events, Giving, Audience journeys, and Beacon promotion close to
  *   the merchandise object from day one.
  * - Provide a premium preview rail so a provider sees the storefront, live pin, and
  *   promotional surfaces before publishing.
@@ -477,7 +477,7 @@ function createDraftFromTemplate(templateId: TemplateKey): MerchandiseDraft {
     donorThankYouEligible: false,
     fulfillmentMode: "Mixed",
     shippingClass: "Standard parcel",
-    prepLabel: "Dispatch in 2â€“4 working days",
+    prepLabel: "Dispatch in 2–4 working days",
     shipRegions: preset.shipRegions,
     pickupLocations: preset.pickupLocations,
     linkHooks: {
@@ -1047,7 +1047,7 @@ function PreviewRail({
                   <div className="absolute left-3 right-3 bottom-3 text-white">
                     <div className="text-[10px] font-black uppercase tracking-[0.2em] opacity-80">FaithMart</div>
                     <div className="mt-1 text-base font-black leading-tight">{draft.title}</div>
-                    <div className="mt-1 text-xs opacity-90">{heroPrice}{supporterPrice ? ` â€¢ Supporter ${supporterPrice}` : ""}</div>
+                    <div className="mt-1 text-xs opacity-90">{heroPrice}{supporterPrice ? ` • Supporter ${supporterPrice}` : ""}</div>
                   </div>
                 </div>
                 <div className="p-3">
@@ -1239,7 +1239,7 @@ export default function MerchandiseBuilderPage() {
   }> = [
     {
       key: "live",
-      title: "Live Sessionz hook",
+      title: "Live Sessions hook",
       subtitle: "Pin merch in live sessions, replay CTAs, and premium studio moments.",
     },
     {
@@ -1279,7 +1279,7 @@ export default function MerchandiseBuilderPage() {
                 </h1>
                 <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-500 sm:text-[15px]">
                   Build a premium merchandise object that is storefront-ready for FaithMart, operationally ready for fulfillment,
-                  and fully connected to Live Sessionz, events, giving journeys, notifications, and Beacon promotion.
+                  and fully connected to Live Sessions, events, giving journeys, notifications, and Beacon promotion.
                 </p>
                 <div className="mt-4 flex flex-wrap items-center gap-2">
                   <Pill text="FaithMart builder" tone="good" icon={<ShoppingBag className="h-3.5 w-3.5" />} />
@@ -1616,7 +1616,7 @@ export default function MerchandiseBuilderPage() {
                       </div>
                       <div>
                         <Label>Preparation SLA</Label>
-                        <Input value={draft.prepLabel} onChange={(value) => patchDraft("prepLabel", value)} placeholder="Dispatch in 2â€“4 working days" />
+                        <Input value={draft.prepLabel} onChange={(value) => patchDraft("prepLabel", value)} placeholder="Dispatch in 2–4 working days" />
                       </div>
                       <div>
                         <Label>Ship regions (comma separated)</Label>
@@ -1837,5 +1837,7 @@ export default function MerchandiseBuilderPage() {
     </div>
   );
 }
+
+
 
 

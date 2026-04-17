@@ -40,7 +40,7 @@ const secondaryTabs = [
   {
     label: 'Streams',
     to: '/faithhub/provider/live-dashboard',
-    sections: ['Live Sessionz Operations'],
+    sections: ['Live Sessions Operations'],
     icon: <PlayCircleOutlineRoundedIcon fontSize="small" />,
   },
   {

@@ -34,7 +34,7 @@ import {
 export type ProviderPageSection =
   | 'Foundation & Mission Control'
   | 'Content Structure & Teaching Creation'
-  | 'Live Sessionz Operations'
+  | 'Live Sessions Operations'
   | 'Audience & Outreach'
   | 'Post-live & Trust'
   | 'Events & Giving'
@@ -243,7 +243,7 @@ export const providerPageCatalog: ProviderPageMeta[] = [
     title: 'Live Builder',
     description: 'Configure operational, editorial, and audience-facing settings for a live session.',
     path: '/faithhub/provider/live-builder',
-    section: 'Live Sessionz Operations',
+    section: 'Live Sessions Operations',
     icon: Radio,
     quickAction: true,
     component: LiveBuilder,
@@ -254,7 +254,7 @@ export const providerPageCatalog: ProviderPageMeta[] = [
     title: 'Live Schedule',
     description: 'Operational calendar for live sessions, staffing, campuses, and readiness.',
     path: '/faithhub/provider/live-schedule',
-    section: 'Live Sessionz Operations',
+    section: 'Live Sessions Operations',
     icon: CalendarClock,
     component: LiveSchedule,
   },
@@ -264,7 +264,7 @@ export const providerPageCatalog: ProviderPageMeta[] = [
     title: 'Live Dashboard',
     description: 'High-intensity control room dashboard for specific sessions before and during broadcast.',
     path: '/faithhub/provider/live-dashboard',
-    section: 'Live Sessionz Operations',
+    section: 'Live Sessions Operations',
     icon: MonitorPlay,
     quickAction: true,
     component: LiveDashboard,
@@ -275,7 +275,7 @@ export const providerPageCatalog: ProviderPageMeta[] = [
     title: 'Live Studio',
     description: 'Premium production studio with scenes, overlays, backstage, captions, and controls.',
     path: '/faithhub/provider/live-studio',
-    section: 'Live Sessionz Operations',
+    section: 'Live Sessions Operations',
     icon: Mic2,
     quickAction: true,
     component: LiveStudio,
@@ -286,7 +286,7 @@ export const providerPageCatalog: ProviderPageMeta[] = [
     title: 'Stream-to-Platforms',
     description: 'Manage multi-destination routing, credentials, health, and fallback behavior.',
     path: '/faithhub/provider/stream-to-platforms',
-    section: 'Live Sessionz Operations',
+    section: 'Live Sessions Operations',
     icon: Sparkles,
     component: StreamToPlatforms,
   },

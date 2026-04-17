@@ -38,7 +38,7 @@ import {
 } from "lucide-react";
 
 /**
- * FaithHub â€” FH-P-032 Live Dashboard
+ * FaithHub — FH-P-032 Live Dashboard
  * ----------------------------------
  * Premium control-room page for a specific Live Session.
  *
@@ -192,10 +192,10 @@ const SESSIONS: SessionData[] = [
     id: "fh-live-032-a",
     title: "Sunday Encounter Live",
     state: "Upcoming",
-    parentLabel: "The Way of Grace â€¢ Episode 4",
+    parentLabel: "The Way of Grace • Episode 4",
     parentType: "Series Episode",
-    audienceLabel: "All Church â€¢ Families â€¢ Swahili track enabled",
-    locationLabel: "Main Sanctuary Â· Central Campus",
+    audienceLabel: "All Church • Families • Swahili track enabled",
+    locationLabel: "Main Sanctuary · Central Campus",
     timezone: "Africa/Kampala",
     startISO: shiftMinutes(18),
     endISO: shiftMinutes(108),
@@ -229,7 +229,7 @@ const SESSIONS: SessionData[] = [
       { role: "Moderator", name: "Moderator Tobi E.", readiness: "Ready", checked: true, critical: true },
       { role: "Captioner", name: "Caption Lead Mercy J.", readiness: "Joining", checked: false, critical: true },
       { role: "Interpreter", name: "Grace L.", readiness: "Ready", checked: true },
-      { role: "Support", name: "Support Team â€” Central", readiness: "Ready", checked: true },
+      { role: "Support", name: "Support Team — Central", readiness: "Ready", checked: true },
     ],
     audience: {
       registrants: 1428,
@@ -250,7 +250,7 @@ const SESSIONS: SessionData[] = [
       eventSignups: 46,
       merchClicks: 28,
       beaconHandoffs: 3,
-      responseLabel: "Waiting-room arrival is tracking 76% of forecast â€” a last-minute reminder could push the room above baseline before start.",
+      responseLabel: "Waiting-room arrival is tracking 76% of forecast — a last-minute reminder could push the room above baseline before start.",
     },
     alerts: [
       {
@@ -299,8 +299,8 @@ const SESSIONS: SessionData[] = [
     state: "Live",
     parentLabel: "Youth Revival Night 2026",
     parentType: "Event",
-    audienceLabel: "Youth â€¢ English + French captions",
-    locationLabel: "Community Arena Â· East Campus",
+    audienceLabel: "Youth • English + French captions",
+    locationLabel: "Community Arena · East Campus",
     timezone: "Africa/Kampala",
     startISO: shiftMinutes(-37),
     endISO: shiftMinutes(53),
@@ -334,7 +334,7 @@ const SESSIONS: SessionData[] = [
       { role: "Moderator", name: "Moderator Sarah A.", readiness: "Ready", checked: true, critical: true },
       { role: "Captioner", name: "Caption Lead Mercy J.", readiness: "Ready", checked: true, critical: true },
       { role: "Interpreter", name: "Interpreter Caleb O.", readiness: "Ready", checked: true },
-      { role: "Support", name: "Support Team â€” East", readiness: "Ready", checked: true },
+      { role: "Support", name: "Support Team — East", readiness: "Ready", checked: true },
     ],
     audience: {
       registrants: 2140,
@@ -395,7 +395,7 @@ const SESSIONS: SessionData[] = [
       ],
     },
     cover: {
-      eyebrow: "Live now â€¢ Control room",
+      eyebrow: "Live now • Control room",
       promise: "High-energy youth gathering with testimony, worship, live prayer, and a strong response moment.",
       gradient: "linear-gradient(135deg, #10253d 0%, #165a5f 46%, #03cd8c 100%)",
     },
@@ -412,8 +412,8 @@ const SESSIONS: SessionData[] = [
     state: "Ended",
     parentLabel: "Community Borehole Appeal",
     parentType: "Giving Moment",
-    audienceLabel: "Community â€¢ Supporters â€¢ Donation responders",
-    locationLabel: "Online Campus Â· Outreach Broadcast Room",
+    audienceLabel: "Community • Supporters • Donation responders",
+    locationLabel: "Online Campus · Outreach Broadcast Room",
     timezone: "Africa/Kampala",
     startISO: shiftMinutes(-88),
     endISO: shiftMinutes(-12),
@@ -447,7 +447,7 @@ const SESSIONS: SessionData[] = [
       { role: "Moderator", name: "Moderator Tobi E.", readiness: "Ready", checked: true, critical: true },
       { role: "Captioner", name: "Caption Lead Mercy J.", readiness: "Ready", checked: true },
       { role: "Interpreter", name: "Interpreter Grace L.", readiness: "Ready", checked: true },
-      { role: "Support", name: "Support Team â€” Outreach", readiness: "Ready", checked: true },
+      { role: "Support", name: "Support Team — Outreach", readiness: "Ready", checked: true },
     ],
     audience: {
       registrants: 986,
@@ -468,7 +468,7 @@ const SESSIONS: SessionData[] = [
       eventSignups: 18,
       merchClicks: 0,
       beaconHandoffs: 8,
-      responseLabel: "Crowdfund movement remained strong after the final prayer appeal â€” this session is ideal for replay plus campaign-update follow-up.",
+      responseLabel: "Crowdfund movement remained strong after the final prayer appeal — this session is ideal for replay plus campaign-update follow-up.",
     },
     alerts: [
       {
@@ -1189,7 +1189,7 @@ export default function FaithHubLiveDashboardPage() {
         <div className="flex items-start justify-between gap-3 flex-wrap">
           <div className="min-w-0">
             <div className="flex flex-wrap items-center gap-2">
-              <Pill text="FH-P-032 â€¢ Live Sessionz Operations" icon={<Radio className="h-3.5 w-3.5" />} />
+              <Pill text="FH-P-032 • Live Sessions Operations" icon={<Radio className="h-3.5 w-3.5" />} />
               <Pill text={session.state} tone={stateTone(session.state)} />
               <Pill text={session.health.critical} tone={healthToneToPill(session.health.critical)} />
             </div>
@@ -1237,7 +1237,7 @@ export default function FaithHubLiveDashboardPage() {
                 >
                   {SESSIONS.map((item) => (
                     <option key={item.id} value={item.id}>
-                      {item.title} â€¢ {item.state}
+                      {item.title} • {item.state}
                     </option>
                   ))}
                 </select>
@@ -1258,7 +1258,7 @@ export default function FaithHubLiveDashboardPage() {
                 <div className="mt-2 text-[12px] font-semibold text-slate-900 dark:text-slate-100">{session.title}</div>
                 <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">{session.audienceLabel}</div>
                 <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">{session.locationLabel}</div>
-                <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">{formatDateTime(session.startISO)} â€¢ {session.timezone}</div>
+                <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">{formatDateTime(session.startISO)} • {session.timezone}</div>
               </div>
 
               <div className="mt-4 grid grid-cols-2 gap-2">
@@ -1276,7 +1276,7 @@ export default function FaithHubLiveDashboardPage() {
 
               <div className="mt-4 flex flex-wrap gap-2">
                 {session.destinations.map((dest) => (
-                  <Pill key={dest.name} text={`${dest.name} â€¢ ${dest.status}`} tone={destinationTone(dest.status)} />
+                  <Pill key={dest.name} text={`${dest.name} • ${dest.status}`} tone={destinationTone(dest.status)} />
                 ))}
               </div>
             </Card>
@@ -1471,7 +1471,7 @@ export default function FaithHubLiveDashboardPage() {
                           <div className="flex flex-wrap items-center gap-2">
                             <Pill text={alert.severity.toUpperCase()} tone={severityTone(alert.severity)} />
                             <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">{alert.title}</div>
-                            <div className="text-[11px] text-slate-400 dark:text-slate-500">â€¢ {alert.owner}</div>
+                            <div className="text-[11px] text-slate-400 dark:text-slate-500">• {alert.owner}</div>
                           </div>
                           <div className="mt-2 text-[12px] text-slate-600 dark:text-slate-400">{alert.description}</div>
                           <div className="mt-2 text-[11px] text-slate-500 dark:text-slate-400">Playbook: {alert.playbook}</div>
@@ -1533,5 +1533,7 @@ export default function FaithHubLiveDashboardPage() {
     </div>
   );
 }
+
+
 
 

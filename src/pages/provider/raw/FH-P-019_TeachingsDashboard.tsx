@@ -1,4 +1,4 @@
-// @ts-nocheck
+﻿// @ts-nocheck
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -35,7 +35,7 @@ import {
 import { handleRawPlaceholderAction } from "./placeholderActions";
 
 /**
- * FaithHub Ã¢â‚¬â€ FH-P-019 Teachings Dashboard
+ * FaithHub — FH-P-019 Teachings Dashboard
  * ---------------------------------------
  * Premium control surface for everything in the Teachings section.
  *
@@ -251,13 +251,13 @@ const TEACHINGS: TeachingRecord[] = [
   },
   {
     id: "teach-episode-week5",
-    title: "Week 5 Ã‚Â· Return with Humility",
+    title: "Week 5 · Return with Humility",
     subtitle: "Episode inside 40 Days of Renewal with live prayer response and follow-up notes.",
     type: "Episode",
     status: "Scheduled",
     speaker: "Pastor Anna",
     summary:
-      "The next episode in the Renewal series, set to anchor the weekÃ¢â‚¬â„¢s live prayer encounter and replay handoff.",
+      "The next episode in the Renewal series, set to anchor the week’s live prayer encounter and replay handoff.",
     coverUrl: HERO_2,
     campus: "Online-first",
     access: "Follower-first",
@@ -730,9 +730,9 @@ function TeachingRow({
           <div className="mt-0.5 text-[12px] text-slate-600">{teaching.subtitle}</div>
           <div className="mt-1 text-[11px] text-slate-500">
             {teaching.speaker}
-            {teaching.seriesLabel ? ` Ã‚Â· ${teaching.seriesLabel}` : ""}
-            {teaching.episodeLabel ? ` Ã‚Â· ${teaching.episodeLabel}` : ""}
-            {teaching.upcomingISO ? ` Ã‚Â· ${fmtDateTime(teaching.upcomingISO)}` : ""}
+            {teaching.seriesLabel ? ` · ${teaching.seriesLabel}` : ""}
+            {teaching.episodeLabel ? ` · ${teaching.episodeLabel}` : ""}
+            {teaching.upcomingISO ? ` · ${fmtDateTime(teaching.upcomingISO)}` : ""}
           </div>
 
           <div className="mt-3 flex flex-wrap gap-2">
@@ -783,7 +783,7 @@ function TeachingRow({
             <div className="flex flex-wrap items-center gap-2">
               <Pill tone={readinessTone}>{readinessText}</Pill>
               <span className="text-[11px] text-slate-500">
-                Updated {fmtDate(teaching.updatedISO)} Ã‚Â· Owner {teaching.owner}
+                Updated {fmtDate(teaching.updatedISO)} · Owner {teaching.owner}
               </span>
             </div>
             <div className="flex flex-wrap gap-2">
@@ -1087,7 +1087,7 @@ export default function TeachingsDashboardPage() {
     if (!selectedTeaching) return [] as string[];
     const items: string[] = [];
     if (selectedTeaching.type !== "Series") items.push("Open the Standalone Teaching Builder and finish the viewer-facing package.");
-    if (selectedTeaching.liveCount === 0) items.push("Create a linked Live Session so this teaching can enter the full live Ã¢â€ â€™ replay Ã¢â€ â€™ clips workflow.");
+    if (selectedTeaching.liveCount === 0) items.push("Create a linked Live Session so this teaching can enter the full live → replay → clips workflow.");
     if (selectedTeaching.replayCount > 0) items.push("Open Replays & Clips to generate short discovery moments and push them into Beacon.");
     if (selectedTeaching.beaconReady) items.push("Launch a Beacon campaign while the teaching is still fresh and conversion-ready.");
     if (selectedTeaching.translationDue > 0) items.push("Complete translation variants before the next outreach or replay reminder journey.");
@@ -1136,10 +1136,10 @@ export default function TeachingsDashboardPage() {
                   Teachings command
                 </div>
                 <div className="mt-1 text-[28px] font-black leading-[1.05] tracking-tight text-slate-900 md:text-[34px]">
-                  FH-P-019 Ã‚Â· Teachings Dashboard
+                  FH-P-019 · Teachings Dashboard
                 </div>
                 <div className="mt-1 max-w-4xl text-[13px] leading-6 text-slate-600">
-                  Premium operating surface for Series, Episodes, and Standalone teachings Ã¢â‚¬â€ built to keep structured journeys and one-off sermons in one calm, world-class control center.
+                  Premium operating surface for Series, Episodes, and Standalone teachings — built to keep structured journeys and one-off sermons in one calm, world-class control center.
                 </div>
                 <div className="mt-3 flex flex-wrap gap-2">
                   <Pill tone="good">Standalone-first</Pill>
@@ -1338,7 +1338,7 @@ export default function TeachingsDashboardPage() {
                         <div className="min-w-0">
                           <div className="truncate text-[13px] font-bold text-slate-900">{teaching.title}</div>
                           <div className="mt-0.5 text-[11px] text-slate-500">
-                            {teaching.upcomingISO ? fmtDateTime(teaching.upcomingISO) : "TBD"} Ã‚Â· {teaching.campus}
+                            {teaching.upcomingISO ? fmtDateTime(teaching.upcomingISO) : "TBD"} · {teaching.campus}
                           </div>
                         </div>
                         <div className="flex flex-wrap gap-2">
@@ -1371,7 +1371,7 @@ export default function TeachingsDashboardPage() {
                         <div className="min-w-0">
                           <div className="truncate text-[13px] font-bold text-slate-900">{teaching.title}</div>
                           <div className="mt-0.5 text-[11px] text-slate-500">
-                            {teaching.type} Ã‚Â· {teaching.speaker}
+                            {teaching.type} · {teaching.speaker}
                           </div>
                         </div>
                         <div className="text-right">
@@ -1415,7 +1415,7 @@ export default function TeachingsDashboardPage() {
                         <div>
                           <div className="text-[13px] font-bold text-slate-900">{selectedTeaching.title}</div>
                           <div className="mt-0.5 text-[11px] text-slate-500">
-                            {selectedTeaching.languages.join(", ")} Ã‚Â· {selectedTeaching.access}
+                            {selectedTeaching.languages.join(", ")} · {selectedTeaching.access}
                           </div>
                         </div>
                         <Pill tone={accessTone(selectedTeaching.access)}>{selectedTeaching.access}</Pill>
@@ -1565,7 +1565,7 @@ export default function TeachingsDashboardPage() {
       <Drawer
         open={previewOpen}
         onClose={() => setPreviewOpen(false)}
-        title={selectedTeaching ? `${selectedTeaching.title} Ã‚Â· Teaching preview` : "Teaching preview"}
+        title={selectedTeaching ? `${selectedTeaching.title} · Teaching preview` : "Teaching preview"}
         subtitle="Full preview view plus linked workflow signals."
       >
         {selectedTeaching ? (
@@ -1660,4 +1660,5 @@ export default function TeachingsDashboardPage() {
     </div>
   );
 }
+
 

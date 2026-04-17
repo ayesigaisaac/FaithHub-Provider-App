@@ -54,9 +54,9 @@ import {
 } from "lucide-react";
 
 /**
- * FaithHub â€” FH-P-033 Live Studio
+ * FaithHub — FH-P-033 Live Studio
  * --------------------------------
- * Premium production studio for FaithHub Live Sessionz.
+ * Premium production studio for FaithHub Live Sessions.
  *
  * Design grammar
  * - Adapted from the creator-style studio layout: top command bar, left rail, center program/preview monitors,
@@ -174,11 +174,11 @@ type ClipMark = {
 
 const SESSION = {
   title: "Sunday Encounter Live",
-  parentLabel: "The Way of Grace â€¢ Episode 4",
+  parentLabel: "The Way of Grace • Episode 4",
   subtitle:
     "Premium control room for a live teaching session with prayer, scripture moments, giving prompts, translated tracks, and replay-ready clip markers.",
-  hostLine: "Pastor Daniel M. â€¢ Minister Ruth K. â€¢ Central Campus",
-  locations: "Main Sanctuary Â· Central Campus",
+  hostLine: "Pastor Daniel M. • Minister Ruth K. • Central Campus",
+  locations: "Main Sanctuary · Central Campus",
   destinations: [
     { label: "FaithHub", health: "healthy" as HealthTone },
     { label: "YouTube", health: "healthy" as HealthTone },
@@ -263,49 +263,49 @@ const SCENES: Scene[] = [
 const SOURCES: SourceItem[] = [
   {
     id: "cam-host",
-    label: "Camera 1 Â· Host",
+    label: "Camera 1 · Host",
     kind: "camera",
     health: "healthy",
-    detail: "Sony FX3 Â· 1080p30 Â· Audio linked",
+    detail: "Sony FX3 · 1080p30 · Audio linked",
   },
   {
     id: "cam-pulpit",
-    label: "Camera 2 Â· Pulpit",
+    label: "Camera 2 · Pulpit",
     kind: "camera",
     health: "healthy",
-    detail: "PTZ preset active Â· Clean framing",
+    detail: "PTZ preset active · Clean framing",
   },
   {
     id: "cam-wide",
-    label: "Camera 3 Â· Wide Room",
+    label: "Camera 3 · Wide Room",
     kind: "camera",
     health: "watch",
     detail: "Low light on rear aisle",
   },
   {
     id: "screen-share",
-    label: "Screen Share Â· Scripture Deck",
+    label: "Screen Share · Scripture Deck",
     kind: "screen",
     health: "healthy",
-    detail: "Slides synced Â· Verse pack loaded",
+    detail: "Slides synced · Verse pack loaded",
   },
   {
     id: "worship-loop",
-    label: "Media Loop Â· Worship Intro",
+    label: "Media Loop · Worship Intro",
     kind: "media",
     health: "healthy",
     detail: "3 motion clips ready",
   },
   {
     id: "graphics",
-    label: "Graphics Bus Â· Lower Thirds",
+    label: "Graphics Bus · Lower Thirds",
     kind: "graphics",
     health: "healthy",
     detail: "12 overlays and 4 scripture cards",
   },
   {
     id: "fallback",
-    label: "Fallback Source Â· Sanctuary Slate",
+    label: "Fallback Source · Sanctuary Slate",
     kind: "fallback",
     health: "healthy",
     detail: "Ready for instant switch",
@@ -318,7 +318,7 @@ const STAGE_MEMBERS: StageMember[] = [
     role: "Host",
     name: "Pastor Daniel M.",
     status: "On stage",
-    controlNote: "Lead voice Â· camera 1 and pulpit scenes",
+    controlNote: "Lead voice · camera 1 and pulpit scenes",
     critical: true,
   },
   {
@@ -423,7 +423,7 @@ const CHAT_MESSAGES: ChatMessage[] = [
   {
     id: 1,
     from: "Ama K.",
-    body: "Audio is clear now. Thank you team ðŸ™",
+    body: "Audio is clear now. Thank you team 🙏",
     time: "Now",
     pinned: true,
   },
@@ -573,7 +573,7 @@ function formatLiveTimer(totalSeconds: number) {
 }
 
 function formatCurrency(amount: number) {
-  return `Â£${amount.toLocaleString()}`;
+  return `£${amount.toLocaleString()}`;
 }
 
 function TopStat({ label, value }: { label: string; value: string }) {
@@ -658,7 +658,7 @@ function StudioStatusBadge({ mode, timer }: { mode: Mode; timer: string }) {
       )}
     >
       <span className={cx("h-2 w-2 rounded-full", mode === "live" ? "bg-emerald-500 animate-pulse" : "bg-slate-400")} />
-      {mode === "live" ? `Live â€¢ ${timer}` : "Pre-live lobby"}
+      {mode === "live" ? `Live • ${timer}` : "Pre-live lobby"}
     </span>
   );
 }
@@ -711,7 +711,7 @@ function AudienceMiniPreview({
               </div>
               {captionsEnabled ? (
                 <div className="mt-3 max-w-[70%] rounded-lg bg-black/55 px-2 py-1 text-[10px] leading-relaxed text-white">
-                  â€œGrace changes not just what we do, but who we become.â€
+                  “Grace changes not just what we do, but who we become.”
                 </div>
               ) : null}
             </div>
@@ -823,7 +823,7 @@ export default function FaithHubLiveStudioPage() {
       return;
     }
     setMode("standby");
-    showToast("Live ended â€¢ Post-live handoff ready");
+    showToast("Live ended • Post-live handoff ready");
   };
 
   const handleMarkClip = (label = "Manual highlight marker") => {
@@ -1215,7 +1215,7 @@ export default function FaithHubLiveStudioPage() {
                           </div>
                           {captionsEnabled ? (
                             <div className="mt-4 max-w-[72%] rounded-lg bg-black/55 px-2.5 py-1.5 text-[11px] leading-relaxed text-white">
-                              â€œGrace changes not just what we do, but who we become.â€
+                              “Grace changes not just what we do, but who we become.”
                             </div>
                           ) : null}
                         </div>
@@ -2011,7 +2011,7 @@ function MobileLiveStudio({
                 <div className="mt-1 text-sm text-white/80">{selectedCTA.label}</div>
                 {captionsEnabled ? (
                   <div className="mt-4 inline-block rounded-lg bg-black/55 px-2.5 py-1.5 text-[11px] text-white">
-                    â€œGrace changes who we become.â€
+                    “Grace changes who we become.”
                   </div>
                 ) : null}
               </div>
@@ -2248,4 +2248,6 @@ function MobileLiveStudio({
 }
 
 export { FaithHubLiveStudioPage };
+
+
 

@@ -32,7 +32,7 @@ import {
 } from "lucide-react";
 
 /**
- * FaithHub â€” FH-P-112 Roles & Permissions
+ * FaithHub — FH-P-112 Roles & Permissions
  * Premium Provider-side RBAC control center for workspace access, role templates,
  * approval paths, scope control, and sensitive-action permissions.
  *
@@ -211,7 +211,7 @@ const ROLE_RECORDS: RoleRecord[] = [
     featureAccess: [
       { id: "fa-1", label: "Provider Dashboard", group: "Workspace", hint: "Mission-control metrics and institution alerts.", state: "Allow" },
       { id: "fa-2", label: "Teachings & Series", group: "Content", hint: "Series, episodes, and standalone teachings.", state: "Allow" },
-      { id: "fa-3", label: "Live Sessionz", group: "Production", hint: "Live Builder, Live Dashboard, Studio, and schedule.", state: "Allow" },
+      { id: "fa-3", label: "Live Sessions", group: "Production", hint: "Live Builder, Live Dashboard, Studio, and schedule.", state: "Allow" },
       { id: "fa-4", label: "Audience & Outreach", group: "Audience", hint: "Notifications, segments, channels, and contact health.", state: "Review" },
       { id: "fa-5", label: "Events Manager", group: "Events", hint: "Event planning, logistics, and check-in readiness.", state: "Allow" },
       { id: "fa-6", label: "Donations & Wallet", group: "Finance", hint: "Funds, donor insights, wallet, and payout readiness.", state: "Review" },
@@ -262,7 +262,7 @@ const ROLE_RECORDS: RoleRecord[] = [
     featureAccess: [
       { id: "fa-11", label: "Provider Dashboard", group: "Workspace", hint: "Operational hero, alerts, and quick-create surfaces.", state: "Allow" },
       { id: "fa-12", label: "Teachings & Series", group: "Content", hint: "Series, episodes, and teaching metadata.", state: "Allow" },
-      { id: "fa-13", label: "Live Sessionz", group: "Production", hint: "Builder, Schedule, Dashboard, Studio, and destinations.", state: "Allow" },
+      { id: "fa-13", label: "Live Sessions", group: "Production", hint: "Builder, Schedule, Dashboard, Studio, and destinations.", state: "Allow" },
       { id: "fa-14", label: "Audience & Outreach", group: "Audience", hint: "Last-minute reminders and session-linked journeys.", state: "Review" },
       { id: "fa-15", label: "Events Manager", group: "Events", hint: "Event-linked live operations and stage logistics.", state: "Review" },
       { id: "fa-16", label: "Donations & Wallet", group: "Finance", hint: "Giving and payout settings remain locked.", state: "Block" },
@@ -313,7 +313,7 @@ const ROLE_RECORDS: RoleRecord[] = [
     featureAccess: [
       { id: "fa-21", label: "Provider Dashboard", group: "Workspace", hint: "Finance-weighted dashboard and campaign snapshot.", state: "Allow" },
       { id: "fa-22", label: "Teachings & Series", group: "Content", hint: "Content structure is visible but not editable.", state: "Review" },
-      { id: "fa-23", label: "Live Sessionz", group: "Production", hint: "Live controls remain hidden to protect production flow.", state: "Block" },
+      { id: "fa-23", label: "Live Sessions", group: "Production", hint: "Live controls remain hidden to protect production flow.", state: "Block" },
       { id: "fa-24", label: "Audience & Outreach", group: "Audience", hint: "View donor journeys without broad contact editing.", state: "Review" },
       { id: "fa-25", label: "Events Manager", group: "Events", hint: "Can view event-linked giving moments and sponsor notes.", state: "Review" },
       { id: "fa-26", label: "Donations & Wallet", group: "Finance", hint: "Funds, recurring giving, receipts, wallet, and payout status.", state: "Allow" },
@@ -363,7 +363,7 @@ const ROLE_RECORDS: RoleRecord[] = [
     featureAccess: [
       { id: "fa-31", label: "Provider Dashboard", group: "Workspace", hint: "Shows trust queue and reputation cards only.", state: "Review" },
       { id: "fa-32", label: "Teachings & Series", group: "Content", hint: "May review comments and linked clip quality only.", state: "Review" },
-      { id: "fa-33", label: "Live Sessionz", group: "Production", hint: "Can open moderation surfaces, not production controls.", state: "Review" },
+      { id: "fa-33", label: "Live Sessions", group: "Production", hint: "Can open moderation surfaces, not production controls.", state: "Review" },
       { id: "fa-34", label: "Audience & Outreach", group: "Audience", hint: "Can view message context for moderation escalations.", state: "Review" },
       { id: "fa-35", label: "Events Manager", group: "Events", hint: "Event forums and review threads only.", state: "Review" },
       { id: "fa-36", label: "Donations & Wallet", group: "Finance", hint: "Finance pages stay locked.", state: "Block" },
@@ -414,7 +414,7 @@ const ROLE_RECORDS: RoleRecord[] = [
     featureAccess: [
       { id: "fa-41", label: "Provider Dashboard", group: "Workspace", hint: "Campus-weighted dashboard widgets only.", state: "Allow" },
       { id: "fa-42", label: "Teachings & Series", group: "Content", hint: "May view series and campus-linked teaching plans.", state: "Review" },
-      { id: "fa-43", label: "Live Sessionz", group: "Production", hint: "Can monitor readiness and open live dashboards for local sessions.", state: "Review" },
+      { id: "fa-43", label: "Live Sessions", group: "Production", hint: "Can monitor readiness and open live dashboards for local sessions.", state: "Review" },
       { id: "fa-44", label: "Audience & Outreach", group: "Audience", hint: "Segment views are limited to campus-level audiences.", state: "Review" },
       { id: "fa-45", label: "Events Manager", group: "Events", hint: "Can run local events and volunteer coverage.", state: "Allow" },
       { id: "fa-46", label: "Donations & Wallet", group: "Finance", hint: "Can view local campaign progress but not issue payouts.", state: "Review" },
@@ -464,7 +464,7 @@ const ROLE_RECORDS: RoleRecord[] = [
     featureAccess: [
       { id: "fa-51", label: "Provider Dashboard", group: "Workspace", hint: "Shows care queue, unresolved cases, and follow-up reminders.", state: "Review" },
       { id: "fa-52", label: "Teachings & Series", group: "Content", hint: "Teaching pages stay out of scope for care leads.", state: "Block" },
-      { id: "fa-53", label: "Live Sessionz", group: "Production", hint: "May view prayer and care intake from live sessions.", state: "Review" },
+      { id: "fa-53", label: "Live Sessions", group: "Production", hint: "May view prayer and care intake from live sessions.", state: "Review" },
       { id: "fa-54", label: "Audience & Outreach", group: "Audience", hint: "Can view care-linked contacts and consent markers.", state: "Review" },
       { id: "fa-55", label: "Events Manager", group: "Events", hint: "May inspect care-linked events and counseling appointments.", state: "Review" },
       { id: "fa-56", label: "Donations & Wallet", group: "Finance", hint: "Finance and payout pages stay hidden.", state: "Block" },
@@ -642,7 +642,7 @@ function RoleListCard({
               {role.name}
             </div>
             <div className={cx("mt-1 truncate text-[12px]", active ? "text-white/75" : "text-slate-500 dark:text-slate-400")}>
-              {role.templateFamily} Â· {role.scope} Â· {role.owner}
+              {role.templateFamily} · {role.scope} · {role.owner}
             </div>
             <div className="mt-3 flex flex-wrap gap-2">
               <TonePill tone={tone}>{role.status}</TonePill>
@@ -847,7 +847,7 @@ function AssignmentCard({ item }: { item: AssignmentRecord }) {
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <div className="text-[14px] font-black text-slate-900 dark:text-slate-100">{item.name}</div>
-          <div className="mt-1 text-[12px] text-slate-500 dark:text-slate-400">{item.title} Â· {item.campus}</div>
+          <div className="mt-1 text-[12px] text-slate-500 dark:text-slate-400">{item.title} · {item.campus}</div>
         </div>
         <TonePill tone={tone}>{item.state}</TonePill>
       </div>
@@ -865,7 +865,7 @@ function PreviewSurface({
   const previewGroups = [
     { key: "workspace", label: "Dashboard", state: role.featureAccess.find((f) => f.label === "Provider Dashboard")?.state || "Block" },
     { key: "content", label: "Teachings", state: role.featureAccess.find((f) => f.group === "Content")?.state || "Block" },
-    { key: "production", label: "Live Sessionz", state: role.featureAccess.find((f) => f.group === "Production")?.state || "Block" },
+    { key: "production", label: "Live Sessions", state: role.featureAccess.find((f) => f.group === "Production")?.state || "Block" },
     { key: "audience", label: "Audience", state: role.featureAccess.find((f) => f.group === "Audience")?.state || "Block" },
     { key: "events", label: "Events & Giving", state: role.featureAccess.find((f) => f.label === "Events Manager" || f.label === "Donations & Wallet")?.state || "Block" },
     { key: "community", label: "Community", state: role.featureAccess.find((f) => f.group === "Community")?.state || "Block" },
@@ -920,7 +920,7 @@ function PreviewSurface({
                 <div key={action.id} className="rounded-2xl border border-slate-200 bg-white px-3 py-2 dark:border-slate-700 dark:bg-slate-900">
                   <div className="text-[11px] font-bold text-slate-900 dark:text-slate-100">{action.label}</div>
                   <div className="mt-1 text-[10px] text-slate-500 dark:text-slate-400">
-                    {action.permission} Â· {action.approval}
+                    {action.permission} · {action.approval}
                   </div>
                 </div>
               ))}
@@ -930,7 +930,7 @@ function PreviewSurface({
           <div className="mt-4 rounded-[22px] border border-slate-200 bg-slate-50 p-3 dark:border-slate-800 dark:bg-slate-950">
             <div className="text-[11px] font-black text-slate-900 dark:text-slate-100">Scope summary</div>
             <div className="mt-2 text-[11px] leading-5 text-slate-500 dark:text-slate-400">
-              {role.scope} Â· {role.campusScopes.join(" Â· ")}
+              {role.scope} · {role.campusScopes.join(" · ")}
             </div>
           </div>
         </div>
@@ -987,7 +987,7 @@ function PreviewSurface({
                   <div key={lane.id} className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2 dark:border-slate-800 dark:bg-slate-950">
                     <div className="text-[12px] font-bold text-slate-900 dark:text-slate-100">{lane.label}</div>
                     <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
-                      {lane.steps.join(" â†’ ")} Â· {lane.sla}
+                      {lane.steps.join(" → ")} · {lane.sla}
                     </div>
                   </div>
                 ))}
@@ -1009,7 +1009,7 @@ function PreviewSurface({
                 </div>
               </div>
               <div className="mt-3 text-[11px] leading-5 text-slate-500 dark:text-slate-400">
-                Scope: {role.scope} Â· {role.campusScopes.join(" Â· ")}
+                Scope: {role.scope} · {role.campusScopes.join(" · ")}
               </div>
             </div>
           </div>
@@ -1042,7 +1042,7 @@ function PreviewDrawer({
           <div className="flex items-center justify-between gap-3">
             <div className="min-w-0">
               <div className="text-[14px] font-black text-slate-900 dark:text-slate-100">
-                Access preview Â· {role.name}
+                Access preview · {role.name}
               </div>
               <div className="mt-1 text-[12px] text-slate-500 dark:text-slate-400">
                 Role visibility, approval flow, and mobile/desktop companion surfaces.
@@ -1300,7 +1300,7 @@ export default function FH_P_112_RolesPermissionsPage() {
                     Team governance
                   </div>
                   <div className="mt-1 text-3xl font-black tracking-tight text-slate-900 dark:text-slate-100">
-                    FH-P-112 Â· Roles & Permissions
+                    FH-P-112 · Roles & Permissions
                   </div>
                   <div className="mt-1 max-w-3xl text-[15px] text-slate-500 dark:text-slate-400">
                     Premium Provider RBAC surface for workspace access, role templates, approval paths, scope control, and sensitive-action permissions.
@@ -1358,7 +1358,7 @@ export default function FH_P_112_RolesPermissionsPage() {
                 Premium RBAC
               </span>
               <span className="ml-3 align-middle">
-                Finance changes still require dual approval Â· Two teammate assignments are waiting for scope review Â· Child-safe overrides remain locked behind safeguarding leadership.
+                Finance changes still require dual approval · Two teammate assignments are waiting for scope review · Child-safe overrides remain locked behind safeguarding leadership.
               </span>
             </div>
             <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">
@@ -1532,7 +1532,7 @@ export default function FH_P_112_RolesPermissionsPage() {
                         {selectedRole.name}
                       </div>
                       <div className="mt-1 text-[13px] text-slate-500 dark:text-slate-400">
-                        {selectedRole.templateFamily} Â· {selectedRole.scope} Â· Owner: {selectedRole.owner}
+                        {selectedRole.templateFamily} · {selectedRole.scope} · Owner: {selectedRole.owner}
                       </div>
                       <div className="mt-3 flex flex-wrap gap-2">
                         <TonePill tone={selectedRole.status === "Healthy" ? "good" : selectedRole.status === "Limited" ? "danger" : "warn"}>
@@ -1600,7 +1600,7 @@ export default function FH_P_112_RolesPermissionsPage() {
 
             <SectionCard
               title="Feature access matrix"
-              subtitle={editMode ? "Edit mode is active â€” click any tile to cycle Allow â†’ Review â†’ Block." : "Permission states across premium Provider surfaces and operational clusters."}
+              subtitle={editMode ? "Edit mode is active — click any tile to cycle Allow → Review → Block." : "Permission states across premium Provider surfaces and operational clusters."}
               right={
                 <TonePill tone={editMode ? "accent" : "neutral"}>
                   {editMode ? "Editing" : "View mode"}
@@ -1817,5 +1817,7 @@ export default function FH_P_112_RolesPermissionsPage() {
     </div>
   );
 }
+
+
 
 

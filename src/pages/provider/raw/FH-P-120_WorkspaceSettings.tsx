@@ -32,7 +32,7 @@ import {
 } from "lucide-react";
 
 /**
- * FaithHub â€” FH-P-120 Workspace Settings
+ * FaithHub — FH-P-120 Workspace Settings
  * --------------------------------------
  * Purpose:
  * Premium operating page for institution-wide defaults across branding,
@@ -339,22 +339,22 @@ const initialCampuses: Campus[] = [
   {
     id: "campus_1",
     name: "Kampala Central",
-    region: "Uganda Â· East Africa",
+    region: "Uganda · East Africa",
     timezone: "Africa/Kampala",
     serviceMode: "Hybrid",
     attendanceModel: "Open access",
-    accessibility: "Wheelchair access Â· Assisted listening",
+    accessibility: "Wheelchair access · Assisted listening",
     liveDefault: "Primary live control room",
     status: "Healthy",
   },
   {
     id: "campus_2",
     name: "Nairobi Fellowship Hub",
-    region: "Kenya Â· East Africa",
+    region: "Kenya · East Africa",
     timezone: "Africa/Nairobi",
     serviceMode: "Hybrid",
     attendanceModel: "Registration",
-    accessibility: "Family room Â· Quiet entrance",
+    accessibility: "Family room · Quiet entrance",
     liveDefault: "Regional watch and host support",
     status: "Healthy",
   },
@@ -500,17 +500,17 @@ export default function WorkspaceSettingsPage() {
   const [defaultNoticeboardVisible, setDefaultNoticeboardVisible] = useState(true);
   const [connectedStreamingPriority, setConnectedStreamingPriority] = useState(true);
   const [changesQueued, setChangesQueued] = useState(4);
-  const [lastSavedLabel, setLastSavedLabel] = useState("Today Â· 10:14 AM");
+  const [lastSavedLabel, setLastSavedLabel] = useState("Today · 10:14 AM");
   const [toast, setToast] = useState<string | null>(null);
 
   const [campusModalOpen, setCampusModalOpen] = useState(false);
   const [integrationModalOpen, setIntegrationModalOpen] = useState(false);
 
   const [newCampusName, setNewCampusName] = useState("Westlands Campus");
-  const [newCampusRegion, setNewCampusRegion] = useState("Kenya Â· East Africa");
+  const [newCampusRegion, setNewCampusRegion] = useState("Kenya · East Africa");
   const [newCampusTimezone, setNewCampusTimezone] = useState("Africa/Nairobi");
   const [newCampusMode, setNewCampusMode] = useState<Campus["serviceMode"]>("Hybrid");
-  const [newCampusAccess, setNewCampusAccess] = useState("Family entry Â· Caption screens");
+  const [newCampusAccess, setNewCampusAccess] = useState("Family entry · Caption screens");
   const [selectedConnectId, setSelectedConnectId] = useState("ci_1");
 
   useEffect(() => {
@@ -765,7 +765,7 @@ export default function WorkspaceSettingsPage() {
                   <div className="flex flex-wrap items-start justify-between gap-3">
                     <div>
                       <div className="text-[15px] font-black text-slate-900 dark:text-slate-100">{campus.name}</div>
-                      <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">{campus.region} Â· {campus.timezone}</div>
+                      <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">{campus.region} · {campus.timezone}</div>
                     </div>
                     <div className="flex flex-wrap gap-2">
                       <Pill tone={campus.status === "Healthy" ? "good" : "warn"}>{campus.status}</Pill>
@@ -822,7 +822,7 @@ export default function WorkspaceSettingsPage() {
                 <div className="mt-3 space-y-2">
                   <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2">
                     <div className="text-[12px] font-extrabold text-slate-900 dark:text-slate-100">East Africa window</div>
-                    <div className="text-[11px] text-slate-500 dark:text-slate-400">Default reminder window: 06:00â€“21:30 local time across Kampala and Nairobi.</div>
+                    <div className="text-[11px] text-slate-500 dark:text-slate-400">Default reminder window: 06:00–21:30 local time across Kampala and Nairobi.</div>
                   </div>
                   <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2">
                     <div className="text-[12px] font-extrabold text-slate-900 dark:text-slate-100">London regional override</div>
@@ -919,7 +919,7 @@ export default function WorkspaceSettingsPage() {
                       <div className="flex flex-wrap items-start justify-between gap-3">
                         <div>
                           <div className="text-[12px] font-extrabold text-slate-900 dark:text-slate-100">{locale.label}</div>
-                          <div className="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">{locale.code} Â· {locale.direction} Â· {locale.launchSurface}</div>
+                          <div className="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">{locale.code} · {locale.direction} · {locale.launchSurface}</div>
                         </div>
                         <Pill tone={locale.status === "Published" ? "good" : locale.status === "Draft" ? "warn" : "danger"}>
                           {locale.status}
@@ -949,7 +949,7 @@ export default function WorkspaceSettingsPage() {
                   <div className="flex flex-wrap items-start justify-between gap-3">
                     <div>
                       <div className="text-[14px] font-black text-slate-900 dark:text-slate-100">{integration.name}</div>
-                      <div className="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">{integration.category} Â· Owner: {integration.owner}</div>
+                      <div className="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">{integration.category} · Owner: {integration.owner}</div>
                     </div>
                     <Pill tone={integration.status === "Connected" ? "good" : integration.status === "Needs attention" ? "warn" : "danger"}>
                       {integration.status}
@@ -1057,7 +1057,7 @@ export default function WorkspaceSettingsPage() {
               <div className="min-w-0">
                 <div className="text-[12px] font-extrabold uppercase tracking-[0.08em] text-slate-400 dark:text-slate-500">WORKSPACE GOVERNANCE</div>
                 <h1 className="mt-1 text-[24px] md:text-[30px] leading-tight font-black text-slate-900 dark:text-slate-100">
-                  FH-P-120 Â· Workspace Settings
+                  FH-P-120 · Workspace Settings
                 </h1>
                 <p className="mt-2 max-w-4xl text-[13px] md:text-[14px] text-slate-500 dark:text-slate-400">
                   Institution-wide defaults for branding, campuses, localization, workspace identity, integrations, and operational preferences.
@@ -1090,11 +1090,11 @@ export default function WorkspaceSettingsPage() {
             <div className="flex flex-wrap items-center gap-2">
               <Pill tone="brand">PREMIUM WORKSPACE DEFAULTS</Pill>
               <span className="text-[12px] text-slate-500 dark:text-slate-400">
-                Brand, campus, and operations rules flow into Teachings, Live Sessionz, Audience, Giving, Beacon, and community surfaces.
+                Brand, campus, and operations rules flow into Teachings, Live Sessions, Audience, Giving, Beacon, and community surfaces.
               </span>
             </div>
             <span className="text-[11px] font-extrabold uppercase tracking-[0.08em] text-slate-400 dark:text-slate-500">
-              MULTI-CAMPUS Â· MULTI-LANGUAGE Â· CONNECTED WORKSPACE
+              MULTI-CAMPUS · MULTI-LANGUAGE · CONNECTED WORKSPACE
             </span>
           </div>
         </section>
@@ -1199,7 +1199,7 @@ export default function WorkspaceSettingsPage() {
                       <div className="text-[11px] font-extrabold uppercase tracking-[0.08em] text-slate-400 dark:text-slate-500">CONNECTED SURFACES</div>
                       <div className="mt-3 space-y-2">
                         <div className="flex items-center justify-between gap-2 rounded-2xl border border-slate-200 dark:border-slate-700 px-3 py-2">
-                          <span className="text-[12px] font-extrabold text-slate-900 dark:text-slate-100">Live Sessionz</span>
+                          <span className="text-[12px] font-extrabold text-slate-900 dark:text-slate-100">Live Sessions</span>
                           <Pill tone="good">Allow</Pill>
                         </div>
                         <div className="flex items-center justify-between gap-2 rounded-2xl border border-slate-200 dark:border-slate-700 px-3 py-2">
@@ -1256,7 +1256,7 @@ export default function WorkspaceSettingsPage() {
                       </div>
                       <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 px-3 py-3">
                         <div className="text-[11px] font-extrabold text-slate-900 dark:text-slate-100">Connections</div>
-                        <div className="mt-2 text-[11px] text-slate-500 dark:text-slate-400">{stats.connectedIntegrations} integrations connected Â· {stats.integrationsNeedingAttention} need attention</div>
+                        <div className="mt-2 text-[11px] text-slate-500 dark:text-slate-400">{stats.connectedIntegrations} integrations connected · {stats.integrationsNeedingAttention} need attention</div>
                       </div>
                     </div>
                   </div>
@@ -1358,7 +1358,7 @@ export default function WorkspaceSettingsPage() {
           <div className="text-[12px] font-extrabold text-slate-900 dark:text-slate-100">Campus summary preview</div>
           <div className="mt-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-3">
             <div className="text-[15px] font-black text-slate-900 dark:text-slate-100">{newCampusName || "New Campus"}</div>
-            <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">{newCampusRegion || "New region"} Â· {newCampusTimezone || "UTC"}</div>
+            <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">{newCampusRegion || "New region"} · {newCampusTimezone || "UTC"}</div>
             <div className="mt-2 flex flex-wrap gap-2">
               <Pill tone="good">{newCampusMode}</Pill>
               <Pill>{newCampusAccess || "Accessibility note pending"}</Pill>
@@ -1439,7 +1439,7 @@ export default function WorkspaceSettingsPage() {
                       </div>
                       <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-3">
                         <div className="text-[12px] font-extrabold text-slate-900 dark:text-slate-100">Defaults propagate to Provider workflows</div>
-                        <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">Live Sessionz, events, audience journeys, and giving surfaces can use this integration immediately.</div>
+                        <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">Live Sessions, events, audience journeys, and giving surfaces can use this integration immediately.</div>
                       </div>
                     </div>
                   </div>
@@ -1461,5 +1461,7 @@ export default function WorkspaceSettingsPage() {
     </div>
   );
 }
+
+
 
 

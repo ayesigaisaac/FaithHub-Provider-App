@@ -1,4 +1,4 @@
-// @ts-nocheck
+﻿// @ts-nocheck
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -29,7 +29,7 @@ import {
 import { handleRawPlaceholderAction } from "./placeholderActions";
 
 /**
- * FaithHub Ã¢â‚¬â€ FH-P-060 Donations & Funds
+ * FaithHub — FH-P-060 Donations & Funds
  * -------------------------------------
  * Premium giving workspace for FaithHub Provider.
  *
@@ -80,7 +80,7 @@ function fmtInt(n: number) {
   return Intl.NumberFormat(undefined, { maximumFractionDigits: 0 }).format(n);
 }
 
-function fmtCurrency(n: number, currency = "Ã‚Â£") {
+function fmtCurrency(n: number, currency = "£") {
   return `${currency}${Intl.NumberFormat(undefined, {
     maximumFractionDigits: 0,
   }).format(n)}`;
@@ -180,7 +180,7 @@ const RECORDS_SEED: GivingRecord[] = [
     linkedObjects: ["Sunday Morning Live", "Events Manager", "Audience Notifications", "Beacon Supporter Boost"],
     legalCopyReady: true,
     accountabilityReady: true,
-    statusHint: "This fund is healthy, highly trusted, and benefits from direct prompting inside regular Live Sessionz.",
+    statusHint: "This fund is healthy, highly trusted, and benefits from direct prompting inside regular Live Sessions.",
     attribution: {
       live: 39,
       replay: 18,
@@ -357,7 +357,7 @@ const BRIDGE_SEED: BridgeSurface[] = [
     label: "Sunday Morning Live donation moment",
     surface: "Live Session",
     state: "Ready",
-    value: "Ã‚Â£12.8k influenced",
+    value: "£12.8k influenced",
     hint: "Pinned donor CTA and progress strip inside the sermon run-of-show.",
     ready: true,
   },
@@ -910,7 +910,7 @@ function CampaignComposer({
           <div className="mt-3 space-y-3">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-sm font-semibold text-slate-900 dark:text-slate-50">Tie into Live Sessionz</div>
+                <div className="text-sm font-semibold text-slate-900 dark:text-slate-50">Tie into Live Sessions</div>
                 <div className="text-xs text-slate-500 dark:text-slate-400">Create donor prompts for live, replay, or event moments.</div>
               </div>
               <Toggle value={tieToLive} onChange={setTieToLive} />
@@ -1031,7 +1031,7 @@ export default function DonationsAndFundsPage() {
   const attributionBars = useMemo(() => {
     if (!selectedRecord) return [];
     return [
-      { label: "Live Sessionz", value: selectedRecord.attribution.live, hint: "Donation moments inside live production" },
+      { label: "Live Sessions", value: selectedRecord.attribution.live, hint: "Donation moments inside live production" },
       { label: "Replays & clips", value: selectedRecord.attribution.replay, hint: "Post-live follow-up and replay CTAs" },
       { label: "Events", value: selectedRecord.attribution.events, hint: "Event registration and in-person giving moments" },
       { label: "Beacon", value: selectedRecord.attribution.beacon, hint: "Promoted campaigns and support reminders" },
@@ -1071,7 +1071,7 @@ export default function DonationsAndFundsPage() {
 
               <div className="mt-1 flex flex-wrap items-center gap-2">
                 <div className="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50">
-                  FH-P-060 Ã‚Â· Donations &amp; Funds
+                  FH-P-060 · Donations &amp; Funds
                 </div>
                 <Pill tone="good">
                   <BadgeCheck className="h-3.5 w-3.5" />
@@ -1319,7 +1319,7 @@ export default function DonationsAndFundsPage() {
               <SectionTitle
                 icon={<MonitorPlay className="h-5 w-5" />}
                 title="Live and content bridge"
-                subtitle="Push donation prompts into Live Sessionz, replays, events, and Beacon campaigns without losing context."
+                subtitle="Push donation prompts into Live Sessions, replays, events, and Beacon campaigns without losing context."
               />
               <div className="mt-4 space-y-3">
                 {BRIDGE_SEED.map((item) => (
@@ -1327,7 +1327,7 @@ export default function DonationsAndFundsPage() {
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0">
                         <div className="text-sm font-bold text-slate-900 dark:text-slate-50">{item.label}</div>
-                        <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{item.surface} Ã‚Â· {item.hint}</div>
+                        <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{item.surface} · {item.hint}</div>
                       </div>
                       <Pill tone={item.ready ? "good" : "warn"}>{item.state}</Pill>
                     </div>
@@ -1481,7 +1481,7 @@ export default function DonationsAndFundsPage() {
                   <div className="flex items-center justify-between gap-2">
                     <div>
                       <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Finance ownership</div>
-                      <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{selectedRecord.owner} Ã‚Â· {selectedRecord.financeHealth} state</div>
+                      <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{selectedRecord.owner} · {selectedRecord.financeHealth} state</div>
                     </div>
                     <Pill tone={badgeToneForFinance(selectedRecord.financeHealth)}>{selectedRecord.financeHealth}</Pill>
                   </div>
@@ -1615,7 +1615,7 @@ export default function DonationsAndFundsPage() {
                   Premium donor pages should feel warm and trustworthy, with clear evidence of where money goes and strong post-give reassurance.
                 </div>
                 <div className="rounded-xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                  Use Live Sessionz, replay surfaces, events, and Beacon hooks to keep the giving journey connected to ministry moments.
+                  Use Live Sessions, replay surfaces, events, and Beacon hooks to keep the giving journey connected to ministry moments.
                 </div>
               </div>
             </div>
@@ -1711,6 +1711,8 @@ export default function DonationsAndFundsPage() {
     </div>
   );
 }
+
+
 
 
 

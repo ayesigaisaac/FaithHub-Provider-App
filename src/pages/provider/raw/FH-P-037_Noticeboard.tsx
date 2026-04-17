@@ -1,4 +1,4 @@
-// @ts-nocheck
+﻿// @ts-nocheck
 "use client";
 
 import React, { useMemo, useState } from "react";
@@ -34,7 +34,7 @@ import {
 import { handleRawPlaceholderAction } from "./placeholderActions";
 
 /**
- * FaithHub ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â FH-P-037 Noticeboard
+ * FaithHub — FH-P-037 Noticeboard
  * --------------------------------
  * Premium Provider-side noticeboard / announcements operating surface.
  *
@@ -45,7 +45,7 @@ import { handleRawPlaceholderAction } from "./placeholderActions";
  *   command hero, KPI cards, filter rail, operational list, live composer, workflow hooks,
  *   governance signals, and a persistent preview surface.
  * - Treat notices as first-class provider objects that can be scheduled, pinned, localized,
- *   linked to Live Sessionz / Events / Giving / Beacon, and previewed before publishing.
+ *   linked to Live Sessions / Events / Giving / Beacon, and previewed before publishing.
  *
  * Suggested placement
  * - Audience & Outreach section, directly after Channels & Contact Manager.
@@ -76,7 +76,7 @@ type Category =
 
 type Surface =
   | "Noticeboard"
-  | "Live Sessionz"
+  | "Live Sessions"
   | "Events"
   | "Giving"
   | "Notification"
@@ -163,7 +163,7 @@ const LINKED_OBJECTS = [
 
 const ALL_SURFACES: Surface[] = [
   "Noticeboard",
-  "Live Sessionz",
+  "Live Sessions",
   "Events",
   "Giving",
   "Notification",
@@ -217,11 +217,11 @@ const INITIAL_NOTICES: NoticeItem[] = [
     language: "English",
     owner: "Pastoral Office",
     linkedTo: "Sunday Prayer Revival",
-    surfaces: ["Noticeboard", "Live Sessionz", "Events", "Notification"],
+    surfaces: ["Noticeboard", "Live Sessions", "Events", "Notification"],
     pinned: true,
     approvalRequired: false,
-    scheduledAt: "Today Ãƒâ€šÃ‚Â· 2:30 PM",
-    expiresAt: "Today Ãƒâ€šÃ‚Â· 8:00 PM",
+    scheduledAt: "Today � 2:30 PM",
+    expiresAt: "Today � 8:00 PM",
     reads: 2480,
     taps: 641,
     conversions: 318,
@@ -244,8 +244,8 @@ const INITIAL_NOTICES: NoticeItem[] = [
     surfaces: ["Noticeboard", "Giving", "Notification", "Beacon"],
     pinned: true,
     approvalRequired: true,
-    scheduledAt: "Today Ãƒâ€šÃ‚Â· 9:00 AM",
-    expiresAt: "Tomorrow Ãƒâ€šÃ‚Â· 9:00 AM",
+    scheduledAt: "Today � 9:00 AM",
+    expiresAt: "Tomorrow � 9:00 AM",
     reads: 1682,
     taps: 430,
     conversions: 216,
@@ -268,8 +268,8 @@ const INITIAL_NOTICES: NoticeItem[] = [
     surfaces: ["Noticeboard", "Notification"],
     pinned: false,
     approvalRequired: true,
-    scheduledAt: "Today Ãƒâ€šÃ‚Â· 3:15 PM",
-    expiresAt: "Today Ãƒâ€šÃ‚Â· 6:00 PM",
+    scheduledAt: "Today � 3:15 PM",
+    expiresAt: "Today � 6:00 PM",
     reads: 690,
     taps: 180,
     conversions: 72,
@@ -292,8 +292,8 @@ const INITIAL_NOTICES: NoticeItem[] = [
     surfaces: ["Noticeboard", "Notification"],
     pinned: false,
     approvalRequired: true,
-    scheduledAt: "Tomorrow Ãƒâ€šÃ‚Â· 6:00 AM",
-    expiresAt: "Tomorrow Ãƒâ€šÃ‚Â· 11:15 AM",
+    scheduledAt: "Tomorrow � 6:00 AM",
+    expiresAt: "Tomorrow � 11:15 AM",
     reads: 0,
     taps: 0,
     conversions: 0,
@@ -319,8 +319,8 @@ function makeBlankComposer(): ComposerState {
     commentsEnabled: false,
     sendToJourney: true,
     boostWithBeacon: false,
-    scheduledAt: "Today Ãƒâ€šÃ‚Â· 4:45 PM",
-    expiresAt: "Tomorrow Ãƒâ€šÃ‚Â· 11:30 PM",
+    scheduledAt: "Today � 4:45 PM",
+    expiresAt: "Tomorrow � 11:30 PM",
   };
 }
 
@@ -827,13 +827,13 @@ function BoardPreviewDesktop({ draft }: { draft: ComposerState }) {
                 ))}
               </div>
               <div className="mt-3 text-[12px] text-slate-500">
-                {draft.campus} ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ {draft.audience} ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ {draft.language}
+                {draft.campus} � {draft.audience} � {draft.language}
               </div>
               <div className="mt-1 text-[12px] text-slate-500">
                 Linked to: {draft.linkedTo}
               </div>
               <div className="mt-1 text-[12px] text-slate-500">
-                Window: {draft.scheduledAt} ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ {draft.expiresAt}
+                Window: {draft.scheduledAt} �?? � {draft.expiresAt}
               </div>
             </div>
           </div>
@@ -853,7 +853,7 @@ function BoardPreviewDesktop({ draft }: { draft: ComposerState }) {
               label: "Board sections",
               items: [
                 "Pinned notice lane",
-                "TodayÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢s notices",
+                "Today’s notices",
                 "Campus-only updates",
               ],
             },
@@ -1069,7 +1069,7 @@ export default function FaithHubNoticeboardPage() {
       },
       {
         label: "Top conversion path",
-        value: "Notice ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ Event",
+        value: "Notice �?? � Event",
         hint: "Event-linked notices are producing the strongest taps this week",
       },
     ],
@@ -1188,17 +1188,17 @@ export default function FaithHubNoticeboardPage() {
                   FH
                 </span>
                 <span>Audience & Outreach</span>
-                <span>ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢</span>
+                <span>�</span>
                 <span>Premium Provider Noticeboard</span>
               </div>
 
               <div className="mt-4 text-[44px] font-black leading-[1.02] tracking-[-0.03em] text-slate-900">
-                FH-P-037 Ãƒâ€šÃ‚Â· Noticeboard
+                FH-P-037 � Noticeboard
               </div>
               <div className="mt-3 max-w-4xl text-[16px] leading-relaxed text-slate-500">
                 Run institution-wide announcements, campus updates, prayer alerts, volunteer calls,
-                event reminders, and giving notices from one premium board ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â then route them into
-                Live Sessionz, notifications, events, giving, and Beacon without losing control.
+                event reminders, and giving notices from one premium board — then route them into
+                Live Sessions, notifications, events, giving, and Beacon without losing control.
               </div>
 
               <div className="mt-5 flex flex-wrap items-center gap-2">
@@ -1226,7 +1226,7 @@ export default function FaithHubNoticeboardPage() {
                   Ayesigai921
                 </div>
                 <div className="mt-2 text-[12px] leading-relaxed text-slate-500">
-                  FaithHub Provider Workspace Ãƒâ€šÃ‚Â· role-aware notice publishing with campus, audience,
+                  FaithHub Provider Workspace � role-aware notice publishing with campus, audience,
                   language, and safety routing.
                 </div>
                 <div className="mt-3">
@@ -1607,7 +1607,7 @@ export default function FaithHubNoticeboardPage() {
                       onChange={(value) =>
                         setComposer((prev) => ({ ...prev, scheduledAt: value }))
                       }
-                      placeholder="Today Ãƒâ€šÃ‚Â· 4:45 PM"
+                      placeholder="Today � 4:45 PM"
                     />
                   </div>
                   <div>
@@ -1617,7 +1617,7 @@ export default function FaithHubNoticeboardPage() {
                       onChange={(value) =>
                         setComposer((prev) => ({ ...prev, expiresAt: value }))
                       }
-                      placeholder="Tomorrow Ãƒâ€šÃ‚Â· 11:30 PM"
+                      placeholder="Tomorrow � 11:30 PM"
                     />
                   </div>
                 </div>
@@ -1700,7 +1700,7 @@ export default function FaithHubNoticeboardPage() {
                   },
                   {
                     icon: <MonitorPlay className="h-4 w-4" />,
-                    title: "Live Sessionz bridge",
+                    title: "Live Sessions bridge",
                     detail:
                       "Surface the same message in waiting rooms, live overlays, and post-live pages.",
                   },
@@ -1753,7 +1753,7 @@ export default function FaithHubNoticeboardPage() {
                           {notice.title}
                         </div>
                         <div className="mt-1 text-[12px] text-slate-500">
-                          {notice.category} ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ {notice.campus} ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ {notice.owner}
+                          {notice.category} � {notice.campus} � {notice.owner}
                         </div>
                       </div>
                       <Pill tone="warn">
@@ -1800,17 +1800,17 @@ export default function FaithHubNoticeboardPage() {
                     tone: "good" as Tone,
                   },
                   {
-                    time: "Today Ãƒâ€šÃ‚Â· 6:15 PM",
+                    time: "Today � 6:15 PM",
                     label: "Live Session overlay sync",
-                    detail: composer.surfaces.includes("Live Sessionz")
+                    detail: composer.surfaces.includes("Live Sessions")
                       ? "Armed for waiting room and live viewer surface"
                       : "No live surface selected",
-                    tone: composer.surfaces.includes("Live Sessionz")
+                    tone: composer.surfaces.includes("Live Sessions")
                       ? ("navy" as Tone)
                       : ("neutral" as Tone),
                   },
                   {
-                    time: "Today Ãƒâ€šÃ‚Â· 7:00 PM",
+                    time: "Today � 7:00 PM",
                     label: "Notification handoff",
                     detail: composer.sendToJourney
                       ? "Journey builder can inherit this notice"
@@ -1862,7 +1862,7 @@ export default function FaithHubNoticeboardPage() {
                     accent: EV_ORANGE,
                   },
                   {
-                    title: "Sync urgent service changes into Live Sessionz",
+                    title: "Sync urgent service changes into Live Sessions",
                     detail:
                       "Service-time notices should mirror into the waiting room and live reminder surfaces.",
                     action: "Link live",
@@ -1901,10 +1901,14 @@ export default function FaithHubNoticeboardPage() {
         </div>
 
         <div className="rounded-[24px] border border-emerald-200 bg-emerald-50 px-6 py-3 text-center text-[13px] font-medium text-slate-700">
-          Concept preview of the generated FaithHub Noticeboard page Ãƒâ€šÃ‚Â· EVzone Green primary ({EV_GREEN}) Ãƒâ€šÃ‚Â· Orange secondary ({EV_ORANGE})
+          Concept preview of the generated FaithHub Noticeboard page � EVzone Green primary ({EV_GREEN}) � Orange secondary ({EV_ORANGE})
         </div>
       </div>
     </div>
   );
 }
+
+
+
+
 

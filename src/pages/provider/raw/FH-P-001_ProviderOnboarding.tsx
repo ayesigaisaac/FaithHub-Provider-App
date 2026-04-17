@@ -1,4 +1,4 @@
-// @ts-nocheck
+﻿// @ts-nocheck
 
 "use client";
 
@@ -34,7 +34,7 @@ import {
 import { handleRawPlaceholderAction } from "./placeholderActions";
 
 /**
- * FaithHub Ã¢â‚¬â€ FH-P-001 Provider Onboarding
+ * FaithHub - FH-P-001 Provider Onboarding
  * ---------------------------------------
  * Premium provider onboarding surface for institutions, ministries,
  * faith creators, and multi-campus organizations.
@@ -123,7 +123,7 @@ const CAMPUS_TIMEZONES = [
 const CONTENT_MODES = [
   "Series",
   "Standalone teachings",
-  "Live Sessionz",
+  "Live Sessions",
   "Events",
   "Giving campaigns",
   "Beacon campaigns",
@@ -138,8 +138,8 @@ const DASHBOARD_PRESETS = [
 ];
 
 const APPROVAL_PRESETS = [
-  "Owner Ã¢â€ â€™ Admin Ã¢â€ â€™ Publish",
-  "Pastoral review Ã¢â€ â€™ Editor sign-off",
+  "Owner -> Admin -> Publish",
+  "Pastoral review -> Editor sign-off",
   "Owner + Finance check",
   "Multi-campus approval chain",
 ];
@@ -228,7 +228,7 @@ function createCampus(id: string, overrides?: Partial<Campus>): Campus {
     city: "Kampala",
     region: "Central Region",
     timezone: "Africa/Kampala",
-    accessibility: "Wheelchair access Ã¢â‚¬Â¢ family seating Ã¢â‚¬Â¢ livestream crew point",
+    accessibility: "Wheelchair access - family seating - livestream crew point",
     onlineFirst: false,
     ...overrides,
   };
@@ -630,7 +630,7 @@ function PhonePreview({
                 {institutionName || "Your institution"}
               </div>
               <div className="mt-1 text-[12px] font-semibold text-white/80">
-                {handle || "@provider"} Ã‚Â· {faithFamily || "Faith family"} Ã‚Â· {tradition || "Tradition"}
+                {handle || "@provider"} - {faithFamily || "Faith family"} - {tradition || "Tradition"}
               </div>
             </div>
           </div>
@@ -675,7 +675,7 @@ function PhonePreview({
               </div>
               <div className="mt-2 grid grid-cols-2 gap-2 text-[11px]">
                 <div className="rounded-xl bg-slate-50 px-2 py-2 text-slate-700 dark:bg-slate-950 dark:text-slate-300">
-                  {liveEnabled ? "Live Sessionz ready" : "Live Sessionz pending"}
+                  {liveEnabled ? "Live Sessions ready" : "Live Sessions pending"}
                 </div>
                 <div className="rounded-xl bg-slate-50 px-2 py-2 text-slate-700 dark:bg-slate-950 dark:text-slate-300">
                   {givingVisible ? "Giving visible" : "Giving hidden"}
@@ -740,14 +740,14 @@ export default function ProviderOnboardingPage() {
       name: "Central Campus",
       city: "Kampala",
       region: "Central Uganda",
-      accessibility: "Wheelchair access Ã¢â‚¬Â¢ family room Ã¢â‚¬Â¢ hearing loop",
+      accessibility: "Wheelchair access - family room - hearing loop",
     }),
     createCampus("campus-2", {
       name: "Online Studio",
       city: "Remote",
       region: "Global stream footprint",
       onlineFirst: true,
-      accessibility: "Captions enabled Ã¢â‚¬Â¢ translation-ready",
+      accessibility: "Captions enabled - translation-ready",
     }),
   ]);
 
@@ -764,12 +764,12 @@ export default function ProviderOnboardingPage() {
   const [contentModes, setContentModes] = useState<string[]>([
     "Series",
     "Standalone teachings",
-    "Live Sessionz",
+    "Live Sessions",
     "Events",
     "Giving campaigns",
   ]);
   const [dashboardPreset, setDashboardPreset] = useState("Mixed model workspace");
-  const [defaultLocale, setDefaultLocale] = useState("English Ã‚Â· Africa/Kampala");
+  const [defaultLocale, setDefaultLocale] = useState("English - Africa/Kampala");
   const [localizedVariant, setLocalizedVariant] = useState(true);
 
   const [payoutReady, setPayoutReady] = useState(false);
@@ -998,7 +998,7 @@ export default function ProviderOnboardingPage() {
       return `${profile.label} onboarding path: set your public story, tradition, leadership, and primary contact with clarity.`;
     }
     if (step === "brand") {
-      return "Brand assets flow into Live Sessionz, Beacon, replays, overlays, and your public provider surface.";
+      return "Brand assets flow into Live Sessions, Beacon, replays, overlays, and your public provider surface.";
     }
     if (step === "campuses") {
       return "Model your physical campuses, online-first footprint, time zones, and accessibility from the start.";
@@ -1263,7 +1263,7 @@ export default function ProviderOnboardingPage() {
                   {institutionName}
                 </div>
                 <div className="mt-0.5 text-[12px] text-slate-500 dark:text-slate-400">
-                  {handle} Ã‚Â· {faithFamily} Ã‚Â· {tradition}
+                  {handle} - {faithFamily} - {tradition}
                 </div>
                 <div className="mt-2 text-[12px] leading-relaxed text-slate-600 dark:text-slate-400">
                   {mission}
@@ -1362,7 +1362,7 @@ export default function ProviderOnboardingPage() {
 
           <div className="grid gap-3 sm:grid-cols-2">
             <div>
-              <Label>Live Sessionz layout preset</Label>
+              <Label>Live Sessions layout preset</Label>
               <div className="mt-1 flex flex-wrap gap-2">
                 {LIVE_LAYOUT_PRESETS.map((preset) => (
                   <button
@@ -1424,7 +1424,7 @@ export default function ProviderOnboardingPage() {
           <div className="grid gap-3 sm:grid-cols-2">
             <div className="rounded-3xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950">
               <div className="text-[11px] uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500">
-                Live Sessionz
+                Live Sessions
               </div>
               <div className="mt-2 text-[14px] font-bold text-slate-900 dark:text-slate-100">
                 {liveLayoutPreset}
@@ -1589,7 +1589,7 @@ export default function ProviderOnboardingPage() {
                     {campus.name}
                   </div>
                   <div className="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">
-                    {campus.city} Ã‚Â· {campus.region}
+                    {campus.city} - {campus.region}
                   </div>
                 </div>
                 <Pill
@@ -1828,7 +1828,7 @@ export default function ProviderOnboardingPage() {
 
           <div>
             <Label>Default locale / launch focus</Label>
-            <Input value={defaultLocale} onChange={setDefaultLocale} placeholder="English Ã‚Â· Africa/Kampala" />
+            <Input value={defaultLocale} onChange={setDefaultLocale} placeholder="English - Africa/Kampala" />
             <div className="mt-3">
               <Toggle
                 checked={localizedVariant}
@@ -2002,7 +2002,7 @@ export default function ProviderOnboardingPage() {
                       {channel.label}
                     </div>
                     <div className="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">
-                      {channel.kind} Ã‚Â· {state.senderLabel}
+                      {channel.kind} - {state.senderLabel}
                     </div>
                   </div>
                   <div className="flex flex-wrap gap-2">
@@ -2254,7 +2254,7 @@ export default function ProviderOnboardingPage() {
                 </div>
                 <div>
                   <div className="text-[44px] font-black leading-none tracking-[-0.04em] text-slate-900 dark:text-slate-100">
-                    FH-P-001 Ã‚Â· Provider Onboarding
+                    FH-P-001 - Provider Onboarding
                   </div>
                   <div className="mt-1 text-[14px] text-slate-500 dark:text-slate-400">
                     Premium verified-provider setup for brand, structure, permissions, channels, and production readiness.
@@ -2333,7 +2333,7 @@ export default function ProviderOnboardingPage() {
                 logoLetter={logoLetter}
                 campuses={campuses}
                 givingVisible={donationButtonsVisible}
-                liveEnabled={contentModes.includes("Live Sessionz")}
+                liveEnabled={contentModes.includes("Live Sessions")}
               />
             </Card>
 
@@ -2393,7 +2393,7 @@ export default function ProviderOnboardingPage() {
                     Next unlock
                   </div>
                   <div className="text-[12px] leading-relaxed text-slate-600 dark:text-slate-400">
-                    Verification unlocks Provider Dashboard, Channels & Contact Manager, Donations & Funds, and the advanced creation workflows for Live Sessionz and Beacon.
+                    Verification unlocks Provider Dashboard, Channels & Contact Manager, Donations & Funds, and the advanced creation workflows for Live Sessions and Beacon.
                   </div>
                 </div>
               </div>
@@ -2402,7 +2402,7 @@ export default function ProviderOnboardingPage() {
         </div>
 
         <div className="mt-5 rounded-full border border-emerald-200 bg-emerald-50 px-5 py-3 text-center text-[12px] font-semibold text-emerald-700 dark:border-emerald-800 dark:bg-emerald-900/20 dark:text-emerald-300">
-          Concept preview of the generated FaithHub Provider Onboarding page Ã‚Â· EVzone Green primary (#03cd8c) Ã‚Â· Orange secondary (#f77f00)
+          Concept preview of the generated FaithHub Provider Onboarding page - EVzone Green primary (#03cd8c) - Orange secondary (#f77f00)
         </div>
       </div>
 

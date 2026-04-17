@@ -1,4 +1,4 @@
-import React from "react";
+﻿import React from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import {
@@ -39,7 +39,7 @@ const stats = [
 const featureCards = [
   {
     icon: Radio,
-    title: "Live Sessionz",
+    title: "Live Sessions",
     body: "Host sermons, classes, worship, prayer gatherings, conferences, Q&A moments, and community broadcasts with a polished live experience.",
   },
   {
@@ -107,7 +107,7 @@ const experiencePillars = [
 const footerCols = [
   {
     title: "Platform",
-    links: ["Live Sessionz", "Teachings", "Giving", "Events", "Beacon", "Community"],
+    links: ["Live Sessions", "Teachings", "Giving", "Events", "Beacon", "Community"],
   },
   {
     title: "For providers",
@@ -199,7 +199,7 @@ function SectionHeading({ eyebrow, title, body }: { eyebrow: string; title: stri
 export default function FaithHubHomeLandingPageV3Fixed() {
   const navigate = useNavigate();
   const footerRouteMap: Record<string, string> = {
-    "Live Sessionz": "/faithhub/provider/live-dashboard",
+    "Live Sessions": "/faithhub/provider/live-dashboard",
     Teachings: "/faithhub/provider/teachings-dashboard",
     Giving: "/faithhub/provider/donations-and-funds",
     Events: "/faithhub/provider/events-manager",
@@ -669,4 +669,5 @@ export default function FaithHubHomeLandingPageV3Fixed() {
     </div>
   );
 }
+
 

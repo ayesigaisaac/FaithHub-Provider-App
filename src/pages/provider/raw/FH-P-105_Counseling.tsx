@@ -1,4 +1,4 @@
-// @ts-nocheck
+﻿// @ts-nocheck
 
 "use client";
 
@@ -27,7 +27,7 @@ import {
 import { handleRawPlaceholderAction } from "./placeholderActions";
 
 /**
- * FaithHub Ã¢â‚¬â€ FH-P-105 Counseling
+ * FaithHub — FH-P-105 Counseling
  * ------------------------------
  * Private-first pastoral care and counseling workspace for cases, intake,
  * scheduling, counselor assignment, session planning, notes, and safeguarding.
@@ -247,9 +247,9 @@ const casesSeed: CounselingCaseRecord[] = [
       },
     ],
     checkpoints: [
-      { id: "cp-1", label: "Intake reviewed", when: "Today Ã‚Â· 11:30 AM", state: "Done" },
-      { id: "cp-2", label: "Counselor assigned", when: "Today Ã‚Â· 12:15 PM", state: "Done" },
-      { id: "cp-3", label: "Private session booked", when: "Tomorrow Ã‚Â· 7:00 PM", state: "Ready" },
+      { id: "cp-1", label: "Intake reviewed", when: "Today · 11:30 AM", state: "Done" },
+      { id: "cp-2", label: "Counselor assigned", when: "Today · 12:15 PM", state: "Done" },
+      { id: "cp-3", label: "Private session booked", when: "Tomorrow · 7:00 PM", state: "Ready" },
       { id: "cp-4", label: "Follow-up summary", when: "After session", state: "Pending" },
     ],
   },
@@ -291,8 +291,8 @@ const casesSeed: CounselingCaseRecord[] = [
       },
     ],
     checkpoints: [
-      { id: "cp-5", label: "Leader intake captured", when: "Today Ã‚Â· 8:40 AM", state: "Done" },
-      { id: "cp-6", label: "Safeguard review", when: "Today Ã‚Â· 1:30 PM", state: "Ready" },
+      { id: "cp-5", label: "Leader intake captured", when: "Today · 8:40 AM", state: "Done" },
+      { id: "cp-6", label: "Safeguard review", when: "Today · 1:30 PM", state: "Ready" },
       { id: "cp-7", label: "Parent / guardian routing", when: "If required", state: "Pending" },
     ],
   },
@@ -327,7 +327,7 @@ const casesSeed: CounselingCaseRecord[] = [
       },
     ],
     checkpoints: [
-      { id: "cp-8", label: "Intake form submitted", when: "Today Ã‚Â· 2:05 PM", state: "Done" },
+      { id: "cp-8", label: "Intake form submitted", when: "Today · 2:05 PM", state: "Done" },
       { id: "cp-9", label: "Assign counselor", when: "Today", state: "Ready" },
       { id: "cp-10", label: "Book first session", when: "Next step", state: "Pending" },
     ],
@@ -673,7 +673,7 @@ function CounselingDestinationPreview({
               {record.counselee}
             </div>
             <div className="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">
-              {record.campus} Ã¢â‚¬Â¢ {record.category}
+              {record.campus} • {record.category}
             </div>
           </div>
           <Pill text={record.priority} tone={priorityTone(record.priority)} />
@@ -731,7 +731,7 @@ function CounselingDestinationPreview({
           </div>
           <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
             {counselor
-              ? `${counselor.role} Ã¢â‚¬Â¢ ${counselor.focus}`
+              ? `${counselor.role} • ${counselor.focus}`
               : "Assign a counselor to activate scheduling and private communication tools."}
           </div>
         </div>
@@ -978,7 +978,7 @@ export default function CounselingPage() {
                 PASTORAL CARE COMMAND
               </div>
               <h1 className="mt-1 text-[30px] font-black leading-tight tracking-[-0.03em] text-slate-900 dark:text-slate-100">
-                FH-P-105 Ã‚Â· Counseling
+                FH-P-105 · Counseling
               </h1>
               <p className="mt-2 max-w-[980px] text-[15px] leading-7 text-slate-600 dark:text-slate-400">
                 Private-first pastoral care and counseling workspace for cases,
@@ -1030,7 +1030,7 @@ export default function CounselingPage() {
               <span className="rounded-full border border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-900/20 px-3 py-1 font-black uppercase tracking-[0.14em] text-amber-700 dark:text-amber-300">
                 Counseling ops pulse
               </span>
-              <span>{pulseBits.join(" Ã¢â‚¬Â¢ ")}</span>
+              <span>{pulseBits.join(" • ")}</span>
             </div>
             <div className="text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-400 dark:text-slate-500">
               Premium pastoral care
@@ -1213,11 +1213,11 @@ export default function CounselingPage() {
                             </div>
                             <div className="mt-1 flex flex-wrap items-center gap-2 text-[12px] text-slate-500 dark:text-slate-400">
                               <span>{record.counselee}</span>
-                              <span>Ã¢â‚¬Â¢</span>
+                              <span>•</span>
                               <span>{counselor ? counselor.name : "Unassigned"}</span>
-                              <span>Ã¢â‚¬Â¢</span>
+                              <span>•</span>
                               <span>{record.campus}</span>
-                              <span>Ã¢â‚¬Â¢</span>
+                              <span>•</span>
                               <span>{record.nextSessionISO ? fmtLocal(record.nextSessionISO) : "No session booked"}</span>
                             </div>
                             <div className="mt-2 text-[12px] leading-6 text-slate-600 dark:text-slate-400 line-clamp-2">
@@ -1362,7 +1362,7 @@ export default function CounselingPage() {
                         >
                           {counselorsSeed.map((counselor) => (
                             <option key={counselor.id} value={counselor.id}>
-                              {counselor.name} Ã‚Â· {counselor.campus}
+                              {counselor.name} · {counselor.campus}
                             </option>
                           ))}
                         </select>
@@ -1372,7 +1372,7 @@ export default function CounselingPage() {
                             {selectedCounselor.name}
                           </div>
                           <div className="mt-1 text-[11px] leading-5 text-slate-500 dark:text-slate-400">
-                            {selectedCounselor.role} Ã¢â‚¬Â¢ {selectedCounselor.focus}
+                            {selectedCounselor.role} • {selectedCounselor.focus}
                           </div>
                           <div className="mt-2 flex flex-wrap items-center gap-2">
                             <Pill
@@ -1416,7 +1416,7 @@ export default function CounselingPage() {
                             key={checkpoint.id}
                             className="rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-3 py-1 text-[11px] font-semibold text-slate-600 dark:text-slate-300"
                           >
-                            {checkpoint.label} Ã‚Â· {checkpoint.state}
+                            {checkpoint.label} · {checkpoint.state}
                           </div>
                         ))}
                       </div>
@@ -1645,7 +1645,7 @@ export default function CounselingPage() {
                           {counselor.name}
                         </div>
                         <div className="mt-1 text-[12px] leading-6 text-slate-500 dark:text-slate-400">
-                          {counselor.role} Ã‚Â· {counselor.campus}
+                          {counselor.role} · {counselor.campus}
                         </div>
                       </div>
                       <Pill
@@ -1655,9 +1655,9 @@ export default function CounselingPage() {
                     </div>
                     <div className="flex flex-wrap items-center gap-2 text-[11px] text-slate-500 dark:text-slate-400">
                       <span>{counselor.focus}</span>
-                      <span>Ã¢â‚¬Â¢</span>
+                      <span>•</span>
                       <span>{counselor.languages.join(" + ")}</span>
-                      <span>Ã¢â‚¬Â¢</span>
+                      <span>•</span>
                       <span>{counselor.activeCases} active cases</span>
                     </div>
                   </div>
@@ -1668,7 +1668,7 @@ export default function CounselingPage() {
         </section>
 
         <section className="rounded-full border border-emerald-200 dark:border-emerald-800 bg-emerald-50/70 dark:bg-emerald-900/20 px-4 py-2 text-center text-[12px] text-slate-600 dark:text-slate-300 shadow-sm transition-colors">
-          Concept preview of the generated FaithHub Counseling page Ã‚Â· EVzone Green primary ({EV_GREEN}) Ã‚Â· Orange secondary ({EV_ORANGE})
+          Concept preview of the generated FaithHub Counseling page · EVzone Green primary ({EV_GREEN}) · Orange secondary ({EV_ORANGE})
         </section>
       </div>
 
@@ -1677,7 +1677,7 @@ export default function CounselingPage() {
           open={previewOpen}
           onClose={() => setPreviewOpen(false)}
           title="FaithHub Counseling destination preview"
-          subtitle={`${selectedCase.reference} Ã¢â‚¬Â¢ ${selectedCase.title}`}
+          subtitle={`${selectedCase.reference} • ${selectedCase.title}`}
         >
           <div className="space-y-4">
             <div className="flex flex-wrap items-center gap-2">
@@ -1713,5 +1713,6 @@ export default function CounselingPage() {
     </div>
   );
 }
+
 
 

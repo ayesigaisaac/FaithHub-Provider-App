@@ -1,7 +1,7 @@
 import type { ProviderPageMeta, ProviderPageSection } from '../catalog';
 
 export const liveAndAudienceSections: readonly ProviderPageSection[] = [
-  'Live Sessionz Operations',
+  'Live Sessions Operations',
   'Audience & Outreach',
   'Post-live & Trust',
 ];

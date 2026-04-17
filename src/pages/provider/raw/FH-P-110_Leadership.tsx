@@ -26,7 +26,7 @@ import {
 } from "lucide-react";
 
 /**
- * FaithHub â€” FH-P-110 Leadership
+ * FaithHub — FH-P-110 Leadership
  * --------------------------------
  * Premium Provider-side leadership operating surface for leadership roster,
  * office assignment, public visibility, succession planning, and coverage health.
@@ -197,7 +197,7 @@ const LEADERS: LeaderRecord[] = [
     language: ["English", "Luganda"],
     tenureLabel: "6 years",
     heroUrl: HERO_1,
-    bio: "Leads the institutionâ€™s teaching direction, leadership rhythms, and high-visibility ministry moments across campuses.",
+    bio: "Leads the institution’s teaching direction, leadership rhythms, and high-visibility ministry moments across campuses.",
     reports: 7,
     activeTeams: 4,
     upcomingEvents: 3,
@@ -603,7 +603,7 @@ export default function FaithHubLeadershipPage() {
                 Manage leadership profiles, offices, and succession from one premium team command surface
               </h1>
               <p className="mt-4 max-w-2xl text-[15px] leading-7 text-slate-600 dark:text-slate-300">
-                Run the public leadership presence and the internal office structure together â€” with clear office ownership,
+                Run the public leadership presence and the internal office structure together — with clear office ownership,
                 visibility rules, coverage planning, and publish-ready leadership cards.
               </p>
 
@@ -760,7 +760,7 @@ export default function FaithHubLeadershipPage() {
                                   {leader.name}
                                 </div>
                                 <div className="mt-0.5 text-[12px] text-slate-500 dark:text-slate-400">
-                                  {leader.officeTitle} Â· {leader.campus}
+                                  {leader.officeTitle} · {leader.campus}
                                 </div>
                               </div>
                               <div className="flex flex-wrap items-center gap-2">
@@ -815,7 +815,7 @@ export default function FaithHubLeadershipPage() {
                     <div>
                       <div className="text-[10px] font-black uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">Selected leader</div>
                       <div className="mt-1 text-[22px] font-black tracking-[-0.02em] text-slate-950 dark:text-white">{selectedLeader.name}</div>
-                      <div className="mt-1 text-[13px] text-slate-500 dark:text-slate-400">{selectedLeader.officeTitle} Â· {selectedLeader.ministryArea}</div>
+                      <div className="mt-1 text-[13px] text-slate-500 dark:text-slate-400">{selectedLeader.officeTitle} · {selectedLeader.ministryArea}</div>
                     </div>
                     <button
                       type="button"
@@ -1030,5 +1030,6 @@ export default function FaithHubLeadershipPage() {
     </div>
   );
 }
+
 
 

@@ -25,7 +25,7 @@ export function MobileBottomNav() {
     if (!page) return tabs[0].value;
     const hit = tabs.find((tab) => page.path === tab.value || page.aliases?.includes(tab.value));
     if (hit) return hit.value;
-    if (page.section === 'Live Sessionz Operations') return '/faithhub/provider/live-dashboard';
+    if (page.section === 'Live Sessions Operations') return '/faithhub/provider/live-dashboard';
     if (page.section === 'Audience & Outreach') return '/faithhub/provider/audience-notifications';
     if (page.section === 'Events & Giving') return '/faithhub/provider/events-manager';
     if (page.section === 'Beacon') return '/faithhub/provider/beacon-dashboard';

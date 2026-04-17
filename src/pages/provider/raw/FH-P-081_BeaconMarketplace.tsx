@@ -27,15 +27,15 @@ import {
 } from "lucide-react";
 
 /**
- * FaithHub â€” FH-P-081 Beacon Marketplace
+ * FaithHub — FH-P-081 Beacon Marketplace
  * --------------------------------------
  * Premium placement and audience-planning surface for FaithHub Provider.
  *
  * Design goals
  * - Adapt the creator/e-commerce marketplace rhythm into a FaithHub promotional inventory experience.
  * - Use EVzone Green as the primary accent and EVzone Orange as the secondary accent.
- * - Keep the page strategic, visual, and â€œmedia-plan firstâ€ rather than feeling like a hidden backend form.
- * - Preserve an embedded preview workflow: inventory â†’ placement preview â†’ media plan â†’ mobile preview.
+ * - Keep the page strategic, visual, and “media-plan first” rather than feeling like a hidden backend form.
+ * - Preserve an embedded preview workflow: inventory → placement preview → media plan → mobile preview.
  *
  * Notes
  * - Self-contained mock TSX page. Replace routing, persistence, pricing, and recommendation logic during integration.
@@ -80,7 +80,7 @@ function fmtInt(n: number) {
   return Intl.NumberFormat(undefined, { maximumFractionDigits: 0 }).format(n);
 }
 
-function fmtCurrency(n: number, currency = "Â£") {
+function fmtCurrency(n: number, currency = "£") {
   return `${currency}${Intl.NumberFormat(undefined, {
     maximumFractionDigits: 0,
   }).format(n)}`;
@@ -162,8 +162,8 @@ const AUDIENCE_PACKAGES: AudiencePackage[] = [
   {
     id: "pkg_local_worship",
     name: "Local Worship Momentum",
-    subtitle: "28kâ€“44k matched users",
-    reachRange: "28kâ€“44k",
+    subtitle: "28k–44k matched users",
+    reachRange: "28k–44k",
     seasonalityNote: "Strong around weekly services and city-specific moments.",
     pricingNote: "Efficient for local ministries with strong proximity intent.",
     performanceRange: "Best for live attendance",
@@ -173,8 +173,8 @@ const AUDIENCE_PACKAGES: AudiencePackage[] = [
   {
     id: "pkg_youth_campus",
     name: "Youth & Campus Energy",
-    subtitle: "18kâ€“32k matched users",
-    reachRange: "18kâ€“32k",
+    subtitle: "18k–32k matched users",
+    reachRange: "18k–32k",
     seasonalityNote: "Peaks during campus launch, weekends, and youth nights.",
     pricingNote: "Best value when paired with clips or countdown surfaces.",
     performanceRange: "Best for replay growth",
@@ -184,8 +184,8 @@ const AUDIENCE_PACKAGES: AudiencePackage[] = [
   {
     id: "pkg_families_community",
     name: "Families & Community",
-    subtitle: "22kâ€“38k matched users",
-    reachRange: "22kâ€“38k",
+    subtitle: "22k–38k matched users",
+    reachRange: "22k–38k",
     seasonalityNote: "Performs well around events, prayer nights, and giving campaigns.",
     pricingNote: "Balanced reach and conversion quality.",
     performanceRange: "Best for event and giving campaigns",
@@ -198,21 +198,21 @@ const INVENTORY_SEED: InventoryPlacement[] = [
   {
     id: "pl_home_feed_spotlight",
     title: "FaithHub Home Feed Spotlight",
-    subtitle: "Feed inventory Â· Home feed",
+    subtitle: "Feed inventory · Home feed",
     type: "Home feed",
     objective: "Awareness",
     accent: "green",
     heroImageUrl: HERO_HOME_FEED,
     reach: 52000,
     price: 420,
-    ctrRange: "4.2%â€“5.1%",
-    expectedFit: "Best for linked Live Sessionz and replay launches.",
+    ctrRange: "4.2%–5.1%",
+    expectedFit: "Best for linked Live Sessions and replay launches.",
     seasonality: "Performs strongly on mid-week evenings and Sundays.",
     availability: "Open",
     pricingLogic: "Flat package + priority rotation.",
     surfaces: ["Home feed", "Followed tab", "Discovery rail"],
-    formats: ["Static 1200Ã—628", "Square 1080Ã—1080", "Vertical 1080Ã—1920"],
-    videoLengths: ["6â€“15 sec", "15â€“20 sec"],
+    formats: ["Static 1200×628", "Square 1080×1080", "Vertical 1080×1920"],
+    videoLengths: ["6–15 sec", "15–20 sec"],
     subtitleExpectation: "Recommended for motion creative.",
     safeAreaRule: "Keep primary text within central 80%.",
     ctaRule: "One primary CTA. Avoid stacked donation + event asks.",
@@ -226,22 +226,22 @@ const INVENTORY_SEED: InventoryPlacement[] = [
   },
   {
     id: "pl_live_countdown_rail",
-    title: "Live Sessionz Countdown Rail",
-    subtitle: "Live surface Â· Countdown rail",
+    title: "Live Sessions Countdown Rail",
+    subtitle: "Live surface · Countdown rail",
     type: "Live surface",
     objective: "Live attendance",
     accent: "orange",
     heroImageUrl: HERO_COUNTDOWN,
     reach: 34000,
     price: 560,
-    ctrRange: "5.1%â€“6.3%",
+    ctrRange: "5.1%–6.3%",
     expectedFit: "Best for same-day pushes and start-now reminders.",
     seasonality: "High-demand around weekend service clusters.",
     availability: "Limited",
     pricingLogic: "Scarce premium slots during high-traffic hours.",
     surfaces: ["Live hub", "Countdown cards", "Session launch rail"],
-    formats: ["Static 1200Ã—628", "Vertical 1080Ã—1920"],
-    videoLengths: ["6â€“12 sec"],
+    formats: ["Static 1200×628", "Vertical 1080×1920"],
+    videoLengths: ["6–12 sec"],
     subtitleExpectation: "Required for vertical video variants.",
     safeAreaRule: "Reserve lower 20% for countdown and action bar.",
     ctaRule: "CTA must point directly to live session or RSVP surface.",
@@ -256,21 +256,21 @@ const INVENTORY_SEED: InventoryPlacement[] = [
   {
     id: "pl_replay_shelf_spotlight",
     title: "Replay Shelf Spotlight",
-    subtitle: "Replay shelf Â· Replay spotlight",
+    subtitle: "Replay shelf · Replay spotlight",
     type: "Replay shelf",
     objective: "Replay growth",
     accent: "navy",
     heroImageUrl: HERO_REPLAY,
     reach: 28500,
     price: 390,
-    ctrRange: "3.8%â€“4.9%",
+    ctrRange: "3.8%–4.9%",
     expectedFit: "Best for clips and replay packages with a clear next-step CTA.",
     seasonality: "Good always-on inventory outside peak live windows.",
     availability: "Open",
     pricingLogic: "Efficient evergreen replay package pricing.",
     surfaces: ["Replay shelves", "Continue watching", "Suggested watch"],
-    formats: ["Static 1200Ã—628", "Square 1080Ã—1080", "Vertical 1080Ã—1920"],
-    videoLengths: ["10â€“20 sec"],
+    formats: ["Static 1200×628", "Square 1080×1080", "Vertical 1080×1920"],
+    videoLengths: ["10–20 sec"],
     subtitleExpectation: "Recommended for all motion placements.",
     safeAreaRule: "Allow room for progress ring and replay metadata chrome.",
     ctaRule: "CTA can drive replay, clip, Beacon follow-up, or giving tie-in.",
@@ -285,21 +285,21 @@ const INVENTORY_SEED: InventoryPlacement[] = [
   {
     id: "pl_giving_momentum_card",
     title: "Giving Momentum Card",
-    subtitle: "Giving spot Â· Cause momentum",
+    subtitle: "Giving spot · Cause momentum",
     type: "Giving spot",
     objective: "Giving conversion",
     accent: "green",
     heroImageUrl: HERO_GIVING,
     reach: 24000,
     price: 460,
-    ctrRange: "4.5%â€“5.4%",
+    ctrRange: "4.5%–5.4%",
     expectedFit: "Works best for active funds and charity crowdfunds with social proof.",
     seasonality: "Strong during emergency response and end-of-month giving pushes.",
     availability: "Open",
     pricingLogic: "Cause package pricing with mission impact overlays.",
     surfaces: ["Giving hub", "Campaign cards", "Cause moments"],
-    formats: ["Static 1200Ã—628", "Square 1080Ã—1080"],
-    videoLengths: ["8â€“15 sec"],
+    formats: ["Static 1200×628", "Square 1080×1080"],
+    videoLengths: ["8–15 sec"],
     subtitleExpectation: "Recommended when using testimonial or field footage.",
     safeAreaRule: "Reserve right side for progress and donor-count modules.",
     ctaRule: "Donation CTA must use one clear ask with transparent destination copy.",
@@ -314,21 +314,21 @@ const INVENTORY_SEED: InventoryPlacement[] = [
   {
     id: "pl_event_discovery_pulse",
     title: "Event Discovery Pulse",
-    subtitle: "Event discovery Â· Registration lift",
+    subtitle: "Event discovery · Registration lift",
     type: "Event discovery",
     objective: "Event registration",
     accent: "orange",
     heroImageUrl: HERO_EVENTS,
     reach: 30500,
     price: 510,
-    ctrRange: "4.0%â€“5.0%",
+    ctrRange: "4.0%–5.0%",
     expectedFit: "Ideal for conferences, retreats, baptisms, and one-off gatherings.",
     seasonality: "Higher demand around conferences and seasonal gatherings.",
     availability: "High demand",
     pricingLogic: "Timed packages around calendar windows and destination saturation.",
     surfaces: ["Event discovery", "Registration feeds", "Related events"],
-    formats: ["Static 1200Ã—628", "Square 1080Ã—1080", "Vertical 1080Ã—1920"],
-    videoLengths: ["8â€“20 sec"],
+    formats: ["Static 1200×628", "Square 1080×1080", "Vertical 1080×1920"],
+    videoLengths: ["8–20 sec"],
     subtitleExpectation: "Required for audio-led event teaser clips.",
     safeAreaRule: "Keep bottom 22% clear for date and venue chips.",
     ctaRule: "CTA must point to registration or event detail page.",
@@ -343,21 +343,21 @@ const INVENTORY_SEED: InventoryPlacement[] = [
   {
     id: "pl_clip_carousel_takeover",
     title: "Clip Carousel Takeover",
-    subtitle: "Premium takeover Â· Discovery burst",
+    subtitle: "Premium takeover · Discovery burst",
     type: "Premium takeover",
     objective: "Product discovery",
     accent: "navy",
     heroImageUrl: HERO_CLIP,
     reach: 68000,
     price: 980,
-    ctrRange: "5.4%â€“7.1%",
+    ctrRange: "5.4%–7.1%",
     expectedFit: "Best for short-form discovery bursts and cross-object promotion.",
     seasonality: "Premium inventory tied to key platform traffic windows.",
     availability: "Reserved",
     pricingLogic: "Premium high-share-of-voice booking.",
     surfaces: ["Discovery hero", "Clip carousel", "Swipe stack"],
-    formats: ["Vertical 1080Ã—1920", "Square 1080Ã—1080"],
-    videoLengths: ["6â€“12 sec", "12â€“20 sec"],
+    formats: ["Vertical 1080×1920", "Square 1080×1080"],
+    videoLengths: ["6–12 sec", "12–20 sec"],
     subtitleExpectation: "Mandatory for vertical video placements.",
     safeAreaRule: "Keep all key text above lower CTA shelf and away from edge rails.",
     ctaRule: "One CTA only. Product discovery or replay push recommended.",
@@ -571,7 +571,7 @@ function PreviewShell({
           Hope & Healing this Friday
         </div>
         <div className="mt-2 max-w-[520px] text-[12px] leading-relaxed text-white/80">
-          New live session opens soon Â· set a reminder or start with the replay trail.
+          New live session opens soon · set a reminder or start with the replay trail.
         </div>
         <div className="mt-4 flex items-center gap-2">
           <span
@@ -619,7 +619,7 @@ function PhonePreview({
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-[#f77f00]/80 to-[#0b1d49]/35" />
                 <div className="absolute inset-x-3 bottom-3 text-[11px] font-extrabold leading-tight text-white line-clamp-2">
-                  Reserve your place for Fridayâ€™s live gathering.
+                  Reserve your place for Friday’s live gathering.
                 </div>
               </div>
               <div className="p-3">
@@ -630,7 +630,7 @@ function PhonePreview({
                   {audiencePackage?.name || "Families & Community"}
                 </div>
                 <div className="mt-1 text-[10px] text-slate-500">
-                  CTR 4.5% Â· Reach 31.8k
+                  CTR 4.5% · Reach 31.8k
                 </div>
               </div>
             </div>
@@ -713,7 +713,7 @@ function PlacementDrawer({
                 <div className="space-y-3 text-[12px] leading-relaxed text-slate-600 dark:text-slate-400">
                   <div>
                     <div className="font-bold text-slate-900 dark:text-slate-100">Video length</div>
-                    <div className="mt-1">{placement.videoLengths.join(" Â· ")}</div>
+                    <div className="mt-1">{placement.videoLengths.join(" · ")}</div>
                   </div>
                   <div>
                     <div className="font-bold text-slate-900 dark:text-slate-100">Subtitle expectation</div>
@@ -761,7 +761,7 @@ export default function BeaconMarketplacePage() {
   const [search, setSearch] = useState("");
   const [selectedPlacementId, setSelectedPlacementId] = useState<string>(INVENTORY_SEED[0].id);
   const [selectedPackageId, setSelectedPackageId] = useState<string>(AUDIENCE_PACKAGES[0].id);
-  const [mediaPlanName, setMediaPlanName] = useState("Beacon Marketplace Plan Â· Weekend Launch");
+  const [mediaPlanName, setMediaPlanName] = useState("Beacon Marketplace Plan · Weekend Launch");
   const [mediaPlan, setMediaPlan] = useState<MediaPlanPlacement[]>([
     { placementId: "pl_home_feed_spotlight", packageId: "pkg_local_worship" },
     { placementId: "pl_replay_shelf_spotlight", packageId: "pkg_families_community" },
@@ -815,7 +815,7 @@ export default function BeaconMarketplacePage() {
   const projectedCtr = useMemo(() => {
     if (!mediaPlanRows.length) return 0;
     return mediaPlanRows.reduce((sum, row) => {
-      const range = row.placement.ctrRange.split("â€“")[0].replace("%", "");
+      const range = row.placement.ctrRange.split("–")[0].replace("%", "");
       return sum + Number(range || 0);
     }, 0) / mediaPlanRows.length;
   }, [mediaPlanRows]);
@@ -860,7 +860,7 @@ export default function BeaconMarketplacePage() {
           <div className="flex flex-col justify-between gap-4 xl:flex-row xl:items-start">
             <div className="min-w-0">
               <div className="text-[15px] font-black tracking-wide text-slate-500 dark:text-slate-400">
-                FH-P-081 Â· Beacon Marketplace
+                FH-P-081 · Beacon Marketplace
               </div>
               <h1 className="mt-1 text-[34px] font-black tracking-tight text-slate-900 dark:text-slate-100 sm:text-[40px]">
                 Premium inventory, audience packages, and media-plan building for Beacon campaigns across FaithHub surfaces.
@@ -1236,7 +1236,7 @@ export default function BeaconMarketplacePage() {
                     <div className="space-y-4 text-[12px] leading-relaxed text-slate-600 dark:text-slate-400">
                       <div>
                         <div className="font-extrabold text-slate-900 dark:text-slate-100">Video length</div>
-                        <div className="mt-1">{selectedPlacement.videoLengths.join(" works best Â· ")} works best</div>
+                        <div className="mt-1">{selectedPlacement.videoLengths.join(" works best · ")} works best</div>
                       </div>
                       <div>
                         <div className="font-extrabold text-slate-900 dark:text-slate-100">Subtitle expectation</div>
@@ -1319,7 +1319,7 @@ export default function BeaconMarketplacePage() {
               {
                 icon: Layers,
                 title: "Inventory catalog",
-                body: "Displays feeds, discovery rails, Live Sessionz surfaces, replay shelves, event discovery, giving spots, and premium takeover opportunities.",
+                body: "Displays feeds, discovery rails, Live Sessions surfaces, replay shelves, event discovery, giving spots, and premium takeover opportunities.",
               },
               {
                 icon: Filter,
@@ -1369,4 +1369,6 @@ export default function BeaconMarketplacePage() {
     </div>
   );
 }
+
+
 

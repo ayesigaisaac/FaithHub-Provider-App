@@ -13,7 +13,7 @@ export type { ProviderPageMeta, ProviderPageSection };
 export const providerSections: ProviderPageSection[] = [
   'Foundation & Mission Control',
   'Content Structure & Teaching Creation',
-  'Live Sessionz Operations',
+  'Live Sessions Operations',
   'Audience & Outreach',
   'Post-live & Trust',
   'Events & Giving',

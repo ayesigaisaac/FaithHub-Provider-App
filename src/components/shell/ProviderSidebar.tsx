@@ -21,7 +21,7 @@ const drawerWidth = 318;
 const sectionLabelMap: Partial<Record<(typeof providerSections)[number], string>> = {
   'Foundation & Mission Control': 'Core',
   'Content Structure & Teaching Creation': 'Content',
-  'Live Sessionz Operations': 'Streams',
+  'Live Sessions Operations': 'Streams',
   'Audience & Outreach': 'Outreach',
   'Post-live & Trust': 'Post-live',
   'Events & Giving': 'Giving',
