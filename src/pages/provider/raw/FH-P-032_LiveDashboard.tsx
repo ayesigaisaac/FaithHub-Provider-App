@@ -809,6 +809,14 @@ function MetricTile({
   hint?: string;
   tone?: "green" | "orange" | "red" | "neutral";
 }) {
+  const tint =
+    tone === "green"
+      ? "bg-white border-emerald-200/80"
+      : tone === "orange"
+        ? "bg-white border-amber-200/80"
+        : tone === "red"
+          ? "bg-white border-rose-200/80"
+          : "bg-white border-slate-200";
   const accent =
     tone === "green"
       ? "text-emerald-600 dark:text-emerald-300"
@@ -817,12 +825,25 @@ function MetricTile({
         : tone === "red"
           ? "text-rose-600 dark:text-rose-300"
           : "text-slate-900 dark:text-slate-100";
+  const chipBg =
+    tone === "green"
+      ? "bg-emerald-100 dark:bg-emerald-900/40"
+      : tone === "orange"
+        ? "bg-amber-100 dark:bg-amber-900/40"
+        : tone === "red"
+          ? "bg-rose-100 dark:bg-rose-900/40"
+          : "bg-slate-100 dark:bg-slate-800";
 
   return (
-    <div className="rounded-[14px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 p-3 transition-colors">
-      <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">{label}</div>
-      <div className={cx("mt-1 text-[20px] font-black", accent)}>{value}</div>
-      {hint ? <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">{hint}</div> : null}
+    <div className={cx("rounded-[24px] border p-4 min-h-[140px] shadow-sm transition-colors", tint)}>
+      <div className="flex h-full flex-col">
+        <div className="flex items-start justify-between gap-2">
+          <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-500 dark:text-slate-400">{label}</div>
+          <div className={cx("h-10 w-10 shrink-0 rounded-xl", chipBg)} />
+        </div>
+        <div className={cx("mt-2 text-[28px] font-black leading-none tracking-[-0.02em]", accent)}>{value}</div>
+        {hint ? <div className="mt-2 text-[12px] leading-5 text-slate-600 dark:text-slate-300">{hint}</div> : null}
+      </div>
     </div>
   );
 }
@@ -1338,7 +1359,7 @@ export default function FaithHubLiveDashboardPage() {
               subtitle="Ingest health, bitrate, frame rate, audio confidence, latency, recording state, destination sync, and backup readiness."
               right={<Pill text={session.health.critical} tone={healthToneToPill(session.health.critical)} icon={<Activity className="h-3.5 w-3.5" />} />}
             >
-              <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-3">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-3">
                 <MetricTile label="Ingest health" value={`${session.health.ingestHealth}%`} hint="Overall stream intake" tone={session.health.ingestHealth >= 90 ? "green" : session.health.ingestHealth >= 80 ? "orange" : "red"} />
                 <MetricTile label="Bitrate" value={`${session.health.bitrateMbps.toFixed(1)} Mbps`} hint="Current media throughput" tone="green" />
                 <MetricTile label="Audio confidence" value={`${session.health.audioConfidence}%`} hint="Voice clarity and stability" tone={session.health.audioConfidence >= 90 ? "green" : session.health.audioConfidence >= 80 ? "orange" : "red"} />
@@ -1371,7 +1392,7 @@ export default function FaithHubLiveDashboardPage() {
             </Card>
 
             <Card title="Team readiness board" subtitle="Hosts, moderators, producers, captioners, interpreters, and support operators in one operational board.">
-              <div className="grid sm:grid-cols-3 gap-3">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
                 <MetricTile label="Role coverage" value={`${rolesReady}/${totalRoles}`} hint="Joined and ready" tone="green" />
                 <MetricTile label="Checks complete" value={`${rolesChecked}/${totalRoles}`} hint="Operational confirmation" tone={readinessPct >= 85 ? "green" : "orange"} />
                 <MetricTile label="Critical roles" value={`${criticalReady}/${criticalRoles.length}`} hint="Broadcast-safe core team" tone={criticalReady === criticalRoles.length ? "green" : "orange"} />
@@ -1398,7 +1419,7 @@ export default function FaithHubLiveDashboardPage() {
             </Card>
 
             <Card title="Audience pulse panel" subtitle="Registrants, waiting room, viewers, chat load, Q&A pressure, prayer requests, and drop-off signals.">
-              <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-3">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-3">
                 <MetricTile label="Registrants" value={session.audience.registrants.toLocaleString()} hint="Total audience signups" tone="neutral" />
                 <MetricTile label="Waiting room" value={session.audience.waitingRoom.toLocaleString()} hint="Pre-live audience holding" tone="orange" />
                 <MetricTile label={session.state === "Ended" ? "Peak viewers" : "Current viewers"} value={(session.state === "Ended" ? session.audience.peakViewers : session.audience.viewers).toLocaleString()} hint="Audience in session" tone="green" />
@@ -1442,7 +1463,7 @@ export default function FaithHubLiveDashboardPage() {
             <Card title="CTA and conversion strip" subtitle="Treat giving, event sign-up, merch clicks, and Beacon promotion as live-response signals."
               right={<SoftButton onClick={() => safeNav(`${ROUTES.beaconBuilder}?sourceSessionId=${encodeURIComponent(session.id)}`)}><Sparkles className="h-4 w-4" /> Beacon handoff</SoftButton>}
             >
-              <div className="grid sm:grid-cols-2 xl:grid-cols-5 gap-3">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-5 gap-3">
                 <MetricTile label="Live giving" value={formatMoney(session.conversion.donationTotal)} hint="Current response total" tone="orange" />
                 <MetricTile label="Crowdfund" value={formatMoney(session.conversion.crowdfundRaised)} hint={`of ${formatMoney(session.conversion.crowdfundTarget)}`} tone="green" />
                 <MetricTile label="Event sign-ups" value={session.conversion.eventSignups.toLocaleString()} hint="Live-response registrations" tone="green" />

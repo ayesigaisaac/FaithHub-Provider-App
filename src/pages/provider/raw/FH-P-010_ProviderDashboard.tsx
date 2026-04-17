@@ -1061,41 +1061,43 @@ function SolidButton({
 function MetricTile({ metric }: { metric: MetricCard }) {
   const tint =
     metric.accent === "green"
-      ? "bg-emerald-50 border-emerald-200"
+      ? "bg-white border-emerald-200/80"
       : metric.accent === "orange"
-        ? "bg-amber-50 border-amber-200"
-        : "bg-slate-50 border-slate-200";
+        ? "bg-white border-amber-200/80"
+        : "bg-white border-slate-200";
 
   return (
-    <div className={cx("rounded-[14px] border p-4 shadow-sm", tint)}>
-      <div className="flex items-start justify-between gap-2">
-        <div className="min-w-0">
-          <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
-            {metric.label}
+    <div className={cx("rounded-[24px] border p-4 shadow-sm min-h-[170px]", tint)}>
+      <div className="flex h-full flex-col">
+        <div className="flex items-start justify-between gap-2">
+          <div className="min-w-0">
+            <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
+              {metric.label}
+            </div>
+            <div className="mt-2 text-[30px] font-black leading-none tracking-[-0.02em] text-slate-900">
+              {metric.value}
+            </div>
           </div>
-          <div className="mt-2 text-[36px] font-black tracking-tight text-slate-900">
-            {metric.value}
-          </div>
+          <div
+            className="h-12 w-12 shrink-0 rounded-2xl"
+            style={{
+              background:
+                metric.accent === "green"
+                  ? "rgba(3,205,140,0.12)"
+                  : metric.accent === "orange"
+                    ? "rgba(247,127,0,0.12)"
+                    : "rgba(22,36,76,0.10)",
+            }}
+          />
         </div>
-        <div
-          className="h-9 w-9 rounded-xl"
-          style={{
-            background:
-              metric.accent === "green"
-                ? "rgba(3,205,140,0.12)"
-                : metric.accent === "orange"
-                  ? "rgba(247,127,0,0.12)"
-                  : "rgba(22,36,76,0.10)",
-          }}
-        />
+        <div className="mt-2 text-[13px] leading-5 text-slate-600">{metric.hint}</div>
+        {metric.delta ? (
+          <div className="mt-auto pt-3 inline-flex items-center gap-1 rounded-full bg-slate-50 px-2.5 py-1 text-[11px] font-semibold text-emerald-700">
+            <TrendingUp className="h-3.5 w-3.5" />
+            {metric.delta}
+          </div>
+        ) : null}
       </div>
-      <div className="mt-2 text-[12px] leading-5 text-slate-600">{metric.hint}</div>
-      {metric.delta ? (
-        <div className="mt-3 inline-flex items-center gap-1 rounded-full bg-white/80 px-2.5 py-1 text-[11px] font-semibold text-emerald-700">
-          <TrendingUp className="h-3.5 w-3.5" />
-          {metric.delta}
-        </div>
-      ) : null}
     </div>
   );
 }
@@ -1935,7 +1937,7 @@ export default function ProviderDashboardPage() {
             subtitle="Fast-glance operating metrics for attendance, giving, registrations, engaged members, and content views."
             right={<Pill text={`Role: ${role.toLowerCase()}`} tone="navy" />}
           >
-            <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-5">
               {[
                 {
                   label: "Live attendance",
@@ -1975,14 +1977,14 @@ export default function ProviderDashboardPage() {
               ].map((item) => (
                 <div
                   key={item.label}
-                  className="rounded-[24px] border border-slate-200 bg-slate-50 p-4"
+                  className="rounded-[24px] border border-slate-200 bg-white p-4 min-h-[170px] shadow-sm"
                 >
                   <div className="flex items-center justify-between gap-3">
-                    <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-400">
+                    <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
                       {item.label}
                     </div>
                     <div
-                      className="grid h-9 w-9 place-items-center rounded-[14px]"
+                      className="grid h-12 w-12 place-items-center rounded-[14px]"
                       style={{
                         background:
                           item.accent === "green"
@@ -1996,10 +1998,10 @@ export default function ProviderDashboardPage() {
                       {item.icon}
                     </div>
                   </div>
-                  <div className="mt-3 text-[22px] font-black tracking-tight text-slate-900">
+                  <div className="mt-3 text-[30px] font-black leading-none tracking-[-0.02em] text-slate-900">
                     {item.value}
                   </div>
-                  <div className="mt-1 text-[12px] leading-5 text-slate-500">
+                  <div className="mt-2 text-[13px] leading-5 text-slate-600">
                     {item.hint}
                   </div>
                 </div>
