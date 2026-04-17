@@ -1,4 +1,10 @@
 import type { MouseEvent } from 'react';
+import {
+  getButtonAction,
+  isButtonActionId,
+  resolveActionFromLabel,
+  type ButtonActionId,
+} from '@/navigation/buttonActions';
 
 const TOAST_ID = 'faithhub-placeholder-toast';
 
@@ -7,7 +13,13 @@ function normalizeLabel(text: string): string {
 }
 
 function go(path: string): void {
-  window.location.assign(path);
+  try {
+    if (window.location.pathname === path) return;
+    window.history.pushState({}, '', path);
+    window.dispatchEvent(new PopStateEvent('popstate'));
+  } catch {
+    window.location.assign(path);
+  }
 }
 
 function setPreviewMode(mode: 'desktop' | 'mobile'): void {
@@ -71,25 +83,15 @@ async function copyCurrentLink(): Promise<void> {
   document.body.removeChild(temp);
 }
 
-export async function handleRawPlaceholderAction(event: MouseEvent<HTMLButtonElement>): Promise<void> {
-  const label = normalizeLabel(event.currentTarget.textContent ?? '');
+async function executeAction(actionId: ButtonActionId, event: MouseEvent<HTMLButtonElement>): Promise<void> {
+  const action = getButtonAction(actionId);
 
-  if (!label) {
-    go('/faithhub/provider/dashboard');
+  if (action.kind === 'preview_mode' && action.previewMode) {
+    setPreviewMode(action.previewMode);
     return;
   }
 
-  if (label.includes('desktop')) {
-    setPreviewMode('desktop');
-    return;
-  }
-
-  if (label.includes('mobile')) {
-    setPreviewMode('mobile');
-    return;
-  }
-
-  if (label.includes('share')) {
+  if (action.kind === 'copy_link') {
     try {
       await copyCurrentLink();
       showToast('Link copied');
@@ -99,60 +101,50 @@ export async function handleRawPlaceholderAction(event: MouseEvent<HTMLButtonEle
     return;
   }
 
-  if (label.includes('give') || label.includes('donat')) {
-    go('/faithhub/provider/donations-and-funds');
-    return;
-  }
-
-  if (label.includes('crowdfund')) {
-    go('/faithhub/provider/charity-crowdfunding-workbench');
-    return;
-  }
-
-  if (label.includes('join') || label.includes('watch') || label.includes('trailer') || label.includes('live')) {
-    go('/faithhub/provider/live-dashboard');
-    return;
-  }
-
-  if (label.includes('prayer')) {
-    go('/faithhub/provider/prayer-requests');
-    return;
-  }
-
-  if (label.includes('resource') || label.includes('note') || label.includes('book')) {
-    go('/faithhub/provider/resources-manager');
-    return;
-  }
-
-  if (label.includes('event')) {
-    go('/faithhub/provider/events-manager');
-    return;
-  }
-
-  if (label.includes('beacon') || label.includes('campaign')) {
-    go('/faithhub/provider/beacon-dashboard');
-    return;
-  }
-
-  if (label.includes('audience') || label.includes('notification') || label.includes('reminder')) {
-    go('/faithhub/provider/audience-notifications');
-    return;
-  }
-
-  if (label.includes('wallet') || label.includes('payout')) {
-    go('/faithhub/provider/wallet-payouts');
-    return;
-  }
-
-  if (label.includes('team') || label.includes('leadership') || label.includes('role') || label.includes('permission')) {
-    go('/faithhub/provider/roles-permissions');
-    return;
-  }
-
-  if (label.includes('follow') || label.includes('story')) {
-    go('/faithhub/provider/community-groups');
+  if (action.kind === 'navigate' && action.targetPath) {
+    const explicitTarget = event.currentTarget.dataset.targetPath;
+    go(explicitTarget || action.targetPath);
     return;
   }
 
   go('/faithhub/provider/dashboard');
+}
+
+function resolveActionId(explicitActionId: ButtonActionId | undefined, event: MouseEvent<HTMLButtonElement>): ButtonActionId {
+  if (explicitActionId) {
+    return explicitActionId;
+  }
+
+  const dataAction = event.currentTarget.dataset.action;
+  if (dataAction && isButtonActionId(dataAction)) {
+    return dataAction;
+  }
+
+  const label = normalizeLabel(event.currentTarget.textContent ?? '');
+  const resolved = resolveActionFromLabel(label);
+  return resolved ?? 'open_provider_dashboard';
+}
+
+async function runPlaceholderAction(
+  explicitActionId: ButtonActionId | undefined,
+  event: MouseEvent<HTMLButtonElement>,
+): Promise<void> {
+  const actionId = resolveActionId(explicitActionId, event);
+  await executeAction(actionId, event);
+}
+
+export function handleRawPlaceholderAction(
+  actionId: ButtonActionId,
+): (event: MouseEvent<HTMLButtonElement>) => Promise<void>;
+export function handleRawPlaceholderAction(
+  event: MouseEvent<HTMLButtonElement>,
+): Promise<void>;
+export function handleRawPlaceholderAction(
+  actionOrEvent: ButtonActionId | MouseEvent<HTMLButtonElement>,
+): Promise<void> | ((event: MouseEvent<HTMLButtonElement>) => Promise<void>) {
+  if (typeof actionOrEvent === 'string') {
+    return (event: MouseEvent<HTMLButtonElement>) => runPlaceholderAction(actionOrEvent, event);
+  }
+
+  return runPlaceholderAction(undefined, actionOrEvent);
 }

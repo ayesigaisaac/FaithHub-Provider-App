@@ -790,8 +790,8 @@ function SeriesLandingPreview({
             <div className="text-[15px] font-black tracking-tight">{series.title}</div>
             <div className="mt-2 max-w-[90%] text-[12px] leading-relaxed text-white/90">{series.subtitle}</div>
             <div className="mt-4 flex flex-wrap items-center gap-2">
-              <button className="rounded-full bg-[#03cd8c] px-4 py-2 text-[12px] font-black text-white" onClick={handleRawPlaceholderAction}>Follow series</button>
-              <button className="rounded-full bg-[#f77f00] px-4 py-2 text-[12px] font-black text-white" onClick={handleRawPlaceholderAction}>Watch trailer</button>
+              <button className="rounded-full bg-[#03cd8c] px-4 py-2 text-[12px] font-black text-white" onClick={handleRawPlaceholderAction("open_series_dashboard")}>Follow series</button>
+              <button className="rounded-full bg-[#f77f00] px-4 py-2 text-[12px] font-black text-white" onClick={handleRawPlaceholderAction("open_live_dashboard")}>Watch trailer</button>
             </div>
           </div>
         </div>

@@ -1378,9 +1378,9 @@ function BrowserPreview({ record }: { record: CrowdfundRecord }) {
                   ) : null}
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  <button className="rounded-2xl px-4 py-2 text-sm font-extrabold text-white" style={{ background: EV_GREEN }} onClick={handleRawPlaceholderAction}>Give now</button>
-                  <button className="rounded-2xl px-4 py-2 text-sm font-extrabold text-white" style={{ background: EV_ORANGE }} onClick={handleRawPlaceholderAction}>Share story</button>
-                  <button className="rounded-2xl bg-slate-100 dark:bg-slate-800 px-4 py-2 text-sm font-extrabold text-slate-900 dark:text-slate-50 ring-1 ring-slate-200 dark:ring-slate-700" onClick={handleRawPlaceholderAction}>Follow cause</button>
+                  <button className="rounded-2xl px-4 py-2 text-sm font-extrabold text-white" style={{ background: EV_GREEN }} onClick={handleRawPlaceholderAction("open_donations_funds")}>Give now</button>
+                  <button className="rounded-2xl px-4 py-2 text-sm font-extrabold text-white" style={{ background: EV_ORANGE }} onClick={handleRawPlaceholderAction("copy_current_link")}>Share story</button>
+                  <button className="rounded-2xl bg-slate-100 dark:bg-slate-800 px-4 py-2 text-sm font-extrabold text-slate-900 dark:text-slate-50 ring-1 ring-slate-200 dark:ring-slate-700" onClick={handleRawPlaceholderAction("open_community_groups")}>Follow cause</button>
                 </div>
               </div>
             </div>
@@ -1485,8 +1485,8 @@ function PhonePreview({ record }: { record: CrowdfundRecord }) {
                 ) : null}
               </div>
               <div className="grid grid-cols-2 gap-2">
-                <button className="inline-flex items-center justify-center rounded-2xl px-4 py-3 text-[12px] font-extrabold text-white" style={{ background: EV_GREEN }} onClick={handleRawPlaceholderAction}>Give now</button>
-                <button className="inline-flex items-center justify-center rounded-2xl px-4 py-3 text-[12px] font-extrabold text-white" style={{ background: EV_ORANGE }} onClick={handleRawPlaceholderAction}>Share</button>
+                <button className="inline-flex items-center justify-center rounded-2xl px-4 py-3 text-[12px] font-extrabold text-white" style={{ background: EV_GREEN }} onClick={handleRawPlaceholderAction("open_donations_funds")}>Give now</button>
+                <button className="inline-flex items-center justify-center rounded-2xl px-4 py-3 text-[12px] font-extrabold text-white" style={{ background: EV_ORANGE }} onClick={handleRawPlaceholderAction("copy_current_link")}>Share</button>
               </div>
             </div>
           </div>
@@ -2280,8 +2280,8 @@ export default function CharityCrowdfundingWorkbenchPage() {
                         <div className="text-xs text-slate-500 dark:text-slate-400">{fmtCurrency(selectedRecord.raised)} of {fmtCurrency(selectedRecord.goal)}</div>
                         <div><ProgressBar value={progress} tone={selectedRecord.accent === "navy" ? "navy" : selectedRecord.accent === "orange" ? "orange" : "green"} /></div>
                         <div className="grid grid-cols-2 gap-2">
-                          <button className="rounded-2xl px-3 py-2 text-[11px] font-extrabold text-white" style={{ background: EV_GREEN }} onClick={handleRawPlaceholderAction}>Give now</button>
-                          <button className="rounded-2xl px-3 py-2 text-[11px] font-extrabold text-white" style={{ background: EV_ORANGE }} onClick={handleRawPlaceholderAction}>Share</button>
+                          <button className="rounded-2xl px-3 py-2 text-[11px] font-extrabold text-white" style={{ background: EV_GREEN }} onClick={handleRawPlaceholderAction("open_donations_funds")}>Give now</button>
+                          <button className="rounded-2xl px-3 py-2 text-[11px] font-extrabold text-white" style={{ background: EV_ORANGE }} onClick={handleRawPlaceholderAction("copy_current_link")}>Share</button>
                         </div>
                       </div>
                     </div>

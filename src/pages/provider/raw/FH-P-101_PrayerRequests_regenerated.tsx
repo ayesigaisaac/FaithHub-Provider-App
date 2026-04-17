@@ -567,8 +567,8 @@ function PreviewCard({
           </div>
         </div>
         <div className="inline-flex rounded-full border border-slate-200 bg-slate-50 p-1">
-          <button className={cx("rounded-full px-3 py-1 text-[11px] font-semibold", mode === "desktop" ? "bg-[#1d2b64] text-white" : "text-slate-600")} onClick={handleRawPlaceholderAction}>Desktop</button>
-          <button className={cx("rounded-full px-3 py-1 text-[11px] font-semibold", mode === "mobile" ? "bg-[#1d2b64] text-white" : "text-slate-600")} onClick={handleRawPlaceholderAction}>Mobile</button>
+          <button className={cx("rounded-full px-3 py-1 text-[11px] font-semibold", mode === "desktop" ? "bg-[#1d2b64] text-white" : "text-slate-600")} onClick={handleRawPlaceholderAction("set_preview_desktop")}>Desktop</button>
+          <button className={cx("rounded-full px-3 py-1 text-[11px] font-semibold", mode === "mobile" ? "bg-[#1d2b64] text-white" : "text-slate-600")} onClick={handleRawPlaceholderAction("set_preview_mobile")}>Mobile</button>
         </div>
       </div>
 

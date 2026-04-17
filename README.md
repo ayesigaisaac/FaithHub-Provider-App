@@ -69,6 +69,21 @@ Current automated coverage includes:
 - sidebar grouping, active-state behavior, and close callback (`src/layout/Sidebar.test.tsx`)
 - reusable nav item rendering and active semantics (`src/components/ui/NavItem.test.tsx`)
 
+## Button navigation standard
+
+Raw page CTAs should route through the shared action registry:
+
+- Registry: `src/navigation/buttonActions.ts`
+- Raw handler: `src/pages/provider/raw/placeholderActions.ts`
+
+Preferred usage in raw pages:
+
+```tsx
+onClick={handleRawPlaceholderAction("open_live_dashboard")}
+```
+
+This keeps CTA routing deterministic, testable, and consistent across provider pages.
+
 A production build was generated successfully in `dist/` during packaging.
 
 ## Routing

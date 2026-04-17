@@ -727,14 +727,14 @@ function PhonePreview({
                 type="button"
                 className="flex-1 rounded-2xl px-3 py-2 text-[12px] font-bold text-white"
                 style={{ background: EV_GREEN }}
-               onClick={handleRawPlaceholderAction}>
+               onClick={handleRawPlaceholderAction("open_live_dashboard")}>
                 Preview live page
               </button>
               <button
                 type="button"
                 className="flex-1 rounded-2xl px-3 py-2 text-[12px] font-bold text-white"
                 style={{ background: EV_ORANGE }}
-               onClick={handleRawPlaceholderAction}>
+               onClick={handleRawPlaceholderAction("open_donations_funds")}>
                 View giving
               </button>
             </div>

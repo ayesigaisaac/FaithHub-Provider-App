@@ -595,7 +595,7 @@ function EpisodePreview({
                   <Pill tone="brand" icon={<Sparkles className="h-3 w-3" />}>
                     Episode live
                   </Pill>
-                  <button className="text-[11px] font-semibold text-emerald-600" onClick={handleRawPlaceholderAction}>Share</button>
+                  <button className="text-[11px] font-semibold text-emerald-600" onClick={handleRawPlaceholderAction("copy_current_link")}>Share</button>
                 </div>
                 <div className="mt-3 text-[10px] font-black uppercase tracking-[0.16em] text-slate-400">
                   {draft.parentSeriesTitle}
