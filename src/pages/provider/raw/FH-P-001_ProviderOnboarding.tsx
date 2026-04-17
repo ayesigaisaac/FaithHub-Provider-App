@@ -301,7 +301,7 @@ function SoftButton({
       onClick={onClick}
       disabled={disabled}
       className={cx(
-        "inline-flex items-center gap-2 rounded-2xl border px-4 py-2 text-[12px] font-semibold transition-colors",
+        "inline-flex items-center gap-2 rounded-2xl border px-4 py-2 text-[12px] font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2",
         disabled
           ? "cursor-not-allowed border-slate-200 bg-slate-100 text-slate-400 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-600"
           : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700",
@@ -333,7 +333,7 @@ function PrimaryButton({
       onClick={onClick}
       disabled={disabled}
       className={cx(
-        "inline-flex items-center gap-2 rounded-2xl border border-transparent px-4 py-2 text-[12px] font-semibold text-white transition-opacity",
+        "inline-flex items-center gap-2 rounded-2xl border border-transparent px-4 py-2 text-[12px] font-semibold text-white transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2",
         disabled ? "cursor-not-allowed opacity-60" : "hover:opacity-95",
       )}
       style={{ background: secondary ? EV_ORANGE : EV_GREEN }}
@@ -437,9 +437,11 @@ function Toggle({
   return (
     <button
       type="button"
+      role="switch"
+      aria-checked={checked}
       onClick={() => onChange(!checked)}
       className={cx(
-        "w-full rounded-3xl border p-3 text-left transition-colors",
+        "w-full rounded-3xl border p-3 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2",
         checked
           ? "border-emerald-200 bg-emerald-50 dark:border-emerald-800 dark:bg-emerald-900/20"
           : "border-slate-200 bg-white hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800",
@@ -509,7 +511,10 @@ function StepRail({
   blockers: string[];
 }) {
   return (
-    <div className="rounded-3xl border border-slate-200 bg-white p-4 transition-colors dark:border-slate-800 dark:bg-slate-900">
+    <nav
+      aria-label="Onboarding steps"
+      className="rounded-3xl border border-slate-200 bg-white p-4 transition-colors dark:border-slate-800 dark:bg-slate-900"
+    >
       <div className="rounded-3xl border border-emerald-200 bg-emerald-50 p-4 dark:border-emerald-900/40 dark:bg-emerald-900/20">
         <div className="text-[18px] font-bold text-slate-900 dark:text-slate-100">
           Provider Onboarding
@@ -544,9 +549,10 @@ function StepRail({
             <button
               key={item.key}
               type="button"
+              aria-current={isActive ? "step" : undefined}
               onClick={() => setStep(item.key)}
               className={cx(
-                "w-full rounded-2xl border px-3 py-3 text-left transition-colors",
+                "w-full rounded-2xl border px-3 py-3 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2",
                 isActive
                   ? "border-emerald-200 bg-emerald-50 dark:border-emerald-800 dark:bg-emerald-900/20"
                   : "border-slate-200 bg-white hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800",
@@ -600,7 +606,7 @@ function StepRail({
           </div>
         </div>
       </div>
-    </div>
+    </nav>
   );
 }
 
@@ -718,12 +724,14 @@ function PhonePreview({
 
             <div className="flex gap-2">
               <button
+                type="button"
                 className="flex-1 rounded-2xl px-3 py-2 text-[12px] font-bold text-white"
                 style={{ background: EV_GREEN }}
                onClick={handleRawPlaceholderAction}>
                 Preview live page
               </button>
               <button
+                type="button"
                 className="flex-1 rounded-2xl px-3 py-2 text-[12px] font-bold text-white"
                 style={{ background: EV_ORANGE }}
                onClick={handleRawPlaceholderAction}>
@@ -885,6 +893,8 @@ export default function ProviderOnboardingPage() {
   const [compareWithPublished, setCompareWithPublished] = useState(false);
 
   const isPreviewSynced = lastSaved.toLowerCase().includes("autosaved") || lastSaved.toLowerCase().includes("saved");
+  const currentStepIndex = STEP_ORDER.findIndex((item) => item.key === step) + 1;
+  const currentStepMeta = STEP_ORDER.find((item) => item.key === step) ?? STEP_ORDER[0];
 
   const coverOption = useMemo(
     () => COVER_LIBRARY.find((item) => item.id === coverId) || COVER_LIBRARY[0],
@@ -1191,6 +1201,17 @@ export default function ProviderOnboardingPage() {
     const timer = window.setTimeout(() => setToast(null), 2400);
     return () => window.clearTimeout(timer);
   }, [toast]);
+
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "s") {
+        event.preventDefault();
+        saveDraft();
+      }
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, []);
 
   useEffect(() => {
     window.localStorage.setItem("fh.provider.onboarding.previewWidth", String(previewPaneWidth));
@@ -2379,8 +2400,14 @@ export default function ProviderOnboardingPage() {
       className="min-h-screen w-full bg-[var(--fh-bg)] text-slate-900 dark:text-slate-50"
       style={{ ["--fh-bg" as any]: EV_LIGHT }}
     >
+      <a
+        href="#provider-onboarding-main"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[70] focus:rounded-xl focus:bg-white focus:px-3 focus:py-2 focus:text-[12px] focus:font-semibold focus:text-slate-900 focus:shadow"
+      >
+        Skip to onboarding content
+      </a>
       <div className="mx-auto max-w-[1640px] px-5 py-5">
-        <div className="rounded-[34px] border border-slate-200 bg-white p-5 shadow-sm transition-colors dark:border-slate-800 dark:bg-slate-900">
+        <header className="rounded-[34px] border border-slate-200 bg-white p-5 shadow-sm transition-colors dark:border-slate-800 dark:bg-slate-900">
           <div className="flex flex-col gap-5 xl:flex-row xl:items-start xl:justify-between">
             <div className="min-w-0">
               <div className="flex flex-wrap items-center gap-3">
@@ -2442,9 +2469,10 @@ export default function ProviderOnboardingPage() {
               </div>
             </div>
           </div>
-        </div>
+        </header>
 
-        <div
+        <main
+          id="provider-onboarding-main"
           className="mt-5 grid gap-5 xl:grid-cols-[280px_minmax(var(--editor-min),1fr)_var(--preview-pane)]"
           style={{ ["--preview-pane" as any]: `${previewPaneWidth}px`, ["--editor-min" as any]: `${editorMinWidth}px` }}
         >
@@ -2458,7 +2486,20 @@ export default function ProviderOnboardingPage() {
             blockers={readinessSummary.blockers}
           />
 
-          <div className="space-y-5">
+          <section className="space-y-5" aria-label="Onboarding editor">
+            <div className="rounded-3xl border border-slate-200 bg-white p-4 transition-colors dark:border-slate-800 dark:bg-slate-900">
+              <div className="flex flex-wrap items-end justify-between gap-3">
+                <div>
+                  <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500 dark:text-slate-400">
+                    Step {currentStepIndex} of {STEP_ORDER.length}
+                  </div>
+                  <h2 className="mt-1 text-[20px] font-black tracking-[-0.02em] text-slate-900 dark:text-slate-100">
+                    {currentStepMeta.label}
+                  </h2>
+                </div>
+                <Pill text={`${readinessSummary.overallProgress}% overall ready`} tone="good" />
+              </div>
+            </div>
             <div className="sticky top-3 z-10 rounded-3xl border border-emerald-200 bg-emerald-50/95 p-4 backdrop-blur dark:border-emerald-900/40 dark:bg-emerald-900/20">
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <div className="min-w-0">
@@ -2480,9 +2521,9 @@ export default function ProviderOnboardingPage() {
               </div>
             </div>
             {renderCenter()}
-          </div>
+          </section>
 
-          <div className="space-y-5">
+          <aside className="space-y-5 xl:sticky xl:top-3 xl:self-start" aria-label="Onboarding preview and readiness">
             <Card
               title="Preview controls"
               subtitle="Tune layout width, viewport, and comparison while you edit onboarding."
@@ -2501,6 +2542,7 @@ export default function ProviderOnboardingPage() {
                     value={previewPaneWidth}
                     onChange={(event) => setPreviewPaneWidth(Number(event.target.value))}
                     className="w-full accent-emerald-600"
+                    aria-label="Preview pane width"
                   />
                 </div>
 
@@ -2517,6 +2559,7 @@ export default function ProviderOnboardingPage() {
                     value={editorMinWidth}
                     onChange={(event) => setEditorMinWidth(Number(event.target.value))}
                     className="w-full accent-emerald-600"
+                    aria-label="Editor minimum width"
                   />
                 </div>
 
@@ -2525,9 +2568,10 @@ export default function ProviderOnboardingPage() {
                     <button
                       key={viewport}
                       type="button"
+                      aria-pressed={previewViewport === viewport}
                       onClick={() => setPreviewViewport(viewport)}
                       className={cx(
-                        "rounded-xl border px-3 py-1.5 text-[11px] font-semibold transition-colors",
+                        "rounded-xl border px-3 py-1.5 text-[11px] font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2",
                         previewViewport === viewport
                           ? "border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-800 dark:bg-emerald-900/20 dark:text-emerald-300"
                           : "border-slate-200 bg-white text-slate-600 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300",
@@ -2680,16 +2724,19 @@ export default function ProviderOnboardingPage() {
                 </div>
               </div>
             </Card>
-          </div>
-        </div>
+          </aside>
+        </main>
 
         <div className="mt-5 rounded-full border border-emerald-200 bg-emerald-50 px-5 py-3 text-center text-[12px] font-semibold text-emerald-700 dark:border-emerald-800 dark:bg-emerald-900/20 dark:text-emerald-300">
           Concept preview of the generated FaithHub Provider Onboarding page - EVzone Green primary (#03cd8c) - Orange secondary (#f77f00)
         </div>
       </div>
 
+      <div className="sr-only" aria-live="polite">
+        {`Onboarding status: ${lastSaved}. ${readinessSummary.blockers.length} blockers remaining.`}
+      </div>
       {toast ? (
-        <div className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-full bg-slate-900 px-4 py-2 text-[12px] font-semibold text-white shadow-lg dark:bg-slate-100 dark:text-slate-900">
+        <div role="status" aria-live="polite" className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-full bg-slate-900 px-4 py-2 text-[12px] font-semibold text-white shadow-lg dark:bg-slate-100 dark:text-slate-900">
           {toast}
         </div>
       ) : null}
