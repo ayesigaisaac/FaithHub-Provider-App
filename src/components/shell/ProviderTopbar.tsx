@@ -20,7 +20,6 @@ import PlayCircleOutlineRoundedIcon from '@mui/icons-material/PlayCircleOutlineR
 import EventNoteRoundedIcon from '@mui/icons-material/EventNoteRounded';
 import GroupsRoundedIcon from '@mui/icons-material/GroupsRounded';
 import VolunteerActivismRoundedIcon from '@mui/icons-material/VolunteerActivismRounded';
-import KeyboardDoubleArrowLeftRoundedIcon from '@mui/icons-material/KeyboardDoubleArrowLeftRounded';
 import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
 import { useMemo, useState, type MouseEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -258,18 +257,6 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
                   </Button>
                 ))}
               </Stack>
-              <IconButton
-                sx={{
-                  display: { xs: 'none', md: 'inline-flex' },
-                  border: '1px solid',
-                  borderColor: '#cfd8e3',
-                  bgcolor: '#fff',
-                  width: 48,
-                  height: 48,
-                }}
-              >
-                <KeyboardDoubleArrowLeftRoundedIcon />
-              </IconButton>
             </>
           )}
         </Stack>

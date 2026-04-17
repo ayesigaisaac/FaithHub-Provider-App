@@ -49,7 +49,7 @@ export function ProviderShellLayout() {
             overflowX: 'hidden',
             px: { xs: 0.5, md: 0.75, lg: 1 },
             pb: { xs: 8, md: 1 },
-            pt: { xs: 0.25, md: 0.25 },
+            pt: 0,
             width: '100%',
           }}
         >

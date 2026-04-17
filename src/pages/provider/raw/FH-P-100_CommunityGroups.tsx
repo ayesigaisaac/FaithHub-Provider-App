@@ -548,17 +548,17 @@ function MetricCard({
         : EV_GREEN;
 
   return (
-    <div className="rounded-[26px] border border-slate-200 bg-white p-4 shadow-sm">
+    <div className="rounded-[24px] border border-slate-200 bg-white p-4 shadow-sm min-h-[170px]">
       <div className="flex items-start justify-between gap-3">
-        <div>
+        <div className="min-w-0">
           <div className="text-[11px] font-black uppercase tracking-[0.12em] text-slate-500">
             {label}
           </div>
-          <div className="mt-2 text-[18px] font-black text-slate-900">{value}</div>
-          <div className="mt-1 text-[11px] leading-snug text-slate-500">{hint}</div>
+          <div className="mt-2 text-[30px] font-black leading-none tracking-[-0.02em] text-slate-900">{value}</div>
+          <div className="mt-2 text-[13px] leading-5 text-slate-600">{hint}</div>
         </div>
         <div
-          className="h-10 w-10 rounded-2xl"
+          className="h-12 w-12 shrink-0 rounded-2xl"
           style={{ background: bg, boxShadow: `inset 0 0 0 1px ${dot}25` }}
         />
       </div>
@@ -1083,7 +1083,7 @@ export default function CommunityGroupsPage() {
             </div>
           </div>
 
-          <div className="grid gap-4 px-4 py-4 md:grid-cols-2 xl:grid-cols-6">
+          <div className="grid gap-4 px-4 py-4 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-6">
             <MetricCard
               label="Active groups"
               value={fmtInt(totalGroups)}
