@@ -20,7 +20,6 @@ import PlayCircleOutlineRoundedIcon from '@mui/icons-material/PlayCircleOutlineR
 import EventNoteRoundedIcon from '@mui/icons-material/EventNoteRounded';
 import GroupsRoundedIcon from '@mui/icons-material/GroupsRounded';
 import VolunteerActivismRoundedIcon from '@mui/icons-material/VolunteerActivismRounded';
-import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
 import { useMemo, useState, type MouseEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/auth/useAuth';
@@ -164,7 +163,7 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
                 fullWidth
                 variant="outlined"
                 startIcon={activeTopTab?.icon ?? secondaryTabs[0].icon}
-                onClick={() => navigate(activeTopTab?.to ?? secondaryTabs[0].to)}
+                onClick={openSectionMenu}
                 sx={{
                   justifyContent: 'flex-start',
                   borderRadius: 999,
@@ -180,19 +179,6 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
               >
                 {activeTopTab?.label ?? 'Dashboard'}
               </Button>
-              <IconButton
-                aria-label="Open sections menu"
-                onClick={openSectionMenu}
-                sx={{
-                  border: '1px solid',
-                  borderColor: '#cfd8e3',
-                  bgcolor: '#fff',
-                  width: 34,
-                  height: 34,
-                }}
-              >
-                <MoreHorizRoundedIcon fontSize="small" />
-              </IconButton>
             </Stack>
           ) : (
             <>

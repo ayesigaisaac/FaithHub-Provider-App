@@ -540,7 +540,7 @@ function MetricCard({
       value={value}
       hint={hint}
       tone={accent}
-      className="min-h-[170px]"
+      size="tall"
     />
   );
 }
@@ -1062,7 +1062,7 @@ export default function CommunityGroupsPage() {
             </div>
           </div>
 
-          <div className="grid gap-4 px-4 py-4 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-6">
+          <div className="grid gap-4 px-4 py-4 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-3">
             <MetricCard
               label="Active groups"
               value={fmtInt(totalGroups)}

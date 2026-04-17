@@ -47,8 +47,8 @@ export function ProviderShellLayout() {
             minHeight: 0,
             overflowY: 'auto',
             overflowX: 'hidden',
-            px: { xs: 0.5, md: 0.75, lg: 1 },
-            pb: { xs: 8, md: 1 },
+            px: 0,
+            pb: { xs: 8, md: 0 },
             pt: 0,
             width: '100%',
           }}
@@ -56,11 +56,11 @@ export function ProviderShellLayout() {
           <Box
             className="provider-shell-surface"
             sx={{
-              borderRadius: 3,
+              borderRadius: { xs: 0, md: 3 },
               border: '1px solid',
               borderColor: 'divider',
               bgcolor: '#f8faf9',
-              p: { xs: 1, md: 1.25 },
+              p: { xs: 0.75, md: 1 },
               minHeight: '100%',
               boxShadow: '0 20px 40px -36px rgba(15, 23, 42, 0.55)',
             }}
