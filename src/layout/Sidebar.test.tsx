@@ -12,18 +12,25 @@ function renderSidebar(initialPath = '/dashboard-ui', onClose?: () => void) {
 }
 
 describe('Sidebar', () => {
-  it('renders Core and Content grouped navigation', () => {
+  beforeEach(() => {
+    localStorage.clear();
+  });
+
+  it('renders Provider Modules dropdown with grouped navigation', () => {
     renderSidebar();
 
+    expect(screen.getByRole('button', { name: /provider modules/i })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: /core/i })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: /content/i })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /overview/i })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /teachings/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /teachings dashboard/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /live studio/i })).toBeInTheDocument();
   });
 
   it('marks current route as active', () => {
     renderSidebar('/faithhub/provider/live-schedule');
-    expect(screen.getByRole('button', { name: /schedule/i })).toHaveAttribute('aria-current', 'page');
+    const liveScheduleItems = screen.getAllByRole('button', { name: /live schedule/i });
+    expect(liveScheduleItems.some((item) => item.getAttribute('aria-current') === 'page')).toBe(true);
   });
 
   it('navigates and closes mobile sidebar callback on selection', async () => {
@@ -31,8 +38,21 @@ describe('Sidebar', () => {
     const onClose = vi.fn();
     renderSidebar('/dashboard-ui', onClose);
 
-    await user.click(screen.getByRole('button', { name: /campaigns/i }));
+    await user.click(screen.getByRole('button', { name: /events manager/i }));
     expect(onClose).toHaveBeenCalledTimes(1);
-    expect(screen.getByRole('button', { name: /campaigns/i })).toHaveAttribute('aria-current', 'page');
+    expect(screen.getByRole('button', { name: /events manager/i })).toHaveAttribute('aria-current', 'page');
+  });
+
+  it('collapses and expands provider modules list', async () => {
+    const user = userEvent.setup();
+    renderSidebar('/dashboard-ui');
+
+    const trigger = screen.getByRole('button', { name: /provider modules/i });
+    expect(trigger).toHaveAttribute('aria-expanded', 'true');
+    await user.click(trigger);
+    expect(trigger).toHaveAttribute('aria-expanded', 'false');
+
+    await user.click(trigger);
+    expect(trigger).toHaveAttribute('aria-expanded', 'true');
   });
 });
