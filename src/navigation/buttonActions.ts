@@ -95,7 +95,6 @@ function validateButtonActionTargets(): void {
     const targetPath = action.kind === 'navigate' ? action.targetPath : undefined;
     if (!targetPath) return;
     if (!knownPaths.has(targetPath)) {
-      // eslint-disable-next-line no-console
       console.warn(`[buttonActions] Unknown route for action "${actionId}": ${targetPath}`);
     }
   });

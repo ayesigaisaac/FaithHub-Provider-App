@@ -133,18 +133,17 @@ async function runPlaceholderAction(
   await executeAction(actionId, event);
 }
 
-export function handleRawPlaceholderAction(
-  actionId: ButtonActionId,
-): (event: MouseEvent<HTMLButtonElement>) => Promise<void>;
-export function handleRawPlaceholderAction(
-  event: MouseEvent<HTMLButtonElement>,
-): Promise<void>;
-export function handleRawPlaceholderAction(
+type PlaceholderActionHandler = {
+  (actionId: ButtonActionId): (event: MouseEvent<HTMLButtonElement>) => Promise<void>;
+  (event: MouseEvent<HTMLButtonElement>): Promise<void>;
+};
+
+export const handleRawPlaceholderAction: PlaceholderActionHandler = ((
   actionOrEvent: ButtonActionId | MouseEvent<HTMLButtonElement>,
-): Promise<void> | ((event: MouseEvent<HTMLButtonElement>) => Promise<void>) {
+): Promise<void> | ((event: MouseEvent<HTMLButtonElement>) => Promise<void>) => {
   if (typeof actionOrEvent === 'string') {
     return (event: MouseEvent<HTMLButtonElement>) => runPlaceholderAction(actionOrEvent, event);
   }
 
   return runPlaceholderAction(undefined, actionOrEvent);
-}
+}) as PlaceholderActionHandler;
