@@ -488,6 +488,7 @@ function MetricTile({ card }: { card: MetricCard }) {
       value={card.value}
       hint={card.hint}
       tone={normalizedTone}
+      size="compact"
     />
   );
 }
@@ -1974,6 +1975,9 @@ export default function ChannelsContactManagerPage() {
     </div>
   );
 }
+
+
+
 
 
 

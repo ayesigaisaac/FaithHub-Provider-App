@@ -574,7 +574,7 @@ function KPIBox({ item }: { item: KPI }) {
       value={item.value}
       hint={item.hint}
       tone={item.tone}
-      className="min-h-[140px]"
+      size="compact"
     />
   );
 }
@@ -1538,6 +1538,7 @@ export default function SubscriptionsPage() {
     </div>
   );
 }
+
 
 
 

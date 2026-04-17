@@ -1054,7 +1054,7 @@ function ScrollTimePicker({
 }
 
 function MetricTile({ label, value, hint }: { label: string; value: string; hint?: string }) {
-  return <KpiTile label={label} value={value} hint={hint} tone="gray" className="min-h-[140px]" />;
+  return <KpiTile label={label} value={value} hint={hint} tone="gray" size="compact" />;
 }
 
 function StepButton({
@@ -2775,6 +2775,7 @@ export default function BeaconBuilderPage({
 
   return content;
 }
+
 
 
 

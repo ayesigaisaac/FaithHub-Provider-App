@@ -816,7 +816,7 @@ function MetricTile({
       value={value}
       hint={hint}
       tone={tone === "neutral" ? "gray" : tone}
-      className="min-h-[140px]"
+      size="compact"
     />
   );
 }
@@ -1527,6 +1527,7 @@ export default function FaithHubLiveDashboardPage() {
     </div>
   );
 }
+
 
 
 

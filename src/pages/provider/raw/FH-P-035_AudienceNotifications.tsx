@@ -449,7 +449,7 @@ function MetricTile({
             ? "gray"
             : tone;
 
-  return <KpiTile label={label} value={value} hint={hint} tone={normalizedTone} />;
+  return <KpiTile label={label} value={value} hint={hint} tone={normalizedTone} size="compact" />;
 }
 
 function CardShell({
@@ -2272,6 +2272,8 @@ export default function FaithHubAudienceNotificationsPage() {
     </div>
   );
 }
+
+
 
 
 

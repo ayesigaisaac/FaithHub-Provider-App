@@ -827,7 +827,7 @@ function MetricTile({
   value: string;
   hint?: string;
 }) {
-  return <KpiTile label={label} value={value} hint={hint} tone="gray" className="min-h-[140px]" />;
+  return <KpiTile label={label} value={value} hint={hint} tone="gray" size="compact" />;
 }
 
 function TinySparkline({
@@ -2678,6 +2678,7 @@ export default function FaithHubEventsManagerPage() {
     </div>
   );
 }
+
 
 
 

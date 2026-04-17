@@ -889,7 +889,7 @@ function Card({
 }
 
 function MetricTile({ item }: { item: ProjectMetricCard }) {
-  return <KpiTile label={item.label} value={item.value} hint={item.hint} tone={item.accent} className="min-h-[140px]" />;
+  return <KpiTile label={item.label} value={item.value} hint={item.hint} tone={item.accent} size="compact" />;
 }
 
 function SearchInput({
@@ -2280,6 +2280,7 @@ function ProjectsPage() {
 }
 
 export default ProjectsPage;
+
 
 
 

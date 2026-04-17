@@ -635,7 +635,7 @@ function MetricCard({
   hint?: string;
   tone?: "green" | "orange" | "navy";
 }) {
-  return <KpiTile label={label} value={value} hint={hint} tone={tone} className="min-h-[140px]" />;
+  return <KpiTile label={label} value={value} hint={hint} tone={tone} size="compact" />;
 }
 
 function RegistryRow({
@@ -1705,6 +1705,7 @@ export default function DonationsAndFundsPage() {
     </div>
   );
 }
+
 
 
 

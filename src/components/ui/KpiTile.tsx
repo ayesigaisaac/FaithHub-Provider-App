@@ -33,6 +33,7 @@ interface KpiTileProps {
   hint?: ReactNode;
   footer?: ReactNode;
   tone?: KpiTileTone;
+  size?: "compact" | "standard" | "tall";
   className?: string;
   indicator?: "panel" | "dot" | "none";
 }
@@ -47,6 +48,7 @@ export function KpiTile({
   hint,
   footer,
   tone = "green",
+  size = "standard",
   className,
   indicator = "panel",
 }: KpiTileProps) {
@@ -78,10 +80,18 @@ export function KpiTile({
               ? "bg-sky-100 dark:bg-sky-900/40"
               : "bg-slate-100 dark:bg-slate-800";
 
+  const minHeightClass = size === "compact" ? "min-h-[132px]" : size === "tall" ? "min-h-[176px]" : "min-h-[160px]";
+  const labelClass = size === "compact" ? "text-[10px]" : "text-[11px]";
+  const valueClass = size === "compact" ? "text-[24px]" : size === "tall" ? "text-[32px]" : "text-[30px]";
+  const hintClass = size === "compact" ? "text-[12px] leading-[18px]" : "text-[13px] leading-5";
+  const panelClass = size === "compact" ? "h-10 w-10 rounded-xl" : "h-12 w-12 rounded-2xl";
+  const dotClass = size === "compact" ? "h-5 w-5" : "h-6 w-6";
+
   return (
     <div
       className={cx(
-        "rounded-[24px] border bg-white dark:bg-slate-900 p-4 shadow-sm transition-colors min-h-[160px]",
+        "rounded-[24px] border bg-white dark:bg-slate-900 p-4 shadow-sm transition-colors",
+        minHeightClass,
         borderTone,
         className,
       )}
@@ -89,21 +99,21 @@ export function KpiTile({
       <div className="flex h-full flex-col">
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
-            <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">
+            <div className={cx(labelClass, "font-extrabold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400")}>
               {label}
             </div>
-            <div className="mt-2 text-[30px] font-black leading-none tracking-[-0.02em] text-slate-900 dark:text-slate-100">
+            <div className={cx(valueClass, "mt-2 font-black leading-none tracking-[-0.02em] text-slate-900 dark:text-slate-100")}>
               {value}
             </div>
           </div>
           {indicator === "panel" ? (
-            <div className={cx("h-12 w-12 shrink-0 rounded-2xl", indicatorTone)} />
+            <div className={cx("shrink-0", panelClass, indicatorTone)} />
           ) : indicator === "dot" ? (
-            <div className={cx("h-6 w-6 shrink-0 rounded-full", indicatorTone)} />
+            <div className={cx("shrink-0 rounded-full", dotClass, indicatorTone)} />
           ) : null}
         </div>
         {hint ? (
-          <div className="mt-2 text-[13px] leading-5 text-slate-600 dark:text-slate-300">{hint}</div>
+          <div className={cx("mt-2 text-slate-600 dark:text-slate-300", hintClass)}>{hint}</div>
         ) : null}
         {footer ? <div className="mt-auto pt-3">{footer}</div> : null}
       </div>

@@ -807,7 +807,7 @@ function MetricCard({
   hint?: string;
   tone?: Accent;
 }) {
-  return <KpiTile label={label} value={value} hint={hint} tone={tone} className="min-h-[140px]" />;
+  return <KpiTile label={label} value={value} hint={hint} tone={tone} size="compact" />;
 }
 
 function ProgressBar({ value, accent = "green" }: { value: number; accent?: Accent }) {
@@ -1779,6 +1779,7 @@ export default function BeaconDashboardPage() {
     </div>
   );
 }
+
 
 
 

@@ -652,6 +652,7 @@ function MetricCard({
       value={value}
       hint={hint}
       tone={tone === "light" ? "gray" : tone}
+      size="compact"
     />
   );
 }
@@ -2082,6 +2083,9 @@ export default function MerchandiseManagerPage() {
     </div>
   );
 }
+
+
+
 
 
 

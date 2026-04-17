@@ -507,7 +507,7 @@ function MetricCard({
   hint: string;
   dot?: "green" | "orange" | "navy" | "grey";
 }) {
-  return <KpiTile label={label} value={value} hint={hint} tone={dot === "grey" ? "gray" : dot} />;
+  return <KpiTile label={label} value={value} hint={hint} tone={dot === "grey" ? "gray" : dot} size="compact" />;
 }
 
 function TonePill({
@@ -1798,6 +1798,8 @@ export default function FH_P_112_RolesPermissionsPage() {
     </div>
   );
 }
+
+
 
 
 

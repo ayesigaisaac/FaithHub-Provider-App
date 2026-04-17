@@ -454,7 +454,7 @@ function MetricCard({
   hint: string;
   accent?: "green" | "orange" | "navy" | "gray";
 }) {
-  return <KpiTile label={label} value={value} hint={hint} tone={accent} indicator="dot" />;
+  return <KpiTile label={label} value={value} hint={hint} tone={accent} indicator="dot" size="compact" />;
 }
 
 function ScopeButton({
@@ -946,6 +946,8 @@ export default function FHP123QACenter() {
     </div>
   );
 }
+
+
 
 
 

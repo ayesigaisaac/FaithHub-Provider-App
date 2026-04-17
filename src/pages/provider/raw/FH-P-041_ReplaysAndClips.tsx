@@ -1784,7 +1784,7 @@ export default function FaithHubReplaysAndClipsPage() {
 }
 
 function MetricCard({ label, value, hint }: { label: string; value: string; hint: string }) {
-  return <KpiTile label={label} value={value} hint={hint} tone="gray" className="min-h-[140px]" />;
+  return <KpiTile label={label} value={value} hint={hint} tone="gray" size="compact" />;
 }
 
 function LifecycleAction({ label, hint, onClick }: { label: string; hint: string; onClick: () => void }) {
@@ -1803,6 +1803,7 @@ function HeartIconPlaceholder(props: any) {
     </svg>
   );
 }
+
 
 
 

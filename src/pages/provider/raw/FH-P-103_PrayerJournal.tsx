@@ -432,7 +432,7 @@ function ActionButton({ tone = "neutral", children, onClick, left, title }: { to
 }
 
 function MetricCard({ label, value, hint, accent }: { label: string; value: string; hint: string; accent: "green" | "orange" | "navy"; }) {
-  return <KpiTile label={label} value={value} hint={hint} tone={accent} />;
+  return <KpiTile label={label} value={value} hint={hint} tone={accent} size="compact" />;
 }
 
 function SectionCard({ title, subtitle, right, children }: { title: string; subtitle?: string; right?: React.ReactNode; children: React.ReactNode; }) {
@@ -633,6 +633,8 @@ export default function PrayerJournalPage() {
     </div>
   );
 }
+
+
 
 
 

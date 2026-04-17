@@ -638,7 +638,7 @@ function MetricCard({
   hint: string;
   accent: "green" | "orange" | "navy";
 }) {
-  return <KpiTile label={label} value={value} hint={hint} tone={accent} />;
+  return <KpiTile label={label} value={value} hint={hint} tone={accent} size="compact" />;
 }
 
 function ThreadRow({
@@ -1640,6 +1640,8 @@ export default function CommunityForumPage() {
     </div>
   );
 }
+
+
 
 
 
