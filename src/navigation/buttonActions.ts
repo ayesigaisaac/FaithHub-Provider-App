@@ -9,7 +9,7 @@ type ButtonActionDefinition = {
   fallbackKeywords?: string[];
 };
 
-const BUTTON_ACTIONS = {
+export const buttonActionRegistry = {
   open_provider_dashboard: { kind: 'navigate', targetPath: '/faithhub/provider/dashboard', fallbackKeywords: ['dashboard', 'overview'] },
   open_live_dashboard: { kind: 'navigate', targetPath: '/faithhub/provider/live-dashboard', fallbackKeywords: ['live', 'watch', 'trailer', 'join', 'preview'] },
   open_donations_funds: { kind: 'navigate', targetPath: '/faithhub/provider/donations-and-funds', fallbackKeywords: ['give', 'giving', 'donat', 'support', 'complete donation'] },
@@ -31,15 +31,15 @@ const BUTTON_ACTIONS = {
   set_preview_mobile: { kind: 'preview_mode', previewMode: 'mobile', fallbackKeywords: ['mobile'] },
 } as const satisfies Record<string, ButtonActionDefinition>;
 
-export type ButtonActionId = keyof typeof BUTTON_ACTIONS;
-export type ButtonAction = (typeof BUTTON_ACTIONS)[ButtonActionId];
+export type ButtonActionId = keyof typeof buttonActionRegistry;
+export type ButtonAction = (typeof buttonActionRegistry)[ButtonActionId];
 
 export function getButtonAction(id: ButtonActionId): ButtonAction {
-  return BUTTON_ACTIONS[id];
+  return buttonActionRegistry[id];
 }
 
 export function isButtonActionId(value: string): value is ButtonActionId {
-  return value in BUTTON_ACTIONS;
+  return value in buttonActionRegistry;
 }
 
 export function resolveActionFromLabel(label: string): ButtonActionId | null {
@@ -69,7 +69,7 @@ export function resolveActionFromLabel(label: string): ButtonActionId | null {
   ];
 
   for (const actionId of prioritisedOrder) {
-    const keywords = BUTTON_ACTIONS[actionId].fallbackKeywords ?? [];
+    const keywords = buttonActionRegistry[actionId].fallbackKeywords ?? [];
     if (keywords.some((keyword) => normalized.includes(keyword))) {
       return actionId;
     }
@@ -90,8 +90,8 @@ function validateButtonActionTargets(): void {
     page.aliases?.forEach((alias) => knownPaths.add(alias));
   });
 
-  (Object.keys(BUTTON_ACTIONS) as ButtonActionId[]).forEach((actionId) => {
-    const action = BUTTON_ACTIONS[actionId];
+  (Object.keys(buttonActionRegistry) as ButtonActionId[]).forEach((actionId) => {
+    const action = buttonActionRegistry[actionId];
     const targetPath = action.kind === 'navigate' ? action.targetPath : undefined;
     if (!targetPath) return;
     if (!knownPaths.has(targetPath)) {

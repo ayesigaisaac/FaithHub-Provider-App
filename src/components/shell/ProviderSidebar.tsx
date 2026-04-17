@@ -44,15 +44,15 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
     .filter((group) => group.pages.length > 0);
 
   const content = (
-    <Box sx={{ display: 'flex', height: '100%', flexDirection: 'column', bgcolor: '#eef3f3' }}>
+    <Box sx={{ display: 'flex', height: '100%', flexDirection: 'column', bgcolor: '#e7efee' }}>
       <Box sx={{ p: 1.25, height: '100%', minHeight: 0 }}>
         <Box
           sx={{
-            borderRadius: 2.5,
-            border: '1px solid #d1d5db',
+            borderRadius: 3,
+            border: '1px solid #d6dee7',
             bgcolor: '#fff',
             overflow: 'hidden',
-            boxShadow: '0 16px 32px -28px rgba(15, 23, 42, 0.42)',
+            boxShadow: '0 20px 40px -32px rgba(15, 23, 42, 0.42)',
             display: 'flex',
             flexDirection: 'column',
             height: '100%',
@@ -117,16 +117,22 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
                         mb: 0.75,
                         px: 1.25,
                         py: 1,
-                        borderRadius: 2,
-                        border: active ? '1.5px solid #111827' : '1px solid #d1d5db',
-                        bgcolor: active ? '#f8fafc' : '#fff',
+                        minHeight: 56,
+                        borderRadius: 2.25,
+                        border: active ? '1.5px solid #0f172a' : '1px solid #d6dee7',
+                        bgcolor: active ? '#f7fbfa' : '#fff',
+                        transition: 'all 150ms ease',
+                        '&:hover': {
+                          bgcolor: active ? '#f2faf7' : '#f8fafc',
+                          borderColor: active ? '#0f172a' : '#c7d2df',
+                        },
                       }}
                     >
                       <ListItemIcon sx={{ minWidth: 44 }}>
                         <Avatar
                           sx={{
-                            width: 30,
-                            height: 30,
+                            width: 32,
+                            height: 32,
                             bgcolor: active ? '#dcfce7' : '#f3f4f6',
                             color: active ? '#047857' : '#64748b',
                           }}
@@ -136,7 +142,7 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
                       </ListItemIcon>
                       <ListItemText
                         primary={
-                          <Typography sx={{ fontWeight: active ? 800 : 700, fontSize: 13.5, lineHeight: 1.2, color: '#334155' }}>
+                          <Typography sx={{ fontWeight: active ? 800 : 700, fontSize: 14, lineHeight: 1.2, color: '#334155' }}>
                             {page.shortTitle ?? page.title}
                           </Typography>
                         }

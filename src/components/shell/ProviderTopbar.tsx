@@ -15,54 +15,18 @@ import {
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import NotificationsRoundedIcon from '@mui/icons-material/NotificationsRounded';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
-import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded';
-import PlayCircleOutlineRoundedIcon from '@mui/icons-material/PlayCircleOutlineRounded';
-import EventNoteRoundedIcon from '@mui/icons-material/EventNoteRounded';
-import GroupsRoundedIcon from '@mui/icons-material/GroupsRounded';
-import VolunteerActivismRoundedIcon from '@mui/icons-material/VolunteerActivismRounded';
 import { useMemo, useState, type MouseEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/auth/useAuth';
+import { topbarTabs } from '@/navigation/topbarTabs';
 import type { ProviderPageMeta } from '@/navigation/providerPages';
+import { resolveKnownProviderPath } from '@/navigation/providerPages';
 
 type ProviderTopbarProps = {
   current?: ProviderPageMeta;
   onOpenSidebar: () => void;
   onOpenSearch: () => void;
 };
-
-const secondaryTabs = [
-  {
-    label: 'Dashboard',
-    to: '/faithhub/provider/dashboard',
-    sections: ['Foundation & Mission Control', 'Content Structure & Teaching Creation'],
-    icon: <DashboardRoundedIcon fontSize="small" />,
-  },
-  {
-    label: 'Streams',
-    to: '/faithhub/provider/live-dashboard',
-    sections: ['Live Sessions Operations'],
-    icon: <PlayCircleOutlineRoundedIcon fontSize="small" />,
-  },
-  {
-    label: 'Community',
-    to: '/faithhub/provider/community-groups',
-    sections: ['Audience & Outreach', 'Community & Care'],
-    icon: <GroupsRoundedIcon fontSize="small" />,
-  },
-  {
-    label: 'Giving',
-    to: '/faithhub/provider/donations-and-funds',
-    sections: ['Events & Giving'],
-    icon: <VolunteerActivismRoundedIcon fontSize="small" />,
-  },
-  {
-    label: 'Reports',
-    to: '/faithhub/provider/reviews-and-moderation',
-    sections: ['Post-live & Trust', 'Leadership & Team', 'Workspace Settings', 'Beacon', 'Previews'],
-    icon: <EventNoteRoundedIcon fontSize="small" />,
-  },
-];
 
 export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: ProviderTopbarProps) {
   const navigate = useNavigate();
@@ -81,7 +45,7 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
     '&:hover': { borderColor: '#c1ccda', bgcolor: '#f8fafc' },
   };
   const activeTopTab = useMemo(
-    () => secondaryTabs.find((tab) => tab.sections.includes(current?.section ?? '')),
+    () => topbarTabs.find((tab) => tab.sections.includes(current?.section ?? '')),
     [current?.section]
   );
   const initials = user?.name
@@ -162,7 +126,7 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
               <Button
                 fullWidth
                 variant="outlined"
-                startIcon={activeTopTab?.icon ?? secondaryTabs[0].icon}
+                startIcon={activeTopTab?.icon ?? topbarTabs[0].icon}
                 onClick={openSectionMenu}
                 sx={{
                   justifyContent: 'flex-start',
@@ -177,7 +141,7 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
                   color: '#111827',
                 }}
               >
-                {activeTopTab?.label ?? 'Dashboard'}
+                {activeTopTab?.label ?? topbarTabs[0].label}
               </Button>
             </Stack>
           ) : (
@@ -211,12 +175,12 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
                 >
                   FaithHub Provider
                 </Box>
-                {secondaryTabs.map((tab) => (
+                {topbarTabs.map((tab) => (
                   <Button
                     key={tab.label}
                     startIcon={tab.icon}
                     variant="outlined"
-                    onClick={() => navigate(tab.to)}
+                    onClick={() => navigate(resolveKnownProviderPath(tab.to))}
                     sx={{
                       borderRadius: 999,
                       textTransform: 'none',
@@ -248,11 +212,11 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
         </Stack>
       </Toolbar>
       <Menu anchorEl={sectionAnchor} open={Boolean(sectionAnchor)} onClose={closeSectionMenu}>
-        {secondaryTabs.map((tab) => (
+        {topbarTabs.map((tab) => (
           <MenuItem
             key={`tiny-${tab.label}`}
             onClick={() => {
-              navigate(tab.to);
+              navigate(resolveKnownProviderPath(tab.to));
               closeSectionMenu();
             }}
             selected={activeTopTab?.label === tab.label}

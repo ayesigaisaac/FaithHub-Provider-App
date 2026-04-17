@@ -31,10 +31,24 @@ export const providerPages: ProviderPageMeta[] = [
   ...getSettingsAndPreviewPages(providerPageCatalog),
 ];
 
+const knownProviderPaths = new Set<string>();
+providerPages.forEach((page) => {
+  knownProviderPaths.add(page.path);
+  page.aliases?.forEach((alias) => knownProviderPaths.add(alias));
+});
+
 export function findProviderPageByPath(pathname: string) {
   return providerPages.find((page) => page.path === pathname || page.aliases?.includes(pathname));
 }
 
 export function getProviderPagesBySection(section: ProviderPageSection) {
   return providerPages.filter((page) => page.section === section && !page.hidden);
+}
+
+export function isKnownProviderPath(pathname: string) {
+  return knownProviderPaths.has(pathname);
+}
+
+export function resolveKnownProviderPath(pathname: string, fallback = '/faithhub/provider/dashboard') {
+  return isKnownProviderPath(pathname) ? pathname : fallback;
 }
