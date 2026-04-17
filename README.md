@@ -42,7 +42,7 @@ They are defined in:
 
 ```bash
 npm install
-d othinfoer7mfaethfaaiotherco7mponentsred utheplpone
+npm run dev
 ```
 
 Open the local Vite URL shown in the terminal.
@@ -53,6 +53,21 @@ Open the local Vite URL shown in the terminal.
 npm run build
 npm run preview
 ```
+
+## Testing
+
+Run the test suite:
+
+```bash
+npm test
+```
+
+Current automated coverage includes:
+
+- app routing smoke tests (`src/App.test.tsx`)
+- layout accessibility and mobile nav dialog behavior (`src/layout/AppLayout.test.tsx`)
+- sidebar grouping, active-state behavior, and close callback (`src/layout/Sidebar.test.tsx`)
+- reusable nav item rendering and active semantics (`src/components/ui/NavItem.test.tsx`)
 
 A production build was generated successfully in `dist/` during packaging.
 
