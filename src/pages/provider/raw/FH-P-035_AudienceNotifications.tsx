@@ -43,7 +43,7 @@ import { handleRawPlaceholderAction } from "./placeholderActions";
 import { KpiTile } from "../../../components/ui/KpiTile";
 
 /**
- * FaithHub — FH-P-035 Audience Notifications
+ * FaithHub — Audience Notifications
  * Premium lifecycle journey page rebuilt from the creator-style Audience Notifications base.
  * Primary colour: EVzone Green (#03cd8c)
  * Secondary colour: EVzone Orange (#f77f00)
@@ -2272,6 +2272,7 @@ export default function FaithHubAudienceNotificationsPage() {
     </div>
   );
 }
+
 
 
 

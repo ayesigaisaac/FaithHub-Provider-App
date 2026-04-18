@@ -43,7 +43,7 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — FH-P-061 Charity Crowdfunding Workbench
+ * FaithHub — Charity Crowdfunding Workbench
  * --------------------------------------------------
  * Premium charity campaign workspace for FaithHub Provider.
  *
@@ -1961,7 +1961,7 @@ export default function CharityCrowdfundingWorkbenchPage() {
                 <span className="font-medium text-slate-700 dark:text-slate-300">Charity Crowdfunding Workbench</span>
               </div>
               <div className="mt-1 flex flex-wrap items-center gap-2">
-                <div className="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50">FH-P-061 · Charity Crowdfunding Workbench</div>
+                <div className="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50">Charity Crowdfunding Workbench</div>
                 <Pill tone="good">
                   <BadgeCheck className="h-3.5 w-3.5" /> Momentum engine
                 </Pill>
@@ -2478,6 +2478,7 @@ export default function CharityCrowdfundingWorkbenchPage() {
     </div>
   );
 }
+
 
 
 

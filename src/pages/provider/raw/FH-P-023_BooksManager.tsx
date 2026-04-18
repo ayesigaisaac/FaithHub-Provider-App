@@ -38,7 +38,7 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — FH-P-023 Books Manager
+ * FaithHub — Books Manager
  * ---------------------------------
  * Premium Provider-side control surface for books, devotionals, manuals,
  * study guides, and downloadable teaching resources.
@@ -1105,7 +1105,7 @@ export default function BooksManagerPage() {
               <div className="min-w-0">
                 <div className="flex flex-wrap items-center gap-2">
                   <div className="text-[34px] leading-none font-black text-slate-900 dark:text-slate-100 tracking-tight">
-                    FH-P-023 Books Manager
+                    Books Manager
                   </div>
                   <Pill text="BOOK CATALOG" tone="good" icon={<BookOpen className="h-3.5 w-3.5" />} />
                   <Pill text="MULTI-FORMAT" tone="neutral" icon={<Layers className="h-3.5 w-3.5" />} />
@@ -1694,6 +1694,7 @@ export default function BooksManagerPage() {
     </div>
   );
 }
+
 
 
 

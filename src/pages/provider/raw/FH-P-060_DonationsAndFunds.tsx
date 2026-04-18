@@ -31,7 +31,7 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — FH-P-060 Donations & Funds
+ * FaithHub — Donations & Funds
  * -------------------------------------
  * Premium giving workspace for FaithHub Provider.
  *
@@ -1065,7 +1065,7 @@ export default function DonationsAndFundsPage() {
 
               <div className="mt-1 flex flex-wrap items-center gap-2">
                 <div className="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50">
-                  FH-P-060 · Donations &amp; Funds
+                  Donations &amp; Funds
                 </div>
                 <Pill tone="good">
                   <BadgeCheck className="h-3.5 w-3.5" />
@@ -1705,6 +1705,7 @@ export default function DonationsAndFundsPage() {
     </div>
   );
 }
+
 
 
 

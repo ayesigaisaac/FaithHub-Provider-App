@@ -39,7 +39,7 @@ import { handleRawPlaceholderAction } from "./placeholderActions";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — FH-P-020 Series Builder
+ * FaithHub — Series Builder
  * ----------------------------------
  * Premium teaching-series control surface for the Provider side.
  *
@@ -1932,6 +1932,7 @@ export default function SeriesBuilderPage() {
     </div>
   );
 }
+
 
 
 

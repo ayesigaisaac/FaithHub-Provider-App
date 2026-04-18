@@ -27,7 +27,7 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — FH-P-103 Prayer Journal
+ * FaithHub — Prayer Journal
  * ----------------------------------
  * Premium Provider-side page for guided prompts, journaling flows,
  * shared reflections, and private/public journal controls.
@@ -586,7 +586,7 @@ export default function PrayerJournalPage() {
           <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
             <div className="min-w-0 flex-1">
               <div className="text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500">Prayer formation command</div>
-              <div className="mt-1 text-[32px] font-black tracking-tight text-slate-900">FH-P-103 · Prayer Journal</div>
+              <div className="mt-1 text-[32px] font-black tracking-tight text-slate-900">Prayer Journal</div>
               <div className="mt-2 max-w-[980px] text-[14px] leading-relaxed text-slate-500">Provider-managed guided journaling for daily prompts, shared reflections, care-aware privacy, and premium public or private prayer journeys.</div>
               <div className="mt-4 flex flex-wrap items-center gap-2"><Pill tone="good"><BookOpen className="h-3.5 w-3.5" /> Guided rhythms</Pill><Pill><Lock className="h-3.5 w-3.5" /> Private + public flows</Pill><Pill tone="warn"><HeartHandshake className="h-3.5 w-3.5" /> Care-aware reflection sharing</Pill></div>
             </div>
@@ -633,6 +633,7 @@ export default function PrayerJournalPage() {
     </div>
   );
 }
+
 
 
 

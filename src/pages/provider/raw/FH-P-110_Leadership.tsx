@@ -27,7 +27,7 @@ import {
 } from "lucide-react";
 
 /**
- * FaithHub — FH-P-110 Leadership
+ * FaithHub — Leadership
  * --------------------------------
  * Premium Provider-side leadership operating surface for leadership roster,
  * office assignment, public visibility, succession planning, and coverage health.
@@ -1030,6 +1030,7 @@ export default function FaithHubLeadershipPage() {
     </div>
   );
 }
+
 
 
 

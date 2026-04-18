@@ -37,7 +37,7 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — FH-P-100 Community Groups
+ * FaithHub — Community Groups
  * ------------------------------------
  * Premium Provider-side operating surface for ministries, cells, discipleship circles,
  * prayer groups, youth communities, family groups, and other faith-community structures.
@@ -1022,7 +1022,7 @@ export default function CommunityGroupsPage() {
               </div>
               <div className="min-w-0">
                 <div className="truncate text-[26px] font-black leading-none tracking-[-0.02em] text-slate-900">
-                  FH-P-100 · Community Groups
+                  Community Groups
                 </div>
                 <div className="mt-1 text-[13px] text-slate-500">
                   Premium community group operating system · EVzone Green primary, Orange secondary
@@ -1587,7 +1587,7 @@ export default function CommunityGroupsPage() {
       <Drawer
         open={previewOpen}
         onClose={() => setPreviewOpen(false)}
-        title="FH-P-100 · Community Groups · Large preview"
+        title="Community Groups · Large preview"
         subtitle="Premium preview of the selected group destination, care signals, and invite experience."
       >
         <GroupExperiencePreviewInner group={selectedGroup} previewMode={previewMode} />
@@ -1595,6 +1595,7 @@ export default function CommunityGroupsPage() {
     </div>
   );
 }
+
 
 
 

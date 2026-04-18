@@ -15,10 +15,10 @@ import {
 } from "lucide-react";
 
 /**
- * FaithHub — FH-P-121 Moderation Settings
+ * FaithHub — Moderation Settings
  * ---------------------------------------
- * Distinct from FH-P-070 Reviews & Moderation.
- * FH-P-121 controls policy rules, thresholds, child-safe defaults,
+ * Distinct from Reviews & Moderation.
+ * controls policy rules, thresholds, child-safe defaults,
  * automation rules, and downstream moderation settings inheritance.
  *
  * Primary CTAs:
@@ -429,7 +429,7 @@ export default function FH_P_121_ModerationSettings() {
     {
       id: "q_1",
       title: "Increase testimony media review strictness",
-      detail: "Testimonies + FH-P-070 moderation queue",
+      detail: "Testimonies + moderation queue",
       state: "Ready",
     },
     {
@@ -485,19 +485,19 @@ export default function FH_P_121_ModerationSettings() {
   const feeds: FeedPage[] = [
     {
       id: "f_1",
-      title: "FH-P-070 Reviews & Moderation",
+      title: "Reviews & Moderation",
       detail: "Receives cases, incidents, evidence, and recovery workflows.",
       state: "Linked",
     },
     {
       id: "f_2",
-      title: "FH-P-032 Live Dashboard",
+      title: "Live Dashboard",
       detail: "Moderator quick tools and alert thresholds inherit these rules.",
       state: "Healthy",
     },
     {
       id: "f_3",
-      title: "FH-P-104 Community Forum",
+      title: "Community Forum",
       detail: "Threads, leader posts, and reply surfaces inherit policy defaults.",
       state: "Inherited",
     },
@@ -544,16 +544,16 @@ export default function FH_P_121_ModerationSettings() {
                   Trust &amp; Safety Governance
                 </div>
                 <div className="mt-1 text-[26px] md:text-[32px] leading-none font-black tracking-tight text-slate-900 dark:text-slate-50">
-                  FH-P-121 · Moderation Settings
+                  Moderation Settings
                 </div>
                 <div className="mt-2 max-w-[920px] text-[15px] leading-relaxed text-slate-500 dark:text-slate-400">
                   Institution-wide policy rules, filters, defaults, thresholds, child-safe settings, and automation rules.
-                  This page governs rule definitions that feed FH-P-070, live chat, community, prayer, counseling, reviews,
+                  This page governs rule definitions that feed , live chat, community, prayer, counseling, reviews,
                   and all linked trust surfaces.
                 </div>
                 <div className="mt-3 flex flex-wrap items-center gap-2">
                   <Pill tone="good">Provider governance active</Pill>
-                  <Pill>Feeds FH-P-070</Pill>
+                  <Pill>Feeds </Pill>
                   <Pill tone="warn">3 policy changes pending save</Pill>
                   <Pill tone="indigo">Child-safe defaults locked</Pill>
                 </div>
@@ -599,7 +599,7 @@ export default function FH_P_121_ModerationSettings() {
           <div className="space-y-4">
             <Card
               title="Policy map"
-              subtitle="Rule engine, defaults, thresholds, and safeguards that feed FH-P-070."
+              subtitle="Rule engine, defaults, thresholds, and safeguards that feed ."
             >
               <div className="space-y-2">
                 <SectionNavItem
@@ -781,6 +781,7 @@ export default function FH_P_121_ModerationSettings() {
     </div>
   );
 }
+
 
 
 

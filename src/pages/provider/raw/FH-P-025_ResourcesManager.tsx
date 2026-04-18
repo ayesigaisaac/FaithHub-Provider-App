@@ -33,7 +33,7 @@ import { handleRawPlaceholderAction } from "./placeholderActions";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — FH-P-025 Resources Manager
+ * FaithHub — Resources Manager
  * -------------------------------------
  * Premium Provider-side control surface for free learning resources,
  * downloadable PDFs, devotionals, prayer guides, study packs, and audio teachings.
@@ -1591,6 +1591,7 @@ export default function ResourcesManagerPage() {
     </div>
   );
 }
+
 
 
 

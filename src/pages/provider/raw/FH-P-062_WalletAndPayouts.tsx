@@ -35,13 +35,13 @@ import { handleRawPlaceholderAction } from "./placeholderActions";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — FH-P-062 Wallet & Payouts
+ * FaithHub — Wallet & Payouts
  * ------------------------------------
  * Premium Provider-side treasury surface for wallet visibility, payout methods,
  * transfer controls, settlement sources, compliance health, and reconciliation.
  *
  * Positioning
- * - Sits naturally after Donations & Funds (FH-P-060) and Charity Crowdfunding Workbench (FH-P-061)
+ * - Sits naturally after Donations & Funds () and Charity Crowdfunding Workbench ()
  *   inside the Events & Giving section.
  * - Gives providers one trusted page for moving money, reviewing settlement sources,
  *   and understanding payout readiness across donations, crowdfunds, events, and merchandise.
@@ -1524,5 +1524,6 @@ export default function WalletAndPayoutsPage() {
     </div>
   );
 }
+
 
 

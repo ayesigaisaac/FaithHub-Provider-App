@@ -40,7 +40,7 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — FH-P-032 Live Dashboard
+ * FaithHub — Live Dashboard
  * ----------------------------------
  * Premium control-room page for a specific Live Session.
  *
@@ -1183,7 +1183,7 @@ export default function FaithHubLiveDashboardPage() {
         <div className="flex items-start justify-between gap-3 flex-wrap">
           <div className="min-w-0">
             <div className="flex flex-wrap items-center gap-2">
-              <Pill text="FH-P-032 • Live Sessions Operations" icon={<Radio className="h-3.5 w-3.5" />} />
+              <Pill text="Live Sessions Operations" icon={<Radio className="h-3.5 w-3.5" />} />
               <Pill text={session.state} tone={stateTone(session.state)} />
               <Pill text={session.health.critical} tone={healthToneToPill(session.health.critical)} />
             </div>
@@ -1527,6 +1527,7 @@ export default function FaithHubLiveDashboardPage() {
     </div>
   );
 }
+
 
 
 

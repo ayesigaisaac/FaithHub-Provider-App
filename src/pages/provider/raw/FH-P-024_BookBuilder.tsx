@@ -40,12 +40,12 @@ import { handleRawPlaceholderAction } from "./placeholderActions";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — FH-P-024 Book Builder
+ * FaithHub — Book Builder
  * --------------------------------
  * Premium Provider-side book creation page.
  *
  * Design goals
- * - Dedicated full-page builder launched from FH-P-023 Books Manager via "+ New Book".
+ * - Dedicated full-page builder launched from Books Manager via "+ New Book".
  * - Premium creator-style layout with strong hierarchy, sticky preview rail, and launch-ready review gate.
  * - EVzone Green as the primary accent and Orange as the secondary accent.
  * - Support devotional / study guide / manual / course reader flows from the same builder.
@@ -2159,7 +2159,7 @@ export default function FaithHubBookBuilderPage() {
                   Books Manager
                 </button>
                 <span>•</span>
-                <span>FH-P-024</span>
+                <span></span>
               </div>
 
               <div className="mt-2 flex flex-wrap items-center gap-3">
@@ -2383,6 +2383,7 @@ export default function FaithHubBookBuilderPage() {
     </div>
   );
 }
+
 
 
 

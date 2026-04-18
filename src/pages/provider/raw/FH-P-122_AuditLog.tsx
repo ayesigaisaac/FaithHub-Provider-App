@@ -1,4 +1,4 @@
-// @ts-nocheck
+ï»¿// @ts-nocheck
 
 "use client";
 
@@ -24,7 +24,7 @@ import {
 import { KpiTile } from "../../../components/ui/KpiTile";
 
 /**
- * FaithHub — FH-P-122 Audit Log
+ * FaithHub â€” Audit Log
  * --------------------------------
  * Purpose:
  * Immutable-style operational history for role changes, publishing actions,
@@ -459,7 +459,7 @@ function PreviewRail({
                 Investigation surface
               </div>
               <div className="mt-1 text-[20px] font-black text-slate-900 dark:text-slate-100">
-                {event.id} · {event.action}
+                {event.id} Â· {event.action}
               </div>
               <div className="mt-1 text-[12px] text-slate-500 dark:text-slate-400">
                 {event.objectLabel}
@@ -470,10 +470,10 @@ function PreviewRail({
               <div className="rounded-[20px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3 transition-colors">
                 <div className="text-[10px] uppercase tracking-[0.08em] text-slate-400 dark:text-slate-500">Actor + context</div>
                 <div className="mt-2 text-[13px] font-extrabold text-slate-900 dark:text-slate-100">
-                  {event.actor} · {event.actorRole}
+                  {event.actor} Â· {event.actorRole}
                 </div>
                 <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
-                  {event.deviceLabel} · {event.ipLabel}
+                  {event.deviceLabel} Â· {event.ipLabel}
                 </div>
               </div>
 
@@ -538,7 +538,7 @@ function PreviewRail({
                 <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3">
                   <div className="text-[10px] uppercase tracking-[0.08em] text-slate-400 dark:text-slate-500">Chain state</div>
                   <div className="mt-1 text-[12px] font-extrabold text-slate-900 dark:text-slate-100">
-                    {event.integrity} · {event.sessionLabel}
+                    {event.integrity} Â· {event.sessionLabel}
                   </div>
                 </div>
               </div>
@@ -576,17 +576,17 @@ const initialEvents: AuditEvent[] = [
     action: "Role template updated",
     actor: "Rachel Admin",
     actorRole: "Workspace Owner",
-    objectLabel: "Finance Manager access · Kampala Central",
+    objectLabel: "Finance Manager access Â· Kampala Central",
     objectType: "Role assignment",
     campus: "Kampala Central",
-    surface: "FH-P-112 Roles & Permissions",
+    surface: "Roles & Permissions",
     summary:
       "Manual payout approval was enabled for finance managers on the Kampala Central workspace scope.",
-    sessionLabel: "Session 9F2C · Signed",
-    ipLabel: "102.89.14.55 · Kampala",
-    deviceLabel: "Chrome on Windows · Trusted device",
+    sessionLabel: "Session 9F2C Â· Signed",
+    ipLabel: "102.89.14.55 Â· Kampala",
+    deviceLabel: "Chrome on Windows Â· Trusted device",
     approvalPath: "Owner ? Finance Lead",
-    linkedPage: "FH-P-112 Roles & Permissions",
+    linkedPage: "Roles & Permissions",
     exportBundle: "Role change evidence pack",
     tags: ["Payout approvals", "Sensitive action", "Approved"],
     diff: [
@@ -595,9 +595,9 @@ const initialEvents: AuditEvent[] = [
       { field: "Approval routing", before: "Owner only", after: "Owner + finance lead" },
     ],
     related: [
-      "AUD-88409 · Access review completed",
-      "AUD-88398 · Role template duplicated",
-      "AUD-88390 · Finance owner acknowledged update",
+      "AUD-88409 Â· Access review completed",
+      "AUD-88398 Â· Role template duplicated",
+      "AUD-88390 Â· Finance owner acknowledged update",
     ],
     note:
       "The change was approved during the morning finance governance window and propagated to the live wallet surface.",
@@ -611,17 +611,17 @@ const initialEvents: AuditEvent[] = [
     action: "Replay published",
     actor: "Miriam Producer",
     actorRole: "Post-live Editor",
-    objectLabel: "Sunday Worship Replay · Easter at Dawn",
+    objectLabel: "Sunday Worship Replay Â· Easter at Dawn",
     objectType: "Replay package",
     campus: "Global Digital Campus",
-    surface: "FH-P-040 Post-live Publishing",
+    surface: "Post-live Publishing",
     summary:
       "Replay visibility was switched from scheduled to public after chapters, notes, and resources passed quality review.",
     sessionLabel: "Publish batch 31A",
-    ipLabel: "102.91.44.14 · Remote editor",
-    deviceLabel: "Safari on macOS · Trusted device",
+    ipLabel: "102.91.44.14 Â· Remote editor",
+    deviceLabel: "Safari on macOS Â· Trusted device",
     approvalPath: "Producer ? Communications lead",
-    linkedPage: "FH-P-040 Post-live Publishing",
+    linkedPage: "Post-live Publishing",
     exportBundle: "Publishing proof bundle",
     tags: ["Replay", "Notes attached", "Search enabled"],
     diff: [
@@ -630,9 +630,9 @@ const initialEvents: AuditEvent[] = [
       { field: "Featured placement", before: "Off", after: "Homepage + series rail" },
     ],
     related: [
-      "AUD-88370 · Clip generation completed",
-      "AUD-88361 · Notes approved",
-      "AUD-88352 · Thumbnail updated",
+      "AUD-88370 Â· Clip generation completed",
+      "AUD-88361 Â· Notes approved",
+      "AUD-88352 Â· Thumbnail updated",
     ],
     note:
       "Publishing action also triggered replay-ready notifications and search indexing across the teaching library.",
@@ -646,17 +646,17 @@ const initialEvents: AuditEvent[] = [
     action: "Safeguard threshold edited",
     actor: "Joseph Trust",
     actorRole: "Moderation Lead",
-    objectLabel: "Live chat link filter · Children & Youth pack",
+    objectLabel: "Live chat link filter Â· Children & Youth pack",
     objectType: "Policy threshold",
     campus: "Nairobi Fellowship Hub",
-    surface: "FH-P-121 Moderation Settings",
+    surface: "Moderation Settings",
     summary:
       "Allowed link threshold was tightened for live chat on youth-facing surfaces while policy validation runs.",
     sessionLabel: "Policy draft 4C1",
-    ipLabel: "197.248.33.24 · Nairobi",
-    deviceLabel: "Edge on Windows · Managed device",
+    ipLabel: "197.248.33.24 Â· Nairobi",
+    deviceLabel: "Edge on Windows Â· Managed device",
     approvalPath: "Moderation lead ? Compliance review",
-    linkedPage: "FH-P-121 Moderation Settings",
+    linkedPage: "Moderation Settings",
     exportBundle: "Safeguard configuration pack",
     tags: ["Youth safety", "Pending review", "Threshold update"],
     diff: [
@@ -665,9 +665,9 @@ const initialEvents: AuditEvent[] = [
       { field: "Escalation target", before: "General mods", after: "Youth safety queue" },
     ],
     related: [
-      "AUD-88391 · Child-safe policy sync started",
-      "AUD-88387 · Forum rule inherited",
-      "AUD-88372 · Prayer Journal reply safeguard reviewed",
+      "AUD-88391 Â· Child-safe policy sync started",
+      "AUD-88387 Â· Forum rule inherited",
+      "AUD-88372 Â· Prayer Journal reply safeguard reviewed",
     ],
     note:
       "Integrity remains pending until the linked moderation policy pack is signed by compliance and re-published.",
@@ -684,14 +684,14 @@ const initialEvents: AuditEvent[] = [
     objectLabel: "Primary wallet payout account",
     objectType: "Payout rail",
     campus: "Kampala Central",
-    surface: "FH-P-062 Wallet & Payouts",
+    surface: "Wallet & Payouts",
     summary:
       "Primary payout destination was edited and automatically flagged for investigation because the routing country changed.",
     sessionLabel: "Payout review C81",
-    ipLabel: "197.220.87.11 · Kampala",
-    deviceLabel: "Chrome on Android · New device",
+    ipLabel: "197.220.87.11 Â· Kampala",
+    deviceLabel: "Chrome on Android Â· New device",
     approvalPath: "Finance manager ? Security review",
-    linkedPage: "FH-P-062 Wallet & Payouts",
+    linkedPage: "Wallet & Payouts",
     exportBundle: "Finance change evidence pack",
     tags: ["Flagged", "New device", "Country mismatch"],
     diff: [
@@ -700,9 +700,9 @@ const initialEvents: AuditEvent[] = [
       { field: "Release threshold", before: "Auto", after: "Manual hold" },
     ],
     related: [
-      "AUD-88381 · Device trust challenge started",
-      "AUD-88380 · Security owner notified",
-      "AUD-88379 · Wallet release paused",
+      "AUD-88381 Â· Device trust challenge started",
+      "AUD-88380 Â· Security owner notified",
+      "AUD-88379 Â· Wallet release paused",
     ],
     note:
       "This event triggered a manual hold, elevated notifications, and a linked investigation path for finance stewardship.",
@@ -719,14 +719,14 @@ const initialEvents: AuditEvent[] = [
     objectLabel: "Swahili campus public surfaces",
     objectType: "Localization default",
     campus: "Nairobi Fellowship Hub",
-    surface: "FH-P-120 Workspace Settings",
+    surface: "Workspace Settings",
     summary:
       "Fallback language was changed to English (Kenya) for public notices and event confirmations across Nairobi surfaces.",
     sessionLabel: "Workspace sync B12",
-    ipLabel: "102.67.51.20 · Nairobi",
-    deviceLabel: "Safari on iPad · Trusted device",
+    ipLabel: "102.67.51.20 Â· Nairobi",
+    deviceLabel: "Safari on iPad Â· Trusted device",
     approvalPath: "Workspace admin",
-    linkedPage: "FH-P-120 Workspace Settings",
+    linkedPage: "Workspace Settings",
     exportBundle: "Workspace settings pack",
     tags: ["Localization", "Public surfaces", "Campus default"],
     diff: [
@@ -734,8 +734,8 @@ const initialEvents: AuditEvent[] = [
       { field: "Affected surfaces", before: "Events only", after: "Events + notices + reminders" },
     ],
     related: [
-      "AUD-88360 · Locale QA completed",
-      "AUD-88352 · Noticeboard preview updated",
+      "AUD-88360 Â· Locale QA completed",
+      "AUD-88352 Â· Noticeboard preview updated",
     ],
     note:
       "Change was low risk but logged for downstream noticeboard, notifications, and event reminder surfaces.",
@@ -756,8 +756,8 @@ const initialEvents: AuditEvent[] = [
     summary:
       "Single-sign-on enforcement was enabled for leadership, finance, and trust roles ahead of the quarterly security review.",
     sessionLabel: "Security change 2A8",
-    ipLabel: "102.88.11.90 · London",
-    deviceLabel: "Firefox on macOS · Trusted device",
+    ipLabel: "102.88.11.90 Â· London",
+    deviceLabel: "Firefox on macOS Â· Trusted device",
     approvalPath: "Owner ? Security lead",
     linkedPage: "Provider admin controls",
     exportBundle: "Authentication governance pack",
@@ -767,8 +767,8 @@ const initialEvents: AuditEvent[] = [
       { field: "Fallback login", before: "Password allowed", after: "Owner approval only" },
     ],
     related: [
-      "AUD-88345 · Leadership roster sync",
-      "AUD-88341 · Role access check complete",
+      "AUD-88345 Â· Leadership roster sync",
+      "AUD-88341 Â· Role access check complete",
     ],
     note:
       "The update also changed how protected actions surface in the audit ledger and how escalations are routed.",
@@ -785,14 +785,14 @@ const initialEvents: AuditEvent[] = [
     objectLabel: "Recurring support receipt template",
     objectType: "Donor receipt",
     campus: "London Prayer House",
-    surface: "FH-P-060 Donations & Funds",
+    surface: "Donations & Funds",
     summary:
       "Receipt language and accountability notes were updated for recurring donor confirmations.",
     sessionLabel: "Receipt template rev 7",
-    ipLabel: "51.148.24.11 · London",
-    deviceLabel: "Chrome on macOS · Trusted device",
+    ipLabel: "51.148.24.11 Â· London",
+    deviceLabel: "Chrome on macOS Â· Trusted device",
     approvalPath: "Finance lead ? Communications",
-    linkedPage: "FH-P-060 Donations & Funds",
+    linkedPage: "Donations & Funds",
     exportBundle: "Donor template evidence pack",
     tags: ["Receipts", "Recurring support", "Compliance note"],
     diff: [
@@ -800,8 +800,8 @@ const initialEvents: AuditEvent[] = [
       { field: "Reply contact", before: "N/A", after: "finance@faithhub.org" },
     ],
     related: [
-      "AUD-88330 · Email sender preview updated",
-      "AUD-88328 · Donor insights sync complete",
+      "AUD-88330 Â· Email sender preview updated",
+      "AUD-88328 Â· Donor insights sync complete",
     ],
     note:
       "No payout logic changed, but donor-facing trust copy and finance ownership references were captured.",
@@ -815,17 +815,17 @@ const initialEvents: AuditEvent[] = [
     action: "Series artwork replaced",
     actor: "Leah Creative",
     actorRole: "Communications Designer",
-    objectLabel: "Hope in Waiting · Series landing",
+    objectLabel: "Hope in Waiting Â· Series landing",
     objectType: "Series metadata",
     campus: "Global Digital Campus",
-    surface: "FH-P-020 Series Builder",
+    surface: "Series Builder",
     summary:
       "Primary cover art and thumbnail treatment were refreshed ahead of the next episode launch and Beacon promotion push.",
     sessionLabel: "Series pack 5H1",
-    ipLabel: "102.89.90.31 · Remote designer",
-    deviceLabel: "Safari on macOS · Trusted device",
+    ipLabel: "102.89.90.31 Â· Remote designer",
+    deviceLabel: "Safari on macOS Â· Trusted device",
     approvalPath: "Designer ? Pastor approval",
-    linkedPage: "FH-P-020 Series Builder",
+    linkedPage: "Series Builder",
     exportBundle: "Creative revision bundle",
     tags: ["Series", "Artwork", "Beacon-ready"],
     diff: [
@@ -833,8 +833,8 @@ const initialEvents: AuditEvent[] = [
       { field: "CTA placement", before: "Lower shelf", after: "Primary hero area" },
     ],
     related: [
-      "AUD-88311 · Beacon recommendation created",
-      "AUD-88302 · Episode summary approved",
+      "AUD-88311 Â· Beacon recommendation created",
+      "AUD-88302 Â· Episode summary approved",
     ],
     note:
       "The change improved consistency across the series landing page, replay covers, and Beacon ad creative variants.",
@@ -851,14 +851,14 @@ const initialEvents: AuditEvent[] = [
     objectLabel: "Prayer Journal reply incident",
     objectType: "Trust case",
     campus: "Global Digital Campus",
-    surface: "FH-P-070 Reviews & Moderation",
+    surface: "Reviews & Moderation",
     summary:
       "A reported reply on Prayer Journal was reviewed, resolved, and documented with a follow-up safeguard note.",
     sessionLabel: "Case 44-PRJ",
-    ipLabel: "102.89.31.17 · Kampala",
-    deviceLabel: "Chrome on Windows · Trusted device",
+    ipLabel: "102.89.31.17 Â· Kampala",
+    deviceLabel: "Chrome on Windows Â· Trusted device",
     approvalPath: "Moderator ? Trust lead",
-    linkedPage: "FH-P-070 Reviews & Moderation",
+    linkedPage: "Reviews & Moderation",
     exportBundle: "Case history bundle",
     tags: ["Prayer Journal", "Resolved", "Safeguard note"],
     diff: [
@@ -866,8 +866,8 @@ const initialEvents: AuditEvent[] = [
       { field: "Follow-up", before: "Pending", after: "Completed" },
     ],
     related: [
-      "AUD-88301 · Safety note published",
-      "AUD-88297 · User restriction lifted",
+      "AUD-88301 Â· Safety note published",
+      "AUD-88297 Â· User restriction lifted",
     ],
     note:
       "Case resolution fed back into moderation learnings and was preserved for future precedent review.",
@@ -1078,7 +1078,7 @@ export default function AuditLogPage() {
                     Governance & Audit Trail
                   </div>
                   <div className="mt-1 truncate text-[26px] font-black tracking-[-0.03em] text-slate-900 dark:text-slate-100">
-                    FH-P-122 · Audit Log
+                    Audit Log
                   </div>
                 </div>
               </div>
@@ -1127,7 +1127,7 @@ export default function AuditLogPage() {
               Reviews & Moderation, and every protected provider workflow.
             </div>
             <div className="text-[11px] font-black uppercase tracking-[0.12em] text-slate-400 dark:text-slate-500">
-              Integrity · Exports · Investigations
+              Integrity Â· Exports Â· Investigations
             </div>
           </div>
         </div>
@@ -1181,7 +1181,7 @@ export default function AuditLogPage() {
                   <div className="text-[10px] uppercase tracking-[0.08em] text-slate-400 dark:text-slate-500">
                     Last export
                   </div>
-                  <div className="mt-1 text-[12px] font-extrabold text-slate-900 dark:text-slate-100">Today · 10:18 AM</div>
+                  <div className="mt-1 text-[12px] font-extrabold text-slate-900 dark:text-slate-100">Today Â· 10:18 AM</div>
                   <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
                     Evidence package shared with leadership and finance review.
                   </div>
@@ -1546,7 +1546,7 @@ export default function AuditLogPage() {
 
       <Modal
         open={investigationOpen}
-        title={selectedEvent ? `${selectedEvent.id} · ${selectedEvent.action}` : "Investigate change"}
+        title={selectedEvent ? `${selectedEvent.id} Â· ${selectedEvent.action}` : "Investigate change"}
         subtitle="Investigation view with actor context, approval routing, evidence trail, and export actions."
         onClose={() => setInvestigationOpen(false)}
       >
@@ -1580,7 +1580,7 @@ export default function AuditLogPage() {
                   <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3">
                     <div className="text-[10px] uppercase tracking-[0.08em] text-slate-400 dark:text-slate-500">Chain label</div>
                     <div className="mt-1 text-[12px] font-extrabold text-slate-900 dark:text-slate-100">{selectedEvent.sessionLabel}</div>
-                    <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">Timestamp · {formatDateTime(selectedEvent.timestampISO)}</div>
+                    <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">Timestamp Â· {formatDateTime(selectedEvent.timestampISO)}</div>
                   </div>
                 </div>
               </Card>
@@ -1663,6 +1663,7 @@ export default function AuditLogPage() {
     </div>
   );
 }
+
 
 
 

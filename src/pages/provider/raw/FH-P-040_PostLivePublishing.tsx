@@ -43,7 +43,7 @@ import {
 } from 'lucide-react';
 
 /**
- * FaithHub — FH-P-040 Post-live Publishing
+ * FaithHub — Post-live Publishing
  * ----------------------------------------
  * Premium replay packaging workspace for FaithHub Live Sessions.
  *
@@ -789,7 +789,7 @@ export default function PostLivePublishingPage() {
 
               <div className="mt-2 flex flex-wrap items-center gap-3">
                 <div className="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50">
-                  FH-P-040 · Post-live Publishing
+                  Post-live Publishing
                 </div>
                 <div className="flex flex-wrap gap-2">
                   <Pill tone="brand">
@@ -1666,6 +1666,7 @@ export default function PostLivePublishingPage() {
 function PlusIconSmall() {
   return <span className="inline-flex h-4 w-4 items-center justify-center text-base leading-none">+</span>;
 }
+
 
 
 

@@ -38,7 +38,7 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — FH-P-082 Beacon Manager
+ * FaithHub — Beacon Manager
  * ----------------------------------
  * Premium operational control surface for Beacon campaigns after build.
  *
@@ -2128,7 +2128,7 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
 
               <div className="mt-2 flex flex-wrap items-center gap-3">
                 <div className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-slate-50 tracking-tight">
-                  FH-P-082 · Beacon Manager
+                  Beacon Manager
                 </div>
                 <Pill
                   text="Premium campaign operations"
@@ -2737,6 +2737,7 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
     </div>
   );
 }
+
 
 
 

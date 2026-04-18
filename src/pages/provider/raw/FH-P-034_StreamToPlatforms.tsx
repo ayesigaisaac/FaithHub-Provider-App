@@ -43,7 +43,7 @@ import {
 } from 'lucide-react';
 
 /**
- * FaithHub — FH-P-034 Stream-to-Platforms
+ * FaithHub — Stream-to-Platforms
  * ---------------------------------------
  * Premium multi-destination distribution page for FaithHub Live Sessions.
  *
@@ -989,7 +989,7 @@ export default function StreamToPlatformsPage() {
                 <span className="font-medium text-slate-700 dark:text-slate-300">Stream-to-Platforms</span>
               </div>
               <div className="mt-1 flex flex-wrap items-center gap-2">
-                <div className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-slate-50 tracking-tight">FH-P-034 · Stream-to-Platforms</div>
+                <div className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-slate-50 tracking-tight">Stream-to-Platforms</div>
                 <Badge tone={masterHealthTone}>
                   <Radio className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
                   {sessionStatus}
@@ -2095,6 +2095,7 @@ export default function StreamToPlatformsPage() {
     </div>
   );
 }
+
 
 
 

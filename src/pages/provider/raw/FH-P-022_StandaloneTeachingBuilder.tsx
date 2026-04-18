@@ -38,7 +38,7 @@ import { handleRawPlaceholderAction } from "./placeholderActions";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — FH-P-022 Standalone Teaching Builder
+ * FaithHub — Standalone Teaching Builder
  * ------------------------------------------------
  * Premium creator-style page for building sermons/teachings that do not
  * belong to any Series or Episode while still supporting Live Sessions,
@@ -1751,7 +1751,7 @@ export default function StandaloneTeachingBuilderPage() {
             <div className="min-w-0">
               <div className="text-[11px] font-black uppercase tracking-[0.18em] text-slate-400">FaithHub Provider Side</div>
               <div className="mt-2 flex flex-col gap-2 lg:flex-row lg:items-center lg:gap-4">
-                <h1 className="text-[46px] font-black leading-none tracking-[-0.03em] text-slate-900">FH-P-022 — Standalone Teaching Builder</h1>
+                <h1 className="text-[46px] font-black leading-none tracking-[-0.03em] text-slate-900">Standalone Teaching Builder</h1>
                 <Pill tone="good">Standalone-first</Pill>
               </div>
               <p className="mt-2 max-w-[920px] text-[15px] leading-7 text-slate-500">
@@ -1839,6 +1839,7 @@ export default function StandaloneTeachingBuilderPage() {
     </div>
   );
 }
+
 
 
 

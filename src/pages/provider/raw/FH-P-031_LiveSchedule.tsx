@@ -2704,7 +2704,7 @@ export default function FaithHubLiveSchedulePage() {
         <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
           <div className="min-w-0">
             <div className="flex flex-wrap items-center gap-2">
-              <Pill text="FH-P-031" icon={<CalendarDays className="h-3.5 w-3.5" />} />
+              <Pill text="" icon={<CalendarDays className="h-3.5 w-3.5" />} />
               <Pill text="Live Sessions Operations" tone="good" />
             </div>
             <div className="mt-3 text-2xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100 sm:text-3xl">
@@ -3203,6 +3203,7 @@ export default function FaithHubLiveSchedulePage() {
     </div>
   );
 }
+
 
 
 

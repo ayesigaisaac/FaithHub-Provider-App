@@ -33,7 +33,7 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — FH-P-104 Community Forum
+ * FaithHub — Community Forum
  * -----------------------------------
  * Premium Provider-side moderated discussion space for threads, categories,
  * leader posts, and faith-community engagement.
@@ -1060,7 +1060,7 @@ export default function CommunityForumPage() {
                 </div>
                 <div className="min-w-0">
                   <div className="truncate text-[28px] font-black leading-none tracking-[-0.03em] text-slate-900 md:text-[44px]">
-                    FH-P-104 · Community Forum
+                    Community Forum
                   </div>
                   <div className="mt-1 text-[14px] text-slate-500 md:text-[15px]">
                     Premium moderated discussion space • EVzone Green primary, Orange secondary
@@ -1640,6 +1640,7 @@ export default function CommunityForumPage() {
     </div>
   );
 }
+
 
 
 

@@ -28,7 +28,7 @@ import {
 } from "lucide-react";
 
 /**
- * FaithHub — FH-P-081 Beacon Marketplace
+ * FaithHub — Beacon Marketplace
  * --------------------------------------
  * Premium placement and audience-planning surface for FaithHub Provider.
  *
@@ -860,7 +860,7 @@ export default function BeaconMarketplacePage() {
           <div className="flex flex-col justify-between gap-4 xl:flex-row xl:items-start">
             <div className="min-w-0">
               <div className="text-[15px] font-black tracking-wide text-slate-500 dark:text-slate-400">
-                FH-P-081 · Beacon Marketplace
+                Beacon Marketplace
               </div>
               <h1 className="mt-1 text-[34px] font-black tracking-tight text-slate-900 dark:text-slate-100 sm:text-[40px]">
                 Premium inventory, audience packages, and media-plan building for Beacon campaigns across FaithHub surfaces.
@@ -1369,6 +1369,7 @@ export default function BeaconMarketplacePage() {
     </div>
   );
 }
+
 
 
 

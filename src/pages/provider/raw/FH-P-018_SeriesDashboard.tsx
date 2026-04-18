@@ -32,7 +32,7 @@ import { handleRawPlaceholderAction } from "./placeholderActions";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — FH-P-018 Series Dashboard
+ * FaithHub — Series Dashboard
  * ------------------------------------
  * Premium operational landing page for structured Series content.
  *
@@ -982,7 +982,7 @@ export default function SeriesDashboardPage() {
                 </div>
                 <div>
                   <div className="text-[18px] md:text-[24px] xl:text-[28px] font-black tracking-tight text-slate-900 dark:text-slate-100">
-                    FH-P-018 � Series Dashboard
+                    � Series Dashboard
                   </div>
                   <div className="mt-1 text-[13px] text-slate-500 dark:text-slate-400">
                     Premium structured-series command surface � EVzone Green primary, Orange secondary
@@ -1461,6 +1461,7 @@ export default function SeriesDashboardPage() {
     </div>
   );
 }
+
 
 
 

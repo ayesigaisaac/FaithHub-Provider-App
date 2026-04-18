@@ -31,7 +31,7 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — FH-P-080 Beacon Dashboard
+ * FaithHub — Beacon Dashboard
  * ------------------------------------
  * Premium promotional control center for FaithHub Provider.
  *
@@ -1280,7 +1280,7 @@ export default function BeaconDashboardPage() {
                 <span className="font-medium text-slate-700 dark:text-slate-300">Dashboard</span>
               </div>
               <div className="mt-2 flex flex-wrap items-center gap-3">
-                <div className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-slate-50 tracking-tight">FH-P-080 · Beacon Dashboard</div>
+                <div className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-slate-50 tracking-tight">Beacon Dashboard</div>
                 <Pill tone="pro">
                   <Sparkles className="h-3.5 w-3.5" /> Premium promotion engine
                 </Pill>
@@ -1795,6 +1795,7 @@ export default function BeaconDashboardPage() {
     </div>
   );
 }
+
 
 
 

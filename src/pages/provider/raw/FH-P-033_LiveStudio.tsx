@@ -54,7 +54,7 @@ import {
 } from "lucide-react";
 
 /**
- * FaithHub — FH-P-033 Live Studio
+ * FaithHub — Live Studio
  * --------------------------------
  * Premium production studio for FaithHub Live Sessions.
  *
@@ -2248,6 +2248,7 @@ function MobileLiveStudio({
 }
 
 export { FaithHubLiveStudioPage };
+
 
 
 

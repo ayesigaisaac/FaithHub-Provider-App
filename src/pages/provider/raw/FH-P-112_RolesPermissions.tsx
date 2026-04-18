@@ -34,7 +34,7 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — FH-P-112 Roles & Permissions
+ * FaithHub — Roles & Permissions
  * Premium Provider-side RBAC control center for workspace access, role templates,
  * approval paths, scope control, and sensitive-action permissions.
  *
@@ -1281,7 +1281,7 @@ export default function FH_P_112_RolesPermissionsPage() {
                     Team governance
                   </div>
                   <div className="mt-1 text-3xl font-black tracking-tight text-slate-900 dark:text-slate-100">
-                    FH-P-112 · Roles & Permissions
+                    Roles & Permissions
                   </div>
                   <div className="mt-1 max-w-3xl text-[15px] text-slate-500 dark:text-slate-400">
                     Premium Provider RBAC surface for workspace access, role templates, approval paths, scope control, and sensitive-action permissions.
@@ -1798,6 +1798,7 @@ export default function FH_P_112_RolesPermissionsPage() {
     </div>
   );
 }
+
 
 
 

@@ -27,7 +27,7 @@ import { handleRawPlaceholderAction } from "./placeholderActions";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — FH-P-102 Testimonies
+ * FaithHub — Testimonies
  * --------------------------------
  * Premium Provider-side page for collecting, reviewing, approving,
  * publishing, and featuring testimonies across the institution.
@@ -1067,7 +1067,7 @@ export default function TestimoniesPage() {
                 Community stories command
               </div>
               <h1 className="mt-2 text-[34px] font-black tracking-[-0.03em] text-slate-900 dark:text-slate-100">
-                FH-P-102 · Testimonies
+                Testimonies
               </h1>
               <p className="mt-2 max-w-[860px] text-[15px] leading-7 text-slate-600 dark:text-slate-400">
                 Premium collection, review, approval, publication, and featuring workspace for testimonies across live sessions,
@@ -1711,7 +1711,7 @@ export default function TestimoniesPage() {
         <Drawer
           open={previewOpen}
           onClose={() => setPreviewOpen(false)}
-          title="FH-P-102 · Testimonies preview"
+          title="Testimonies preview"
           subtitle="Large preview of the selected testimony destination"
         >
           <TestimonyPreviewInner story={selectedStory} previewMode={previewMode} />
@@ -1720,6 +1720,7 @@ export default function TestimoniesPage() {
     </div>
   );
 }
+
 
 
 

@@ -26,7 +26,7 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — FH-P-111 Serving Teams
+ * FaithHub — Serving Teams
  * Premium Provider-side volunteer and service-team management page.
  *
  * Primary CTAs
@@ -902,7 +902,7 @@ export default function FH_P_111_ServingTeamsPage() {
                     Team operations
                   </div>
                   <div className="mt-1 text-3xl font-black tracking-tight text-slate-900 dark:text-slate-100">
-                    FH-P-111 · Serving Teams
+                    Serving Teams
                   </div>
                   <div className="mt-1 max-w-3xl text-[15px] text-slate-500 dark:text-slate-400">
                     Premium volunteer and service-team operating system for ushers, media, worship, care, outreach, hospitality, and event/live support.
@@ -1425,6 +1425,7 @@ export default function FH_P_111_ServingTeamsPage() {
     </div>
   );
 }
+
 
 
 

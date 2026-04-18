@@ -27,7 +27,7 @@ import { handleRawPlaceholderAction } from "./placeholderActions";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — FH-P-101 Prayer Requests
+ * FaithHub — Prayer Requests
  * -----------------------------------
  * Regenerated standalone TSX page.
  * Premium prayer intake and care-management surface for Providers.
@@ -758,7 +758,7 @@ function PrayerRequestsPage() {
                   FH
                 </div>
                 <div className="min-w-0">
-                  <div className="text-[46px] leading-none font-black tracking-tight text-slate-900">FH-P-101 · Prayer Requests</div>
+                  <div className="text-[46px] leading-none font-black tracking-tight text-slate-900">Prayer Requests</div>
                   <div className="mt-1 text-[16px] text-slate-500">
                     Premium prayer intake + care routing system · EVzone Green primary, Orange secondary
                   </div>
@@ -1103,6 +1103,7 @@ function PrayerRequestsPage() {
 }
 
 export default PrayerRequestsPage;
+
 
 
 

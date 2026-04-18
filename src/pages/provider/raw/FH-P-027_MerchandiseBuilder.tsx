@@ -36,9 +36,9 @@ import {
 } from "lucide-react";
 
 /**
- * FaithHub — FH-P-027 Merchandise Builder
+ * FaithHub — Merchandise Builder
  * ---------------------------------------
- * Premium Provider-side create/edit page launched from FH-P-026 Merchandise Manager via
+ * Premium Provider-side create/edit page launched from Merchandise Manager via
  * the "+ New Merchandise" command.
  *
  * Product intent
@@ -1837,6 +1837,7 @@ export default function MerchandiseBuilderPage() {
     </div>
   );
 }
+
 
 
 

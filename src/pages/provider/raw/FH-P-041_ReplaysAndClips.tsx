@@ -40,7 +40,7 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — FH-P-041 Replays & Clips
+ * FaithHub — Replays & Clips
  * -----------------------------------
  * Premium replay library and clip engine for FaithHub Provider.
  *
@@ -1062,7 +1062,7 @@ export default function FaithHubReplaysAndClipsPage() {
               <div className="flex flex-wrap items-center gap-2 text-[10px] sm:text-xs text-slate-500 dark:text-slate-400">
                 <button onClick={() => safeNav(ROUTES.postLivePublishing)} className="hover:text-slate-700 dark:hover:text-slate-200">Post-live & Trust</button>
                 <span>/</span>
-                <span className="font-semibold text-slate-900 dark:text-slate-100">FH-P-041 Replays & Clips</span>
+                <span className="font-semibold text-slate-900 dark:text-slate-100">Replays & Clips</span>
               </div>
               <div className="mt-2 flex flex-wrap items-center gap-3">
                 <div className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50">Replays & Clips</div>
@@ -1803,6 +1803,7 @@ function HeartIconPlaceholder(props: any) {
     </svg>
   );
 }
+
 
 
 

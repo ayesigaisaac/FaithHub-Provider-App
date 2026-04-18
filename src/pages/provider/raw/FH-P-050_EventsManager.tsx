@@ -38,7 +38,7 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — FH-P-050 Events Manager
+ * FaithHub — Events Manager
  * ----------------------------------
  * Premium event operating system for FaithHub Provider.
  *
@@ -1547,7 +1547,7 @@ export default function FaithHubEventsManagerPage() {
                 </button>
                 <span>/</span>
                 <span className="font-semibold text-slate-900 dark:text-slate-100">
-                  FH-P-050 Events Manager
+                  Events Manager
                 </span>
               </div>
 
@@ -2599,7 +2599,7 @@ export default function FaithHubEventsManagerPage() {
       <Drawer
         open={previewOpen}
         onClose={() => setPreviewOpen(false)}
-        title="FH-P-050 ? Event preview suite"
+        title="Event preview suite"
         right={
           <div className="inline-flex rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-1">
             <button
@@ -2658,7 +2658,7 @@ export default function FaithHubEventsManagerPage() {
       <Drawer
         open={checkInOpen}
         onClose={() => setCheckInOpen(false)}
-        title="FH-P-050 ? Check-in mode"
+        title="Check-in mode"
       >
         <div className="space-y-4">
           <CheckInConsolePreview event={selectedEvent} />
@@ -2678,6 +2678,7 @@ export default function FaithHubEventsManagerPage() {
     </div>
   );
 }
+
 
 
 

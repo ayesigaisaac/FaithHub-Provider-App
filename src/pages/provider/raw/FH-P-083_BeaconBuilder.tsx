@@ -40,7 +40,7 @@ import { type ButtonActionId, resolveActionFromLabel } from "@/navigation/button
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — FH-P-083 Beacon Builder
+ * FaithHub — Beacon Builder
  * ----------------------------------
  * Premium dual-path campaign builder for linked and standalone Beacon campaigns.
  *
@@ -2604,7 +2604,7 @@ export default function BeaconBuilderPage({
               </div>
               <div className="mt-2 flex flex-wrap items-center gap-2">
                 <div className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50">
-                  FH-P-083 ? Beacon Builder
+                  Beacon Builder
                 </div>
                 <Pill tone="brand"><Zap className="h-3.5 w-3.5" /> Beacon</Pill>
                 <Pill tone="good">{builder.sourceMode}</Pill>
@@ -2778,6 +2778,7 @@ export default function BeaconBuilderPage({
 
   return content;
 }
+
 
 
 

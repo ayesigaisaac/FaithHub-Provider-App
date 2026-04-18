@@ -34,7 +34,7 @@ import {
 import { handleRawPlaceholderAction } from "./placeholderActions";
 
 /**
- * FaithHub - FH-P-001 Provider Onboarding
+ * FaithHub - Provider Onboarding
  * ---------------------------------------
  * Premium provider onboarding surface for institutions, ministries,
  * faith creators, and multi-campus organizations.
@@ -2419,7 +2419,7 @@ export default function ProviderOnboardingPage() {
                 </div>
                 <div>
                   <div className="text-[44px] font-black leading-none tracking-[-0.04em] text-slate-900 dark:text-slate-100">
-                    FH-P-001 - Provider Onboarding
+                    Provider Onboarding
                   </div>
                   <div className="mt-1 text-[14px] text-slate-500 dark:text-slate-400">
                     Premium verified-provider setup for brand, structure, permissions, channels, and production readiness.
@@ -2743,5 +2743,6 @@ export default function ProviderOnboardingPage() {
     </div>
   );
 }
+
 
 

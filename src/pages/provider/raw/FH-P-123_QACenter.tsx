@@ -1,4 +1,4 @@
-// @ts-nocheck
+ï»¿// @ts-nocheck
 "use client";
 
 import React, { useMemo, useState } from "react";
@@ -25,7 +25,7 @@ import {
 import { KpiTile } from "../../../components/ui/KpiTile";
 
 /**
- * FaithHub — FH-P-123 QA Center
+ * FaithHub â€” QA Center
  * --------------------------------
  * Purpose:
  * Internal quality-assurance page for testing streams, validating content
@@ -152,7 +152,7 @@ const QA_RESULTS_SEED: QAResult[] = [
     destination: "Mobile form",
     lastCheckedLabel: "14 min ago",
     suggestedFix:
-      "Increase bottom padding, validate safe-area spacing, and confirm tap targets on 390 × 680 layouts.",
+      "Increase bottom padding, validate safe-area spacing, and confirm tap targets on 390 Ã— 680 layouts.",
     tags: ["Forms", "Mobile", "Safe area"],
     confidence: 91,
     steps: [
@@ -538,7 +538,7 @@ export default function FHP123QACenter() {
   const [checklist, setChecklist] = useState<ChecklistItem[]>(CHECKLIST_SEED);
   const [selectedResultId, setSelectedResultId] = useState<string>(QA_RESULTS_SEED[0]?.id || "");
   const [scanCount, setScanCount] = useState(18);
-  const [lastScanLabel, setLastScanLabel] = useState("Today · 10:42 AM");
+  const [lastScanLabel, setLastScanLabel] = useState("Today Â· 10:42 AM");
   const [isScanning, setIsScanning] = useState(false);
   const [savedChecklistCount, setSavedChecklistCount] = useState(7);
 
@@ -636,7 +636,7 @@ export default function FHP123QACenter() {
               state: "Passing",
               severity: "Info",
               lastCheckedLabel: "Resolved just now",
-              summary: `Resolved · ${item.summary}`,
+              summary: `Resolved Â· ${item.summary}`,
               confidence: Math.min(99, item.confidence + 8),
             }
           : item,
@@ -663,7 +663,7 @@ export default function FHP123QACenter() {
                     Quality & launch assurance
                   </div>
                   <h1 className="mt-1 text-[26px] leading-tight md:text-[34px] font-black tracking-[-0.03em] text-slate-900 dark:text-slate-100">
-                    FH-P-123 · QA Center
+                    QA Center
                   </h1>
                   <p className="mt-2 max-w-[860px] text-[13px] md:text-[14px] leading-relaxed text-slate-500 dark:text-slate-400">
                     Internal quality-assurance surface for stream checks, content package validation,
@@ -680,7 +680,7 @@ export default function FHP123QACenter() {
             </div>
             <div className="flex flex-wrap items-center gap-2 lg:justify-end">
               <Btn tone="primary" left={<RefreshCw className={cx("h-4 w-4", isScanning && "animate-spin")} />} onClick={runQAScan} disabled={isScanning}>
-                {isScanning ? "Scanning…" : "Run QA Scan"}
+                {isScanning ? "Scanningâ€¦" : "Run QA Scan"}
               </Btn>
               <Btn left={<Plus className="h-4 w-4" />} onClick={createChecklist}>Create Checklist</Btn>
               <Btn tone="secondary" left={<Wrench className="h-4 w-4" />} onClick={resolveIssue}>Resolve Issue</Btn>
@@ -698,7 +698,7 @@ export default function FHP123QACenter() {
             </div>
           </div>
           <div className="text-[11px] font-extrabold uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">
-            STREAMS · PACKAGES · FORMS · PREFLIGHT
+            STREAMS Â· PACKAGES Â· FORMS Â· PREFLIGHT
           </div>
         </div>
 
@@ -779,7 +779,7 @@ export default function FHP123QACenter() {
               </div>
             </Card>
 
-            <Card title="Checklist builder" subtitle="Reusable QA packs for streams, content packages, forms, and final preflight launch review." right={<Pill tone="brand">Critical open · {checklistStats.criticalOpen}</Pill>}>
+            <Card title="Checklist builder" subtitle="Reusable QA packs for streams, content packages, forms, and final preflight launch review." right={<Pill tone="brand">Critical open Â· {checklistStats.criticalOpen}</Pill>}>
               <div className="grid gap-3 md:grid-cols-2">
                 {checklist.map((item) => (
                   <button
@@ -880,7 +880,7 @@ export default function FHP123QACenter() {
                       <Pill>{selectedResult.owner}</Pill>
                     </div>
                     <div className="mt-3 text-[15px] font-black text-slate-900 dark:text-slate-100">{selectedResult.title}</div>
-                    <div className="mt-1 text-[12px] text-slate-500 dark:text-slate-400">{selectedResult.surface} · {selectedResult.destination}</div>
+                    <div className="mt-1 text-[12px] text-slate-500 dark:text-slate-400">{selectedResult.surface} Â· {selectedResult.destination}</div>
                   </div>
 
                   <div className="rounded-[22px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3 transition-colors">
@@ -946,6 +946,7 @@ export default function FHP123QACenter() {
     </div>
   );
 }
+
 
 
 

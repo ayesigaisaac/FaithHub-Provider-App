@@ -35,7 +35,7 @@ import { handleRawPlaceholderAction } from "./placeholderActions";
 import { KpiTile } from "../../../components/ui/KpiTile";
 
 /**
- * FaithHub — FH-P-037 Noticeboard
+ * FaithHub — Noticeboard
  * --------------------------------
  * Premium Provider-side noticeboard / announcements operating surface.
  *
@@ -50,7 +50,7 @@ import { KpiTile } from "../../../components/ui/KpiTile";
  *
  * Suggested placement
  * - Audience & Outreach section, directly after Channels & Contact Manager.
- * - Proposed page code: FH-P-037.
+ * - Proposed page code: .
  */
 
 const EV_GREEN = "#03cd8c";
@@ -1173,7 +1173,7 @@ export default function FaithHubNoticeboardPage() {
               </div>
 
               <div className="mt-4 text-[44px] font-black leading-[1.02] tracking-[-0.03em] text-slate-900">
-                FH-P-037 ? Noticeboard
+                Noticeboard
               </div>
               <div className="mt-3 max-w-4xl text-[16px] leading-relaxed text-slate-500">
                 Run institution-wide announcements, campus updates, prayer alerts, volunteer calls,
@@ -1889,6 +1889,7 @@ export default function FaithHubNoticeboardPage() {
     </div>
   );
 }
+
 
 
 

@@ -34,7 +34,7 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — FH-P-026 Merchandise Manager
+ * FaithHub — Merchandise Manager
  * ---------------------------------------
  * Premium Provider-side control surface for FaithMart merchandise:
  * apparel, gifts, journals, worship essentials, event kits, and community bundles.
@@ -1504,8 +1504,7 @@ export default function MerchandiseManagerPage() {
                   className="rounded-full px-2.5 py-1 text-[10px] font-black text-white"
                   style={{ background: EV_GREEN }}
                 >
-                  FH-P-026
-                </div>
+                  </div>
               </div>
 
               <div className="mt-4 flex flex-wrap gap-2">
@@ -2083,6 +2082,7 @@ export default function MerchandiseManagerPage() {
     </div>
   );
 }
+
 
 
 

@@ -30,7 +30,7 @@ import {
 } from 'lucide-react';
 
 /**
- * FaithHub — FH-P-070 Reviews & Moderation
+ * FaithHub — Reviews & Moderation
  * ---------------------------------------
  * Premium trust-and-safety centre for Provider-side review response,
  * moderation case handling, risk pattern detection, and reputation recovery.
@@ -1193,7 +1193,7 @@ export default function FaithHubReviewsAndModerationPage() {
 
               <div className="mt-2 flex flex-wrap items-center gap-3">
                 <div className="text-2xl sm:text-3xl font-black tracking-tight text-slate-900 dark:text-slate-50">
-                  FH-P-070 Reviews & Moderation
+                  Reviews & Moderation
                 </div>
                 <Pill tone="brand">
                   <ShieldCheck className="h-3.5 w-3.5" />
@@ -2029,6 +2029,7 @@ export default function FaithHubReviewsAndModerationPage() {
     </div>
   );
 }
+
 
 
 

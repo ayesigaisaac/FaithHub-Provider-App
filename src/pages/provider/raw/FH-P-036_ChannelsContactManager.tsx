@@ -1,4 +1,4 @@
-// @ts-nocheck
+ï»¿// @ts-nocheck
 "use client";
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
@@ -38,7 +38,7 @@ import {
 import { KpiTile } from "../../../components/ui/KpiTile";
 
 /**
- * FaithHub — FH-P-036 Channels & Contact Manager
+ * FaithHub â€” Channels & Contact Manager
  * Premium audience data, consent, channel-operations, and contact-intelligence hub.
  * Primary colour: EVzone Green (#03cd8c)
  * Secondary colour: EVzone Orange (#f77f00)
@@ -532,11 +532,11 @@ const contacts: Contact[] = [
     campus: "Downtown",
     brand: "Main Ministry",
     region: "Kampala, Uganda",
-    language: "English • Luganda",
+    language: "English â€¢ Luganda",
     primaryChannel: "WhatsApp",
     channelsAllowed: ["WhatsApp", "Push", "Email", "In-app"],
     consentState: "Full",
-    quietHours: "21:00–07:00",
+    quietHours: "21:00â€“07:00",
     childSafe: false,
     highRisk: false,
     email: "amal@faithhub.demo",
@@ -551,8 +551,8 @@ const contacts: Contact[] = [
     engagementScore: 94,
     pastoralNote: "Consistent attendee. Responds well to replay reminders and giving updates.",
     timeline: [
-      { id: "1", label: "Sunday Live Session attended", when: "Today · 10:08", type: "Live", detail: "Joined via WhatsApp deep link and stayed 48 minutes." },
-      { id: "2", label: "Replay follow-up opened", when: "Yesterday · 16:22", type: "Replay", detail: "Watched the prayer segment and shared the replay card." },
+      { id: "1", label: "Sunday Live Session attended", when: "Today Â· 10:08", type: "Live", detail: "Joined via WhatsApp deep link and stayed 48 minutes." },
+      { id: "2", label: "Replay follow-up opened", when: "Yesterday Â· 16:22", type: "Replay", detail: "Watched the prayer segment and shared the replay card." },
       { id: "3", label: "Charity campaign donation", when: "2 days ago", type: "Donation", detail: "Contributed to the school-feeding crowdfund after a reminder journey." },
       { id: "4", label: "Beacon awareness touch", when: "4 days ago", type: "Beacon", detail: "Saw 3 community-service ads and tapped the giving campaign." },
     ],
@@ -569,11 +569,11 @@ const contacts: Contact[] = [
     campus: "East Campus",
     brand: "Main Ministry",
     region: "Mukono, Uganda",
-    language: "English • Swahili",
+    language: "English â€¢ Swahili",
     primaryChannel: "Email",
     channelsAllowed: ["Email", "SMS", "In-app"],
     consentState: "Limited",
-    quietHours: "22:00–06:30",
+    quietHours: "22:00â€“06:30",
     childSafe: false,
     highRisk: false,
     email: "ezra@faithhub.demo",
@@ -588,7 +588,7 @@ const contacts: Contact[] = [
     engagementScore: 81,
     pastoralNote: "Reliable on events. Prefers email planning updates and avoids late-night SMS.",
     timeline: [
-      { id: "5", label: "Volunteer briefing opened", when: "Today · 08:14", type: "Message", detail: "Opened production call-sheet from Audience Notifications." },
+      { id: "5", label: "Volunteer briefing opened", when: "Today Â· 08:14", type: "Message", detail: "Opened production call-sheet from Audience Notifications." },
       { id: "6", label: "Baptism event checked in", when: "Last Sunday", type: "Event", detail: "Registered early and completed volunteer duty." },
       { id: "7", label: "Beacon click-through", when: "6 days ago", type: "Beacon", detail: "Tapped youth retreat promo but did not complete RSVP." },
     ],
@@ -628,7 +628,7 @@ const contacts: Contact[] = [
       { id: "9", label: "Safeguarding check triggered", when: "3 days ago", type: "Message", detail: "Consent refresh required before the next reminder send." },
     ],
     consentAudit: [
-      { at: "02 Mar 2026", label: "Parent push opt-in", detail: "Parent accepted notifications for children’s ministry updates only." },
+      { at: "02 Mar 2026", label: "Parent push opt-in", detail: "Parent accepted notifications for childrenâ€™s ministry updates only." },
       { at: "02 Mar 2026", label: "Child-safe lane active", detail: "Quiet hours locked, messaging channels limited." },
       { at: "18 Mar 2026", label: "Consent review due", detail: "Parental reconfirmation required within 7 days." },
     ],
@@ -640,11 +640,11 @@ const contacts: Contact[] = [
     campus: "Global",
     brand: "Outreach Nights",
     region: "London, UK",
-    language: "English • French",
+    language: "English â€¢ French",
     primaryChannel: "Email",
     channelsAllowed: ["Email", "Push", "WhatsApp", "In-app"],
     consentState: "Full",
-    quietHours: "23:00–07:00",
+    quietHours: "23:00â€“07:00",
     childSafe: false,
     highRisk: false,
     email: "samira@faithhub.demo",
@@ -659,7 +659,7 @@ const contacts: Contact[] = [
     engagementScore: 92,
     pastoralNote: "Global donor with strong replay affinity. Excellent candidate for Beacon replay boosts.",
     timeline: [
-      { id: "10", label: "Crowdfund donation completed", when: "Today · 06:42", type: "Donation", detail: "Responded to ‘impact update’ journey and completed donation." },
+      { id: "10", label: "Crowdfund donation completed", when: "Today Â· 06:42", type: "Donation", detail: "Responded to â€˜impact updateâ€™ journey and completed donation." },
       { id: "11", label: "Replay binge", when: "Yesterday", type: "Replay", detail: "Watched 3 clips and 1 full replay from the prayer summit." },
       { id: "12", label: "Beacon donation ad conversion", when: "1 week ago", type: "Beacon", detail: "Clicked a replay boost and completed a giving action." },
     ],
@@ -680,7 +680,7 @@ const contacts: Contact[] = [
     primaryChannel: "SMS",
     channelsAllowed: ["SMS", "In-app"],
     consentState: "Limited",
-    quietHours: "21:00–06:00",
+    quietHours: "21:00â€“06:00",
     childSafe: false,
     highRisk: true,
     email: "david.kaggwa@faithhub.demo",
@@ -695,7 +695,7 @@ const contacts: Contact[] = [
     engagementScore: 28,
     pastoralNote: "Needs hygiene review. SMS bounced and profile is marked for verification before the next reminder.",
     timeline: [
-      { id: "13", label: "SMS bounce", when: "Today · 07:52", type: "Message", detail: "Carrier returned invalid endpoint. Do not contact until fixed." },
+      { id: "13", label: "SMS bounce", when: "Today Â· 07:52", type: "Message", detail: "Carrier returned invalid endpoint. Do not contact until fixed." },
       { id: "14", label: "Event RSVP started", when: "3 days ago", type: "Event", detail: "Did not complete RSVP after first step." },
     ],
     consentAudit: [
@@ -711,7 +711,7 @@ const segments: Segment[] = [
     label: "Weekly Live Core",
     mode: "Smart",
     campus: "Multi-campus",
-    ruleSummary: "Live attendance = 2 in 30 days • watched replay = 1 • follows main ministry",
+    ruleSummary: "Live attendance = 2 in 30 days â€¢ watched replay = 1 â€¢ follows main ministry",
     size: 12480,
     health: "High",
     growth: "+8.4% in 30 days",
@@ -724,7 +724,7 @@ const segments: Segment[] = [
     label: "Warm Donors",
     mode: "Smart",
     campus: "Global",
-    ruleSummary: "Donated in last 90 days • opened 2+ giving reminders • replay viewers",
+    ruleSummary: "Donated in last 90 days â€¢ opened 2+ giving reminders â€¢ replay viewers",
     size: 3920,
     health: "High",
     growth: "+4.1% in 30 days",
@@ -737,7 +737,7 @@ const segments: Segment[] = [
     label: "Children Guarded Lane",
     mode: "Manual",
     campus: "Youth Chapel",
-    ruleSummary: "Parent-approved contacts only • child-safe restrictions enforced • in-app/push only",
+    ruleSummary: "Parent-approved contacts only â€¢ child-safe restrictions enforced â€¢ in-app/push only",
     size: 410,
     health: "Watch",
     growth: "+1.7% in 30 days",
@@ -750,7 +750,7 @@ const segments: Segment[] = [
     label: "Event Ready Attendees",
     mode: "Smart",
     campus: "Downtown",
-    ruleSummary: "Opened event reminder in 14 days • RSVP intent present • donor score not required",
+    ruleSummary: "Opened event reminder in 14 days â€¢ RSVP intent present â€¢ donor score not required",
     size: 1840,
     health: "Needs work",
     growth: "-2.3% in 30 days",
@@ -763,7 +763,7 @@ const segments: Segment[] = [
     label: "Family Updates",
     mode: "Manual",
     campus: "Youth Chapel",
-    ruleSummary: "Family ministry parents • parent-approved channels • quiet-hour compliance strict",
+    ruleSummary: "Family ministry parents â€¢ parent-approved channels â€¢ quiet-hour compliance strict",
     size: 650,
     health: "High",
     growth: "+3.2% in 30 days",
@@ -776,7 +776,7 @@ const segments: Segment[] = [
     label: "Women Weekly Path",
     mode: "Smart",
     campus: "Downtown",
-    ruleSummary: "Women’s group tag • weekly watch history • accepted WhatsApp or push",
+    ruleSummary: "Womenâ€™s group tag â€¢ weekly watch history â€¢ accepted WhatsApp or push",
     size: 2740,
     health: "High",
     growth: "+5.0% in 30 days",
@@ -802,7 +802,7 @@ const segments: Segment[] = [
     label: "Global Donors",
     mode: "Smart",
     campus: "Global",
-    ruleSummary: "International donors • replay viewers • opened email in last 21 days",
+    ruleSummary: "International donors â€¢ replay viewers â€¢ opened email in last 21 days",
     size: 1120,
     health: "High",
     growth: "+6.8% in 30 days",
@@ -815,7 +815,7 @@ const segments: Segment[] = [
     label: "Replay Loyalists",
     mode: "Smart",
     campus: "Global",
-    ruleSummary: "Watched 3+ replays in 30 days • clip taps present • live attendance optional",
+    ruleSummary: "Watched 3+ replays in 30 days â€¢ clip taps present â€¢ live attendance optional",
     size: 5080,
     health: "Watch",
     growth: "+1.3% in 30 days",
@@ -993,7 +993,7 @@ function ContactPreviewCard({
           <div className="min-w-0">
             <div className="truncate text-sm font-black text-slate-900 dark:text-slate-50">{contact.name}</div>
             <div className="text-[11px] text-slate-500 dark:text-slate-400">
-              {contact.title} • {contact.campus} • {contact.language}
+              {contact.title} â€¢ {contact.campus} â€¢ {contact.language}
             </div>
             <div className="mt-1 flex flex-wrap items-center gap-1.5">
               <Pill tone={consentTone(contact.consentState)}>{contact.consentState} consent</Pill>
@@ -1307,7 +1307,7 @@ export default function ChannelsContactManagerPage() {
                 </Pill>
                 <span className="text-[11px] font-bold text-slate-600 dark:text-slate-400 uppercase tracking-tight">
                   {systemIssues.length
-                    ? systemIssues.join(" • ")
+                    ? systemIssues.join(" â€¢ ")
                     : "Consent trails, deliverability, and contact hygiene are all operating within premium thresholds."}
                 </span>
               </div>
@@ -1457,9 +1457,9 @@ export default function ChannelsContactManagerPage() {
                               </div>
                               <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400 flex flex-wrap gap-x-2 gap-y-1">
                                 <span>{contact.campus}</span>
-                                <span>•</span>
+                                <span>â€¢</span>
                                 <span>{contact.brand}</span>
-                                <span>•</span>
+                                <span>â€¢</span>
                                 <span>{contact.region}</span>
                               </div>
                             </div>
@@ -1478,7 +1478,7 @@ export default function ChannelsContactManagerPage() {
                           <div className="text-[12px] text-slate-600 dark:text-slate-300">
                             <div className="font-bold text-slate-900 dark:text-slate-50">{contact.segmentIds.length} segments</div>
                             <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1">
-                              {contact.segmentIds.map((id) => segmentLookup.get(id)?.label || id).join(" • ")}
+                              {contact.segmentIds.map((id) => segmentLookup.get(id)?.label || id).join(" â€¢ ")}
                             </div>
                           </div>
 
@@ -1557,7 +1557,7 @@ export default function ChannelsContactManagerPage() {
                     <div className="mt-4 rounded-2xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                       <div className="text-[12px] font-bold text-slate-900 dark:text-slate-50">Manual roster controls</div>
                       <div className="mt-2 text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
-                        Build protected ministry lists for choir, ushers, children’s ministry parents, translators, or pastoral care groups with strict child-safe and quiet-hour rules.
+                        Build protected ministry lists for choir, ushers, childrenâ€™s ministry parents, translators, or pastoral care groups with strict child-safe and quiet-hour rules.
                       </div>
                       <div className="mt-3 grid grid-cols-2 gap-2 text-[11px]">
                         <div className="rounded-2xl bg-slate-50 dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">CSV import + approval review</div>
@@ -1771,7 +1771,7 @@ export default function ChannelsContactManagerPage() {
                           <Pill tone={statusTone(channel.status)}>{channel.status}</Pill>
                         </div>
                         <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
-                          {channel.sender} • {channel.campus}
+                          {channel.sender} â€¢ {channel.campus}
                         </div>
                       </div>
                       <Btn tone="ghost" left={<ExternalLink className="h-4 w-4" />} onClick={() => setToast(`Opened ${channel.name} settings`)}>Open</Btn>
@@ -1906,7 +1906,7 @@ export default function ChannelsContactManagerPage() {
                   <>
                     <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/80 px-4 py-3 ring-1 ring-slate-100 dark:ring-white/5 shadow-sm">
                       <div className="text-xs font-black uppercase tracking-widest text-slate-500 dark:text-slate-400">Consent state</div>
-                      <div className="mt-1 text-sm font-black text-slate-900 dark:text-slate-100">{selectedContact.consentState} • {selectedContact.primaryChannel}</div>
+                      <div className="mt-1 text-sm font-black text-slate-900 dark:text-slate-100">{selectedContact.consentState} â€¢ {selectedContact.primaryChannel}</div>
                     </div>
                     <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/80 px-4 py-3 ring-1 ring-slate-100 dark:ring-white/5 shadow-sm">
                       <div className="text-xs font-black uppercase tracking-widest text-slate-500 dark:text-slate-400">Recent touch</div>
@@ -1924,7 +1924,7 @@ export default function ChannelsContactManagerPage() {
                       <div key={segment.id} className="rounded-2xl bg-slate-50 dark:bg-slate-800/80 px-4 py-3 ring-1 ring-slate-100 dark:ring-white/5 shadow-sm">
                         <div className="text-xs font-black uppercase tracking-widest text-slate-500 dark:text-slate-400">{segment.mode} segment</div>
                         <div className="mt-1 text-sm font-black text-slate-900 dark:text-slate-100">{segment.label}</div>
-                        <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">{segment.size.toLocaleString()} contacts • {segment.growth}</div>
+                        <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">{segment.size.toLocaleString()} contacts â€¢ {segment.growth}</div>
                       </div>
                     ))}
                   </>
@@ -1975,6 +1975,7 @@ export default function ChannelsContactManagerPage() {
     </div>
   );
 }
+
 
 
 

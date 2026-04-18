@@ -28,7 +28,7 @@ import { handleRawPlaceholderAction } from "./placeholderActions";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — FH-P-105 Counseling
+ * FaithHub — Counseling
  * ------------------------------
  * Private-first pastoral care and counseling workspace for cases, intake,
  * scheduling, counselor assignment, session planning, notes, and safeguarding.
@@ -978,7 +978,7 @@ export default function CounselingPage() {
                 PASTORAL CARE COMMAND
               </div>
               <h1 className="mt-1 text-[30px] font-black leading-tight tracking-[-0.03em] text-slate-900 dark:text-slate-100">
-                FH-P-105 · Counseling
+                Counseling
               </h1>
               <p className="mt-2 max-w-[980px] text-[15px] leading-7 text-slate-600 dark:text-slate-400">
                 Private-first pastoral care and counseling workspace for cases,
@@ -1713,6 +1713,7 @@ export default function CounselingPage() {
     </div>
   );
 }
+
 
 
 

@@ -35,7 +35,7 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — FH-P-106 Projects
+ * FaithHub — Projects
  * ----------------------------
  * Premium Provider-side operating surface for community missions, outreach drives,
  * volunteer mobilization, build projects, charity actions, and progress tracking.
@@ -1458,7 +1458,7 @@ function ProjectsPage() {
                   </div>
                   <div>
                     <div className="text-[22px] font-black leading-tight text-slate-900">
-                      FH-P-106 · Projects
+                      Projects
                     </div>
                     <div className="mt-1 max-w-3xl text-[14px] leading-6 text-slate-500">
                       Premium command page for missions, outreach, volunteer drives, build projects,
@@ -1958,7 +1958,7 @@ function ProjectsPage() {
       <Drawer
         open={previewOpen}
         onClose={() => setPreviewOpen(false)}
-        title="FH-P-106 · Projects · Large preview"
+        title="Projects · Large preview"
         subtitle="Premium preview of the selected project destination, impact story, volunteer CTA, and funding path."
       >
         <div className="grid gap-6 xl:grid-cols-[minmax(0,1.2fr)_420px]">
@@ -2280,6 +2280,7 @@ function ProjectsPage() {
 }
 
 export default ProjectsPage;
+
 
 
 

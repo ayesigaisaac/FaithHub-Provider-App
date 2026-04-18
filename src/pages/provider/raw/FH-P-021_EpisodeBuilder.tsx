@@ -28,7 +28,7 @@ import {
 import { handleRawPlaceholderAction } from "./placeholderActions";
 
 /**
- * FaithHub — FH-P-021 Episode Builder
+ * FaithHub — Episode Builder
  * -----------------------------------
  * Premium provider page for shaping an episode inside a Series while still
  * giving it its own live, replay, resource, and audience journey.
@@ -1759,6 +1759,7 @@ export default function EpisodeBuilderPage() {
     </div>
   );
 }
+
 
 
 

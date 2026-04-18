@@ -36,7 +36,7 @@ import { handleRawPlaceholderAction } from "./placeholderActions";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — FH-P-019 Teachings Dashboard
+ * FaithHub — Teachings Dashboard
  * ---------------------------------------
  * Premium control surface for everything in the Teachings section.
  *
@@ -1148,7 +1148,7 @@ export default function TeachingsDashboardPage() {
                   Teachings command
                 </div>
                 <div className="mt-1 text-[28px] font-black leading-[1.05] tracking-tight text-slate-900 md:text-[34px]">
-                  FH-P-019 · Teachings Dashboard
+                  Teachings Dashboard
                 </div>
                 <div className="mt-1 max-w-4xl text-[13px] leading-6 text-slate-600">
                   Premium operating surface for Series, Episodes, and Standalone teachings — built to keep structured journeys and one-off sermons in one calm, world-class control center.
@@ -1672,5 +1672,6 @@ export default function TeachingsDashboardPage() {
     </div>
   );
 }
+
 
 
