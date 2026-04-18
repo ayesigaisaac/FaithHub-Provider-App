@@ -8,7 +8,7 @@ import { usePageTitle } from '@/hooks/usePageTitle';
 import Dashboard from '@/pages/Dashboard';
 import LoginPage from '@/pages/public/LoginPage';
 import { ProtectedRoute } from '@/routes/ProtectedRoute';
-import type { UserRole } from '@/auth/types';
+import type { Permission, UserRole } from '@/auth/types';
 
 function ScrollToTop(): null {
   const location = useLocation();
@@ -39,8 +39,18 @@ const roleRestrictedPaths: Record<string, UserRole[]> = {
   '/faithhub/provider/subscriptions': ['finance', 'leadership'],
 };
 
+const permissionRestrictedPaths: Record<string, Permission[]> = {
+  '/faithhub/provider/donations-and-funds': ['finance:read'],
+  '/faithhub/provider/wallet-payouts': ['finance:read'],
+  '/faithhub/provider/subscriptions': ['finance:read'],
+};
+
 function getAllowedRoles(path: string): UserRole[] | undefined {
   return roleRestrictedPaths[path];
+}
+
+function getRequiredPermissions(path: string): Permission[] | undefined {
+  return permissionRestrictedPaths[path];
 }
 
 export default function App() {
@@ -66,7 +76,10 @@ export default function App() {
                 key={`${page.key}:${path}`}
                 path={path}
                 element={
-                  <ProtectedRoute allowedRoles={getAllowedRoles(path)}>
+                  <ProtectedRoute
+                    allowedRoles={getAllowedRoles(path)}
+                    requiredPermissions={getRequiredPermissions(path)}
+                  >
                     <ProviderPageMount page={page} />
                   </ProtectedRoute>
                 }

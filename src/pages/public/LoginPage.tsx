@@ -19,7 +19,27 @@ import VisibilityRoundedIcon from '@mui/icons-material/VisibilityRounded';
 import { useEffect, useMemo, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/auth/useAuth';
+import { isKnownProviderPath } from '@/navigation/providerPages';
 import type { WorkspaceContext } from '@/auth/types';
+
+function resolveSafeRedirect(input?: string) {
+  const fallback = '/faithhub/provider/dashboard';
+  if (!input || typeof input !== 'string' || !input.startsWith('/')) return fallback;
+
+  try {
+    const parsed = new URL(input, 'https://faithhub.local');
+    const path = parsed.pathname;
+    const suffix = `${parsed.search}${parsed.hash}`;
+
+    if (path === '/faithhub/provider') return `${fallback}${suffix}`;
+    if (path === '/dashboard-ui' || path === '/faithhub/home-landing') return `${path}${suffix}`;
+    if (isKnownProviderPath(path)) return `${path}${suffix}`;
+  } catch {
+    return fallback;
+  }
+
+  return fallback;
+}
 
 export default function LoginPage() {
   const { login, loading, setWorkspace, isAuthenticated } = useAuth();
@@ -39,7 +59,7 @@ export default function LoginPage() {
 
   const from = useMemo(() => {
     const state = location.state as { from?: string } | undefined;
-    return state?.from || '/faithhub/provider/dashboard';
+    return resolveSafeRedirect(state?.from);
   }, [location.state]);
 
   useEffect(() => {

@@ -1,4 +1,14 @@
 export type UserRole = 'leadership' | 'production' | 'outreach' | 'finance';
+export type Permission =
+  | 'finance:read'
+  | 'finance:manage'
+  | 'content:manage'
+  | 'live:operate'
+  | 'audience:manage'
+  | 'beacon:manage'
+  | 'community:manage'
+  | 'teams:manage'
+  | 'workspace:admin';
 
 export type WorkspaceContext = {
   campus: string;
