@@ -59,16 +59,16 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
             minHeight: 0,
           }}
         >
-          <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ px: 1.5, py: 1.25 }}>
+          <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ px: 1.5, py: 1.05 }}>
             <Box sx={{ minWidth: 0 }}>
-              <Typography sx={{ fontWeight: 800, fontSize: 24, lineHeight: 1, color: '#0f172a' }}>
+              <Typography sx={{ fontWeight: 900, fontSize: 22, lineHeight: 0.98, letterSpacing: '-0.01em', color: '#0f172a' }}>
                 FaithHub Provider
               </Typography>
-              <Typography color="text.secondary" sx={{ fontSize: 13, lineHeight: 1.1, letterSpacing: '0.02em', mt: 0.4 }}>
+              <Typography color="text.secondary" sx={{ fontSize: 12.5, lineHeight: 1.08, letterSpacing: '0.01em', mt: 0.2 }}>
                 Navigation
               </Typography>
             </Box>
-            <Avatar sx={{ bgcolor: '#fff', color: '#111827', border: '1px solid #d1d5db', width: 40, height: 40 }}>
+            <Avatar sx={{ bgcolor: '#fff', color: '#111827', border: '1px solid #d1d5db', width: 38, height: 38 }}>
               <KeyboardDoubleArrowLeftRoundedIcon />
             </Avatar>
           </Stack>
