@@ -1,4 +1,4 @@
-// @ts-nocheck
+ï»¿// @ts-nocheck
 "use client";
 
 import React, { useMemo, useState } from "react";
@@ -34,9 +34,10 @@ import {
 } from "lucide-react";
 import { handleRawPlaceholderAction } from "./placeholderActions";
 import { KpiTile } from "../../../components/ui/KpiTile";
+import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — FH-P-100 Community Groups
+ * FaithHub â€” FH-P-100 Community Groups
  * ------------------------------------
  * Premium Provider-side operating surface for ministries, cells, discipleship circles,
  * prayer groups, youth communities, family groups, and other faith-community structures.
@@ -77,8 +78,7 @@ const cx = (...xs: Array<string | false | null | undefined>) =>
   xs.filter(Boolean).join(" ");
 
 function safeNav(url: string) {
-  if (typeof window === "undefined") return;
-  window.location.assign(url);
+  navigateWithRouter(url);
 }
 
 function fmtInt(n: number) {
@@ -229,7 +229,7 @@ const GROUPS: GroupRecord[] = [
   {
     id: "grp-young-adults",
     title: "Young Adults Discipleship Circle",
-    subtitle: "Weekly growth, accountability, and live-linked follow-up for ages 20–35.",
+    subtitle: "Weekly growth, accountability, and live-linked follow-up for ages 20â€“35.",
     type: "Discipleship",
     status: "Healthy",
     access: "Open",
@@ -275,8 +275,8 @@ const GROUPS: GroupRecord[] = [
       },
     ],
     rhythm: [
-      { id: "rh-1", label: "Weekly circle gathering", when: "Fri · 6:30 PM", state: "Ready" },
-      { id: "rh-2", label: "Post-live follow-up thread", when: "Sun · after service", state: "Ready" },
+      { id: "rh-1", label: "Weekly circle gathering", when: "Fri Â· 6:30 PM", state: "Ready" },
+      { id: "rh-2", label: "Post-live follow-up thread", when: "Sun Â· after service", state: "Ready" },
       { id: "rh-3", label: "April reading plan push", when: "Tomorrow", state: "Pending" },
     ],
     hooks: [
@@ -327,18 +327,18 @@ const GROUPS: GroupRecord[] = [
       {
         id: "cs-6",
         label: "Answered-prayer ratio improving",
-        hint: "3 testimonies published this week from last month’s requests.",
+        hint: "3 testimonies published this week from last monthâ€™s requests.",
         tone: "good",
       },
     ],
     rhythm: [
-      { id: "rh-4", label: "Night prayer watch", when: "Wed · 8:00 PM", state: "Ready" },
-      { id: "rh-5", label: "Answered-prayer recap", when: "Fri · 11:00 AM", state: "Pending" },
+      { id: "rh-4", label: "Night prayer watch", when: "Wed Â· 8:00 PM", state: "Ready" },
+      { id: "rh-5", label: "Answered-prayer recap", when: "Fri Â· 11:00 AM", state: "Pending" },
       { id: "rh-6", label: "Care-owner assignment sweep", when: "Daily", state: "Watch" },
     ],
     hooks: [
       { id: "hk-4", label: "Prayer intake bridge", hint: "Prayer Requests page has 6 items waiting for routing.", state: "Pending" },
-      { id: "hk-5", label: "Noticeboard card", hint: "Private-only notice is ready for tonight’s prayer circle.", state: "Ready" },
+      { id: "hk-5", label: "Noticeboard card", hint: "Private-only notice is ready for tonightâ€™s prayer circle.", state: "Ready" },
       { id: "hk-6", label: "Counseling handoff", hint: "Two members need private support channel follow-up.", state: "Pending" },
     ],
   },
@@ -389,9 +389,9 @@ const GROUPS: GroupRecord[] = [
       },
     ],
     rhythm: [
-      { id: "rh-7", label: "Youth circle meet-up", when: "Sat · 3:00 PM", state: "Ready" },
-      { id: "rh-8", label: "Parent reminder run", when: "Thu · 6:00 PM", state: "Pending" },
-      { id: "rh-9", label: "Identity & Purpose replay follow-up", when: "Mon · 5:00 PM", state: "Ready" },
+      { id: "rh-7", label: "Youth circle meet-up", when: "Sat Â· 3:00 PM", state: "Ready" },
+      { id: "rh-8", label: "Parent reminder run", when: "Thu Â· 6:00 PM", state: "Pending" },
+      { id: "rh-9", label: "Identity & Purpose replay follow-up", when: "Mon Â· 5:00 PM", state: "Ready" },
     ],
     hooks: [
       { id: "hk-7", label: "Noticeboard sync", hint: "Youth notice cards waiting for parent-visible approval.", state: "Pending" },
@@ -723,7 +723,7 @@ function GroupExperiencePreview({
                 <div>
                   <div className="text-[12px] font-black text-slate-900">{group.title}</div>
                   <div className="mt-1 text-[11px] text-slate-500">
-                    {group.type} • {group.campus} • {group.meetingMode}
+                    {group.type} â€¢ {group.campus} â€¢ {group.meetingMode}
                   </div>
                 </div>
                 <AccessPill access={group.access} />
@@ -871,7 +871,7 @@ function GroupExperiencePreviewInner({
             <div className="mt-3 space-y-2 text-[13px] text-slate-700">
               <div className="flex items-center gap-2">
                 <Users className="h-4 w-4 text-slate-400" />
-                {group.type} • {group.meetingMode}
+                {group.type} â€¢ {group.meetingMode}
               </div>
               <div className="flex items-center gap-2">
                 <MapPin className="h-4 w-4 text-slate-400" />
@@ -879,7 +879,7 @@ function GroupExperiencePreviewInner({
               </div>
               <div className="flex items-center gap-2">
                 <Globe2 className="h-4 w-4 text-slate-400" />
-                {group.language.join(" • ")}
+                {group.language.join(" â€¢ ")}
               </div>
               <div className="flex items-center gap-2">
                 <BadgeCheck className="h-4 w-4 text-slate-400" />
@@ -948,7 +948,7 @@ function GroupExperiencePreviewInner({
           <div className="mt-3 space-y-2">
             {group.childrenSafe ? (
               <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-3 text-[12px] text-emerald-800">
-                Child-safe defaults are active for this group’s communication and visibility patterns.
+                Child-safe defaults are active for this groupâ€™s communication and visibility patterns.
               </div>
             ) : (
               <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3 text-[12px] text-slate-600">
@@ -1020,10 +1020,10 @@ export default function CommunityGroupsPage() {
               </div>
               <div className="min-w-0">
                 <div className="truncate text-[26px] font-black leading-none tracking-[-0.02em] text-slate-900">
-                  FH-P-100 · Community Groups
+                  FH-P-100 Â· Community Groups
                 </div>
                 <div className="mt-1 text-[13px] text-slate-500">
-                  Premium community group operating system · EVzone Green primary, Orange secondary
+                  Premium community group operating system Â· EVzone Green primary, Orange secondary
                 </div>
               </div>
             </div>
@@ -1052,9 +1052,9 @@ export default function CommunityGroupsPage() {
             <div className="flex flex-wrap items-center gap-3 text-[12px] text-slate-500">
               <Pill tone="brand">COMMUNITY NETWORK PULSE</Pill>
               <span>{coverageGaps} groups need co-leader coverage</span>
-              <span>•</span>
+              <span>â€¢</span>
               <span>{careBacklog} care escalations need review</span>
-              <span>•</span>
+              <span>â€¢</span>
               <span>3 groups are ready for noticeboard and live-linked follow-up</span>
               <span className="ml-auto text-[11px] font-black uppercase tracking-[0.12em] text-slate-400">
                 Premium community ops
@@ -1216,17 +1216,17 @@ export default function CommunityGroupsPage() {
                               <Users className="h-3.5 w-3.5" />
                               {fmtInt(group.members)} members
                             </span>
-                            <span>•</span>
+                            <span>â€¢</span>
                             <span className="inline-flex items-center gap-1">
                               <CalendarClock className="h-3.5 w-3.5" />
                               {fmtLocal(group.upcomingISO)}
                             </span>
-                            <span>•</span>
+                            <span>â€¢</span>
                             <span className="inline-flex items-center gap-1">
                               <MapPin className="h-3.5 w-3.5" />
                               {group.campus}
                             </span>
-                            <span>•</span>
+                            <span>â€¢</span>
                             <span>{group.meetingMode}</span>
                           </div>
 
@@ -1573,7 +1573,7 @@ export default function CommunityGroupsPage() {
             className="mx-4 mb-4 rounded-full px-6 py-1.5 text-center text-[12px] text-slate-600"
             style={{ background: "rgba(3,205,140,0.16)", border: "1px solid rgba(3,205,140,0.30)" }}
           >
-            Concept preview of the generated FaithHub Community Groups page · EVzone Green primary (#03cd8c) · Orange secondary (#f77f00)
+            Concept preview of the generated FaithHub Community Groups page Â· EVzone Green primary (#03cd8c) Â· Orange secondary (#f77f00)
           </div>
         </div>
       </div>
@@ -1581,7 +1581,7 @@ export default function CommunityGroupsPage() {
       <Drawer
         open={previewOpen}
         onClose={() => setPreviewOpen(false)}
-        title="FH-P-100 · Community Groups · Large preview"
+        title="FH-P-100 Â· Community Groups Â· Large preview"
         subtitle="Premium preview of the selected group destination, care signals, and invite experience."
       >
         <GroupExperiencePreviewInner group={selectedGroup} previewMode={previewMode} />

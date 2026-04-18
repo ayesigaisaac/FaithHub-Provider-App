@@ -2,6 +2,7 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
+import { navigateWithRouter } from "@/navigation/routerNavigate";
 import {
   AlertTriangle,
   ArrowRight,
@@ -70,8 +71,7 @@ const cx = (...xs: Array<string | false | null | undefined>) =>
   xs.filter(Boolean).join(" ");
 
 function safeNav(url: string) {
-  if (typeof window === "undefined") return;
-  window.location.assign(url);
+  navigateWithRouter(url);
 }
 
 function fmtInt(n: number) {
@@ -1030,6 +1030,8 @@ export default function FaithHubLeadershipPage() {
     </div>
   );
 }
+
+
 
 
 

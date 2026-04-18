@@ -3,6 +3,7 @@
 'use client';
 
 import React, { useEffect, useMemo, useState } from 'react';
+import { navigateWithRouter } from "@/navigation/routerNavigate";
 import {
   AlertTriangle,
   BadgeCheck,
@@ -55,8 +56,7 @@ const ROUTES = {
 const cx = (...xs: Array<string | false | null | undefined>) => xs.filter(Boolean).join(' ');
 
 function safeNav(url: string) {
-  if (typeof window === 'undefined') return;
-  window.location.assign(url);
+  navigateWithRouter(url);
 }
 
 async function copyText(text: string) {
@@ -2029,6 +2029,8 @@ export default function FaithHubReviewsAndModerationPage() {
     </div>
   );
 }
+
+
 
 
 

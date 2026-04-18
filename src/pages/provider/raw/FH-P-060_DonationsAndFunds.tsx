@@ -1,4 +1,4 @@
-// @ts-nocheck
+ï»¿// @ts-nocheck
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -28,9 +28,10 @@ import {
 } from "lucide-react";
 import { handleRawPlaceholderAction } from "./placeholderActions";
 import { KpiTile } from "../../../components/ui/KpiTile";
+import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — FH-P-060 Donations & Funds
+ * FaithHub â€” FH-P-060 Donations & Funds
  * -------------------------------------
  * Premium giving workspace for FaithHub Provider.
  *
@@ -73,15 +74,14 @@ const cx = (...xs: Array<string | false | null | undefined>) =>
   xs.filter(Boolean).join(" ");
 
 function safeNav(url: string) {
-  if (typeof window === "undefined") return;
-  window.location.assign(url);
+  navigateWithRouter(url);
 }
 
 function fmtInt(n: number) {
   return Intl.NumberFormat(undefined, { maximumFractionDigits: 0 }).format(n);
 }
 
-function fmtCurrency(n: number, currency = "£") {
+function fmtCurrency(n: number, currency = "Â£") {
   return `${currency}${Intl.NumberFormat(undefined, {
     maximumFractionDigits: 0,
   }).format(n)}`;
@@ -358,7 +358,7 @@ const BRIDGE_SEED: BridgeSurface[] = [
     label: "Sunday Morning Live donation moment",
     surface: "Live Session",
     state: "Ready",
-    value: "£12.8k influenced",
+    value: "Â£12.8k influenced",
     hint: "Pinned donor CTA and progress strip inside the sermon run-of-show.",
     ready: true,
   },
@@ -1065,7 +1065,7 @@ export default function DonationsAndFundsPage() {
 
               <div className="mt-1 flex flex-wrap items-center gap-2">
                 <div className="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50">
-                  FH-P-060 · Donations &amp; Funds
+                  FH-P-060 Â· Donations &amp; Funds
                 </div>
                 <Pill tone="good">
                   <BadgeCheck className="h-3.5 w-3.5" />
@@ -1321,7 +1321,7 @@ export default function DonationsAndFundsPage() {
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0">
                         <div className="text-sm font-bold text-slate-900 dark:text-slate-50">{item.label}</div>
-                        <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{item.surface} · {item.hint}</div>
+                        <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{item.surface} Â· {item.hint}</div>
                       </div>
                       <Pill tone={item.ready ? "good" : "warn"}>{item.state}</Pill>
                     </div>
@@ -1475,7 +1475,7 @@ export default function DonationsAndFundsPage() {
                   <div className="flex items-center justify-between gap-2">
                     <div>
                       <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Finance ownership</div>
-                      <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{selectedRecord.owner} · {selectedRecord.financeHealth} state</div>
+                      <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{selectedRecord.owner} Â· {selectedRecord.financeHealth} state</div>
                     </div>
                     <Pill tone={badgeToneForFinance(selectedRecord.financeHealth)}>{selectedRecord.financeHealth}</Pill>
                   </div>

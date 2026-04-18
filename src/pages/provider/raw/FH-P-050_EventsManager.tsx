@@ -1,4 +1,4 @@
-// @ts-nocheck
+ï»¿// @ts-nocheck
 
 "use client";
 
@@ -35,9 +35,10 @@ import {
 } from "lucide-react";
 import { handleRawPlaceholderAction } from "./placeholderActions";
 import { KpiTile } from "../../../components/ui/KpiTile";
+import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — FH-P-050 Events Manager
+ * FaithHub â€” FH-P-050 Events Manager
  * ----------------------------------
  * Premium event operating system for FaithHub Provider.
  *
@@ -80,8 +81,7 @@ const cx = (...xs: Array<string | false | null | undefined>) =>
   xs.filter(Boolean).join(" ");
 
 function safeNav(url: string) {
-  if (typeof window === "undefined") return;
-  window.location.assign(url);
+  navigateWithRouter(url);
 }
 
 function fmtLocal(iso: string) {
@@ -1509,7 +1509,7 @@ export default function FaithHubEventsManagerPage() {
       "",
       "LOGISTICS",
       ...selectedEvent.logistics.map(
-        (item) => `${item.label} — ${item.status} — ${item.note}`,
+        (item) => `${item.label} â€” ${item.status} â€” ${item.note}`,
       ),
       "",
       "VOLUNTEER COVERAGE",
@@ -1588,7 +1588,7 @@ export default function FaithHubEventsManagerPage() {
                 left={<Plus className="h-4 w-4" />}
                 disabled={workingAction === "create"}
               >
-                {workingAction === "create" ? "Creating…" : "+ New Event"}
+                {workingAction === "create" ? "Creatingâ€¦" : "+ New Event"}
               </Btn>
             </div>
           </div>
@@ -1658,7 +1658,7 @@ export default function FaithHubEventsManagerPage() {
                       className="px-3 py-2 text-[12px]"
                       disabled={workingAction === "duplicate"}
                     >
-                      {workingAction === "duplicate" ? "Duplicating…" : "Duplicate"}
+                      {workingAction === "duplicate" ? "Duplicatingâ€¦" : "Duplicate"}
                     </Btn>
                   </div>
                 </div>
@@ -2441,7 +2441,7 @@ export default function FaithHubEventsManagerPage() {
                       onClick={publishEventPlan}
                       disabled={workingAction === "publish"}
                     >
-                      {workingAction === "publish" ? "Publishing…" : "Mark operationally ready"}
+                      {workingAction === "publish" ? "Publishingâ€¦" : "Mark operationally ready"}
                     </Btn>
                     <Btn
                       tone="accent"

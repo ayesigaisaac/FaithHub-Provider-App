@@ -1,4 +1,4 @@
-// @ts-nocheck
+Ôªø// @ts-nocheck
 
 "use client";
 
@@ -36,9 +36,10 @@ import {
 } from "lucide-react";
 import { handleRawPlaceholderAction } from "./placeholderActions";
 import { KpiTile } from "../../../components/ui/KpiTile";
+import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub ó FH-P-083 Beacon Builder
+ * FaithHub ‚Äî FH-P-083 Beacon Builder
  * ----------------------------------
  * Premium dual-path campaign builder for linked and standalone Beacon campaigns.
  *
@@ -84,15 +85,14 @@ const cx = (...xs: Array<string | false | null | undefined>) =>
   xs.filter(Boolean).join(" ");
 
 function safeNav(url: string) {
-  if (typeof window === "undefined") return;
-  window.location.assign(url);
+  navigateWithRouter(url);
 }
 
 function fmtInt(n: number) {
   return Intl.NumberFormat(undefined, { maximumFractionDigits: 0 }).format(n);
 }
 
-function fmtCurrency(n: number, currency = "£") {
+function fmtCurrency(n: number, currency = "¬£") {
   return `${currency}${Intl.NumberFormat(undefined, {
     maximumFractionDigits: 0,
   }).format(n)}`;
@@ -1226,7 +1226,7 @@ function BeaconPreviewCard({
               {showQuote ? (
                 <div className="absolute inset-x-0 bottom-0 p-4 text-white">
                   <div className="max-w-[85%] text-lg font-black leading-tight drop-shadow">
-                    ì{builder.quoteText || "The next faithful move may be the one you almost postponed."}î
+                    ‚Äú{builder.quoteText || "The next faithful move may be the one you almost postponed."}‚Äù
                   </div>
                 </div>
               ) : null}
@@ -1329,7 +1329,7 @@ export default function BeaconBuilderPage({
     heroVideoId: "asset_replay_video",
     headline: "Catch the message that moved the room.",
     body: "Replay the full teaching, share it with someone who needs it, and step into the next response moment while the message is still fresh.",
-    quoteText: "Grace doesnít wait for strength before it shows up.",
+    quoteText: "Grace doesn‚Äôt wait for strength before it shows up.",
     storyCardLabel: "Why this replay matters now",
     countdownEnabled: false,
     countdownEndISO: countdownDefault.toISOString(),
@@ -1817,7 +1817,7 @@ export default function BeaconBuilderPage({
                             setField(
                               "headline",
                               src.recommendedObjective === "Live attendance"
-                                ? `Donít miss ${src.title}.`
+                                ? `Don‚Äôt miss ${src.title}.`
                                 : src.recommendedObjective === "Giving" || src.recommendedObjective === "Charity momentum"
                                   ? `Support ${src.title}.`
                                   : `Explore ${src.title}.`,
@@ -2608,7 +2608,7 @@ export default function BeaconBuilderPage({
                 <Pill tone="pro">Preview-first workflow</Pill>
               </div>
               <div className="mt-1 text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-4xl">
-                Create a premium Beacon campaign from scratch ó linked to FaithHub content or fully standalone ó with rich creative, audience logic, placement planning, and a launch-ready review flow.
+                Create a premium Beacon campaign from scratch ‚Äî linked to FaithHub content or fully standalone ‚Äî with rich creative, audience logic, placement planning, and a launch-ready review flow.
               </div>
             </div>
             <div className="flex flex-wrap items-center gap-2">

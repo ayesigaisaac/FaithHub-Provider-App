@@ -2,6 +2,7 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
+import { navigateWithRouter } from "@/navigation/routerNavigate";
 import {
   ArrowLeft,
   BadgeCheck,
@@ -79,8 +80,7 @@ const cx = (...xs: Array<string | false | null | undefined>) =>
   xs.filter(Boolean).join(" ");
 
 function safeNav(url: string) {
-  if (typeof window === "undefined") return;
-  window.location.assign(url);
+  navigateWithRouter(url);
 }
 
 function money(amount: number, currency: CurrencyCode) {
@@ -1837,6 +1837,8 @@ export default function MerchandiseBuilderPage() {
     </div>
   );
 }
+
+
 
 
 

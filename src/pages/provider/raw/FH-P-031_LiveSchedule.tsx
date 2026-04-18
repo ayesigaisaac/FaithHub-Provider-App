@@ -4,6 +4,7 @@
 
 import React, { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { navigateWithRouter } from "@/navigation/routerNavigate";
 import {
   AlertTriangle,
   ArrowRight,
@@ -531,8 +532,7 @@ function cx(...parts: Array<string | false | null | undefined>) {
 }
 
 function safeNav(path: string) {
-  if (typeof window === "undefined") return;
-  window.location.assign(path);
+  navigateWithRouter(path);
 }
 
 function pad2(n: number) {
@@ -3203,6 +3203,8 @@ export default function FaithHubLiveSchedulePage() {
     </div>
   );
 }
+
+
 
 
 

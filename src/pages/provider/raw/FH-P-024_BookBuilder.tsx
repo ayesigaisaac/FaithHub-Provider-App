@@ -37,6 +37,7 @@ import {
   Zap,
 } from "lucide-react";
 import { handleRawPlaceholderAction } from "./placeholderActions";
+import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
  * FaithHub — FH-P-024 Book Builder
@@ -438,8 +439,7 @@ function cx(...xs: Array<string | false | null | undefined>) {
 }
 
 function safeNav(url: string) {
-  if (typeof window === "undefined") return;
-  window.location.assign(url);
+  navigateWithRouter(url);
 }
 
 function nextId(prefix: string) {

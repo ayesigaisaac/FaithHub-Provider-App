@@ -5,6 +5,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { CircularProgress } from '@mui/material';
 import { useNotification } from '@/contexts/NotificationContext';
 import { useAsyncAction } from '@/hooks/useAsyncAction';
+import { navigateWithRouter } from "@/navigation/routerNavigate";
 import {
   AlertTriangle,
   ArrowRight,
@@ -75,8 +76,7 @@ const DEFAULT_COVER =
 const cx = (...xs: Array<string | false | null | undefined>) => xs.filter(Boolean).join(' ');
 
 function safeNav(url: string) {
-  if (typeof window === 'undefined') return;
-  window.location.assign(url);
+  navigateWithRouter(url);
 }
 
 async function copyText(text: string) {
@@ -1666,6 +1666,8 @@ export default function PostLivePublishingPage() {
 function PlusIconSmall() {
   return <span className="inline-flex h-4 w-4 items-center justify-center text-base leading-none">+</span>;
 }
+
+
 
 
 

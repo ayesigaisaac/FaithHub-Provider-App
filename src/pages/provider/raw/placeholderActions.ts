@@ -1,4 +1,5 @@
 import type { MouseEvent } from 'react';
+import { navigateWithRouter } from '@/navigation/routerNavigate';
 import {
   getButtonAction,
   isButtonActionId,
@@ -13,13 +14,7 @@ function normalizeLabel(text: string): string {
 }
 
 function go(path: string): void {
-  try {
-    if (window.location.pathname === path) return;
-    window.history.pushState({}, '', path);
-    window.dispatchEvent(new PopStateEvent('popstate'));
-  } catch {
-    window.location.assign(path);
-  }
+  navigateWithRouter(path);
 }
 
 function setPreviewMode(mode: 'desktop' | 'mobile'): void {

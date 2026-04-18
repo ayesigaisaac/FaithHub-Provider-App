@@ -41,6 +41,7 @@ import {
   Zap,
 } from "lucide-react";
 import { handleRawPlaceholderAction } from "./placeholderActions";
+import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
  * FaithHub — Live Builder (Provider)
@@ -616,8 +617,7 @@ function cx(...items: Array<string | false | undefined | null>) {
 }
 
 function safeNav(url: string) {
-  if (typeof window === "undefined") return;
-  window.location.assign(url);
+  navigateWithRouter(url);
 }
 
 function pad2(n: number) {
