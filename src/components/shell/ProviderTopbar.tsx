@@ -18,6 +18,7 @@ import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import { useMemo, useState, type MouseEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/auth/useAuth';
+import { BrandLogo } from '@/components/branding/BrandLogo';
 import { topbarTabs } from '@/navigation/topbarTabs';
 import type { ProviderPageMeta } from '@/navigation/providerPages';
 import { resolveKnownProviderPath } from '@/navigation/providerPages';
@@ -87,10 +88,11 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
           <IconButton sx={{ display: { md: 'none' } }} onClick={onOpenSidebar}>
             <MenuRoundedIcon />
           </IconButton>
-          <Avatar src="/assets/logo.svg" alt="FaithHub" sx={{ width: { xs: 34, md: 46 }, height: { xs: 34, md: 46 } }} />
+          <Box sx={{ display: { xs: 'block', sm: 'none' } }}>
+            <BrandLogo variant="symbol" alt="FaithHub Provider" style={{ height: 34, width: 34 }} />
+          </Box>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            <Typography sx={{ fontWeight: 900, fontSize: { sm: 22, md: 30 }, lineHeight: 0.9, color: '#13b981' }}>FaithHub</Typography>
-            <Typography sx={{ fontWeight: 800, fontSize: { sm: 20, md: 28 }, lineHeight: 0.9, color: '#111827' }}>Provider</Typography>
+            <BrandLogo variant="landscape" alt="FaithHub Provider" style={{ height: 62, width: 'auto' }} />
           </Box>
         </Stack>
 

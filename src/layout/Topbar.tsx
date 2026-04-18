@@ -1,6 +1,7 @@
 import { Bell, ChevronDown, Menu, Search } from 'lucide-react';
 import { useState, type ChangeEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { BrandLogo } from '@/components/branding/BrandLogo';
 
 interface TopbarProps {
   onOpenSidebar: () => void;
@@ -27,6 +28,7 @@ export function Topbar({ onOpenSidebar }: TopbarProps) {
         </button>
 
         <div className="hidden items-center gap-3 lg:flex">
+          <BrandLogo variant="symbol" alt="FaithHub" className="h-10 w-10 rounded-xl" />
           <div className="min-w-0">
             <p className="truncate text-sm font-semibold text-slate-900">FaithHub Provider</p>
             <p className="truncate text-xs text-slate-500">Workspace Dashboard</p>

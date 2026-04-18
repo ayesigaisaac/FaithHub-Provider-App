@@ -27,6 +27,7 @@ import {
 } from 'lucide-react';
 import { useEffect, useId, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { BrandLogo } from '@/components/branding/BrandLogo';
 
 interface SidebarProps {
   onClose?: () => void;
@@ -149,8 +150,8 @@ export function Sidebar({ onClose }: SidebarProps) {
   return (
     <aside className="flex h-full w-full flex-col border-r border-slate-200 bg-[#f4f6f6]">
       <div className="flex items-center justify-between border-b border-slate-200 px-5 py-5">
-        <div>
-          <h2 className="text-3xl font-bold leading-none tracking-[-0.02em] text-slate-900">Navigation</h2>
+        <div className="min-w-0">
+          <BrandLogo variant="landscape" alt="FaithHub Provider" className="h-12 w-auto max-w-full" />
           <p className="mt-1 text-base font-semibold text-slate-500">Modules</p>
         </div>
         <button

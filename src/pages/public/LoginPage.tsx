@@ -19,6 +19,7 @@ import VisibilityRoundedIcon from '@mui/icons-material/VisibilityRounded';
 import { useEffect, useMemo, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/auth/useAuth';
+import { BrandLogo } from '@/components/branding/BrandLogo';
 import { isKnownProviderPath } from '@/navigation/providerPages';
 import type { WorkspaceContext } from '@/auth/types';
 
@@ -119,6 +120,9 @@ export default function LoginPage() {
           <CardContent sx={{ p: 4 }}>
             <Stack spacing={2.25} component="form" onSubmit={onSubmit}>
               <Box>
+                <Box sx={{ mb: 1.25 }}>
+                  <BrandLogo variant="landscape" alt="FaithHub Provider" style={{ height: 70, width: 'auto', maxWidth: '100%' }} />
+                </Box>
                 <Typography variant="overline" color="primary.main" fontWeight={800}>
                   FaithHub Provider
                 </Typography>

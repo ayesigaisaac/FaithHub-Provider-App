@@ -21,6 +21,7 @@ import {
   Mail,
 } from "lucide-react";
 import { ThemeModeToggle } from "@/components/theme/ThemeModeToggle";
+import { BrandLogo } from "@/components/branding/BrandLogo";
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -238,9 +239,7 @@ export default function FaithHubHomeLandingPageV3Fixed() {
 
         <header className="relative z-20 mx-auto flex max-w-7xl items-center justify-between px-6 py-6 lg:px-10">
           <div className="flex items-center gap-3">
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-950 text-white shadow-[0_12px_30px_rgba(15,23,42,0.22)]">
-              <span className="text-lg font-black">FH</span>
-            </div>
+            <BrandLogo variant="symbol" alt="FaithHub icon" className="h-12 w-12 rounded-2xl" />
             <div>
               <div className="text-lg font-black tracking-tight">FaithHub</div>
               <div className="text-[11px] font-black uppercase tracking-[0.24em] text-slate-500">Powered by EVzone</div>
@@ -608,9 +607,7 @@ export default function FaithHubHomeLandingPageV3Fixed() {
           <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr_0.8fr_0.8fr_0.8fr]">
             <div>
               <div className="flex items-center gap-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-950 text-white shadow-lg">
-                  <span className="text-lg font-black">FH</span>
-                </div>
+                <BrandLogo variant="symbol" alt="FaithHub icon" className="h-12 w-12 rounded-2xl" />
                 <div>
                   <div className="text-lg font-black tracking-tight">FaithHub</div>
                   <div className="text-[11px] font-black uppercase tracking-[0.24em] text-slate-500">Powered by EVzone</div>
