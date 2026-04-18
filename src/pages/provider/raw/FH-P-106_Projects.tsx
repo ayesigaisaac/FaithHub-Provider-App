@@ -1949,7 +1949,7 @@ function ProjectsPage() {
           </Card>
 
           <div className="rounded-full border border-emerald-200 bg-emerald-50 px-4 py-1.5 text-center text-[12px] text-slate-500">
-            Concept preview of the generated FaithHub Projects page · EVzone Green primary (#03cd8c) · Orange secondary (#f77f00)
+            FaithHub preview
           </div>
         </div>
       </div>
@@ -2280,6 +2280,7 @@ function ProjectsPage() {
 }
 
 export default ProjectsPage;
+
 
 
 

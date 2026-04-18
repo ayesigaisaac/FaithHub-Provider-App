@@ -1533,11 +1533,12 @@ export default function SubscriptionsPage() {
       ) : null}
 
       <div className="mx-auto mt-4 max-w-[1550px] rounded-[18px] bg-emerald-50 px-4 py-3 text-[12px] text-emerald-700">
-        Concept preview of the generated FaithHub Subscriptions page · EVzone Green primary ({EV_GREEN}) · Orange secondary ({EV_ORANGE}) · Medium gray ({EV_GREY})
+        FaithHub preview
       </div>
     </div>
   );
 }
+
 
 
 

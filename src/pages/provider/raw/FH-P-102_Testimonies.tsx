@@ -1699,7 +1699,7 @@ export default function TestimoniesPage() {
                 </div>
 
                 <div className="text-[11px] text-slate-500 dark:text-slate-400">
-                  Concept preview of the generated FaithHub Testimonies page • EVzone Green primary ({EV_GREEN}) • Orange secondary ({EV_ORANGE})
+                  FaithHub preview
                 </div>
               </div>
             ) : null}
@@ -1720,6 +1720,7 @@ export default function TestimoniesPage() {
     </div>
   );
 }
+
 
 
 

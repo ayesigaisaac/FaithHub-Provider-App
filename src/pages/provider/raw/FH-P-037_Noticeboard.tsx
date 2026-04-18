@@ -1883,12 +1883,13 @@ export default function FaithHubNoticeboardPage() {
         </div>
 
         <div className="rounded-[24px] border border-emerald-200 bg-emerald-50 px-6 py-3 text-center text-[13px] font-medium text-slate-700">
-          Concept preview of the generated FaithHub Noticeboard page ? EVzone Green primary ({EV_GREEN}) ? Orange secondary ({EV_ORANGE})
+          FaithHub preview
         </div>
       </div>
     </div>
   );
 }
+
 
 
 

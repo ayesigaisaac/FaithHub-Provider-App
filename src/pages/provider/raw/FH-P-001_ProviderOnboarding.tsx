@@ -2728,7 +2728,7 @@ export default function ProviderOnboardingPage() {
         </main>
 
         <div className="mt-5 rounded-full border border-emerald-200 bg-emerald-50 px-5 py-3 text-center text-[12px] font-semibold text-emerald-700 dark:border-emerald-800 dark:bg-emerald-900/20 dark:text-emerald-300">
-          Concept preview of the generated FaithHub Provider Onboarding page - EVzone Green primary (#03cd8c) - Orange secondary (#f77f00)
+          FaithHub preview
         </div>
       </div>
 
@@ -2743,6 +2743,7 @@ export default function ProviderOnboardingPage() {
     </div>
   );
 }
+
 
 
 

@@ -1616,7 +1616,7 @@ export default function CommunityForumPage() {
         </div>
 
         <div className="mt-3 rounded-full border border-[rgba(3,205,140,0.35)] bg-[rgba(3,205,140,0.10)] px-4 py-2 text-center text-[12px] text-slate-600 shadow-sm">
-          Concept preview of the generated FaithHub Community Forum page • EVzone Green primary ({EV_GREEN}) • Orange secondary ({EV_ORANGE}) • Medium grey ({EV_GREY}) • Light surface ({EV_LIGHT})
+          FaithHub preview
         </div>
       </div>
 
@@ -1640,6 +1640,7 @@ export default function CommunityForumPage() {
     </div>
   );
 }
+
 
 
 

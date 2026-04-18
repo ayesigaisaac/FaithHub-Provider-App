@@ -1881,7 +1881,7 @@ export default function SeriesBuilderPage() {
                 <SeriesLandingPreview draft={draft} previewMode={previewMode} readinessScore={readiness.score} />
               </div>
               <div className="mt-4 rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-[12px] font-semibold text-emerald-700">
-                Concept preview of the generated FaithHub Series Builder page.
+                FaithHub preview
               </div>
             </div>
           </div>
@@ -1932,6 +1932,7 @@ export default function SeriesBuilderPage() {
     </div>
   );
 }
+
 
 
 

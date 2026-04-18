@@ -1025,7 +1025,7 @@ export default function CommunityGroupsPage() {
                   Community Groups
                 </div>
                 <div className="mt-1 text-[13px] leading-6 text-slate-500">
-                  Premium community group operating system · EVzone Green primary, Orange secondary
+                  Community group operating system for multi-campus ministry teams.
                 </div>
               </div>
             </div>
@@ -1058,9 +1058,9 @@ export default function CommunityGroupsPage() {
               <span>{careBacklog} care escalations need review</span>
               <span>•</span>
               <span>3 groups are ready for noticeboard and live-linked follow-up</span>
-              <span className="ml-auto text-[11px] font-black uppercase tracking-[0.12em] text-slate-400">
-                Premium community ops
-              </span>
+                <span className="ml-auto text-[11px] font-black uppercase tracking-[0.12em] text-slate-400">
+                Community ops
+                </span>
             </div>
           </div>
 
@@ -1109,12 +1109,12 @@ export default function CommunityGroupsPage() {
                 <div>
                   <div className="text-[14px] font-black text-slate-900">Community groups catalog</div>
                   <div className="mt-1 max-w-2xl text-[12px] text-slate-500">
-                    Premium master library for discipleship circles, prayer communities, youth groups, family gatherings, and service-led communities.
+                    Master library for discipleship circles, prayer communities, youth groups, family gatherings, and service-led communities.
                   </div>
                 </div>
                 <div className="inline-flex items-center gap-2">
                   <Pill>{fmtInt(filteredGroups.length)} groups</Pill>
-                  <Pill>Command view</Pill>
+                  <Pill>Operations view</Pill>
                 </div>
               </div>
 
@@ -1579,7 +1579,7 @@ export default function CommunityGroupsPage() {
             className="mx-4 mb-4 rounded-full px-6 py-1.5 text-center text-[12px] text-slate-600"
             style={{ background: "rgba(3,205,140,0.16)", border: "1px solid rgba(3,205,140,0.30)" }}
           >
-            Concept preview of the generated FaithHub Community Groups page · EVzone Green primary (#03cd8c) · Orange secondary (#f77f00)
+            FaithHub Community Groups preview
           </div>
         </div>
       </div>
@@ -1588,7 +1588,7 @@ export default function CommunityGroupsPage() {
         open={previewOpen}
         onClose={() => setPreviewOpen(false)}
         title="Community Groups · Large preview"
-        subtitle="Premium preview of the selected group destination, care signals, and invite experience."
+        subtitle="Preview of the selected group destination, care signals, and invite experience."
       >
         <GroupExperiencePreviewInner group={selectedGroup} previewMode={previewMode} />
       </Drawer>

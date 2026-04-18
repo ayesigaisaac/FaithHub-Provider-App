@@ -1668,7 +1668,7 @@ export default function CounselingPage() {
         </section>
 
         <section className="rounded-full border border-emerald-200 dark:border-emerald-800 bg-emerald-50/70 dark:bg-emerald-900/20 px-4 py-2 text-center text-[12px] text-slate-600 dark:text-slate-300 shadow-sm transition-colors">
-          Concept preview of the generated FaithHub Counseling page · EVzone Green primary ({EV_GREEN}) · Orange secondary ({EV_ORANGE})
+          FaithHub preview
         </section>
       </div>
 
@@ -1713,6 +1713,7 @@ export default function CounselingPage() {
     </div>
   );
 }
+
 
 
 
