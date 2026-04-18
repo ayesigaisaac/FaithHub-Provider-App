@@ -6,6 +6,7 @@ import type { AuthUser, UserRole, WorkspaceContext } from './types';
 type LoginInput = {
   email: string;
   password: string;
+  rememberMe?: boolean;
 };
 
 type AuthContextValue = {
@@ -71,8 +72,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setLoading(true);
     try {
       const session = await loginRequest(input);
-      setStoredToken(session.token);
-      setStoredWorkspace(session.workspace);
+      const rememberMe = input.rememberMe ?? true;
+      setStoredToken(session.token, rememberMe);
+      setStoredWorkspace(session.workspace, rememberMe);
       setToken(session.token);
       setUser(session.user);
       setRole(session.role);
