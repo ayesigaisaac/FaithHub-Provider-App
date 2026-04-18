@@ -775,7 +775,7 @@ function SeriesLandingPreview({
                     type="button"
                     className="flex-1 rounded-2xl bg-amber-500 px-3 py-2 text-[12px] font-bold text-white"
                     style={{ background: EV_ORANGE }}
-                   onClick={handleRawPlaceholderAction}>
+                    onClick={handleRawPlaceholderAction("open_audience_notifications")}>
                     Notify me
                   </button>
                 </div>
@@ -814,10 +814,10 @@ function SeriesLandingPreview({
               ))}
             </div>
             <div className="mt-5 flex gap-3">
-              <button className="rounded-2xl px-4 py-2 text-[12px] font-bold text-white" style={{ background: EV_GREEN }} onClick={handleRawPlaceholderAction}>
+              <button className="rounded-2xl px-4 py-2 text-[12px] font-bold text-white" style={{ background: EV_GREEN }} onClick={handleRawPlaceholderAction("open_series_dashboard")}>
                 Follow series
               </button>
-              <button className="rounded-2xl px-4 py-2 text-[12px] font-bold text-white" style={{ background: EV_ORANGE }} onClick={handleRawPlaceholderAction}>
+              <button className="rounded-2xl px-4 py-2 text-[12px] font-bold text-white" style={{ background: EV_ORANGE }} onClick={handleRawPlaceholderAction("open_audience_notifications")}>
                 Get reminders
               </button>
             </div>

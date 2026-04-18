@@ -1,4 +1,4 @@
-// @ts-nocheck
+ï»¿// @ts-nocheck
 
 "use client";
 
@@ -33,7 +33,7 @@ import { handleRawPlaceholderAction } from "./placeholderActions";
 import { KpiTile } from "../../../components/ui/KpiTile";
 
 /**
- * FaithHub — FH-P-026 Merchandise Manager
+ * FaithHub â€” FH-P-026 Merchandise Manager
  * ---------------------------------------
  * Premium Provider-side control surface for FaithMart merchandise:
  * apparel, gifts, journals, worship essentials, event kits, and community bundles.
@@ -1062,10 +1062,10 @@ function MerchandiseStorefrontPreview({
                   <button
                     className="flex-1 rounded-2xl px-3 py-2 text-[12px] font-bold text-white"
                     style={{ background: EV_ORANGE }}
-                   onClick={handleRawPlaceholderAction}>
+                   onClick={handleRawPlaceholderAction("open_merchandise_builder")}>
                     View item
                   </button>
-                  <button className="flex-1 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-[12px] font-bold text-slate-700 dark:text-slate-200 transition-colors" onClick={handleRawPlaceholderAction}>
+                  <button className="flex-1 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-[12px] font-bold text-slate-700 dark:text-slate-200 transition-colors" onClick={handleRawPlaceholderAction("copy_current_link")}>
                     Save
                   </button>
                 </div>
@@ -1153,10 +1153,10 @@ function MerchandiseStorefrontPreview({
             <button
               className="rounded-2xl px-4 py-2 text-[12px] font-bold text-white"
               style={{ background: EV_ORANGE }}
-             onClick={handleRawPlaceholderAction}>
-              View item
+             onClick={handleRawPlaceholderAction("open_merchandise_builder")}>
+                    View item
             </button>
-            <button className="rounded-2xl border border-white/25 bg-white/10 px-4 py-2 text-[12px] font-bold text-white backdrop-blur" onClick={handleRawPlaceholderAction}>
+            <button className="rounded-2xl border border-white/25 bg-white/10 px-4 py-2 text-[12px] font-bold text-white backdrop-blur" onClick={handleRawPlaceholderAction("copy_current_link")}>
               Save for later
             </button>
           </div>
@@ -1402,7 +1402,7 @@ export default function MerchandiseManagerPage() {
         ? `${low.length} merchandise item${low.length > 1 ? "s" : ""} running low`
         : "Inventory is healthy",
       hint: low.length
-        ? `${low.map((item) => item.title).slice(0, 2).join(" • ")}${low.length > 2 ? "…" : ""}`
+        ? `${low.map((item) => item.title).slice(0, 2).join(" â€¢ ")}${low.length > 2 ? "â€¦" : ""}`
         : "No urgent low-stock merch issues right now.",
       tone: low.length ? "warn" : "good",
     });
@@ -1479,7 +1479,7 @@ export default function MerchandiseManagerPage() {
               </h1>
               <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-slate-500 dark:text-slate-400">
                 Manage gifts, apparel, journals, worship essentials, and event kits from one
-                premium Provider-side surface — with direct links into Live Sessions, events,
+                premium Provider-side surface â€” with direct links into Live Sessions, events,
                 giving journeys, and Beacon promotion.
               </p>
 
@@ -1535,7 +1535,7 @@ export default function MerchandiseManagerPage() {
                     },
                     {
                       label: "Conference Welcome Pack",
-                      hint: "Strong event performance — consider a new Beacon push.",
+                      hint: "Strong event performance â€” consider a new Beacon push.",
                     },
                     {
                       label: "Prayer Journal Gift Set",
@@ -1579,7 +1579,7 @@ export default function MerchandiseManagerPage() {
                 Search and filter merchandise
               </div>
               <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
-                Find apparel, gifts, event kits, or worship essentials fast — then jump straight into details or preview.
+                Find apparel, gifts, event kits, or worship essentials fast â€” then jump straight into details or preview.
               </div>
               <div className="mt-4 flex items-center gap-3 rounded-[24px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-4 py-3 transition-colors">
                 <Search className="h-4 w-4 text-slate-400" />
@@ -1868,7 +1868,7 @@ export default function MerchandiseManagerPage() {
         open={drawerOpen}
         onClose={() => setDrawerOpen(false)}
         title={selected.title}
-        subtitle={`${selected.kind} • ${selected.collection} • Updated ${fmtDate(selected.updatedISO)}`}
+        subtitle={`${selected.kind} â€¢ ${selected.collection} â€¢ Updated ${fmtDate(selected.updatedISO)}`}
       >
         <div className="space-y-4">
           <div className="flex flex-wrap gap-2">
@@ -2083,6 +2083,8 @@ export default function MerchandiseManagerPage() {
     </div>
   );
 }
+
+
 
 
 

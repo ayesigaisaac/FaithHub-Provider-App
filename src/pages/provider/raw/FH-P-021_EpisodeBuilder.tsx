@@ -626,10 +626,10 @@ function EpisodePreview({
                 </div>
 
                 <div className="mt-4 flex gap-2">
-                  <button className="flex-1 rounded-2xl px-3 py-2 text-[12px] font-bold text-white" style={{ background: EV_GREEN }} onClick={handleRawPlaceholderAction}>
+                  <button className="flex-1 rounded-2xl px-3 py-2 text-[12px] font-bold text-white" style={{ background: EV_GREEN }} onClick={handleRawPlaceholderAction("open_live_dashboard")}>
                     Join live
                   </button>
-                  <button className="flex-1 rounded-2xl px-3 py-2 text-[12px] font-bold text-white" style={{ background: EV_ORANGE }} onClick={handleRawPlaceholderAction}>
+                  <button className="flex-1 rounded-2xl px-3 py-2 text-[12px] font-bold text-white" style={{ background: EV_ORANGE }} onClick={handleRawPlaceholderAction("open_audience_notifications")}>
                     Save reminder
                   </button>
                 </div>
@@ -671,10 +671,10 @@ function EpisodePreview({
               ))}
             </div>
             <div className="mt-4 flex gap-3">
-              <button className="rounded-2xl px-4 py-2 text-[12px] font-bold text-white" style={{ background: EV_GREEN }} onClick={handleRawPlaceholderAction}>
+              <button className="rounded-2xl px-4 py-2 text-[12px] font-bold text-white" style={{ background: EV_GREEN }} onClick={handleRawPlaceholderAction("open_live_dashboard")}>
                 Join session
               </button>
-              <button className="rounded-2xl px-4 py-2 text-[12px] font-bold text-white" style={{ background: EV_ORANGE }} onClick={handleRawPlaceholderAction}>
+              <button className="rounded-2xl px-4 py-2 text-[12px] font-bold text-white" style={{ background: EV_ORANGE }} onClick={handleRawPlaceholderAction("open_resources_manager")}>
                 Episode resources
               </button>
             </div>

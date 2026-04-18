@@ -935,13 +935,13 @@ function PreviewRail({
               type="button"
               className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-2xl text-[13px] font-black text-white"
               style={{ background: EV_GREEN }}
-             onClick={handleRawPlaceholderAction}>
+              onClick={handleRawPlaceholderAction("open_resources_manager")}>
               <Eye className="h-4 w-4" /> Open details
             </button>
             <button
               type="button"
               className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white text-[13px] font-black text-slate-800"
-             onClick={handleRawPlaceholderAction}>
+              onClick={handleRawPlaceholderAction("copy_current_link")}>
               <Download className="h-4 w-4" /> Download
             </button>
           </div>
