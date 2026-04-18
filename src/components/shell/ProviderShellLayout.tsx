@@ -60,7 +60,7 @@ export function ProviderShellLayout() {
               border: '1px solid',
               borderColor: 'divider',
               bgcolor: '#f8faf9',
-              p: { xs: 0.75, md: 1 },
+              p: { xs: 0.5, md: 0.75 },
               minHeight: '100%',
               boxShadow: '0 20px 40px -36px rgba(15, 23, 42, 0.55)',
             }}

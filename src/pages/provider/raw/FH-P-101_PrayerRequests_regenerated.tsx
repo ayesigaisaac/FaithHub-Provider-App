@@ -758,7 +758,7 @@ function PrayerRequestsPage() {
                   FH
                 </div>
                 <div className="min-w-0">
-                  <div className="text-[46px] leading-none font-black tracking-tight text-slate-900">Prayer Requests</div>
+                  <div className="text-[34px] sm:text-[40px] lg:text-[46px] leading-none font-black tracking-tight text-slate-900">Prayer Requests</div>
                   <div className="mt-1 text-[16px] text-slate-500">
                     Premium prayer intake + care routing system · EVzone Green primary, Orange secondary
                   </div>
