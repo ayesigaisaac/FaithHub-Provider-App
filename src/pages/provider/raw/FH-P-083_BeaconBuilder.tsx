@@ -36,6 +36,7 @@ import {
 } from "lucide-react";
 import { handleRawPlaceholderAction } from "./placeholderActions";
 import { KpiTile } from "../../../components/ui/KpiTile";
+import { type ButtonActionId, resolveActionFromLabel } from "@/navigation/buttonActions";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
@@ -1169,6 +1170,8 @@ function BeaconPreviewCard({
 
   const cta = builder.ctaLabel || "Explore now";
   const secondary = builder.secondaryCtaLabel || "Save for later";
+  const resolvePreviewAction = (label: string): ButtonActionId =>
+    resolveActionFromLabel(label) ?? "open_beacon_dashboard";
   const showCarousel = builder.creativeLayout === "Carousel" || builder.creativeLayout === "Mixed";
   const aspectClass =
     surface === "Story rail" || surface === "Live countdown rail"
@@ -1261,10 +1264,10 @@ function BeaconPreviewCard({
               ) : null}
 
               <div className="mt-4 flex flex-wrap items-center gap-2">
-                <button type="button" className="inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-2.5 text-sm font-black text-white" style={{ background: EV_GREEN }} onClick={handleRawPlaceholderAction}>
+                <button type="button" className="inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-2.5 text-sm font-black text-white" style={{ background: EV_GREEN }} onClick={handleRawPlaceholderAction(resolvePreviewAction(cta))}>
                   {cta}
                 </button>
-                <button type="button" className="inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-2.5 text-sm font-black text-slate-900 ring-1 ring-slate-200 dark:text-slate-100 dark:ring-slate-700" onClick={handleRawPlaceholderAction}>
+                <button type="button" className="inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-2.5 text-sm font-black text-slate-900 ring-1 ring-slate-200 dark:text-slate-100 dark:ring-slate-700" onClick={handleRawPlaceholderAction(resolvePreviewAction(secondary))}>
                   {secondary}
                 </button>
               </div>

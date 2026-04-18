@@ -845,14 +845,26 @@ function TeachingPreview({
               type="button"
               className="rounded-full px-5 py-2 text-[13px] font-bold text-white"
               style={{ background: EV_GREEN }}
-             onClick={handleRawPlaceholderAction}>
+              onClick={handleRawPlaceholderAction(
+                primaryCta === "Join live" || primaryCta === "Watch replay"
+                  ? "open_live_dashboard"
+                  : primaryCta === "Follow series"
+                    ? "open_series_dashboard"
+                    : "open_teachings_dashboard",
+              )}>
               {primaryCta}
             </button>
             <button
               type="button"
               className="rounded-full px-5 py-2 text-[13px] font-bold text-white"
               style={{ background: EV_ORANGE }}
-             onClick={handleRawPlaceholderAction}>
+              onClick={handleRawPlaceholderAction(
+                secondaryCta === "Get reminders"
+                  ? "open_audience_notifications"
+                  : secondaryCta === "View notes"
+                    ? "open_resources_manager"
+                    : "open_teachings_dashboard",
+              )}>
               {secondaryCta}
             </button>
           </div>

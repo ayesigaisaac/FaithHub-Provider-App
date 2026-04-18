@@ -1,4 +1,4 @@
-// @ts-nocheck
+ï»¿// @ts-nocheck
 "use client";
 
 import React, { useMemo, useState } from "react";
@@ -35,7 +35,7 @@ import { handleRawPlaceholderAction } from "./placeholderActions";
 import { KpiTile } from "../../../components/ui/KpiTile";
 
 /**
- * FaithHub — FH-P-037 Noticeboard
+ * FaithHub â€” FH-P-037 Noticeboard
  * --------------------------------
  * Premium Provider-side noticeboard / announcements operating surface.
  *
@@ -833,7 +833,7 @@ function BoardPreviewDesktop({ draft }: { draft: ComposerState }) {
               label: "Board sections",
               items: [
                 "Pinned notice lane",
-                "Today’s notices",
+                "Todayâ€™s notices",
                 "Campus-only updates",
               ],
             },
@@ -951,7 +951,7 @@ function BoardPreviewMobile({ draft }: { draft: ComposerState }) {
               type="button"
               className="inline-flex w-full items-center justify-center gap-2 rounded-[18px] px-4 py-3 text-[12px] font-black text-white"
               style={{ background: EV_GREEN }}
-             onClick={handleRawPlaceholderAction}>
+              onClick={handleRawPlaceholderAction("open_noticeboard")}>
               <Bell className="h-4 w-4" />
               Open full notice
             </button>
@@ -1177,7 +1177,7 @@ export default function FaithHubNoticeboardPage() {
               </div>
               <div className="mt-3 max-w-4xl text-[16px] leading-relaxed text-slate-500">
                 Run institution-wide announcements, campus updates, prayer alerts, volunteer calls,
-                event reminders, and giving notices from one premium board — then route them into
+                event reminders, and giving notices from one premium board â€” then route them into
                 Live Sessions, notifications, events, giving, and Beacon without losing control.
               </div>
 
@@ -1870,7 +1870,9 @@ export default function FaithHubNoticeboardPage() {
                       type="button"
                       className="mt-3 rounded-full px-4 py-2 text-[11px] font-semibold text-white"
                       style={{ background: item.accent }}
-                     onClick={handleRawPlaceholderAction}>
+                      onClick={handleRawPlaceholderAction(
+                        item.action === "Review lane" ? "open_roles_permissions" : "open_noticeboard",
+                      )}>
                       {item.action}
                     </button>
                   </div>

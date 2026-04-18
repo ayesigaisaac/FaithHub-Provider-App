@@ -858,6 +858,14 @@ function BrowserPreview({ campaign }: { campaign: BeaconCampaign }) {
       : campaign.sourceType === "Live Session"
       ? "Join session"
       : "Open destination";
+  const primaryActionId =
+    campaign.sourceType === "Crowdfund" || campaign.sourceType === "Fund"
+      ? "open_donations_funds"
+      : campaign.sourceType === "Event"
+        ? "open_events_manager"
+        : campaign.sourceType === "Replay" || campaign.sourceType === "Clip" || campaign.sourceType === "Live Session"
+          ? "open_live_dashboard"
+          : "open_beacon_dashboard";
 
   return (
     <div className="overflow-hidden rounded-[28px] border border-slate-200 dark:border-slate-800 bg-slate-950 shadow-sm transition-colors">
@@ -877,13 +885,13 @@ function BrowserPreview({ campaign }: { campaign: BeaconCampaign }) {
               type="button"
               className="inline-flex items-center gap-2 rounded-2xl px-3 py-2 text-[12px] font-extrabold text-white"
               style={{ background: accentColor(campaign.accent) }}
-             onClick={handleRawPlaceholderAction}>
+              onClick={handleRawPlaceholderAction(primaryActionId)}>
               {primaryCTA}
             </button>
             <button
               type="button"
               className="inline-flex items-center gap-2 rounded-2xl border border-white/20 bg-white/10 px-3 py-2 text-[12px] font-extrabold text-white backdrop-blur"
-             onClick={handleRawPlaceholderAction}>
+              onClick={handleRawPlaceholderAction("open_beacon_dashboard")}>
               Learn more
             </button>
           </div>
@@ -918,6 +926,14 @@ function PhonePreview({ campaign }: { campaign: BeaconCampaign }) {
       : campaign.sourceType === "Live Session"
       ? "Join"
       : "Open";
+  const primaryActionId =
+    primaryLabel === "Give"
+      ? "open_donations_funds"
+      : primaryLabel === "Register"
+        ? "open_events_manager"
+        : primaryLabel === "Watch" || primaryLabel === "Join"
+          ? "open_live_dashboard"
+          : "open_beacon_dashboard";
 
   return (
     <div className="mx-auto w-full max-w-[310px] md:max-w-[360px] rounded-[34px] bg-slate-950 p-3 shadow-[0_18px_60px_rgba(0,0,0,0.35)] transition-colors">
@@ -961,13 +977,13 @@ function PhonePreview({ campaign }: { campaign: BeaconCampaign }) {
                     type="button"
                     className="inline-flex flex-1 items-center justify-center rounded-2xl px-3 py-2.5 text-[12px] font-black text-white"
                     style={{ background: accentColor(campaign.accent) }}
-                   onClick={handleRawPlaceholderAction}>
+                    onClick={handleRawPlaceholderAction(primaryActionId)}>
                     {primaryLabel}
                   </button>
                   <button
                     type="button"
                     className="inline-flex items-center justify-center rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2.5 text-[12px] font-black text-slate-900 dark:text-slate-100"
-                   onClick={handleRawPlaceholderAction}>
+                    onClick={handleRawPlaceholderAction("copy_current_link")}>
                     Save
                   </button>
                 </div>

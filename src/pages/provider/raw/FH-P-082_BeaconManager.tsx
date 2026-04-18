@@ -1417,13 +1417,13 @@ function PreviewSurface({
             <button
               className="inline-flex flex-1 items-center justify-center rounded-2xl px-3 py-2 text-[12px] font-extrabold text-white"
               style={{ background: EV_GREEN }}
-             onClick={handleRawPlaceholderAction}>
+              onClick={handleRawPlaceholderAction("open_beacon_dashboard")}>
               Open preview
             </button>
             <button
               className="inline-flex flex-1 items-center justify-center rounded-2xl px-3 py-2 text-[12px] font-extrabold text-white"
               style={{ background: EV_ORANGE }}
-             onClick={handleRawPlaceholderAction}>
+              onClick={handleRawPlaceholderAction("open_beacon_dashboard")}>
               Launch CTA
             </button>
           </div>

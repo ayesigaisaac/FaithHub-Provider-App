@@ -1665,7 +1665,7 @@ function ProjectsPage() {
                           type="button"
                           className="inline-flex items-center gap-2 text-[12px] font-black"
                           style={{ color: EV_ORANGE }}
-                         onClick={handleRawPlaceholderAction}>
+                          onClick={handleRawPlaceholderAction("open_projects")}>
                           Use template
                           <ChevronRight className="h-4 w-4" />
                         </button>

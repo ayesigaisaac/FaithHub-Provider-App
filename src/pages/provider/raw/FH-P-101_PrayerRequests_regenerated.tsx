@@ -581,10 +581,10 @@ function PreviewCard({
           <div className="text-[14px] font-bold text-slate-900">{request.title}</div>
           <div className="mt-1 text-[12px] text-slate-500">{request.group} · {request.submittedLabel} · {request.location}</div>
           <div className="mt-4 flex flex-wrap gap-2">
-            <button className="rounded-full px-4 py-2 text-[12px] font-semibold text-white" style={{ background: EV_GREEN }} onClick={handleRawPlaceholderAction}>
+            <button className="rounded-full px-4 py-2 text-[12px] font-semibold text-white" style={{ background: EV_GREEN }} onClick={handleRawPlaceholderAction("open_prayer_requests")}>
               Pray now
             </button>
-            <button className="rounded-full border border-slate-200 bg-white px-4 py-2 text-[12px] font-semibold text-slate-700" onClick={handleRawPlaceholderAction}>
+            <button className="rounded-full border border-slate-200 bg-white px-4 py-2 text-[12px] font-semibold text-slate-700" onClick={handleRawPlaceholderAction("open_counseling")}>
               Send encouragement
             </button>
           </div>
@@ -613,7 +613,7 @@ function TemplateTile({ template }: { template: TemplateCard }) {
         type="button"
         className="mt-4 inline-flex items-center gap-1 text-[12px] font-semibold"
         style={{ color: EV_GREEN }}
-       onClick={handleRawPlaceholderAction}>
+        onClick={handleRawPlaceholderAction("open_prayer_requests")}>
         Use template <ArrowRight className="h-3.5 w-3.5" />
       </button>
     </div>
@@ -1063,13 +1063,13 @@ function PrayerRequestsPage() {
                   <div className="mt-4 text-[14px] leading-7 text-slate-600">{selectedRequest.summary}</div>
 
                   <div className="mt-5 flex flex-wrap gap-2">
-                    <button className="rounded-full px-5 py-2.5 text-[13px] font-semibold text-white" style={{ background: EV_GREEN }} onClick={handleRawPlaceholderAction}>
+                    <button className="rounded-full px-5 py-2.5 text-[13px] font-semibold text-white" style={{ background: EV_GREEN }} onClick={handleRawPlaceholderAction("open_prayer_requests")}>
                       Pray now
                     </button>
-                    <button className="rounded-full border border-slate-200 bg-white px-5 py-2.5 text-[13px] font-semibold text-slate-700" onClick={handleRawPlaceholderAction}>
+                    <button className="rounded-full border border-slate-200 bg-white px-5 py-2.5 text-[13px] font-semibold text-slate-700" onClick={handleRawPlaceholderAction("open_counseling")}>
                       Send encouragement
                     </button>
-                    <button className="rounded-full border border-slate-200 bg-white px-5 py-2.5 text-[13px] font-semibold text-slate-700" onClick={handleRawPlaceholderAction}>
+                    <button className="rounded-full border border-slate-200 bg-white px-5 py-2.5 text-[13px] font-semibold text-slate-700" onClick={handleRawPlaceholderAction("open_counseling")}>
                       Request follow-up
                     </button>
                   </div>

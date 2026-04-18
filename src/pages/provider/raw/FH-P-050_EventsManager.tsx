@@ -1142,10 +1142,10 @@ function EventPreviewSurface({
         </div>
 
         <div className="grid grid-cols-2 gap-2">
-          <button className="inline-flex items-center justify-center gap-2 rounded-2xl bg-slate-900 dark:bg-slate-100 px-4 py-2.5 text-[12px] font-extrabold text-white dark:text-slate-900 shadow-sm" onClick={handleRawPlaceholderAction}>
+          <button className="inline-flex items-center justify-center gap-2 rounded-2xl bg-slate-900 dark:bg-slate-100 px-4 py-2.5 text-[12px] font-extrabold text-white dark:text-slate-900 shadow-sm" onClick={handleRawPlaceholderAction("open_events_manager")}>
             <Ticket className="h-4 w-4" /> Get ticket
           </button>
-          <button className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white dark:bg-slate-900 px-4 py-2.5 text-[12px] font-extrabold text-slate-900 dark:text-slate-100 ring-1 ring-slate-200 dark:ring-slate-700 shadow-sm" onClick={handleRawPlaceholderAction}>
+          <button className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white dark:bg-slate-900 px-4 py-2.5 text-[12px] font-extrabold text-slate-900 dark:text-slate-100 ring-1 ring-slate-200 dark:ring-slate-700 shadow-sm" onClick={handleRawPlaceholderAction("open_donations_funds")}>
             <HeartHandshake className="h-4 w-4" /> Support
           </button>
         </div>

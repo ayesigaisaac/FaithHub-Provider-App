@@ -663,9 +663,11 @@ function SignalCard({
 function GroupExperiencePreview({
   group,
   previewMode,
+  onPreviewModeChange,
 }: {
   group: GroupRecord;
   previewMode: PreviewMode;
+  onPreviewModeChange: (mode: PreviewMode) => void;
 }) {
   const desktop = previewMode === "desktop";
   return (
@@ -686,7 +688,7 @@ function GroupExperiencePreview({
               "rounded-full px-3 py-1 text-[11px] font-bold",
               desktop ? "bg-slate-900 text-white" : "text-slate-500",
             )}
-           onClick={handleRawPlaceholderAction}>
+            onClick={() => onPreviewModeChange("desktop")}>
             Desktop
           </button>
           <button
@@ -695,7 +697,7 @@ function GroupExperiencePreview({
               "rounded-full px-3 py-1 text-[11px] font-bold",
               !desktop ? "bg-slate-900 text-white" : "text-slate-500",
             )}
-           onClick={handleRawPlaceholderAction}>
+            onClick={() => onPreviewModeChange("mobile")}>
             Mobile
           </button>
         </div>
@@ -827,7 +829,7 @@ function GroupExperiencePreview({
                 type="button"
                 className="mt-3 w-full rounded-2xl px-3 py-2 text-[12px] font-black text-white"
                 style={{ background: EV_GREEN }}
-               onClick={handleRawPlaceholderAction}>
+                onClick={handleRawPlaceholderAction("open_community_groups")}>
                 Join circle
               </button>
             </div>
@@ -1439,7 +1441,11 @@ export default function CommunityGroupsPage() {
                 </div>
 
                 <div className="mt-4">
-                  <GroupExperiencePreview group={selectedGroup} previewMode={previewMode} />
+                  <GroupExperiencePreview
+                    group={selectedGroup}
+                    previewMode={previewMode}
+                    onPreviewModeChange={setPreviewMode}
+                  />
                 </div>
 
                 <div className="mt-3 flex flex-wrap gap-2">
