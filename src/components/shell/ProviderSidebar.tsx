@@ -14,7 +14,6 @@ import {
 import KeyboardArrowRightRoundedIcon from '@mui/icons-material/KeyboardArrowRightRounded';
 import KeyboardDoubleArrowLeftRoundedIcon from '@mui/icons-material/KeyboardDoubleArrowLeftRounded';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
-import { BrandLogo } from '@/components/branding/BrandLogo';
 import { getProviderPagesBySection, providerSections } from '@/navigation/providerPages';
 
 const drawerWidth = 318;
@@ -62,7 +61,9 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
         >
           <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ px: 1.5, py: 1.25 }}>
             <Box sx={{ minWidth: 0 }}>
-              <BrandLogo variant="landscape" alt="FaithHub Provider" style={{ height: 58, width: 'auto', maxWidth: '100%' }} />
+              <Typography sx={{ fontWeight: 800, fontSize: 24, lineHeight: 1, color: '#0f172a' }}>
+                FaithHub Provider
+              </Typography>
               <Typography color="text.secondary" sx={{ fontSize: 13, lineHeight: 1.1, letterSpacing: '0.02em', mt: 0.4 }}>
                 Navigation
               </Typography>
