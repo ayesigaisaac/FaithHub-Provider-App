@@ -671,7 +671,7 @@ function GroupExperiencePreview({
 }) {
   const desktop = previewMode === "desktop";
   return (
-    <div className="rounded-[28px] border border-slate-200 bg-white p-4 shadow-sm">
+    <div className="rounded-[28px] border border-slate-200 bg-white p-3 sm:p-4 shadow-sm">
       <div className="flex items-center justify-between gap-2">
         <div>
           <div className="text-[11px] font-black uppercase tracking-[0.12em] text-slate-400">
@@ -1007,12 +1007,12 @@ export default function CommunityGroupsPage() {
 
   return (
     <div
-      className="min-h-screen w-full bg-[#f2f2f2] px-4 py-4 text-slate-900 sm:px-5 sm:py-5 lg:px-6 lg:py-6"
+      className="min-h-screen w-full bg-[#f2f2f2] px-3 py-3 text-slate-900 sm:px-5 sm:py-5 lg:px-6 lg:py-6"
       style={{ fontFamily: 'Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif' }}
     >
       <div className="mx-auto max-w-[1600px]">
         <div className="overflow-hidden rounded-[30px] border border-slate-200 bg-white shadow-sm">
-          <div className="flex flex-wrap items-start justify-between gap-5 border-b border-slate-200 px-6 py-5">
+          <div className="flex flex-wrap items-start justify-between gap-4 sm:gap-5 border-b border-slate-200 px-4 py-4 sm:px-6 sm:py-5">
             <div className="flex min-w-0 items-start gap-4">
               <div
                 className="grid h-12 w-12 place-items-center rounded-2xl text-[20px] font-black text-white"
@@ -1021,7 +1021,7 @@ export default function CommunityGroupsPage() {
                 FH
               </div>
               <div className="min-w-0">
-                <div className="truncate text-[26px] font-black leading-none tracking-[-0.02em] text-slate-900">
+                <div className="truncate text-[24px] sm:text-[26px] font-black leading-none tracking-[-0.02em] text-slate-900">
                   Community Groups
                 </div>
                 <div className="mt-1 text-[13px] leading-6 text-slate-500">
@@ -1064,7 +1064,7 @@ export default function CommunityGroupsPage() {
             </div>
           </div>
 
-          <div className="grid gap-4 px-4 py-4 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-3">
+          <div className="grid gap-3 sm:gap-4 px-3 sm:px-4 py-3 sm:py-4 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-3">
             <MetricCard
               label="Active groups"
               value={fmtInt(totalGroups)}
@@ -1103,8 +1103,8 @@ export default function CommunityGroupsPage() {
             />
           </div>
 
-          <div className="grid gap-5 px-4 pb-4 xl:grid-cols-[minmax(0,1.4fr)_minmax(0,0.95fr)_360px]">
-            <div className="rounded-[28px] border border-slate-200 bg-white p-4 shadow-sm">
+          <div className="grid gap-4 sm:gap-5 px-3 sm:px-4 pb-3 sm:pb-4 xl:grid-cols-[minmax(0,1.4fr)_minmax(0,0.95fr)_360px]">
+            <div className="rounded-[28px] border border-slate-200 bg-white p-3 sm:p-4 shadow-sm">
               <div className="flex flex-wrap items-start justify-between gap-3">
                 <div>
                   <div className="text-[14px] font-black text-slate-900">Community groups catalog</div>
@@ -1287,8 +1287,8 @@ export default function CommunityGroupsPage() {
               </div>
             </div>
 
-            <div className="space-y-4">
-              <div className="rounded-[28px] border border-slate-200 bg-white p-4 shadow-sm">
+            <div className="space-y-3 sm:space-y-4">
+              <div className="rounded-[28px] border border-slate-200 bg-white p-3 sm:p-4 shadow-sm">
                 <div className="flex items-start justify-between gap-3">
                   <div>
                     <div className="text-[14px] font-black text-slate-900">Group health & care lane</div>
@@ -1308,7 +1308,7 @@ export default function CommunityGroupsPage() {
                 </div>
               </div>
 
-              <div className="rounded-[28px] border border-slate-200 bg-white p-4 shadow-sm">
+              <div className="rounded-[28px] border border-slate-200 bg-white p-3 sm:p-4 shadow-sm">
                 <div className="text-[14px] font-black text-slate-900">Rhythm, events, and linked ministry</div>
                 <div className="mt-1 text-[12px] text-slate-500">
                   Calendar-aware rhythm items and linked follow-up moments from Live Sessions, events, and noticeboard.
@@ -1371,7 +1371,7 @@ export default function CommunityGroupsPage() {
                 </div>
               </div>
 
-              <div className="rounded-[28px] border border-slate-200 bg-white p-4 shadow-sm">
+              <div className="rounded-[28px] border border-slate-200 bg-white p-3 sm:p-4 shadow-sm">
                 <div className="text-[14px] font-black text-slate-900">Cross-object hooks</div>
                 <div className="mt-1 text-[12px] text-slate-500">
                   Noticeboard, prayer, event, and audience-system handoff points that make the group feel operationally complete.
@@ -1406,8 +1406,8 @@ export default function CommunityGroupsPage() {
               </div>
             </div>
 
-            <div className="space-y-4">
-              <div className="rounded-[28px] border border-slate-200 bg-white p-4 shadow-sm">
+            <div className="space-y-3 sm:space-y-4">
+              <div className="rounded-[28px] border border-slate-200 bg-white p-3 sm:p-4 shadow-sm">
                 <div className="flex items-start justify-between gap-3">
                   <div>
                     <div className="text-[14px] font-black text-slate-900">Group destination preview</div>
@@ -1457,7 +1457,7 @@ export default function CommunityGroupsPage() {
                 </div>
               </div>
 
-              <div className="rounded-[28px] border border-slate-200 bg-white p-4 shadow-sm">
+              <div className="rounded-[28px] border border-slate-200 bg-white p-3 sm:p-4 shadow-sm">
                 <div className="text-[14px] font-black text-slate-900">Community performance intelligence</div>
                 <div className="mt-1 text-[12px] text-slate-500">
                   What this group is doing for discipleship, care, retention, and event/live follow-up.
@@ -1494,8 +1494,8 @@ export default function CommunityGroupsPage() {
             </div>
           </div>
 
-          <div className="grid gap-4 border-t border-slate-200 px-4 py-4 xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-            <div className="rounded-[28px] border border-slate-200 bg-white p-4 shadow-sm">
+          <div className="grid gap-3 sm:gap-4 border-t border-slate-200 px-3 sm:px-4 py-3 sm:py-4 xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+            <div className="rounded-[28px] border border-slate-200 bg-white p-3 sm:p-4 shadow-sm">
               <div className="flex items-start justify-between gap-3">
                 <div>
                   <div className="text-[14px] font-black text-slate-900">Quick-create templates</div>
@@ -1537,7 +1537,7 @@ export default function CommunityGroupsPage() {
               </div>
             </div>
 
-            <div className="rounded-[28px] border border-slate-200 bg-white p-4 shadow-sm">
+            <div className="rounded-[28px] border border-slate-200 bg-white p-3 sm:p-4 shadow-sm">
               <div className="text-[14px] font-black text-slate-900">Group network, collections & oversight</div>
               <div className="mt-1 text-[12px] text-slate-500">
                 Keep community lanes organized by campus, type, safety level, and leader coverage while retaining a premium operations view.

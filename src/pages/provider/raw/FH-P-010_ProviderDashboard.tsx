@@ -981,7 +981,7 @@ function SectionCard({
   return (
     <section
       className={cx(
-        "rounded-[16px] border border-slate-200 bg-white p-4 md:p-5 shadow-sm",
+        "rounded-[16px] border border-slate-200 bg-white p-3 sm:p-4 md:p-5 shadow-sm",
         className,
       )}
     >
@@ -1195,15 +1195,15 @@ export default function ProviderDashboardPage() {
       style={{ background: EV_LIGHT }}
     >
       <div className="w-full max-w-none px-0 py-0">
-        <div className="space-y-5">
+        <div className="space-y-4 sm:space-y-5">
           {/* Top hero / mission command */}
-          <section className="rounded-[16px] border border-slate-200 bg-white p-4 md:p-5 shadow-sm">
-            <div className="grid gap-6 xl:grid-cols-[1.25fr,0.9fr]">
+          <section className="rounded-[16px] border border-slate-200 bg-white p-3 sm:p-4 md:p-5 shadow-sm">
+            <div className="grid gap-4 sm:gap-6 xl:grid-cols-[1.25fr,0.9fr]">
               <div className="min-w-0">
                 <div className="text-[11px] font-bold uppercase tracking-[0.22em] text-slate-400">
                   Home · Global dashboard
                 </div>
-                <div className="mt-2 max-w-4xl text-[32px] font-black leading-[1.06] tracking-[-0.03em] text-slate-900 sm:text-[42px]">
+                <div className="mt-2 max-w-4xl text-[28px] font-black leading-[1.08] tracking-[-0.03em] text-slate-900 sm:text-[36px] lg:text-[42px]">
                   FaithHub Provider Dashboard
                 </div>
                 <p className="mt-3 max-w-3xl text-[14px] leading-6 text-slate-600">
@@ -1257,8 +1257,8 @@ export default function ProviderDashboardPage() {
                 </div>
               </div>
 
-              <div className="grid gap-4 lg:grid-cols-2 xl:grid-cols-1">
-                <div className="rounded-[14px] border border-slate-200 bg-slate-50 p-4 md:p-5">
+              <div className="grid gap-3 sm:gap-4 lg:grid-cols-2 xl:grid-cols-1">
+                <div className="rounded-[14px] border border-slate-200 bg-slate-50 p-3 sm:p-4 md:p-5">
                   <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-slate-400">
                     Profile summary
                   </div>
@@ -1298,7 +1298,7 @@ export default function ProviderDashboardPage() {
                   </div>
                 </div>
 
-                <div className="rounded-[14px] border border-slate-200 bg-slate-50 p-4 md:p-5">
+                <div className="rounded-[14px] border border-slate-200 bg-slate-50 p-3 sm:p-4 md:p-5">
                   <div className="flex items-center justify-between gap-2">
                     <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-slate-400">
                       Role-aware views
@@ -1364,7 +1364,7 @@ export default function ProviderDashboardPage() {
             </div>
 
             {/* Executive command header */}
-            <div className="mt-4 rounded-[14px] border border-slate-200 bg-slate-50 p-4 md:p-5">
+            <div className="mt-4 rounded-[14px] border border-slate-200 bg-slate-50 p-3 sm:p-4 md:p-5">
               <div className="flex flex-wrap items-start justify-between gap-3">
                 <div>
                   <div className="text-[15px] font-bold tracking-tight text-slate-900">
@@ -1404,7 +1404,7 @@ export default function ProviderDashboardPage() {
             </div>
 
             {/* Quick-create rail */}
-            <div className="mt-4 rounded-[14px] border border-slate-200 bg-slate-50 p-4 md:p-5">
+            <div className="mt-4 rounded-[14px] border border-slate-200 bg-slate-50 p-3 sm:p-4 md:p-5">
               <div className="flex items-center justify-between gap-3">
                 <div>
                   <div className="text-[15px] font-bold tracking-tight text-slate-900">
@@ -1450,7 +1450,7 @@ export default function ProviderDashboardPage() {
           </section>
 
           {/* Notifications / continue / search */}
-          <div className="grid gap-4 xl:grid-cols-2">
+          <div className="grid gap-3 sm:gap-4 xl:grid-cols-2">
             <SectionCard
               title="Notifications"
               subtitle="Live sessions, reminders, donor alerts, and Beacon tasks requiring immediate attention."
@@ -1539,7 +1539,7 @@ export default function ProviderDashboardPage() {
           </SectionCard>
 
           {/* Main dashboard modules */}
-          <div className="grid gap-4 xl:grid-cols-12">
+          <div className="grid gap-3 sm:gap-4 xl:grid-cols-12">
             <SectionCard
               title="Live Sessions command center"
               subtitle="Today’s schedule, readiness state, late-start warnings, stream health, backstage availability, and one-click handoff into operations."

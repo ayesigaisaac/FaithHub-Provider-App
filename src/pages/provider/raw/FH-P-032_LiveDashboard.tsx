@@ -624,7 +624,7 @@ function SoftButton({
       onClick={onClick}
       disabled={disabled}
       className={cx(
-        "inline-flex items-center gap-2 rounded-xl border px-4 py-2 text-[12px] font-semibold transition-colors",
+        "inline-flex items-center gap-2 rounded-xl border px-3 sm:px-4 py-2 text-[11px] sm:text-[12px] font-semibold transition-colors",
         disabled
           ? "cursor-not-allowed border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-slate-400 dark:text-slate-600"
           : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800",
@@ -658,7 +658,7 @@ function PrimaryButton({
       onClick={onClick}
       disabled={disabled}
       className={cx(
-        "inline-flex items-center gap-2 rounded-xl border border-transparent px-4 py-2 text-[12px] font-semibold text-white transition-opacity",
+        "inline-flex items-center gap-2 rounded-xl border border-transparent px-3 sm:px-4 py-2 text-[11px] sm:text-[12px] font-semibold text-white transition-opacity",
         disabled ? "cursor-not-allowed opacity-60" : "hover:opacity-95",
         className,
       )}
@@ -683,7 +683,7 @@ function Card({
   className?: string;
 }) {
   return (
-    <div className={cx("rounded-[16px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 md:p-5 transition-colors", className)}>
+    <div className={cx("rounded-[16px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3 sm:p-4 md:p-5 transition-colors", className)}>
       <div className="flex items-start justify-between gap-3">
         <div>
           <div className="text-[14px] font-semibold text-slate-900 dark:text-slate-100">{title}</div>
@@ -1179,7 +1179,7 @@ export default function FaithHubLiveDashboardPage() {
 
   return (
     <div className="min-h-screen bg-[#f2f2f2] dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors">
-      <div className="mx-auto max-w-[1600px] px-4 py-4 sm:px-6 sm:py-5 lg:px-8 lg:py-6">
+      <div className="mx-auto max-w-[1600px] px-3 py-3 sm:px-6 sm:py-5 lg:px-8 lg:py-6">
         <div className="flex items-start justify-between gap-3 flex-wrap">
           <div className="min-w-0">
             <div className="flex flex-wrap items-center gap-2">
@@ -1187,10 +1187,10 @@ export default function FaithHubLiveDashboardPage() {
               <Pill text={session.state} tone={stateTone(session.state)} />
               <Pill text={session.health.critical} tone={healthToneToPill(session.health.critical)} />
             </div>
-            <div className="mt-3 text-2xl sm:text-3xl font-black tracking-tight text-slate-900 dark:text-slate-100">
+            <div className="mt-2 text-[26px] sm:text-3xl font-black tracking-tight text-slate-900 dark:text-slate-100">
               Live Dashboard
             </div>
-            <div className="mt-1 max-w-[860px] text-[13px] leading-6 text-slate-600 dark:text-slate-400">
+            <div className="mt-1 max-w-[860px] text-[12px] sm:text-[13px] leading-5 sm:leading-6 text-slate-600 dark:text-slate-400">
               High-intensity control room for a specific Live Session, combining technical health,
               team readiness, audience pulse, conversions, moderation, and post-live actions.
             </div>
@@ -1215,8 +1215,8 @@ export default function FaithHubLiveDashboardPage() {
           </div>
         </div>
 
-        <div className="mt-4 grid grid-cols-1 gap-5 lg:grid-cols-12">
-          <div className="lg:col-span-3 space-y-5">
+        <div className="mt-3 sm:mt-4 grid grid-cols-1 gap-4 sm:gap-5 lg:grid-cols-12">
+          <div className="lg:col-span-3 space-y-4 sm:space-y-5">
             <Card
               title="Session status header"
               subtitle="Countdown, content context, host presence, destinations, and the critical health badge."
@@ -1326,7 +1326,7 @@ export default function FaithHubLiveDashboardPage() {
             </Card>
           </div>
 
-          <div className="lg:col-span-6 space-y-5">
+          <div className="lg:col-span-6 space-y-4 sm:space-y-5">
             <Card
               title="Technical health telemetry"
               subtitle="Ingest health, bitrate, frame rate, audio confidence, latency, recording state, destination sync, and backup readiness."
@@ -1488,7 +1488,7 @@ export default function FaithHubLiveDashboardPage() {
           </div>
 
           <div className="hidden lg:block lg:col-span-3">
-            <div className="sticky top-4 space-y-5">
+            <div className="sticky top-4 space-y-4 sm:space-y-5">
               <ControlRoomPreview
                 session={session}
                 slowMode={slowMode}
