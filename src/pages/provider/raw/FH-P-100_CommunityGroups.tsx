@@ -655,7 +655,7 @@ function SignalCard({
       <div className="flex items-start gap-2">
         <Pill tone={tone}>{signal.label}</Pill>
       </div>
-      <div className="mt-2 text-[12px] leading-snug text-slate-600">{signal.hint}</div>
+      <div className="mt-2 text-[12px] leading-5 text-slate-600">{signal.hint}</div>
     </div>
   );
 }
@@ -671,7 +671,7 @@ function GroupExperiencePreview({
 }) {
   const desktop = previewMode === "desktop";
   return (
-    <div className="rounded-[28px] border border-slate-200 bg-white p-3 shadow-sm">
+    <div className="rounded-[28px] border border-slate-200 bg-white p-4 shadow-sm">
       <div className="flex items-center justify-between gap-2">
         <div>
           <div className="text-[11px] font-black uppercase tracking-[0.12em] text-slate-400">
@@ -719,7 +719,7 @@ function GroupExperiencePreview({
             </div>
           </div>
 
-          <div className="space-y-3 p-3">
+          <div className="space-y-4 p-4">
             <div className="rounded-2xl border border-slate-200 bg-white p-3">
               <div className="flex items-start justify-between gap-3">
                 <div>
@@ -791,7 +791,7 @@ function GroupExperiencePreview({
         <div className="mt-4 flex justify-center">
           <div className="w-[230px] overflow-hidden rounded-[34px] border-[8px] border-slate-900 bg-white shadow-2xl">
             <div className="h-5 bg-slate-900" />
-            <div className="p-3">
+            <div className="p-4">
               <div className="rounded-3xl border border-slate-200 bg-slate-50 p-3">
                 <div className="text-[10px] font-black uppercase tracking-[0.12em] text-slate-400">
                   Community group
@@ -1007,10 +1007,10 @@ export default function CommunityGroupsPage() {
 
   return (
     <div
-      className="min-h-screen w-full bg-[#f2f2f2] px-5 py-5 text-slate-900"
+      className="min-h-screen w-full bg-[#f2f2f2] px-4 py-4 text-slate-900 sm:px-5 sm:py-5 lg:px-6 lg:py-6"
       style={{ fontFamily: 'Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif' }}
     >
-      <div className="mx-auto max-w-[1520px]">
+      <div className="mx-auto max-w-[1600px]">
         <div className="overflow-hidden rounded-[30px] border border-slate-200 bg-white shadow-sm">
           <div className="flex flex-wrap items-start justify-between gap-5 border-b border-slate-200 px-6 py-5">
             <div className="flex min-w-0 items-start gap-4">
@@ -1024,7 +1024,7 @@ export default function CommunityGroupsPage() {
                 <div className="truncate text-[26px] font-black leading-none tracking-[-0.02em] text-slate-900">
                   Community Groups
                 </div>
-                <div className="mt-1 text-[13px] text-slate-500">
+                <div className="mt-1 text-[13px] leading-6 text-slate-500">
                   Premium community group operating system · EVzone Green primary, Orange secondary
                 </div>
               </div>
@@ -1103,7 +1103,7 @@ export default function CommunityGroupsPage() {
             />
           </div>
 
-          <div className="grid gap-4 px-4 pb-4 xl:grid-cols-[minmax(0,1.4fr)_minmax(0,0.95fr)_360px]">
+          <div className="grid gap-5 px-4 pb-4 xl:grid-cols-[minmax(0,1.4fr)_minmax(0,0.95fr)_360px]">
             <div className="rounded-[28px] border border-slate-200 bg-white p-4 shadow-sm">
               <div className="flex flex-wrap items-start justify-between gap-3">
                 <div>

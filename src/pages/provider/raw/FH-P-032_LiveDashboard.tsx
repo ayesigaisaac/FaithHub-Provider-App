@@ -683,11 +683,11 @@ function Card({
   className?: string;
 }) {
   return (
-    <div className={cx("rounded-[16px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 transition-colors", className)}>
+    <div className={cx("rounded-[16px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 md:p-5 transition-colors", className)}>
       <div className="flex items-start justify-between gap-3">
         <div>
-          <div className="text-[13px] font-semibold text-slate-900 dark:text-slate-100">{title}</div>
-          {subtitle ? <div className="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">{subtitle}</div> : null}
+          <div className="text-[14px] font-semibold text-slate-900 dark:text-slate-100">{title}</div>
+          {subtitle ? <div className="mt-0.5 text-[11px] leading-5 text-slate-500 dark:text-slate-400">{subtitle}</div> : null}
         </div>
         {right ? <div className="shrink-0">{right}</div> : null}
       </div>
@@ -952,7 +952,7 @@ function RouteButton({
           </div>
           <div className="min-w-0">
             <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100 truncate">{label}</div>
-            <div className="text-[11px] text-slate-500 dark:text-slate-400 truncate">{hint}</div>
+            <div className="text-[11px] leading-5 text-slate-500 dark:text-slate-400 truncate">{hint}</div>
           </div>
         </div>
         <ArrowRight className="h-4 w-4 text-slate-400" />
@@ -1179,7 +1179,7 @@ export default function FaithHubLiveDashboardPage() {
 
   return (
     <div className="min-h-screen bg-[#f2f2f2] dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors">
-      <div className="mx-auto max-w-[1600px] px-4 py-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1600px] px-4 py-4 sm:px-6 sm:py-5 lg:px-8 lg:py-6">
         <div className="flex items-start justify-between gap-3 flex-wrap">
           <div className="min-w-0">
             <div className="flex flex-wrap items-center gap-2">
@@ -1190,7 +1190,7 @@ export default function FaithHubLiveDashboardPage() {
             <div className="mt-3 text-2xl sm:text-3xl font-black tracking-tight text-slate-900 dark:text-slate-100">
               Live Dashboard
             </div>
-            <div className="mt-1 max-w-[860px] text-[13px] text-slate-600 dark:text-slate-400">
+            <div className="mt-1 max-w-[860px] text-[13px] leading-6 text-slate-600 dark:text-slate-400">
               High-intensity control room for a specific Live Session, combining technical health,
               team readiness, audience pulse, conversions, moderation, and post-live actions.
             </div>
@@ -1215,8 +1215,8 @@ export default function FaithHubLiveDashboardPage() {
           </div>
         </div>
 
-        <div className="mt-4 grid grid-cols-1 lg:grid-cols-12 gap-4">
-          <div className="lg:col-span-3 space-y-4">
+        <div className="mt-4 grid grid-cols-1 gap-5 lg:grid-cols-12">
+          <div className="lg:col-span-3 space-y-5">
             <Card
               title="Session status header"
               subtitle="Countdown, content context, host presence, destinations, and the critical health badge."
@@ -1326,7 +1326,7 @@ export default function FaithHubLiveDashboardPage() {
             </Card>
           </div>
 
-          <div className="lg:col-span-6 space-y-4">
+          <div className="lg:col-span-6 space-y-5">
             <Card
               title="Technical health telemetry"
               subtitle="Ingest health, bitrate, frame rate, audio confidence, latency, recording state, destination sync, and backup readiness."
@@ -1488,7 +1488,7 @@ export default function FaithHubLiveDashboardPage() {
           </div>
 
           <div className="hidden lg:block lg:col-span-3">
-            <div className="sticky top-4 space-y-4">
+            <div className="sticky top-4 space-y-5">
               <ControlRoomPreview
                 session={session}
                 slowMode={slowMode}
