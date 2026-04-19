@@ -1059,10 +1059,10 @@ export default function CommunityForumPage() {
                   <MessageSquare className="h-6 w-6" />
                 </div>
                 <div className="min-w-0">
-                  <div className="truncate text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 sm:text-[34px] lg:text-[40px]">
+                  <div className="text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
                     Community Forum
                   </div>
-                  <div className="mt-1.5 text-[14px] leading-6 text-slate-500">
+                  <div className="mt-1.5 text-[14px] leading-6 text-slate-500 dark:text-slate-400">
                     Moderated discussion hub for threads, leader posts, and community engagement.
                   </div>
                 </div>

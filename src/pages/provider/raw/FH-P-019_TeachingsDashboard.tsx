@@ -1150,10 +1150,10 @@ export default function TeachingsDashboardPage() {
                 <div className="text-[10px] font-bold uppercase tracking-[0.22em] text-slate-400">
                   Teachings command
                 </div>
-                <div className="mt-1 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 sm:text-[34px] lg:text-[40px]">
+                <div className="text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
                   Teachings Dashboard
                 </div>
-                <div className="mt-1.5 max-w-4xl text-[14px] leading-6 text-slate-500">
+                <div className="mt-1.5 text-[14px] leading-6 text-slate-500 dark:text-slate-400">
                   Premium operating surface for Series, Episodes, and Standalone teachings — built to keep structured journeys and one-off sermons in one calm, world-class control center.
                 </div>
                 <div className="mt-3 flex flex-wrap gap-2">

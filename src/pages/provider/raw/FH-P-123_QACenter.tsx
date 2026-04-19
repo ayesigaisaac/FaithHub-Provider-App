@@ -662,10 +662,10 @@ export default function FHP123QACenter() {
                   <div className="text-[12px] font-extrabold uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">
                     Quality & launch assurance
                   </div>
-                  <h1 className="mt-1 text-[26px] leading-tight md:text-[34px] font-black tracking-[-0.03em] text-slate-900 dark:text-slate-100">
+                  <h1 className="text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
                     QA Center
                   </h1>
-                  <p className="mt-2 max-w-[860px] text-[13px] md:text-[14px] leading-relaxed text-slate-500 dark:text-slate-400">
+                  <p className="mt-1.5 text-[14px] leading-6 text-slate-500 dark:text-slate-400">
                     Internal quality-assurance surface for stream checks, content package validation,
                     page and form review, and premium preflight sign-off before launch.
                   </p>

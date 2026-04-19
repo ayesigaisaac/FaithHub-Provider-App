@@ -1471,12 +1471,12 @@ export default function MerchandiseManagerPage() {
               <div className="text-[11px] font-black uppercase tracking-[0.22em] text-slate-400 dark:text-slate-500">
                 FaithMart & Merchandise
               </div>
-              <h1 className="mt-2 text-[34px] md:text-[42px] leading-[1.02] font-black tracking-tight text-slate-900 dark:text-slate-50">
+              <h1 className="text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
                 Run premium merchandise,
                 <br />
                 shelves, bundles, and live-linked FaithMart drops
               </h1>
-              <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-slate-500 dark:text-slate-400">
+              <p className="mt-1.5 text-[14px] leading-6 text-slate-500 dark:text-slate-400">
                 Manage gifts, apparel, journals, worship essentials, and event kits from one
                 premium Provider-side surface — with direct links into Live Sessions, events,
                 giving journeys, and Beacon promotion.

@@ -1277,10 +1277,10 @@ export default function FaithHubAudienceNotificationsPage() {
                                 {String(idx + 1).padStart(2, "0")}
                               </span>
                               <div className="min-w-0">
-                                <div className="truncate text-[13px] font-black text-slate-900 dark:text-slate-100">
+                                <div className="text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
                                   {node.label}
                                 </div>
-                                <div className="truncate text-[11px] font-semibold text-slate-500 dark:text-slate-400">
+                                <div className="mt-1.5 text-[14px] leading-6 text-slate-500 dark:text-slate-400">
                                   {node.offset} • {node.hint}
                                 </div>
                               </div>

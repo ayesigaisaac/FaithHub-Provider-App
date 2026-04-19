@@ -719,7 +719,7 @@ export default function SubscriptionsPage() {
                   <div className="text-[12px] font-semibold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">
                     TEAM OPERATIONS · BILLING & ACCESS
                   </div>
-                  <h1 className="mt-1 text-[36px] leading-[1.05] font-black tracking-[-0.03em] text-slate-900 dark:text-slate-100 md:text-[52px]">
+                  <h1 className="text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
                     Manage plans, seats, and premium access without losing control.
                   </h1>
                   <p className="mt-3 max-w-[980px] text-[18px] leading-snug text-slate-600 dark:text-slate-400">

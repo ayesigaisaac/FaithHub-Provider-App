@@ -543,10 +543,10 @@ export default function FH_P_121_ModerationSettings() {
                 <div className="text-[12px] font-extrabold uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">
                   Trust &amp; Safety Governance
                 </div>
-                <div className="mt-1 text-[26px] md:text-[32px] leading-none font-black tracking-tight text-slate-900 dark:text-slate-50">
+                <div className="text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
                   Moderation Settings
                 </div>
-                <div className="mt-2 max-w-[920px] text-[15px] leading-relaxed text-slate-500 dark:text-slate-400">
+                <div className="mt-1.5 text-[14px] leading-6 text-slate-500 dark:text-slate-400">
                   Institution-wide policy rules, filters, defaults, thresholds, child-safe settings, and automation rules.
                   This page governs rule definitions that feed , live chat, community, prayer, counseling, reviews,
                   and all linked trust surfaces.

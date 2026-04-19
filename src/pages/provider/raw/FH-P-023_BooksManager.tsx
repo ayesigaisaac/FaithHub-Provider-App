@@ -1104,7 +1104,7 @@ export default function BooksManagerPage() {
             <div className="mt-3 flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
               <div className="min-w-0">
                 <div className="flex flex-wrap items-center gap-2">
-                  <div className="text-[34px] leading-none font-black text-slate-900 dark:text-slate-100 tracking-tight">
+                  <div className="text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
                     Books Manager
                   </div>
                   <Pill text="BOOK CATALOG" tone="good" icon={<BookOpen className="h-3.5 w-3.5" />} />

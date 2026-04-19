@@ -901,10 +901,10 @@ export default function FH_P_111_ServingTeamsPage() {
                   <div className="text-[11px] font-black uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">
                     Team operations
                   </div>
-                  <div className="mt-1 text-3xl font-black tracking-tight text-slate-900 dark:text-slate-100">
+                  <div className="text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
                     Serving Teams
                   </div>
-                  <div className="mt-1 max-w-3xl text-[15px] text-slate-500 dark:text-slate-400">
+                  <div className="mt-1.5 text-[14px] leading-6 text-slate-500 dark:text-slate-400">
                     Premium volunteer and service-team operating system for ushers, media, worship, care, outreach, hospitality, and event/live support.
                   </div>
                 </div>

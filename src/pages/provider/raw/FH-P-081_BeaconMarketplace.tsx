@@ -862,7 +862,7 @@ export default function BeaconMarketplacePage() {
               <div className="text-[15px] font-black tracking-wide text-slate-500 dark:text-slate-400">
                 Beacon Marketplace
               </div>
-              <h1 className="mt-1 text-[34px] font-black tracking-tight text-slate-900 dark:text-slate-100 sm:text-[40px]">
+              <h1 className="text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
                 Premium inventory, audience packages, and media-plan building for Beacon campaigns across FaithHub surfaces.
               </h1>
               <div className="mt-4 flex flex-wrap items-center gap-2">

@@ -1192,7 +1192,7 @@ export default function FaithHubReviewsAndModerationPage() {
               </div>
 
               <div className="mt-2 flex flex-wrap items-center gap-3">
-                <div className="text-2xl sm:text-3xl font-black tracking-tight text-slate-900 dark:text-slate-50">
+                <div className="text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
                   Reviews & Moderation
                 </div>
                 <Pill tone="brand">
@@ -1209,7 +1209,7 @@ export default function FaithHubReviewsAndModerationPage() {
                 </Pill>
               </div>
 
-              <div className="mt-2 text-sm text-slate-500 dark:text-slate-400">
+              <div className="mt-1.5 text-[14px] leading-6 text-slate-500 dark:text-slate-400">
                 Protect institution trust across Live Sessions, replays, clips, events, campaigns, and public reviews without losing context.
               </div>
             </div>

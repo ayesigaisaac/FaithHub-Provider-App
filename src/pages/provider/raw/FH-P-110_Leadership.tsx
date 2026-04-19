@@ -654,7 +654,7 @@ export default function FaithHubLeadershipPage() {
                 <div className="flex items-center justify-between gap-3">
                   <div>
                     <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">Publishing confidence</div>
-                    <div className="mt-1 text-[18px] font-black text-slate-900 dark:text-slate-100">{publishHealth}% leadership publish-ready</div>
+                    <div className="text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">{publishHealth}% leadership publish-ready</div>
                   </div>
                   <div
                     className="inline-flex h-12 w-12 items-center justify-center rounded-2xl text-white shadow-sm"

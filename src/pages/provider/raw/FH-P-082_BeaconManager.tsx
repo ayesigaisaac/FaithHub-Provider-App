@@ -2215,7 +2215,7 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
                         <div className="text-[11px] uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">
                           {item.state}
                         </div>
-                        <div className="mt-1 text-[28px] font-black text-slate-900 dark:text-slate-100">
+                        <div className="text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
                           {item.count}
                         </div>
                       </button>
@@ -2225,7 +2225,7 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
 
                 <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
                   <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Creative health panel</div>
-                  <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">Creative quality warnings, fatigue risk, and campaigns most likely to need refresh or QA attention.</div>
+                  <div className="mt-1.5 text-[14px] leading-6 text-slate-500 dark:text-slate-400">Creative quality warnings, fatigue risk, and campaigns most likely to need refresh or QA attention.</div>
 
                   <div className="mt-4 space-y-3">
                     {qualityRows.map((campaign) => (

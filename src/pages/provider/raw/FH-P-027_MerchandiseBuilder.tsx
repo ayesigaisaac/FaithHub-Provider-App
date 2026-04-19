@@ -1274,10 +1274,10 @@ export default function MerchandiseBuilderPage() {
                 <div className="text-[11px] font-black uppercase tracking-[0.22em] text-slate-400">
                   Merchandise creation
                 </div>
-                <h1 className="mt-2 text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">
+                <h1 className="text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
                   + New Merchandise / Merchandise Builder
                 </h1>
-                <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-500 sm:text-[15px]">
+                <p className="mt-1.5 text-[14px] leading-6 text-slate-500 dark:text-slate-400">
                   Build a premium merchandise object that is storefront-ready for FaithMart, operationally ready for fulfillment,
                   and fully connected to Live Sessions, events, giving journeys, notifications, and Beacon promotion.
                 </p>

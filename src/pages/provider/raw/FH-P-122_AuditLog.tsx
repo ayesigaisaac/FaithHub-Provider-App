@@ -1077,13 +1077,13 @@ export default function AuditLogPage() {
                   <div className="text-[11px] font-black uppercase tracking-[0.12em] text-slate-400 dark:text-slate-500">
                     Governance & Audit Trail
                   </div>
-                  <div className="mt-1 truncate text-[26px] font-black tracking-[-0.03em] text-slate-900 dark:text-slate-100">
+                  <div className="text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
                     Audit Log
                   </div>
                 </div>
               </div>
 
-              <div className="mt-4 max-w-4xl text-[14px] leading-6 text-slate-500 dark:text-slate-400">
+              <div className="mt-1.5 text-[14px] leading-6 text-slate-500 dark:text-slate-400">
                 Immutable-style operational history for role changes, publishing actions, moderation actions,
                 finance changes, and admin events. Use this page to filter activity, verify evidence trails,
                 and investigate high-signal changes without losing institutional context.

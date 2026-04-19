@@ -1056,8 +1056,8 @@ export default function StandaloneTeachingBuilderPage() {
                 <div className="mt-2 rounded-[24px] border border-slate-200 bg-slate-50 p-4">
                   <div className="flex items-center justify-between gap-3">
                     <div>
-                      <div className="text-[14px] font-black text-slate-900">{draft.speaker}</div>
-                      <div className="mt-1 text-[11px] text-slate-500">{draft.ministryContext} · {draft.theme}</div>
+                      <div className="text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">{draft.speaker}</div>
+                      <div className="mt-1.5 text-[14px] leading-6 text-slate-500 dark:text-slate-400">{draft.ministryContext} · {draft.theme}</div>
                     </div>
                     <Pill tone="brand">Lead teacher</Pill>
                   </div>

@@ -1264,13 +1264,13 @@ export default function FaithHubLiveStudioPage() {
               <div className="mt-4 grid gap-3 md:grid-cols-4">
                 <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3 dark:border-slate-700 dark:bg-slate-950">
                   <div className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">Ingest health</div>
-                  <div className="mt-1 text-xl font-black text-slate-900 dark:text-slate-100">96%</div>
+                  <div className="text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">96%</div>
                   <div className="mt-2">
                     <MiniBar value={96} tone="green" />
                   </div>
                 </div>
                 <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3 dark:border-slate-700 dark:bg-slate-950">
-                  <div className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">Audio confidence</div>
+                  <div className="mt-1.5 text-[14px] leading-6 text-slate-500 dark:text-slate-400">Audio confidence</div>
                   <div className="mt-1 text-xl font-black text-slate-900 dark:text-slate-100">94%</div>
                   <div className="mt-2">
                     <MiniBar value={94} tone="green" />

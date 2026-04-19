@@ -1252,10 +1252,10 @@ export default function ResourcesManagerPage() {
               <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
                 <div className="max-w-4xl">
                   <Label>Books & resources</Label>
-                  <h1 className="mt-3 text-[38px] font-black tracking-[-0.04em] text-slate-900 md:text-[50px]">
+                  <h1 className="text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
                     Free Learning Resources
                   </h1>
-                  <p className="mt-3 max-w-3xl text-[17px] leading-8 text-slate-500">
+                  <p className="mt-1.5 text-[14px] leading-6 text-slate-500 dark:text-slate-400">
                     Explore free books, PDFs, audio teachings, devotionals, study packs, and prayer guides. Paid resources remain in FaithMart.
                   </p>
                   <div className="mt-5 flex flex-wrap gap-2">

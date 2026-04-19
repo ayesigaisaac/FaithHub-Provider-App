@@ -1411,7 +1411,7 @@ export default function BeaconDashboardPage() {
                     )}
                   >
                     <div className="text-[11px] uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">{item.state}</div>
-                    <div className="mt-1 text-[28px] font-black text-slate-900 dark:text-slate-100">{item.count}</div>
+                    <div className="text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">{item.count}</div>
                   </button>
                 ))}
               </div>
@@ -1423,7 +1423,7 @@ export default function BeaconDashboardPage() {
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     placeholder="Search title, source type, linked object, or owner"
-                    className="w-full bg-transparent outline-none text-[12px] text-slate-900 dark:text-slate-100 placeholder:text-slate-500"
+                    className="mt-1.5 text-[14px] leading-6 text-slate-500 dark:text-slate-400"
                   />
                 </div>
                 <div className="flex flex-wrap items-center gap-2">

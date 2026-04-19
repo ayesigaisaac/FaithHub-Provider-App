@@ -1175,10 +1175,10 @@ export default function FaithHubNoticeboardPage() {
                 <span>Premium Provider Noticeboard</span>
               </div>
 
-              <div className="mt-3 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 sm:text-[34px] lg:text-[40px]">
+              <div className="text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
                 Noticeboard
               </div>
-              <div className="mt-1.5 max-w-4xl text-[14px] leading-6 text-slate-500">
+              <div className="mt-1.5 text-[14px] leading-6 text-slate-500 dark:text-slate-400">
                 Run institution-wide announcements, campus updates, prayer alerts, volunteer calls,
                 event reminders, and giving notices from one premium board — then route them into
                 Live Sessions, notifications, events, giving, and Beacon without losing control.

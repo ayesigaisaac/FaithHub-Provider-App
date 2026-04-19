@@ -1254,7 +1254,7 @@ export default function ProviderDashboardPage() {
                 <div className="text-[11px] font-bold uppercase tracking-[0.22em] text-slate-400">
                   Home · Global dashboard
                 </div>
-                <div className="mt-2 max-w-4xl text-[28px] font-black leading-[1.08] tracking-[-0.03em] text-slate-900 sm:text-[36px] lg:text-[42px]">
+                <div className="text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
                   FaithHub Provider Dashboard
                 </div>
                 <p className="mt-3 max-w-3xl text-[14px] leading-6 text-slate-600">
