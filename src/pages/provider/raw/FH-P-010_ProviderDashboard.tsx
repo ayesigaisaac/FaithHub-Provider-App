@@ -1191,8 +1191,7 @@ export default function ProviderDashboardPage() {
 
   return (
     <div
-      className="min-h-screen w-full text-slate-900"
-      style={{ background: EV_LIGHT }}
+      className="min-h-screen w-full bg-[#f2f2f2] text-slate-900 transition-colors dark:bg-slate-950 dark:text-slate-100"
     >
       <div className="w-full max-w-none px-0 py-0">
         <div className="space-y-4 sm:space-y-5">

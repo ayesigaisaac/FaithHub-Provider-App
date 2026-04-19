@@ -1007,7 +1007,7 @@ export default function CommunityGroupsPage() {
 
   return (
     <div
-      className="min-h-screen w-full bg-[#f2f2f2] px-3 py-3 text-slate-900 sm:px-5 sm:py-5 lg:px-6 lg:py-6"
+      className="min-h-screen w-full bg-[#f2f2f2] px-3 py-3 text-slate-900 transition-colors dark:bg-slate-950 dark:text-slate-100 sm:px-5 sm:py-5 lg:px-6 lg:py-6"
       style={{ fontFamily: 'Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif' }}
     >
       <div className="mx-auto max-w-[1600px]">

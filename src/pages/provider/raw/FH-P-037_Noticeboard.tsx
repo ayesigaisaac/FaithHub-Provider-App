@@ -339,7 +339,7 @@ function toneClasses(tone: Tone) {
     return "text-white border-transparent";
   }
   if (tone === "navy") {
-    return "bg-[#EEF2FF] text-[#16244c] border-[#C7D2FE]";
+    return "bg-[#EEF2FF] text-[#16244c] border-[#C7D2FE] dark:bg-slate-800 dark:text-slate-100 dark:border-slate-600";
   }
   return "bg-white text-slate-700 border-slate-200";
 }
@@ -1156,8 +1156,7 @@ export default function FaithHubNoticeboardPage() {
 
   return (
     <div
-      className="min-h-screen w-full bg-[#f2f2f2] px-5 py-6 text-slate-900"
-      style={{ background: EV_LIGHT }}
+      className="min-h-screen w-full bg-[#f2f2f2] px-5 py-6 text-slate-900 transition-colors dark:bg-slate-950 dark:text-slate-100"
     >
       <div className="mx-auto max-w-[1500px] space-y-5">
         <div className="rounded-[34px] border border-slate-200 bg-white p-6 shadow-sm">

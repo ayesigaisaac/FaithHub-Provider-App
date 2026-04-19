@@ -2397,8 +2397,7 @@ export default function ProviderOnboardingPage() {
 
   return (
     <div
-      className="min-h-screen w-full bg-[var(--fh-bg)] text-slate-900 dark:text-slate-50"
-      style={{ ["--fh-bg" as any]: EV_LIGHT }}
+      className="min-h-screen w-full bg-[var(--fh-bg)] text-slate-900 dark:text-slate-50 [--fh-bg:#f2f2f2] dark:[--fh-bg:#020617]"
     >
       <a
         href="#provider-onboarding-main"

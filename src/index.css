@@ -171,9 +171,32 @@ html.dark .provider-page-density--compact :is(
 }
 
 html.dark .provider-page-density--compact :is(
+    [class*='bg-[#F']
+  ):not([class*='bg-[#F77F00']) {
+  background-color: #0f172a !important;
+}
+
+html.dark .provider-page-density--compact :is(
     [class*='bg-[#e']
   ):not([class*='bg-[#03cd8c']):not([class*='bg-[#10b981']):not([class*='bg-[#0ea5e9']) {
   background-color: #111b2f !important;
+}
+
+html.dark .provider-page-density--compact :is(
+    [class*='bg-[#E']
+  ):not([class*='bg-[#03CD8C']) {
+  background-color: #111b2f !important;
+}
+
+html.dark .provider-page-density--compact :is(
+    [class*='text-[#16244c]'],
+    [class*='text-[#172554]'],
+    [class*='text-[#0b1d49]'],
+    [class*='text-[#0B1D49]'],
+    [class*='text-[#1e2b6d]'],
+    [class*='text-[#1E2B6D]']
+  ) {
+  color: #e2e8f0 !important;
 }
 
 html.dark .provider-page-density--compact :is(input, select, textarea) {
