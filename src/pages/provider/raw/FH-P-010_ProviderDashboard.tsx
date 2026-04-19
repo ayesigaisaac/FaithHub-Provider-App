@@ -2,7 +2,7 @@
 
 "use client";
 
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import {
   Activity,
   AlertTriangle,
@@ -37,6 +37,7 @@ import {
   Zap,
 } from "lucide-react";
 import { KpiTile } from "../../../components/ui/KpiTile";
+import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
  * FaithHub — Provider Dashboard
@@ -188,6 +189,29 @@ const LANGUAGES = [
   "Arabic",
   "Portuguese",
 ];
+
+const ROUTES = {
+  providerDashboard: "/faithhub/provider/dashboard",
+  teachingsDashboard: "/faithhub/provider/teachings-dashboard",
+  liveBuilder: "/faithhub/provider/live-builder",
+  liveSchedule: "/faithhub/provider/live-schedule",
+  liveDashboard: "/faithhub/provider/live-dashboard",
+  liveStudio: "/faithhub/provider/live-studio",
+  audienceNotifications: "/faithhub/provider/audience-notifications",
+  channelsContactManager: "/faithhub/provider/channels-contact-manager",
+  donationsFunds: "/faithhub/provider/donations-and-funds",
+  charityCrowdfund: "/faithhub/provider/charity-crowdfunding-workbench",
+  beaconDashboard: "/faithhub/provider/beacon-dashboard",
+  beaconBuilder: "/faithhub/provider/beacon-builder",
+  beaconManager: "/faithhub/provider/beacon-manager",
+  replaysClips: "/faithhub/provider/replays-and-clips",
+  reviewsModeration: "/faithhub/provider/reviews-moderation",
+  eventsManager: "/faithhub/provider/events-manager",
+} as const;
+
+function safeNav(path: string) {
+  navigateWithRouter(path);
+}
 
 const EXECUTIVE_METRICS: Record<RoleKey, MetricCard[]> = {
   Leadership: [
@@ -1159,14 +1183,6 @@ export default function ProviderDashboardPage() {
   const [timeFilter, setTimeFilter] = useState("Today");
   const [objectFilter, setObjectFilter] = useState("All categories");
   const [search, setSearch] = useState("");
-  const [toast, setToast] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (!toast) return;
-    const timer = window.setTimeout(() => setToast(null), 2200);
-    return () => window.clearTimeout(timer);
-  }, [toast]);
-
   const metrics = useMemo(() => EXECUTIVE_METRICS[role], [role]);
   const recommendations = useMemo(() => RECOMMENDATIONS_BY_ROLE[role], [role]);
 
@@ -1187,7 +1203,43 @@ export default function ProviderDashboardPage() {
     return { ready, atRisk, blocked };
   }, []);
 
-  const triggerToast = (label: string) => setToast(label);
+  const openQuickAction = (actionId: QuickCreateAction["id"]) => {
+    const routeByAction: Record<QuickCreateAction["id"], string> = {
+      "new-live": ROUTES.liveBuilder,
+      "new-teaching": ROUTES.teachingsDashboard,
+      "new-event": ROUTES.eventsManager,
+      "new-fund": ROUTES.donationsFunds,
+      "new-ad": ROUTES.beaconBuilder,
+    };
+    safeNav(routeByAction[actionId] ?? ROUTES.providerDashboard);
+  };
+
+  const openContinueItem = (cta: string) => {
+    const routeByCta: Record<string, string> = {
+      "Open content board": ROUTES.teachingsDashboard,
+      "Open Events Manager": ROUTES.eventsManager,
+      "Open Donations & Funds": ROUTES.donationsFunds,
+      "Open Beacon Manager": ROUTES.beaconManager,
+    };
+    safeNav(routeByCta[cta] ?? ROUTES.providerDashboard);
+  };
+
+  const openRecommendation = (cta: string) => {
+    const routeByCta: Record<string, string> = {
+      "Open Beacon Builder": ROUTES.beaconBuilder,
+      "Open Live Builder": ROUTES.liveBuilder,
+      "Open Reviews & Moderation": ROUTES.reviewsModeration,
+      "Open Live Dashboard": ROUTES.liveDashboard,
+      "Open Replays & Clips": ROUTES.replaysClips,
+      "Open Audience Notifications": ROUTES.audienceNotifications,
+      "Open Channels & Contacts": ROUTES.channelsContactManager,
+      "Open Beacon Dashboard": ROUTES.beaconDashboard,
+      "Open Crowdfunding Workbench": ROUTES.charityCrowdfund,
+      "Open Donations & Funds": ROUTES.donationsFunds,
+      "Open Beacon Manager": ROUTES.beaconManager,
+    };
+    safeNav(routeByCta[cta] ?? ROUTES.providerDashboard);
+  };
 
   return (
     <div
@@ -1233,25 +1285,25 @@ export default function ProviderDashboardPage() {
                     label="+ New Live Session"
                     accent="green"
                     icon={<Video className="h-4 w-4" />}
-                    onClick={() => triggerToast("New Live Session launched")}
+                    onClick={() => safeNav(ROUTES.liveBuilder)}
                   />
                   <GhostButton
                     label="+ New Teaching"
                     accent="navy"
                     icon={<BookOpen className="h-4 w-4" />}
-                    onClick={() => triggerToast("Teaching creation launched")}
+                    onClick={() => safeNav(ROUTES.teachingsDashboard)}
                   />
                   <GhostButton
                     label="+ New Campaign"
                     accent="orange"
                     icon={<Wallet className="h-4 w-4" />}
-                    onClick={() => triggerToast("Giving campaign launched")}
+                    onClick={() => safeNav(ROUTES.donationsFunds)}
                   />
                   <GhostButton
                     label="+ New Ad"
                     accent="orange"
                     icon={<Megaphone className="h-4 w-4" />}
-                    onClick={() => triggerToast("Beacon Builder launched")}
+                    onClick={() => safeNav(ROUTES.beaconBuilder)}
                   />
                 </div>
               </div>
@@ -1378,19 +1430,19 @@ export default function ProviderDashboardPage() {
                     label="Open live dashboard"
                     icon={<MonitorPlay className="h-4 w-4" />}
                     accent="green"
-                    onClick={() => triggerToast("Live Dashboard opened")}
+                    onClick={() => safeNav(ROUTES.liveDashboard)}
                   />
                   <GhostButton
                     label="Open donor insights"
                     icon={<DollarSign className="h-4 w-4" />}
                     accent="orange"
-                    onClick={() => triggerToast("Donor insights opened")}
+                    onClick={() => safeNav(ROUTES.donationsFunds)}
                   />
                   <GhostButton
                     label="Review recommendations"
                     icon={<Sparkles className="h-4 w-4" />}
                     accent="navy"
-                    onClick={() => triggerToast("Recommendations panel opened")}
+                    onClick={() => safeNav(ROUTES.reviewsModeration)}
                   />
                 </div>
               </div>
@@ -1424,7 +1476,7 @@ export default function ProviderDashboardPage() {
                   <button
                     key={action.id}
                     type="button"
-                    onClick={() => triggerToast(`${action.label} launched`)}
+                    onClick={() => openQuickAction(action.id)}
                     className="rounded-[14px] border border-slate-200 bg-white p-4 text-left shadow-sm transition hover:-translate-y-[1px] hover:shadow-md"
                   >
                     <div
@@ -1486,7 +1538,7 @@ export default function ProviderDashboardPage() {
                   <button
                     key={item.id}
                     type="button"
-                    onClick={() => triggerToast(item.cta)}
+                    onClick={() => openContinueItem(item.cta)}
                     className="w-full rounded-[22px] border border-slate-200 bg-slate-50 p-4 text-left transition hover:bg-white"
                   >
                     <div className="flex items-start justify-between gap-2">
@@ -1549,13 +1601,13 @@ export default function ProviderDashboardPage() {
                     label="Open Live Schedule"
                     icon={<CalendarClock className="h-4 w-4" />}
                     accent="green"
-                    onClick={() => triggerToast("Live Schedule opened")}
+                    onClick={() => safeNav(ROUTES.liveSchedule)}
                   />
                   <SolidButton
                     label="Open session dashboard"
                     accent="green"
                     icon={<MonitorPlay className="h-4 w-4" />}
-                    onClick={() => triggerToast("Session dashboard opened")}
+                    onClick={() => safeNav(`${ROUTES.liveDashboard}?sessionId=${encodeURIComponent(LIVE_SESSIONS[0]?.id ?? "ls-1")}`)}
                   />
                 </div>
               }
@@ -1616,19 +1668,19 @@ export default function ProviderDashboardPage() {
                           label="Launch studio"
                           icon={<Video className="h-4 w-4" />}
                           accent="green"
-                          onClick={() => triggerToast(`Launching studio for ${item.title}`)}
+                          onClick={() => safeNav(`${ROUTES.liveStudio}?sessionId=${encodeURIComponent(item.id)}`)}
                         />
                         <GhostButton
                           label="Send reminder"
                           icon={<Bell className="h-4 w-4" />}
                           accent="orange"
-                          onClick={() => triggerToast(`Reminder sent for ${item.title}`)}
+                          onClick={() => safeNav(`${ROUTES.audienceNotifications}?sessionId=${encodeURIComponent(item.id)}`)}
                         />
                         <GhostButton
                           label="Moderation"
                           icon={<ShieldCheck className="h-4 w-4" />}
                           accent="navy"
-                          onClick={() => triggerToast(`Moderation opened for ${item.title}`)}
+                          onClick={() => safeNav(`${ROUTES.reviewsModeration}?sessionId=${encodeURIComponent(item.id)}&panel=live`)}
                         />
                       </div>
                     </div>
@@ -1685,7 +1737,7 @@ export default function ProviderDashboardPage() {
                   label="Open audience tools"
                   icon={<Users className="h-4 w-4" />}
                   accent="green"
-                  onClick={() => triggerToast("Audience tools opened")}
+                  onClick={() => safeNav(ROUTES.audienceNotifications)}
                 />
               }
             >
@@ -1723,7 +1775,7 @@ export default function ProviderDashboardPage() {
                   label="Open donor insights"
                   icon={<HeartHandshake className="h-4 w-4" />}
                   accent="orange"
-                  onClick={() => triggerToast("Donor insights opened")}
+                  onClick={() => safeNav(ROUTES.donationsFunds)}
                 />
               }
             >
@@ -1779,7 +1831,7 @@ export default function ProviderDashboardPage() {
                   label="Open Beacon Dashboard"
                   icon={<Megaphone className="h-4 w-4" />}
                   accent="orange"
-                  onClick={() => triggerToast("Beacon Dashboard opened")}
+                  onClick={() => safeNav(ROUTES.beaconDashboard)}
                 />
               }
             >
@@ -1829,13 +1881,13 @@ export default function ProviderDashboardPage() {
                     label="Open moderation"
                     icon={<ShieldCheck className="h-4 w-4" />}
                     accent="navy"
-                    onClick={() => triggerToast("Moderation queue opened")}
+                    onClick={() => safeNav(ROUTES.reviewsModeration)}
                   />
                   <GhostButton
                     label="Respond to reviews"
                     icon={<MessageSquare className="h-4 w-4" />}
                     accent="green"
-                    onClick={() => triggerToast("Review inbox opened")}
+                    onClick={() => safeNav(ROUTES.reviewsModeration)}
                   />
                 </div>
               }
@@ -1896,7 +1948,7 @@ export default function ProviderDashboardPage() {
                     </div>
                     <button
                       type="button"
-                      onClick={() => triggerToast(item.cta)}
+                      onClick={() => openRecommendation(item.cta)}
                       className="mt-3 inline-flex items-center gap-1 text-[12px] font-semibold text-slate-700"
                     >
                       {item.cta} <ArrowRight className="h-3.5 w-3.5" />
@@ -1987,11 +2039,6 @@ export default function ProviderDashboardPage() {
         </div>
       </div>
 
-      {toast ? (
-        <div className="fixed bottom-5 left-1/2 z-50 -translate-x-1/2 rounded-full bg-slate-900 px-4 py-2 text-[12px] font-semibold text-white shadow-lg">
-          {toast}
-        </div>
-      ) : null}
     </div>
   );
 }
