@@ -1014,16 +1014,16 @@ export default function CommunityGroupsPage() {
           <div className="flex flex-wrap items-start justify-between gap-4 sm:gap-5 border-b border-slate-200 px-4 py-4 sm:px-6 sm:py-5">
             <div className="flex min-w-0 items-start gap-4">
               <div
-                className="grid h-12 w-12 place-items-center rounded-2xl text-[20px] font-black text-white"
+                className="grid h-12 w-12 place-items-center rounded-2xl text-white shadow-sm"
                 style={{ background: EV_GREEN }}
               >
-                FH
+                <Users className="h-6 w-6" />
               </div>
               <div className="min-w-0">
-                <div className="truncate text-[24px] sm:text-[26px] font-black leading-none tracking-[-0.02em] text-slate-900">
+                <div className="truncate text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 sm:text-[34px] lg:text-[40px]">
                   Community Groups
                 </div>
-                <div className="mt-1 text-[13px] leading-6 text-slate-500">
+                <div className="mt-1.5 text-[14px] leading-6 text-slate-500">
                   Community group operating system for multi-campus ministry teams.
                 </div>
               </div>

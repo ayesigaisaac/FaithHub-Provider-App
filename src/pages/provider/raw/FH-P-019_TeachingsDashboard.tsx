@@ -1141,19 +1141,19 @@ export default function TeachingsDashboardPage() {
           <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
             <div className="flex min-w-0 gap-4">
               <div
-                className="grid h-14 w-14 shrink-0 place-items-center rounded-[20px] text-[22px] font-black text-white"
+                className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl text-white shadow-sm"
                 style={{ background: EV_GREEN }}
               >
-                FH
+                <BookOpen className="h-6 w-6" />
               </div>
               <div className="min-w-0">
                 <div className="text-[10px] font-bold uppercase tracking-[0.22em] text-slate-400">
                   Teachings command
                 </div>
-                <div className="mt-1 text-[28px] font-black leading-[1.05] tracking-tight text-slate-900 md:text-[34px]">
+                <div className="mt-1 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 sm:text-[34px] lg:text-[40px]">
                   Teachings Dashboard
                 </div>
-                <div className="mt-1 max-w-4xl text-[13px] leading-6 text-slate-600">
+                <div className="mt-1.5 max-w-4xl text-[14px] leading-6 text-slate-500">
                   Premium operating surface for Series, Episodes, and Standalone teachings — built to keep structured journeys and one-off sermons in one calm, world-class control center.
                 </div>
                 <div className="mt-3 flex flex-wrap gap-2">

@@ -755,13 +755,13 @@ function PrayerRequestsPage() {
           <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
             <div className="min-w-0 flex-1">
               <div className="flex items-center gap-3">
-                <div className="grid h-12 w-12 place-items-center rounded-[18px] text-white font-black text-[26px]" style={{ background: EV_GREEN }}>
-                  FH
+                <div className="grid h-12 w-12 place-items-center rounded-2xl text-white shadow-sm" style={{ background: EV_GREEN }}>
+                  <HeartHandshake className="h-6 w-6" />
                 </div>
                 <div className="min-w-0">
-                  <div className="text-[34px] sm:text-[40px] lg:text-[46px] leading-none font-black tracking-tight text-slate-900">Prayer Requests</div>
-                  <div className="mt-1 text-[16px] text-slate-500">
-                    Premium prayer intake + care routing system · EVzone Green primary, Orange secondary
+                  <div className="text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 sm:text-[34px] lg:text-[40px]">Prayer Requests</div>
+                  <div className="mt-1.5 text-[14px] leading-6 text-slate-500">
+                    Prayer intake and care-routing command center for providers.
                   </div>
                 </div>
               </div>

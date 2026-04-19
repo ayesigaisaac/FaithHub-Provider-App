@@ -2410,16 +2410,16 @@ export default function ProviderOnboardingPage() {
             <div className="min-w-0">
               <div className="flex flex-wrap items-center gap-3">
                 <div
-                  className="grid h-14 w-14 place-items-center rounded-3xl text-xl font-black text-white"
+                  className="grid h-12 w-12 place-items-center rounded-2xl text-white shadow-sm"
                   style={{ background: EV_GREEN }}
                 >
-                  FH
+                  <BadgeCheck className="h-6 w-6" />
                 </div>
                 <div>
-                  <div className="text-[44px] font-black leading-none tracking-[-0.04em] text-slate-900 dark:text-slate-100">
+                  <div className="text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
                     Provider Onboarding
                   </div>
-                  <div className="mt-1 text-[14px] text-slate-500 dark:text-slate-400">
+                  <div className="mt-1.5 text-[14px] leading-6 text-slate-500 dark:text-slate-400">
                     Premium verified-provider setup for brand, structure, permissions, channels, and production readiness.
                   </div>
                 </div>

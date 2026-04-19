@@ -1053,17 +1053,17 @@ export default function CommunityForumPage() {
             <div className="min-w-0">
               <div className="flex items-center gap-4">
                 <div
-                  className="grid h-12 w-12 shrink-0 place-items-center rounded-[18px] text-white text-[15px] font-black"
+                  className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl text-white shadow-sm"
                   style={{ background: EV_GREEN }}
                 >
-                  FH
+                  <MessageSquare className="h-6 w-6" />
                 </div>
                 <div className="min-w-0">
-                  <div className="truncate text-[28px] font-black leading-none tracking-[-0.03em] text-slate-900 md:text-[44px]">
+                  <div className="truncate text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 sm:text-[34px] lg:text-[40px]">
                     Community Forum
                   </div>
-                  <div className="mt-1 text-[14px] text-slate-500 md:text-[15px]">
-                    Premium moderated discussion space • EVzone Green primary, Orange secondary
+                  <div className="mt-1.5 text-[14px] leading-6 text-slate-500">
+                    Moderated discussion hub for threads, leader posts, and community engagement.
                   </div>
                 </div>
               </div>
