@@ -99,9 +99,23 @@ html.dark .provider-page-density--compact :is(
     [class*='bg-white'],
     [class*='bg-slate-50'],
     [class*='bg-slate-100'],
+    [class*='bg-slate-200'],
+    [class*='bg-gray-50'],
+    [class*='bg-gray-100'],
+    [class*='bg-gray-200'],
+    [class*='bg-neutral-50'],
+    [class*='bg-neutral-100'],
     [class*='bg-[#f2f2f2]'],
+    [class*='bg-[#f5f7fa]'],
     [class*='bg-[#f7f7f5]'],
-    [class*='bg-[#f7f7f7]']
+    [class*='bg-[#f7f7f7]'],
+    [class*='bg-[#f8fafc]'],
+    [class*='bg-[#fafafa]'],
+    [class*='bg-[#fcfcfc]'],
+    [class*='bg-[#fbfbfd]'],
+    [class*='bg-[#edf9f5]'],
+    [class*='bg-[#e8f8f3]'],
+    [class*='bg-[#eef2ff]']
   ) {
   background-color: #0f172a !important;
 }
@@ -109,7 +123,13 @@ html.dark .provider-page-density--compact :is(
 html.dark .provider-page-density--compact :is(
     [class*='text-slate-900'],
     [class*='text-slate-800'],
-    [class*='text-slate-700']
+    [class*='text-slate-700'],
+    [class*='text-gray-900'],
+    [class*='text-gray-800'],
+    [class*='text-gray-700'],
+    [class*='text-neutral-900'],
+    [class*='text-neutral-800'],
+    [class*='text-neutral-700']
   ) {
   color: #e2e8f0 !important;
 }
@@ -117,7 +137,13 @@ html.dark .provider-page-density--compact :is(
 html.dark .provider-page-density--compact :is(
     [class*='text-slate-600'],
     [class*='text-slate-500'],
-    [class*='text-slate-400']
+    [class*='text-slate-400'],
+    [class*='text-gray-600'],
+    [class*='text-gray-500'],
+    [class*='text-gray-400'],
+    [class*='text-neutral-600'],
+    [class*='text-neutral-500'],
+    [class*='text-neutral-400']
   ) {
   color: #94a3b8 !important;
 }
@@ -125,7 +151,46 @@ html.dark .provider-page-density--compact :is(
 html.dark .provider-page-density--compact :is(
     [class*='border-slate-200'],
     [class*='border-slate-300'],
-    [class*='border-slate-100']
+    [class*='border-slate-100'],
+    [class*='border-gray-200'],
+    [class*='border-gray-300'],
+    [class*='border-gray-100'],
+    [class*='border-neutral-200'],
+    [class*='border-neutral-300'],
+    [class*='ring-slate-200'],
+    [class*='ring-gray-200'],
+    [class*='ring-neutral-200']
   ) {
   border-color: #334155 !important;
+}
+
+html.dark .provider-page-density--compact :is(
+    [class*='bg-[#f']
+  ):not([class*='bg-[#f77f00']):not([class*='bg-[#f97316']):not([class*='bg-[#fb7185']) {
+  background-color: #0f172a !important;
+}
+
+html.dark .provider-page-density--compact :is(
+    [class*='bg-[#e']
+  ):not([class*='bg-[#03cd8c']):not([class*='bg-[#10b981']):not([class*='bg-[#0ea5e9']) {
+  background-color: #111b2f !important;
+}
+
+html.dark .provider-page-density--compact :is(input, select, textarea) {
+  background-color: #0b1220 !important;
+  color: #e2e8f0 !important;
+  border-color: #334155 !important;
+}
+
+html.dark .provider-page-density--compact :is(input, select, textarea)::placeholder {
+  color: #94a3b8 !important;
+}
+
+html.dark .provider-page-density--compact :is(
+    [class*='shadow'],
+    [class*='shadow-sm'],
+    [class*='shadow-md'],
+    [class*='shadow-lg']
+  ) {
+  box-shadow: 0 16px 36px -26px rgba(2, 6, 23, 0.86) !important;
 }
