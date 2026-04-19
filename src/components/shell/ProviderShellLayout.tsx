@@ -26,8 +26,11 @@ export function ProviderShellLayout() {
         minHeight: '100vh',
         maxHeight: '100vh',
         overflow: 'hidden',
-        bgcolor: '#dfe9e8',
-        backgroundImage: 'linear-gradient(180deg, #edf3f2 0%, #dfe9e8 45%, #d7e4e3 100%)',
+        bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#0b1220' : '#dfe9e8'),
+        backgroundImage: (theme) =>
+          theme.palette.mode === 'dark'
+            ? 'linear-gradient(180deg, #0f172a 0%, #0b1220 45%, #0a1020 100%)'
+            : 'linear-gradient(180deg, #edf3f2 0%, #dfe9e8 45%, #d7e4e3 100%)',
       }}
     >
       <ProviderTopbar
@@ -59,10 +62,13 @@ export function ProviderShellLayout() {
               borderRadius: { xs: 0, md: 3 },
               border: '1px solid',
               borderColor: 'divider',
-              bgcolor: '#f8faf9',
+              bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#0f172a' : '#f8faf9'),
               p: { xs: 0.5, md: 0.75 },
               minHeight: '100%',
-              boxShadow: '0 20px 40px -36px rgba(15, 23, 42, 0.55)',
+              boxShadow: (theme) =>
+                theme.palette.mode === 'dark'
+                  ? '0 20px 40px -34px rgba(2, 6, 23, 0.92)'
+                  : '0 20px 40px -36px rgba(15, 23, 42, 0.55)',
             }}
           >
             <ErrorBoundary key={location.pathname} label={current?.title}>

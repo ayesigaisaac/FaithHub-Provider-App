@@ -44,15 +44,26 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
     .filter((group) => group.pages.length > 0);
 
   const content = (
-    <Box sx={{ display: 'flex', height: '100%', flexDirection: 'column', bgcolor: '#e7efee' }}>
+    <Box
+      sx={{
+        display: 'flex',
+        height: '100%',
+        flexDirection: 'column',
+        bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#0b1220' : '#e7efee'),
+      }}
+    >
       <Box sx={{ p: 1.25, height: '100%', minHeight: 0 }}>
         <Box
           sx={{
             borderRadius: 3,
-            border: '1px solid #d6dee7',
-            bgcolor: '#fff',
+            border: '1px solid',
+            borderColor: (theme) => (theme.palette.mode === 'dark' ? '#334155' : '#d6dee7'),
+            bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#0f172a' : '#fff'),
             overflow: 'hidden',
-            boxShadow: '0 20px 40px -32px rgba(15, 23, 42, 0.42)',
+            boxShadow: (theme) =>
+              theme.palette.mode === 'dark'
+                ? '0 20px 40px -32px rgba(2, 6, 23, 0.9)'
+                : '0 20px 40px -32px rgba(15, 23, 42, 0.42)',
             display: 'flex',
             flexDirection: 'column',
             height: '100%',
@@ -61,14 +72,31 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
         >
           <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ px: 1.5, py: 1.05 }}>
             <Box sx={{ minWidth: 0 }}>
-              <Typography sx={{ fontWeight: 900, fontSize: 22, lineHeight: 0.98, letterSpacing: '-0.01em', color: '#0f172a' }}>
+              <Typography
+                sx={{
+                  fontWeight: 900,
+                  fontSize: 22,
+                  lineHeight: 0.98,
+                  letterSpacing: '-0.01em',
+                  color: (theme) => (theme.palette.mode === 'dark' ? '#f8fafc' : '#0f172a'),
+                }}
+              >
                 FaithHub Provider
               </Typography>
               <Typography color="text.secondary" sx={{ fontSize: 12.5, lineHeight: 1.08, letterSpacing: '0.01em', mt: 0.2 }}>
                 Navigation
               </Typography>
             </Box>
-            <Avatar sx={{ bgcolor: '#fff', color: '#111827', border: '1px solid #d1d5db', width: 38, height: 38 }}>
+            <Avatar
+              sx={{
+                bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#0f172a' : '#fff'),
+                color: (theme) => (theme.palette.mode === 'dark' ? '#e2e8f0' : '#111827'),
+                border: '1px solid',
+                borderColor: (theme) => (theme.palette.mode === 'dark' ? '#334155' : '#d1d5db'),
+                width: 38,
+                height: 38,
+              }}
+            >
               <KeyboardDoubleArrowLeftRoundedIcon />
             </Avatar>
           </Stack>
@@ -82,7 +110,10 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
               minHeight: 0,
               overflowY: 'auto',
               '&::-webkit-scrollbar': { width: 8 },
-              '&::-webkit-scrollbar-thumb': { backgroundColor: '#cbd5e1', borderRadius: 10 },
+              '&::-webkit-scrollbar-thumb': {
+                backgroundColor: (theme) => (theme.palette.mode === 'dark' ? '#334155' : '#cbd5e1'),
+                borderRadius: 10,
+              },
               '&::-webkit-scrollbar-track': { backgroundColor: 'transparent' },
             }}
           >
@@ -94,7 +125,7 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
                     bgcolor: 'transparent',
                     px: 1.25,
                     py: 0.25,
-                    color: '#6b7280',
+                    color: (theme) => (theme.palette.mode === 'dark' ? '#94a3b8' : '#6b7280'),
                     fontSize: 11,
                     lineHeight: 1.4,
                     letterSpacing: '0.09em',
@@ -121,12 +152,42 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
                         py: 1,
                         minHeight: 56,
                         borderRadius: 2.25,
-                        border: active ? '1.5px solid #0f172a' : '1px solid #d6dee7',
-                        bgcolor: active ? '#f7fbfa' : '#fff',
+                        border: '1px solid',
+                        borderWidth: active ? 1.5 : 1,
+                        borderColor: (theme) =>
+                          active
+                            ? theme.palette.mode === 'dark'
+                              ? '#e2e8f0'
+                              : '#0f172a'
+                            : theme.palette.mode === 'dark'
+                              ? '#334155'
+                              : '#d6dee7',
+                        bgcolor: (theme) =>
+                          active
+                            ? theme.palette.mode === 'dark'
+                              ? '#162236'
+                              : '#f7fbfa'
+                            : theme.palette.mode === 'dark'
+                              ? '#0f172a'
+                              : '#fff',
                         transition: 'all 150ms ease',
                         '&:hover': {
-                          bgcolor: active ? '#f2faf7' : '#f8fafc',
-                          borderColor: active ? '#0f172a' : '#c7d2df',
+                          bgcolor: (theme) =>
+                            active
+                              ? theme.palette.mode === 'dark'
+                                ? '#1d2a3f'
+                                : '#f2faf7'
+                              : theme.palette.mode === 'dark'
+                                ? '#111c30'
+                                : '#f8fafc',
+                          borderColor: (theme) =>
+                            active
+                              ? theme.palette.mode === 'dark'
+                                ? '#e2e8f0'
+                                : '#0f172a'
+                              : theme.palette.mode === 'dark'
+                                ? '#475569'
+                                : '#c7d2df',
                         },
                       }}
                     >
@@ -135,8 +196,22 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
                           sx={{
                             width: 32,
                             height: 32,
-                            bgcolor: active ? '#dcfce7' : '#f3f4f6',
-                            color: active ? '#047857' : '#64748b',
+                            bgcolor: (theme) =>
+                              active
+                                ? theme.palette.mode === 'dark'
+                                  ? '#0f3a2a'
+                                  : '#dcfce7'
+                                : theme.palette.mode === 'dark'
+                                  ? '#1e293b'
+                                  : '#f3f4f6',
+                            color: (theme) =>
+                              active
+                                ? theme.palette.mode === 'dark'
+                                  ? '#6ee7b7'
+                                  : '#047857'
+                                : theme.palette.mode === 'dark'
+                                  ? '#94a3b8'
+                                  : '#64748b',
                           }}
                         >
                           <Icon size={16} />
@@ -144,12 +219,21 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
                       </ListItemIcon>
                       <ListItemText
                         primary={
-                          <Typography sx={{ fontWeight: active ? 800 : 700, fontSize: 14, lineHeight: 1.2, color: '#334155' }}>
+                          <Typography
+                            sx={{
+                              fontWeight: active ? 800 : 700,
+                              fontSize: 14,
+                              lineHeight: 1.2,
+                              color: (theme) => (theme.palette.mode === 'dark' ? '#e2e8f0' : '#334155'),
+                            }}
+                          >
                             {page.shortTitle ?? page.title}
                           </Typography>
                         }
                       />
-                      <KeyboardArrowRightRoundedIcon sx={{ fontSize: 22, color: '#94a3b8' }} />
+                      <KeyboardArrowRightRoundedIcon
+                        sx={{ fontSize: 22, color: (theme) => (theme.palette.mode === 'dark' ? '#64748b' : '#94a3b8') }}
+                      />
                     </ListItemButton>
                   );
                 })}

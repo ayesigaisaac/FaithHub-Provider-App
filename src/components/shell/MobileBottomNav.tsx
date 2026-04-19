@@ -42,9 +42,10 @@ export function MobileBottomNav() {
         right: 0,
         bottom: 0,
         zIndex: 1200,
-        borderTop: '1px solid rgba(15,23,42,0.08)',
+        borderTop: '1px solid',
+        borderTopColor: 'divider',
         backdropFilter: 'blur(18px)',
-        bgcolor: 'rgba(255,255,255,0.94)',
+        bgcolor: (theme) => (theme.palette.mode === 'dark' ? 'rgba(15,23,42,0.94)' : 'rgba(255,255,255,0.94)'),
       }}
     >
       <BottomNavigation value={value} onChange={(_, nextValue) => navigate(nextValue)} showLabels>

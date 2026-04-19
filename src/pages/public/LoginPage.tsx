@@ -20,6 +20,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/auth/useAuth';
 import { BrandLogo } from '@/components/branding/BrandLogo';
+import { ThemeModeToggle } from '@/components/theme/ThemeModeToggle';
 import { isKnownProviderPath } from '@/navigation/providerPages';
 import type { WorkspaceContext } from '@/auth/types';
 
@@ -114,12 +115,35 @@ export default function LoginPage() {
   } as const;
 
   return (
-    <Box sx={{ minHeight: '100vh', display: 'grid', placeItems: 'center', bgcolor: '#f3f4f6' }}>
+    <Box
+      sx={{
+        minHeight: '100vh',
+        display: 'grid',
+        placeItems: 'center',
+        bgcolor: 'background.default',
+        backgroundImage: (theme) =>
+          theme.palette.mode === 'dark'
+            ? 'radial-gradient(circle at 10% 5%, rgba(3,205,140,0.12), transparent 26%), radial-gradient(circle at 90% 0%, rgba(247,127,0,0.1), transparent 24%)'
+            : 'radial-gradient(circle at 10% 5%, rgba(3,205,140,0.08), transparent 26%), radial-gradient(circle at 90% 0%, rgba(247,127,0,0.08), transparent 24%)',
+      }}
+    >
       <Container maxWidth="sm">
-        <Card sx={{ borderRadius: 3, border: '1px solid #e5e7eb', boxShadow: '0 16px 48px rgba(15, 23, 42, 0.08)' }}>
+        <Card
+          sx={{
+            borderRadius: 3,
+            border: '1px solid',
+            borderColor: 'divider',
+            bgcolor: 'background.paper',
+            boxShadow: (theme) =>
+              theme.palette.mode === 'dark'
+                ? '0 16px 48px rgba(2, 6, 23, 0.75)'
+                : '0 16px 48px rgba(15, 23, 42, 0.08)',
+          }}
+        >
           <CardContent sx={{ p: 4 }}>
             <Stack spacing={2.25} component="form" onSubmit={onSubmit}>
-              <Box>
+              <Stack direction="row" justifyContent="space-between" alignItems="flex-start">
+                <Box>
                 <Box sx={{ mb: 1.25 }}>
                   <BrandLogo variant="landscape" alt="FaithHub Provider" style={{ height: 70, width: 'auto', maxWidth: '100%' }} />
                 </Box>
@@ -132,7 +156,9 @@ export default function LoginPage() {
                 <Typography variant="body2" color="text.secondary">
                   Use mock users like `leadership@faithhub.dev` with password `password123`.
                 </Typography>
-              </Box>
+                </Box>
+                <ThemeModeToggle />
+              </Stack>
 
               {error ? <Alert severity="error">{error}</Alert> : null}
 

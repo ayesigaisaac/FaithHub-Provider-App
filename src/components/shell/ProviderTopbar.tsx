@@ -10,6 +10,7 @@ import {
   Stack,
   Toolbar,
   Typography,
+  useTheme,
   useMediaQuery,
 } from '@mui/material';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
@@ -22,6 +23,7 @@ import { BrandLogo } from '@/components/branding/BrandLogo';
 import { topbarTabs } from '@/navigation/topbarTabs';
 import type { ProviderPageMeta } from '@/navigation/providerPages';
 import { resolveKnownProviderPath } from '@/navigation/providerPages';
+import { ThemeModeToggle } from '@/components/theme/ThemeModeToggle';
 
 type ProviderTopbarProps = {
   current?: ProviderPageMeta;
@@ -30,6 +32,8 @@ type ProviderTopbarProps = {
 };
 
 export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: ProviderTopbarProps) {
+  const theme = useTheme();
+  const isDark = theme.palette.mode === 'dark';
   const navigate = useNavigate();
   const { user, role, workspace, logout, setWorkspace } = useAuth();
   const [userAnchor, setUserAnchor] = useState<null | HTMLElement>(null);
@@ -37,13 +41,13 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
   const isTinyScreen = useMediaQuery('(max-width:399.95px)');
   const utilityIconSx = {
     border: '1px solid',
-    borderColor: '#d9e1ec',
+    borderColor: isDark ? '#334155' : '#d9e1ec',
     borderRadius: 3,
     width: { xs: 40, md: 48 },
     height: { xs: 40, md: 48 },
-    bgcolor: '#fff',
-    color: '#475569',
-    '&:hover': { borderColor: '#c1ccda', bgcolor: '#f8fafc' },
+    bgcolor: isDark ? '#0f172a' : '#fff',
+    color: isDark ? '#cbd5e1' : '#475569',
+    '&:hover': { borderColor: isDark ? '#475569' : '#c1ccda', bgcolor: isDark ? '#111c30' : '#f8fafc' },
   };
   const activeTopTab = useMemo(
     () => topbarTabs.find((tab) => tab.sections.includes(current?.section ?? '')),
@@ -100,13 +104,24 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
           <IconButton aria-label="Open search" sx={utilityIconSx} onClick={onOpenSearch}>
             <SearchRoundedIcon />
           </IconButton>
+          <Box
+            sx={{
+              ...utilityIconSx,
+              display: 'grid',
+              placeItems: 'center',
+            }}
+          >
+            <ThemeModeToggle size="small" />
+          </Box>
           <IconButton sx={utilityIconSx}>
             <Badge badgeContent={2} color="success">
               <NotificationsRoundedIcon />
             </Badge>
           </IconButton>
           <IconButton aria-label="User menu" onClick={openUserMenu} sx={utilityIconSx}>
-            <Avatar sx={{ width: { xs: 28, md: 32 }, height: { xs: 28, md: 32 }, bgcolor: '#111827' }}>{initials}</Avatar>
+            <Avatar sx={{ width: { xs: 28, md: 32 }, height: { xs: 28, md: 32 }, bgcolor: isDark ? '#0f172a' : '#111827' }}>
+              {initials}
+            </Avatar>
           </IconButton>
         </Stack>
       </Toolbar>
@@ -117,9 +132,9 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
           px: { xs: 1.25, md: 3 },
           py: { xs: 0.2, md: 0.35 },
           mt: 0,
-          bgcolor: '#f8fafc',
+          bgcolor: isDark ? '#0f172a' : '#f8fafc',
           borderTop: '1px solid',
-          borderColor: '#e5e7eb',
+          borderColor: isDark ? '#334155' : '#e5e7eb',
         }}
       >
         <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ width: '100%' }}>
@@ -139,8 +154,8 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
                   px: 1.3,
                   borderWidth: 1,
                   borderColor: '#cfd8e3',
-                  bgcolor: '#fff',
-                  color: '#111827',
+                  bgcolor: isDark ? '#111c30' : '#fff',
+                  color: isDark ? '#f8fafc' : '#111827',
                 }}
               >
                 {activeTopTab?.label ?? topbarTabs[0].label}
@@ -157,7 +172,7 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
                   py: 0.25,
                   pl: 0.25,
                   '&::-webkit-scrollbar': { height: 7 },
-                  '&::-webkit-scrollbar-thumb': { backgroundColor: '#cbd5e1', borderRadius: 10 },
+                  '&::-webkit-scrollbar-thumb': { backgroundColor: isDark ? '#334155' : '#cbd5e1', borderRadius: 10 },
                   '&::-webkit-scrollbar-track': { backgroundColor: 'transparent' },
                 }}
               >
@@ -191,17 +206,17 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
                       px: { xs: 1.35, md: 2.1 },
                       fontSize: { xs: 13, md: 16 },
                       borderWidth: 1,
-                      borderColor: activeTopTab?.label === tab.label ? '#10b981' : '#cfd8e3',
-                      bgcolor: activeTopTab?.label === tab.label ? '#10b981' : '#ffffff',
-                      color: activeTopTab?.label === tab.label ? '#ffffff' : '#111827',
+                      borderColor: activeTopTab?.label === tab.label ? '#10b981' : isDark ? '#334155' : '#cfd8e3',
+                      bgcolor: activeTopTab?.label === tab.label ? '#10b981' : isDark ? '#111c30' : '#ffffff',
+                      color: activeTopTab?.label === tab.label ? '#ffffff' : isDark ? '#f8fafc' : '#111827',
                       whiteSpace: 'nowrap',
                       '& .MuiButton-startIcon': {
-                        color: activeTopTab?.label === tab.label ? '#ffffff' : '#0f172a',
+                        color: activeTopTab?.label === tab.label ? '#ffffff' : isDark ? '#cbd5e1' : '#0f172a',
                         mr: 0.9,
                       },
                       '&:hover': {
-                        borderColor: activeTopTab?.label === tab.label ? '#0f9f72' : '#b9c6d8',
-                        bgcolor: activeTopTab?.label === tab.label ? '#0f9f72' : '#f3f6fa',
+                        borderColor: activeTopTab?.label === tab.label ? '#0f9f72' : isDark ? '#475569' : '#b9c6d8',
+                        bgcolor: activeTopTab?.label === tab.label ? '#0f9f72' : isDark ? '#162236' : '#f3f6fa',
                       },
                     }}
                   >
