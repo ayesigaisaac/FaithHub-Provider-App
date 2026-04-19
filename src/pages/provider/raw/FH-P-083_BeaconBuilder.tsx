@@ -34,7 +34,7 @@ import {
   X,
   Zap,
 } from "lucide-react";
-import { handleRawPlaceholderAction } from "./placeholderActions";
+
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { type ButtonActionId, resolveActionFromLabel } from "@/navigation/buttonActions";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
@@ -87,6 +87,34 @@ const cx = (...xs: Array<string | false | null | undefined>) =>
 
 function safeNav(url: string) {
   navigateWithRouter(url);
+}
+
+function runPreviewAction(actionId: ButtonActionId) {
+  if (actionId === "copy_current_link") {
+    navigator.clipboard?.writeText(window.location.href);
+    return;
+  }
+  if (actionId === "open_donations_funds") {
+    safeNav("/faithhub/provider/donations-and-funds");
+    return;
+  }
+  if (actionId === "open_events_manager") {
+    safeNav("/faithhub/provider/events-manager");
+    return;
+  }
+  if (actionId === "open_live_dashboard") {
+    safeNav("/faithhub/provider/live-dashboard");
+    return;
+  }
+  if (actionId === "open_noticeboard") {
+    safeNav("/faithhub/provider/noticeboard");
+    return;
+  }
+  if (actionId === "open_beacon_dashboard") {
+    safeNav("/faithhub/provider/beacon-dashboard");
+    return;
+  }
+  safeNav("/faithhub/provider/beacon-dashboard");
 }
 
 function fmtInt(n: number) {
@@ -1264,10 +1292,10 @@ function BeaconPreviewCard({
               ) : null}
 
               <div className="mt-4 flex flex-wrap items-center gap-2">
-                <button type="button" className="inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-2.5 text-sm font-black text-white" style={{ background: EV_GREEN }} onClick={handleRawPlaceholderAction(resolvePreviewAction(cta))}>
+                <button type="button" className="inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-2.5 text-sm font-black text-white" style={{ background: EV_GREEN }} onClick={() => runPreviewAction(resolvePreviewAction(cta))}>
                   {cta}
                 </button>
-                <button type="button" className="inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-2.5 text-sm font-black text-slate-900 ring-1 ring-slate-200 dark:text-slate-100 dark:ring-slate-700" onClick={handleRawPlaceholderAction(resolvePreviewAction(secondary))}>
+                <button type="button" className="inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-2.5 text-sm font-black text-slate-900 ring-1 ring-slate-200 dark:text-slate-100 dark:ring-slate-700" onClick={() => runPreviewAction(resolvePreviewAction(secondary))}>
                   {secondary}
                 </button>
               </div>
@@ -2778,6 +2806,8 @@ export default function BeaconBuilderPage({
 
   return content;
 }
+
+
 
 
 

@@ -36,7 +36,6 @@ import {
   Workflow,
   Zap,
 } from "lucide-react";
-import { handleRawPlaceholderAction } from "./placeholderActions";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
@@ -1012,13 +1011,15 @@ function StorefrontPreview({
                 type="button"
                 className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-2xl px-4 py-3 text-sm font-black text-white"
                 style={{ background: accentColor }}
-                onClick={handleRawPlaceholderAction(
-                  primaryAction.startsWith("Unlock")
-                    ? "open_donations_funds"
-                    : primaryAction === "Internal access"
-                      ? "open_roles_permissions"
-                      : "open_resources_manager",
-                )}>
+                onClick={() =>
+                  safeNav(
+                    primaryAction.startsWith("Unlock")
+                      ? "/faithhub/provider/donations-and-funds"
+                      : primaryAction === "Internal access"
+                        ? "/faithhub/provider/roles-permissions"
+                        : "/faithhub/provider/resources-manager",
+                  )
+                }>
                 <BookOpen className="h-4 w-4" />
                 {primaryAction}
               </button>
@@ -1117,13 +1118,15 @@ function StorefrontPreview({
                 type="button"
                 className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-2xl px-4 py-3 text-sm font-black text-white"
                 style={{ background: accentColor }}
-                onClick={handleRawPlaceholderAction(
-                  primaryAction.startsWith("Unlock")
-                    ? "open_donations_funds"
-                    : primaryAction === "Internal access"
-                      ? "open_roles_permissions"
-                      : "open_resources_manager",
-                )}>
+                onClick={() =>
+                  safeNav(
+                    primaryAction.startsWith("Unlock")
+                      ? "/faithhub/provider/donations-and-funds"
+                      : primaryAction === "Internal access"
+                        ? "/faithhub/provider/roles-permissions"
+                        : "/faithhub/provider/resources-manager",
+                  )
+                }>
                 <BookOpen className="h-4 w-4" />
                 {primaryAction}
               </button>

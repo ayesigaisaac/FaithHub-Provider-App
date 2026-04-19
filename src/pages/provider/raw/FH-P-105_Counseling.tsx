@@ -24,7 +24,6 @@ import {
   Workflow,
   X,
 } from "lucide-react";
-import { handleRawPlaceholderAction } from "./placeholderActions";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
@@ -695,10 +694,10 @@ function CounselingDestinationPreview({
           <button
             className="rounded-2xl px-3 py-2 text-[12px] font-bold text-white"
             style={{ background: EV_GREEN }}
-            onClick={handleRawPlaceholderAction("open_counseling")}>
+            onClick={() => safeNav("/faithhub/provider/counseling")}>
             {record.nextSessionISO ? "Join session" : "Request slot"}
           </button>
-          <button className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-[12px] font-bold text-slate-700 dark:text-slate-200 transition-colors" onClick={handleRawPlaceholderAction("open_counseling")}>
+          <button className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-[12px] font-bold text-slate-700 dark:text-slate-200 transition-colors" onClick={() => safeNav("/faithhub/provider/counseling")}>
             Send secure note
           </button>
         </div>
@@ -1713,6 +1712,8 @@ export default function CounselingPage() {
     </div>
   );
 }
+
+
 
 
 

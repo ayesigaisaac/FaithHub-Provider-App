@@ -26,7 +26,6 @@ import {
   X,
   Zap,
 } from "lucide-react";
-import { handleRawPlaceholderAction } from "./placeholderActions";
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
@@ -746,7 +745,7 @@ function BrowserPreview({
                 type="button"
                 key={amount}
                 className="rounded-xl border border-slate-200 bg-slate-50 px-3 py-3 text-center text-sm font-extrabold text-slate-900 transition hover:bg-white dark:border-slate-700 dark:bg-slate-800 dark:text-slate-50 dark:hover:bg-slate-700"
-                onClick={handleRawPlaceholderAction("open_donations_funds")}>
+                onClick={() => safeNav("/faithhub/provider/donations-and-funds")}>
                 {fmtCurrency(amount)}
               </button>
             ))}
@@ -764,7 +763,7 @@ function BrowserPreview({
             <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Trust & privacy</div>
             <div className="mt-2 text-xs text-slate-500 dark:text-slate-400">{privacyWall ? "Donor recognition requires explicit opt-in." : record.donorPrivacy}</div>
           </div>
-          <button type="button" className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-extrabold text-white" style={{ background: EV_GREEN }} onClick={handleRawPlaceholderAction("open_donations_funds")}>
+          <button type="button" className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-extrabold text-white" style={{ background: EV_GREEN }} onClick={() => safeNav("/faithhub/provider/donations-and-funds")}>
             <HeartHandshake className="h-4 w-4" /> Complete donation
           </button>
         </div>
@@ -811,7 +810,7 @@ function PhonePreview({
                     key={amount}
                     type="button"
                     className="rounded-xl border border-slate-200 bg-white px-3 py-3 text-sm font-extrabold text-slate-900 shadow-sm dark:border-slate-700 dark:bg-slate-900 dark:text-slate-50"
-                    onClick={handleRawPlaceholderAction("open_donations_funds")}>
+                    onClick={() => safeNav("/faithhub/provider/donations-and-funds")}>
                     {fmtCurrency(amount)}
                   </button>
                 ))}
@@ -831,7 +830,7 @@ function PhonePreview({
               </div>
             </div>
             <div className="sticky bottom-0 bg-white/95 px-4 pb-4 pt-2 backdrop-blur dark:bg-slate-900/95">
-              <button type="button" className="inline-flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-extrabold text-white shadow-lg" style={{ background: EV_GREEN }} onClick={handleRawPlaceholderAction("open_donations_funds")}>
+              <button type="button" className="inline-flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-extrabold text-white shadow-lg" style={{ background: EV_GREEN }} onClick={() => safeNav("/faithhub/provider/donations-and-funds")}>
                 <HeartHandshake className="h-4 w-4" /> Give now
               </button>
             </div>
@@ -1238,7 +1237,7 @@ export default function DonationsAndFundsPage() {
                         type="button"
                         key={amount}
                         className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-2 py-2 text-sm font-extrabold text-slate-900 dark:text-slate-50"
-                        onClick={handleRawPlaceholderAction("open_donations_funds")}>
+                        onClick={() => safeNav("/faithhub/provider/donations-and-funds")}>
                         {fmtCurrency(amount)}
                       </button>
                     ))}
@@ -1705,6 +1704,8 @@ export default function DonationsAndFundsPage() {
     </div>
   );
 }
+
+
 
 
 

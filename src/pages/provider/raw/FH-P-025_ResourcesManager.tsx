@@ -29,7 +29,6 @@ import {
   Wand2,
   X,
 } from "lucide-react";
-import { handleRawPlaceholderAction } from "./placeholderActions";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
@@ -935,13 +934,13 @@ function PreviewRail({
               type="button"
               className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-2xl text-[13px] font-black text-white"
               style={{ background: EV_GREEN }}
-              onClick={handleRawPlaceholderAction("open_resources_manager")}>
+              onClick={() => safeNav("/faithhub/provider/resources-manager")}>
               <Eye className="h-4 w-4" /> Open details
             </button>
             <button
               type="button"
               className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white text-[13px] font-black text-slate-800"
-              onClick={handleRawPlaceholderAction("copy_current_link")}>
+              onClick={() => navigator.clipboard?.writeText(window.location.href)}>
               <Download className="h-4 w-4" /> Download
             </button>
           </div>
@@ -1591,6 +1590,8 @@ export default function ResourcesManagerPage() {
     </div>
   );
 }
+
+
 
 
 

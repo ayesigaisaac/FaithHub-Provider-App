@@ -23,7 +23,6 @@ import {
   UserPlus,
   X,
 } from "lucide-react";
-import { handleRawPlaceholderAction } from "./placeholderActions";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
@@ -865,10 +864,10 @@ function TestimonyPreview({
           <button
             className="rounded-2xl px-3 py-2 text-[12px] font-bold text-white"
             style={{ background: EV_GREEN }}
-            onClick={handleRawPlaceholderAction("open_testimonies")}>
+            onClick={() => safeNav("/faithhub/provider/testimonies")}>
             Read full story
           </button>
-          <button className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-[12px] font-bold text-slate-700 dark:text-slate-200 transition-colors" onClick={handleRawPlaceholderAction("copy_current_link")}>
+          <button className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-[12px] font-bold text-slate-700 dark:text-slate-200 transition-colors" onClick={() => navigator.clipboard?.writeText(window.location.href)}>
             Share testimony
           </button>
         </div>
@@ -1720,6 +1719,8 @@ export default function TestimoniesPage() {
     </div>
   );
 }
+
+
 
 
 

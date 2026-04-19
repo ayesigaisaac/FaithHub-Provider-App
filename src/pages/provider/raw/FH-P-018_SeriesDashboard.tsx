@@ -28,7 +28,6 @@ import {
   Workflow,
   Zap,
 } from "lucide-react";
-import { handleRawPlaceholderAction } from "./placeholderActions";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
@@ -45,7 +44,7 @@ import { navigateWithRouter } from "@/navigation/routerNavigate";
  * Design goals
  * - EVzone Green primary, Orange secondary.
  * - Premium creator-style hierarchy: hero, KPI strip, command center, preview rail, and workflow boards.
- * - Strong emphasis on the Series �?? � Episodes relationship.
+ * - Strong emphasis on the Series ??? ? Episodes relationship.
  */
 
 const EV_GREEN = "#03cd8c";
@@ -790,8 +789,8 @@ function SeriesLandingPreview({
             <div className="text-[15px] font-black tracking-tight">{series.title}</div>
             <div className="mt-2 max-w-[90%] text-[12px] leading-relaxed text-white/90">{series.subtitle}</div>
             <div className="mt-4 flex flex-wrap items-center gap-2">
-              <button className="rounded-full bg-[#03cd8c] px-4 py-2 text-[12px] font-black text-white" onClick={handleRawPlaceholderAction("open_series_dashboard")}>Follow series</button>
-              <button className="rounded-full bg-[#f77f00] px-4 py-2 text-[12px] font-black text-white" onClick={handleRawPlaceholderAction("open_live_dashboard")}>Watch trailer</button>
+              <button className="rounded-full bg-[#03cd8c] px-4 py-2 text-[12px] font-black text-white" onClick={() => safeNav("/faithhub/provider/series-dashboard")}>Follow series</button>
+              <button className="rounded-full bg-[#f77f00] px-4 py-2 text-[12px] font-black text-white" onClick={() => safeNav("/faithhub/provider/live-dashboard")}>Watch trailer</button>
             </div>
           </div>
         </div>
@@ -823,7 +822,7 @@ function SeriesLandingPreview({
                 <div key={episode.id} className="rounded-2xl bg-slate-50 dark:bg-slate-950 px-3 py-2 transition-colors">
                   <div className="flex items-center justify-between gap-2">
                     <div className="min-w-0">
-                      <div className="truncate text-[12px] font-bold text-slate-900 dark:text-slate-100">Episode {episode.number} � {episode.title}</div>
+                      <div className="truncate text-[12px] font-bold text-slate-900 dark:text-slate-100">Episode {episode.number} ? {episode.title}</div>
                       <div className="mt-0.5 truncate text-[11px] text-slate-500 dark:text-slate-400">{episode.focus}</div>
                     </div>
                     <Pill text={episode.status} tone={statusTone(episode.status)} />
@@ -952,8 +951,8 @@ export default function SeriesDashboardPage() {
 
       return {
         id: episode.id,
-        title: `Episode ${episode.number} � ${episode.title}`,
-        detail: detailParts.join(" � "),
+        title: `Episode ${episode.number} ? ${episode.title}`,
+        detail: detailParts.join(" ? "),
         status: episode.status,
         tone,
       };
@@ -982,10 +981,10 @@ export default function SeriesDashboardPage() {
                 </div>
                 <div>
                   <div className="text-[18px] md:text-[24px] xl:text-[28px] font-black tracking-tight text-slate-900 dark:text-slate-100">
-                    � Series Dashboard
+                    ? Series Dashboard
                   </div>
                   <div className="mt-1 text-[13px] text-slate-500 dark:text-slate-400">
-                    Premium structured-series command surface � EVzone Green primary, Orange secondary
+                    Premium structured-series command surface ? EVzone Green primary, Orange secondary
                   </div>
                 </div>
               </div>
@@ -1028,11 +1027,11 @@ export default function SeriesDashboardPage() {
               Series pipeline pulse
             </span>
             <span>1 series needs artwork</span>
-            <span>�</span>
+            <span>?</span>
             <span>2 episodes require notes review</span>
-            <span>�</span>
+            <span>?</span>
             <span>{translationReviewCount} translation variants still due</span>
-            <span>�</span>
+            <span>?</span>
             <span>{beaconReadyCount} series already promotion-ready</span>
             <span className="ml-auto text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-400">Premium series ops</span>
           </div>
@@ -1342,7 +1341,7 @@ export default function SeriesDashboardPage() {
                         <Workflow className="h-5 w-5" />
                       </div>
                       <div>
-                        <div className="text-[14px] font-bold text-slate-900 dark:text-slate-100">Series �?? � Episodes rule</div>
+                        <div className="text-[14px] font-bold text-slate-900 dark:text-slate-100">Series ??? ? Episodes rule</div>
                         <div className="mt-1 text-[12px] text-slate-600 dark:text-slate-400">
                           <span className="font-semibold text-slate-900 dark:text-slate-100">{selectedSeries.title}</span> currently holds <span className="font-semibold text-slate-900 dark:text-slate-100">{selectedSeries.episodeCount} episodes</span>. New episodes should be created from this Series context so they inherit the right identity, audience, and workflow connections.
                         </div>
@@ -1461,6 +1460,8 @@ export default function SeriesDashboardPage() {
     </div>
   );
 }
+
+
 
 
 

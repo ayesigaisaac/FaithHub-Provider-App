@@ -26,7 +26,6 @@ import {
   X,
   Zap,
 } from "lucide-react";
-import { handleRawPlaceholderAction } from "./placeholderActions";
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
@@ -83,6 +82,26 @@ const cx = (...xs: Array<string | false | null | undefined>) =>
 
 function safeNav(url: string) {
   navigateWithRouter(url);
+}
+
+function runPrimaryAction(actionId: string) {
+  if (actionId === "open_donations_funds") {
+    safeNav("/faithhub/provider/donations-and-funds");
+    return;
+  }
+  if (actionId === "open_events_manager") {
+    safeNav("/faithhub/provider/events-manager");
+    return;
+  }
+  if (actionId === "open_live_dashboard") {
+    safeNav("/faithhub/provider/live-dashboard");
+    return;
+  }
+  if (actionId === "copy_current_link") {
+    navigator.clipboard?.writeText(window.location.href);
+    return;
+  }
+  safeNav("/faithhub/provider/beacon-dashboard");
 }
 
 function fmtInt(n: number) {
@@ -885,13 +904,13 @@ function BrowserPreview({ campaign }: { campaign: BeaconCampaign }) {
               type="button"
               className="inline-flex items-center gap-2 rounded-2xl px-3 py-2 text-[12px] font-extrabold text-white"
               style={{ background: accentColor(campaign.accent) }}
-              onClick={handleRawPlaceholderAction(primaryActionId)}>
+              onClick={() => runPrimaryAction(primaryActionId)}>
               {primaryCTA}
             </button>
             <button
               type="button"
               className="inline-flex items-center gap-2 rounded-2xl border border-white/20 bg-white/10 px-3 py-2 text-[12px] font-extrabold text-white backdrop-blur"
-              onClick={handleRawPlaceholderAction("open_beacon_dashboard")}>
+              onClick={() => safeNav("/faithhub/provider/beacon-dashboard")}>
               Learn more
             </button>
           </div>
@@ -977,13 +996,13 @@ function PhonePreview({ campaign }: { campaign: BeaconCampaign }) {
                     type="button"
                     className="inline-flex flex-1 items-center justify-center rounded-2xl px-3 py-2.5 text-[12px] font-black text-white"
                     style={{ background: accentColor(campaign.accent) }}
-                    onClick={handleRawPlaceholderAction(primaryActionId)}>
+                    onClick={() => runPrimaryAction(primaryActionId)}>
                     {primaryLabel}
                   </button>
                   <button
                     type="button"
                     className="inline-flex items-center justify-center rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2.5 text-[12px] font-black text-slate-900 dark:text-slate-100"
-                    onClick={handleRawPlaceholderAction("copy_current_link")}>
+                    onClick={() => navigator.clipboard?.writeText(window.location.href)}>
                     Save
                   </button>
                 </div>
@@ -1795,6 +1814,8 @@ export default function BeaconDashboardPage() {
     </div>
   );
 }
+
+
 
 
 

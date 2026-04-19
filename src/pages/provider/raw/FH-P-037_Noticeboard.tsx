@@ -31,8 +31,8 @@ import {
   Workflow,
   Zap,
 } from "lucide-react";
-import { handleRawPlaceholderAction } from "./placeholderActions";
 import { KpiTile } from "../../../components/ui/KpiTile";
+import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
  * FaithHub — Noticeboard
@@ -61,6 +61,10 @@ const EV_NAVY = "#16244c";
 
 const cx = (...xs: Array<string | false | null | undefined>) =>
   xs.filter(Boolean).join(" ");
+
+function safeNav(url: string) {
+  navigateWithRouter(url);
+}
 
 type ViewKey = "Board" | "Calendar" | "Archive" | "Analytics";
 type Tone = "neutral" | "good" | "warn" | "danger" | "brand" | "navy";
@@ -951,7 +955,7 @@ function BoardPreviewMobile({ draft }: { draft: ComposerState }) {
               type="button"
               className="inline-flex w-full items-center justify-center gap-2 rounded-[18px] px-4 py-3 text-[12px] font-black text-white"
               style={{ background: EV_GREEN }}
-              onClick={handleRawPlaceholderAction("open_noticeboard")}>
+              onClick={() => safeNav("/faithhub/provider/noticeboard")}>
               <Bell className="h-4 w-4" />
               Open full notice
             </button>
@@ -1869,9 +1873,13 @@ export default function FaithHubNoticeboardPage() {
                       type="button"
                       className="mt-3 rounded-full px-4 py-2 text-[11px] font-semibold text-white"
                       style={{ background: item.accent }}
-                      onClick={handleRawPlaceholderAction(
-                        item.action === "Review lane" ? "open_roles_permissions" : "open_noticeboard",
-                      )}>
+                      onClick={() =>
+                        safeNav(
+                          item.action === "Review lane"
+                            ? "/faithhub/provider/roles-permissions"
+                            : "/faithhub/provider/noticeboard",
+                        )
+                      }>
                       {item.action}
                     </button>
                   </div>
@@ -1888,6 +1896,8 @@ export default function FaithHubNoticeboardPage() {
     </div>
   );
 }
+
+
 
 
 

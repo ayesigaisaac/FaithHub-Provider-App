@@ -35,7 +35,6 @@ import {
   X,
   Zap,
 } from "lucide-react";
-import { handleRawPlaceholderAction } from "./placeholderActions";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
@@ -174,7 +173,7 @@ const EMBARGO_RULES = [
 ];
 
 const APPROVAL_FLOWS = [
-  "Pastoral review → editor sign-off → publish",
+  "Pastoral review ? editor sign-off ? publish",
   "Content lead only",
   "Leadership review board",
   "Multi-campus approval chain",
@@ -747,7 +746,7 @@ function SeriesLandingPreview({
               <div className="rounded-[26px] border border-slate-200 bg-white p-4 shadow-sm">
                 <div className="flex items-center justify-between gap-2">
                   <Pill tone="brand">Series live</Pill>
-                  <button className="text-[11px] font-semibold text-emerald-600" onClick={handleRawPlaceholderAction("copy_current_link")}>Share</button>
+                  <button className="text-[11px] font-semibold text-emerald-600" onClick={() => navigator.clipboard?.writeText(window.location.href)}>Share</button>
                 </div>
                 <div className="mt-3 text-[22px] font-black leading-tight text-slate-900">{draft.title}</div>
                 <div className="mt-1 text-[12px] text-slate-500">{draft.subtitle}</div>
@@ -775,7 +774,7 @@ function SeriesLandingPreview({
                     type="button"
                     className="flex-1 rounded-2xl bg-amber-500 px-3 py-2 text-[12px] font-bold text-white"
                     style={{ background: EV_ORANGE }}
-                    onClick={handleRawPlaceholderAction("open_audience_notifications")}>
+                    onClick={() => safeNav("/faithhub/provider/audience-notifications")}>
                     Notify me
                   </button>
                 </div>
@@ -814,10 +813,10 @@ function SeriesLandingPreview({
               ))}
             </div>
             <div className="mt-5 flex gap-3">
-              <button className="rounded-2xl px-4 py-2 text-[12px] font-bold text-white" style={{ background: EV_GREEN }} onClick={handleRawPlaceholderAction("open_series_dashboard")}>
+              <button className="rounded-2xl px-4 py-2 text-[12px] font-bold text-white" style={{ background: EV_GREEN }} onClick={() => safeNav("/faithhub/provider/series-dashboard")}>
                 Follow series
               </button>
-              <button className="rounded-2xl px-4 py-2 text-[12px] font-bold text-white" style={{ background: EV_ORANGE }} onClick={handleRawPlaceholderAction("open_audience_notifications")}>
+              <button className="rounded-2xl px-4 py-2 text-[12px] font-bold text-white" style={{ background: EV_ORANGE }} onClick={() => safeNav("/faithhub/provider/audience-notifications")}>
                 Get reminders
               </button>
             </div>
@@ -1932,6 +1931,8 @@ export default function SeriesBuilderPage() {
     </div>
   );
 }
+
+
 
 
 

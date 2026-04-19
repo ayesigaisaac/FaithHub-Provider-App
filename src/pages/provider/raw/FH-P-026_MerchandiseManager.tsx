@@ -29,7 +29,6 @@ import {
   X,
   Zap,
 } from "lucide-react";
-import { handleRawPlaceholderAction } from "./placeholderActions";
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
@@ -1062,10 +1061,10 @@ function MerchandiseStorefrontPreview({
                   <button
                     className="flex-1 rounded-2xl px-3 py-2 text-[12px] font-bold text-white"
                     style={{ background: EV_ORANGE }}
-                   onClick={handleRawPlaceholderAction("open_merchandise_builder")}>
+                   onClick={() => safeNav("/faithhub/provider/merchandise-builder")}>
                     View item
                   </button>
-                  <button className="flex-1 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-[12px] font-bold text-slate-700 dark:text-slate-200 transition-colors" onClick={handleRawPlaceholderAction("copy_current_link")}>
+                  <button className="flex-1 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-[12px] font-bold text-slate-700 dark:text-slate-200 transition-colors" onClick={() => navigator.clipboard?.writeText(window.location.href)}>
                     Save
                   </button>
                 </div>
@@ -1153,10 +1152,10 @@ function MerchandiseStorefrontPreview({
             <button
               className="rounded-2xl px-4 py-2 text-[12px] font-bold text-white"
               style={{ background: EV_ORANGE }}
-             onClick={handleRawPlaceholderAction("open_merchandise_builder")}>
+             onClick={() => safeNav("/faithhub/provider/merchandise-builder")}>
                     View item
             </button>
-            <button className="rounded-2xl border border-white/25 bg-white/10 px-4 py-2 text-[12px] font-bold text-white backdrop-blur" onClick={handleRawPlaceholderAction("copy_current_link")}>
+            <button className="rounded-2xl border border-white/25 bg-white/10 px-4 py-2 text-[12px] font-bold text-white backdrop-blur" onClick={() => navigator.clipboard?.writeText(window.location.href)}>
               Save for later
             </button>
           </div>
@@ -2082,6 +2081,8 @@ export default function MerchandiseManagerPage() {
     </div>
   );
 }
+
+
 
 
 

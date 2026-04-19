@@ -23,7 +23,6 @@ import {
   X,
   Zap,
 } from "lucide-react";
-import { handleRawPlaceholderAction } from "./placeholderActions";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
@@ -549,11 +548,13 @@ function RequestRow({
 function PreviewCard({
   request,
   mode,
+  onModeChange,
   onOpenLarge,
   onCopy,
 }: {
   request: PrayerRequest;
   mode: PreviewMode;
+  onModeChange: (mode: PreviewMode) => void;
   onOpenLarge: () => void;
   onCopy: () => void;
 }) {
@@ -567,8 +568,8 @@ function PreviewCard({
           </div>
         </div>
         <div className="inline-flex rounded-full border border-slate-200 bg-slate-50 p-1">
-          <button className={cx("rounded-full px-3 py-1 text-[11px] font-semibold", mode === "desktop" ? "bg-[#1d2b64] text-white" : "text-slate-600")} onClick={handleRawPlaceholderAction("set_preview_desktop")}>Desktop</button>
-          <button className={cx("rounded-full px-3 py-1 text-[11px] font-semibold", mode === "mobile" ? "bg-[#1d2b64] text-white" : "text-slate-600")} onClick={handleRawPlaceholderAction("set_preview_mobile")}>Mobile</button>
+          <button className={cx("rounded-full px-3 py-1 text-[11px] font-semibold", mode === "desktop" ? "bg-[#1d2b64] text-white" : "text-slate-600")} onClick={() => onModeChange("desktop")}>Desktop</button>
+          <button className={cx("rounded-full px-3 py-1 text-[11px] font-semibold", mode === "mobile" ? "bg-[#1d2b64] text-white" : "text-slate-600")} onClick={() => onModeChange("mobile")}>Mobile</button>
         </div>
       </div>
 
@@ -581,10 +582,10 @@ function PreviewCard({
           <div className="text-[14px] font-bold text-slate-900">{request.title}</div>
           <div className="mt-1 text-[12px] text-slate-500">{request.group} · {request.submittedLabel} · {request.location}</div>
           <div className="mt-4 flex flex-wrap gap-2">
-            <button className="rounded-full px-4 py-2 text-[12px] font-semibold text-white" style={{ background: EV_GREEN }} onClick={handleRawPlaceholderAction("open_prayer_requests")}>
+            <button className="rounded-full px-4 py-2 text-[12px] font-semibold text-white" style={{ background: EV_GREEN }} onClick={() => safeNav("/faithhub/provider/prayer-requests")}>
               Pray now
             </button>
-            <button className="rounded-full border border-slate-200 bg-white px-4 py-2 text-[12px] font-semibold text-slate-700" onClick={handleRawPlaceholderAction("open_counseling")}>
+            <button className="rounded-full border border-slate-200 bg-white px-4 py-2 text-[12px] font-semibold text-slate-700" onClick={() => safeNav("/faithhub/provider/counseling")}>
               Send encouragement
             </button>
           </div>
@@ -613,7 +614,7 @@ function TemplateTile({ template }: { template: TemplateCard }) {
         type="button"
         className="mt-4 inline-flex items-center gap-1 text-[12px] font-semibold"
         style={{ color: EV_GREEN }}
-        onClick={handleRawPlaceholderAction("open_prayer_requests")}>
+        onClick={() => safeNav("/faithhub/provider/prayer-requests")}>
         Use template <ArrowRight className="h-3.5 w-3.5" />
       </button>
     </div>
@@ -980,6 +981,7 @@ function PrayerRequestsPage() {
             <PreviewCard
               request={selectedRequest}
               mode={previewMode}
+              onModeChange={setPreviewMode}
               onOpenLarge={() => setPreviewOpen(true)}
               onCopy={handleCopyLink}
             />
@@ -1063,13 +1065,13 @@ function PrayerRequestsPage() {
                   <div className="mt-4 text-[14px] leading-7 text-slate-600">{selectedRequest.summary}</div>
 
                   <div className="mt-5 flex flex-wrap gap-2">
-                    <button className="rounded-full px-5 py-2.5 text-[13px] font-semibold text-white" style={{ background: EV_GREEN }} onClick={handleRawPlaceholderAction("open_prayer_requests")}>
+                    <button className="rounded-full px-5 py-2.5 text-[13px] font-semibold text-white" style={{ background: EV_GREEN }} onClick={() => safeNav("/faithhub/provider/prayer-requests")}>
                       Pray now
                     </button>
-                    <button className="rounded-full border border-slate-200 bg-white px-5 py-2.5 text-[13px] font-semibold text-slate-700" onClick={handleRawPlaceholderAction("open_counseling")}>
+                    <button className="rounded-full border border-slate-200 bg-white px-5 py-2.5 text-[13px] font-semibold text-slate-700" onClick={() => safeNav("/faithhub/provider/counseling")}>
                       Send encouragement
                     </button>
-                    <button className="rounded-full border border-slate-200 bg-white px-5 py-2.5 text-[13px] font-semibold text-slate-700" onClick={handleRawPlaceholderAction("open_counseling")}>
+                    <button className="rounded-full border border-slate-200 bg-white px-5 py-2.5 text-[13px] font-semibold text-slate-700" onClick={() => safeNav("/faithhub/provider/counseling")}>
                       Request follow-up
                     </button>
                   </div>
@@ -1103,6 +1105,8 @@ function PrayerRequestsPage() {
 }
 
 export default PrayerRequestsPage;
+
+
 
 
 

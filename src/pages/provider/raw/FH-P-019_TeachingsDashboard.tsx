@@ -32,7 +32,6 @@ import {
   X,
   Zap,
 } from "lucide-react";
-import { handleRawPlaceholderAction } from "./placeholderActions";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
@@ -845,26 +844,30 @@ function TeachingPreview({
               type="button"
               className="rounded-full px-5 py-2 text-[13px] font-bold text-white"
               style={{ background: EV_GREEN }}
-              onClick={handleRawPlaceholderAction(
-                primaryCta === "Join live" || primaryCta === "Watch replay"
-                  ? "open_live_dashboard"
-                  : primaryCta === "Follow series"
-                    ? "open_series_dashboard"
-                    : "open_teachings_dashboard",
-              )}>
+              onClick={() =>
+                safeNav(
+                  primaryCta === "Join live" || primaryCta === "Watch replay"
+                    ? "/faithhub/provider/live-dashboard"
+                    : primaryCta === "Follow series"
+                      ? "/faithhub/provider/series-dashboard"
+                      : "/faithhub/provider/teachings-dashboard",
+                )
+              }>
               {primaryCta}
             </button>
             <button
               type="button"
               className="rounded-full px-5 py-2 text-[13px] font-bold text-white"
               style={{ background: EV_ORANGE }}
-              onClick={handleRawPlaceholderAction(
-                secondaryCta === "Get reminders"
-                  ? "open_audience_notifications"
-                  : secondaryCta === "View notes"
-                    ? "open_resources_manager"
-                    : "open_teachings_dashboard",
-              )}>
+              onClick={() =>
+                safeNav(
+                  secondaryCta === "Get reminders"
+                    ? "/faithhub/provider/audience-notifications"
+                    : secondaryCta === "View notes"
+                      ? "/faithhub/provider/resources-manager"
+                      : "/faithhub/provider/teachings-dashboard",
+                )
+              }>
               {secondaryCta}
             </button>
           </div>

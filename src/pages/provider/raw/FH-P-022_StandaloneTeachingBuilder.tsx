@@ -34,7 +34,6 @@ import {
   X,
   Zap,
 } from "lucide-react";
-import { handleRawPlaceholderAction } from "./placeholderActions";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
@@ -766,11 +765,11 @@ function DesktopTeachingPreview({ draft }: { draft: TeachingDraft }) {
             <div className="mt-3 flex flex-wrap gap-2">
               <button
                 className="inline-flex items-center gap-2 rounded-full bg-[#03cd8c] px-4 py-2 text-[12px] font-black text-white"
-                onClick={draft.liveEnabled ? handleRawPlaceholderAction("open_live_dashboard") : handleRawPlaceholderAction("open_teachings_dashboard")}
+                onClick={() => safeNav(draft.liveEnabled ? "/faithhub/provider/live-dashboard" : "/faithhub/provider/teachings-dashboard")}
               >
                 {draft.liveEnabled ? "Join teaching" : "Watch teaching"}
               </button>
-              <button className="inline-flex items-center gap-2 rounded-full bg-[#f77f00] px-4 py-2 text-[12px] font-black text-white" onClick={handleRawPlaceholderAction("open_resources_manager")}>
+              <button className="inline-flex items-center gap-2 rounded-full bg-[#f77f00] px-4 py-2 text-[12px] font-black text-white" onClick={() => safeNav("/faithhub/provider/resources-manager")}>
                 Open notes
               </button>
             </div>
@@ -858,7 +857,7 @@ function MobileTeachingPreview({ draft }: { draft: TeachingDraft }) {
             <div className="rounded-[26px] border border-slate-200 bg-white p-4 shadow-sm">
               <div className="flex items-center justify-between gap-2">
                 <Pill tone="brand">Standalone</Pill>
-                <button className="text-[11px] font-semibold text-emerald-600" onClick={handleRawPlaceholderAction("copy_current_link")}>Share</button>
+                <button className="text-[11px] font-semibold text-emerald-600" onClick={() => navigator.clipboard?.writeText(window.location.href)}>Share</button>
               </div>
               <div className="mt-3 text-[22px] font-black leading-tight text-slate-900">{draft.title}</div>
               <div className="mt-1 text-[12px] text-slate-500">{draft.subtitle}</div>
@@ -874,11 +873,11 @@ function MobileTeachingPreview({ draft }: { draft: TeachingDraft }) {
               <div className="mt-3 space-y-2">
                 <button
                   className="inline-flex w-full items-center justify-center rounded-2xl bg-[#03cd8c] px-4 py-3 text-[13px] font-black text-white"
-                  onClick={draft.liveEnabled ? handleRawPlaceholderAction("open_live_dashboard") : handleRawPlaceholderAction("open_teachings_dashboard")}
+                  onClick={() => safeNav(draft.liveEnabled ? "/faithhub/provider/live-dashboard" : "/faithhub/provider/teachings-dashboard")}
                 >
                   {draft.liveEnabled ? "Join linked live" : "Watch teaching"}
                 </button>
-                <button className="inline-flex w-full items-center justify-center rounded-2xl bg-[#f77f00] px-4 py-3 text-[13px] font-black text-white" onClick={handleRawPlaceholderAction("open_resources_manager")}>
+                <button className="inline-flex w-full items-center justify-center rounded-2xl bg-[#f77f00] px-4 py-3 text-[13px] font-black text-white" onClick={() => safeNav("/faithhub/provider/resources-manager")}>
                   Open notes & resources
                 </button>
               </div>
@@ -1839,6 +1838,8 @@ export default function StandaloneTeachingBuilderPage() {
     </div>
   );
 }
+
+
 
 
 

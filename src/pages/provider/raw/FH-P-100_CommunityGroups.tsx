@@ -32,7 +32,6 @@ import {
   X,
   Zap,
 } from "lucide-react";
-import { handleRawPlaceholderAction } from "./placeholderActions";
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
@@ -829,7 +828,7 @@ function GroupExperiencePreview({
                 type="button"
                 className="mt-3 w-full rounded-2xl px-3 py-2 text-[12px] font-black text-white"
                 style={{ background: EV_GREEN }}
-                onClick={handleRawPlaceholderAction("open_community_groups")}>
+                onClick={() => safeNav("/faithhub/provider/community-groups")}>
                 Join circle
               </button>
             </div>
@@ -1595,6 +1594,8 @@ export default function CommunityGroupsPage() {
     </div>
   );
 }
+
+
 
 
 

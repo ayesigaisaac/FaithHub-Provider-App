@@ -40,7 +40,6 @@ import {
   X,
   Zap,
 } from "lucide-react";
-import { handleRawPlaceholderAction } from "./placeholderActions";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
@@ -81,16 +80,16 @@ const SERIES_OPTIONS = [
 
 const EPISODE_OPTIONS: Record<string, Array<{ id: string; name: string }>> = {
   "series-1": [
-    { id: "episode-1", name: "Episode 1 � Grace That Restores" },
-    { id: "episode-2", name: "Episode 2 � Grace in the Wilderness" },
+    { id: "episode-1", name: "Episode 1 ? Grace That Restores" },
+    { id: "episode-2", name: "Episode 2 ? Grace in the Wilderness" },
   ],
   "series-2": [
-    { id: "episode-3", name: "Episode 1 � Called to Build" },
-    { id: "episode-4", name: "Episode 2 � Faithful Hands" },
+    { id: "episode-3", name: "Episode 1 ? Called to Build" },
+    { id: "episode-4", name: "Episode 2 ? Faithful Hands" },
   ],
   "series-3": [
-    { id: "episode-5", name: "Day 1 � Awakening Faith" },
-    { id: "episode-6", name: "Day 2 � Spirit & Mission" },
+    { id: "episode-5", name: "Day 1 ? Awakening Faith" },
+    { id: "episode-6", name: "Day 2 ? Spirit & Mission" },
   ],
 };
 
@@ -674,7 +673,7 @@ function getParentLabel(draft: LiveBuilderDraft) {
     case "seriesEpisode": {
       const series = SERIES_OPTIONS.find((option) => option.id === draft.linkedSeriesId)?.name || "Series";
       const episode = (draft.linkedSeriesId ? EPISODE_OPTIONS[draft.linkedSeriesId] : [])?.find((option) => option.id === draft.linkedEpisodeId)?.name || "Episode";
-      return `${series} � ${episode}`;
+      return `${series} ? ${episode}`;
     }
     case "standaloneTeaching":
       return STANDALONE_TEACHINGS.find((option) => option.id === draft.linkedTeachingId)?.name || "Standalone teaching";
@@ -1384,7 +1383,7 @@ function PreviewPhone({ draft, readiness }: { draft: LiveBuilderDraft; readiness
                 type="button"
                 className="rounded-xl border-2 px-2 py-1 text-[11px] font-bold"
                 style={{ borderColor: EV_GREEN, color: EV_GREEN }}
-                onClick={handleRawPlaceholderAction("copy_current_link")}>
+                onClick={() => navigator.clipboard?.writeText(window.location.href)}>
                 Share
               </button>
             </div>
@@ -1421,11 +1420,11 @@ function PreviewPhone({ draft, readiness }: { draft: LiveBuilderDraft; readiness
                 <PreviewCard title="Time & access" icon={<Calendar className="h-4 w-4" />}>
                   <div className="text-[13px] font-semibold text-slate-900 dark:text-slate-100">{formatPrettyDate(draft.startDateISO, draft.startTime, draft.timezone)}</div>
                   <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
-                    {draft.durationMin} minutes � {draft.timezone} � {draft.registrationRequired ? "Registration required" : draft.rsvpEnabled ? "RSVP open" : "Open entry"}
+                    {draft.durationMin} minutes ? {draft.timezone} ? {draft.registrationRequired ? "Registration required" : draft.rsvpEnabled ? "RSVP open" : "Open entry"}
                   </div>
                   {draft.payOrTicketEnabled ? (
                     <div className="mt-2 inline-flex items-center gap-1 rounded-full border border-orange-200 bg-orange-50 px-2 py-1 text-[10px] font-bold text-orange-700 dark:border-orange-800 dark:bg-orange-900/20 dark:text-orange-300">
-                      <Ticket className="h-3 w-3" /> Ticketed � {draft.ticketPrice || "Price set in checkout"}
+                      <Ticket className="h-3 w-3" /> Ticketed ? {draft.ticketPrice || "Price set in checkout"}
                     </div>
                   ) : null}
                 </PreviewCard>
@@ -1506,16 +1505,16 @@ function PreviewPhone({ draft, readiness }: { draft: LiveBuilderDraft; readiness
 
             <div className="sticky bottom-0 border-t border-slate-200 bg-white/95 px-3 py-3 backdrop-blur dark:border-slate-800 dark:bg-slate-950/95">
               <div className="flex gap-2">
-                <button className="flex-1 rounded-2xl px-3 py-3 text-[12px] font-extrabold text-white" style={{ background: EV_GREEN }} onClick={handleRawPlaceholderAction("open_live_dashboard")}>
+                <button className="flex-1 rounded-2xl px-3 py-3 text-[12px] font-extrabold text-white" style={{ background: EV_GREEN }} onClick={() => safeNav("/faithhub/provider/live-dashboard")}>
                   Join live
                 </button>
                 {draft.engagement.donationPromptEnabled ? (
-                  <button className="flex-1 rounded-2xl px-3 py-3 text-[12px] font-extrabold text-white" style={{ background: EV_ORANGE }} onClick={handleRawPlaceholderAction("open_donations_funds")}>
+                  <button className="flex-1 rounded-2xl px-3 py-3 text-[12px] font-extrabold text-white" style={{ background: EV_ORANGE }} onClick={() => safeNav("/faithhub/provider/donations-and-funds")}>
                     {draft.engagement.donationPromptLabel || "Donate"}
                   </button>
                 ) : null}
                 {draft.engagement.prayerRequestsEnabled ? (
-                  <button className="rounded-2xl border-2 px-3 py-3 text-[12px] font-extrabold" style={{ borderColor: EV_GREEN, color: EV_GREEN }} onClick={handleRawPlaceholderAction("open_prayer_requests")}>
+                  <button className="rounded-2xl border-2 px-3 py-3 text-[12px] font-extrabold" style={{ borderColor: EV_GREEN, color: EV_GREEN }} onClick={() => safeNav("/faithhub/provider/prayer-requests")}>
                     Prayer
                   </button>
                 ) : null}
@@ -1886,8 +1885,8 @@ function RunOfShowRow({
           <Pill tone={segment.tone === "donation" ? "orange" : segment.tone === "crowdfund" ? "green" : "neutral"}>{segment.type}</Pill>
         </div>
         <div className="flex items-center gap-2">
-          <SoftButton onClick={onMoveUp} disabled={index === 0} className="px-3 py-2">�?? �</SoftButton>
-          <SoftButton onClick={onMoveDown} disabled={index === total - 1} className="px-3 py-2">�?? �</SoftButton>
+          <SoftButton onClick={onMoveUp} disabled={index === 0} className="px-3 py-2">??? ?</SoftButton>
+          <SoftButton onClick={onMoveDown} disabled={index === total - 1} className="px-3 py-2">??? ?</SoftButton>
           <button type="button" onClick={onRemove} className="grid h-9 w-9 place-items-center rounded-2xl border border-slate-200 bg-white hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800">
             <X className="h-4 w-4 text-slate-700 dark:text-slate-300" />
           </button>
@@ -2491,9 +2490,9 @@ export default function FaithHubLiveBuilderPage({ embedded = false, onRequestClo
             </div>
             <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 flex items-center gap-2 flex-wrap">
               <span>{getParentLabel(draft)}</span>
-              <span className="text-slate-300 dark:text-slate-700">�</span>
+              <span className="text-slate-300 dark:text-slate-700">?</span>
               <span>{formatPrettyDate(draft.startDateISO, draft.startTime, draft.timezone)}</span>
-              <span className="text-slate-300 dark:text-slate-700">�</span>
+              <span className="text-slate-300 dark:text-slate-700">?</span>
               <span>{TEMPLATE_META[draft.template].label}</span>
             </div>
           </div>
@@ -2561,6 +2560,8 @@ export default function FaithHubLiveBuilderPage({ embedded = false, onRequestClo
     </div>
   );
 }
+
+
 
 
 

@@ -30,7 +30,6 @@ import {
   X,
   Zap,
 } from "lucide-react";
-import { handleRawPlaceholderAction } from "./placeholderActions";
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
@@ -1665,7 +1664,7 @@ function ProjectsPage() {
                           type="button"
                           className="inline-flex items-center gap-2 text-[12px] font-black"
                           style={{ color: EV_ORANGE }}
-                          onClick={handleRawPlaceholderAction("open_projects")}>
+                          onClick={() => safeNav("/faithhub/provider/projects")}>
                           Use template
                           <ChevronRight className="h-4 w-4" />
                         </button>
@@ -2280,6 +2279,8 @@ function ProjectsPage() {
 }
 
 export default ProjectsPage;
+
+
 
 
 

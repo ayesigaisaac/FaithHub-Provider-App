@@ -31,7 +31,6 @@ import {
   Wallet,
   Wand2,
 } from "lucide-react";
-import { handleRawPlaceholderAction } from "./placeholderActions";
 
 /**
  * FaithHub - Provider Onboarding
@@ -727,14 +726,14 @@ function PhonePreview({
                 type="button"
                 className="flex-1 rounded-2xl px-3 py-2 text-[12px] font-bold text-white"
                 style={{ background: EV_GREEN }}
-               onClick={handleRawPlaceholderAction("open_live_dashboard")}>
+               onClick={() => safeNav("/faithhub/provider/live-dashboard")}>
                 Preview live page
               </button>
               <button
                 type="button"
                 className="flex-1 rounded-2xl px-3 py-2 text-[12px] font-bold text-white"
                 style={{ background: EV_ORANGE }}
-               onClick={handleRawPlaceholderAction("open_donations_funds")}>
+               onClick={() => safeNav("/faithhub/provider/donations-and-funds")}>
                 View giving
               </button>
             </div>
@@ -2742,6 +2741,8 @@ export default function ProviderOnboardingPage() {
     </div>
   );
 }
+
+
 
 
 

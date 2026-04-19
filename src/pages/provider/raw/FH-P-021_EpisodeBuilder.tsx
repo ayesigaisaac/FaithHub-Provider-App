@@ -25,7 +25,6 @@ import {
   X,
   Zap,
 } from "lucide-react";
-import { handleRawPlaceholderAction } from "./placeholderActions";
 
 /**
  * FaithHub — Episode Builder
@@ -57,7 +56,7 @@ const PRESET_BLUEPRINTS = [
   {
     id: "blueprint-sermon",
     title: "Standard sermon blueprint",
-    subtitle: "Hook → scripture → teaching core → response → close.",
+    subtitle: "Hook ? scripture ? teaching core ? response ? close.",
     accent: "green" as const,
   },
   {
@@ -595,7 +594,7 @@ function EpisodePreview({
                   <Pill tone="brand" icon={<Sparkles className="h-3 w-3" />}>
                     Episode live
                   </Pill>
-                  <button className="text-[11px] font-semibold text-emerald-600" onClick={handleRawPlaceholderAction("copy_current_link")}>Share</button>
+                  <button className="text-[11px] font-semibold text-emerald-600" onClick={() => navigator.clipboard?.writeText(window.location.href)}>Share</button>
                 </div>
                 <div className="mt-3 text-[10px] font-black uppercase tracking-[0.16em] text-slate-400">
                   {draft.parentSeriesTitle}
@@ -626,10 +625,10 @@ function EpisodePreview({
                 </div>
 
                 <div className="mt-4 flex gap-2">
-                  <button className="flex-1 rounded-2xl px-3 py-2 text-[12px] font-bold text-white" style={{ background: EV_GREEN }} onClick={handleRawPlaceholderAction("open_live_dashboard")}>
+                  <button className="flex-1 rounded-2xl px-3 py-2 text-[12px] font-bold text-white" style={{ background: EV_GREEN }} onClick={() => safeNav("/faithhub/provider/live-dashboard")}>
                     Join live
                   </button>
-                  <button className="flex-1 rounded-2xl px-3 py-2 text-[12px] font-bold text-white" style={{ background: EV_ORANGE }} onClick={handleRawPlaceholderAction("open_audience_notifications")}>
+                  <button className="flex-1 rounded-2xl px-3 py-2 text-[12px] font-bold text-white" style={{ background: EV_ORANGE }} onClick={() => safeNav("/faithhub/provider/audience-notifications")}>
                     Save reminder
                   </button>
                 </div>
@@ -671,10 +670,10 @@ function EpisodePreview({
               ))}
             </div>
             <div className="mt-4 flex gap-3">
-              <button className="rounded-2xl px-4 py-2 text-[12px] font-bold text-white" style={{ background: EV_GREEN }} onClick={handleRawPlaceholderAction("open_live_dashboard")}>
+              <button className="rounded-2xl px-4 py-2 text-[12px] font-bold text-white" style={{ background: EV_GREEN }} onClick={() => safeNav("/faithhub/provider/live-dashboard")}>
                 Join session
               </button>
-              <button className="rounded-2xl px-4 py-2 text-[12px] font-bold text-white" style={{ background: EV_ORANGE }} onClick={handleRawPlaceholderAction("open_resources_manager")}>
+              <button className="rounded-2xl px-4 py-2 text-[12px] font-bold text-white" style={{ background: EV_ORANGE }} onClick={() => safeNav("/faithhub/provider/resources-manager")}>
                 Episode resources
               </button>
             </div>
@@ -821,7 +820,7 @@ export default function EpisodeBuilderPage() {
 
   const [draft, setDraft] = useState<EpisodeDraft>({
     parentSeriesTitle: "Practicing the Way of Hope",
-    seriesArc: "Renewal → Endurance → Healing → Community → Witness",
+    seriesArc: "Renewal ? Endurance ? Healing ? Community ? Witness",
     episodeNumber: 2,
     title: "Week 2 · Hope in the Wilderness",
     focusStatement:
@@ -1759,6 +1758,8 @@ export default function EpisodeBuilderPage() {
     </div>
   );
 }
+
+
 
 
 
