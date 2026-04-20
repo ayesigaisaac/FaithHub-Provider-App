@@ -52,14 +52,14 @@ describe('App smoke routing', () => {
 
   it('mounts provider shell routes', async () => {
     renderApp(['/faithhub/provider/dashboard']);
-    const brandMatches = await screen.findAllByText(/FaithHub/i);
+    const brandMatches = await screen.findAllByText(/Provider/i);
     expect(brandMatches.length).toBeGreaterThan(0);
   });
 
   it('renders key provider navigation elements', async () => {
     renderApp(['/faithhub/provider/dashboard']);
-    const faithHubProviderLabels = await screen.findAllByText(/FaithHub Provider/i);
-    expect(faithHubProviderLabels.length).toBeGreaterThan(0);
+    const providerWorkspaceLabels = await screen.findAllByText(/Provider Workspace/i);
+    expect(providerWorkspaceLabels.length).toBeGreaterThan(0);
     const navigationLabels = await screen.findAllByText(/Navigation/i);
     expect(navigationLabels.length).toBeGreaterThan(0);
     const dashboardButtons = await screen.findAllByRole('button', { name: /dashboard/i });
