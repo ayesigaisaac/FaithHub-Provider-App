@@ -44,7 +44,7 @@ import { navigateWithRouter } from "@/navigation/routerNavigate";
  * - Open Moderation
  *
  * Design intent
- * - Follow the same premium creator-style grammar used across the FaithHub Provider pages.
+ * - Follow the same premium creator-style grammar used across the Provider Workspace pages.
  * - Use EVzone Green as primary and Orange as secondary.
  * - Position Community Forum as the institutional discussion operating surface,
  *   not just a flat thread list.

@@ -46,7 +46,7 @@ export function SearchCommandDialog({ open, onClose }: { open: boolean; onClose:
               Jump to a Provider page
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              Search across every attached FaithHub Provider screen.
+              Search across every attached Provider Workspace screen.
             </Typography>
           </Box>
           <IconButton onClick={onClose}>

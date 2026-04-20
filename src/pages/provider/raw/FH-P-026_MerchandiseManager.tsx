@@ -1468,9 +1468,6 @@ export default function MerchandiseManagerPage() {
         <section className="rounded-[32px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 transition-colors">
           <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
             <div className="max-w-3xl">
-              <div className="text-[11px] font-black uppercase tracking-[0.22em] text-slate-400 dark:text-slate-500">
-                FaithMart & Merchandise
-              </div>
               <h1 className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
                 Run premium merchandise,
                 <br />

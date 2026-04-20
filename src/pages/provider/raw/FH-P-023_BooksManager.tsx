@@ -44,7 +44,7 @@ import { navigateWithRouter } from "@/navigation/routerNavigate";
  * study guides, and downloadable teaching resources.
  *
  * Page goals
- * - Keep the same premium creator-style grammar already used across the FaithHub Provider pages.
+ * - Keep the same premium creator-style grammar already used across the Provider Workspace pages.
  * - Use EVzone Green as the primary accent and Orange as the secondary accent.
  * - Make Books Manager the operational control page and push creation into Book Builder
  *   through a strong "+ New Book" primary CTA.
@@ -1097,9 +1097,6 @@ export default function BooksManagerPage() {
             }}
           />
           <div className="relative">
-            <div className="text-[11px] uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">
-              FaithHub Provider / Books / Books Manager
-            </div>
 
             <div className="mt-3 flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
               <div className="min-w-0">

@@ -42,7 +42,7 @@ import { navigateWithRouter } from "@/navigation/routerNavigate";
  * prayer groups, youth communities, family groups, and other faith-community structures.
  *
  * Page goals
- * - Keep the same premium creator-style grammar already used across the FaithHub Provider pages.
+ * - Keep the same premium creator-style grammar already used across the Provider Workspace pages.
  * - Use EVzone Green as the primary accent and Orange as the secondary accent.
  * - Make Community Groups the command page for group lifecycle, leader coverage,
  *   safety, care, events, live follow-up, and noticeboard distribution.

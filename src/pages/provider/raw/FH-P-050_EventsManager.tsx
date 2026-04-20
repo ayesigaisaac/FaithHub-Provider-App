@@ -39,7 +39,7 @@ import { navigateWithRouter } from "@/navigation/routerNavigate";
 /**
  * FaithHub — Events Manager
  * ----------------------------------
- * Premium event operating system for FaithHub Provider.
+ * Premium event operating system for Provider Workspace.
  *
  * Design goals
  * - Keep the same premium creator-style control-surface direction used across earlier FaithHub pages.

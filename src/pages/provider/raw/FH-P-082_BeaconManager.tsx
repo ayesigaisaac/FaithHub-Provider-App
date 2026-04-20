@@ -2118,7 +2118,7 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <div className="min-w-0">
               <div className="flex flex-wrap items-center gap-2 text-[10px] sm:text-xs text-slate-500 dark:text-slate-400">
-                <span>FaithHub Provider</span>
+                <span>Provider Workspace</span>
                 <span className="text-slate-300 dark:text-slate-700">/</span>
                 <span>Beacon</span>
                 <span className="text-slate-300 dark:text-slate-700">/</span>
@@ -2212,9 +2212,6 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
                             : "border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900",
                         )}
                       >
-                        <div className="text-[11px] uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">
-                          {item.state}
-                        </div>
                         <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
                           {item.count}
                         </div>

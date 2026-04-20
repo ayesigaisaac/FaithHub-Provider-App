@@ -30,7 +30,7 @@ import {
 /**
  * FaithHub — Beacon Marketplace
  * --------------------------------------
- * Premium placement and audience-planning surface for FaithHub Provider.
+ * Premium placement and audience-planning surface for Provider Workspace.
  *
  * Design goals
  * - Adapt the creator/e-commerce marketplace rhythm into a FaithHub promotional inventory experience.
@@ -863,7 +863,7 @@ export default function BeaconMarketplacePage() {
                 Beacon Marketplace
               </div>
               <h1 className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
-                Premium inventory, audience packages, and media-plan building for Beacon campaigns across FaithHub surfaces.
+                Premium inventory, audience packages, and media-plan building for Beacon campaigns across surfaces.
               </h1>
               <div className="mt-4 flex flex-wrap items-center gap-2">
                 <Pill tone="green">Inventory planning</Pill>

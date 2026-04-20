@@ -93,10 +93,10 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
             <MenuRoundedIcon />
           </IconButton>
           <Box sx={{ display: { xs: 'block', sm: 'none' } }}>
-            <BrandLogo variant="symbol" alt="FaithHub Provider" style={{ height: 34, width: 34 }} />
+            <BrandLogo variant="symbol" alt="Provider Workspace" style={{ height: 34, width: 34 }} />
           </Box>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            <BrandLogo variant="landscape" alt="FaithHub Provider" style={{ height: 62, width: 'auto' }} />
+            <BrandLogo variant="landscape" alt="Provider Workspace" style={{ height: 62, width: 'auto' }} />
           </Box>
         </Stack>
 
@@ -190,7 +190,7 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
                     whiteSpace: 'nowrap',
                   }}
                 >
-                  FaithHub Provider
+                  Provider
                 </Box>
                 {topbarTabs.map((tab) => (
                   <Button

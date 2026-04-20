@@ -2153,17 +2153,6 @@ export default function FaithHubBookBuilderPage() {
         <div className="mx-auto max-w-[1600px] px-4 py-4 md:px-6 lg:px-8">
           <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
             <div className="min-w-0">
-              <div className="flex flex-wrap items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-400">
-                <button
-                  type="button"
-                  className="transition hover:text-slate-700 dark:hover:text-slate-200"
-                  onClick={() => safeNav(ROUTES.booksManager)}
-                >
-                  Books Manager
-                </button>
-                <span>•</span>
-                <span></span>
-              </div>
 
               <div className="mt-2 flex flex-wrap items-center gap-3">
                 <div className="inline-flex h-12 w-12 items-center justify-center rounded-3xl bg-white shadow-sm ring-1 ring-slate-200 dark:bg-slate-900 dark:ring-slate-700">

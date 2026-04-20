@@ -985,11 +985,8 @@ export default function EpisodeBuilderPage() {
         <div className="rounded-[32px] border border-slate-200 bg-white px-7 py-6 shadow-[0_20px_60px_rgba(15,23,42,0.08)]">
           <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
             <div className="min-w-0">
-              <div className="text-[11px] font-black uppercase tracking-[0.18em] text-slate-400">
-                FaithHub Provider Side
-              </div>
               <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
-                FaithHub — Episode Builder
+                — Episode Builder
               </div>
               <div className="mt-1.5 text-[14px] leading-6 text-slate-500 dark:text-slate-400">
                 Premium creator-style episode workflow with embedded landing-page preview.

@@ -37,7 +37,7 @@ import {
  *
  * Notes
  * - Self-contained mock page built to match the premium creator-style format used
- *   across the FaithHub Provider pages.
+ *   across the Provider Workspace pages.
  * - Uses EVzone Green as primary and Orange as secondary, with calm neutrals for trust workflows.
  * - Replace routes and mocked datasets during integration.
  */
@@ -1183,13 +1183,6 @@ export default function FaithHubReviewsAndModerationPage() {
         <div className="w-full px-4 md:px-6 lg:px-8 py-4">
           <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
             <div className="min-w-0">
-              <div className="flex flex-wrap items-center gap-2 text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 uppercase tracking-[0.16em] font-bold">
-                <span>FaithHub Provider</span>
-                <span className="text-slate-300 dark:text-slate-700">/</span>
-                <span>Post-live & Trust</span>
-                <span className="text-slate-300 dark:text-slate-700">/</span>
-                <span className="text-slate-900 dark:text-slate-100">Reviews & Moderation</span>
-              </div>
 
               <div className="mt-2 flex flex-wrap items-center gap-3">
                 <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">

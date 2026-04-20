@@ -540,9 +540,6 @@ export default function FH_P_121_ModerationSettings() {
                 <ShieldCheck className="h-6 w-6" />
               </div>
               <div className="min-w-0">
-                <div className="text-[12px] font-extrabold uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">
-                  Trust &amp; Safety Governance
-                </div>
                 <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
                   Moderation Settings
                 </div>

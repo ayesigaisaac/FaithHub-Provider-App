@@ -1147,9 +1147,6 @@ export default function TeachingsDashboardPage() {
                 <BookOpen className="h-6 w-6" />
               </div>
               <div className="min-w-0">
-                <div className="text-[10px] font-bold uppercase tracking-[0.22em] text-slate-400">
-                  Teachings command
-                </div>
                 <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
                   Teachings Dashboard
                 </div>

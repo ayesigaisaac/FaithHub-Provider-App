@@ -716,14 +716,11 @@ export default function SubscriptionsPage() {
                   <Crown className="h-7 w-7" />
                 </div>
                 <div className="min-w-0">
-                  <div className="text-[12px] font-semibold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">
-                    TEAM OPERATIONS · BILLING & ACCESS
-                  </div>
                   <h1 className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
                     Manage plans, seats, and premium access without losing control.
                   </h1>
                   <p className="mt-3 max-w-[980px] text-[18px] leading-snug text-slate-600 dark:text-slate-400">
-                    Workspace/team subscriptions for FaithHub providers — covering billing plans,
+                    Workspace/team subscriptions for providers — covering billing plans,
                     seats, entitlements, add-ons, renewals, invoices, and feature access in one premium surface.
                   </p>
                   <div className="mt-4 flex flex-wrap gap-2">

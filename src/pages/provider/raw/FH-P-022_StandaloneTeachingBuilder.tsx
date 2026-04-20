@@ -1748,7 +1748,7 @@ export default function StandaloneTeachingBuilderPage() {
         <div className="rounded-[34px] border border-slate-200 bg-white p-6 shadow-sm">
           <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
             <div className="min-w-0">
-              <div className="text-[11px] font-black uppercase tracking-[0.18em] text-slate-400">FaithHub Provider Side</div>
+              <div className="text-[11px] font-black uppercase tracking-[0.18em] text-slate-400">Provider Side</div>
               <div className="mt-2 flex flex-col gap-2 lg:flex-row lg:items-center lg:gap-4">
                 <h1 className="text-[34px] sm:text-[40px] lg:text-[46px] font-black leading-none tracking-[-0.03em] text-slate-900">Standalone Teaching Builder</h1>
                 <Pill tone="good">Standalone-first</Pill>

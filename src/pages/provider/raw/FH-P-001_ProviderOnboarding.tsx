@@ -2109,9 +2109,6 @@ export default function ProviderOnboardingPage() {
           <div className="rounded-3xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950">
             <div className="flex items-center justify-between gap-2">
               <div>
-                <div className="text-[11px] uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500">
-                  Receipt identity
-                </div>
                 <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
                   {receiptName}
                 </div>

@@ -81,7 +81,7 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
                   color: (theme) => (theme.palette.mode === 'dark' ? '#f8fafc' : '#0f172a'),
                 }}
               >
-                FaithHub Provider
+                Provider Workspace
               </Typography>
               <Typography color="text.secondary" sx={{ fontSize: 12.5, lineHeight: 1.08, letterSpacing: '0.01em', mt: 0.2 }}>
                 Navigation

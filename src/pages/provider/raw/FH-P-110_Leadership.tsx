@@ -38,7 +38,7 @@ import {
  * - Publish Leadership
  *
  * Direction
- * - Same premium creator-style grammar used across the FaithHub Provider pages.
+ * - Same premium creator-style grammar used across the Provider Workspace pages.
  * - EVzone Green is primary. Orange is secondary.
  * - Strong command hero, KPI strip, searchable roster, office structure,
  *   succession/coverage lane, and persistent public-preview rail.
@@ -612,7 +612,7 @@ export default function FaithHubLeadershipPage() {
                   <BadgeCheck className="h-3.5 w-3.5" /> Leadership published
                 </TonePill>
                 <TonePill tone="accent">Team cluster</TonePill>
-                <TonePill tone="neutral">FaithHub Provider workspace</TonePill>
+                <TonePill tone="neutral">Provider Workspace workspace</TonePill>
               </div>
 
               <div className="mt-6 flex flex-wrap gap-3">
@@ -642,7 +642,6 @@ export default function FaithHubLeadershipPage() {
             </div>
 
             <div className="rounded-[30px] border border-slate-200 bg-slate-50 p-4 shadow-inner dark:border-slate-800 dark:bg-slate-950">
-              <div className="text-[10px] font-black uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">Leadership health summary</div>
               <div className="mt-4 grid gap-3 sm:grid-cols-2">
                 <MiniStat label="Total leaders" value={fmtInt(totals.totalLeaders)} hint="Profiles being managed across public and internal surfaces." />
                 <MiniStat label="Published" value={fmtInt(totals.published)} hint="Public leadership profiles already visible on FaithHub." />
@@ -653,7 +652,6 @@ export default function FaithHubLeadershipPage() {
               <div className="mt-4 rounded-[24px] border border-white/10 bg-white/90 p-4 dark:bg-slate-900/70">
                 <div className="flex items-center justify-between gap-3">
                   <div>
-                    <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">Publishing confidence</div>
                     <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">{publishHealth}% leadership publish-ready</div>
                   </div>
                   <div

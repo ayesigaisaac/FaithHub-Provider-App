@@ -42,7 +42,7 @@ import { navigateWithRouter } from "@/navigation/routerNavigate";
 /**
  * FaithHub — Replays & Clips
  * -----------------------------------
- * Premium replay library and clip engine for FaithHub Provider.
+ * Premium replay library and clip engine for Provider Workspace.
  *
  * Design goals
  * - Preserve the creator-style source layout (replay library + clip engine) while upgrading it into a

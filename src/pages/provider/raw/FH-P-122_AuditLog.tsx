@@ -1074,9 +1074,6 @@ export default function AuditLogPage() {
                   <History className="h-6 w-6" />
                 </span>
                 <div className="min-w-0">
-                  <div className="text-[11px] font-black uppercase tracking-[0.12em] text-slate-400 dark:text-slate-500">
-                    Governance & Audit Trail
-                  </div>
                   <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
                     Audit Log
                   </div>

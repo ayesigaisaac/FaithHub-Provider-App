@@ -1251,11 +1251,8 @@ export default function ProviderDashboardPage() {
           <section className="rounded-[16px] border border-slate-200 bg-white p-3 sm:p-4 md:p-5 shadow-sm">
             <div className="grid gap-4 sm:gap-6 xl:grid-cols-[1.25fr,0.9fr]">
               <div className="min-w-0">
-                <div className="text-[11px] font-bold uppercase tracking-[0.22em] text-slate-400">
-                  Home · Global dashboard
-                </div>
                 <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
-                  FaithHub Provider Dashboard
+                  Provider Dashboard
                 </div>
                 <p className="mt-3 max-w-3xl text-[14px] leading-6 text-slate-600">
                   Daily overview of live sessions, teachings, audience health, giving performance, and trust operations.
@@ -1267,7 +1264,7 @@ export default function ProviderDashboardPage() {
                     tone="good"
                     left={<BadgeCheck className="h-3.5 w-3.5" />}
                   />
-                  <Pill text="FaithHub Provider Workspace" tone="navy" />
+                  <Pill text="Provider Workspace" tone="navy" />
                   <Pill
                     text={`${anomalyCount} live issues or campaign warnings`}
                     tone="warn"
@@ -1326,7 +1323,7 @@ export default function ProviderDashboardPage() {
                       </div>
                       <div className="mt-1 text-[13px] text-slate-500">Provider</div>
                       <div className="text-[13px] text-slate-500">
-                        FaithHub Provider Workspace
+                        Provider Workspace
                       </div>
                     </div>
                   </div>

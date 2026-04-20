@@ -42,7 +42,7 @@ import { navigateWithRouter } from "@/navigation/routerNavigate";
  * Design intent
  * - Extend the old community/announcements block into a world-class Noticeboard page.
  * - Use EVzone Green as the primary accent and Orange as the secondary accent.
- * - Keep the same premium creator-style format used across the FaithHub Provider pages:
+ * - Keep the same premium creator-style format used across the Provider Workspace pages:
  *   command hero, KPI cards, filter rail, operational list, live composer, workflow hooks,
  *   governance signals, and a persistent preview surface.
  * - Treat notices as first-class provider objects that can be scheduled, pinned, localized,
@@ -1166,14 +1166,6 @@ export default function FaithHubNoticeboardPage() {
         <div className="rounded-[34px] border border-slate-200 bg-white p-6 shadow-sm">
           <div className="flex flex-col gap-5 xl:flex-row xl:items-start xl:justify-between">
             <div className="min-w-0 flex-1">
-              <div className="flex flex-wrap items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-400">
-                <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl text-white shadow-sm" style={{ background: EV_GREEN }}>
-                  <Megaphone className="h-6 w-6" />
-                </span>
-                <span>Audience & Outreach</span>
-                <span>•</span>
-                <span>Premium Provider Noticeboard</span>
-              </div>
 
               <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
                 Noticeboard
@@ -1209,7 +1201,7 @@ export default function FaithHubNoticeboardPage() {
                   Ayesigai921
                 </div>
                 <div className="mt-2 text-[12px] leading-relaxed text-slate-500">
-                  FaithHub Provider Workspace ? role-aware notice publishing with campus, audience,
+                  Provider Workspace ? role-aware notice publishing with campus, audience,
                   language, and safety routing.
                 </div>
                 <div className="mt-3">

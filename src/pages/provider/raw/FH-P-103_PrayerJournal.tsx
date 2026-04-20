@@ -585,7 +585,6 @@ export default function PrayerJournalPage() {
         <div className="rounded-[28px] border border-slate-200 bg-white p-5 shadow-sm">
           <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
             <div className="min-w-0 flex-1">
-              <div className="text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500">Prayer formation command</div>
               <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">Prayer Journal</div>
               <div className="mt-1.5 text-[14px] leading-6 text-slate-500 dark:text-slate-400">Provider-managed guided journaling for daily prompts, shared reflections, care-aware privacy, and premium public or private prayer journeys.</div>
               <div className="mt-4 flex flex-wrap items-center gap-2"><Pill tone="good"><BookOpen className="h-3.5 w-3.5" /> Guided rhythms</Pill><Pill><Lock className="h-3.5 w-3.5" /> Private + public flows</Pill><Pill tone="warn"><HeartHandshake className="h-3.5 w-3.5" /> Care-aware reflection sharing</Pill></div>

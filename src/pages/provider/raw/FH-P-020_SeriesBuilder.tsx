@@ -1351,7 +1351,6 @@ export default function SeriesBuilderPage() {
 
               <div className="space-y-3">
                 <div className="rounded-[26px] border border-slate-200 bg-slate-50 p-4">
-                  <div className="text-[11px] font-black uppercase tracking-[0.16em] text-slate-400">Arc map</div>
                   <div className="mt-3 space-y-2">
                     {draft.episodes.map((episode, index) => (
                       <div key={episode.id} className="rounded-2xl border border-slate-200 bg-white px-3 py-3">
@@ -1365,7 +1364,6 @@ export default function SeriesBuilderPage() {
                   </div>
                 </div>
                 <div className="rounded-[26px] border border-slate-200 bg-slate-50 p-4">
-                  <div className="text-[11px] font-black uppercase tracking-[0.16em] text-slate-400">Completeness indicators</div>
                   <div className="mt-3 space-y-2">
                     <div className="rounded-2xl border border-slate-200 bg-white px-3 py-3">
                       <div className="text-[12px] font-bold text-slate-900">Episode target</div>
@@ -1817,7 +1815,7 @@ export default function SeriesBuilderPage() {
                 <span className="font-semibold text-slate-700">Series Builder</span>
               </div>
               <div className="mt-2 text-[38px] font-black leading-none tracking-[-0.03em] text-slate-900">
-                FaithHub — Series Builder
+                Series Builder
               </div>
               <div className="mt-2 max-w-[920px] text-[14px] text-slate-500">
                 Premium provider teaching workflow inspired by the creator base layout — now rebuilt for Series, Episodes, linked Live Sessions, localized discovery, and Beacon-ready promotion.
@@ -1931,7 +1929,6 @@ export default function SeriesBuilderPage() {
     </div>
   );
 }
-
 
 
 

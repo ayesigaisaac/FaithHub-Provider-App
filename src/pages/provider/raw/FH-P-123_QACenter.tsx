@@ -659,9 +659,6 @@ export default function FHP123QACenter() {
                   <ClipboardCheck className="h-6 w-6" />
                 </div>
                 <div className="min-w-0">
-                  <div className="text-[12px] font-extrabold uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">
-                    Quality & launch assurance
-                  </div>
                   <h1 className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
                     QA Center
                   </h1>
