@@ -1,5 +1,5 @@
 import { Box } from '@mui/material';
-import { Suspense, useMemo, useState } from 'react';
+import { Suspense, useEffect, useMemo, useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { findProviderPageByPath } from '@/navigation/providerPages';
 import { ProviderSidebar } from './ProviderSidebar';
@@ -17,6 +17,18 @@ export function ProviderShellLayout() {
   const [searchOpen, setSearchOpen] = useState(false);
 
   const current = useMemo(() => findProviderPageByPath(location.pathname), [location.pathname]);
+
+  useEffect(() => {
+    const handleKeydown = (event: KeyboardEvent) => {
+      if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
+        event.preventDefault();
+        setSearchOpen(true);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeydown);
+    return () => window.removeEventListener('keydown', handleKeydown);
+  }, []);
 
   return (
     <Box

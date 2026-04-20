@@ -34,6 +34,7 @@ type ProviderTopbarProps = {
 export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: ProviderTopbarProps) {
   const theme = useTheme();
   const isDark = theme.palette.mode === 'dark';
+  const isMobileActions = useMediaQuery(theme.breakpoints.down('md'));
   const navigate = useNavigate();
   const { user, role, workspace, logout, setWorkspace } = useAuth();
   const [userAnchor, setUserAnchor] = useState<null | HTMLElement>(null);
@@ -101,9 +102,52 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
         </Stack>
 
         <Stack direction="row" spacing={{ xs: 0.75, md: 1.5 }} alignItems="center">
-          <IconButton aria-label="Open search" sx={utilityIconSx} onClick={onOpenSearch}>
-            <SearchRoundedIcon />
-          </IconButton>
+          {isMobileActions ? (
+            <IconButton aria-label="Open search" sx={utilityIconSx} onClick={onOpenSearch}>
+              <SearchRoundedIcon />
+            </IconButton>
+          ) : (
+            <Button
+              onClick={onOpenSearch}
+              startIcon={<SearchRoundedIcon />}
+              variant="outlined"
+              sx={{
+                borderRadius: 3,
+                textTransform: 'none',
+                minHeight: 48,
+                minWidth: 256,
+                px: 1.8,
+                justifyContent: 'space-between',
+                borderColor: isDark ? '#334155' : '#d9e1ec',
+                bgcolor: isDark ? '#0f172a' : '#fff',
+                color: isDark ? '#cbd5e1' : '#475569',
+                fontWeight: 700,
+                '&:hover': {
+                  borderColor: isDark ? '#475569' : '#c1ccda',
+                  bgcolor: isDark ? '#111c30' : '#f8fafc',
+                },
+              }}
+            >
+              <Box component="span" sx={{ flex: 1, textAlign: 'left' }}>
+                Search pages...
+              </Box>
+              <Box
+                component="span"
+                sx={{
+                  border: '1px solid',
+                  borderColor: isDark ? '#334155' : '#cbd5e1',
+                  borderRadius: 1.5,
+                  px: 0.8,
+                  py: 0.15,
+                  fontSize: 11,
+                  lineHeight: 1.2,
+                  color: isDark ? '#94a3b8' : '#64748b',
+                }}
+              >
+                Ctrl K
+              </Box>
+            </Button>
+          )}
           <Box
             sx={{
               ...utilityIconSx,
@@ -291,4 +335,3 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
     </AppBar>
   );
 }
-
