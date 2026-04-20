@@ -25,7 +25,7 @@ import {
 import { KpiTile } from "../../../components/ui/KpiTile";
 
 /**
- * FaithHub — QA Center
+ * Provider — QA Center
  * --------------------------------
  * Purpose:
  * Internal quality-assurance page for testing streams, validating content
@@ -908,7 +908,7 @@ export default function FHP123QACenter() {
         </div>
 
         <div className="mt-5">
-          <Card title="Surface coverage matrix" subtitle="Desktop, mobile, and child-safe validation across core FaithHub provider surfaces." right={<Pill>{scopedCoverage.length} rows in scope</Pill>}>
+          <Card title="Surface coverage matrix" subtitle="Desktop, mobile, and child-safe validation across core Provider provider surfaces." right={<Pill>{scopedCoverage.length} rows in scope</Pill>}>
             <div className="overflow-auto">
               <table className="min-w-full text-left border-separate border-spacing-y-2">
                 <thead>

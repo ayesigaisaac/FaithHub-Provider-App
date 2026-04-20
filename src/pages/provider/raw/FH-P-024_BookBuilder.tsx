@@ -39,7 +39,7 @@ import {
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — Book Builder
+ * Provider — Book Builder
  * --------------------------------
  * Premium Provider-side book creation page.
  *
@@ -464,14 +464,14 @@ function buildDraft(templateId: TemplateKey): BookDraft {
     templateId,
     title: preset.title,
     subtitle: preset.subtitle,
-    author: "FaithHub Editorial Team",
+    author: "Provider Editorial Team",
     kind: preset.kind,
     audienceFit: preset.audienceFit,
     themeScripture: preset.themeScripture,
     promise: preset.promise,
     description: preset.description,
     tone: preset.tone,
-    tags: ["FaithHub", preset.kind, "Provider"],
+    tags: ["Provider", preset.kind, "Provider"],
     coverUrl: preset.coverUrl,
     altCoverUrl: preset.coverUrl,
     coverAltText: `${preset.title} cover artwork`,
@@ -951,7 +951,7 @@ function StorefrontPreview({
 
             <div className="p-4">
               <div className="text-[10px] font-black uppercase tracking-[0.24em] text-slate-400">
-                FaithHub Book
+                Book
               </div>
               <div className="mt-1 text-lg font-black leading-tight text-slate-900 dark:text-slate-100">
                 {draft.title}
@@ -1072,7 +1072,7 @@ function StorefrontPreview({
           </div>
 
           <div className="mt-4 text-[11px] font-black uppercase tracking-[0.22em] text-slate-400">
-            FaithHub Book
+            Book
           </div>
           <div className="mt-1 text-3xl font-black leading-tight text-slate-900 dark:text-slate-100">
             {draft.title}
@@ -1461,7 +1461,7 @@ export default function FaithHubBookBuilderPage() {
                 onClick={() => update("importMode", "Compose in builder")}
                 icon={<Wand2 className="h-4 w-4" />}
                 label="Compose in builder"
-                hint="Write and structure the book directly inside FaithHub."
+                hint="Write and structure the book directly inside Provider."
                 tone="orange"
               />
             </div>
@@ -2296,7 +2296,7 @@ export default function FaithHubBookBuilderPage() {
                     Premium book destination
                   </div>
                   <div className="mt-2 text-xs leading-relaxed text-slate-500 dark:text-slate-400">
-                    Book Builder is the dedicated create/edit surface launched from the <span className="font-semibold text-slate-900 dark:text-slate-100">+ New Book</span> action in Books Manager. It turns ideas, manuscripts, covers, and chapters into a launch-ready FaithHub book object with premium packaging.
+                    Book Builder is the dedicated create/edit surface launched from the <span className="font-semibold text-slate-900 dark:text-slate-100">+ New Book</span> action in Books Manager. It turns ideas, manuscripts, covers, and chapters into a launch-ready provider book object with premium packaging.
                   </div>
                 </div>
 
@@ -2350,7 +2350,7 @@ export default function FaithHubBookBuilderPage() {
                     Book storefront preview
                   </div>
                   <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">
-                    Preview how the premium FaithHub book page feels before launch.
+                    Preview how the premium book page feels before launch.
                   </div>
                 </div>
                 <div className="flex flex-wrap items-center gap-2">

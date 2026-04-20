@@ -33,7 +33,7 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — Merchandise Manager
+ * Provider — Merchandise Manager
  * ---------------------------------------
  * Premium Provider-side control surface for FaithMart merchandise:
  * apparel, gifts, journals, worship essentials, event kits, and community bundles.
@@ -43,7 +43,7 @@ import { navigateWithRouter } from "@/navigation/routerNavigate";
  * - Make Merchandise Manager the operational catalog page.
  * - Route creation into a dedicated + New Merchandise builder page.
  * - Keep live, events, giving, and Beacon links visible so merchandise can plug directly
- *   into the wider FaithHub system.
+ *   into the wider Provider system.
  */
 
 const EV_GREEN = "#03cd8c";
@@ -166,7 +166,7 @@ type MerchandiseRecord = {
 const MERCHANDISE: MerchandiseRecord[] = [
   {
     id: "merch-hoodie",
-    title: "FaithHub Community Hoodie",
+    title: "Provider Community Hoodie",
     subtitle: "Premium heavyweight pullover for services, teams, and community drops.",
     kind: "Apparel",
     status: "Published",
@@ -174,7 +174,7 @@ const MERCHANDISE: MerchandiseRecord[] = [
     collection: "Sunday Essentials",
     imageUrl: HERO_1,
     summary:
-      "A premium community hoodie designed for worship teams, youth leaders, and everyday FaithHub brand presence.",
+      "A premium community hoodie designed for worship teams, youth leaders, and everyday Provider brand presence.",
     tags: ["hoodie", "community", "winter"],
     variants: ["S", "M", "L", "XL", "Black", "Forest"],
     campus: "Main campus",
@@ -1296,7 +1296,7 @@ function MerchandiseStorefrontPreview({
               Premium note
             </div>
             <div className="mt-1 text-[11px] leading-relaxed text-slate-500 dark:text-slate-400">
-              Merchandise behaves as a first-class FaithHub object, so providers can place it
+              Merchandise behaves as a first-class provider object, so providers can place it
               inside live sessions, event flows, supporter journeys, and Beacon promotion without
               duplicating setup.
             </div>
@@ -1980,7 +1980,7 @@ export default function MerchandiseManagerPage() {
           <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
             <DetailSection
               title="Cross-links and growth hooks"
-              subtitle="FaithHub merchandise should never sit isolated from live, events, giving, or promotion."
+              subtitle="Provider merchandise should never sit isolated from live, events, giving, or promotion."
             >
               <div className="grid gap-3 sm:grid-cols-2">
                 {[

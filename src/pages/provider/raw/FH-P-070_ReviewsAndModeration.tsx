@@ -30,7 +30,7 @@ import {
 } from 'lucide-react';
 
 /**
- * FaithHub — Reviews & Moderation
+ * Provider — Reviews & Moderation
  * ---------------------------------------
  * Premium trust-and-safety centre for Provider-side review response,
  * moderation case handling, risk pattern detection, and reputation recovery.

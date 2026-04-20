@@ -27,7 +27,7 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — Prayer Journal
+ * Provider — Prayer Journal
  * ----------------------------------
  * Premium Provider-side page for guided prompts, journaling flows,
  * shared reflections, and private/public journal controls.

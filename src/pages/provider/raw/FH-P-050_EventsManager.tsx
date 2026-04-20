@@ -37,12 +37,12 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — Events Manager
+ * Provider — Events Manager
  * ----------------------------------
  * Premium event operating system for Provider Workspace.
  *
  * Design goals
- * - Keep the same premium creator-style control-surface direction used across earlier FaithHub pages.
+ * - Keep the same premium creator-style control-surface direction used across earlier Provider pages.
  * - Use EVzone Green as primary and Orange as secondary, with soft grey neutrals for premium surfaces.
  * - Cover the full premium spec: event command list, setup workspace, attendance/ticketing,
  *   live and content ties, logistics, promotion, giving/merchandising, and after-event follow-up.
@@ -254,7 +254,7 @@ const EVENTS_SEED: EventRecord[] = [
     campus: "City Campus",
     owner: "Miriam Okello",
     language: "English ? Swahili",
-    locationLabel: "FaithHub Arena, Kampala",
+    locationLabel: "Provider Arena, Kampala",
     venueType: "Hybrid",
     startISO: "2026-07-18T08:30:00Z",
     endISO: "2026-07-18T17:00:00Z",
@@ -2639,7 +2639,7 @@ export default function FaithHubEventsManagerPage() {
                 Premium preview lab
               </div>
               <div className="mt-2 text-[12px] text-slate-600 dark:text-slate-300">
-                Review public event presentation, attendance positioning, and check-in behavior before launch. Desktop and mobile previews mirror how event discovery and conversion surfaces will feel across FaithHub.
+                Review public event presentation, attendance positioning, and check-in behavior before launch. Desktop and mobile previews mirror how event discovery and conversion surfaces will feel across the platform.
               </div>
               <div className="mt-3 flex flex-wrap items-center gap-2">
                 <Btn tone="primary" left={<Ticket className="h-4 w-4" />} onClick={publishEventPlan}>

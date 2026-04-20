@@ -42,12 +42,12 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — Charity Crowdfunding Workbench
+ * Provider — Charity Crowdfunding Workbench
  * --------------------------------------------------
  * Premium charity campaign workspace for Provider Workspace.
  *
  * Design goals
- * - Match the premium creator-style layout direction already used across the generated FaithHub pages.
+ * - Match the premium creator-style layout direction already used across the generated Provider pages.
  * - Use EVzone Green as the primary accent, Orange as the secondary accent, and soft neutrals for trust-heavy charity operations.
  * - Cover the full page spec: campaign story builder, goals and milestones, evidence and impact gallery,
  *   updates timeline, momentum and social proof, distribution hooks, governance, and campaign closeout/reporting.
@@ -1310,7 +1310,7 @@ function BrowserPreview({ record }: { record: CrowdfundRecord }) {
         <span className="h-3 w-3 rounded-full bg-rose-400" />
         <span className="h-3 w-3 rounded-full bg-amber-400" />
         <span className="h-3 w-3 rounded-full bg-emerald-400" />
-        <div className="ml-2 text-xs font-semibold text-slate-500 dark:text-slate-400">faithhub.org/care/crowdfund/{record.id}</div>
+        <div className="ml-2 text-xs font-semibold text-slate-500 dark:text-slate-400">workspace.org/care/crowdfund/{record.id}</div>
       </div>
       <div className="grid gap-0 lg:grid-cols-[1.25fr_0.75fr]">
         <div>
@@ -1322,7 +1322,7 @@ function BrowserPreview({ record }: { record: CrowdfundRecord }) {
               {record.matchActive ? <span className="rounded-full px-3 py-1 text-[11px] font-bold text-white" style={{ background: EV_ORANGE }}>Match live</span> : null}
             </div>
             <div className="absolute bottom-4 left-4 right-4">
-              <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-white/80">FaithHub Crowdfund</div>
+              <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-white/80">Crowdfund</div>
               <div className="mt-1 text-2xl font-extrabold text-white">{record.title}</div>
               <div className="mt-1 max-w-2xl text-sm text-white/85 line-clamp-2">{record.subtitle}</div>
             </div>
@@ -1415,7 +1415,7 @@ function PhonePreview({ record }: { record: CrowdfundRecord }) {
           <div className="sticky top-0 z-10 flex items-center justify-between border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-950/95 px-4 py-3 backdrop-blur">
             <div className="min-w-0">
               <div className="truncate text-sm font-bold text-slate-900 dark:text-slate-50">{record.title}</div>
-              <div className="text-[11px] text-slate-500 dark:text-slate-400">FaithHub Crowdfund</div>
+              <div className="text-[11px] text-slate-500 dark:text-slate-400">Crowdfund</div>
             </div>
             <div className="rounded-2xl bg-slate-100 dark:bg-slate-800 px-2.5 py-1 text-[10px] font-bold text-slate-700 dark:text-slate-300">{record.category}</div>
           </div>

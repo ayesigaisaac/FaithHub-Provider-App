@@ -33,14 +33,14 @@ import {
 } from "lucide-react";
 
 /**
- * FaithHub - Provider Onboarding
+ * Provider - Provider Onboarding
  * ---------------------------------------
  * Premium provider onboarding surface for institutions, ministries,
  * faith creators, and multi-campus organizations.
  *
  * Design goals
  * - Keep the same creator-style premium grammar used across the rest of the
- *   generated FaithHub provider pages: bold header, left step rail,
+ *   generated Provider provider pages: bold header, left step rail,
  *   rich central workspace, and persistent preview panel.
  * - Use EVzone Green as the primary colour and Orange as the secondary accent.
  * - Cover the complete onboarding scope:
@@ -837,7 +837,7 @@ export default function ProviderOnboardingPage() {
     },
     push: {
       connected: true,
-      senderLabel: "FaithHub app push",
+      senderLabel: "App push",
       consentDefault: true,
       quietHours: false,
       needsVerification: false,
@@ -2723,7 +2723,7 @@ export default function ProviderOnboardingPage() {
         </main>
 
         <div className="mt-5 rounded-full border border-emerald-200 bg-emerald-50 px-5 py-3 text-center text-[12px] font-semibold text-emerald-700 dark:border-emerald-800 dark:bg-emerald-900/20 dark:text-emerald-300">
-          FaithHub preview
+          Preview
         </div>
       </div>
 

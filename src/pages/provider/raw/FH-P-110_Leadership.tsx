@@ -27,7 +27,7 @@ import {
 } from "lucide-react";
 
 /**
- * FaithHub — Leadership
+ * Provider — Leadership
  * --------------------------------
  * Premium Provider-side leadership operating surface for leadership roster,
  * office assignment, public visibility, succession planning, and coverage health.
@@ -522,7 +522,7 @@ function PreviewDrawer({
               Public leadership preview
             </div>
             <div className="mt-1 text-lg font-black text-slate-900 dark:text-slate-100">{leader.name}</div>
-            <div className="mt-1 text-[12px] text-slate-500 dark:text-slate-400">Preview how this leadership profile appears across FaithHub public surfaces.</div>
+            <div className="mt-1 text-[12px] text-slate-500 dark:text-slate-400">Preview how this leadership profile appears across the platform public surfaces.</div>
           </div>
           <button
             type="button"
@@ -644,7 +644,7 @@ export default function FaithHubLeadershipPage() {
             <div className="rounded-[30px] border border-slate-200 bg-slate-50 p-4 shadow-inner dark:border-slate-800 dark:bg-slate-950">
               <div className="mt-4 grid gap-3 sm:grid-cols-2">
                 <MiniStat label="Total leaders" value={fmtInt(totals.totalLeaders)} hint="Profiles being managed across public and internal surfaces." />
-                <MiniStat label="Published" value={fmtInt(totals.published)} hint="Public leadership profiles already visible on FaithHub." />
+                <MiniStat label="Published" value={fmtInt(totals.published)} hint="Public leadership profiles already visible on Provider." />
                 <MiniStat label="Public offices" value={fmtInt(totals.publicProfiles)} hint="Leaders currently set to public discovery and public profile pages." />
                 <MiniStat label="Coverage healthy" value={`${leadershipHealth}%`} hint="Offices with named succession coverage or deputies." />
               </div>

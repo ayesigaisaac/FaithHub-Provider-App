@@ -40,7 +40,7 @@ import { type ButtonActionId, resolveActionFromLabel } from "@/navigation/button
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — Beacon Builder
+ * Provider — Beacon Builder
  * ----------------------------------
  * Premium dual-path campaign builder for linked and standalone Beacon campaigns.
  *
@@ -207,7 +207,7 @@ type CreativeLayout =
   | "Carousel"
   | "Mixed";
 type DestinationType =
-  | "FaithHub internal"
+  | "Provider internal"
   | "Replay page"
   | "Event page"
   | "Giving page"
@@ -1194,7 +1194,7 @@ function BeaconPreviewCard({
     builder.body ||
     (builder.sourceMode === "Standalone"
       ? builder.standaloneMessage || "A premium standalone Beacon campaign with custom messaging and destination logic."
-      : source?.subtitle || "Drive premium attention into the selected FaithHub object.");
+      : source?.subtitle || "Drive premium attention into the selected Provider object.");
 
   const cta = builder.ctaLabel || "Explore now";
   const secondary = builder.secondaryCtaLabel || "Save for later";
@@ -1266,7 +1266,7 @@ function BeaconPreviewCard({
             <div className="p-4">
               <div className="flex items-center justify-between gap-2">
                 <div className="min-w-0">
-                  <div className="text-[11px] font-extrabold uppercase tracking-[0.12em]" style={{ color: EV_GREY }}>FaithHub promo</div>
+                  <div className="text-[11px] font-extrabold uppercase tracking-[0.12em]" style={{ color: EV_GREY }}>Promotion</div>
                   <div className="mt-1 text-lg font-black leading-tight">{campaignTitle}</div>
                 </div>
                 <Pill tone={builder.variantTesting ? "pro" : "neutral"}>{builder.variantTesting ? "A/B ready" : "Single variant"}</Pill>
@@ -1757,7 +1757,7 @@ export default function BeaconBuilderPage({
       <div className="space-y-4">
         <Section
           title="Source mode chooser"
-          subtitle="Choose between a linked FaithHub object and a completely standalone Beacon campaign."
+          subtitle="Choose between a linked Provider object and a completely standalone Beacon campaign."
           right={
             <div className="inline-flex rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-1 transition-colors">
               <button
@@ -1907,7 +1907,7 @@ export default function BeaconBuilderPage({
                         </div>
                         <div className="mt-4 rounded-2xl p-3" style={{ background: `${EV_GREEN}16` }}>
                           <div className="text-sm font-bold text-slate-900 dark:text-slate-100">Linked campaigns stay context-rich.</div>
-                          <div className="mt-1 text-xs text-slate-600 dark:text-slate-400">FaithHub pulls source context, status, and conversion pathways into the campaign without flattening everything into generic ads.</div>
+                          <div className="mt-1 text-xs text-slate-600 dark:text-slate-400">The platform pulls source context, status, and conversion pathways into the campaign without flattening everything into generic ads.</div>
                         </div>
                       </>
                     ) : (
@@ -1933,7 +1933,7 @@ export default function BeaconBuilderPage({
               </div>
               <Card>
                 <div className="text-sm font-black text-slate-900 dark:text-slate-100">Standalone Beacon is first-class.</div>
-                <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">Use this mode for institution awareness, public notices, prayer drives, seasonal calls, giving pushes, or campaigns that are not anchored to an existing FaithHub object.</div>
+                <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">Use this mode for institution awareness, public notices, prayer drives, seasonal calls, giving pushes, or campaigns that are not anchored to an existing source object.</div>
               </Card>
               <Card>
                 <div className="text-sm font-black text-slate-900 dark:text-slate-100">Destination can still be rich.</div>
@@ -2144,7 +2144,7 @@ export default function BeaconBuilderPage({
 
   function renderDestinationStep() {
     const destinationOptions: DestinationType[] = [
-      "FaithHub internal",
+      "Provider internal",
       "Replay page",
       "Event page",
       "Giving page",
@@ -2204,7 +2204,7 @@ export default function BeaconBuilderPage({
           <div className="mt-4 grid gap-4 md:grid-cols-3">
             <Card>
               <div className="text-sm font-black text-slate-900 dark:text-slate-100">Deep-link confidence</div>
-              <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">Use internal FaithHub targets whenever possible for cleaner attribution and smoother conversion tracing.</div>
+              <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">Use internal platform targets whenever possible for cleaner attribution and smoother conversion tracing.</div>
             </Card>
             <Card>
               <div className="text-sm font-black text-slate-900 dark:text-slate-100">Approved external targets</div>
@@ -2639,7 +2639,7 @@ export default function BeaconBuilderPage({
                 <Pill tone="pro">Preview-first workflow</Pill>
               </div>
               <div className="mt-1 text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-4xl">
-                Create a premium Beacon campaign from scratch — linked to FaithHub content or fully standalone — with rich creative, audience logic, placement planning, and a launch-ready review flow.
+                Create a premium Beacon campaign from scratch — linked to platform content or fully standalone — with rich creative, audience logic, placement planning, and a launch-ready review flow.
               </div>
             </div>
             <div className="flex flex-wrap items-center gap-2">

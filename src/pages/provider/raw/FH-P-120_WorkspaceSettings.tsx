@@ -33,7 +33,7 @@ import {
 import { KpiTile } from "../../../components/ui/KpiTile";
 
 /**
- * FaithHub — Workspace Settings
+ * Provider — Workspace Settings
  * --------------------------------------
  * Purpose:
  * Premium operating page for institution-wide defaults across branding,
@@ -1002,7 +1002,7 @@ export default function WorkspaceSettingsPage() {
               <div className="flex items-center justify-between gap-3 rounded-[24px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-4 py-4">
                 <div>
                   <div className="text-[12px] font-extrabold text-slate-900 dark:text-slate-100">Streaming priority</div>
-                  <div className="text-[11px] text-slate-500 dark:text-slate-400">Keep the FaithHub session as source of truth before external destination routing.</div>
+                  <div className="text-[11px] text-slate-500 dark:text-slate-400">Keep the primary session as source of truth before external destination routing.</div>
                 </div>
                 <Toggle checked={connectedStreamingPriority} onChange={setConnectedStreamingPriority} />
               </div>

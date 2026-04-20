@@ -24,7 +24,7 @@ import {
 import { KpiTile } from "../../../components/ui/KpiTile";
 
 /**
- * FaithHub — Audit Log
+ * Provider — Audit Log
  * --------------------------------
  * Purpose:
  * Immutable-style operational history for role changes, publishing actions,
@@ -797,7 +797,7 @@ const initialEvents: AuditEvent[] = [
     tags: ["Receipts", "Recurring support", "Compliance note"],
     diff: [
       { field: "Footer note", before: "General support", after: "General support + accountability reference" },
-      { field: "Reply contact", before: "N/A", after: "finance@faithhub.org" },
+      { field: "Reply contact", before: "N/A", after: "finance@workspace.org" },
     ],
     related: [
       "AUD-88330 · Email sender preview updated",

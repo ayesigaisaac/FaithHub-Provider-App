@@ -27,7 +27,7 @@ import {
 } from "lucide-react";
 
 /**
- * FaithHub — Episode Builder
+ * Provider — Episode Builder
  * -----------------------------------
  * Premium provider page for shaping an episode inside a Series while still
  * giving it its own live, replay, resource, and audience journey.
@@ -242,7 +242,7 @@ const DEFAULT_LIVE_ATTACHMENTS: LiveAttachment[] = [
     variant: "Preview session",
     startLabel: "Thu · 18:30",
     language: "English",
-    destination: "FaithHub + YouTube",
+    destination: "Primary + YouTube",
     status: "Ready",
   },
   {
@@ -251,7 +251,7 @@ const DEFAULT_LIVE_ATTACHMENTS: LiveAttachment[] = [
     variant: "Main live",
     startLabel: "Sun · 09:00",
     language: "English",
-    destination: "FaithHub + Instagram",
+    destination: "Primary + Instagram",
     status: "Scheduled",
   },
   {
@@ -260,7 +260,7 @@ const DEFAULT_LIVE_ATTACHMENTS: LiveAttachment[] = [
     variant: "Translated session",
     startLabel: "Sun · 13:00",
     language: "Swahili",
-    destination: "FaithHub only",
+    destination: "Primary only",
     status: "Draft",
   },
 ];
@@ -651,7 +651,7 @@ function EpisodePreview({
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/20 to-transparent" />
           <div className="absolute left-5 top-5 flex flex-wrap gap-2">
             <Pill tone="brand" icon={<Film className="h-3 w-3" />}>
-              FaithHub Episode
+              Episode
             </Pill>
             <Pill tone="good">{draft.accessModel}</Pill>
             <Pill tone="warn">{draft.liveAttachments.length} sessions linked</Pill>
@@ -936,7 +936,7 @@ export default function EpisodeBuilderPage() {
           variant: "Follow-up Q&A",
           startLabel: "Mon · 19:00",
           language: "English",
-          destination: "FaithHub only",
+          destination: "Primary only",
           status: "Draft",
         },
       ],

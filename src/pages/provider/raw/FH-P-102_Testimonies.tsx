@@ -26,7 +26,7 @@ import {
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — Testimonies
+ * Provider — Testimonies
  * --------------------------------
  * Premium Provider-side page for collecting, reviewing, approving,
  * publishing, and featuring testimonies across the institution.
@@ -1695,7 +1695,7 @@ export default function TestimoniesPage() {
                 </div>
 
                 <div className="text-[11px] text-slate-500 dark:text-slate-400">
-                  FaithHub preview
+                  Preview
                 </div>
               </div>
             ) : null}

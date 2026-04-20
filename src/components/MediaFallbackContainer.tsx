@@ -9,7 +9,7 @@ function patchMedia(root: HTMLElement) {
       if (!img.dataset.fallbackApplied) {
         img.dataset.fallbackApplied = 'true';
         img.src = FALLBACK_SRC;
-        img.alt = img.alt || 'FaithHub media placeholder';
+        img.alt = img.alt || 'Provider media placeholder';
         img.loading = 'lazy';
       }
     };

@@ -37,7 +37,7 @@ import {
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — Standalone Teaching Builder
+ * Provider — Standalone Teaching Builder
  * ------------------------------------------------
  * Premium creator-style page for building sermons/teachings that do not
  * belong to any Series or Episode while still supporting Live Sessions,
@@ -364,7 +364,7 @@ const DEFAULT_DRAFT: TeachingDraft = {
   liveEnabled: true,
   linkedLiveTitle: "Sunday Fire Live Session",
   linkedLiveState: "Scheduled",
-  linkedLiveTime: "Sun 09:00 · FaithHub + YouTube",
+  linkedLiveTime: "Sun 09:00 · Primary + YouTube",
   releaseTiming: "Publish after the linked live ends",
   visibility: "Public",
   region: "Global",
@@ -1191,7 +1191,7 @@ export default function StandaloneTeachingBuilderPage() {
                   <TextInput
                     value={draft.linkedLiveTime}
                     onChange={(linkedLiveTime) => setDraft((current) => ({ ...current, linkedLiveTime }))}
-                    placeholder="Sun 09:00 · FaithHub + YouTube"
+                    placeholder="Sun 09:00 · Primary + YouTube"
                   />
                 </div>
                 <div className="flex flex-wrap gap-2">
@@ -1558,7 +1558,7 @@ export default function StandaloneTeachingBuilderPage() {
             </Card>
 
             <Card
-              title="FaithHub object independence"
+              title="Object independence"
               subtitle="The teaching remains standalone even when related pages are attached."
               right={<Pill tone="good">First-class standalone</Pill>}
             >

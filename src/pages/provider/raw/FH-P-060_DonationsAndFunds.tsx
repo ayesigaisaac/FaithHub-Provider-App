@@ -30,12 +30,12 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — Donations & Funds
+ * Provider — Donations & Funds
  * -------------------------------------
  * Premium giving workspace for Provider Workspace.
  *
  * Design goals
- * - Keep the same premium creator-style layout direction used across the other generated FaithHub pages.
+ * - Keep the same premium creator-style layout direction used across the other generated Provider pages.
  * - Use EVzone Green as the primary accent, Orange as the secondary accent, and soft neutrals for premium finance surfaces.
  * - Cover the full page spec: funds registry, campaign creation, donor experience settings, payout/finance,
  *   donor intelligence, live/content bridge, compliance, lifecycle controls, and a strong preview workflow.
@@ -722,7 +722,7 @@ function BrowserPreview({
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-slate-900/10" />
           <div className="relative z-10 p-8">
             <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-bold backdrop-blur">
-              <HeartHandshake className="h-3.5 w-3.5" /> FaithHub Giving
+              <HeartHandshake className="h-3.5 w-3.5" /> Giving
             </div>
             <div className="mt-5 text-3xl font-black leading-tight">{record.title}</div>
             <div className="mt-2 max-w-[520px] text-sm text-white/85">{record.subtitle}</div>
@@ -788,7 +788,7 @@ function PhonePreview({
           <div className="relative aspect-[9/12] overflow-y-auto bg-slate-50 dark:bg-slate-950">
             <div className="sticky top-0 z-10 flex items-center justify-between bg-white/95 px-4 py-3 shadow-sm backdrop-blur dark:bg-slate-900/95">
               <div>
-                <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500">FaithHub Giving</div>
+                <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500">Giving</div>
                 <div className="text-sm font-black text-slate-900 dark:text-slate-50">{record.title}</div>
               </div>
               <div className="rounded-full bg-slate-100 px-2 py-1 text-[10px] font-bold text-slate-700 dark:bg-slate-800 dark:text-slate-200">{record.recordType}</div>
@@ -965,7 +965,7 @@ export default function DonationsAndFundsPage() {
   const [receiptLanguage, setReceiptLanguage] = useState("Standard ministry receipt");
   const [confirmationJourney, setConfirmationJourney] = useState("Instant thank-you + 7-day stewardship follow-up");
   const [donorCopy, setDonorCopy] = useState(
-    "Your generosity strengthens ministry, supports people, and fuels real outcomes across FaithHub moments.",
+    "Your generosity strengthens ministry, supports people, and fuels real outcomes across Provider moments.",
   );
   const [toast, setToast] = useState<string | null>(null);
 
@@ -1557,7 +1557,7 @@ export default function DonationsAndFundsPage() {
         open={previewOpen}
         onClose={() => setPreviewOpen(false)}
         title="Donor experience preview"
-        subtitle="FaithHub giving destination preview for desktop and mobile surfaces."
+        subtitle="Provider giving destination preview for desktop and mobile surfaces."
       >
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
           <div className="space-y-4">

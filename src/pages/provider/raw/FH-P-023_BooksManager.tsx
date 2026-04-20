@@ -38,7 +38,7 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — Books Manager
+ * Provider — Books Manager
  * ---------------------------------
  * Premium Provider-side control surface for books, devotionals, manuals,
  * study guides, and downloadable teaching resources.
@@ -330,7 +330,7 @@ const BOOKS: BookRecord[] = [
     id: "book-003",
     title: "Leadership Foundations Manual",
     subtitle: "Training handbook for volunteers, leaders, and ministry coordinators.",
-    author: "FaithHub Leadership Office",
+    author: "Provider Leadership Office",
     kind: "Manual",
     status: "Scheduled",
     access: "Internal",

@@ -36,7 +36,7 @@ import {
 } from "lucide-react";
 
 /**
- * FaithHub — Merchandise Builder
+ * Provider — Merchandise Builder
  * ---------------------------------------
  * Premium Provider-side create/edit page launched from Merchandise Manager via
  * the "+ New Merchandise" command.
@@ -488,7 +488,7 @@ function createDraftFromTemplate(templateId: TemplateKey): MerchandiseDraft {
       notifications: true,
     },
     linkedLive: "Sunday evening service live",
-    linkedEvent: preset.kind === "Event Kit" ? "FaithHub conference 2026" : "",
+    linkedEvent: preset.kind === "Event Kit" ? "Provider conference 2026" : "",
     linkedFund: preset.kind === "Gift" ? "Supporter thank-you journey" : "",
     linkedBeacon: "Seasonal awareness campaign",
     ctaText: preset.ctaText,
@@ -1343,13 +1343,13 @@ export default function MerchandiseBuilderPage() {
 
                   <Card
                     title="Merch identity"
-                    subtitle="Define what the merchandise object is, who it serves, and the premium positioning it should carry across FaithHub and FaithMart."
+                    subtitle="Define what the merchandise object is, who it serves, and the premium positioning it should carry across Provider and FaithMart."
                     right={<Pill text={draft.kind} tone="neutral" icon={<Package className="h-3.5 w-3.5" />} />}
                   >
                     <div className="grid gap-4 lg:grid-cols-2">
                       <div>
                         <Label>Title</Label>
-                        <Input value={draft.title} onChange={(value) => patchDraft("title", value)} placeholder="FaithHub Community Hoodie" />
+                        <Input value={draft.title} onChange={(value) => patchDraft("title", value)} placeholder="Provider Community Hoodie" />
                       </div>
                       <div>
                         <Label>Subtitle</Label>
@@ -1657,7 +1657,7 @@ export default function MerchandiseBuilderPage() {
                   <Card
                     title="Cross-links and growth activation"
                     subtitle="Turn the merch item into a premium growth object that can surface in live sessions, events, giving, notifications, and Beacon."
-                    right={<Pill text="FaithHub-connected" tone="good" icon={<Workflow className="h-3.5 w-3.5" />} />}
+                    right={<Pill text="Provider-connected" tone="good" icon={<Workflow className="h-3.5 w-3.5" />} />}
                   >
                     <div className="grid gap-3 md:grid-cols-2">
                       {hookToggleItems.map((item) => (

@@ -35,7 +35,7 @@ import {
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — Teachings Dashboard
+ * Provider — Teachings Dashboard
  * ---------------------------------------
  * Premium control surface for everything in the Teachings section.
  *
@@ -293,7 +293,7 @@ const TEACHINGS: TeachingRecord[] = [
     summary:
       "A standalone sermon with no Series or Episode parent, designed for direct publish or live-first delivery.",
     coverUrl: HERO_3,
-    campus: "FaithHub Studio",
+    campus: "Studio",
     access: "Supporter",
     languages: ["English"],
     tags: ["Standalone", "Encouragement", "Midweek"],

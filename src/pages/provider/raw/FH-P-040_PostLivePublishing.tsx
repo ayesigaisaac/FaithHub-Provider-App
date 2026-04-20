@@ -43,15 +43,15 @@ import {
 } from 'lucide-react';
 
 /**
- * FaithHub — Post-live Publishing
+ * Provider — Post-live Publishing
  * ----------------------------------------
- * Premium replay packaging workspace for FaithHub Live Sessions.
+ * Premium replay packaging workspace for Live Sessions.
  *
  * Page intent
- * - Rebuild the creator/e-commerce post-live page into a FaithHub replay publishing surface.
+ * - Rebuild the creator/e-commerce post-live page into a Replay publishing surface.
  * - Preserve the creator-style premium format: sticky command header, left operational workspace,
  *   right-side readiness + preview rail, and an expanded preview drawer.
- * - Use EVzone Green as primary, Orange as secondary, with FaithHub neutral greys.
+ * - Use EVzone Green as primary, Orange as secondary, with Provider neutral greys.
  *
  * Notes
  * - Self-contained mock TSX page built with Tailwind-style utility classes.
@@ -389,7 +389,7 @@ function BrowserPreview({
         <span className="h-3 w-3 rounded-full bg-rose-400" />
         <span className="h-3 w-3 rounded-full bg-amber-400" />
         <span className="h-3 w-3 rounded-full" style={{ background: EV_GREEN }} />
-        <div className="ml-2 rounded-full bg-slate-100 dark:bg-slate-800 px-3 py-1 text-[11px] font-bold text-slate-700 dark:text-slate-300">faithhub replay page</div>
+        <div className="ml-2 rounded-full bg-slate-100 dark:bg-slate-800 px-3 py-1 text-[11px] font-bold text-slate-700 dark:text-slate-300">replay page</div>
       </div>
       <div className="p-4">
         <div className="overflow-hidden rounded-3xl bg-[#07162f] p-4 text-white">
@@ -446,7 +446,7 @@ function PhonePreview({
         <div className="rounded-[28px] bg-white dark:bg-slate-950 overflow-hidden transition-colors">
           <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 px-4 py-3">
             <div>
-              <div className="text-[10px] font-black uppercase tracking-[0.14em] text-slate-500">FaithHub replay</div>
+              <div className="text-[10px] font-black uppercase tracking-[0.14em] text-slate-500">Replay</div>
               <div className="mt-0.5 text-sm font-black text-slate-900 dark:text-slate-50">{accessLevel}</div>
             </div>
             <div className="h-10 w-10 rounded-2xl" style={{ background: EV_GREEN }} />
@@ -483,7 +483,7 @@ export default function PostLivePublishingPage() {
       endedISO: new Date(Date.now() - 42 * 60 * 1000).toISOString(),
       replayUrl: 'https://faithhub.evzone.app/replay/LS-24051',
       coverUrl: DEFAULT_COVER,
-      destinationLabel: 'FaithHub Home + Replay Library',
+      destinationLabel: 'Provider Home + Replay Library',
     }),
     [],
   );
@@ -572,7 +572,7 @@ export default function PostLivePublishingPage() {
   ]);
 
   const [surfaces, setSurfaces] = useState<SurfaceItem[]>([
-    { key: 'home', label: 'FaithHub Home feed', hint: 'Primary discovery feed for followers and recommended viewers.', enabled: true },
+    { key: 'home', label: 'Home feed', hint: 'Primary discovery feed for followers and recommended viewers.', enabled: true },
     { key: 'series', label: 'Series landing page', hint: 'Replay appears on the parent series and episode.', enabled: true },
     { key: 'library', label: 'Replay library', hint: 'Adds the replay to the institution library.', enabled: true },
     { key: 'search', label: 'Global search', hint: 'Uses chapters and transcript to improve discovery.', enabled: true },
@@ -680,7 +680,7 @@ export default function PostLivePublishingPage() {
       {
         label: 'Replay access and discoverability',
         status: accessCoverage ? 'Pass' : 'Warn',
-        detail: `${visibleSurfaceCount} FaithHub surfaces enabled${featuredPlacement ? ' · featured shelf requested' : ''}.`,
+        detail: `${visibleSurfaceCount} surfaces enabled${featuredPlacement ? ' · featured shelf requested' : ''}.`,
       },
       {
         label: 'Accessibility and subtitle confidence',
@@ -780,7 +780,7 @@ export default function PostLivePublishingPage() {
           <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
             <div className="min-w-0">
               <div className="flex flex-wrap items-center gap-2 text-[10px] font-black uppercase tracking-[0.14em] text-slate-500 dark:text-slate-400">
-                <span>FaithHub</span>
+                    <span>Provider</span>
                 <span className="text-slate-300 dark:text-slate-700">/</span>
                 <span>Provider</span>
                 <span className="text-slate-300 dark:text-slate-700">/</span>
@@ -1185,7 +1185,7 @@ export default function PostLivePublishingPage() {
                       </Pill>
                     </div>
                     <Meter value={subtitleConfidence} tone={subtitleConfidence >= 95 ? 'brand' : 'warn'} />
-                    <div className="mt-2 text-[11px] text-slate-500 dark:text-slate-400">FaithHub can flag subtitle confidence below 90% before publishing.</div>
+                    <div className="mt-2 text-[11px] text-slate-500 dark:text-slate-400">Provider can flag subtitle confidence below 90% before publishing.</div>
                   </div>
                 </div>
               </div>
@@ -1301,8 +1301,8 @@ export default function PostLivePublishingPage() {
                 <div className="xl:col-span-8 rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                   <div className="flex items-center justify-between gap-2">
                     <div>
-                      <FieldLabel>FaithHub surfaces</FieldLabel>
-                      <div className="mt-1 text-xs text-slate-600 dark:text-slate-400">Choose where the replay should appear inside FaithHub and how premium placement should behave.</div>
+                      <FieldLabel>Surfaces</FieldLabel>
+                      <div className="mt-1 text-xs text-slate-600 dark:text-slate-400">Choose where the replay should appear inside the platform and how premium placement should behave.</div>
                     </div>
                     <Pill tone={featuredPlacement ? 'good' : 'neutral'}>
                       <Sparkles className="h-3.5 w-3.5" /> {featuredPlacement ? 'Featured shelf requested' : 'Standard placement'}
@@ -1544,7 +1544,7 @@ export default function PostLivePublishingPage() {
             <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
               <SectionHead
                 title="Distribution summary"
-                subtitle="Where the replay will surface inside FaithHub and which external prep steps are queued."
+                subtitle="Where the replay will surface inside Provider and which external prep steps are queued."
                 right={<Pill tone="accent"><Layers className="h-3.5 w-3.5" /> {visibleSurfaceCount} surfaces</Pill>}
               />
 
@@ -1598,7 +1598,7 @@ export default function PostLivePublishingPage() {
         open={previewOpen}
         onClose={() => setPreviewOpen(false)}
         title="Replay destination preview"
-        subtitle="FaithHub desktop and mobile replay destination, reflecting your current packaging settings."
+        subtitle="Provider desktop and mobile replay destination, reflecting your current packaging settings."
       >
         <div className="grid grid-cols-1 gap-5 xl:grid-cols-12">
           <div className="xl:col-span-8 space-y-4">
@@ -1665,7 +1665,6 @@ export default function PostLivePublishingPage() {
 function PlusIconSmall() {
   return <span className="inline-flex h-4 w-4 items-center justify-center text-base leading-none">+</span>;
 }
-
 
 
 

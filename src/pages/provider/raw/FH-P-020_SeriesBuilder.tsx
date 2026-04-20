@@ -38,12 +38,12 @@ import {
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — Series Builder
+ * Provider — Series Builder
  * ----------------------------------
  * Premium teaching-series control surface for the Provider side.
  *
  * Design goals
- * - Keep the same premium creator-style grammar already used across the generated FaithHub pages:
+ * - Keep the same premium creator-style grammar already used across the generated Provider pages:
  *   top action bar, left step rail, rich center workspace, and a persistent right-side preview.
  * - Use EVzone Green as the primary accent and Orange as the secondary accent.
  * - Represent the full Series Builder scope from the premium blueprint:
@@ -158,8 +158,8 @@ const LOCALE_OPTIONS = [
 ];
 
 const GRAPHIC_RULES = [
-  "FaithHub Standard",
-  "FaithHub Minimal Serif",
+  "Standard",
+  "Minimal Serif",
   "Conference Premium",
   "Revival Night",
   "Teaching Notes Overlay",
@@ -797,7 +797,7 @@ function SeriesLandingPreview({
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-900/15 to-transparent" />
           <div className="absolute left-5 top-5 flex flex-wrap gap-2">
             <Pill tone="brand">
-              <Sparkles className="h-3 w-3" /> FaithHub Series
+              <Sparkles className="h-3 w-3" /> Series
             </Pill>
             <Pill tone="good">{draft.accessModel}</Pill>
             <Pill tone="warn">{readyEpisodes}/{draft.episodeTarget} ready</Pill>
@@ -1632,7 +1632,7 @@ export default function SeriesBuilderPage() {
                     />
                     <ToggleTile
                       title="Featured placement + launch rail"
-                      hint="Eligible for launch-week spotlight across FaithHub discovery surfaces."
+                      hint="Eligible for launch-week spotlight across Discovery surfaces."
                       checked={draft.featuredPlacement}
                       onChange={(featuredPlacement) => setDraft((current) => ({ ...current, featuredPlacement }))}
                     />
@@ -1878,7 +1878,7 @@ export default function SeriesBuilderPage() {
                 <SeriesLandingPreview draft={draft} previewMode={previewMode} readinessScore={readiness.score} />
               </div>
               <div className="mt-4 rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-[12px] font-semibold text-emerald-700">
-                FaithHub preview
+                Preview
               </div>
             </div>
           </div>

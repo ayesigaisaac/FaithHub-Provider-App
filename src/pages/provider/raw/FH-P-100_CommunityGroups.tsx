@@ -36,7 +36,7 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — Community Groups
+ * Provider — Community Groups
  * ------------------------------------
  * Premium Provider-side operating surface for ministries, cells, discipleship circles,
  * prayer groups, youth communities, family groups, and other faith-community structures.
@@ -1578,7 +1578,7 @@ export default function CommunityGroupsPage() {
             className="mx-4 mb-4 rounded-full px-6 py-1.5 text-center text-[12px] text-slate-600"
             style={{ background: "rgba(3,205,140,0.16)", border: "1px solid rgba(3,205,140,0.30)" }}
           >
-            FaithHub Community Groups preview
+            Community Groups preview
           </div>
         </div>
       </div>

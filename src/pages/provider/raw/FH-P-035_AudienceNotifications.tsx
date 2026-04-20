@@ -42,7 +42,7 @@ import {
 import { KpiTile } from "../../../components/ui/KpiTile";
 
 /**
- * FaithHub — Audience Notifications
+ * Provider — Audience Notifications
  * Premium lifecycle journey page rebuilt from the creator-style Audience Notifications base.
  * Primary colour: EVzone Green (#03cd8c)
  * Secondary colour: EVzone Orange (#f77f00)
@@ -814,7 +814,7 @@ const channelSeed: ChannelConfig[] = [
     name: "In-app inbox",
     short: "Inbox",
     connected: "Connected",
-    note: "Persists inside FaithHub and supports contextual follow-up after the live moment.",
+    note: "Persists inside Provider and supports contextual follow-up after the live moment.",
     deliverability: "100% internal",
     priority: "Normal",
     throttle: "Unlimited internal",
@@ -855,20 +855,20 @@ function buildInitialVariants(sourceType: SourceType): Record<LocaleKey, LocaleV
   return {
     en: {
       headline: `${subjectRoot} • Join with purpose`,
-      body: "You asked to stay connected. Here is the right message at the right moment, with a deep link that takes people straight into the most relevant FaithHub experience.",
-      cta: "Open in FaithHub",
+      body: "You asked to stay connected. Here is the right message at the right moment, with a deep link that takes people straight into the most relevant Provider experience.",
+      cta: "Open in Provider",
       deepLink: "faithhub://live/sunday-encounter",
     },
     sw: {
       headline: `${subjectRoot} • Jiunge sasa`,
       body: "Ujumbe huu umeboreshwa kwa wakati unaofaa, lugha sahihi, na kiungo kinachopeleka mtu moja kwa moja kwenye tukio au replay inayohitajika.",
-      cta: "Fungua kwenye FaithHub",
+      cta: "Fungua kwenye Provider",
       deepLink: "faithhub://live/sunday-encounter?locale=sw",
     },
     fr: {
       headline: `${subjectRoot} • Rejoignez maintenant`,
       body: "Ce message est localisé pour le bon moment, le bon public, et le bon résultat ministériel — participation, replay, don, inscription ou promotion.",
-      cta: "Ouvrir dans FaithHub",
+      cta: "Ouvrir dans Provider",
       deepLink: "faithhub://live/sunday-encounter?locale=fr",
     },
   };
@@ -882,7 +882,7 @@ function stageTone(key: JourneyNodeKey) {
 
 function buildPreviewHeadline(node: JourneyNode, variant: LocaleVariant) {
   if (variant.headline.trim()) return variant.headline;
-  return `${node.label} • FaithHub`;
+    return `${node.label} • Provider`;
 }
 
 function buildPreviewBody(node: JourneyNode, variant: LocaleVariant) {
@@ -929,7 +929,7 @@ export default function FaithHubAudienceNotificationsPage() {
   const [variants, setVariants] = useState<Record<LocaleKey, LocaleVariant>>(
     buildInitialVariants("Live Session"),
   );
-  const [previewImage, setPreviewImage] = useState("FaithHub_live_reminder_cover.png");
+  const [previewImage, setPreviewImage] = useState("provider_live_reminder_cover.png");
   const [abVariantEnabled, setAbVariantEnabled] = useState(true);
   const [variantBLabel, setVariantBLabel] = useState("Hope-led opening");
 
@@ -1905,7 +1905,7 @@ export default function FaithHubAudienceNotificationsPage() {
 
                 {previewTab === "push" ? (
                   <PhoneMock
-                    title="FaithHub Push"
+                    title="Provider Push"
                     subtitle={`${activeNode.label} • ${localeLabels[selectedLocale].label}`}
                     body={
                       <div className="space-y-2">
@@ -1916,7 +1916,7 @@ export default function FaithHubAudienceNotificationsPage() {
                           {previewBody}
                         </div>
                         <div className="inline-flex items-center rounded-full px-2.5 py-1 text-[10px] font-black text-white" style={{ backgroundColor: GREEN }}>
-                          {activeVariant.cta || "Open in FaithHub"}
+                          {activeVariant.cta || "Open in Provider"}
                         </div>
                       </div>
                     }
@@ -1934,20 +1934,20 @@ export default function FaithHubAudienceNotificationsPage() {
                     subject={previewHeadline}
                     preheader={`${activeNode.label} • ${sourceType} • ${languageTarget}`}
                     body={previewBody}
-                    cta={activeVariant.cta || "Open in FaithHub"}
+                    cta={activeVariant.cta || "Open in Provider"}
                   />
                 ) : null}
 
                 {previewTab === "sms" ? (
                   <SmsPreview
-                    sender="FaithHub SMS"
+                    sender="Provider SMS"
                     message={`${previewHeadline}\n${previewBody}`}
                   />
                 ) : null}
 
                 {previewTab === "whatsapp" ? (
                   <SmsPreview
-                    sender="FaithHub Messaging"
+                    sender="Provider Messaging"
                     message={`${previewHeadline}\n${previewBody}`}
                     accent
                   />
@@ -2165,7 +2165,7 @@ export default function FaithHubAudienceNotificationsPage() {
               <div className="mt-4">
                 {previewTab === "push" ? (
                   <PhoneMock
-                    title="FaithHub Push"
+                    title="Provider Push"
                     subtitle={`${activeNode.label} • ${sourceType}`}
                     body={
                       <div className="space-y-2">
@@ -2173,7 +2173,7 @@ export default function FaithHubAudienceNotificationsPage() {
                         <div className="text-[12px] leading-relaxed">{previewBody}</div>
                         <div className="flex flex-wrap gap-2 pt-1">
                           <span className="inline-flex items-center rounded-full px-2.5 py-1 text-[10px] font-black text-white" style={{ backgroundColor: GREEN }}>
-                            {activeVariant.cta || "Open in FaithHub"}
+                            {activeVariant.cta || "Open in Provider"}
                           </span>
                           <span className="inline-flex items-center rounded-full px-2.5 py-1 text-[10px] font-black text-white" style={{ backgroundColor: ORANGE }}>
                             {activeNode.offset}
@@ -2189,16 +2189,16 @@ export default function FaithHubAudienceNotificationsPage() {
                     subject={previewHeadline}
                     preheader={`${activeNode.label} • ${languageTarget} • ${regionTarget}`}
                     body={previewBody}
-                    cta={activeVariant.cta || "Open in FaithHub"}
+                    cta={activeVariant.cta || "Open in Provider"}
                   />
                 ) : null}
 
                 {previewTab === "sms" ? (
-                  <SmsPreview sender="FaithHub SMS" message={`${previewHeadline}\n${previewBody}`} />
+                  <SmsPreview sender="Provider SMS" message={`${previewHeadline}\n${previewBody}`} />
                 ) : null}
 
                 {previewTab === "whatsapp" ? (
-                  <SmsPreview sender="FaithHub Messaging" message={`${previewHeadline}\n${previewBody}`} accent />
+                  <SmsPreview sender="Provider Messaging" message={`${previewHeadline}\n${previewBody}`} accent />
                 ) : null}
               </div>
             </div>
@@ -2271,7 +2271,6 @@ export default function FaithHubAudienceNotificationsPage() {
     </div>
   );
 }
-
 
 
 

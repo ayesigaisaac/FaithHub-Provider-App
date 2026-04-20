@@ -40,13 +40,13 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — Replays & Clips
+ * Provider — Replays & Clips
  * -----------------------------------
  * Premium replay library and clip engine for Provider Workspace.
  *
  * Design goals
  * - Preserve the creator-style source layout (replay library + clip engine) while upgrading it into a
- *   world-class FaithHub post-live growth surface.
+ *   world-class Provider post-live growth surface.
  * - Use EVzone Green as primary, Orange as secondary, and preserve premium grey neutrals.
  * - Add a real preview lab so editors can see how clips will look across desktop and mobile surfaces.
  * - Cover every requested module: replay library, clip extraction timeline, aspect variants, clip packaging,

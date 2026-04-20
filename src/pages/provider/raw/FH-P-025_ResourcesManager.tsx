@@ -32,7 +32,7 @@ import {
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — Resources Manager
+ * Provider — Resources Manager
  * -------------------------------------
  * Premium Provider-side control surface for free learning resources,
  * downloadable PDFs, devotionals, prayer guides, study packs, and audio teachings.
@@ -217,8 +217,8 @@ const INITIAL_RESOURCES: ResourceRecord[] = [
   {
     id: "res-youth-audio",
     title: "Youth Purpose Audio Series",
-    author: "FaithHub Editorial",
-    sourceLabel: "FaithHub",
+    author: "Provider Editorial",
+    sourceLabel: "Provider",
     type: "Audio",
     category: "Youth",
     summary:
@@ -286,8 +286,8 @@ const INITIAL_RESOURCES: ResourceRecord[] = [
   {
     id: "res-discipleship-guide",
     title: "Gospel Foundations Study Notes",
-    author: "FaithHub Editorial",
-    sourceLabel: "FaithHub",
+    author: "Provider Editorial",
+    sourceLabel: "Provider",
     type: "Study Guide",
     category: "Study",
     summary:
@@ -910,7 +910,7 @@ function PreviewRail({
         <div className="overflow-hidden rounded-[26px] bg-white">
           <div className="flex items-center justify-between border-b border-slate-200 px-4 py-3">
             <div>
-              <div className="text-[10px] font-black uppercase tracking-[0.18em] text-slate-500">FaithHub</div>
+                      <div className="text-[10px] font-black uppercase tracking-[0.18em] text-slate-500">Provider</div>
               <div className="mt-1 text-[13px] font-black text-slate-900">Resources</div>
             </div>
             <div
@@ -1299,7 +1299,7 @@ export default function ResourcesManagerPage() {
                     <BookOpen className="h-4 w-4" /> Library count
                   </div>
                   <div className="mt-3 text-[28px] font-black tracking-tight text-slate-900">{fmtInt(stats.total)}</div>
-                  <div className="mt-1 text-sm text-slate-500">Free resources live inside FaithHub.</div>
+                  <div className="mt-1 text-sm text-slate-500">Free resources live inside the platform.</div>
                 </div>
                 <div className="rounded-[24px] border border-slate-200 bg-slate-50 p-4">
                   <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.18em] text-slate-500">
@@ -1404,7 +1404,7 @@ export default function ResourcesManagerPage() {
                 <SectionTitle
                   icon={<Star className="h-4 w-4" />}
                   title="Recommended"
-                  subtitle="Resources the provider or FaithHub editorial team wants to surface next."
+                  subtitle="Resources the provider or Provider editorial team wants to surface next."
                 />
                 <div className="mt-4 space-y-2">
                   {recommendedResources.length ? (
@@ -1447,7 +1447,7 @@ export default function ResourcesManagerPage() {
                 <SectionTitle
                   icon={<Upload className="h-4 w-4" />}
                   title="Provider upload"
-                  subtitle="Upload free resources for the community and tag them for clean discovery across the FaithHub library."
+                  subtitle="Upload free resources for the community and tag them for clean discovery across the Provider library."
                 />
 
                 <div className="mt-5 grid gap-3 md:grid-cols-2">
@@ -1590,7 +1590,6 @@ export default function ResourcesManagerPage() {
     </div>
   );
 }
-
 
 
 

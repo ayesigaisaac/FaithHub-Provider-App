@@ -250,7 +250,7 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
               {user?.name || 'Provider User'}
             </Typography>
             <Typography variant="caption" color="text.secondary">
-              {user?.email || 'unknown@faithhub.dev'}
+              {user?.email || 'unknown@workspace.dev'}
             </Typography>
           </Box>
         </MenuItem>
@@ -263,7 +263,7 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
           onClick={() =>
             setWorkspace({
               campus: workspace?.campus === 'Kampala Central' ? 'Online Studio' : 'Kampala Central',
-              brand: workspace?.brand || 'FaithHub',
+              brand: workspace?.brand || 'Provider',
             })
           }
         >
@@ -273,7 +273,7 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
           onClick={() =>
             setWorkspace({
               campus: workspace?.campus || 'Kampala Central',
-              brand: workspace?.brand === 'FaithHub' ? 'FaithHub Plus' : 'FaithHub',
+              brand: workspace?.brand === 'Provider' ? 'Provider Plus' : 'Provider',
             })
           }
         >

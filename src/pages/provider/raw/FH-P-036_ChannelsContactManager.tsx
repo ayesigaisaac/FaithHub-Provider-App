@@ -38,7 +38,7 @@ import {
 import { KpiTile } from "../../../components/ui/KpiTile";
 
 /**
- * FaithHub — Channels & Contact Manager
+ * Provider — Channels & Contact Manager
  * Premium audience data, consent, channel-operations, and contact-intelligence hub.
  * Primary colour: EVzone Green (#03cd8c)
  * Secondary colour: EVzone Orange (#f77f00)
@@ -539,7 +539,7 @@ const contacts: Contact[] = [
     quietHours: "21:00–07:00",
     childSafe: false,
     highRisk: false,
-    email: "amal@faithhub.demo",
+    email: "amal@workspace.demo",
     phone: "+256 700 123 448",
     segmentIds: ["seg_live_core", "seg_donors_warm", "seg_women_weekly"],
     lastActivity: "Watched replay 32 min ago",
@@ -558,7 +558,7 @@ const contacts: Contact[] = [
     ],
     consentAudit: [
       { at: "14 Feb 2026", label: "WhatsApp opt-in", detail: "Joined after scanning the Sunday live QR card." },
-      { at: "14 Feb 2026", label: "Push permission granted", detail: "Enabled from FaithHub mobile settings." },
+      { at: "14 Feb 2026", label: "Push permission granted", detail: "Enabled from Provider mobile settings." },
       { at: "20 Feb 2026", label: "Email confirmed", detail: "Clicked secure verify link from follow-up journey." },
     ],
   },
@@ -576,7 +576,7 @@ const contacts: Contact[] = [
     quietHours: "22:00–06:30",
     childSafe: false,
     highRisk: false,
-    email: "ezra@faithhub.demo",
+    email: "ezra@workspace.demo",
     phone: "+256 703 998 101",
     segmentIds: ["seg_volunteers_ops", "seg_event_core"],
     lastActivity: "Opened event reminder 1 hr ago",
@@ -612,7 +612,7 @@ const contacts: Contact[] = [
     quietHours: "Always child-safe",
     childSafe: true,
     highRisk: false,
-    email: "lina.parent@faithhub.demo",
+    email: "lina.parent@workspace.demo",
     phone: "+254 700 000 410",
     segmentIds: ["seg_children_guarded", "seg_family_updates"],
     lastActivity: "Awaiting parental reconfirmation",
@@ -647,7 +647,7 @@ const contacts: Contact[] = [
     quietHours: "23:00–07:00",
     childSafe: false,
     highRisk: false,
-    email: "samira@faithhub.demo",
+    email: "samira@workspace.demo",
     phone: "+44 7444 111 900",
     segmentIds: ["seg_global_donors", "seg_replay_loyalists"],
     lastActivity: "Gave to outreach fund 3 hrs ago",
@@ -683,7 +683,7 @@ const contacts: Contact[] = [
     quietHours: "21:00–06:00",
     childSafe: false,
     highRisk: true,
-    email: "david.kaggwa@faithhub.demo",
+    email: "david.kaggwa@workspace.demo",
     phone: "+256 780 222 009",
     segmentIds: ["seg_event_core"],
     lastActivity: "Endpoint invalid after last send",
@@ -831,7 +831,7 @@ const channelConnections: ChannelConnection[] = [
     name: "Push",
     campus: "Multi-campus",
     status: "Healthy",
-    sender: "FaithHub Mobile",
+    sender: "Provider Mobile",
     deliverability: "98.4% delivered",
     verification: "App certificates healthy",
     templateReadiness: "Journey templates synced",
@@ -843,7 +843,7 @@ const channelConnections: ChannelConnection[] = [
     name: "Email",
     campus: "Multi-campus",
     status: "Healthy",
-    sender: "news@faithhub.demo",
+    sender: "news@workspace.demo",
     deliverability: "97.1% inbox placement",
     verification: "SPF / DKIM / DMARC passing",
     templateReadiness: "Bilingual layouts ready",
@@ -867,7 +867,7 @@ const channelConnections: ChannelConnection[] = [
     name: "WhatsApp",
     campus: "Global",
     status: "Healthy",
-    sender: "FaithHub Live",
+    sender: "Live",
     deliverability: "Template quality high",
     verification: "Business profile healthy",
     templateReadiness: "24h window + template packs ready",
@@ -879,7 +879,7 @@ const channelConnections: ChannelConnection[] = [
     name: "Telegram",
     campus: "Young Adults",
     status: "Needs action",
-    sender: "FaithHub Youth",
+    sender: "Provider Youth",
     deliverability: "Endpoint sync stale",
     verification: "Reconnect required",
     templateReadiness: "No issues after reconnect",
@@ -891,7 +891,7 @@ const channelConnections: ChannelConnection[] = [
     name: "In-app",
     campus: "Multi-campus",
     status: "Healthy",
-    sender: "FaithHub Inbox",
+    sender: "Provider Inbox",
     deliverability: "No external carrier risk",
     verification: "Native surface healthy",
     templateReadiness: "Cards + deep links ready",

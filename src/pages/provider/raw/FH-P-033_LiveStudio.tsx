@@ -54,9 +54,9 @@ import {
 } from "lucide-react";
 
 /**
- * FaithHub — Live Studio
+ * Provider — Live Studio
  * --------------------------------
- * Premium production studio for FaithHub Live Sessions.
+ * Premium production studio for Live Sessions.
  *
  * Design grammar
  * - Adapted from the creator-style studio layout: top command bar, left rail, center program/preview monitors,
@@ -65,7 +65,7 @@ import {
  * - The page includes a built-in audience-experience preview to mirror the base-file preview pattern.
  *
  * Notes
- * - The component is self-contained with mock data so it can drop into the FaithHub codebase quickly.
+ * - The component is self-contained with mock data so it can drop into the Provider codebase quickly.
  * - Replace route constants and data hooks with your production sources.
  */
 
@@ -180,7 +180,7 @@ const SESSION = {
   hostLine: "Pastor Daniel M. • Minister Ruth K. • Central Campus",
   locations: "Main Sanctuary · Central Campus",
   destinations: [
-    { label: "FaithHub", health: "healthy" as HealthTone },
+    { label: "Provider", health: "healthy" as HealthTone },
     { label: "YouTube", health: "healthy" as HealthTone },
     { label: "Facebook", health: "watch" as HealthTone },
     { label: "Instagram", health: "healthy" as HealthTone },
@@ -198,7 +198,7 @@ const SCENES: Scene[] = [
     id: "countdown",
     label: "Countdown",
     desc: "Branded countdown with motion graphics and music bed.",
-    template: "FaithHub Classic",
+    template: "Classic",
     durationHint: "00:30:00",
     tone: "slate",
   },
@@ -689,7 +689,7 @@ function AudienceMiniPreview({
       <div className={cx("bg-slate-950 p-2", isMobile ? "rounded-[28px]" : "rounded-[24px]")}>
         <div className="overflow-hidden rounded-[20px] bg-white dark:bg-slate-900 transition-colors">
           <div className="h-8 border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-950/95 px-3 flex items-center justify-between">
-            <div className="text-[10px] font-semibold text-slate-900 dark:text-slate-100">FaithHub Live</div>
+            <div className="text-[10px] font-semibold text-slate-900 dark:text-slate-100">Live</div>
             <div className="text-[10px] text-slate-500 dark:text-slate-400">4.8k watching</div>
           </div>
           <div className={cx("relative bg-slate-950", isMobile ? "aspect-[9/14]" : "aspect-[16/9]")}>
@@ -819,7 +819,7 @@ export default function FaithHubLiveStudioPage() {
       setMode("live");
       setElapsedSec(0);
       setEmergencySlate(false);
-      showToast("FaithHub session is now live");
+      showToast("Provider session is now live");
       return;
     }
     setMode("standby");
@@ -1183,7 +1183,7 @@ export default function FaithHubLiveStudioPage() {
                     {emergencySlate ? (
                       <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
                         <div className="rounded-full border border-orange-300/40 bg-orange-500/15 px-3 py-1 text-[11px] font-black uppercase tracking-[0.22em] text-orange-200">
-                          FaithHub recovery slate
+                          Recovery slate
                         </div>
                         <div className="text-center">
                           <div className="text-2xl font-black text-white">Please stand by</div>
@@ -1386,7 +1386,7 @@ export default function FaithHubLiveStudioPage() {
                       <Pill text={translationsEnabled ? "Active" : "Paused"} tone={translationsEnabled ? "warn" : "neutral"} />
                     </div>
                     <div className="mt-2 text-[11px] text-slate-500 dark:text-slate-400">
-                      FaithHub can surface secondary subtitle and overlay tracks on supported viewers.
+                      The platform can surface secondary subtitle and overlay tracks on supported viewers.
                     </div>
                   </button>
                 </div>

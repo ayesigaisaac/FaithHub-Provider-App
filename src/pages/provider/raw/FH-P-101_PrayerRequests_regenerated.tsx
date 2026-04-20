@@ -26,7 +26,7 @@ import {
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — Prayer Requests
+ * Provider — Prayer Requests
  * -----------------------------------
  * Regenerated standalone TSX page.
  * Premium prayer intake and care-management surface for Providers.
@@ -38,7 +38,7 @@ import { navigateWithRouter } from "@/navigation/routerNavigate";
  *
  * Product notes
  * - EVzone Green (#03cd8c) is primary and Orange (#f77f00) is secondary.
- * - The page keeps the premium Provider-side grammar used across FaithHub:
+ * - The page keeps the premium Provider-side grammar used across the platform:
  *   strong command hero, KPI strip, inbox + care lane + detail pane,
  *   quick-create templates, persistent preview rail, and a larger preview drawer.
  */
@@ -958,7 +958,7 @@ function PrayerRequestsPage() {
             <Card
               title="Answered prayer & testimony"
               subtitle="Convert answered prayers into thanksgiving moments, moderated testimonies, and encouragement-ready follow-up."
-              right={<Pill text="FaithHub system links" tone="navy" icon={<Sparkles className="h-3.5 w-3.5" />} />}
+              right={<Pill text="Provider system links" tone="navy" icon={<Sparkles className="h-3.5 w-3.5" />} />}
             >
               <div className="space-y-2">
                 <div className="flex items-center justify-between rounded-[18px] border border-emerald-300 bg-emerald-50 px-3 py-2.5">
@@ -1000,7 +1000,7 @@ function PrayerRequestsPage() {
         </div>
 
         <div className="mt-4 rounded-full border border-emerald-200 bg-emerald-50 px-5 py-2 text-center text-[13px] text-slate-500">
-          Concept preview of the regenerated FaithHub Prayer Requests page · EVzone Green primary ({EV_GREEN}) · Orange secondary ({EV_ORANGE})
+          Concept preview of the regenerated Prayer Requests page · EVzone Green primary ({EV_GREEN}) · Orange secondary ({EV_ORANGE})
         </div>
       </div>
 

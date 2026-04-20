@@ -43,18 +43,18 @@ import {
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — Live Builder (Provider)
+ * Provider — Live Builder (Provider)
  * ----------------------------------
  * Design intent:
  * - Keep the same premium page grammar as the Creator base file:
  *   left step rail, center builder workspace, right live preview, mobile preview drawer,
  *   preflight/readiness panel, and top-level action bar.
- * - Rebuild the content model for FaithHub Live Sessions.
+ * - Rebuild the content model for Live Sessions.
  * - Use EVzone Green as primary and Orange as secondary.
  *
  * Notes:
  * - This component is self-contained so it can be dropped into a sandbox or adapted
- *   into the FaithHub codebase without needing project-specific contexts.
+ *   into the Provider codebase without needing project-specific contexts.
  * - Route constants are placeholders that can be mapped to your real app routes.
  */
 
@@ -160,7 +160,7 @@ const CHAT_RULE_PRESETS = [
 ];
 
 const GRAPHICS_PACKAGES = [
-  "FaithHub Classic",
+  "Classic",
   "Revival Night",
   "Conference Premium",
   "Giving Focus",
@@ -168,10 +168,10 @@ const GRAPHICS_PACKAGES = [
 ];
 
 const DESTINATION_PRESETS = [
-  "FaithHub only",
-  "FaithHub + YouTube",
-  "FaithHub + YouTube + Facebook",
-  "FaithHub + TikTok + Instagram",
+  "Primary only",
+  "Primary + YouTube",
+  "Primary + YouTube + Facebook",
+  "Primary + TikTok + Instagram",
   "Global translated session pack",
 ];
 
@@ -426,9 +426,9 @@ const TEMPLATE_META: Record<
     technical: {
       streamMode: "broadcast",
       latencyProfile: "low",
-      graphicsPackage: "FaithHub Classic",
+      graphicsPackage: "Classic",
       captioningMode: "Live captions",
-      destinationPreset: "FaithHub + YouTube + Facebook",
+      destinationPreset: "Primary + YouTube + Facebook",
       failoverEnabled: true,
     },
   },
@@ -457,7 +457,7 @@ const TEMPLATE_META: Record<
       latencyProfile: "low",
       graphicsPackage: "Minimal Studio",
       captioningMode: "Live captions",
-      destinationPreset: "FaithHub only",
+      destinationPreset: "Primary only",
     },
   },
   webinar: {
@@ -483,7 +483,7 @@ const TEMPLATE_META: Record<
       latencyProfile: "standard",
       graphicsPackage: "Conference Premium",
       captioningMode: "Live captions",
-      destinationPreset: "FaithHub + YouTube",
+      destinationPreset: "Primary + YouTube",
     },
   },
   fundraiser: {
@@ -517,7 +517,7 @@ const TEMPLATE_META: Record<
       latencyProfile: "low",
       graphicsPackage: "Giving Focus",
       captioningMode: "Live captions",
-      destinationPreset: "FaithHub + YouTube + Facebook",
+      destinationPreset: "Primary + YouTube + Facebook",
       failoverEnabled: true,
     },
   },
@@ -543,9 +543,9 @@ const TEMPLATE_META: Record<
     technical: {
       streamMode: "broadcast",
       latencyProfile: "standard",
-      graphicsPackage: "FaithHub Classic",
+      graphicsPackage: "Classic",
       captioningMode: "Replay captions",
-      destinationPreset: "FaithHub only",
+      destinationPreset: "Primary only",
     },
   },
   translatedSession: {
@@ -605,7 +605,7 @@ const TEMPLATE_META: Record<
       latencyProfile: "low",
       graphicsPackage: "Conference Premium",
       captioningMode: "Live captions",
-      destinationPreset: "FaithHub + YouTube + Facebook",
+      destinationPreset: "Primary + YouTube + Facebook",
       failoverEnabled: true,
     },
   },
@@ -807,10 +807,10 @@ function buildDefaultDraft(): LiveBuilderDraft {
       latencyProfile: templateMeta.technical.latencyProfile || "low",
       recordingEnabled: true,
       backupPlan: "Secondary laptop encoder + mobile hotspot",
-      graphicsPackage: templateMeta.technical.graphicsPackage || "FaithHub Classic",
+      graphicsPackage: templateMeta.technical.graphicsPackage || "Classic",
       captioningMode: templateMeta.technical.captioningMode || "Live captions",
       translationTracks: templateMeta.technical.translationTracks || [],
-      destinationPreset: templateMeta.technical.destinationPreset || "FaithHub only",
+      destinationPreset: templateMeta.technical.destinationPreset || "Primary only",
       failoverEnabled: templateMeta.technical.failoverEnabled ?? true,
     },
     approvals: {
@@ -1123,7 +1123,7 @@ function StepNav({ active, onChange, readiness }: { active: StepKey; onChange: (
         <div className="flex items-center justify-between gap-3">
           <div>
             <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">Live Builder</div>
-            <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">FaithHub provider workflow</div>
+            <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">provider workflow</div>
           </div>
           <Pill tone={readiness >= 80 ? "green" : readiness >= 55 ? "orange" : "danger"}>{readiness}% ready</Pill>
         </div>
@@ -1377,7 +1377,7 @@ function PreviewPhone({ draft, readiness }: { draft: LiveBuilderDraft; readiness
             <div className="sticky top-0 z-10 flex items-center justify-between bg-white/90 px-3 py-2 backdrop-blur dark:bg-slate-950/90">
               <div className="min-w-0">
                 <div className="truncate text-sm font-semibold text-slate-900 dark:text-slate-100">{draft.title || "Untitled live session"}</div>
-                <div className="truncate text-[11px] text-slate-500 dark:text-slate-400">FaithHub Live Sessions</div>
+                <div className="truncate text-[11px] text-slate-500 dark:text-slate-400">Live Sessions</div>
               </div>
               <button
                 type="button"
@@ -2378,7 +2378,7 @@ export function FaithHubLiveBuilderDrawer({
     <Drawer
       open={open}
       onClose={onClose}
-      title="FaithHub Live Builder"
+      title="Live Builder"
       subtitle="Configure a premium Live Session with preview, run-of-show, engagement, and studio handoff."
       zIndex={110}
     >

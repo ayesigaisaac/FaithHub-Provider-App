@@ -30,7 +30,7 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — Beacon Dashboard
+ * Provider — Beacon Dashboard
  * ------------------------------------
  * Premium promotional control center for Provider Workspace.
  *
@@ -249,7 +249,7 @@ const CAMPAIGNS_SEED: BeaconCampaign[] = [
     forecastLabel: "Projected 11.8k watch starts if the current pace holds.",
     audienceLeads: ["Followers", "Replay visitors", "Young adults"],
     regionLeads: ["Kampala", "Nairobi", "London diaspora"],
-    placementLeads: ["FaithHub feed", "Replay rail", "Beacon cards"],
+    placementLeads: ["Feed", "Replay rail", "Beacon cards"],
     surfaceMix: ["In-app hero", "Replay companion", "Recommended cards"],
     languageMix: ["English", "Swahili"],
     recommendation: "Duplicate the best grace-quote creative into a short retargeting flight before fatigue rises.",
@@ -287,7 +287,7 @@ const CAMPAIGNS_SEED: BeaconCampaign[] = [
     forecastLabel: "Likely to stabilise after learning and outperform the current attendance baseline.",
     audienceLeads: ["Recent attendees", "Workplace group", "English audience"],
     regionLeads: ["Lagos", "Accra", "Kampala"],
-    placementLeads: ["Live reminders rail", "FaithHub discover", "Home modules"],
+    placementLeads: ["Live reminders rail", "Discover", "Home modules"],
     surfaceMix: ["Live reminders", "Discover", "Session cards"],
     languageMix: ["English"],
     recommendation: "Let the learning phase settle, then expand into a follow-up linked replay campaign.",
@@ -364,7 +364,7 @@ const CAMPAIGNS_SEED: BeaconCampaign[] = [
     audienceLeads: ["Donors", "Care team followers", "Diaspora supporters"],
     regionLeads: ["Nairobi", "Kampala", "Johannesburg diaspora"],
     placementLeads: ["Giving surfaces", "Home hero", "Replay companion cards"],
-    surfaceMix: ["Giving Hub", "FaithHub feed", "Replay CTA strip"],
+    surfaceMix: ["Giving Hub", "Feed", "Replay CTA strip"],
     languageMix: ["English", "Swahili"],
     recommendation: "Create a donor-update variant and raise spend into the most efficient diaspora segment.",
     createdFrom: "Charity Crowdfunding Workbench",
@@ -377,7 +377,7 @@ const CAMPAIGNS_SEED: BeaconCampaign[] = [
     state: "Paused",
     mode: "Standalone",
     sourceType: "Institution",
-    linkedName: "FaithHub Kampala Central",
+    linkedName: "Provider Kampala Central",
     owner: "Communications",
     objective: "Follows",
     accent: "navy",
@@ -440,7 +440,7 @@ const CAMPAIGNS_SEED: BeaconCampaign[] = [
     audienceLeads: ["Series followers", "Replay viewers", "Study groups"],
     regionLeads: ["London", "Nairobi", "Kampala"],
     placementLeads: ["Series cards", "Home spotlight", "Library rails"],
-    surfaceMix: ["Series library", "FaithHub home"],
+    surfaceMix: ["Series library", "Home"],
     languageMix: ["English"],
     recommendation: "Reuse the strongest launch creative for episode-level reminder campaigns.",
     createdFrom: "Series Builder",
@@ -1019,7 +1019,7 @@ function PhonePreview({ campaign }: { campaign: BeaconCampaign }) {
                 ))}
               </div>
               <div className="mt-3 text-[12px] text-slate-500 dark:text-slate-400 leading-relaxed">
-                Preview shows how the selected Beacon creative sits inside premium FaithHub feed surfaces.
+                Preview shows how the selected Beacon creative sits inside premium Feed surfaces.
               </div>
             </div>
           </div>
@@ -1254,7 +1254,7 @@ export default function BeaconDashboardPage() {
 
   const placementRows = useMemo<InsightRow[]>(
     () => [
-      { label: "FaithHub feed", value: 68400, note: "Best premium reach inventory this week", accent: "green" },
+      { label: "Feed", value: 68400, note: "Best premium reach inventory this week", accent: "green" },
       { label: "Replay companion cards", value: 26800, note: "High donor-quality traffic", accent: "orange" },
       { label: "Discover modules", value: 21400, note: "Great for institution awareness", accent: "navy" },
       { label: "Event rail", value: 9300, note: "Registration-focused placements", accent: "orange" },
@@ -1264,7 +1264,7 @@ export default function BeaconDashboardPage() {
 
   const regionRows = useMemo<InsightRow[]>(
     () => [
-      { label: "Kampala", value: 52100, note: "Highest FaithHub response density", accent: "green" },
+      { label: "Kampala", value: 52100, note: "Highest Provider response density", accent: "green" },
       { label: "Nairobi", value: 37700, note: "Strong reach for replay and crowdfund campaigns", accent: "orange" },
       { label: "Diaspora mix", value: 18200, note: "Premium donor conversion corridor", accent: "navy" },
     ],
@@ -1744,7 +1744,7 @@ export default function BeaconDashboardPage() {
         open={previewOpen}
         onClose={() => setPreviewOpen(false)}
         title={`${selectedCampaign.title} · Full preview`}
-        subtitle="Preview how the selected Beacon campaign appears across premium FaithHub promotion surfaces."
+        subtitle="Preview how the selected Beacon campaign appears across premium Promotiontion surfaces."
       >
         <div className="grid grid-cols-1 gap-6 xl:grid-cols-[1.15fr_0.85fr]">
           <div className="space-y-4">

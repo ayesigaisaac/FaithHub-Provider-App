@@ -31,7 +31,7 @@ import {
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — Series Dashboard
+ * Provider — Series Dashboard
  * ------------------------------------
  * Premium operational landing page for structured Series content.
  *
@@ -1457,7 +1457,7 @@ export default function SeriesDashboardPage() {
         </div>
 
         <div className="rounded-[18px] border border-[#03cd8c]/30 bg-[#e8f8f3] px-4 py-3 text-center text-[13px] text-slate-600">
-          FaithHub preview
+          Preview
         </div>
       </div>
     </div>

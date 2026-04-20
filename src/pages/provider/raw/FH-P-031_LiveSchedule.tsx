@@ -253,14 +253,14 @@ const SESSION_SEED: LiveSession[] = [
     parentType: "Standalone Teaching",
     sessionType: "Prayer",
     campus: "Online Campus",
-    venue: "FaithHub Studio A",
+    venue: "Studio A",
     language: "English",
     audience: "All Church",
     speaker: "Pastor Grace L.",
     startISO: "2026-04-14T06:30:00",
     endISO: "2026-04-14T07:00:00",
     timezone: "Africa/Kampala",
-    destinations: ["FaithHub", "YouTube"],
+    destinations: ["Provider", "YouTube"],
     avResources: ["Studio Switcher A", "Wireless Pack 1"],
     roles: {
       host: "Pastor Grace L.",
@@ -290,7 +290,7 @@ const SESSION_SEED: LiveSession[] = [
     startISO: "2026-04-15T13:00:00",
     endISO: "2026-04-15T14:00:00",
     timezone: "Africa/Kampala",
-    destinations: ["FaithHub", "Zoom Room"],
+    destinations: ["Provider", "Zoom Room"],
     avResources: ["Portable Kit C"],
     roles: {
       host: "Pastor Samuel A.",
@@ -322,7 +322,7 @@ const SESSION_SEED: LiveSession[] = [
     startISO: "2026-04-15T19:00:00",
     endISO: "2026-04-15T20:30:00",
     timezone: "Africa/Kampala",
-    destinations: ["FaithHub", "YouTube", "Facebook"],
+    destinations: ["Provider", "YouTube", "Facebook"],
     avResources: ["Main Stage Kit A", "Wireless Pack 2"],
     roles: {
       host: "Pastor Daniel M.",
@@ -354,7 +354,7 @@ const SESSION_SEED: LiveSession[] = [
     startISO: "2026-04-16T18:00:00",
     endISO: "2026-04-16T19:30:00",
     timezone: "Africa/Kampala",
-    destinations: ["FaithHub"],
+    destinations: ["Provider"],
     avResources: ["Main Stage Kit A", "Wireless Pack 2"],
     roles: {
       host: "Minister Ruth K.",
@@ -385,7 +385,7 @@ const SESSION_SEED: LiveSession[] = [
     startISO: "2026-04-16T18:15:00",
     endISO: "2026-04-16T19:00:00",
     timezone: "Africa/Kampala",
-    destinations: ["FaithHub", "YouTube"],
+    destinations: ["Provider", "YouTube"],
     avResources: ["Main Stage Kit A", "Wireless Pack 2"],
     roles: {
       host: "Minister Ruth K.",
@@ -416,7 +416,7 @@ const SESSION_SEED: LiveSession[] = [
     startISO: "2026-04-17T18:30:00",
     endISO: "2026-04-17T20:00:00",
     timezone: "Africa/Kampala",
-    destinations: ["FaithHub", "YouTube", "TikTok"],
+    destinations: ["Provider", "YouTube", "TikTok"],
     avResources: ["Portable Kit C", "Wireless Pack 1"],
     roles: {
       host: "Pastor Daniel M.",
@@ -442,14 +442,14 @@ const SESSION_SEED: LiveSession[] = [
     parentType: "Series Episode",
     sessionType: "Watch Party",
     campus: "Online Campus",
-    venue: "FaithHub Studio B",
+    venue: "Studio B",
     language: "French",
     audience: "Families",
     speaker: "Pastor Samuel A.",
     startISO: "2026-04-18T16:00:00",
     endISO: "2026-04-18T17:00:00",
     timezone: "Europe/Paris",
-    destinations: ["FaithHub"],
+    destinations: ["Provider"],
     avResources: ["Replay Stack B"],
     roles: {
       host: "Pastor Samuel A.",
@@ -480,7 +480,7 @@ const SESSION_SEED: LiveSession[] = [
     startISO: "2026-04-19T09:00:00",
     endISO: "2026-04-19T10:30:00",
     timezone: "Africa/Kampala",
-    destinations: ["FaithHub", "YouTube", "Facebook"],
+    destinations: ["Provider", "YouTube", "Facebook"],
     avResources: ["Main Stage Kit A", "Wireless Pack 2"],
     roles: {
       host: "Pastor Daniel M.",
@@ -2155,7 +2155,7 @@ function ExportCard({
               ? `${selectedSession.title} · ${formatDateTime(
                   selectedSession.startISO,
                 )} · ${selectedSession.campus} · ${selectedSession.venue}`
-              : "FaithHub Live Schedule";
+              : "Live Schedule";
             copyText(payload);
             showToast("Schedule card copied for internal chat.");
           }}
@@ -2620,7 +2620,7 @@ export default function FaithHubLiveSchedulePage() {
       startISO: start.toISOString().slice(0, 19),
       endISO: end.toISOString().slice(0, 19),
       timezone: draft.timezone,
-      destinations: ["FaithHub"],
+      destinations: ["Provider"],
       avResources: draft.campus === "East Campus" ? ["Portable Kit C"] : ["Main Stage Kit A"],
       roles: {
         host: draft.speaker,

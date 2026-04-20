@@ -28,12 +28,12 @@ import {
 } from "lucide-react";
 
 /**
- * FaithHub — Beacon Marketplace
+ * Provider — Beacon Marketplace
  * --------------------------------------
  * Premium placement and audience-planning surface for Provider Workspace.
  *
  * Design goals
- * - Adapt the creator/e-commerce marketplace rhythm into a FaithHub promotional inventory experience.
+ * - Adapt the creator/e-commerce marketplace rhythm into a Promotiontional inventory experience.
  * - Use EVzone Green as the primary accent and EVzone Orange as the secondary accent.
  * - Keep the page strategic, visual, and “media-plan first” rather than feeling like a hidden backend form.
  * - Preserve an embedded preview workflow: inventory → placement preview → media plan → mobile preview.
@@ -197,7 +197,7 @@ const AUDIENCE_PACKAGES: AudiencePackage[] = [
 const INVENTORY_SEED: InventoryPlacement[] = [
   {
     id: "pl_home_feed_spotlight",
-    title: "FaithHub Home Feed Spotlight",
+    title: "Provider Home Feed Spotlight",
     subtitle: "Feed inventory · Home feed",
     type: "Home feed",
     objective: "Awareness",
@@ -222,7 +222,7 @@ const INVENTORY_SEED: InventoryPlacement[] = [
     historicalWin: "Highest awareness lift for weekly services.",
     policyNote: "Clear destination label required when promoting giving or ticketed sessions.",
     detailNote:
-      "Premium awareness placement with large hero treatment across FaithHub home surfaces.",
+      "Premium awareness placement with large hero treatment across Home surfaces.",
   },
   {
     id: "pl_live_countdown_rail",
@@ -278,7 +278,7 @@ const INVENTORY_SEED: InventoryPlacement[] = [
     overlapRisk: 26,
     competitionIndex: 39,
     historicalWin: "Delivers strong secondary watch starts and follow adds.",
-    policyNote: "Replay metadata must match the published FaithHub replay asset.",
+    policyNote: "Replay metadata must match the published Provider replay asset.",
     detailNote:
       "Premium replay inventory designed for long-tail post-live growth.",
   },
@@ -336,7 +336,7 @@ const INVENTORY_SEED: InventoryPlacement[] = [
     overlapRisk: 41,
     competitionIndex: 66,
     historicalWin: "Delivers reliable registration lift for local and regional events.",
-    policyNote: "Event date accuracy is validated against the linked FaithHub event.",
+    policyNote: "Event date accuracy is validated against the linked Provider event.",
     detailNote:
       "Calendar-aware event placement built for registration conversion.",
   },
@@ -586,7 +586,7 @@ function PreviewShell({
         </div>
       </div>
       <div className="absolute right-5 top-4 text-[11px] font-semibold uppercase tracking-wide text-white/80">
-        FaithHub home feed
+        Home feed
       </div>
     </div>
   );

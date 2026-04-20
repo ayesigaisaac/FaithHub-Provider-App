@@ -9,7 +9,7 @@ export function QuickCreateDial() {
 
   return (
     <SpeedDial
-      ariaLabel="FaithHub quick create"
+      ariaLabel="Provider quick create"
       icon={<SpeedDialIcon />}
       sx={{
         position: 'fixed',

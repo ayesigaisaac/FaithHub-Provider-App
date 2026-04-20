@@ -40,7 +40,7 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — Provider Dashboard
+ * Provider — Provider Dashboard
  * --------------------------------------
  * Premium provider-side mission control page.
  *
@@ -53,7 +53,7 @@ import { navigateWithRouter } from "@/navigation/routerNavigate";
  *   executive command header, quick-create rail, live operations, content pipeline,
  *   audience summary, giving snapshot, Beacon performance, trust queue,
  *   and role-aware insight cards.
- * - Keep the component self-contained and easy to adapt inside the FaithHub provider shell.
+ * - Keep the component self-contained and easy to adapt inside the Provider provider shell.
  */
 
 const EV_GREEN = "#03cd8c";

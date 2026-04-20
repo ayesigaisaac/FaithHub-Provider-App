@@ -12,7 +12,7 @@ export class ErrorBoundary extends React.Component<
   }
 
   componentDidCatch(error: Error, info: React.ErrorInfo) {
-    console.error('FaithHub route render error:', error, info);
+    console.error('Provider route render error:', error, info);
     this.setState({ componentStack: info.componentStack || undefined });
   }
 

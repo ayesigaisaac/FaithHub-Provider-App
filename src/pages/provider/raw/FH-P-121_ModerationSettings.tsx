@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 
 /**
- * FaithHub — Moderation Settings
+ * Provider — Moderation Settings
  * ---------------------------------------
  * Distinct from Reviews & Moderation.
  * controls policy rules, thresholds, child-safe defaults,
@@ -407,7 +407,7 @@ export default function FH_P_121_ModerationSettings() {
   const policyPacks: PolicyPack[] = [
     {
       id: "pk_1",
-      title: "FaithHub default ministry rules",
+      title: "Provider default ministry rules",
       detail: "Base provider-wide policy set for live, replay, and community flows.",
       status: "Active",
     },

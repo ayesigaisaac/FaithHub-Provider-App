@@ -35,7 +35,7 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — Noticeboard
+ * Provider — Noticeboard
  * --------------------------------
  * Premium Provider-side noticeboard / announcements operating surface.
  *
@@ -719,7 +719,7 @@ function BoardPreviewDesktop({ draft }: { draft: ComposerState }) {
             Desktop noticeboard preview
           </div>
           <div className="mt-1 text-[16px] font-black text-slate-900">
-            FaithHub Community Updates
+            Community Updates
           </div>
         </div>
         <div className="flex items-center gap-2">
@@ -1882,7 +1882,7 @@ export default function FaithHubNoticeboardPage() {
         </div>
 
         <div className="rounded-[24px] border border-emerald-200 bg-emerald-50 px-6 py-3 text-center text-[13px] font-medium text-slate-700">
-          FaithHub preview
+          Preview
         </div>
       </div>
     </div>

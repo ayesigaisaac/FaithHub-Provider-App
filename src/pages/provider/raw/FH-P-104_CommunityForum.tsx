@@ -33,7 +33,7 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — Community Forum
+ * Provider — Community Forum
  * -----------------------------------
  * Premium Provider-side moderated discussion space for threads, categories,
  * leader posts, and faith-community engagement.
@@ -1616,7 +1616,7 @@ export default function CommunityForumPage() {
         </div>
 
         <div className="mt-3 rounded-full border border-[rgba(3,205,140,0.35)] bg-[rgba(3,205,140,0.10)] px-4 py-2 text-center text-[12px] text-slate-600 shadow-sm">
-          FaithHub preview
+          Preview
         </div>
       </div>
 

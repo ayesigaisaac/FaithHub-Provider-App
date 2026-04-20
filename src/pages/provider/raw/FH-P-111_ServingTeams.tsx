@@ -26,7 +26,7 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — Serving Teams
+ * Provider — Serving Teams
  * Premium Provider-side volunteer and service-team management page.
  *
  * Primary CTAs

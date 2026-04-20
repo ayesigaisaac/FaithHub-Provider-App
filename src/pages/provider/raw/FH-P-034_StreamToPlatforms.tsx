@@ -43,12 +43,12 @@ import {
 } from 'lucide-react';
 
 /**
- * FaithHub — Stream-to-Platforms
+ * Provider — Stream-to-Platforms
  * ---------------------------------------
- * Premium multi-destination distribution page for FaithHub Live Sessions.
+ * Premium multi-destination distribution page for Live Sessions.
  *
  * Design intent
- * - Rebuild the creator/e-commerce base page into a FaithHub provider operations surface.
+ * - Rebuild the creator/e-commerce base page into a Provider provider operations surface.
  * - Keep the same premium format: sticky command header, rich destination cards, health intelligence,
  *   advanced settings modal, and a live audience/distribution preview.
  * - Use EVzone Green as the primary color, Orange as the secondary action color,
@@ -101,11 +101,11 @@ async function copyText(text: string) {
 
 type SessionStatus = 'Draft' | 'Scheduled' | 'Live' | 'Ended';
 type DestinationStatus = 'Connected' | 'Needs re-auth' | 'Missing credentials' | 'Blocked' | 'Live';
-type DestinationFamily = 'FaithHub Surface' | 'External Social' | 'Custom RTMP';
+type DestinationFamily = 'Provider Surface' | 'External Social' | 'Custom RTMP';
 type Privacy = 'Public' | 'Unlisted' | 'Private';
 type OutputOrientation = 'Landscape' | 'Portrait' | 'Adaptive';
 type OutputQuality = 'Standard' | 'High' | 'Broadcast';
-type FallbackRule = 'Keep FaithHub primary' | 'Retry + backup RTMP' | 'Internal only if external fails';
+type FallbackRule = 'Keep Provider primary' | 'Retry + backup RTMP' | 'Internal only if external fails';
 type CrossPostRule = 'Internal only' | 'Replay only' | 'Replay + clips' | 'Manual after review';
 
 type Destination = {
@@ -198,7 +198,7 @@ function statusTone(s: DestinationStatus): 'green' | 'orange' | 'red' | 'neutral
 }
 
 function familyTone(family: DestinationFamily): 'blue' | 'green' | 'purple' {
-  if (family === 'FaithHub Surface') return 'green';
+  if (family === 'Provider Surface') return 'green';
   if (family === 'Custom RTMP') return 'purple';
   return 'blue';
 }
@@ -427,19 +427,19 @@ const PRESETS: DistributionPreset[] = [
   {
     id: 'weekly-service',
     label: 'Weekly service preset',
-    desc: 'FaithHub primary, YouTube + Facebook open, replay held for review.',
+    desc: 'Provider primary, YouTube + Facebook open, replay held for review.',
     chip: 'Sunday flow',
     destIds: ['fh-live', 'fh-home', 'yt', 'fb'],
     creativeVariant: 'Sanctuary welcome + scripture lower third',
     languageTrack: 'English main + Swahili CC',
     crossPostRule: 'Replay only',
-    fallbackRule: 'Keep FaithHub primary',
+    fallbackRule: 'Keep Provider primary',
     beaconNote: 'Boost replay after publishing if watch-through crosses target.',
   },
   {
     id: 'translated-session',
     label: 'Translated session preset',
-    desc: 'FaithHub, YouTube, and backup RTMP with translated overlays and safe-area checks.',
+    desc: 'Provider, YouTube, and backup RTMP with translated overlays and safe-area checks.',
     chip: 'Language-first',
     destIds: ['fh-live', 'yt', 'rtmp'],
     creativeVariant: 'Dual-language sermon cards',
@@ -451,19 +451,19 @@ const PRESETS: DistributionPreset[] = [
   {
     id: 'fundraiser',
     label: 'Fundraiser / giving moment',
-    desc: 'FaithHub, YouTube, Instagram, and RTMP with giving overlays and clip-ready rules.',
+    desc: 'Provider, YouTube, Instagram, and RTMP with giving overlays and clip-ready rules.',
     chip: 'Conversion-focused',
     destIds: ['fh-live', 'yt', 'ig', 'rtmp'],
     creativeVariant: 'Giving banner + crowdfund progress',
     languageTrack: 'English main track',
     crossPostRule: 'Replay + clips',
-    fallbackRule: 'Keep FaithHub primary',
+    fallbackRule: 'Keep Provider primary',
     beaconNote: 'Send replay and short giving clips into Beacon for continued momentum.',
   },
   {
     id: 'internal-only',
-    label: 'FaithHub internal only',
-    desc: 'Only EVzone/FaithHub surfaces are used. External platforms remain disconnected.',
+    label: 'Provider internal only',
+    desc: 'Only EVzone/Provider surfaces are used. External platforms remain disconnected.',
     chip: 'Private run',
     destIds: ['fh-live', 'fh-home'],
     creativeVariant: 'In-app discovery card',
@@ -477,16 +477,16 @@ const PRESETS: DistributionPreset[] = [
 const INITIAL_DESTINATIONS: Destination[] = normalizeRouteOrders([
   {
     id: 'fh-live',
-    name: 'FaithHub Live Hub',
-    family: 'FaithHub Surface',
+    name: 'Live Hub',
+    family: 'Provider Surface',
     status: 'Connected',
     enabled: true,
     routeOrder: 1,
-    owner: 'FaithHub Core Surface',
+    owner: 'Provider Core Surface',
     tokenStatus: 'Core surface healthy · no reconnect needed',
     historyNote: 'Primary in-app destination with viewer-safe fallback logic.',
     creativeVariant: 'In-app live hero · Sunday Encounter',
-    fallbackRule: 'Keep FaithHub primary',
+    fallbackRule: 'Keep Provider primary',
     supportsPrivacy: true,
     supportsLanguageTracks: true,
     supportsThumbnails: true,
@@ -496,11 +496,11 @@ const INITIAL_DESTINATIONS: Destination[] = normalizeRouteOrders([
     thumbnailUrl: DEFAULT_THUMBNAIL,
     settings: {
       title: DEFAULT_SESSION_TITLE,
-      description: 'FaithHub in-app live destination with internal audience, captions, and replay handoff.',
+      description: 'Provider in-app live destination with internal audience, captions, and replay handoff.',
       privacy: 'Public',
       languageTrack: 'English main + Swahili CC',
       safeAreaMode: '16:9 safe',
-      complianceNote: 'Primary destination for FaithHub audience and backup continuity.',
+      complianceNote: 'Primary destination for Provider audience and backup continuity.',
       archiveRule: 'Auto-publish replay',
       autoReconnect: true,
     },
@@ -514,8 +514,8 @@ const INITIAL_DESTINATIONS: Destination[] = normalizeRouteOrders([
   },
   {
     id: 'fh-home',
-    name: 'FaithHub Home Rail',
-    family: 'FaithHub Surface',
+    name: 'Provider Home Rail',
+    family: 'Provider Surface',
     status: 'Connected',
     enabled: true,
     routeOrder: 2,
@@ -523,7 +523,7 @@ const INITIAL_DESTINATIONS: Destination[] = normalizeRouteOrders([
     tokenStatus: 'Placement ready · home promo lane mapped',
     historyNote: 'Shows the session card on Home, Discover, and the institution profile.',
     creativeVariant: 'Home rail discovery tile',
-    fallbackRule: 'Keep FaithHub primary',
+    fallbackRule: 'Keep Provider primary',
     supportsPrivacy: true,
     supportsLanguageTracks: true,
     supportsThumbnails: true,
@@ -560,7 +560,7 @@ const INITIAL_DESTINATIONS: Destination[] = normalizeRouteOrders([
     tokenStatus: 'OAuth healthy · stream key mapped',
     historyNote: 'Scheduled channel with custom metadata, thumbnail, and replay carry-over.',
     creativeVariant: 'Main sermon cover',
-    fallbackRule: 'Keep FaithHub primary',
+    fallbackRule: 'Keep Provider primary',
     supportsPrivacy: true,
     supportsLanguageTracks: true,
     supportsThumbnails: true,
@@ -597,7 +597,7 @@ const INITIAL_DESTINATIONS: Destination[] = normalizeRouteOrders([
     tokenStatus: 'Session expired 3 hours ago',
     historyNote: 'Audience presence is strong here, but the token must be re-authorized.',
     creativeVariant: 'Community live card',
-    fallbackRule: 'Keep FaithHub primary',
+    fallbackRule: 'Keep Provider primary',
     supportsPrivacy: true,
     supportsLanguageTracks: false,
     supportsThumbnails: true,
@@ -636,7 +636,7 @@ const INITIAL_DESTINATIONS: Destination[] = normalizeRouteOrders([
     tokenStatus: 'Connected · mobile publish relay ready',
     historyNote: 'Great for real-time reach, safe-area preview uses 9:16 crop guidance.',
     creativeVariant: 'Vertical teaser cover',
-    fallbackRule: 'Keep FaithHub primary',
+    fallbackRule: 'Keep Provider primary',
     supportsPrivacy: false,
     supportsLanguageTracks: false,
     supportsThumbnails: false,
@@ -672,7 +672,7 @@ const INITIAL_DESTINATIONS: Destination[] = normalizeRouteOrders([
     tokenStatus: 'Stream key missing',
     historyNote: 'Short-form audience is available, but the current session key is missing.',
     creativeVariant: 'Vertical hook + swipe copy',
-    fallbackRule: 'Keep FaithHub primary',
+    fallbackRule: 'Keep Provider primary',
     supportsPrivacy: false,
     supportsLanguageTracks: false,
     supportsThumbnails: false,
@@ -748,7 +748,7 @@ export default function StreamToPlatformsPage() {
   const [distributionApproved, setDistributionApproved] = useState(false);
   const [estimatedUploadMbps, setEstimatedUploadMbps] = useState(22.4);
   const [crossPostRule, setCrossPostRule] = useState<CrossPostRule>('Replay + clips');
-  const [fallbackRule, setFallbackRule] = useState<FallbackRule>('Keep FaithHub primary');
+  const [fallbackRule, setFallbackRule] = useState<FallbackRule>('Keep Provider primary');
   const [recordMaster, setRecordMaster] = useState(true);
   const [protectIso, setProtectIso] = useState(true);
   const [beaconBridge, setBeaconBridge] = useState(true);
@@ -767,8 +767,8 @@ export default function StreamToPlatformsPage() {
     () => destinations.filter((d) => d.enabled).sort((a, b) => (a.routeOrder ?? 999) - (b.routeOrder ?? 999)),
     [destinations]
   );
-  const internalDestinations = useMemo(() => activeDestinations.filter((d) => d.family === 'FaithHub Surface'), [activeDestinations]);
-  const externalDestinations = useMemo(() => activeDestinations.filter((d) => d.family !== 'FaithHub Surface'), [activeDestinations]);
+  const internalDestinations = useMemo(() => activeDestinations.filter((d) => d.family === 'Provider Surface'), [activeDestinations]);
+  const externalDestinations = useMemo(() => activeDestinations.filter((d) => d.family !== 'Provider Surface'), [activeDestinations]);
   const requiredUploadMbps = useMemo(() => computeRequiredUpload(profile, activeDestinations.length), [profile, activeDestinations.length]);
   const selectedPreset = useMemo(() => PRESETS.find((preset) => preset.id === selectedPresetId) || PRESETS[0], [selectedPresetId]);
   const availableToConnect = useMemo(() => destinations.filter((d) => !d.enabled || d.status !== 'Connected'), [destinations]);
@@ -778,9 +778,9 @@ export default function StreamToPlatformsPage() {
     const hasInternal = internalDestinations.length > 0;
     items.push({
       id: 'internal-primary',
-      label: 'FaithHub internal surface remains part of the distribution plan',
+      label: 'Provider internal surface remains part of the distribution plan',
       status: hasInternal ? 'Pass' : 'Fail',
-      fix: hasInternal ? undefined : 'Enable at least one FaithHub surface before publishing the plan.',
+      fix: hasInternal ? undefined : 'Enable at least one Provider surface before publishing the plan.',
     });
 
     const invalid = activeDestinations.filter((d) => d.status === 'Needs re-auth' || d.status === 'Missing credentials' || d.status === 'Blocked');
@@ -930,7 +930,7 @@ export default function StreamToPlatformsPage() {
               ...d.settings,
               languageTrack: preset.languageTrack,
               title:
-                d.family === 'FaithHub Surface'
+                d.family === 'Provider Surface'
                   ? DEFAULT_SESSION_TITLE
                   : `${DEFAULT_SESSION_TITLE} · ${d.name.replace(' Live', '')}`,
             },
@@ -997,7 +997,7 @@ export default function StreamToPlatformsPage() {
                 <Badge tone="green">EVzone Green primary</Badge>
               </div>
               <div className="mt-1 text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 line-clamp-2 sm:line-clamp-1">
-                Single-source distribution planning for FaithHub Live Sessions across internal EVzone surfaces and external destinations, with platform-safe metadata, fallback logic, archive rules, and Beacon bridge preparation.
+                Single-source distribution planning for Live Sessions across internal EVzone surfaces and external destinations, with platform-safe metadata, fallback logic, archive rules, and Beacon bridge preparation.
               </div>
             </div>
 
@@ -1098,8 +1098,8 @@ export default function StreamToPlatformsPage() {
                       <div className="flex items-start justify-between gap-3">
                         <div className="min-w-0">
                           <div className="flex items-center gap-2">
-                            <div className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-white shadow-sm" style={{ background: d.family === 'FaithHub Surface' ? EV_GREEN : d.family === 'Custom RTMP' ? '#312e81' : '#0f172a' }}>
-                              {d.family === 'FaithHub Surface' ? <Globe2 className="h-5 w-5" /> : d.family === 'Custom RTMP' ? <Radio className="h-5 w-5" /> : <Video className="h-5 w-5" />}
+                            <div className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-white shadow-sm" style={{ background: d.family === 'Provider Surface' ? EV_GREEN : d.family === 'Custom RTMP' ? '#312e81' : '#0f172a' }}>
+                              {d.family === 'Provider Surface' ? <Globe2 className="h-5 w-5" /> : d.family === 'Custom RTMP' ? <Radio className="h-5 w-5" /> : <Video className="h-5 w-5" />}
                             </div>
                             <div className="min-w-0">
                               <div className="truncate text-sm font-bold text-slate-900 dark:text-slate-50">{d.name}</div>
@@ -1365,7 +1365,7 @@ export default function StreamToPlatformsPage() {
                       <div className="text-[10px] sm:text-xs font-bold text-slate-800 dark:text-slate-200">Fallback and redundancy controls</div>
                       <div className="mt-2 grid gap-2">
                         {([
-                          'Keep FaithHub primary',
+                          'Keep Provider primary',
                           'Retry + backup RTMP',
                           'Internal only if external fails',
                         ] as FallbackRule[]).map((rule) => (
@@ -1385,7 +1385,7 @@ export default function StreamToPlatformsPage() {
                         ))}
                       </div>
                       <div className="mt-2 text-[10px] text-slate-500 dark:text-slate-500">
-                        Recommended: keep FaithHub primary so the in-app audience remains protected even when an external route degrades.
+                        Recommended: keep the primary channel so the in-app audience remains protected even when an external route degrades.
                       </div>
                     </div>
                   </div>
@@ -1426,7 +1426,7 @@ export default function StreamToPlatformsPage() {
                             <div className="col-span-2 text-center font-semibold text-slate-700 dark:text-slate-200">{d.health.lastAckSec}s</div>
                             <div className="col-span-3 flex items-center justify-end gap-2">
                               <Badge tone={statusTone(d.status)}>{statusLabel(d.status)}</Badge>
-                              <MiniLine values={d.health.trend} tone={d.family === 'FaithHub Surface' ? 'green' : 'orange'} />
+                              <MiniLine values={d.health.trend} tone={d.family === 'Provider Surface' ? 'green' : 'orange'} />
                             </div>
                           </div>
                         ))}
@@ -1477,7 +1477,7 @@ export default function StreamToPlatformsPage() {
                       <div className="flex items-start justify-between gap-3">
                         <div>
                           <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Protect master recording</div>
-                          <div className="mt-1 text-[10px] sm:text-xs text-slate-500 dark:text-slate-400">Keep the FaithHub replay and ISO protection safe even if a destination fails.</div>
+                          <div className="mt-1 text-[10px] sm:text-xs text-slate-500 dark:text-slate-400">Keep replay and ISO protection safe even if a destination fails.</div>
                         </div>
                         <Toggle checked={recordMaster} onChange={setRecordMaster} />
                       </div>
@@ -1504,7 +1504,7 @@ export default function StreamToPlatformsPage() {
                       <div className="flex items-start justify-between gap-3">
                         <div>
                           <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Internal feed remains primary</div>
-                          <div className="mt-1 text-[10px] sm:text-xs text-slate-500 dark:text-slate-400">Preserve FaithHub as the central source of truth even when multi-streaming outward.</div>
+                          <div className="mt-1 text-[10px] sm:text-xs text-slate-500 dark:text-slate-400">Preserve the platform as the central source of truth even when multi-streaming outward.</div>
                         </div>
                         <Toggle checked={profile.internalPrimary} onChange={(v) => setProfile((prev) => ({ ...prev, internalPrimary: v }))} />
                       </div>
@@ -1520,7 +1520,7 @@ export default function StreamToPlatformsPage() {
                     <div className="px-4 py-4 text-white" style={{ background: 'linear-gradient(135deg, #03cd8c 0%, #0f766e 45%, #f77f00 100%)' }}>
                       <Badge tone="green">Distribution summary</Badge>
                       <div className="mt-3 text-2xl font-extrabold leading-tight">{DEFAULT_SESSION_TITLE}</div>
-                      <div className="mt-1 text-sm text-white/90">FaithHub central feed · {activeDestinations.length} live route{activeDestinations.length === 1 ? '' : 's'} · {crossPostRule}</div>
+                      <div className="mt-1 text-sm text-white/90">Primary feed · {activeDestinations.length} live route{activeDestinations.length === 1 ? '' : 's'} · {crossPostRule}</div>
                       <div className="mt-3 flex flex-wrap gap-2">
                         {activeDestinations.map((d) => (
                           <span key={d.id} className="inline-flex items-center gap-1 rounded-full bg-white/15 px-3 py-1 text-[11px] font-semibold text-white backdrop-blur">
@@ -1649,7 +1649,7 @@ export default function StreamToPlatformsPage() {
 
                 <div className="mt-4 rounded-[14px] overflow-hidden ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm">
                   <div className="px-4 py-4 text-white" style={{ background: 'linear-gradient(180deg, #03cd8c 0%, #0f766e 55%, #f77f00 100%)' }}>
-                    <Badge tone="green">FaithHub surface preview</Badge>
+                    <Badge tone="green">Surface preview</Badge>
                     <div className="mt-3 text-3xl font-extrabold leading-tight">Sunday Encounter Live</div>
                     <div className="mt-1 text-sm text-white/90">Live Sessions · Central Campus · Thu 18:30</div>
                     <div className="mt-3 h-2 w-full rounded-full bg-white/20">
@@ -1685,20 +1685,20 @@ export default function StreamToPlatformsPage() {
                             <div className="absolute top-0 left-1/2 -translate-x-1/2 z-30 w-20 h-5 bg-black rounded-b-2xl" />
                             <div className="p-3">
                               <div className="flex items-center justify-between text-[10px] font-bold text-slate-900 dark:text-slate-100">
-                                <span>FaithHub</span>
+                              <span>Provider</span>
                                 <span style={{ color: EV_GREEN }}>Share</span>
                               </div>
                               <div className="mt-3 rounded-[20px] overflow-hidden" style={{ background: 'linear-gradient(180deg, rgba(3,205,140,0.32) 0%, rgba(247,127,0,0.9) 100%)' }}>
                                 <div className="h-24 w-full" style={{ background: 'linear-gradient(180deg, rgba(15,23,42,0.12) 0%, rgba(15,23,42,0.76) 100%)' }} />
                                 <div className="p-3 text-white">
                                   <div className="text-[13px] font-extrabold leading-tight">Sunday Encounter</div>
-                                  <div className="mt-1 text-[10px] text-white/85">FaithHub Live Hub</div>
+                                  <div className="mt-1 text-[10px] text-white/85">Live Hub</div>
                                 </div>
                               </div>
                               <div className="mt-3 space-y-2">
-                                <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-2 text-[10px] font-semibold text-slate-700 dark:text-slate-300">YouTube + Instagram + FaithHub</div>
+                                <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-2 text-[10px] font-semibold text-slate-700 dark:text-slate-300">YouTube + Instagram + Primary</div>
                                 <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-2 text-[10px] font-semibold text-slate-700 dark:text-slate-300">Language tracks ready</div>
-                                <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-2 text-[10px] font-semibold text-slate-700 dark:text-slate-300">Fallback · FaithHub primary</div>
+                                <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-2 text-[10px] font-semibold text-slate-700 dark:text-slate-300">Fallback · Provider primary</div>
                               </div>
                             </div>
                             <div className="absolute bottom-3 left-3 right-3 flex flex-col gap-2">
@@ -2044,7 +2044,7 @@ export default function StreamToPlatformsPage() {
               <div className="mt-3 flex flex-wrap gap-2">
                 {preset.destIds.map((id) => {
                   const found = destinations.find((d) => d.id === id);
-                  return found ? <Badge key={id} tone={found.family === 'FaithHub Surface' ? 'green' : found.family === 'Custom RTMP' ? 'purple' : 'blue'}>{found.name}</Badge> : null;
+                  return found ? <Badge key={id} tone={found.family === 'Provider Surface' ? 'green' : found.family === 'Custom RTMP' ? 'purple' : 'blue'}>{found.name}</Badge> : null;
                 })}
               </div>
             </button>
@@ -2095,7 +2095,6 @@ export default function StreamToPlatformsPage() {
     </div>
   );
 }
-
 
 
 

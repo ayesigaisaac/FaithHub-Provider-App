@@ -34,7 +34,7 @@ import {
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — Wallet & Payouts
+ * Provider — Wallet & Payouts
  * ------------------------------------
  * Premium Provider-side treasury surface for wallet visibility, payout methods,
  * transfer controls, settlement sources, compliance health, and reconciliation.
@@ -886,7 +886,7 @@ export default function WalletAndPayoutsPage() {
 
   function exportStatement() {
     const lines = [
-      "FaithHub Wallet & Payouts Statement",
+      "Provider Wallet & Payouts Statement",
       "---------------------------------",
       `Generated: ${new Date().toLocaleString()}`,
       `Filter: ${filter}`,
@@ -910,7 +910,7 @@ export default function WalletAndPayoutsPage() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = "faithhub-wallet-statement.txt";
+    a.download = "workspace-wallet-statement.txt";
     document.body.appendChild(a);
     a.click();
     a.remove();

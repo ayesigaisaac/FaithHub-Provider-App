@@ -37,7 +37,7 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — Beacon Manager
+ * Provider — Beacon Manager
  * ----------------------------------
  * Premium operational control surface for Beacon campaigns after build.
  *
@@ -1359,7 +1359,7 @@ function PreviewSurface({
       >
         <div className="flex items-center justify-between bg-white/95 dark:bg-slate-900/95 px-3 py-2 shadow-sm">
           <div className="text-[11px] font-bold text-slate-900 dark:text-slate-100">
-            {isMobile ? "FaithHub mobile" : "FaithHub desktop"}
+            {isMobile ? "Provider mobile" : "Provider desktop"}
           </div>
           <div className="flex items-center gap-2 text-slate-400">
             <div className="h-2.5 w-2.5 rounded-full" style={{ background: EV_GREEN }} />

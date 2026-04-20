@@ -28,7 +28,7 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — Subscriptions
+ * Provider — Subscriptions
  * ---------------------------------
  * Workspace / team subscriptions surface for billing plans, seats, entitlements,
  * add-ons, renewals, invoices, and feature access.
@@ -1530,7 +1530,7 @@ export default function SubscriptionsPage() {
       ) : null}
 
       <div className="mx-auto mt-4 max-w-[1550px] rounded-[18px] bg-emerald-50 px-4 py-3 text-[12px] text-emerald-700">
-        FaithHub preview
+        Preview
       </div>
     </div>
   );

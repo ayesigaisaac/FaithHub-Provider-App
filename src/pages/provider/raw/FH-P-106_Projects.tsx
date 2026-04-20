@@ -34,13 +34,13 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — Projects
+ * Provider — Projects
  * ----------------------------
  * Premium Provider-side operating surface for community missions, outreach drives,
  * volunteer mobilization, build projects, charity actions, and progress tracking.
  *
  * Design goals
- * - Keep the same premium provider grammar used across the FaithHub build:
+ * - Keep the same premium provider grammar used across the Provider build:
  *   command hero, KPI strip, search/filter workspace, command catalog, progress lanes,
  *   cross-object hooks, and a persistent desktop/mobile destination preview rail.
  * - Use EVzone Green as the primary accent and Orange as the secondary accent.
@@ -1785,7 +1785,7 @@ function ProjectsPage() {
 
               <Card
                 title="Cross-object hooks"
-                subtitle="Connected workflow points that turn this project into a full FaithHub operating thread."
+                subtitle="Connected workflow points that turn this project into a full Provider operating thread."
               >
                 <div className="space-y-3">
                   {selectedProject.hooks.map((hook) => (
@@ -1948,7 +1948,7 @@ function ProjectsPage() {
           </Card>
 
           <div className="rounded-full border border-emerald-200 bg-emerald-50 px-4 py-1.5 text-center text-[12px] text-slate-500">
-            FaithHub preview
+            Preview
           </div>
         </div>
       </div>

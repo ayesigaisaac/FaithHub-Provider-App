@@ -40,12 +40,12 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * FaithHub — Live Dashboard
+ * Provider — Live Dashboard
  * ----------------------------------
  * Premium control-room page for a specific Live Session.
  *
  * Design intent
- * - Follow the premium card grammar used in the creator base files and the previous FaithHub pages.
+ * - Follow the premium card grammar used in the creator base files and the previous Provider pages.
  * - Use EVzone Green as the primary brand colour and Orange as the secondary action colour.
  * - Keep the page operationally rich: session health, team readiness, audience pulse,
  *   conversions, moderation tools, incident playbooks, and a post-live launch pad.
@@ -55,7 +55,7 @@ import { navigateWithRouter } from "@/navigation/routerNavigate";
  * Notes
  * - This is a self-contained TSX page using React, Tailwind-style classes, lucide-react icons,
  *   and framer-motion for the mobile drawer.
- * - Replace mock data and safe navigation hooks with your real FaithHub data sources and routing.
+ * - Replace mock data and safe navigation hooks with your real Provider data sources and routing.
  */
 
 const EV_GREEN = "#03cd8c";
@@ -219,7 +219,7 @@ const SESSIONS: SessionData[] = [
       trend: [58, 61, 60, 63, 65, 66, 69, 71, 72, 70, 73, 74],
     },
     destinations: [
-      { name: "FaithHub", status: "Healthy" },
+      { name: "Provider", status: "Healthy" },
       { name: "YouTube", status: "Healthy" },
       { name: "Facebook", status: "Standby" },
     ],
@@ -324,7 +324,7 @@ const SESSIONS: SessionData[] = [
       trend: [71, 72, 74, 76, 80, 84, 83, 85, 81, 82, 79, 80],
     },
     destinations: [
-      { name: "FaithHub", status: "Healthy" },
+      { name: "Provider", status: "Healthy" },
       { name: "YouTube", status: "Delayed" },
       { name: "TikTok", status: "Healthy" },
     ],
@@ -371,7 +371,7 @@ const SESSIONS: SessionData[] = [
         id: "al-live-2",
         severity: "warn",
         title: "YouTube destination is 9s behind",
-        description: "External destination sync is delayed relative to the FaithHub master feed.",
+        description: "External destination sync is delayed relative to the Provider master feed.",
         playbook: "Hold major CTA countdown overlays for 10 seconds or reset the YouTube destination profile after the current prayer segment.",
         owner: "Distribution",
       },
@@ -437,7 +437,7 @@ const SESSIONS: SessionData[] = [
       trend: [62, 65, 69, 71, 74, 76, 75, 77, 79, 81, 82, 84],
     },
     destinations: [
-      { name: "FaithHub", status: "Healthy" },
+      { name: "Provider", status: "Healthy" },
       { name: "Facebook", status: "Healthy" },
       { name: "YouTube", status: "Healthy" },
     ],
