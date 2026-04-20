@@ -70,23 +70,7 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
             minHeight: 0,
           }}
         >
-          <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ px: 1.5, py: 1.05 }}>
-            <Box sx={{ minWidth: 0 }}>
-              <Typography
-                sx={{
-                  fontWeight: 900,
-                  fontSize: 22,
-                  lineHeight: 0.98,
-                  letterSpacing: '-0.01em',
-                  color: (theme) => (theme.palette.mode === 'dark' ? '#f8fafc' : '#0f172a'),
-                }}
-              >
-                Provider Workspace
-              </Typography>
-              <Typography color="text.secondary" sx={{ fontSize: 12.5, lineHeight: 1.08, letterSpacing: '0.01em', mt: 0.2 }}>
-                Navigation
-              </Typography>
-            </Box>
+          <Stack direction="row" alignItems="center" justifyContent="flex-end" sx={{ px: 1.5, py: 1.05 }}>
             <Avatar
               sx={{
                 bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#0f172a' : '#fff'),
