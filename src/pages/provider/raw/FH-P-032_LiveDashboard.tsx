@@ -1187,7 +1187,7 @@ export default function FaithHubLiveDashboardPage() {
               <Pill text={session.state} tone={stateTone(session.state)} />
               <Pill text={session.health.critical} tone={healthToneToPill(session.health.critical)} />
             </div>
-            <div className="text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
+            <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
               Live Dashboard
             </div>
             <div className="mt-1 max-w-[860px] text-[12px] sm:text-[13px] leading-5 sm:leading-6 text-slate-600 dark:text-slate-400">

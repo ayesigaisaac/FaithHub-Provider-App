@@ -662,7 +662,7 @@ export default function FHP123QACenter() {
                   <div className="text-[12px] font-extrabold uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">
                     Quality & launch assurance
                   </div>
-                  <h1 className="text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
+                  <h1 className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
                     QA Center
                   </h1>
                   <p className="mt-1.5 text-[14px] leading-6 text-slate-500 dark:text-slate-400">

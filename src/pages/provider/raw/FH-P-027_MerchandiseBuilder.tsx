@@ -1269,12 +1269,12 @@ export default function MerchandiseBuilderPage() {
       <div className="mx-auto w-full max-w-[1640px] px-4 py-6 sm:px-6 lg:px-8">
         <div className="rounded-[32px] border border-slate-200 bg-white shadow-sm transition-colors">
           <div className="border-b border-slate-200 p-6">
-            <div className="flex flex-col gap-5 xl:flex-row xl:items-start xl:justify-between">
+            <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
               <div className="min-w-0">
                 <div className="text-[11px] font-black uppercase tracking-[0.22em] text-slate-400">
                   Merchandise creation
                 </div>
-                <h1 className="text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
+                <h1 className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
                   + New Merchandise / Merchandise Builder
                 </h1>
                 <p className="mt-1.5 text-[14px] leading-6 text-slate-500 dark:text-slate-400">

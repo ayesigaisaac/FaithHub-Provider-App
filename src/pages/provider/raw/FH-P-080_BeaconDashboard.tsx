@@ -1411,19 +1411,19 @@ export default function BeaconDashboardPage() {
                     )}
                   >
                     <div className="text-[11px] uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">{item.state}</div>
-                    <div className="text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">{item.count}</div>
+                    <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">{item.count}</div>
                   </button>
                 ))}
               </div>
 
-              <div className="mt-4 flex flex-col gap-3 xl:flex-row xl:items-center xl:justify-between">
+              <div className="mt-4 flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
                 <div className="flex flex-1 items-center gap-2 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-3 py-2 transition-colors">
                   <Search className="h-4 w-4 text-slate-400" />
                   <input
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     placeholder="Search title, source type, linked object, or owner"
-                    className="mt-1.5 text-[14px] leading-6 text-slate-500 dark:text-slate-400"
+                    className="w-full bg-transparent text-[13px] text-slate-700 dark:text-slate-200 placeholder:text-slate-400 outline-none"
                   />
                 </div>
                 <div className="flex flex-wrap items-center gap-2">

@@ -1060,12 +1060,12 @@ export default function TestimoniesPage() {
     <div className="min-h-screen w-full bg-[#f2f2f2] dark:bg-slate-950 p-5 text-slate-900 dark:text-slate-50 transition-colors">
       <div className="mx-auto max-w-[1600px] space-y-5">
         <section className="rounded-[28px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm transition-colors">
-          <div className="flex flex-col gap-5 xl:flex-row xl:items-start xl:justify-between">
+          <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
             <div className="min-w-0">
               <div className="text-[11px] font-black uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500">
                 Community stories command
               </div>
-              <h1 className="text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
+              <h1 className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
                 Testimonies
               </h1>
               <p className="mt-2 max-w-[860px] text-[15px] leading-7 text-slate-600 dark:text-slate-400">

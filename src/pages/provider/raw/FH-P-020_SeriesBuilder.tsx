@@ -1369,7 +1369,7 @@ export default function SeriesBuilderPage() {
                   <div className="mt-3 space-y-2">
                     <div className="rounded-2xl border border-slate-200 bg-white px-3 py-3">
                       <div className="text-[12px] font-bold text-slate-900">Episode target</div>
-                      <div className="text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">{draft.episodes.length}/{draft.episodeTarget}</div>
+                      <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">{draft.episodes.length}/{draft.episodeTarget}</div>
                     </div>
                     <div className="rounded-2xl border border-slate-200 bg-white px-3 py-3">
                       <div className="text-[12px] font-bold text-slate-900">Ready or scheduled</div>

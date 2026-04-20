@@ -1633,7 +1633,7 @@ export default function BeaconBuilderPage({
           <Card>
             <div className="flex items-center justify-between gap-2">
               <div>
-                <div className="text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">Creative quality score</div>
+                <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">Creative quality score</div>
                 <div className="mt-1.5 text-[14px] leading-6 text-slate-500 dark:text-slate-400">Preview-driven confidence before spend begins.</div>
               </div>
               <div className="text-3xl font-black" style={{ color: EV_GREEN }}>{simulation.qualityScore}</div>

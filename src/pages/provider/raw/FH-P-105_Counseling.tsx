@@ -976,7 +976,7 @@ export default function CounselingPage() {
               <div className="text-[11px] font-black uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500">
                 PASTORAL CARE COMMAND
               </div>
-              <h1 className="text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
+              <h1 className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
                 Counseling
               </h1>
               <p className="mt-2 max-w-[980px] text-[15px] leading-7 text-slate-600 dark:text-slate-400">

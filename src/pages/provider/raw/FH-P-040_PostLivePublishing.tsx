@@ -922,7 +922,7 @@ export default function PostLivePublishingPage() {
                     <div className="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-4">
                       <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
                         <div className="text-[10px] font-black uppercase tracking-[0.14em] text-slate-500">Readiness</div>
-                        <div className="text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">{readinessScore}%</div>
+                        <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">{readinessScore}%</div>
                         <div className="mt-1.5 text-[14px] leading-6 text-slate-500 dark:text-slate-400">Packaging confidence</div>
                       </div>
                       <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">

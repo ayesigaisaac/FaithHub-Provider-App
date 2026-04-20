@@ -1192,7 +1192,7 @@ export default function FaithHubReviewsAndModerationPage() {
               </div>
 
               <div className="mt-2 flex flex-wrap items-center gap-3">
-                <div className="text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
+                <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
                   Reviews & Moderation
                 </div>
                 <Pill tone="brand">

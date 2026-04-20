@@ -1077,7 +1077,7 @@ export default function AuditLogPage() {
                   <div className="text-[11px] font-black uppercase tracking-[0.12em] text-slate-400 dark:text-slate-500">
                     Governance & Audit Trail
                   </div>
-                  <div className="text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
+                  <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
                     Audit Log
                   </div>
                 </div>

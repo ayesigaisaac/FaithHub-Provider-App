@@ -934,7 +934,7 @@ export default function WalletAndPayoutsPage() {
               <div className="text-[12px] font-semibold uppercase tracking-[0.14em] text-slate-400">
                 Events & Giving · Treasury Operations
               </div>
-              <h1 className="text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
+              <h1 className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
                 Move ministry funds, reserves, and payouts with premium financial control.
               </h1>
               <p className="mt-3 max-w-[900px] text-[15px] leading-7 text-slate-600">

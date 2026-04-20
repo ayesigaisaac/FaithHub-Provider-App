@@ -1175,7 +1175,7 @@ export default function FaithHubNoticeboardPage() {
                 <span>Premium Provider Noticeboard</span>
               </div>
 
-              <div className="text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
+              <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
                 Noticeboard
               </div>
               <div className="mt-1.5 text-[14px] leading-6 text-slate-500 dark:text-slate-400">

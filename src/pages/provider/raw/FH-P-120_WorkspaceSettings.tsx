@@ -745,7 +745,7 @@ export default function WorkspaceSettingsPage() {
                 <div key={campus.id} className="rounded-[24px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-4">
                   <div className="flex flex-wrap items-start justify-between gap-3">
                     <div>
-                      <div className="text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">{campus.name}</div>
+                      <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">{campus.name}</div>
                       <div className="mt-1.5 text-[14px] leading-6 text-slate-500 dark:text-slate-400">{campus.region} · {campus.timezone}</div>
                     </div>
                     <div className="flex flex-wrap gap-2">
