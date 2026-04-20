@@ -58,10 +58,7 @@ describe('App smoke routing', () => {
 
   it('renders key provider navigation elements', async () => {
     renderApp(['/faithhub/provider/dashboard']);
-    const providerWorkspaceLabels = await screen.findAllByText(/Provider Workspace/i);
-    expect(providerWorkspaceLabels.length).toBeGreaterThan(0);
-    const navigationLabels = await screen.findAllByText(/Navigation/i);
-    expect(navigationLabels.length).toBeGreaterThan(0);
+    expect(await screen.findByRole('button', { name: /search pages/i })).toBeInTheDocument();
     const dashboardButtons = await screen.findAllByRole('button', { name: /dashboard/i });
     expect(dashboardButtons.length).toBeGreaterThan(0);
   });

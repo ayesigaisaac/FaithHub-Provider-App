@@ -156,7 +156,7 @@ export function SearchCommandDialog({ open, onClose }: { open: boolean; onClose:
     } catch {
       return [] as VisiblePage[];
     }
-  }, [pageKeyMap, open]);
+  }, [pageKeyMap]);
 
   useEffect(() => {
     if (!open) return;
