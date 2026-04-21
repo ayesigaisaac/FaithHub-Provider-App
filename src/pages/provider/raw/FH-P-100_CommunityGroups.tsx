@@ -34,6 +34,7 @@ import {
 } from "lucide-react";
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
  * Provider — Community Groups
@@ -1012,22 +1013,11 @@ export default function CommunityGroupsPage() {
       <div className="mx-auto max-w-[1600px]">
         <div className="overflow-hidden rounded-[30px] border border-slate-200 bg-white shadow-sm">
           <div className="flex flex-wrap items-start justify-between gap-4 sm:gap-5 border-b border-slate-200 px-4 py-4 sm:px-6 sm:py-5">
-            <div className="flex min-w-0 items-start gap-4">
-              <div
-                className="grid h-12 w-12 place-items-center rounded-2xl text-white shadow-sm"
-                style={{ background: EV_GREEN }}
-              >
-                <Users className="h-6 w-6" />
-              </div>
-              <div className="min-w-0">
-                <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
-                  Community Groups
-                </div>
-                <div className="mt-1.5 text-[14px] leading-6 text-slate-500 dark:text-slate-400">
-                  Community group operating system for multi-campus ministry teams.
-                </div>
-              </div>
-            </div>
+            <ProviderPageTitle
+              icon={<Users className="h-6 w-6" />}
+              title="Community Groups"
+              subtitle="Community group operating system for multi-campus ministry teams."
+            />
 
             <div className="flex flex-wrap items-center gap-2">
               <Pill>Multi-campus</Pill>
@@ -1594,7 +1584,6 @@ export default function CommunityGroupsPage() {
     </div>
   );
 }
-
 
 
 

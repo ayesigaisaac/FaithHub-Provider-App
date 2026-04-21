@@ -38,6 +38,7 @@ import {
 } from "lucide-react";
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
  * Provider — Live Dashboard
@@ -1187,13 +1188,12 @@ export default function FaithHubLiveDashboardPage() {
               <Pill text={session.state} tone={stateTone(session.state)} />
               <Pill text={session.health.critical} tone={healthToneToPill(session.health.critical)} />
             </div>
-            <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
-              Live Dashboard
-            </div>
-            <div className="mt-1 max-w-[860px] text-[12px] sm:text-[13px] leading-5 sm:leading-6 text-slate-600 dark:text-slate-400">
-              High-intensity control room for a specific Live Session, combining technical health,
-              team readiness, audience pulse, conversions, moderation, and post-live actions.
-            </div>
+            <ProviderPageTitle
+              icon={<MonitorPlay className="h-6 w-6" />}
+              title="Live Dashboard"
+              subtitle="High-intensity control room for a specific Live Session, combining technical health, team readiness, audience pulse, conversions, moderation, and post-live actions."
+              className="mt-2"
+            />
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
@@ -1527,7 +1527,6 @@ export default function FaithHubLiveDashboardPage() {
     </div>
   );
 }
-
 
 
 

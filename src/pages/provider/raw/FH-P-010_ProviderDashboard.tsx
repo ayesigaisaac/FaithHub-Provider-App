@@ -38,6 +38,7 @@ import {
 } from "lucide-react";
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
  * Provider — Provider Dashboard
@@ -1251,12 +1252,12 @@ export default function ProviderDashboardPage() {
           <section className="rounded-[16px] border border-slate-200 bg-white p-3 sm:p-4 md:p-5 shadow-sm">
             <div className="grid gap-4 sm:gap-6 xl:grid-cols-[1.25fr,0.9fr]">
               <div className="min-w-0">
-                <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
-                  Provider Dashboard
-                </div>
-                <p className="mt-3 max-w-3xl text-[14px] leading-6 text-slate-600">
-                  Daily overview of live sessions, teachings, audience health, giving performance, and trust operations.
-                </p>
+                <ProviderPageTitle
+                  icon={<LayoutDashboard className="h-6 w-6" />}
+                  title="Provider Dashboard"
+                  subtitle="Daily overview of live sessions, teachings, audience health, giving performance, and trust operations."
+                  className="mt-2"
+                />
 
                 <div className="mt-5 flex flex-wrap items-center gap-2">
                   <Pill
@@ -2039,7 +2040,6 @@ export default function ProviderDashboardPage() {
     </div>
   );
 }
-
 
 
 
