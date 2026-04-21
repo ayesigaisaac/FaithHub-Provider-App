@@ -54,6 +54,8 @@ export type ProviderPageMeta = {
   aliases?: string[];
   section: ProviderPageSection;
   icon: LucideIcon;
+  navPlacement?: 'primary' | 'builder';
+  parentKey?: string;
   hidden?: boolean;
   quickAction?: boolean;
   component: LazyExoticComponent<ComponentType>;
@@ -161,6 +163,8 @@ export const providerPageCatalog: ProviderPageMeta[] = [
     path: '/faithhub/provider/series-builder',
     section: 'Content Structure & Teaching Creation',
     icon: BookText,
+    navPlacement: 'builder',
+    parentKey: 'teachings-dashboard',
     quickAction: true,
     component: SeriesBuilder,
   },
@@ -172,6 +176,8 @@ export const providerPageCatalog: ProviderPageMeta[] = [
     path: '/faithhub/provider/episode-builder',
     section: 'Content Structure & Teaching Creation',
     icon: NotebookPen,
+    navPlacement: 'builder',
+    parentKey: 'teachings-dashboard',
     component: EpisodeBuilder,
   },
   {
@@ -182,6 +188,8 @@ export const providerPageCatalog: ProviderPageMeta[] = [
     path: '/faithhub/provider/standalone-teaching-builder',
     section: 'Content Structure & Teaching Creation',
     icon: FilePenLine,
+    navPlacement: 'builder',
+    parentKey: 'teachings-dashboard',
     quickAction: true,
     component: StandaloneTeachingBuilder,
   },
@@ -203,6 +211,8 @@ export const providerPageCatalog: ProviderPageMeta[] = [
     path: '/faithhub/provider/book-builder',
     section: 'Content Structure & Teaching Creation',
     icon: BookText,
+    navPlacement: 'builder',
+    parentKey: 'books-manager',
     component: BookBuilder,
   },
   {
@@ -235,6 +245,8 @@ export const providerPageCatalog: ProviderPageMeta[] = [
     aliases: ['/faithhub/provider/new-merchandise'],
     section: 'Content Structure & Teaching Creation',
     icon: Package,
+    navPlacement: 'builder',
+    parentKey: 'merchandise-manager',
     component: MerchandiseBuilder,
   },
   {
@@ -245,6 +257,8 @@ export const providerPageCatalog: ProviderPageMeta[] = [
     path: '/faithhub/provider/live-builder',
     section: 'Live Sessions Operations',
     icon: Radio,
+    navPlacement: 'builder',
+    parentKey: 'live-dashboard',
     quickAction: true,
     component: LiveBuilder,
   },
@@ -434,6 +448,8 @@ export const providerPageCatalog: ProviderPageMeta[] = [
     path: '/faithhub/provider/beacon-builder',
     section: 'Beacon',
     icon: Sparkles,
+    navPlacement: 'builder',
+    parentKey: 'beacon-manager',
     quickAction: true,
     component: BeaconBuilder,
   },

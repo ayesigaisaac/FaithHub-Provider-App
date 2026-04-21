@@ -45,6 +45,33 @@ export function getProviderPagesBySection(section: ProviderPageSection) {
   return providerPages.filter((page) => page.section === section && !page.hidden);
 }
 
+export type ProviderSidebarGroup = {
+  page: ProviderPageMeta;
+  children: ProviderPageMeta[];
+};
+
+export function getProviderSidebarGroupsBySection(section: ProviderPageSection): ProviderSidebarGroup[] {
+  const pages = getProviderPagesBySection(section);
+  const byKey = new Map(pages.map((page) => [page.key, page]));
+  const buildersByParent = new Map<string, ProviderPageMeta[]>();
+  const primary: ProviderPageMeta[] = [];
+
+  pages.forEach((page) => {
+    if (page.navPlacement === 'builder' && page.parentKey && byKey.has(page.parentKey)) {
+      const siblings = buildersByParent.get(page.parentKey) ?? [];
+      siblings.push(page);
+      buildersByParent.set(page.parentKey, siblings);
+      return;
+    }
+    primary.push(page);
+  });
+
+  return primary.map((page) => ({
+    page,
+    children: buildersByParent.get(page.key) ?? [],
+  }));
+}
+
 export function isKnownProviderPath(pathname: string) {
   return knownProviderPaths.has(pathname);
 }

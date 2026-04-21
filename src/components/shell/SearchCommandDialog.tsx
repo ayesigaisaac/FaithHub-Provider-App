@@ -143,6 +143,18 @@ export function SearchCommandDialog({ open, onClose }: { open: boolean; onClose:
 
   const visiblePages = useMemo(() => providerPages.filter((page) => !page.hidden), []);
   const pageKeyMap = useMemo(() => new Map(visiblePages.map((page) => [page.key, page])), [visiblePages]);
+  const pageSectionLabelMap = useMemo(() => {
+    const map = new Map<string, string>();
+    visiblePages.forEach((page) => {
+      const parentTitle = page.parentKey ? pageKeyMap.get(page.parentKey)?.title : undefined;
+      const sectionLabel =
+        page.navPlacement === 'builder' && parentTitle
+          ? `${page.section} • ${parentTitle} → ${page.title}`
+          : page.section;
+      map.set(page.key, sectionLabel);
+    });
+    return map;
+  }, [pageKeyMap, visiblePages]);
 
   const recentPages = useMemo(() => {
     if (typeof window === 'undefined') return [] as VisiblePage[];
@@ -198,14 +210,14 @@ export function SearchCommandDialog({ open, onClose }: { open: boolean; onClose:
         key: entry.page.key,
         title: entry.page.title,
         description: entry.page.description,
-        section: entry.page.section,
+        section: pageSectionLabelMap.get(entry.page.key) ?? entry.page.section,
         id: entry.page.id,
         path: entry.page.path,
         aliases: entry.page.aliases,
         icon: entry.page.icon,
         payload: entry.page,
       }));
-  }, [query, visiblePages]);
+  }, [pageSectionLabelMap, query, visiblePages]);
 
   const rankedActions = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -250,14 +262,14 @@ export function SearchCommandDialog({ open, onClose }: { open: boolean; onClose:
       key: page.key,
       title: page.title,
       description: page.description,
-      section: page.section,
+      section: pageSectionLabelMap.get(page.key) ?? page.section,
       id: page.id,
       path: page.path,
       aliases: page.aliases,
       icon: page.icon,
       payload: page,
     }));
-  }, [visiblePages]);
+  }, [pageSectionLabelMap, visiblePages]);
 
   const recentPageEntries = useMemo(
     () =>
@@ -266,14 +278,14 @@ export function SearchCommandDialog({ open, onClose }: { open: boolean; onClose:
         key: page.key,
         title: page.title,
         description: page.description,
-        section: page.section,
+        section: pageSectionLabelMap.get(page.key) ?? page.section,
         id: page.id,
         path: page.path,
         aliases: page.aliases,
         icon: page.icon,
         payload: page,
       })),
-    [recentPages]
+    [pageSectionLabelMap, recentPages]
   );
 
   const groupedResults = useMemo(() => {
