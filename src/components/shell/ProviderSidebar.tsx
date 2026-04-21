@@ -55,7 +55,7 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
       <Box sx={{ p: 1.25, height: '100%', minHeight: 0 }}>
         <Box
           sx={{
-            borderRadius: 3,
+            borderRadius: 0,
             border: '1px solid',
             borderColor: (theme) => (theme.palette.mode === 'dark' ? '#334155' : '#d6dee7'),
             bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#0f172a' : '#fff'),
@@ -134,11 +134,11 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
                         component={RouterLink}
                         to={page.path}
                         onClick={onClose}
-                        sx={{
-                          px: 1.25,
-                          py: 1,
-                          minHeight: 56,
-                          borderRadius: 2.25,
+                      sx={{
+                        px: 1.25,
+                        py: 1,
+                        minHeight: 56,
+                        borderRadius: 0,
                           border: '1px solid',
                           borderWidth: active ? 1.5 : 1,
                           borderColor: (theme) =>
@@ -234,12 +234,12 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
                                 component={RouterLink}
                                 to={child.path}
                                 onClick={onClose}
-                                sx={{
+                              sx={{
                                   mb: 0.55,
                                   px: 1,
                                   py: 0.75,
                                   minHeight: 44,
-                                  borderRadius: 2,
+                                  borderRadius: 0,
                                   border: '1px solid',
                                   borderColor: childActive ? 'primary.main' : 'transparent',
                                   bgcolor: childActive ? 'action.selected' : 'transparent',
@@ -311,6 +311,8 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
             maxWidth: '100vw',
             top: `${topbarOffsetMobile}px`,
             height: `calc(100% - ${topbarOffsetMobile}px)`,
+            borderRadius: 0,
+            overflow: 'hidden',
             borderRight: '1px solid',
             borderColor: 'divider',
           },
@@ -330,6 +332,8 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
             boxSizing: 'border-box',
             top: `${topbarOffsetDesktop}px`,
             height: `calc(100% - ${topbarOffsetDesktop}px)`,
+            borderRadius: 0,
+            overflow: 'hidden',
             borderRight: '1px solid',
             borderColor: 'divider',
           },
