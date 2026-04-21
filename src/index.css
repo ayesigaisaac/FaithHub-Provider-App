@@ -217,24 +217,3 @@ html.dark .provider-page-density--compact :is(
   ) {
   box-shadow: 0 16px 36px -26px rgba(2, 6, 23, 0.86) !important;
 }
-
-/* Global corner reset: remove rounded corners across the whole app. */
-[class*='rounded'],
-.MuiPaper-root,
-.MuiDrawer-paper,
-.MuiDialog-paper,
-.MuiCard-root,
-.MuiAvatar-root,
-.MuiChip-root,
-.MuiTooltip-tooltip,
-.MuiOutlinedInput-root,
-.MuiInputBase-root,
-.MuiButtonBase-root,
-.MuiFab-root,
-.MuiSpeedDial-root .MuiFab-root,
-button,
-input,
-select,
-textarea {
-  border-radius: 0 !important;
-}
