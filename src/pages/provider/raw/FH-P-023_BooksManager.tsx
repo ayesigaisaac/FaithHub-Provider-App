@@ -36,6 +36,7 @@ import {
 } from "lucide-react";
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
  * Provider — Books Manager
@@ -1100,16 +1101,15 @@ export default function BooksManagerPage() {
 
             <div className="mt-3 flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
               <div className="min-w-0">
-                <div className="flex flex-wrap items-center gap-2">
-                  <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
-                    Books Manager
-                  </div>
+                <ProviderPageTitle
+                  icon={<BookOpen className="h-6 w-6" />}
+                  title="Books Manager"
+                  subtitle="Manage devotionals, eBooks, study guides, manuals, and reading resources from one premium publishing surface. Track readiness, formats, access, translations, promotion hooks, and storefront quality without leaving the provider workspace."
+                />
+                <div className="mt-3 flex flex-wrap items-center gap-2">
                   <Pill text="BOOK CATALOG" tone="good" icon={<BookOpen className="h-3.5 w-3.5" />} />
                   <Pill text="MULTI-FORMAT" tone="neutral" icon={<Layers className="h-3.5 w-3.5" />} />
                   <Pill text="BEACON READY" tone="warn" icon={<Megaphone className="h-3.5 w-3.5" />} />
-                </div>
-                <div className="mt-3 max-w-[980px] text-[15px] text-slate-600 dark:text-slate-400 leading-relaxed">
-                  Manage devotionals, eBooks, study guides, manuals, and reading resources from one premium publishing surface. Track readiness, formats, access, translations, promotion hooks, and storefront quality without leaving the provider workspace.
                 </div>
               </div>
 
@@ -1691,8 +1691,6 @@ export default function BooksManagerPage() {
     </div>
   );
 }
-
-
 
 
 

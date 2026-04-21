@@ -36,6 +36,7 @@ import {
   Zap,
 } from "lucide-react";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
  * Provider — Series Builder
@@ -1814,11 +1815,12 @@ export default function SeriesBuilderPage() {
                 <ChevronRight className="h-4 w-4" />
                 <span className="font-semibold text-slate-700">Series Builder</span>
               </div>
-              <div className="mt-2 text-[38px] font-black leading-none tracking-[-0.03em] text-slate-900">
-                Series Builder
-              </div>
-              <div className="mt-2 max-w-[920px] text-[14px] text-slate-500">
-                Premium provider teaching workflow inspired by the creator base layout — now rebuilt for Series, Episodes, linked Live Sessions, localized discovery, and Beacon-ready promotion.
+              <div className="mt-2">
+                <ProviderPageTitle
+                  icon={<Layers className="h-6 w-6" />}
+                  title="Series Builder"
+                  subtitle="Premium provider teaching workflow inspired by the creator base layout — now rebuilt for Series, Episodes, linked Live Sessions, localized discovery, and Beacon-ready promotion."
+                />
               </div>
               <div className="mt-4 flex flex-wrap gap-2">
                 <Pill tone="brand"><BookOpen className="h-3 w-3" /> Series engine</Pill>
@@ -1929,7 +1931,6 @@ export default function SeriesBuilderPage() {
     </div>
   );
 }
-
 
 
 

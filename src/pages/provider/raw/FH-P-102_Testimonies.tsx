@@ -24,6 +24,7 @@ import {
   X,
 } from "lucide-react";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
  * Provider — Testimonies
@@ -1062,13 +1063,11 @@ export default function TestimoniesPage() {
         <section className="rounded-[28px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm transition-colors">
           <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
             <div className="min-w-0">
-              <h1 className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
-                Testimonies
-              </h1>
-              <p className="mt-2 max-w-[860px] text-[15px] leading-7 text-slate-600 dark:text-slate-400">
-                Premium collection, review, approval, publication, and featuring workspace for testimonies across live sessions,
-                community groups, events, counseling follow-up, prayer journeys, and institution-wide storytelling surfaces.
-              </p>
+              <ProviderPageTitle
+                icon={<MessageSquare className="h-6 w-6" />}
+                title="Testimonies"
+                subtitle="Premium collection, review, approval, publication, and featuring workspace for testimonies across live sessions, community groups, events, counseling follow-up, prayer journeys, and institution-wide storytelling surfaces."
+              />
               <div className="mt-5 flex flex-wrap items-center gap-2">
                 <Pill text="Consent-led publishing" tone="good" />
                 <Pill text="Review + feature board" tone="navy" />
@@ -1716,7 +1715,6 @@ export default function TestimoniesPage() {
     </div>
   );
 }
-
 
 
 

@@ -24,6 +24,7 @@ import {
   Zap,
 } from "lucide-react";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
  * Provider — Prayer Requests
@@ -754,17 +755,11 @@ function PrayerRequestsPage() {
         <div className="rounded-[30px] border border-slate-200 bg-white p-5 shadow-sm">
           <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
             <div className="min-w-0 flex-1">
-              <div className="flex items-center gap-3">
-                <div className="grid h-12 w-12 place-items-center rounded-2xl text-white shadow-sm" style={{ background: EV_GREEN }}>
-                  <HeartHandshake className="h-6 w-6" />
-                </div>
-                <div className="min-w-0">
-                  <div className="text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 sm:text-[34px] lg:text-[40px]">Prayer Requests</div>
-                  <div className="mt-1.5 text-[14px] leading-6 text-slate-500">
-                    Prayer intake and care-routing command center for providers.
-                  </div>
-                </div>
-              </div>
+              <ProviderPageTitle
+                icon={<HeartHandshake className="h-6 w-6" />}
+                title="Prayer Requests"
+                subtitle="Prayer intake and care-routing command center for providers."
+              />
             </div>
 
             <div className="flex flex-col items-start gap-3 xl:items-end">
@@ -1105,7 +1100,6 @@ function PrayerRequestsPage() {
 }
 
 export default PrayerRequestsPage;
-
 
 
 

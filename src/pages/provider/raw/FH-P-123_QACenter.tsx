@@ -23,6 +23,7 @@ import {
   XCircle,
 } from "lucide-react";
 import { KpiTile } from "../../../components/ui/KpiTile";
+import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
  * Provider — QA Center
@@ -654,20 +655,11 @@ export default function FHP123QACenter() {
         <div className="rounded-[32px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-4 md:px-6 md:py-5 transition-colors">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
             <div className="min-w-0 flex-1">
-              <div className="flex items-center gap-4">
-                <div className="h-12 w-12 rounded-[18px] flex items-center justify-center text-white shadow-sm" style={{ background: GREEN }}>
-                  <ClipboardCheck className="h-6 w-6" />
-                </div>
-                <div className="min-w-0">
-                  <h1 className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
-                    QA Center
-                  </h1>
-                  <p className="mt-1.5 text-[14px] leading-6 text-slate-500 dark:text-slate-400">
-                    Internal quality-assurance surface for stream checks, content package validation,
-                    page and form review, and premium preflight sign-off before launch.
-                  </p>
-                </div>
-              </div>
+              <ProviderPageTitle
+                icon={<ClipboardCheck className="h-6 w-6" />}
+                title="QA Center"
+                subtitle="Internal quality-assurance surface for stream checks, content package validation, page and form review, and premium preflight sign-off before launch."
+              />
               <div className="mt-4 flex flex-wrap gap-2">
                 <Pill tone="good">{metrics.passing} surfaces passing</Pill>
                 <Pill tone="warn">{metrics.needsReview} checks need review</Pill>
@@ -943,7 +935,6 @@ export default function FHP123QACenter() {
     </div>
   );
 }
-
 
 
 

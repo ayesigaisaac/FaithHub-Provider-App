@@ -26,6 +26,7 @@ import {
 } from "lucide-react";
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
  * Provider — Subscriptions
@@ -709,16 +710,12 @@ export default function SubscriptionsPage() {
           <div className="flex flex-col gap-5 xl:flex-row xl:items-start xl:justify-between">
             <div className="min-w-0 flex-1">
               <div className="flex items-start gap-4">
-                <div
-                  className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl text-white"
-                  style={{ background: EV_GREEN }}
-                >
-                  <Crown className="h-7 w-7" />
-                </div>
                 <div className="min-w-0">
-                  <h1 className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
-                    Manage plans, seats, and premium access without losing control.
-                  </h1>
+                  <ProviderPageTitle
+                    icon={<Crown className="h-6 w-6" />}
+                    title="Subscriptions"
+                    subtitle="Manage plans, seats, and premium access without losing control across billing plans, entitlements, renewals, invoices, and workspace feature access."
+                  />
                   <p className="mt-3 max-w-[980px] text-[18px] leading-snug text-slate-600 dark:text-slate-400">
                     Workspace/team subscriptions for providers — covering billing plans,
                     seats, entitlements, add-ons, renewals, invoices, and feature access in one premium surface.
@@ -1535,7 +1532,6 @@ export default function SubscriptionsPage() {
     </div>
   );
 }
-
 
 
 

@@ -4,6 +4,7 @@
 
 import React, { useEffect, useMemo, useState } from 'react';
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import {
   AlertTriangle,
   BadgeCheck,
@@ -1184,10 +1185,12 @@ export default function FaithHubReviewsAndModerationPage() {
           <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
             <div className="min-w-0">
 
-              <div className="mt-2 flex flex-wrap items-center gap-3">
-                <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
-                  Reviews & Moderation
-                </div>
+              <ProviderPageTitle
+                icon={<ShieldCheck className="h-6 w-6" />}
+                title="Reviews & Moderation"
+                subtitle="Protect institution trust across Live Sessions, replays, clips, events, campaigns, and public reviews without losing context."
+              />
+              <div className="mt-3 flex flex-wrap items-center gap-3">
                 <Pill tone="brand">
                   <ShieldCheck className="h-3.5 w-3.5" />
                   Trust centre active
@@ -1200,10 +1203,6 @@ export default function FaithHubReviewsAndModerationPage() {
                   <BadgeCheck className="h-3.5 w-3.5" />
                   Child-safe defaults locked
                 </Pill>
-              </div>
-
-              <div className="mt-1.5 text-[14px] leading-6 text-slate-500 dark:text-slate-400">
-                Protect institution trust across Live Sessions, replays, clips, events, campaigns, and public reviews without losing context.
               </div>
             </div>
 
@@ -2022,7 +2021,6 @@ export default function FaithHubReviewsAndModerationPage() {
     </div>
   );
 }
-
 
 
 

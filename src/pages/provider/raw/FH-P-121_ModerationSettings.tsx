@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import React, { useMemo, useState } from "react";
+import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import {
   Bot,
   ChevronRight,
@@ -533,21 +534,12 @@ export default function FH_P_121_ModerationSettings() {
         <div className="rounded-[30px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 py-5 transition-colors">
           <div className="flex flex-col gap-5 xl:flex-row xl:items-start xl:justify-between">
             <div className="flex items-start gap-4 min-w-0">
-              <div
-                className="h-12 w-12 rounded-[18px] grid place-items-center text-white shrink-0"
-                style={{ background: GREEN }}
-              >
-                <ShieldCheck className="h-6 w-6" />
-              </div>
               <div className="min-w-0">
-                <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
-                  Moderation Settings
-                </div>
-                <div className="mt-1.5 text-[14px] leading-6 text-slate-500 dark:text-slate-400">
-                  Institution-wide policy rules, filters, defaults, thresholds, child-safe settings, and automation rules.
-                  This page governs rule definitions that feed , live chat, community, prayer, counseling, reviews,
-                  and all linked trust surfaces.
-                </div>
+                <ProviderPageTitle
+                  icon={<ShieldCheck className="h-6 w-6" />}
+                  title="Moderation Settings"
+                  subtitle="Institution-wide policy rules, filters, defaults, thresholds, child-safe settings, and automation rules. This page governs rule definitions that feed live chat, community, prayer, counseling, reviews, and all linked trust surfaces."
+                />
                 <div className="mt-3 flex flex-wrap items-center gap-2">
                   <Pill tone="good">Provider governance active</Pill>
                   <Pill>Feeds </Pill>
@@ -778,7 +770,6 @@ export default function FH_P_121_ModerationSettings() {
     </div>
   );
 }
-
 
 
 

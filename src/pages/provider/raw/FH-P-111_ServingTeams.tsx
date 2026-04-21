@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
  * Provider — Serving Teams
@@ -890,22 +891,11 @@ export default function FH_P_111_ServingTeamsPage() {
         <div className="rounded-[32px] border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
           <div className="flex flex-col gap-5 xl:flex-row xl:items-start xl:justify-between">
             <div className="min-w-0 flex-1">
-              <div className="flex items-center gap-4">
-                <div
-                  className="grid h-12 w-12 place-items-center rounded-[18px] text-white"
-                  style={{ background: EV_GREEN }}
-                >
-                  <Users className="h-6 w-6" />
-                </div>
-                <div className="min-w-0">
-                  <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
-                    Serving Teams
-                  </div>
-                  <div className="mt-1.5 text-[14px] leading-6 text-slate-500 dark:text-slate-400">
-                    Premium volunteer and service-team operating system for ushers, media, worship, care, outreach, hospitality, and event/live support.
-                  </div>
-                </div>
-              </div>
+              <ProviderPageTitle
+                icon={<Users className="h-6 w-6" />}
+                title="Serving Teams"
+                subtitle="Premium volunteer and service-team operating system for ushers, media, worship, care, outreach, hospitality, and event/live support."
+              />
 
               <div className="mt-5 flex flex-wrap items-center gap-3">
                 <TonePill tone="accent">Serving coverage pulse 5</TonePill>
@@ -1422,7 +1412,6 @@ export default function FH_P_111_ServingTeamsPage() {
     </div>
   );
 }
-
 
 
 

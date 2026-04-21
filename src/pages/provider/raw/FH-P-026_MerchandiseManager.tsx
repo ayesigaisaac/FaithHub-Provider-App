@@ -31,6 +31,7 @@ import {
 } from "lucide-react";
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
  * Provider — Merchandise Manager
@@ -1468,16 +1469,11 @@ export default function MerchandiseManagerPage() {
         <section className="rounded-[32px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 transition-colors">
           <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
             <div className="max-w-3xl">
-              <h1 className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
-                Run premium merchandise,
-                <br />
-                shelves, bundles, and live-linked FaithMart drops
-              </h1>
-              <p className="mt-1.5 text-[14px] leading-6 text-slate-500 dark:text-slate-400">
-                Manage gifts, apparel, journals, worship essentials, and event kits from one
-                premium Provider-side surface — with direct links into Live Sessions, events,
-                giving journeys, and Beacon promotion.
-              </p>
+              <ProviderPageTitle
+                icon={<Gift className="h-6 w-6" />}
+                title="Merchandise Manager"
+                subtitle="Run premium merchandise shelves, bundles, and live-linked FaithMart drops from one Provider-side surface connected to Live Sessions, events, giving journeys, and Beacon promotion."
+              />
 
               <div className="mt-5 flex flex-wrap gap-2">
                 <Pill text="FaithMart merchandise" tone="good" icon={<BadgeCheck className="h-3.5 w-3.5" />} />
@@ -2078,7 +2074,6 @@ export default function MerchandiseManagerPage() {
     </div>
   );
 }
-
 
 
 

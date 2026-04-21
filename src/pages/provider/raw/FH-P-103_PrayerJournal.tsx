@@ -25,6 +25,7 @@ import {
 } from "lucide-react";
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
  * Provider — Prayer Journal
@@ -585,8 +586,11 @@ export default function PrayerJournalPage() {
         <div className="rounded-[28px] border border-slate-200 bg-white p-5 shadow-sm">
           <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
             <div className="min-w-0 flex-1">
-              <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">Prayer Journal</div>
-              <div className="mt-1.5 text-[14px] leading-6 text-slate-500 dark:text-slate-400">Provider-managed guided journaling for daily prompts, shared reflections, care-aware privacy, and premium public or private prayer journeys.</div>
+              <ProviderPageTitle
+                icon={<BookOpen className="h-6 w-6" />}
+                title="Prayer Journal"
+                subtitle="Provider-managed guided journaling for daily prompts, shared reflections, care-aware privacy, and premium public or private prayer journeys."
+              />
               <div className="mt-4 flex flex-wrap items-center gap-2"><Pill tone="good"><BookOpen className="h-3.5 w-3.5" /> Guided rhythms</Pill><Pill><Lock className="h-3.5 w-3.5" /> Private + public flows</Pill><Pill tone="warn"><HeartHandshake className="h-3.5 w-3.5" /> Care-aware reflection sharing</Pill></div>
             </div>
             <div className="flex w-full flex-col gap-2 xl:w-[320px]"><ActionButton tone="primary" onClick={handleCreateJournal} left={<Plus className="h-4 w-4" />}>+ New Journal</ActionButton><ActionButton onClick={() => handleAddPrompt()} left={<Plus className="h-4 w-4" />}>Add Prompt</ActionButton><ActionButton onClick={handleShareReflection} left={<Share2 className="h-4 w-4" />}>Share Reflection</ActionButton><ActionButton onClick={() => setPreviewOpen(true)} left={<Eye className="h-4 w-4" />}>Preview</ActionButton></div>
@@ -632,7 +636,6 @@ export default function PrayerJournalPage() {
     </div>
   );
 }
-
 
 
 

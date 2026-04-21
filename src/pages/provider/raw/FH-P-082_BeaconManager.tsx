@@ -35,6 +35,7 @@ import {
 } from "lucide-react";
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
  * Provider — Beacon Manager
@@ -2125,20 +2126,17 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
                 <span className="font-medium text-slate-700 dark:text-slate-300">Manager</span>
               </div>
 
-              <div className="mt-2 flex flex-wrap items-center gap-3">
-                <div className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-slate-50 tracking-tight">
-                  Beacon Manager
-                </div>
+              <ProviderPageTitle
+                icon={<BarChart3 className="h-6 w-6" />}
+                title="Beacon Manager"
+                subtitle="Manage every Beacon campaign after creation, including budget controls, approvals, creative versions, performance drill-downs, optimization rules, and campaign lifecycle decisions."
+              />
+              <div className="mt-3 flex flex-wrap items-center gap-3">
                 <Pill
                   text="Premium campaign operations"
                   tone="pro"
                   icon={<Sparkles className="h-3.5 w-3.5" />}
                 />
-              </div>
-
-              <div className="mt-2 max-w-4xl text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
-                Manage every Beacon campaign after creation, including budget controls, approvals,
-                creative versions, performance drill-downs, rule-based optimization, and campaign life-cycle decisions.
               </div>
             </div>
 
@@ -2733,7 +2731,6 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
     </div>
   );
 }
-
 
 
 

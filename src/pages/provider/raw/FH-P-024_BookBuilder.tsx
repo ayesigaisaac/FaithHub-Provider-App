@@ -37,6 +37,7 @@ import {
   Zap,
 } from "lucide-react";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
  * Provider — Book Builder
@@ -2154,19 +2155,11 @@ export default function FaithHubBookBuilderPage() {
           <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
             <div className="min-w-0">
 
-              <div className="mt-2 flex flex-wrap items-center gap-3">
-                <div className="inline-flex h-12 w-12 items-center justify-center rounded-3xl bg-white shadow-sm ring-1 ring-slate-200 dark:bg-slate-900 dark:ring-slate-700">
-                  <BookOpen className="h-6 w-6" style={{ color: EV_GREEN }} />
-                </div>
-                <div className="min-w-0">
-                  <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
-                    Book Builder
-                  </div>
-                  <div className="mt-1.5 text-[14px] leading-6 text-slate-500 dark:text-slate-400">
-                    Build a premium devotional, study guide, manual, or course reader with storefront-ready packaging, structured chapters, access rules, localization, and linked promotion hooks.
-                  </div>
-                </div>
-              </div>
+              <ProviderPageTitle
+                icon={<BookOpen className="h-6 w-6" />}
+                title="Book Builder"
+                subtitle="Build a premium devotional, study guide, manual, or course reader with storefront-ready packaging, structured chapters, access rules, localization, and linked promotion hooks."
+              />
 
               <div className="mt-4 flex flex-wrap gap-2">
                 <Pill text={template.title} tone="good" icon={<Sparkles className="h-3.5 w-3.5" />} />
@@ -2375,7 +2368,6 @@ export default function FaithHubBookBuilderPage() {
     </div>
   );
 }
-
 
 
 

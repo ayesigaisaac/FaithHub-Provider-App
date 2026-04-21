@@ -25,6 +25,7 @@ import {
   X,
 } from "lucide-react";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
  * Provider — Counseling
@@ -973,14 +974,11 @@ export default function CounselingPage() {
         <section className="rounded-[30px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm transition-colors">
           <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
             <div className="min-w-0">
-              <h1 className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
-                Counseling
-              </h1>
-              <p className="mt-2 max-w-[980px] text-[15px] leading-7 text-slate-600 dark:text-slate-400">
-                Private-first pastoral care and counseling workspace for cases,
-                intake, scheduling, counselor assignment, notes, and
-                safeguarding across the institution.
-              </p>
+              <ProviderPageTitle
+                icon={<HeartHandshake className="h-6 w-6" />}
+                title="Counseling"
+                subtitle="Private-first pastoral care and counseling workspace for cases, intake, scheduling, counselor assignment, notes, and safeguarding across the institution."
+              />
 
               <div className="mt-4 flex flex-wrap items-center gap-3">
                 <Pill text="Private-first care" tone="good" />
@@ -1709,7 +1707,6 @@ export default function CounselingPage() {
     </div>
   );
 }
-
 
 
 

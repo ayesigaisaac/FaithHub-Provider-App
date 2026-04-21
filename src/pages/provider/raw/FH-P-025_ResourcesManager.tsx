@@ -30,6 +30,7 @@ import {
   X,
 } from "lucide-react";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
  * Provider — Resources Manager
@@ -1252,12 +1253,13 @@ export default function ResourcesManagerPage() {
               <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
                 <div className="max-w-4xl">
                   <Label>Books & resources</Label>
-                  <h1 className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
-                    Free Learning Resources
-                  </h1>
-                  <p className="mt-1.5 text-[14px] leading-6 text-slate-500 dark:text-slate-400">
-                    Explore free books, PDFs, audio teachings, devotionals, study packs, and prayer guides. Paid resources remain in FaithMart.
-                  </p>
+                  <div className="mt-2">
+                    <ProviderPageTitle
+                      icon={<BookOpen className="h-6 w-6" />}
+                      title="Free Learning Resources"
+                      subtitle="Explore free books, PDFs, audio teachings, devotionals, study packs, and prayer guides. Paid resources remain in FaithMart."
+                    />
+                  </div>
                   <div className="mt-5 flex flex-wrap gap-2">
                     <Pill tone="brand">{stats.total} free resources</Pill>
                     <Pill tone="soft">Provider upload enabled</Pill>
@@ -1590,7 +1592,6 @@ export default function ResourcesManagerPage() {
     </div>
   );
 }
-
 
 
 

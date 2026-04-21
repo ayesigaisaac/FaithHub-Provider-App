@@ -3,6 +3,7 @@
 
 import React, { useMemo, useState } from "react";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import {
   AlertTriangle,
   ArrowRight,
@@ -599,13 +600,13 @@ export default function FaithHubLeadershipPage() {
               <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-slate-500 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-400">
                 Team command
               </div>
-              <h1 className="mt-4 max-w-3xl text-[34px] font-black leading-[1.05] tracking-[-0.03em] text-slate-950 dark:text-white md:text-[46px]">
-                Manage leadership profiles, offices, and succession from one premium team command surface
-              </h1>
-              <p className="mt-4 max-w-2xl text-[15px] leading-7 text-slate-600 dark:text-slate-300">
-                Run the public leadership presence and the internal office structure together — with clear office ownership,
-                visibility rules, coverage planning, and publish-ready leadership cards.
-              </p>
+              <div className="mt-4">
+                <ProviderPageTitle
+                  icon={<Briefcase className="h-6 w-6" />}
+                  title="Leadership"
+                  subtitle="Manage leadership profiles, offices, and succession from one premium team command surface with clear ownership, visibility rules, coverage planning, and publish-ready leadership cards."
+                />
+              </div>
 
               <div className="mt-5 flex flex-wrap items-center gap-2">
                 <TonePill tone="good">
@@ -1028,7 +1029,6 @@ export default function FaithHubLeadershipPage() {
     </div>
   );
 }
-
 
 
 

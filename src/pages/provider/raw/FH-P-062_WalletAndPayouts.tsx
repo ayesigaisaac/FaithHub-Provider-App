@@ -32,6 +32,7 @@ import {
   Wallet,
 } from "lucide-react";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
  * Provider — Wallet & Payouts
@@ -931,9 +932,11 @@ export default function WalletAndPayoutsPage() {
         <div className="rounded-[32px] border border-slate-200 bg-white p-4 md:p-5 shadow-sm">
           <div className="grid gap-4 xl:grid-cols-[1.45fr_0.75fr]">
             <div>
-              <h1 className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
-                Move ministry funds, reserves, and payouts with premium financial control.
-              </h1>
+              <ProviderPageTitle
+                icon={<Wallet className="h-6 w-6" />}
+                title="Wallet & Payouts"
+                subtitle="Move ministry funds, reserves, and payouts with premium financial control across donations, crowdfunding, event registrations, supporter memberships, and FaithMart-linked revenue."
+              />
               <p className="mt-3 max-w-[900px] text-[15px] leading-7 text-slate-600">
                 A dedicated wallet and payouts command surface for donations, charity crowdfunding, event registrations,
                 supporter memberships, and FaithMart-linked revenue — with finance trust, payout readiness, and reconciliation all in one place.
@@ -1520,7 +1523,6 @@ export default function WalletAndPayoutsPage() {
     </div>
   );
 }
-
 
 
 

@@ -32,6 +32,7 @@ import {
 } from "lucide-react";
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
  * Provider — Roles & Permissions
@@ -1269,22 +1270,11 @@ export default function FH_P_112_RolesPermissionsPage() {
         <div className="rounded-[32px] border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
           <div className="flex flex-col gap-5 xl:flex-row xl:items-start xl:justify-between">
             <div className="min-w-0 flex-1">
-              <div className="flex items-center gap-4">
-                <div
-                  className="grid h-12 w-12 place-items-center rounded-[18px] text-white"
-                  style={{ background: EV_GREEN }}
-                >
-                  <UserCog className="h-6 w-6" />
-                </div>
-                <div className="min-w-0">
-                  <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
-                    Roles & Permissions
-                  </div>
-                  <div className="mt-1.5 text-[14px] leading-6 text-slate-500 dark:text-slate-400">
-                    Premium Provider RBAC surface for workspace access, role templates, approval paths, scope control, and sensitive-action permissions.
-                  </div>
-                </div>
-              </div>
+              <ProviderPageTitle
+                icon={<UserCog className="h-6 w-6" />}
+                title="Roles & Permissions"
+                subtitle="Premium Provider RBAC surface for workspace access, role templates, approval paths, scope control, and sensitive-action permissions."
+              />
 
               <div className="mt-5 flex flex-wrap items-center gap-3">
                 <TonePill tone="accent">Sensitive gates {stats.sensitiveGates}</TonePill>
@@ -1795,7 +1785,6 @@ export default function FH_P_112_RolesPermissionsPage() {
     </div>
   );
 }
-
 
 
 

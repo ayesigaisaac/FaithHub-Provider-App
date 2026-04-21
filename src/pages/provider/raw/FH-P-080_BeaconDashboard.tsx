@@ -28,6 +28,7 @@ import {
 } from "lucide-react";
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
  * Provider — Beacon Dashboard
@@ -1298,15 +1299,15 @@ export default function BeaconDashboardPage() {
                 <span className="text-slate-300 dark:text-slate-700">/</span>
                 <span className="font-medium text-slate-700 dark:text-slate-300">Dashboard</span>
               </div>
-              <div className="mt-2 flex flex-wrap items-center gap-3">
-                <div className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-slate-50 tracking-tight">Beacon Dashboard</div>
+              <ProviderPageTitle
+                icon={<BarChart3 className="h-6 w-6" />}
+                title="Beacon Dashboard"
+                subtitle="Premium control center for promotion, spend, reach, conversions, creative health, and recommendations across active and past Beacon campaigns."
+              />
+              <div className="mt-3 flex flex-wrap items-center gap-3">
                 <Pill tone="pro">
                   <Sparkles className="h-3.5 w-3.5" /> Premium promotion engine
                 </Pill>
-              </div>
-              <div className="mt-2 max-w-4xl text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
-                Give Providers a premium control center for promotion, spend, reach, conversions, creative health,
-                and recommendations across all active and past Beacon campaigns.
               </div>
             </div>
 
@@ -1813,7 +1814,6 @@ export default function BeaconDashboardPage() {
     </div>
   );
 }
-
 
 
 

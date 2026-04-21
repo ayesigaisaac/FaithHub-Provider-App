@@ -25,6 +25,7 @@ import {
   X,
   Zap,
 } from "lucide-react";
+import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
  * Provider — Episode Builder
@@ -985,12 +986,11 @@ export default function EpisodeBuilderPage() {
         <div className="rounded-[32px] border border-slate-200 bg-white px-7 py-6 shadow-[0_20px_60px_rgba(15,23,42,0.08)]">
           <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
             <div className="min-w-0">
-              <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
-                — Episode Builder
-              </div>
-              <div className="mt-1.5 text-[14px] leading-6 text-slate-500 dark:text-slate-400">
-                Premium creator-style episode workflow with embedded landing-page preview.
-              </div>
+              <ProviderPageTitle
+                icon={<Film className="h-6 w-6" />}
+                title="Episode Builder"
+                subtitle="Premium creator-style episode workflow with embedded landing-page preview."
+              />
             </div>
 
             <div className="flex flex-wrap items-center gap-3">
@@ -1755,7 +1755,6 @@ export default function EpisodeBuilderPage() {
     </div>
   );
 }
-
 
 
 

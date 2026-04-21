@@ -22,6 +22,7 @@ import {
   X,
 } from "lucide-react";
 import { KpiTile } from "../../../components/ui/KpiTile";
+import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
  * Provider — Audit Log
@@ -1066,25 +1067,11 @@ export default function AuditLogPage() {
         <div className="rounded-[28px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 transition-colors">
           <div className="flex flex-col gap-5 xl:flex-row xl:items-start xl:justify-between">
             <div className="min-w-0 flex-1">
-              <div className="inline-flex items-center gap-3">
-                <span
-                  className="h-12 w-12 rounded-[18px] grid place-items-center text-white shadow-sm"
-                  style={{ background: GREEN }}
-                >
-                  <History className="h-6 w-6" />
-                </span>
-                <div className="min-w-0">
-                  <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
-                    Audit Log
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-1.5 text-[14px] leading-6 text-slate-500 dark:text-slate-400">
-                Immutable-style operational history for role changes, publishing actions, moderation actions,
-                finance changes, and admin events. Use this page to filter activity, verify evidence trails,
-                and investigate high-signal changes without losing institutional context.
-              </div>
+              <ProviderPageTitle
+                icon={<History className="h-6 w-6" />}
+                title="Audit Log"
+                subtitle="Immutable-style operational history for role changes, publishing actions, moderation actions, finance changes, and admin events. Use this page to filter activity, verify evidence trails, and investigate high-signal changes without losing institutional context."
+              />
 
               <div className="mt-4 flex flex-wrap items-center gap-2">
                 <Pill tone="good">Signed event chain active</Pill>
@@ -1660,7 +1647,6 @@ export default function AuditLogPage() {
     </div>
   );
 }
-
 
 
 

@@ -35,6 +35,7 @@ import {
   Zap,
 } from "lucide-react";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
  * Provider — Standalone Teaching Builder
@@ -1750,12 +1751,13 @@ export default function StandaloneTeachingBuilderPage() {
             <div className="min-w-0">
               <div className="text-[11px] font-black uppercase tracking-[0.18em] text-slate-400">Provider Side</div>
               <div className="mt-2 flex flex-col gap-2 lg:flex-row lg:items-center lg:gap-4">
-                <h1 className="text-[34px] sm:text-[40px] lg:text-[46px] font-black leading-none tracking-[-0.03em] text-slate-900">Standalone Teaching Builder</h1>
+                <ProviderPageTitle
+                  icon={<Mic className="h-6 w-6" />}
+                  title="Standalone Teaching Builder"
+                  subtitle="Premium creator-style page for shaping a sermon or teaching that lives outside any Series or Episode while still supporting live delivery, replay packaging, clips, reviews, giving, and promotion."
+                />
                 <Pill tone="good">Standalone-first</Pill>
               </div>
-              <p className="mt-2 max-w-[920px] text-[15px] leading-7 text-slate-500">
-                Premium creator-style page for shaping a sermon or teaching that lives outside any Series or Episode while still supporting live delivery, replay packaging, clips, reviews, giving, and promotion.
-              </p>
             </div>
             <div className="flex flex-wrap items-center gap-3 xl:justify-end">
               <SoftButton onClick={() => setToast("Standalone teaching draft saved.")}>Save teaching draft</SoftButton>
@@ -1838,7 +1840,6 @@ export default function StandaloneTeachingBuilderPage() {
     </div>
   );
 }
-
 
 
 

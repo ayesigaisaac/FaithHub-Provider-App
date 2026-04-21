@@ -33,6 +33,7 @@ import {
   Zap,
 } from "lucide-react";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
  * Provider — Teachings Dashboard
@@ -1140,19 +1141,12 @@ export default function TeachingsDashboardPage() {
         <section className="rounded-[34px] border border-slate-200 bg-white p-4 shadow-sm md:p-5">
           <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
             <div className="flex min-w-0 gap-4">
-              <div
-                className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl text-white shadow-sm"
-                style={{ background: EV_GREEN }}
-              >
-                <BookOpen className="h-6 w-6" />
-              </div>
               <div className="min-w-0">
-                <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
-                  Teachings Dashboard
-                </div>
-                <div className="mt-1.5 text-[14px] leading-6 text-slate-500 dark:text-slate-400">
-                  Premium operating surface for Series, Episodes, and Standalone teachings — built to keep structured journeys and one-off sermons in one calm, world-class control center.
-                </div>
+                <ProviderPageTitle
+                  icon={<BookOpen className="h-6 w-6" />}
+                  title="Teachings Dashboard"
+                  subtitle="Premium operating surface for Series, Episodes, and Standalone teachings — built to keep structured journeys and one-off sermons in one calm, world-class control center."
+                />
                 <div className="mt-3 flex flex-wrap gap-2">
                   <Pill tone="good">Standalone-first</Pill>
                   <Pill tone="navy">Series-aware</Pill>
@@ -1672,6 +1666,5 @@ export default function TeachingsDashboardPage() {
     </div>
   );
 }
-
 
 

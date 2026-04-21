@@ -38,6 +38,7 @@ import {
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { type ButtonActionId, resolveActionFromLabel } from "@/navigation/buttonActions";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
  * Provider — Beacon Builder
@@ -2630,16 +2631,15 @@ export default function BeaconBuilderPage({
                 <span className="text-slate-300 dark:text-slate-700">/</span>
                 <span className="font-medium text-slate-700 dark:text-slate-300">Beacon Builder</span>
               </div>
-              <div className="mt-2 flex flex-wrap items-center gap-2">
-                <div className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50">
-                  Beacon Builder
-                </div>
+              <ProviderPageTitle
+                icon={<Zap className="h-6 w-6" />}
+                title="Beacon Builder"
+                subtitle="Create a premium Beacon campaign from scratch — linked to platform content or fully standalone — with rich creative, audience logic, placement planning, and a launch-ready review flow."
+              />
+              <div className="mt-3 flex flex-wrap items-center gap-2">
                 <Pill tone="brand"><Zap className="h-3.5 w-3.5" /> Beacon</Pill>
                 <Pill tone="good">{builder.sourceMode}</Pill>
                 <Pill tone="pro">Preview-first workflow</Pill>
-              </div>
-              <div className="mt-1 text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-4xl">
-                Create a premium Beacon campaign from scratch — linked to platform content or fully standalone — with rich creative, audience logic, placement planning, and a launch-ready review flow.
               </div>
             </div>
             <div className="flex flex-wrap items-center gap-2">
@@ -2806,7 +2806,6 @@ export default function BeaconBuilderPage({
 
   return content;
 }
-
 
 
 

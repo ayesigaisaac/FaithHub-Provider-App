@@ -33,6 +33,7 @@ import {
 } from "lucide-react";
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
  * Provider — Noticeboard
@@ -1167,14 +1168,11 @@ export default function FaithHubNoticeboardPage() {
           <div className="flex flex-col gap-5 xl:flex-row xl:items-start xl:justify-between">
             <div className="min-w-0 flex-1">
 
-              <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
-                Noticeboard
-              </div>
-              <div className="mt-1.5 text-[14px] leading-6 text-slate-500 dark:text-slate-400">
-                Run institution-wide announcements, campus updates, prayer alerts, volunteer calls,
-                event reminders, and giving notices from one premium board — then route them into
-                Live Sessions, notifications, events, giving, and Beacon without losing control.
-              </div>
+              <ProviderPageTitle
+                icon={<Megaphone className="h-6 w-6" />}
+                title="Noticeboard"
+                subtitle="Run institution-wide announcements, campus updates, prayer alerts, volunteer calls, event reminders, and giving notices from one premium board — then route them into Live Sessions, notifications, events, giving, and Beacon without losing control."
+              />
 
               <div className="mt-5 flex flex-wrap items-center gap-2">
                 <Pill tone="good">
@@ -1888,7 +1886,6 @@ export default function FaithHubNoticeboardPage() {
     </div>
   );
 }
-
 
 
 

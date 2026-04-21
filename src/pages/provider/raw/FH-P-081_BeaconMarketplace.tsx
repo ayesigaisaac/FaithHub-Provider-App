@@ -3,6 +3,7 @@
 
 import React, { useMemo, useState } from "react";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import {
   AlertTriangle,
   BadgeCheck,
@@ -859,12 +860,11 @@ export default function BeaconMarketplacePage() {
         <div className="flex flex-col gap-5">
           <div className="flex flex-col justify-between gap-4 xl:flex-row xl:items-start">
             <div className="min-w-0">
-              <div className="text-[15px] font-black tracking-wide text-slate-500 dark:text-slate-400">
-                Beacon Marketplace
-              </div>
-              <h1 className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
-                Premium inventory, audience packages, and media-plan building for Beacon campaigns across surfaces.
-              </h1>
+              <ProviderPageTitle
+                icon={<Sparkles className="h-6 w-6" />}
+                title="Beacon Marketplace"
+                subtitle="Premium inventory, audience packages, and media-plan building for Beacon campaigns across surfaces."
+              />
               <div className="mt-4 flex flex-wrap items-center gap-2">
                 <Pill tone="green">Inventory planning</Pill>
                 <Pill tone="orange">Premium media plans</Pill>
@@ -1369,7 +1369,6 @@ export default function BeaconMarketplacePage() {
     </div>
   );
 }
-
 
 
 

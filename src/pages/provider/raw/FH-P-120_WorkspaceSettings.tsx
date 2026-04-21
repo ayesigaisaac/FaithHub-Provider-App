@@ -31,6 +31,7 @@ import {
   X,
 } from "lucide-react";
 import { KpiTile } from "../../../components/ui/KpiTile";
+import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
  * Provider — Workspace Settings
@@ -1032,17 +1033,15 @@ export default function WorkspaceSettingsPage() {
         <section className="rounded-[32px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 transition-colors">
           <div className="flex flex-col gap-5 xl:flex-row xl:items-start xl:justify-between">
             <div className="flex min-w-0 items-start gap-4">
-              <div className="h-12 w-12 rounded-2xl grid place-items-center text-white" style={{ background: GREEN }}>
-                <Settings className="h-5 w-5" />
-              </div>
               <div className="min-w-0">
                 <div className="text-[12px] font-extrabold uppercase tracking-[0.08em] text-slate-400 dark:text-slate-500">WORKSPACE GOVERNANCE</div>
-                <h1 className="mt-1 text-[24px] md:text-[30px] leading-tight font-black text-slate-900 dark:text-slate-100">
-                  Workspace Settings
-                </h1>
-                <p className="mt-2 max-w-4xl text-[13px] md:text-[14px] text-slate-500 dark:text-slate-400">
-                  Institution-wide defaults for branding, campuses, localization, workspace identity, integrations, and operational preferences.
-                </p>
+                <div className="mt-1">
+                  <ProviderPageTitle
+                    icon={<Settings className="h-6 w-6" />}
+                    title="Workspace Settings"
+                    subtitle="Institution-wide defaults for branding, campuses, localization, workspace identity, integrations, and operational preferences."
+                  />
+                </div>
                 <div className="mt-4 flex flex-wrap gap-2">
                   <Pill tone="brand">4 campuses</Pill>
                   <Pill>6 locale packs</Pill>
@@ -1442,7 +1441,6 @@ export default function WorkspaceSettingsPage() {
     </div>
   );
 }
-
 
 
 

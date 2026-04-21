@@ -31,6 +31,7 @@ import {
 } from "lucide-react";
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
  * Provider — Community Forum
@@ -1051,22 +1052,11 @@ export default function CommunityForumPage() {
         <div className="rounded-[34px] border border-slate-200 bg-white p-5 shadow-sm">
           <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
             <div className="min-w-0">
-              <div className="flex items-center gap-3">
-                <div
-                  className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl text-white shadow-sm"
-                  style={{ background: EV_GREEN }}
-                >
-                  <MessageSquare className="h-6 w-6" />
-                </div>
-                <div className="min-w-0">
-                  <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
-                    Community Forum
-                  </div>
-                  <div className="mt-1.5 text-[14px] leading-6 text-slate-500 dark:text-slate-400">
-                    Moderated discussion hub for threads, leader posts, and community engagement.
-                  </div>
-                </div>
-              </div>
+              <ProviderPageTitle
+                icon={<MessageSquare className="h-6 w-6" />}
+                title="Community Forum"
+                subtitle="Moderated discussion hub for threads, leader posts, and community engagement."
+              />
             </div>
 
             <div className="flex flex-col gap-3 xl:items-end">
@@ -1640,7 +1630,6 @@ export default function CommunityForumPage() {
     </div>
   );
 }
-
 
 
 
