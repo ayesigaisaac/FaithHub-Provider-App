@@ -140,7 +140,7 @@ Because several attached pages navigate using full path changes such as `/faithh
 
 ```text
 src/
-  components/
+  components/1`                       
     shell/
   contexts/
   hooks/

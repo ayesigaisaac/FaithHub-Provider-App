@@ -1,9 +1,10 @@
 import { createTheme, alpha } from '@mui/material/styles';
-import { brandTokens } from './tokens';
+import { brandTokens, designTokens, getCssThemeVariables } from './tokens';
 import type { PaletteMode } from '@mui/material';
 
 export function createAppTheme(mode: PaletteMode) {
   const isDark = mode === 'dark';
+  const cssThemeVariables = getCssThemeVariables(mode);
 
   return createTheme({
   palette: {
@@ -37,18 +38,10 @@ export function createAppTheme(mode: PaletteMode) {
     },
   },
   shape: {
-    borderRadius: 18,
+    borderRadius: 16,
   },
   typography: {
-    fontFamily: [
-      'Inter',
-      'ui-sans-serif',
-      'system-ui',
-      '-apple-system',
-      'BlinkMacSystemFont',
-      'Segoe UI',
-      'sans-serif',
-    ].join(','),
+    fontFamily: designTokens.typography.fontFamily,
     h1: { fontSize: '2.4rem', fontWeight: 800, letterSpacing: '-0.03em' },
     h2: { fontSize: '1.9rem', fontWeight: 800, letterSpacing: '-0.03em' },
     h3: { fontSize: '1.5rem', fontWeight: 700, letterSpacing: '-0.02em' },
@@ -58,13 +51,7 @@ export function createAppTheme(mode: PaletteMode) {
     MuiCssBaseline: {
       styleOverrides: {
         ':root': {
-          '--fh-brand': brandTokens.green,
-          '--fh-brand-dark': brandTokens.greenDark,
-          '--fh-accent': brandTokens.orange,
-          '--fh-line': brandTokens.line,
-          '--fh-surface': brandTokens.surface,
-          '--fh-page-bg': isDark ? '#0b1220' : '#f4f8f6',
-          '--fh-surface-bg': isDark ? '#0f172a' : '#ffffff',
+          ...cssThemeVariables,
         },
         body: {
           background: isDark
