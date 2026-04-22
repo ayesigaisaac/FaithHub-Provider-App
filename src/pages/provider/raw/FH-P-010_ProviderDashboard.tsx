@@ -1,4 +1,4 @@
-ï»¿// @ts-nocheck
+// @ts-nocheck
 
 "use client";
 
@@ -41,7 +41,7 @@ import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
- * Provider â€” Provider Dashboard
+ * Provider — Provider Dashboard
  * --------------------------------------
  * Premium provider-side mission control page.
  *
@@ -427,7 +427,7 @@ const EXECUTIVE_METRICS: Record<RoleKey, MetricCard[]> = {
     {
       id: "spend",
       label: "Beacon spend",
-      value: "Â£3.9k",
+      value: "£3.9k",
       hint: "Current spend against plan and placement pacing",
       delta: "64% pace",
       accent: "orange",
@@ -610,20 +610,20 @@ const LIVE_SESSIONS: LiveSessionRow[] = [
   {
     id: "ls-1",
     title: "Evening Prayer Revival",
-    time: "18:30 â€” 19:45",
+    time: "18:30 — 19:45",
     campus: "Kampala Central",
-    audience: "Prayer community Â· Public",
+    audience: "Prayer community · Public",
     readiness: "At risk",
     health: "Watching",
-    backstage: "Host joined Â· Captioner pending",
+    backstage: "Host joined · Captioner pending",
     warning: "Caption operator check still open",
   },
   {
     id: "ls-2",
     title: "Faith & Work Midweek Class",
-    time: "20:00 â€” 21:00",
+    time: "20:00 — 21:00",
     campus: "Online Studio",
-    audience: "Series audience Â· Members first",
+    audience: "Series audience · Members first",
     readiness: "Ready",
     health: "Healthy",
     backstage: "All roles confirmed",
@@ -633,10 +633,10 @@ const LIVE_SESSIONS: LiveSessionRow[] = [
     title: "Youth Outreach Q&A",
     time: "Sat 15:00",
     campus: "Youth Hall",
-    audience: "Youth ministry Â· RSVP",
+    audience: "Youth ministry · RSVP",
     readiness: "Blocked",
     health: "Watching",
-    backstage: "Moderator gap Â· venue AV unresolved",
+    backstage: "Moderator gap · venue AV unresolved",
     warning: "Venue mic routing conflict detected",
   },
 ];
@@ -644,7 +644,7 @@ const LIVE_SESSIONS: LiveSessionRow[] = [
 const PIPELINE_ITEMS: PipelineItem[] = [
   {
     id: "p-1",
-    title: "Hope in the Wilderness â€” Episode 02",
+    title: "Hope in the Wilderness — Episode 02",
     type: "Episode draft",
     status: "Missing assets",
     owner: "Content editor",
@@ -652,7 +652,7 @@ const PIPELINE_ITEMS: PipelineItem[] = [
   },
   {
     id: "p-2",
-    title: "Stand Firm â€” Standalone Teaching",
+    title: "Stand Firm — Standalone Teaching",
     type: "Standalone teaching",
     status: "Awaiting review",
     owner: "Pastoral review",
@@ -738,7 +738,7 @@ const BEACON_ITEMS: BeaconItem[] = [
     id: "b-1",
     title: "Sunday Encounter replay boost",
     mode: "Linked",
-    spend: "Â£1.2k",
+    spend: "£1.2k",
     outcome: "784 watch starts",
     status: "Healthy",
   },
@@ -746,7 +746,7 @@ const BEACON_ITEMS: BeaconItem[] = [
     id: "b-2",
     title: "Youth Camp registration push",
     mode: "Linked",
-    spend: "Â£820",
+    spend: "£820",
     outcome: "41 registrations",
     status: "Learning",
   },
@@ -754,7 +754,7 @@ const BEACON_ITEMS: BeaconItem[] = [
     id: "b-3",
     title: "Care & Missions awareness",
     mode: "Standalone",
-    spend: "Â£460",
+    spend: "£460",
     outcome: "183 giving clicks",
     status: "Needs approval",
   },
@@ -762,7 +762,7 @@ const BEACON_ITEMS: BeaconItem[] = [
     id: "b-4",
     title: "Prayer Night announcement",
     mode: "Standalone",
-    spend: "Â£210",
+    spend: "£210",
     outcome: "CTR softening",
     status: "Fatigue risk",
   },
@@ -772,21 +772,21 @@ const TRUST_CASES: TrustCase[] = [
   {
     id: "t-1",
     title: "Audio complaint cluster on Prayer Night replay",
-    source: "Reviews Â· Replay",
+    source: "Reviews · Replay",
     priority: "High",
     owner: "Production team",
   },
   {
     id: "t-2",
     title: "Reported chat messages during Youth Outreach live",
-    source: "Moderation Â· Live chat",
+    source: "Moderation · Live chat",
     priority: "Critical",
     owner: "Moderator lead",
   },
   {
     id: "t-3",
     title: "Flagged clip comment thread",
-    source: "Clips Â· Public comments",
+    source: "Clips · Public comments",
     priority: "Medium",
     owner: "Community manager",
   },
@@ -814,7 +814,7 @@ const RECOMMENDATIONS_BY_ROLE: Record<
     {
       id: "r-2",
       title: "Convert Flood Relief into a live fundraiser moment",
-      detail: "Tonightâ€™s prayer stream is the strongest fit for donor urgency and public momentum.",
+      detail: "Tonight’s prayer stream is the strongest fit for donor urgency and public momentum.",
       cta: "Open Live Builder",
       tone: "good",
     },
@@ -889,7 +889,7 @@ const RECOMMENDATIONS_BY_ROLE: Record<
     },
     {
       id: "r-3",
-      title: "Insert a giving moment into tonightâ€™s live",
+      title: "Insert a giving moment into tonight’s live",
       detail: "Prayer Night already has strong attendance forecasts and could support a clear donor CTA.",
       cta: "Open Live Builder",
       tone: "good",
@@ -957,9 +957,9 @@ function tonePill(tone: Tone) {
     return "bg-orange-50 text-orange-700 border-orange-200";
   }
   if (tone === "navy") {
-    return "bg-slate-100 text-slate-800 border-slate-200";
+    return "bg-slate-100 text-slate-800 border-faith-line";
   }
-  return "bg-white text-slate-700 border-slate-200";
+  return "bg-[var(--fh-surface-bg)] text-slate-700 border-faith-line";
 }
 
 function accentBg(accent: "green" | "orange" | "navy") {
@@ -1006,17 +1006,17 @@ function SectionCard({
   return (
     <section
       className={cx(
-        "rounded-[16px] border border-slate-200 bg-white p-3 sm:p-4 md:p-5 shadow-sm",
+        "rounded-[16px] border border-faith-line bg-[var(--fh-surface-bg)] p-3 sm:p-4 md:p-5 shadow-soft",
         className,
       )}
     >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
-          <h3 className="text-[15px] font-bold tracking-tight text-slate-900">
+          <h3 className="text-[15px] font-bold tracking-tight text-faith-ink">
             {title}
           </h3>
           {subtitle ? (
-            <p className="mt-1 text-[12px] leading-5 text-slate-500">
+            <p className="mt-1 text-[12px] leading-5 text-faith-slate">
               {subtitle}
             </p>
           ) : null}
@@ -1044,13 +1044,13 @@ function GhostButton({
       ? "text-emerald-700 border-emerald-200 hover:bg-emerald-50"
       : accent === "orange"
         ? "text-orange-700 border-orange-200 hover:bg-orange-50"
-        : "text-slate-700 border-slate-200 hover:bg-slate-50";
+        : "text-slate-700 border-faith-line hover:bg-[var(--fh-surface)]";
   return (
     <button
       type="button"
       onClick={onClick}
       className={cx(
-        "inline-flex items-center gap-2 rounded-xl border bg-white px-3 py-1.5 text-[12px] font-semibold transition-colors",
+        "inline-flex items-center gap-2 rounded-xl border bg-[var(--fh-surface-bg)] px-3 py-1.5 text-[12px] font-semibold transition-colors",
         activeColor,
       )}
     >
@@ -1094,7 +1094,7 @@ function MetricTile({ metric }: { metric: MetricCard }) {
       size="tall"
       footer={
         metric.delta ? (
-          <div className="inline-flex items-center gap-1 rounded-full bg-slate-50 px-2.5 py-1 text-[11px] font-semibold text-emerald-700 dark:bg-slate-800 dark:text-emerald-300">
+          <div className="inline-flex items-center gap-1 rounded-full bg-[var(--fh-surface)] px-2.5 py-1 text-[11px] font-semibold text-emerald-700 dark:bg-slate-800 dark:text-emerald-300">
             <TrendingUp className="h-3.5 w-3.5" />
             {metric.delta}
           </div>
@@ -1142,7 +1142,7 @@ function RoleChip({
         "inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-[12px] font-semibold transition-colors",
         active
           ? "border-transparent text-white"
-          : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50",
+          : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 hover:bg-[var(--fh-surface)]",
       )}
       style={active ? { background: EV_NAVY } : undefined}
     >
@@ -1166,13 +1166,13 @@ function SelectPill({
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="h-11 rounded-2xl border border-slate-200 bg-white px-3 pr-9 text-[12px] font-semibold text-slate-700 shadow-sm outline-none focus:border-slate-300"
+        className="h-11 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 pr-9 text-[12px] font-semibold text-slate-700 shadow-soft outline-none focus:border-slate-300"
       >
         {options.map((option) => (
           <option key={option}>{option}</option>
         ))}
       </select>
-      <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+      <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-faith-slate" />
     </div>
   );
 }
@@ -1244,12 +1244,12 @@ export default function ProviderDashboardPage() {
 
   return (
     <div
-      className="min-h-screen w-full bg-[#f2f2f2] text-slate-900 transition-colors dark:bg-slate-950 dark:text-slate-100"
+      className="min-h-screen w-full bg-[var(--fh-page-bg)] text-faith-ink transition-colors dark:bg-slate-950 dark:text-slate-100"
     >
       <div className="w-full max-w-none px-0 py-0">
         <div className="space-y-4 sm:space-y-5">
           {/* Top hero / mission command */}
-          <section className="rounded-[16px] border border-slate-200 bg-white p-3 sm:p-4 md:p-5 shadow-sm">
+          <section className="rounded-[16px] border border-faith-line bg-[var(--fh-surface-bg)] p-3 sm:p-4 md:p-5 shadow-soft">
             <div className="grid gap-4 sm:gap-6 xl:grid-cols-[1.25fr,0.9fr]">
               <div className="min-w-0">
                 <ProviderPageTitle
@@ -1272,7 +1272,7 @@ export default function ProviderDashboardPage() {
                     left={<AlertTriangle className="h-3.5 w-3.5" />}
                   />
                   <Pill
-                    text={`${readinessSummary.ready} ready Â· ${readinessSummary.atRisk} at risk Â· ${readinessSummary.blocked} blocked`}
+                    text={`${readinessSummary.ready} ready · ${readinessSummary.atRisk} at risk · ${readinessSummary.blocked} blocked`}
                     tone="brand"
                     left={<Radio className="h-3.5 w-3.5" />}
                   />
@@ -1307,23 +1307,23 @@ export default function ProviderDashboardPage() {
               </div>
 
               <div className="grid gap-3 sm:gap-4 lg:grid-cols-2 xl:grid-cols-1">
-                <div className="rounded-[14px] border border-slate-200 bg-slate-50 p-3 sm:p-4 md:p-5">
-                  <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-slate-400">
+                <div className="rounded-lg border border-faith-line bg-[var(--fh-surface)] p-3 sm:p-4 md:p-5">
+                  <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-faith-slate">
                     Profile summary
                   </div>
                   <div className="mt-3 flex items-start gap-3">
                     <div
-                      className="grid h-14 w-14 place-items-center rounded-[20px] text-white text-[18px] font-black"
+                      className="grid h-14 w-14 place-items-center rounded-xl text-white text-[18px] font-black"
                       style={{ background: EV_GREEN }}
                     >
                       FH
                     </div>
                     <div className="min-w-0">
-                      <div className="text-[20px] font-black tracking-tight text-slate-900">
+                      <div className="text-[20px] font-black tracking-tight text-faith-ink">
                         Ayesigai921
                       </div>
-                      <div className="mt-1 text-[13px] text-slate-500">Provider</div>
-                      <div className="text-[13px] text-slate-500">
+                      <div className="mt-1 text-[13px] text-faith-slate">Provider</div>
+                      <div className="text-[13px] text-faith-slate">
                         Provider Workspace
                       </div>
                     </div>
@@ -1347,9 +1347,9 @@ export default function ProviderDashboardPage() {
                   </div>
                 </div>
 
-                <div className="rounded-[14px] border border-slate-200 bg-slate-50 p-3 sm:p-4 md:p-5">
+                <div className="rounded-lg border border-faith-line bg-[var(--fh-surface)] p-3 sm:p-4 md:p-5">
                   <div className="flex items-center justify-between gap-2">
-                    <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-slate-400">
+                    <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-faith-slate">
                       Role-aware views
                     </div>
                     <Pill
@@ -1372,7 +1372,7 @@ export default function ProviderDashboardPage() {
 
                   <div className="mt-4 grid gap-3 sm:grid-cols-3 xl:grid-cols-3">
                     <div>
-                      <div className="text-[11px] font-semibold text-slate-500">
+                      <div className="text-[11px] font-semibold text-faith-slate">
                         Campus
                       </div>
                       <div className="mt-1">
@@ -1384,7 +1384,7 @@ export default function ProviderDashboardPage() {
                       </div>
                     </div>
                     <div>
-                      <div className="text-[11px] font-semibold text-slate-500">
+                      <div className="text-[11px] font-semibold text-faith-slate">
                         Language
                       </div>
                       <div className="mt-1">
@@ -1396,7 +1396,7 @@ export default function ProviderDashboardPage() {
                       </div>
                     </div>
                     <div>
-                      <div className="text-[11px] font-semibold text-slate-500">
+                      <div className="text-[11px] font-semibold text-faith-slate">
                         Saved view
                       </div>
                       <div className="mt-1">
@@ -1413,13 +1413,13 @@ export default function ProviderDashboardPage() {
             </div>
 
             {/* Executive command header */}
-            <div className="mt-4 rounded-[14px] border border-slate-200 bg-slate-50 p-3 sm:p-4 md:p-5">
+            <div className="mt-4 rounded-lg border border-faith-line bg-[var(--fh-surface)] p-3 sm:p-4 md:p-5">
               <div className="flex flex-wrap items-start justify-between gap-3">
                 <div>
-                  <div className="text-[15px] font-bold tracking-tight text-slate-900">
+                  <div className="text-[15px] font-bold tracking-tight text-faith-ink">
                     Top KPIs
                   </div>
-                  <div className="mt-1 text-[12px] text-slate-500">
+                  <div className="mt-1 text-[12px] text-faith-slate">
                     Snapshot of audience growth, live readiness, replay performance, and giving health.
                   </div>
                 </div>
@@ -1453,13 +1453,13 @@ export default function ProviderDashboardPage() {
             </div>
 
             {/* Quick-create rail */}
-            <div className="mt-4 rounded-[14px] border border-slate-200 bg-slate-50 p-3 sm:p-4 md:p-5">
+            <div className="mt-4 rounded-lg border border-faith-line bg-[var(--fh-surface)] p-3 sm:p-4 md:p-5">
               <div className="flex items-center justify-between gap-3">
                 <div>
-                  <div className="text-[15px] font-bold tracking-tight text-slate-900">
+                  <div className="text-[15px] font-bold tracking-tight text-faith-ink">
                     Quick-create rail
                   </div>
-                  <div className="mt-1 text-[12px] text-slate-500">
+                  <div className="mt-1 text-[12px] text-faith-slate">
                     Launch the most important provider workflows in one click.
                   </div>
                 </div>
@@ -1475,7 +1475,7 @@ export default function ProviderDashboardPage() {
                     key={action.id}
                     type="button"
                     onClick={() => openQuickAction(action.id)}
-                    className="rounded-[14px] border border-slate-200 bg-white p-4 text-left shadow-sm transition hover:-translate-y-[1px] hover:shadow-md"
+                    className="rounded-lg border border-faith-line bg-[var(--fh-surface-bg)] p-4 text-left shadow-soft transition hover:-translate-y-[1px] hover:shadow-md"
                   >
                     <div
                       className="grid h-10 w-10 place-items-center rounded-[12px] text-white"
@@ -1483,10 +1483,10 @@ export default function ProviderDashboardPage() {
                     >
                       {action.icon}
                     </div>
-                    <div className="mt-3 text-[14px] font-bold text-slate-900">
+                    <div className="mt-3 text-[14px] font-bold text-faith-ink">
                       {action.label}
                     </div>
-                    <div className="mt-1 text-[12px] leading-5 text-slate-500">
+                    <div className="mt-1 text-[12px] leading-5 text-faith-slate">
                       {action.detail}
                     </div>
                     <div className="mt-3 inline-flex items-center gap-1 text-[12px] font-semibold text-slate-700">
@@ -1509,14 +1509,14 @@ export default function ProviderDashboardPage() {
                 {NOTIFICATIONS.map((item) => (
                   <div
                     key={item.id}
-                    className="rounded-[22px] border border-slate-200 bg-slate-50 p-4"
+                    className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4"
                   >
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0">
-                        <div className="text-[14px] font-bold text-slate-900">
+                        <div className="text-[14px] font-bold text-faith-ink">
                           {item.title}
                         </div>
-                        <div className="mt-1 text-[12px] leading-5 text-slate-500">
+                        <div className="mt-1 text-[12px] leading-5 text-faith-slate">
                           {item.detail}
                         </div>
                       </div>
@@ -1537,18 +1537,18 @@ export default function ProviderDashboardPage() {
                     key={item.id}
                     type="button"
                     onClick={() => openContinueItem(item.cta)}
-                    className="w-full rounded-[22px] border border-slate-200 bg-slate-50 p-4 text-left transition hover:bg-white"
+                    className="w-full rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4 text-left transition hover:bg-[var(--fh-surface-bg)]"
                   >
                     <div className="flex items-start justify-between gap-2">
                       <div className="min-w-0">
-                        <div className="text-[14px] font-bold text-slate-900">
+                        <div className="text-[14px] font-bold text-faith-ink">
                           {item.label}
                         </div>
-                        <div className="mt-1 text-[12px] leading-5 text-slate-500">
+                        <div className="mt-1 text-[12px] leading-5 text-faith-slate">
                           {item.detail}
                         </div>
                       </div>
-                      <ChevronRight className="mt-1 h-4 w-4 shrink-0 text-slate-400" />
+                      <ChevronRight className="mt-1 h-4 w-4 shrink-0 text-faith-slate" />
                     </div>
                   </button>
                 ))}
@@ -1562,12 +1562,12 @@ export default function ProviderDashboardPage() {
           >
             <div className="grid gap-3 xl:grid-cols-[minmax(0,1fr),160px,190px]">
               <div className="relative">
-                <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+                <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-faith-slate" />
                 <input
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   placeholder="Search live sessions, series, events, campaigns, reviews, or contacts"
-                  className="h-12 w-full rounded-2xl border border-slate-200 bg-white pl-11 pr-4 text-[13px] font-medium text-slate-700 outline-none focus:border-slate-300"
+                  className="h-12 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] pl-11 pr-4 text-[13px] font-medium text-slate-700 outline-none focus:border-slate-300"
                 />
               </div>
               <SelectPill value={timeFilter} options={["Today", "This week", "This month"]} onChange={setTimeFilter} />
@@ -1591,7 +1591,7 @@ export default function ProviderDashboardPage() {
           <div className="grid gap-3 sm:gap-4 xl:grid-cols-12">
             <SectionCard
               title="Live Sessions command center"
-              subtitle="Todayâ€™s schedule, readiness state, late-start warnings, stream health, backstage availability, and one-click handoff into operations."
+              subtitle="Today’s schedule, readiness state, late-start warnings, stream health, backstage availability, and one-click handoff into operations."
               className="xl:col-span-7"
               right={
                 <div className="flex flex-wrap gap-2">
@@ -1614,12 +1614,12 @@ export default function ProviderDashboardPage() {
                 {LIVE_SESSIONS.map((item) => (
                   <div
                     key={item.id}
-                    className="rounded-[24px] border border-slate-200 bg-slate-50 p-4"
+                    className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4"
                   >
                     <div className="flex flex-col gap-3 xl:flex-row xl:items-center xl:justify-between">
                       <div className="min-w-0">
                         <div className="flex flex-wrap items-center gap-2">
-                          <div className="text-[16px] font-bold tracking-tight text-slate-900">
+                          <div className="text-[16px] font-bold tracking-tight text-faith-ink">
                             {item.title}
                           </div>
                           <Pill
@@ -1643,11 +1643,11 @@ export default function ProviderDashboardPage() {
                             }
                           />
                         </div>
-                        <div className="mt-2 flex flex-wrap items-center gap-2 text-[12px] text-slate-500">
+                        <div className="mt-2 flex flex-wrap items-center gap-2 text-[12px] text-faith-slate">
                           <span>{item.time}</span>
-                          <span>â€¢</span>
+                          <span>•</span>
                           <span>{item.campus}</span>
-                          <span>â€¢</span>
+                          <span>•</span>
                           <span>{item.audience}</span>
                         </div>
                         <div className="mt-2 text-[12px] font-medium text-slate-700">
@@ -1697,15 +1697,15 @@ export default function ProviderDashboardPage() {
                 {PIPELINE_ITEMS.map((item) => (
                   <div
                     key={item.id}
-                    className="rounded-[22px] border border-slate-200 bg-slate-50 p-4"
+                    className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4"
                   >
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0">
-                        <div className="text-[14px] font-bold text-slate-900">
+                        <div className="text-[14px] font-bold text-faith-ink">
                           {item.title}
                         </div>
-                        <div className="mt-1 text-[12px] text-slate-500">
-                          {item.type} Â· {item.owner} Â· Due {item.due}
+                        <div className="mt-1 text-[12px] text-faith-slate">
+                          {item.type} · {item.owner} · Due {item.due}
                         </div>
                       </div>
                       <Pill
@@ -1743,17 +1743,17 @@ export default function ProviderDashboardPage() {
                 {AUDIENCE_STATS.map((item) => (
                   <div
                     key={item.id}
-                    className="rounded-[22px] border border-slate-200 bg-slate-50 p-4"
+                    className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4"
                   >
                     <div className="flex items-start justify-between gap-3">
                       <div>
-                        <div className="text-[12px] font-semibold uppercase tracking-[0.14em] text-slate-400">
+                        <div className="text-[12px] font-semibold uppercase tracking-[0.14em] text-faith-slate">
                           {item.label}
                         </div>
-                        <div className="mt-2 text-[24px] font-black tracking-tight text-slate-900">
+                        <div className="mt-2 text-[24px] font-black tracking-tight text-faith-ink">
                           {item.value}
                         </div>
-                        <div className="mt-1 text-[12px] leading-5 text-slate-500">
+                        <div className="mt-1 text-[12px] leading-5 text-faith-slate">
                           {item.sublabel}
                         </div>
                       </div>
@@ -1781,14 +1781,14 @@ export default function ProviderDashboardPage() {
                 {GIVING_CAMPAIGNS.map((item) => (
                   <div
                     key={item.id}
-                    className="rounded-[22px] border border-slate-200 bg-slate-50 p-4"
+                    className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4"
                   >
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0">
-                        <div className="text-[14px] font-bold text-slate-900">
+                        <div className="text-[14px] font-bold text-faith-ink">
                           {item.title}
                         </div>
-                        <div className="mt-1 text-[12px] text-slate-500">
+                        <div className="mt-1 text-[12px] text-faith-slate">
                           {item.type}
                         </div>
                       </div>
@@ -1837,15 +1837,15 @@ export default function ProviderDashboardPage() {
                 {BEACON_ITEMS.map((item) => (
                   <div
                     key={item.id}
-                    className="rounded-[22px] border border-slate-200 bg-slate-50 p-4"
+                    className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4"
                   >
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0">
-                        <div className="text-[14px] font-bold text-slate-900">
+                        <div className="text-[14px] font-bold text-faith-ink">
                           {item.title}
                         </div>
-                        <div className="mt-1 text-[12px] text-slate-500">
-                          {item.mode} campaign Â· {item.spend}
+                        <div className="mt-1 text-[12px] text-faith-slate">
+                          {item.mode} campaign · {item.spend}
                         </div>
                       </div>
                       <Pill
@@ -1894,15 +1894,15 @@ export default function ProviderDashboardPage() {
                 {TRUST_CASES.map((item) => (
                   <div
                     key={item.id}
-                    className="rounded-[22px] border border-slate-200 bg-slate-50 p-4"
+                    className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4"
                   >
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0">
-                        <div className="text-[14px] font-bold text-slate-900">
+                        <div className="text-[14px] font-bold text-faith-ink">
                           {item.title}
                         </div>
-                        <div className="mt-1 text-[12px] text-slate-500">
-                          {item.source} Â· {item.owner}
+                        <div className="mt-1 text-[12px] text-faith-slate">
+                          {item.source} · {item.owner}
                         </div>
                       </div>
                       <Pill
@@ -1931,14 +1931,14 @@ export default function ProviderDashboardPage() {
                 {recommendations.map((item) => (
                   <div
                     key={item.id}
-                    className="rounded-[22px] border border-slate-200 bg-slate-50 p-4"
+                    className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4"
                   >
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0">
-                        <div className="text-[14px] font-bold text-slate-900">
+                        <div className="text-[14px] font-bold text-faith-ink">
                           {item.title}
                         </div>
-                        <div className="mt-1 text-[12px] leading-5 text-slate-500">
+                        <div className="mt-1 text-[12px] leading-5 text-faith-slate">
                           {item.detail}
                         </div>
                       </div>
@@ -2003,14 +2003,14 @@ export default function ProviderDashboardPage() {
               ].map((item) => (
                 <div
                   key={item.label}
-                  className="rounded-[24px] border border-slate-200 bg-white p-4 min-h-[170px] shadow-sm"
+                  className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 min-h-[170px] shadow-soft"
                 >
                   <div className="flex items-center justify-between gap-3">
-                    <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
+                    <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-faith-slate">
                       {item.label}
                     </div>
                     <div
-                      className="grid h-12 w-12 place-items-center rounded-[14px]"
+                      className="grid h-12 w-12 place-items-center rounded-lg"
                       style={{
                         background:
                           item.accent === "green"
@@ -2024,10 +2024,10 @@ export default function ProviderDashboardPage() {
                       {item.icon}
                     </div>
                   </div>
-                  <div className="mt-3 text-[30px] font-black leading-none tracking-[-0.02em] text-slate-900">
+                  <div className="mt-3 text-[30px] font-black leading-none tracking-[-0.02em] text-faith-ink">
                     {item.value}
                   </div>
-                  <div className="mt-2 text-[13px] leading-5 text-slate-600">
+                  <div className="mt-2 text-[13px] leading-5 text-faith-slate">
                     {item.hint}
                   </div>
                 </div>
@@ -2040,6 +2040,8 @@ export default function ProviderDashboardPage() {
     </div>
   );
 }
+
+
 
 
 

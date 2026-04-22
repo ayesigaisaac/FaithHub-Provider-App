@@ -1,4 +1,4 @@
-ï»¿// @ts-nocheck
+// @ts-nocheck
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -41,7 +41,7 @@ import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
- * Provider â€” Live Dashboard
+ * Provider — Live Dashboard
  * ----------------------------------
  * Premium control-room page for a specific Live Session.
  *
@@ -194,10 +194,10 @@ const SESSIONS: SessionData[] = [
     id: "fh-live-032-a",
     title: "Sunday Encounter Live",
     state: "Upcoming",
-    parentLabel: "The Way of Grace â€¢ Episode 4",
+    parentLabel: "The Way of Grace • Episode 4",
     parentType: "Series Episode",
-    audienceLabel: "All Church â€¢ Families â€¢ Swahili track enabled",
-    locationLabel: "Main Sanctuary Â· Central Campus",
+    audienceLabel: "All Church • Families • Swahili track enabled",
+    locationLabel: "Main Sanctuary · Central Campus",
     timezone: "Africa/Kampala",
     startISO: shiftMinutes(18),
     endISO: shiftMinutes(108),
@@ -231,7 +231,7 @@ const SESSIONS: SessionData[] = [
       { role: "Moderator", name: "Moderator Tobi E.", readiness: "Ready", checked: true, critical: true },
       { role: "Captioner", name: "Caption Lead Mercy J.", readiness: "Joining", checked: false, critical: true },
       { role: "Interpreter", name: "Grace L.", readiness: "Ready", checked: true },
-      { role: "Support", name: "Support Team â€” Central", readiness: "Ready", checked: true },
+      { role: "Support", name: "Support Team — Central", readiness: "Ready", checked: true },
     ],
     audience: {
       registrants: 1428,
@@ -252,7 +252,7 @@ const SESSIONS: SessionData[] = [
       eventSignups: 46,
       merchClicks: 28,
       beaconHandoffs: 3,
-      responseLabel: "Waiting-room arrival is tracking 76% of forecast â€” a last-minute reminder could push the room above baseline before start.",
+      responseLabel: "Waiting-room arrival is tracking 76% of forecast — a last-minute reminder could push the room above baseline before start.",
     },
     alerts: [
       {
@@ -301,8 +301,8 @@ const SESSIONS: SessionData[] = [
     state: "Live",
     parentLabel: "Youth Revival Night 2026",
     parentType: "Event",
-    audienceLabel: "Youth â€¢ English + French captions",
-    locationLabel: "Community Arena Â· East Campus",
+    audienceLabel: "Youth • English + French captions",
+    locationLabel: "Community Arena · East Campus",
     timezone: "Africa/Kampala",
     startISO: shiftMinutes(-37),
     endISO: shiftMinutes(53),
@@ -336,7 +336,7 @@ const SESSIONS: SessionData[] = [
       { role: "Moderator", name: "Moderator Sarah A.", readiness: "Ready", checked: true, critical: true },
       { role: "Captioner", name: "Caption Lead Mercy J.", readiness: "Ready", checked: true, critical: true },
       { role: "Interpreter", name: "Interpreter Caleb O.", readiness: "Ready", checked: true },
-      { role: "Support", name: "Support Team â€” East", readiness: "Ready", checked: true },
+      { role: "Support", name: "Support Team — East", readiness: "Ready", checked: true },
     ],
     audience: {
       registrants: 2140,
@@ -397,7 +397,7 @@ const SESSIONS: SessionData[] = [
       ],
     },
     cover: {
-      eyebrow: "Live now â€¢ Control room",
+      eyebrow: "Live now • Control room",
       promise: "High-energy youth gathering with testimony, worship, live prayer, and a strong response moment.",
       gradient: "linear-gradient(135deg, #10253d 0%, #165a5f 46%, #03cd8c 100%)",
     },
@@ -414,8 +414,8 @@ const SESSIONS: SessionData[] = [
     state: "Ended",
     parentLabel: "Community Borehole Appeal",
     parentType: "Giving Moment",
-    audienceLabel: "Community â€¢ Supporters â€¢ Donation responders",
-    locationLabel: "Online Campus Â· Outreach Broadcast Room",
+    audienceLabel: "Community • Supporters • Donation responders",
+    locationLabel: "Online Campus · Outreach Broadcast Room",
     timezone: "Africa/Kampala",
     startISO: shiftMinutes(-88),
     endISO: shiftMinutes(-12),
@@ -449,7 +449,7 @@ const SESSIONS: SessionData[] = [
       { role: "Moderator", name: "Moderator Tobi E.", readiness: "Ready", checked: true, critical: true },
       { role: "Captioner", name: "Caption Lead Mercy J.", readiness: "Ready", checked: true },
       { role: "Interpreter", name: "Interpreter Grace L.", readiness: "Ready", checked: true },
-      { role: "Support", name: "Support Team â€” Outreach", readiness: "Ready", checked: true },
+      { role: "Support", name: "Support Team — Outreach", readiness: "Ready", checked: true },
     ],
     audience: {
       registrants: 986,
@@ -470,7 +470,7 @@ const SESSIONS: SessionData[] = [
       eventSignups: 18,
       merchClicks: 0,
       beaconHandoffs: 8,
-      responseLabel: "Crowdfund movement remained strong after the final prayer appeal â€” this session is ideal for replay plus campaign-update follow-up.",
+      responseLabel: "Crowdfund movement remained strong after the final prayer appeal — this session is ideal for replay plus campaign-update follow-up.",
     },
     alerts: [
       {
@@ -595,7 +595,7 @@ function Pill({
         ? "border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-900/20 text-amber-800 dark:text-amber-300"
         : tone === "danger"
           ? "border-rose-200 dark:border-rose-800 bg-rose-50 dark:bg-rose-900/20 text-rose-800 dark:text-rose-300"
-          : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300";
+          : "border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 text-slate-700 dark:text-slate-300";
 
   return (
     <span className={cx("inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[11px] font-semibold", toneCls)}>
@@ -627,8 +627,8 @@ function SoftButton({
       className={cx(
         "inline-flex items-center gap-2 rounded-xl border px-3 sm:px-4 py-2 text-[11px] sm:text-[12px] font-semibold transition-colors",
         disabled
-          ? "cursor-not-allowed border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-slate-400 dark:text-slate-600"
-          : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800",
+          ? "cursor-not-allowed border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 text-faith-slate dark:text-faith-slate"
+          : "border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-slate-700 dark:text-slate-200 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800",
         className,
       )}
     >
@@ -684,11 +684,11 @@ function Card({
   className?: string;
 }) {
   return (
-    <div className={cx("rounded-[16px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3 sm:p-4 md:p-5 transition-colors", className)}>
+    <div className={cx("rounded-[16px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 sm:p-4 md:p-5 transition-colors", className)}>
       <div className="flex items-start justify-between gap-3">
         <div>
-          <div className="text-[14px] font-semibold text-slate-900 dark:text-slate-100">{title}</div>
-          {subtitle ? <div className="mt-0.5 text-[11px] leading-5 text-slate-500 dark:text-slate-400">{subtitle}</div> : null}
+          <div className="text-[14px] font-semibold text-faith-ink dark:text-slate-100">{title}</div>
+          {subtitle ? <div className="mt-0.5 text-[11px] leading-5 text-faith-slate dark:text-faith-slate">{subtitle}</div> : null}
         </div>
         {right ? <div className="shrink-0">{right}</div> : null}
       </div>
@@ -744,18 +744,18 @@ function Drawer({
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 80, opacity: 0 }}
             transition={{ type: "spring", damping: 28, stiffness: 280 }}
-            className="absolute inset-0 bg-white dark:bg-slate-950 transition-colors"
+            className="absolute inset-0 bg-[var(--fh-surface-bg)] dark:bg-slate-950 transition-colors"
           >
-            <div className="sticky top-0 z-10 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3 transition-colors">
+            <div className="sticky top-0 z-10 border-b border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 py-3 transition-colors">
               <div className="flex items-start justify-between gap-3">
                 <div className="min-w-0">
-                  <div className="text-[14px] font-semibold text-slate-900 dark:text-slate-100">{title}</div>
-                  {subtitle ? <div className="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">{subtitle}</div> : null}
+                  <div className="text-[14px] font-semibold text-faith-ink dark:text-slate-100">{title}</div>
+                  {subtitle ? <div className="mt-0.5 text-[11px] text-faith-slate dark:text-faith-slate">{subtitle}</div> : null}
                 </div>
                 <button
                   type="button"
                   onClick={onClose}
-                  className="grid h-9 w-9 place-items-center rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 transition-colors hover:bg-slate-50 dark:hover:bg-slate-700"
+                  className="grid h-9 w-9 place-items-center rounded-xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 text-slate-700 dark:text-slate-300 transition-colors hover:bg-[var(--fh-surface)] dark:hover:bg-slate-700"
                 >
                   <X className="h-4 w-4" />
                 </button>
@@ -771,7 +771,7 @@ function Drawer({
 
 function Toast({ text }: { text: string }) {
   return (
-    <div className="fixed bottom-4 left-1/2 z-[140] -translate-x-1/2 rounded-xl bg-slate-900 px-4 py-3 text-[12px] font-semibold text-white shadow-lg dark:bg-slate-100 dark:text-slate-900">
+    <div className="fixed bottom-4 left-1/2 z-[140] -translate-x-1/2 rounded-xl bg-slate-900 px-4 py-3 text-[12px] font-semibold text-white shadow-lg dark:bg-slate-100 dark:text-faith-ink">
       {text}
     </div>
   );
@@ -857,9 +857,9 @@ function TimeBadge({
 }) {
   const pad = (value: number) => String(Math.max(0, value)).padStart(2, "0");
   return (
-    <div className="rounded-[14px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3 py-2 transition-colors">
-      <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">{label}</div>
-      <div className="mt-1 font-mono text-[20px] font-black text-slate-900 dark:text-slate-100">
+    <div className="rounded-lg border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 transition-colors">
+      <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-faith-slate dark:text-faith-slate">{label}</div>
+      <div className="mt-1 font-mono text-[20px] font-black text-faith-ink dark:text-slate-100">
         {pad(values.hours)}:{pad(values.minutes)}:{pad(values.seconds)}
       </div>
     </div>
@@ -868,21 +868,21 @@ function TimeBadge({
 
 function SessionArtwork({ gradient }: { gradient: string }) {
   return (
-    <div className="relative overflow-hidden rounded-[14px]" style={{ background: gradient }}>
+    <div className="relative overflow-hidden rounded-lg" style={{ background: gradient }}>
       <div className="aspect-[16/10] w-full">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.18),transparent_34%),radial-gradient(circle_at_76%_30%,rgba(255,255,255,0.12),transparent_32%),radial-gradient(circle_at_68%_72%,rgba(255,255,255,0.08),transparent_35%)]" />
         <div className="absolute left-5 top-5 flex items-center gap-2">
-          <div className="h-4 w-20 rounded-full bg-white/30" />
-          <div className="h-4 w-10 rounded-full bg-white/18" />
+          <div className="h-4 w-20 rounded-full bg-[var(--fh-surface-bg)]/30" />
+          <div className="h-4 w-10 rounded-full bg-[var(--fh-surface-bg)]/18" />
         </div>
         <div className="absolute right-5 top-5 flex gap-2">
-          <div className="h-10 w-10 rounded-xl bg-white/18" />
-          <div className="h-10 w-10 rounded-xl bg-white/12" />
+          <div className="h-10 w-10 rounded-xl bg-[var(--fh-surface-bg)]/18" />
+          <div className="h-10 w-10 rounded-xl bg-[var(--fh-surface-bg)]/12" />
         </div>
         <div className="absolute bottom-5 left-5 right-5">
-          <div className="h-5 w-48 rounded-full bg-white/80 mb-3" />
-          <div className="h-3 w-72 max-w-full rounded-full bg-white/35 mb-2" />
-          <div className="h-3 w-52 rounded-full bg-white/22" />
+          <div className="h-5 w-48 rounded-full bg-[var(--fh-surface-bg)]/80 mb-3" />
+          <div className="h-3 w-72 max-w-full rounded-full bg-[var(--fh-surface-bg)]/35 mb-2" />
+          <div className="h-3 w-52 rounded-full bg-[var(--fh-surface-bg)]/22" />
         </div>
       </div>
     </div>
@@ -905,24 +905,24 @@ function QuickToggle({
       type="button"
       onClick={onClick}
       className={cx(
-        "w-full rounded-[14px] border p-3 text-left transition-colors",
+        "w-full rounded-lg border p-3 text-left transition-colors",
         active
           ? "border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-900/20"
-          : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800",
+          : "border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800",
       )}
     >
       <div className="flex items-start justify-between gap-3">
         <div>
-          <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">{label}</div>
-          <div className="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">{hint}</div>
+          <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">{label}</div>
+          <div className="mt-0.5 text-[11px] text-faith-slate dark:text-faith-slate">{hint}</div>
         </div>
         <div className={cx(
           "flex h-6 w-10 items-center rounded-full border px-1 transition-colors",
           active
             ? "justify-end border-emerald-500 bg-emerald-500"
-            : "justify-start border-slate-200 dark:border-slate-600 bg-slate-100 dark:bg-slate-700",
+            : "justify-start border-faith-line dark:border-slate-600 bg-slate-100 dark:bg-slate-700",
         )}>
-          <span className="h-4 w-4 rounded-full bg-white shadow" />
+          <span className="h-4 w-4 rounded-full bg-[var(--fh-surface-bg)] shadow" />
         </div>
       </div>
     </button>
@@ -944,19 +944,19 @@ function RouteButton({
     <button
       type="button"
       onClick={onClick}
-      className="w-full rounded-[14px] border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-3 text-left transition-colors hover:bg-slate-50 dark:hover:bg-slate-800"
+      className="w-full rounded-lg border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-3 text-left transition-colors hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800"
     >
       <div className="flex items-center justify-between gap-2">
         <div className="flex items-center gap-2 min-w-0">
-          <div className="grid h-9 w-9 place-items-center rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200">
+          <div className="grid h-9 w-9 place-items-center rounded-xl bg-[var(--fh-surface)] dark:bg-slate-800 text-slate-700 dark:text-slate-200">
             {icon}
           </div>
           <div className="min-w-0">
-            <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100 truncate">{label}</div>
-            <div className="text-[11px] leading-5 text-slate-500 dark:text-slate-400 truncate">{hint}</div>
+            <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100 truncate">{label}</div>
+            <div className="text-[11px] leading-5 text-faith-slate dark:text-faith-slate truncate">{hint}</div>
           </div>
         </div>
-        <ArrowRight className="h-4 w-4 text-slate-400" />
+        <ArrowRight className="h-4 w-4 text-faith-slate" />
       </div>
     </button>
   );
@@ -997,8 +997,8 @@ function ControlRoomPreview({
         <MetricTile label="Giving" value={formatMoney(session.conversion.donationTotal)} hint="Live-response total" tone="orange" />
       </div>
 
-      <div className="mt-4 rounded-[14px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 p-3 transition-colors">
-        <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">Active tools</div>
+      <div className="mt-4 rounded-lg border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-3 transition-colors">
+        <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-faith-slate dark:text-faith-slate">Active tools</div>
         <div className="mt-3 flex flex-wrap gap-2">
           {slowMode ? <Pill text="Slow mode" tone="warn" /> : null}
           {pinnedNotice ? <Pill text="Pinned notice" tone="good" /> : null}
@@ -1010,8 +1010,8 @@ function ControlRoomPreview({
 
       <div className="mt-4 grid grid-cols-3 gap-2">
         {session.destinations.map((dest) => (
-          <div key={dest.name} className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-2 text-center transition-colors">
-            <div className="text-[11px] font-semibold text-slate-900 dark:text-slate-100 truncate">{dest.name}</div>
+          <div key={dest.name} className="rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2 text-center transition-colors">
+            <div className="text-[11px] font-semibold text-faith-ink dark:text-slate-100 truncate">{dest.name}</div>
             <div className="mt-1 flex justify-center">
               <Pill text={dest.status} tone={destinationTone(dest.status)} />
             </div>
@@ -1019,7 +1019,7 @@ function ControlRoomPreview({
         ))}
       </div>
 
-      <div className="mt-4 text-[11px] text-slate-500 dark:text-slate-400">
+      <div className="mt-4 text-[11px] text-faith-slate dark:text-faith-slate">
         {acknowledgedCount} alert{acknowledgedCount === 1 ? "" : "s"} acknowledged in this session.
       </div>
     </Card>
@@ -1046,7 +1046,7 @@ function PostLiveLaunchPad({ session }: { session: SessionData }) {
 
       <div className="mt-4 space-y-2">
         {session.postLive.nextActions.map((action) => (
-          <div key={action} className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 p-3 text-[12px] text-slate-700 dark:text-slate-300 transition-colors">
+          <div key={action} className="rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-3 text-[12px] text-slate-700 dark:text-slate-300 transition-colors">
             {action}
           </div>
         ))}
@@ -1179,7 +1179,7 @@ export default function FaithHubLiveDashboardPage() {
   );
 
   return (
-    <div className="min-h-screen bg-[#f2f2f2] dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors">
+    <div className="min-h-screen bg-[var(--fh-page-bg)] dark:bg-slate-950 text-faith-ink dark:text-slate-100 transition-colors">
       <div className="mx-auto max-w-[1600px] px-3 py-3 sm:px-6 sm:py-5 lg:px-8 lg:py-6">
         <div className="flex items-start justify-between gap-3 flex-wrap">
           <div className="min-w-0">
@@ -1223,15 +1223,15 @@ export default function FaithHubLiveDashboardPage() {
               right={<SoftButton onClick={copySessionLink}><Copy className="h-4 w-4" /> Copy link</SoftButton>}
             >
               <div>
-                <div className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">Active session</div>
+                <div className="text-[11px] font-semibold text-faith-slate dark:text-faith-slate">Active session</div>
                 <select
                   value={activeSessionId}
                   onChange={(e) => setActiveSessionId(e.target.value)}
-                  className="mt-2 w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-[13px] font-semibold text-slate-900 dark:text-slate-100 transition-colors"
+                  className="mt-2 w-full rounded-xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[13px] font-semibold text-faith-ink dark:text-slate-100 transition-colors"
                 >
                   {SESSIONS.map((item) => (
                     <option key={item.id} value={item.id}>
-                      {item.title} â€¢ {item.state}
+                      {item.title} • {item.state}
                     </option>
                   ))}
                 </select>
@@ -1247,30 +1247,30 @@ export default function FaithHubLiveDashboardPage() {
                 <TimeBadge label={session.state === "Ended" ? "Replay window" : "Ends in"} values={session.state === "Ended" ? sinceEnd : untilEnd} />
               </div>
 
-              <div className="mt-4 rounded-[14px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 p-3 transition-colors">
-                <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">Session context</div>
-                <div className="mt-2 text-[12px] font-semibold text-slate-900 dark:text-slate-100">{session.title}</div>
-                <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">{session.audienceLabel}</div>
-                <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">{session.locationLabel}</div>
-                <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">{formatDateTime(session.startISO)} â€¢ {session.timezone}</div>
+              <div className="mt-4 rounded-lg border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-3 transition-colors">
+                <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-faith-slate dark:text-faith-slate">Session context</div>
+                <div className="mt-2 text-[12px] font-semibold text-faith-ink dark:text-slate-100">{session.title}</div>
+                <div className="mt-1 text-[11px] text-faith-slate dark:text-faith-slate">{session.audienceLabel}</div>
+                <div className="mt-1 text-[11px] text-faith-slate dark:text-faith-slate">{session.locationLabel}</div>
+                <div className="mt-1 text-[11px] text-faith-slate dark:text-faith-slate">{formatDateTime(session.startISO)} • {session.timezone}</div>
               </div>
 
               <div className="mt-4 grid grid-cols-2 gap-2">
-                <div className="rounded-[14px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3 transition-colors">
-                  <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">Host</div>
-                  <div className="mt-1 text-[13px] font-semibold text-slate-900 dark:text-slate-100">{session.hosts.host}</div>
-                  <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">On stage and checked</div>
+                <div className="rounded-lg border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
+                  <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-faith-slate dark:text-faith-slate">Host</div>
+                  <div className="mt-1 text-[13px] font-semibold text-faith-ink dark:text-slate-100">{session.hosts.host}</div>
+                  <div className="mt-1 text-[11px] text-faith-slate dark:text-faith-slate">On stage and checked</div>
                 </div>
-                <div className="rounded-[14px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3 transition-colors">
-                  <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">Producer</div>
-                  <div className="mt-1 text-[13px] font-semibold text-slate-900 dark:text-slate-100">{session.hosts.producer}</div>
-                  <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">Backstage operations</div>
+                <div className="rounded-lg border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
+                  <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-faith-slate dark:text-faith-slate">Producer</div>
+                  <div className="mt-1 text-[13px] font-semibold text-faith-ink dark:text-slate-100">{session.hosts.producer}</div>
+                  <div className="mt-1 text-[11px] text-faith-slate dark:text-faith-slate">Backstage operations</div>
                 </div>
               </div>
 
               <div className="mt-4 flex flex-wrap gap-2">
                 {session.destinations.map((dest) => (
-                  <Pill key={dest.name} text={`${dest.name} â€¢ ${dest.status}`} tone={destinationTone(dest.status)} />
+                  <Pill key={dest.name} text={`${dest.name} • ${dest.status}`} tone={destinationTone(dest.status)} />
                 ))}
               </div>
             </Card>
@@ -1279,14 +1279,14 @@ export default function FaithHubLiveDashboardPage() {
               <div className="space-y-3">
                 {firstPlaybooks.length ? (
                   firstPlaybooks.map((alert) => (
-                    <div key={alert.id} className="rounded-[14px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 p-3 transition-colors">
+                    <div key={alert.id} className="rounded-lg border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-3 transition-colors">
                       <div className="flex items-start justify-between gap-2">
                         <div>
                           <div className="flex items-center gap-2">
                             <Pill text={alert.severity.toUpperCase()} tone={severityTone(alert.severity)} />
-                            <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">{alert.title}</div>
+                            <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">{alert.title}</div>
                           </div>
-                          <div className="mt-2 text-[11px] text-slate-500 dark:text-slate-400">{alert.playbook}</div>
+                          <div className="mt-2 text-[11px] text-faith-slate dark:text-faith-slate">{alert.playbook}</div>
                         </div>
                       </div>
                       <div className="mt-3 flex flex-wrap gap-2">
@@ -1300,7 +1300,7 @@ export default function FaithHubLiveDashboardPage() {
                     </div>
                   ))
                 ) : (
-                  <div className="rounded-[14px] border border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-900/20 p-3 text-[12px] text-emerald-800 dark:text-emerald-300 transition-colors">
+                  <div className="rounded-lg border border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-900/20 p-3 text-[12px] text-emerald-800 dark:text-emerald-300 transition-colors">
                     No active playbooks right now. This session is operating within safe thresholds.
                   </div>
                 )}
@@ -1339,11 +1339,11 @@ export default function FaithHubLiveDashboardPage() {
                 <MetricTile label="Latency" value={`${session.health.latencySec.toFixed(1)}s`} hint="Observed delivery delay" tone={session.health.latencySec <= 3 ? "green" : session.health.latencySec <= 5 ? "orange" : "red"} />
               </div>
 
-              <div className="mt-4 rounded-[14px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 p-3 transition-colors">
+              <div className="mt-4 rounded-lg border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-3 transition-colors">
                 <div className="flex items-center justify-between gap-2">
                   <div>
-                    <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">Health telemetry trend</div>
-                    <div className="text-[11px] text-slate-500 dark:text-slate-400">Combined ingest and sync health over the last few checks.</div>
+                    <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">Health telemetry trend</div>
+                    <div className="text-[11px] text-faith-slate dark:text-faith-slate">Combined ingest and sync health over the last few checks.</div>
                   </div>
                   <Pill text={`${session.health.fps} FPS`} icon={<Video className="h-3.5 w-3.5" />} />
                 </div>
@@ -1373,19 +1373,19 @@ export default function FaithHubLiveDashboardPage() {
 
               <div className="mt-4 grid md:grid-cols-2 xl:grid-cols-3 gap-3">
                 {session.team.map((member) => (
-                  <div key={`${member.role}-${member.name}`} className="rounded-[14px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 p-3 transition-colors">
+                  <div key={`${member.role}-${member.name}`} className="rounded-lg border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-3 transition-colors">
                     <div className="flex items-start justify-between gap-2">
                       <div>
-                        <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">{member.role}</div>
-                        <div className="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">{member.name}</div>
+                        <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">{member.role}</div>
+                        <div className="mt-0.5 text-[11px] text-faith-slate dark:text-faith-slate">{member.name}</div>
                       </div>
                       <Pill text={member.readiness} tone={readinessTone(member.readiness)} />
                     </div>
-                    <div className="mt-3 flex items-center gap-2 text-[11px] text-slate-600 dark:text-slate-400">
+                    <div className="mt-3 flex items-center gap-2 text-[11px] text-faith-slate dark:text-faith-slate">
                       {member.checked ? <CheckCircle2 className="h-4 w-4 text-emerald-600" /> : <Clock3 className="h-4 w-4 text-amber-600" />}
                       {member.checked ? "Checks complete" : "Checks pending"}
                     </div>
-                    {member.critical ? <div className="mt-2 text-[10px] font-bold uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">Critical role</div> : null}
+                    {member.critical ? <div className="mt-2 text-[10px] font-bold uppercase tracking-[0.14em] text-faith-slate dark:text-faith-slate">Critical role</div> : null}
                   </div>
                 ))}
               </div>
@@ -1399,11 +1399,11 @@ export default function FaithHubLiveDashboardPage() {
                 <MetricTile label="Chat velocity" value={`${session.audience.chatVelocity}/min`} hint="Current message rate" tone={session.audience.chatVelocity > 120 ? "orange" : "green"} />
               </div>
 
-              <div className="mt-4 rounded-[14px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 p-3 transition-colors">
+              <div className="mt-4 rounded-lg border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-3 transition-colors">
                 <div className="flex items-center justify-between gap-2">
                   <div>
-                    <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">Arrival and audience trend</div>
-                    <div className="text-[11px] text-slate-500 dark:text-slate-400">Forecast alignment and live momentum in one view.</div>
+                    <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">Arrival and audience trend</div>
+                    <div className="text-[11px] text-faith-slate dark:text-faith-slate">Forecast alignment and live momentum in one view.</div>
                   </div>
                   <Pill text={`${arrivalPct}% of forecast`} tone={arrivalPct >= 90 ? "good" : arrivalPct >= 70 ? "warn" : "danger"} />
                 </div>
@@ -1413,22 +1413,22 @@ export default function FaithHubLiveDashboardPage() {
               </div>
 
               <div className="mt-4 grid sm:grid-cols-3 gap-3">
-                <div className="rounded-[14px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3 transition-colors">
-                  <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">Q&A load</div>
-                  <div className="mt-1 text-[18px] font-black text-slate-900 dark:text-slate-100">{session.audience.qnaLoad}</div>
-                  <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">Open questions needing review.</div>
+                <div className="rounded-lg border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
+                  <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-faith-slate dark:text-faith-slate">Q&A load</div>
+                  <div className="mt-1 text-[18px] font-black text-faith-ink dark:text-slate-100">{session.audience.qnaLoad}</div>
+                  <div className="mt-1 text-[11px] text-faith-slate dark:text-faith-slate">Open questions needing review.</div>
                 </div>
-                <div className="rounded-[14px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3 transition-colors">
-                  <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">Prayer requests</div>
-                  <div className="mt-1 text-[18px] font-black text-slate-900 dark:text-slate-100">{session.audience.prayerRequests}</div>
-                  <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">Requests flowing into triage.</div>
+                <div className="rounded-lg border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
+                  <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-faith-slate dark:text-faith-slate">Prayer requests</div>
+                  <div className="mt-1 text-[18px] font-black text-faith-ink dark:text-slate-100">{session.audience.prayerRequests}</div>
+                  <div className="mt-1 text-[11px] text-faith-slate dark:text-faith-slate">Requests flowing into triage.</div>
                 </div>
-                <div className="rounded-[14px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3 transition-colors">
-                  <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">Drop-off risk</div>
+                <div className="rounded-lg border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
+                  <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-faith-slate dark:text-faith-slate">Drop-off risk</div>
                   <div className="mt-1 flex items-center gap-2">
                     <Pill text={session.audience.dropOffRisk} tone={session.audience.dropOffRisk === "Low" ? "good" : session.audience.dropOffRisk === "Watch" ? "warn" : "danger"} />
                   </div>
-                  <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">Audience retention warning state.</div>
+                  <div className="mt-1 text-[11px] text-faith-slate dark:text-faith-slate">Audience retention warning state.</div>
                 </div>
               </div>
             </Card>
@@ -1448,7 +1448,7 @@ export default function FaithHubLiveDashboardPage() {
                 <ProgressRail label="Crowdfund movement" value={percent(session.conversion.crowdfundRaised, session.conversion.crowdfundTarget)} suffix="of target" tone="green" />
               </div>
 
-              <div className="mt-4 rounded-[14px] border border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-900/20 p-3 text-[12px] text-amber-900 dark:text-amber-200 transition-colors">
+              <div className="mt-4 rounded-lg border border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-900/20 p-3 text-[12px] text-amber-900 dark:text-amber-200 transition-colors">
                 {session.conversion.responseLabel}
               </div>
             </Card>
@@ -1459,16 +1459,16 @@ export default function FaithHubLiveDashboardPage() {
               <div className="space-y-3">
                 {activeAlerts.length ? (
                   activeAlerts.map((alert) => (
-                    <div key={alert.id} className="rounded-[14px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 p-3 transition-colors">
+                    <div key={alert.id} className="rounded-lg border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-3 transition-colors">
                       <div className="flex items-start justify-between gap-3">
                         <div className="min-w-0">
                           <div className="flex flex-wrap items-center gap-2">
                             <Pill text={alert.severity.toUpperCase()} tone={severityTone(alert.severity)} />
-                            <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">{alert.title}</div>
-                            <div className="text-[11px] text-slate-400 dark:text-slate-500">â€¢ {alert.owner}</div>
+                            <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">{alert.title}</div>
+                            <div className="text-[11px] text-faith-slate dark:text-faith-slate">• {alert.owner}</div>
                           </div>
-                          <div className="mt-2 text-[12px] text-slate-600 dark:text-slate-400">{alert.description}</div>
-                          <div className="mt-2 text-[11px] text-slate-500 dark:text-slate-400">Playbook: {alert.playbook}</div>
+                          <div className="mt-2 text-[12px] text-faith-slate dark:text-faith-slate">{alert.description}</div>
+                          <div className="mt-2 text-[11px] text-faith-slate dark:text-faith-slate">Playbook: {alert.playbook}</div>
                         </div>
                         <div className="flex shrink-0 gap-2">
                           <SoftButton onClick={() => acknowledgeAlert(alert.id)} className="px-3 py-2">
@@ -1479,7 +1479,7 @@ export default function FaithHubLiveDashboardPage() {
                     </div>
                   ))
                 ) : (
-                  <div className="rounded-[14px] border border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-900/20 p-4 text-[12px] text-emerald-800 dark:text-emerald-300 transition-colors">
+                  <div className="rounded-lg border border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-900/20 p-4 text-[12px] text-emerald-800 dark:text-emerald-300 transition-colors">
                     No unresolved alerts. Stream health, destinations, moderation, and caption readiness are all within expected thresholds.
                   </div>
                 )}
@@ -1527,6 +1527,8 @@ export default function FaithHubLiveDashboardPage() {
     </div>
   );
 }
+
+
 
 
 

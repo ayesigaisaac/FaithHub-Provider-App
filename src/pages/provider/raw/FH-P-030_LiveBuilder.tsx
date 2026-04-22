@@ -1,4 +1,4 @@
-ï»¿// @ts-nocheck
+// @ts-nocheck
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -43,7 +43,7 @@ import {
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * Provider â€” Live Builder (Provider)
+ * Provider — Live Builder (Provider)
  * ----------------------------------
  * Design intent:
  * - Keep the same premium page grammar as the Creator base file:
@@ -856,7 +856,7 @@ function Pill({
         ? "border-orange-200 bg-orange-50 text-orange-700 dark:border-orange-800 dark:bg-orange-900/20 dark:text-orange-300"
         : tone === "danger"
           ? "border-rose-200 bg-rose-50 text-rose-700 dark:border-rose-800 dark:bg-rose-900/20 dark:text-rose-300"
-          : "border-slate-200 bg-white text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300";
+          : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300";
 
   return (
     <span
@@ -893,8 +893,8 @@ function SoftButton({
       className={cx(
         "inline-flex items-center gap-2 rounded-2xl border px-4 py-2 text-[12px] font-semibold transition-colors",
         disabled
-          ? "cursor-not-allowed border-slate-200 bg-slate-100 text-slate-400 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-600"
-          : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800",
+          ? "cursor-not-allowed border-faith-line bg-slate-100 text-faith-slate dark:border-slate-800 dark:bg-slate-900 dark:text-faith-slate"
+          : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800",
         className,
       )}
     >
@@ -951,11 +951,11 @@ function Card({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-[28px] border border-slate-200 bg-white p-4 shadow-[0_10px_32px_rgba(15,23,42,0.04)] transition-colors dark:border-slate-800 dark:bg-slate-950">
+    <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-[0_10px_32px_rgba(15,23,42,0.04)] transition-colors dark:border-slate-800 dark:bg-slate-950">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <div className="text-[13px] font-semibold text-slate-900 dark:text-slate-100">{title}</div>
-          {subtitle ? <div className="mt-1 text-[11px] leading-5 text-slate-500 dark:text-slate-400">{subtitle}</div> : null}
+          <div className="text-[13px] font-semibold text-faith-ink dark:text-slate-100">{title}</div>
+          {subtitle ? <div className="mt-1 text-[11px] leading-5 text-faith-slate dark:text-faith-slate">{subtitle}</div> : null}
         </div>
         {right}
       </div>
@@ -985,7 +985,7 @@ function Input({
       value={value}
       onChange={(event) => onChange(event.target.value)}
       placeholder={placeholder}
-      className="mt-1 w-full rounded-2xl border border-slate-200 bg-white px-3 py-2 text-[12px] text-slate-900 outline-none transition-colors focus:ring-2 focus:ring-emerald-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:focus:ring-emerald-900/30"
+      className="mt-1 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] text-faith-ink outline-none transition-colors focus:ring-2 focus:ring-emerald-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:focus:ring-emerald-900/30"
     />
   );
 }
@@ -1003,7 +1003,7 @@ function Select({
     <select
       value={value}
       onChange={(event) => onChange(event.target.value)}
-      className="mt-1 w-full rounded-2xl border border-slate-200 bg-white px-3 py-2 text-[12px] font-medium text-slate-900 outline-none transition-colors focus:ring-2 focus:ring-emerald-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:focus:ring-emerald-900/30"
+      className="mt-1 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] font-medium text-faith-ink outline-none transition-colors focus:ring-2 focus:ring-emerald-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:focus:ring-emerald-900/30"
     >
       {options.map((option) => (
         <option key={option.value} value={option.value}>
@@ -1031,7 +1031,7 @@ function TextArea({
       value={value}
       onChange={(event) => onChange(event.target.value)}
       placeholder={placeholder}
-      className="mt-1 w-full rounded-2xl border border-slate-200 bg-white px-3 py-2 text-[12px] text-slate-900 outline-none transition-colors focus:ring-2 focus:ring-emerald-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:focus:ring-emerald-900/30"
+      className="mt-1 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] text-faith-ink outline-none transition-colors focus:ring-2 focus:ring-emerald-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:focus:ring-emerald-900/30"
     />
   );
 }
@@ -1055,23 +1055,23 @@ function Toggle({
         "w-full rounded-3xl border p-3 text-left transition-colors",
         checked
           ? "border-emerald-200 bg-emerald-50 dark:border-emerald-800 dark:bg-emerald-900/20"
-          : "border-slate-200 bg-white hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800",
+          : "border-faith-line bg-[var(--fh-surface-bg)] hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800",
       )}
     >
       <div className="flex items-start justify-between gap-3">
         <div>
-          <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">{label}</div>
-          {hint ? <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">{hint}</div> : null}
+          <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">{label}</div>
+          {hint ? <div className="mt-1 text-[11px] text-faith-slate dark:text-faith-slate">{hint}</div> : null}
         </div>
         <div
           className={cx(
             "flex h-6 w-10 items-center rounded-full border px-1 transition-colors",
             checked
               ? "justify-end border-emerald-500 bg-emerald-500"
-              : "justify-start border-slate-200 bg-slate-100 dark:border-slate-600 dark:bg-slate-700",
+              : "justify-start border-faith-line bg-slate-100 dark:border-slate-600 dark:bg-slate-700",
           )}
         >
-          <span className="h-4 w-4 rounded-full bg-white shadow" />
+          <span className="h-4 w-4 rounded-full bg-[var(--fh-surface-bg)] shadow" />
         </div>
       </div>
     </button>
@@ -1096,11 +1096,11 @@ function ReadinessCard({ checklist }: { checklist: Array<{ label: string; ok: bo
   const complete = checklist.filter((item) => item.ok).length;
   const percentage = Math.round((complete / checklist.length) * 100);
   return (
-    <div className="rounded-[28px] border border-slate-200 bg-white p-4 shadow-[0_10px_32px_rgba(15,23,42,0.04)] dark:border-slate-800 dark:bg-slate-950">
+    <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-[0_10px_32px_rgba(15,23,42,0.04)] dark:border-slate-800 dark:bg-slate-950">
       <div className="flex items-start justify-between gap-3">
         <div>
-          <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">Pre-live readiness</div>
-          <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">Premium live production checklist</div>
+          <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">Pre-live readiness</div>
+          <div className="mt-1 text-[11px] text-faith-slate dark:text-faith-slate">Premium live production checklist</div>
         </div>
         <Pill tone={percentage >= 80 ? "green" : percentage >= 55 ? "orange" : "danger"}>{percentage}% ready</Pill>
       </div>
@@ -1119,22 +1119,22 @@ function ReadinessCard({ checklist }: { checklist: Array<{ label: string; ok: bo
 function StepNav({ active, onChange, readiness }: { active: StepKey; onChange: (step: StepKey) => void; readiness: number }) {
   return (
     <div className="space-y-4">
-      <div className="rounded-[28px] border border-slate-200 bg-white p-3 shadow-[0_10px_32px_rgba(15,23,42,0.04)] dark:border-slate-800 dark:bg-slate-950">
+      <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-3 shadow-[0_10px_32px_rgba(15,23,42,0.04)] dark:border-slate-800 dark:bg-slate-950">
         <div className="flex items-center justify-between gap-3">
           <div>
-            <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">Live Builder</div>
-            <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">provider workflow</div>
+            <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">Live Builder</div>
+            <div className="mt-1 text-[11px] text-faith-slate dark:text-faith-slate">provider workflow</div>
           </div>
           <Pill tone={readiness >= 80 ? "green" : readiness >= 55 ? "orange" : "danger"}>{readiness}% ready</Pill>
         </div>
       </div>
 
-      <div className="rounded-[28px] border border-slate-200 bg-white p-3 shadow-[0_10px_32px_rgba(15,23,42,0.04)] dark:border-slate-800 dark:bg-slate-950">
+      <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-3 shadow-[0_10px_32px_rgba(15,23,42,0.04)] dark:border-slate-800 dark:bg-slate-950">
         <div className="space-y-1">
           {STEPS.map((step) => {
             const activeStyles = active === step.key
-              ? "border-emerald-200 bg-emerald-50 text-slate-900 dark:border-emerald-800 dark:bg-emerald-900/20 dark:text-slate-100"
-              : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800";
+              ? "border-emerald-200 bg-emerald-50 text-faith-ink dark:border-emerald-800 dark:bg-emerald-900/20 dark:text-slate-100"
+              : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800";
             return (
               <button
                 key={step.key}
@@ -1156,8 +1156,8 @@ function StepNav({ active, onChange, readiness }: { active: StepKey; onChange: (
 function QuickStatsCard({ draft }: { draft: LiveBuilderDraft }) {
   const totalDuration = draft.runOfShow.reduce((sum, item) => sum + item.durationMin, 0);
   return (
-    <div className="rounded-[28px] border border-slate-200 bg-white p-4 shadow-[0_10px_32px_rgba(15,23,42,0.04)] dark:border-slate-800 dark:bg-slate-950">
-      <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">Live at a glance</div>
+    <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-[0_10px_32px_rgba(15,23,42,0.04)] dark:border-slate-800 dark:bg-slate-950">
+      <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">Live at a glance</div>
       <div className="mt-3 grid grid-cols-2 gap-2">
         <MiniStat label="Parent" value={draft.parentType === "standalone" ? "Standalone" : "Linked"} />
         <MiniStat label="Template" value={TEMPLATE_META[draft.template].label} />
@@ -1170,9 +1170,9 @@ function QuickStatsCard({ draft }: { draft: LiveBuilderDraft }) {
 
 function MiniStat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2 dark:border-slate-700 dark:bg-slate-900">
-      <div className="text-[10px] uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">{label}</div>
-      <div className="mt-1 text-[13px] font-bold text-slate-900 dark:text-slate-100">{value}</div>
+    <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2 dark:border-slate-700 dark:bg-slate-900">
+      <div className="text-[10px] uppercase tracking-[0.14em] text-faith-slate dark:text-faith-slate">{label}</div>
+      <div className="mt-1 text-[13px] font-bold text-faith-ink dark:text-slate-100">{value}</div>
     </div>
   );
 }
@@ -1180,7 +1180,7 @@ function MiniStat({ label, value }: { label: string; value: string }) {
 function SectionDivider({ title }: { title: string }) {
   return (
     <div className="flex items-center gap-3 py-1">
-      <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500">{title}</div>
+      <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-faith-slate dark:text-faith-slate">{title}</div>
       <div className="h-px flex-1 bg-slate-200 dark:bg-slate-800" />
     </div>
   );
@@ -1201,17 +1201,17 @@ function TemplateCard({
       type="button"
       onClick={() => onSelect(template)}
       className={cx(
-        "rounded-[24px] border p-4 text-left transition-colors",
+        "rounded-2xl border p-4 text-left transition-colors",
         selected
           ? "border-emerald-200 bg-emerald-50 shadow-[0_8px_24px_rgba(3,205,140,0.08)] dark:border-emerald-800 dark:bg-emerald-900/20"
-          : "border-slate-200 bg-white hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800",
+          : "border-faith-line bg-[var(--fh-surface-bg)] hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800",
       )}
     >
       <div className="flex items-center justify-between gap-3">
-        <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">{meta.label}</div>
+        <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">{meta.label}</div>
         {selected ? <Pill tone="green">Selected</Pill> : null}
       </div>
-      <div className="mt-2 text-[11px] leading-5 text-slate-500 dark:text-slate-400">{meta.description}</div>
+      <div className="mt-2 text-[11px] leading-5 text-faith-slate dark:text-faith-slate">{meta.description}</div>
       <div className="mt-3 flex flex-wrap gap-2">
         <Pill>{meta.category}</Pill>
         <Pill>{meta.durationMin} min</Pill>
@@ -1236,14 +1236,14 @@ function ParentTypeCard({
       type="button"
       onClick={onClick}
       className={cx(
-        "rounded-[24px] border p-4 text-left transition-colors",
+        "rounded-2xl border p-4 text-left transition-colors",
         selected
           ? "border-emerald-200 bg-emerald-50 shadow-[0_8px_24px_rgba(3,205,140,0.08)] dark:border-emerald-800 dark:bg-emerald-900/20"
-          : "border-slate-200 bg-white hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800",
+          : "border-faith-line bg-[var(--fh-surface-bg)] hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800",
       )}
     >
-      <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">{title}</div>
-      <div className="mt-2 text-[11px] leading-5 text-slate-500 dark:text-slate-400">{description}</div>
+      <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">{title}</div>
+      <div className="mt-2 text-[11px] leading-5 text-faith-slate dark:text-faith-slate">{description}</div>
     </button>
   );
 }
@@ -1295,16 +1295,16 @@ function Drawer({
             animate={{ y: 0 }}
             exit={{ y: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 220 }}
-            className="absolute inset-0 bg-slate-50 dark:bg-slate-950 shadow-2xl flex flex-col"
+            className="absolute inset-0 bg-[var(--fh-surface)] dark:bg-slate-950 shadow-2xl flex flex-col"
           >
-            <div className="sticky top-0 z-10 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shrink-0">
+            <div className="sticky top-0 z-10 bg-[var(--fh-surface-bg)] dark:bg-slate-900 border-b border-faith-line dark:border-slate-800 shrink-0">
               <div className="px-4 py-3 flex items-start justify-between gap-3">
                 <div className="min-w-0">
-                  <div className="text-[13px] font-semibold truncate text-slate-900 dark:text-slate-100">{title}</div>
-                  {subtitle ? <div className="text-[11px] text-slate-500 dark:text-slate-400 truncate mt-0.5">{subtitle}</div> : null}
+                  <div className="text-[13px] font-semibold truncate text-faith-ink dark:text-slate-100">{title}</div>
+                  {subtitle ? <div className="text-[11px] text-faith-slate dark:text-faith-slate truncate mt-0.5">{subtitle}</div> : null}
                 </div>
                 <button
-                  className="h-9 w-9 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 grid place-items-center"
+                  className="h-9 w-9 rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-700 grid place-items-center"
                   onClick={onClose}
                   aria-label="Close"
                 >
@@ -1322,7 +1322,7 @@ function Drawer({
 
 function TimeChip({ value, label }: { value: number; label: string }) {
   return (
-    <div className="rounded-xl bg-white/12 px-2 py-1 text-center text-white shadow-sm backdrop-blur">
+    <div className="rounded-xl bg-[var(--fh-surface-bg)]/12 px-2 py-1 text-center text-white shadow-soft backdrop-blur">
       <div className="text-sm font-extrabold tabular-nums">{pad2(value)}</div>
       <div className="text-[10px] uppercase tracking-[0.14em] text-white/75">{label}</div>
     </div>
@@ -1348,8 +1348,8 @@ function SmallStatusChip({ label, color }: { label: string; color: "green" | "or
 
 function PreviewCard({ title, icon, children }: { title: string; icon: React.ReactNode; children: React.ReactNode }) {
   return (
-    <div className="rounded-[24px] bg-white p-3 shadow-sm ring-1 ring-slate-100 dark:bg-slate-950 dark:ring-slate-800">
-      <div className="flex items-center gap-2 text-[12px] font-semibold text-slate-900 dark:text-slate-100">{icon}{title}</div>
+    <div className="rounded-2xl bg-[var(--fh-surface-bg)] p-3 shadow-soft ring-1 ring-slate-100 dark:bg-slate-950 dark:ring-slate-800">
+      <div className="flex items-center gap-2 text-[12px] font-semibold text-faith-ink dark:text-slate-100">{icon}{title}</div>
       <div className="mt-3">{children}</div>
     </div>
   );
@@ -1362,22 +1362,22 @@ function PreviewPhone({ draft, readiness }: { draft: LiveBuilderDraft; readiness
   const crowdfund = CROWDFUND_OPTIONS.find((item) => item.id === draft.linkedCrowdfundId);
 
   return (
-    <div className="rounded-[30px] border border-slate-200 bg-white shadow-[0_18px_60px_rgba(15,23,42,0.08)] dark:border-slate-800 dark:bg-slate-950">
-      <div className="flex items-center justify-between border-b border-slate-200 px-4 py-3 dark:border-slate-800">
+    <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] shadow-[0_18px_60px_rgba(15,23,42,0.08)] dark:border-slate-800 dark:bg-slate-950">
+      <div className="flex items-center justify-between border-b border-faith-line px-4 py-3 dark:border-slate-800">
         <div>
-          <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">Audience Preview</div>
-          <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">Mirrors a premium waiting-room/live landing view</div>
+          <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">Audience Preview</div>
+          <div className="mt-1 text-[11px] text-faith-slate dark:text-faith-slate">Mirrors a premium waiting-room/live landing view</div>
         </div>
         <Pill tone={draft.status === "Scheduled" ? "green" : draft.status === "Ready" ? "orange" : "neutral"}>{draft.status}</Pill>
       </div>
 
       <div className="mx-auto max-w-[420px] px-3 py-4">
-        <div className="rounded-[34px] bg-black p-3 shadow-[0_18px_60px_rgba(0,0,0,0.32)]">
-          <div className="overflow-hidden rounded-[28px] bg-slate-50 dark:bg-slate-950">
-            <div className="sticky top-0 z-10 flex items-center justify-between bg-white/90 px-3 py-2 backdrop-blur dark:bg-slate-950/90">
+        <div className="rounded-3xl bg-black p-3 shadow-[0_18px_60px_rgba(0,0,0,0.32)]">
+          <div className="overflow-hidden rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-950">
+            <div className="sticky top-0 z-10 flex items-center justify-between bg-[var(--fh-surface-bg)]/90 px-3 py-2 backdrop-blur dark:bg-slate-950/90">
               <div className="min-w-0">
-                <div className="truncate text-sm font-semibold text-slate-900 dark:text-slate-100">{draft.title || "Untitled live session"}</div>
-                <div className="truncate text-[11px] text-slate-500 dark:text-slate-400">Live Sessions</div>
+                <div className="truncate text-sm font-semibold text-faith-ink dark:text-slate-100">{draft.title || "Untitled live session"}</div>
+                <div className="truncate text-[11px] text-faith-slate dark:text-faith-slate">Live Sessions</div>
               </div>
               <button
                 type="button"
@@ -1389,7 +1389,7 @@ function PreviewPhone({ draft, readiness }: { draft: LiveBuilderDraft; readiness
             </div>
 
             <div className="max-h-[760px] overflow-y-auto pb-6">
-              <div className="relative mx-3 mt-3 overflow-hidden rounded-[28px] bg-slate-900 text-white">
+              <div className="relative mx-3 mt-3 overflow-hidden rounded-3xl bg-slate-900 text-white">
                 <img src={draft.coverUrl} alt={draft.title} className="h-[220px] w-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent" />
                 <div className="absolute left-3 top-3 flex items-center gap-2">
@@ -1409,17 +1409,17 @@ function PreviewPhone({ draft, readiness }: { draft: LiveBuilderDraft; readiness
                   <div className="text-lg font-extrabold leading-tight">{draft.title}</div>
                   {draft.subtitle ? <div className="mt-1 text-sm text-white/90">{draft.subtitle}</div> : null}
                   <div className="mt-2 flex flex-wrap gap-2">
-                    <span className="rounded-full bg-white/12 px-2 py-1 text-[10px] font-semibold backdrop-blur">{draft.category}</span>
-                    <span className="rounded-full bg-white/12 px-2 py-1 text-[10px] font-semibold backdrop-blur">{draft.language}</span>
-                    <span className="rounded-full bg-white/12 px-2 py-1 text-[10px] font-semibold backdrop-blur">{accessLabel(draft.accessLevel)}</span>
+                    <span className="rounded-full bg-[var(--fh-surface-bg)]/12 px-2 py-1 text-[10px] font-semibold backdrop-blur">{draft.category}</span>
+                    <span className="rounded-full bg-[var(--fh-surface-bg)]/12 px-2 py-1 text-[10px] font-semibold backdrop-blur">{draft.language}</span>
+                    <span className="rounded-full bg-[var(--fh-surface-bg)]/12 px-2 py-1 text-[10px] font-semibold backdrop-blur">{accessLabel(draft.accessLevel)}</span>
                   </div>
                 </div>
               </div>
 
               <div className="mt-3 space-y-3 px-3">
                 <PreviewCard title="Time & access" icon={<Calendar className="h-4 w-4" />}>
-                  <div className="text-[13px] font-semibold text-slate-900 dark:text-slate-100">{formatPrettyDate(draft.startDateISO, draft.startTime, draft.timezone)}</div>
-                  <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
+                  <div className="text-[13px] font-semibold text-faith-ink dark:text-slate-100">{formatPrettyDate(draft.startDateISO, draft.startTime, draft.timezone)}</div>
+                  <div className="mt-1 text-[11px] text-faith-slate dark:text-faith-slate">
                     {draft.durationMin} minutes ? {draft.timezone} ? {draft.registrationRequired ? "Registration required" : draft.rsvpEnabled ? "RSVP open" : "Open entry"}
                   </div>
                   {draft.payOrTicketEnabled ? (
@@ -1446,16 +1446,16 @@ function PreviewPhone({ draft, readiness }: { draft: LiveBuilderDraft; readiness
                 <PreviewCard title="Run of show" icon={<Layers className="h-4 w-4" />}>
                   <div className="space-y-2">
                     {firstSegments.map((segment, index) => (
-                      <div key={segment.id} className="flex items-start justify-between gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2 dark:border-slate-700 dark:bg-slate-900">
+                      <div key={segment.id} className="flex items-start justify-between gap-3 rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2 dark:border-slate-700 dark:bg-slate-900">
                         <div className="min-w-0">
-                          <div className="text-[11px] font-semibold text-slate-900 dark:text-slate-100">{index + 1}. {segment.title}</div>
-                          <div className="mt-1 text-[10px] text-slate-500 dark:text-slate-400">{segment.type}</div>
+                          <div className="text-[11px] font-semibold text-faith-ink dark:text-slate-100">{index + 1}. {segment.title}</div>
+                          <div className="mt-1 text-[10px] text-faith-slate dark:text-faith-slate">{segment.type}</div>
                         </div>
                         <div className="flex items-center gap-2">
                           {segment.tone === "donation" ? <span className="rounded-full bg-orange-100 px-2 py-1 text-[10px] font-bold text-orange-700 dark:bg-orange-900/20 dark:text-orange-300">Donate</span> : null}
                           {segment.tone === "crowdfund" ? <span className="rounded-full bg-emerald-100 px-2 py-1 text-[10px] font-bold text-emerald-700 dark:bg-emerald-900/20 dark:text-emerald-300">Crowdfund</span> : null}
                           {segment.tone === "event" ? <span className="rounded-full bg-slate-200 px-2 py-1 text-[10px] font-bold text-slate-700 dark:bg-slate-800 dark:text-slate-300">CTA</span> : null}
-                          <span className="text-[10px] font-bold text-slate-500 dark:text-slate-400">{segment.durationMin}m</span>
+                          <span className="text-[10px] font-bold text-faith-slate dark:text-faith-slate">{segment.durationMin}m</span>
                         </div>
                       </div>
                     ))}
@@ -1471,7 +1471,7 @@ function PreviewPhone({ draft, readiness }: { draft: LiveBuilderDraft; readiness
                     <SmallStatusChip label={draft.engagement.chatRulePreset} color="neutral" />
                   </div>
                   {draft.technical.translationTracks.length ? (
-                    <div className="mt-3 rounded-2xl border border-slate-200 bg-white px-3 py-2 text-[11px] text-slate-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300">
+                    <div className="mt-3 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[11px] text-faith-slate dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300">
                       Translation tracks: {draft.technical.translationTracks.join(", ")}
                     </div>
                   ) : null}
@@ -1479,8 +1479,8 @@ function PreviewPhone({ draft, readiness }: { draft: LiveBuilderDraft; readiness
 
                 {draft.engagement.crowdfundInsertEnabled && crowdfund ? (
                   <PreviewCard title="Campaign moment" icon={<HeartHandshake className="h-4 w-4" />}>
-                    <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">{crowdfund.name}</div>
-                    <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">{draft.engagement.crowdfundInsertLabel}</div>
+                    <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">{crowdfund.name}</div>
+                    <div className="mt-1 text-[11px] text-faith-slate dark:text-faith-slate">{draft.engagement.crowdfundInsertLabel}</div>
                     <div className="mt-3 h-2 rounded-full bg-slate-100 dark:bg-slate-800">
                       <div className="h-full rounded-full" style={{ width: `${crowdfund.progress}%`, background: EV_GREEN }} />
                     </div>
@@ -1488,12 +1488,12 @@ function PreviewPhone({ draft, readiness }: { draft: LiveBuilderDraft; readiness
                   </PreviewCard>
                 ) : null}
 
-                <div className="rounded-[24px] bg-white p-3 shadow-sm ring-1 ring-slate-100 dark:bg-slate-950 dark:ring-slate-800">
-                  <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500">Readiness</div>
+                <div className="rounded-2xl bg-[var(--fh-surface-bg)] p-3 shadow-soft ring-1 ring-slate-100 dark:bg-slate-950 dark:ring-slate-800">
+                  <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-faith-slate dark:text-faith-slate">Readiness</div>
                   <div className="mt-2 flex items-center justify-between gap-3">
                     <div>
-                      <div className="text-[15px] font-extrabold text-slate-900 dark:text-slate-100">{readiness}% ready</div>
-                      <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">Pre-live checklist and approvals are tracked in real time.</div>
+                      <div className="text-[15px] font-extrabold text-faith-ink dark:text-slate-100">{readiness}% ready</div>
+                      <div className="mt-1 text-[11px] text-faith-slate dark:text-faith-slate">Pre-live checklist and approvals are tracked in real time.</div>
                     </div>
                     <div className="grid h-14 w-14 place-items-center rounded-full border-4 border-emerald-100 bg-emerald-50 text-[12px] font-black text-emerald-700 dark:border-emerald-900 dark:bg-emerald-900/20 dark:text-emerald-300">
                       {readiness}%
@@ -1503,7 +1503,7 @@ function PreviewPhone({ draft, readiness }: { draft: LiveBuilderDraft; readiness
               </div>
             </div>
 
-            <div className="sticky bottom-0 border-t border-slate-200 bg-white/95 px-3 py-3 backdrop-blur dark:border-slate-800 dark:bg-slate-950/95">
+            <div className="sticky bottom-0 border-t border-faith-line bg-[var(--fh-surface-bg)]/95 px-3 py-3 backdrop-blur dark:border-slate-800 dark:bg-slate-950/95">
               <div className="flex gap-2">
                 <button className="flex-1 rounded-2xl px-3 py-3 text-[12px] font-extrabold text-white" style={{ background: EV_GREEN }} onClick={() => safeNav("/faithhub/provider/live-dashboard")}>
                   Join live
@@ -1586,7 +1586,7 @@ function SetupStep({
           <ParentTypeCard title="Event" description="Attach the session to a retreat, conference, prayer night, or special gathering." selected={draft.parentType === "event"} onClick={() => setDraft((d) => ({ ...d, parentType: "event" }))} />
           <ParentTypeCard title="Giving Campaign" description="Create a giving-focused live moment that is anchored to a standard fund or appeal." selected={draft.parentType === "givingCampaign"} onClick={() => setDraft((d) => ({ ...d, parentType: "givingCampaign" }))} />
           <ParentTypeCard title="Charity Crowdfund" description="Drive a story-based crowdfund with progress, milestones, and urgency inside the live experience." selected={draft.parentType === "charityCrowdfund"} onClick={() => setDraft((d) => ({ ...d, parentType: "charityCrowdfund" }))} />
-          <ParentTypeCard title="Pure Standalone Live" description="Launch a live session with no content parent at all â€” ideal for announcements, prayer, or spontaneous moments." selected={draft.parentType === "standalone"} onClick={() => setDraft((d) => ({ ...d, parentType: "standalone" }))} />
+          <ParentTypeCard title="Pure Standalone Live" description="Launch a live session with no content parent at all — ideal for announcements, prayer, or spontaneous moments." selected={draft.parentType === "standalone"} onClick={() => setDraft((d) => ({ ...d, parentType: "standalone" }))} />
         </div>
 
         <div className="mt-4 grid gap-3 md:grid-cols-2">
@@ -1719,7 +1719,7 @@ function IdentityStep({ draft, setDraft }: { draft: LiveBuilderDraft; setDraft: 
         </div>
       </Card>
 
-      <Card title="Presenters" subtitle="Add the visible faces of the session â€” sermon lead, host, worship lead, or guests.">
+      <Card title="Presenters" subtitle="Add the visible faces of the session — sermon lead, host, worship lead, or guests.">
         <div className="flex flex-wrap gap-2">
           {PEOPLE.map((person) => {
             const selected = draft.presenters.includes(person);
@@ -1737,7 +1737,7 @@ function IdentityStep({ draft, setDraft }: { draft: LiveBuilderDraft; setDraft: 
                   "rounded-full border px-3 py-2 text-[12px] font-semibold transition-colors",
                   selected
                     ? "border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-800 dark:bg-emerald-900/20 dark:text-emerald-300"
-                    : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800",
+                    : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800",
                 )}
               >
                 {selected ? <Check className="mr-1 inline h-3.5 w-3.5" /> : null}
@@ -1758,15 +1758,15 @@ function IdentityStep({ draft, setDraft }: { draft: LiveBuilderDraft; setDraft: 
                 type="button"
                 onClick={() => setDraft((d) => ({ ...d, coverUrl: cover.url }))}
                 className={cx(
-                  "overflow-hidden rounded-[24px] border text-left transition-colors",
-                  selected ? "border-emerald-300 shadow-[0_8px_24px_rgba(3,205,140,0.12)]" : "border-slate-200 dark:border-slate-700",
+                  "overflow-hidden rounded-2xl border text-left transition-colors",
+                  selected ? "border-emerald-300 shadow-[0_8px_24px_rgba(3,205,140,0.12)]" : "border-faith-line dark:border-slate-700",
                 )}
               >
                 <div className="aspect-[4/3] bg-slate-100 dark:bg-slate-900">
                   <img src={cover.url} alt={cover.name} className="h-full w-full object-cover" />
                 </div>
-                <div className="flex items-center justify-between gap-2 bg-white px-3 py-2 dark:bg-slate-950">
-                  <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">{cover.name}</div>
+                <div className="flex items-center justify-between gap-2 bg-[var(--fh-surface-bg)] px-3 py-2 dark:bg-slate-950">
+                  <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">{cover.name}</div>
                   {selected ? <Pill tone="green">Live</Pill> : null}
                 </div>
               </button>
@@ -1878,7 +1878,7 @@ function RunOfShowRow({
   onMoveDown: () => void;
 }) {
   return (
-    <div className="rounded-[24px] border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-950">
+    <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 dark:border-slate-800 dark:bg-slate-950">
       <div className="flex items-start justify-between gap-3">
         <div className="flex items-center gap-2">
           <span className="inline-flex h-8 min-w-[34px] items-center justify-center rounded-full bg-slate-900 px-3 text-[11px] font-black text-white dark:bg-slate-700">{index + 1}</span>
@@ -1887,7 +1887,7 @@ function RunOfShowRow({
         <div className="flex items-center gap-2">
           <SoftButton onClick={onMoveUp} disabled={index === 0} className="px-3 py-2">??? ?</SoftButton>
           <SoftButton onClick={onMoveDown} disabled={index === total - 1} className="px-3 py-2">??? ?</SoftButton>
-          <button type="button" onClick={onRemove} className="grid h-9 w-9 place-items-center rounded-2xl border border-slate-200 bg-white hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800">
+          <button type="button" onClick={onRemove} className="grid h-9 w-9 place-items-center rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800">
             <X className="h-4 w-4 text-slate-700 dark:text-slate-300" />
           </button>
         </div>
@@ -1952,7 +1952,7 @@ function RunOfShowStep({ draft, setDraft }: { draft: LiveBuilderDraft; setDraft:
               key={type}
               type="button"
               onClick={() => addSegment(type)}
-              className="rounded-full border border-slate-200 bg-white px-3 py-2 text-[12px] font-semibold text-slate-700 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800"
+              className="rounded-full border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] font-semibold text-slate-700 transition-colors hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800"
             >
               + {type}
             </button>
@@ -2042,7 +2042,7 @@ function TeamStep({ draft, setDraft }: { draft: LiveBuilderDraft; setDraft: Reac
                 onChange={(value) => setDraft((d) => ({ ...d, team: { ...d.team, [role.key]: value } }))}
                 options={PEOPLE.map((person) => ({ value: person, label: person }))}
               />
-              <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">{role.hint}</div>
+              <div className="mt-1 text-[11px] text-faith-slate dark:text-faith-slate">{role.hint}</div>
             </div>
           ))}
         </div>
@@ -2050,20 +2050,20 @@ function TeamStep({ draft, setDraft }: { draft: LiveBuilderDraft; setDraft: Reac
 
       <Card title="Backstage readiness" subtitle="Use role clarity to reduce confusion before the stream starts.">
         <div className="grid gap-3 md:grid-cols-3">
-          <div className="rounded-3xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-900">
-            <div className="text-[10px] uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">Host lane</div>
-            <div className="mt-2 text-[13px] font-semibold text-slate-900 dark:text-slate-100">{draft.team.host}</div>
-            <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">Primary presenter and audience-facing voice.</div>
+          <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface)] p-4 dark:border-slate-700 dark:bg-slate-900">
+            <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate dark:text-faith-slate">Host lane</div>
+            <div className="mt-2 text-[13px] font-semibold text-faith-ink dark:text-slate-100">{draft.team.host}</div>
+            <div className="mt-1 text-[11px] text-faith-slate dark:text-faith-slate">Primary presenter and audience-facing voice.</div>
           </div>
-          <div className="rounded-3xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-900">
-            <div className="text-[10px] uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">Production lane</div>
-            <div className="mt-2 text-[13px] font-semibold text-slate-900 dark:text-slate-100">{draft.team.producer}</div>
-            <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">Scene control, graphics, and transition safety.</div>
+          <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface)] p-4 dark:border-slate-700 dark:bg-slate-900">
+            <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate dark:text-faith-slate">Production lane</div>
+            <div className="mt-2 text-[13px] font-semibold text-faith-ink dark:text-slate-100">{draft.team.producer}</div>
+            <div className="mt-1 text-[11px] text-faith-slate dark:text-faith-slate">Scene control, graphics, and transition safety.</div>
           </div>
-          <div className="rounded-3xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-900">
-            <div className="text-[10px] uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">Safety lane</div>
-            <div className="mt-2 text-[13px] font-semibold text-slate-900 dark:text-slate-100">{draft.team.moderator}</div>
-            <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">Chat health, moderation, prayer triage, and community safety.</div>
+          <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface)] p-4 dark:border-slate-700 dark:bg-slate-900">
+            <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate dark:text-faith-slate">Safety lane</div>
+            <div className="mt-2 text-[13px] font-semibold text-faith-ink dark:text-slate-100">{draft.team.moderator}</div>
+            <div className="mt-1 text-[11px] text-faith-slate dark:text-faith-slate">Chat health, moderation, prayer triage, and community safety.</div>
           </div>
         </div>
       </Card>
@@ -2189,7 +2189,7 @@ function TechnicalStep({ draft, setDraft }: { draft: LiveBuilderDraft; setDraft:
                   "rounded-full border px-3 py-2 text-[12px] font-semibold transition-colors",
                   selected
                     ? "border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-800 dark:bg-emerald-900/20 dark:text-emerald-300"
-                    : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800",
+                    : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800",
                 )}
               >
                 {selected ? <Check className="mr-1 inline h-3.5 w-3.5" /> : null}
@@ -2232,12 +2232,12 @@ function ApprovalsStep({ draft, setDraft }: { draft: LiveBuilderDraft; setDraft:
             <Label>Final approval by</Label>
             <Input value={draft.approvals.finalApprovalName} onChange={(value) => setDraft((d) => ({ ...d, approvals: { ...d.approvals, finalApprovalName: value } }))} placeholder="e.g. Lead producer or pastor" />
           </div>
-          <div className="rounded-3xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-900">
+          <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface)] p-4 dark:border-slate-700 dark:bg-slate-900">
             <div className="flex items-start gap-3">
               <ShieldCheck className="mt-0.5 h-5 w-5 text-slate-700 dark:text-slate-300" />
               <div>
-                <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">Approval-aware workflow</div>
-                <div className="mt-1 text-[11px] leading-5 text-slate-500 dark:text-slate-400">This page is designed to block risky handoffs into schedule or studio until the essential operational, editorial, and safety checks are complete.</div>
+                <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">Approval-aware workflow</div>
+                <div className="mt-1 text-[11px] leading-5 text-faith-slate dark:text-faith-slate">This page is designed to block risky handoffs into schedule or studio until the essential operational, editorial, and safety checks are complete.</div>
               </div>
             </div>
           </div>
@@ -2272,20 +2272,20 @@ function ReviewStep({
         </div>
 
         <div className="mt-4 grid gap-3 md:grid-cols-2">
-          <div className="rounded-3xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-900">
-            <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">Session summary</div>
-            <div className="mt-2 text-[11px] leading-5 text-slate-500 dark:text-slate-400">{draft.summary}</div>
+          <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface)] p-4 dark:border-slate-700 dark:bg-slate-900">
+            <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">Session summary</div>
+            <div className="mt-2 text-[11px] leading-5 text-faith-slate dark:text-faith-slate">{draft.summary}</div>
             <div className="mt-3 flex flex-wrap gap-2">
               {draft.tags.map((tag) => <Pill key={tag}>{tag}</Pill>)}
             </div>
           </div>
-          <div className="rounded-3xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-900">
-            <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">Backstage team</div>
-            <div className="mt-2 space-y-1 text-[11px] text-slate-500 dark:text-slate-400">
-              <div>Host: <span className="font-semibold text-slate-900 dark:text-slate-100">{draft.team.host}</span></div>
-              <div>Producer: <span className="font-semibold text-slate-900 dark:text-slate-100">{draft.team.producer}</span></div>
-              <div>Moderator: <span className="font-semibold text-slate-900 dark:text-slate-100">{draft.team.moderator}</span></div>
-              <div>Captioning: <span className="font-semibold text-slate-900 dark:text-slate-100">{draft.team.captionOperator}</span></div>
+          <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface)] p-4 dark:border-slate-700 dark:bg-slate-900">
+            <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">Backstage team</div>
+            <div className="mt-2 space-y-1 text-[11px] text-faith-slate dark:text-faith-slate">
+              <div>Host: <span className="font-semibold text-faith-ink dark:text-slate-100">{draft.team.host}</span></div>
+              <div>Producer: <span className="font-semibold text-faith-ink dark:text-slate-100">{draft.team.producer}</span></div>
+              <div>Moderator: <span className="font-semibold text-faith-ink dark:text-slate-100">{draft.team.moderator}</span></div>
+              <div>Captioning: <span className="font-semibold text-faith-ink dark:text-slate-100">{draft.team.captionOperator}</span></div>
             </div>
           </div>
         </div>
@@ -2293,25 +2293,25 @@ function ReviewStep({
 
       <Card title="Instant handoff" subtitle="All settings should remain preserved as the team moves to scheduling, notifications, studio, and distribution.">
         <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
-          <button type="button" onClick={() => onQuickLink("Live Schedule", ROUTES.liveSchedule)} className="rounded-[24px] border border-slate-200 bg-white p-4 text-left transition-colors hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800">
+          <button type="button" onClick={() => onQuickLink("Live Schedule", ROUTES.liveSchedule)} className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 text-left transition-colors hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800">
             <Calendar className="h-5 w-5 text-emerald-600" />
-            <div className="mt-3 text-[12px] font-semibold text-slate-900 dark:text-slate-100">Live Schedule</div>
-            <div className="mt-1 text-[11px] leading-5 text-slate-500 dark:text-slate-400">Place the session onto the operational calendar with staffing and readiness preserved.</div>
+            <div className="mt-3 text-[12px] font-semibold text-faith-ink dark:text-slate-100">Live Schedule</div>
+            <div className="mt-1 text-[11px] leading-5 text-faith-slate dark:text-faith-slate">Place the session onto the operational calendar with staffing and readiness preserved.</div>
           </button>
-          <button type="button" onClick={() => onQuickLink("Live Dashboard", ROUTES.liveDashboard)} className="rounded-[24px] border border-slate-200 bg-white p-4 text-left transition-colors hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800">
+          <button type="button" onClick={() => onQuickLink("Live Dashboard", ROUTES.liveDashboard)} className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 text-left transition-colors hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800">
             <MonitorPlay className="h-5 w-5 text-emerald-600" />
-            <div className="mt-3 text-[12px] font-semibold text-slate-900 dark:text-slate-100">Live Dashboard</div>
-            <div className="mt-1 text-[11px] leading-5 text-slate-500 dark:text-slate-400">Open the operational cockpit for readiness, alerts, and audience pulse.</div>
+            <div className="mt-3 text-[12px] font-semibold text-faith-ink dark:text-slate-100">Live Dashboard</div>
+            <div className="mt-1 text-[11px] leading-5 text-faith-slate dark:text-faith-slate">Open the operational cockpit for readiness, alerts, and audience pulse.</div>
           </button>
-          <button type="button" onClick={() => onQuickLink("Audience Notifications", ROUTES.audienceNotifications)} className="rounded-[24px] border border-slate-200 bg-white p-4 text-left transition-colors hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800">
+          <button type="button" onClick={() => onQuickLink("Audience Notifications", ROUTES.audienceNotifications)} className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 text-left transition-colors hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800">
             <Bell className="h-5 w-5 text-orange-500" />
-            <div className="mt-3 text-[12px] font-semibold text-slate-900 dark:text-slate-100">Audience Notifications</div>
-            <div className="mt-1 text-[11px] leading-5 text-slate-500 dark:text-slate-400">Activate reminder journeys and replay follow-up without rebuilding the audience logic.</div>
+            <div className="mt-3 text-[12px] font-semibold text-faith-ink dark:text-slate-100">Audience Notifications</div>
+            <div className="mt-1 text-[11px] leading-5 text-faith-slate dark:text-faith-slate">Activate reminder journeys and replay follow-up without rebuilding the audience logic.</div>
           </button>
-          <button type="button" onClick={() => onQuickLink("Stream-to-Platforms", ROUTES.streamToPlatforms)} className="rounded-[24px] border border-slate-200 bg-white p-4 text-left transition-colors hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800">
+          <button type="button" onClick={() => onQuickLink("Stream-to-Platforms", ROUTES.streamToPlatforms)} className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 text-left transition-colors hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800">
             <Globe2 className="h-5 w-5 text-orange-500" />
-            <div className="mt-3 text-[12px] font-semibold text-slate-900 dark:text-slate-100">Stream-to-Platforms</div>
-            <div className="mt-1 text-[11px] leading-5 text-slate-500 dark:text-slate-400">Carry metadata, destination presets, and failover choices into distribution.</div>
+            <div className="mt-3 text-[12px] font-semibold text-faith-ink dark:text-slate-100">Stream-to-Platforms</div>
+            <div className="mt-1 text-[11px] leading-5 text-faith-slate dark:text-faith-slate">Carry metadata, destination presets, and failover choices into distribution.</div>
           </button>
         </div>
       </Card>
@@ -2338,9 +2338,9 @@ function ReviewStep({
 
 function HandoffPanel({ onQuickLink }: { onQuickLink: (label: string, route: string) => void }) {
   return (
-    <div className="mt-4 rounded-[30px] border border-slate-200 bg-white p-4 shadow-[0_10px_32px_rgba(15,23,42,0.04)] dark:border-slate-800 dark:bg-slate-950">
-      <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">Preview-linked handoff</div>
-      <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">Same premium workflow pattern as the base page: preview stays visible while downstream actions remain one click away.</div>
+    <div className="mt-4 rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-[0_10px_32px_rgba(15,23,42,0.04)] dark:border-slate-800 dark:bg-slate-950">
+      <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">Preview-linked handoff</div>
+      <div className="mt-1 text-[11px] text-faith-slate dark:text-faith-slate">Same premium workflow pattern as the base page: preview stays visible while downstream actions remain one click away.</div>
       <div className="mt-3 grid gap-2">
         {[
           { label: "Open Live Schedule", route: ROUTES.liveSchedule },
@@ -2348,7 +2348,7 @@ function HandoffPanel({ onQuickLink }: { onQuickLink: (label: string, route: str
           { label: "Open Audience Notifications", route: ROUTES.audienceNotifications },
           { label: "Open Studio Setup", route: ROUTES.liveStudio },
         ].map((item) => (
-          <button key={item.route} type="button" onClick={() => onQuickLink(item.label, item.route)} className="flex items-center justify-between rounded-2xl border border-slate-200 bg-white px-3 py-2 text-[12px] font-semibold text-slate-700 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800">
+          <button key={item.route} type="button" onClick={() => onQuickLink(item.label, item.route)} className="flex items-center justify-between rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] font-semibold text-slate-700 transition-colors hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800">
             <span>{item.label}</span>
             <ExternalLink className="h-4 w-4" />
           </button>
@@ -2480,15 +2480,15 @@ export default function FaithHubLiveBuilderPage({ embedded = false, onRequestClo
   };
 
   return (
-    <div className={cx("space-y-4 pb-28 sm:pb-20", embedded ? "min-h-0" : "min-h-screen bg-slate-50 px-4 py-4 dark:bg-slate-950 sm:px-6" )}>
+    <div className={cx("space-y-4 pb-28 sm:pb-20", embedded ? "min-h-0" : "min-h-screen bg-[var(--fh-surface)] px-4 py-4 dark:bg-slate-950 sm:px-6" )}>
       {!embedded ? (
         <div className="flex items-start justify-between gap-3 flex-wrap">
           <div className="min-w-0">
             <div className="flex items-center gap-2 flex-wrap">
-              <div className="text-xl sm:text-2xl font-extrabold truncate text-slate-900 dark:text-slate-100">{draft.title}</div>
+              <div className="text-xl sm:text-2xl font-extrabold truncate text-faith-ink dark:text-slate-100">{draft.title}</div>
               <Pill tone={draft.status === "Scheduled" ? "green" : draft.status === "Ready" ? "orange" : "neutral"}>{draft.status}</Pill>
             </div>
-            <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 flex items-center gap-2 flex-wrap">
+            <div className="text-[11px] text-faith-slate dark:text-faith-slate mt-1 flex items-center gap-2 flex-wrap">
               <span>{getParentLabel(draft)}</span>
               <span className="text-slate-300 dark:text-slate-700">?</span>
               <span>{formatPrettyDate(draft.startDateISO, draft.startTime, draft.timezone)}</span>
@@ -2528,7 +2528,7 @@ export default function FaithHubLiveBuilderPage({ embedded = false, onRequestClo
 
         <div className="space-y-4 lg:col-span-5">
           {renderStep()}
-          <div className="sticky bottom-4 z-30 rounded-[28px] border border-slate-200 bg-white p-3 shadow-[0_12px_30px_rgba(15,23,42,0.08)] dark:border-slate-800 dark:bg-slate-950 lg:hidden">
+          <div className="sticky bottom-4 z-30 rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-3 shadow-[0_12px_30px_rgba(15,23,42,0.08)] dark:border-slate-800 dark:bg-slate-950 lg:hidden">
             <div className="flex items-center justify-between gap-2">
               <SoftButton onClick={() => !isFirstStep && setStep(STEPS[currentIndex - 1].key)} disabled={isFirstStep}>
                 <ChevronLeft className="h-4 w-4" /> Back
@@ -2560,6 +2560,8 @@ export default function FaithHubLiveBuilderPage({ embedded = false, onRequestClo
     </div>
   );
 }
+
+
 
 
 

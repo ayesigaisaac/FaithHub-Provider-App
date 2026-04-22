@@ -1,4 +1,4 @@
-﻿// @ts-nocheck
+// @ts-nocheck
 
 "use client";
 
@@ -265,8 +265,8 @@ function Pill({
           : tone === "brand"
             ? "border-transparent text-white"
             : tone === "navy"
-              ? "border-transparent bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900"
-              : "border-slate-200 bg-white text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300";
+              ? "border-transparent bg-slate-900 text-white dark:bg-slate-100 dark:text-faith-ink"
+              : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300";
   return (
     <span
       className={cx(
@@ -303,8 +303,8 @@ function SoftButton({
       className={cx(
         "inline-flex items-center gap-2 rounded-2xl border px-4 py-2 text-[12px] font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2",
         disabled
-          ? "cursor-not-allowed border-slate-200 bg-slate-100 text-slate-400 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-600"
-          : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700",
+          ? "cursor-not-allowed border-faith-line bg-slate-100 text-faith-slate dark:border-slate-800 dark:bg-slate-900 dark:text-faith-slate"
+          : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700",
         className,
       )}
     >
@@ -355,14 +355,14 @@ function Card({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-3xl border border-slate-200 bg-white p-4 transition-colors dark:border-slate-800 dark:bg-slate-900">
+    <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 transition-colors dark:border-slate-800 dark:bg-slate-900">
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
-          <div className="text-[14px] font-semibold text-slate-900 dark:text-slate-100">
+          <div className="text-[14px] font-semibold text-faith-ink dark:text-slate-100">
             {title}
           </div>
           {subtitle ? (
-            <div className="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">
+            <div className="mt-0.5 text-[11px] text-faith-slate dark:text-faith-slate">
               {subtitle}
             </div>
           ) : null}
@@ -396,7 +396,7 @@ function Input({
       value={value}
       onChange={(e) => onChange(e.target.value)}
       placeholder={placeholder}
-      className="mt-1 w-full rounded-2xl border border-slate-200 bg-white px-3 py-2 text-[12px] text-slate-900 outline-none transition-colors focus:ring-2 focus:ring-emerald-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:focus:ring-emerald-900/40"
+      className="mt-1 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] text-faith-ink outline-none transition-colors focus:ring-2 focus:ring-emerald-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:focus:ring-emerald-900/40"
     />
   );
 }
@@ -418,7 +418,7 @@ function TextArea({
       value={value}
       onChange={(e) => onChange(e.target.value)}
       placeholder={placeholder}
-      className="mt-1 w-full rounded-2xl border border-slate-200 bg-white px-3 py-2 text-[12px] text-slate-900 outline-none transition-colors focus:ring-2 focus:ring-emerald-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:focus:ring-emerald-900/40"
+      className="mt-1 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] text-faith-ink outline-none transition-colors focus:ring-2 focus:ring-emerald-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:focus:ring-emerald-900/40"
     />
   );
 }
@@ -444,16 +444,16 @@ function Toggle({
         "w-full rounded-3xl border p-3 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2",
         checked
           ? "border-emerald-200 bg-emerald-50 dark:border-emerald-800 dark:bg-emerald-900/20"
-          : "border-slate-200 bg-white hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800",
+          : "border-faith-line bg-[var(--fh-surface-bg)] hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800",
       )}
     >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0 flex-1">
-          <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+          <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
             {label}
           </div>
           {hint ? (
-            <div className="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">
+            <div className="mt-0.5 text-[11px] text-faith-slate dark:text-faith-slate">
               {hint}
             </div>
           ) : null}
@@ -463,10 +463,10 @@ function Toggle({
             "mt-0.5 flex h-6 w-10 shrink-0 items-center rounded-full border px-1 transition-colors",
             checked
               ? "justify-end border-emerald-500 bg-emerald-500"
-              : "justify-start border-slate-200 bg-slate-100 dark:border-slate-700 dark:bg-slate-800",
+              : "justify-start border-faith-line bg-slate-100 dark:border-slate-700 dark:bg-slate-800",
           )}
         >
-          <span className="h-4 w-4 rounded-full bg-white shadow" />
+          <span className="h-4 w-4 rounded-full bg-[var(--fh-surface-bg)] shadow" />
         </span>
       </div>
     </button>
@@ -513,13 +513,13 @@ function StepRail({
   return (
     <nav
       aria-label="Onboarding steps"
-      className="rounded-3xl border border-slate-200 bg-white p-4 transition-colors dark:border-slate-800 dark:bg-slate-900"
+      className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 transition-colors dark:border-slate-800 dark:bg-slate-900"
     >
       <div className="rounded-3xl border border-emerald-200 bg-emerald-50 p-4 dark:border-emerald-900/40 dark:bg-emerald-900/20">
-        <div className="text-[18px] font-bold text-slate-900 dark:text-slate-100">
+        <div className="text-[18px] font-bold text-faith-ink dark:text-slate-100">
           Provider Onboarding
         </div>
-        <div className="mt-1 text-[12px] text-slate-600 dark:text-slate-400">
+        <div className="mt-1 text-[12px] text-faith-slate dark:text-faith-slate">
           Guided setup for identity, brand, roles, giving, channels, and launch readiness.
         </div>
         <div className="mt-4">
@@ -555,15 +555,15 @@ function StepRail({
                 "w-full rounded-2xl border px-3 py-3 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2",
                 isActive
                   ? "border-emerald-200 bg-emerald-50 dark:border-emerald-800 dark:bg-emerald-900/20"
-                  : "border-slate-200 bg-white hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800",
+                  : "border-faith-line bg-[var(--fh-surface-bg)] hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800",
               )}
             >
               <div className="flex items-center justify-between gap-2">
                 <div className="min-w-0">
-                  <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+                  <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                     {item.label}
                   </div>
-                  <div className="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">
+                  <div className="mt-0.5 text-[11px] text-faith-slate dark:text-faith-slate">
                     {statusLabel}
                   </div>
                   {firstBlocker ? (
@@ -580,12 +580,12 @@ function StepRail({
                         ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300"
                         : status === "blocked"
                           ? "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300"
-                          : "bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300",
+                          : "bg-slate-100 text-faith-slate dark:bg-slate-800 dark:text-slate-300",
                     )}
                   >
                     {status === "complete" ? "Done" : `${score}%`}
                   </span>
-                  <ChevronRight className="h-4 w-4 text-slate-400" />
+                  <ChevronRight className="h-4 w-4 text-faith-slate" />
                 </div>
               </div>
             </button>
@@ -597,10 +597,10 @@ function StepRail({
         <div className="flex items-start gap-2">
           <Sparkles className="mt-0.5 h-4 w-4 text-orange-600 dark:text-orange-300" />
           <div>
-            <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+            <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
               Concierge readiness
             </div>
-            <div className="mt-1 text-[11px] text-slate-600 dark:text-slate-400">
+            <div className="mt-1 text-[11px] text-faith-slate dark:text-faith-slate">
               The page explains exactly what is still blocking verification, payout readiness, and safe launch.
             </div>
           </div>
@@ -646,8 +646,8 @@ function PhonePreview({
 
   return (
     <div className={`mx-auto w-full ${viewportMaxWidth}`}>
-      <div className="rounded-[34px] bg-slate-950 p-3 shadow-[0_18px_60px_rgba(15,23,42,0.28)]">
-        <div className="overflow-hidden rounded-[28px] bg-white dark:bg-slate-900">
+      <div className="rounded-3xl bg-slate-950 p-3 shadow-[0_18px_60px_rgba(15,23,42,0.28)]">
+        <div className="overflow-hidden rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900">
           <div className="relative">
             <img
               src={coverUrl}
@@ -675,37 +675,37 @@ function PhonePreview({
           </div>
 
           <div className="space-y-3 p-4">
-            <div className="rounded-2xl border border-slate-200 bg-white p-3 dark:border-slate-800 dark:bg-slate-900">
-              <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+            <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-3 dark:border-slate-800 dark:bg-slate-900">
+              <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                 Mission
               </div>
-              <div className="mt-1 text-[12px] leading-relaxed text-slate-600 dark:text-slate-400">
+              <div className="mt-1 text-[12px] leading-relaxed text-faith-slate dark:text-faith-slate">
                 {mission || "Add your mission statement to show the heart of your institution."}
               </div>
             </div>
 
             <div className="grid grid-cols-2 gap-2">
-              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3 dark:border-slate-800 dark:bg-slate-950">
-                <div className="text-[10px] uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500">
+              <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3 dark:border-slate-800 dark:bg-slate-950">
+                <div className="text-[10px] uppercase tracking-[0.18em] text-faith-slate dark:text-faith-slate">
                   Campuses
                 </div>
-                <div className="mt-1 text-[18px] font-black text-slate-900 dark:text-slate-100">
+                <div className="mt-1 text-[18px] font-black text-faith-ink dark:text-slate-100">
                   {campuses.length}
                 </div>
               </div>
-              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3 dark:border-slate-800 dark:bg-slate-950">
-                <div className="text-[10px] uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500">
+              <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3 dark:border-slate-800 dark:bg-slate-950">
+                <div className="text-[10px] uppercase tracking-[0.18em] text-faith-slate dark:text-faith-slate">
                   Launch state
                 </div>
-                <div className="mt-1 text-[18px] font-black text-slate-900 dark:text-slate-100">
+                <div className="mt-1 text-[18px] font-black text-faith-ink dark:text-slate-100">
                   {launchState}
                 </div>
               </div>
             </div>
 
-            <div className="rounded-2xl border border-slate-200 bg-white p-3 dark:border-slate-800 dark:bg-slate-900">
+            <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-3 dark:border-slate-800 dark:bg-slate-900">
               <div className="flex items-center justify-between gap-2">
-                <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+                <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                   Workspace defaults
                 </div>
                 <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-[10px] font-bold text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300">
@@ -713,10 +713,10 @@ function PhonePreview({
                 </span>
               </div>
               <div className="mt-2 grid grid-cols-2 gap-2 text-[11px]">
-                <div className="rounded-xl bg-slate-50 px-2 py-2 text-slate-700 dark:bg-slate-950 dark:text-slate-300">
+                <div className="rounded-xl bg-[var(--fh-surface)] px-2 py-2 text-slate-700 dark:bg-slate-950 dark:text-slate-300">
                   {liveEnabled ? "Live Sessions ready" : "Live Sessions pending"}
                 </div>
-                <div className="rounded-xl bg-slate-50 px-2 py-2 text-slate-700 dark:bg-slate-950 dark:text-slate-300">
+                <div className="rounded-xl bg-[var(--fh-surface)] px-2 py-2 text-slate-700 dark:bg-slate-950 dark:text-slate-300">
                   {givingVisible ? "Giving visible" : "Giving hidden"}
                 </div>
               </div>
@@ -1340,13 +1340,13 @@ export default function ProviderOnboardingPage() {
                     "rounded-2xl border p-3 text-left transition-colors",
                     active
                       ? "border-emerald-200 bg-emerald-50 dark:border-emerald-800 dark:bg-emerald-900/20"
-                      : "border-slate-200 bg-white hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800",
+                      : "border-faith-line bg-[var(--fh-surface-bg)] hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800",
                   )}
                 >
-                  <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+                  <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                     {profile.label}
                   </div>
-                  <div className="mt-1 text-[11px] leading-relaxed text-slate-500 dark:text-slate-400">
+                  <div className="mt-1 text-[11px] leading-relaxed text-faith-slate dark:text-faith-slate">
                     {profile.hint}
                   </div>
                 </button>
@@ -1409,7 +1409,7 @@ export default function ProviderOnboardingPage() {
             <Input value={contactEmail} onChange={setContactEmail} />
           </div>
 
-          <div className="rounded-3xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950">
+          <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface)] p-4 dark:border-slate-800 dark:bg-slate-950">
             <div className="flex items-start gap-3">
               <div
                 className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl text-lg font-black text-white"
@@ -1418,13 +1418,13 @@ export default function ProviderOnboardingPage() {
                 {logoLetter}
               </div>
               <div className="min-w-0">
-                <div className="text-[15px] font-bold text-slate-900 dark:text-slate-100">
+                <div className="text-[15px] font-bold text-faith-ink dark:text-slate-100">
                   {institutionName}
                 </div>
-                <div className="mt-0.5 text-[12px] text-slate-500 dark:text-slate-400">
+                <div className="mt-0.5 text-[12px] text-faith-slate dark:text-faith-slate">
                   {handle} - {faithFamily} - {tradition}
                 </div>
-                <div className="mt-2 text-[12px] leading-relaxed text-slate-600 dark:text-slate-400">
+                <div className="mt-2 text-[12px] leading-relaxed text-faith-slate dark:text-faith-slate">
                   {mission}
                 </div>
                 <div className="mt-3 flex flex-wrap gap-2">
@@ -1440,10 +1440,10 @@ export default function ProviderOnboardingPage() {
             <div className="flex items-start gap-2">
               <Wand2 className="mt-0.5 h-4 w-4 text-orange-600 dark:text-orange-300" />
               <div>
-                <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+                <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                   Dynamic onboarding branch
                 </div>
-                <div className="mt-1 text-[11px] text-slate-600 dark:text-slate-400">
+                <div className="mt-1 text-[11px] text-faith-slate dark:text-faith-slate">
                   Your selected provider profile tailors role suggestions, campus defaults, content rails, and channel recommendations.
                 </div>
               </div>
@@ -1473,12 +1473,12 @@ export default function ProviderOnboardingPage() {
                     "overflow-hidden rounded-3xl border transition-colors",
                     active
                       ? "border-emerald-200 ring-2 ring-emerald-100 dark:border-emerald-800 dark:ring-emerald-900/40"
-                      : "border-slate-200 dark:border-slate-700",
+                      : "border-faith-line dark:border-slate-700",
                   )}
                 >
                   <img src={cover.url} alt={cover.label} className="h-28 w-full object-cover" />
                   <div className="px-3 py-2 text-left">
-                    <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+                    <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                       {cover.label}
                     </div>
                   </div>
@@ -1504,7 +1504,7 @@ export default function ProviderOnboardingPage() {
                       "rounded-full border px-3 py-1.5 text-[11px] font-semibold transition-colors",
                       typographyPreset === preset
                         ? "border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-800 dark:bg-emerald-900/20 dark:text-emerald-300"
-                        : "border-slate-200 bg-white text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300",
+                        : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300",
                     )}
                   >
                     {preset}
@@ -1532,7 +1532,7 @@ export default function ProviderOnboardingPage() {
                       "rounded-full border px-3 py-1.5 text-[11px] font-semibold transition-colors",
                       liveLayoutPreset === preset
                         ? "border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-800 dark:bg-emerald-900/20 dark:text-emerald-300"
-                        : "border-slate-200 bg-white text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300",
+                        : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300",
                     )}
                   >
                     {preset}
@@ -1552,7 +1552,7 @@ export default function ProviderOnboardingPage() {
                       "rounded-full border px-3 py-1.5 text-[11px] font-semibold transition-colors",
                       beaconLayoutPreset === preset
                         ? "border-orange-200 bg-orange-50 text-orange-700 dark:border-orange-800 dark:bg-orange-900/20 dark:text-orange-300"
-                        : "border-slate-200 bg-white text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300",
+                        : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300",
                     )}
                   >
                     {preset}
@@ -1577,36 +1577,36 @@ export default function ProviderOnboardingPage() {
         right={<Pill text="EVzone Green primary" tone="brand" />}
       >
         <div className="grid gap-4">
-          <div className="overflow-hidden rounded-3xl border border-slate-200 dark:border-slate-800">
+          <div className="overflow-hidden rounded-3xl border border-faith-line dark:border-slate-800">
             <img src={coverOption.url} alt={coverOption.label} className="h-44 w-full object-cover" />
           </div>
           <div className="grid gap-3 sm:grid-cols-2">
-            <div className="rounded-3xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950">
-              <div className="text-[11px] uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500">
+            <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface)] p-4 dark:border-slate-800 dark:bg-slate-950">
+              <div className="text-[11px] uppercase tracking-[0.18em] text-faith-slate dark:text-faith-slate">
                 Live Sessions
               </div>
-              <div className="mt-2 text-[14px] font-bold text-slate-900 dark:text-slate-100">
+              <div className="mt-2 text-[14px] font-bold text-faith-ink dark:text-slate-100">
                 {liveLayoutPreset}
               </div>
-              <div className="mt-1 text-[12px] text-slate-500 dark:text-slate-400">
+              <div className="mt-1 text-[12px] text-faith-slate dark:text-faith-slate">
                 Typography: {typographyPreset}
               </div>
             </div>
-            <div className="rounded-3xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950">
-              <div className="text-[11px] uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500">
+            <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface)] p-4 dark:border-slate-800 dark:bg-slate-950">
+              <div className="text-[11px] uppercase tracking-[0.18em] text-faith-slate dark:text-faith-slate">
                 Beacon
               </div>
-              <div className="mt-2 text-[14px] font-bold text-slate-900 dark:text-slate-100">
+              <div className="mt-2 text-[14px] font-bold text-faith-ink dark:text-slate-100">
                 {beaconLayoutPreset}
               </div>
-              <div className="mt-1 text-[12px] text-slate-500 dark:text-slate-400">
+              <div className="mt-1 text-[12px] text-faith-slate dark:text-faith-slate">
                 {watermarkEnabled ? "Watermark active" : "Watermark optional"}
               </div>
             </div>
           </div>
 
-          <div className="rounded-3xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
-            <div className="mb-2 text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+          <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 dark:border-slate-800 dark:bg-slate-900">
+            <div className="mb-2 text-[12px] font-semibold text-faith-ink dark:text-slate-100">
               Colour discipline
             </div>
             <div className="grid grid-cols-4 gap-3">
@@ -1616,9 +1616,9 @@ export default function ProviderOnboardingPage() {
                 { label: "Medium gray", color: EV_GREY },
                 { label: "Light surface", color: EV_LIGHT },
               ].map((swatch) => (
-                <div key={swatch.label} className="rounded-2xl border border-slate-200 p-3 text-center dark:border-slate-800">
+                <div key={swatch.label} className="rounded-2xl border border-faith-line p-3 text-center dark:border-slate-800">
                   <div
-                    className="mx-auto h-12 w-12 rounded-2xl border border-white/60 shadow-sm"
+                    className="mx-auto h-12 w-12 rounded-2xl border border-white/60 shadow-soft"
                     style={{ background: swatch.color }}
                   />
                   <div className="mt-2 text-[11px] font-semibold text-slate-700 dark:text-slate-300">
@@ -1664,7 +1664,7 @@ export default function ProviderOnboardingPage() {
           {campuses.map((campus) => (
             <div
               key={campus.id}
-              className="rounded-3xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950"
+              className="rounded-3xl border border-faith-line bg-[var(--fh-surface)] p-4 dark:border-slate-800 dark:bg-slate-950"
             >
               <div className="grid gap-3 sm:grid-cols-2">
                 <div>
@@ -1702,7 +1702,7 @@ export default function ProviderOnboardingPage() {
                           "rounded-full border px-3 py-1.5 text-[11px] font-semibold transition-colors",
                           campus.timezone === zone
                             ? "border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-800 dark:bg-emerald-900/20 dark:text-emerald-300"
-                            : "border-slate-200 bg-white text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300",
+                            : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300",
                         )}
                       >
                         {zone}
@@ -1740,14 +1740,14 @@ export default function ProviderOnboardingPage() {
           {campuses.map((campus) => (
             <div
               key={campus.id}
-              className="rounded-3xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900"
+              className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 dark:border-slate-800 dark:bg-slate-900"
             >
               <div className="flex items-start justify-between gap-2">
                 <div className="min-w-0">
-                  <div className="text-[13px] font-semibold text-slate-900 dark:text-slate-100">
+                  <div className="text-[13px] font-semibold text-faith-ink dark:text-slate-100">
                     {campus.name}
                   </div>
-                  <div className="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">
+                  <div className="mt-0.5 text-[11px] text-faith-slate dark:text-faith-slate">
                     {campus.city} - {campus.region}
                   </div>
                 </div>
@@ -1761,7 +1761,7 @@ export default function ProviderOnboardingPage() {
                 <Pill text={campus.timezone} tone="neutral" icon={<CalendarClock className="h-3.5 w-3.5" />} />
                 <Pill text="Accessibility noted" tone="good" icon={<ShieldCheck className="h-3.5 w-3.5" />} />
               </div>
-              <div className="mt-3 text-[12px] leading-relaxed text-slate-600 dark:text-slate-400">
+              <div className="mt-3 text-[12px] leading-relaxed text-faith-slate dark:text-faith-slate">
                 {campus.accessibility}
               </div>
             </div>
@@ -1771,10 +1771,10 @@ export default function ProviderOnboardingPage() {
             <div className="flex items-start gap-2">
               <Sparkles className="mt-0.5 h-4 w-4 text-orange-600 dark:text-orange-300" />
               <div>
-                <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+                <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                   Multi-campus switching
                 </div>
-                <div className="mt-1 text-[11px] text-slate-600 dark:text-slate-400">
+                <div className="mt-1 text-[11px] text-faith-slate dark:text-faith-slate">
                   Providers can move between campuses and languages without leaving onboarding or later dashboard workflows.
                 </div>
               </div>
@@ -1801,7 +1801,7 @@ export default function ProviderOnboardingPage() {
           {team.map((member) => (
             <div
               key={member.id}
-              className="rounded-3xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950"
+              className="rounded-3xl border border-faith-line bg-[var(--fh-surface)] p-4 dark:border-slate-800 dark:bg-slate-950"
             >
               <div className="grid gap-3 sm:grid-cols-[minmax(0,1fr)_160px_140px]">
                 <div>
@@ -1823,7 +1823,7 @@ export default function ProviderOnboardingPage() {
                           "rounded-full border px-3 py-1.5 text-[11px] font-semibold transition-colors",
                           member.role === role
                             ? "border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-800 dark:bg-emerald-900/20 dark:text-emerald-300"
-                            : "border-slate-200 bg-white text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300",
+                            : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300",
                         )}
                       >
                         {role}
@@ -1843,7 +1843,7 @@ export default function ProviderOnboardingPage() {
                           "rounded-full border px-3 py-1.5 text-[11px] font-semibold transition-colors",
                           member.status === status
                             ? "border-orange-200 bg-orange-50 text-orange-700 dark:border-orange-800 dark:bg-orange-900/20 dark:text-orange-300"
-                            : "border-slate-200 bg-white text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300",
+                            : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300",
                         )}
                       >
                         {status}
@@ -1880,7 +1880,7 @@ export default function ProviderOnboardingPage() {
                   "rounded-full border px-3 py-1.5 text-[11px] font-semibold transition-colors",
                   approvalPreset === preset
                     ? "border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-800 dark:bg-emerald-900/20 dark:text-emerald-300"
-                    : "border-slate-200 bg-white text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300",
+                    : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300",
                 )}
               >
                 {preset}
@@ -1908,17 +1908,17 @@ export default function ProviderOnboardingPage() {
             ].map((lane) => (
               <div
                 key={lane.title}
-                className="rounded-3xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950"
+                className="rounded-3xl border border-faith-line bg-[var(--fh-surface)] p-4 dark:border-slate-800 dark:bg-slate-950"
               >
                 <div className="flex items-start gap-3">
-                  <div className="mt-0.5 inline-flex h-9 w-9 items-center justify-center rounded-2xl bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900">
+                  <div className="mt-0.5 inline-flex h-9 w-9 items-center justify-center rounded-2xl bg-slate-900 text-white dark:bg-slate-100 dark:text-faith-ink">
                     {lane.icon}
                   </div>
                   <div>
-                    <div className="text-[13px] font-semibold text-slate-900 dark:text-slate-100">
+                    <div className="text-[13px] font-semibold text-faith-ink dark:text-slate-100">
                       {lane.title}
                     </div>
-                    <div className="mt-1 text-[12px] leading-relaxed text-slate-600 dark:text-slate-400">
+                    <div className="mt-1 text-[12px] leading-relaxed text-faith-slate dark:text-faith-slate">
                       {lane.detail}
                     </div>
                   </div>
@@ -1949,11 +1949,11 @@ export default function ProviderOnboardingPage() {
                   "rounded-3xl border p-4 text-left transition-colors",
                   active
                     ? "border-emerald-200 bg-emerald-50 dark:border-emerald-800 dark:bg-emerald-900/20"
-                    : "border-slate-200 bg-white hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800",
+                    : "border-faith-line bg-[var(--fh-surface-bg)] hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800",
                 )}
               >
                 <div className="flex items-start justify-between gap-2">
-                  <div className="text-[13px] font-semibold text-slate-900 dark:text-slate-100">
+                  <div className="text-[13px] font-semibold text-faith-ink dark:text-slate-100">
                     {mode}
                   </div>
                   {active ? <CheckCircle2 className="h-4 w-4 text-emerald-600 dark:text-emerald-300" /> : null}
@@ -1976,7 +1976,7 @@ export default function ProviderOnboardingPage() {
                     "rounded-full border px-3 py-1.5 text-[11px] font-semibold transition-colors",
                     dashboardPreset === preset
                       ? "border-orange-200 bg-orange-50 text-orange-700 dark:border-orange-800 dark:bg-orange-900/20 dark:text-orange-300"
-                      : "border-slate-200 bg-white text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300",
+                      : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300",
                   )}
                 >
                   {preset}
@@ -2014,7 +2014,7 @@ export default function ProviderOnboardingPage() {
           ].map((action) => (
             <div
               key={action.title}
-              className="rounded-3xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950"
+              className="rounded-3xl border border-faith-line bg-[var(--fh-surface)] p-4 dark:border-slate-800 dark:bg-slate-950"
             >
               <div
                 className="mb-3 inline-flex h-11 w-11 items-center justify-center rounded-2xl text-white"
@@ -2022,18 +2022,18 @@ export default function ProviderOnboardingPage() {
               >
                 <Plus className="h-5 w-5" />
               </div>
-              <div className="text-[13px] font-semibold text-slate-900 dark:text-slate-100">
+              <div className="text-[13px] font-semibold text-faith-ink dark:text-slate-100">
                 {action.title}
               </div>
-              <div className="mt-1 text-[12px] leading-relaxed text-slate-600 dark:text-slate-400">
+              <div className="mt-1 text-[12px] leading-relaxed text-faith-slate dark:text-faith-slate">
                 {action.detail}
               </div>
             </div>
           ))}
         </div>
 
-        <div className="mt-4 rounded-3xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
-          <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+        <div className="mt-4 rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 dark:border-slate-800 dark:bg-slate-900">
+          <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
             Selected content mix
           </div>
           <div className="mt-2 flex flex-wrap gap-2">
@@ -2085,7 +2085,7 @@ export default function ProviderOnboardingPage() {
                       "rounded-full border px-3 py-1.5 text-[11px] font-semibold transition-colors",
                       defaultFund === option
                         ? "border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-800 dark:bg-emerald-900/20 dark:text-emerald-300"
-                        : "border-slate-200 bg-white text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300",
+                        : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300",
                     )}
                   >
                     {option}
@@ -2107,10 +2107,10 @@ export default function ProviderOnboardingPage() {
         subtitle="Warm ministry tone, clear receipt ownership, and financial transparency without feeling like a cold ledger."
       >
         <div className="space-y-3">
-          <div className="rounded-3xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950">
+          <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface)] p-4 dark:border-slate-800 dark:bg-slate-950">
             <div className="flex items-center justify-between gap-2">
               <div>
-                <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
+                <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-faith-ink dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
                   {receiptName}
                 </div>
               </div>
@@ -2122,14 +2122,14 @@ export default function ProviderOnboardingPage() {
             </div>
           </div>
 
-          <div className="rounded-3xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
-            <div className="mb-3 text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+          <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 dark:border-slate-800 dark:bg-slate-900">
+            <div className="mb-3 text-[12px] font-semibold text-faith-ink dark:text-slate-100">
               Default giving destination
             </div>
-            <div className="rounded-2xl bg-slate-50 px-3 py-3 text-[13px] font-semibold text-slate-900 dark:bg-slate-950 dark:text-slate-100">
+            <div className="rounded-2xl bg-[var(--fh-surface)] px-3 py-3 text-[13px] font-semibold text-faith-ink dark:bg-slate-950 dark:text-slate-100">
               {defaultFund}
             </div>
-            <div className="mt-3 text-[12px] leading-relaxed text-slate-600 dark:text-slate-400">
+            <div className="mt-3 text-[12px] leading-relaxed text-faith-slate dark:text-faith-slate">
               {taxComplianceNote}
             </div>
           </div>
@@ -2150,14 +2150,14 @@ export default function ProviderOnboardingPage() {
             return (
               <div
                 key={channel.id}
-                className="rounded-3xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950"
+                className="rounded-3xl border border-faith-line bg-[var(--fh-surface)] p-4 dark:border-slate-800 dark:bg-slate-950"
               >
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                   <div className="min-w-0">
-                    <div className="text-[13px] font-semibold text-slate-900 dark:text-slate-100">
+                    <div className="text-[13px] font-semibold text-faith-ink dark:text-slate-100">
                       {channel.label}
                     </div>
-                    <div className="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">
+                    <div className="mt-0.5 text-[11px] text-faith-slate dark:text-faith-slate">
                       {channel.kind} - {state.senderLabel}
                     </div>
                   </div>
@@ -2212,26 +2212,26 @@ export default function ProviderOnboardingPage() {
       >
         <div className="grid gap-3">
           <div className="grid grid-cols-2 gap-3">
-            <div className="rounded-3xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950">
-              <div className="text-[10px] uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500">
+            <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface)] p-4 dark:border-slate-800 dark:bg-slate-950">
+              <div className="text-[10px] uppercase tracking-[0.18em] text-faith-slate dark:text-faith-slate">
                 Channels ready
               </div>
-              <div className="mt-1 text-[22px] font-black text-slate-900 dark:text-slate-100">
+              <div className="mt-1 text-[22px] font-black text-faith-ink dark:text-slate-100">
                 {readinessSummary.connectedChannels}
               </div>
             </div>
-            <div className="rounded-3xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950">
-              <div className="text-[10px] uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500">
+            <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface)] p-4 dark:border-slate-800 dark:bg-slate-950">
+              <div className="text-[10px] uppercase tracking-[0.18em] text-faith-slate dark:text-faith-slate">
                 Consent defaults
               </div>
-              <div className="mt-1 text-[22px] font-black text-slate-900 dark:text-slate-100">
+              <div className="mt-1 text-[22px] font-black text-faith-ink dark:text-slate-100">
                 {readinessSummary.consentReady}
               </div>
             </div>
           </div>
 
-          <div className="rounded-3xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
-            <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+          <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 dark:border-slate-800 dark:bg-slate-900">
+            <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
               Connected launch channels
             </div>
             <div className="mt-2 flex flex-wrap gap-2">
@@ -2295,8 +2295,8 @@ export default function ProviderOnboardingPage() {
             />
           ) : null}
 
-          <div className="rounded-3xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950">
-            <div className="mb-3 text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+          <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface)] p-4 dark:border-slate-800 dark:bg-slate-950">
+            <div className="mb-3 text-[12px] font-semibold text-faith-ink dark:text-slate-100">
               Remaining blockers
             </div>
             <div className="space-y-2">
@@ -2352,11 +2352,11 @@ export default function ProviderOnboardingPage() {
                 "rounded-3xl border px-4 py-3 transition-colors",
                 item.ok
                   ? "border-emerald-200 bg-emerald-50 dark:border-emerald-800 dark:bg-emerald-900/20"
-                  : "border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900",
+                  : "border-faith-line bg-[var(--fh-surface-bg)] dark:border-slate-800 dark:bg-slate-900",
               )}
             >
               <div className="flex items-center justify-between gap-2">
-                <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+                <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                   {item.label}
                 </div>
                 {item.ok ? (
@@ -2368,11 +2368,11 @@ export default function ProviderOnboardingPage() {
             </div>
           ))}
 
-          <div className="rounded-3xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950">
-            <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+          <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface)] p-4 dark:border-slate-800 dark:bg-slate-950">
+            <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
               Verification note
             </div>
-            <div className="mt-2 text-[12px] leading-relaxed text-slate-600 dark:text-slate-400">
+            <div className="mt-2 text-[12px] leading-relaxed text-faith-slate dark:text-faith-slate">
               Once verification is approved, the main Provider Dashboard unlocks with role-aware quick create, live operations, giving visibility, audience activation, and Beacon controls.
             </div>
           </div>
@@ -2394,16 +2394,16 @@ export default function ProviderOnboardingPage() {
 
   return (
     <div
-      className="min-h-screen w-full bg-[var(--fh-bg)] text-slate-900 dark:text-slate-50 [--fh-bg:#f2f2f2] dark:[--fh-bg:#020617]"
+      className="min-h-screen w-full bg-[var(--fh-bg)] text-faith-ink dark:text-slate-50 [--fh-bg:#f2f2f2] dark:[--fh-bg:#020617]"
     >
       <a
         href="#provider-onboarding-main"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[70] focus:rounded-xl focus:bg-white focus:px-3 focus:py-2 focus:text-[12px] focus:font-semibold focus:text-slate-900 focus:shadow"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[70] focus:rounded-xl focus:bg-[var(--fh-surface-bg)] focus:px-3 focus:py-2 focus:text-[12px] focus:font-semibold focus:text-faith-ink focus:shadow"
       >
         Skip to onboarding content
       </a>
       <div className="mx-auto max-w-[1640px] px-5 py-5">
-        <header className="rounded-[34px] border border-slate-200 bg-white p-5 shadow-sm transition-colors dark:border-slate-800 dark:bg-slate-900">
+        <header className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-5 shadow-soft transition-colors dark:border-slate-800 dark:bg-slate-900">
           <div className="flex flex-col gap-5 xl:flex-row xl:items-start xl:justify-between">
             <div className="min-w-0">
               <ProviderPageTitle
@@ -2440,7 +2440,7 @@ export default function ProviderOnboardingPage() {
             </div>
           </div>
 
-          <div className="mt-5 rounded-3xl border border-slate-200 bg-slate-50 p-4 transition-colors dark:border-slate-800 dark:bg-slate-950">
+          <div className="mt-5 rounded-3xl border border-faith-line bg-[var(--fh-surface)] p-4 transition-colors dark:border-slate-800 dark:bg-slate-950">
             <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
               <div className="flex flex-wrap items-center gap-2">
                 <Pill text={PROVIDER_PROFILES.find((item) => item.id === providerProfile)?.label || "Profile"} tone="brand" icon={<Building2 className="h-3.5 w-3.5" />} />
@@ -2472,13 +2472,13 @@ export default function ProviderOnboardingPage() {
           />
 
           <section className="space-y-5" aria-label="Onboarding editor">
-            <div className="rounded-3xl border border-slate-200 bg-white p-4 transition-colors dark:border-slate-800 dark:bg-slate-900">
+            <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 transition-colors dark:border-slate-800 dark:bg-slate-900">
               <div className="flex flex-wrap items-end justify-between gap-3">
                 <div>
-                  <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500 dark:text-slate-400">
+                  <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-faith-slate dark:text-faith-slate">
                     Step {currentStepIndex} of {STEP_ORDER.length}
                   </div>
-                  <h2 className="mt-1 text-[20px] font-black tracking-[-0.02em] text-slate-900 dark:text-slate-100">
+                  <h2 className="mt-1 text-[20px] font-black tracking-[-0.02em] text-faith-ink dark:text-slate-100">
                     {currentStepMeta.label}
                   </h2>
                 </div>
@@ -2491,10 +2491,10 @@ export default function ProviderOnboardingPage() {
                   <div className="text-[12px] font-semibold uppercase tracking-[0.12em] text-emerald-700 dark:text-emerald-300">
                     Continue where you left off
                   </div>
-                  <div className="mt-1 text-[14px] font-semibold text-slate-900 dark:text-slate-100">
+                  <div className="mt-1 text-[14px] font-semibold text-faith-ink dark:text-slate-100">
                     {continueStepMeta.label}
                   </div>
-                  <div className="mt-1 text-[11px] text-slate-600 dark:text-slate-400">
+                  <div className="mt-1 text-[11px] text-faith-slate dark:text-faith-slate">
                     {readinessSummary.blockersByStep[continueStep].length > 0
                       ? readinessSummary.blockersByStep[continueStep][0]
                       : "No blocker here. Finish this step to move onboarding forward."}
@@ -2559,7 +2559,7 @@ export default function ProviderOnboardingPage() {
                         "rounded-xl border px-3 py-1.5 text-[11px] font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2",
                         previewViewport === viewport
                           ? "border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-800 dark:bg-emerald-900/20 dark:text-emerald-300"
-                          : "border-slate-200 bg-white text-slate-600 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300",
+                          : "border-faith-line bg-[var(--fh-surface-bg)] text-faith-slate hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300",
                       )}
                     >
                       {viewport}
@@ -2592,7 +2592,7 @@ export default function ProviderOnboardingPage() {
               {compareWithPublished ? (
                 <div className="grid gap-4 xl:grid-cols-2">
                   <div>
-                    <div className="mb-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">
+                    <div className="mb-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-faith-slate dark:text-faith-slate">
                       Current draft
                     </div>
                     <PhonePreview
@@ -2611,7 +2611,7 @@ export default function ProviderOnboardingPage() {
                     />
                   </div>
                   <div>
-                    <div className="mb-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">
+                    <div className="mb-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-faith-slate dark:text-faith-slate">
                       Published profile
                     </div>
                     <PhonePreview
@@ -2674,36 +2674,36 @@ export default function ProviderOnboardingPage() {
               subtitle="Child-facing protection, localization readiness, and multi-campus support are first-class parts of the onboarding layer."
             >
               <div className="space-y-3">
-                <div className="rounded-3xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950">
-                  <div className="mb-2 flex items-center gap-2 text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+                <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface)] p-4 dark:border-slate-800 dark:bg-slate-950">
+                  <div className="mb-2 flex items-center gap-2 text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                     <ShieldCheck className="h-4 w-4 text-emerald-600 dark:text-emerald-300" />
                     Child-safe controls
                   </div>
-                  <div className="text-[12px] leading-relaxed text-slate-600 dark:text-slate-400">
+                  <div className="text-[12px] leading-relaxed text-faith-slate dark:text-faith-slate">
                     {childFacingMinistry
                       ? "Extra moderation, channel restrictions, and compliance checks are enabled before public launch."
                       : "Standard moderation and outreach defaults are active for the wider provider audience."}
                   </div>
                 </div>
 
-                <div className="rounded-3xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950">
-                  <div className="mb-2 flex items-center gap-2 text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+                <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface)] p-4 dark:border-slate-800 dark:bg-slate-950">
+                  <div className="mb-2 flex items-center gap-2 text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                     <Languages className="h-4 w-4 text-orange-600 dark:text-orange-300" />
                     Localization
                   </div>
-                  <div className="text-[12px] leading-relaxed text-slate-600 dark:text-slate-400">
+                  <div className="text-[12px] leading-relaxed text-faith-slate dark:text-faith-slate">
                     {localizedVariant
                       ? "Localized metadata and multilingual launch surfaces are configured from day one."
                       : "Provider launches with a single primary locale and can expand later."}
                   </div>
                 </div>
 
-                <div className="rounded-3xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950">
-                  <div className="mb-2 flex items-center gap-2 text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+                <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface)] p-4 dark:border-slate-800 dark:bg-slate-950">
+                  <div className="mb-2 flex items-center gap-2 text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                     <Link2 className="h-4 w-4 text-slate-700 dark:text-slate-200" />
                     Next unlock
                   </div>
-                  <div className="text-[12px] leading-relaxed text-slate-600 dark:text-slate-400">
+                  <div className="text-[12px] leading-relaxed text-faith-slate dark:text-faith-slate">
                     Verification unlocks Provider Dashboard, Channels & Contact Manager, Donations & Funds, and the advanced creation workflows for Live Sessions and Beacon.
                   </div>
                 </div>
@@ -2721,13 +2721,15 @@ export default function ProviderOnboardingPage() {
         {`Onboarding status: ${lastSaved}. ${readinessSummary.blockers.length} blockers remaining.`}
       </div>
       {toast ? (
-        <div role="status" aria-live="polite" className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-full bg-slate-900 px-4 py-2 text-[12px] font-semibold text-white shadow-lg dark:bg-slate-100 dark:text-slate-900">
+        <div role="status" aria-live="polite" className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-full bg-slate-900 px-4 py-2 text-[12px] font-semibold text-white shadow-lg dark:bg-slate-100 dark:text-faith-ink">
           {toast}
         </div>
       ) : null}
     </div>
   );
 }
+
+
 
 
 

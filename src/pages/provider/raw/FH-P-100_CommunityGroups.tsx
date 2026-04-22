@@ -1,4 +1,4 @@
-ï»¿// @ts-nocheck
+// @ts-nocheck
 "use client";
 
 import React, { useMemo, useState } from "react";
@@ -37,7 +37,7 @@ import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
- * Provider â€” Community Groups
+ * Provider — Community Groups
  * ------------------------------------
  * Premium Provider-side operating surface for ministries, cells, discipleship circles,
  * prayer groups, youth communities, family groups, and other faith-community structures.
@@ -229,7 +229,7 @@ const GROUPS: GroupRecord[] = [
   {
     id: "grp-young-adults",
     title: "Young Adults Discipleship Circle",
-    subtitle: "Weekly growth, accountability, and live-linked follow-up for ages 20â€“35.",
+    subtitle: "Weekly growth, accountability, and live-linked follow-up for ages 20–35.",
     type: "Discipleship",
     status: "Healthy",
     access: "Open",
@@ -275,8 +275,8 @@ const GROUPS: GroupRecord[] = [
       },
     ],
     rhythm: [
-      { id: "rh-1", label: "Weekly circle gathering", when: "Fri Â· 6:30 PM", state: "Ready" },
-      { id: "rh-2", label: "Post-live follow-up thread", when: "Sun Â· after service", state: "Ready" },
+      { id: "rh-1", label: "Weekly circle gathering", when: "Fri · 6:30 PM", state: "Ready" },
+      { id: "rh-2", label: "Post-live follow-up thread", when: "Sun · after service", state: "Ready" },
       { id: "rh-3", label: "April reading plan push", when: "Tomorrow", state: "Pending" },
     ],
     hooks: [
@@ -327,18 +327,18 @@ const GROUPS: GroupRecord[] = [
       {
         id: "cs-6",
         label: "Answered-prayer ratio improving",
-        hint: "3 testimonies published this week from last monthâ€™s requests.",
+        hint: "3 testimonies published this week from last month’s requests.",
         tone: "good",
       },
     ],
     rhythm: [
-      { id: "rh-4", label: "Night prayer watch", when: "Wed Â· 8:00 PM", state: "Ready" },
-      { id: "rh-5", label: "Answered-prayer recap", when: "Fri Â· 11:00 AM", state: "Pending" },
+      { id: "rh-4", label: "Night prayer watch", when: "Wed · 8:00 PM", state: "Ready" },
+      { id: "rh-5", label: "Answered-prayer recap", when: "Fri · 11:00 AM", state: "Pending" },
       { id: "rh-6", label: "Care-owner assignment sweep", when: "Daily", state: "Watch" },
     ],
     hooks: [
       { id: "hk-4", label: "Prayer intake bridge", hint: "Prayer Requests page has 6 items waiting for routing.", state: "Pending" },
-      { id: "hk-5", label: "Noticeboard card", hint: "Private-only notice is ready for tonightâ€™s prayer circle.", state: "Ready" },
+      { id: "hk-5", label: "Noticeboard card", hint: "Private-only notice is ready for tonight’s prayer circle.", state: "Ready" },
       { id: "hk-6", label: "Counseling handoff", hint: "Two members need private support channel follow-up.", state: "Pending" },
     ],
   },
@@ -389,9 +389,9 @@ const GROUPS: GroupRecord[] = [
       },
     ],
     rhythm: [
-      { id: "rh-7", label: "Youth circle meet-up", when: "Sat Â· 3:00 PM", state: "Ready" },
-      { id: "rh-8", label: "Parent reminder run", when: "Thu Â· 6:00 PM", state: "Pending" },
-      { id: "rh-9", label: "Identity & Purpose replay follow-up", when: "Mon Â· 5:00 PM", state: "Ready" },
+      { id: "rh-7", label: "Youth circle meet-up", when: "Sat · 3:00 PM", state: "Ready" },
+      { id: "rh-8", label: "Parent reminder run", when: "Thu · 6:00 PM", state: "Pending" },
+      { id: "rh-9", label: "Identity & Purpose replay follow-up", when: "Mon · 5:00 PM", state: "Ready" },
     ],
     hooks: [
       { id: "hk-7", label: "Noticeboard sync", hint: "Youth notice cards waiting for parent-visible approval.", state: "Pending" },
@@ -469,7 +469,7 @@ function Pill({
             ? "bg-violet-50 text-violet-800 ring-violet-200"
             : tone === "brand"
               ? "text-white"
-              : "bg-white text-slate-700 ring-slate-200";
+              : "bg-[var(--fh-surface-bg)] text-slate-700 ring-slate-200";
   return (
     <span
       title={title}
@@ -507,8 +507,8 @@ function ActionButton({
     tone === "primary"
       ? "text-white hover:brightness-95"
       : tone === "ghost"
-        ? "bg-transparent text-slate-900 hover:bg-white"
-        : "bg-white text-slate-900 ring-1 ring-slate-200 hover:bg-slate-50";
+        ? "bg-transparent text-faith-ink hover:bg-[var(--fh-surface-bg)]"
+        : "bg-[var(--fh-surface-bg)] text-faith-ink ring-1 ring-slate-200 hover:bg-[var(--fh-surface)]";
   return (
     <button
       title={title}
@@ -563,18 +563,18 @@ function Drawer({
   return (
     <div className="fixed inset-0 z-[70]">
       <div className="absolute inset-0 bg-slate-900/40 backdrop-blur-sm" onClick={onClose} />
-      <aside className="absolute right-0 top-0 h-full w-full max-w-3xl overflow-hidden border-l border-slate-200 bg-white shadow-2xl">
-        <div className="flex items-start justify-between gap-3 border-b border-slate-200 px-5 py-4">
+      <aside className="absolute right-0 top-0 h-full w-full max-w-3xl overflow-hidden border-l border-faith-line bg-[var(--fh-surface-bg)] shadow-2xl">
+        <div className="flex items-start justify-between gap-3 border-b border-faith-line px-5 py-4">
           <div className="min-w-0">
-            <div className="truncate text-[14px] font-black text-slate-900">{title}</div>
+            <div className="truncate text-[14px] font-black text-faith-ink">{title}</div>
             {subtitle ? (
-              <div className="mt-0.5 text-[11px] text-slate-500">{subtitle}</div>
+              <div className="mt-0.5 text-[11px] text-faith-slate">{subtitle}</div>
             ) : null}
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="inline-flex h-9 w-9 items-center justify-center rounded-2xl border border-slate-200 bg-white text-slate-600 hover:bg-slate-50"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] text-faith-slate hover:bg-[var(--fh-surface)]"
           >
             <X className="h-4 w-4" />
           </button>
@@ -651,11 +651,11 @@ function SignalCard({
         : "danger";
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-3 shadow-sm">
+    <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-3 shadow-soft">
       <div className="flex items-start gap-2">
         <Pill tone={tone}>{signal.label}</Pill>
       </div>
-      <div className="mt-2 text-[12px] leading-5 text-slate-600">{signal.hint}</div>
+      <div className="mt-2 text-[12px] leading-5 text-faith-slate">{signal.hint}</div>
     </div>
   );
 }
@@ -671,22 +671,22 @@ function GroupExperiencePreview({
 }) {
   const desktop = previewMode === "desktop";
   return (
-    <div className="rounded-[28px] border border-slate-200 bg-white p-3 sm:p-4 shadow-sm">
+    <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-3 sm:p-4 shadow-soft">
       <div className="flex items-center justify-between gap-2">
         <div>
-          <div className="text-[11px] font-black uppercase tracking-[0.12em] text-slate-400">
+          <div className="text-[11px] font-black uppercase tracking-[0.12em] text-faith-slate">
             {desktop ? "Desktop group preview" : "Mobile group preview"}
           </div>
-          <div className="mt-1 text-[11px] text-slate-500">
+          <div className="mt-1 text-[11px] text-faith-slate">
             Persistent preview rail for how the group destination and invite flow will appear.
           </div>
         </div>
-        <div className="inline-flex rounded-full border border-slate-200 bg-slate-50 p-1">
+        <div className="inline-flex rounded-full border border-faith-line bg-[var(--fh-surface)] p-1">
           <button
             type="button"
             className={cx(
               "rounded-full px-3 py-1 text-[11px] font-bold",
-              desktop ? "bg-slate-900 text-white" : "text-slate-500",
+              desktop ? "bg-slate-900 text-white" : "text-faith-slate",
             )}
             onClick={() => onPreviewModeChange("desktop")}>
             Desktop
@@ -695,7 +695,7 @@ function GroupExperiencePreview({
             type="button"
             className={cx(
               "rounded-full px-3 py-1 text-[11px] font-bold",
-              !desktop ? "bg-slate-900 text-white" : "text-slate-500",
+              !desktop ? "bg-slate-900 text-white" : "text-faith-slate",
             )}
             onClick={() => onPreviewModeChange("mobile")}>
             Mobile
@@ -704,7 +704,7 @@ function GroupExperiencePreview({
       </div>
 
       {desktop ? (
-        <div className="mt-4 overflow-hidden rounded-[24px] border border-slate-200 bg-[#f8fafc]">
+        <div className="mt-4 overflow-hidden rounded-2xl border border-faith-line bg-[#f8fafc]">
           <div className="relative h-40 overflow-hidden">
             <img src={group.heroUrl} alt={group.title} className="h-full w-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-900/75 via-slate-900/10 to-transparent" />
@@ -720,12 +720,12 @@ function GroupExperiencePreview({
           </div>
 
           <div className="space-y-4 p-4">
-            <div className="rounded-2xl border border-slate-200 bg-white p-3">
+            <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-3">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <div className="text-[12px] font-black text-slate-900">{group.title}</div>
-                  <div className="mt-1 text-[11px] text-slate-500">
-                    {group.type} â€¢ {group.campus} â€¢ {group.meetingMode}
+                  <div className="text-[12px] font-black text-faith-ink">{group.title}</div>
+                  <div className="mt-1 text-[11px] text-faith-slate">
+                    {group.type} • {group.campus} • {group.meetingMode}
                   </div>
                 </div>
                 <AccessPill access={group.access} />
@@ -734,7 +734,7 @@ function GroupExperiencePreview({
                 {group.tags.slice(0, 4).map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-[10px] font-bold text-slate-600"
+                    className="rounded-full border border-faith-line bg-[var(--fh-surface)] px-2.5 py-1 text-[10px] font-bold text-faith-slate"
                   >
                     {tag}
                   </span>
@@ -743,38 +743,38 @@ function GroupExperiencePreview({
             </div>
 
             <div className="grid grid-cols-3 gap-2">
-              <div className="rounded-2xl border border-slate-200 bg-white p-3">
-                <div className="text-[10px] font-black uppercase tracking-[0.12em] text-slate-400">
+              <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-3">
+                <div className="text-[10px] font-black uppercase tracking-[0.12em] text-faith-slate">
                   Members
                 </div>
-                <div className="mt-1 text-[17px] font-black text-slate-900">
+                <div className="mt-1 text-[17px] font-black text-faith-ink">
                   {fmtInt(group.members)}
                 </div>
               </div>
-              <div className="rounded-2xl border border-slate-200 bg-white p-3">
-                <div className="text-[10px] font-black uppercase tracking-[0.12em] text-slate-400">
+              <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-3">
+                <div className="text-[10px] font-black uppercase tracking-[0.12em] text-faith-slate">
                   Attendance
                 </div>
-                <div className="mt-1 text-[17px] font-black text-slate-900">
+                <div className="mt-1 text-[17px] font-black text-faith-ink">
                   {group.attendanceRate}%
                 </div>
               </div>
-              <div className="rounded-2xl border border-slate-200 bg-white p-3">
-                <div className="text-[10px] font-black uppercase tracking-[0.12em] text-slate-400">
+              <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-3">
+                <div className="text-[10px] font-black uppercase tracking-[0.12em] text-faith-slate">
                   Prayer queue
                 </div>
-                <div className="mt-1 text-[17px] font-black text-slate-900">
+                <div className="mt-1 text-[17px] font-black text-faith-ink">
                   {group.prayerRequests}
                 </div>
               </div>
             </div>
 
-            <div className="rounded-2xl border border-slate-200 bg-white p-3">
-              <div className="text-[11px] font-black uppercase tracking-[0.12em] text-slate-400">
+            <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-3">
+              <div className="text-[11px] font-black uppercase tracking-[0.12em] text-faith-slate">
                 Next meetup
               </div>
-              <div className="mt-1 text-[13px] font-black text-slate-900">{fmtLocal(group.upcomingISO)}</div>
-              <div className="mt-1 text-[11px] text-slate-500">
+              <div className="mt-1 text-[13px] font-black text-faith-ink">{fmtLocal(group.upcomingISO)}</div>
+              <div className="mt-1 text-[11px] text-faith-slate">
                 Leader: {group.leader}
               </div>
             </div>
@@ -789,39 +789,39 @@ function GroupExperiencePreview({
         </div>
       ) : (
         <div className="mt-4 flex justify-center">
-          <div className="w-[230px] overflow-hidden rounded-[34px] border-[8px] border-slate-900 bg-white shadow-2xl">
+          <div className="w-[230px] overflow-hidden rounded-3xl border-[8px] border-slate-900 bg-[var(--fh-surface-bg)] shadow-2xl">
             <div className="h-5 bg-slate-900" />
             <div className="p-4">
-              <div className="rounded-3xl border border-slate-200 bg-slate-50 p-3">
-                <div className="text-[10px] font-black uppercase tracking-[0.12em] text-slate-400">
+              <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface)] p-3">
+                <div className="text-[10px] font-black uppercase tracking-[0.12em] text-faith-slate">
                   Community group
                 </div>
-                <div className="mt-1 text-[16px] font-black leading-tight text-slate-900">
+                <div className="mt-1 text-[16px] font-black leading-tight text-faith-ink">
                   {group.title}
                 </div>
-                <div className="mt-1 text-[11px] leading-snug text-slate-500">
+                <div className="mt-1 text-[11px] leading-snug text-faith-slate">
                   {group.subtitle}
                 </div>
               </div>
 
               <div className="mt-3 space-y-2">
-                <div className="rounded-2xl border border-slate-200 px-3 py-2">
-                  <div className="text-[10px] uppercase tracking-[0.12em] text-slate-400">
+                <div className="rounded-2xl border border-faith-line px-3 py-2">
+                  <div className="text-[10px] uppercase tracking-[0.12em] text-faith-slate">
                     Next gathering
                   </div>
-                  <div className="mt-1 text-[12px] font-bold text-slate-900">{fmtLocal(group.upcomingISO)}</div>
+                  <div className="mt-1 text-[12px] font-bold text-faith-ink">{fmtLocal(group.upcomingISO)}</div>
                 </div>
-                <div className="rounded-2xl border border-slate-200 px-3 py-2">
-                  <div className="text-[10px] uppercase tracking-[0.12em] text-slate-400">
+                <div className="rounded-2xl border border-faith-line px-3 py-2">
+                  <div className="text-[10px] uppercase tracking-[0.12em] text-faith-slate">
                     Prayer queue
                   </div>
-                  <div className="mt-1 text-[12px] font-bold text-slate-900">{group.prayerRequests} open items</div>
+                  <div className="mt-1 text-[12px] font-bold text-faith-ink">{group.prayerRequests} open items</div>
                 </div>
-                <div className="rounded-2xl border border-slate-200 px-3 py-2">
-                  <div className="text-[10px] uppercase tracking-[0.12em] text-slate-400">
+                <div className="rounded-2xl border border-faith-line px-3 py-2">
+                  <div className="text-[10px] uppercase tracking-[0.12em] text-faith-slate">
                     Members
                   </div>
-                  <div className="mt-1 text-[12px] font-bold text-slate-900">{fmtInt(group.members)} people</div>
+                  <div className="mt-1 text-[12px] font-bold text-faith-ink">{fmtInt(group.members)} people</div>
                 </div>
               </div>
 
@@ -849,8 +849,8 @@ function GroupExperiencePreviewInner({
 }) {
   return (
     <div className="grid gap-4 lg:grid-cols-[minmax(0,1.15fr)_380px]">
-      <div className="rounded-[28px] border border-slate-200 bg-white p-4 shadow-sm">
-        <div className="relative overflow-hidden rounded-[24px]">
+      <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft">
+        <div className="relative overflow-hidden rounded-2xl">
           <img src={group.heroUrl} alt={group.title} className="h-[280px] w-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/10 to-transparent" />
           <div className="absolute left-4 top-4 flex flex-wrap gap-2">
@@ -866,57 +866,57 @@ function GroupExperiencePreviewInner({
         </div>
 
         <div className="mt-4 grid gap-3 md:grid-cols-2">
-          <div className="rounded-3xl border border-slate-200 bg-slate-50 p-4">
-            <div className="text-[11px] font-black uppercase tracking-[0.12em] text-slate-400">
+          <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface)] p-4">
+            <div className="text-[11px] font-black uppercase tracking-[0.12em] text-faith-slate">
               Group identity
             </div>
             <div className="mt-3 space-y-2 text-[13px] text-slate-700">
               <div className="flex items-center gap-2">
-                <Users className="h-4 w-4 text-slate-400" />
-                {group.type} â€¢ {group.meetingMode}
+                <Users className="h-4 w-4 text-faith-slate" />
+                {group.type} • {group.meetingMode}
               </div>
               <div className="flex items-center gap-2">
-                <MapPin className="h-4 w-4 text-slate-400" />
+                <MapPin className="h-4 w-4 text-faith-slate" />
                 {group.campus}
               </div>
               <div className="flex items-center gap-2">
-                <Globe2 className="h-4 w-4 text-slate-400" />
-                {group.language.join(" â€¢ ")}
+                <Globe2 className="h-4 w-4 text-faith-slate" />
+                {group.language.join(" • ")}
               </div>
               <div className="flex items-center gap-2">
-                <BadgeCheck className="h-4 w-4 text-slate-400" />
+                <BadgeCheck className="h-4 w-4 text-faith-slate" />
                 Leader: {group.leader}
               </div>
             </div>
           </div>
 
-          <div className="rounded-3xl border border-slate-200 bg-slate-50 p-4">
-            <div className="text-[11px] font-black uppercase tracking-[0.12em] text-slate-400">
+          <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface)] p-4">
+            <div className="text-[11px] font-black uppercase tracking-[0.12em] text-faith-slate">
               Group performance
             </div>
             <div className="mt-3 grid grid-cols-2 gap-2">
-              <div className="rounded-2xl border border-slate-200 bg-white p-3">
-                <div className="text-[10px] text-slate-400">Members</div>
-                <div className="mt-1 text-[18px] font-black text-slate-900">{fmtInt(group.members)}</div>
+              <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-3">
+                <div className="text-[10px] text-faith-slate">Members</div>
+                <div className="mt-1 text-[18px] font-black text-faith-ink">{fmtInt(group.members)}</div>
               </div>
-              <div className="rounded-2xl border border-slate-200 bg-white p-3">
-                <div className="text-[10px] text-slate-400">Attendance</div>
-                <div className="mt-1 text-[18px] font-black text-slate-900">{group.attendanceRate}%</div>
+              <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-3">
+                <div className="text-[10px] text-faith-slate">Attendance</div>
+                <div className="mt-1 text-[18px] font-black text-faith-ink">{group.attendanceRate}%</div>
               </div>
-              <div className="rounded-2xl border border-slate-200 bg-white p-3">
-                <div className="text-[10px] text-slate-400">Prayer queue</div>
-                <div className="mt-1 text-[18px] font-black text-slate-900">{group.prayerRequests}</div>
+              <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-3">
+                <div className="text-[10px] text-faith-slate">Prayer queue</div>
+                <div className="mt-1 text-[18px] font-black text-faith-ink">{group.prayerRequests}</div>
               </div>
-              <div className="rounded-2xl border border-slate-200 bg-white p-3">
-                <div className="text-[10px] text-slate-400">Noticeboard posts</div>
-                <div className="mt-1 text-[18px] font-black text-slate-900">{group.noticeboardPosts}</div>
+              <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-3">
+                <div className="text-[10px] text-faith-slate">Noticeboard posts</div>
+                <div className="mt-1 text-[18px] font-black text-faith-ink">{group.noticeboardPosts}</div>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="mt-4 rounded-[26px] border border-slate-200 bg-slate-50 p-4">
-          <div className="text-[11px] font-black uppercase tracking-[0.12em] text-slate-400">
+        <div className="mt-4 rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4">
+          <div className="text-[11px] font-black uppercase tracking-[0.12em] text-faith-slate">
             Community destination preview
           </div>
           <div className="mt-3">
@@ -926,8 +926,8 @@ function GroupExperiencePreviewInner({
       </div>
 
       <div className="space-y-4">
-        <div className="rounded-[28px] border border-slate-200 bg-white p-4 shadow-sm">
-          <div className="text-[12px] font-black uppercase tracking-[0.12em] text-slate-400">
+        <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft">
+          <div className="text-[12px] font-black uppercase tracking-[0.12em] text-faith-slate">
             Preview actions
           </div>
           <div className="mt-3 grid gap-2">
@@ -943,17 +943,17 @@ function GroupExperiencePreviewInner({
           </div>
         </div>
 
-        <div className="rounded-[28px] border border-slate-200 bg-white p-4 shadow-sm">
-          <div className="text-[12px] font-black uppercase tracking-[0.12em] text-slate-400">
+        <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft">
+          <div className="text-[12px] font-black uppercase tracking-[0.12em] text-faith-slate">
             Care & safety
           </div>
           <div className="mt-3 space-y-2">
             {group.childrenSafe ? (
               <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-3 text-[12px] text-emerald-800">
-                Child-safe defaults are active for this groupâ€™s communication and visibility patterns.
+                Child-safe defaults are active for this group’s communication and visibility patterns.
               </div>
             ) : (
-              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3 text-[12px] text-slate-600">
+              <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3 text-[12px] text-faith-slate">
                 Standard community visibility applies. Escalations still route into provider trust workflows.
               </div>
             )}
@@ -1007,12 +1007,12 @@ export default function CommunityGroupsPage() {
 
   return (
     <div
-      className="min-h-screen w-full bg-[#f2f2f2] px-3 py-3 text-slate-900 transition-colors dark:bg-slate-950 dark:text-slate-100 sm:px-5 sm:py-5 lg:px-6 lg:py-6"
+      className="min-h-screen w-full bg-[var(--fh-page-bg)] px-3 py-3 text-faith-ink transition-colors dark:bg-slate-950 dark:text-slate-100 sm:px-5 sm:py-5 lg:px-6 lg:py-6"
       style={{ fontFamily: 'Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif' }}
     >
       <div className="mx-auto max-w-[1600px]">
-        <div className="overflow-hidden rounded-[30px] border border-slate-200 bg-white shadow-sm">
-          <div className="flex flex-wrap items-start justify-between gap-4 sm:gap-5 border-b border-slate-200 px-4 py-4 sm:px-6 sm:py-5">
+        <div className="overflow-hidden rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] shadow-soft">
+          <div className="flex flex-wrap items-start justify-between gap-4 sm:gap-5 border-b border-faith-line px-4 py-4 sm:px-6 sm:py-5">
             <ProviderPageTitle
               icon={<Users className="h-6 w-6" />}
               title="Community Groups"
@@ -1039,15 +1039,15 @@ export default function CommunityGroupsPage() {
             </div>
           </div>
 
-          <div className="border-b border-slate-200 px-6 py-3">
-            <div className="flex flex-wrap items-center gap-3 text-[12px] text-slate-500">
+          <div className="border-b border-faith-line px-6 py-3">
+            <div className="flex flex-wrap items-center gap-3 text-[12px] text-faith-slate">
               <Pill tone="brand">COMMUNITY NETWORK PULSE</Pill>
               <span>{coverageGaps} groups need co-leader coverage</span>
-              <span>â€¢</span>
+              <span>•</span>
               <span>{careBacklog} care escalations need review</span>
-              <span>â€¢</span>
+              <span>•</span>
               <span>3 groups are ready for noticeboard and live-linked follow-up</span>
-                <span className="ml-auto text-[11px] font-black uppercase tracking-[0.12em] text-slate-400">
+                <span className="ml-auto text-[11px] font-black uppercase tracking-[0.12em] text-faith-slate">
                 Community ops
                 </span>
             </div>
@@ -1093,11 +1093,11 @@ export default function CommunityGroupsPage() {
           </div>
 
           <div className="grid gap-4 sm:gap-5 px-3 sm:px-4 pb-3 sm:pb-4 xl:grid-cols-[minmax(0,1.4fr)_minmax(0,0.95fr)_360px]">
-            <div className="rounded-[28px] border border-slate-200 bg-white p-3 sm:p-4 shadow-sm">
+            <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-3 sm:p-4 shadow-soft">
               <div className="flex flex-wrap items-start justify-between gap-3">
                 <div>
-                  <div className="text-[14px] font-black text-slate-900">Community groups catalog</div>
-                  <div className="mt-1 max-w-2xl text-[12px] text-slate-500">
+                  <div className="text-[14px] font-black text-faith-ink">Community groups catalog</div>
+                  <div className="mt-1 max-w-2xl text-[12px] text-faith-slate">
                     Master library for discipleship circles, prayer communities, youth groups, family gatherings, and service-led communities.
                   </div>
                 </div>
@@ -1109,19 +1109,19 @@ export default function CommunityGroupsPage() {
 
               <div className="mt-4 grid gap-3 md:grid-cols-[minmax(0,1fr)_140px_160px]">
                 <div className="relative">
-                  <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+                  <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-faith-slate" />
                   <input
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                     placeholder="Search groups, leaders, tags, or keywords"
-                    className="w-full rounded-2xl border border-slate-200 bg-[#fbfbfd] px-11 py-3 text-[13px] outline-none placeholder:text-slate-400 focus:border-slate-300"
+                    className="w-full rounded-2xl border border-faith-line bg-[#fbfbfd] px-11 py-3 text-[13px] outline-none placeholder:text-faith-slate focus:border-slate-300"
                   />
                 </div>
 
                 <select
                   value={statusFilter}
                   onChange={(e) => setStatusFilter(e.target.value as "All" | GroupStatus)}
-                  className="rounded-2xl border border-slate-200 bg-[#fbfbfd] px-4 py-3 text-[13px] font-semibold outline-none"
+                  className="rounded-2xl border border-faith-line bg-[#fbfbfd] px-4 py-3 text-[13px] font-semibold outline-none"
                 >
                   <option value="All">All statuses</option>
                   <option value="Healthy">Healthy</option>
@@ -1133,7 +1133,7 @@ export default function CommunityGroupsPage() {
                 <select
                   value={typeFilter}
                   onChange={(e) => setTypeFilter(e.target.value as "All" | GroupType)}
-                  className="rounded-2xl border border-slate-200 bg-[#fbfbfd] px-4 py-3 text-[13px] font-semibold outline-none"
+                  className="rounded-2xl border border-faith-line bg-[#fbfbfd] px-4 py-3 text-[13px] font-semibold outline-none"
                 >
                   <option value="All">All group types</option>
                   <option value="Discipleship">Discipleship</option>
@@ -1156,7 +1156,7 @@ export default function CommunityGroupsPage() {
                         ? "border-orange-200 bg-orange-50 text-orange-700"
                         : chip === "Child-safe"
                           ? "border-emerald-200 bg-emerald-50 text-emerald-700"
-                          : "border-slate-200 bg-white text-slate-600",
+                          : "border-faith-line bg-[var(--fh-surface-bg)] text-faith-slate",
                     )}
                   >
                     {chip}
@@ -1175,24 +1175,24 @@ export default function CommunityGroupsPage() {
                       type="button"
                       onClick={() => setSelectedGroupId(group.id)}
                       className={cx(
-                        "w-full rounded-[24px] border p-3 text-left transition",
+                        "w-full rounded-2xl border p-3 text-left transition",
                         selected
-                          ? "border-emerald-200 bg-[rgba(3,205,140,0.10)] shadow-sm"
-                          : "border-slate-200 bg-white hover:bg-slate-50",
+                          ? "border-emerald-200 bg-[rgba(3,205,140,0.10)] shadow-soft"
+                          : "border-faith-line bg-[var(--fh-surface-bg)] hover:bg-[var(--fh-surface)]",
                       )}
                     >
                       <div className="flex items-start gap-3">
-                        <div className="h-16 w-16 overflow-hidden rounded-2xl border border-white shadow-sm">
+                        <div className="h-16 w-16 overflow-hidden rounded-2xl border border-white shadow-soft">
                           <img src={group.heroUrl} alt={group.title} className="h-full w-full object-cover" />
                         </div>
 
                         <div className="min-w-0 flex-1">
                           <div className="flex flex-wrap items-start justify-between gap-3">
                             <div className="min-w-0">
-                              <div className="truncate text-[15px] font-black text-slate-900">
+                              <div className="truncate text-[15px] font-black text-faith-ink">
                                 {group.title}
                               </div>
-                              <div className="mt-0.5 line-clamp-2 text-[12px] leading-snug text-slate-500">
+                              <div className="mt-0.5 line-clamp-2 text-[12px] leading-snug text-faith-slate">
                                 {group.subtitle}
                               </div>
                             </div>
@@ -1202,32 +1202,32 @@ export default function CommunityGroupsPage() {
                             </div>
                           </div>
 
-                          <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] text-slate-500">
+                          <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] text-faith-slate">
                             <span className="inline-flex items-center gap-1">
                               <Users className="h-3.5 w-3.5" />
                               {fmtInt(group.members)} members
                             </span>
-                            <span>â€¢</span>
+                            <span>•</span>
                             <span className="inline-flex items-center gap-1">
                               <CalendarClock className="h-3.5 w-3.5" />
                               {fmtLocal(group.upcomingISO)}
                             </span>
-                            <span>â€¢</span>
+                            <span>•</span>
                             <span className="inline-flex items-center gap-1">
                               <MapPin className="h-3.5 w-3.5" />
                               {group.campus}
                             </span>
-                            <span>â€¢</span>
+                            <span>•</span>
                             <span>{group.meetingMode}</span>
                           </div>
 
                           <div className="mt-3 grid gap-2 md:grid-cols-[1fr_128px_128px]">
-                            <div className="rounded-2xl border border-slate-200 bg-white px-3 py-2">
+                            <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2">
                               <div className="flex items-center justify-between gap-2">
-                                <span className="text-[10px] font-black uppercase tracking-[0.12em] text-slate-400">
+                                <span className="text-[10px] font-black uppercase tracking-[0.12em] text-faith-slate">
                                   Member activity
                                 </span>
-                                <span className="text-[11px] font-bold text-slate-600">
+                                <span className="text-[11px] font-bold text-faith-slate">
                                   {memberPct}%
                                 </span>
                               </div>
@@ -1239,20 +1239,20 @@ export default function CommunityGroupsPage() {
                               </div>
                             </div>
 
-                            <div className="rounded-2xl border border-slate-200 bg-white px-3 py-2">
-                              <div className="text-[10px] font-black uppercase tracking-[0.12em] text-slate-400">
+                            <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2">
+                              <div className="text-[10px] font-black uppercase tracking-[0.12em] text-faith-slate">
                                 Prayer queue
                               </div>
-                              <div className="mt-1 text-[16px] font-black text-slate-900">
+                              <div className="mt-1 text-[16px] font-black text-faith-ink">
                                 {group.prayerRequests}
                               </div>
                             </div>
 
-                            <div className="rounded-2xl border border-slate-200 bg-white px-3 py-2">
-                              <div className="text-[10px] font-black uppercase tracking-[0.12em] text-slate-400">
+                            <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2">
+                              <div className="text-[10px] font-black uppercase tracking-[0.12em] text-faith-slate">
                                 Care flags
                               </div>
-                              <div className="mt-1 text-[16px] font-black text-slate-900">
+                              <div className="mt-1 text-[16px] font-black text-faith-ink">
                                 {group.careEscalations}
                               </div>
                             </div>
@@ -1262,7 +1262,7 @@ export default function CommunityGroupsPage() {
                             {group.tags.map((tag) => (
                               <span
                                 key={tag}
-                                className="rounded-full border border-slate-200 bg-white px-2.5 py-1 text-[10px] font-bold text-slate-500"
+                                className="rounded-full border border-faith-line bg-[var(--fh-surface-bg)] px-2.5 py-1 text-[10px] font-bold text-faith-slate"
                               >
                                 {tag}
                               </span>
@@ -1277,11 +1277,11 @@ export default function CommunityGroupsPage() {
             </div>
 
             <div className="space-y-3 sm:space-y-4">
-              <div className="rounded-[28px] border border-slate-200 bg-white p-3 sm:p-4 shadow-sm">
+              <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-3 sm:p-4 shadow-soft">
                 <div className="flex items-start justify-between gap-3">
                   <div>
-                    <div className="text-[14px] font-black text-slate-900">Group health & care lane</div>
-                    <div className="mt-1 text-[12px] text-slate-500">
+                    <div className="text-[14px] font-black text-faith-ink">Group health & care lane</div>
+                    <div className="mt-1 text-[12px] text-faith-slate">
                       Signals that tell leaders what needs action now and what is safe to leave alone.
                     </div>
                   </div>
@@ -1297,9 +1297,9 @@ export default function CommunityGroupsPage() {
                 </div>
               </div>
 
-              <div className="rounded-[28px] border border-slate-200 bg-white p-3 sm:p-4 shadow-sm">
-                <div className="text-[14px] font-black text-slate-900">Rhythm, events, and linked ministry</div>
-                <div className="mt-1 text-[12px] text-slate-500">
+              <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-3 sm:p-4 shadow-soft">
+                <div className="text-[14px] font-black text-faith-ink">Rhythm, events, and linked ministry</div>
+                <div className="mt-1 text-[12px] text-faith-slate">
                   Calendar-aware rhythm items and linked follow-up moments from Live Sessions, events, and noticeboard.
                 </div>
 
@@ -1307,12 +1307,12 @@ export default function CommunityGroupsPage() {
                   {selectedGroup.rhythm.map((item) => (
                     <div
                       key={item.id}
-                      className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-3"
+                      className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-3"
                     >
                       <div className="flex items-start justify-between gap-3">
                         <div>
-                          <div className="text-[13px] font-black text-slate-900">{item.label}</div>
-                          <div className="mt-1 text-[11px] text-slate-500">{item.when}</div>
+                          <div className="text-[13px] font-black text-faith-ink">{item.label}</div>
+                          <div className="mt-1 text-[11px] text-faith-slate">{item.when}</div>
                         </div>
                         <Pill
                           tone={
@@ -1332,37 +1332,37 @@ export default function CommunityGroupsPage() {
 
                 <div className="mt-4 grid gap-2">
                   {selectedGroup.linkedLive ? (
-                    <div className="rounded-2xl border border-slate-200 bg-white px-3 py-3">
-                      <div className="text-[10px] font-black uppercase tracking-[0.12em] text-slate-400">
+                    <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-3">
+                      <div className="text-[10px] font-black uppercase tracking-[0.12em] text-faith-slate">
                         Linked live
                       </div>
-                      <div className="mt-1 text-[13px] font-black text-slate-900">{selectedGroup.linkedLive}</div>
+                      <div className="mt-1 text-[13px] font-black text-faith-ink">{selectedGroup.linkedLive}</div>
                     </div>
                   ) : null}
 
                   {selectedGroup.linkedSeries ? (
-                    <div className="rounded-2xl border border-slate-200 bg-white px-3 py-3">
-                      <div className="text-[10px] font-black uppercase tracking-[0.12em] text-slate-400">
+                    <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-3">
+                      <div className="text-[10px] font-black uppercase tracking-[0.12em] text-faith-slate">
                         Linked series
                       </div>
-                      <div className="mt-1 text-[13px] font-black text-slate-900">{selectedGroup.linkedSeries}</div>
+                      <div className="mt-1 text-[13px] font-black text-faith-ink">{selectedGroup.linkedSeries}</div>
                     </div>
                   ) : null}
 
                   {selectedGroup.linkedEvent ? (
-                    <div className="rounded-2xl border border-slate-200 bg-white px-3 py-3">
-                      <div className="text-[10px] font-black uppercase tracking-[0.12em] text-slate-400">
+                    <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-3">
+                      <div className="text-[10px] font-black uppercase tracking-[0.12em] text-faith-slate">
                         Linked event
                       </div>
-                      <div className="mt-1 text-[13px] font-black text-slate-900">{selectedGroup.linkedEvent}</div>
+                      <div className="mt-1 text-[13px] font-black text-faith-ink">{selectedGroup.linkedEvent}</div>
                     </div>
                   ) : null}
                 </div>
               </div>
 
-              <div className="rounded-[28px] border border-slate-200 bg-white p-3 sm:p-4 shadow-sm">
-                <div className="text-[14px] font-black text-slate-900">Cross-object hooks</div>
-                <div className="mt-1 text-[12px] text-slate-500">
+              <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-3 sm:p-4 shadow-soft">
+                <div className="text-[14px] font-black text-faith-ink">Cross-object hooks</div>
+                <div className="mt-1 text-[12px] text-faith-slate">
                   Noticeboard, prayer, event, and audience-system handoff points that make the group feel operationally complete.
                 </div>
 
@@ -1370,12 +1370,12 @@ export default function CommunityGroupsPage() {
                   {selectedGroup.hooks.map((hook) => (
                     <div
                       key={hook.id}
-                      className="rounded-2xl border border-slate-200 bg-white px-3 py-3"
+                      className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-3"
                     >
                       <div className="flex items-start justify-between gap-3">
                         <div>
-                          <div className="text-[13px] font-black text-slate-900">{hook.label}</div>
-                          <div className="mt-1 text-[11px] leading-snug text-slate-500">{hook.hint}</div>
+                          <div className="text-[13px] font-black text-faith-ink">{hook.label}</div>
+                          <div className="mt-1 text-[11px] leading-snug text-faith-slate">{hook.hint}</div>
                         </div>
                         <Pill
                           tone={
@@ -1396,22 +1396,22 @@ export default function CommunityGroupsPage() {
             </div>
 
             <div className="space-y-3 sm:space-y-4">
-              <div className="rounded-[28px] border border-slate-200 bg-white p-3 sm:p-4 shadow-sm">
+              <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-3 sm:p-4 shadow-soft">
                 <div className="flex items-start justify-between gap-3">
                   <div>
-                    <div className="text-[14px] font-black text-slate-900">Group destination preview</div>
-                    <div className="mt-1 text-[12px] text-slate-500">
+                    <div className="text-[14px] font-black text-faith-ink">Group destination preview</div>
+                    <div className="mt-1 text-[12px] text-faith-slate">
                       Persistent preview rail for the selected community destination, invite route, and care CTA.
                     </div>
                   </div>
 
-                  <div className="inline-flex rounded-full border border-slate-200 bg-slate-50 p-1">
+                  <div className="inline-flex rounded-full border border-faith-line bg-[var(--fh-surface)] p-1">
                     <button
                       type="button"
                       onClick={() => setPreviewMode("desktop")}
                       className={cx(
                         "rounded-full px-3 py-1 text-[11px] font-bold",
-                        previewMode === "desktop" ? "bg-slate-900 text-white" : "text-slate-500",
+                        previewMode === "desktop" ? "bg-slate-900 text-white" : "text-faith-slate",
                       )}
                     >
                       Desktop
@@ -1421,7 +1421,7 @@ export default function CommunityGroupsPage() {
                       onClick={() => setPreviewMode("mobile")}
                       className={cx(
                         "rounded-full px-3 py-1 text-[11px] font-bold",
-                        previewMode === "mobile" ? "bg-slate-900 text-white" : "text-slate-500",
+                        previewMode === "mobile" ? "bg-slate-900 text-white" : "text-faith-slate",
                       )}
                     >
                       Mobile
@@ -1446,35 +1446,35 @@ export default function CommunityGroupsPage() {
                 </div>
               </div>
 
-              <div className="rounded-[28px] border border-slate-200 bg-white p-3 sm:p-4 shadow-sm">
-                <div className="text-[14px] font-black text-slate-900">Community performance intelligence</div>
-                <div className="mt-1 text-[12px] text-slate-500">
+              <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-3 sm:p-4 shadow-soft">
+                <div className="text-[14px] font-black text-faith-ink">Community performance intelligence</div>
+                <div className="mt-1 text-[12px] text-faith-slate">
                   What this group is doing for discipleship, care, retention, and event/live follow-up.
                 </div>
 
                 <div className="mt-4 grid gap-2">
-                  <div className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-3">
-                    <div className="text-[10px] font-black uppercase tracking-[0.12em] text-slate-400">Attendance health</div>
-                    <div className="mt-1 text-[18px] font-black text-slate-900">{selectedGroup.attendanceRate}%</div>
-                    <div className="mt-1 text-[11px] text-slate-500">
+                  <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-3">
+                    <div className="text-[10px] font-black uppercase tracking-[0.12em] text-faith-slate">Attendance health</div>
+                    <div className="mt-1 text-[18px] font-black text-faith-ink">{selectedGroup.attendanceRate}%</div>
+                    <div className="mt-1 text-[11px] text-faith-slate">
                       Average attendance versus active member base.
                     </div>
                   </div>
-                  <div className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-3">
-                    <div className="text-[10px] font-black uppercase tracking-[0.12em] text-slate-400">Prayer & care pressure</div>
-                    <div className="mt-1 text-[18px] font-black text-slate-900">
+                  <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-3">
+                    <div className="text-[10px] font-black uppercase tracking-[0.12em] text-faith-slate">Prayer & care pressure</div>
+                    <div className="mt-1 text-[18px] font-black text-faith-ink">
                       {selectedGroup.prayerRequests + selectedGroup.careEscalations}
                     </div>
-                    <div className="mt-1 text-[11px] text-slate-500">
+                    <div className="mt-1 text-[11px] text-faith-slate">
                       Combined prayer requests and escalations needing workflow attention.
                     </div>
                   </div>
-                  <div className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-3">
-                    <div className="text-[10px] font-black uppercase tracking-[0.12em] text-slate-400">Content hooks live</div>
-                    <div className="mt-1 text-[18px] font-black text-slate-900">
+                  <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-3">
+                    <div className="text-[10px] font-black uppercase tracking-[0.12em] text-faith-slate">Content hooks live</div>
+                    <div className="mt-1 text-[18px] font-black text-faith-ink">
                       {selectedGroup.noticeboardPosts + selectedGroup.testimonies}
                     </div>
-                    <div className="mt-1 text-[11px] text-slate-500">
+                    <div className="mt-1 text-[11px] text-faith-slate">
                       Noticeboard and testimony surfaces currently enriching the group experience.
                     </div>
                   </div>
@@ -1483,12 +1483,12 @@ export default function CommunityGroupsPage() {
             </div>
           </div>
 
-          <div className="grid gap-3 sm:gap-4 border-t border-slate-200 px-3 sm:px-4 py-3 sm:py-4 xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-            <div className="rounded-[28px] border border-slate-200 bg-white p-3 sm:p-4 shadow-sm">
+          <div className="grid gap-3 sm:gap-4 border-t border-faith-line px-3 sm:px-4 py-3 sm:py-4 xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+            <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-3 sm:p-4 shadow-soft">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <div className="text-[14px] font-black text-slate-900">Quick-create templates</div>
-                  <div className="mt-1 text-[12px] text-slate-500">
+                  <div className="text-[14px] font-black text-faith-ink">Quick-create templates</div>
+                  <div className="mt-1 text-[12px] text-faith-slate">
                     World-class group launch templates so Community Groups leads cleanly into a future builder flow.
                   </div>
                 </div>
@@ -1499,7 +1499,7 @@ export default function CommunityGroupsPage() {
                 {TEMPLATE_CARDS.map((template) => (
                   <div
                     key={template.id}
-                    className="rounded-[24px] border border-slate-200 bg-slate-50 p-4"
+                    className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4"
                   >
                     <div
                       className="h-1.5 w-14 rounded-full"
@@ -1512,8 +1512,8 @@ export default function CommunityGroupsPage() {
                               : EV_GREEN,
                       }}
                     />
-                    <div className="mt-3 text-[15px] font-black text-slate-900">{template.title}</div>
-                    <div className="mt-1 text-[12px] leading-snug text-slate-500">
+                    <div className="mt-3 text-[15px] font-black text-faith-ink">{template.title}</div>
+                    <div className="mt-1 text-[12px] leading-snug text-faith-slate">
                       {template.subtitle}
                     </div>
                     <div className="mt-4">
@@ -1526,9 +1526,9 @@ export default function CommunityGroupsPage() {
               </div>
             </div>
 
-            <div className="rounded-[28px] border border-slate-200 bg-white p-3 sm:p-4 shadow-sm">
-              <div className="text-[14px] font-black text-slate-900">Group network, collections & oversight</div>
-              <div className="mt-1 text-[12px] text-slate-500">
+            <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-3 sm:p-4 shadow-soft">
+              <div className="text-[14px] font-black text-faith-ink">Group network, collections & oversight</div>
+              <div className="mt-1 text-[12px] text-faith-slate">
                 Keep community lanes organized by campus, type, safety level, and leader coverage while retaining a premium operations view.
               </div>
 
@@ -1536,12 +1536,12 @@ export default function CommunityGroupsPage() {
                 {NETWORK_LANES.map((lane) => (
                   <div
                     key={lane.id}
-                    className="rounded-[24px] border border-slate-200 bg-slate-50 px-4 py-4"
+                    className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-4 py-4"
                   >
                     <div className="flex items-start justify-between gap-3">
                       <div>
-                        <div className="text-[14px] font-black text-slate-900">{lane.title}</div>
-                        <div className="mt-1 text-[12px] leading-snug text-slate-500">{lane.subtitle}</div>
+                        <div className="text-[14px] font-black text-faith-ink">{lane.title}</div>
+                        <div className="mt-1 text-[12px] leading-snug text-faith-slate">{lane.subtitle}</div>
                       </div>
                       <Pill
                         tone={
@@ -1555,7 +1555,7 @@ export default function CommunityGroupsPage() {
                         {lane.state}
                       </Pill>
                     </div>
-                    <div className="mt-3 text-[12px] font-bold text-slate-600">
+                    <div className="mt-3 text-[12px] font-bold text-faith-slate">
                       {lane.count} destinations
                     </div>
                   </div>
@@ -1565,7 +1565,7 @@ export default function CommunityGroupsPage() {
           </div>
 
           <div
-            className="mx-4 mb-4 rounded-full px-6 py-1.5 text-center text-[12px] text-slate-600"
+            className="mx-4 mb-4 rounded-full px-6 py-1.5 text-center text-[12px] text-faith-slate"
             style={{ background: "rgba(3,205,140,0.16)", border: "1px solid rgba(3,205,140,0.30)" }}
           >
             Community Groups preview
@@ -1576,7 +1576,7 @@ export default function CommunityGroupsPage() {
       <Drawer
         open={previewOpen}
         onClose={() => setPreviewOpen(false)}
-        title="Community Groups Â· Large preview"
+        title="Community Groups · Large preview"
         subtitle="Preview of the selected group destination, care signals, and invite experience."
       >
         <GroupExperiencePreviewInner group={selectedGroup} previewMode={previewMode} />
@@ -1584,6 +1584,8 @@ export default function CommunityGroupsPage() {
     </div>
   );
 }
+
+
 
 
 
