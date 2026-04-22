@@ -33,7 +33,6 @@ type ProviderTopbarProps = {
 
 export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: ProviderTopbarProps) {
   const theme = useTheme();
-  const isDark = theme.palette.mode === 'dark';
   const isMobileActions = useMediaQuery(theme.breakpoints.down('md'));
   const navigate = useNavigate();
   const { user, role, workspace, logout, setWorkspace } = useAuth();
@@ -42,13 +41,16 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
   const isTinyScreen = useMediaQuery('(max-width:399.95px)');
   const utilityIconSx = {
     border: '1px solid',
-    borderColor: isDark ? '#334155' : '#d9e1ec',
-    borderRadius: 3,
+    borderColor: 'var(--fh-line)',
+    borderRadius: 'var(--fh-radius-xl)',
     width: { xs: 40, md: 48 },
     height: { xs: 40, md: 48 },
-    bgcolor: isDark ? '#0f172a' : '#fff',
-    color: isDark ? '#cbd5e1' : '#475569',
-    '&:hover': { borderColor: isDark ? '#475569' : '#c1ccda', bgcolor: isDark ? '#111c30' : '#f8fafc' },
+    bgcolor: 'var(--fh-surface-bg)',
+    color: 'var(--fh-slate)',
+    '&:hover': {
+      borderColor: 'color-mix(in srgb, var(--fh-line) 72%, var(--fh-ink) 28%)',
+      bgcolor: 'var(--fh-surface)',
+    },
   };
   const activeTopTab = useMemo(
     () => topbarTabs.find((tab) => tab.sections.includes(current?.section ?? '')),
@@ -77,7 +79,7 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
         borderBottom: '1px solid',
         borderColor: 'divider',
         bgcolor: 'background.paper',
-        boxShadow: '0 12px 28px -26px rgba(15, 23, 42, 0.55)',
+        boxShadow: 'var(--fh-shadow-sm)',
       }}
     >
       <Toolbar
@@ -112,19 +114,19 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
               startIcon={<SearchRoundedIcon />}
               variant="outlined"
               sx={{
-                borderRadius: 3,
+                borderRadius: 'var(--fh-radius-xl)',
                 textTransform: 'none',
                 minHeight: 48,
                 minWidth: 256,
                 px: 1.8,
                 justifyContent: 'space-between',
-                borderColor: isDark ? '#334155' : '#d9e1ec',
-                bgcolor: isDark ? '#0f172a' : '#fff',
-                color: isDark ? '#cbd5e1' : '#475569',
+                borderColor: 'var(--fh-line)',
+                bgcolor: 'var(--fh-surface-bg)',
+                color: 'var(--fh-slate)',
                 fontWeight: 700,
                 '&:hover': {
-                  borderColor: isDark ? '#475569' : '#c1ccda',
-                  bgcolor: isDark ? '#111c30' : '#f8fafc',
+                  borderColor: 'color-mix(in srgb, var(--fh-line) 72%, var(--fh-ink) 28%)',
+                  bgcolor: 'var(--fh-surface)',
                 },
               }}
             >
@@ -135,13 +137,13 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
                 component="span"
                 sx={{
                   border: '1px solid',
-                  borderColor: isDark ? '#334155' : '#cbd5e1',
+                  borderColor: 'var(--fh-line)',
                   borderRadius: 1.5,
                   px: 0.8,
                   py: 0.15,
                   fontSize: 11,
                   lineHeight: 1.2,
-                  color: isDark ? '#94a3b8' : '#64748b',
+                  color: 'var(--fh-slate)',
                 }}
               >
                 Ctrl K
@@ -163,7 +165,7 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
             </Badge>
           </IconButton>
           <IconButton aria-label="User menu" onClick={openUserMenu} sx={utilityIconSx}>
-            <Avatar sx={{ width: { xs: 28, md: 32 }, height: { xs: 28, md: 32 }, bgcolor: isDark ? '#0f172a' : '#111827' }}>
+            <Avatar sx={{ width: { xs: 28, md: 32 }, height: { xs: 28, md: 32 }, bgcolor: 'var(--fh-ink)', color: 'var(--fh-surface-bg)' }}>
               {initials}
             </Avatar>
           </IconButton>
@@ -176,9 +178,9 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
           px: { xs: 1.25, md: 3 },
           py: { xs: 0.2, md: 0.35 },
           mt: 0,
-          bgcolor: isDark ? '#0f172a' : '#f8fafc',
+          bgcolor: 'var(--fh-surface)',
           borderTop: '1px solid',
-          borderColor: isDark ? '#334155' : '#e5e7eb',
+          borderColor: 'var(--fh-line)',
         }}
       >
         <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ width: '100%' }}>
@@ -197,9 +199,9 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
                   minHeight: 34,
                   px: 1.3,
                   borderWidth: 1,
-                  borderColor: '#cfd8e3',
-                  bgcolor: isDark ? '#111c30' : '#fff',
-                  color: isDark ? '#f8fafc' : '#111827',
+                  borderColor: 'var(--fh-line)',
+                  bgcolor: 'var(--fh-surface-bg)',
+                  color: 'var(--fh-ink)',
                 }}
               >
                 {activeTopTab?.label ?? topbarTabs[0].label}
@@ -216,21 +218,21 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
                   py: 0.25,
                   pl: 0.25,
                   '&::-webkit-scrollbar': { height: 7 },
-                  '&::-webkit-scrollbar-thumb': { backgroundColor: isDark ? '#334155' : '#cbd5e1', borderRadius: 10 },
+                  '&::-webkit-scrollbar-thumb': { backgroundColor: 'var(--fh-line)', borderRadius: 10 },
                   '&::-webkit-scrollbar-track': { backgroundColor: 'transparent' },
                 }}
               >
                 <Box
                   sx={{
-                    bgcolor: '#10b981',
-                    color: '#fff',
+                    bgcolor: 'var(--fh-brand)',
+                    color: 'var(--fh-surface-bg)',
                     borderRadius: 999,
                     px: { xs: 1.35, md: 1.9 },
                     py: { xs: 0.45, md: 0.6 },
                     fontSize: { xs: 14, md: 17 },
                     fontWeight: 800,
                     lineHeight: 1,
-                    border: '1px solid #0ea673',
+                    border: '1px solid var(--fh-brand-dark)',
                     whiteSpace: 'nowrap',
                   }}
                 >
@@ -250,17 +252,23 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
                       px: { xs: 1.35, md: 2.1 },
                       fontSize: { xs: 13, md: 16 },
                       borderWidth: 1,
-                      borderColor: activeTopTab?.label === tab.label ? '#10b981' : isDark ? '#334155' : '#cfd8e3',
-                      bgcolor: activeTopTab?.label === tab.label ? '#10b981' : isDark ? '#111c30' : '#ffffff',
-                      color: activeTopTab?.label === tab.label ? '#ffffff' : isDark ? '#f8fafc' : '#111827',
+                      borderColor: activeTopTab?.label === tab.label ? 'var(--fh-brand)' : 'var(--fh-line)',
+                      bgcolor: activeTopTab?.label === tab.label ? 'var(--fh-brand)' : 'var(--fh-surface-bg)',
+                      color: activeTopTab?.label === tab.label ? 'var(--fh-surface-bg)' : 'var(--fh-ink)',
                       whiteSpace: 'nowrap',
                       '& .MuiButton-startIcon': {
-                        color: activeTopTab?.label === tab.label ? '#ffffff' : isDark ? '#cbd5e1' : '#0f172a',
+                        color: activeTopTab?.label === tab.label ? 'var(--fh-surface-bg)' : 'var(--fh-slate)',
                         mr: 0.9,
                       },
                       '&:hover': {
-                        borderColor: activeTopTab?.label === tab.label ? '#0f9f72' : isDark ? '#475569' : '#b9c6d8',
-                        bgcolor: activeTopTab?.label === tab.label ? '#0f9f72' : isDark ? '#162236' : '#f3f6fa',
+                        borderColor:
+                          activeTopTab?.label === tab.label
+                            ? 'var(--fh-brand-dark)'
+                            : 'color-mix(in srgb, var(--fh-line) 72%, var(--fh-ink) 28%)',
+                        bgcolor:
+                          activeTopTab?.label === tab.label
+                            ? 'var(--fh-brand-dark)'
+                            : 'color-mix(in srgb, var(--fh-surface) 90%, var(--fh-surface-bg) 10%)',
                       },
                     }}
                   >

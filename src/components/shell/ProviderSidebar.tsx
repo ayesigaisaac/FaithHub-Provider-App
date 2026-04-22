@@ -49,21 +49,18 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
         display: 'flex',
         height: '100%',
         flexDirection: 'column',
-        bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#0b1220' : '#e7efee'),
+        bgcolor: 'var(--fh-page-bg)',
       }}
     >
       <Box sx={{ p: 1.25, height: '100%', minHeight: 0 }}>
         <Box
           sx={{
-            borderRadius: 0,
+            borderRadius: 'var(--fh-radius-3xl)',
             border: '1px solid',
-            borderColor: (theme) => (theme.palette.mode === 'dark' ? '#334155' : '#d6dee7'),
-            bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#0f172a' : '#fff'),
+            borderColor: 'var(--fh-line)',
+            bgcolor: 'var(--fh-surface-bg)',
             overflow: 'hidden',
-            boxShadow: (theme) =>
-              theme.palette.mode === 'dark'
-                ? '0 20px 40px -32px rgba(2, 6, 23, 0.9)'
-                : '0 20px 40px -32px rgba(15, 23, 42, 0.42)',
+            boxShadow: 'var(--fh-shadow-md)',
             display: 'flex',
             flexDirection: 'column',
             height: '100%',
@@ -73,10 +70,10 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
           <Stack direction="row" alignItems="center" justifyContent="flex-end" sx={{ px: 1.5, py: 1.05 }}>
             <Avatar
               sx={{
-                bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#0f172a' : '#fff'),
-                color: (theme) => (theme.palette.mode === 'dark' ? '#e2e8f0' : '#111827'),
+                bgcolor: 'var(--fh-surface-bg)',
+                color: 'var(--fh-ink)',
                 border: '1px solid',
-                borderColor: (theme) => (theme.palette.mode === 'dark' ? '#334155' : '#d1d5db'),
+                borderColor: 'var(--fh-line)',
                 width: 38,
                 height: 38,
               }}
@@ -95,7 +92,7 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
               overflowY: 'auto',
               '&::-webkit-scrollbar': { width: 8 },
               '&::-webkit-scrollbar-thumb': {
-                backgroundColor: (theme) => (theme.palette.mode === 'dark' ? '#334155' : '#cbd5e1'),
+                backgroundColor: 'var(--fh-line)',
                 borderRadius: 10,
               },
               '&::-webkit-scrollbar-track': { backgroundColor: 'transparent' },
@@ -109,7 +106,7 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
                     bgcolor: 'transparent',
                     px: 1.25,
                     py: 0.25,
-                    color: (theme) => (theme.palette.mode === 'dark' ? '#94a3b8' : '#6b7280'),
+                    color: 'var(--fh-slate)',
                     fontSize: 11,
                     lineHeight: 1.4,
                     letterSpacing: '0.09em',
@@ -134,47 +131,23 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
                         component={RouterLink}
                         to={page.path}
                         onClick={onClose}
-                      sx={{
-                        px: 1.25,
-                        py: 1,
-                        minHeight: 56,
-                        borderRadius: 0,
+                        sx={{
+                          px: 1.25,
+                          py: 1,
+                          minHeight: 56,
+                          borderRadius: 'var(--fh-radius-2xl)',
                           border: '1px solid',
                           borderWidth: active ? 1.5 : 1,
-                          borderColor: (theme) =>
-                            active
-                              ? theme.palette.mode === 'dark'
-                                ? '#e2e8f0'
-                                : '#0f172a'
-                              : theme.palette.mode === 'dark'
-                                ? '#334155'
-                                : '#d6dee7',
-                          bgcolor: (theme) =>
-                            active
-                              ? theme.palette.mode === 'dark'
-                                ? '#162236'
-                                : '#f7fbfa'
-                              : theme.palette.mode === 'dark'
-                                ? '#0f172a'
-                                : '#fff',
+                          borderColor: active ? 'var(--fh-brand-dark)' : 'var(--fh-line)',
+                          bgcolor: active ? 'color-mix(in srgb, var(--fh-brand-soft) 40%, var(--fh-surface-bg) 60%)' : 'var(--fh-surface-bg)',
                           transition: 'all 150ms ease',
                           '&:hover': {
-                            bgcolor: (theme) =>
-                              active
-                                ? theme.palette.mode === 'dark'
-                                  ? '#1d2a3f'
-                                  : '#f2faf7'
-                                : theme.palette.mode === 'dark'
-                                  ? '#111c30'
-                                  : '#f8fafc',
-                            borderColor: (theme) =>
-                              active
-                                ? theme.palette.mode === 'dark'
-                                  ? '#e2e8f0'
-                                  : '#0f172a'
-                                : theme.palette.mode === 'dark'
-                                  ? '#475569'
-                                  : '#c7d2df',
+                            bgcolor: active
+                              ? 'color-mix(in srgb, var(--fh-brand-soft) 54%, var(--fh-surface-bg) 46%)'
+                              : 'var(--fh-surface)',
+                            borderColor: active
+                              ? 'var(--fh-brand-dark)'
+                              : 'color-mix(in srgb, var(--fh-line) 72%, var(--fh-ink) 28%)',
                           },
                         }}
                       >
@@ -183,22 +156,10 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
                             sx={{
                               width: 32,
                               height: 32,
-                              bgcolor: (theme) =>
-                                active
-                                  ? theme.palette.mode === 'dark'
-                                    ? '#0f3a2a'
-                                    : '#dcfce7'
-                                  : theme.palette.mode === 'dark'
-                                    ? '#1e293b'
-                                    : '#f3f4f6',
-                              color: (theme) =>
-                                active
-                                  ? theme.palette.mode === 'dark'
-                                    ? '#6ee7b7'
-                                    : '#047857'
-                                  : theme.palette.mode === 'dark'
-                                    ? '#94a3b8'
-                                    : '#64748b',
+                              bgcolor: active
+                                ? 'color-mix(in srgb, var(--fh-brand-soft) 72%, var(--fh-surface-bg) 28%)'
+                                : 'color-mix(in srgb, var(--fh-line) 26%, var(--fh-surface-bg) 74%)',
+                              color: active ? 'var(--fh-brand-dark)' : 'var(--fh-slate)',
                             }}
                           >
                             <Icon size={16} />
@@ -211,7 +172,7 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
                                 fontWeight: active ? 800 : 700,
                                 fontSize: 14,
                                 lineHeight: 1.2,
-                                color: (theme) => (theme.palette.mode === 'dark' ? '#e2e8f0' : '#334155'),
+                                color: 'var(--fh-ink)',
                               }}
                             >
                               {page.shortTitle ?? page.title}
@@ -219,7 +180,7 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
                           }
                         />
                         <KeyboardArrowRightRoundedIcon
-                          sx={{ fontSize: 22, color: (theme) => (theme.palette.mode === 'dark' ? '#64748b' : '#94a3b8') }}
+                          sx={{ fontSize: 22, color: 'var(--fh-slate)' }}
                         />
                       </ListItemButton>
                       {children.length ? (
@@ -234,17 +195,19 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
                                 component={RouterLink}
                                 to={child.path}
                                 onClick={onClose}
-                              sx={{
+                                sx={{
                                   mb: 0.55,
                                   px: 1,
                                   py: 0.75,
                                   minHeight: 44,
-                                  borderRadius: 0,
+                                  borderRadius: 'var(--fh-radius-xl)',
                                   border: '1px solid',
-                                  borderColor: childActive ? 'primary.main' : 'transparent',
-                                  bgcolor: childActive ? 'action.selected' : 'transparent',
+                                  borderColor: childActive ? 'var(--fh-brand-dark)' : 'transparent',
+                                  bgcolor: childActive
+                                    ? 'color-mix(in srgb, var(--fh-brand-soft) 35%, var(--fh-surface-bg) 65%)'
+                                    : 'transparent',
                                   '&:hover': {
-                                    bgcolor: 'action.hover',
+                                    bgcolor: 'var(--fh-surface)',
                                   },
                                 }}
                               >
@@ -254,14 +217,7 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
                                       width: 24,
                                       height: 24,
                                       bgcolor: 'transparent',
-                                      color: (theme) =>
-                                        childActive
-                                          ? theme.palette.mode === 'dark'
-                                            ? '#6ee7b7'
-                                            : '#047857'
-                                          : theme.palette.mode === 'dark'
-                                            ? '#94a3b8'
-                                            : '#64748b',
+                                      color: childActive ? 'var(--fh-brand-dark)' : 'var(--fh-slate)',
                                     }}
                                   >
                                     <ChildIcon size={14} />
@@ -274,7 +230,7 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
                                         fontWeight: childActive ? 800 : 600,
                                         fontSize: 13,
                                         lineHeight: 1.2,
-                                        color: (theme) => (theme.palette.mode === 'dark' ? '#cbd5e1' : '#475569'),
+                                        color: childActive ? 'var(--fh-ink)' : 'var(--fh-slate)',
                                       }}
                                     >
                                       {child.shortTitle ?? child.title}
