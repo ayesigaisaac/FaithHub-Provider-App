@@ -4,6 +4,7 @@ import {
   Badge,
   Box,
   Button,
+  Divider,
   IconButton,
   Menu,
   MenuItem,
@@ -56,8 +57,17 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
     () => topbarTabs.find((tab) => tab.sections.includes(current?.section ?? '')),
     [current?.section]
   );
-  const initials = user?.name
-    ?.split(' ')
+  const displayName = useMemo(() => {
+    if (user?.name?.trim()) return user.name;
+    const local = (user?.email?.split('@')[0] || 'user').trim();
+    return local
+      .replace(/[._-]+/g, ' ')
+      .replace(/\s+/g, ' ')
+      .replace(/\b\w/g, (char) => char.toUpperCase());
+  }, [user?.email, user?.name]);
+  const roleLabel = role ? role[0].toUpperCase() + role.slice(1) : 'Leadership';
+  const initials = displayName
+    .split(' ')
     .map((part) => part[0])
     .join('')
     .slice(0, 2)
@@ -295,20 +305,42 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
         ))}
       </Menu>
 
-      <Menu anchorEl={userAnchor} open={Boolean(userAnchor)} onClose={closeUserMenu}>
-        <MenuItem disabled>
-          <Box>
-            <Typography variant="body2" fontWeight={700}>
-              {user?.name || 'Provider User'}
-            </Typography>
-            <Typography variant="caption" color="text.secondary">
-              {user?.email || 'unknown@workspace.dev'}
-            </Typography>
-          </Box>
-        </MenuItem>
+      <Menu
+        anchorEl={userAnchor}
+        open={Boolean(userAnchor)}
+        onClose={closeUserMenu}
+        PaperProps={{
+          sx: {
+            mt: 1,
+            minWidth: 300,
+            borderRadius: '18px',
+            border: '1px solid',
+            borderColor: 'var(--fh-line)',
+            bgcolor: 'var(--fh-surface-bg)',
+            boxShadow: 'var(--fh-shadow-md)',
+            overflow: 'hidden',
+          },
+        }}
+      >
+        <Box sx={{ px: 2, py: 1.5 }}>
+          <Stack direction="row" spacing={1.25} alignItems="center">
+            <Avatar sx={{ width: 38, height: 38, bgcolor: 'var(--fh-ink)', color: 'var(--fh-surface-bg)', fontWeight: 800 }}>
+              {initials}
+            </Avatar>
+            <Box sx={{ minWidth: 0 }}>
+              <Typography variant="body2" fontWeight={800} sx={{ color: 'var(--fh-ink)', lineHeight: 1.2 }}>
+                {displayName}
+              </Typography>
+              <Typography variant="caption" sx={{ color: 'var(--fh-slate)' }}>
+                {user?.email || 'unknown@workspace.dev'}
+              </Typography>
+            </Box>
+          </Stack>
+        </Box>
+        <Divider />
         <MenuItem disabled>
           <Typography variant="body2">
-            Role: {role || 'leadership'} - {workspace?.campus || 'Kampala Central'}
+            {roleLabel} - {workspace?.campus || 'Kampala Central'}
           </Typography>
         </MenuItem>
         <MenuItem

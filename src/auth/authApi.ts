@@ -7,6 +7,14 @@ type LoginPayload = {
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL as string | undefined;
 
+function toDisplayNameFromEmail(email: string) {
+  const local = (email.split('@')[0] || 'user').trim();
+  return local
+    .replace(/[._-]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .replace(/\b\w/g, (char) => char.toUpperCase());
+}
+
 const MOCK_USERS: Array<{
   user: AuthUser;
   password: string;
@@ -61,9 +69,14 @@ async function mockLogin(payload: LoginPayload): Promise<AuthSession> {
   if (!hit || hit.password !== payload.password) {
     throw new Error('Invalid email or password.');
   }
+  const normalizedEmail = payload.email.trim().toLowerCase();
   return {
-    token: `mock-token-${hit.user.email}`,
-    user: hit.user,
+    token: `mock-token-${normalizedEmail}`,
+    user: {
+      ...hit.user,
+      email: normalizedEmail,
+      name: toDisplayNameFromEmail(normalizedEmail),
+    },
     role: hit.role,
     workspace: hit.workspace,
   };
@@ -75,7 +88,10 @@ async function mockMe(token: string): Promise<Omit<AuthSession, 'token'>> {
     throw new Error('Session expired.');
   }
   return {
-    user: hit.user,
+    user: {
+      ...hit.user,
+      name: toDisplayNameFromEmail(hit.user.email),
+    },
     role: hit.role,
     workspace: hit.workspace,
   };
@@ -114,7 +130,7 @@ async function backendLogin(payload: LoginPayload): Promise<AuthSession> {
     token,
     user: {
       id: meData?.id || 'u-fallback',
-      name: meData?.name || meData?.fullName || 'FaithHub User',
+      name: meData?.name || meData?.fullName || toDisplayNameFromEmail(payload.email),
       email: meData?.email || payload.email,
     },
     role: normalizeRole(meData?.role),
@@ -146,7 +162,7 @@ export async function meRequest(token: string): Promise<Omit<AuthSession, 'token
   return {
     user: {
       id: meData?.id || 'u-fallback',
-      name: meData?.name || meData?.fullName || 'FaithHub User',
+      name: meData?.name || meData?.fullName || toDisplayNameFromEmail(meData?.email || 'user@faithhub.dev'),
       email: meData?.email || 'unknown@faithhub.dev',
     },
     role: normalizeRole(meData?.role),
