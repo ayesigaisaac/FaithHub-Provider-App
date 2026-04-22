@@ -34,9 +34,10 @@ import {
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
+import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 
 /**
- * Provider — Noticeboard
+ * Provider â€” Noticeboard
  * --------------------------------
  * Premium Provider-side noticeboard / announcements operating surface.
  *
@@ -443,23 +444,15 @@ function Card({
   className?: string;
 }) {
   return (
-    <div
-      className={cx(
-        "rounded-[30px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft transition-colors",
-        className,
-      )}
+    <ProviderSurfaceCard
+      title={title}
+      subtitle={subtitle}
+      right={right}
+      className={cx("rounded-[30px]", className)}
+      titleClassName="text-[13px]"
     >
-      <div className="flex items-start justify-between gap-3">
-        <div>
-          <div className="text-[13px] font-semibold text-faith-ink">{title}</div>
-          {subtitle ? (
-            <div className="mt-0.5 text-[11px] text-faith-slate">{subtitle}</div>
-          ) : null}
-        </div>
-        {right ? <div className="shrink-0">{right}</div> : null}
-      </div>
-      <div className="mt-4">{children}</div>
-    </div>
+      {children}
+    </ProviderSurfaceCard>
   );
 }
 
@@ -838,7 +831,7 @@ function BoardPreviewDesktop({ draft }: { draft: ComposerState }) {
               label: "Board sections",
               items: [
                 "Pinned notice lane",
-                "Today’s notices",
+                "Todayâ€™s notices",
                 "Campus-only updates",
               ],
             },
@@ -1171,7 +1164,7 @@ export default function FaithHubNoticeboardPage() {
               <ProviderPageTitle
                 icon={<Megaphone className="h-6 w-6" />}
                 title="Noticeboard"
-                subtitle="Run institution-wide announcements, campus updates, prayer alerts, volunteer calls, event reminders, and giving notices from one premium board — then route them into Live Sessions, notifications, events, giving, and Beacon without losing control."
+                subtitle="Run institution-wide announcements, campus updates, prayer alerts, volunteer calls, event reminders, and giving notices from one premium board â€” then route them into Live Sessions, notifications, events, giving, and Beacon without losing control."
               />
 
               <div className="mt-5 flex flex-wrap items-center gap-2">

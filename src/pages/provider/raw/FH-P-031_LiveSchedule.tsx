@@ -5,6 +5,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 import {
   AlertTriangle,
   ArrowRight,
@@ -210,8 +211,8 @@ const PEOPLE = [
   "Interpreter Grace L.",
   "Interpreter Caleb O.",
   "Caption Lead Mercy J.",
-  "Support Team – East Campus",
-  "Support Team – Central Campus",
+  "Support Team â€“ East Campus",
+  "Support Team â€“ Central Campus",
 ];
 
 const BLACKOUTS = [
@@ -219,14 +220,14 @@ const BLACKOUTS = [
     id: "bo-1",
     campus: "Central Campus",
     dateISO: "2026-04-17",
-    time: "17:30–19:00",
+    time: "17:30â€“19:00",
     label: "Main sanctuary sound check lock",
   },
   {
     id: "bo-2",
     campus: "East Campus",
     dateISO: "2026-04-19",
-    time: "08:30–09:30",
+    time: "08:30â€“09:30",
     label: "Generator maintenance",
   },
 ];
@@ -249,7 +250,7 @@ const SESSION_SEED: LiveSession[] = [
   {
     id: "FH-LS-301",
     title: "Morning Prayer & Word",
-    parentLabel: "Standalone Teaching · Prayer Room",
+    parentLabel: "Standalone Teaching Â· Prayer Room",
     parentType: "Standalone Teaching",
     sessionType: "Prayer",
     campus: "Online Campus",
@@ -267,7 +268,7 @@ const SESSION_SEED: LiveSession[] = [
       producer: "",
       moderator: "Moderator Tobi E.",
       caption: "Caption Lead Mercy J.",
-      support: "Support Team – Central Campus",
+      support: "Support Team â€“ Central Campus",
     },
     recurrence: "Weekly",
     registrations: 312,
@@ -279,7 +280,7 @@ const SESSION_SEED: LiveSession[] = [
   {
     id: "FH-LS-302",
     title: "Leadership Lab Live",
-    parentLabel: "Standalone Teaching · Leadership Lab",
+    parentLabel: "Standalone Teaching Â· Leadership Lab",
     parentType: "Standalone Teaching",
     sessionType: "Teaching",
     campus: "City Hub",
@@ -297,7 +298,7 @@ const SESSION_SEED: LiveSession[] = [
       producer: "Producer Claire N.",
       moderator: "Moderator Sarah A.",
       caption: "Caption Lead Mercy J.",
-      support: "Support Team – Central Campus",
+      support: "Support Team â€“ Central Campus",
     },
     recurrence: "Monthly",
     linkedEvent: "Leaders Formation Week",
@@ -311,7 +312,7 @@ const SESSION_SEED: LiveSession[] = [
   {
     id: "FH-LS-303",
     title: "Midweek Prayer & Teaching",
-    parentLabel: "Standalone Teaching · Midweek Encounter",
+    parentLabel: "Standalone Teaching Â· Midweek Encounter",
     parentType: "Standalone Teaching",
     sessionType: "Teaching",
     campus: "Central Campus",
@@ -330,7 +331,7 @@ const SESSION_SEED: LiveSession[] = [
       moderator: "Moderator Tobi E.",
       caption: "Caption Lead Mercy J.",
       interpreter: "Interpreter Caleb O.",
-      support: "Support Team – Central Campus",
+      support: "Support Team â€“ Central Campus",
     },
     recurrence: "Weekly",
     registrations: 918,
@@ -343,7 +344,7 @@ const SESSION_SEED: LiveSession[] = [
   {
     id: "FH-LS-304",
     title: "Women of Wisdom Discipleship",
-    parentLabel: "Series · Women of Wisdom · Episode 04",
+    parentLabel: "Series Â· Women of Wisdom Â· Episode 04",
     parentType: "Series Episode",
     sessionType: "Class",
     campus: "Central Campus",
@@ -361,7 +362,7 @@ const SESSION_SEED: LiveSession[] = [
       producer: "Producer Claire N.",
       moderator: "",
       caption: "Caption Lead Mercy J.",
-      support: "Support Team – Central Campus",
+      support: "Support Team â€“ Central Campus",
     },
     recurrence: "Weekly",
     registrations: 447,
@@ -392,7 +393,7 @@ const SESSION_SEED: LiveSession[] = [
       producer: "Producer Nathan P.",
       moderator: "Moderator Sarah A.",
       caption: "",
-      support: "Support Team – Central Campus",
+      support: "Support Team â€“ Central Campus",
     },
     recurrence: "One-time",
     linkedCrowdfund: "Community Borehole Appeal",
@@ -405,7 +406,7 @@ const SESSION_SEED: LiveSession[] = [
   {
     id: "FH-LS-306",
     title: "Youth Revival Night",
-    parentLabel: "Event · Youth Revival Night",
+    parentLabel: "Event Â· Youth Revival Night",
     parentType: "Event",
     sessionType: "Special Event",
     campus: "East Campus",
@@ -424,7 +425,7 @@ const SESSION_SEED: LiveSession[] = [
       moderator: "Moderator Tobi E.",
       caption: "",
       interpreter: "Interpreter Grace L.",
-      support: "Support Team – East Campus",
+      support: "Support Team â€“ East Campus",
     },
     recurrence: "One-time",
     linkedEvent: "Youth Revival Night",
@@ -438,7 +439,7 @@ const SESSION_SEED: LiveSession[] = [
   {
     id: "FH-LS-307",
     title: "French Watch Party",
-    parentLabel: "Series · The Way of Grace · Watch Party",
+    parentLabel: "Series Â· The Way of Grace Â· Watch Party",
     parentType: "Series Episode",
     sessionType: "Watch Party",
     campus: "Online Campus",
@@ -457,7 +458,7 @@ const SESSION_SEED: LiveSession[] = [
       moderator: "Moderator Sarah A.",
       caption: "Caption Lead Mercy J.",
       interpreter: "Interpreter Grace L.",
-      support: "Support Team – Central Campus",
+      support: "Support Team â€“ Central Campus",
     },
     recurrence: "Seasonal Campaign",
     registrations: 173,
@@ -469,7 +470,7 @@ const SESSION_SEED: LiveSession[] = [
   {
     id: "FH-LS-308",
     title: "Sunday Encounter Live",
-    parentLabel: "Series · Sunday Encounter · Episode 10",
+    parentLabel: "Series Â· Sunday Encounter Â· Episode 10",
     parentType: "Series Episode",
     sessionType: "Weekly Service",
     campus: "Central Campus",
@@ -488,7 +489,7 @@ const SESSION_SEED: LiveSession[] = [
       moderator: "Moderator Tobi E.",
       caption: "Caption Lead Mercy J.",
       interpreter: "Interpreter Caleb O.",
-      support: "Support Team – Central Campus",
+      support: "Support Team â€“ Central Campus",
     },
     recurrence: "Weekly",
     linkedGiving: "Mission Expansion Offering",
@@ -626,7 +627,7 @@ function formatTime(date: Date) {
 }
 
 function formatSessionTimeRange(session: LiveSession) {
-  return `${formatTime(toDate(session.startISO))}–${formatTime(
+  return `${formatTime(toDate(session.startISO))}â€“${formatTime(
     toDate(session.endISO),
   )}`;
 }
@@ -667,7 +668,7 @@ function getDayColumns(anchor: Date) {
 }
 
 function buildBlackoutWindow(dateISO: string, timeRange: string) {
-  const [from, to] = timeRange.split("–");
+  const [from, to] = timeRange.split("â€“");
   return {
     start: new Date(`${dateISO}T${from}:00`),
     end: new Date(`${dateISO}T${to}:00`),
@@ -879,7 +880,7 @@ function generateScheduleICS(sessions: LiveSession[]) {
         .replace(/[-:]/g, "")
         .replace(/\.\d{3}/, "")}`,
       `SUMMARY:${session.title}`,
-      `DESCRIPTION:${session.parentLabel} · ${session.campus} · ${session.language}`,
+      `DESCRIPTION:${session.parentLabel} Â· ${session.campus} Â· ${session.language}`,
       "END:VEVENT",
     ]),
     "END:VCALENDAR",
@@ -1017,7 +1018,7 @@ function buildSuggestions(
       return {
         id: `${session.id}-suggestion-${index + 1}`,
         sessionId: session.id,
-        label: `${formatDayHeader(candidate.start)} · ${formatTime(candidate.start)}–${formatTime(end)}`,
+        label: `${formatDayHeader(candidate.start)} Â· ${formatTime(candidate.start)}â€“${formatTime(end)}`,
         startISO: candidate.start.toISOString().slice(0, 19),
         endISO: end.toISOString().slice(0, 19),
         reason: blocked
@@ -1146,27 +1147,15 @@ function Card({
   className?: string;
 }) {
   return (
-    <div
-      className={cx(
-        "rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 shadow-soft transition-colors",
-        className,
-      )}
+    <ProviderSurfaceCard
+      title={title}
+      subtitle={subtitle}
+      right={right}
+      className={cx("rounded-[28px]", className)}
+      titleClassName="text-[13px]"
     >
-      <div className="flex items-start justify-between gap-3">
-        <div className="min-w-0">
-          <div className="text-[13px] font-semibold text-faith-ink dark:text-slate-100">
-            {title}
-          </div>
-          {subtitle ? (
-            <div className="mt-0.5 text-[11px] text-faith-slate">
-              {subtitle}
-            </div>
-          ) : null}
-        </div>
-        {right ? <div className="shrink-0">{right}</div> : null}
-      </div>
-      <div className="mt-4">{children}</div>
-    </div>
+      {children}
+    </ProviderSurfaceCard>
   );
 }
 
@@ -1415,7 +1404,7 @@ function SessionCard({
             </div>
           </div>
           <div className="mt-1 text-[11px] text-faith-slate">
-            {formatSessionTimeRange(session)} · {session.campus}
+            {formatSessionTimeRange(session)} Â· {session.campus}
           </div>
         </div>
         <Pill
@@ -1498,11 +1487,11 @@ function AgendaRow({
           </div>
           <div className="mt-1 flex flex-wrap items-center gap-2 text-[11px] text-faith-slate">
             <span>{formatDateTime(session.startISO)}</span>
-            <span>•</span>
+            <span>â€¢</span>
             <span>{session.campus}</span>
-            <span>•</span>
+            <span>â€¢</span>
             <span>{session.venue}</span>
-            <span>•</span>
+            <span>â€¢</span>
             <span>{session.speaker}</span>
           </div>
         </div>
@@ -1829,7 +1818,7 @@ function MonthView({
                       )}
                     >
                       <div className="truncate font-semibold">
-                        {formatTime(toDate(session.startISO))} · {session.title}
+                        {formatTime(toDate(session.startISO))} Â· {session.title}
                       </div>
                     </button>
                   );
@@ -1900,9 +1889,9 @@ function OperationsPreview({
           </div>
           <div className="mt-2 flex flex-wrap items-center gap-2 text-[11px] opacity-95">
             <span>{session.parentLabel}</span>
-            <span>•</span>
+            <span>â€¢</span>
             <span>{formatDateTime(session.startISO)}</span>
-            <span>•</span>
+            <span>â€¢</span>
             <span>{session.campus}</span>
           </div>
           <div className="mt-4 h-2 rounded-full bg-[var(--fh-surface-bg)]/20 overflow-hidden">
@@ -1912,7 +1901,7 @@ function OperationsPreview({
             />
           </div>
           <div className="mt-2 text-[11px] font-semibold">
-            Readiness score · {readiness.score}%
+            Readiness score Â· {readiness.score}%
           </div>
         </div>
 
@@ -1924,15 +1913,15 @@ function OperationsPreview({
             <div className="mt-2 space-y-2 text-[12px] text-slate-700 dark:text-slate-300">
               <div className="flex items-center gap-2">
                 <MapPin className="h-4 w-4 text-faith-slate" />
-                {session.venue} · {session.campus}
+                {session.venue} Â· {session.campus}
               </div>
               <div className="flex items-center gap-2">
                 <Users className="h-4 w-4 text-faith-slate" />
-                {session.speaker} · {session.audience}
+                {session.speaker} Â· {session.audience}
               </div>
               <div className="flex items-center gap-2">
                 <Globe2 className="h-4 w-4 text-faith-slate" />
-                {session.language} · {session.timezone}
+                {session.language} Â· {session.timezone}
               </div>
               <div className="flex items-center gap-2">
                 <Bell className="h-4 w-4 text-faith-slate" />
@@ -2076,7 +2065,7 @@ function StaffingLane({
                     {session.title}
                   </div>
                   <div className="mt-1 text-[11px] text-faith-slate">
-                    {formatSessionTimeRange(session)} · {session.campus}
+                    {formatSessionTimeRange(session)} Â· {session.campus}
                   </div>
                 </div>
                 <Pill text={readiness.state} tone={readinessTone(readiness.state)} />
@@ -2152,9 +2141,9 @@ function ExportCard({
         <SoftButton
           onClick={() => {
             const payload = selectedSession
-              ? `${selectedSession.title} · ${formatDateTime(
+              ? `${selectedSession.title} Â· ${formatDateTime(
                   selectedSession.startISO,
-                )} · ${selectedSession.campus} · ${selectedSession.venue}`
+                )} Â· ${selectedSession.campus} Â· ${selectedSession.venue}`
               : "Live Schedule";
             copyText(payload);
             showToast("Schedule card copied for internal chat.");
@@ -2418,7 +2407,7 @@ function RescheduleDrawer({
             {session.title}
           </div>
           <div className="mt-1 text-[11px] text-faith-slate">
-            {formatDateTime(session.startISO)} · {session.campus} · {session.venue}
+            {formatDateTime(session.startISO)} Â· {session.campus} Â· {session.venue}
           </div>
           <div className="mt-3 flex flex-wrap gap-2">
             {getImpactLabels(session).map((label) => (
@@ -2603,8 +2592,8 @@ export default function FaithHubLiveSchedulePage() {
     const end = new Date(start.getTime() + draft.durationMin * 60000);
     const supportLabel =
       draft.campus === "East Campus"
-        ? "Support Team – East Campus"
-        : "Support Team – Central Campus";
+        ? "Support Team â€“ East Campus"
+        : "Support Team â€“ Central Campus";
 
     const nextSession: LiveSession = {
       id: `FH-LS-${Math.floor(Math.random() * 900 + 400)}`,
@@ -2662,7 +2651,7 @@ export default function FaithHubLiveSchedulePage() {
     const target = selectedSession || firstConflictSession;
     if (!target) return;
     copyText(
-      `${target.title}\n${formatDateTime(target.startISO)}\n${target.campus} · ${target.venue}\n${target.speaker}`,
+      `${target.title}\n${formatDateTime(target.startISO)}\n${target.campus} Â· ${target.venue}\n${target.speaker}`,
     );
     showToast("Schedule card copied.");
   }
@@ -2711,13 +2700,13 @@ export default function FaithHubLiveSchedulePage() {
               Live Schedule
             </div>
             <div className="mt-2 max-w-3xl text-[13px] leading-6 text-faith-slate">
-              World-class operational calendar for all live activity — with day, week, month, timeline, and agenda views, staffing intelligence, readiness ribbons, conflict detection, recurrence tools, timezone safety, and fast handoff into Live Dashboard or Studio.
+              World-class operational calendar for all live activity â€” with day, week, month, timeline, and agenda views, staffing intelligence, readiness ribbons, conflict detection, recurrence tools, timezone safety, and fast handoff into Live Dashboard or Studio.
             </div>
             <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] text-faith-slate">
               <span>{SAVED_VIEW_CONFIG[savedView].label} view</span>
-              <span>•</span>
+              <span>â€¢</span>
               <span>{formatMonthHeader(anchorDate)}</span>
-              <span>•</span>
+              <span>â€¢</span>
               <span>{scheduleHealth.green} green / {scheduleHealth.warn} at risk / {scheduleHealth.blocked} blocked</span>
             </div>
           </div>
@@ -2862,7 +2851,7 @@ export default function FaithHubLiveSchedulePage() {
                     >
                       <div className="font-semibold">{blackout.label}</div>
                       <div className="mt-1">
-                        {blackout.campus} · {blackout.dateISO} · {blackout.time}
+                        {blackout.campus} Â· {blackout.dateISO} Â· {blackout.time}
                       </div>
                     </div>
                   ))}
@@ -2982,7 +2971,7 @@ export default function FaithHubLiveSchedulePage() {
                         onChange={(event) =>
                           setFilters((current) => ({ ...current, search: event.target.value }))
                         }
-                        placeholder="Search title, speaker, venue…"
+                        placeholder="Search title, speaker, venueâ€¦"
                         className="w-full rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 py-2 pl-9 pr-3 text-[12px] text-faith-ink dark:text-slate-100 outline-none transition-colors focus:ring-2 focus:ring-orange-100 dark:focus:ring-orange-900/30"
                       />
                     </div>

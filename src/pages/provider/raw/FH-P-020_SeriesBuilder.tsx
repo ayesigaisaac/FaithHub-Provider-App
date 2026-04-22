@@ -37,9 +37,10 @@ import {
 } from "lucide-react";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
+import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 
 /**
- * Provider — Series Builder
+ * Provider â€” Series Builder
  * ----------------------------------
  * Premium teaching-series control surface for the Provider side.
  *
@@ -257,7 +258,7 @@ type SeriesDraft = {
 const DEFAULT_EPISODES: EpisodeItem[] = [
   {
     id: "ep-1",
-    title: "Week 1 · The Call to Hope",
+    title: "Week 1 Â· The Call to Hope",
     summary: "Set the series promise and begin with renewal, witness, and spiritual confidence.",
     theme: "Renewal",
     durationLabel: "55 min",
@@ -266,7 +267,7 @@ const DEFAULT_EPISODES: EpisodeItem[] = [
   },
   {
     id: "ep-2",
-    title: "Week 2 · Hope in the Wilderness",
+    title: "Week 2 Â· Hope in the Wilderness",
     summary: "Address uncertainty, endurance, and faithful obedience under pressure.",
     theme: "Endurance",
     durationLabel: "60 min",
@@ -275,7 +276,7 @@ const DEFAULT_EPISODES: EpisodeItem[] = [
   },
   {
     id: "ep-3",
-    title: "Week 3 · Healing and Restoration",
+    title: "Week 3 Â· Healing and Restoration",
     summary: "Move into personal healing, prayer ministry, and practical support.",
     theme: "Healing",
     durationLabel: "70 min",
@@ -284,7 +285,7 @@ const DEFAULT_EPISODES: EpisodeItem[] = [
   },
   {
     id: "ep-4",
-    title: "Week 4 · Hope in Community",
+    title: "Week 4 Â· Hope in Community",
     summary: "Focus on serving, community, care, and local mission response.",
     theme: "Community",
     durationLabel: "50 min",
@@ -293,7 +294,7 @@ const DEFAULT_EPISODES: EpisodeItem[] = [
   },
   {
     id: "ep-5",
-    title: "Week 5 · Witness and Courage",
+    title: "Week 5 Â· Witness and Courage",
     summary: "Build toward outward witness, boldness, and testimony.",
     theme: "Witness",
     durationLabel: "65 min",
@@ -302,7 +303,7 @@ const DEFAULT_EPISODES: EpisodeItem[] = [
   },
   {
     id: "ep-6",
-    title: "Week 6 · Living the Hope",
+    title: "Week 6 Â· Living the Hope",
     summary: "Land the series with commitments, next steps, and follow-through resources.",
     theme: "Next steps",
     durationLabel: "60 min",
@@ -316,21 +317,21 @@ const DEFAULT_LOCALES: LocaleVariant[] = [
     code: "en-UG",
     title: "Practicing the Way of Hope",
     description: "A six-week teaching journey on faithful living, healing, and witness.",
-    artworkVariant: "Hero A · English",
+    artworkVariant: "Hero A Â· English",
     notesState: "Ready",
   },
   {
     code: "sw-UG",
     title: "Kuishi Njia ya Tumaini",
     description: "Mfululizo wa wiki sita kuhusu matumaini, uponyaji, na ushuhuda.",
-    artworkVariant: "Hero B · Swahili",
+    artworkVariant: "Hero B Â· Swahili",
     notesState: "Translating",
   },
   {
     code: "fr-FR",
-    title: "Vivre le chemin de l'espérance",
-    description: "Une série de six semaines sur l'espérance, la guérison et le témoignage.",
-    artworkVariant: "Hero C · French",
+    title: "Vivre le chemin de l'espÃ©rance",
+    description: "Une sÃ©rie de six semaines sur l'espÃ©rance, la guÃ©rison et le tÃ©moignage.",
+    artworkVariant: "Hero C Â· French",
     notesState: "Draft",
   },
 ];
@@ -521,21 +522,16 @@ function Card({
   className?: string;
 }) {
   return (
-    <div
-      className={cx(
-        "rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft transition-colors",
-        className,
-      )}
+    <ProviderSurfaceCard
+      title={title}
+      subtitle={subtitle}
+      right={right}
+      className={cx("rounded-[28px]", className)}
+      titleClassName="font-bold"
+      subtitleClassName="mt-1"
     >
-      <div className="flex items-start justify-between gap-3">
-        <div>
-          <div className="text-[14px] font-bold text-faith-ink">{title}</div>
-          {subtitle ? <div className="mt-1 text-[11px] text-faith-slate">{subtitle}</div> : null}
-        </div>
-        {right ? <div className="shrink-0">{right}</div> : null}
-      </div>
-      <div className="mt-4">{children}</div>
-    </div>
+      {children}
+    </ProviderSurfaceCard>
   );
 }
 
@@ -782,7 +778,7 @@ function SeriesLandingPreview({
               </div>
             </div>
             <div className="absolute bottom-4 left-4 right-4 rounded-2xl border border-emerald-200 bg-emerald-50 px-3 py-2 text-[11px] font-semibold text-emerald-700">
-              Preview confidence · {readinessScore}% complete
+              Preview confidence Â· {readinessScore}% complete
             </div>
           </div>
         </div>
@@ -840,7 +836,7 @@ function SeriesLandingPreview({
                     <Pill tone={episode.status === "Ready" || episode.status === "Scheduled" ? "good" : "warn"}>{episode.status}</Pill>
                   </div>
                   <div className="mt-2 text-[13px] font-bold text-faith-ink">{episode.title}</div>
-                  <div className="mt-1 text-[11px] text-faith-slate">{episode.theme} · {episode.durationLabel}</div>
+                  <div className="mt-1 text-[11px] text-faith-slate">{episode.theme} Â· {episode.durationLabel}</div>
                 </div>
               ))}
             </div>
@@ -872,13 +868,13 @@ export default function SeriesBuilderPage() {
     subtitle: "A six-week teaching journey on faithful living, healing, and witness.",
     description:
       "Build a structured discipleship path that moves from renewal into healing, witness, and next-step commitment across live teaching, replay, and group resources.",
-    scriptureTheme: "Romans 12 · Isaiah 61 · Matthew 5",
+    scriptureTheme: "Romans 12 Â· Isaiah 61 Â· Matthew 5",
     promise: "A clear, hope-filled pathway for prayer, formation, and public witness.",
-    durationWindow: "6 weeks · April to May",
+    durationWindow: "6 weeks Â· April to May",
     audienceFit: "Adults, young professionals, family ministry",
     speakers: ["Pastor Daniel M.", "Minister Ruth K."],
     coverId: "cover-hope",
-    trailerLabel: "Series trailer cut · 45s",
+    trailerLabel: "Series trailer cut Â· 45s",
     bannerStyle: "Immersive hero with layered scripture quote",
     graphicRule: GRAPHIC_RULES[2],
     accessModel: "Public",
@@ -927,7 +923,7 @@ export default function SeriesBuilderPage() {
         ...current.episodes,
         {
           id: `ep-${Math.random().toString(16).slice(2, 8)}`,
-          title: `Week ${index} · New Episode`,
+          title: `Week ${index} Â· New Episode`,
           summary: "Add the episode purpose, live plan, and resource pack.",
           theme: "New theme",
           durationLabel: "60 min",
@@ -973,7 +969,7 @@ export default function SeriesBuilderPage() {
           code: next.code,
           title: `${current.title} (${next.label})`,
           description: current.description,
-          artworkVariant: `Localized art · ${next.label}`,
+          artworkVariant: `Localized art Â· ${next.label}`,
           notesState: "Draft",
         },
       ],
@@ -1056,7 +1052,7 @@ export default function SeriesBuilderPage() {
                 <TextInput
                   value={draft.scriptureTheme}
                   onChange={(scriptureTheme) => setDraft((current) => ({ ...current, scriptureTheme }))}
-                  placeholder="Romans 12 · Isaiah 61 · Matthew 5"
+                  placeholder="Romans 12 Â· Isaiah 61 Â· Matthew 5"
                 />
               </div>
               <div>
@@ -1237,11 +1233,11 @@ export default function SeriesBuilderPage() {
                   <div className="text-[11px] font-black uppercase tracking-[0.16em] text-faith-slate">Variant set</div>
                   <div className="mt-2 grid gap-2 md:grid-cols-2">
                     <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-3">
-                      <div className="text-[12px] font-bold text-faith-ink">Cover A · Sanctuary Light</div>
+                      <div className="text-[12px] font-bold text-faith-ink">Cover A Â· Sanctuary Light</div>
                       <div className="mt-1 text-[11px] text-faith-slate">For followers and returning viewers.</div>
                     </div>
                     <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-3">
-                      <div className="text-[12px] font-bold text-faith-ink">Cover B · Scripture Close-up</div>
+                      <div className="text-[12px] font-bold text-faith-ink">Cover B Â· Scripture Close-up</div>
                       <div className="mt-1 text-[11px] text-faith-slate">For new guests and broad discovery shelves.</div>
                     </div>
                   </div>
@@ -1356,7 +1352,7 @@ export default function SeriesBuilderPage() {
                     {draft.episodes.map((episode, index) => (
                       <div key={episode.id} className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-3">
                         <div className="flex items-center justify-between gap-2">
-                          <div className="text-[12px] font-bold text-faith-ink">{String(index + 1).padStart(2, "0")} · {episode.theme}</div>
+                          <div className="text-[12px] font-bold text-faith-ink">{String(index + 1).padStart(2, "0")} Â· {episode.theme}</div>
                           <span className="text-[11px] font-semibold text-faith-slate">{episode.durationLabel}</span>
                         </div>
                         <div className="mt-1 text-[11px] text-faith-slate">{episode.title}</div>
@@ -1819,7 +1815,7 @@ export default function SeriesBuilderPage() {
                 <ProviderPageTitle
                   icon={<Layers className="h-6 w-6" />}
                   title="Series Builder"
-                  subtitle="Premium provider teaching workflow inspired by the creator base layout — now rebuilt for Series, Episodes, linked Live Sessions, localized discovery, and Beacon-ready promotion."
+                  subtitle="Premium provider teaching workflow inspired by the creator base layout â€” now rebuilt for Series, Episodes, linked Live Sessions, localized discovery, and Beacon-ready promotion."
                 />
               </div>
               <div className="mt-4 flex flex-wrap gap-2">

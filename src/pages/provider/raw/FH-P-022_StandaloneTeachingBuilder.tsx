@@ -36,9 +36,10 @@ import {
 } from "lucide-react";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
+import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 
 /**
- * Provider — Standalone Teaching Builder
+ * Provider â€” Standalone Teaching Builder
  * ------------------------------------------------
  * Premium creator-style page for building sermons/teachings that do not
  * belong to any Series or Episode while still supporting Live Sessions,
@@ -219,7 +220,7 @@ const CONTENT_ASSET_LIBRARY = [
   {
     id: "asset-hero",
     type: "Artwork",
-    name: "Hero artwork · Sanctuary Light",
+    name: "Hero artwork Â· Sanctuary Light",
     status: "Ready" as const,
     hint: "Landing image, replay cover, and promo thumbnail treatment.",
   },
@@ -336,8 +337,8 @@ const STEPS: Array<{ key: StepKey; label: string }> = [
 ];
 
 const DEFAULT_LOCALES: LocaleVariant[] = [
-  { code: "en-UG", title: "Sunday Fire · English", state: "Ready" },
-  { code: "sw-UG", title: "Sunday Fire · Swahili", state: "Draft" },
+  { code: "en-UG", title: "Sunday Fire Â· English", state: "Ready" },
+  { code: "sw-UG", title: "Sunday Fire Â· Swahili", state: "Draft" },
 ];
 
 const DEFAULT_CROSS_LINKS: TeachingDraft["crossLinks"] = {
@@ -349,12 +350,12 @@ const DEFAULT_CROSS_LINKS: TeachingDraft["crossLinks"] = {
 };
 
 const DEFAULT_DRAFT: TeachingDraft = {
-  title: "Sunday Fire · Hope for the Waiting Heart",
+  title: "Sunday Fire Â· Hope for the Waiting Heart",
   subtitle: "A standalone sermon for courage, patience, and faithful action in uncertain seasons.",
   speaker: "Pastor Daniel M.",
   ministryContext: "Sunday service",
   theme: "Hope and endurance",
-  scriptureSource: "Romans 8 · Isaiah 40 · Psalm 27",
+  scriptureSource: "Romans 8 Â· Isaiah 40 Â· Psalm 27",
   intendedAudience: "Open to everyone",
   promise: "Help the audience find language for waiting faithfully without losing spiritual confidence.",
   description:
@@ -365,7 +366,7 @@ const DEFAULT_DRAFT: TeachingDraft = {
   liveEnabled: true,
   linkedLiveTitle: "Sunday Fire Live Session",
   linkedLiveState: "Scheduled",
-  linkedLiveTime: "Sun 09:00 · Primary + YouTube",
+  linkedLiveTime: "Sun 09:00 Â· Primary + YouTube",
   releaseTiming: "Publish after the linked live ends",
   visibility: "Public",
   region: "Global",
@@ -529,23 +530,16 @@ function Card({
   className?: string;
 }) {
   return (
-    <div
-      className={cx(
-        "rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft transition-colors",
-        className,
-      )}
+    <ProviderSurfaceCard
+      title={title}
+      subtitle={subtitle}
+      right={right}
+      className={cx("rounded-[28px]", className)}
+      titleClassName="font-bold"
+      subtitleClassName="mt-1"
     >
-      <div className="flex items-start justify-between gap-3">
-        <div>
-          <div className="text-[14px] font-bold text-faith-ink">{title}</div>
-          {subtitle ? (
-            <div className="mt-1 text-[11px] text-faith-slate">{subtitle}</div>
-          ) : null}
-        </div>
-        {right ? <div className="shrink-0">{right}</div> : null}
-      </div>
-      <div className="mt-4">{children}</div>
-    </div>
+      {children}
+    </ProviderSurfaceCard>
   );
 }
 
@@ -1058,7 +1052,7 @@ export default function StandaloneTeachingBuilderPage() {
                   <div className="flex items-center justify-between gap-3">
                     <div>
                       <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-faith-ink dark:text-slate-100 sm:text-[34px] lg:text-[40px]">{draft.speaker}</div>
-                      <div className="mt-1.5 text-[14px] leading-6 text-faith-slate">{draft.ministryContext} · {draft.theme}</div>
+                      <div className="mt-1.5 text-[14px] leading-6 text-faith-slate">{draft.ministryContext} Â· {draft.theme}</div>
                     </div>
                     <Pill tone="brand">Lead teacher</Pill>
                   </div>
@@ -1192,7 +1186,7 @@ export default function StandaloneTeachingBuilderPage() {
                   <TextInput
                     value={draft.linkedLiveTime}
                     onChange={(linkedLiveTime) => setDraft((current) => ({ ...current, linkedLiveTime }))}
-                    placeholder="Sun 09:00 · Primary + YouTube"
+                    placeholder="Sun 09:00 Â· Primary + YouTube"
                   />
                 </div>
                 <div className="flex flex-wrap gap-2">
@@ -1283,7 +1277,7 @@ export default function StandaloneTeachingBuilderPage() {
                     <div className="flex items-start justify-between gap-3">
                       <div>
                         <div className="text-[12px] font-bold text-faith-ink">{asset.name}</div>
-                        <div className="mt-1 text-[11px] text-faith-slate">{asset.type} · {asset.hint}</div>
+                        <div className="mt-1 text-[11px] text-faith-slate">{asset.type} Â· {asset.hint}</div>
                       </div>
                       <Pill tone={statusTone(asset.status)}>{asset.status}</Pill>
                     </div>
@@ -1509,7 +1503,7 @@ export default function StandaloneTeachingBuilderPage() {
             <SectionHeader
               eyebrow="Connected journeys"
               title="Attach downstream destinations"
-              subtitle="Cross-links deepen the teaching’s usefulness while preserving it as a standalone message."
+              subtitle="Cross-links deepen the teachingâ€™s usefulness while preserving it as a standalone message."
             />
             <div className="mt-4 grid gap-3 xl:grid-cols-2">
               {CROSS_LINK_TYPES.map((item) => {
@@ -1588,7 +1582,7 @@ export default function StandaloneTeachingBuilderPage() {
             <SectionHeader
               eyebrow="Future flexibility"
               title="Decide how this teaching could evolve later"
-              subtitle="Ministries often preach one-off messages that later deserve a broader campaign. Preserve that path without disturbing today’s publishing workflow."
+              subtitle="Ministries often preach one-off messages that later deserve a broader campaign. Preserve that path without disturbing todayâ€™s publishing workflow."
             />
             <div className="mt-4 grid gap-3 md:grid-cols-3">
               {MIGRATION_MODES.map((mode) => {
