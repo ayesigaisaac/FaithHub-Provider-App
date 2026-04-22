@@ -29,6 +29,7 @@ import {
   Users,
   Wallet,
   Wrench,
+  UserCircle2,
 } from 'lucide-react';
 
 export type ProviderPageSection =
@@ -109,6 +110,7 @@ const WorkspaceSettings = lazyPage(() => import('@/pages/provider/raw/FH-P-120_W
 const ModerationSettings = lazyPage(() => import('@/pages/provider/raw/FH-P-121_ModerationSettings'));
 const AuditLog = lazyPage(() => import('@/pages/provider/raw/FH-P-122_AuditLog'));
 const QACenter = lazyPage(() => import('@/pages/provider/raw/FH-P-123_QACenter'));
+const ProfileSettings = lazyPage(() => import('@/pages/provider/ProfileSettingsPage'));
 const ProviderShellPreview = lazyPage(() => import('@/pages/provider/previews/FaithHubProviderShellLightV3'));
 
 export const providerPageCatalog: ProviderPageMeta[] = [
@@ -622,6 +624,17 @@ export const providerPageCatalog: ProviderPageMeta[] = [
     section: 'Workspace Settings',
     icon: ClipboardCheck,
     component: QACenter,
+  },
+  {
+    key: 'profile-settings',
+    title: 'Profile Settings',
+    shortTitle: 'Profile',
+    description: 'Signed-in account identity, role context, and active workspace profile.',
+    path: '/faithhub/provider/profile-settings',
+    section: 'Workspace Settings',
+    icon: UserCircle2,
+    hidden: true,
+    component: ProfileSettings,
   },
   {
     key: 'provider-shell-preview',

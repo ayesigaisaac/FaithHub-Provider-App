@@ -344,22 +344,32 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
           </Typography>
         </MenuItem>
         <MenuItem
-          onClick={() =>
+          onClick={() => {
+            closeUserMenu();
             setWorkspace({
               campus: workspace?.campus === 'Kampala Central' ? 'Online Studio' : 'Kampala Central',
               brand: workspace?.brand || 'Provider',
-            })
-          }
+            });
+          }}
         >
           Switch campus
         </MenuItem>
         <MenuItem
-          onClick={() =>
+          onClick={() => {
+            closeUserMenu();
+            navigate('/faithhub/provider/profile-settings');
+          }}
+        >
+          Profile settings
+        </MenuItem>
+        <MenuItem
+          onClick={() => {
+            closeUserMenu();
             setWorkspace({
               campus: workspace?.campus || 'Kampala Central',
               brand: workspace?.brand === 'Provider' ? 'Provider Plus' : 'Provider',
-            })
-          }
+            });
+          }}
         >
           Switch brand
         </MenuItem>
