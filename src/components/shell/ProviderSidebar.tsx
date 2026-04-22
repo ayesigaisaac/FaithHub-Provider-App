@@ -82,7 +82,7 @@ export function ProviderSidebar({
             minHeight: 0,
           }}
         >
-          <Stack direction="row" alignItems="center" justifyContent="flex-end" sx={{ px: 1.5, py: 1.05 }}>
+          <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ px: 1.25, py: 0.9, gap: 1 }}>
             <Tooltip title="Open provider dashboard">
               <ListItemButton
                 component={RouterLink}
@@ -90,13 +90,13 @@ export function ProviderSidebar({
                 onClick={onClose}
                 sx={{
                   flex: 1,
-                  minHeight: 40,
-                  borderRadius: 'var(--fh-radius-xl)',
+                  minHeight: 42,
+                  borderRadius: 'var(--fh-radius-2xl)',
                   border: '1px solid',
                   borderColor: 'var(--fh-line)',
                   bgcolor: 'var(--fh-surface)',
-                  px: collapsed ? 1 : 1.25,
-                  py: 0.75,
+                  px: collapsed ? 1 : 1.15,
+                  py: 0.65,
                   justifyContent: collapsed ? 'center' : 'flex-start',
                   '&:hover': { bgcolor: 'var(--fh-surface-bg)' },
                 }}
@@ -114,7 +114,7 @@ export function ProviderSidebar({
                   P
                 </Avatar>
                 {!collapsed ? (
-                  <Typography sx={{ ml: 1, fontWeight: 800, fontSize: 13, color: 'var(--fh-ink)', lineHeight: 1.2 }}>
+                  <Typography sx={{ ml: 1, fontWeight: 700, fontSize: 12.5, color: 'var(--fh-ink)', lineHeight: 1.15 }}>
                     Provider Navigation
                   </Typography>
                 ) : null}
@@ -130,13 +130,13 @@ export function ProviderSidebar({
                   onClose();
                 }}
                 sx={{
-                  ml: 1,
                   bgcolor: 'var(--fh-surface-bg)',
                   color: 'var(--fh-ink)',
                   border: '1px solid',
                   borderColor: 'var(--fh-line)',
-                  width: 38,
-                  height: 38,
+                  width: 42,
+                  height: 42,
+                  borderRadius: 999,
                   '&:hover': { bgcolor: 'var(--fh-surface)' },
                 }}
               >
