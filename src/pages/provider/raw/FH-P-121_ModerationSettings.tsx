@@ -210,6 +210,8 @@ function Card({
       right={right}
       className={cx("rounded-[28px] shadow-none", className)}
       titleClassName="text-[13px] font-extrabold"
+      subtitleClassName="leading-4"
+      bodyClassName="mt-3"
     >
       {children}
     </ProviderSurfaceCard>

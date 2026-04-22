@@ -361,6 +361,7 @@ function Card({
       subtitle={subtitle}
       right={right}
       className="rounded-3xl shadow-none"
+      bodyClassName="mt-3"
     >
       {children}
     </ProviderSurfaceCard>
