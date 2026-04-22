@@ -159,6 +159,67 @@ video {
   }
 }
 
+/* Light mode normalization for raw provider pages so legacy one-off classes inherit tokens. */
+.provider-page-density--compact > :is(div, main)[class*='min-h-screen'] {
+  background-color: var(--fh-page-bg) !important;
+  color: var(--fh-ink) !important;
+}
+
+.provider-page-density--compact :is(
+    [class*='bg-[#f2f2f2]'],
+    [class*='bg-[#f7f7f5]'],
+    .bg-white,
+    .bg-slate-50,
+    .bg-slate-100,
+    .bg-gray-50,
+    .bg-gray-100,
+    .bg-neutral-50,
+    .bg-neutral-100
+  ) {
+  background-color: var(--fh-surface-bg) !important;
+}
+
+.provider-page-density--compact :is(
+    .text-slate-900,
+    .text-slate-800,
+    .text-gray-900,
+    .text-gray-800,
+    .text-neutral-900,
+    .text-neutral-800
+  ) {
+  color: var(--fh-ink) !important;
+}
+
+.provider-page-density--compact :is(
+    .text-slate-600,
+    .text-slate-500,
+    .text-gray-600,
+    .text-gray-500,
+    .text-neutral-600,
+    .text-neutral-500
+  ) {
+  color: var(--fh-slate) !important;
+}
+
+.provider-page-density--compact :is(
+    .border-slate-200,
+    .border-slate-300,
+    .border-gray-200,
+    .border-gray-300,
+    .border-neutral-200,
+    .border-neutral-300
+  ) {
+  border-color: var(--fh-line) !important;
+}
+
+.provider-page-density--compact :is(
+    .shadow-sm,
+    .shadow-md,
+    .shadow-lg
+  ) {
+  box-shadow: var(--fh-shadow-sm) !important;
+}
+
 /* Uniform dark skin for imported provider pages that still carry light-only styles. */
 html.dark .provider-page-density--compact > :is(div, main)[class*='min-h-screen'] {
   background-color: #020617 !important;

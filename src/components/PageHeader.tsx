@@ -55,7 +55,14 @@ export function PageHeader({
   const titleIcon = icon ?? (Icon ? <Icon size={22} /> : null);
 
   return (
-    <Box className={className} sx={{ borderBottom: '1px solid rgba(15,23,42,0.08)', bgcolor: 'rgba(255,255,255,0.92)', backdropFilter: 'blur(12px)' }}>
+    <Box
+      className={className}
+      sx={{
+        borderBottom: '1px solid var(--fh-line)',
+        bgcolor: 'color-mix(in srgb, var(--fh-surface-bg) 92%, transparent)',
+        backdropFilter: 'blur(12px)',
+      }}
+    >
       <Stack direction="row" alignItems="center" justifyContent="space-between" gap={2} px={{ xs: 2, md: 3 }} py={2}>
         <Stack direction="row" alignItems="center" gap={1.5} minWidth={0}>
           <Box
@@ -66,8 +73,8 @@ export function PageHeader({
               flexShrink: 0,
               display: 'grid',
               placeItems: 'center',
-              bgcolor: '#10b981',
-              color: '#fff',
+              bgcolor: 'var(--fh-brand)',
+              color: 'var(--fh-surface-bg)',
             }}
           >
             {titleIcon}
@@ -78,7 +85,7 @@ export function PageHeader({
               fontWeight: 900,
               letterSpacing: '-0.03em',
               lineHeight: 1.04,
-              color: 'text.primary',
+              color: 'var(--fh-ink)',
               fontSize: { xs: '28px', sm: '34px', lg: '40px' },
             }}
           >
