@@ -15,6 +15,10 @@ export function ProviderShellLayout() {
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState<boolean>(() => {
+    if (typeof window === 'undefined') return false;
+    return window.localStorage.getItem('faithhub.sidebar.collapsed') === 'true';
+  });
 
   const current = useMemo(() => findProviderPageByPath(location.pathname), [location.pathname]);
 
@@ -29,6 +33,10 @@ export function ProviderShellLayout() {
     window.addEventListener('keydown', handleKeydown);
     return () => window.removeEventListener('keydown', handleKeydown);
   }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem('faithhub.sidebar.collapsed', String(sidebarCollapsed));
+  }, [sidebarCollapsed]);
 
   return (
     <Box
@@ -52,7 +60,12 @@ export function ProviderShellLayout() {
       />
 
       <Box sx={{ flex: 1, minHeight: 0, display: 'flex', minWidth: 0 }}>
-        <ProviderSidebar open={mobileOpen} onClose={() => setMobileOpen(false)} />
+        <ProviderSidebar
+          open={mobileOpen}
+          onClose={() => setMobileOpen(false)}
+          collapsed={sidebarCollapsed}
+          onToggleCollapse={() => setSidebarCollapsed((prev) => !prev)}
+        />
 
         <Box
           component="main"

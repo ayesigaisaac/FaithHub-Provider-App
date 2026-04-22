@@ -1,6 +1,7 @@
 import {
   Avatar,
   Box,
+  IconButton,
   Divider,
   Drawer,
   List,
@@ -9,6 +10,7 @@ import {
   ListItemIcon,
   ListItemText,
   Stack,
+  Tooltip,
   Typography,
 } from '@mui/material';
 import KeyboardArrowRightRoundedIcon from '@mui/icons-material/KeyboardArrowRightRounded';
@@ -33,7 +35,20 @@ const sectionLabelMap: Partial<Record<(typeof providerSections)[number], string>
   'Workspace Settings': 'Settings',
 };
 
-export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () => void }) {
+const expandedDrawerWidth = 318;
+const collapsedDrawerWidth = 88;
+
+export function ProviderSidebar({
+  open,
+  onClose,
+  collapsed = false,
+  onToggleCollapse,
+}: {
+  open: boolean;
+  onClose: () => void;
+  collapsed?: boolean;
+  onToggleCollapse?: () => void;
+}) {
   const location = useLocation();
   const sections = providerSections
     .map((section) => ({
@@ -68,18 +83,71 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
           }}
         >
           <Stack direction="row" alignItems="center" justifyContent="flex-end" sx={{ px: 1.5, py: 1.05 }}>
-            <Avatar
-              sx={{
-                bgcolor: 'var(--fh-surface-bg)',
-                color: 'var(--fh-ink)',
-                border: '1px solid',
-                borderColor: 'var(--fh-line)',
-                width: 38,
-                height: 38,
-              }}
-            >
-              <KeyboardDoubleArrowLeftRoundedIcon />
-            </Avatar>
+            <Tooltip title="Open provider dashboard">
+              <ListItemButton
+                component={RouterLink}
+                to="/faithhub/provider/dashboard"
+                onClick={onClose}
+                sx={{
+                  flex: 1,
+                  minHeight: 40,
+                  borderRadius: 'var(--fh-radius-xl)',
+                  border: '1px solid',
+                  borderColor: 'var(--fh-line)',
+                  bgcolor: 'var(--fh-surface)',
+                  px: collapsed ? 1 : 1.25,
+                  py: 0.75,
+                  justifyContent: collapsed ? 'center' : 'flex-start',
+                  '&:hover': { bgcolor: 'var(--fh-surface-bg)' },
+                }}
+              >
+                <Avatar
+                  sx={{
+                    width: 24,
+                    height: 24,
+                    bgcolor: 'color-mix(in srgb, var(--fh-brand-soft) 68%, var(--fh-surface-bg) 32%)',
+                    color: 'var(--fh-brand-dark)',
+                    fontSize: 12,
+                    fontWeight: 800,
+                  }}
+                >
+                  P
+                </Avatar>
+                {!collapsed ? (
+                  <Typography sx={{ ml: 1, fontWeight: 800, fontSize: 13, color: 'var(--fh-ink)', lineHeight: 1.2 }}>
+                    Provider Navigation
+                  </Typography>
+                ) : null}
+              </ListItemButton>
+            </Tooltip>
+            <Tooltip title={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}>
+              <IconButton
+                onClick={() => {
+                  if (onToggleCollapse) {
+                    onToggleCollapse();
+                    return;
+                  }
+                  onClose();
+                }}
+                sx={{
+                  ml: 1,
+                  bgcolor: 'var(--fh-surface-bg)',
+                  color: 'var(--fh-ink)',
+                  border: '1px solid',
+                  borderColor: 'var(--fh-line)',
+                  width: 38,
+                  height: 38,
+                  '&:hover': { bgcolor: 'var(--fh-surface)' },
+                }}
+              >
+                <KeyboardDoubleArrowLeftRoundedIcon
+                  sx={{
+                    transform: collapsed ? 'rotate(180deg)' : 'none',
+                    transition: 'transform 160ms ease',
+                  }}
+                />
+              </IconButton>
+            </Tooltip>
           </Stack>
 
           <Divider />
@@ -99,23 +167,25 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
             }}
           >
             {sections.map((group) => (
-              <Box key={group.section} sx={{ mb: 0.75 }}>
-                <ListSubheader
-                  disableSticky
-                  sx={{
-                    bgcolor: 'transparent',
-                    px: 1.25,
-                    py: 0.25,
-                    color: 'var(--fh-slate)',
-                    fontSize: 11,
-                    lineHeight: 1.4,
-                    letterSpacing: '0.09em',
-                    textTransform: 'uppercase',
-                    fontWeight: 800,
-                  }}
-                >
-                  {group.label}
-                </ListSubheader>
+              <Box key={group.section} sx={{ mb: collapsed ? 0.25 : 0.75 }}>
+                {!collapsed ? (
+                  <ListSubheader
+                    disableSticky
+                    sx={{
+                      bgcolor: 'transparent',
+                      px: 1.25,
+                      py: 0.25,
+                      color: 'var(--fh-slate)',
+                      fontSize: 11,
+                      lineHeight: 1.4,
+                      letterSpacing: '0.09em',
+                      textTransform: 'uppercase',
+                      fontWeight: 800,
+                    }}
+                  >
+                    {group.label}
+                  </ListSubheader>
+                ) : null}
 
                 {group.groups.map(({ page, children }) => {
                   const Icon = page.icon;
@@ -131,8 +201,9 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
                         component={RouterLink}
                         to={page.path}
                         onClick={onClose}
+                        title={collapsed ? page.shortTitle ?? page.title : undefined}
                         sx={{
-                          px: 1.25,
+                          px: collapsed ? 1 : 1.25,
                           py: 1,
                           minHeight: 56,
                           borderRadius: 'var(--fh-radius-2xl)',
@@ -151,7 +222,7 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
                           },
                         }}
                       >
-                        <ListItemIcon sx={{ minWidth: 44 }}>
+                        <ListItemIcon sx={{ minWidth: collapsed ? 0 : 44, mr: collapsed ? 0 : 0 }}>
                           <Avatar
                             sx={{
                               width: 32,
@@ -165,25 +236,27 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
                             <Icon size={16} />
                           </Avatar>
                         </ListItemIcon>
-                        <ListItemText
-                          primary={
-                            <Typography
-                              sx={{
-                                fontWeight: active ? 800 : 700,
-                                fontSize: 14,
-                                lineHeight: 1.2,
-                                color: 'var(--fh-ink)',
-                              }}
-                            >
-                              {page.shortTitle ?? page.title}
-                            </Typography>
-                          }
-                        />
-                        <KeyboardArrowRightRoundedIcon
-                          sx={{ fontSize: 22, color: 'var(--fh-slate)' }}
-                        />
+                        {!collapsed ? (
+                          <>
+                            <ListItemText
+                              primary={
+                                <Typography
+                                  sx={{
+                                    fontWeight: active ? 800 : 700,
+                                    fontSize: 14,
+                                    lineHeight: 1.2,
+                                    color: 'var(--fh-ink)',
+                                  }}
+                                >
+                                  {page.shortTitle ?? page.title}
+                                </Typography>
+                              }
+                            />
+                            <KeyboardArrowRightRoundedIcon sx={{ fontSize: 22, color: 'var(--fh-slate)' }} />
+                          </>
+                        ) : null}
                       </ListItemButton>
-                      {children.length ? (
+                      {!collapsed && children.length ? (
                         <Box sx={{ pl: 4.5, pr: 0.25, pt: 0.6 }}>
                           {children.map((child) => {
                             const ChildIcon = child.icon;
@@ -281,10 +354,10 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
         open
         sx={{
           display: { xs: 'none', md: 'block' },
-          width: drawerWidth,
+          width: collapsed ? collapsedDrawerWidth : expandedDrawerWidth,
           flexShrink: 0,
           '& .MuiDrawer-paper': {
-            width: drawerWidth,
+            width: collapsed ? collapsedDrawerWidth : expandedDrawerWidth,
             boxSizing: 'border-box',
             top: `${topbarOffsetDesktop}px`,
             height: `calc(100% - ${topbarOffsetDesktop}px)`,
@@ -301,4 +374,4 @@ export function ProviderSidebar({ open, onClose }: { open: boolean; onClose: () 
   );
 }
 
-export const providerDrawerWidth = drawerWidth;
+export const providerDrawerWidth = expandedDrawerWidth;
