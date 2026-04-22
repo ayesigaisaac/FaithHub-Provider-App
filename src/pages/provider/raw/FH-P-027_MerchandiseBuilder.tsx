@@ -35,9 +35,10 @@ import {
   Zap,
 } from "lucide-react";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
+import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 
 /**
- * Provider — Merchandise Builder
+ * Provider ï¿½ Merchandise Builder
  * ---------------------------------------
  * Premium Provider-side create/edit page launched from Merchandise Manager via
  * the "+ New Merchandise" command.
@@ -478,7 +479,7 @@ function createDraftFromTemplate(templateId: TemplateKey): MerchandiseDraft {
     donorThankYouEligible: false,
     fulfillmentMode: "Mixed",
     shippingClass: "Standard parcel",
-    prepLabel: "Dispatch in 2–4 working days",
+    prepLabel: "Dispatch in 2ï¿½4 working days",
     shipRegions: preset.shipRegions,
     pickupLocations: preset.pickupLocations,
     linkHooks: {
@@ -651,18 +652,15 @@ function Card({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 transition-colors">
-      <div className="flex items-start justify-between gap-3">
-        <div>
-          <div className="text-[13px] font-semibold text-faith-ink">{title}</div>
-          {subtitle ? (
-            <div className="mt-0.5 text-[11px] text-faith-slate">{subtitle}</div>
-          ) : null}
-        </div>
-        {right ? <div className="shrink-0">{right}</div> : null}
-      </div>
-      <div className="mt-4">{children}</div>
-    </div>
+    <ProviderSurfaceCard
+      title={title}
+      subtitle={subtitle}
+      right={right}
+      className="rounded-3xl shadow-none"
+      titleClassName="text-[13px]"
+    >
+      {children}
+    </ProviderSurfaceCard>
   );
 }
 
@@ -1048,7 +1046,7 @@ function PreviewRail({
                   <div className="absolute left-3 right-3 bottom-3 text-white">
                     <div className="text-[10px] font-black uppercase tracking-[0.2em] opacity-80">FaithMart</div>
                     <div className="mt-1 text-base font-black leading-tight">{draft.title}</div>
-                    <div className="mt-1 text-xs opacity-90">{heroPrice}{supporterPrice ? ` • Supporter ${supporterPrice}` : ""}</div>
+                    <div className="mt-1 text-xs opacity-90">{heroPrice}{supporterPrice ? ` ï¿½ Supporter ${supporterPrice}` : ""}</div>
                   </div>
                 </div>
                 <div className="p-3">
@@ -1612,7 +1610,7 @@ export default function MerchandiseBuilderPage() {
                       </div>
                       <div>
                         <Label>Preparation SLA</Label>
-                        <Input value={draft.prepLabel} onChange={(value) => patchDraft("prepLabel", value)} placeholder="Dispatch in 2–4 working days" />
+                        <Input value={draft.prepLabel} onChange={(value) => patchDraft("prepLabel", value)} placeholder="Dispatch in 2ï¿½4 working days" />
                       </div>
                       <div>
                         <Label>Ship regions (comma separated)</Label>

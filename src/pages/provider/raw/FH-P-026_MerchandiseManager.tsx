@@ -32,9 +32,10 @@ import {
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
+import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 
 /**
- * Provider — Merchandise Manager
+ * Provider ï¿½ Merchandise Manager
  * ---------------------------------------
  * Premium Provider-side control surface for FaithMart merchandise:
  * apparel, gifts, journals, worship essentials, event kits, and community bundles.
@@ -616,22 +617,15 @@ function Card({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors">
-      <div className="flex items-start justify-between gap-3">
-        <div>
-          <div className="text-[13px] font-semibold text-faith-ink dark:text-slate-100">
-            {title}
-          </div>
-          {subtitle ? (
-            <div className="text-[11px] text-faith-slate mt-0.5">
-              {subtitle}
-            </div>
-          ) : null}
-        </div>
-        {right ? <div className="shrink-0">{right}</div> : null}
-      </div>
-      <div className="mt-4">{children}</div>
-    </div>
+    <ProviderSurfaceCard
+      title={title}
+      subtitle={subtitle}
+      right={right}
+      className="rounded-[28px] shadow-none"
+      titleClassName="text-[13px]"
+    >
+      {children}
+    </ProviderSurfaceCard>
   );
 }
 
@@ -1402,7 +1396,7 @@ export default function MerchandiseManagerPage() {
         ? `${low.length} merchandise item${low.length > 1 ? "s" : ""} running low`
         : "Inventory is healthy",
       hint: low.length
-        ? `${low.map((item) => item.title).slice(0, 2).join(" • ")}${low.length > 2 ? "…" : ""}`
+        ? `${low.map((item) => item.title).slice(0, 2).join(" ï¿½ ")}${low.length > 2 ? "ï¿½" : ""}`
         : "No urgent low-stock merch issues right now.",
       tone: low.length ? "warn" : "good",
     });
@@ -1526,7 +1520,7 @@ export default function MerchandiseManagerPage() {
                     },
                     {
                       label: "Conference Welcome Pack",
-                      hint: "Strong event performance — consider a new Beacon push.",
+                      hint: "Strong event performance ï¿½ consider a new Beacon push.",
                     },
                     {
                       label: "Prayer Journal Gift Set",
@@ -1570,7 +1564,7 @@ export default function MerchandiseManagerPage() {
                 Search and filter merchandise
               </div>
               <div className="mt-1 text-[11px] text-faith-slate">
-                Find apparel, gifts, event kits, or worship essentials fast — then jump straight into details or preview.
+                Find apparel, gifts, event kits, or worship essentials fast ï¿½ then jump straight into details or preview.
               </div>
               <div className="mt-4 flex items-center gap-3 rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-3 transition-colors">
                 <Search className="h-4 w-4 text-faith-slate" />
@@ -1859,7 +1853,7 @@ export default function MerchandiseManagerPage() {
         open={drawerOpen}
         onClose={() => setDrawerOpen(false)}
         title={selected.title}
-        subtitle={`${selected.kind} • ${selected.collection} • Updated ${fmtDate(selected.updatedISO)}`}
+        subtitle={`${selected.kind} ï¿½ ${selected.collection} ï¿½ Updated ${fmtDate(selected.updatedISO)}`}
       >
         <div className="space-y-4">
           <div className="flex flex-wrap gap-2">

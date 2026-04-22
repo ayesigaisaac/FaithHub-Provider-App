@@ -25,9 +25,10 @@ import {
 } from "lucide-react";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
+import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 
 /**
- * Provider — Prayer Requests
+ * Provider ï¿½ Prayer Requests
  * -----------------------------------
  * Regenerated standalone TSX page.
  * Premium prayer intake and care-management surface for Providers.
@@ -126,8 +127,8 @@ const REQUESTS_SEED: PrayerRequest[] = [
     source: "Community Group",
     group: "Care team",
     location: "Kampala Central",
-    submittedLabel: "Today · 7:00 PM",
-    followUpLabel: "Next follow-up · Today 7:40 PM",
+    submittedLabel: "Today ï¿½ 7:00 PM",
+    followUpLabel: "Next follow-up ï¿½ Today 7:40 PM",
     summary:
       "Scheduled for surgery on Thursday morning. Please pray for peace, wisdom for the doctors, and strength for family as they prepare.",
     status: "Assigned",
@@ -151,8 +152,8 @@ const REQUESTS_SEED: PrayerRequest[] = [
     source: "Live Sessions",
     group: "Anonymous support",
     location: "Online first",
-    submittedLabel: "Today · 11:30 AM",
-    followUpLabel: "Escalation review · Today 3:15 PM",
+    submittedLabel: "Today ï¿½ 11:30 AM",
+    followUpLabel: "Escalation review ï¿½ Today 3:15 PM",
     summary:
       "Prayer and stabilizing support requested after a live-session altar call. Needs careful privacy handling and counseling bridge review.",
     status: "Escalated",
@@ -176,8 +177,8 @@ const REQUESTS_SEED: PrayerRequest[] = [
     source: "Prayer wall",
     group: "Prayer wall",
     location: "Online first",
-    submittedLabel: "Tomorrow · 9:30 AM",
-    followUpLabel: "Check-in · Tomorrow 2:00 PM",
+    submittedLabel: "Tomorrow ï¿½ 9:30 AM",
+    followUpLabel: "Check-in ï¿½ Tomorrow 2:00 PM",
     summary:
       "Asking for provision, open doors, and peace during a long job search. Prefers scripture response and a prayer-circle reminder.",
     status: "Follow-up",
@@ -200,8 +201,8 @@ const REQUESTS_SEED: PrayerRequest[] = [
     source: "Noticeboard",
     group: "New intake",
     location: "Entebbe South",
-    submittedLabel: "Tomorrow · 4:00 PM",
-    followUpLabel: "Assign leader · Tomorrow 5:00 PM",
+    submittedLabel: "Tomorrow ï¿½ 4:00 PM",
+    followUpLabel: "Assign leader ï¿½ Tomorrow 5:00 PM",
     summary:
       "New believer requesting prayer, next-step guidance, and baptism preparation. Good candidate for discipleship routing after first response.",
     status: "New intake",
@@ -225,7 +226,7 @@ const REQUESTS_SEED: PrayerRequest[] = [
     group: "Answered prayers",
     location: "Kampala Central",
     submittedLabel: "This week",
-    followUpLabel: "Testimony review · Friday",
+    followUpLabel: "Testimony review ï¿½ Friday",
     summary:
       "Submitted update that reconciliation has happened and family peace has improved. Suitable for moderated testimony review once approved.",
     status: "Answered",
@@ -444,20 +445,16 @@ function Card({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 transition-colors">
-      <div className="flex items-start justify-between gap-3">
-        <div>
-          <div className="text-[13px] font-semibold tracking-wide text-faith-slate uppercase">
-            {title}
-          </div>
-          {subtitle ? (
-            <div className="mt-1 text-[11px] text-faith-slate leading-5">{subtitle}</div>
-          ) : null}
-        </div>
-        {right ? <div className="shrink-0">{right}</div> : null}
-      </div>
-      <div className="mt-4">{children}</div>
-    </div>
+    <ProviderSurfaceCard
+      title={title}
+      subtitle={subtitle}
+      right={right}
+      className="rounded-[28px] shadow-none"
+      titleClassName="text-[13px] font-semibold tracking-wide text-faith-slate uppercase"
+      subtitleClassName="mt-1 leading-5"
+    >
+      {children}
+    </ProviderSurfaceCard>
   );
 }
 
@@ -528,7 +525,7 @@ function RequestRow({
             <div className="min-w-0">
               <div className="truncate text-[14px] font-bold text-faith-ink">{request.title}</div>
               <div className="mt-1 truncate text-[12px] text-faith-slate">
-                {request.requester} · {request.owner} · {request.submittedLabel}
+                {request.requester} ï¿½ {request.owner} ï¿½ {request.submittedLabel}
               </div>
             </div>
             <div className="shrink-0 text-right">
@@ -581,7 +578,7 @@ function PreviewCard({
         </div>
         <div className="mt-4 rounded-[20px] border border-faith-line bg-[var(--fh-surface-bg)] p-4">
           <div className="text-[14px] font-bold text-faith-ink">{request.title}</div>
-          <div className="mt-1 text-[12px] text-faith-slate">{request.group} · {request.submittedLabel} · {request.location}</div>
+          <div className="mt-1 text-[12px] text-faith-slate">{request.group} ï¿½ {request.submittedLabel} ï¿½ {request.location}</div>
           <div className="mt-4 flex flex-wrap gap-2">
             <button className="rounded-full px-4 py-2 text-[12px] font-semibold text-white" style={{ background: EV_GREEN }} onClick={() => safeNav("/faithhub/provider/prayer-requests")}>
               Pray now
@@ -628,7 +625,7 @@ function CareLeadRow({ lead }: { lead: CareLead }) {
       <div className="flex items-center justify-between gap-2">
         <div>
           <div className="text-[13px] font-bold text-faith-ink">{lead.name}</div>
-          <div className="mt-1 text-[12px] text-faith-slate">{lead.role} · {lead.location}</div>
+          <div className="mt-1 text-[12px] text-faith-slate">{lead.role} ï¿½ {lead.location}</div>
         </div>
         <Pill text={lead.state} tone={toneForCareState(lead.state)} />
       </div>
@@ -790,9 +787,9 @@ function PrayerRequestsPage() {
           <div className="flex flex-wrap items-center gap-3">
             <Pill text="Prayer care pulse" tone="orange" />
             <span>4 follow-ups are due today</span>
-            <span>•</span>
+            <span>ï¿½</span>
             <span>1 escalated request needs counseling bridge review</span>
-            <span>•</span>
+            <span>ï¿½</span>
             <span>2 answered prayers are testimony-ready</span>
           </div>
           <div className="text-[12px] uppercase tracking-[0.2em] text-faith-slate">Premium prayer ops</div>
@@ -995,7 +992,7 @@ function PrayerRequestsPage() {
         </div>
 
         <div className="mt-4 rounded-full border border-emerald-200 bg-emerald-50 px-5 py-2 text-center text-[13px] text-faith-slate">
-          Concept preview of the regenerated Prayer Requests page · EVzone Green primary ({EV_GREEN}) · Orange secondary ({EV_ORANGE})
+          Concept preview of the regenerated Prayer Requests page ï¿½ EVzone Green primary ({EV_GREEN}) ï¿½ Orange secondary ({EV_ORANGE})
         </div>
       </div>
 
@@ -1048,14 +1045,14 @@ function PrayerRequestsPage() {
                   </div>
                   <div className="mt-3 text-[28px] font-black tracking-tight">Support is already being prepared</div>
                   <div className="mt-2 max-w-[420px] text-[14px] leading-6 text-white/80">
-                    This prayer request is receiving care-team attention, private prayer support, and follow-up aligned to the member’s preferences.
+                    This prayer request is receiving care-team attention, private prayer support, and follow-up aligned to the memberï¿½s preferences.
                   </div>
                 </div>
 
                 <div className="mt-4 rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] p-5">
                   <div className="text-[24px] leading-tight font-black text-faith-ink">{selectedRequest.title}</div>
                   <div className="mt-2 text-[13px] text-faith-slate">
-                    {selectedRequest.group} · {selectedRequest.submittedLabel} · {selectedRequest.location}
+                    {selectedRequest.group} ï¿½ {selectedRequest.submittedLabel} ï¿½ {selectedRequest.location}
                   </div>
                   <div className="mt-4 text-[14px] leading-7 text-faith-slate">{selectedRequest.summary}</div>
 
@@ -1076,7 +1073,7 @@ function PrayerRequestsPage() {
                   <div className="rounded-[22px] border border-faith-line bg-[var(--fh-surface-bg)] p-4">
                     <div className="text-[12px] font-semibold uppercase tracking-wide text-faith-slate">Care ownership</div>
                     <div className="mt-2 text-[16px] font-bold text-faith-ink">{selectedRequest.owner}</div>
-                    <div className="mt-1 text-[13px] text-faith-slate">{selectedRequest.group} · {selectedRequest.source}</div>
+                    <div className="mt-1 text-[13px] text-faith-slate">{selectedRequest.group} ï¿½ {selectedRequest.source}</div>
                   </div>
                   <div className="rounded-[22px] border border-faith-line bg-[var(--fh-surface-bg)] p-4">
                     <div className="text-[12px] font-semibold uppercase tracking-wide text-faith-slate">Prayer activity</div>

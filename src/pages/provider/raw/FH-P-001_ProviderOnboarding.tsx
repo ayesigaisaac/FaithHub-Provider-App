@@ -32,6 +32,7 @@ import {
   Wand2,
 } from "lucide-react";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
+import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 
 /**
  * Provider - Provider Onboarding
@@ -355,22 +356,14 @@ function Card({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 transition-colors dark:border-slate-800 dark:bg-slate-900">
-      <div className="flex items-start justify-between gap-3">
-        <div className="min-w-0">
-          <div className="text-[14px] font-semibold text-faith-ink dark:text-slate-100">
-            {title}
-          </div>
-          {subtitle ? (
-            <div className="mt-0.5 text-[11px] text-faith-slate">
-              {subtitle}
-            </div>
-          ) : null}
-        </div>
-        {right ? <div className="shrink-0">{right}</div> : null}
-      </div>
-      <div className="mt-4">{children}</div>
-    </div>
+    <ProviderSurfaceCard
+      title={title}
+      subtitle={subtitle}
+      right={right}
+      className="rounded-3xl shadow-none"
+    >
+      {children}
+    </ProviderSurfaceCard>
   );
 }
 

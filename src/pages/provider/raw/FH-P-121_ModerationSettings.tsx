@@ -2,6 +2,7 @@
 
 import React, { useMemo, useState } from "react";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
+import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 import {
   Bot,
   ChevronRight,
@@ -16,7 +17,7 @@ import {
 } from "lucide-react";
 
 /**
- * Provider — Moderation Settings
+ * Provider ï¿½ Moderation Settings
  * ---------------------------------------
  * Distinct from Reviews & Moderation.
  * controls policy rules, thresholds, child-safe defaults,
@@ -203,23 +204,15 @@ function Card({
   className?: string;
 }) {
   return (
-    <div
-      className={cx(
-        "rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors",
-        className,
-      )}
+    <ProviderSurfaceCard
+      title={title}
+      subtitle={subtitle}
+      right={right}
+      className={cx("rounded-[28px] shadow-none", className)}
+      titleClassName="text-[13px] font-extrabold"
     >
-      <div className="flex items-start justify-between gap-3">
-        <div>
-          <div className="text-[13px] font-extrabold text-faith-ink dark:text-slate-100">{title}</div>
-          {subtitle ? (
-            <div className="mt-0.5 text-[11px] text-faith-slate">{subtitle}</div>
-          ) : null}
-        </div>
-        {right}
-      </div>
-      <div className="mt-4">{children}</div>
-    </div>
+      {children}
+    </ProviderSurfaceCard>
   );
 }
 
@@ -306,7 +299,7 @@ function SafeguardTile({
         <div>
           <div className="text-[13px] font-extrabold leading-tight text-faith-ink dark:text-slate-100">{safeguard.title}</div>
           <div className="mt-1 text-[11px] leading-snug text-faith-slate">{safeguard.detail}</div>
-          <div className="mt-1 text-[11px] font-semibold text-faith-slate">High-trust safeguard for minors,…</div>
+          <div className="mt-1 text-[11px] font-semibold text-faith-slate">High-trust safeguard for minors,ï¿½</div>
         </div>
         <Toggle checked={safeguard.enabled} onChange={() => onToggle(safeguard.id)} />
       </div>
@@ -369,37 +362,37 @@ export default function FH_P_121_ModerationSettings() {
   const [safeguards, setSafeguards] = useState<Safeguard[]>([
     {
       id: "sg_1",
-      title: "Disable anonymous replies…",
+      title: "Disable anonymous repliesï¿½",
       detail: "Reduce hidden participation in child-facing or highly sensitive flows.",
       enabled: true,
     },
     {
       id: "sg_2",
-      title: "Block adult-to-child…",
+      title: "Block adult-to-childï¿½",
       detail: "Prevent direct adult-to-child routing outside approved care flows.",
       enabled: true,
     },
     {
       id: "sg_3",
-      title: "Require dual approval for…",
+      title: "Require dual approval forï¿½",
       detail: "Mandate an extra reviewer for child-linked moderation actions.",
       enabled: true,
     },
     {
       id: "sg_4",
-      title: "Disable direct messaging for…",
+      title: "Disable direct messaging forï¿½",
       detail: "Keep child-safe conversation surfaces group-led and audited.",
       enabled: true,
     },
     {
       id: "sg_5",
-      title: "Require media consent on…",
+      title: "Require media consent onï¿½",
       detail: "Add stricter consent checks for testimony and prayer uploads.",
       enabled: true,
     },
     {
       id: "sg_6",
-      title: "Freeze public sort order duri…",
+      title: "Freeze public sort order duriï¿½",
       detail: "Reduce rapid public amplification when risk signals spike.",
       enabled: true,
     },
@@ -460,7 +453,7 @@ export default function FH_P_121_ModerationSettings() {
     {
       id: "p_1",
       title: "Live chat message with repeated links",
-      surface: "Live Sessions · Chat",
+      surface: "Live Sessions ï¿½ Chat",
       outcome: "Hold",
     },
     {
@@ -571,7 +564,7 @@ export default function FH_P_121_ModerationSettings() {
             </div>
           </div>
           <div className="text-[12px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">
-            Surface engine · Safeguards · Automation
+            Surface engine ï¿½ Safeguards ï¿½ Automation
           </div>
         </div>
 

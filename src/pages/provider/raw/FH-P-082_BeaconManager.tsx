@@ -36,9 +36,10 @@ import {
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
+import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 
 /**
- * Provider — Beacon Manager
+ * Provider ï¿½ Beacon Manager
  * ----------------------------------
  * Premium operational control surface for Beacon campaigns after build.
  *
@@ -91,7 +92,7 @@ function fmtInt(n: number) {
   return Intl.NumberFormat(undefined, { maximumFractionDigits: 0 }).format(n);
 }
 
-function fmtCurrency(n: number, currency = "£") {
+function fmtCurrency(n: number, currency = "ï¿½") {
   return `${currency}${Intl.NumberFormat(undefined, {
     maximumFractionDigits: 0,
   }).format(n)}`;
@@ -445,7 +446,7 @@ const CAMPAIGNS_SEED: BeaconCampaign[] = [
     pacePct: 69,
     burnRateLabel: "On pace",
     forecastLabel: "Projected to exceed watch-start target by 14%",
-    budgetMoveLabel: "Recommend +£180 over the next 48h",
+    budgetMoveLabel: "Recommend +ï¿½180 over the next 48h",
     segmentLeads: ["Replay viewers", "Recent attendees", "Families"],
     regionLeads: ["Kampala", "Nairobi", "Accra"],
     destinationObjects: ["Replay page", "Library shelf", "Beacon follow-up"],
@@ -866,10 +867,10 @@ function approvalTone(state: ApprovalState): "neutral" | "good" | "warn" | "dang
   return "danger";
 }
 
-function spendBand(value: number): "Under £1k" | "£1k–£5k" | "£5k+" {
-  if (value < 1000) return "Under £1k";
-  if (value < 5000) return "£1k–£5k";
-  return "£5k+";
+function spendBand(value: number): "Under ï¿½1k" | "ï¿½1kï¿½ï¿½5k" | "ï¿½5k+" {
+  if (value < 1000) return "Under ï¿½1k";
+  if (value < 5000) return "ï¿½1kï¿½ï¿½5k";
+  return "ï¿½5k+";
 }
 
 function primaryOutcomeValue(campaign: BeaconCampaign) {
@@ -1065,22 +1066,15 @@ function Card({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-3xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors">
-      <div className="flex items-start justify-between gap-3">
-        <div className="min-w-0">
-          <div className="text-[13px] font-semibold text-faith-ink dark:text-slate-100">
-            {title}
-          </div>
-          {subtitle ? (
-            <div className="mt-0.5 text-[11px] text-faith-slate">
-              {subtitle}
-            </div>
-          ) : null}
-        </div>
-        {right ? <div className="shrink-0">{right}</div> : null}
-      </div>
-      <div className="mt-4">{children}</div>
-    </div>
+    <ProviderSurfaceCard
+      title={title}
+      subtitle={subtitle}
+      right={right}
+      className="rounded-3xl shadow-none"
+      titleClassName="text-[13px]"
+    >
+      {children}
+    </ProviderSurfaceCard>
   );
 }
 
@@ -1330,7 +1324,7 @@ function Drawer({
                 onClick={onClose}
                 className="grid h-9 w-9 place-items-center rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 text-faith-slate dark:text-slate-300 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-700 transition-colors"
               >
-                <span className="text-lg leading-none">×</span>
+                <span className="text-lg leading-none">ï¿½</span>
               </button>
             </div>
           </div>
@@ -1479,7 +1473,7 @@ function CreativeVersionRow({
             ) : null}
           </div>
           <div className="mt-1 text-[11px] text-faith-slate">
-            {version.language} · {version.format} · {version.subtitleMode}
+            {version.language} ï¿½ {version.format} ï¿½ {version.subtitleMode}
           </div>
           <div className="mt-2 grid grid-cols-3 gap-2 text-[11px]">
             <div className="rounded-xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2">
@@ -1639,14 +1633,14 @@ function CampaignDetailDrawer({
     <Drawer
       open={open}
       onClose={onClose}
-      title={`${campaign.title} · Campaign detail drawer`}
+      title={`${campaign.title} ï¿½ Campaign detail drawer`}
       subtitle="Spend history, delivery state, audience breakdown, conversion paths, creative versions, approvals, and policy notes without leaving the list view."
     >
       <div className="grid gap-4 lg:grid-cols-12">
         <div className="space-y-4 lg:col-span-7">
           <Card
             title="Campaign summary"
-            subtitle={`${campaign.mode} · ${campaign.sourceType}${campaign.linkedName ? ` · ${campaign.linkedName}` : ""}`}
+            subtitle={`${campaign.mode} ï¿½ ${campaign.sourceType}${campaign.linkedName ? ` ï¿½ ${campaign.linkedName}` : ""}`}
             right={<Pill text={campaign.state} tone={stateTone(campaign.state)} />}
           >
             <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
@@ -1698,7 +1692,7 @@ function CampaignDetailDrawer({
                         {version.name}
                       </div>
                       <div className="mt-0.5 text-[11px] text-faith-slate">
-                        {version.language} · {version.format}
+                        {version.language} ï¿½ {version.format}
                       </div>
                     </div>
                     <Pill text={version.state} tone={creativeTone(version.state)} />
@@ -1759,7 +1753,7 @@ function CampaignDetailDrawer({
                 <div className="mt-2 space-y-2">
                   {campaign.policyNotes.map((note) => (
                     <div key={note} className="text-[12px] text-slate-700 dark:text-slate-300">
-                      • {note}
+                      ï¿½ {note}
                     </div>
                   ))}
                 </div>
@@ -1794,7 +1788,7 @@ export default function BeaconManagerPage() {
   const [modeFilter, setModeFilter] = useState<CampaignMode | "All">("All");
   const [ownerFilter, setOwnerFilter] = useState<string>("All");
   const [placementFilter, setPlacementFilter] = useState<PlacementType | "All">("All");
-  const [spendFilter, setSpendFilter] = useState<"All" | "Under £1k" | "£1k–£5k" | "£5k+">("All");
+  const [spendFilter, setSpendFilter] = useState<"All" | "Under ï¿½1k" | "ï¿½1kï¿½ï¿½5k" | "ï¿½5k+">("All");
   const [outcomeFilter, setOutcomeFilter] = useState<OutcomeType | "All">("All");
 
   useEffect(() => {
@@ -2184,7 +2178,7 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
                 <MetricCard label="Portfolio spend" value={fmtCurrency(portfolio.spend)} hint="Across all Beacon campaigns" tone="green" />
                 <MetricCard label="Reach" value={fmtInt(portfolio.reach)} hint={`${portfolio.activeCount} active campaigns`} tone="orange" />
                 <MetricCard label="Creative health" value={`${Math.round(portfolio.avgCreativeHealth)}%`} hint={`${portfolio.learningOrRisk} learning or at-risk`} tone="navy" />
-                <MetricCard label="Approval backlog" value={fmtInt(portfolio.approvalBacklog)} hint={`${portfolio.linkedCount} linked · ${portfolio.standaloneCount} standalone`} tone="green" />
+                <MetricCard label="Approval backlog" value={fmtInt(portfolio.approvalBacklog)} hint={`${portfolio.linkedCount} linked ï¿½ ${portfolio.standaloneCount} standalone`} tone="green" />
               </div>
 
               <div className="mt-4 grid grid-cols-1 gap-4 xl:grid-cols-[1.15fr_0.85fr]">
@@ -2234,7 +2228,7 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
                               {campaign.title}
                             </div>
                             <div className="mt-0.5 text-[11px] text-faith-slate">
-                              {campaign.mode} · {campaign.sourceType}
+                              {campaign.mode} ï¿½ {campaign.sourceType}
                             </div>
                           </div>
                           <Pill text={`${campaign.creativeHealth}%`} tone={campaign.creativeHealth >= 80 ? "good" : campaign.creativeHealth >= 65 ? "warn" : "danger"} />
@@ -2336,7 +2330,7 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
                 </div>
                 <div>
                   <Label>Spend range</Label>
-                  <SelectField value={spendFilter} onChange={(v) => setSpendFilter(v as "All" | "Under £1k" | "£1k–£5k" | "£5k+")} options={["All", "Under £1k", "£1k–£5k", "£5k+"]} />
+                  <SelectField value={spendFilter} onChange={(v) => setSpendFilter(v as "All" | "Under ï¿½1k" | "ï¿½1kï¿½ï¿½5k" | "ï¿½5k+")} options={["All", "Under ï¿½1k", "ï¿½1kï¿½ï¿½5k", "ï¿½5k+"]} />
                 </div>
                 <div>
                   <Label>Outcome type</Label>
@@ -2415,19 +2409,19 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
                       <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
                         <div className="text-[11px] uppercase tracking-wide text-faith-slate">Top segment</div>
                         <div className="mt-2 text-sm font-black text-faith-ink dark:text-slate-100">
-                          {selectedCampaign.segmentLeads[0] || "—"}
+                          {selectedCampaign.segmentLeads[0] || "ï¿½"}
                         </div>
                       </div>
                       <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
                         <div className="text-[11px] uppercase tracking-wide text-faith-slate">Top region</div>
                         <div className="mt-2 text-sm font-black text-faith-ink dark:text-slate-100">
-                          {selectedCampaign.regionLeads[0] || "—"}
+                          {selectedCampaign.regionLeads[0] || "ï¿½"}
                         </div>
                       </div>
                       <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
                         <div className="text-[11px] uppercase tracking-wide text-faith-slate">Primary destination</div>
                         <div className="mt-2 text-sm font-black text-faith-ink dark:text-slate-100">
-                          {selectedCampaign.destinationObjects[0] || "—"}
+                          {selectedCampaign.destinationObjects[0] || "ï¿½"}
                         </div>
                       </div>
                       <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">

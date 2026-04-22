@@ -41,9 +41,10 @@ import {
   Zap,
 } from "lucide-react";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 
 /**
- * Provider — Live Builder (Provider)
+ * Provider ï¿½ Live Builder (Provider)
  * ----------------------------------
  * Design intent:
  * - Keep the same premium page grammar as the Creator base file:
@@ -951,16 +952,17 @@ function Card({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft transition-colors dark:border-slate-800 dark:bg-slate-950">
-      <div className="flex flex-wrap items-start justify-between gap-3">
-        <div>
-          <div className="text-[13px] font-semibold text-faith-ink dark:text-slate-100">{title}</div>
-          {subtitle ? <div className="mt-1 text-[11px] leading-5 text-faith-slate">{subtitle}</div> : null}
-        </div>
-        {right}
-      </div>
-      <div className="mt-4">{children}</div>
-    </div>
+    <ProviderSurfaceCard
+      title={title}
+      subtitle={subtitle}
+      right={right}
+      className="rounded-3xl dark:bg-slate-950"
+      headerClassName="flex-wrap"
+      titleClassName="text-[13px]"
+      subtitleClassName="mt-1 leading-5"
+    >
+      {children}
+    </ProviderSurfaceCard>
   );
 }
 
@@ -1586,7 +1588,7 @@ function SetupStep({
           <ParentTypeCard title="Event" description="Attach the session to a retreat, conference, prayer night, or special gathering." selected={draft.parentType === "event"} onClick={() => setDraft((d) => ({ ...d, parentType: "event" }))} />
           <ParentTypeCard title="Giving Campaign" description="Create a giving-focused live moment that is anchored to a standard fund or appeal." selected={draft.parentType === "givingCampaign"} onClick={() => setDraft((d) => ({ ...d, parentType: "givingCampaign" }))} />
           <ParentTypeCard title="Charity Crowdfund" description="Drive a story-based crowdfund with progress, milestones, and urgency inside the live experience." selected={draft.parentType === "charityCrowdfund"} onClick={() => setDraft((d) => ({ ...d, parentType: "charityCrowdfund" }))} />
-          <ParentTypeCard title="Pure Standalone Live" description="Launch a live session with no content parent at all — ideal for announcements, prayer, or spontaneous moments." selected={draft.parentType === "standalone"} onClick={() => setDraft((d) => ({ ...d, parentType: "standalone" }))} />
+          <ParentTypeCard title="Pure Standalone Live" description="Launch a live session with no content parent at all ï¿½ ideal for announcements, prayer, or spontaneous moments." selected={draft.parentType === "standalone"} onClick={() => setDraft((d) => ({ ...d, parentType: "standalone" }))} />
         </div>
 
         <div className="mt-4 grid gap-3 md:grid-cols-2">
@@ -1719,7 +1721,7 @@ function IdentityStep({ draft, setDraft }: { draft: LiveBuilderDraft; setDraft: 
         </div>
       </Card>
 
-      <Card title="Presenters" subtitle="Add the visible faces of the session — sermon lead, host, worship lead, or guests.">
+      <Card title="Presenters" subtitle="Add the visible faces of the session ï¿½ sermon lead, host, worship lead, or guests.">
         <div className="flex flex-wrap gap-2">
           {PEOPLE.map((person) => {
             const selected = draft.presenters.includes(person);

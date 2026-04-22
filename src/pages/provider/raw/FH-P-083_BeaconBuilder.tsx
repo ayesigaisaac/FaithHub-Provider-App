@@ -39,9 +39,10 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { type ButtonActionId, resolveActionFromLabel } from "@/navigation/buttonActions";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
+import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 
 /**
- * Provider — Beacon Builder
+ * Provider ï¿½ Beacon Builder
  * ----------------------------------
  * Premium dual-path campaign builder for linked and standalone Beacon campaigns.
  *
@@ -122,7 +123,7 @@ function fmtInt(n: number) {
   return Intl.NumberFormat(undefined, { maximumFractionDigits: 0 }).format(n);
 }
 
-function fmtCurrency(n: number, currency = "£") {
+function fmtCurrency(n: number, currency = "ï¿½") {
   return `${currency}${Intl.NumberFormat(undefined, {
     maximumFractionDigits: 0,
   }).format(n)}`;
@@ -817,14 +818,15 @@ function Section({
 
 function Card({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
-    <div
+    <ProviderSurfaceCard
       className={cx(
-        "rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-950/80 p-3 ring-1 ring-slate-200 dark:ring-slate-800 transition-colors",
+        "rounded-3xl border-0 ring-1 ring-slate-200 dark:ring-slate-800 p-3 dark:bg-slate-950/80 shadow-none",
         className,
       )}
+      bodyClassName="mt-0"
     >
       {children}
-    </div>
+    </ProviderSurfaceCard>
   );
 }
 
@@ -1258,7 +1260,7 @@ function BeaconPreviewCard({
               {showQuote ? (
                 <div className="absolute inset-x-0 bottom-0 p-4 text-white">
                   <div className="max-w-[85%] text-lg font-black leading-tight drop-shadow">
-                    “{builder.quoteText || "The next faithful move may be the one you almost postponed."}”
+                    ï¿½{builder.quoteText || "The next faithful move may be the one you almost postponed."}ï¿½
                   </div>
                 </div>
               ) : null}
@@ -1361,7 +1363,7 @@ export default function BeaconBuilderPage({
     heroVideoId: "asset_replay_video",
     headline: "Catch the message that moved the room.",
     body: "Replay the full teaching, share it with someone who needs it, and step into the next response moment while the message is still fresh.",
-    quoteText: "Grace doesn’t wait for strength before it shows up.",
+    quoteText: "Grace doesnï¿½t wait for strength before it shows up.",
     storyCardLabel: "Why this replay matters now",
     countdownEnabled: false,
     countdownEndISO: countdownDefault.toISOString(),
@@ -1849,7 +1851,7 @@ export default function BeaconBuilderPage({
                             setField(
                               "headline",
                               src.recommendedObjective === "Live attendance"
-                                ? `Don’t miss ${src.title}.`
+                                ? `Donï¿½t miss ${src.title}.`
                                 : src.recommendedObjective === "Giving" || src.recommendedObjective === "Charity momentum"
                                   ? `Support ${src.title}.`
                                   : `Explore ${src.title}.`,
@@ -2634,7 +2636,7 @@ export default function BeaconBuilderPage({
               <ProviderPageTitle
                 icon={<Zap className="h-6 w-6" />}
                 title="Beacon Builder"
-                subtitle="Create a premium Beacon campaign from scratch — linked to platform content or fully standalone — with rich creative, audience logic, placement planning, and a launch-ready review flow."
+                subtitle="Create a premium Beacon campaign from scratch ï¿½ linked to platform content or fully standalone ï¿½ with rich creative, audience logic, placement planning, and a launch-ready review flow."
               />
               <div className="mt-3 flex flex-wrap items-center gap-2">
                 <Pill tone="brand"><Zap className="h-3.5 w-3.5" /> Beacon</Pill>
