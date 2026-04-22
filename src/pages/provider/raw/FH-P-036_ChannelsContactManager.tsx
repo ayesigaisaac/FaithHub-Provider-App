@@ -1,4 +1,4 @@
-ï»¿// @ts-nocheck
+// @ts-nocheck
 "use client";
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
@@ -38,7 +38,7 @@ import {
 import { KpiTile } from "../../../components/ui/KpiTile";
 
 /**
- * Provider â€” Channels & Contact Manager
+ * Provider — Channels & Contact Manager
  * Premium audience data, consent, channel-operations, and contact-intelligence hub.
  * Primary colour: EVzone Green (#03cd8c)
  * Secondary colour: EVzone Orange (#f77f00)
@@ -172,9 +172,9 @@ function Pill({
         : tone === "bad"
           ? "bg-rose-50 text-rose-800 ring-rose-200 dark:bg-rose-500/10 dark:text-rose-400 dark:ring-rose-500/20"
           : tone === "brand"
-            ? "text-white ring-0 shadow-sm"
+            ? "text-white ring-0 shadow-soft"
             : tone === "accent"
-              ? "text-white ring-0 shadow-sm"
+              ? "text-white ring-0 shadow-soft"
               : "bg-slate-100 text-slate-800 ring-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:ring-slate-700";
 
   const style =
@@ -223,8 +223,8 @@ function Btn({
         : tone === "danger"
           ? "bg-rose-600 text-white hover:brightness-95 shadow-md shadow-rose-500/20"
           : tone === "ghost"
-            ? "bg-transparent text-slate-900 dark:text-slate-50 hover:bg-slate-100 dark:hover:bg-slate-900"
-            : "bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-50 ring-1 ring-slate-200 dark:ring-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 shadow-sm";
+            ? "bg-transparent text-faith-ink dark:text-slate-50 hover:bg-slate-100 dark:hover:bg-slate-900"
+            : "bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-faith-ink dark:text-slate-50 ring-1 ring-slate-200 dark:ring-slate-800 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800 shadow-soft";
 
   const style =
     tone === "primary"
@@ -275,7 +275,7 @@ function Toggle({
     >
       <span
         className={cn(
-          "inline-block h-4 w-4 sm:h-5 sm:w-5 transform rounded-full bg-white dark:bg-slate-900 shadow-md transition",
+          "inline-block h-4 w-4 sm:h-5 sm:w-5 transform rounded-full bg-[var(--fh-surface-bg)] dark:bg-slate-900 shadow-md transition",
           value ? "translate-x-5" : "translate-x-1",
         )}
       />
@@ -310,33 +310,33 @@ function Select({
     <div className="relative" ref={ref}>
       <button
         type="button"
-        className="w-full h-11 rounded-xl bg-white dark:bg-slate-900 px-4 text-left ring-1 ring-slate-200 dark:ring-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 transition"
+        className="w-full h-11 rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 text-left ring-1 ring-slate-200 dark:ring-slate-800 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800 transition"
         onClick={() => setOpen((s) => !s)}
       >
         <div className="flex items-center justify-between gap-2">
           <div className="min-w-0">
-            <div className="truncate text-sm font-bold text-slate-900 dark:text-slate-50">
+            <div className="truncate text-sm font-bold text-faith-ink dark:text-slate-50">
               {selected?.label ?? "Select"}
             </div>
             {selected?.hint ? (
-              <div className="truncate text-[10px] font-semibold text-slate-500 dark:text-slate-500">
+              <div className="truncate text-[10px] font-semibold text-faith-slate">
                 {selected.hint}
               </div>
             ) : null}
           </div>
-          <ChevronDown className={cn("h-4 w-4 text-slate-400 transition-transform", open && "rotate-180")} />
+          <ChevronDown className={cn("h-4 w-4 text-faith-slate transition-transform", open && "rotate-180")} />
         </div>
       </button>
 
       {open ? (
-        <div className="absolute z-30 mt-2 w-full overflow-hidden rounded-2xl bg-white dark:bg-slate-900 shadow-xl ring-1 ring-slate-200 dark:ring-slate-800 animate-in fade-in zoom-in-95 duration-100">
+        <div className="absolute z-30 mt-2 w-full overflow-hidden rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 shadow-xl ring-1 ring-slate-200 dark:ring-slate-800 animate-in fade-in zoom-in-95 duration-100">
           <div className="max-h-[300px] overflow-y-auto">
             {options.map((o) => (
               <button
                 key={o.value}
                 className={cn(
                   "w-full px-4 py-3 text-left transition",
-                  o.value === value ? "bg-slate-100 dark:bg-slate-800" : "hover:bg-slate-50 dark:hover:bg-slate-800/50",
+                  o.value === value ? "bg-slate-100 dark:bg-slate-800" : "hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800/50",
                 )}
                 onClick={() => {
                   onChange(o.value);
@@ -345,11 +345,11 @@ function Select({
                 type="button"
               >
                 <div className="min-w-0">
-                  <div className="truncate text-sm font-bold text-slate-900 dark:text-slate-50">
+                  <div className="truncate text-sm font-bold text-faith-ink dark:text-slate-50">
                     {o.label}
                   </div>
                   {o.hint ? (
-                    <div className="truncate text-[10px] font-semibold text-slate-500 dark:text-slate-500">
+                    <div className="truncate text-[10px] font-semibold text-faith-slate">
                       {o.hint}
                     </div>
                   ) : null}
@@ -396,19 +396,19 @@ function Drawer({
   return (
     <div className="fixed inset-0 z-[110]">
       <div className="absolute inset-0 bg-slate-900/50 backdrop-blur-sm transition-opacity" onClick={onClose} />
-      <div className={cn("absolute right-0 top-0 h-full w-full bg-white dark:bg-slate-900 shadow-2xl transition-transform duration-300 ease-out sm:ring-1 sm:ring-slate-200 dark:sm:ring-slate-800", widthClass)}>
+      <div className={cn("absolute right-0 top-0 h-full w-full bg-[var(--fh-surface-bg)] dark:bg-slate-900 shadow-2xl transition-transform duration-300 ease-out sm:ring-1 sm:ring-slate-200 dark:sm:ring-slate-800", widthClass)}>
         <div className="flex h-full flex-col">
           <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 px-6 py-4">
             <div className="min-w-0">
-              <div className="truncate text-lg font-bold text-slate-900 dark:text-slate-50">{title}</div>
-              <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-1">
+              <div className="truncate text-lg font-bold text-faith-ink dark:text-slate-50">{title}</div>
+              <div className="text-[11px] text-faith-slate mt-1">
                 Contact intelligence, segment health, and channel readiness previews.
               </div>
             </div>
             <button
               type="button"
               onClick={onClose}
-              className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 text-faith-slate hover:bg-slate-200 dark:hover:bg-slate-700 transition"
             >
               <X className="h-5 w-5" />
             </button>
@@ -455,7 +455,7 @@ function MiniLine({
         strokeWidth={2.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="text-slate-900 dark:text-slate-100"
+        className="text-faith-ink dark:text-slate-100"
         style={{ color: stroke }}
       />
       <circle
@@ -463,7 +463,7 @@ function MiniLine({
         cy={norm(values[values.length - 1])}
         r={3.5}
         fill="currentColor"
-        className="text-slate-900 dark:text-slate-100"
+        className="text-faith-ink dark:text-slate-100"
         style={{ color: stroke }}
       />
     </svg>
@@ -507,12 +507,12 @@ function PhoneMock({
   return (
     <div className="mx-auto w-full max-w-[420px]">
       <div className="relative overflow-hidden rounded-[40px] bg-slate-900 dark:bg-black p-3 shadow-2xl transition ring-1 ring-slate-800">
-        <div className="flex flex-col rounded-[32px] bg-white dark:bg-slate-900 overflow-hidden">
+        <div className="flex flex-col rounded-[32px] bg-[var(--fh-surface-bg)] dark:bg-slate-900 overflow-hidden">
           <div className="border-b border-slate-100 dark:border-slate-800 px-6 py-4">
-            <div className="text-[10px] font-black text-slate-500 dark:text-slate-500 uppercase tracking-widest">
+            <div className="text-[10px] font-black text-faith-slate uppercase tracking-widest">
               {subtitle ?? "Preview"}
             </div>
-            <div className="mt-1 text-sm font-black text-slate-900 dark:text-slate-50">{title}</div>
+            <div className="mt-1 text-sm font-black text-faith-ink dark:text-slate-50">{title}</div>
           </div>
           <div className="flex-1 p-6">
             <div className="space-y-3">{body}</div>
@@ -532,11 +532,11 @@ const contacts: Contact[] = [
     campus: "Downtown",
     brand: "Main Ministry",
     region: "Kampala, Uganda",
-    language: "English â€¢ Luganda",
+    language: "English • Luganda",
     primaryChannel: "WhatsApp",
     channelsAllowed: ["WhatsApp", "Push", "Email", "In-app"],
     consentState: "Full",
-    quietHours: "21:00â€“07:00",
+    quietHours: "21:00–07:00",
     childSafe: false,
     highRisk: false,
     email: "amal@workspace.demo",
@@ -551,8 +551,8 @@ const contacts: Contact[] = [
     engagementScore: 94,
     pastoralNote: "Consistent attendee. Responds well to replay reminders and giving updates.",
     timeline: [
-      { id: "1", label: "Sunday Live Session attended", when: "Today Â· 10:08", type: "Live", detail: "Joined via WhatsApp deep link and stayed 48 minutes." },
-      { id: "2", label: "Replay follow-up opened", when: "Yesterday Â· 16:22", type: "Replay", detail: "Watched the prayer segment and shared the replay card." },
+      { id: "1", label: "Sunday Live Session attended", when: "Today · 10:08", type: "Live", detail: "Joined via WhatsApp deep link and stayed 48 minutes." },
+      { id: "2", label: "Replay follow-up opened", when: "Yesterday · 16:22", type: "Replay", detail: "Watched the prayer segment and shared the replay card." },
       { id: "3", label: "Charity campaign donation", when: "2 days ago", type: "Donation", detail: "Contributed to the school-feeding crowdfund after a reminder journey." },
       { id: "4", label: "Beacon awareness touch", when: "4 days ago", type: "Beacon", detail: "Saw 3 community-service ads and tapped the giving campaign." },
     ],
@@ -569,11 +569,11 @@ const contacts: Contact[] = [
     campus: "East Campus",
     brand: "Main Ministry",
     region: "Mukono, Uganda",
-    language: "English â€¢ Swahili",
+    language: "English • Swahili",
     primaryChannel: "Email",
     channelsAllowed: ["Email", "SMS", "In-app"],
     consentState: "Limited",
-    quietHours: "22:00â€“06:30",
+    quietHours: "22:00–06:30",
     childSafe: false,
     highRisk: false,
     email: "ezra@workspace.demo",
@@ -588,7 +588,7 @@ const contacts: Contact[] = [
     engagementScore: 81,
     pastoralNote: "Reliable on events. Prefers email planning updates and avoids late-night SMS.",
     timeline: [
-      { id: "5", label: "Volunteer briefing opened", when: "Today Â· 08:14", type: "Message", detail: "Opened production call-sheet from Audience Notifications." },
+      { id: "5", label: "Volunteer briefing opened", when: "Today · 08:14", type: "Message", detail: "Opened production call-sheet from Audience Notifications." },
       { id: "6", label: "Baptism event checked in", when: "Last Sunday", type: "Event", detail: "Registered early and completed volunteer duty." },
       { id: "7", label: "Beacon click-through", when: "6 days ago", type: "Beacon", detail: "Tapped youth retreat promo but did not complete RSVP." },
     ],
@@ -628,7 +628,7 @@ const contacts: Contact[] = [
       { id: "9", label: "Safeguarding check triggered", when: "3 days ago", type: "Message", detail: "Consent refresh required before the next reminder send." },
     ],
     consentAudit: [
-      { at: "02 Mar 2026", label: "Parent push opt-in", detail: "Parent accepted notifications for childrenâ€™s ministry updates only." },
+      { at: "02 Mar 2026", label: "Parent push opt-in", detail: "Parent accepted notifications for children’s ministry updates only." },
       { at: "02 Mar 2026", label: "Child-safe lane active", detail: "Quiet hours locked, messaging channels limited." },
       { at: "18 Mar 2026", label: "Consent review due", detail: "Parental reconfirmation required within 7 days." },
     ],
@@ -640,11 +640,11 @@ const contacts: Contact[] = [
     campus: "Global",
     brand: "Outreach Nights",
     region: "London, UK",
-    language: "English â€¢ French",
+    language: "English • French",
     primaryChannel: "Email",
     channelsAllowed: ["Email", "Push", "WhatsApp", "In-app"],
     consentState: "Full",
-    quietHours: "23:00â€“07:00",
+    quietHours: "23:00–07:00",
     childSafe: false,
     highRisk: false,
     email: "samira@workspace.demo",
@@ -659,7 +659,7 @@ const contacts: Contact[] = [
     engagementScore: 92,
     pastoralNote: "Global donor with strong replay affinity. Excellent candidate for Beacon replay boosts.",
     timeline: [
-      { id: "10", label: "Crowdfund donation completed", when: "Today Â· 06:42", type: "Donation", detail: "Responded to â€˜impact updateâ€™ journey and completed donation." },
+      { id: "10", label: "Crowdfund donation completed", when: "Today · 06:42", type: "Donation", detail: "Responded to ‘impact update’ journey and completed donation." },
       { id: "11", label: "Replay binge", when: "Yesterday", type: "Replay", detail: "Watched 3 clips and 1 full replay from the prayer summit." },
       { id: "12", label: "Beacon donation ad conversion", when: "1 week ago", type: "Beacon", detail: "Clicked a replay boost and completed a giving action." },
     ],
@@ -680,7 +680,7 @@ const contacts: Contact[] = [
     primaryChannel: "SMS",
     channelsAllowed: ["SMS", "In-app"],
     consentState: "Limited",
-    quietHours: "21:00â€“06:00",
+    quietHours: "21:00–06:00",
     childSafe: false,
     highRisk: true,
     email: "david.kaggwa@workspace.demo",
@@ -695,7 +695,7 @@ const contacts: Contact[] = [
     engagementScore: 28,
     pastoralNote: "Needs hygiene review. SMS bounced and profile is marked for verification before the next reminder.",
     timeline: [
-      { id: "13", label: "SMS bounce", when: "Today Â· 07:52", type: "Message", detail: "Carrier returned invalid endpoint. Do not contact until fixed." },
+      { id: "13", label: "SMS bounce", when: "Today · 07:52", type: "Message", detail: "Carrier returned invalid endpoint. Do not contact until fixed." },
       { id: "14", label: "Event RSVP started", when: "3 days ago", type: "Event", detail: "Did not complete RSVP after first step." },
     ],
     consentAudit: [
@@ -711,7 +711,7 @@ const segments: Segment[] = [
     label: "Weekly Live Core",
     mode: "Smart",
     campus: "Multi-campus",
-    ruleSummary: "Live attendance = 2 in 30 days â€¢ watched replay = 1 â€¢ follows main ministry",
+    ruleSummary: "Live attendance = 2 in 30 days • watched replay = 1 • follows main ministry",
     size: 12480,
     health: "High",
     growth: "+8.4% in 30 days",
@@ -724,7 +724,7 @@ const segments: Segment[] = [
     label: "Warm Donors",
     mode: "Smart",
     campus: "Global",
-    ruleSummary: "Donated in last 90 days â€¢ opened 2+ giving reminders â€¢ replay viewers",
+    ruleSummary: "Donated in last 90 days • opened 2+ giving reminders • replay viewers",
     size: 3920,
     health: "High",
     growth: "+4.1% in 30 days",
@@ -737,7 +737,7 @@ const segments: Segment[] = [
     label: "Children Guarded Lane",
     mode: "Manual",
     campus: "Youth Chapel",
-    ruleSummary: "Parent-approved contacts only â€¢ child-safe restrictions enforced â€¢ in-app/push only",
+    ruleSummary: "Parent-approved contacts only • child-safe restrictions enforced • in-app/push only",
     size: 410,
     health: "Watch",
     growth: "+1.7% in 30 days",
@@ -750,7 +750,7 @@ const segments: Segment[] = [
     label: "Event Ready Attendees",
     mode: "Smart",
     campus: "Downtown",
-    ruleSummary: "Opened event reminder in 14 days â€¢ RSVP intent present â€¢ donor score not required",
+    ruleSummary: "Opened event reminder in 14 days • RSVP intent present • donor score not required",
     size: 1840,
     health: "Needs work",
     growth: "-2.3% in 30 days",
@@ -763,7 +763,7 @@ const segments: Segment[] = [
     label: "Family Updates",
     mode: "Manual",
     campus: "Youth Chapel",
-    ruleSummary: "Family ministry parents â€¢ parent-approved channels â€¢ quiet-hour compliance strict",
+    ruleSummary: "Family ministry parents • parent-approved channels • quiet-hour compliance strict",
     size: 650,
     health: "High",
     growth: "+3.2% in 30 days",
@@ -776,7 +776,7 @@ const segments: Segment[] = [
     label: "Women Weekly Path",
     mode: "Smart",
     campus: "Downtown",
-    ruleSummary: "Womenâ€™s group tag â€¢ weekly watch history â€¢ accepted WhatsApp or push",
+    ruleSummary: "Women’s group tag • weekly watch history • accepted WhatsApp or push",
     size: 2740,
     health: "High",
     growth: "+5.0% in 30 days",
@@ -802,7 +802,7 @@ const segments: Segment[] = [
     label: "Global Donors",
     mode: "Smart",
     campus: "Global",
-    ruleSummary: "International donors â€¢ replay viewers â€¢ opened email in last 21 days",
+    ruleSummary: "International donors • replay viewers • opened email in last 21 days",
     size: 1120,
     health: "High",
     growth: "+6.8% in 30 days",
@@ -815,7 +815,7 @@ const segments: Segment[] = [
     label: "Replay Loyalists",
     mode: "Smart",
     campus: "Global",
-    ruleSummary: "Watched 3+ replays in 30 days â€¢ clip taps present â€¢ live attendance optional",
+    ruleSummary: "Watched 3+ replays in 30 days • clip taps present • live attendance optional",
     size: 5080,
     health: "Watch",
     growth: "+1.3% in 30 days",
@@ -977,7 +977,7 @@ function ContactPreviewCard({
   segmentLookup: Map<string, Segment>;
 }) {
   return (
-    <div className="rounded-3xl bg-white dark:bg-slate-900 ring-1 ring-slate-200 dark:ring-slate-800 p-4 shadow-sm transition">
+    <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 ring-1 ring-slate-200 dark:ring-slate-800 p-4 shadow-soft transition">
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0 flex items-center gap-3">
           <div
@@ -991,9 +991,9 @@ function ContactPreviewCard({
               .join("")}
           </div>
           <div className="min-w-0">
-            <div className="truncate text-sm font-black text-slate-900 dark:text-slate-50">{contact.name}</div>
-            <div className="text-[11px] text-slate-500 dark:text-slate-400">
-              {contact.title} â€¢ {contact.campus} â€¢ {contact.language}
+            <div className="truncate text-sm font-black text-faith-ink dark:text-slate-50">{contact.name}</div>
+            <div className="text-[11px] text-faith-slate">
+              {contact.title} • {contact.campus} • {contact.language}
             </div>
             <div className="mt-1 flex flex-wrap items-center gap-1.5">
               <Pill tone={consentTone(contact.consentState)}>{contact.consentState} consent</Pill>
@@ -1005,13 +1005,13 @@ function ContactPreviewCard({
       </div>
 
       <div className="mt-4 grid grid-cols-2 gap-2">
-        <div className="rounded-2xl bg-slate-50 dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800 transition">
-          <div className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-500">Primary channel</div>
-          <div className="mt-1 text-sm font-bold text-slate-900 dark:text-slate-50">{contact.primaryChannel}</div>
+        <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+          <div className="text-[10px] font-black uppercase tracking-widest text-faith-slate">Primary channel</div>
+          <div className="mt-1 text-sm font-bold text-faith-ink dark:text-slate-50">{contact.primaryChannel}</div>
         </div>
-        <div className="rounded-2xl bg-slate-50 dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800 transition">
-          <div className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-500">Quiet hours</div>
-          <div className="mt-1 text-sm font-bold text-slate-900 dark:text-slate-50">{contact.quietHours}</div>
+        <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+          <div className="text-[10px] font-black uppercase tracking-widest text-faith-slate">Quiet hours</div>
+          <div className="mt-1 text-sm font-bold text-faith-ink dark:text-slate-50">{contact.quietHours}</div>
         </div>
       </div>
 
@@ -1021,7 +1021,7 @@ function ContactPreviewCard({
       </div>
 
       <div className="mt-4 space-y-2">
-        <div className="text-[11px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-500">Linked segments</div>
+        <div className="text-[11px] font-black uppercase tracking-widest text-faith-slate">Linked segments</div>
         <div className="flex flex-wrap gap-2">
           {contact.segmentIds.map((id) => (
             <Pill key={id} tone="neutral">{segmentLookup.get(id)?.label || id}</Pill>
@@ -1038,36 +1038,36 @@ function SegmentPreviewBoard({
   selectedSegments: Segment[];
 }) {
   return (
-    <div className="rounded-3xl bg-white dark:bg-slate-900 ring-1 ring-slate-200 dark:ring-slate-800 p-4 shadow-sm transition">
+    <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 ring-1 ring-slate-200 dark:ring-slate-800 p-4 shadow-soft transition">
       <div className="flex items-center justify-between gap-2">
         <div>
-          <div className="text-sm font-black text-slate-900 dark:text-slate-50">Segment spotlight</div>
-          <div className="text-[11px] text-slate-500 dark:text-slate-400">Saved operational and campaign-ready segment views.</div>
+          <div className="text-sm font-black text-faith-ink dark:text-slate-50">Segment spotlight</div>
+          <div className="text-[11px] text-faith-slate">Saved operational and campaign-ready segment views.</div>
         </div>
         <Pill tone="brand"><Layers className="h-3 w-3" /> {selectedSegments.length} shown</Pill>
       </div>
       <div className="mt-4 space-y-3">
         {selectedSegments.slice(0, 3).map((segment) => (
-          <div key={segment.id} className="rounded-2xl bg-slate-50 dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+          <div key={segment.id} className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800 transition">
             <div className="flex items-start justify-between gap-3">
               <div className="min-w-0">
-                <div className="text-[13px] font-bold text-slate-900 dark:text-slate-50 truncate">{segment.label}</div>
-                <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-1">{segment.ruleSummary}</div>
+                <div className="text-[13px] font-bold text-faith-ink dark:text-slate-50 truncate">{segment.label}</div>
+                <div className="text-[11px] text-faith-slate mt-1">{segment.ruleSummary}</div>
               </div>
               <Pill tone={segmentTone(segment.health)}>{segment.health}</Pill>
             </div>
             <div className="mt-3 grid grid-cols-3 gap-2 text-[11px]">
-              <div className="rounded-xl bg-white dark:bg-slate-900 px-2 py-2 ring-1 ring-slate-200 dark:ring-slate-800">
-                <div className="text-slate-500 dark:text-slate-500 uppercase tracking-widest text-[10px] font-black">Audience</div>
-                <div className="mt-1 font-bold text-slate-900 dark:text-slate-50">{segment.size.toLocaleString()}</div>
+              <div className="rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-2 py-2 ring-1 ring-slate-200 dark:ring-slate-800">
+                <div className="text-faith-slate uppercase tracking-widest text-[10px] font-black">Audience</div>
+                <div className="mt-1 font-bold text-faith-ink dark:text-slate-50">{segment.size.toLocaleString()}</div>
               </div>
-              <div className="rounded-xl bg-white dark:bg-slate-900 px-2 py-2 ring-1 ring-slate-200 dark:ring-slate-800">
-                <div className="text-slate-500 dark:text-slate-500 uppercase tracking-widest text-[10px] font-black">Journeys</div>
-                <div className="mt-1 font-bold text-slate-900 dark:text-slate-50">{segment.linkedJourneys}</div>
+              <div className="rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-2 py-2 ring-1 ring-slate-200 dark:ring-slate-800">
+                <div className="text-faith-slate uppercase tracking-widest text-[10px] font-black">Journeys</div>
+                <div className="mt-1 font-bold text-faith-ink dark:text-slate-50">{segment.linkedJourneys}</div>
               </div>
-              <div className="rounded-xl bg-white dark:bg-slate-900 px-2 py-2 ring-1 ring-slate-200 dark:ring-slate-800">
-                <div className="text-slate-500 dark:text-slate-500 uppercase tracking-widest text-[10px] font-black">Beacon</div>
-                <div className="mt-1 font-bold text-slate-900 dark:text-slate-50">{segment.linkedBeaconCampaigns}</div>
+              <div className="rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-2 py-2 ring-1 ring-slate-200 dark:ring-slate-800">
+                <div className="text-faith-slate uppercase tracking-widest text-[10px] font-black">Beacon</div>
+                <div className="mt-1 font-bold text-faith-ink dark:text-slate-50">{segment.linkedBeaconCampaigns}</div>
               </div>
             </div>
           </div>
@@ -1217,22 +1217,22 @@ export default function ChannelsContactManagerPage() {
   }, []);
 
   return (
-    <div className="min-h-screen w-full flex flex-col bg-[#f2f2f2] dark:bg-slate-950 text-slate-900 dark:text-slate-50 transition-colors overflow-x-hidden">
-      <div className="sticky top-0 z-40 border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md transition">
+    <div className="min-h-screen w-full flex flex-col bg-[var(--fh-page-bg)] dark:bg-slate-950 text-faith-ink dark:text-slate-50 transition-colors overflow-x-hidden">
+      <div className="sticky top-0 z-40 border-b border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)]/95 dark:bg-slate-900/95 backdrop-blur-md transition">
         <div className="w-full flex flex-col gap-4 px-4 md:px-6 lg:px-8 py-4 lg:flex-row lg:items-center lg:justify-between">
           <div className="min-w-0">
             <div className="flex items-center gap-2 overflow-x-auto no-scrollbar">
-              <div className="flex items-center gap-2 whitespace-nowrap text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400">
+              <div className="flex items-center gap-2 whitespace-nowrap text-[10px] font-black uppercase tracking-widest text-faith-slate">
                 <span className="hover:text-slate-700 dark:hover:text-slate-200 transition cursor-default">Provider Workspace</span>
                 <span className="text-slate-300 dark:text-slate-700">/</span>
                 <span className="hover:text-slate-700 dark:hover:text-slate-200 transition cursor-default">Audience & Outreach</span>
                 <span className="text-slate-300 dark:text-slate-700">/</span>
-                <span className="text-slate-900 dark:text-slate-100 italic">Channels & Contact Manager</span>
+                <span className="text-faith-ink dark:text-slate-100 italic">Channels & Contact Manager</span>
               </div>
             </div>
 
             <div className="mt-2 flex flex-wrap items-center gap-3">
-              <div className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-slate-50 tracking-tight">
+              <div className="text-xl sm:text-2xl font-extrabold text-faith-ink dark:text-slate-50 tracking-tight">
                 Channels & Contact Manager
               </div>
               <div className="flex gap-2 flex-wrap">
@@ -1242,19 +1242,19 @@ export default function ChannelsContactManagerPage() {
               </div>
             </div>
 
-            <div className="mt-2 text-xs font-bold text-slate-500 dark:text-slate-400 flex flex-wrap items-center gap-x-4 gap-y-1">
+            <div className="mt-2 text-xs font-bold text-faith-slate flex flex-wrap items-center gap-x-4 gap-y-1">
               <span className="flex items-center gap-1.5">
-                <Users className="h-3.5 w-3.5 text-slate-400" />
+                <Users className="h-3.5 w-3.5 text-faith-slate" />
                 {visibleContacts.length.toLocaleString()} visible contacts
               </span>
               <span className="text-slate-200 dark:text-slate-800">|</span>
               <span className="flex items-center gap-1.5">
-                <MessageCircle className="h-3.5 w-3.5 text-slate-400" />
+                <MessageCircle className="h-3.5 w-3.5 text-faith-slate" />
                 6 connected channels
               </span>
               <span className="text-slate-200 dark:text-slate-800">|</span>
               <span className="flex items-center gap-1.5">
-                <ShieldCheck className="h-3.5 w-3.5 text-slate-400" />
+                <ShieldCheck className="h-3.5 w-3.5 text-faith-slate" />
                 Child-safe protections embedded
               </span>
             </div>
@@ -1297,7 +1297,7 @@ export default function ChannelsContactManagerPage() {
           </div>
         </div>
 
-        <div className="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 transition">
+        <div className="border-t border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 transition">
           <div className="w-full px-4 md:px-6 lg:px-8 py-2.5">
             <div className="flex flex-wrap items-center justify-between gap-3 text-sm">
               <div className="flex flex-wrap items-center gap-3">
@@ -1305,13 +1305,13 @@ export default function ChannelsContactManagerPage() {
                   {systemIssues.length ? <AlertTriangle className="h-3.5 w-3.5" /> : <CheckCircle2 className="h-3.5 w-3.5" />}
                   Audience system check
                 </Pill>
-                <span className="text-[11px] font-bold text-slate-600 dark:text-slate-400 uppercase tracking-tight">
+                <span className="text-[11px] font-bold text-faith-slate uppercase tracking-tight">
                   {systemIssues.length
-                    ? systemIssues.join(" â€¢ ")
+                    ? systemIssues.join(" • ")
                     : "Consent trails, deliverability, and contact hygiene are all operating within premium thresholds."}
                 </span>
               </div>
-              <div className="hidden sm:flex items-center gap-1.5 text-[10px] font-black text-slate-400 uppercase tracking-widest">
+              <div className="hidden sm:flex items-center gap-1.5 text-[10px] font-black text-faith-slate uppercase tracking-widest">
                 <Sparkles className="h-3 w-3" style={{ color: ORANGE }} />
                 CRM-grade ministry intelligence
               </div>
@@ -1329,11 +1329,11 @@ export default function ChannelsContactManagerPage() {
               ))}
             </div>
 
-            <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <div className="flex flex-col gap-3 xl:flex-row xl:items-start xl:justify-between">
                 <div>
-                  <div className="text-sm font-bold text-slate-900 dark:text-slate-50 uppercase tracking-tight">Audience health dashboard</div>
-                  <div className="mt-1 text-[11px] sm:text-xs text-slate-500 dark:text-slate-400">
+                  <div className="text-sm font-bold text-faith-ink dark:text-slate-50 uppercase tracking-tight">Audience health dashboard</div>
+                  <div className="mt-1 text-[11px] sm:text-xs text-faith-slate">
                     Growth, deliverability, consent quality, and segment momentum for ministry communications.
                   </div>
                 </div>
@@ -1344,55 +1344,55 @@ export default function ChannelsContactManagerPage() {
               </div>
 
               <div className="mt-4 grid gap-4 md:grid-cols-3">
-                <div className="rounded-3xl bg-slate-50 dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+                <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                   <div className="flex items-center justify-between gap-2">
                     <div>
-                      <div className="text-[11px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-500">Audience growth</div>
-                      <div className="mt-1 text-xl font-extrabold text-slate-900 dark:text-slate-50">+12.4%</div>
+                      <div className="text-[11px] font-black uppercase tracking-widest text-faith-slate">Audience growth</div>
+                      <div className="mt-1 text-xl font-extrabold text-faith-ink dark:text-slate-50">+12.4%</div>
                     </div>
                     <MiniLine values={audienceHealthSeries} tone="brand" />
                   </div>
-                  <div className="mt-3 text-[11px] text-slate-500 dark:text-slate-400">Follower, member, and donor layers are all moving upward after the last replay cycle.</div>
+                  <div className="mt-3 text-[11px] text-faith-slate">Follower, member, and donor layers are all moving upward after the last replay cycle.</div>
                 </div>
-                <div className="rounded-3xl bg-slate-50 dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+                <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                   <div className="flex items-center justify-between gap-2">
                     <div>
-                      <div className="text-[11px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-500">Deliverability trend</div>
-                      <div className="mt-1 text-xl font-extrabold text-slate-900 dark:text-slate-50">97.8%</div>
+                      <div className="text-[11px] font-black uppercase tracking-widest text-faith-slate">Deliverability trend</div>
+                      <div className="mt-1 text-xl font-extrabold text-faith-ink dark:text-slate-50">97.8%</div>
                     </div>
                     <MiniLine values={deliverabilitySeries} tone="accent" />
                   </div>
-                  <div className="mt-3 text-[11px] text-slate-500 dark:text-slate-400">Sender health remains high across push, email, in-app, and WhatsApp lanes.</div>
+                  <div className="mt-3 text-[11px] text-faith-slate">Sender health remains high across push, email, in-app, and WhatsApp lanes.</div>
                 </div>
-                <div className="rounded-3xl bg-slate-50 dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+                <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                   <div className="flex items-center justify-between gap-2">
                     <div>
-                      <div className="text-[11px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-500">Segment performance</div>
-                      <div className="mt-1 text-xl font-extrabold text-slate-900 dark:text-slate-50">79 score</div>
+                      <div className="text-[11px] font-black uppercase tracking-widest text-faith-slate">Segment performance</div>
+                      <div className="mt-1 text-xl font-extrabold text-faith-ink dark:text-slate-50">79 score</div>
                     </div>
                     <MiniLine values={segmentSeries} tone="neutral" />
                   </div>
-                  <div className="mt-3 text-[11px] text-slate-500 dark:text-slate-400">Smart segments are converting better when tied to replay and giving follow-up journeys.</div>
+                  <div className="mt-3 text-[11px] text-faith-slate">Smart segments are converting better when tied to replay and giving follow-up journeys.</div>
                 </div>
               </div>
             </div>
 
-            <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
                 <div>
-                  <div className="text-sm font-bold text-slate-900 dark:text-slate-50 uppercase tracking-tight">Contact directory</div>
-                  <div className="mt-1 text-[11px] sm:text-xs text-slate-500 dark:text-slate-400">
+                  <div className="text-sm font-bold text-faith-ink dark:text-slate-50 uppercase tracking-tight">Contact directory</div>
+                  <div className="mt-1 text-[11px] sm:text-xs text-faith-slate">
                     Master audience list for followers, members, attendees, donors, volunteers, and imported leads.
                   </div>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 min-w-full xl:min-w-[480px]">
                   <label className="relative block sm:col-span-2">
-                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-faith-slate" />
                     <input
                       value={search}
                       onChange={(e) => setSearch(e.target.value)}
                       placeholder="Search contacts, segments, language, or channel"
-                      className="w-full h-11 rounded-xl bg-slate-50 dark:bg-slate-800/20 pl-10 pr-4 text-sm font-bold text-slate-900 dark:text-slate-100 ring-1 ring-slate-200 dark:ring-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-400 transition placeholder:text-slate-400 dark:placeholder:text-slate-600"
+                      className="w-full h-11 rounded-xl bg-[var(--fh-surface)] dark:bg-slate-800/20 pl-10 pr-4 text-sm font-bold text-faith-ink dark:text-slate-100 ring-1 ring-slate-200 dark:ring-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-400 transition placeholder:text-faith-slate dark:placeholder:text-faith-slate"
                     />
                   </label>
                   <Btn tone="ghost" left={<Filter className="h-4 w-4" />} onClick={() => setToast("Advanced directory filters opened")}>Filters</Btn>
@@ -1400,26 +1400,26 @@ export default function ChannelsContactManagerPage() {
               </div>
 
               <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-3">
-                <div className="rounded-2xl bg-slate-50 dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                  <div className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-500">Followers / attendees</div>
-                  <div className="mt-1 text-xl font-extrabold text-slate-900 dark:text-slate-50">{contactCounts.followers}</div>
+                <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div className="text-[10px] font-black uppercase tracking-widest text-faith-slate">Followers / attendees</div>
+                  <div className="mt-1 text-xl font-extrabold text-faith-ink dark:text-slate-50">{contactCounts.followers}</div>
                 </div>
-                <div className="rounded-2xl bg-slate-50 dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                  <div className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-500">Members</div>
-                  <div className="mt-1 text-xl font-extrabold text-slate-900 dark:text-slate-50">{contactCounts.members}</div>
+                <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div className="text-[10px] font-black uppercase tracking-widest text-faith-slate">Members</div>
+                  <div className="mt-1 text-xl font-extrabold text-faith-ink dark:text-slate-50">{contactCounts.members}</div>
                 </div>
-                <div className="rounded-2xl bg-slate-50 dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                  <div className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-500">Donors</div>
-                  <div className="mt-1 text-xl font-extrabold text-slate-900 dark:text-slate-50">{contactCounts.donors}</div>
+                <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div className="text-[10px] font-black uppercase tracking-widest text-faith-slate">Donors</div>
+                  <div className="mt-1 text-xl font-extrabold text-faith-ink dark:text-slate-50">{contactCounts.donors}</div>
                 </div>
-                <div className="rounded-2xl bg-slate-50 dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                  <div className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-500">Volunteers</div>
-                  <div className="mt-1 text-xl font-extrabold text-slate-900 dark:text-slate-50">{contactCounts.volunteers}</div>
+                <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div className="text-[10px] font-black uppercase tracking-widest text-faith-slate">Volunteers</div>
+                  <div className="mt-1 text-xl font-extrabold text-faith-ink dark:text-slate-50">{contactCounts.volunteers}</div>
                 </div>
               </div>
 
               <div className="mt-4 overflow-hidden rounded-3xl ring-1 ring-slate-200 dark:ring-slate-800">
-                <div className="hidden md:grid grid-cols-[1.6fr_1fr_.9fr_1fr_1fr_.7fr] gap-3 bg-slate-50 dark:bg-slate-950 px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-500">
+                <div className="hidden md:grid grid-cols-[1.6fr_1fr_.9fr_1fr_1fr_.7fr] gap-3 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-3 text-[10px] font-black uppercase tracking-widest text-faith-slate">
                   <div>Contact</div>
                   <div>Consent / safety</div>
                   <div>Channels</div>
@@ -1427,7 +1427,7 @@ export default function ChannelsContactManagerPage() {
                   <div>Recent activity</div>
                   <div>Health</div>
                 </div>
-                <div className="divide-y divide-slate-100 dark:divide-slate-800 bg-white dark:bg-slate-900">
+                <div className="divide-y divide-slate-100 dark:divide-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900">
                   {visibleContacts.map((contact) => {
                     const selected = selectedContact.id === contact.id;
                     return (
@@ -1437,7 +1437,7 @@ export default function ChannelsContactManagerPage() {
                         onClick={() => setSelectedContactId(contact.id)}
                         className={cn(
                           "w-full text-left px-4 py-4 transition",
-                          selected ? "bg-emerald-50/70 dark:bg-emerald-500/10" : "hover:bg-slate-50 dark:hover:bg-slate-950",
+                          selected ? "bg-emerald-50/70 dark:bg-emerald-500/10" : "hover:bg-[var(--fh-surface)] dark:hover:bg-slate-950",
                         )}
                       >
                         <div className="grid grid-cols-1 md:grid-cols-[1.6fr_1fr_.9fr_1fr_1fr_.7fr] gap-3 items-start">
@@ -1451,15 +1451,15 @@ export default function ChannelsContactManagerPage() {
                             </div>
                             <div className="min-w-0">
                               <div className="flex flex-wrap items-center gap-2">
-                                <div className="truncate text-[13px] font-bold text-slate-900 dark:text-slate-50">{contact.name}</div>
+                                <div className="truncate text-[13px] font-bold text-faith-ink dark:text-slate-50">{contact.name}</div>
                                 <Pill tone={roleTone(contact.title)}>{contact.title}</Pill>
                                 {contact.childSafe ? <Pill tone="warn"><ShieldCheck className="h-3 w-3" /> Protected</Pill> : null}
                               </div>
-                              <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400 flex flex-wrap gap-x-2 gap-y-1">
+                              <div className="mt-1 text-[11px] text-faith-slate flex flex-wrap gap-x-2 gap-y-1">
                                 <span>{contact.campus}</span>
-                                <span>â€¢</span>
+                                <span>•</span>
                                 <span>{contact.brand}</span>
-                                <span>â€¢</span>
+                                <span>•</span>
                                 <span>{contact.region}</span>
                               </div>
                             </div>
@@ -1470,25 +1470,25 @@ export default function ChannelsContactManagerPage() {
                             {contact.highRisk ? <Pill tone="bad"><AlertTriangle className="h-3 w-3" /> Hold</Pill> : null}
                           </div>
 
-                          <div className="text-[12px] text-slate-600 dark:text-slate-300">
-                            <div className="font-bold text-slate-900 dark:text-slate-50">{contact.primaryChannel}</div>
-                            <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">{contact.channelsAllowed.length} allowed</div>
+                          <div className="text-[12px] text-faith-slate dark:text-slate-300">
+                            <div className="font-bold text-faith-ink dark:text-slate-50">{contact.primaryChannel}</div>
+                            <div className="mt-1 text-[11px] text-faith-slate">{contact.channelsAllowed.length} allowed</div>
                           </div>
 
-                          <div className="text-[12px] text-slate-600 dark:text-slate-300">
-                            <div className="font-bold text-slate-900 dark:text-slate-50">{contact.segmentIds.length} segments</div>
-                            <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1">
-                              {contact.segmentIds.map((id) => segmentLookup.get(id)?.label || id).join(" â€¢ ")}
+                          <div className="text-[12px] text-faith-slate dark:text-slate-300">
+                            <div className="font-bold text-faith-ink dark:text-slate-50">{contact.segmentIds.length} segments</div>
+                            <div className="mt-1 text-[11px] text-faith-slate line-clamp-1">
+                              {contact.segmentIds.map((id) => segmentLookup.get(id)?.label || id).join(" • ")}
                             </div>
                           </div>
 
-                          <div className="text-[12px] text-slate-600 dark:text-slate-300">
-                            <div className="font-bold text-slate-900 dark:text-slate-50">{contact.lastActivity}</div>
-                            <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">{contact.language}</div>
+                          <div className="text-[12px] text-faith-slate dark:text-slate-300">
+                            <div className="font-bold text-faith-ink dark:text-slate-50">{contact.lastActivity}</div>
+                            <div className="mt-1 text-[11px] text-faith-slate">{contact.language}</div>
                           </div>
 
-                          <div className="text-[12px] text-slate-600 dark:text-slate-300">
-                            <div className="font-bold text-slate-900 dark:text-slate-50">{contact.engagementScore}/100</div>
+                          <div className="text-[12px] text-faith-slate dark:text-slate-300">
+                            <div className="font-bold text-faith-ink dark:text-slate-50">{contact.engagementScore}/100</div>
                             <div className="mt-1 h-2 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
                               <div className={cn("h-full rounded-full", contact.engagementScore > 80 ? "bg-emerald-500" : contact.engagementScore > 50 ? "bg-amber-500" : "bg-rose-500")} style={{ width: `${contact.engagementScore}%` }} />
                             </div>
@@ -1501,11 +1501,11 @@ export default function ChannelsContactManagerPage() {
               </div>
             </div>
 
-            <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
                 <div>
-                  <div className="text-sm font-bold text-slate-900 dark:text-slate-50 uppercase tracking-tight">Segment builder</div>
-                  <div className="mt-1 text-[11px] sm:text-xs text-slate-500 dark:text-slate-400">
+                  <div className="text-sm font-bold text-faith-ink dark:text-slate-50 uppercase tracking-tight">Segment builder</div>
+                  <div className="mt-1 text-[11px] sm:text-xs text-faith-slate">
                     Smart and manual segments for ministry groups, donor paths, event audiences, replay viewers, and Beacon responders.
                   </div>
                 </div>
@@ -1515,7 +1515,7 @@ export default function ChannelsContactManagerPage() {
                     onClick={() => setSegmentMode("Smart")}
                     className={cn(
                       "rounded-xl px-3 py-2 text-[11px] font-black uppercase tracking-widest transition",
-                      segmentMode === "Smart" ? "text-white" : "text-slate-600 dark:text-slate-300 hover:bg-slate-200/70 dark:hover:bg-slate-700/60",
+                      segmentMode === "Smart" ? "text-white" : "text-faith-slate dark:text-slate-300 hover:bg-slate-200/70 dark:hover:bg-slate-700/60",
                     )}
                     style={segmentMode === "Smart" ? { backgroundColor: GREEN } : undefined}
                   >
@@ -1526,7 +1526,7 @@ export default function ChannelsContactManagerPage() {
                     onClick={() => setSegmentMode("Manual")}
                     className={cn(
                       "rounded-xl px-3 py-2 text-[11px] font-black uppercase tracking-widest transition",
-                      segmentMode === "Manual" ? "text-white" : "text-slate-600 dark:text-slate-300 hover:bg-slate-200/70 dark:hover:bg-slate-700/60",
+                      segmentMode === "Manual" ? "text-white" : "text-faith-slate dark:text-slate-300 hover:bg-slate-200/70 dark:hover:bg-slate-700/60",
                     )}
                     style={segmentMode === "Manual" ? { backgroundColor: ORANGE } : undefined}
                   >
@@ -1536,11 +1536,11 @@ export default function ChannelsContactManagerPage() {
               </div>
 
               <div className="mt-4 grid gap-4 xl:grid-cols-[1.2fr_.8fr]">
-                <div className="rounded-3xl bg-slate-50 dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+                <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                   <div className="flex items-center justify-between gap-3">
                     <div>
-                      <div className="text-[11px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-500">Active rule canvas</div>
-                      <div className="mt-1 text-[13px] font-bold text-slate-900 dark:text-slate-50">
+                      <div className="text-[11px] font-black uppercase tracking-widest text-faith-slate">Active rule canvas</div>
+                      <div className="mt-1 text-[13px] font-bold text-faith-ink dark:text-slate-50">
                         {segmentMode === "Smart" ? "Smart rule recommendations" : "Manual ministry list builder"}
                       </div>
                     </div>
@@ -1554,16 +1554,16 @@ export default function ChannelsContactManagerPage() {
                       ))}
                     </div>
                   ) : (
-                    <div className="mt-4 rounded-2xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
-                      <div className="text-[12px] font-bold text-slate-900 dark:text-slate-50">Manual roster controls</div>
-                      <div className="mt-2 text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
-                        Build protected ministry lists for choir, ushers, childrenâ€™s ministry parents, translators, or pastoral care groups with strict child-safe and quiet-hour rules.
+                    <div className="mt-4 rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+                      <div className="text-[12px] font-bold text-faith-ink dark:text-slate-50">Manual roster controls</div>
+                      <div className="mt-2 text-[11px] text-faith-slate leading-relaxed">
+                        Build protected ministry lists for choir, ushers, children’s ministry parents, translators, or pastoral care groups with strict child-safe and quiet-hour rules.
                       </div>
                       <div className="mt-3 grid grid-cols-2 gap-2 text-[11px]">
-                        <div className="rounded-2xl bg-slate-50 dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">CSV import + approval review</div>
-                        <div className="rounded-2xl bg-slate-50 dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">Parent-approved child-safe lists</div>
-                        <div className="rounded-2xl bg-slate-50 dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">Volunteer / staff roster sync</div>
-                        <div className="rounded-2xl bg-slate-50 dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">Quiet-hour aware small-group messages</div>
+                        <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">CSV import + approval review</div>
+                        <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">Parent-approved child-safe lists</div>
+                        <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">Volunteer / staff roster sync</div>
+                        <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">Quiet-hour aware small-group messages</div>
                       </div>
                     </div>
                   )}
@@ -1576,30 +1576,30 @@ export default function ChannelsContactManagerPage() {
 
                 <div className="space-y-3">
                   {filteredSegments.slice(0, 4).map((segment) => (
-                    <div key={segment.id} className="rounded-3xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+                    <div key={segment.id} className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
                       <div className="flex items-start justify-between gap-3">
                         <div className="min-w-0">
                           <div className="flex items-center gap-2 flex-wrap">
-                            <div className="text-[13px] font-bold text-slate-900 dark:text-slate-50 truncate">{segment.label}</div>
+                            <div className="text-[13px] font-bold text-faith-ink dark:text-slate-50 truncate">{segment.label}</div>
                             <Pill tone={segmentTone(segment.health)}>{segment.health}</Pill>
                             {segment.childSafeReady ? <Pill tone="good"><ShieldCheck className="h-3 w-3" /> Safe</Pill> : null}
                           </div>
-                          <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">{segment.ruleSummary}</div>
+                          <div className="mt-1 text-[11px] text-faith-slate">{segment.ruleSummary}</div>
                         </div>
                         <Btn tone="ghost" left={<ExternalLink className="h-4 w-4" />} onClick={() => setToast(`Opened ${segment.label}`)}>Open</Btn>
                       </div>
                       <div className="mt-4 grid grid-cols-3 gap-2 text-[11px]">
-                        <div className="rounded-2xl bg-slate-50 dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                          <div className="text-slate-500 dark:text-slate-500 uppercase tracking-widest text-[10px] font-black">Audience</div>
-                          <div className="mt-1 font-extrabold text-slate-900 dark:text-slate-50">{segment.size.toLocaleString()}</div>
+                        <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                          <div className="text-faith-slate uppercase tracking-widest text-[10px] font-black">Audience</div>
+                          <div className="mt-1 font-extrabold text-faith-ink dark:text-slate-50">{segment.size.toLocaleString()}</div>
                         </div>
-                        <div className="rounded-2xl bg-slate-50 dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                          <div className="text-slate-500 dark:text-slate-500 uppercase tracking-widest text-[10px] font-black">Journeys</div>
-                          <div className="mt-1 font-extrabold text-slate-900 dark:text-slate-50">{segment.linkedJourneys}</div>
+                        <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                          <div className="text-faith-slate uppercase tracking-widest text-[10px] font-black">Journeys</div>
+                          <div className="mt-1 font-extrabold text-faith-ink dark:text-slate-50">{segment.linkedJourneys}</div>
                         </div>
-                        <div className="rounded-2xl bg-slate-50 dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                          <div className="text-slate-500 dark:text-slate-500 uppercase tracking-widest text-[10px] font-black">Growth</div>
-                          <div className="mt-1 font-extrabold text-slate-900 dark:text-slate-50">{segment.growth}</div>
+                        <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                          <div className="text-faith-slate uppercase tracking-widest text-[10px] font-black">Growth</div>
+                          <div className="mt-1 font-extrabold text-faith-ink dark:text-slate-50">{segment.growth}</div>
                         </div>
                       </div>
                     </div>
@@ -1608,11 +1608,11 @@ export default function ChannelsContactManagerPage() {
               </div>
             </div>
 
-            <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
                 <div>
-                  <div className="text-sm font-bold text-slate-900 dark:text-slate-50 uppercase tracking-tight">Import, merge & hygiene tools</div>
-                  <div className="mt-1 text-[11px] sm:text-xs text-slate-500 dark:text-slate-400">
+                  <div className="text-sm font-bold text-faith-ink dark:text-slate-50 uppercase tracking-tight">Import, merge & hygiene tools</div>
+                  <div className="mt-1 text-[11px] sm:text-xs text-faith-slate">
                     CSV and platform imports, duplicate detection, merge suggestions, invalid endpoint cleanup, and audience-quality protection.
                   </div>
                 </div>
@@ -1625,11 +1625,11 @@ export default function ChannelsContactManagerPage() {
               <div className="mt-4 grid gap-4 xl:grid-cols-[1fr_.9fr]">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {hygieneTasks.map((task) => (
-                    <div key={task.id} className="rounded-3xl bg-slate-50 dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+                    <div key={task.id} className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                       <div className="flex items-start justify-between gap-3">
                         <div>
-                          <div className="text-[12px] font-bold text-slate-900 dark:text-slate-50">{task.label}</div>
-                          <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">{task.hint}</div>
+                          <div className="text-[12px] font-bold text-faith-ink dark:text-slate-50">{task.label}</div>
+                          <div className="mt-1 text-[11px] text-faith-slate">{task.hint}</div>
                         </div>
                         <Pill tone={task.tone}>{task.count}</Pill>
                       </div>
@@ -1637,34 +1637,34 @@ export default function ChannelsContactManagerPage() {
                   ))}
                 </div>
 
-                <div className="rounded-3xl bg-slate-50 dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
-                  <div className="text-[11px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-500">Automation and safety controls</div>
+                <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+                  <div className="text-[11px] font-black uppercase tracking-widest text-faith-slate">Automation and safety controls</div>
                   <div className="mt-4 space-y-3">
                     <div className="flex items-start justify-between gap-3">
                       <div>
-                        <div className="text-[13px] font-bold text-slate-900 dark:text-slate-50">Quiet-hour enforcement</div>
-                        <div className="text-[11px] text-slate-500 dark:text-slate-400">Respect household and donor quiet windows across channels.</div>
+                        <div className="text-[13px] font-bold text-faith-ink dark:text-slate-50">Quiet-hour enforcement</div>
+                        <div className="text-[11px] text-faith-slate">Respect household and donor quiet windows across channels.</div>
                       </div>
                       <Toggle value={channelQuietHours} onChange={setChannelQuietHours} />
                     </div>
                     <div className="flex items-start justify-between gap-3">
                       <div>
-                        <div className="text-[13px] font-bold text-slate-900 dark:text-slate-50">Child-safe lane lock</div>
-                        <div className="text-[11px] text-slate-500 dark:text-slate-400">Keep protected contacts inside approved parent-safe surfaces only.</div>
+                        <div className="text-[13px] font-bold text-faith-ink dark:text-slate-50">Child-safe lane lock</div>
+                        <div className="text-[11px] text-faith-slate">Keep protected contacts inside approved parent-safe surfaces only.</div>
                       </div>
                       <Toggle value={childSafeLock} onChange={setChildSafeLock} />
                     </div>
                     <div className="flex items-start justify-between gap-3">
                       <div>
-                        <div className="text-[13px] font-bold text-slate-900 dark:text-slate-50">Auto-merge suggestions</div>
-                        <div className="text-[11px] text-slate-500 dark:text-slate-400">Queue duplicate suggestions, but keep final merge approval human-reviewed.</div>
+                        <div className="text-[13px] font-bold text-faith-ink dark:text-slate-50">Auto-merge suggestions</div>
+                        <div className="text-[11px] text-faith-slate">Queue duplicate suggestions, but keep final merge approval human-reviewed.</div>
                       </div>
                       <Toggle value={autoMerge} onChange={setAutoMerge} />
                     </div>
                     <div className="flex items-start justify-between gap-3">
                       <div>
-                        <div className="text-[13px] font-bold text-slate-900 dark:text-slate-50">Audience risk guard</div>
-                        <div className="text-[11px] text-slate-500 dark:text-slate-400">Suppress high-risk, bounced, or spam-reported contacts from live journeys.</div>
+                        <div className="text-[13px] font-bold text-faith-ink dark:text-slate-50">Audience risk guard</div>
+                        <div className="text-[11px] text-faith-slate">Suppress high-risk, bounced, or spam-reported contacts from live journeys.</div>
                       </div>
                       <Toggle value={audienceRiskGuard} onChange={setAudienceRiskGuard} />
                     </div>
@@ -1677,11 +1677,11 @@ export default function ChannelsContactManagerPage() {
           <div className="lg:col-span-4 space-y-4">
             <ContactPreviewCard contact={selectedContact} segmentLookup={segmentLookup} />
 
-            <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <div className="text-sm font-bold text-slate-900 dark:text-slate-50 uppercase tracking-tight">Interaction timeline</div>
-                  <div className="mt-1 text-[11px] sm:text-xs text-slate-500 dark:text-slate-400">
+                  <div className="text-sm font-bold text-faith-ink dark:text-slate-50 uppercase tracking-tight">Interaction timeline</div>
+                  <div className="mt-1 text-[11px] sm:text-xs text-faith-slate">
                     Deep linked history across live attendance, replays, messages, donations, events, and Beacon exposure.
                   </div>
                 </div>
@@ -1690,25 +1690,25 @@ export default function ChannelsContactManagerPage() {
 
               <div className="mt-4 space-y-3">
                 {selectedContact.timeline.map((event) => (
-                  <div key={event.id} className="rounded-2xl bg-slate-50 dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+                  <div key={event.id} className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                     <div className="flex items-start justify-between gap-2">
                       <div className="min-w-0">
-                        <div className="text-[12px] font-bold text-slate-900 dark:text-slate-50">{event.label}</div>
-                        <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">{event.detail}</div>
+                        <div className="text-[12px] font-bold text-faith-ink dark:text-slate-50">{event.label}</div>
+                        <div className="mt-1 text-[11px] text-faith-slate leading-relaxed">{event.detail}</div>
                       </div>
                       <Pill tone={event.type === "Donation" ? "accent" : event.type === "Beacon" ? "brand" : "neutral"}>{event.type}</Pill>
                     </div>
-                    <div className="mt-2 text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-500">{event.when}</div>
+                    <div className="mt-2 text-[10px] font-black uppercase tracking-widest text-faith-slate">{event.when}</div>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <div className="text-sm font-bold text-slate-900 dark:text-slate-50 uppercase tracking-tight">Consent & opt-in center</div>
-                  <div className="mt-1 text-[11px] sm:text-xs text-slate-500 dark:text-slate-400">
+                  <div className="text-sm font-bold text-faith-ink dark:text-slate-50 uppercase tracking-tight">Consent & opt-in center</div>
+                  <div className="mt-1 text-[11px] sm:text-xs text-faith-slate">
                     Source, quiet-hour controls, channel permissions, and child-safe restrictions for the selected contact.
                   </div>
                 </div>
@@ -1716,13 +1716,13 @@ export default function ChannelsContactManagerPage() {
               </div>
 
               <div className="mt-4 grid grid-cols-2 gap-2 text-[11px]">
-                <div className="rounded-2xl bg-slate-50 dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                  <div className="text-slate-500 dark:text-slate-500 uppercase tracking-widest text-[10px] font-black">Quiet hours</div>
-                  <div className="mt-1 font-bold text-slate-900 dark:text-slate-50">{selectedContact.quietHours}</div>
+                <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div className="text-faith-slate uppercase tracking-widest text-[10px] font-black">Quiet hours</div>
+                  <div className="mt-1 font-bold text-faith-ink dark:text-slate-50">{selectedContact.quietHours}</div>
                 </div>
-                <div className="rounded-2xl bg-slate-50 dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                  <div className="text-slate-500 dark:text-slate-500 uppercase tracking-widest text-[10px] font-black">Allowed channels</div>
-                  <div className="mt-1 font-bold text-slate-900 dark:text-slate-50">{selectedContact.channelsAllowed.length}</div>
+                <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div className="text-faith-slate uppercase tracking-widest text-[10px] font-black">Allowed channels</div>
+                  <div className="mt-1 font-bold text-faith-ink dark:text-slate-50">{selectedContact.channelsAllowed.length}</div>
                 </div>
               </div>
 
@@ -1741,20 +1741,20 @@ export default function ChannelsContactManagerPage() {
 
               <div className="mt-4 space-y-3">
                 {selectedContact.consentAudit.map((entry) => (
-                  <div key={`${entry.at}-${entry.label}`} className="rounded-2xl bg-slate-50 dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                    <div className="text-[12px] font-bold text-slate-900 dark:text-slate-50">{entry.label}</div>
-                    <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">{entry.detail}</div>
-                    <div className="mt-2 text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-500">{entry.at}</div>
+                  <div key={`${entry.at}-${entry.label}`} className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                    <div className="text-[12px] font-bold text-faith-ink dark:text-slate-50">{entry.label}</div>
+                    <div className="mt-1 text-[11px] text-faith-slate">{entry.detail}</div>
+                    <div className="mt-2 text-[10px] font-black uppercase tracking-widest text-faith-slate">{entry.at}</div>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <div className="text-sm font-bold text-slate-900 dark:text-slate-50 uppercase tracking-tight">Channel connection manager</div>
-                  <div className="mt-1 text-[11px] sm:text-xs text-slate-500 dark:text-slate-400">
+                  <div className="text-sm font-bold text-faith-ink dark:text-slate-50 uppercase tracking-tight">Channel connection manager</div>
+                  <div className="mt-1 text-[11px] sm:text-xs text-faith-slate">
                     Sender health, template readiness, verification state, and deliverability across connected ministry surfaces.
                   </div>
                 </div>
@@ -1763,40 +1763,40 @@ export default function ChannelsContactManagerPage() {
 
               <div className="mt-4 space-y-3">
                 {channelConnections.map((channel) => (
-                  <div key={channel.id} className="rounded-2xl bg-slate-50 dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+                  <div key={channel.id} className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                     <div className="flex items-start justify-between gap-2">
                       <div className="min-w-0">
                         <div className="flex flex-wrap items-center gap-2">
-                          <div className="text-[13px] font-bold text-slate-900 dark:text-slate-50">{channel.name}</div>
+                          <div className="text-[13px] font-bold text-faith-ink dark:text-slate-50">{channel.name}</div>
                           <Pill tone={statusTone(channel.status)}>{channel.status}</Pill>
                         </div>
-                        <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
-                          {channel.sender} â€¢ {channel.campus}
+                        <div className="mt-1 text-[11px] text-faith-slate">
+                          {channel.sender} • {channel.campus}
                         </div>
                       </div>
                       <Btn tone="ghost" left={<ExternalLink className="h-4 w-4" />} onClick={() => setToast(`Opened ${channel.name} settings`)}>Open</Btn>
                     </div>
                     <div className="mt-3 grid grid-cols-2 gap-2 text-[11px]">
-                      <div className="rounded-xl bg-white dark:bg-slate-900 p-2.5 ring-1 ring-slate-200 dark:ring-slate-800">
-                        <div className="text-slate-500 dark:text-slate-500 uppercase tracking-widest text-[10px] font-black">Deliverability</div>
-                        <div className="mt-1 font-bold text-slate-900 dark:text-slate-50">{channel.deliverability}</div>
+                      <div className="rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2.5 ring-1 ring-slate-200 dark:ring-slate-800">
+                        <div className="text-faith-slate uppercase tracking-widest text-[10px] font-black">Deliverability</div>
+                        <div className="mt-1 font-bold text-faith-ink dark:text-slate-50">{channel.deliverability}</div>
                       </div>
-                      <div className="rounded-xl bg-white dark:bg-slate-900 p-2.5 ring-1 ring-slate-200 dark:ring-slate-800">
-                        <div className="text-slate-500 dark:text-slate-500 uppercase tracking-widest text-[10px] font-black">Verification</div>
-                        <div className="mt-1 font-bold text-slate-900 dark:text-slate-50">{channel.verification}</div>
+                      <div className="rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2.5 ring-1 ring-slate-200 dark:ring-slate-800">
+                        <div className="text-faith-slate uppercase tracking-widest text-[10px] font-black">Verification</div>
+                        <div className="mt-1 font-bold text-faith-ink dark:text-slate-50">{channel.verification}</div>
                       </div>
                     </div>
-                    <div className="mt-3 text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">{channel.note}</div>
+                    <div className="mt-3 text-[11px] text-faith-slate leading-relaxed">{channel.note}</div>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <div className="text-sm font-bold text-slate-900 dark:text-slate-50 uppercase tracking-tight">Suppression & safety controls</div>
-                  <div className="mt-1 text-[11px] sm:text-xs text-slate-500 dark:text-slate-400">
+                  <div className="text-sm font-bold text-faith-ink dark:text-slate-50 uppercase tracking-tight">Suppression & safety controls</div>
+                  <div className="mt-1 text-[11px] sm:text-xs text-faith-slate">
                     Unsubscribes, spam reports, do-not-contact rules, child-protection restrictions, and risk-aware audience locks.
                   </div>
                 </div>
@@ -1840,8 +1840,8 @@ export default function ChannelsContactManagerPage() {
                     className={cn(
                       "inline-flex items-center gap-2 rounded-full px-3 py-2 text-[11px] font-black uppercase tracking-widest transition",
                       selectedPreviewTab === tab.key
-                        ? "text-white shadow-sm"
-                        : "bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 ring-1 ring-slate-200 dark:ring-slate-800",
+                        ? "text-white shadow-soft"
+                        : "bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-faith-slate dark:text-slate-300 ring-1 ring-slate-200 dark:ring-slate-800",
                     )}
                     style={selectedPreviewTab === tab.key ? { backgroundColor: selectedPreviewTab === "segment" ? ORANGE : GREEN } : undefined}
                   >
@@ -1855,20 +1855,20 @@ export default function ChannelsContactManagerPage() {
             {selectedPreviewTab === "contact" ? (
               <div className="space-y-4">
                 <ContactPreviewCard contact={selectedContact} segmentLookup={segmentLookup} />
-                <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm">
-                  <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">Desktop spotlight</div>
+                <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft">
+                  <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-faith-ink dark:text-slate-100 sm:text-[34px] lg:text-[40px]">Desktop spotlight</div>
                   <div className="mt-2 grid grid-cols-3 gap-3 text-[12px]">
-                    <div className="rounded-2xl bg-slate-50 dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                      <div className="mt-1.5 text-[14px] leading-6 text-slate-500 dark:text-slate-400">Live attended</div>
-                      <div className="mt-1 text-lg font-extrabold text-slate-900 dark:text-slate-50">{selectedContact.liveCount}</div>
+                    <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                      <div className="mt-1.5 text-[14px] leading-6 text-faith-slate">Live attended</div>
+                      <div className="mt-1 text-lg font-extrabold text-faith-ink dark:text-slate-50">{selectedContact.liveCount}</div>
                     </div>
-                    <div className="rounded-2xl bg-slate-50 dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                      <div className="text-slate-500 dark:text-slate-500 uppercase tracking-widest text-[10px] font-black">Replays</div>
-                      <div className="mt-1 text-lg font-extrabold text-slate-900 dark:text-slate-50">{selectedContact.replayCount}</div>
+                    <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                      <div className="text-faith-slate uppercase tracking-widest text-[10px] font-black">Replays</div>
+                      <div className="mt-1 text-lg font-extrabold text-faith-ink dark:text-slate-50">{selectedContact.replayCount}</div>
                     </div>
-                    <div className="rounded-2xl bg-slate-50 dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                      <div className="text-slate-500 dark:text-slate-500 uppercase tracking-widest text-[10px] font-black">Beacon touches</div>
-                      <div className="mt-1 text-lg font-extrabold text-slate-900 dark:text-slate-50">{selectedContact.beaconTouches}</div>
+                    <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                      <div className="text-faith-slate uppercase tracking-widest text-[10px] font-black">Beacon touches</div>
+                      <div className="mt-1 text-lg font-extrabold text-faith-ink dark:text-slate-50">{selectedContact.beaconTouches}</div>
                     </div>
                   </div>
                 </div>
@@ -1880,16 +1880,16 @@ export default function ChannelsContactManagerPage() {
             ) : null}
 
             {selectedPreviewTab === "channel" ? (
-              <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm">
-                <div className="text-sm font-black text-slate-900 dark:text-slate-50">Operational channel map</div>
+              <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft">
+                <div className="text-sm font-black text-faith-ink dark:text-slate-50">Operational channel map</div>
                 <div className="mt-3 grid gap-3 md:grid-cols-2">
                   {channelConnections.slice(0, 4).map((channel) => (
-                    <div key={channel.id} className="rounded-2xl bg-slate-50 dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                    <div key={channel.id} className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
                       <div className="flex items-center justify-between gap-2">
-                        <div className="text-[13px] font-bold text-slate-900 dark:text-slate-50">{channel.name}</div>
+                        <div className="text-[13px] font-bold text-faith-ink dark:text-slate-50">{channel.name}</div>
                         <Pill tone={statusTone(channel.status)}>{channel.status}</Pill>
                       </div>
-                      <div className="mt-2 text-[11px] text-slate-500 dark:text-slate-400">{channel.deliverability}</div>
+                      <div className="mt-2 text-[11px] text-faith-slate">{channel.deliverability}</div>
                     </div>
                   ))}
                 </div>
@@ -1904,39 +1904,39 @@ export default function ChannelsContactManagerPage() {
               body={
                 selectedPreviewTab === "contact" ? (
                   <>
-                    <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/80 px-4 py-3 ring-1 ring-slate-100 dark:ring-white/5 shadow-sm">
-                      <div className="text-xs font-black uppercase tracking-widest text-slate-500 dark:text-slate-400">Consent state</div>
-                      <div className="mt-1 text-sm font-black text-slate-900 dark:text-slate-100">{selectedContact.consentState} â€¢ {selectedContact.primaryChannel}</div>
+                    <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800/80 px-4 py-3 ring-1 ring-slate-100 dark:ring-white/5 shadow-soft">
+                      <div className="text-xs font-black uppercase tracking-widest text-faith-slate">Consent state</div>
+                      <div className="mt-1 text-sm font-black text-faith-ink dark:text-slate-100">{selectedContact.consentState} • {selectedContact.primaryChannel}</div>
                     </div>
-                    <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/80 px-4 py-3 ring-1 ring-slate-100 dark:ring-white/5 shadow-sm">
-                      <div className="text-xs font-black uppercase tracking-widest text-slate-500 dark:text-slate-400">Recent touch</div>
-                      <div className="mt-1 text-sm font-black text-slate-900 dark:text-slate-100">{selectedContact.lastActivity}</div>
-                      <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">{selectedContact.timeline[0]?.detail}</div>
+                    <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800/80 px-4 py-3 ring-1 ring-slate-100 dark:ring-white/5 shadow-soft">
+                      <div className="text-xs font-black uppercase tracking-widest text-faith-slate">Recent touch</div>
+                      <div className="mt-1 text-sm font-black text-faith-ink dark:text-slate-100">{selectedContact.lastActivity}</div>
+                      <div className="mt-1 text-[11px] text-faith-slate">{selectedContact.timeline[0]?.detail}</div>
                     </div>
-                    <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/80 px-4 py-3 ring-1 ring-slate-100 dark:ring-white/5 shadow-sm">
-                      <div className="text-xs font-black uppercase tracking-widest text-slate-500 dark:text-slate-400">Protected flags</div>
-                      <div className="mt-1 text-sm font-black text-slate-900 dark:text-slate-100">{selectedContact.childSafe ? "Child-safe lane" : "Standard lane"}</div>
+                    <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800/80 px-4 py-3 ring-1 ring-slate-100 dark:ring-white/5 shadow-soft">
+                      <div className="text-xs font-black uppercase tracking-widest text-faith-slate">Protected flags</div>
+                      <div className="mt-1 text-sm font-black text-faith-ink dark:text-slate-100">{selectedContact.childSafe ? "Child-safe lane" : "Standard lane"}</div>
                     </div>
                   </>
                 ) : selectedPreviewTab === "segment" ? (
                   <>
                     {(selectedContactSegments.length ? selectedContactSegments : filteredSegments).slice(0, 2).map((segment) => (
-                      <div key={segment.id} className="rounded-2xl bg-slate-50 dark:bg-slate-800/80 px-4 py-3 ring-1 ring-slate-100 dark:ring-white/5 shadow-sm">
-                        <div className="text-xs font-black uppercase tracking-widest text-slate-500 dark:text-slate-400">{segment.mode} segment</div>
-                        <div className="mt-1 text-sm font-black text-slate-900 dark:text-slate-100">{segment.label}</div>
-                        <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">{segment.size.toLocaleString()} contacts â€¢ {segment.growth}</div>
+                      <div key={segment.id} className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800/80 px-4 py-3 ring-1 ring-slate-100 dark:ring-white/5 shadow-soft">
+                        <div className="text-xs font-black uppercase tracking-widest text-faith-slate">{segment.mode} segment</div>
+                        <div className="mt-1 text-sm font-black text-faith-ink dark:text-slate-100">{segment.label}</div>
+                        <div className="mt-1 text-[11px] text-faith-slate">{segment.size.toLocaleString()} contacts • {segment.growth}</div>
                       </div>
                     ))}
                   </>
                 ) : (
                   <>
                     {channelConnections.slice(0, 3).map((channel) => (
-                      <div key={channel.id} className="rounded-2xl bg-slate-50 dark:bg-slate-800/80 px-4 py-3 ring-1 ring-slate-100 dark:ring-white/5 shadow-sm">
+                      <div key={channel.id} className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800/80 px-4 py-3 ring-1 ring-slate-100 dark:ring-white/5 shadow-soft">
                         <div className="flex items-center justify-between gap-2">
-                          <div className="text-sm font-black text-slate-900 dark:text-slate-100">{channel.name}</div>
+                          <div className="text-sm font-black text-faith-ink dark:text-slate-100">{channel.name}</div>
                           <Pill tone={statusTone(channel.status)}>{channel.status}</Pill>
                         </div>
-                        <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">{channel.deliverability}</div>
+                        <div className="mt-1 text-[11px] text-faith-slate">{channel.deliverability}</div>
                       </div>
                     ))}
                   </>
@@ -1953,12 +1953,12 @@ export default function ChannelsContactManagerPage() {
               }
             />
 
-            <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm">
-              <div className="text-sm font-black text-slate-900 dark:text-slate-50">Why this page is premium</div>
-              <div className="mt-3 space-y-2 text-[12px] text-slate-600 dark:text-slate-400 leading-relaxed">
-                <div className="rounded-2xl bg-slate-50 dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">A premium CRM feel without losing the warmth, context, and safeguarding needs of ministry work.</div>
-                <div className="rounded-2xl bg-slate-50 dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">Consent audit trails and child-safe restrictions live directly in the audience layer, not as a disconnected compliance add-on.</div>
-                <div className="rounded-2xl bg-slate-50 dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">Every contact and segment can deep-link into live attendance, replay behaviour, giving history, and Beacon campaign exposure.</div>
+            <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft">
+              <div className="text-sm font-black text-faith-ink dark:text-slate-50">Why this page is premium</div>
+              <div className="mt-3 space-y-2 text-[12px] text-faith-slate leading-relaxed">
+                <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">A premium CRM feel without losing the warmth, context, and safeguarding needs of ministry work.</div>
+                <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">Consent audit trails and child-safe restrictions live directly in the audience layer, not as a disconnected compliance add-on.</div>
+                <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">Every contact and segment can deep-link into live attendance, replay behaviour, giving history, and Beacon campaign exposure.</div>
               </div>
             </div>
           </div>
@@ -1975,6 +1975,7 @@ export default function ChannelsContactManagerPage() {
     </div>
   );
 }
+
 
 
 

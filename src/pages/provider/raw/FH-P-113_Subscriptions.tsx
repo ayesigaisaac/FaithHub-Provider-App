@@ -1,4 +1,4 @@
-ï»¿// @ts-nocheck
+// @ts-nocheck
 
 "use client";
 
@@ -29,7 +29,7 @@ import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
- * Provider â€” Subscriptions
+ * Provider — Subscriptions
  * ---------------------------------
  * Workspace / team subscriptions surface for billing plans, seats, entitlements,
  * add-ons, renewals, invoices, and feature access.
@@ -60,7 +60,7 @@ function safeNav(url: string) {
   navigateWithRouter(url);
 }
 
-function fmtMoney(n: number, currency = "Â£") {
+function fmtMoney(n: number, currency = "£") {
   return `${currency}${Intl.NumberFormat(undefined, {
     maximumFractionDigits: 0,
   }).format(n)}`;
@@ -456,7 +456,7 @@ function toneStyles(tone: Tone) {
     return "bg-sky-50 dark:bg-sky-900/20 text-sky-700 dark:text-sky-300 border-sky-200 dark:border-sky-800";
   if (tone === "pro")
     return "bg-violet-50 dark:bg-violet-900/20 text-violet-700 dark:text-violet-300 border-violet-200 dark:border-violet-800";
-  return "bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700";
+  return "bg-[var(--fh-surface-bg)] dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-faith-line dark:border-slate-700";
 }
 
 function Pill({
@@ -498,7 +498,7 @@ function SoftButton({
       title={title}
       onClick={onClick}
       className={cx(
-        "inline-flex items-center gap-2 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-2 text-[12px] font-semibold text-slate-700 dark:text-slate-200 transition-colors hover:bg-slate-50 dark:hover:bg-slate-700",
+        "inline-flex items-center gap-2 rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 px-4 py-2 text-[12px] font-semibold text-slate-700 dark:text-slate-200 transition-colors hover:bg-[var(--fh-surface)] dark:hover:bg-slate-700",
         className,
       )}
     >
@@ -549,14 +549,14 @@ function SectionCard({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 transition-colors">
+    <div className="rounded-3xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors">
       <div className="flex items-start justify-between gap-3">
         <div>
-          <div className="text-[14px] font-semibold text-slate-900 dark:text-slate-100">
+          <div className="text-[14px] font-semibold text-faith-ink dark:text-slate-100">
             {title}
           </div>
           {subtitle ? (
-            <div className="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">
+            <div className="mt-0.5 text-[11px] text-faith-slate">
               {subtitle}
             </div>
           ) : null}
@@ -706,7 +706,7 @@ export default function SubscriptionsPage() {
       style={{ background: EV_LIGHT, color: EV_NAVY }}
     >
       <div className="mx-auto max-w-[1550px] space-y-5">
-        <div className="rounded-[28px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 md:p-6 transition-colors">
+        <div className="rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-5 md:p-6 transition-colors">
           <div className="flex flex-col gap-5 xl:flex-row xl:items-start xl:justify-between">
             <div className="min-w-0 flex-1">
               <div className="flex items-start gap-4">
@@ -716,8 +716,8 @@ export default function SubscriptionsPage() {
                     title="Subscriptions"
                     subtitle="Manage plans, seats, and premium access without losing control across billing plans, entitlements, renewals, invoices, and workspace feature access."
                   />
-                  <p className="mt-3 max-w-[980px] text-[18px] leading-snug text-slate-600 dark:text-slate-400">
-                    Workspace/team subscriptions for providers â€” covering billing plans,
+                  <p className="mt-3 max-w-[980px] text-[18px] leading-snug text-faith-slate">
+                    Workspace/team subscriptions for providers — covering billing plans,
                     seats, entitlements, add-ons, renewals, invoices, and feature access in one premium surface.
                   </p>
                   <div className="mt-4 flex flex-wrap gap-2">
@@ -730,11 +730,11 @@ export default function SubscriptionsPage() {
               </div>
             </div>
 
-            <div className="w-full max-w-[470px] rounded-[24px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-5 transition-colors">
-              <div className="text-[12px] font-semibold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">
+            <div className="w-full max-w-[470px] rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-5 transition-colors">
+              <div className="text-[12px] font-semibold uppercase tracking-[0.12em] text-faith-slate">
                 COMMAND ACTIONS
               </div>
-              <div className="mt-2 text-[18px] font-black text-slate-900 dark:text-slate-100">
+              <div className="mt-2 text-[18px] font-black text-faith-ink dark:text-slate-100">
                 Subscription control
               </div>
               <div className="mt-3 flex flex-wrap gap-2">
@@ -762,14 +762,14 @@ export default function SubscriptionsPage() {
                   View Invoices
                 </SoftButton>
               </div>
-              <div className="mt-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 transition-colors">
-                <div className="text-[12px] font-semibold text-slate-500 dark:text-slate-400">
+              <div className="mt-4 rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors">
+                <div className="text-[12px] font-semibold text-faith-slate">
                   Billing contact
                 </div>
-                <div className="mt-1 text-[17px] font-black text-slate-900 dark:text-slate-100">
+                <div className="mt-1 text-[17px] font-black text-faith-ink dark:text-slate-100">
                   finance@glowuphub.org
                 </div>
-                <div className="mt-2 text-[12px] leading-snug text-slate-600 dark:text-slate-400">
+                <div className="mt-2 text-[12px] leading-snug text-faith-slate">
                   Renewal notices, invoices, payment failures, and seat-change approvals route here.
                 </div>
               </div>
@@ -783,13 +783,13 @@ export default function SubscriptionsPage() {
           ))}
         </div>
 
-        <div className="rounded-[24px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 transition-colors">
+        <div className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors">
           <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
             <div className="min-w-0">
-              <div className="text-[15px] font-semibold text-slate-900 dark:text-slate-100">
+              <div className="text-[15px] font-semibold text-faith-ink dark:text-slate-100">
                 Search and filter subscription operations
               </div>
-              <div className="mt-0.5 text-[12px] text-slate-600 dark:text-slate-400">
+              <div className="mt-0.5 text-[12px] text-faith-slate">
                 Find plans, seats, entitlements, add-ons, invoices, and billing notes faster.
               </div>
             </div>
@@ -803,7 +803,7 @@ export default function SubscriptionsPage() {
                     "rounded-full px-3 py-1.5 text-[12px] font-semibold transition-colors",
                     filter === item
                       ? "text-white"
-                      : "border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300",
+                      : "border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 text-slate-700 dark:text-slate-300",
                   )}
                   style={filter === item ? { background: item === "Billing" ? EV_ORANGE : EV_GREEN } : undefined}
                 >
@@ -812,15 +812,15 @@ export default function SubscriptionsPage() {
               ))}
             </div>
           </div>
-          <div className="mt-3 flex items-center gap-2 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-4 py-3 transition-colors">
-            <Search className="h-4 w-4 text-slate-400" />
+          <div className="mt-3 flex items-center gap-2 rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-3 transition-colors">
+            <Search className="h-4 w-4 text-faith-slate" />
             <input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search plans, seat notes, invoice references, entitlements, or add-ons"
-              className="flex-1 bg-transparent text-[13px] outline-none placeholder:text-slate-400 text-slate-900 dark:text-slate-100"
+              className="flex-1 bg-transparent text-[13px] outline-none placeholder:text-faith-slate text-faith-ink dark:text-slate-100"
             />
-            <Filter className="h-4 w-4 text-slate-400" />
+            <Filter className="h-4 w-4 text-faith-slate" />
           </div>
         </div>
 
@@ -851,7 +851,7 @@ export default function SubscriptionsPage() {
                 </div>
 
                 <div className="mt-5 grid gap-3 sm:grid-cols-3">
-                  <div className="rounded-2xl bg-white/8 p-3 ring-1 ring-white/10">
+                  <div className="rounded-2xl bg-[var(--fh-surface-bg)]/8 p-3 ring-1 ring-white/10">
                     <div className="text-[10px] uppercase tracking-[0.12em] text-white/60">
                       Seats
                     </div>
@@ -860,7 +860,7 @@ export default function SubscriptionsPage() {
                       <ProgressBar value={38} total={45} tone="good" />
                     </div>
                   </div>
-                  <div className="rounded-2xl bg-white/8 p-3 ring-1 ring-white/10">
+                  <div className="rounded-2xl bg-[var(--fh-surface-bg)]/8 p-3 ring-1 ring-white/10">
                     <div className="text-[10px] uppercase tracking-[0.12em] text-white/60">
                       Monthly total
                     </div>
@@ -869,7 +869,7 @@ export default function SubscriptionsPage() {
                       Base plan + seats + active premium add-ons
                     </div>
                   </div>
-                  <div className="rounded-2xl bg-white/8 p-3 ring-1 ring-white/10">
+                  <div className="rounded-2xl bg-[var(--fh-surface-bg)]/8 p-3 ring-1 ring-white/10">
                     <div className="text-[10px] uppercase tracking-[0.12em] text-white/60">
                       Renewal
                     </div>
@@ -881,13 +881,13 @@ export default function SubscriptionsPage() {
                 </div>
 
                 <div className="mt-4 flex flex-wrap gap-2">
-                  <SoftButton onClick={() => setSheet("plan")} className="bg-white/95 text-slate-900 border-white/50">
+                  <SoftButton onClick={() => setSheet("plan")} className="bg-[var(--fh-surface-bg)]/95 text-faith-ink border-white/50">
                     <Crown className="h-4 w-4" />
                     Compare plan paths
                   </SoftButton>
                   <SoftButton
                     onClick={() => safeNav(ROUTES.walletPayouts)}
-                    className="bg-white/10 text-white border-white/15 hover:bg-white/15"
+                    className="bg-[var(--fh-surface-bg)]/10 text-white border-white/15 hover:bg-[var(--fh-surface-bg)]/15"
                   >
                     <ExternalLink className="h-4 w-4" />
                     Open finance links
@@ -897,7 +897,7 @@ export default function SubscriptionsPage() {
                       const ok = await copyText("finance@glowuphub.org");
                       if (ok) window.alert("Billing contact copied");
                     }}
-                    className="bg-white/10 text-white border-white/15 hover:bg-white/15"
+                    className="bg-[var(--fh-surface-bg)]/10 text-white border-white/15 hover:bg-[var(--fh-surface-bg)]/15"
                   >
                     <CheckCircle2 className="h-4 w-4" />
                     Copy billing contact
@@ -906,36 +906,36 @@ export default function SubscriptionsPage() {
               </div>
 
               <div className="mt-4 grid gap-3 md:grid-cols-3">
-                <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-4 transition-colors">
-                  <div className="text-[11px] uppercase tracking-[0.12em] text-slate-400">
+                <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 transition-colors">
+                  <div className="text-[11px] uppercase tracking-[0.12em] text-faith-slate">
                     Plan stewardship
                   </div>
-                  <div className="mt-2 text-[13px] font-semibold text-slate-900 dark:text-slate-100">
+                  <div className="mt-2 text-[13px] font-semibold text-faith-ink dark:text-slate-100">
                     Auto-renew is on
                   </div>
-                  <div className="mt-1 text-[12px] text-slate-600 dark:text-slate-400">
+                  <div className="mt-1 text-[12px] text-faith-slate">
                     Renewal protection is enabled so core provider surfaces stay uninterrupted.
                   </div>
                 </div>
-                <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-4 transition-colors">
-                  <div className="text-[11px] uppercase tracking-[0.12em] text-slate-400">
+                <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 transition-colors">
+                  <div className="text-[11px] uppercase tracking-[0.12em] text-faith-slate">
                     Seat health
                   </div>
-                  <div className="mt-2 text-[13px] font-semibold text-slate-900 dark:text-slate-100">
+                  <div className="mt-2 text-[13px] font-semibold text-faith-ink dark:text-slate-100">
                     7 seats remaining
                   </div>
-                  <div className="mt-1 text-[12px] text-slate-600 dark:text-slate-400">
+                  <div className="mt-1 text-[12px] text-faith-slate">
                     Community care and production teams are the fastest-growing clusters right now.
                   </div>
                 </div>
-                <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-4 transition-colors">
-                  <div className="text-[11px] uppercase tracking-[0.12em] text-slate-400">
+                <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 transition-colors">
+                  <div className="text-[11px] uppercase tracking-[0.12em] text-faith-slate">
                     Payment readiness
                   </div>
-                  <div className="mt-2 text-[13px] font-semibold text-slate-900 dark:text-slate-100">
+                  <div className="mt-2 text-[13px] font-semibold text-faith-ink dark:text-slate-100">
                     1 backup method stored
                   </div>
-                  <div className="mt-1 text-[12px] text-slate-600 dark:text-slate-400">
+                  <div className="mt-1 text-[12px] text-faith-slate">
                     Primary card is healthy and ACH fallback is available for higher-value invoices.
                   </div>
                 </div>
@@ -956,14 +956,14 @@ export default function SubscriptionsPage() {
                 {filteredSeats.map((item) => (
                   <div
                     key={item.id}
-                    className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 p-4 transition-colors"
+                    className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 p-4 transition-colors"
                   >
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0">
-                        <div className="text-[13px] font-semibold text-slate-900 dark:text-slate-100">
+                        <div className="text-[13px] font-semibold text-faith-ink dark:text-slate-100">
                           {item.label}
                         </div>
-                        <div className="mt-0.5 text-[12px] text-slate-600 dark:text-slate-400">
+                        <div className="mt-0.5 text-[12px] text-faith-slate">
                           {item.hint}
                         </div>
                       </div>
@@ -975,7 +975,7 @@ export default function SubscriptionsPage() {
                     <div className="mt-3">
                       <ProgressBar value={item.used} total={item.total} tone={item.tone} />
                     </div>
-                    <div className="mt-2 text-[11px] text-slate-500 dark:text-slate-400">
+                    <div className="mt-2 text-[11px] text-faith-slate">
                       {item.total - item.used} seat(s) available in this cluster.
                     </div>
                   </div>
@@ -983,24 +983,24 @@ export default function SubscriptionsPage() {
               </div>
 
               <div className="mt-4 grid gap-3 md:grid-cols-2">
-                <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-4 transition-colors">
-                  <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+                <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 transition-colors">
+                  <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                     Pending invites
                   </div>
-                  <div className="mt-2 flex items-center justify-between text-[12px] text-slate-600 dark:text-slate-400">
+                  <div className="mt-2 flex items-center justify-between text-[12px] text-faith-slate">
                     <span>2 invites waiting for acceptance</span>
-                    <span className="font-semibold text-slate-900 dark:text-slate-100">
+                    <span className="font-semibold text-faith-ink dark:text-slate-100">
                       2 seats reserved
                     </span>
                   </div>
                 </div>
-                <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-4 transition-colors">
-                  <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+                <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 transition-colors">
+                  <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                     Recommended expansion
                   </div>
-                  <div className="mt-2 flex items-center justify-between text-[12px] text-slate-600 dark:text-slate-400">
+                  <div className="mt-2 flex items-center justify-between text-[12px] text-faith-slate">
                     <span>Five-seat pack before Easter</span>
-                    <span className="font-semibold text-slate-900 dark:text-slate-100">
+                    <span className="font-semibold text-faith-ink dark:text-slate-100">
                       {fmtMoney(90)}
                     </span>
                   </div>
@@ -1019,17 +1019,17 @@ export default function SubscriptionsPage() {
                 {filteredEntitlements.map((item) => (
                   <div
                     key={item.id}
-                    className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 p-4 transition-colors"
+                    className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 p-4 transition-colors"
                   >
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0">
-                        <div className="text-[11px] uppercase tracking-[0.12em] text-slate-400">
+                        <div className="text-[11px] uppercase tracking-[0.12em] text-faith-slate">
                           {item.group}
                         </div>
-                        <div className="mt-1 text-[13px] font-semibold text-slate-900 dark:text-slate-100">
+                        <div className="mt-1 text-[13px] font-semibold text-faith-ink dark:text-slate-100">
                           {item.label}
                         </div>
-                        <div className="mt-1 text-[12px] leading-snug text-slate-600 dark:text-slate-400">
+                        <div className="mt-1 text-[12px] leading-snug text-faith-slate">
                           {item.hint}
                         </div>
                       </div>
@@ -1049,19 +1049,19 @@ export default function SubscriptionsPage() {
                 {filteredAddOns.map((item) => (
                   <div
                     key={item.id}
-                    className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 p-4 transition-colors"
+                    className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 p-4 transition-colors"
                   >
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0">
-                        <div className="text-[13px] font-semibold text-slate-900 dark:text-slate-100">
+                        <div className="text-[13px] font-semibold text-faith-ink dark:text-slate-100">
                           {item.label}
                         </div>
-                        <div className="mt-1 text-[12px] leading-snug text-slate-600 dark:text-slate-400">
+                        <div className="mt-1 text-[12px] leading-snug text-faith-slate">
                           {item.hint}
                         </div>
                       </div>
                       <div className="text-right">
-                        <div className="text-[13px] font-black text-slate-900 dark:text-slate-100">
+                        <div className="text-[13px] font-black text-faith-ink dark:text-slate-100">
                           {item.priceLabel}
                         </div>
                         <div className="mt-1">
@@ -1090,7 +1090,7 @@ export default function SubscriptionsPage() {
               title="Preview + access rail"
               subtitle="How the plan and entitlements feel to provider teams before you change anything."
               right={
-                <div className="inline-flex rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-1 transition-colors">
+                <div className="inline-flex rounded-full border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 p-1 transition-colors">
                   <button
                     type="button"
                     onClick={() => setPreviewMode("desktop")}
@@ -1117,7 +1117,7 @@ export default function SubscriptionsPage() {
               }
             >
               {previewMode === "desktop" ? (
-                <div className="rounded-[26px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-4 transition-colors">
+                <div className="rounded-[26px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 transition-colors">
                   <div
                     className="rounded-[22px] p-4 text-white"
                     style={{ background: `linear-gradient(135deg, ${EV_NAVY} 0%, #132a5b 100%)` }}
@@ -1127,7 +1127,7 @@ export default function SubscriptionsPage() {
                     </div>
                     <div className="mt-1 text-[24px] font-black">Growth Workspace</div>
                     <div className="mt-1 text-[12px] text-white/75">
-                      38 / 45 seats Â· 4 premium add-ons Â· renewal May 28
+                      38 / 45 seats · 4 premium add-ons · renewal May 28
                     </div>
                     <div className="mt-3">
                       <ProgressBar value={38} total={45} tone="good" />
@@ -1144,9 +1144,9 @@ export default function SubscriptionsPage() {
                     ].map(([label, state, tone]) => (
                       <div
                         key={label}
-                        className="flex items-center justify-between rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3 py-2 transition-colors"
+                        className="flex items-center justify-between rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 transition-colors"
                       >
-                        <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+                        <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                           {label}
                         </div>
                         <StatusPill label={state} tone={tone as Tone} />
@@ -1155,24 +1155,24 @@ export default function SubscriptionsPage() {
                   </div>
                 </div>
               ) : (
-                <div className="mx-auto max-w-[300px] rounded-[28px] border border-slate-200 dark:border-slate-800 bg-slate-900 p-3 shadow-sm transition-colors">
-                  <div className="rounded-[24px] bg-white dark:bg-slate-950 p-4 transition-colors">
-                    <div className="text-[10px] uppercase tracking-[0.12em] text-slate-400">
+                <div className="mx-auto max-w-[300px] rounded-[28px] border border-faith-line dark:border-slate-800 bg-slate-900 p-3 shadow-soft transition-colors">
+                  <div className="rounded-[24px] bg-[var(--fh-surface-bg)] dark:bg-slate-950 p-4 transition-colors">
+                    <div className="text-[10px] uppercase tracking-[0.12em] text-faith-slate">
                       Mobile billing summary
                     </div>
-                    <div className="mt-1 text-[18px] font-black text-slate-900 dark:text-slate-100">
+                    <div className="mt-1 text-[18px] font-black text-faith-ink dark:text-slate-100">
                       Growth Workspace
                     </div>
-                    <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
-                      38 / 45 seats Â· renewal in 18 days
+                    <div className="mt-1 text-[11px] text-faith-slate">
+                      38 / 45 seats · renewal in 18 days
                     </div>
                     <div className="mt-3 space-y-2">
                       {["Live Sessions", "Beacon", "Translation", "Invoices"].map((label, idx) => (
                         <div
                           key={label}
-                          className="flex items-center justify-between rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 px-3 py-2 transition-colors"
+                          className="flex items-center justify-between rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 px-3 py-2 transition-colors"
                         >
-                          <span className="text-[11px] font-semibold text-slate-900 dark:text-slate-100">
+                          <span className="text-[11px] font-semibold text-faith-ink dark:text-slate-100">
                             {label}
                           </span>
                           <span
@@ -1189,19 +1189,19 @@ export default function SubscriptionsPage() {
               )}
 
               <div className="mt-4 grid gap-3">
-                <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-4 transition-colors">
-                  <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+                <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 transition-colors">
+                  <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                     Payment method vault
                   </div>
-                  <div className="mt-2 text-[12px] text-slate-600 dark:text-slate-400">
-                    Primary card: <span className="font-semibold text-slate-900 dark:text-slate-100">Visa ending 4831</span>
+                  <div className="mt-2 text-[12px] text-faith-slate">
+                    Primary card: <span className="font-semibold text-faith-ink dark:text-slate-100">Visa ending 4831</span>
                   </div>
-                  <div className="mt-1 text-[12px] text-slate-600 dark:text-slate-400">
-                    Backup: <span className="font-semibold text-slate-900 dark:text-slate-100">ACH account Â· verified</span>
+                  <div className="mt-1 text-[12px] text-faith-slate">
+                    Backup: <span className="font-semibold text-faith-ink dark:text-slate-100">ACH account · verified</span>
                   </div>
                 </div>
-                <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-4 transition-colors">
-                  <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+                <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 transition-colors">
+                  <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                     Billing safeguards
                   </div>
                   <div className="mt-2 flex flex-wrap gap-2">
@@ -1240,24 +1240,24 @@ export default function SubscriptionsPage() {
                   className={cx(
                     "w-full rounded-2xl border p-4 text-left transition-colors",
                     selectedInvoiceId === invoice.id
-                      ? "border-slate-900 dark:border-white bg-slate-50 dark:bg-slate-950"
-                      : "border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-950",
+                      ? "border-slate-900 dark:border-white bg-[var(--fh-surface)] dark:bg-slate-950"
+                      : "border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-950",
                   )}
                 >
                   <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                     <div className="min-w-0">
-                      <div className="text-[13px] font-semibold text-slate-900 dark:text-slate-100">
+                      <div className="text-[13px] font-semibold text-faith-ink dark:text-slate-100">
                         {invoice.period}
                       </div>
-                      <div className="mt-1 text-[12px] text-slate-600 dark:text-slate-400">
-                        {invoice.reference} Â· {invoice.method}
+                      <div className="mt-1 text-[12px] text-faith-slate">
+                        {invoice.reference} · {invoice.method}
                       </div>
-                      <div className="mt-1 text-[12px] text-slate-500 dark:text-slate-400">
-                        Due {fmtDate(invoice.dueISO)} Â· {invoice.seats} billed seats
+                      <div className="mt-1 text-[12px] text-faith-slate">
+                        Due {fmtDate(invoice.dueISO)} · {invoice.seats} billed seats
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="text-[16px] font-black text-slate-900 dark:text-slate-100">
+                      <div className="text-[16px] font-black text-faith-ink dark:text-slate-100">
                         {fmtMoney(invoice.amount)}
                       </div>
                       <div className="mt-1">
@@ -1269,13 +1269,13 @@ export default function SubscriptionsPage() {
               ))}
             </div>
 
-            <div className="mt-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-4 transition-colors">
+            <div className="mt-4 rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 transition-colors">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <div className="text-[13px] font-semibold text-slate-900 dark:text-slate-100">
+                  <div className="text-[13px] font-semibold text-faith-ink dark:text-slate-100">
                     {selectedInvoice.period}
                   </div>
-                  <div className="mt-1 text-[12px] text-slate-500 dark:text-slate-400">
+                  <div className="mt-1 text-[12px] text-faith-slate">
                     {selectedInvoice.note}
                   </div>
                 </div>
@@ -1289,12 +1289,12 @@ export default function SubscriptionsPage() {
                 {selectedInvoice.lines.map((line) => (
                   <div
                     key={line.label}
-                    className="flex items-center justify-between rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3 py-2 transition-colors"
+                    className="flex items-center justify-between rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 transition-colors"
                   >
                     <span className="text-[12px] text-slate-700 dark:text-slate-300">
                       {line.label}
                     </span>
-                    <span className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+                    <span className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                       {fmtMoney(line.amount)}
                     </span>
                   </div>
@@ -1377,22 +1377,22 @@ export default function SubscriptionsPage() {
                     key={item.label}
                     type="button"
                     onClick={item.onClick}
-                    className="flex items-center justify-between rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-4 py-3 text-left transition-colors hover:bg-slate-50 dark:hover:bg-slate-900"
+                    className="flex items-center justify-between rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 px-4 py-3 text-left transition-colors hover:bg-[var(--fh-surface)] dark:hover:bg-slate-900"
                   >
                     <div className="flex items-start gap-3">
                       <div className="mt-0.5 grid h-9 w-9 place-items-center rounded-2xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200">
                         {item.icon}
                       </div>
                       <div>
-                        <div className="text-[13px] font-semibold text-slate-900 dark:text-slate-100">
+                        <div className="text-[13px] font-semibold text-faith-ink dark:text-slate-100">
                           {item.label}
                         </div>
-                        <div className="mt-0.5 text-[12px] text-slate-600 dark:text-slate-400">
+                        <div className="mt-0.5 text-[12px] text-faith-slate">
                           {item.hint}
                         </div>
                       </div>
                     </div>
-                    <ChevronRight className="h-4 w-4 text-slate-400" />
+                    <ChevronRight className="h-4 w-4 text-faith-slate" />
                   </button>
                 ))}
               </div>
@@ -1403,13 +1403,13 @@ export default function SubscriptionsPage() {
 
       {sheet === "plan" ? (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/35 p-4">
-          <div className="w-full max-w-[980px] rounded-[28px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-2xl transition-colors">
+          <div className="w-full max-w-[980px] rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-5 shadow-2xl transition-colors">
             <div className="flex items-start justify-between gap-3">
               <div>
-                <div className="text-[18px] font-black text-slate-900 dark:text-slate-100">
+                <div className="text-[18px] font-black text-faith-ink dark:text-slate-100">
                   Manage plan
                 </div>
-                <div className="mt-1 text-[12px] text-slate-600 dark:text-slate-400">
+                <div className="mt-1 text-[12px] text-faith-slate">
                   Compare the current workspace against upgrade or downgrade paths before changing anything.
                 </div>
               </div>
@@ -1442,10 +1442,10 @@ export default function SubscriptionsPage() {
               ].map((plan) => (
                 <div
                   key={plan.label}
-                  className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-4 transition-colors"
+                  className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 transition-colors"
                 >
                   <div className="flex items-center justify-between gap-2">
-                    <div className="text-[14px] font-semibold text-slate-900 dark:text-slate-100">
+                    <div className="text-[14px] font-semibold text-faith-ink dark:text-slate-100">
                       {plan.label}
                     </div>
                     <StatusPill
@@ -1453,10 +1453,10 @@ export default function SubscriptionsPage() {
                       tone={plan.tone}
                     />
                   </div>
-                  <div className="mt-3 text-[28px] font-black text-slate-900 dark:text-slate-100">
+                  <div className="mt-3 text-[28px] font-black text-faith-ink dark:text-slate-100">
                     {plan.price}
                   </div>
-                  <div className="mt-1 text-[12px] leading-snug text-slate-600 dark:text-slate-400">
+                  <div className="mt-1 text-[12px] leading-snug text-faith-slate">
                     {plan.hint}
                   </div>
                   <div className="mt-4">
@@ -1476,13 +1476,13 @@ export default function SubscriptionsPage() {
 
       {sheet === "seats" ? (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/35 p-4">
-          <div className="w-full max-w-[760px] rounded-[28px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-2xl transition-colors">
+          <div className="w-full max-w-[760px] rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-5 shadow-2xl transition-colors">
             <div className="flex items-start justify-between gap-3">
               <div>
-                <div className="text-[18px] font-black text-slate-900 dark:text-slate-100">
+                <div className="text-[18px] font-black text-faith-ink dark:text-slate-100">
                   Add seats
                 </div>
-                <div className="mt-1 text-[12px] text-slate-600 dark:text-slate-400">
+                <div className="mt-1 text-[12px] text-faith-slate">
                   Expand your workspace capacity for production, care, outreach, and leadership teams.
                 </div>
               </div>
@@ -1500,15 +1500,15 @@ export default function SubscriptionsPage() {
               ].map((pack, idx) => (
                 <div
                   key={pack.label}
-                  className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-4 transition-colors"
+                  className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 transition-colors"
                 >
-                  <div className="text-[14px] font-semibold text-slate-900 dark:text-slate-100">
+                  <div className="text-[14px] font-semibold text-faith-ink dark:text-slate-100">
                     {pack.label}
                   </div>
-                  <div className="mt-3 text-[24px] font-black text-slate-900 dark:text-slate-100">
+                  <div className="mt-3 text-[24px] font-black text-faith-ink dark:text-slate-100">
                     {pack.price}
                   </div>
-                  <div className="mt-1 text-[12px] leading-snug text-slate-600 dark:text-slate-400">
+                  <div className="mt-1 text-[12px] leading-snug text-faith-slate">
                     {pack.hint}
                   </div>
                   <div className="mt-4">
@@ -1532,6 +1532,7 @@ export default function SubscriptionsPage() {
     </div>
   );
 }
+
 
 
 

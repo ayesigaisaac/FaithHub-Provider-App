@@ -1,4 +1,4 @@
-Ôªø// @ts-nocheck
+// @ts-nocheck
 
 "use client";
 
@@ -54,7 +54,7 @@ import {
 } from "lucide-react";
 
 /**
- * Provider ‚Äî Live Studio
+ * Provider ó Live Studio
  * --------------------------------
  * Premium production studio for Live Sessions.
  *
@@ -174,11 +174,11 @@ type ClipMark = {
 
 const SESSION = {
   title: "Sunday Encounter Live",
-  parentLabel: "The Way of Grace ‚Ä¢ Episode 4",
+  parentLabel: "The Way of Grace ï Episode 4",
   subtitle:
     "Premium control room for a live teaching session with prayer, scripture moments, giving prompts, translated tracks, and replay-ready clip markers.",
-  hostLine: "Pastor Daniel M. ‚Ä¢ Minister Ruth K. ‚Ä¢ Central Campus",
-  locations: "Main Sanctuary ¬∑ Central Campus",
+  hostLine: "Pastor Daniel M. ï Minister Ruth K. ï Central Campus",
+  locations: "Main Sanctuary ∑ Central Campus",
   destinations: [
     { label: "Provider", health: "healthy" as HealthTone },
     { label: "YouTube", health: "healthy" as HealthTone },
@@ -263,49 +263,49 @@ const SCENES: Scene[] = [
 const SOURCES: SourceItem[] = [
   {
     id: "cam-host",
-    label: "Camera 1 ¬∑ Host",
+    label: "Camera 1 ∑ Host",
     kind: "camera",
     health: "healthy",
-    detail: "Sony FX3 ¬∑ 1080p30 ¬∑ Audio linked",
+    detail: "Sony FX3 ∑ 1080p30 ∑ Audio linked",
   },
   {
     id: "cam-pulpit",
-    label: "Camera 2 ¬∑ Pulpit",
+    label: "Camera 2 ∑ Pulpit",
     kind: "camera",
     health: "healthy",
-    detail: "PTZ preset active ¬∑ Clean framing",
+    detail: "PTZ preset active ∑ Clean framing",
   },
   {
     id: "cam-wide",
-    label: "Camera 3 ¬∑ Wide Room",
+    label: "Camera 3 ∑ Wide Room",
     kind: "camera",
     health: "watch",
     detail: "Low light on rear aisle",
   },
   {
     id: "screen-share",
-    label: "Screen Share ¬∑ Scripture Deck",
+    label: "Screen Share ∑ Scripture Deck",
     kind: "screen",
     health: "healthy",
-    detail: "Slides synced ¬∑ Verse pack loaded",
+    detail: "Slides synced ∑ Verse pack loaded",
   },
   {
     id: "worship-loop",
-    label: "Media Loop ¬∑ Worship Intro",
+    label: "Media Loop ∑ Worship Intro",
     kind: "media",
     health: "healthy",
     detail: "3 motion clips ready",
   },
   {
     id: "graphics",
-    label: "Graphics Bus ¬∑ Lower Thirds",
+    label: "Graphics Bus ∑ Lower Thirds",
     kind: "graphics",
     health: "healthy",
     detail: "12 overlays and 4 scripture cards",
   },
   {
     id: "fallback",
-    label: "Fallback Source ¬∑ Sanctuary Slate",
+    label: "Fallback Source ∑ Sanctuary Slate",
     kind: "fallback",
     health: "healthy",
     detail: "Ready for instant switch",
@@ -318,7 +318,7 @@ const STAGE_MEMBERS: StageMember[] = [
     role: "Host",
     name: "Pastor Daniel M.",
     status: "On stage",
-    controlNote: "Lead voice ¬∑ camera 1 and pulpit scenes",
+    controlNote: "Lead voice ∑ camera 1 and pulpit scenes",
     critical: true,
   },
   {
@@ -423,7 +423,7 @@ const CHAT_MESSAGES: ChatMessage[] = [
   {
     id: 1,
     from: "Ama K.",
-    body: "Audio is clear now. Thank you team üôè",
+    body: "Audio is clear now. Thank you team ??",
     time: "Now",
     pinned: true,
   },
@@ -548,8 +548,8 @@ function toneClasses(tone: SceneTone) {
     };
   }
   return {
-    bg: "bg-slate-50 dark:bg-slate-900",
-    border: "border-slate-200 dark:border-slate-700",
+    bg: "bg-[var(--fh-surface)] dark:bg-slate-900",
+    border: "border-faith-line dark:border-slate-700",
     text: "text-slate-800 dark:text-slate-300",
   };
 }
@@ -573,14 +573,14 @@ function formatLiveTimer(totalSeconds: number) {
 }
 
 function formatCurrency(amount: number) {
-  return `¬£${amount.toLocaleString()}`;
+  return `£${amount.toLocaleString()}`;
 }
 
 function TopStat({ label, value }: { label: string; value: string }) {
   return (
-    <span className="inline-flex flex-col items-start rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-2.5 py-1 text-xs transition-colors">
-      <span className="text-[10px] uppercase tracking-wide text-slate-400 dark:text-slate-500">{label}</span>
-      <span className="text-sm font-semibold text-slate-900 dark:text-slate-100">{value}</span>
+    <span className="inline-flex flex-col items-start rounded-xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-2.5 py-1 text-xs transition-colors">
+      <span className="text-[10px] uppercase tracking-wide text-faith-slate">{label}</span>
+      <span className="text-sm font-semibold text-faith-ink dark:text-slate-100">{value}</span>
     </span>
   );
 }
@@ -601,7 +601,7 @@ function Pill({
       ? "border-orange-200 dark:border-orange-800 bg-orange-50 dark:bg-orange-900/20 text-orange-700 dark:text-orange-300"
       : tone === "danger"
       ? "border-rose-200 dark:border-rose-800 bg-rose-50 dark:bg-rose-900/20 text-rose-700 dark:text-rose-300"
-      : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300";
+      : "border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 text-slate-700 dark:text-slate-300";
   return (
     <span className={cx("inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[11px] font-semibold", cls)}>
       {icon}
@@ -624,11 +624,11 @@ function CardShell({
   className?: string;
 }) {
   return (
-    <section className={cx("rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 transition-colors shadow-sm", className)}>
+    <section className={cx("rounded-3xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors shadow-soft", className)}>
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
-          <h3 className="text-[13px] font-semibold text-slate-900 dark:text-slate-100">{title}</h3>
-          {subtitle ? <p className="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">{subtitle}</p> : null}
+          <h3 className="text-[13px] font-semibold text-faith-ink dark:text-slate-100">{title}</h3>
+          {subtitle ? <p className="mt-0.5 text-[11px] text-faith-slate">{subtitle}</p> : null}
         </div>
         {right ? <div className="shrink-0">{right}</div> : null}
       </div>
@@ -654,11 +654,11 @@ function StudioStatusBadge({ mode, timer }: { mode: Mode; timer: string }) {
         "inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-semibold",
         mode === "live"
           ? "border-emerald-400/60 bg-emerald-500/15 text-emerald-700 dark:text-emerald-300"
-          : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300",
+          : "border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-slate-700 dark:text-slate-300",
       )}
     >
       <span className={cx("h-2 w-2 rounded-full", mode === "live" ? "bg-emerald-500 animate-pulse" : "bg-slate-400")} />
-      {mode === "live" ? `Live ‚Ä¢ ${timer}` : "Pre-live lobby"}
+      {mode === "live" ? `Live ï ${timer}` : "Pre-live lobby"}
     </span>
   );
 }
@@ -682,51 +682,51 @@ function AudienceMiniPreview({
   return (
     <div
       className={cx(
-        "overflow-hidden rounded-[28px] border border-slate-200 dark:border-slate-700 bg-slate-950 shadow-sm",
+        "overflow-hidden rounded-[28px] border border-faith-line dark:border-slate-700 bg-slate-950 shadow-soft",
         isMobile ? "mx-auto w-[200px]" : "w-full",
       )}
     >
       <div className={cx("bg-slate-950 p-2", isMobile ? "rounded-[28px]" : "rounded-[24px]")}>
-        <div className="overflow-hidden rounded-[20px] bg-white dark:bg-slate-900 transition-colors">
-          <div className="h-8 border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-950/95 px-3 flex items-center justify-between">
-            <div className="text-[10px] font-semibold text-slate-900 dark:text-slate-100">Live</div>
-            <div className="text-[10px] text-slate-500 dark:text-slate-400">4.8k watching</div>
+        <div className="overflow-hidden rounded-[20px] bg-[var(--fh-surface-bg)] dark:bg-slate-900 transition-colors">
+          <div className="h-8 border-b border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)]/95 dark:bg-slate-950/95 px-3 flex items-center justify-between">
+            <div className="text-[10px] font-semibold text-faith-ink dark:text-slate-100">Live</div>
+            <div className="text-[10px] text-faith-slate">4.8k watching</div>
           </div>
           <div className={cx("relative bg-slate-950", isMobile ? "aspect-[9/14]" : "aspect-[16/9]")}>
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(3,205,140,0.22),transparent_40%),linear-gradient(135deg,rgba(2,6,23,1),rgba(15,23,42,1))]" />
             <div className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-red-600/90 px-2.5 py-1 text-[10px] font-bold text-white">
-              <span className="h-2 w-2 rounded-full bg-white" />
+              <span className="h-2 w-2 rounded-full bg-[var(--fh-surface-bg)]" />
               LIVE
             </div>
-            <div className="absolute right-4 top-4 rounded-full bg-white/10 px-2 py-1 text-[10px] font-bold text-white backdrop-blur">
+            <div className="absolute right-4 top-4 rounded-full bg-[var(--fh-surface-bg)]/10 px-2 py-1 text-[10px] font-bold text-white backdrop-blur">
               {sceneLabel}
             </div>
             <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
             <div className="absolute inset-x-4 bottom-4">
               <div className="text-[14px] font-black text-white">{SESSION.title}</div>
               <div className="mt-1 text-[11px] text-white/90">{SESSION.parentLabel}</div>
-              <div className="mt-2 inline-flex items-center gap-2 rounded-2xl bg-white/10 px-3 py-1.5 text-[10px] font-semibold text-white backdrop-blur">
+              <div className="mt-2 inline-flex items-center gap-2 rounded-2xl bg-[var(--fh-surface-bg)]/10 px-3 py-1.5 text-[10px] font-semibold text-white backdrop-blur">
                 <HeartHandshake className="h-3.5 w-3.5" />
                 {ctaLabel}
               </div>
               {captionsEnabled ? (
                 <div className="mt-3 max-w-[70%] rounded-lg bg-black/55 px-2 py-1 text-[10px] leading-relaxed text-white">
-                  ‚ÄúGrace changes not just what we do, but who we become.‚Äù
+                  ìGrace changes not just what we do, but who we become.î
                 </div>
               ) : null}
             </div>
           </div>
-          <div className="grid grid-cols-3 gap-2 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-3 py-2 text-[10px] text-slate-600 dark:text-slate-400">
+          <div className="grid grid-cols-3 gap-2 border-t border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 px-3 py-2 text-[10px] text-faith-slate">
             <div>
-              <div className="font-bold text-slate-900 dark:text-slate-100">Prayer</div>
+              <div className="font-bold text-faith-ink dark:text-slate-100">Prayer</div>
               <div>{SESSION.audience.prayerCount} active</div>
             </div>
             <div>
-              <div className="font-bold text-slate-900 dark:text-slate-100">Chat</div>
+              <div className="font-bold text-faith-ink dark:text-slate-100">Chat</div>
               <div>{SESSION.audience.chatVelocity}/min</div>
             </div>
             <div>
-              <div className="font-bold text-slate-900 dark:text-slate-100">Donate</div>
+              <div className="font-bold text-faith-ink dark:text-slate-100">Donate</div>
               <div>Open</div>
             </div>
           </div>
@@ -823,7 +823,7 @@ export default function FaithHubLiveStudioPage() {
       return;
     }
     setMode("standby");
-    showToast("Live ended ‚Ä¢ Post-live handoff ready");
+    showToast("Live ended ï Post-live handoff ready");
   };
 
   const handleMarkClip = (label = "Manual highlight marker") => {
@@ -900,11 +900,11 @@ export default function FaithHubLiveStudioPage() {
   );
 
   return (
-    <div className="min-h-screen w-full overflow-hidden bg-[radial-gradient(circle_at_top_left,rgba(3,205,140,0.08),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(247,127,0,0.08),transparent_32%)] bg-slate-50 text-slate-900 transition-colors dark:bg-slate-950 dark:text-slate-50">
+    <div className="min-h-screen w-full overflow-hidden bg-[radial-gradient(circle_at_top_left,rgba(3,205,140,0.08),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(247,127,0,0.08),transparent_32%)] bg-[var(--fh-surface)] text-faith-ink transition-colors dark:bg-slate-950 dark:text-slate-50">
       <PageHeader
         pageTitle="Live Studio"
         badge={headerBadge}
-        className="border-b border-slate-200 bg-white/80 backdrop-blur-sm dark:border-slate-800 dark:bg-slate-950/80"
+        className="border-b border-faith-line bg-[var(--fh-surface-bg)]/80 backdrop-blur-sm dark:border-slate-800 dark:bg-slate-950/80"
       />
 
       <div className="hidden xl:flex h-[calc(100dvh-76px)] flex-col overflow-hidden">
@@ -929,7 +929,7 @@ export default function FaithHubLiveStudioPage() {
                         "w-full rounded-2xl border p-3 text-left transition-colors",
                         queued
                           ? `${tones.bg} ${tones.border}`
-                          : "border-slate-200 bg-white hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800",
+                          : "border-faith-line bg-[var(--fh-surface-bg)] hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800",
                       )}
                     >
                       <div className="flex items-start justify-between gap-3">
@@ -942,13 +942,13 @@ export default function FaithHubLiveStudioPage() {
                               {scene.label.slice(0, 2).toUpperCase()}
                             </span>
                             <div className="min-w-0">
-                              <div className="truncate text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+                              <div className="truncate text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                                 {scene.label}
                               </div>
-                              <div className="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">{scene.template}</div>
+                              <div className="mt-0.5 text-[11px] text-faith-slate">{scene.template}</div>
                             </div>
                           </div>
-                          <div className="mt-2 line-clamp-2 text-[11px] leading-relaxed text-slate-600 dark:text-slate-400">
+                          <div className="mt-2 line-clamp-2 text-[11px] leading-relaxed text-faith-slate">
                             {scene.desc}
                           </div>
                         </div>
@@ -997,13 +997,13 @@ export default function FaithHubLiveStudioPage() {
                       "w-full rounded-2xl border p-3 text-left transition-colors",
                       selectedSourceId === source.id
                         ? "border-emerald-200 bg-emerald-50 dark:border-emerald-800 dark:bg-emerald-900/20"
-                        : "border-slate-200 bg-white hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800",
+                        : "border-faith-line bg-[var(--fh-surface-bg)] hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800",
                     )}
                   >
                     <div className="flex items-center justify-between gap-3">
                       <div className="min-w-0">
-                        <div className="truncate text-[12px] font-semibold text-slate-900 dark:text-slate-100">{source.label}</div>
-                        <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">{source.detail}</div>
+                        <div className="truncate text-[12px] font-semibold text-faith-ink dark:text-slate-100">{source.label}</div>
+                        <div className="mt-1 text-[11px] text-faith-slate">{source.detail}</div>
                       </div>
                       <span className={cx("rounded-full border px-2.5 py-1 text-[10px] font-semibold", healthPillClasses(source.health))}>
                         {source.health === "healthy" ? "Healthy" : source.health === "watch" ? "Watch" : "Risk"}
@@ -1014,19 +1014,19 @@ export default function FaithHubLiveStudioPage() {
               </div>
 
               <div className="mt-4 grid grid-cols-2 gap-2">
-                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3 dark:border-slate-700 dark:bg-slate-950">
-                  <div className="flex items-center gap-2 text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+                <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3 dark:border-slate-700 dark:bg-slate-950">
+                  <div className="flex items-center gap-2 text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                     <ScreenShare className="h-4 w-4 text-slate-700 dark:text-slate-300" />
                     Screen share
                   </div>
-                  <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">Enabled for scripture deck and sermon notes.</div>
+                  <div className="mt-1 text-[11px] text-faith-slate">Enabled for scripture deck and sermon notes.</div>
                 </div>
-                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3 dark:border-slate-700 dark:bg-slate-950">
-                  <div className="flex items-center gap-2 text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+                <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3 dark:border-slate-700 dark:bg-slate-950">
+                  <div className="flex items-center gap-2 text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                     <ImageIcon className="h-4 w-4 text-slate-700 dark:text-slate-300" />
                     Quick assets
                   </div>
-                  <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">5 lower thirds, 2 loop videos, 1 emergency slate.</div>
+                  <div className="mt-1 text-[11px] text-faith-slate">5 lower thirds, 2 loop videos, 1 emergency slate.</div>
                 </div>
               </div>
             </CardShell>
@@ -1040,7 +1040,7 @@ export default function FaithHubLiveStudioPage() {
                 {stageMembers.map((member) => (
                   <div
                     key={member.id}
-                    className="rounded-2xl border border-slate-200 bg-slate-50 p-3 dark:border-slate-700 dark:bg-slate-950"
+                    className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3 dark:border-slate-700 dark:bg-slate-950"
                   >
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0">
@@ -1056,16 +1056,16 @@ export default function FaithHubLiveStudioPage() {
                               .slice(0, 2)}
                           </span>
                           <div className="min-w-0">
-                            <div className="truncate text-[12px] font-semibold text-slate-900 dark:text-slate-100">{member.name}</div>
-                            <div className="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">{member.role}</div>
+                            <div className="truncate text-[12px] font-semibold text-faith-ink dark:text-slate-100">{member.name}</div>
+                            <div className="mt-0.5 text-[11px] text-faith-slate">{member.role}</div>
                           </div>
                         </div>
-                        <div className="mt-2 text-[11px] text-slate-600 dark:text-slate-400">{member.controlNote}</div>
+                        <div className="mt-2 text-[11px] text-faith-slate">{member.controlNote}</div>
                       </div>
                       <div className="shrink-0 text-right">
                         <Pill text={member.status} tone={member.status === "On stage" ? "good" : member.status === "Backstage" ? "warn" : "neutral"} />
                         {member.critical ? (
-                          <div className="mt-2 text-[10px] font-semibold uppercase tracking-wide text-slate-400 dark:text-slate-500">
+                          <div className="mt-2 text-[10px] font-semibold uppercase tracking-wide text-faith-slate">
                             Critical role
                           </div>
                         ) : null}
@@ -1075,7 +1075,7 @@ export default function FaithHubLiveStudioPage() {
                       <button
                         type="button"
                         onClick={() => cycleStageMember(member.id)}
-                        className="inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-700 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800"
+                        className="inline-flex items-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-xs font-semibold text-slate-700 transition-colors hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800"
                       >
                         <ChevronRight className="h-4 w-4" />
                         Cycle status
@@ -1107,7 +1107,7 @@ export default function FaithHubLiveStudioPage() {
                     "rounded-2xl border px-4 py-3 text-left text-[12px] font-semibold transition-colors",
                     muteAll
                       ? "border-rose-200 bg-rose-50 text-rose-700 dark:border-rose-900 dark:bg-rose-900/20 dark:text-rose-300"
-                      : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800",
+                      : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800",
                   )}
                 >
                   <div className="flex items-center justify-between gap-2">
@@ -1125,7 +1125,7 @@ export default function FaithHubLiveStudioPage() {
                     "rounded-2xl border px-4 py-3 text-left text-[12px] font-semibold transition-colors",
                     emergencySlate
                       ? "border-orange-200 bg-orange-50 text-orange-700 dark:border-orange-900 dark:bg-orange-900/20 dark:text-orange-300"
-                      : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800",
+                      : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800",
                   )}
                 >
                   <div className="flex items-center justify-between gap-2">
@@ -1143,7 +1143,7 @@ export default function FaithHubLiveStudioPage() {
                     "rounded-2xl border px-4 py-3 text-left text-[12px] font-semibold transition-colors",
                     fallbackArmed
                       ? "border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-800 dark:bg-emerald-900/20 dark:text-emerald-300"
-                      : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800",
+                      : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800",
                   )}
                 >
                   <div className="flex items-center justify-between gap-2">
@@ -1170,8 +1170,8 @@ export default function FaithHubLiveStudioPage() {
               }
             >
               <div className="grid gap-4 xl:grid-cols-2">
-                <div className="overflow-hidden rounded-3xl border border-slate-200 dark:border-slate-700">
-                  <div className="flex items-center justify-between border-b border-slate-200 bg-white/90 px-4 py-3 text-[12px] font-semibold text-slate-900 dark:border-slate-700 dark:bg-slate-950/90 dark:text-slate-100">
+                <div className="overflow-hidden rounded-3xl border border-faith-line dark:border-slate-700">
+                  <div className="flex items-center justify-between border-b border-faith-line bg-[var(--fh-surface-bg)]/90 px-4 py-3 text-[12px] font-semibold text-faith-ink dark:border-slate-700 dark:bg-slate-950/90 dark:text-slate-100">
                     <span className="inline-flex items-center gap-2">
                       <Radio className="h-4 w-4" style={{ color: mode === "live" ? EV_GREEN : EV_GREY }} />
                       Program monitor
@@ -1193,10 +1193,10 @@ export default function FaithHubLiveStudioPage() {
                     ) : (
                       <>
                         <div className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-red-600/90 px-3 py-1.5 text-[10px] font-black uppercase tracking-wide text-white">
-                          <span className="h-2 w-2 rounded-full bg-white" />
+                          <span className="h-2 w-2 rounded-full bg-[var(--fh-surface-bg)]" />
                           {mode === "live" ? "Live" : "Preview only"}
                         </div>
-                        <div className="absolute right-4 top-4 rounded-full bg-white/10 px-3 py-1.5 text-[10px] font-semibold text-white backdrop-blur">
+                        <div className="absolute right-4 top-4 rounded-full bg-[var(--fh-surface-bg)]/10 px-3 py-1.5 text-[10px] font-semibold text-white backdrop-blur">
                           {activeScene.template}
                         </div>
                         <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/80 via-black/35 to-transparent" />
@@ -1204,18 +1204,18 @@ export default function FaithHubLiveStudioPage() {
                           <div className="text-[22px] font-black text-white">{activeScene.label}</div>
                           <div className="mt-1 text-sm text-white/85">{SESSION.parentLabel}</div>
                           <div className="mt-3 flex flex-wrap items-center gap-2">
-                            <span className="inline-flex items-center gap-2 rounded-2xl bg-white/10 px-3 py-1.5 text-[10px] font-semibold text-white backdrop-blur">
+                            <span className="inline-flex items-center gap-2 rounded-2xl bg-[var(--fh-surface-bg)]/10 px-3 py-1.5 text-[10px] font-semibold text-white backdrop-blur">
                               <Mic className="h-3.5 w-3.5" />
                               {stageMembers.find((member) => member.role === "Host")?.name}
                             </span>
-                            <span className="inline-flex items-center gap-2 rounded-2xl bg-white/10 px-3 py-1.5 text-[10px] font-semibold text-white backdrop-blur">
+                            <span className="inline-flex items-center gap-2 rounded-2xl bg-[var(--fh-surface-bg)]/10 px-3 py-1.5 text-[10px] font-semibold text-white backdrop-blur">
                               <Gift className="h-3.5 w-3.5" />
                               {selectedCTA.label}
                             </span>
                           </div>
                           {captionsEnabled ? (
                             <div className="mt-4 max-w-[72%] rounded-lg bg-black/55 px-2.5 py-1.5 text-[11px] leading-relaxed text-white">
-                              ‚ÄúGrace changes not just what we do, but who we become.‚Äù
+                              ìGrace changes not just what we do, but who we become.î
                             </div>
                           ) : null}
                         </div>
@@ -1224,8 +1224,8 @@ export default function FaithHubLiveStudioPage() {
                   </div>
                 </div>
 
-                <div className="overflow-hidden rounded-3xl border border-slate-200 dark:border-slate-700">
-                  <div className="flex items-center justify-between border-b border-slate-200 bg-white/90 px-4 py-3 text-[12px] font-semibold text-slate-900 dark:border-slate-700 dark:bg-slate-950/90 dark:text-slate-100">
+                <div className="overflow-hidden rounded-3xl border border-faith-line dark:border-slate-700">
+                  <div className="flex items-center justify-between border-b border-faith-line bg-[var(--fh-surface-bg)]/90 px-4 py-3 text-[12px] font-semibold text-faith-ink dark:border-slate-700 dark:bg-slate-950/90 dark:text-slate-100">
                     <span className="inline-flex items-center gap-2">
                       <Eye className="h-4 w-4" style={{ color: EV_ORANGE }} />
                       Preview monitor
@@ -1234,10 +1234,10 @@ export default function FaithHubLiveStudioPage() {
                   </div>
                   <div className="relative aspect-[16/10] bg-slate-950">
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(247,127,0,0.24),transparent_30%),linear-gradient(135deg,rgba(15,23,42,1),rgba(2,6,23,1))]" />
-                    <div className="absolute left-4 top-4 rounded-full bg-white/10 px-3 py-1.5 text-[10px] font-semibold text-white backdrop-blur">
+                    <div className="absolute left-4 top-4 rounded-full bg-[var(--fh-surface-bg)]/10 px-3 py-1.5 text-[10px] font-semibold text-white backdrop-blur">
                       Queued next
                     </div>
-                    <div className="absolute right-4 top-4 rounded-full bg-white/10 px-3 py-1.5 text-[10px] font-semibold text-white backdrop-blur">
+                    <div className="absolute right-4 top-4 rounded-full bg-[var(--fh-surface-bg)]/10 px-3 py-1.5 text-[10px] font-semibold text-white backdrop-blur">
                       {selectedSource.label}
                     </div>
                     <div className="absolute inset-x-4 bottom-5">
@@ -1249,7 +1249,7 @@ export default function FaithHubLiveStudioPage() {
                             key={source.id}
                             className={cx(
                               "rounded-2xl border px-3 py-2 text-[10px] font-semibold text-white/90 backdrop-blur",
-                              selectedSource.id === source.id ? "border-emerald-300/40 bg-emerald-500/10" : "border-white/10 bg-white/5",
+                              selectedSource.id === source.id ? "border-emerald-300/40 bg-emerald-500/10" : "border-white/10 bg-[var(--fh-surface-bg)]/5",
                             )}
                           >
                             {source.label}
@@ -1262,30 +1262,30 @@ export default function FaithHubLiveStudioPage() {
               </div>
 
               <div className="mt-4 grid gap-3 md:grid-cols-4">
-                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3 dark:border-slate-700 dark:bg-slate-950">
-                  <div className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">Ingest health</div>
-                  <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">96%</div>
+                <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3 dark:border-slate-700 dark:bg-slate-950">
+                  <div className="text-[11px] font-semibold text-faith-slate">Ingest health</div>
+                  <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-faith-ink dark:text-slate-100 sm:text-[34px] lg:text-[40px]">96%</div>
                   <div className="mt-2">
                     <MiniBar value={96} tone="green" />
                   </div>
                 </div>
-                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3 dark:border-slate-700 dark:bg-slate-950">
-                  <div className="mt-1.5 text-[14px] leading-6 text-slate-500 dark:text-slate-400">Audio confidence</div>
-                  <div className="mt-1 text-xl font-black text-slate-900 dark:text-slate-100">94%</div>
+                <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3 dark:border-slate-700 dark:bg-slate-950">
+                  <div className="mt-1.5 text-[14px] leading-6 text-faith-slate">Audio confidence</div>
+                  <div className="mt-1 text-xl font-black text-faith-ink dark:text-slate-100">94%</div>
                   <div className="mt-2">
                     <MiniBar value={94} tone="green" />
                   </div>
                 </div>
-                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3 dark:border-slate-700 dark:bg-slate-950">
-                  <div className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">Latency</div>
-                  <div className="mt-1 text-xl font-black text-slate-900 dark:text-slate-100">2.4s</div>
+                <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3 dark:border-slate-700 dark:bg-slate-950">
+                  <div className="text-[11px] font-semibold text-faith-slate">Latency</div>
+                  <div className="mt-1 text-xl font-black text-faith-ink dark:text-slate-100">2.4s</div>
                   <div className="mt-2">
                     <MiniBar value={72} tone="orange" />
                   </div>
                 </div>
-                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3 dark:border-slate-700 dark:bg-slate-950">
-                  <div className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">Destination sync</div>
-                  <div className="mt-1 text-xl font-black text-slate-900 dark:text-slate-100">98%</div>
+                <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3 dark:border-slate-700 dark:bg-slate-950">
+                  <div className="text-[11px] font-semibold text-faith-slate">Destination sync</div>
+                  <div className="mt-1 text-xl font-black text-faith-ink dark:text-slate-100">98%</div>
                   <div className="mt-2">
                     <MiniBar value={98} tone="green" />
                   </div>
@@ -1310,13 +1310,13 @@ export default function FaithHubLiveStudioPage() {
                         onClick={() => handleTriggerCTA(item.id)}
                         className={cx(
                           "rounded-2xl border p-3 text-left transition-colors",
-                          active ? `${tones.bg} ${tones.border}` : "border-slate-200 bg-white hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800",
+                          active ? `${tones.bg} ${tones.border}` : "border-faith-line bg-[var(--fh-surface-bg)] hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800",
                         )}
                       >
                         <div className="flex items-start justify-between gap-3">
                           <div className="min-w-0">
-                            <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">{item.label}</div>
-                            <div className="mt-1 text-[11px] leading-relaxed text-slate-500 dark:text-slate-400">{item.desc}</div>
+                            <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">{item.label}</div>
+                            <div className="mt-1 text-[11px] leading-relaxed text-faith-slate">{item.desc}</div>
                           </div>
                           <Pill text={item.type} tone={item.tone === "green" ? "good" : item.tone === "orange" ? "warn" : "neutral"} />
                         </div>
@@ -1326,17 +1326,17 @@ export default function FaithHubLiveStudioPage() {
                 </div>
 
                 <div className="mt-4 grid grid-cols-3 gap-3">
-                  <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3 dark:border-slate-700 dark:bg-slate-950">
-                    <div className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">Live donations</div>
-                    <div className="mt-1 text-lg font-black text-slate-900 dark:text-slate-100">{formatCurrency(donationTotal)}</div>
+                  <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3 dark:border-slate-700 dark:bg-slate-950">
+                    <div className="text-[11px] font-semibold text-faith-slate">Live donations</div>
+                    <div className="mt-1 text-lg font-black text-faith-ink dark:text-slate-100">{formatCurrency(donationTotal)}</div>
                   </div>
-                  <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3 dark:border-slate-700 dark:bg-slate-950">
-                    <div className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">Crowdfund</div>
-                    <div className="mt-1 text-lg font-black text-slate-900 dark:text-slate-100">{formatCurrency(crowdfundRaised)}</div>
+                  <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3 dark:border-slate-700 dark:bg-slate-950">
+                    <div className="text-[11px] font-semibold text-faith-slate">Crowdfund</div>
+                    <div className="mt-1 text-lg font-black text-faith-ink dark:text-slate-100">{formatCurrency(crowdfundRaised)}</div>
                   </div>
-                  <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3 dark:border-slate-700 dark:bg-slate-950">
-                    <div className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">Event sign-ups</div>
-                    <div className="mt-1 text-lg font-black text-slate-900 dark:text-slate-100">{eventSignups}</div>
+                  <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3 dark:border-slate-700 dark:bg-slate-950">
+                    <div className="text-[11px] font-semibold text-faith-slate">Event sign-ups</div>
+                    <div className="mt-1 text-lg font-black text-faith-ink dark:text-slate-100">{eventSignups}</div>
                   </div>
                 </div>
               </CardShell>
@@ -1354,17 +1354,17 @@ export default function FaithHubLiveStudioPage() {
                       "rounded-2xl border p-3 text-left transition-colors",
                       captionsEnabled
                         ? "border-emerald-200 bg-emerald-50 dark:border-emerald-800 dark:bg-emerald-900/20"
-                        : "border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-900",
+                        : "border-faith-line bg-[var(--fh-surface-bg)] dark:border-slate-700 dark:bg-slate-900",
                     )}
                   >
                     <div className="flex items-center justify-between gap-3">
-                      <span className="inline-flex items-center gap-2 text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+                      <span className="inline-flex items-center gap-2 text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                         <Captions className="h-4 w-4" />
                         Live captions
                       </span>
                       <Pill text={captionsEnabled ? "On" : "Off"} tone={captionsEnabled ? "good" : "warn"} />
                     </div>
-                    <div className="mt-2 text-[11px] text-slate-500 dark:text-slate-400">
+                    <div className="mt-2 text-[11px] text-faith-slate">
                       Live captions are synced with scripture-safe overlay zones.
                     </div>
                   </button>
@@ -1375,17 +1375,17 @@ export default function FaithHubLiveStudioPage() {
                       "rounded-2xl border p-3 text-left transition-colors",
                       translationsEnabled
                         ? "border-orange-200 bg-orange-50 dark:border-orange-900 dark:bg-orange-900/20"
-                        : "border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-900",
+                        : "border-faith-line bg-[var(--fh-surface-bg)] dark:border-slate-700 dark:bg-slate-900",
                     )}
                   >
                     <div className="flex items-center justify-between gap-3">
-                      <span className="inline-flex items-center gap-2 text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+                      <span className="inline-flex items-center gap-2 text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                         <Globe2 className="h-4 w-4" />
                         Translation tracks
                       </span>
                       <Pill text={translationsEnabled ? "Active" : "Paused"} tone={translationsEnabled ? "warn" : "neutral"} />
                     </div>
-                    <div className="mt-2 text-[11px] text-slate-500 dark:text-slate-400">
+                    <div className="mt-2 text-[11px] text-faith-slate">
                       The platform can surface secondary subtitle and overlay tracks on supported viewers.
                     </div>
                   </button>
@@ -1393,11 +1393,11 @@ export default function FaithHubLiveStudioPage() {
 
                 <div className="mt-4 grid gap-3 md:grid-cols-2">
                   <div>
-                    <div className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">Primary caption language</div>
+                    <div className="text-[11px] font-semibold text-faith-slate">Primary caption language</div>
                     <select
                       value={primaryTrack}
                       onChange={(event) => setPrimaryTrack(event.target.value as (typeof LANGUAGE_TRACKS)[number])}
-                      className="mt-1 h-11 w-full rounded-2xl border border-slate-200 bg-white px-4 text-sm text-slate-900 outline-none transition-colors focus:border-emerald-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
+                      className="mt-1 h-11 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-4 text-sm text-faith-ink outline-none transition-colors focus:border-emerald-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
                     >
                       {LANGUAGE_TRACKS.map((track) => (
                         <option key={track} value={track}>
@@ -1407,11 +1407,11 @@ export default function FaithHubLiveStudioPage() {
                     </select>
                   </div>
                   <div>
-                    <div className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">Secondary translated track</div>
+                    <div className="text-[11px] font-semibold text-faith-slate">Secondary translated track</div>
                     <select
                       value={secondaryTrack}
                       onChange={(event) => setSecondaryTrack(event.target.value as (typeof LANGUAGE_TRACKS)[number])}
-                      className="mt-1 h-11 w-full rounded-2xl border border-slate-200 bg-white px-4 text-sm text-slate-900 outline-none transition-colors focus:border-orange-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
+                      className="mt-1 h-11 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-4 text-sm text-faith-ink outline-none transition-colors focus:border-orange-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
                     >
                       {LANGUAGE_TRACKS.filter((track) => track !== primaryTrack).map((track) => (
                         <option key={track} value={track}>
@@ -1423,23 +1423,23 @@ export default function FaithHubLiveStudioPage() {
                 </div>
 
                 <div className="mt-4 grid grid-cols-3 gap-3">
-                  <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3 dark:border-slate-700 dark:bg-slate-950">
-                    <div className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">Caption confidence</div>
-                    <div className="mt-1 text-xl font-black text-slate-900 dark:text-slate-100">96%</div>
+                  <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3 dark:border-slate-700 dark:bg-slate-950">
+                    <div className="text-[11px] font-semibold text-faith-slate">Caption confidence</div>
+                    <div className="mt-1 text-xl font-black text-faith-ink dark:text-slate-100">96%</div>
                     <div className="mt-2">
                       <MiniBar value={96} tone="green" />
                     </div>
                   </div>
-                  <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3 dark:border-slate-700 dark:bg-slate-950">
-                    <div className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">Translation sync</div>
-                    <div className="mt-1 text-xl font-black text-slate-900 dark:text-slate-100">91%</div>
+                  <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3 dark:border-slate-700 dark:bg-slate-950">
+                    <div className="text-[11px] font-semibold text-faith-slate">Translation sync</div>
+                    <div className="mt-1 text-xl font-black text-faith-ink dark:text-slate-100">91%</div>
                     <div className="mt-2">
                       <MiniBar value={91} tone="orange" />
                     </div>
                   </div>
-                  <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3 dark:border-slate-700 dark:bg-slate-950">
-                    <div className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">Subtitle safe-area</div>
-                    <div className="mt-1 text-xl font-black text-slate-900 dark:text-slate-100">Ready</div>
+                  <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3 dark:border-slate-700 dark:bg-slate-950">
+                    <div className="text-[11px] font-semibold text-faith-slate">Subtitle safe-area</div>
+                    <div className="mt-1 text-xl font-black text-faith-ink dark:text-slate-100">Ready</div>
                     <div className="mt-2">
                       <MiniBar value={100} tone="green" />
                     </div>
@@ -1455,44 +1455,44 @@ export default function FaithHubLiveStudioPage() {
             >
               <div className="grid gap-4 lg:grid-cols-[0.8fr_1.2fr]">
                 <div className="space-y-3">
-                  <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-950">
+                  <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4 dark:border-slate-700 dark:bg-slate-950">
                     <div className="flex items-center justify-between gap-2">
-                      <span className="inline-flex items-center gap-2 text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+                      <span className="inline-flex items-center gap-2 text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                         <Film className="h-4 w-4" />
                         Master recording
                       </span>
                       <button
                         type="button"
                         onClick={() => setRecordingOn((current) => !current)}
-                        className="rounded-full border border-slate-200 bg-white px-3 py-1 text-[10px] font-semibold text-slate-700 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800"
+                        className="rounded-full border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-1 text-[10px] font-semibold text-slate-700 transition-colors hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800"
                       >
                         {recordingOn ? "Pause" : "Resume"}
                       </button>
                     </div>
-                    <div className="mt-2 text-[11px] leading-relaxed text-slate-500 dark:text-slate-400">
+                    <div className="mt-2 text-[11px] leading-relaxed text-faith-slate">
                       Recording includes program feed, scene metadata, CTA triggers, clip markers and destination timestamps.
                     </div>
                   </div>
 
-                  <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-950">
+                  <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4 dark:border-slate-700 dark:bg-slate-950">
                     <div className="flex items-center justify-between gap-2">
-                      <span className="inline-flex items-center gap-2 text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+                      <span className="inline-flex items-center gap-2 text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                         <Layers className="h-4 w-4" />
                         ISO tracks
                       </span>
                       <button
                         type="button"
                         onClick={() => setIsoTracksOn((current) => !current)}
-                        className="rounded-full border border-slate-200 bg-white px-3 py-1 text-[10px] font-semibold text-slate-700 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800"
+                        className="rounded-full border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-1 text-[10px] font-semibold text-slate-700 transition-colors hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800"
                       >
                         {isoTracksOn ? "Enabled" : "Disabled"}
                       </button>
                     </div>
-                    <div className="mt-3 grid grid-cols-2 gap-2 text-[11px] text-slate-600 dark:text-slate-400">
-                      <div className="rounded-xl border border-slate-200 bg-white px-3 py-2 dark:border-slate-700 dark:bg-slate-900">Host audio</div>
-                      <div className="rounded-xl border border-slate-200 bg-white px-3 py-2 dark:border-slate-700 dark:bg-slate-900">Room audio</div>
-                      <div className="rounded-xl border border-slate-200 bg-white px-3 py-2 dark:border-slate-700 dark:bg-slate-900">Caption feed</div>
-                      <div className="rounded-xl border border-slate-200 bg-white px-3 py-2 dark:border-slate-700 dark:bg-slate-900">Stage camera</div>
+                    <div className="mt-3 grid grid-cols-2 gap-2 text-[11px] text-faith-slate">
+                      <div className="rounded-xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 dark:border-slate-700 dark:bg-slate-900">Host audio</div>
+                      <div className="rounded-xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 dark:border-slate-700 dark:bg-slate-900">Room audio</div>
+                      <div className="rounded-xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 dark:border-slate-700 dark:bg-slate-900">Caption feed</div>
+                      <div className="rounded-xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 dark:border-slate-700 dark:bg-slate-900">Stage camera</div>
                     </div>
                   </div>
 
@@ -1517,11 +1517,11 @@ export default function FaithHubLiveStudioPage() {
                   </div>
                 </div>
 
-                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-950">
+                <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4 dark:border-slate-700 dark:bg-slate-950">
                   <div className="flex items-center justify-between gap-3">
                     <div>
-                      <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">Clip mark timeline</div>
-                      <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
+                      <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">Clip mark timeline</div>
+                      <div className="mt-1 text-[11px] text-faith-slate">
                         Every marker is preserved for Post-live Publishing and Replays & Clips.
                       </div>
                     </div>
@@ -1531,12 +1531,12 @@ export default function FaithHubLiveStudioPage() {
                     {clipMarks.map((mark) => (
                       <div
                         key={mark.id}
-                        className="grid grid-cols-[92px_minmax(0,1fr)_auto] items-center gap-3 rounded-2xl border border-slate-200 bg-white px-3 py-3 text-[12px] dark:border-slate-700 dark:bg-slate-900"
+                        className="grid grid-cols-[92px_minmax(0,1fr)_auto] items-center gap-3 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-3 text-[12px] dark:border-slate-700 dark:bg-slate-900"
                       >
-                        <div className="font-black text-slate-900 dark:text-slate-100">{mark.time}</div>
+                        <div className="font-black text-faith-ink dark:text-slate-100">{mark.time}</div>
                         <div className="min-w-0">
-                          <div className="truncate font-semibold text-slate-900 dark:text-slate-100">{mark.label}</div>
-                          <div className="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">{mark.category}</div>
+                          <div className="truncate font-semibold text-faith-ink dark:text-slate-100">{mark.label}</div>
+                          <div className="mt-0.5 text-[11px] text-faith-slate">{mark.category}</div>
                         </div>
                         <Pill text="Saved" tone="good" />
                       </div>
@@ -1553,7 +1553,7 @@ export default function FaithHubLiveStudioPage() {
               subtitle="Live chat, moderated questions, prayer requests and polls without leaving studio."
               right={<Pill text="Moderator ready" tone="good" icon={<ShieldCheck className="h-3.5 w-3.5" />} />}
             >
-              <div className="grid grid-cols-4 gap-1 rounded-2xl border border-slate-200 bg-slate-50 p-1 dark:border-slate-700 dark:bg-slate-950">
+              <div className="grid grid-cols-4 gap-1 rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-1 dark:border-slate-700 dark:bg-slate-950">
                 {([
                   { key: "chat", label: "Chat", icon: <MessageSquare className="h-4 w-4" /> },
                   { key: "qa", label: "Q&A", icon: <PlayCircle className="h-4 w-4" /> },
@@ -1567,8 +1567,8 @@ export default function FaithHubLiveStudioPage() {
                     className={cx(
                       "inline-flex items-center justify-center gap-1 rounded-xl px-2 py-2 text-[11px] font-semibold transition-colors",
                       interactionTab === tab.key
-                        ? "bg-white text-slate-900 shadow-sm dark:bg-slate-900 dark:text-slate-100"
-                        : "text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200",
+                        ? "bg-[var(--fh-surface-bg)] text-faith-ink shadow-soft dark:bg-slate-900 dark:text-slate-100"
+                        : "text-faith-slate hover:text-slate-700 dark:hover:text-slate-200",
                     )}
                   >
                     {tab.icon}
@@ -1586,61 +1586,61 @@ export default function FaithHubLiveStudioPage() {
                         "rounded-2xl border px-3 py-3",
                         message.flagged
                           ? "border-rose-200 bg-rose-50 dark:border-rose-900 dark:bg-rose-900/20"
-                          : "border-slate-200 bg-slate-50 dark:border-slate-700 dark:bg-slate-950",
+                          : "border-faith-line bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-950",
                       )}
                     >
                       <div className="flex items-center justify-between gap-2">
                         <div className="flex items-center gap-2">
-                          <span className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">{message.from}</span>
+                          <span className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">{message.from}</span>
                           {message.pinned ? <Pill text="Pinned" tone="good" /> : null}
                           {message.flagged ? <Pill text="Flagged" tone="danger" /> : null}
                         </div>
-                        <span className="text-[10px] text-slate-500 dark:text-slate-400">{message.time}</span>
+                        <span className="text-[10px] text-faith-slate">{message.time}</span>
                       </div>
-                      <div className="mt-2 text-[12px] leading-relaxed text-slate-600 dark:text-slate-400">{message.body}</div>
+                      <div className="mt-2 text-[12px] leading-relaxed text-faith-slate">{message.body}</div>
                     </div>
                   ))}
 
                 {interactionTab === "qa" &&
                   QA_ITEMS.map((item) => (
-                    <div key={item.id} className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-3 dark:border-slate-700 dark:bg-slate-950">
+                    <div key={item.id} className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-3 dark:border-slate-700 dark:bg-slate-950">
                       <div className="flex items-center justify-between gap-2">
-                        <span className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">{item.from}</span>
+                        <span className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">{item.from}</span>
                         <Pill text={item.status} tone={item.status === "Picked" ? "good" : item.status === "Queued" ? "warn" : "neutral"} />
                       </div>
-                      <div className="mt-2 text-[12px] leading-relaxed text-slate-600 dark:text-slate-400">{item.question}</div>
+                      <div className="mt-2 text-[12px] leading-relaxed text-faith-slate">{item.question}</div>
                     </div>
                   ))}
 
                 {interactionTab === "prayer" &&
                   PRAYER_REQUESTS.map((item) => (
-                    <div key={item.id} className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-3 dark:border-slate-700 dark:bg-slate-950">
+                    <div key={item.id} className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-3 dark:border-slate-700 dark:bg-slate-950">
                       <div className="flex items-center justify-between gap-2">
-                        <span className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">{item.from}</span>
+                        <span className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">{item.from}</span>
                         <Pill text={item.urgency} tone={item.urgency === "High" ? "danger" : item.urgency === "Watch" ? "warn" : "neutral"} />
                       </div>
-                      <div className="mt-2 text-[12px] leading-relaxed text-slate-600 dark:text-slate-400">{item.body}</div>
+                      <div className="mt-2 text-[12px] leading-relaxed text-faith-slate">{item.body}</div>
                     </div>
                   ))}
 
                 {interactionTab === "polls" &&
                   POLL_ITEMS.map((item) => (
-                    <div key={item.id} className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-3 dark:border-slate-700 dark:bg-slate-950">
+                    <div key={item.id} className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-3 dark:border-slate-700 dark:bg-slate-950">
                       <div className="flex items-center justify-between gap-2">
-                        <span className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">{item.question}</span>
+                        <span className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">{item.question}</span>
                         <Pill text={item.status} tone={item.status === "Live" ? "good" : item.status === "Ready" ? "warn" : "neutral"} />
                       </div>
                       <div className="mt-3 grid grid-cols-2 gap-3">
                         <div>
-                          <div className="text-[11px] text-slate-500 dark:text-slate-400">Yes</div>
-                          <div className="mt-1 text-lg font-black text-slate-900 dark:text-slate-100">{item.yes}%</div>
+                          <div className="text-[11px] text-faith-slate">Yes</div>
+                          <div className="mt-1 text-lg font-black text-faith-ink dark:text-slate-100">{item.yes}%</div>
                           <div className="mt-2">
                             <MiniBar value={item.yes} tone="green" />
                           </div>
                         </div>
                         <div>
-                          <div className="text-[11px] text-slate-500 dark:text-slate-400">No</div>
-                          <div className="mt-1 text-lg font-black text-slate-900 dark:text-slate-100">{item.no}%</div>
+                          <div className="text-[11px] text-faith-slate">No</div>
+                          <div className="mt-1 text-lg font-black text-faith-ink dark:text-slate-100">{item.no}%</div>
                           <div className="mt-2">
                             <MiniBar value={item.no} tone="orange" />
                           </div>
@@ -1661,7 +1661,7 @@ export default function FaithHubLiveStudioPage() {
                     "rounded-2xl border px-3 py-3 text-left text-[12px] font-semibold transition-colors",
                     slowMode
                       ? "border-orange-200 bg-orange-50 text-orange-700 dark:border-orange-900 dark:bg-orange-900/20 dark:text-orange-300"
-                      : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800",
+                      : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800",
                   )}
                 >
                   <div className="flex items-center justify-between gap-2">
@@ -1682,7 +1682,7 @@ export default function FaithHubLiveStudioPage() {
                     "rounded-2xl border px-3 py-3 text-left text-[12px] font-semibold transition-colors",
                     pinnedNotice
                       ? "border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-800 dark:bg-emerald-900/20 dark:text-emerald-300"
-                      : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800",
+                      : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800",
                   )}
                 >
                   <div className="flex items-center justify-between gap-2">
@@ -1703,7 +1703,7 @@ export default function FaithHubLiveStudioPage() {
                     "rounded-2xl border px-3 py-3 text-left text-[12px] font-semibold transition-colors",
                     prayerTriage
                       ? "border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-800 dark:bg-emerald-900/20 dark:text-emerald-300"
-                      : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800",
+                      : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800",
                   )}
                 >
                   <div className="flex items-center justify-between gap-2">
@@ -1717,7 +1717,7 @@ export default function FaithHubLiveStudioPage() {
                 <button
                   type="button"
                   onClick={() => navigate(ROUTES.liveDashboard)}
-                  className="rounded-2xl border border-slate-200 bg-white px-3 py-3 text-left text-[12px] font-semibold text-slate-700 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800"
+                  className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-3 text-left text-[12px] font-semibold text-slate-700 transition-colors hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800"
                 >
                   <div className="flex items-center justify-between gap-2">
                     <span className="inline-flex items-center gap-2">
@@ -1735,15 +1735,15 @@ export default function FaithHubLiveStudioPage() {
               subtitle="Preview how the session looks on the audience side without leaving studio."
               right={<Pill text={previewDevice === "desktop" ? "Desktop view" : "Mobile view"} icon={<Eye className="h-3.5 w-3.5" />} />}
             >
-              <div className="mb-3 inline-flex rounded-2xl border border-slate-200 bg-slate-50 p-1 dark:border-slate-700 dark:bg-slate-950">
+              <div className="mb-3 inline-flex rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-1 dark:border-slate-700 dark:bg-slate-950">
                 <button
                   type="button"
                   onClick={() => setPreviewDevice("desktop")}
                   className={cx(
                     "rounded-xl px-3 py-1.5 text-[11px] font-semibold transition-colors",
                     previewDevice === "desktop"
-                      ? "bg-white text-slate-900 shadow-sm dark:bg-slate-900 dark:text-slate-100"
-                      : "text-slate-500 dark:text-slate-400",
+                      ? "bg-[var(--fh-surface-bg)] text-faith-ink shadow-soft dark:bg-slate-900 dark:text-slate-100"
+                      : "text-faith-slate",
                   )}
                 >
                   Desktop
@@ -1754,8 +1754,8 @@ export default function FaithHubLiveStudioPage() {
                   className={cx(
                     "rounded-xl px-3 py-1.5 text-[11px] font-semibold transition-colors",
                     previewDevice === "mobile"
-                      ? "bg-white text-slate-900 shadow-sm dark:bg-slate-900 dark:text-slate-100"
-                      : "text-slate-500 dark:text-slate-400",
+                      ? "bg-[var(--fh-surface-bg)] text-faith-ink shadow-soft dark:bg-slate-900 dark:text-slate-100"
+                      : "text-faith-slate",
                   )}
                 >
                   Mobile
@@ -1770,17 +1770,17 @@ export default function FaithHubLiveStudioPage() {
               />
 
               <div className="mt-4 grid grid-cols-3 gap-2 text-[11px]">
-                <div className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-3 text-center dark:border-slate-700 dark:bg-slate-950">
-                  <div className="font-black text-slate-900 dark:text-slate-100">{audienceViewers.toLocaleString()}</div>
-                  <div className="mt-1 text-slate-500 dark:text-slate-400">Watching</div>
+                <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-3 text-center dark:border-slate-700 dark:bg-slate-950">
+                  <div className="font-black text-faith-ink dark:text-slate-100">{audienceViewers.toLocaleString()}</div>
+                  <div className="mt-1 text-faith-slate">Watching</div>
                 </div>
-                <div className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-3 text-center dark:border-slate-700 dark:bg-slate-950">
-                  <div className="font-black text-slate-900 dark:text-slate-100">{beaconTeasers}</div>
-                  <div className="mt-1 text-slate-500 dark:text-slate-400">Beacon teasers</div>
+                <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-3 text-center dark:border-slate-700 dark:bg-slate-950">
+                  <div className="font-black text-faith-ink dark:text-slate-100">{beaconTeasers}</div>
+                  <div className="mt-1 text-faith-slate">Beacon teasers</div>
                 </div>
-                <div className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-3 text-center dark:border-slate-700 dark:bg-slate-950">
-                  <div className="font-black text-slate-900 dark:text-slate-100">{SESSION.audience.prayerCount}</div>
-                  <div className="mt-1 text-slate-500 dark:text-slate-400">Prayer requests</div>
+                <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-3 text-center dark:border-slate-700 dark:bg-slate-950">
+                  <div className="font-black text-faith-ink dark:text-slate-100">{SESSION.audience.prayerCount}</div>
+                  <div className="mt-1 text-faith-slate">Prayer requests</div>
                 </div>
               </div>
             </CardShell>
@@ -1794,42 +1794,42 @@ export default function FaithHubLiveStudioPage() {
                 <button
                   type="button"
                   onClick={() => navigate(ROUTES.streamToPlatforms)}
-                  className="flex w-full items-center justify-between rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-left transition-colors hover:bg-white dark:border-slate-700 dark:bg-slate-950 dark:hover:bg-slate-900"
+                  className="flex w-full items-center justify-between rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-4 py-3 text-left transition-colors hover:bg-[var(--fh-surface-bg)] dark:border-slate-700 dark:bg-slate-950 dark:hover:bg-slate-900"
                 >
                   <div>
-                    <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">Open Stream-to-Platforms</div>
-                    <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">Adjust destinations, health and output variants.</div>
+                    <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">Open Stream-to-Platforms</div>
+                    <div className="mt-1 text-[11px] text-faith-slate">Adjust destinations, health and output variants.</div>
                   </div>
-                  <ExternalLink className="h-4 w-4 text-slate-500 dark:text-slate-400" />
+                  <ExternalLink className="h-4 w-4 text-faith-slate" />
                 </button>
                 <button
                   type="button"
                   onClick={() => navigate(ROUTES.postLivePublishing)}
-                  className="flex w-full items-center justify-between rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-left transition-colors hover:bg-white dark:border-slate-700 dark:bg-slate-950 dark:hover:bg-slate-900"
+                  className="flex w-full items-center justify-between rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-4 py-3 text-left transition-colors hover:bg-[var(--fh-surface-bg)] dark:border-slate-700 dark:bg-slate-950 dark:hover:bg-slate-900"
                 >
                   <div>
-                    <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">Open Post-live Publishing</div>
-                    <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">Replay package, notes, chapters and clip workflows.</div>
+                    <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">Open Post-live Publishing</div>
+                    <div className="mt-1 text-[11px] text-faith-slate">Replay package, notes, chapters and clip workflows.</div>
                   </div>
-                  <ExternalLink className="h-4 w-4 text-slate-500 dark:text-slate-400" />
+                  <ExternalLink className="h-4 w-4 text-faith-slate" />
                 </button>
                 <button
                   type="button"
                   onClick={() => showToast("Beacon teaser package prepared")}
-                  className="flex w-full items-center justify-between rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-left transition-colors hover:bg-white dark:border-slate-700 dark:bg-slate-950 dark:hover:bg-slate-900"
+                  className="flex w-full items-center justify-between rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-4 py-3 text-left transition-colors hover:bg-[var(--fh-surface-bg)] dark:border-slate-700 dark:bg-slate-950 dark:hover:bg-slate-900"
                 >
                   <div>
-                    <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">Prepare Beacon replay teaser</div>
-                    <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">Use live-response signals to power promotion fast.</div>
+                    <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">Prepare Beacon replay teaser</div>
+                    <div className="mt-1 text-[11px] text-faith-slate">Use live-response signals to power promotion fast.</div>
                   </div>
-                  <Zap className="h-4 w-4 text-slate-500 dark:text-slate-400" />
+                  <Zap className="h-4 w-4 text-faith-slate" />
                 </button>
               </div>
             </CardShell>
           </section>
         </main>
 
-        <div className="border-t border-slate-200 bg-white/90 px-4 py-3 backdrop-blur dark:border-slate-800 dark:bg-slate-950/90">
+        <div className="border-t border-faith-line bg-[var(--fh-surface-bg)]/90 px-4 py-3 backdrop-blur dark:border-slate-800 dark:bg-slate-950/90">
           <div className="flex flex-wrap items-center gap-2 lg:gap-3">
             <button
               type="button"
@@ -1851,7 +1851,7 @@ export default function FaithHubLiveStudioPage() {
             <button
               type="button"
               onClick={() => handleTriggerCTA()}
-              className="inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800"
+              className="inline-flex items-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-2 text-sm font-semibold text-slate-700 transition-colors hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800"
             >
               <Sparkles className="h-4 w-4" />
               Trigger scene/CTA
@@ -1859,7 +1859,7 @@ export default function FaithHubLiveStudioPage() {
             <button
               type="button"
               onClick={() => handleMarkClip()}
-              className="inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800"
+              className="inline-flex items-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-2 text-sm font-semibold text-slate-700 transition-colors hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800"
             >
               <BookmarkPlus className="h-4 w-4" />
               Mark clip
@@ -1871,7 +1871,7 @@ export default function FaithHubLiveStudioPage() {
                 "inline-flex items-center gap-2 rounded-2xl border px-4 py-2 text-sm font-semibold transition-colors",
                 emergencySlate
                   ? "border-orange-200 bg-orange-50 text-orange-700 dark:border-orange-900 dark:bg-orange-900/20 dark:text-orange-300"
-                  : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800",
+                  : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800",
               )}
             >
               <Siren className="h-4 w-4" />
@@ -1884,7 +1884,7 @@ export default function FaithHubLiveStudioPage() {
                 "inline-flex items-center gap-2 rounded-2xl border px-4 py-2 text-sm font-semibold transition-colors",
                 fallbackArmed
                   ? "border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-800 dark:bg-emerald-900/20 dark:text-emerald-300"
-                  : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800",
+                  : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800",
               )}
             >
               <TimerReset className="h-4 w-4" />
@@ -1893,7 +1893,7 @@ export default function FaithHubLiveStudioPage() {
             <button
               type="button"
               onClick={() => navigate(ROUTES.streamToPlatforms)}
-              className="ml-auto inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800"
+              className="ml-auto inline-flex items-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-2 text-sm font-semibold text-slate-700 transition-colors hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800"
             >
               <ExternalLink className="h-4 w-4" />
               Stream-to-Platforms
@@ -1933,7 +1933,7 @@ export default function FaithHubLiveStudioPage() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 18 }}
             transition={{ duration: 0.2 }}
-            className="pointer-events-none fixed bottom-6 left-1/2 z-[100] -translate-x-1/2 rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow-xl dark:bg-slate-100 dark:text-slate-900"
+            className="pointer-events-none fixed bottom-6 left-1/2 z-[100] -translate-x-1/2 rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow-xl dark:bg-slate-100 dark:text-faith-ink"
           >
             {toast}
           </motion.div>
@@ -1996,13 +1996,13 @@ function MobileLiveStudio({
           subtitle={SESSION.title}
           right={<StudioStatusBadge mode={mode} timer={liveTimer} />}
         >
-          <div className="overflow-hidden rounded-3xl border border-slate-200 dark:border-slate-700">
+          <div className="overflow-hidden rounded-3xl border border-faith-line dark:border-slate-700">
             <div className="relative aspect-[16/10] bg-slate-950">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(3,205,140,0.24),transparent_32%),linear-gradient(135deg,rgba(2,6,23,1),rgba(15,23,42,1))]" />
               <div className="absolute left-4 top-4 rounded-full bg-red-600/90 px-3 py-1.5 text-[10px] font-black uppercase tracking-wide text-white">
                 {mode === "live" ? "Live" : "Lobby"}
               </div>
-              <div className="absolute right-4 top-4 rounded-full bg-white/10 px-3 py-1.5 text-[10px] font-semibold text-white backdrop-blur">
+              <div className="absolute right-4 top-4 rounded-full bg-[var(--fh-surface-bg)]/10 px-3 py-1.5 text-[10px] font-semibold text-white backdrop-blur">
                 {selectedSource.label}
               </div>
               <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/80 via-black/35 to-transparent" />
@@ -2011,7 +2011,7 @@ function MobileLiveStudio({
                 <div className="mt-1 text-sm text-white/80">{selectedCTA.label}</div>
                 {captionsEnabled ? (
                   <div className="mt-4 inline-block rounded-lg bg-black/55 px-2.5 py-1.5 text-[11px] text-white">
-                    ‚ÄúGrace changes who we become.‚Äù
+                    ìGrace changes who we become.î
                   </div>
                 ) : null}
               </div>
@@ -2028,11 +2028,11 @@ function MobileLiveStudio({
                   "min-w-[150px] rounded-2xl border px-3 py-2 text-left text-[12px] font-semibold transition-colors",
                   previewScene.id === scene.id
                     ? "border-orange-200 bg-orange-50 text-orange-700 dark:border-orange-900 dark:bg-orange-900/20 dark:text-orange-300"
-                    : "border-slate-200 bg-white text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300",
+                    : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300",
                 )}
               >
                 <div>{scene.label}</div>
-                <div className="mt-1 text-[11px] font-normal text-slate-500 dark:text-slate-400">{scene.template}</div>
+                <div className="mt-1 text-[11px] font-normal text-faith-slate">{scene.template}</div>
               </button>
             ))}
           </div>
@@ -2058,7 +2058,7 @@ function MobileLiveStudio({
                 "rounded-2xl border px-4 py-3 text-left text-[12px] font-semibold transition-colors",
                 captionsEnabled
                   ? "border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-800 dark:bg-emerald-900/20 dark:text-emerald-300"
-                  : "border-slate-200 bg-white text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300",
+                  : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300",
               )}
             >
               {captionsEnabled ? "Captions on" : "Captions off"}
@@ -2070,7 +2070,7 @@ function MobileLiveStudio({
                 "rounded-2xl border px-4 py-3 text-left text-[12px] font-semibold transition-colors",
                 translationsEnabled
                   ? "border-orange-200 bg-orange-50 text-orange-700 dark:border-orange-900 dark:bg-orange-900/20 dark:text-orange-300"
-                  : "border-slate-200 bg-white text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300",
+                  : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300",
               )}
             >
               {translationsEnabled ? "Translation active" : "Translation off"}
@@ -2078,7 +2078,7 @@ function MobileLiveStudio({
             <button
               type="button"
               onClick={handleMarkClip}
-              className="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-left text-[12px] font-semibold text-slate-700 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
+              className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-3 text-left text-[12px] font-semibold text-slate-700 transition-colors hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
             >
               Mark highlight
             </button>
@@ -2090,7 +2090,7 @@ function MobileLiveStudio({
           subtitle="Chat, questions, prayer and polls."
           right={<Pill text={`${clipMarks.length} markers`} />}
         >
-          <div className="grid grid-cols-4 gap-1 rounded-2xl border border-slate-200 bg-slate-50 p-1 dark:border-slate-700 dark:bg-slate-950">
+          <div className="grid grid-cols-4 gap-1 rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-1 dark:border-slate-700 dark:bg-slate-950">
             {(["chat", "qa", "prayer", "polls"] as const).map((tab) => (
               <button
                 key={tab}
@@ -2098,7 +2098,7 @@ function MobileLiveStudio({
                 onClick={() => setInteractionTab(tab)}
                 className={cx(
                   "rounded-xl px-2 py-2 text-[11px] font-semibold transition-colors",
-                  interactionTab === tab ? "bg-white text-slate-900 shadow-sm dark:bg-slate-900 dark:text-slate-100" : "text-slate-500 dark:text-slate-400",
+                  interactionTab === tab ? "bg-[var(--fh-surface-bg)] text-faith-ink shadow-soft dark:bg-slate-900 dark:text-slate-100" : "text-faith-slate",
                 )}
               >
                 {tab === "qa" ? "Q&A" : tab.charAt(0).toUpperCase() + tab.slice(1)}
@@ -2108,40 +2108,40 @@ function MobileLiveStudio({
           <div className="mt-4 space-y-2">
             {interactionTab === "chat" &&
               CHAT_MESSAGES.slice(0, 2).map((item) => (
-                <div key={item.id} className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-3 dark:border-slate-700 dark:bg-slate-950">
+                <div key={item.id} className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-3 dark:border-slate-700 dark:bg-slate-950">
                   <div className="flex items-center justify-between gap-2">
-                    <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">{item.from}</div>
-                    <div className="text-[10px] text-slate-500 dark:text-slate-400">{item.time}</div>
+                    <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">{item.from}</div>
+                    <div className="text-[10px] text-faith-slate">{item.time}</div>
                   </div>
-                  <div className="mt-2 text-[12px] text-slate-600 dark:text-slate-400">{item.body}</div>
+                  <div className="mt-2 text-[12px] text-faith-slate">{item.body}</div>
                 </div>
               ))}
             {interactionTab === "qa" &&
               QA_ITEMS.slice(0, 2).map((item) => (
-                <div key={item.id} className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-3 dark:border-slate-700 dark:bg-slate-950">
-                  <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">{item.question}</div>
-                  <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">{item.from}</div>
+                <div key={item.id} className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-3 dark:border-slate-700 dark:bg-slate-950">
+                  <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">{item.question}</div>
+                  <div className="mt-1 text-[11px] text-faith-slate">{item.from}</div>
                 </div>
               ))}
             {interactionTab === "prayer" &&
               PRAYER_REQUESTS.slice(0, 2).map((item) => (
-                <div key={item.id} className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-3 dark:border-slate-700 dark:bg-slate-950">
-                  <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">{item.from}</div>
-                  <div className="mt-2 text-[12px] text-slate-600 dark:text-slate-400">{item.body}</div>
+                <div key={item.id} className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-3 dark:border-slate-700 dark:bg-slate-950">
+                  <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">{item.from}</div>
+                  <div className="mt-2 text-[12px] text-faith-slate">{item.body}</div>
                 </div>
               ))}
             {interactionTab === "polls" &&
               POLL_ITEMS.slice(0, 1).map((item) => (
-                <div key={item.id} className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-3 dark:border-slate-700 dark:bg-slate-950">
-                  <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">{item.question}</div>
+                <div key={item.id} className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-3 dark:border-slate-700 dark:bg-slate-950">
+                  <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">{item.question}</div>
                   <div className="mt-3 grid grid-cols-2 gap-3">
                     <div>
-                      <div className="text-[11px] text-slate-500 dark:text-slate-400">Yes</div>
-                      <div className="mt-1 text-lg font-black text-slate-900 dark:text-slate-100">{item.yes}%</div>
+                      <div className="text-[11px] text-faith-slate">Yes</div>
+                      <div className="mt-1 text-lg font-black text-faith-ink dark:text-slate-100">{item.yes}%</div>
                     </div>
                     <div>
-                      <div className="text-[11px] text-slate-500 dark:text-slate-400">No</div>
-                      <div className="mt-1 text-lg font-black text-slate-900 dark:text-slate-100">{item.no}%</div>
+                      <div className="text-[11px] text-faith-slate">No</div>
+                      <div className="mt-1 text-lg font-black text-faith-ink dark:text-slate-100">{item.no}%</div>
                     </div>
                   </div>
                 </div>
@@ -2154,13 +2154,13 @@ function MobileLiveStudio({
           subtitle="Switch between desktop and mobile experience."
           right={<Pill text={previewDevice === "desktop" ? "Desktop" : "Mobile"} />}
         >
-          <div className="mb-3 inline-flex rounded-2xl border border-slate-200 bg-slate-50 p-1 dark:border-slate-700 dark:bg-slate-950">
+          <div className="mb-3 inline-flex rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-1 dark:border-slate-700 dark:bg-slate-950">
             <button
               type="button"
               onClick={() => setPreviewDevice("desktop")}
               className={cx(
                 "rounded-xl px-3 py-1.5 text-[11px] font-semibold transition-colors",
-                previewDevice === "desktop" ? "bg-white text-slate-900 shadow-sm dark:bg-slate-900 dark:text-slate-100" : "text-slate-500 dark:text-slate-400",
+                previewDevice === "desktop" ? "bg-[var(--fh-surface-bg)] text-faith-ink shadow-soft dark:bg-slate-900 dark:text-slate-100" : "text-faith-slate",
               )}
             >
               Desktop
@@ -2170,7 +2170,7 @@ function MobileLiveStudio({
               onClick={() => setPreviewDevice("mobile")}
               className={cx(
                 "rounded-xl px-3 py-1.5 text-[11px] font-semibold transition-colors",
-                previewDevice === "mobile" ? "bg-white text-slate-900 shadow-sm dark:bg-slate-900 dark:text-slate-100" : "text-slate-500 dark:text-slate-400",
+                previewDevice === "mobile" ? "bg-[var(--fh-surface-bg)] text-faith-ink shadow-soft dark:bg-slate-900 dark:text-slate-100" : "text-faith-slate",
               )}
             >
               Mobile
@@ -2189,7 +2189,7 @@ function MobileLiveStudio({
             <button
               type="button"
               onClick={() => navigate(ROUTES.streamToPlatforms)}
-              className="flex w-full items-center justify-between rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-left text-[12px] font-semibold text-slate-700 transition-colors hover:bg-white dark:border-slate-700 dark:bg-slate-950 dark:text-slate-300 dark:hover:bg-slate-900"
+              className="flex w-full items-center justify-between rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-4 py-3 text-left text-[12px] font-semibold text-slate-700 transition-colors hover:bg-[var(--fh-surface-bg)] dark:border-slate-700 dark:bg-slate-950 dark:text-slate-300 dark:hover:bg-slate-900"
             >
               Stream-to-Platforms
               <ExternalLink className="h-4 w-4" />
@@ -2197,7 +2197,7 @@ function MobileLiveStudio({
             <button
               type="button"
               onClick={() => navigate(ROUTES.postLivePublishing)}
-              className="flex w-full items-center justify-between rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-left text-[12px] font-semibold text-slate-700 transition-colors hover:bg-white dark:border-slate-700 dark:bg-slate-950 dark:text-slate-300 dark:hover:bg-slate-900"
+              className="flex w-full items-center justify-between rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-4 py-3 text-left text-[12px] font-semibold text-slate-700 transition-colors hover:bg-[var(--fh-surface-bg)] dark:border-slate-700 dark:bg-slate-950 dark:text-slate-300 dark:hover:bg-slate-900"
             >
               Post-live Publishing
               <ExternalLink className="h-4 w-4" />
@@ -2206,7 +2206,7 @@ function MobileLiveStudio({
         </CardShell>
       </div>
 
-      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-slate-200 bg-white/95 px-4 py-3 backdrop-blur dark:border-slate-800 dark:bg-slate-950/95">
+      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-faith-line bg-[var(--fh-surface-bg)]/95 px-4 py-3 backdrop-blur dark:border-slate-800 dark:bg-slate-950/95">
         <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
           <button
             type="button"
@@ -2228,7 +2228,7 @@ function MobileLiveStudio({
           <button
             type="button"
             onClick={() => handleTriggerCTA()}
-            className="inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-3 py-3 text-xs font-semibold text-slate-700 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800"
+            className="inline-flex items-center justify-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-3 text-xs font-semibold text-slate-700 transition-colors hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800"
           >
             <Sparkles className="h-4 w-4" />
             Trigger
@@ -2236,7 +2236,7 @@ function MobileLiveStudio({
           <button
             type="button"
             onClick={() => handleMarkClip()}
-            className="inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-3 py-3 text-xs font-semibold text-slate-700 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800"
+            className="inline-flex items-center justify-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-3 text-xs font-semibold text-slate-700 transition-colors hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800"
           >
             <BookmarkPlus className="h-4 w-4" />
             Clip
@@ -2248,6 +2248,7 @@ function MobileLiveStudio({
 }
 
 export { FaithHubLiveStudioPage };
+
 
 
 

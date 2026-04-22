@@ -1,4 +1,4 @@
-ï»¿// @ts-nocheck
+// @ts-nocheck
 "use client";
 
 import React, { useMemo, useState } from "react";
@@ -37,7 +37,7 @@ import {
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
- * Provider â€” Merchandise Builder
+ * Provider — Merchandise Builder
  * ---------------------------------------
  * Premium Provider-side create/edit page launched from Merchandise Manager via
  * the "+ New Merchandise" command.
@@ -478,7 +478,7 @@ function createDraftFromTemplate(templateId: TemplateKey): MerchandiseDraft {
     donorThankYouEligible: false,
     fulfillmentMode: "Mixed",
     shippingClass: "Standard parcel",
-    prepLabel: "Dispatch in 2â€“4 working days",
+    prepLabel: "Dispatch in 2–4 working days",
     shipRegions: preset.shipRegions,
     pickupLocations: preset.pickupLocations,
     linkHooks: {
@@ -528,8 +528,8 @@ function StepNav({
   setStep: (step: StepKey) => void;
 }) {
   return (
-    <div className="rounded-3xl border border-slate-200 bg-white p-3 transition-colors">
-      <div className="text-[12px] font-semibold text-slate-900">Builder flow</div>
+    <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-3 transition-colors">
+      <div className="text-[12px] font-semibold text-faith-ink">Builder flow</div>
       <div className="mt-2 space-y-1">
         {STEP_LIBRARY.map((item) => (
           <button
@@ -539,8 +539,8 @@ function StepNav({
             className={cx(
               "w-full rounded-2xl border px-3 py-2 text-left text-[12px] font-semibold transition-colors flex items-center justify-between",
               step === item.key
-                ? "border-amber-200 bg-amber-50 text-slate-900"
-                : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50",
+                ? "border-amber-200 bg-amber-50 text-faith-ink"
+                : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 hover:bg-[var(--fh-surface)]",
             )}
           >
             <span>{item.label}</span>
@@ -568,7 +568,7 @@ function Pill({
         ? "border-amber-200 bg-amber-50 text-amber-800"
         : tone === "danger"
           ? "border-rose-200 bg-rose-50 text-rose-700"
-          : "border-slate-200 bg-white text-slate-700";
+          : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700";
   return (
     <span
       className={cx(
@@ -601,8 +601,8 @@ function SoftButton({
       className={cx(
         "inline-flex items-center gap-2 rounded-2xl border px-4 py-2 text-[12px] font-semibold transition-colors",
         disabled
-          ? "cursor-not-allowed border-slate-200 bg-slate-50 text-slate-400"
-          : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50",
+          ? "cursor-not-allowed border-faith-line bg-[var(--fh-surface)] text-faith-slate"
+          : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 hover:bg-[var(--fh-surface)]",
         className,
       )}
     >
@@ -651,12 +651,12 @@ function Card({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-3xl border border-slate-200 bg-white p-4 transition-colors">
+    <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 transition-colors">
       <div className="flex items-start justify-between gap-3">
         <div>
-          <div className="text-[13px] font-semibold text-slate-900">{title}</div>
+          <div className="text-[13px] font-semibold text-faith-ink">{title}</div>
           {subtitle ? (
-            <div className="mt-0.5 text-[11px] text-slate-500">{subtitle}</div>
+            <div className="mt-0.5 text-[11px] text-faith-slate">{subtitle}</div>
           ) : null}
         </div>
         {right ? <div className="shrink-0">{right}</div> : null}
@@ -687,7 +687,7 @@ function Input({
       type={type}
       onChange={(e) => onChange(e.target.value)}
       placeholder={placeholder}
-      className="mt-1 w-full rounded-2xl border border-slate-200 bg-white px-3 py-2 text-[12px] text-slate-900 outline-none transition-colors focus:ring-2 focus:ring-amber-200"
+      className="mt-1 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] text-faith-ink outline-none transition-colors focus:ring-2 focus:ring-amber-200"
     />
   );
 }
@@ -709,7 +709,7 @@ function TextArea({
       rows={rows}
       onChange={(e) => onChange(e.target.value)}
       placeholder={placeholder}
-      className="mt-1 w-full rounded-2xl border border-slate-200 bg-white px-3 py-2 text-[12px] text-slate-900 outline-none transition-colors focus:ring-2 focus:ring-amber-200"
+      className="mt-1 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] text-faith-ink outline-none transition-colors focus:ring-2 focus:ring-amber-200"
     />
   );
 }
@@ -733,23 +733,23 @@ function Toggle({
         "w-full rounded-3xl border p-3 text-left transition-colors",
         checked
           ? "border-emerald-200 bg-emerald-50"
-          : "border-slate-200 bg-white hover:bg-slate-50",
+          : "border-faith-line bg-[var(--fh-surface-bg)] hover:bg-[var(--fh-surface)]",
       )}
     >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
-          <div className="text-[12px] font-semibold text-slate-900">{label}</div>
-          {hint ? <div className="mt-0.5 text-[11px] text-slate-500">{hint}</div> : null}
+          <div className="text-[12px] font-semibold text-faith-ink">{label}</div>
+          {hint ? <div className="mt-0.5 text-[11px] text-faith-slate">{hint}</div> : null}
         </div>
         <span
           className={cx(
             "flex h-6 w-10 shrink-0 items-center rounded-full border px-1 transition-colors",
             checked
               ? "justify-end border-emerald-500 bg-emerald-500"
-              : "justify-start border-slate-200 bg-slate-100",
+              : "justify-start border-faith-line bg-slate-100",
           )}
         >
-          <span className="h-4 w-4 rounded-full bg-white shadow" />
+          <span className="h-4 w-4 rounded-full bg-[var(--fh-surface-bg)] shadow" />
         </span>
       </div>
     </button>
@@ -766,7 +766,7 @@ function SegmentedToggle({
   onChange: (value: string) => void;
 }) {
   return (
-    <div className="inline-flex rounded-2xl border border-slate-200 bg-white p-1 transition-colors">
+    <div className="inline-flex rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-1 transition-colors">
       {values.map((value) => (
         <button
           key={value}
@@ -776,7 +776,7 @@ function SegmentedToggle({
             "rounded-xl px-3 py-1.5 text-[12px] font-bold transition-colors",
             active === value
               ? "bg-slate-900 text-white"
-              : "text-slate-700 hover:bg-slate-50",
+              : "text-slate-700 hover:bg-[var(--fh-surface)]",
           )}
         >
           {value}
@@ -802,8 +802,8 @@ function TemplateCard({
       className={cx(
         "group overflow-hidden rounded-3xl border text-left transition-all",
         active
-          ? "border-emerald-300 bg-emerald-50 shadow-sm"
-          : "border-slate-200 bg-white hover:border-slate-300 hover:shadow-sm",
+          ? "border-emerald-300 bg-emerald-50 shadow-soft"
+          : "border-faith-line bg-[var(--fh-surface-bg)] hover:border-slate-300 hover:shadow-soft",
       )}
     >
       <div className="aspect-[16/10] overflow-hidden">
@@ -816,8 +816,8 @@ function TemplateCard({
       <div className="p-3">
         <div className="flex items-start justify-between gap-2">
           <div>
-            <div className="text-[13px] font-semibold text-slate-900">{preset.title}</div>
-            <div className="mt-0.5 text-[11px] text-slate-500">{preset.subtitle}</div>
+            <div className="text-[13px] font-semibold text-faith-ink">{preset.title}</div>
+            <div className="mt-0.5 text-[11px] text-faith-slate">{preset.subtitle}</div>
           </div>
           {active ? (
             <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500 text-white">
@@ -844,7 +844,7 @@ function VariantRow({
   onRemove: () => void;
 }) {
   return (
-    <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3 transition-colors">
+    <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3 transition-colors">
       <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
         <div>
           <Label>Variant label</Label>
@@ -872,7 +872,7 @@ function VariantRow({
         </div>
       </div>
       <div className="mt-3 flex items-center justify-between gap-2">
-        <div className="text-[11px] text-slate-500">
+        <div className="text-[11px] text-faith-slate">
           Premium tip: use clear size / colour naming so event volunteers and pickup teams can fulfil faster.
         </div>
         <SoftButton onClick={onRemove}>Remove</SoftButton>
@@ -889,7 +889,7 @@ function LocaleRow({
   onChange: (next: LocaleItem) => void;
 }) {
   return (
-    <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3 transition-colors">
+    <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3 transition-colors">
       <div className="grid gap-3 md:grid-cols-4">
         <div>
           <Label>Language</Label>
@@ -943,11 +943,11 @@ function ReadinessCard({ checks }: { checks: Array<{ label: string; ok: boolean;
         {checks.map((item) => (
           <div
             key={item.label}
-            className="flex items-start justify-between gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-3 py-3"
+            className="flex items-start justify-between gap-3 rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-3"
           >
             <div>
-              <div className="text-[12px] font-semibold text-slate-900">{item.label}</div>
-              <div className="mt-0.5 text-[11px] text-slate-500">{item.hint}</div>
+              <div className="text-[12px] font-semibold text-faith-ink">{item.label}</div>
+              <div className="mt-0.5 text-[11px] text-faith-slate">{item.hint}</div>
             </div>
             <Pill text={item.ok ? "Ready" : "Needed"} tone={item.ok ? "good" : "warn"} />
           </div>
@@ -991,9 +991,9 @@ function PreviewRail({
           />
         }
       >
-        <div className="rounded-[28px] border border-slate-200 bg-[#f2f2f2] p-3">
+        <div className="rounded-[28px] border border-faith-line bg-[var(--fh-page-bg)] p-3">
           {previewMode === "desktop" ? (
-            <div className="overflow-hidden rounded-[24px] border border-slate-200 bg-white shadow-sm">
+            <div className="overflow-hidden rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] shadow-soft">
               <div className="relative aspect-[16/10] overflow-hidden">
                 <img src={draft.coverUrl} alt={draft.title} className="h-full w-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
@@ -1010,64 +1010,64 @@ function PreviewRail({
               <div className="p-4">
                 <div className="flex items-start justify-between gap-3">
                   <div>
-                    <div className="text-[13px] font-semibold text-slate-900">{draft.storefrontLabel}</div>
-                    <div className="mt-1 text-[11px] text-slate-500">{draft.summary}</div>
+                    <div className="text-[13px] font-semibold text-faith-ink">{draft.storefrontLabel}</div>
+                    <div className="mt-1 text-[11px] text-faith-slate">{draft.summary}</div>
                   </div>
                   <div className="text-right">
-                    <div className="text-lg font-black text-slate-900">{heroPrice}</div>
-                    {comparePrice ? <div className="text-[11px] text-slate-400 line-through">{comparePrice}</div> : null}
+                    <div className="text-lg font-black text-faith-ink">{heroPrice}</div>
+                    {comparePrice ? <div className="text-[11px] text-faith-slate line-through">{comparePrice}</div> : null}
                   </div>
                 </div>
                 <div className="mt-3 flex flex-wrap gap-2">
                   {activeVariants.slice(0, 4).map((variant) => (
-                    <span key={variant.id} className="inline-flex rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-[11px] font-semibold text-slate-700">
+                    <span key={variant.id} className="inline-flex rounded-full border border-faith-line bg-[var(--fh-surface)] px-3 py-1 text-[11px] font-semibold text-slate-700">
                       {variant.label}
                     </span>
                   ))}
                 </div>
                 <div className="mt-4 grid gap-2 sm:grid-cols-2">
-                  <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3">
-                    <div className="text-[10px] uppercase tracking-[0.18em] text-slate-400">Live pin</div>
-                    <div className="mt-1 text-[12px] font-semibold text-slate-900">{draft.ctaText}</div>
-                    <div className="mt-1 text-[11px] text-slate-500">{draft.linkedLive || "Attach this merch item to a live session pin."}</div>
+                  <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
+                    <div className="text-[10px] uppercase tracking-[0.18em] text-faith-slate">Live pin</div>
+                    <div className="mt-1 text-[12px] font-semibold text-faith-ink">{draft.ctaText}</div>
+                    <div className="mt-1 text-[11px] text-faith-slate">{draft.linkedLive || "Attach this merch item to a live session pin."}</div>
                   </div>
-                  <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3">
-                    <div className="text-[10px] uppercase tracking-[0.18em] text-slate-400">Beacon card</div>
-                    <div className="mt-1 text-[12px] font-semibold text-slate-900">{draft.linkedBeacon || "Seasonal awareness campaign"}</div>
-                    <div className="mt-1 text-[11px] text-slate-500">{draft.merchAngle}</div>
+                  <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
+                    <div className="text-[10px] uppercase tracking-[0.18em] text-faith-slate">Beacon card</div>
+                    <div className="mt-1 text-[12px] font-semibold text-faith-ink">{draft.linkedBeacon || "Seasonal awareness campaign"}</div>
+                    <div className="mt-1 text-[11px] text-faith-slate">{draft.merchAngle}</div>
                   </div>
                 </div>
               </div>
             </div>
           ) : (
-            <div className="mx-auto w-[320px] md:w-[360px] overflow-hidden rounded-[34px] border border-slate-200 bg-slate-950 p-2 shadow-sm">
-              <div className="overflow-hidden rounded-[28px] bg-white">
+            <div className="mx-auto w-[320px] md:w-[360px] overflow-hidden rounded-[34px] border border-faith-line bg-slate-950 p-2 shadow-soft">
+              <div className="overflow-hidden rounded-[28px] bg-[var(--fh-surface-bg)]">
                 <div className="relative aspect-[9/12] overflow-hidden">
                   <img src={draft.coverUrl} alt={draft.title} className="h-full w-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                   <div className="absolute left-3 right-3 bottom-3 text-white">
                     <div className="text-[10px] font-black uppercase tracking-[0.2em] opacity-80">FaithMart</div>
                     <div className="mt-1 text-base font-black leading-tight">{draft.title}</div>
-                    <div className="mt-1 text-xs opacity-90">{heroPrice}{supporterPrice ? ` â€¢ Supporter ${supporterPrice}` : ""}</div>
+                    <div className="mt-1 text-xs opacity-90">{heroPrice}{supporterPrice ? ` • Supporter ${supporterPrice}` : ""}</div>
                   </div>
                 </div>
                 <div className="p-3">
-                  <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3">
-                    <div className="text-[10px] uppercase tracking-[0.18em] text-slate-400">Storefront CTA</div>
-                    <div className="mt-1 text-[12px] font-semibold text-slate-900">{draft.ctaText}</div>
-                    <div className="mt-1 text-[11px] text-slate-500">{draft.themeLine}</div>
+                  <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
+                    <div className="text-[10px] uppercase tracking-[0.18em] text-faith-slate">Storefront CTA</div>
+                    <div className="mt-1 text-[12px] font-semibold text-faith-ink">{draft.ctaText}</div>
+                    <div className="mt-1 text-[11px] text-faith-slate">{draft.themeLine}</div>
                   </div>
                   <div className="mt-3 grid gap-2">
                     {activeVariants.slice(0, 2).map((variant) => (
-                      <div key={variant.id} className="rounded-2xl border border-slate-200 p-3">
+                      <div key={variant.id} className="rounded-2xl border border-faith-line p-3">
                         <div className="flex items-center justify-between gap-3">
                           <div>
-                            <div className="text-[12px] font-semibold text-slate-900">{variant.label}</div>
-                            <div className="text-[11px] text-slate-500">{variant.sku}</div>
+                            <div className="text-[12px] font-semibold text-faith-ink">{variant.label}</div>
+                            <div className="text-[11px] text-faith-slate">{variant.sku}</div>
                           </div>
                           <div className="text-right">
-                            <div className="text-[12px] font-black text-slate-900">{money(draft.basePrice + variant.priceDelta, draft.currency)}</div>
-                            <div className="text-[10px] text-slate-500">{variant.inventory} left</div>
+                            <div className="text-[12px] font-black text-faith-ink">{money(draft.basePrice + variant.priceDelta, draft.currency)}</div>
+                            <div className="text-[10px] text-faith-slate">{variant.inventory} left</div>
                           </div>
                         </div>
                       </div>
@@ -1082,20 +1082,20 @@ function PreviewRail({
 
       <Card title="Surface summary" subtitle="Premium readiness across connected provider surfaces.">
         <div className="grid gap-2">
-          <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3">
-            <div className="text-[10px] uppercase tracking-[0.18em] text-slate-400">Inventory</div>
-            <div className="mt-1 text-[18px] font-black text-slate-900">{inventoryTotal}</div>
-            <div className="text-[11px] text-slate-500">Across {draft.variantItems.length} variants</div>
+          <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
+            <div className="text-[10px] uppercase tracking-[0.18em] text-faith-slate">Inventory</div>
+            <div className="mt-1 text-[18px] font-black text-faith-ink">{inventoryTotal}</div>
+            <div className="text-[11px] text-faith-slate">Across {draft.variantItems.length} variants</div>
           </div>
-          <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3">
-            <div className="text-[10px] uppercase tracking-[0.18em] text-slate-400">Activation hooks</div>
-            <div className="mt-1 text-[18px] font-black text-slate-900">{liveHooksCount}</div>
-            <div className="text-[11px] text-slate-500">Live, events, Beacon, giving, and notification journeys</div>
+          <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
+            <div className="text-[10px] uppercase tracking-[0.18em] text-faith-slate">Activation hooks</div>
+            <div className="mt-1 text-[18px] font-black text-faith-ink">{liveHooksCount}</div>
+            <div className="text-[11px] text-faith-slate">Live, events, Beacon, giving, and notification journeys</div>
           </div>
-          <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3">
-            <div className="text-[10px] uppercase tracking-[0.18em] text-slate-400">Release</div>
-            <div className="mt-1 text-[14px] font-black text-slate-900">{draft.releaseMode}</div>
-            <div className="text-[11px] text-slate-500">
+          <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
+            <div className="text-[10px] uppercase tracking-[0.18em] text-faith-slate">Release</div>
+            <div className="mt-1 text-[14px] font-black text-faith-ink">{draft.releaseMode}</div>
+            <div className="text-[11px] text-faith-slate">
               {draft.releaseMode === "Schedule" ? fmtDate(draft.releaseAt) : "Ready for storefront handoff"}
             </div>
           </div>
@@ -1266,10 +1266,10 @@ export default function MerchandiseBuilderPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#f2f2f2] text-slate-900">
+    <div className="min-h-screen bg-[var(--fh-page-bg)] text-faith-ink">
       <div className="mx-auto w-full max-w-[1640px] px-4 py-6 sm:px-6 lg:px-8">
-        <div className="rounded-[32px] border border-slate-200 bg-white shadow-sm transition-colors">
-          <div className="border-b border-slate-200 p-6">
+        <div className="rounded-[32px] border border-faith-line bg-[var(--fh-surface-bg)] shadow-soft transition-colors">
+          <div className="border-b border-faith-line p-6">
             <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
               <div className="min-w-0">
                 <ProviderPageTitle
@@ -1285,15 +1285,15 @@ export default function MerchandiseBuilderPage() {
               </div>
 
               <div className="grid w-full max-w-[560px] gap-3 sm:grid-cols-2 xl:w-[520px]">
-                <div className="rounded-3xl border border-slate-200 bg-slate-50 p-4">
-                  <div className="text-[10px] uppercase tracking-[0.16em] text-slate-400">Readiness</div>
-                  <div className="mt-2 text-3xl font-black text-slate-900">{commandStats.readiness}%</div>
-                  <div className="mt-1 text-[11px] text-slate-500">Launch confidence across merchandising, fulfillment, and activation.</div>
+                <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface)] p-4">
+                  <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">Readiness</div>
+                  <div className="mt-2 text-3xl font-black text-faith-ink">{commandStats.readiness}%</div>
+                  <div className="mt-1 text-[11px] text-faith-slate">Launch confidence across merchandising, fulfillment, and activation.</div>
                 </div>
-                <div className="rounded-3xl border border-slate-200 bg-slate-50 p-4">
-                  <div className="text-[10px] uppercase tracking-[0.16em] text-slate-400">Connected surfaces</div>
-                  <div className="mt-2 text-3xl font-black text-slate-900">{commandStats.hooks}</div>
-                  <div className="mt-1 text-[11px] text-slate-500">Live, event, giving, notification, and Beacon hooks enabled.</div>
+                <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface)] p-4">
+                  <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">Connected surfaces</div>
+                  <div className="mt-2 text-3xl font-black text-faith-ink">{commandStats.hooks}</div>
+                  <div className="mt-1 text-[11px] text-faith-slate">Live, event, giving, notification, and Beacon hooks enabled.</div>
                 </div>
               </div>
             </div>
@@ -1374,7 +1374,7 @@ export default function MerchandiseBuilderPage() {
                                 "rounded-full border px-3 py-1.5 text-[11px] font-semibold transition-colors",
                                 draft.collection === collection
                                   ? "border-emerald-300 bg-emerald-50 text-emerald-700"
-                                  : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50",
+                                  : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 hover:bg-[var(--fh-surface)]",
                               )}
                             >
                               {collection}
@@ -1475,13 +1475,13 @@ export default function MerchandiseBuilderPage() {
                     subtitle="Make the merchandise asset useful across FaithMart, provider campaigns, and premium surface previews."
                   >
                     <div className="grid gap-3 md:grid-cols-2">
-                      <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3">
-                        <div className="text-[12px] font-semibold text-slate-900">Storefront hero</div>
-                        <div className="mt-1 text-[11px] text-slate-500">Use the primary cover image as the FaithMart hero and category thumbnail source.</div>
+                      <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
+                        <div className="text-[12px] font-semibold text-faith-ink">Storefront hero</div>
+                        <div className="mt-1 text-[11px] text-faith-slate">Use the primary cover image as the FaithMart hero and category thumbnail source.</div>
                       </div>
-                      <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3">
-                        <div className="text-[12px] font-semibold text-slate-900">Beacon creative handoff</div>
-                        <div className="mt-1 text-[11px] text-slate-500">Generate promotion variants without rebuilding the merch object from scratch.</div>
+                      <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
+                        <div className="text-[12px] font-semibold text-faith-ink">Beacon creative handoff</div>
+                        <div className="mt-1 text-[11px] text-faith-slate">Generate promotion variants without rebuilding the merch object from scratch.</div>
                       </div>
                     </div>
                   </Card>
@@ -1612,7 +1612,7 @@ export default function MerchandiseBuilderPage() {
                       </div>
                       <div>
                         <Label>Preparation SLA</Label>
-                        <Input value={draft.prepLabel} onChange={(value) => patchDraft("prepLabel", value)} placeholder="Dispatch in 2â€“4 working days" />
+                        <Input value={draft.prepLabel} onChange={(value) => patchDraft("prepLabel", value)} placeholder="Dispatch in 2–4 working days" />
                       </div>
                       <div>
                         <Label>Ship regions (comma separated)</Label>
@@ -1762,21 +1762,21 @@ export default function MerchandiseBuilderPage() {
                     </div>
 
                     <div className="mt-4 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
-                      <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3">
-                        <div className="text-[10px] uppercase tracking-[0.16em] text-slate-400">Slug</div>
-                        <div className="mt-1 text-[13px] font-semibold text-slate-900">/{slug}</div>
+                      <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
+                        <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">Slug</div>
+                        <div className="mt-1 text-[13px] font-semibold text-faith-ink">/{slug}</div>
                       </div>
-                      <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3">
-                        <div className="text-[10px] uppercase tracking-[0.16em] text-slate-400">Storefront price</div>
-                        <div className="mt-1 text-[13px] font-semibold text-slate-900">{money(draft.basePrice, draft.currency)}</div>
+                      <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
+                        <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">Storefront price</div>
+                        <div className="mt-1 text-[13px] font-semibold text-faith-ink">{money(draft.basePrice, draft.currency)}</div>
                       </div>
-                      <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3">
-                        <div className="text-[10px] uppercase tracking-[0.16em] text-slate-400">Inventory</div>
-                        <div className="mt-1 text-[13px] font-semibold text-slate-900">{inventoryTotal} units</div>
+                      <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
+                        <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">Inventory</div>
+                        <div className="mt-1 text-[13px] font-semibold text-faith-ink">{inventoryTotal} units</div>
                       </div>
-                      <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3">
-                        <div className="text-[10px] uppercase tracking-[0.16em] text-slate-400">Release</div>
-                        <div className="mt-1 text-[13px] font-semibold text-slate-900">{draft.releaseMode}</div>
+                      <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
+                        <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">Release</div>
+                        <div className="mt-1 text-[13px] font-semibold text-faith-ink">{draft.releaseMode}</div>
                       </div>
                     </div>
 
@@ -1805,7 +1805,7 @@ export default function MerchandiseBuilderPage() {
             />
           </div>
 
-          <div className="border-t border-slate-200 p-6">
+          <div className="border-t border-faith-line p-6">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div className="flex flex-wrap items-center gap-2">
                 <Pill text={`${commandStats.variants} variants`} tone="neutral" icon={<Layers3 className="h-3.5 w-3.5" />} />
@@ -1833,6 +1833,7 @@ export default function MerchandiseBuilderPage() {
     </div>
   );
 }
+
 
 
 

@@ -1,4 +1,4 @@
-Ôªø// @ts-nocheck
+// @ts-nocheck
 "use client";
 
 import React, { useMemo, useState } from "react";
@@ -27,7 +27,7 @@ import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
- * Provider ‚Äî Testimonies
+ * Provider ó Testimonies
  * --------------------------------
  * Premium Provider-side page for collecting, reviewing, approving,
  * publishing, and featuring testimonies across the institution.
@@ -206,7 +206,7 @@ const testimoniesSeed: TestimonyRecord[] = [
     anonymousRequested: false,
     childSafe: false,
     linkedLive: "Night of Hope Revival",
-    linkedReplay: "Night of Hope ‚Äî Replay",
+    linkedReplay: "Night of Hope ó Replay",
     heroUrl: HERO_1,
     tags: ["Provision", "Jobs", "Night of Hope"],
     safeguards: [
@@ -397,7 +397,7 @@ const testimoniesSeed: TestimonyRecord[] = [
     anonymousRequested: false,
     childSafe: false,
     linkedEvent: "Baptism Sunday",
-    linkedReplay: "Baptism Sunday ‚Äî Replay",
+    linkedReplay: "Baptism Sunday ó Replay",
     heroUrl: HERO_4,
     tags: ["Baptism", "Salvation", "Replay"],
     safeguards: [
@@ -579,7 +579,7 @@ function toneClass(
   if (tone === "brand") {
     return "border-transparent text-white";
   }
-  return "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300";
+  return "border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 text-slate-700 dark:text-slate-300";
 }
 
 function statusTone(
@@ -648,12 +648,12 @@ function ActionButton({
       className={cx(
         "inline-flex items-center gap-2 rounded-2xl border px-4 py-2 text-[12px] font-semibold transition-colors",
         disabled
-          ? "cursor-not-allowed opacity-60 bg-slate-50 dark:bg-slate-900 text-slate-400 dark:text-slate-500 border-slate-200 dark:border-slate-800"
+          ? "cursor-not-allowed opacity-60 bg-[var(--fh-surface)] dark:bg-slate-900 text-faith-slate border-faith-line dark:border-slate-800"
           : tone === "primary"
             ? "text-white border-transparent hover:opacity-95"
             : tone === "ghost"
               ? "bg-transparent border-transparent text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
-              : "bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700",
+              : "bg-[var(--fh-surface-bg)] dark:bg-slate-800 border-faith-line dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-700",
         className,
       )}
       style={tone === "primary" ? { background: EV_GREEN } : undefined}
@@ -700,19 +700,19 @@ function StatCard({
 }) {
   const dot = accent === "green" ? EV_GREEN : accent === "orange" ? EV_ORANGE : EV_NAVY;
   return (
-    <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 transition-colors">
+    <div className="rounded-3xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors">
       <div className="flex items-start justify-between gap-3">
         <div>
-          <div className="text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">
+          <div className="text-[11px] font-semibold uppercase tracking-[0.12em] text-faith-slate">
             {label}
           </div>
-          <div className="mt-2 text-[18px] font-black text-slate-900 dark:text-slate-100">
+          <div className="mt-2 text-[18px] font-black text-faith-ink dark:text-slate-100">
             {value}
           </div>
         </div>
         <div className="h-10 w-10 rounded-full" style={{ background: dot }} />
       </div>
-      <div className="mt-3 text-[12px] leading-5 text-slate-600 dark:text-slate-400">
+      <div className="mt-3 text-[12px] leading-5 text-faith-slate">
         {hint}
       </div>
     </div>
@@ -739,15 +739,15 @@ function Drawer({
         className="absolute inset-0 bg-black/50 backdrop-blur-sm"
         onClick={onClose}
       />
-      <div className="absolute inset-0 bg-slate-50 dark:bg-slate-950 shadow-2xl transition-colors flex flex-col">
-        <div className="shrink-0 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3">
+      <div className="absolute inset-0 bg-[var(--fh-surface)] dark:bg-slate-950 shadow-2xl transition-colors flex flex-col">
+        <div className="shrink-0 border-b border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 py-3">
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0">
-              <div className="truncate text-[14px] font-semibold text-slate-900 dark:text-slate-100">
+              <div className="truncate text-[14px] font-semibold text-faith-ink dark:text-slate-100">
                 {title}
               </div>
               {subtitle ? (
-                <div className="mt-0.5 truncate text-[11px] text-slate-500 dark:text-slate-400">
+                <div className="mt-0.5 truncate text-[11px] text-faith-slate">
                   {subtitle}
                 </div>
               ) : null}
@@ -755,7 +755,7 @@ function Drawer({
             <button
               type="button"
               onClick={onClose}
-              className="h-9 w-9 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 grid place-items-center hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors"
+              className="h-9 w-9 rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 grid place-items-center hover:bg-[var(--fh-surface)] dark:hover:bg-slate-700 transition-colors"
             >
               <X className="h-4 w-4 text-slate-700 dark:text-slate-300" />
             </button>
@@ -769,13 +769,13 @@ function Drawer({
 
 function FeaturePlacementCard({ hook }: { hook: PlacementHook }) {
   return (
-    <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 p-3 transition-colors">
+    <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 p-3 transition-colors">
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
-          <div className="text-[12px] font-bold text-slate-900 dark:text-slate-100">
+          <div className="text-[12px] font-bold text-faith-ink dark:text-slate-100">
             {hook.label}
           </div>
-          <div className="mt-1 text-[11px] leading-5 text-slate-500 dark:text-slate-400">
+          <div className="mt-1 text-[11px] leading-5 text-faith-slate">
             {hook.hint}
           </div>
         </div>
@@ -796,7 +796,7 @@ function TestimonyPreview({
   return (
     <div
       className={cx(
-        "overflow-hidden rounded-[28px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 transition-colors",
+        "overflow-hidden rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 transition-colors",
         previewMode === "mobile" ? "max-w-[340px] md:max-w-[380px]" : "w-full",
       )}
     >
@@ -839,25 +839,25 @@ function TestimonyPreview({
       <div className="p-4">
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
-            <div className="text-[12px] font-bold text-slate-900 dark:text-slate-100">
+            <div className="text-[12px] font-bold text-faith-ink dark:text-slate-100">
               {story.displayName}
             </div>
-            <div className="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">
-              {story.category} ‚Ä¢ {story.mediaType}
+            <div className="mt-0.5 text-[11px] text-faith-slate">
+              {story.category} ï {story.mediaType}
             </div>
           </div>
           <Pill text={story.status} tone={statusTone(story.status)} />
         </div>
 
-        <div className="mt-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3 transition-colors">
-          <div className="text-[10px] font-black uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">
+        <div className="mt-4 rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
+          <div className="text-[10px] font-black uppercase tracking-[0.16em] text-faith-slate">
             Story highlight
           </div>
-          <div className="mt-1 text-[13px] font-semibold text-slate-900 dark:text-slate-100 leading-6">
-            ‚Äú{story.storyText.slice(0, 160)}{story.storyText.length > 160 ? "‚Ä¶" : ""}‚Äù
+          <div className="mt-1 text-[13px] font-semibold text-faith-ink dark:text-slate-100 leading-6">
+            ì{story.storyText.slice(0, 160)}{story.storyText.length > 160 ? "Ö" : ""}î
           </div>
-          <div className="mt-2 text-[11px] text-slate-600 dark:text-slate-400">
-            Key verse ‚Ä¢ {story.keyVerse}
+          <div className="mt-2 text-[11px] text-faith-slate">
+            Key verse ï {story.keyVerse}
           </div>
         </div>
 
@@ -868,7 +868,7 @@ function TestimonyPreview({
             onClick={() => safeNav("/faithhub/provider/testimonies")}>
             Read full story
           </button>
-          <button className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-[12px] font-bold text-slate-700 dark:text-slate-200 transition-colors" onClick={() => navigator.clipboard?.writeText(window.location.href)}>
+          <button className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] font-bold text-slate-700 dark:text-slate-200 transition-colors" onClick={() => navigator.clipboard?.writeText(window.location.href)}>
             Share testimony
           </button>
         </div>
@@ -882,12 +882,12 @@ function TestimonyPreview({
           ].map((metric) => (
             <div
               key={metric.label}
-              className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-2 transition-colors"
+              className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2 transition-colors"
             >
-              <div className="text-[10px] font-black uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">
+              <div className="text-[10px] font-black uppercase tracking-[0.14em] text-faith-slate">
                 {metric.label}
               </div>
-              <div className="mt-1 text-[12px] font-bold text-slate-900 dark:text-slate-100">
+              <div className="mt-1 text-[12px] font-bold text-faith-ink dark:text-slate-100">
                 {metric.value}
               </div>
             </div>
@@ -906,9 +906,9 @@ function TestimonyPreviewInner({
   previewMode: PreviewMode;
 }) {
   return (
-    <div className="rounded-[34px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 transition-colors">
+    <div className="rounded-[34px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors">
       <div className="mb-3 flex items-center justify-between gap-2">
-        <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+        <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
           Testimony destination preview
         </div>
         <div className="flex items-center gap-2">
@@ -1058,9 +1058,9 @@ export default function TestimoniesPage() {
     (selectedStory.mediaType === "Text only" || !!selectedStory.mediaRelease);
 
   return (
-    <div className="min-h-screen w-full bg-[#f2f2f2] dark:bg-slate-950 p-5 text-slate-900 dark:text-slate-50 transition-colors">
+    <div className="min-h-screen w-full bg-[var(--fh-page-bg)] dark:bg-slate-950 p-5 text-faith-ink dark:text-slate-50 transition-colors">
       <div className="mx-auto max-w-[1600px] space-y-5">
-        <section className="rounded-[28px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm transition-colors">
+        <section className="rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-6 shadow-soft transition-colors">
           <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
             <div className="min-w-0">
               <ProviderPageTitle
@@ -1096,17 +1096,17 @@ export default function TestimoniesPage() {
           </div>
         </section>
 
-        <section className="rounded-[24px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3 shadow-sm transition-colors">
+        <section className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 py-3 shadow-soft transition-colors">
           <div className="flex flex-col gap-2 xl:flex-row xl:items-center xl:justify-between">
-            <div className="min-w-0 flex flex-wrap items-center gap-2 text-[13px] text-slate-600 dark:text-slate-400">
+            <div className="min-w-0 flex flex-wrap items-center gap-2 text-[13px] text-faith-slate">
               <Pill text="STORY OPS ALERTS" tone="warn" icon={<AlertTriangle className="h-3 w-3" />} />
               <span>{fmtInt(needsReview.length)} stories still need first review</span>
-              <span>‚Ä¢</span>
+              <span>ï</span>
               <span>{fmtInt(consentGaps.length)} stories have consent or release gaps</span>
-              <span>‚Ä¢</span>
+              <span>ï</span>
               <span>{fmtInt(featureReady.length)} approved stories are ready for featuring</span>
             </div>
-            <div className="text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-400 dark:text-slate-500">
+            <div className="text-[11px] font-semibold uppercase tracking-[0.12em] text-faith-slate">
               Premium testimony ops
             </div>
           </div>
@@ -1152,14 +1152,14 @@ export default function TestimoniesPage() {
         </section>
 
         <section className="grid gap-4 xl:grid-cols-[1.28fr_0.9fr_0.72fr]">
-          <div className="rounded-[28px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 shadow-sm transition-colors">
+          <div className="rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 shadow-soft transition-colors">
             <div className="flex flex-col gap-3">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <div className="text-[16px] font-black tracking-[-0.02em] text-slate-900 dark:text-slate-100">
+                  <div className="text-[16px] font-black tracking-[-0.02em] text-faith-ink dark:text-slate-100">
                     Testimony review inbox
                   </div>
-                  <div className="mt-1 text-[13px] leading-6 text-slate-600 dark:text-slate-400">
+                  <div className="mt-1 text-[13px] leading-6 text-faith-slate">
                     Unified intake from prayer follow-up, group leaders, live sessions, events, counseling pathways, and standalone story forms.
                   </div>
                 </div>
@@ -1170,21 +1170,21 @@ export default function TestimoniesPage() {
               </div>
 
               <div className="grid gap-3 xl:grid-cols-[1.25fr_0.85fr_0.85fr_0.85fr]">
-                <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-3 py-2 transition-colors">
-                  <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400">
+                <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-2 transition-colors">
+                  <div className="flex items-center gap-2 text-faith-slate">
                     <Search className="h-4 w-4" />
                     <input
                       value={query}
                       onChange={(e) => setQuery(e.target.value)}
                       placeholder="Search storyteller, story, tags, or category"
-                      className="w-full bg-transparent text-[12px] font-semibold outline-none placeholder:text-slate-400 dark:placeholder:text-slate-500 text-slate-900 dark:text-slate-100"
+                      className="w-full bg-transparent text-[12px] font-semibold outline-none placeholder:text-faith-slate dark:placeholder:text-faith-slate text-faith-ink dark:text-slate-100"
                     />
                   </div>
                 </div>
                 <select
                   value={statusFilter}
                   onChange={(e) => setStatusFilter(e.target.value)}
-                  className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3 py-2 text-[12px] font-semibold text-slate-700 dark:text-slate-200 transition-colors"
+                  className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] font-semibold text-slate-700 dark:text-slate-200 transition-colors"
                 >
                   <option>All statuses</option>
                   <option>Needs review</option>
@@ -1197,7 +1197,7 @@ export default function TestimoniesPage() {
                 <select
                   value={sourceFilter}
                   onChange={(e) => setSourceFilter(e.target.value)}
-                  className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3 py-2 text-[12px] font-semibold text-slate-700 dark:text-slate-200 transition-colors"
+                  className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] font-semibold text-slate-700 dark:text-slate-200 transition-colors"
                 >
                   <option>All sources</option>
                   <option>Prayer follow-up</option>
@@ -1211,7 +1211,7 @@ export default function TestimoniesPage() {
                   <select
                     value={publishFilter}
                     onChange={(e) => setPublishFilter(e.target.value)}
-                    className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3 py-2 text-[12px] font-semibold text-slate-700 dark:text-slate-200 transition-colors"
+                    className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] font-semibold text-slate-700 dark:text-slate-200 transition-colors"
                   >
                     <option>All visibility</option>
                     <option>Private draft</option>
@@ -1222,7 +1222,7 @@ export default function TestimoniesPage() {
                   <select
                     value={featureFilter}
                     onChange={(e) => setFeatureFilter(e.target.value)}
-                    className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3 py-2 text-[12px] font-semibold text-slate-700 dark:text-slate-200 transition-colors"
+                    className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] font-semibold text-slate-700 dark:text-slate-200 transition-colors"
                   >
                     <option>All feature states</option>
                     <option>Pending</option>
@@ -1260,7 +1260,7 @@ export default function TestimoniesPage() {
                         "w-full rounded-[24px] border p-4 text-left transition-colors",
                         active
                           ? "border-emerald-200 dark:border-emerald-800 bg-emerald-50/70 dark:bg-emerald-900/20"
-                          : "border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800",
+                          : "border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800",
                       )}
                     >
                       <div className="flex items-start justify-between gap-3">
@@ -1290,15 +1290,15 @@ export default function TestimoniesPage() {
                           </div>
                           <div className="min-w-0">
                             <div className="flex flex-wrap items-center gap-2">
-                              <div className="truncate text-[16px] font-black tracking-[-0.02em] text-slate-900 dark:text-slate-100">
+                              <div className="truncate text-[16px] font-black tracking-[-0.02em] text-faith-ink dark:text-slate-100">
                                 {story.title}
                               </div>
                               <Pill text={story.status} tone={statusTone(story.status)} />
                               <Pill text={story.publishMode} tone={publishTone(story.publishMode)} />
                               <Pill text={featureState} tone={featureState === "Blocked" ? "danger" : featureState === "Featured" ? "good" : featureState === "Feature ready" ? "warn" : "navy"} />
                             </div>
-                            <div className="mt-1 text-[13px] text-slate-500 dark:text-slate-400">
-                              {story.displayName} ‚Ä¢ {story.category} ‚Ä¢ {story.mediaType}
+                            <div className="mt-1 text-[13px] text-faith-slate">
+                              {story.displayName} ï {story.category} ï {story.mediaType}
                             </div>
                             <div className="mt-2 max-w-[820px] text-[13px] leading-6 text-slate-700 dark:text-slate-300">
                               {story.summary}
@@ -1323,14 +1323,14 @@ export default function TestimoniesPage() {
                         </div>
 
                         <div className="shrink-0 text-right">
-                          <div className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">
+                          <div className="text-[11px] font-semibold text-faith-slate">
                             Submitted
                           </div>
-                          <div className="mt-1 text-[12px] font-bold text-slate-900 dark:text-slate-100">
+                          <div className="mt-1 text-[12px] font-bold text-faith-ink dark:text-slate-100">
                             {fmtLocal(story.submittedISO)}
                           </div>
-                          <div className="mt-3 text-[11px] text-slate-500 dark:text-slate-400">
-                            Reads ‚Ä¢ {fmtInt(story.impact.reads)}
+                          <div className="mt-3 text-[11px] text-faith-slate">
+                            Reads ï {fmtInt(story.impact.reads)}
                           </div>
                         </div>
                       </div>
@@ -1342,13 +1342,13 @@ export default function TestimoniesPage() {
           </div>
 
           <div className="space-y-4">
-            <div className="rounded-[28px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 shadow-sm transition-colors">
+            <div className="rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 shadow-soft transition-colors">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <div className="text-[16px] font-black tracking-[-0.02em] text-slate-900 dark:text-slate-100">
+                  <div className="text-[16px] font-black tracking-[-0.02em] text-faith-ink dark:text-slate-100">
                     Selected story workspace
                   </div>
-                  <div className="mt-1 text-[13px] leading-6 text-slate-600 dark:text-slate-400">
+                  <div className="mt-1 text-[13px] leading-6 text-faith-slate">
                     Review narrative quality, confirm consent, link destinations, and move the story into publish or feature lanes.
                   </div>
                 </div>
@@ -1357,7 +1357,7 @@ export default function TestimoniesPage() {
 
               {selectedStory ? (
                 <div className="mt-4 space-y-4">
-                  <div className="overflow-hidden rounded-[24px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 transition-colors">
+                  <div className="overflow-hidden rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 transition-colors">
                     <div className="relative aspect-[16/10] overflow-hidden">
                       <img
                         src={selectedStory.heroUrl}
@@ -1387,19 +1387,19 @@ export default function TestimoniesPage() {
                   </div>
 
                   <div className="grid gap-3 sm:grid-cols-2">
-                    <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3 transition-colors">
-                      <div className="text-[10px] font-black uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">
+                    <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
+                      <div className="text-[10px] font-black uppercase tracking-[0.16em] text-faith-slate">
                         Story frame
                       </div>
-                      <div className="mt-1 text-[14px] font-bold text-slate-900 dark:text-slate-100">
+                      <div className="mt-1 text-[14px] font-bold text-faith-ink dark:text-slate-100">
                         {selectedStory.category}
                       </div>
                       <div className="mt-2 text-[12px] leading-6 text-slate-700 dark:text-slate-300">
                         {selectedStory.storyText}
                       </div>
                     </div>
-                    <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3 transition-colors">
-                      <div className="text-[10px] font-black uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">
+                    <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
+                      <div className="text-[10px] font-black uppercase tracking-[0.16em] text-faith-slate">
                         Trust + consent
                       </div>
                       <div className="mt-2 grid gap-2">
@@ -1424,22 +1424,22 @@ export default function TestimoniesPage() {
                   </div>
 
                   <div className="grid gap-3 sm:grid-cols-2">
-                    <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3 transition-colors">
-                      <div className="text-[12px] font-bold text-slate-900 dark:text-slate-100">
+                    <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
+                      <div className="text-[12px] font-bold text-faith-ink dark:text-slate-100">
                         Linked destinations
                       </div>
                       <div className="mt-3 flex flex-wrap gap-2">
-                        {selectedStory.linkedLive ? <Pill text={`Live ‚Ä¢ ${selectedStory.linkedLive}`} tone="navy" icon={<PlayCircle className="h-3 w-3" />} /> : null}
-                        {selectedStory.linkedReplay ? <Pill text={`Replay ‚Ä¢ ${selectedStory.linkedReplay}`} tone="good" icon={<Link2 className="h-3 w-3" />} /> : null}
-                        {selectedStory.linkedGroup ? <Pill text={`Group ‚Ä¢ ${selectedStory.linkedGroup}`} tone="warn" icon={<LayoutGrid className="h-3 w-3" />} /> : null}
-                        {selectedStory.linkedEvent ? <Pill text={`Event ‚Ä¢ ${selectedStory.linkedEvent}`} tone="warn" icon={<CalendarClock className="h-3 w-3" />} /> : null}
+                        {selectedStory.linkedLive ? <Pill text={`Live ï ${selectedStory.linkedLive}`} tone="navy" icon={<PlayCircle className="h-3 w-3" />} /> : null}
+                        {selectedStory.linkedReplay ? <Pill text={`Replay ï ${selectedStory.linkedReplay}`} tone="good" icon={<Link2 className="h-3 w-3" />} /> : null}
+                        {selectedStory.linkedGroup ? <Pill text={`Group ï ${selectedStory.linkedGroup}`} tone="warn" icon={<LayoutGrid className="h-3 w-3" />} /> : null}
+                        {selectedStory.linkedEvent ? <Pill text={`Event ï ${selectedStory.linkedEvent}`} tone="warn" icon={<CalendarClock className="h-3 w-3" />} /> : null}
                       </div>
-                      <div className="mt-3 text-[11px] leading-5 text-slate-500 dark:text-slate-400">
-                        Tags ‚Ä¢ {selectedStory.tags.join(" ‚Ä¢ ")}
+                      <div className="mt-3 text-[11px] leading-5 text-faith-slate">
+                        Tags ï {selectedStory.tags.join(" ï ")}
                       </div>
                     </div>
-                    <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3 transition-colors">
-                      <div className="text-[12px] font-bold text-slate-900 dark:text-slate-100">
+                    <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
+                      <div className="text-[12px] font-bold text-faith-ink dark:text-slate-100">
                         Quick actions
                       </div>
                       <div className="mt-3 flex flex-wrap gap-2">
@@ -1456,13 +1456,13 @@ export default function TestimoniesPage() {
                     </div>
                   </div>
 
-                  <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3 transition-colors">
+                  <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
                     <div className="flex items-start justify-between gap-3">
                       <div>
-                        <div className="text-[12px] font-bold text-slate-900 dark:text-slate-100">
+                        <div className="text-[12px] font-bold text-faith-ink dark:text-slate-100">
                           Approval lane
                         </div>
-                        <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
+                        <div className="mt-1 text-[11px] text-faith-slate">
                           Shared workflow for story intake, verification, pastoral sign-off, and publication.
                         </div>
                       </div>
@@ -1472,15 +1472,15 @@ export default function TestimoniesPage() {
                       {selectedApprovalSteps(selectedStory).map((step) => (
                         <div
                           key={step.id}
-                          className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-3 py-2 transition-colors"
+                          className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-2 transition-colors"
                         >
                           <div className="flex items-center justify-between gap-2">
-                            <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+                            <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                               {step.label}
                             </div>
                             <Pill text={step.state} tone={approvalTone(step.state)} />
                           </div>
-                          <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
+                          <div className="mt-1 text-[11px] text-faith-slate">
                             {step.when}
                           </div>
                         </div>
@@ -1493,17 +1493,17 @@ export default function TestimoniesPage() {
           </div>
 
           <div className="space-y-4">
-            <div className="rounded-[28px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 shadow-sm transition-colors">
+            <div className="rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 shadow-soft transition-colors">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <div className="text-[16px] font-black tracking-[-0.02em] text-slate-900 dark:text-slate-100">
+                  <div className="text-[16px] font-black tracking-[-0.02em] text-faith-ink dark:text-slate-100">
                     Featuring + trust board
                   </div>
-                  <div className="mt-1 text-[13px] leading-6 text-slate-600 dark:text-slate-400">
+                  <div className="mt-1 text-[13px] leading-6 text-faith-slate">
                     Decide where the story should surface next and which safeguards still gate public visibility.
                   </div>
                 </div>
-                <Pill text={selectedStory?.status || "‚Äî"} tone={selectedStory ? statusTone(selectedStory.status) : "neutral"} />
+                <Pill text={selectedStory?.status || "ó"} tone={selectedStory ? statusTone(selectedStory.status) : "neutral"} />
               </div>
 
               {selectedStory ? (
@@ -1512,22 +1512,22 @@ export default function TestimoniesPage() {
                     <FeaturePlacementCard key={hook.id} hook={hook} />
                   ))}
 
-                  <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3 transition-colors">
-                    <div className="text-[12px] font-bold text-slate-900 dark:text-slate-100">
+                  <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
+                    <div className="text-[12px] font-bold text-faith-ink dark:text-slate-100">
                       Safeguard signals
                     </div>
                     <div className="mt-3 space-y-2">
                       {selectedStory.safeguards.map((signal) => (
                         <div
                           key={signal.id}
-                          className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3 py-2 transition-colors"
+                          className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 transition-colors"
                         >
                           <div className="flex items-start justify-between gap-2">
                             <div className="min-w-0">
-                              <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+                              <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                                 {signal.label}
                               </div>
-                              <div className="mt-1 text-[11px] leading-5 text-slate-500 dark:text-slate-400">
+                              <div className="mt-1 text-[11px] leading-5 text-faith-slate">
                                 {signal.hint}
                               </div>
                             </div>
@@ -1539,25 +1539,25 @@ export default function TestimoniesPage() {
                   </div>
 
                   <div className="grid grid-cols-2 gap-3">
-                    <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3 transition-colors">
-                      <div className="text-[10px] font-black uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">
+                    <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
+                      <div className="text-[10px] font-black uppercase tracking-[0.16em] text-faith-slate">
                         Read momentum
                       </div>
-                      <div className="mt-2 text-[18px] font-black text-slate-900 dark:text-slate-100">
+                      <div className="mt-2 text-[18px] font-black text-faith-ink dark:text-slate-100">
                         {fmtInt(selectedStory.impact.reads)}
                       </div>
-                      <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
+                      <div className="mt-1 text-[11px] text-faith-slate">
                         Total story reads across visible surfaces.
                       </div>
                     </div>
-                    <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3 transition-colors">
-                      <div className="text-[10px] font-black uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">
+                    <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
+                      <div className="text-[10px] font-black uppercase tracking-[0.16em] text-faith-slate">
                         Share health
                       </div>
-                      <div className="mt-2 text-[18px] font-black text-slate-900 dark:text-slate-100">
+                      <div className="mt-2 text-[18px] font-black text-faith-ink dark:text-slate-100">
                         {fmtInt(selectedStory.impact.shares)}
                       </div>
-                      <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
+                      <div className="mt-1 text-[11px] text-faith-slate">
                         Signals whether the story is strong enough for featuring.
                       </div>
                     </div>
@@ -1569,13 +1569,13 @@ export default function TestimoniesPage() {
         </section>
 
         <section className="grid gap-4 xl:grid-cols-[1fr_0.9fr]">
-          <div className="rounded-[28px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 shadow-sm transition-colors">
+          <div className="rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 shadow-soft transition-colors">
             <div className="flex items-start justify-between gap-3">
               <div>
-                <div className="text-[16px] font-black tracking-[-0.02em] text-slate-900 dark:text-slate-100">
+                <div className="text-[16px] font-black tracking-[-0.02em] text-faith-ink dark:text-slate-100">
                   Story collections + next destinations
                 </div>
-                <div className="mt-1 text-[13px] leading-6 text-slate-600 dark:text-slate-400">
+                <div className="mt-1 text-[13px] leading-6 text-faith-slate">
                   Group testimonies into narrative themes and route them into noticeboard, live follow-up, replay journeys, or promotional next steps.
                 </div>
               </div>
@@ -1608,13 +1608,13 @@ export default function TestimoniesPage() {
               ].map((card) => (
                 <div
                   key={card.id}
-                  className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3 transition-colors"
+                  className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors"
                 >
-                  <div className="flex items-center gap-2 text-slate-900 dark:text-slate-100">
+                  <div className="flex items-center gap-2 text-faith-ink dark:text-slate-100">
                     {card.icon}
                     <div className="text-[13px] font-bold">{card.title}</div>
                   </div>
-                  <div className="mt-2 text-[12px] leading-6 text-slate-600 dark:text-slate-400">
+                  <div className="mt-2 text-[12px] leading-6 text-faith-slate">
                     {card.hint}
                   </div>
                   <div className="mt-3">
@@ -1634,13 +1634,13 @@ export default function TestimoniesPage() {
             </div>
           </div>
 
-          <div className="rounded-[28px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 shadow-sm transition-colors">
+          <div className="rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 shadow-soft transition-colors">
             <div className="flex items-start justify-between gap-3">
               <div>
-                <div className="text-[16px] font-black tracking-[-0.02em] text-slate-900 dark:text-slate-100">
+                <div className="text-[16px] font-black tracking-[-0.02em] text-faith-ink dark:text-slate-100">
                   Testimony destination preview
                 </div>
-                <div className="mt-1 text-[13px] leading-6 text-slate-600 dark:text-slate-400">
+                <div className="mt-1 text-[13px] leading-6 text-faith-slate">
                   Persistent preview of the selected testimony card, destination landing page, and featured-story presentation.
                 </div>
               </div>
@@ -1651,8 +1651,8 @@ export default function TestimoniesPage() {
                   className={cx(
                     "rounded-2xl border px-3 py-2 text-[11px] font-semibold transition-colors",
                     previewMode === "desktop"
-                      ? "border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-900/20 text-slate-900 dark:text-slate-100"
-                      : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300",
+                      ? "border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-900/20 text-faith-ink dark:text-slate-100"
+                      : "border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-faith-slate dark:text-slate-300",
                   )}
                 >
                   Desktop
@@ -1663,8 +1663,8 @@ export default function TestimoniesPage() {
                   className={cx(
                     "rounded-2xl border px-3 py-2 text-[11px] font-semibold transition-colors",
                     previewMode === "mobile"
-                      ? "border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-900/20 text-slate-900 dark:text-slate-100"
-                      : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300",
+                      ? "border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-900/20 text-faith-ink dark:text-slate-100"
+                      : "border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-faith-slate dark:text-slate-300",
                   )}
                 >
                   Mobile
@@ -1676,8 +1676,8 @@ export default function TestimoniesPage() {
               <div className="mt-4 space-y-4">
                 <TestimonyPreview story={selectedStory} previewMode={previewMode} />
 
-                <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3 transition-colors">
-                  <div className="text-[12px] font-bold text-slate-900 dark:text-slate-100">
+                <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
+                  <div className="text-[12px] font-bold text-faith-ink dark:text-slate-100">
                     Preview actions
                   </div>
                   <div className="mt-3 flex flex-wrap gap-2">
@@ -1693,7 +1693,7 @@ export default function TestimoniesPage() {
                   </div>
                 </div>
 
-                <div className="text-[11px] text-slate-500 dark:text-slate-400">
+                <div className="text-[11px] text-faith-slate">
                   Preview
                 </div>
               </div>
@@ -1715,6 +1715,7 @@ export default function TestimoniesPage() {
     </div>
   );
 }
+
 
 
 

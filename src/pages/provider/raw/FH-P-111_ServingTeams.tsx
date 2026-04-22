@@ -1,4 +1,4 @@
-ï»¿// @ts-nocheck
+// @ts-nocheck
 "use client";
 
 import React, { useMemo, useState } from "react";
@@ -27,7 +27,7 @@ import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
- * Provider â€” Serving Teams
+ * Provider — Serving Teams
  * Premium Provider-side volunteer and service-team management page.
  *
  * Primary CTAs
@@ -208,22 +208,22 @@ const TEAM_RECORDS: TeamRecord[] = [
       {
         id: "asg-1",
         title: "Sunday early service",
-        surface: "Main auditorium Â· Live Studio linked",
-        when: "Sun Â· 7:30 AM",
+        surface: "Main auditorium · Live Studio linked",
+        when: "Sun · 7:30 AM",
         state: "Ready",
       },
       {
         id: "asg-2",
         title: "Saturday rehearsal",
         surface: "Central Campus stage",
-        when: "Sat Â· 5:00 PM",
+        when: "Sat · 5:00 PM",
         state: "Needs cover",
       },
       {
         id: "asg-3",
         title: "Night prayer live",
-        surface: "Live Schedule Â· Worship support",
-        when: "Tue Â· 8:00 PM",
+        surface: "Live Schedule · Worship support",
+        when: "Tue · 8:00 PM",
         state: "Watch",
       },
     ],
@@ -262,22 +262,22 @@ const TEAM_RECORDS: TeamRecord[] = [
       {
         id: "asg-4",
         title: "Wednesday discipleship class",
-        surface: "Live Schedule Â· Studio lane",
-        when: "Wed Â· 6:30 PM",
+        surface: "Live Schedule · Studio lane",
+        when: "Wed · 6:30 PM",
         state: "Needs cover",
       },
       {
         id: "asg-5",
         title: "Conference livestream",
-        surface: "Events Manager Â· Multi-camera",
-        when: "Fri Â· 4:00 PM",
+        surface: "Events Manager · Multi-camera",
+        when: "Fri · 4:00 PM",
         state: "Training due",
       },
       {
         id: "asg-6",
         title: "Sunday replay packaging prep",
         surface: "Post-live handoff",
-        when: "Sun Â· 12:15 PM",
+        when: "Sun · 12:15 PM",
         state: "Ready",
       },
     ],
@@ -317,21 +317,21 @@ const TEAM_RECORDS: TeamRecord[] = [
         id: "asg-7",
         title: "Sunday main service",
         surface: "East Campus foyer",
-        when: "Sun Â· 8:00 AM",
+        when: "Sun · 8:00 AM",
         state: "Ready",
       },
       {
         id: "asg-8",
         title: "Community outreach sign-in",
-        surface: "Events Manager Â· Outreach Day",
-        when: "Sat Â· 9:30 AM",
+        surface: "Events Manager · Outreach Day",
+        when: "Sat · 9:30 AM",
         state: "Watch",
       },
       {
         id: "asg-9",
         title: "Family lane support",
-        surface: "Childrenâ€™s arrival zone",
-        when: "Sun Â· 10:30 AM",
+        surface: "Children’s arrival zone",
+        when: "Sun · 10:30 AM",
         state: "Needs cover",
       },
     ],
@@ -371,21 +371,21 @@ const TEAM_RECORDS: TeamRecord[] = [
         id: "asg-10",
         title: "Night prayer response lane",
         surface: "Live Sessions prayer intake",
-        when: "Tue Â· 8:00 PM",
+        when: "Tue · 8:00 PM",
         state: "Training due",
       },
       {
         id: "asg-11",
         title: "Post-service care desk",
         surface: "Central Campus lobby",
-        when: "Sun Â· 11:15 AM",
+        when: "Sun · 11:15 AM",
         state: "Ready",
       },
       {
         id: "asg-12",
         title: "Prayer Journal prompt follow-up",
         surface: "Community care flow",
-        when: "Thu Â· 6:00 PM",
+        when: "Thu · 6:00 PM",
         state: "Watch",
       },
     ],
@@ -424,22 +424,22 @@ const TEAM_RECORDS: TeamRecord[] = [
       {
         id: "asg-13",
         title: "Outreach registration team",
-        surface: "Projects Â· Community mission",
-        when: "Sat Â· 8:30 AM",
+        surface: "Projects · Community mission",
+        when: "Sat · 8:30 AM",
         state: "Needs cover",
       },
       {
         id: "asg-14",
         title: "Transport coordination",
         surface: "Event trip roster",
-        when: "Fri Â· 4:00 PM",
+        when: "Fri · 4:00 PM",
         state: "Needs cover",
       },
       {
         id: "asg-15",
         title: "Beacon follow-up ambassador lane",
         surface: "Audience + Projects bridge",
-        when: "Mon Â· 6:30 PM",
+        when: "Mon · 6:30 PM",
         state: "Watch",
       },
     ],
@@ -476,7 +476,7 @@ function TonePill({
           ? "border-rose-200 bg-rose-50 text-rose-700 dark:border-rose-900/40 dark:bg-rose-900/20 dark:text-rose-300"
           : tone === "accent"
             ? "text-white"
-            : "border-slate-200 bg-white text-slate-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300";
+            : "border-faith-line bg-[var(--fh-surface-bg)] text-faith-slate dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300";
 
   return (
     <span
@@ -503,12 +503,12 @@ function SectionCard({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-[30px] border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+    <div className="rounded-[30px] border border-faith-line bg-[var(--fh-surface-bg)] p-5 shadow-soft dark:border-slate-800 dark:bg-slate-900">
       <div className="flex items-start justify-between gap-3">
         <div>
-          <div className="text-[15px] font-black text-slate-900 dark:text-slate-100">{title}</div>
+          <div className="text-[15px] font-black text-faith-ink dark:text-slate-100">{title}</div>
           {subtitle ? (
-            <div className="mt-1 text-[13px] text-slate-500 dark:text-slate-400">{subtitle}</div>
+            <div className="mt-1 text-[13px] text-faith-slate">{subtitle}</div>
           ) : null}
         </div>
         {right ? <div className="shrink-0">{right}</div> : null}
@@ -542,7 +542,7 @@ function TeamListCard({
         "w-full rounded-[28px] border p-4 text-left transition-all",
         active
           ? "border-transparent text-white shadow-md"
-          : "border-slate-200 bg-white hover:bg-slate-50 dark:border-slate-800 dark:bg-slate-900 dark:hover:bg-slate-800",
+          : "border-faith-line bg-[var(--fh-surface-bg)] hover:bg-[var(--fh-surface)] dark:border-slate-800 dark:bg-slate-900 dark:hover:bg-slate-800",
       )}
       style={active ? { background: EV_NAVY } : undefined}
     >
@@ -552,18 +552,18 @@ function TeamListCard({
             className={cx(
               "grid h-14 w-14 shrink-0 place-items-center rounded-[20px] text-lg font-black",
               active
-                ? "bg-white/10 text-white"
+                ? "bg-[var(--fh-surface-bg)]/10 text-white"
                 : "bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-100",
             )}
           >
             {initials(team.name)}
           </div>
           <div className="min-w-0">
-            <div className={cx("truncate text-[15px] font-bold", active ? "text-white" : "text-slate-900 dark:text-slate-100")}>
+            <div className={cx("truncate text-[15px] font-bold", active ? "text-white" : "text-faith-ink dark:text-slate-100")}>
               {team.name}
             </div>
-            <div className={cx("mt-1 truncate text-[12px]", active ? "text-white/75" : "text-slate-500 dark:text-slate-400")}>
-              {team.category} Â· {team.campus} Â· {team.lead}
+            <div className={cx("mt-1 truncate text-[12px]", active ? "text-white/75" : "text-faith-slate")}>
+              {team.category} · {team.campus} · {team.lead}
             </div>
             <div className="mt-3 flex flex-wrap gap-2">
               <TonePill tone={tone}>{team.status}</TonePill>
@@ -575,24 +575,24 @@ function TeamListCard({
             </div>
           </div>
         </div>
-        <div className={cx("shrink-0 text-right", active ? "text-white" : "text-slate-900 dark:text-slate-100")}>
+        <div className={cx("shrink-0 text-right", active ? "text-white" : "text-faith-ink dark:text-slate-100")}>
           <div className="text-[12px] font-black">{team.coverageFill}%</div>
-          <div className={cx("mt-1 text-[11px]", active ? "text-white/70" : "text-slate-500 dark:text-slate-400")}>coverage</div>
+          <div className={cx("mt-1 text-[11px]", active ? "text-white/70" : "text-faith-slate")}>coverage</div>
         </div>
       </div>
 
       <div className="mt-4 grid grid-cols-3 gap-3">
         <div>
-          <div className={cx("text-[10px] font-bold uppercase tracking-[0.16em]", active ? "text-white/60" : "text-slate-500 dark:text-slate-400")}>Members</div>
-          <div className={cx("mt-1 text-[14px] font-black", active ? "text-white" : "text-slate-900 dark:text-slate-100")}>{fmtInt(team.members)}</div>
+          <div className={cx("text-[10px] font-bold uppercase tracking-[0.16em]", active ? "text-white/60" : "text-faith-slate")}>Members</div>
+          <div className={cx("mt-1 text-[14px] font-black", active ? "text-white" : "text-faith-ink dark:text-slate-100")}>{fmtInt(team.members)}</div>
         </div>
         <div>
-          <div className={cx("text-[10px] font-bold uppercase tracking-[0.16em]", active ? "text-white/60" : "text-slate-500 dark:text-slate-400")}>Scheduled</div>
-          <div className={cx("mt-1 text-[14px] font-black", active ? "text-white" : "text-slate-900 dark:text-slate-100")}>{fmtInt(team.scheduledThisWeek)}</div>
+          <div className={cx("text-[10px] font-bold uppercase tracking-[0.16em]", active ? "text-white/60" : "text-faith-slate")}>Scheduled</div>
+          <div className={cx("mt-1 text-[14px] font-black", active ? "text-white" : "text-faith-ink dark:text-slate-100")}>{fmtInt(team.scheduledThisWeek)}</div>
         </div>
         <div>
-          <div className={cx("text-[10px] font-bold uppercase tracking-[0.16em]", active ? "text-white/60" : "text-slate-500 dark:text-slate-400")}>Open shifts</div>
-          <div className={cx("mt-1 text-[14px] font-black", active ? "text-white" : "text-slate-900 dark:text-slate-100")}>{fmtInt(team.openShifts)}</div>
+          <div className={cx("text-[10px] font-bold uppercase tracking-[0.16em]", active ? "text-white/60" : "text-faith-slate")}>Open shifts</div>
+          <div className={cx("mt-1 text-[14px] font-black", active ? "text-white" : "text-faith-ink dark:text-slate-100")}>{fmtInt(team.openShifts)}</div>
         </div>
       </div>
     </button>
@@ -605,7 +605,7 @@ function TemplateTile({ card }: { card: TemplateCard }) {
     <button
       type="button"
       onClick={() => safeNav(ROUTES.newTeam)}
-      className="group rounded-[28px] border border-slate-200 bg-white p-4 text-left shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
+      className="group rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 text-left shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
     >
       <div
         className="inline-flex items-center rounded-full px-3 py-1 text-[10px] font-black uppercase tracking-[0.16em] text-white"
@@ -613,8 +613,8 @@ function TemplateTile({ card }: { card: TemplateCard }) {
       >
         Template
       </div>
-      <div className="mt-4 text-[15px] font-bold text-slate-900 dark:text-slate-100">{card.title}</div>
-      <div className="mt-1 text-[12px] leading-5 text-slate-500 dark:text-slate-400">{card.subtitle}</div>
+      <div className="mt-4 text-[15px] font-bold text-faith-ink dark:text-slate-100">{card.title}</div>
+      <div className="mt-1 text-[12px] leading-5 text-faith-slate">{card.subtitle}</div>
       <div className="mt-4 inline-flex items-center gap-2 text-[12px] font-bold" style={{ color: bg }}>
         Use template <ChevronRight className="h-4 w-4" />
       </div>
@@ -632,20 +632,20 @@ function TeamPreview({
   return (
     <div
       className={cx(
-        "overflow-hidden rounded-[30px] border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900",
+        "overflow-hidden rounded-[30px] border border-faith-line bg-[var(--fh-surface-bg)] shadow-soft dark:border-slate-800 dark:bg-slate-900",
         mode === "desktop" ? "w-full" : "mx-auto w-[320px] md:w-[360px]",
       )}
     >
       <div className="relative aspect-[16/9] overflow-hidden bg-slate-200 dark:bg-slate-800">
         <img src={team.heroUrl} alt={team.name} className="h-full w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-900/10 to-transparent" />
-        <div className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1 text-[10px] font-black uppercase tracking-[0.16em] text-slate-700 shadow-sm backdrop-blur">
+        <div className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-[var(--fh-surface-bg)]/90 px-3 py-1 text-[10px] font-black uppercase tracking-[0.16em] text-slate-700 shadow-soft backdrop-blur">
           <BadgeCheck className="h-3.5 w-3.5" style={{ color: EV_GREEN }} />
           Volunteer destination
         </div>
         <div className="absolute bottom-4 left-4 right-4 text-white">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="rounded-full bg-white/15 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.16em] backdrop-blur">
+            <span className="rounded-full bg-[var(--fh-surface-bg)]/15 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.16em] backdrop-blur">
               {team.category}
             </span>
             <span
@@ -656,7 +656,7 @@ function TeamPreview({
             </span>
           </div>
           <div className="mt-3 text-xl font-black leading-tight">{team.name}</div>
-          <div className="mt-1 text-[12px] text-white/80">{team.lead} Â· {team.campus}</div>
+          <div className="mt-1 text-[12px] text-white/80">{team.lead} · {team.campus}</div>
         </div>
       </div>
 
@@ -669,20 +669,20 @@ function TeamPreview({
           {team.childSafe ? <TonePill tone="good">Child-safe flow</TonePill> : null}
         </div>
 
-        <div className="mt-4 text-[13px] leading-6 text-slate-600 dark:text-slate-300">{team.description}</div>
+        <div className="mt-4 text-[13px] leading-6 text-faith-slate dark:text-slate-300">{team.description}</div>
 
         <div className="mt-4 grid grid-cols-3 gap-3">
-          <div className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2 dark:border-slate-700 dark:bg-slate-950">
-            <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">Members</div>
-            <div className="mt-1 text-[13px] font-black text-slate-900 dark:text-slate-100">{team.members}</div>
+          <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2 dark:border-slate-700 dark:bg-slate-950">
+            <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-faith-slate">Members</div>
+            <div className="mt-1 text-[13px] font-black text-faith-ink dark:text-slate-100">{team.members}</div>
           </div>
-          <div className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2 dark:border-slate-700 dark:bg-slate-950">
-            <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">Coverage</div>
-            <div className="mt-1 text-[13px] font-black text-slate-900 dark:text-slate-100">{team.coverageFill}%</div>
+          <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2 dark:border-slate-700 dark:bg-slate-950">
+            <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-faith-slate">Coverage</div>
+            <div className="mt-1 text-[13px] font-black text-faith-ink dark:text-slate-100">{team.coverageFill}%</div>
           </div>
-          <div className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2 dark:border-slate-700 dark:bg-slate-950">
-            <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">Open shifts</div>
-            <div className="mt-1 text-[13px] font-black text-slate-900 dark:text-slate-100">{team.openShifts}</div>
+          <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2 dark:border-slate-700 dark:bg-slate-950">
+            <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-faith-slate">Open shifts</div>
+            <div className="mt-1 text-[13px] font-black text-faith-ink dark:text-slate-100">{team.openShifts}</div>
           </div>
         </div>
 
@@ -690,13 +690,13 @@ function TeamPreview({
           {team.assignments.slice(0, 3).map((assignment) => (
             <div
               key={assignment.id}
-              className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2 dark:border-slate-700 dark:bg-slate-950"
+              className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2 dark:border-slate-700 dark:bg-slate-950"
             >
               <div className="flex items-center justify-between gap-3">
                 <div>
-                  <div className="text-[12px] font-bold text-slate-900 dark:text-slate-100">{assignment.title}</div>
-                  <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
-                    {assignment.when} Â· {assignment.surface}
+                  <div className="text-[12px] font-bold text-faith-ink dark:text-slate-100">{assignment.title}</div>
+                  <div className="mt-1 text-[11px] text-faith-slate">
+                    {assignment.when} · {assignment.surface}
                   </div>
                 </div>
                 <TonePill
@@ -727,7 +727,7 @@ function TeamPreview({
           <button
             type="button"
             onClick={() => safeNav(ROUTES.createRota)}
-            className="inline-flex flex-1 items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-3 py-2 text-[12px] font-bold text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+            className="inline-flex flex-1 items-center justify-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] font-bold text-slate-700 hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
           >
             <CalendarClock className="h-4 w-4" /> View rota
           </button>
@@ -752,23 +752,23 @@ function PreviewDrawer({
   return (
     <div className="fixed inset-0 z-[70]">
       <div className="absolute inset-0 bg-slate-950/55 backdrop-blur-sm" onClick={onClose} />
-      <div className="absolute right-0 top-0 h-full w-full max-w-4xl overflow-y-auto border-l border-slate-200 bg-slate-50 p-4 shadow-2xl dark:border-slate-800 dark:bg-slate-950">
-        <div className="flex items-start justify-between gap-3 rounded-[28px] border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+      <div className="absolute right-0 top-0 h-full w-full max-w-4xl overflow-y-auto border-l border-faith-line bg-[var(--fh-surface)] p-4 shadow-2xl dark:border-slate-800 dark:bg-slate-950">
+        <div className="flex items-start justify-between gap-3 rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft dark:border-slate-800 dark:bg-slate-900">
           <div>
-            <div className="text-[10px] font-black uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">
+            <div className="text-[10px] font-black uppercase tracking-[0.16em] text-faith-slate">
               Large preview
             </div>
-            <div className="mt-2 text-2xl font-black text-slate-900 dark:text-slate-100">
+            <div className="mt-2 text-2xl font-black text-faith-ink dark:text-slate-100">
               Volunteer portal preview
             </div>
-            <div className="mt-1 text-[12px] text-slate-500 dark:text-slate-400">
+            <div className="mt-1 text-[12px] text-faith-slate">
               Public-facing team destination with join, rota, and readiness information.
             </div>
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="grid h-10 w-10 place-items-center rounded-2xl border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800"
+            className="grid h-10 w-10 place-items-center rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] text-faith-slate hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800"
           >
             <X className="h-4 w-4" />
           </button>
@@ -886,9 +886,9 @@ export default function FH_P_111_ServingTeamsPage() {
   }, [selectedTeam]);
 
   return (
-    <div className="min-h-screen bg-[#f2f2f2] text-slate-900 dark:bg-slate-950 dark:text-slate-100">
+    <div className="min-h-screen bg-[var(--fh-page-bg)] text-faith-ink dark:bg-slate-950 dark:text-slate-100">
       <div className="mx-auto max-w-[1600px] px-5 py-5 md:px-6 lg:px-8 lg:py-6">
-        <div className="rounded-[32px] border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+        <div className="rounded-[32px] border border-faith-line bg-[var(--fh-surface-bg)] p-5 shadow-soft dark:border-slate-800 dark:bg-slate-900">
           <div className="flex flex-col gap-5 xl:flex-row xl:items-start xl:justify-between">
             <div className="min-w-0 flex-1">
               <ProviderPageTitle
@@ -923,7 +923,7 @@ export default function FH_P_111_ServingTeamsPage() {
                 <button
                   type="button"
                   onClick={() => safeNav(ROUTES.createRota)}
-                  className="inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-2 text-[12px] font-bold text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+                  className="inline-flex items-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-2 text-[12px] font-bold text-slate-700 hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
                 >
                   <CalendarClock className="h-4 w-4" /> Create Rota
                 </button>
@@ -940,17 +940,17 @@ export default function FH_P_111_ServingTeamsPage() {
           </div>
         </div>
 
-        <div className="mt-5 rounded-[26px] border border-slate-200 bg-white px-4 py-3 text-[13px] text-slate-500 shadow-sm dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400">
+        <div className="mt-5 rounded-[26px] border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-3 text-[13px] text-faith-slate shadow-soft dark:border-slate-800 dark:bg-slate-900">
           <div className="flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
             <div className="min-w-0">
               <span className="inline-flex items-center rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-[10px] font-black uppercase tracking-[0.16em] text-amber-700 dark:border-amber-900/40 dark:bg-amber-900/20 dark:text-amber-300">
                 Premium team ops
               </span>
               <span className="ml-3 align-middle">
-                Media crew needs one backup producer Â· Hospitality has one family-lane opening Â· Worship rehearsal coverage is 93% ready for the week.
+                Media crew needs one backup producer · Hospitality has one family-lane opening · Worship rehearsal coverage is 93% ready for the week.
               </span>
             </div>
-            <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">
+            <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-faith-slate">
               Volunteer readiness system
             </div>
           </div>
@@ -995,25 +995,25 @@ export default function FH_P_111_ServingTeamsPage() {
           />
         </div>
 
-        <div className="mt-4 rounded-[28px] border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-          <div className="text-[14px] font-bold text-slate-900 dark:text-slate-100">Search and filter</div>
-          <div className="mt-1 text-[13px] text-slate-500 dark:text-slate-400">
+        <div className="mt-4 rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] p-5 shadow-soft dark:border-slate-800 dark:bg-slate-900">
+          <div className="text-[14px] font-bold text-faith-ink dark:text-slate-100">Search and filter</div>
+          <div className="mt-1 text-[13px] text-faith-slate">
             Find teams, campuses, leads, visibility rules, and staffing gaps faster.
           </div>
           <div className="mt-4 grid gap-3 xl:grid-cols-[1.4fr_0.55fr_0.55fr_0.55fr]">
             <div className="relative">
-              <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+              <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-faith-slate" />
               <input
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search team name, lead, tags, or campus"
-                className="h-12 w-full rounded-2xl border border-slate-200 bg-slate-50 pl-11 pr-4 text-[13px] outline-none transition focus:border-transparent focus:ring-2 focus:ring-emerald-200 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:ring-emerald-900/40"
+                className="h-12 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface)] pl-11 pr-4 text-[13px] outline-none transition focus:border-transparent focus:ring-2 focus:ring-emerald-200 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:ring-emerald-900/40"
               />
             </div>
             <select
               value={campusFilter}
               onChange={(e) => setCampusFilter(e.target.value)}
-              className="h-12 rounded-2xl border border-slate-200 bg-slate-50 px-4 text-[13px] font-semibold text-slate-700 outline-none transition focus:border-transparent focus:ring-2 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200 dark:focus:ring-slate-800"
+              className="h-12 rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-4 text-[13px] font-semibold text-slate-700 outline-none transition focus:border-transparent focus:ring-2 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200 dark:focus:ring-slate-800"
             >
               {campuses.map((value) => (
                 <option key={value} value={value}>{value}</option>
@@ -1022,7 +1022,7 @@ export default function FH_P_111_ServingTeamsPage() {
             <select
               value={categoryFilter}
               onChange={(e) => setCategoryFilter(e.target.value)}
-              className="h-12 rounded-2xl border border-slate-200 bg-slate-50 px-4 text-[13px] font-semibold text-slate-700 outline-none transition focus:border-transparent focus:ring-2 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200 dark:focus:ring-slate-800"
+              className="h-12 rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-4 text-[13px] font-semibold text-slate-700 outline-none transition focus:border-transparent focus:ring-2 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200 dark:focus:ring-slate-800"
             >
               {categories.map((value) => (
                 <option key={value} value={value}>{value}</option>
@@ -1031,7 +1031,7 @@ export default function FH_P_111_ServingTeamsPage() {
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="h-12 rounded-2xl border border-slate-200 bg-slate-50 px-4 text-[13px] font-semibold text-slate-700 outline-none transition focus:border-transparent focus:ring-2 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200 dark:focus:ring-slate-800"
+              className="h-12 rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-4 text-[13px] font-semibold text-slate-700 outline-none transition focus:border-transparent focus:ring-2 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200 dark:focus:ring-slate-800"
             >
               {statuses.map((value) => (
                 <option key={value} value={value}>{value}</option>
@@ -1066,14 +1066,14 @@ export default function FH_P_111_ServingTeamsPage() {
                     />
                   ))
                 ) : (
-                  <div className="rounded-[28px] border border-dashed border-slate-300 bg-slate-50 p-8 text-center dark:border-slate-700 dark:bg-slate-950">
-                    <div className="mx-auto grid h-14 w-14 place-items-center rounded-full border border-slate-200 bg-white text-slate-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300">
+                  <div className="rounded-[28px] border border-dashed border-slate-300 bg-[var(--fh-surface)] p-8 text-center dark:border-slate-700 dark:bg-slate-950">
+                    <div className="mx-auto grid h-14 w-14 place-items-center rounded-full border border-faith-line bg-[var(--fh-surface-bg)] text-faith-slate dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300">
                       <Search className="h-6 w-6" />
                     </div>
-                    <div className="mt-4 text-[15px] font-bold text-slate-900 dark:text-slate-100">
+                    <div className="mt-4 text-[15px] font-bold text-faith-ink dark:text-slate-100">
                       No teams match this filter
                     </div>
-                    <div className="mt-1 text-[12px] text-slate-500 dark:text-slate-400">
+                    <div className="mt-1 text-[12px] text-faith-slate">
                       Try changing the campus, category, or status filters.
                     </div>
                   </div>
@@ -1117,11 +1117,11 @@ export default function FH_P_111_ServingTeamsPage() {
                       {initials(selectedTeam.name)}
                     </div>
                     <div className="min-w-0 flex-1">
-                      <div className="text-2xl font-black tracking-tight text-slate-900 dark:text-slate-100">
+                      <div className="text-2xl font-black tracking-tight text-faith-ink dark:text-slate-100">
                         {selectedTeam.name}
                       </div>
-                      <div className="mt-1 text-[13px] text-slate-500 dark:text-slate-400">
-                        {selectedTeam.lead} Â· {selectedTeam.leadRole} Â· {selectedTeam.campus}
+                      <div className="mt-1 text-[13px] text-faith-slate">
+                        {selectedTeam.lead} · {selectedTeam.leadRole} · {selectedTeam.campus}
                       </div>
                       <div className="mt-3 flex flex-wrap gap-2">
                         <TonePill tone={selectedTeam.status === "Healthy" ? "good" : selectedTeam.status === "Review" ? "danger" : "warn"}>
@@ -1136,57 +1136,57 @@ export default function FH_P_111_ServingTeamsPage() {
                     </div>
                   </div>
 
-                  <div className="mt-5 rounded-[24px] border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950">
-                    <div className="text-[11px] font-black uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">
+                  <div className="mt-5 rounded-[24px] border border-faith-line bg-[var(--fh-surface)] p-4 dark:border-slate-800 dark:bg-slate-950">
+                    <div className="text-[11px] font-black uppercase tracking-[0.16em] text-faith-slate">
                       Team description
                     </div>
-                    <div className="mt-2 text-[13px] leading-6 text-slate-600 dark:text-slate-300">
+                    <div className="mt-2 text-[13px] leading-6 text-faith-slate dark:text-slate-300">
                       {selectedTeam.description}
                     </div>
                   </div>
 
                   <div className="mt-4 grid grid-cols-3 gap-3">
-                    <div className="rounded-[24px] border border-slate-200 bg-white p-3 dark:border-slate-800 dark:bg-slate-900">
-                      <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">
+                    <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] p-3 dark:border-slate-800 dark:bg-slate-900">
+                      <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-faith-slate">
                         Members
                       </div>
-                      <div className="mt-2 text-xl font-black text-slate-900 dark:text-slate-100">{selectedTeam.members}</div>
+                      <div className="mt-2 text-xl font-black text-faith-ink dark:text-slate-100">{selectedTeam.members}</div>
                     </div>
-                    <div className="rounded-[24px] border border-slate-200 bg-white p-3 dark:border-slate-800 dark:bg-slate-900">
-                      <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">
+                    <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] p-3 dark:border-slate-800 dark:bg-slate-900">
+                      <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-faith-slate">
                         Coverage fill
                       </div>
-                      <div className="mt-2 text-xl font-black text-slate-900 dark:text-slate-100">{selectedTeam.coverageFill}%</div>
+                      <div className="mt-2 text-xl font-black text-faith-ink dark:text-slate-100">{selectedTeam.coverageFill}%</div>
                     </div>
-                    <div className="rounded-[24px] border border-slate-200 bg-white p-3 dark:border-slate-800 dark:bg-slate-900">
-                      <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">
+                    <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] p-3 dark:border-slate-800 dark:bg-slate-900">
+                      <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-faith-slate">
                         Response rate
                       </div>
-                      <div className="mt-2 text-xl font-black text-slate-900 dark:text-slate-100">{selectedTeam.responseRate}%</div>
+                      <div className="mt-2 text-xl font-black text-faith-ink dark:text-slate-100">{selectedTeam.responseRate}%</div>
                     </div>
                   </div>
 
                   <div className="mt-4 grid gap-3 md:grid-cols-2">
-                    <div className="rounded-[24px] border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
-                      <div className="text-[10px] font-black uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">
+                    <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 dark:border-slate-800 dark:bg-slate-900">
+                      <div className="text-[10px] font-black uppercase tracking-[0.16em] text-faith-slate">
                         Responsibilities & skills
                       </div>
                       <div className="mt-3 flex flex-wrap gap-2">
                         {selectedTeam.skills.map((skill) => (
                           <span
                             key={skill}
-                            className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-semibold text-slate-600 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-300"
+                            className="rounded-full border border-faith-line bg-[var(--fh-surface)] px-2.5 py-1 text-[11px] font-semibold text-faith-slate dark:border-slate-700 dark:bg-slate-950 dark:text-slate-300"
                           >
                             {skill}
                           </span>
                         ))}
                       </div>
                     </div>
-                    <div className="rounded-[24px] border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
-                      <div className="text-[10px] font-black uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">
+                    <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 dark:border-slate-800 dark:bg-slate-900">
+                      <div className="text-[10px] font-black uppercase tracking-[0.16em] text-faith-slate">
                         Leadership notes
                       </div>
-                      <div className="mt-3 text-[13px] leading-6 text-slate-600 dark:text-slate-300">
+                      <div className="mt-3 text-[13px] leading-6 text-faith-slate dark:text-slate-300">
                         {selectedTeam.notes}
                       </div>
                     </div>
@@ -1196,7 +1196,7 @@ export default function FH_P_111_ServingTeamsPage() {
                     <button
                       type="button"
                       onClick={() => safeNav(ROUTES.createRota)}
-                      className="inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-2 text-[12px] font-bold text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+                      className="inline-flex items-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-2 text-[12px] font-bold text-slate-700 hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
                     >
                       <CalendarClock className="h-4 w-4" /> Create Rota
                     </button>
@@ -1211,7 +1211,7 @@ export default function FH_P_111_ServingTeamsPage() {
                     <button
                       type="button"
                       onClick={() => safeNav(ROUTES.rolesPermissions)}
-                      className="inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-2 text-[12px] font-bold text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+                      className="inline-flex items-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-2 text-[12px] font-bold text-slate-700 hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
                     >
                       <Lock className="h-4 w-4" /> Roles & Permissions
                     </button>
@@ -1229,13 +1229,13 @@ export default function FH_P_111_ServingTeamsPage() {
                 {selectedTeam?.assignments.map((assignment) => (
                   <div
                     key={assignment.id}
-                    className="rounded-[24px] border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950"
+                    className="rounded-[24px] border border-faith-line bg-[var(--fh-surface)] p-4 dark:border-slate-800 dark:bg-slate-950"
                   >
                     <div className="flex items-start justify-between gap-3">
                       <div>
-                        <div className="text-[14px] font-bold text-slate-900 dark:text-slate-100">{assignment.title}</div>
-                        <div className="mt-1 text-[12px] text-slate-500 dark:text-slate-400">{assignment.surface}</div>
-                        <div className="mt-2 inline-flex items-center gap-2 text-[11px] font-semibold text-slate-500 dark:text-slate-400">
+                        <div className="text-[14px] font-bold text-faith-ink dark:text-slate-100">{assignment.title}</div>
+                        <div className="mt-1 text-[12px] text-faith-slate">{assignment.surface}</div>
+                        <div className="mt-2 inline-flex items-center gap-2 text-[11px] font-semibold text-faith-slate">
                           <CalendarClock className="h-3.5 w-3.5" /> {assignment.when}
                         </div>
                       </div>
@@ -1273,8 +1273,8 @@ export default function FH_P_111_ServingTeamsPage() {
                           : "border-rose-200 bg-rose-50 dark:border-rose-900/40 dark:bg-rose-900/20",
                     )}
                   >
-                    <div className="text-[13px] font-bold text-slate-900 dark:text-slate-100">{signal.title}</div>
-                    <div className="mt-1 text-[12px] leading-5 text-slate-600 dark:text-slate-300">{signal.hint}</div>
+                    <div className="text-[13px] font-bold text-faith-ink dark:text-slate-100">{signal.title}</div>
+                    <div className="mt-1 text-[12px] leading-5 text-faith-slate dark:text-slate-300">{signal.hint}</div>
                   </div>
                 ))}
               </div>
@@ -1283,10 +1283,10 @@ export default function FH_P_111_ServingTeamsPage() {
                 {selectedTeam?.certifications.map((cert) => (
                   <div
                     key={cert.id}
-                    className="rounded-[24px] border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900"
+                    className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 dark:border-slate-800 dark:bg-slate-900"
                   >
                     <div className="flex items-center justify-between gap-3">
-                      <div className="text-[13px] font-bold text-slate-900 dark:text-slate-100">{cert.label}</div>
+                      <div className="text-[13px] font-bold text-faith-ink dark:text-slate-100">{cert.label}</div>
                       <TonePill
                         tone={
                           cert.state === "Valid"
@@ -1310,13 +1310,13 @@ export default function FH_P_111_ServingTeamsPage() {
               title="Volunteer portal preview rail"
               subtitle="Persistent desktop/mobile preview of the volunteer-facing destination and join experience."
               right={
-                <div className="inline-flex rounded-full border border-slate-200 bg-slate-50 p-1 dark:border-slate-700 dark:bg-slate-950">
+                <div className="inline-flex rounded-full border border-faith-line bg-[var(--fh-surface)] p-1 dark:border-slate-700 dark:bg-slate-950">
                   <button
                     type="button"
                     onClick={() => setPreviewMode("desktop")}
                     className={cx(
                       "rounded-full px-3 py-1 text-[11px] font-bold transition",
-                      previewMode === "desktop" ? "text-white" : "text-slate-500 dark:text-slate-400",
+                      previewMode === "desktop" ? "text-white" : "text-faith-slate",
                     )}
                     style={previewMode === "desktop" ? { background: EV_NAVY } : undefined}
                   >
@@ -1327,7 +1327,7 @@ export default function FH_P_111_ServingTeamsPage() {
                     onClick={() => setPreviewMode("mobile")}
                     className={cx(
                       "rounded-full px-3 py-1 text-[11px] font-bold transition",
-                      previewMode === "mobile" ? "text-white" : "text-slate-500 dark:text-slate-400",
+                      previewMode === "mobile" ? "text-white" : "text-faith-slate",
                     )}
                     style={previewMode === "mobile" ? { background: EV_NAVY } : undefined}
                   >
@@ -1342,14 +1342,14 @@ export default function FH_P_111_ServingTeamsPage() {
                 <button
                   type="button"
                   onClick={() => setPreviewOpen(true)}
-                  className="inline-flex flex-1 items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-3 py-2 text-[12px] font-bold text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+                  className="inline-flex flex-1 items-center justify-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] font-bold text-slate-700 hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
                 >
                   <Eye className="h-4 w-4" /> Open large preview
                 </button>
                 <button
                   type="button"
                   onClick={() => safeNav(ROUTES.inviteVolunteers)}
-                  className="inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-3 py-2 text-[12px] font-bold text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+                  className="inline-flex items-center justify-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] font-bold text-slate-700 hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
                 >
                   <Globe2 className="h-4 w-4" /> Copy join route
                 </button>
@@ -1361,41 +1361,41 @@ export default function FH_P_111_ServingTeamsPage() {
               subtitle="Keep volunteer lanes organized by campus, responsibility, and operational readiness while retaining a premium team-management surface."
             >
               <div className="space-y-3">
-                <div className="rounded-[28px] border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+                <div className="rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft dark:border-slate-800 dark:bg-slate-900">
                   <div className="flex items-start justify-between gap-3">
                     <div>
-                      <div className="text-[14px] font-bold text-slate-900 dark:text-slate-100">Production & worship lane</div>
-                      <div className="mt-1 text-[12px] leading-5 text-slate-500 dark:text-slate-400">
+                      <div className="text-[14px] font-bold text-faith-ink dark:text-slate-100">Production & worship lane</div>
+                      <div className="mt-1 text-[12px] leading-5 text-faith-slate">
                         Worship, media, stage, and caption support for weekly services and live sessionz.
                       </div>
                     </div>
                     <TonePill tone="good">Stable</TonePill>
                   </div>
-                  <div className="mt-4 text-2xl font-black text-slate-900 dark:text-slate-100">4</div>
+                  <div className="mt-4 text-2xl font-black text-faith-ink dark:text-slate-100">4</div>
                 </div>
-                <div className="rounded-[28px] border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+                <div className="rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft dark:border-slate-800 dark:bg-slate-900">
                   <div className="flex items-start justify-between gap-3">
                     <div>
-                      <div className="text-[14px] font-bold text-slate-900 dark:text-slate-100">Care & response lane</div>
-                      <div className="mt-1 text-[12px] leading-5 text-slate-500 dark:text-slate-400">
+                      <div className="text-[14px] font-bold text-faith-ink dark:text-slate-100">Care & response lane</div>
+                      <div className="mt-1 text-[12px] leading-5 text-faith-slate">
                         Prayer, care response, hospitality, and front-of-house volunteer coverage.
                       </div>
                     </div>
                     <TonePill tone="warn">Watch</TonePill>
                   </div>
-                  <div className="mt-4 text-2xl font-black text-slate-900 dark:text-slate-100">5</div>
+                  <div className="mt-4 text-2xl font-black text-faith-ink dark:text-slate-100">5</div>
                 </div>
-                <div className="rounded-[28px] border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+                <div className="rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft dark:border-slate-800 dark:bg-slate-900">
                   <div className="flex items-start justify-between gap-3">
                     <div>
-                      <div className="text-[14px] font-bold text-slate-900 dark:text-slate-100">Outreach & event lane</div>
-                      <div className="mt-1 text-[12px] leading-5 text-slate-500 dark:text-slate-400">
+                      <div className="text-[14px] font-bold text-faith-ink dark:text-slate-100">Outreach & event lane</div>
+                      <div className="mt-1 text-[12px] leading-5 text-faith-slate">
                         Projects, event logistics, registration, and on-ground service teams.
                       </div>
                     </div>
                     <TonePill tone="danger">Gap</TonePill>
                   </div>
-                  <div className="mt-4 text-2xl font-black text-slate-900 dark:text-slate-100">3</div>
+                  <div className="mt-4 text-2xl font-black text-faith-ink dark:text-slate-100">3</div>
                 </div>
               </div>
             </SectionCard>
@@ -1412,6 +1412,7 @@ export default function FH_P_111_ServingTeamsPage() {
     </div>
   );
 }
+
 
 
 

@@ -1,4 +1,4 @@
-ï»¿// @ts-nocheck
+// @ts-nocheck
 "use client";
 
 import React, { useMemo, useState } from "react";
@@ -33,7 +33,7 @@ import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
- * Provider â€” Resources Manager
+ * Provider — Resources Manager
  * -------------------------------------
  * Premium Provider-side control surface for free learning resources,
  * downloadable PDFs, devotionals, prayer guides, study packs, and audio teachings.
@@ -355,8 +355,8 @@ function Pill({
         : tone === "brand"
           ? "border-transparent text-white"
           : tone === "soft"
-            ? "border-slate-200 bg-white text-slate-600"
-            : "border-slate-200 bg-slate-50 text-slate-700";
+            ? "border-faith-line bg-[var(--fh-surface-bg)] text-faith-slate"
+            : "border-faith-line bg-[var(--fh-surface)] text-slate-700";
 
   return (
     <span
@@ -393,7 +393,7 @@ function Btn({
       ? "text-white"
       : tone === "secondary"
         ? "border border-orange-200 bg-orange-50 text-orange-700 hover:bg-orange-100"
-        : "border border-slate-200 bg-white text-slate-800 hover:bg-slate-50";
+        : "border border-faith-line bg-[var(--fh-surface-bg)] text-slate-800 hover:bg-[var(--fh-surface)]";
 
   return (
     <button
@@ -411,7 +411,7 @@ function Btn({
 
 function Label({ children }: { children: React.ReactNode }) {
   return (
-    <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-500">
+    <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-faith-slate">
       {children}
     </div>
   );
@@ -430,7 +430,7 @@ function SelectField({
     <select
       value={value}
       onChange={(e) => onChange(e.target.value)}
-      className="mt-1 h-11 w-full rounded-2xl border border-slate-200 bg-white px-4 text-sm font-semibold text-slate-800 outline-none transition focus:border-transparent focus:ring-2 focus:ring-[rgba(3,205,140,0.25)]"
+      className="mt-1 h-11 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-4 text-sm font-semibold text-slate-800 outline-none transition focus:border-transparent focus:ring-2 focus:ring-[rgba(3,205,140,0.25)]"
     >
       {options.map((option) => (
         <option key={option} value={option}>
@@ -444,12 +444,12 @@ function SelectField({
 function SearchField({ value, onChange }: { value: string; onChange: (v: string) => void }) {
   return (
     <div className="relative">
-      <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+      <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-faith-slate" />
       <input
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder="Search title, author, or tag"
-        className="h-12 w-full rounded-2xl border border-slate-200 bg-white pl-11 pr-4 text-sm font-semibold text-slate-800 outline-none transition focus:border-transparent focus:ring-2 focus:ring-[rgba(3,205,140,0.25)]"
+        className="h-12 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] pl-11 pr-4 text-sm font-semibold text-slate-800 outline-none transition focus:border-transparent focus:ring-2 focus:ring-[rgba(3,205,140,0.25)]"
       />
     </div>
   );
@@ -476,8 +476,8 @@ function SectionTitle({
           {icon}
         </div>
         <div>
-          <div className="text-[18px] font-black tracking-tight text-slate-900">{title}</div>
-          {subtitle ? <div className="text-sm text-slate-500">{subtitle}</div> : null}
+          <div className="text-[18px] font-black tracking-tight text-faith-ink">{title}</div>
+          {subtitle ? <div className="text-sm text-faith-slate">{subtitle}</div> : null}
         </div>
       </div>
       {right}
@@ -495,19 +495,19 @@ function ResourceFeatureCard({
   const styles = toneStyles(resource.tone);
 
   return (
-    <div className="overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-sm">
+    <div className="overflow-hidden rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] shadow-soft">
       <div className="p-5" style={{ background: styles.bg }}>
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
             <div className="flex flex-wrap items-center gap-2">
-              <div className="truncate text-[22px] font-black tracking-tight text-slate-900">
+              <div className="truncate text-[22px] font-black tracking-tight text-faith-ink">
                 {resource.title}
               </div>
               <Pill tone="good">FREE</Pill>
               {resource.providerUploaded ? <Pill tone="soft">PROVIDER</Pill> : null}
             </div>
-            <div className="mt-1 text-sm text-slate-600">
-              {resource.author} Â· {resource.type} Â· {resource.category}
+            <div className="mt-1 text-sm text-faith-slate">
+              {resource.author} · {resource.type} · {resource.category}
             </div>
           </div>
           <div
@@ -530,14 +530,14 @@ function ResourceFeatureCard({
           {resource.tags.slice(0, 3).map((tag) => (
             <span
               key={tag}
-              className="rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-slate-600"
+              className="rounded-full border border-faith-line bg-[var(--fh-surface-bg)]/80 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-faith-slate"
             >
               {tag}
             </span>
           ))}
         </div>
 
-        <div className="mt-5 flex flex-wrap items-center justify-between gap-3 text-sm text-slate-500">
+        <div className="mt-5 flex flex-wrap items-center justify-between gap-3 text-sm text-faith-slate">
           <div>{fmtDate(resource.dateISO)}</div>
           <div className="inline-flex items-center gap-2">
             <Download className="h-4 w-4" />
@@ -579,17 +579,17 @@ function ResourceMiniRow({
     <button
       type="button"
       onClick={onOpen}
-      className="flex w-full items-center justify-between gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 text-left transition hover:border-slate-300 hover:bg-slate-50"
+      className="flex w-full items-center justify-between gap-3 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-3 text-left transition hover:border-slate-300 hover:bg-[var(--fh-surface)]"
     >
       <div className="min-w-0">
-        <div className="truncate text-[15px] font-black tracking-tight text-slate-900">
+        <div className="truncate text-[15px] font-black tracking-tight text-faith-ink">
           {resource.title}
         </div>
-        <div className="truncate text-sm text-slate-500">
-          {resource.type} Â· {fmtInt(resource.downloads)} downloads
+        <div className="truncate text-sm text-faith-slate">
+          {resource.type} · {fmtInt(resource.downloads)} downloads
         </div>
       </div>
-      <ChevronRight className="h-4 w-4 shrink-0 text-slate-400" />
+      <ChevronRight className="h-4 w-4 shrink-0 text-faith-slate" />
     </button>
   );
 }
@@ -610,14 +610,14 @@ function LibraryCard({
         : BookOpen;
 
   return (
-    <div className="rounded-[28px] border border-slate-200 bg-white p-4 shadow-sm">
+    <div className="rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft">
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
-          <div className="text-[21px] font-black tracking-tight text-slate-900">
+          <div className="text-[21px] font-black tracking-tight text-faith-ink">
             {resource.title}
           </div>
-          <div className="mt-1 text-sm text-slate-500">
-            {resource.author} Â· {resource.type} Â· {resource.category}
+          <div className="mt-1 text-sm text-faith-slate">
+            {resource.author} · {resource.type} · {resource.category}
           </div>
         </div>
         <div className="inline-flex flex-wrap items-center justify-end gap-2">
@@ -642,14 +642,14 @@ function LibraryCard({
         {resource.tags.slice(0, 3).map((tag) => (
           <span
             key={tag}
-            className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-slate-600"
+            className="rounded-full border border-faith-line bg-[var(--fh-surface)] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-faith-slate"
           >
             {tag}
           </span>
         ))}
       </div>
 
-      <div className="mt-4 flex items-center justify-between gap-3 text-sm text-slate-500">
+      <div className="mt-4 flex items-center justify-between gap-3 text-sm text-faith-slate">
         <span>{fmtDate(resource.dateISO)}</span>
         <span className="inline-flex items-center gap-2">
           <Download className="h-4 w-4" />
@@ -695,18 +695,18 @@ function ManageRow({
   onRemove: () => void;
 }) {
   return (
-    <div className="rounded-[24px] border border-slate-200 bg-white p-4 shadow-sm">
-      <div className="text-[17px] font-black tracking-tight text-slate-900">{resource.title}</div>
-      <div className="mt-1 text-sm text-slate-500">
-        {fmtInt(resource.downloads)} downloads Â· {resource.category}
+    <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft">
+      <div className="text-[17px] font-black tracking-tight text-faith-ink">{resource.title}</div>
+      <div className="mt-1 text-sm text-faith-slate">
+        {fmtInt(resource.downloads)} downloads · {resource.category}
       </div>
-      <div className="mt-3 text-[11px] font-bold uppercase tracking-[0.18em] text-slate-500">
+      <div className="mt-3 text-[11px] font-bold uppercase tracking-[0.18em] text-faith-slate">
         Tags
       </div>
       <input
         value={tagDraft}
         onChange={(e) => onChangeTags(e.target.value)}
-        className="mt-2 h-11 w-full rounded-2xl border border-slate-200 bg-white px-4 text-sm font-semibold text-slate-800 outline-none transition focus:border-transparent focus:ring-2 focus:ring-[rgba(3,205,140,0.25)]"
+        className="mt-2 h-11 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-4 text-sm font-semibold text-slate-800 outline-none transition focus:border-transparent focus:ring-2 focus:ring-[rgba(3,205,140,0.25)]"
       />
       <div className="mt-3 flex flex-wrap gap-2">
         <Btn onClick={onSaveTags}>Save tags</Btn>
@@ -734,16 +734,16 @@ function DetailDrawer({
   return (
     <div className="fixed inset-0 z-[90]">
       <div className="absolute inset-0 bg-slate-900/45 backdrop-blur-sm" onClick={onClose} />
-      <div className="absolute right-0 top-0 h-full w-full max-w-[760px] overflow-y-auto border-l border-slate-200 bg-white shadow-2xl">
-        <div className="sticky top-0 z-10 flex items-start justify-between gap-3 border-b border-slate-200 bg-white px-5 py-4">
+      <div className="absolute right-0 top-0 h-full w-full max-w-[760px] overflow-y-auto border-l border-faith-line bg-[var(--fh-surface-bg)] shadow-2xl">
+        <div className="sticky top-0 z-10 flex items-start justify-between gap-3 border-b border-faith-line bg-[var(--fh-surface-bg)] px-5 py-4">
           <div>
-            <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-500">Resource details</div>
-            <div className="mt-1 text-[22px] font-black tracking-tight text-slate-900">{resource.title}</div>
+            <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-faith-slate">Resource details</div>
+            <div className="mt-1 text-[22px] font-black tracking-tight text-faith-ink">{resource.title}</div>
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="grid h-10 w-10 place-items-center rounded-2xl border border-slate-200 bg-white text-slate-600 transition hover:bg-slate-50"
+            className="grid h-10 w-10 place-items-center rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] text-faith-slate transition hover:bg-[var(--fh-surface)]"
           >
             <X className="h-4 w-4" />
           </button>
@@ -759,40 +759,40 @@ function DetailDrawer({
             </div>
             <div className="mt-4 text-base leading-7 text-slate-700">{resource.summary}</div>
             <div className="mt-4 grid gap-3 sm:grid-cols-2">
-              <div className="rounded-2xl border border-white/70 bg-white/70 px-4 py-3">
-                <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-500">Author</div>
-                <div className="mt-1 text-sm font-bold text-slate-900">{resource.author}</div>
+              <div className="rounded-2xl border border-white/70 bg-[var(--fh-surface-bg)]/70 px-4 py-3">
+                <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-faith-slate">Author</div>
+                <div className="mt-1 text-sm font-bold text-faith-ink">{resource.author}</div>
               </div>
-              <div className="rounded-2xl border border-white/70 bg-white/70 px-4 py-3">
-                <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-500">Language</div>
-                <div className="mt-1 text-sm font-bold text-slate-900">{resource.language}</div>
+              <div className="rounded-2xl border border-white/70 bg-[var(--fh-surface-bg)]/70 px-4 py-3">
+                <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-faith-slate">Language</div>
+                <div className="mt-1 text-sm font-bold text-faith-ink">{resource.language}</div>
               </div>
             </div>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">
-            <div className="rounded-[24px] border border-slate-200 bg-white p-4">
-              <div className="text-[12px] font-bold uppercase tracking-[0.18em] text-slate-500">Audience fit</div>
+            <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] p-4">
+              <div className="text-[12px] font-bold uppercase tracking-[0.18em] text-faith-slate">Audience fit</div>
               <div className="mt-3 flex flex-wrap gap-2">
                 {resource.audiences.map((item) => (
                   <Pill key={item} tone="soft">{item}</Pill>
                 ))}
               </div>
-              <div className="mt-4 text-[12px] font-bold uppercase tracking-[0.18em] text-slate-500">Age group</div>
+              <div className="mt-4 text-[12px] font-bold uppercase tracking-[0.18em] text-faith-slate">Age group</div>
               <div className="mt-3 flex flex-wrap gap-2">
                 {resource.ages.map((item) => (
                   <Pill key={item} tone="soft">{item}</Pill>
                 ))}
               </div>
             </div>
-            <div className="rounded-[24px] border border-slate-200 bg-white p-4">
-              <div className="text-[12px] font-bold uppercase tracking-[0.18em] text-slate-500">Discovery tags</div>
+            <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] p-4">
+              <div className="text-[12px] font-bold uppercase tracking-[0.18em] text-faith-slate">Discovery tags</div>
               <div className="mt-3 flex flex-wrap gap-2">
                 {resource.tags.map((tag) => (
                   <Pill key={tag} tone="soft">{tag}</Pill>
                 ))}
               </div>
-              <div className="mt-4 text-[12px] font-bold uppercase tracking-[0.18em] text-slate-500">Denominations</div>
+              <div className="mt-4 text-[12px] font-bold uppercase tracking-[0.18em] text-faith-slate">Denominations</div>
               <div className="mt-3 flex flex-wrap gap-2">
                 {resource.denominations.map((item) => (
                   <Pill key={item} tone="soft">{item}</Pill>
@@ -801,31 +801,31 @@ function DetailDrawer({
             </div>
           </div>
 
-          <div className="rounded-[24px] border border-slate-200 bg-white p-4">
+          <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] p-4">
             <div className="flex items-center justify-between gap-3">
               <div>
-                <div className="text-[12px] font-bold uppercase tracking-[0.18em] text-slate-500">Member-facing preview</div>
-                <div className="mt-1 text-sm text-slate-500">
-                  Current preview mode: <span className="font-bold text-slate-900">{previewMode === "desktop" ? "Desktop" : "Mobile"}</span>
+                <div className="text-[12px] font-bold uppercase tracking-[0.18em] text-faith-slate">Member-facing preview</div>
+                <div className="mt-1 text-sm text-faith-slate">
+                  Current preview mode: <span className="font-bold text-faith-ink">{previewMode === "desktop" ? "Desktop" : "Mobile"}</span>
                 </div>
               </div>
-              <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-bold text-slate-600">
+              <div className="inline-flex items-center gap-2 rounded-full border border-faith-line bg-[var(--fh-surface)] px-3 py-1.5 text-xs font-bold text-faith-slate">
                 <Eye className="h-3.5 w-3.5" />
                 Preview synced with preview rail
               </div>
             </div>
             <div className="mt-4 grid gap-3 sm:grid-cols-3">
-              <div className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
-                <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-500">Downloads</div>
-                <div className="mt-1 text-[18px] font-black tracking-tight text-slate-900">{fmtInt(resource.downloads)}</div>
+              <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-4 py-3">
+                <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-faith-slate">Downloads</div>
+                <div className="mt-1 text-[18px] font-black tracking-tight text-faith-ink">{fmtInt(resource.downloads)}</div>
               </div>
-              <div className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
-                <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-500">Published</div>
-                <div className="mt-1 text-[18px] font-black tracking-tight text-slate-900">{fmtDate(resource.dateISO)}</div>
+              <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-4 py-3">
+                <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-faith-slate">Published</div>
+                <div className="mt-1 text-[18px] font-black tracking-tight text-faith-ink">{fmtDate(resource.dateISO)}</div>
               </div>
-              <div className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
-                <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-500">Source</div>
-                <div className="mt-1 text-[18px] font-black tracking-tight text-slate-900">{resource.sourceLabel}</div>
+              <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-4 py-3">
+                <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-faith-slate">Source</div>
+                <div className="mt-1 text-[18px] font-black tracking-tight text-faith-ink">{resource.sourceLabel}</div>
               </div>
             </div>
           </div>
@@ -852,12 +852,12 @@ function PreviewRail({
 }) {
   const styles = toneStyles(resource.tone);
   const desktopFrame = (
-    <div className="overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-sm">
-      <div className="flex items-center gap-2 border-b border-slate-200 px-4 py-3">
+    <div className="overflow-hidden rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] shadow-soft">
+      <div className="flex items-center gap-2 border-b border-faith-line px-4 py-3">
         <div className="h-2.5 w-2.5 rounded-full bg-slate-300" />
         <div className="h-2.5 w-2.5 rounded-full bg-slate-300" />
         <div className="h-2.5 w-2.5 rounded-full bg-slate-300" />
-        <div className="ml-3 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-[11px] font-bold text-slate-500">
+        <div className="ml-3 rounded-full border border-faith-line bg-[var(--fh-surface)] px-3 py-1 text-[11px] font-bold text-faith-slate">
           faithhub.app/resources
         </div>
       </div>
@@ -868,34 +868,34 @@ function PreviewRail({
             {resource.providerUploaded ? <Pill tone="soft">PROVIDER</Pill> : null}
             {resource.trustedUpload ? <Pill tone="brand">TRUSTED</Pill> : null}
           </div>
-          <div className="mt-3 text-[20px] font-black tracking-tight text-slate-900">
+          <div className="mt-3 text-[20px] font-black tracking-tight text-faith-ink">
             {resource.title}
           </div>
-          <div className="mt-1 text-sm text-slate-500">{resource.author} Â· {resource.type}</div>
+          <div className="mt-1 text-sm text-faith-slate">{resource.author} · {resource.type}</div>
           <div className="mt-4 text-sm leading-6 text-slate-700">{resource.summary}</div>
         </div>
         <div className="grid grid-cols-2 gap-3">
-          <div className="rounded-[20px] border border-slate-200 bg-white p-4">
-            <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-500">Actions</div>
+          <div className="rounded-[20px] border border-faith-line bg-[var(--fh-surface-bg)] p-4">
+            <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-faith-slate">Actions</div>
             <div className="mt-3 flex flex-wrap gap-2">
               <Btn tone="primary" className="px-3 py-2 text-[11px]">Open details</Btn>
               <Btn className="px-3 py-2 text-[11px]">Download</Btn>
             </div>
           </div>
-          <div className="rounded-[20px] border border-slate-200 bg-white p-4">
-            <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-500">Metadata</div>
-            <div className="mt-3 space-y-1 text-sm text-slate-600">
+          <div className="rounded-[20px] border border-faith-line bg-[var(--fh-surface-bg)] p-4">
+            <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-faith-slate">Metadata</div>
+            <div className="mt-3 space-y-1 text-sm text-faith-slate">
               <div>{resource.category}</div>
               <div>{resource.language}</div>
               <div>{fmtInt(resource.downloads)} downloads</div>
             </div>
           </div>
         </div>
-        <div className="rounded-[20px] border border-slate-200 bg-white p-4">
-          <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-500">Tags</div>
+        <div className="rounded-[20px] border border-faith-line bg-[var(--fh-surface-bg)] p-4">
+          <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-faith-slate">Tags</div>
           <div className="mt-3 flex flex-wrap gap-2">
             {resource.tags.map((tag) => (
-              <span key={tag} className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-slate-600">
+              <span key={tag} className="rounded-full border border-faith-line bg-[var(--fh-surface)] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-faith-slate">
                 {tag}
               </span>
             ))}
@@ -908,11 +908,11 @@ function PreviewRail({
   const mobileFrame = (
     <div className="mx-auto w-full max-w-[340px] md:max-w-[380px]">
       <div className="overflow-hidden rounded-[34px] bg-slate-950 p-3 shadow-[0_16px_50px_rgba(15,23,42,0.24)]">
-        <div className="overflow-hidden rounded-[26px] bg-white">
-          <div className="flex items-center justify-between border-b border-slate-200 px-4 py-3">
+        <div className="overflow-hidden rounded-[26px] bg-[var(--fh-surface-bg)]">
+          <div className="flex items-center justify-between border-b border-faith-line px-4 py-3">
             <div>
-                      <div className="text-[10px] font-black uppercase tracking-[0.18em] text-slate-500">Provider</div>
-              <div className="mt-1 text-[13px] font-black text-slate-900">Resources</div>
+                      <div className="text-[10px] font-black uppercase tracking-[0.18em] text-faith-slate">Provider</div>
+              <div className="mt-1 text-[13px] font-black text-faith-ink">Resources</div>
             </div>
             <div
               className="grid h-10 w-10 place-items-center rounded-2xl"
@@ -927,8 +927,8 @@ function PreviewRail({
                 <Pill tone="good">FREE</Pill>
                 {resource.trustedUpload ? <Pill tone="brand">TRUSTED</Pill> : null}
               </div>
-              <div className="mt-3 text-[18px] font-black tracking-tight text-slate-900">{resource.title}</div>
-              <div className="mt-1 text-sm text-slate-500">{resource.author}</div>
+              <div className="mt-3 text-[18px] font-black tracking-tight text-faith-ink">{resource.title}</div>
+              <div className="mt-1 text-sm text-faith-slate">{resource.author}</div>
               <div className="mt-3 text-[13px] leading-6 text-slate-700 line-clamp-4">{resource.summary}</div>
             </div>
             <button
@@ -940,7 +940,7 @@ function PreviewRail({
             </button>
             <button
               type="button"
-              className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white text-[13px] font-black text-slate-800"
+              className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] text-[13px] font-black text-slate-800"
               onClick={() => navigator.clipboard?.writeText(window.location.href)}>
               <Download className="h-4 w-4" /> Download
             </button>
@@ -952,20 +952,20 @@ function PreviewRail({
 
   return (
     <div className="sticky top-6 space-y-4">
-      <div className="rounded-[28px] border border-slate-200 bg-white p-4 shadow-sm">
+      <div className="rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft">
         <div className="flex items-start justify-between gap-3">
           <div>
-            <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-500">
+            <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-faith-slate">
               Preview
             </div>
-            <div className="mt-1 text-[20px] font-black tracking-tight text-slate-900">
+            <div className="mt-1 text-[20px] font-black tracking-tight text-faith-ink">
               Member-facing resource view
             </div>
-            <div className="mt-1 text-sm text-slate-500">
+            <div className="mt-1 text-sm text-faith-slate">
               Preview how the selected free resource appears in the library and detail flow.
             </div>
           </div>
-          <div className="inline-flex rounded-full border border-slate-200 bg-slate-50 p-1">
+          <div className="inline-flex rounded-full border border-faith-line bg-[var(--fh-surface)] p-1">
             <button
               type="button"
               onClick={() => onChangeMode("desktop")}
@@ -973,7 +973,7 @@ function PreviewRail({
                 "rounded-full px-3 py-1.5 text-[11px] font-black transition",
                 previewMode === "desktop"
                   ? "bg-slate-900 text-white"
-                  : "text-slate-600 hover:bg-slate-100",
+                  : "text-faith-slate hover:bg-slate-100",
               )}
             >
               Desktop
@@ -985,35 +985,35 @@ function PreviewRail({
                 "rounded-full px-3 py-1.5 text-[11px] font-black transition",
                 previewMode === "mobile"
                   ? "bg-slate-900 text-white"
-                  : "text-slate-600 hover:bg-slate-100",
+                  : "text-faith-slate hover:bg-slate-100",
               )}
             >
               Mobile
             </button>
           </div>
         </div>
-        <div className="mt-4 rounded-[24px] border border-slate-200 bg-slate-50 p-3">
+        <div className="mt-4 rounded-[24px] border border-faith-line bg-[var(--fh-surface)] p-3">
           {previewMode === "desktop" ? desktopFrame : mobileFrame}
         </div>
       </div>
 
-      <div className="rounded-[28px] border border-slate-200 bg-white p-4 shadow-sm">
-        <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-500">Preview signals</div>
+      <div className="rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft">
+        <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-faith-slate">Preview signals</div>
         <div className="mt-3 space-y-3">
-          <div className="flex items-start gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
+          <div className="flex items-start gap-3 rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-4 py-3">
             <ShieldCheck className="mt-0.5 h-4 w-4 text-emerald-600" />
             <div>
-              <div className="text-sm font-black text-slate-900">Trust badge visible</div>
-              <div className="mt-1 text-[13px] leading-6 text-slate-500">
+              <div className="text-sm font-black text-faith-ink">Trust badge visible</div>
+              <div className="mt-1 text-[13px] leading-6 text-faith-slate">
                 Trusted provider uploads are clearly labeled so free resources still feel premium and safe.
               </div>
             </div>
           </div>
-          <div className="flex items-start gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
+          <div className="flex items-start gap-3 rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-4 py-3">
             <Globe2 className="mt-0.5 h-4 w-4" style={{ color: EV_ORANGE }} />
             <div>
-              <div className="text-sm font-black text-slate-900">Audience metadata visible</div>
-              <div className="mt-1 text-[13px] leading-6 text-slate-500">
+              <div className="text-sm font-black text-faith-ink">Audience metadata visible</div>
+              <div className="mt-1 text-[13px] leading-6 text-faith-slate">
                 Language, audience fit, and category stay visible so discovery works cleanly across ministries.
               </div>
             </div>
@@ -1245,11 +1245,11 @@ export default function ResourcesManagerPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#f2f2f2] text-slate-900">
+    <div className="min-h-screen bg-[var(--fh-page-bg)] text-faith-ink">
       <main className="mx-auto max-w-[1720px] p-4 md:p-6 lg:p-8">
         <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_380px]">
           <div className="space-y-5">
-            <section className="rounded-[32px] border border-slate-200 bg-white p-6 shadow-sm md:p-7">
+            <section className="rounded-[32px] border border-faith-line bg-[var(--fh-surface-bg)] p-6 shadow-soft md:p-7">
               <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
                 <div className="max-w-4xl">
                   <Label>Books & resources</Label>
@@ -1296,38 +1296,38 @@ export default function ResourcesManagerPage() {
               </div>
 
               <div className="mt-6 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
-                <div className="rounded-[24px] border border-slate-200 bg-slate-50 p-4">
-                  <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.18em] text-slate-500">
+                <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface)] p-4">
+                  <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.18em] text-faith-slate">
                     <BookOpen className="h-4 w-4" /> Library count
                   </div>
-                  <div className="mt-3 text-[28px] font-black tracking-tight text-slate-900">{fmtInt(stats.total)}</div>
-                  <div className="mt-1 text-sm text-slate-500">Free resources live inside the platform.</div>
+                  <div className="mt-3 text-[28px] font-black tracking-tight text-faith-ink">{fmtInt(stats.total)}</div>
+                  <div className="mt-1 text-sm text-faith-slate">Free resources live inside the platform.</div>
                 </div>
-                <div className="rounded-[24px] border border-slate-200 bg-slate-50 p-4">
-                  <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.18em] text-slate-500">
+                <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface)] p-4">
+                  <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.18em] text-faith-slate">
                     <BadgeCheck className="h-4 w-4" /> Trusted uploads
                   </div>
-                  <div className="mt-3 text-[28px] font-black tracking-tight text-slate-900">{fmtInt(stats.trustedCount)}</div>
-                  <div className="mt-1 text-sm text-slate-500">High-trust resources from verified provider workflows.</div>
+                  <div className="mt-3 text-[28px] font-black tracking-tight text-faith-ink">{fmtInt(stats.trustedCount)}</div>
+                  <div className="mt-1 text-sm text-faith-slate">High-trust resources from verified provider workflows.</div>
                 </div>
-                <div className="rounded-[24px] border border-slate-200 bg-slate-50 p-4">
-                  <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.18em] text-slate-500">
+                <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface)] p-4">
+                  <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.18em] text-faith-slate">
                     <Sparkles className="h-4 w-4" /> Featured shelves
                   </div>
-                  <div className="mt-3 text-[28px] font-black tracking-tight text-slate-900">{fmtInt(stats.featuredCount)}</div>
-                  <div className="mt-1 text-sm text-slate-500">Provider-curated resources surfaced above the library.</div>
+                  <div className="mt-3 text-[28px] font-black tracking-tight text-faith-ink">{fmtInt(stats.featuredCount)}</div>
+                  <div className="mt-1 text-sm text-faith-slate">Provider-curated resources surfaced above the library.</div>
                 </div>
-                <div className="rounded-[24px] border border-slate-200 bg-slate-50 p-4">
-                  <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.18em] text-slate-500">
+                <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface)] p-4">
+                  <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.18em] text-faith-slate">
                     <Link2 className="h-4 w-4" /> FaithMart bridge
                   </div>
-                  <div className="mt-3 text-[28px] font-black tracking-tight text-slate-900">Active</div>
-                  <div className="mt-1 text-sm text-slate-500">Premium products and paid resources continue in FaithMart.</div>
+                  <div className="mt-3 text-[28px] font-black tracking-tight text-faith-ink">Active</div>
+                  <div className="mt-1 text-sm text-faith-slate">Premium products and paid resources continue in FaithMart.</div>
                 </div>
               </div>
             </section>
 
-            <section className="rounded-[32px] border border-slate-200 bg-white p-5 shadow-sm md:p-6">
+            <section className="rounded-[32px] border border-faith-line bg-[var(--fh-surface-bg)] p-5 shadow-soft md:p-6">
               <SectionTitle
                 icon={<Filter className="h-4 w-4" />}
                 title="Search and filter"
@@ -1378,7 +1378,7 @@ export default function ResourcesManagerPage() {
                     />
                   ))
                 ) : (
-                  <div className="rounded-[28px] border border-dashed border-slate-300 bg-white p-6 text-sm text-slate-500 lg:col-span-2">
+                  <div className="rounded-[28px] border border-dashed border-slate-300 bg-[var(--fh-surface-bg)] p-6 text-sm text-faith-slate lg:col-span-2">
                     No featured resources match the current filters.
                   </div>
                 )}
@@ -1386,7 +1386,7 @@ export default function ResourcesManagerPage() {
             </section>
 
             <section className="grid gap-4 lg:grid-cols-2">
-              <div className="rounded-[32px] border border-slate-200 bg-white p-5 shadow-sm md:p-6">
+              <div className="rounded-[32px] border border-faith-line bg-[var(--fh-surface-bg)] p-5 shadow-soft md:p-6">
                 <SectionTitle
                   icon={<Bell className="h-4 w-4" />}
                   title="Recently added"
@@ -1402,7 +1402,7 @@ export default function ResourcesManagerPage() {
                   ))}
                 </div>
               </div>
-              <div className="rounded-[32px] border border-slate-200 bg-white p-5 shadow-sm md:p-6">
+              <div className="rounded-[32px] border border-faith-line bg-[var(--fh-surface-bg)] p-5 shadow-soft md:p-6">
                 <SectionTitle
                   icon={<Star className="h-4 w-4" />}
                   title="Recommended"
@@ -1418,7 +1418,7 @@ export default function ResourcesManagerPage() {
                       />
                     ))
                   ) : (
-                    <div className="rounded-2xl border border-dashed border-slate-300 bg-slate-50 px-4 py-3 text-sm text-slate-500">
+                    <div className="rounded-2xl border border-dashed border-slate-300 bg-[var(--fh-surface)] px-4 py-3 text-sm text-faith-slate">
                       No recommended resources match the active filters.
                     </div>
                   )}
@@ -1445,7 +1445,7 @@ export default function ResourcesManagerPage() {
             </section>
 
             <section className="grid gap-4 xl:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
-              <div id="provider-upload-panel" className="rounded-[32px] border border-slate-200 bg-white p-5 shadow-sm md:p-6">
+              <div id="provider-upload-panel" className="rounded-[32px] border border-faith-line bg-[var(--fh-surface-bg)] p-5 shadow-soft md:p-6">
                 <SectionTitle
                   icon={<Upload className="h-4 w-4" />}
                   title="Provider upload"
@@ -1459,7 +1459,7 @@ export default function ResourcesManagerPage() {
                       value={formTitle}
                       onChange={(e) => setFormTitle(e.target.value)}
                       placeholder="Resource title"
-                      className="mt-1 h-11 w-full rounded-2xl border border-slate-200 bg-white px-4 text-sm font-semibold text-slate-800 outline-none transition focus:border-transparent focus:ring-2 focus:ring-[rgba(3,205,140,0.25)]"
+                      className="mt-1 h-11 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-4 text-sm font-semibold text-slate-800 outline-none transition focus:border-transparent focus:ring-2 focus:ring-[rgba(3,205,140,0.25)]"
                     />
                   </div>
                   <div className="md:col-span-2">
@@ -1469,7 +1469,7 @@ export default function ResourcesManagerPage() {
                       onChange={(e) => setFormSummary(e.target.value)}
                       placeholder="Short summary"
                       rows={4}
-                      className="mt-1 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-800 outline-none transition focus:border-transparent focus:ring-2 focus:ring-[rgba(3,205,140,0.25)]"
+                      className="mt-1 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-3 text-sm font-semibold text-slate-800 outline-none transition focus:border-transparent focus:ring-2 focus:ring-[rgba(3,205,140,0.25)]"
                     />
                   </div>
                   <div>
@@ -1494,7 +1494,7 @@ export default function ResourcesManagerPage() {
                       value={formFileUrl}
                       onChange={(e) => setFormFileUrl(e.target.value)}
                       placeholder="https://..."
-                      className="mt-1 h-11 w-full rounded-2xl border border-slate-200 bg-white px-4 text-sm font-semibold text-slate-800 outline-none transition focus:border-transparent focus:ring-2 focus:ring-[rgba(3,205,140,0.25)]"
+                      className="mt-1 h-11 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-4 text-sm font-semibold text-slate-800 outline-none transition focus:border-transparent focus:ring-2 focus:ring-[rgba(3,205,140,0.25)]"
                     />
                   </div>
                   <div className="md:col-span-2">
@@ -1502,7 +1502,7 @@ export default function ResourcesManagerPage() {
                     <input
                       value={formTags}
                       onChange={(e) => setFormTags(e.target.value)}
-                      className="mt-1 h-11 w-full rounded-2xl border border-slate-200 bg-white px-4 text-sm font-semibold text-slate-800 outline-none transition focus:border-transparent focus:ring-2 focus:ring-[rgba(3,205,140,0.25)]"
+                      className="mt-1 h-11 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-4 text-sm font-semibold text-slate-800 outline-none transition focus:border-transparent focus:ring-2 focus:ring-[rgba(3,205,140,0.25)]"
                     />
                   </div>
                   <div>
@@ -1510,7 +1510,7 @@ export default function ResourcesManagerPage() {
                     <input
                       value={formDenominations}
                       onChange={(e) => setFormDenominations(e.target.value)}
-                      className="mt-1 h-11 w-full rounded-2xl border border-slate-200 bg-white px-4 text-sm font-semibold text-slate-800 outline-none transition focus:border-transparent focus:ring-2 focus:ring-[rgba(3,205,140,0.25)]"
+                      className="mt-1 h-11 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-4 text-sm font-semibold text-slate-800 outline-none transition focus:border-transparent focus:ring-2 focus:ring-[rgba(3,205,140,0.25)]"
                     />
                   </div>
                   <div>
@@ -1518,7 +1518,7 @@ export default function ResourcesManagerPage() {
                     <input
                       value={formAudiences}
                       onChange={(e) => setFormAudiences(e.target.value)}
-                      className="mt-1 h-11 w-full rounded-2xl border border-slate-200 bg-white px-4 text-sm font-semibold text-slate-800 outline-none transition focus:border-transparent focus:ring-2 focus:ring-[rgba(3,205,140,0.25)]"
+                      className="mt-1 h-11 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-4 text-sm font-semibold text-slate-800 outline-none transition focus:border-transparent focus:ring-2 focus:ring-[rgba(3,205,140,0.25)]"
                     />
                   </div>
                   <div className="md:col-span-2">
@@ -1526,13 +1526,13 @@ export default function ResourcesManagerPage() {
                     <input
                       value={formAgeGroups}
                       onChange={(e) => setFormAgeGroups(e.target.value)}
-                      className="mt-1 h-11 w-full rounded-2xl border border-slate-200 bg-white px-4 text-sm font-semibold text-slate-800 outline-none transition focus:border-transparent focus:ring-2 focus:ring-[rgba(3,205,140,0.25)]"
+                      className="mt-1 h-11 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-4 text-sm font-semibold text-slate-800 outline-none transition focus:border-transparent focus:ring-2 focus:ring-[rgba(3,205,140,0.25)]"
                     />
                   </div>
                 </div>
 
                 <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                  <div className="text-sm text-slate-500">
+                  <div className="text-sm text-faith-slate">
                     Free resources stay here. Premium and paid assets should move through FaithMart.
                   </div>
                   <Btn tone="primary" left={<Upload className="h-4 w-4" />} onClick={publishResource}>
@@ -1541,7 +1541,7 @@ export default function ResourcesManagerPage() {
                 </div>
               </div>
 
-              <div className="rounded-[32px] border border-slate-200 bg-white p-5 shadow-sm md:p-6">
+              <div className="rounded-[32px] border border-faith-line bg-[var(--fh-surface-bg)] p-5 shadow-soft md:p-6">
                 <SectionTitle
                   icon={<Wand2 className="h-4 w-4" />}
                   title="Manage provider resources"
@@ -1592,6 +1592,7 @@ export default function ResourcesManagerPage() {
     </div>
   );
 }
+
 
 
 

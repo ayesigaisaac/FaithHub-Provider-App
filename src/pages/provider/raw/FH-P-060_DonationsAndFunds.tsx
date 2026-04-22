@@ -1,4 +1,4 @@
-ï»¿// @ts-nocheck
+// @ts-nocheck
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -30,7 +30,7 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * Provider â€” Donations & Funds
+ * Provider — Donations & Funds
  * -------------------------------------
  * Premium giving workspace for Provider Workspace.
  *
@@ -80,7 +80,7 @@ function fmtInt(n: number) {
   return Intl.NumberFormat(undefined, { maximumFractionDigits: 0 }).format(n);
 }
 
-function fmtCurrency(n: number, currency = "Â£") {
+function fmtCurrency(n: number, currency = "£") {
   return `${currency}${Intl.NumberFormat(undefined, {
     maximumFractionDigits: 0,
   }).format(n)}`;
@@ -357,7 +357,7 @@ const BRIDGE_SEED: BridgeSurface[] = [
     label: "Sunday Morning Live donation moment",
     surface: "Live Session",
     state: "Ready",
-    value: "Â£12.8k influenced",
+    value: "£12.8k influenced",
     hint: "Pinned donor CTA and progress strip inside the sermon run-of-show.",
     ready: true,
   },
@@ -509,12 +509,12 @@ function Btn({
     "inline-flex items-center justify-center gap-2 rounded-xl px-3.5 py-2 text-sm font-semibold transition active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed";
   const cls =
     tone === "primary"
-      ? "text-white hover:brightness-95 shadow-sm"
+      ? "text-white hover:brightness-95 shadow-soft"
       : tone === "secondary"
-        ? "text-white hover:brightness-95 shadow-sm"
+        ? "text-white hover:brightness-95 shadow-soft"
         : tone === "ghost"
-          ? "bg-transparent text-slate-900 dark:text-slate-50 hover:bg-slate-100 dark:hover:bg-slate-800"
-          : "bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-50 ring-1 ring-slate-200 dark:ring-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 shadow-sm";
+          ? "bg-transparent text-faith-ink dark:text-slate-50 hover:bg-slate-100 dark:hover:bg-slate-800"
+          : "bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-faith-ink dark:text-slate-50 ring-1 ring-slate-200 dark:ring-slate-800 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800 shadow-soft";
   const style =
     tone === "primary"
       ? { background: EV_GREEN }
@@ -543,7 +543,7 @@ function Toggle({ value, onChange }: { value: boolean; onChange: (v: boolean) =>
     >
       <span
         className={cx(
-          "inline-block h-5 w-5 transform rounded-full bg-white dark:bg-slate-900 shadow transition",
+          "inline-block h-5 w-5 transform rounded-full bg-[var(--fh-surface-bg)] dark:bg-slate-900 shadow transition",
           value ? "translate-x-5" : "translate-x-1",
         )}
       />
@@ -576,18 +576,18 @@ function Modal({
   return (
     <div className="fixed inset-0 z-[90] flex items-end justify-center p-0 sm:items-center sm:p-4">
       <div className="absolute inset-0 bg-black/45 backdrop-blur-sm" onClick={onClose} />
-      <div className="relative flex h-[92vh] w-full max-w-6xl flex-col overflow-hidden rounded-t-3xl bg-white shadow-2xl ring-1 ring-slate-200 transition dark:bg-slate-900 dark:ring-slate-800 sm:h-auto sm:max-h-[90vh] sm:rounded-[14px]">
-        <div className="flex items-start justify-between gap-3 border-b border-slate-200 px-5 py-4 dark:border-slate-800">
+      <div className="relative flex h-[92vh] w-full max-w-6xl flex-col overflow-hidden rounded-t-3xl bg-[var(--fh-surface-bg)] shadow-2xl ring-1 ring-slate-200 transition dark:bg-slate-900 dark:ring-slate-800 sm:h-auto sm:max-h-[90vh] sm:rounded-[14px]">
+        <div className="flex items-start justify-between gap-3 border-b border-faith-line px-5 py-4 dark:border-slate-800">
           <div className="min-w-0">
-            <div className="truncate text-base font-semibold text-slate-900 dark:text-slate-50">{title}</div>
-            {subtitle ? <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{subtitle}</div> : null}
+            <div className="truncate text-base font-semibold text-faith-ink dark:text-slate-50">{title}</div>
+            {subtitle ? <div className="mt-1 text-xs text-faith-slate">{subtitle}</div> : null}
           </div>
           <button
             type="button"
             onClick={onClose}
             className="inline-flex h-10 w-10 items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800"
           >
-            <X className="h-5 w-5 text-slate-600 dark:text-slate-400" />
+            <X className="h-5 w-5 text-faith-slate" />
           </button>
         </div>
         <div className="flex-1 overflow-auto p-4 sm:p-6">{children}</div>
@@ -610,12 +610,12 @@ function SectionTitle({
   return (
     <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
       <div className="flex items-start gap-3">
-        <div className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-slate-900 text-white shadow-sm dark:bg-slate-100 dark:text-slate-900">
+        <div className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-slate-900 text-white shadow-soft dark:bg-slate-100 dark:text-faith-ink">
           {icon}
         </div>
         <div className="min-w-0">
-          <div className="text-base font-bold text-slate-900 dark:text-slate-50">{title}</div>
-          {subtitle ? <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{subtitle}</div> : null}
+          <div className="text-base font-bold text-faith-ink dark:text-slate-50">{title}</div>
+          {subtitle ? <div className="mt-1 text-xs text-faith-slate">{subtitle}</div> : null}
         </div>
       </div>
       {right ? <div className="shrink-0">{right}</div> : null}
@@ -656,14 +656,14 @@ function RegistryRow({
       className={cx(
         "w-full rounded-[14px] border p-3 text-left transition-all",
         active
-          ? "border-slate-300 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-900"
-          : "border-slate-200 bg-slate-50 hover:bg-white dark:border-slate-800 dark:bg-slate-800/50 dark:hover:bg-slate-900",
+          ? "border-slate-300 bg-[var(--fh-surface-bg)] shadow-soft dark:border-slate-700 dark:bg-slate-900"
+          : "border-faith-line bg-[var(--fh-surface)] hover:bg-[var(--fh-surface-bg)] dark:border-slate-800 dark:bg-slate-800/50 dark:hover:bg-slate-900",
       )}
     >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
-          <div className="truncate text-sm font-bold text-slate-900 dark:text-slate-50">{record.title}</div>
-          <div className="mt-1 text-xs text-slate-500 dark:text-slate-400 line-clamp-2">{record.subtitle}</div>
+          <div className="truncate text-sm font-bold text-faith-ink dark:text-slate-50">{record.title}</div>
+          <div className="mt-1 text-xs text-faith-slate line-clamp-2">{record.subtitle}</div>
         </div>
         <div className="shrink-0 rounded-full px-2 py-1 text-[10px] font-bold text-white" style={{ background: color }}>
           {record.recordType}
@@ -677,8 +677,8 @@ function RegistryRow({
       </div>
       <div className="mt-3 flex items-center justify-between gap-3">
         <div>
-          <div className="text-[11px] text-slate-500 dark:text-slate-400">Raised</div>
-          <div className="text-sm font-extrabold text-slate-900 dark:text-slate-50">{fmtCurrency(record.raised)}</div>
+          <div className="text-[11px] text-faith-slate">Raised</div>
+          <div className="text-sm font-extrabold text-faith-ink dark:text-slate-50">{fmtCurrency(record.raised)}</div>
         </div>
         <button
           type="button"
@@ -686,7 +686,7 @@ function RegistryRow({
             e.stopPropagation();
             onDuplicate();
           }}
-          className="rounded-full bg-white px-3 py-1 text-[11px] font-semibold text-slate-700 ring-1 ring-slate-200 transition hover:bg-slate-50 dark:bg-slate-900 dark:text-slate-200 dark:ring-slate-700 dark:hover:bg-slate-800"
+          className="rounded-full bg-[var(--fh-surface-bg)] px-3 py-1 text-[11px] font-semibold text-slate-700 ring-1 ring-slate-200 transition hover:bg-[var(--fh-surface)] dark:bg-slate-900 dark:text-slate-200 dark:ring-slate-700 dark:hover:bg-slate-800"
         >
           Duplicate
         </button>
@@ -707,12 +707,12 @@ function BrowserPreview({
   donorCopy: string;
 }) {
   return (
-    <div className="overflow-hidden rounded-[16px] bg-white shadow-2xl ring-1 ring-slate-200 dark:ring-slate-800">
-      <div className="flex items-center gap-2 border-b border-slate-200 bg-slate-50 px-4 py-3 dark:border-slate-800 dark:bg-slate-950">
+    <div className="overflow-hidden rounded-[16px] bg-[var(--fh-surface-bg)] shadow-2xl ring-1 ring-slate-200 dark:ring-slate-800">
+      <div className="flex items-center gap-2 border-b border-faith-line bg-[var(--fh-surface)] px-4 py-3 dark:border-slate-800 dark:bg-slate-950">
         <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
         <span className="h-2.5 w-2.5 rounded-full bg-amber-400" />
         <span className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
-        <div className="ml-2 rounded-full bg-white px-4 py-1 text-xs font-semibold text-slate-500 ring-1 ring-slate-200 dark:bg-slate-900 dark:text-slate-400 dark:ring-slate-700">
+        <div className="ml-2 rounded-full bg-[var(--fh-surface-bg)] px-4 py-1 text-xs font-semibold text-faith-slate ring-1 ring-slate-200 dark:bg-slate-900 dark:ring-slate-700">
           faithhub.app/give/{record.id}
         </div>
       </div>
@@ -721,47 +721,47 @@ function BrowserPreview({
           <img src={record.heroImageUrl} alt={record.title} className="absolute inset-0 h-full w-full object-cover opacity-60" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-slate-900/10" />
           <div className="relative z-10 p-8">
-            <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-bold backdrop-blur">
+            <div className="inline-flex items-center gap-2 rounded-full bg-[var(--fh-surface-bg)]/10 px-3 py-1 text-xs font-bold backdrop-blur">
               <HeartHandshake className="h-3.5 w-3.5" /> Giving
             </div>
             <div className="mt-5 text-3xl font-black leading-tight">{record.title}</div>
             <div className="mt-2 max-w-[520px] text-sm text-white/85">{record.subtitle}</div>
             <div className="mt-5 flex flex-wrap gap-2 text-xs">
-              <span className="rounded-full bg-white/10 px-3 py-1 font-semibold">Trust {record.trustScore}%</span>
-              <span className="rounded-full bg-white/10 px-3 py-1 font-semibold">Recurring {record.repeatRate}%</span>
-              <span className="rounded-full bg-white/10 px-3 py-1 font-semibold">{record.recordType}</span>
+              <span className="rounded-full bg-[var(--fh-surface-bg)]/10 px-3 py-1 font-semibold">Trust {record.trustScore}%</span>
+              <span className="rounded-full bg-[var(--fh-surface-bg)]/10 px-3 py-1 font-semibold">Recurring {record.repeatRate}%</span>
+              <span className="rounded-full bg-[var(--fh-surface-bg)]/10 px-3 py-1 font-semibold">{record.recordType}</span>
             </div>
             <div className="mt-6 max-w-[520px] text-sm leading-relaxed text-white/85">{donorCopy}</div>
           </div>
         </div>
-        <div className="bg-white p-6 dark:bg-slate-900">
-          <div className="text-xs font-bold uppercase tracking-wide text-slate-400 dark:text-slate-500">Give today</div>
-          <div className="mt-2 text-2xl font-black text-slate-900 dark:text-slate-50">{fmtCurrency(record.raised)}</div>
-          <div className="mt-1 text-sm text-slate-500 dark:text-slate-400">toward {fmtCurrency(record.goal)} goal</div>
+        <div className="bg-[var(--fh-surface-bg)] p-6 dark:bg-slate-900">
+          <div className="text-xs font-bold uppercase tracking-wide text-faith-slate">Give today</div>
+          <div className="mt-2 text-2xl font-black text-faith-ink dark:text-slate-50">{fmtCurrency(record.raised)}</div>
+          <div className="mt-1 text-sm text-faith-slate">toward {fmtCurrency(record.goal)} goal</div>
           <div className="mt-3"><ProgressBar value={pct(record.raised, record.goal)} tone={record.accent === "navy" ? "navy" : record.accent === "orange" ? "orange" : "green"} /></div>
           <div className="mt-5 grid grid-cols-3 gap-2">
             {record.defaultAmounts.slice(0, 3).map((amount) => (
               <button
                 type="button"
                 key={amount}
-                className="rounded-xl border border-slate-200 bg-slate-50 px-3 py-3 text-center text-sm font-extrabold text-slate-900 transition hover:bg-white dark:border-slate-700 dark:bg-slate-800 dark:text-slate-50 dark:hover:bg-slate-700"
+                className="rounded-xl border border-faith-line bg-[var(--fh-surface)] px-3 py-3 text-center text-sm font-extrabold text-faith-ink transition hover:bg-[var(--fh-surface-bg)] dark:border-slate-700 dark:bg-slate-800 dark:text-slate-50 dark:hover:bg-slate-700"
                 onClick={() => safeNav("/faithhub/provider/donations-and-funds")}>
                 {fmtCurrency(amount)}
               </button>
             ))}
           </div>
-          <div className="mt-4 rounded-xl bg-slate-50 p-3 ring-1 ring-slate-200 dark:bg-slate-800/50 dark:ring-slate-800">
+          <div className="mt-4 rounded-xl bg-[var(--fh-surface)] p-3 ring-1 ring-slate-200 dark:bg-slate-800/50 dark:ring-slate-800">
             <div className="flex items-center justify-between gap-3">
               <div>
-                <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Monthly support</div>
-                <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">Preselect recurring giving for partner-style campaigns.</div>
+                <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Monthly support</div>
+                <div className="mt-1 text-xs text-faith-slate">Preselect recurring giving for partner-style campaigns.</div>
               </div>
               <span className={cx("rounded-full px-3 py-1 text-xs font-bold", recurringDefault ? "bg-emerald-500 text-white" : "bg-slate-200 text-slate-700 dark:bg-slate-700 dark:text-slate-200")}>{recurringDefault ? "On" : "Off"}</span>
             </div>
           </div>
-          <div className="mt-4 rounded-xl bg-slate-50 p-3 ring-1 ring-slate-200 dark:bg-slate-800/50 dark:ring-slate-800">
-            <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Trust & privacy</div>
-            <div className="mt-2 text-xs text-slate-500 dark:text-slate-400">{privacyWall ? "Donor recognition requires explicit opt-in." : record.donorPrivacy}</div>
+          <div className="mt-4 rounded-xl bg-[var(--fh-surface)] p-3 ring-1 ring-slate-200 dark:bg-slate-800/50 dark:ring-slate-800">
+            <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Trust & privacy</div>
+            <div className="mt-2 text-xs text-faith-slate">{privacyWall ? "Donor recognition requires explicit opt-in." : record.donorPrivacy}</div>
           </div>
           <button type="button" className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-extrabold text-white" style={{ background: EV_GREEN }} onClick={() => safeNav("/faithhub/provider/donations-and-funds")}>
             <HeartHandshake className="h-4 w-4" /> Complete donation
@@ -784,12 +784,12 @@ function PhonePreview({
   return (
     <div className="mx-auto w-full max-w-[360px] md:max-w-[400px]">
       <div className="rounded-[34px] bg-slate-900 p-3 shadow-2xl">
-        <div className="overflow-hidden rounded-[14px] bg-white dark:bg-slate-900">
-          <div className="relative aspect-[9/12] overflow-y-auto bg-slate-50 dark:bg-slate-950">
-            <div className="sticky top-0 z-10 flex items-center justify-between bg-white/95 px-4 py-3 shadow-sm backdrop-blur dark:bg-slate-900/95">
+        <div className="overflow-hidden rounded-[14px] bg-[var(--fh-surface-bg)] dark:bg-slate-900">
+          <div className="relative aspect-[9/12] overflow-y-auto bg-[var(--fh-surface)] dark:bg-slate-950">
+            <div className="sticky top-0 z-10 flex items-center justify-between bg-[var(--fh-surface-bg)]/95 px-4 py-3 shadow-soft backdrop-blur dark:bg-slate-900/95">
               <div>
-                <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500">Giving</div>
-                <div className="text-sm font-black text-slate-900 dark:text-slate-50">{record.title}</div>
+                <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-faith-slate">Giving</div>
+                <div className="text-sm font-black text-faith-ink dark:text-slate-50">{record.title}</div>
               </div>
               <div className="rounded-full bg-slate-100 px-2 py-1 text-[10px] font-bold text-slate-700 dark:bg-slate-800 dark:text-slate-200">{record.recordType}</div>
             </div>
@@ -809,27 +809,27 @@ function PhonePreview({
                   <button
                     key={amount}
                     type="button"
-                    className="rounded-xl border border-slate-200 bg-white px-3 py-3 text-sm font-extrabold text-slate-900 shadow-sm dark:border-slate-700 dark:bg-slate-900 dark:text-slate-50"
+                    className="rounded-xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-3 text-sm font-extrabold text-faith-ink shadow-soft dark:border-slate-700 dark:bg-slate-900 dark:text-slate-50"
                     onClick={() => safeNav("/faithhub/provider/donations-and-funds")}>
                     {fmtCurrency(amount)}
                   </button>
                 ))}
               </div>
-              <div className="mt-4 rounded-xl bg-white p-3 shadow-sm ring-1 ring-slate-200 dark:bg-slate-900 dark:ring-slate-800">
+              <div className="mt-4 rounded-xl bg-[var(--fh-surface-bg)] p-3 shadow-soft ring-1 ring-slate-200 dark:bg-slate-900 dark:ring-slate-800">
                 <div className="flex items-center justify-between gap-3">
                   <div>
-                    <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Monthly support</div>
-                    <div className="text-xs text-slate-500 dark:text-slate-400">{recurringDefault ? "Enabled by default" : "One-time selected"}</div>
+                    <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Monthly support</div>
+                    <div className="text-xs text-faith-slate">{recurringDefault ? "Enabled by default" : "One-time selected"}</div>
                   </div>
                   <span className={cx("rounded-full px-3 py-1 text-[10px] font-bold", recurringDefault ? "bg-emerald-500 text-white" : "bg-slate-200 text-slate-700 dark:bg-slate-700 dark:text-slate-200")}>{recurringDefault ? "Monthly" : "Once"}</span>
                 </div>
               </div>
-              <div className="mt-3 rounded-xl bg-white p-3 shadow-sm ring-1 ring-slate-200 dark:bg-slate-900 dark:ring-slate-800">
-                <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Trust note</div>
-                <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{privacyWall ? "Recognition requires donor opt-in." : record.donorPrivacy}</div>
+              <div className="mt-3 rounded-xl bg-[var(--fh-surface-bg)] p-3 shadow-soft ring-1 ring-slate-200 dark:bg-slate-900 dark:ring-slate-800">
+                <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Trust note</div>
+                <div className="mt-1 text-xs text-faith-slate">{privacyWall ? "Recognition requires donor opt-in." : record.donorPrivacy}</div>
               </div>
             </div>
-            <div className="sticky bottom-0 bg-white/95 px-4 pb-4 pt-2 backdrop-blur dark:bg-slate-900/95">
+            <div className="sticky bottom-0 bg-[var(--fh-surface-bg)]/95 px-4 pb-4 pt-2 backdrop-blur dark:bg-slate-900/95">
               <button type="button" className="inline-flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-extrabold text-white shadow-lg" style={{ background: EV_GREEN }} onClick={() => safeNav("/faithhub/provider/donations-and-funds")}>
                 <HeartHandshake className="h-4 w-4" /> Give now
               </button>
@@ -859,37 +859,37 @@ function CampaignComposer({
     <div className="space-y-5">
       <div className="grid gap-4 md:grid-cols-2">
         <div>
-          <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Name</div>
+          <div className="text-[11px] font-semibold uppercase tracking-wide text-faith-slate">Name</div>
           <input
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder={mode === "Fund" ? "e.g. General Missions Fund" : mode === "Campaign" ? "e.g. Easter Appeal" : mode === "Recurring support" ? "e.g. Partner Circle" : "e.g. Clean Water Charity Drive"}
-            className="mt-1 w-full rounded-xl border border-slate-200 bg-white px-3 py-3 text-sm text-slate-900 outline-none transition focus:ring-2 focus:ring-slate-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-50 dark:focus:ring-slate-700"
+            className="mt-1 w-full rounded-xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-3 text-sm text-faith-ink outline-none transition focus:ring-2 focus:ring-slate-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-50 dark:focus:ring-slate-700"
           />
         </div>
         <div>
-          <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Owner</div>
+          <div className="text-[11px] font-semibold uppercase tracking-wide text-faith-slate">Owner</div>
           <input
             value={owner}
             onChange={(e) => setOwner(e.target.value)}
-            className="mt-1 w-full rounded-xl border border-slate-200 bg-white px-3 py-3 text-sm text-slate-900 outline-none transition focus:ring-2 focus:ring-slate-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-50 dark:focus:ring-slate-700"
+            className="mt-1 w-full rounded-xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-3 text-sm text-faith-ink outline-none transition focus:ring-2 focus:ring-slate-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-50 dark:focus:ring-slate-700"
           />
         </div>
         <div>
-          <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Target or goal</div>
+          <div className="text-[11px] font-semibold uppercase tracking-wide text-faith-slate">Target or goal</div>
           <input
             value={goal}
             onChange={(e) => setGoal(e.target.value.replace(/[^\d]/g, ""))}
-            className="mt-1 w-full rounded-xl border border-slate-200 bg-white px-3 py-3 text-sm text-slate-900 outline-none transition focus:ring-2 focus:ring-slate-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-50 dark:focus:ring-slate-700"
+            className="mt-1 w-full rounded-xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-3 text-sm text-faith-ink outline-none transition focus:ring-2 focus:ring-slate-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-50 dark:focus:ring-slate-700"
           />
         </div>
         <div>
-          <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Launch strategy</div>
+          <div className="text-[11px] font-semibold uppercase tracking-wide text-faith-slate">Launch strategy</div>
           <div className="mt-1 grid gap-2">
-            <div className="flex items-center justify-between rounded-xl bg-slate-50 px-3 py-3 ring-1 ring-slate-200 dark:bg-slate-800/50 dark:ring-slate-800">
+            <div className="flex items-center justify-between rounded-xl bg-[var(--fh-surface)] px-3 py-3 ring-1 ring-slate-200 dark:bg-slate-800/50 dark:ring-slate-800">
               <div>
-                <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Launch now</div>
-                <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">Create a ready-to-use donor surface immediately.</div>
+                <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Launch now</div>
+                <div className="mt-1 text-xs text-faith-slate">Create a ready-to-use donor surface immediately.</div>
               </div>
               <Toggle value={launchNow} onChange={setLaunchNow} />
             </div>
@@ -898,28 +898,28 @@ function CampaignComposer({
       </div>
 
       <div className="grid gap-3 md:grid-cols-2">
-        <div className="rounded-[14px] bg-slate-50 p-4 ring-1 ring-slate-200 dark:bg-slate-800/40 dark:ring-slate-800">
-          <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Connected surfaces</div>
+        <div className="rounded-[14px] bg-[var(--fh-surface)] p-4 ring-1 ring-slate-200 dark:bg-slate-800/40 dark:ring-slate-800">
+          <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Connected surfaces</div>
           <div className="mt-3 space-y-3">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-sm font-semibold text-slate-900 dark:text-slate-50">Tie into Live Sessions</div>
-                <div className="text-xs text-slate-500 dark:text-slate-400">Create donor prompts for live, replay, or event moments.</div>
+                <div className="text-sm font-semibold text-faith-ink dark:text-slate-50">Tie into Live Sessions</div>
+                <div className="text-xs text-faith-slate">Create donor prompts for live, replay, or event moments.</div>
               </div>
               <Toggle value={tieToLive} onChange={setTieToLive} />
             </div>
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-sm font-semibold text-slate-900 dark:text-slate-50">Open Beacon bridge</div>
-                <div className="text-xs text-slate-500 dark:text-slate-400">Prepare a promotion path once the campaign is live.</div>
+                <div className="text-sm font-semibold text-faith-ink dark:text-slate-50">Open Beacon bridge</div>
+                <div className="text-xs text-faith-slate">Prepare a promotion path once the campaign is live.</div>
               </div>
               <Toggle value={tieToBeacon} onChange={setTieToBeacon} />
             </div>
           </div>
         </div>
-        <div className="rounded-[14px] bg-slate-50 p-4 ring-1 ring-slate-200 dark:bg-slate-800/40 dark:ring-slate-800">
-          <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Mode summary</div>
-          <div className="mt-3 text-sm text-slate-600 dark:text-slate-300">
+        <div className="rounded-[14px] bg-[var(--fh-surface)] p-4 ring-1 ring-slate-200 dark:bg-slate-800/40 dark:ring-slate-800">
+          <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Mode summary</div>
+          <div className="mt-3 text-sm text-faith-slate dark:text-slate-300">
             {mode === "Fund" && "Standard fund for steady, always-on giving across the ministry."}
             {mode === "Campaign" && "Timed giving pathway for appeals, special moments, seasonal pushes, or emergency calls to action."}
             {mode === "Recurring support" && "Retention-first donor experience that emphasizes monthly partnership and long-term supporter care."}
@@ -1049,12 +1049,12 @@ export default function DonationsAndFundsPage() {
   };
 
   return (
-    <div className="min-h-screen w-full flex flex-col bg-[#f2f2f2] dark:bg-slate-950 text-slate-900 dark:text-slate-50 transition-colors overflow-x-hidden">
-      <div className="sticky top-0 z-40 border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur transition-colors">
+    <div className="min-h-screen w-full flex flex-col bg-[var(--fh-page-bg)] dark:bg-slate-950 text-faith-ink dark:text-slate-50 transition-colors overflow-x-hidden">
+      <div className="sticky top-0 z-40 border-b border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)]/95 dark:bg-slate-900/95 backdrop-blur transition-colors">
         <div className="w-full px-4 md:px-6 lg:px-8 py-4">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <div className="min-w-0">
-              <div className="flex flex-wrap items-center gap-2 text-[10px] sm:text-xs text-slate-500 dark:text-slate-400">
+              <div className="flex flex-wrap items-center gap-2 text-[10px] sm:text-xs text-faith-slate">
                 <span className="hover:text-slate-700 dark:hover:text-slate-200">Provider Workspace</span>
                 <span className="text-slate-300 dark:text-slate-700">/</span>
                 <span className="hover:text-slate-700 dark:hover:text-slate-200">Events &amp; Giving</span>
@@ -1063,7 +1063,7 @@ export default function DonationsAndFundsPage() {
               </div>
 
               <div className="mt-1 flex flex-wrap items-center gap-2">
-                <div className="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50">
+                <div className="text-xl sm:text-2xl font-extrabold tracking-tight text-faith-ink dark:text-slate-50">
                   Donations &amp; Funds
                 </div>
                 <Pill tone="good">
@@ -1075,7 +1075,7 @@ export default function DonationsAndFundsPage() {
                   Donor intelligence
                 </Pill>
               </div>
-              <div className="mt-1 text-[10px] sm:text-xs text-slate-500 dark:text-slate-400">
+              <div className="mt-1 text-[10px] sm:text-xs text-faith-slate">
                 Premium giving operations for standard funds, special campaigns, recurring support, donor experience, and finance visibility.
               </div>
             </div>
@@ -1097,11 +1097,11 @@ export default function DonationsAndFundsPage() {
           </div>
         </div>
 
-        <div className="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 transition-colors">
+        <div className="border-t border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 transition-colors">
           <div className="w-full px-4 md:px-6 lg:px-8 py-3">
             <div className="flex flex-col gap-3 xl:flex-row xl:items-center xl:justify-between">
               <div className="flex flex-wrap items-center gap-2">
-                <div className="rounded-xl bg-slate-50 dark:bg-slate-800 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800 text-sm font-bold text-slate-900 dark:text-slate-100">
+                <div className="rounded-xl bg-[var(--fh-surface)] dark:bg-slate-800 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800 text-sm font-bold text-faith-ink dark:text-slate-100">
                   {selectedRecord?.title}
                 </div>
                 <Pill tone="good">Trust {selectedRecord?.trustScore ?? 0}%</Pill>
@@ -1129,7 +1129,7 @@ export default function DonationsAndFundsPage() {
       <div className="flex-1 w-full px-3 sm:px-4 md:px-6 lg:px-8 py-6">
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-12">
           <div className="lg:col-span-4 space-y-4">
-            <div className="rounded-[14px] bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <div className="rounded-[14px] bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <SectionTitle
                 icon={<Layers className="h-5 w-5" />}
                 title="Funds registry"
@@ -1137,12 +1137,12 @@ export default function DonationsAndFundsPage() {
               />
               <div className="mt-4 space-y-3">
                 <div className="relative">
-                  <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+                  <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-faith-slate" />
                   <input
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                     placeholder="Search funds, owners, or donor journeys"
-                    className="w-full rounded-xl bg-slate-50 dark:bg-slate-800 px-10 py-3 text-sm text-slate-900 dark:text-slate-50 ring-1 ring-slate-200 dark:ring-slate-800 outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600"
+                    className="w-full rounded-xl bg-[var(--fh-surface)] dark:bg-slate-800 px-10 py-3 text-sm text-faith-ink dark:text-slate-50 ring-1 ring-slate-200 dark:ring-slate-800 outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600"
                   />
                 </div>
 
@@ -1187,7 +1187,7 @@ export default function DonationsAndFundsPage() {
           </div>
 
           <div className="lg:col-span-4 space-y-4">
-            <div className="rounded-[14px] bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <div className="rounded-[14px] bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <SectionTitle
                 icon={<Plus className="h-5 w-5" />}
                 title="Campaign creation rail"
@@ -1205,13 +1205,13 @@ export default function DonationsAndFundsPage() {
                           ? safeNav(ROUTES.charityCrowdfund)
                           : openComposer(preset.mode)
                       }
-                      className="rounded-[14px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 p-4 text-left hover:bg-white dark:hover:bg-slate-800 transition-colors"
+                      className="rounded-[14px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 text-left hover:bg-[var(--fh-surface-bg)] dark:hover:bg-slate-800 transition-colors"
                     >
-                      <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl text-white shadow-sm" style={{ background: accent }}>
+                      <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl text-white shadow-soft" style={{ background: accent }}>
                         {preset.mode === "Recurring support" ? <HeartHandshake className="h-5 w-5" /> : preset.mode === "Crowdfund" ? <Zap className="h-5 w-5" /> : <Gift className="h-5 w-5" />}
                       </div>
-                      <div className="mt-3 text-sm font-bold text-slate-900 dark:text-slate-50">{preset.label}</div>
-                      <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{preset.hint}</div>
+                      <div className="mt-3 text-sm font-bold text-faith-ink dark:text-slate-50">{preset.label}</div>
+                      <div className="mt-1 text-xs text-faith-slate">{preset.hint}</div>
                       <div className="mt-3 inline-flex items-center gap-2 text-xs font-semibold" style={{ color: accent }}>
                         {preset.mode === "Crowdfund" ? "Open workbench" : "Start draft"}
                         <ExternalLink className="h-3.5 w-3.5" />
@@ -1222,21 +1222,21 @@ export default function DonationsAndFundsPage() {
               </div>
             </div>
 
-            <div className="rounded-[14px] bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <div className="rounded-[14px] bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <SectionTitle
                 icon={<HeartHandshake className="h-5 w-5" />}
                 title="Giving experience settings"
                 subtitle="Configure suggested amounts, recurring defaults, donor-visible copy, receipts, and privacy options."
               />
               <div className="mt-4 space-y-4">
-                <div className="rounded-[14px] bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-                  <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Suggested amounts</div>
+                <div className="rounded-[14px] bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Suggested amounts</div>
                   <div className="mt-3 grid grid-cols-5 gap-2">
                     {(selectedRecord?.defaultAmounts || []).map((amount) => (
                       <button
                         type="button"
                         key={amount}
-                        className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-2 py-2 text-sm font-extrabold text-slate-900 dark:text-slate-50"
+                        className="rounded-xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-2 py-2 text-sm font-extrabold text-faith-ink dark:text-slate-50"
                         onClick={() => safeNav("/faithhub/provider/donations-and-funds")}>
                         {fmtCurrency(amount)}
                       </button>
@@ -1245,38 +1245,38 @@ export default function DonationsAndFundsPage() {
                 </div>
 
                 <div className="grid gap-3 md:grid-cols-2">
-                  <div className="rounded-[14px] bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div className="rounded-[14px] bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
                     <div className="flex items-center justify-between gap-3">
                       <div>
-                        <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Recurring default</div>
-                        <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">Preselect monthly support for partner-style funds.</div>
+                        <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Recurring default</div>
+                        <div className="mt-1 text-xs text-faith-slate">Preselect monthly support for partner-style funds.</div>
                       </div>
                       <Toggle value={recurringDefault} onChange={setRecurringDefault} />
                     </div>
                     <div className="mt-3 flex items-center justify-between gap-3">
                       <div>
-                        <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Donor wall opt-in</div>
-                        <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">Only surface donor names when explicit consent is given.</div>
+                        <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Donor wall opt-in</div>
+                        <div className="mt-1 text-xs text-faith-slate">Only surface donor names when explicit consent is given.</div>
                       </div>
                       <Toggle value={privacyWall} onChange={setPrivacyWall} />
                     </div>
                     <div className="mt-3 flex items-center justify-between gap-3">
                       <div>
-                        <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Quiet-hour guardrails</div>
-                        <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">Protect donor follow-up timing inside journeys.</div>
+                        <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Quiet-hour guardrails</div>
+                        <div className="mt-1 text-xs text-faith-slate">Protect donor follow-up timing inside journeys.</div>
                       </div>
                       <Toggle value={quietHoursGuard} onChange={setQuietHoursGuard} />
                     </div>
                   </div>
 
-                  <div className="rounded-[14px] bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-                    <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Receipt & confirmation</div>
-                    <label className="mt-3 block text-[11px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
+                  <div className="rounded-[14px] bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                    <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Receipt & confirmation</div>
+                    <label className="mt-3 block text-[11px] font-semibold uppercase tracking-wide text-faith-slate">
                       Receipt language
                       <select
                         value={receiptLanguage}
                         onChange={(e) => setReceiptLanguage(e.target.value)}
-                        className="mt-1 w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-sm text-slate-900 dark:text-slate-50"
+                        className="mt-1 w-full rounded-xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-sm text-faith-ink dark:text-slate-50"
                       >
                         <option>Standard ministry receipt</option>
                         <option>Missions campaign receipt</option>
@@ -1285,30 +1285,30 @@ export default function DonationsAndFundsPage() {
                         <option>Scholarship support receipt</option>
                       </select>
                     </label>
-                    <label className="mt-3 block text-[11px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
+                    <label className="mt-3 block text-[11px] font-semibold uppercase tracking-wide text-faith-slate">
                       Confirmation journey
                       <input
                         value={confirmationJourney}
                         onChange={(e) => setConfirmationJourney(e.target.value)}
-                        className="mt-1 w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-sm text-slate-900 dark:text-slate-50"
+                        className="mt-1 w-full rounded-xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-sm text-faith-ink dark:text-slate-50"
                       />
                     </label>
                   </div>
                 </div>
 
-                <div className="rounded-[14px] bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-                  <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Donor-visible copy</div>
+                <div className="rounded-[14px] bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Donor-visible copy</div>
                   <textarea
                     value={donorCopy}
                     onChange={(e) => setDonorCopy(e.target.value)}
                     rows={4}
-                    className="mt-3 w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-3 text-sm text-slate-900 dark:text-slate-50"
+                    className="mt-3 w-full rounded-xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-3 text-sm text-faith-ink dark:text-slate-50"
                   />
                 </div>
               </div>
             </div>
 
-            <div className="rounded-[14px] bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <div className="rounded-[14px] bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <SectionTitle
                 icon={<MonitorPlay className="h-5 w-5" />}
                 title="Live and content bridge"
@@ -1316,16 +1316,16 @@ export default function DonationsAndFundsPage() {
               />
               <div className="mt-4 space-y-3">
                 {BRIDGE_SEED.map((item) => (
-                  <div key={item.id} className="rounded-[14px] bg-slate-50 dark:bg-slate-800/50 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div key={item.id} className="rounded-[14px] bg-[var(--fh-surface)] dark:bg-slate-800/50 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0">
-                        <div className="text-sm font-bold text-slate-900 dark:text-slate-50">{item.label}</div>
-                        <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{item.surface} Â· {item.hint}</div>
+                        <div className="text-sm font-bold text-faith-ink dark:text-slate-50">{item.label}</div>
+                        <div className="mt-1 text-xs text-faith-slate">{item.surface} · {item.hint}</div>
                       </div>
                       <Pill tone={item.ready ? "good" : "warn"}>{item.state}</Pill>
                     </div>
                     <div className="mt-2 flex items-center justify-between gap-2">
-                      <div className="text-sm font-extrabold text-slate-900 dark:text-slate-50">{item.value}</div>
+                      <div className="text-sm font-extrabold text-faith-ink dark:text-slate-50">{item.value}</div>
                       <button
                         type="button"
                         onClick={() => {
@@ -1345,16 +1345,16 @@ export default function DonationsAndFundsPage() {
           </div>
 
           <div className="lg:col-span-4 space-y-4">
-            <div className="rounded-[14px] bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <div className="rounded-[14px] bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <SectionTitle
                 icon={<Eye className="h-5 w-5" />}
                 title="Preview + donor experience"
                 subtitle="Desktop and mobile giving surfaces with donor trust, amounts, recurring, and promotion hooks."
                 right={<Pill tone="good">Preview-ready</Pill>}
               />
-              <div className="mt-4 rounded-[14px] bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+              <div className="mt-4 rounded-[14px] bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
                 <div className="flex items-center justify-between gap-2">
-                  <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Current donor surface</div>
+                  <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Current donor surface</div>
                   <div className="flex items-center gap-2">
                     <button
                       type="button"
@@ -1407,7 +1407,7 @@ export default function DonationsAndFundsPage() {
               </div>
             </div>
 
-            <div className="rounded-[14px] bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <div className="rounded-[14px] bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <SectionTitle
                 icon={<BarChart3 className="h-5 w-5" />}
                 title="Donor intelligence dashboard"
@@ -1421,29 +1421,29 @@ export default function DonationsAndFundsPage() {
               </div>
 
               <div className="mt-4 grid gap-3 md:grid-cols-3">
-                <div className="rounded-[14px] bg-slate-50 dark:bg-slate-800/50 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                  <div className="text-xs font-bold text-slate-900 dark:text-slate-50">Donor growth</div>
+                <div className="rounded-[14px] bg-[var(--fh-surface)] dark:bg-slate-800/50 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div className="text-xs font-bold text-faith-ink dark:text-slate-50">Donor growth</div>
                   <div className="mt-2"><MiniLine values={donorGrowthSeries} tone="green" /></div>
                 </div>
-                <div className="rounded-[14px] bg-slate-50 dark:bg-slate-800/50 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                  <div className="text-xs font-bold text-slate-900 dark:text-slate-50">Recurring retention</div>
+                <div className="rounded-[14px] bg-[var(--fh-surface)] dark:bg-slate-800/50 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div className="text-xs font-bold text-faith-ink dark:text-slate-50">Recurring retention</div>
                   <div className="mt-2"><MiniLine values={recurringRetentionSeries} tone="orange" /></div>
                 </div>
-                <div className="rounded-[14px] bg-slate-50 dark:bg-slate-800/50 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                  <div className="text-xs font-bold text-slate-900 dark:text-slate-50">Content influence</div>
+                <div className="rounded-[14px] bg-[var(--fh-surface)] dark:bg-slate-800/50 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div className="text-xs font-bold text-faith-ink dark:text-slate-50">Content influence</div>
                   <div className="mt-2"><MiniLine values={contentInfluenceSeries} tone="navy" /></div>
                 </div>
               </div>
 
               <div className="mt-4 space-y-3">
                 {attributionBars.map((item) => (
-                  <div key={item.label} className="rounded-xl bg-slate-50 dark:bg-slate-800/50 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div key={item.label} className="rounded-xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
                     <div className="flex items-center justify-between gap-2">
                       <div>
-                        <div className="text-sm font-bold text-slate-900 dark:text-slate-50">{item.label}</div>
-                        <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{item.hint}</div>
+                        <div className="text-sm font-bold text-faith-ink dark:text-slate-50">{item.label}</div>
+                        <div className="mt-1 text-xs text-faith-slate">{item.hint}</div>
                       </div>
-                      <div className="text-sm font-extrabold text-slate-900 dark:text-slate-50">{item.value}%</div>
+                      <div className="text-sm font-extrabold text-faith-ink dark:text-slate-50">{item.value}%</div>
                     </div>
                     <div className="mt-2"><ProgressBar value={item.value} tone={item.label === "Beacon" ? "orange" : item.label === "Events" ? "navy" : "green"} /></div>
                   </div>
@@ -1451,7 +1451,7 @@ export default function DonationsAndFundsPage() {
               </div>
             </div>
 
-            <div className="rounded-[14px] bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <div className="rounded-[14px] bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <SectionTitle
                 icon={<CalendarClock className="h-5 w-5" />}
                 title="Payout and finance panel"
@@ -1459,71 +1459,71 @@ export default function DonationsAndFundsPage() {
               />
               <div className="mt-4 space-y-3">
                 <div className="grid gap-3 sm:grid-cols-2">
-                  <div className="rounded-[14px] bg-slate-50 dark:bg-slate-800/50 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                    <div className="text-[11px] uppercase tracking-wide text-slate-400">Next payout</div>
-                    <div className="mt-1 text-lg font-extrabold text-slate-900 dark:text-slate-50">{fmtDate(selectedRecord.nextPayoutISO)}</div>
-                    <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">Transfers route to finance owners after reconciliation checks.</div>
+                  <div className="rounded-[14px] bg-[var(--fh-surface)] dark:bg-slate-800/50 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                    <div className="text-[11px] uppercase tracking-wide text-faith-slate">Next payout</div>
+                    <div className="mt-1 text-lg font-extrabold text-faith-ink dark:text-slate-50">{fmtDate(selectedRecord.nextPayoutISO)}</div>
+                    <div className="mt-1 text-xs text-faith-slate">Transfers route to finance owners after reconciliation checks.</div>
                   </div>
-                  <div className="rounded-[14px] bg-slate-50 dark:bg-slate-800/50 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                    <div className="text-[11px] uppercase tracking-wide text-slate-400">Reconciliation</div>
-                    <div className="mt-1 text-lg font-extrabold text-slate-900 dark:text-slate-50">{selectedRecord.reconciliationPct}%</div>
+                  <div className="rounded-[14px] bg-[var(--fh-surface)] dark:bg-slate-800/50 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                    <div className="text-[11px] uppercase tracking-wide text-faith-slate">Reconciliation</div>
+                    <div className="mt-1 text-lg font-extrabold text-faith-ink dark:text-slate-50">{selectedRecord.reconciliationPct}%</div>
                     <div className="mt-2"><ProgressBar value={selectedRecord.reconciliationPct} tone={selectedRecord.reconciliationPct >= 90 ? "green" : "orange"} /></div>
                   </div>
                 </div>
-                <div className="rounded-[14px] bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                <div className="rounded-[14px] bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
                   <div className="flex items-center justify-between gap-2">
                     <div>
-                      <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Finance ownership</div>
-                      <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{selectedRecord.owner} Â· {selectedRecord.financeHealth} state</div>
+                      <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Finance ownership</div>
+                      <div className="mt-1 text-xs text-faith-slate">{selectedRecord.owner} · {selectedRecord.financeHealth} state</div>
                     </div>
                     <Pill tone={badgeToneForFinance(selectedRecord.financeHealth)}>{selectedRecord.financeHealth}</Pill>
                   </div>
-                  <div className="mt-3 space-y-2 text-sm text-slate-600 dark:text-slate-300">
-                    <div className="rounded-xl bg-white dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800">Transfer timing aligned to provider payout schedule</div>
-                    <div className="rounded-xl bg-white dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800">Internal finance notes available for restricted funds and emergency appeals</div>
-                    <div className="rounded-xl bg-white dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800">Audit-friendly ownership chain from donor experience to payout</div>
+                  <div className="mt-3 space-y-2 text-sm text-faith-slate dark:text-slate-300">
+                    <div className="rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800">Transfer timing aligned to provider payout schedule</div>
+                    <div className="rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800">Internal finance notes available for restricted funds and emergency appeals</div>
+                    <div className="rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800">Audit-friendly ownership chain from donor experience to payout</div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="rounded-[14px] bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <div className="rounded-[14px] bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <SectionTitle
                 icon={<ShieldCheck className="h-5 w-5" />}
                 title="Compliance and trust controls"
                 subtitle="Legal copy, receipts, campaign accountability notes, and assets that explain where money is going."
               />
               <div className="mt-4 space-y-3">
-                <div className="rounded-[14px] bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                <div className="rounded-[14px] bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
                   <div className="flex items-center justify-between gap-2">
-                    <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Active controls</div>
+                    <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Active controls</div>
                     <Pill tone={selectedRecord.legalCopyReady && selectedRecord.accountabilityReady ? "good" : "warn"}>
                       {selectedRecord.legalCopyReady && selectedRecord.accountabilityReady ? "Ready" : "Review"}
                     </Pill>
                   </div>
                   <div className="mt-3 space-y-2">
-                    <div className="flex items-center justify-between rounded-xl bg-white dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800 text-sm">
+                    <div className="flex items-center justify-between rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800 text-sm">
                       <span>Legal copy & campaign explanation</span>
                       {selectedRecord.legalCopyReady ? <CheckCircle2 className="h-4 w-4 text-emerald-500" /> : <Clock3 className="h-4 w-4 text-amber-500" />}
                     </div>
-                    <div className="flex items-center justify-between rounded-xl bg-white dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800 text-sm">
+                    <div className="flex items-center justify-between rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800 text-sm">
                       <span>Accountability notes & where-money-goes assets</span>
                       {selectedRecord.accountabilityReady ? <CheckCircle2 className="h-4 w-4 text-emerald-500" /> : <Clock3 className="h-4 w-4 text-amber-500" />}
                     </div>
-                    <div className="flex items-center justify-between rounded-xl bg-white dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800 text-sm">
+                    <div className="flex items-center justify-between rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800 text-sm">
                       <span>Child-safe restrictions and privacy defaults</span>
                       <CheckCircle2 className="h-4 w-4 text-emerald-500" />
                     </div>
                   </div>
                 </div>
 
-                <div className="rounded-[14px] bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 text-sm text-slate-600 dark:text-slate-300">
+                <div className="rounded-[14px] bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 text-sm text-faith-slate dark:text-slate-300">
                   {selectedRecord.statusHint}
                 </div>
               </div>
             </div>
 
-            <div className="rounded-[14px] bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <div className="rounded-[14px] bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <SectionTitle
                 icon={<Workflow className="h-5 w-5" />}
                 title="Campaign lifecycle tools"
@@ -1598,16 +1598,16 @@ export default function DonationsAndFundsPage() {
           </div>
 
           <div className="space-y-4">
-            <div className="rounded-[14px] bg-slate-50 dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-              <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Preview notes</div>
-              <div className="mt-3 space-y-3 text-sm text-slate-600 dark:text-slate-300">
-                <div className="rounded-xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+            <div className="rounded-[14px] bg-[var(--fh-surface)] dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+              <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Preview notes</div>
+              <div className="mt-3 space-y-3 text-sm text-faith-slate dark:text-slate-300">
+                <div className="rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
                   Suggested amounts, recurring defaults, donor privacy, and confirmation journeys are mirrored from the page controls.
                 </div>
-                <div className="rounded-xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                <div className="rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
                   Premium donor pages should feel warm and trustworthy, with clear evidence of where money goes and strong post-give reassurance.
                 </div>
-                <div className="rounded-xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                <div className="rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
                   Use Live Sessions, replay surfaces, events, and Beacon hooks to keep the giving journey connected to ministry moments.
                 </div>
               </div>
@@ -1641,19 +1641,19 @@ export default function DonationsAndFundsPage() {
               <MetricCard label="Replay-influenced gifts" value="18%" hint="Post-live discovery contribution" tone="navy" />
               <MetricCard label="Beacon conversions" value="22%" hint="Promotion-assisted giving share" tone="orange" />
             </div>
-            <div className="rounded-[14px] bg-slate-50 dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-              <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Trend monitors</div>
+            <div className="rounded-[14px] bg-[var(--fh-surface)] dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+              <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Trend monitors</div>
               <div className="mt-4 grid gap-4 md:grid-cols-3">
                 <div>
-                  <div className="text-xs font-semibold text-slate-500 dark:text-slate-400">Donor growth</div>
+                  <div className="text-xs font-semibold text-faith-slate">Donor growth</div>
                   <MiniLine values={donorGrowthSeries} tone="green" />
                 </div>
                 <div>
-                  <div className="text-xs font-semibold text-slate-500 dark:text-slate-400">Recurring retention</div>
+                  <div className="text-xs font-semibold text-faith-slate">Recurring retention</div>
                   <MiniLine values={recurringRetentionSeries} tone="orange" />
                 </div>
                 <div>
-                  <div className="text-xs font-semibold text-slate-500 dark:text-slate-400">Content influence</div>
+                  <div className="text-xs font-semibold text-faith-slate">Content influence</div>
                   <MiniLine values={contentInfluenceSeries} tone="navy" />
                 </div>
               </div>
@@ -1661,8 +1661,8 @@ export default function DonationsAndFundsPage() {
           </div>
 
           <div className="space-y-4">
-            <div className="rounded-[14px] bg-slate-50 dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-              <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Top donor segments</div>
+            <div className="rounded-[14px] bg-[var(--fh-surface)] dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+              <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Top donor segments</div>
               <div className="mt-3 space-y-3">
                 {[
                   ["First-time givers", 28, "Triggered by live giving moments and event entry points"],
@@ -1670,13 +1670,13 @@ export default function DonationsAndFundsPage() {
                   ["Recurring supporters", 22, "Best-performing retention group and Beacon audience"],
                   ["High-intent viewers", 17, "Convert when replay and live prompts are both attached"],
                 ].map(([label, value, hint]) => (
-                  <div key={label as string} className="rounded-xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div key={label as string} className="rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
                     <div className="flex items-center justify-between gap-2">
                       <div>
-                        <div className="text-sm font-bold text-slate-900 dark:text-slate-50">{label as string}</div>
-                        <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{hint as string}</div>
+                        <div className="text-sm font-bold text-faith-ink dark:text-slate-50">{label as string}</div>
+                        <div className="mt-1 text-xs text-faith-slate">{hint as string}</div>
                       </div>
-                      <div className="text-sm font-extrabold text-slate-900 dark:text-slate-50">{value as number}%</div>
+                      <div className="text-sm font-extrabold text-faith-ink dark:text-slate-50">{value as number}%</div>
                     </div>
                     <div className="mt-2"><ProgressBar value={value as number} tone={label === "Recurring supporters" ? "green" : "orange"} /></div>
                   </div>
@@ -1704,6 +1704,7 @@ export default function DonationsAndFundsPage() {
     </div>
   );
 }
+
 
 
 

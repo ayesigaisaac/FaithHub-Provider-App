@@ -1,4 +1,4 @@
-ï»¿// @ts-nocheck
+// @ts-nocheck
 
 "use client";
 
@@ -210,8 +210,8 @@ const PEOPLE = [
   "Interpreter Grace L.",
   "Interpreter Caleb O.",
   "Caption Lead Mercy J.",
-  "Support Team â€“ East Campus",
-  "Support Team â€“ Central Campus",
+  "Support Team – East Campus",
+  "Support Team – Central Campus",
 ];
 
 const BLACKOUTS = [
@@ -219,14 +219,14 @@ const BLACKOUTS = [
     id: "bo-1",
     campus: "Central Campus",
     dateISO: "2026-04-17",
-    time: "17:30â€“19:00",
+    time: "17:30–19:00",
     label: "Main sanctuary sound check lock",
   },
   {
     id: "bo-2",
     campus: "East Campus",
     dateISO: "2026-04-19",
-    time: "08:30â€“09:30",
+    time: "08:30–09:30",
     label: "Generator maintenance",
   },
 ];
@@ -249,7 +249,7 @@ const SESSION_SEED: LiveSession[] = [
   {
     id: "FH-LS-301",
     title: "Morning Prayer & Word",
-    parentLabel: "Standalone Teaching Â· Prayer Room",
+    parentLabel: "Standalone Teaching · Prayer Room",
     parentType: "Standalone Teaching",
     sessionType: "Prayer",
     campus: "Online Campus",
@@ -267,7 +267,7 @@ const SESSION_SEED: LiveSession[] = [
       producer: "",
       moderator: "Moderator Tobi E.",
       caption: "Caption Lead Mercy J.",
-      support: "Support Team â€“ Central Campus",
+      support: "Support Team – Central Campus",
     },
     recurrence: "Weekly",
     registrations: 312,
@@ -279,7 +279,7 @@ const SESSION_SEED: LiveSession[] = [
   {
     id: "FH-LS-302",
     title: "Leadership Lab Live",
-    parentLabel: "Standalone Teaching Â· Leadership Lab",
+    parentLabel: "Standalone Teaching · Leadership Lab",
     parentType: "Standalone Teaching",
     sessionType: "Teaching",
     campus: "City Hub",
@@ -297,7 +297,7 @@ const SESSION_SEED: LiveSession[] = [
       producer: "Producer Claire N.",
       moderator: "Moderator Sarah A.",
       caption: "Caption Lead Mercy J.",
-      support: "Support Team â€“ Central Campus",
+      support: "Support Team – Central Campus",
     },
     recurrence: "Monthly",
     linkedEvent: "Leaders Formation Week",
@@ -311,7 +311,7 @@ const SESSION_SEED: LiveSession[] = [
   {
     id: "FH-LS-303",
     title: "Midweek Prayer & Teaching",
-    parentLabel: "Standalone Teaching Â· Midweek Encounter",
+    parentLabel: "Standalone Teaching · Midweek Encounter",
     parentType: "Standalone Teaching",
     sessionType: "Teaching",
     campus: "Central Campus",
@@ -330,7 +330,7 @@ const SESSION_SEED: LiveSession[] = [
       moderator: "Moderator Tobi E.",
       caption: "Caption Lead Mercy J.",
       interpreter: "Interpreter Caleb O.",
-      support: "Support Team â€“ Central Campus",
+      support: "Support Team – Central Campus",
     },
     recurrence: "Weekly",
     registrations: 918,
@@ -343,7 +343,7 @@ const SESSION_SEED: LiveSession[] = [
   {
     id: "FH-LS-304",
     title: "Women of Wisdom Discipleship",
-    parentLabel: "Series Â· Women of Wisdom Â· Episode 04",
+    parentLabel: "Series · Women of Wisdom · Episode 04",
     parentType: "Series Episode",
     sessionType: "Class",
     campus: "Central Campus",
@@ -361,7 +361,7 @@ const SESSION_SEED: LiveSession[] = [
       producer: "Producer Claire N.",
       moderator: "",
       caption: "Caption Lead Mercy J.",
-      support: "Support Team â€“ Central Campus",
+      support: "Support Team – Central Campus",
     },
     recurrence: "Weekly",
     registrations: 447,
@@ -392,7 +392,7 @@ const SESSION_SEED: LiveSession[] = [
       producer: "Producer Nathan P.",
       moderator: "Moderator Sarah A.",
       caption: "",
-      support: "Support Team â€“ Central Campus",
+      support: "Support Team – Central Campus",
     },
     recurrence: "One-time",
     linkedCrowdfund: "Community Borehole Appeal",
@@ -405,7 +405,7 @@ const SESSION_SEED: LiveSession[] = [
   {
     id: "FH-LS-306",
     title: "Youth Revival Night",
-    parentLabel: "Event Â· Youth Revival Night",
+    parentLabel: "Event · Youth Revival Night",
     parentType: "Event",
     sessionType: "Special Event",
     campus: "East Campus",
@@ -424,7 +424,7 @@ const SESSION_SEED: LiveSession[] = [
       moderator: "Moderator Tobi E.",
       caption: "",
       interpreter: "Interpreter Grace L.",
-      support: "Support Team â€“ East Campus",
+      support: "Support Team – East Campus",
     },
     recurrence: "One-time",
     linkedEvent: "Youth Revival Night",
@@ -438,7 +438,7 @@ const SESSION_SEED: LiveSession[] = [
   {
     id: "FH-LS-307",
     title: "French Watch Party",
-    parentLabel: "Series Â· The Way of Grace Â· Watch Party",
+    parentLabel: "Series · The Way of Grace · Watch Party",
     parentType: "Series Episode",
     sessionType: "Watch Party",
     campus: "Online Campus",
@@ -457,7 +457,7 @@ const SESSION_SEED: LiveSession[] = [
       moderator: "Moderator Sarah A.",
       caption: "Caption Lead Mercy J.",
       interpreter: "Interpreter Grace L.",
-      support: "Support Team â€“ Central Campus",
+      support: "Support Team – Central Campus",
     },
     recurrence: "Seasonal Campaign",
     registrations: 173,
@@ -469,7 +469,7 @@ const SESSION_SEED: LiveSession[] = [
   {
     id: "FH-LS-308",
     title: "Sunday Encounter Live",
-    parentLabel: "Series Â· Sunday Encounter Â· Episode 10",
+    parentLabel: "Series · Sunday Encounter · Episode 10",
     parentType: "Series Episode",
     sessionType: "Weekly Service",
     campus: "Central Campus",
@@ -488,7 +488,7 @@ const SESSION_SEED: LiveSession[] = [
       moderator: "Moderator Tobi E.",
       caption: "Caption Lead Mercy J.",
       interpreter: "Interpreter Caleb O.",
-      support: "Support Team â€“ Central Campus",
+      support: "Support Team – Central Campus",
     },
     recurrence: "Weekly",
     linkedGiving: "Mission Expansion Offering",
@@ -626,7 +626,7 @@ function formatTime(date: Date) {
 }
 
 function formatSessionTimeRange(session: LiveSession) {
-  return `${formatTime(toDate(session.startISO))}â€“${formatTime(
+  return `${formatTime(toDate(session.startISO))}–${formatTime(
     toDate(session.endISO),
   )}`;
 }
@@ -667,7 +667,7 @@ function getDayColumns(anchor: Date) {
 }
 
 function buildBlackoutWindow(dateISO: string, timeRange: string) {
-  const [from, to] = timeRange.split("â€“");
+  const [from, to] = timeRange.split("–");
   return {
     start: new Date(`${dateISO}T${from}:00`),
     end: new Date(`${dateISO}T${to}:00`),
@@ -836,7 +836,7 @@ function toneClasses(tone: "neutral" | "good" | "warn" | "danger") {
       ? "border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-900/20 text-amber-800 dark:text-amber-300"
       : tone === "danger"
         ? "border-rose-200 dark:border-rose-800 bg-rose-50 dark:bg-rose-900/20 text-rose-800 dark:text-rose-300"
-        : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300";
+        : "border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 text-slate-700 dark:text-slate-300";
 }
 
 function readinessTone(state: ReadinessState) {
@@ -879,7 +879,7 @@ function generateScheduleICS(sessions: LiveSession[]) {
         .replace(/[-:]/g, "")
         .replace(/\.\d{3}/, "")}`,
       `SUMMARY:${session.title}`,
-      `DESCRIPTION:${session.parentLabel} Â· ${session.campus} Â· ${session.language}`,
+      `DESCRIPTION:${session.parentLabel} · ${session.campus} · ${session.language}`,
       "END:VEVENT",
     ]),
     "END:VCALENDAR",
@@ -1017,7 +1017,7 @@ function buildSuggestions(
       return {
         id: `${session.id}-suggestion-${index + 1}`,
         sessionId: session.id,
-        label: `${formatDayHeader(candidate.start)} Â· ${formatTime(candidate.start)}â€“${formatTime(end)}`,
+        label: `${formatDayHeader(candidate.start)} · ${formatTime(candidate.start)}–${formatTime(end)}`,
         startISO: candidate.start.toISOString().slice(0, 19),
         endISO: end.toISOString().slice(0, 19),
         reason: blocked
@@ -1089,7 +1089,7 @@ function PrimaryButton({
       disabled={disabled}
       onClick={onClick}
       className={cx(
-        "inline-flex items-center gap-2 rounded-2xl px-4 py-2.5 text-[12px] font-semibold text-white shadow-sm transition-all",
+        "inline-flex items-center gap-2 rounded-2xl px-4 py-2.5 text-[12px] font-semibold text-white shadow-soft transition-all",
         disabled ? "opacity-50 cursor-not-allowed" : "hover:brightness-95",
         className,
       )}
@@ -1122,8 +1122,8 @@ function SoftButton({
       className={cx(
         "inline-flex items-center gap-2 rounded-2xl px-4 py-2.5 text-[12px] font-semibold border transition-colors",
         disabled
-          ? "opacity-50 cursor-not-allowed border-slate-200 dark:border-slate-800 text-slate-400 dark:text-slate-600"
-          : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200",
+          ? "opacity-50 cursor-not-allowed border-faith-line dark:border-slate-800 text-faith-slate"
+          : "border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200",
         className,
       )}
     >
@@ -1148,17 +1148,17 @@ function Card({
   return (
     <div
       className={cx(
-        "rounded-[28px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 shadow-sm transition-colors",
+        "rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 shadow-soft transition-colors",
         className,
       )}
     >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
-          <div className="text-[13px] font-semibold text-slate-900 dark:text-slate-100">
+          <div className="text-[13px] font-semibold text-faith-ink dark:text-slate-100">
             {title}
           </div>
           {subtitle ? (
-            <div className="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">
+            <div className="mt-0.5 text-[11px] text-faith-slate">
               {subtitle}
             </div>
           ) : null}
@@ -1217,7 +1217,7 @@ function Input({
       value={value}
       onChange={(event) => onChange(event.target.value)}
       placeholder={placeholder}
-      className="mt-1 w-full rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-[12px] text-slate-900 dark:text-slate-100 outline-none transition-colors focus:ring-2 focus:ring-orange-100 dark:focus:ring-orange-900/30"
+      className="mt-1 w-full rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] text-faith-ink dark:text-slate-100 outline-none transition-colors focus:ring-2 focus:ring-orange-100 dark:focus:ring-orange-900/30"
     />
   );
 }
@@ -1235,7 +1235,7 @@ function SelectField({
     <select
       value={value}
       onChange={(event) => onChange(event.target.value)}
-      className="mt-1 h-10 w-full rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 text-[12px] text-slate-900 dark:text-slate-100 outline-none transition-colors focus:ring-2 focus:ring-orange-100 dark:focus:ring-orange-900/30"
+      className="mt-1 h-10 w-full rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 text-[12px] text-faith-ink dark:text-slate-100 outline-none transition-colors focus:ring-2 focus:ring-orange-100 dark:focus:ring-orange-900/30"
     >
       {options.map((option) => (
         <option key={option} value={option}>
@@ -1253,7 +1253,7 @@ function Toast({ message, onClose }: { message: string; onClose: () => void }) {
   }, [message, onClose]);
 
   return (
-    <div className="fixed bottom-5 left-1/2 z-[120] -translate-x-1/2 rounded-full bg-slate-950 px-4 py-2 text-[12px] font-semibold text-white shadow-2xl dark:bg-white dark:text-slate-900">
+    <div className="fixed bottom-5 left-1/2 z-[120] -translate-x-1/2 rounded-full bg-slate-950 px-4 py-2 text-[12px] font-semibold text-white shadow-2xl dark:bg-[var(--fh-surface-bg)] dark:text-faith-ink">
       {message}
     </div>
   );
@@ -1303,20 +1303,20 @@ function Drawer({
             onClick={onClose}
           />
           <motion.div
-            className="absolute inset-y-0 right-0 flex h-full w-full max-w-xl flex-col bg-slate-50 dark:bg-slate-950 shadow-2xl"
+            className="absolute inset-y-0 right-0 flex h-full w-full max-w-xl flex-col bg-[var(--fh-surface)] dark:bg-slate-950 shadow-2xl"
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 28, stiffness: 260 }}
           >
-            <div className="border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3">
+            <div className="border-b border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 py-3">
               <div className="flex items-start justify-between gap-3">
                 <div className="min-w-0">
-                  <div className="text-[13px] font-semibold text-slate-900 dark:text-slate-100">
+                  <div className="text-[13px] font-semibold text-faith-ink dark:text-slate-100">
                     {title}
                   </div>
                   {subtitle ? (
-                    <div className="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">
+                    <div className="mt-0.5 text-[11px] text-faith-slate">
                       {subtitle}
                     </div>
                   ) : null}
@@ -1324,7 +1324,7 @@ function Drawer({
                 <button
                   type="button"
                   onClick={onClose}
-                  className="grid h-9 w-9 place-items-center rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 transition-colors hover:bg-slate-50 dark:hover:bg-slate-700"
+                  className="grid h-9 w-9 place-items-center rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 transition-colors hover:bg-[var(--fh-surface)] dark:hover:bg-slate-700"
                 >
                   <X className="h-4 w-4 text-slate-700 dark:text-slate-300" />
                 </button>
@@ -1354,7 +1354,7 @@ function ViewToggle({
   ];
 
   return (
-    <div className="inline-flex flex-wrap items-center gap-1 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 p-1">
+    <div className="inline-flex flex-wrap items-center gap-1 rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-800 p-1">
       {views.map((option) => (
         <button
           key={option.id}
@@ -1363,8 +1363,8 @@ function ViewToggle({
           className={cx(
             "inline-flex items-center gap-1.5 rounded-xl px-3 py-2 text-[11px] font-semibold transition-colors",
             view === option.id
-              ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-sm"
-              : "text-slate-600 dark:text-slate-300 hover:bg-white/70 dark:hover:bg-slate-900/60",
+              ? "bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-faith-ink dark:text-slate-100 shadow-soft"
+              : "text-faith-slate dark:text-slate-300 hover:bg-[var(--fh-surface-bg)]/70 dark:hover:bg-slate-900/60",
           )}
         >
           {option.icon}
@@ -1400,22 +1400,22 @@ function SessionCard({
       className={cx(
         "w-full rounded-[20px] border p-3 text-left transition-all",
         selected
-          ? "border-emerald-300 dark:border-emerald-700 bg-emerald-50/70 dark:bg-emerald-900/15 shadow-sm"
-          : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800",
+          ? "border-emerald-300 dark:border-emerald-700 bg-emerald-50/70 dark:bg-emerald-900/15 shadow-soft"
+          : "border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800",
       )}
     >
       <div className="flex items-start justify-between gap-2">
         <div className="min-w-0">
           <div className="flex items-center gap-2">
             {onDragStart ? (
-              <GripVertical className="h-4 w-4 shrink-0 text-slate-400 dark:text-slate-500" />
+              <GripVertical className="h-4 w-4 shrink-0 text-faith-slate" />
             ) : null}
-            <div className="truncate text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+            <div className="truncate text-[12px] font-semibold text-faith-ink dark:text-slate-100">
               {session.title}
             </div>
           </div>
-          <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
-            {formatSessionTimeRange(session)} Â· {session.campus}
+          <div className="mt-1 text-[11px] text-faith-slate">
+            {formatSessionTimeRange(session)} · {session.campus}
           </div>
         </div>
         <Pill
@@ -1445,7 +1445,7 @@ function SessionCard({
       </div>
 
       <div className="mt-2 flex items-center justify-between gap-2 text-[11px]">
-        <span className="text-slate-500 dark:text-slate-400">
+        <span className="text-faith-slate">
           {session.speaker}
         </span>
         <span className="font-semibold text-slate-700 dark:text-slate-200">
@@ -1480,14 +1480,14 @@ function AgendaRow({
   const issueCount = issuesForSession(session.id, conflicts).length;
 
   return (
-    <div className="rounded-[22px] border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-3 transition-colors">
+    <div className="rounded-[22px] border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
       <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-2">
             <button
               type="button"
               onClick={onSelect}
-              className="text-left text-[13px] font-semibold text-slate-900 dark:text-slate-100 hover:underline"
+              className="text-left text-[13px] font-semibold text-faith-ink dark:text-slate-100 hover:underline"
             >
               {session.title}
             </button>
@@ -1496,13 +1496,13 @@ function AgendaRow({
               <Pill text={`${issueCount} issue${issueCount === 1 ? "" : "s"}`} tone="warn" />
             ) : null}
           </div>
-          <div className="mt-1 flex flex-wrap items-center gap-2 text-[11px] text-slate-500 dark:text-slate-400">
+          <div className="mt-1 flex flex-wrap items-center gap-2 text-[11px] text-faith-slate">
             <span>{formatDateTime(session.startISO)}</span>
-            <span>â€¢</span>
+            <span>•</span>
             <span>{session.campus}</span>
-            <span>â€¢</span>
+            <span>•</span>
             <span>{session.venue}</span>
-            <span>â€¢</span>
+            <span>•</span>
             <span>{session.speaker}</span>
           </div>
         </div>
@@ -1536,7 +1536,7 @@ function DayView({
 
   return (
     <div className="space-y-3">
-      <div className="rounded-[22px] border border-dashed border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 p-3 text-[11px] text-slate-500 dark:text-slate-400">
+      <div className="rounded-[22px] border border-dashed border-slate-300 dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 text-[11px] text-faith-slate">
         Day view keeps a single-day run sheet in focus so production, pastoral, and venue teams can inspect the exact cadence of that date.
       </div>
       {rows.length ? (
@@ -1550,7 +1550,7 @@ function DayView({
           />
         ))
       ) : (
-        <div className="rounded-[22px] border border-dashed border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 p-6 text-center text-[12px] text-slate-500 dark:text-slate-400">
+        <div className="rounded-[22px] border border-dashed border-slate-300 dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 p-6 text-center text-[12px] text-faith-slate">
           No live activity scheduled for {formatDayHeader(date)}.
         </div>
       )}
@@ -1598,14 +1598,14 @@ function WeekView({
                 if (sessionId) onMoveSession(sessionId, column.date);
                 setDraggingSessionId(null);
               }}
-              className="min-h-[320px] rounded-[24px] border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 p-3 transition-colors"
+              className="min-h-[320px] rounded-[24px] border border-faith-line dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors"
             >
-              <div className="flex items-center justify-between gap-2 border-b border-slate-200 dark:border-slate-800 pb-2">
+              <div className="flex items-center justify-between gap-2 border-b border-faith-line dark:border-slate-800 pb-2">
                 <div>
-                  <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+                  <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                     {column.label}
                   </div>
-                  <div className="text-[11px] text-slate-500 dark:text-slate-400">
+                  <div className="text-[11px] text-faith-slate">
                     {formatDayHeader(column.date)}
                   </div>
                 </div>
@@ -1629,7 +1629,7 @@ function WeekView({
                     />
                   ))
                 ) : (
-                  <div className="rounded-[20px] border border-dashed border-slate-300 dark:border-slate-700 bg-white/70 dark:bg-slate-900/40 p-3 text-[11px] text-slate-400 dark:text-slate-500">
+                  <div className="rounded-[20px] border border-dashed border-slate-300 dark:border-slate-700 bg-[var(--fh-surface-bg)]/70 dark:bg-slate-900/40 p-3 text-[11px] text-faith-slate">
                     Drop a session here to reschedule this day.
                   </div>
                 )}
@@ -1670,7 +1670,7 @@ function TimelineView({
           {hours.map((hour) => (
             <div
               key={hour}
-              className="text-center text-[10px] font-semibold uppercase tracking-[0.12em] text-slate-400 dark:text-slate-500"
+              className="text-center text-[10px] font-semibold uppercase tracking-[0.12em] text-faith-slate"
             >
               {pad2(hour)}:00
             </div>
@@ -1688,21 +1688,21 @@ function TimelineView({
                 className="grid gap-3"
                 style={{ gridTemplateColumns: "160px minmax(0,1fr)" }}
               >
-                <div className="rounded-[22px] border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-3 transition-colors">
-                  <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+                <div className="rounded-[22px] border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
+                  <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                     {formatDayHeader(day)}
                   </div>
-                  <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
+                  <div className="mt-1 text-[11px] text-faith-slate">
                     {daySessions.length} scheduled
                   </div>
                 </div>
 
-                <div className="relative h-24 rounded-[22px] border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 transition-colors">
+                <div className="relative h-24 rounded-[22px] border border-faith-line dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 transition-colors">
                   <div className="absolute inset-0 grid grid-cols-16">
                     {hours.map((hour) => (
                       <div
                         key={hour}
-                        className="border-r border-dashed border-slate-200 dark:border-slate-800"
+                        className="border-r border-dashed border-faith-line dark:border-slate-800"
                       />
                     ))}
                   </div>
@@ -1723,7 +1723,7 @@ function TimelineView({
                         type="button"
                         onClick={() => onSelectSession(session.id)}
                         className={cx(
-                          "absolute top-4 h-16 rounded-2xl px-3 py-2 text-left shadow-sm transition-all",
+                          "absolute top-4 h-16 rounded-2xl px-3 py-2 text-left shadow-soft transition-all",
                           readiness.state === "Green"
                             ? "bg-emerald-500 text-white"
                             : readiness.state === "At risk"
@@ -1773,7 +1773,7 @@ function MonthView({
         {["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map((day) => (
           <div
             key={day}
-            className="text-center text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500"
+            className="text-center text-[11px] font-semibold uppercase tracking-[0.14em] text-faith-slate"
           >
             {day}
           </div>
@@ -1790,8 +1790,8 @@ function MonthView({
               className={cx(
                 "min-h-[150px] rounded-[22px] border p-2 transition-colors",
                 isCurrentMonth
-                  ? "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900"
-                  : "border-slate-200/60 dark:border-slate-800 bg-slate-50 dark:bg-slate-950",
+                  ? "border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900"
+                  : "border-faith-line/60 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950",
               )}
             >
               <div className="flex items-center justify-between">
@@ -1800,7 +1800,7 @@ function MonthView({
                     "text-[11px] font-semibold",
                     isCurrentMonth
                       ? "text-slate-700 dark:text-slate-200"
-                      : "text-slate-400 dark:text-slate-500",
+                      : "text-faith-slate",
                   )}
                 >
                   {cell.getDate()}
@@ -1829,13 +1829,13 @@ function MonthView({
                       )}
                     >
                       <div className="truncate font-semibold">
-                        {formatTime(toDate(session.startISO))} Â· {session.title}
+                        {formatTime(toDate(session.startISO))} · {session.title}
                       </div>
                     </button>
                   );
                 })}
                 {cellSessions.length > 3 ? (
-                  <div className="text-[10px] text-slate-400 dark:text-slate-500">
+                  <div className="text-[10px] text-faith-slate">
                     +{cellSessions.length - 3} more
                   </div>
                 ) : null}
@@ -1867,7 +1867,7 @@ function OperationsPreview({
 }) {
   if (!session) {
     return (
-      <div className="rounded-[28px] border border-dashed border-slate-300 dark:border-slate-700 bg-white/80 dark:bg-slate-900/70 p-5 text-[12px] text-slate-500 dark:text-slate-400">
+      <div className="rounded-[28px] border border-dashed border-slate-300 dark:border-slate-700 bg-[var(--fh-surface-bg)]/80 dark:bg-slate-900/70 p-5 text-[12px] text-faith-slate">
         Pick a session to open the operational preview, staffing lane, readiness ribbon, and fast handoff actions.
       </div>
     );
@@ -1900,49 +1900,49 @@ function OperationsPreview({
           </div>
           <div className="mt-2 flex flex-wrap items-center gap-2 text-[11px] opacity-95">
             <span>{session.parentLabel}</span>
-            <span>â€¢</span>
+            <span>•</span>
             <span>{formatDateTime(session.startISO)}</span>
-            <span>â€¢</span>
+            <span>•</span>
             <span>{session.campus}</span>
           </div>
-          <div className="mt-4 h-2 rounded-full bg-white/20 overflow-hidden">
+          <div className="mt-4 h-2 rounded-full bg-[var(--fh-surface-bg)]/20 overflow-hidden">
             <div
-              className="h-full rounded-full bg-white"
+              className="h-full rounded-full bg-[var(--fh-surface-bg)]"
               style={{ width: `${readiness.score}%` }}
             />
           </div>
           <div className="mt-2 text-[11px] font-semibold">
-            Readiness score Â· {readiness.score}%
+            Readiness score · {readiness.score}%
           </div>
         </div>
 
         <div className="mt-4 grid gap-3 sm:grid-cols-2">
-          <div className="rounded-[22px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3">
-            <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">
+          <div className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3">
+            <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-faith-slate">
               Session intelligence
             </div>
             <div className="mt-2 space-y-2 text-[12px] text-slate-700 dark:text-slate-300">
               <div className="flex items-center gap-2">
-                <MapPin className="h-4 w-4 text-slate-400" />
-                {session.venue} Â· {session.campus}
+                <MapPin className="h-4 w-4 text-faith-slate" />
+                {session.venue} · {session.campus}
               </div>
               <div className="flex items-center gap-2">
-                <Users className="h-4 w-4 text-slate-400" />
-                {session.speaker} Â· {session.audience}
+                <Users className="h-4 w-4 text-faith-slate" />
+                {session.speaker} · {session.audience}
               </div>
               <div className="flex items-center gap-2">
-                <Globe2 className="h-4 w-4 text-slate-400" />
-                {session.language} Â· {session.timezone}
+                <Globe2 className="h-4 w-4 text-faith-slate" />
+                {session.language} · {session.timezone}
               </div>
               <div className="flex items-center gap-2">
-                <Bell className="h-4 w-4 text-slate-400" />
+                <Bell className="h-4 w-4 text-faith-slate" />
                 {getImpactLabels(session)[2]}
               </div>
             </div>
           </div>
 
-          <div className="rounded-[22px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3">
-            <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">
+          <div className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3">
+            <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-faith-slate">
               Conflict & impact
             </div>
             <div className="mt-2 space-y-2 text-[12px] text-slate-700 dark:text-slate-300">
@@ -1961,7 +1961,7 @@ function OperationsPreview({
               )}
               {getImpactLabels(session).map((label) => (
                 <div key={label} className="flex items-start gap-2">
-                  <ArrowRight className="mt-0.5 h-4 w-4 text-slate-400" />
+                  <ArrowRight className="mt-0.5 h-4 w-4 text-faith-slate" />
                   <span>{label}</span>
                 </div>
               ))}
@@ -1969,8 +1969,8 @@ function OperationsPreview({
           </div>
         </div>
 
-        <div className="mt-4 rounded-[22px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3">
-          <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">
+        <div className="mt-4 rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3">
+          <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-faith-slate">
             Role coverage
           </div>
           <div className="mt-3 grid gap-2 sm:grid-cols-2">
@@ -1998,20 +1998,20 @@ function OperationsPreview({
           </div>
         </div>
 
-        <div className="mt-4 rounded-[22px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3">
-          <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">
+        <div className="mt-4 rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3">
+          <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-faith-slate">
             Time-zone safety
           </div>
           <div className="mt-3 space-y-2">
             {timezones.map((item) => (
               <div
                 key={item.zone}
-                className="flex items-center justify-between gap-2 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3 py-2 text-[12px]"
+                className="flex items-center justify-between gap-2 rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px]"
               >
-                <span className="font-semibold text-slate-900 dark:text-slate-100">
+                <span className="font-semibold text-faith-ink dark:text-slate-100">
                   {item.zone}
                 </span>
-                <span className="text-slate-500 dark:text-slate-400">{item.label}</span>
+                <span className="text-faith-slate">{item.label}</span>
               </div>
             ))}
           </div>
@@ -2068,15 +2068,15 @@ function StaffingLane({
               key={session.id}
               type="button"
               onClick={() => onSelectSession(session.id)}
-              className="w-full rounded-[22px] border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-3 text-left transition-colors hover:bg-slate-50 dark:hover:bg-slate-800"
+              className="w-full rounded-[22px] border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 text-left transition-colors hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800"
             >
               <div className="flex items-start justify-between gap-2">
                 <div className="min-w-0">
-                  <div className="truncate text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+                  <div className="truncate text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                     {session.title}
                   </div>
-                  <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
-                    {formatSessionTimeRange(session)} Â· {session.campus}
+                  <div className="mt-1 text-[11px] text-faith-slate">
+                    {formatSessionTimeRange(session)} · {session.campus}
                   </div>
                 </div>
                 <Pill text={readiness.state} tone={readinessTone(readiness.state)} />
@@ -2094,7 +2094,7 @@ function StaffingLane({
                     className={cx(
                       "rounded-2xl border px-2.5 py-2 text-[11px]",
                       value
-                        ? "border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-700 dark:text-slate-300"
+                        ? "border-faith-line dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 text-slate-700 dark:text-slate-300"
                         : "border-rose-200 dark:border-rose-800 bg-rose-50 dark:bg-rose-900/15 text-rose-700 dark:text-rose-300",
                     )}
                   >
@@ -2152,9 +2152,9 @@ function ExportCard({
         <SoftButton
           onClick={() => {
             const payload = selectedSession
-              ? `${selectedSession.title} Â· ${formatDateTime(
+              ? `${selectedSession.title} · ${formatDateTime(
                   selectedSession.startISO,
-                )} Â· ${selectedSession.campus} Â· ${selectedSession.venue}`
+                )} · ${selectedSession.campus} · ${selectedSession.venue}`
               : "Live Schedule";
             copyText(payload);
             showToast("Schedule card copied for internal chat.");
@@ -2413,12 +2413,12 @@ function RescheduleDrawer({
       subtitle="Auto-reschedule suggestions account for staffing, venue pressure, and audience overlap."
     >
       <div className="space-y-4">
-        <div className="rounded-[24px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4">
-          <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+        <div className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4">
+          <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
             {session.title}
           </div>
-          <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
-            {formatDateTime(session.startISO)} Â· {session.campus} Â· {session.venue}
+          <div className="mt-1 text-[11px] text-faith-slate">
+            {formatDateTime(session.startISO)} · {session.campus} · {session.venue}
           </div>
           <div className="mt-3 flex flex-wrap gap-2">
             {getImpactLabels(session).map((label) => (
@@ -2431,14 +2431,14 @@ function RescheduleDrawer({
           {suggestions.map((suggestion) => (
             <div
               key={suggestion.id}
-              className="rounded-[24px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4"
+              className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4"
             >
               <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
                 <div>
-                  <div className="text-[13px] font-semibold text-slate-900 dark:text-slate-100">
+                  <div className="text-[13px] font-semibold text-faith-ink dark:text-slate-100">
                     {suggestion.label}
                   </div>
-                  <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
+                  <div className="mt-1 text-[11px] text-faith-slate">
                     {suggestion.reason}
                   </div>
                   <div className="mt-2">
@@ -2603,8 +2603,8 @@ export default function FaithHubLiveSchedulePage() {
     const end = new Date(start.getTime() + draft.durationMin * 60000);
     const supportLabel =
       draft.campus === "East Campus"
-        ? "Support Team â€“ East Campus"
-        : "Support Team â€“ Central Campus";
+        ? "Support Team – East Campus"
+        : "Support Team – Central Campus";
 
     const nextSession: LiveSession = {
       id: `FH-LS-${Math.floor(Math.random() * 900 + 400)}`,
@@ -2662,7 +2662,7 @@ export default function FaithHubLiveSchedulePage() {
     const target = selectedSession || firstConflictSession;
     if (!target) return;
     copyText(
-      `${target.title}\n${formatDateTime(target.startISO)}\n${target.campus} Â· ${target.venue}\n${target.speaker}`,
+      `${target.title}\n${formatDateTime(target.startISO)}\n${target.campus} · ${target.venue}\n${target.speaker}`,
     );
     showToast("Schedule card copied.");
   }
@@ -2699,7 +2699,7 @@ export default function FaithHubLiveSchedulePage() {
   );
 
   return (
-    <div className="min-h-screen bg-[#f2f2f2] text-slate-900 dark:bg-slate-950 dark:text-slate-50">
+    <div className="min-h-screen bg-[var(--fh-page-bg)] text-faith-ink dark:bg-slate-950 dark:text-slate-50">
       <div className="mx-auto max-w-[1800px] px-4 pb-24 pt-5 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
           <div className="min-w-0">
@@ -2707,17 +2707,17 @@ export default function FaithHubLiveSchedulePage() {
               <Pill text="" icon={<CalendarDays className="h-3.5 w-3.5" />} />
               <Pill text="Live Sessions Operations" tone="good" />
             </div>
-            <div className="mt-3 text-2xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100 sm:text-3xl">
+            <div className="mt-3 text-2xl font-extrabold tracking-tight text-faith-ink dark:text-slate-100 sm:text-3xl">
               Live Schedule
             </div>
-            <div className="mt-2 max-w-3xl text-[13px] leading-6 text-slate-600 dark:text-slate-400">
-              World-class operational calendar for all live activity â€” with day, week, month, timeline, and agenda views, staffing intelligence, readiness ribbons, conflict detection, recurrence tools, timezone safety, and fast handoff into Live Dashboard or Studio.
+            <div className="mt-2 max-w-3xl text-[13px] leading-6 text-faith-slate">
+              World-class operational calendar for all live activity — with day, week, month, timeline, and agenda views, staffing intelligence, readiness ribbons, conflict detection, recurrence tools, timezone safety, and fast handoff into Live Dashboard or Studio.
             </div>
-            <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] text-slate-500 dark:text-slate-400">
+            <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] text-faith-slate">
               <span>{SAVED_VIEW_CONFIG[savedView].label} view</span>
-              <span>â€¢</span>
+              <span>•</span>
               <span>{formatMonthHeader(anchorDate)}</span>
-              <span>â€¢</span>
+              <span>•</span>
               <span>{scheduleHealth.green} green / {scheduleHealth.warn} at risk / {scheduleHealth.blocked} blocked</span>
             </div>
           </div>
@@ -2796,12 +2796,12 @@ export default function FaithHubLiveSchedulePage() {
                       className={cx(
                         "w-full rounded-[22px] border px-3 py-3 text-left transition-colors",
                         savedView === key
-                          ? "border-emerald-300 dark:border-emerald-700 bg-white dark:bg-slate-900 shadow-sm"
-                          : "border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 hover:bg-white dark:hover:bg-slate-900",
+                          ? "border-emerald-300 dark:border-emerald-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 shadow-soft"
+                          : "border-faith-line dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 hover:bg-[var(--fh-surface-bg)] dark:hover:bg-slate-900",
                       )}
                     >
                       <div className="flex items-center justify-between gap-2">
-                        <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+                        <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                           {config.label}
                         </div>
                         {savedView === key ? (
@@ -2811,7 +2811,7 @@ export default function FaithHubLiveSchedulePage() {
                           />
                         ) : null}
                       </div>
-                      <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
+                      <div className="mt-1 text-[11px] text-faith-slate">
                         {config.note}
                       </div>
                     </button>
@@ -2833,7 +2833,7 @@ export default function FaithHubLiveSchedulePage() {
                 ].map((label) => (
                   <div
                     key={label}
-                    className="rounded-[20px] border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 px-3 py-2 text-[12px] text-slate-700 dark:text-slate-300"
+                    className="rounded-[20px] border border-faith-line dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-2 text-[12px] text-slate-700 dark:text-slate-300"
                   >
                     {label}
                   </div>
@@ -2862,7 +2862,7 @@ export default function FaithHubLiveSchedulePage() {
                     >
                       <div className="font-semibold">{blackout.label}</div>
                       <div className="mt-1">
-                        {blackout.campus} Â· {blackout.dateISO} Â· {blackout.time}
+                        {blackout.campus} · {blackout.dateISO} · {blackout.time}
                       </div>
                     </div>
                   ))}
@@ -2871,9 +2871,9 @@ export default function FaithHubLiveSchedulePage() {
                   {HOLIDAY_NOTES.map((item) => (
                     <div
                       key={item.id}
-                      className="rounded-[20px] border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-3 text-[11px] text-slate-500 dark:text-slate-400"
+                      className="rounded-[20px] border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 text-[11px] text-faith-slate"
                     >
-                      <div className="font-semibold text-slate-900 dark:text-slate-100">
+                      <div className="font-semibold text-faith-ink dark:text-slate-100">
                         {item.label}
                       </div>
                       <div className="mt-1">{item.detail}</div>
@@ -2918,12 +2918,12 @@ export default function FaithHubLiveSchedulePage() {
                   suggestionCards.map((suggestion) => (
                     <div
                       key={suggestion.id}
-                      className="rounded-[24px] border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 p-4 transition-colors"
+                      className="rounded-[24px] border border-faith-line dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 transition-colors"
                     >
-                      <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+                      <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                         {suggestion.label}
                       </div>
-                      <div className="mt-2 text-[11px] text-slate-500 dark:text-slate-400">
+                      <div className="mt-2 text-[11px] text-faith-slate">
                         {suggestion.reason}
                       </div>
                       <div className="mt-3">
@@ -2941,7 +2941,7 @@ export default function FaithHubLiveSchedulePage() {
                     </div>
                   ))
                 ) : (
-                  <div className="rounded-[24px] border border-dashed border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 p-6 text-[12px] text-slate-500 dark:text-slate-400 md:col-span-3">
+                  <div className="rounded-[24px] border border-dashed border-slate-300 dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 p-6 text-[12px] text-faith-slate md:col-span-3">
                     No conflict-driven suggestions are required right now. Use the filters or select a different saved view to inspect a specific operational lane.
                   </div>
                 )}
@@ -2959,12 +2959,12 @@ export default function FaithHubLiveSchedulePage() {
                     <SoftButton onClick={() => shiftAnchor("prev")}>
                       <ChevronLeft className="h-4 w-4" /> Previous
                     </SoftButton>
-                    <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-3 py-2 text-[12px] font-semibold text-slate-700 dark:text-slate-200">
+                    <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-800 px-3 py-2 text-[12px] font-semibold text-slate-700 dark:text-slate-200">
                       {viewMode === "month"
                         ? formatMonthHeader(anchorDate)
                         : viewMode === "day"
                           ? formatDayHeader(anchorDate)
-                          : `${formatDayHeader(weekStart)} â†’ ${formatDayHeader(addDays(weekStart, 6))}`}
+                          : `${formatDayHeader(weekStart)} ? ${formatDayHeader(addDays(weekStart, 6))}`}
                     </div>
                     <SoftButton onClick={() => shiftAnchor("next")}>
                       Next <ChevronRight className="h-4 w-4" />
@@ -2976,14 +2976,14 @@ export default function FaithHubLiveSchedulePage() {
                   <div className="lg:col-span-2">
                     <Label>Search</Label>
                     <div className="relative mt-1">
-                      <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+                      <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-faith-slate" />
                       <input
                         value={filters.search}
                         onChange={(event) =>
                           setFilters((current) => ({ ...current, search: event.target.value }))
                         }
-                        placeholder="Search title, speaker, venueâ€¦"
-                        className="w-full rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 py-2 pl-9 pr-3 text-[12px] text-slate-900 dark:text-slate-100 outline-none transition-colors focus:ring-2 focus:ring-orange-100 dark:focus:ring-orange-900/30"
+                        placeholder="Search title, speaker, venue…"
+                        className="w-full rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 py-2 pl-9 pr-3 text-[12px] text-faith-ink dark:text-slate-100 outline-none transition-colors focus:ring-2 focus:ring-orange-100 dark:focus:ring-orange-900/30"
                       />
                     </div>
                   </div>
@@ -3069,7 +3069,7 @@ export default function FaithHubLiveSchedulePage() {
                             setRescheduleOpen(true);
                           }
                         }}
-                        className="border-amber-300 dark:border-amber-700 bg-white/80 dark:bg-slate-900/70 text-amber-900 dark:text-amber-200"
+                        className="border-amber-300 dark:border-amber-700 bg-[var(--fh-surface-bg)]/80 dark:bg-slate-900/70 text-amber-900 dark:text-amber-200"
                       >
                         <Wand2 className="h-4 w-4" /> Resolve first conflict
                       </SoftButton>
@@ -3137,7 +3137,7 @@ export default function FaithHubLiveSchedulePage() {
                         />
                       ))
                     ) : (
-                      <div className="rounded-[24px] border border-dashed border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 p-6 text-center text-[12px] text-slate-500 dark:text-slate-400">
+                      <div className="rounded-[24px] border border-dashed border-slate-300 dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 p-6 text-center text-[12px] text-faith-slate">
                         No live sessions match the current saved view and filter stack.
                       </div>
                     )}
@@ -3203,6 +3203,7 @@ export default function FaithHubLiveSchedulePage() {
     </div>
   );
 }
+
 
 
 

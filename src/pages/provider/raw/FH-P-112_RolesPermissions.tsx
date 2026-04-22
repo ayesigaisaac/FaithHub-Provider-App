@@ -1,4 +1,4 @@
-ï»¿// @ts-nocheck
+// @ts-nocheck
 
 "use client";
 
@@ -35,7 +35,7 @@ import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
- * Provider â€” Roles & Permissions
+ * Provider — Roles & Permissions
  * Premium Provider-side RBAC control center for workspace access, role templates,
  * approval paths, scope control, and sensitive-action permissions.
  *
@@ -527,7 +527,7 @@ function TonePill({
           ? "border-rose-200 bg-rose-50 text-rose-700 dark:border-rose-900/40 dark:bg-rose-900/20 dark:text-rose-300"
           : tone === "accent"
             ? "text-white"
-            : "border-slate-200 bg-white text-slate-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300";
+            : "border-faith-line bg-[var(--fh-surface-bg)] text-faith-slate dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300";
 
   return (
     <span
@@ -554,12 +554,12 @@ function SectionCard({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-[30px] border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+    <div className="rounded-[30px] border border-faith-line bg-[var(--fh-surface-bg)] p-5 shadow-soft dark:border-slate-800 dark:bg-slate-900">
       <div className="flex items-start justify-between gap-3">
         <div>
-          <div className="text-[15px] font-black text-slate-900 dark:text-slate-100">{title}</div>
+          <div className="text-[15px] font-black text-faith-ink dark:text-slate-100">{title}</div>
           {subtitle ? (
-            <div className="mt-1 text-[13px] text-slate-500 dark:text-slate-400">{subtitle}</div>
+            <div className="mt-1 text-[13px] text-faith-slate">{subtitle}</div>
           ) : null}
         </div>
         {right ? <div className="shrink-0">{right}</div> : null}
@@ -603,7 +603,7 @@ function RoleListCard({
         "w-full rounded-[28px] border p-4 text-left transition-all",
         active
           ? "border-transparent text-white shadow-md"
-          : "border-slate-200 bg-white hover:bg-slate-50 dark:border-slate-800 dark:bg-slate-900 dark:hover:bg-slate-800",
+          : "border-faith-line bg-[var(--fh-surface-bg)] hover:bg-[var(--fh-surface)] dark:border-slate-800 dark:bg-slate-900 dark:hover:bg-slate-800",
       )}
       style={active ? { background: EV_NAVY } : undefined}
     >
@@ -613,18 +613,18 @@ function RoleListCard({
             className={cx(
               "grid h-14 w-14 shrink-0 place-items-center rounded-[20px] text-lg font-black",
               active
-                ? "bg-white/10 text-white"
+                ? "bg-[var(--fh-surface-bg)]/10 text-white"
                 : "bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-100",
             )}
           >
             {initials(role.name)}
           </div>
           <div className="min-w-0">
-            <div className={cx("truncate text-[15px] font-bold", active ? "text-white" : "text-slate-900 dark:text-slate-100")}>
+            <div className={cx("truncate text-[15px] font-bold", active ? "text-white" : "text-faith-ink dark:text-slate-100")}>
               {role.name}
             </div>
-            <div className={cx("mt-1 truncate text-[12px]", active ? "text-white/75" : "text-slate-500 dark:text-slate-400")}>
-              {role.templateFamily} Â· {role.scope} Â· {role.owner}
+            <div className={cx("mt-1 truncate text-[12px]", active ? "text-white/75" : "text-faith-slate")}>
+              {role.templateFamily} · {role.scope} · {role.owner}
             </div>
             <div className="mt-3 flex flex-wrap gap-2">
               <TonePill tone={tone}>{role.status}</TonePill>
@@ -639,28 +639,28 @@ function RoleListCard({
             </div>
           </div>
         </div>
-        <div className={cx("shrink-0 text-right", active ? "text-white" : "text-slate-900 dark:text-slate-100")}>
+        <div className={cx("shrink-0 text-right", active ? "text-white" : "text-faith-ink dark:text-slate-100")}>
           <div className="text-[12px] font-black">{role.assigned}/{role.seats}</div>
-          <div className={cx("mt-1 text-[11px]", active ? "text-white/70" : "text-slate-500 dark:text-slate-400")}>assigned</div>
+          <div className={cx("mt-1 text-[11px]", active ? "text-white/70" : "text-faith-slate")}>assigned</div>
         </div>
       </div>
 
       <div className="mt-4 grid grid-cols-3 gap-3">
         <div>
-          <div className={cx("text-[10px] font-bold uppercase tracking-[0.16em]", active ? "text-white/60" : "text-slate-500 dark:text-slate-400")}>Allow</div>
-          <div className={cx("mt-1 text-[14px] font-black", active ? "text-white" : "text-slate-900 dark:text-slate-100")}>
+          <div className={cx("text-[10px] font-bold uppercase tracking-[0.16em]", active ? "text-white/60" : "text-faith-slate")}>Allow</div>
+          <div className={cx("mt-1 text-[14px] font-black", active ? "text-white" : "text-faith-ink dark:text-slate-100")}>
             {role.featureAccess.filter((f) => f.state === "Allow").length}
           </div>
         </div>
         <div>
-          <div className={cx("text-[10px] font-bold uppercase tracking-[0.16em]", active ? "text-white/60" : "text-slate-500 dark:text-slate-400")}>Review</div>
-          <div className={cx("mt-1 text-[14px] font-black", active ? "text-white" : "text-slate-900 dark:text-slate-100")}>
+          <div className={cx("text-[10px] font-bold uppercase tracking-[0.16em]", active ? "text-white/60" : "text-faith-slate")}>Review</div>
+          <div className={cx("mt-1 text-[14px] font-black", active ? "text-white" : "text-faith-ink dark:text-slate-100")}>
             {role.featureAccess.filter((f) => f.state === "Review").length}
           </div>
         </div>
         <div>
-          <div className={cx("text-[10px] font-bold uppercase tracking-[0.16em]", active ? "text-white/60" : "text-slate-500 dark:text-slate-400")}>Blocked</div>
-          <div className={cx("mt-1 text-[14px] font-black", active ? "text-white" : "text-slate-900 dark:text-slate-100")}>
+          <div className={cx("text-[10px] font-bold uppercase tracking-[0.16em]", active ? "text-white/60" : "text-faith-slate")}>Blocked</div>
+          <div className={cx("mt-1 text-[14px] font-black", active ? "text-white" : "text-faith-ink dark:text-slate-100")}>
             {role.featureAccess.filter((f) => f.state === "Block").length}
           </div>
         </div>
@@ -678,11 +678,11 @@ function TemplateTile({ card }: { card: TemplateCard }) {
         : EV_NAVY;
 
   return (
-    <div className="rounded-[28px] border border-slate-200 bg-white p-4 shadow-sm transition-colors dark:border-slate-800 dark:bg-slate-950">
+    <div className="rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft transition-colors dark:border-slate-800 dark:bg-slate-950">
       <div className="flex items-start justify-between gap-3">
         <div>
-          <div className="text-[14px] font-black text-slate-900 dark:text-slate-100">{card.title}</div>
-          <div className="mt-2 text-[12px] leading-6 text-slate-500 dark:text-slate-400">{card.subtitle}</div>
+          <div className="text-[14px] font-black text-faith-ink dark:text-slate-100">{card.title}</div>
+          <div className="mt-2 text-[12px] leading-6 text-faith-slate">{card.subtitle}</div>
         </div>
         <div className="h-10 w-10 rounded-full" style={{ background: accent }} />
       </div>
@@ -712,7 +712,7 @@ function FeatureAccessTile({
       className={cx(
         "w-full rounded-[24px] border p-4 text-left transition-all",
         editMode
-          ? "hover:bg-slate-50 dark:hover:bg-slate-950"
+          ? "hover:bg-[var(--fh-surface)] dark:hover:bg-slate-950"
           : "cursor-default",
         tone === "good"
           ? "border-emerald-200 bg-emerald-50 dark:border-emerald-900/40 dark:bg-emerald-900/20"
@@ -723,16 +723,16 @@ function FeatureAccessTile({
     >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
-          <div className="text-[10px] font-black uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">
+          <div className="text-[10px] font-black uppercase tracking-[0.16em] text-faith-slate">
             {feature.group}
           </div>
-          <div className="mt-1 text-[14px] font-black text-slate-900 dark:text-slate-100">{feature.label}</div>
-          <div className="mt-2 text-[12px] leading-5 text-slate-600 dark:text-slate-400">{feature.hint}</div>
+          <div className="mt-1 text-[14px] font-black text-faith-ink dark:text-slate-100">{feature.label}</div>
+          <div className="mt-2 text-[12px] leading-5 text-faith-slate">{feature.hint}</div>
         </div>
         <TonePill tone={tone}>{feature.state}</TonePill>
       </div>
       {editMode ? (
-        <div className="mt-3 text-[11px] font-semibold text-slate-500 dark:text-slate-400">
+        <div className="mt-3 text-[11px] font-semibold text-faith-slate">
           Click to cycle access state
         </div>
       ) : null}
@@ -755,17 +755,17 @@ function SensitiveActionCard({
       disabled={!editMode}
       onClick={editMode ? onCycle : undefined}
       className={cx(
-        "w-full rounded-[24px] border border-slate-200 bg-white p-4 text-left shadow-sm transition-colors dark:border-slate-800 dark:bg-slate-950",
-        editMode ? "hover:bg-slate-50 dark:hover:bg-slate-900" : "cursor-default",
+        "w-full rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 text-left shadow-soft transition-colors dark:border-slate-800 dark:bg-slate-950",
+        editMode ? "hover:bg-[var(--fh-surface)] dark:hover:bg-slate-900" : "cursor-default",
       )}
     >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-2">
-            <div className="text-[14px] font-black text-slate-900 dark:text-slate-100">{action.label}</div>
+            <div className="text-[14px] font-black text-faith-ink dark:text-slate-100">{action.label}</div>
             <TonePill tone={riskTone(action.risk)}>{action.risk}</TonePill>
           </div>
-          <div className="mt-2 text-[12px] leading-5 text-slate-600 dark:text-slate-400">{action.note}</div>
+          <div className="mt-2 text-[12px] leading-5 text-faith-slate">{action.note}</div>
         </div>
         <TonePill tone={accessTone(action.permission)}>{action.permission}</TonePill>
       </div>
@@ -776,7 +776,7 @@ function SensitiveActionCard({
           {action.approval}
         </TonePill>
         {editMode ? (
-          <span className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">
+          <span className="text-[11px] font-semibold text-faith-slate">
             Click to cycle permission state
           </span>
         ) : null}
@@ -791,25 +791,25 @@ function ApprovalLaneCard({ lane }: { lane: ApprovalLane }) {
       className={cx(
         "rounded-[24px] border p-4 transition-colors",
         lane.active
-          ? "border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950"
-          : "border-slate-200/70 bg-slate-50 dark:border-slate-800 dark:bg-slate-950/70",
+          ? "border-faith-line bg-[var(--fh-surface-bg)] dark:border-slate-800 dark:bg-slate-950"
+          : "border-faith-line/70 bg-[var(--fh-surface)] dark:border-slate-800 dark:bg-slate-950/70",
       )}
     >
       <div className="flex items-center justify-between gap-3">
-        <div className="text-[14px] font-black text-slate-900 dark:text-slate-100">{lane.label}</div>
+        <div className="text-[14px] font-black text-faith-ink dark:text-slate-100">{lane.label}</div>
         <TonePill tone={lane.active ? "good" : "warn"}>{lane.active ? "Active" : "On demand"}</TonePill>
       </div>
       <div className="mt-3 flex flex-wrap items-center gap-2">
         {lane.steps.map((step, idx) => (
           <React.Fragment key={`${lane.id}-${step}-${idx}`}>
-            <span className="rounded-full border border-slate-200 bg-white px-3 py-1 text-[11px] font-semibold text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300">
+            <span className="rounded-full border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-1 text-[11px] font-semibold text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300">
               {step}
             </span>
-            {idx < lane.steps.length - 1 ? <ChevronRight className="h-4 w-4 text-slate-400" /> : null}
+            {idx < lane.steps.length - 1 ? <ChevronRight className="h-4 w-4 text-faith-slate" /> : null}
           </React.Fragment>
         ))}
       </div>
-      <div className="mt-3 text-[11px] font-semibold text-slate-500 dark:text-slate-400">
+      <div className="mt-3 text-[11px] font-semibold text-faith-slate">
         {lane.sla}
       </div>
     </div>
@@ -825,11 +825,11 @@ function AssignmentCard({ item }: { item: AssignmentRecord }) {
         : "danger";
 
   return (
-    <div className="rounded-[24px] border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-950">
+    <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft dark:border-slate-800 dark:bg-slate-950">
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
-          <div className="text-[14px] font-black text-slate-900 dark:text-slate-100">{item.name}</div>
-          <div className="mt-1 text-[12px] text-slate-500 dark:text-slate-400">{item.title} Â· {item.campus}</div>
+          <div className="text-[14px] font-black text-faith-ink dark:text-slate-100">{item.name}</div>
+          <div className="mt-1 text-[12px] text-faith-slate">{item.title} · {item.campus}</div>
         </div>
         <TonePill tone={tone}>{item.state}</TonePill>
       </div>
@@ -860,26 +860,26 @@ function PreviewSurface({
       ? "bg-emerald-50 border-emerald-200 text-emerald-700 dark:bg-emerald-900/20 dark:border-emerald-900/40 dark:text-emerald-300"
       : state === "Review"
         ? "bg-amber-50 border-amber-200 text-amber-700 dark:bg-amber-900/20 dark:border-amber-900/40 dark:text-amber-300"
-        : "bg-slate-50 border-slate-200 text-slate-400 dark:bg-slate-950 dark:border-slate-800 dark:text-slate-600";
+        : "bg-[var(--fh-surface)] border-faith-line text-faith-slate dark:bg-slate-950 dark:border-slate-800";
 
   if (previewMode === "mobile") {
     return (
-      <div className="mx-auto w-full max-w-[340px] md:max-w-[380px] rounded-[34px] border border-slate-200 bg-slate-950 p-3 shadow-xl dark:border-slate-700">
-        <div className="rounded-[28px] bg-white p-4 dark:bg-slate-900">
+      <div className="mx-auto w-full max-w-[340px] md:max-w-[380px] rounded-[34px] border border-faith-line bg-slate-950 p-3 shadow-xl dark:border-slate-700">
+        <div className="rounded-[28px] bg-[var(--fh-surface-bg)] p-4 dark:bg-slate-900">
           <div className="flex items-center justify-between">
             <div>
-              <div className="text-[10px] font-black uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">
+              <div className="text-[10px] font-black uppercase tracking-[0.16em] text-faith-slate">
                 Mobile companion view
               </div>
-              <div className="mt-1 text-[13px] font-black text-slate-900 dark:text-slate-100">{role.name}</div>
+              <div className="mt-1 text-[13px] font-black text-faith-ink dark:text-slate-100">{role.name}</div>
             </div>
             <div className="grid h-10 w-10 place-items-center rounded-2xl bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-100">
               {initials(role.name)}
             </div>
           </div>
 
-          <div className="mt-4 rounded-[22px] border border-slate-200 bg-slate-50 p-3 dark:border-slate-800 dark:bg-slate-950">
-            <div className="text-[11px] font-black text-slate-900 dark:text-slate-100">What this role sees</div>
+          <div className="mt-4 rounded-[22px] border border-faith-line bg-[var(--fh-surface)] p-3 dark:border-slate-800 dark:bg-slate-950">
+            <div className="text-[11px] font-black text-faith-ink dark:text-slate-100">What this role sees</div>
             <div className="mt-3 grid grid-cols-2 gap-2">
               {previewGroups.map((item) => (
                 <div
@@ -895,24 +895,24 @@ function PreviewSurface({
             </div>
           </div>
 
-          <div className="mt-4 rounded-[22px] border border-slate-200 bg-slate-50 p-3 dark:border-slate-800 dark:bg-slate-950">
-            <div className="text-[11px] font-black text-slate-900 dark:text-slate-100">Sensitive action sheet</div>
+          <div className="mt-4 rounded-[22px] border border-faith-line bg-[var(--fh-surface)] p-3 dark:border-slate-800 dark:bg-slate-950">
+            <div className="text-[11px] font-black text-faith-ink dark:text-slate-100">Sensitive action sheet</div>
             <div className="mt-3 space-y-2">
               {role.sensitiveActions.slice(0, 3).map((action) => (
-                <div key={action.id} className="rounded-2xl border border-slate-200 bg-white px-3 py-2 dark:border-slate-700 dark:bg-slate-900">
-                  <div className="text-[11px] font-bold text-slate-900 dark:text-slate-100">{action.label}</div>
-                  <div className="mt-1 text-[10px] text-slate-500 dark:text-slate-400">
-                    {action.permission} Â· {action.approval}
+                <div key={action.id} className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 dark:border-slate-700 dark:bg-slate-900">
+                  <div className="text-[11px] font-bold text-faith-ink dark:text-slate-100">{action.label}</div>
+                  <div className="mt-1 text-[10px] text-faith-slate">
+                    {action.permission} · {action.approval}
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="mt-4 rounded-[22px] border border-slate-200 bg-slate-50 p-3 dark:border-slate-800 dark:bg-slate-950">
-            <div className="text-[11px] font-black text-slate-900 dark:text-slate-100">Scope summary</div>
-            <div className="mt-2 text-[11px] leading-5 text-slate-500 dark:text-slate-400">
-              {role.scope} Â· {role.campusScopes.join(" Â· ")}
+          <div className="mt-4 rounded-[22px] border border-faith-line bg-[var(--fh-surface)] p-3 dark:border-slate-800 dark:bg-slate-950">
+            <div className="text-[11px] font-black text-faith-ink dark:text-slate-100">Scope summary</div>
+            <div className="mt-2 text-[11px] leading-5 text-faith-slate">
+              {role.scope} · {role.campusScopes.join(" · ")}
             </div>
           </div>
         </div>
@@ -921,26 +921,26 @@ function PreviewSurface({
   }
 
   return (
-    <div className="rounded-[30px] border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-      <div className="rounded-[26px] border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950">
+    <div className="rounded-[30px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft dark:border-slate-800 dark:bg-slate-900">
+      <div className="rounded-[26px] border border-faith-line bg-[var(--fh-surface)] p-4 dark:border-slate-800 dark:bg-slate-950">
         <div className="flex items-start justify-between gap-3">
           <div>
-            <div className="text-[11px] font-black uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">
+            <div className="text-[11px] font-black uppercase tracking-[0.16em] text-faith-slate">
               Desktop access preview
             </div>
-            <div className="mt-1 text-[18px] font-black text-slate-900 dark:text-slate-100">{role.name}</div>
-            <div className="mt-1 max-w-[340px] text-[12px] leading-5 text-slate-500 dark:text-slate-400">
+            <div className="mt-1 text-[18px] font-black text-faith-ink dark:text-slate-100">{role.name}</div>
+            <div className="mt-1 max-w-[340px] text-[12px] leading-5 text-faith-slate">
               {role.previewBody}
             </div>
           </div>
-          <div className="grid h-12 w-12 place-items-center rounded-[20px] bg-slate-900 text-white dark:bg-white dark:text-slate-900">
+          <div className="grid h-12 w-12 place-items-center rounded-[20px] bg-slate-900 text-white dark:bg-[var(--fh-surface-bg)] dark:text-faith-ink">
             {initials(role.name)}
           </div>
         </div>
 
         <div className="mt-4 grid gap-3 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="rounded-[24px] border border-slate-200 bg-white p-3 dark:border-slate-700 dark:bg-slate-900">
-            <div className="text-[11px] font-black uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">
+          <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] p-3 dark:border-slate-700 dark:bg-slate-900">
+            <div className="text-[11px] font-black uppercase tracking-[0.16em] text-faith-slate">
               Sidebar visibility
             </div>
             <div className="mt-3 space-y-2">
@@ -960,38 +960,38 @@ function PreviewSurface({
           </div>
 
           <div className="space-y-3">
-            <div className="rounded-[24px] border border-slate-200 bg-white p-3 dark:border-slate-700 dark:bg-slate-900">
-              <div className="text-[11px] font-black uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">
+            <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] p-3 dark:border-slate-700 dark:bg-slate-900">
+              <div className="text-[11px] font-black uppercase tracking-[0.16em] text-faith-slate">
                 Approval path preview
               </div>
               <div className="mt-3 space-y-2">
                 {role.approvalLanes.slice(0, 2).map((lane) => (
-                  <div key={lane.id} className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2 dark:border-slate-800 dark:bg-slate-950">
-                    <div className="text-[12px] font-bold text-slate-900 dark:text-slate-100">{lane.label}</div>
-                    <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
-                      {lane.steps.join(" ? ")} Â· {lane.sla}
+                  <div key={lane.id} className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2 dark:border-slate-800 dark:bg-slate-950">
+                    <div className="text-[12px] font-bold text-faith-ink dark:text-slate-100">{lane.label}</div>
+                    <div className="mt-1 text-[11px] text-faith-slate">
+                      {lane.steps.join(" ? ")} · {lane.sla}
                     </div>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="rounded-[24px] border border-slate-200 bg-white p-3 dark:border-slate-700 dark:bg-slate-900">
-              <div className="text-[11px] font-black uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">
+            <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] p-3 dark:border-slate-700 dark:bg-slate-900">
+              <div className="text-[11px] font-black uppercase tracking-[0.16em] text-faith-slate">
                 Review health
               </div>
               <div className="mt-3 grid grid-cols-2 gap-2">
-                <div className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2 dark:border-slate-800 dark:bg-slate-950">
-                  <div className="text-[10px] uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">Last reviewed</div>
-                  <div className="mt-1 text-[12px] font-black text-slate-900 dark:text-slate-100">{fmtDate(role.lastReviewedISO)}</div>
+                <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2 dark:border-slate-800 dark:bg-slate-950">
+                  <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">Last reviewed</div>
+                  <div className="mt-1 text-[12px] font-black text-faith-ink dark:text-slate-100">{fmtDate(role.lastReviewedISO)}</div>
                 </div>
-                <div className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2 dark:border-slate-800 dark:bg-slate-950">
-                  <div className="text-[10px] uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">Assignments</div>
-                  <div className="mt-1 text-[12px] font-black text-slate-900 dark:text-slate-100">{role.assigned}/{role.seats}</div>
+                <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2 dark:border-slate-800 dark:bg-slate-950">
+                  <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">Assignments</div>
+                  <div className="mt-1 text-[12px] font-black text-faith-ink dark:text-slate-100">{role.assigned}/{role.seats}</div>
                 </div>
               </div>
-              <div className="mt-3 text-[11px] leading-5 text-slate-500 dark:text-slate-400">
-                Scope: {role.scope} Â· {role.campusScopes.join(" Â· ")}
+              <div className="mt-3 text-[11px] leading-5 text-faith-slate">
+                Scope: {role.scope} · {role.campusScopes.join(" · ")}
               </div>
             </div>
           </div>
@@ -1019,21 +1019,21 @@ function PreviewDrawer({
   return (
     <div className="fixed inset-0 z-[120]">
       <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose} />
-      <div className="absolute inset-y-0 right-0 w-full max-w-[860px] overflow-y-auto border-l border-slate-200 bg-slate-50 p-5 shadow-2xl dark:border-slate-800 dark:bg-slate-950">
-        <div className="sticky top-0 z-10 rounded-[26px] border border-slate-200 bg-white px-4 py-3 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+      <div className="absolute inset-y-0 right-0 w-full max-w-[860px] overflow-y-auto border-l border-faith-line bg-[var(--fh-surface)] p-5 shadow-2xl dark:border-slate-800 dark:bg-slate-950">
+        <div className="sticky top-0 z-10 rounded-[26px] border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-3 shadow-soft dark:border-slate-800 dark:bg-slate-900">
           <div className="flex items-center justify-between gap-3">
             <div className="min-w-0">
-              <div className="text-[14px] font-black text-slate-900 dark:text-slate-100">
-                Access preview Â· {role.name}
+              <div className="text-[14px] font-black text-faith-ink dark:text-slate-100">
+                Access preview · {role.name}
               </div>
-              <div className="mt-1 text-[12px] text-slate-500 dark:text-slate-400">
+              <div className="mt-1 text-[12px] text-faith-slate">
                 Role visibility, approval flow, and mobile/desktop companion surfaces.
               </div>
             </div>
             <button
               type="button"
               onClick={onClose}
-              className="grid h-10 w-10 place-items-center rounded-2xl border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+              className="grid h-10 w-10 place-items-center rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
             >
               <X className="h-4 w-4" />
             </button>
@@ -1048,7 +1048,7 @@ function PreviewDrawer({
               "rounded-full px-3 py-1.5 text-[12px] font-bold transition-colors",
               previewMode === "desktop"
                 ? "text-white"
-                : "bg-white text-slate-700 ring-1 ring-slate-200 hover:bg-slate-50 dark:bg-slate-900 dark:text-slate-300 dark:ring-slate-700 dark:hover:bg-slate-800",
+                : "bg-[var(--fh-surface-bg)] text-slate-700 ring-1 ring-slate-200 hover:bg-[var(--fh-surface)] dark:bg-slate-900 dark:text-slate-300 dark:ring-slate-700 dark:hover:bg-slate-800",
             )}
             style={previewMode === "desktop" ? { background: EV_GREEN } : undefined}
           >
@@ -1061,7 +1061,7 @@ function PreviewDrawer({
               "rounded-full px-3 py-1.5 text-[12px] font-bold transition-colors",
               previewMode === "mobile"
                 ? "text-white"
-                : "bg-white text-slate-700 ring-1 ring-slate-200 hover:bg-slate-50 dark:bg-slate-900 dark:text-slate-300 dark:ring-slate-700 dark:hover:bg-slate-800",
+                : "bg-[var(--fh-surface-bg)] text-slate-700 ring-1 ring-slate-200 hover:bg-[var(--fh-surface)] dark:bg-slate-900 dark:text-slate-300 dark:ring-slate-700 dark:hover:bg-slate-800",
             )}
             style={previewMode === "mobile" ? { background: EV_ORANGE } : undefined}
           >
@@ -1265,9 +1265,9 @@ export default function FH_P_112_RolesPermissionsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#f2f2f2] text-slate-900 dark:bg-slate-950 dark:text-slate-100">
+    <div className="min-h-screen bg-[var(--fh-page-bg)] text-faith-ink dark:bg-slate-950 dark:text-slate-100">
       <div className="mx-auto max-w-[1600px] px-5 py-5 md:px-6 lg:px-8 lg:py-6">
-        <div className="rounded-[32px] border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+        <div className="rounded-[32px] border border-faith-line bg-[var(--fh-surface-bg)] p-5 shadow-soft dark:border-slate-800 dark:bg-slate-900">
           <div className="flex flex-col gap-5 xl:flex-row xl:items-start xl:justify-between">
             <div className="min-w-0 flex-1">
               <ProviderPageTitle
@@ -1302,7 +1302,7 @@ export default function FH_P_112_RolesPermissionsPage() {
                 <button
                   type="button"
                   onClick={() => setEditMode((v) => !v)}
-                  className="inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-2 text-[12px] font-bold text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+                  className="inline-flex items-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-2 text-[12px] font-bold text-slate-700 hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
                 >
                   <KeyRound className="h-4 w-4" /> {editMode ? "Stop Editing" : "Edit Permissions"}
                 </button>
@@ -1319,17 +1319,17 @@ export default function FH_P_112_RolesPermissionsPage() {
           </div>
         </div>
 
-        <div className="mt-5 rounded-[26px] border border-slate-200 bg-white px-4 py-3 text-[13px] text-slate-500 shadow-sm dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400">
+        <div className="mt-5 rounded-[26px] border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-3 text-[13px] text-faith-slate shadow-soft dark:border-slate-800 dark:bg-slate-900">
           <div className="flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
             <div className="min-w-0">
               <span className="inline-flex items-center rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-[10px] font-black uppercase tracking-[0.16em] text-amber-700 dark:border-amber-900/40 dark:bg-amber-900/20 dark:text-amber-300">
                 Premium RBAC
               </span>
               <span className="ml-3 align-middle">
-                Finance changes still require dual approval Â· Two teammate assignments are waiting for scope review Â· Child-safe overrides remain locked behind safeguarding leadership.
+                Finance changes still require dual approval · Two teammate assignments are waiting for scope review · Child-safe overrides remain locked behind safeguarding leadership.
               </span>
             </div>
-            <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">
+            <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-faith-slate">
               Workspace security system
             </div>
           </div>
@@ -1374,25 +1374,25 @@ export default function FH_P_112_RolesPermissionsPage() {
           />
         </div>
 
-        <div className="mt-4 rounded-[28px] border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-          <div className="text-[14px] font-bold text-slate-900 dark:text-slate-100">Search and filter</div>
-          <div className="mt-1 text-[13px] text-slate-500 dark:text-slate-400">
+        <div className="mt-4 rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] p-5 shadow-soft dark:border-slate-800 dark:bg-slate-900">
+          <div className="text-[14px] font-bold text-faith-ink dark:text-slate-100">Search and filter</div>
+          <div className="mt-1 text-[13px] text-faith-slate">
             Find roles, templates, campus scope, approval posture, and high-risk permissions faster.
           </div>
           <div className="mt-4 grid gap-3 xl:grid-cols-[1.4fr_0.55fr_0.55fr_0.55fr]">
             <div className="relative">
-              <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+              <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-faith-slate" />
               <input
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search role name, owner, template, scope, or tags"
-                className="h-12 w-full rounded-2xl border border-slate-200 bg-slate-50 pl-11 pr-4 text-[13px] outline-none transition focus:border-transparent focus:ring-2 focus:ring-emerald-200 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:ring-emerald-900/40"
+                className="h-12 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface)] pl-11 pr-4 text-[13px] outline-none transition focus:border-transparent focus:ring-2 focus:ring-emerald-200 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:ring-emerald-900/40"
               />
             </div>
             <select
               value={templateFilter}
               onChange={(e) => setTemplateFilter(e.target.value)}
-              className="h-12 rounded-2xl border border-slate-200 bg-slate-50 px-4 text-[13px] font-semibold text-slate-700 outline-none transition focus:border-transparent focus:ring-2 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200 dark:focus:ring-slate-800"
+              className="h-12 rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-4 text-[13px] font-semibold text-slate-700 outline-none transition focus:border-transparent focus:ring-2 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200 dark:focus:ring-slate-800"
             >
               {templates.map((value) => (
                 <option key={value} value={value}>{value}</option>
@@ -1401,7 +1401,7 @@ export default function FH_P_112_RolesPermissionsPage() {
             <select
               value={scopeFilter}
               onChange={(e) => setScopeFilter(e.target.value)}
-              className="h-12 rounded-2xl border border-slate-200 bg-slate-50 px-4 text-[13px] font-semibold text-slate-700 outline-none transition focus:border-transparent focus:ring-2 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200 dark:focus:ring-slate-800"
+              className="h-12 rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-4 text-[13px] font-semibold text-slate-700 outline-none transition focus:border-transparent focus:ring-2 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200 dark:focus:ring-slate-800"
             >
               {scopes.map((value) => (
                 <option key={value} value={value}>{value}</option>
@@ -1410,7 +1410,7 @@ export default function FH_P_112_RolesPermissionsPage() {
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="h-12 rounded-2xl border border-slate-200 bg-slate-50 px-4 text-[13px] font-semibold text-slate-700 outline-none transition focus:border-transparent focus:ring-2 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200 dark:focus:ring-slate-800"
+              className="h-12 rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-4 text-[13px] font-semibold text-slate-700 outline-none transition focus:border-transparent focus:ring-2 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200 dark:focus:ring-slate-800"
             >
               {statuses.map((value) => (
                 <option key={value} value={value}>{value}</option>
@@ -1445,14 +1445,14 @@ export default function FH_P_112_RolesPermissionsPage() {
                     />
                   ))
                 ) : (
-                  <div className="rounded-[28px] border border-dashed border-slate-300 bg-slate-50 p-8 text-center dark:border-slate-700 dark:bg-slate-950">
-                    <div className="mx-auto grid h-14 w-14 place-items-center rounded-full border border-slate-200 bg-white text-slate-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300">
+                  <div className="rounded-[28px] border border-dashed border-slate-300 bg-[var(--fh-surface)] p-8 text-center dark:border-slate-700 dark:bg-slate-950">
+                    <div className="mx-auto grid h-14 w-14 place-items-center rounded-full border border-faith-line bg-[var(--fh-surface-bg)] text-faith-slate dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300">
                       <Search className="h-6 w-6" />
                     </div>
-                    <div className="mt-4 text-[15px] font-bold text-slate-900 dark:text-slate-100">
+                    <div className="mt-4 text-[15px] font-bold text-faith-ink dark:text-slate-100">
                       No roles match this filter
                     </div>
-                    <div className="mt-1 text-[12px] text-slate-500 dark:text-slate-400">
+                    <div className="mt-1 text-[12px] text-faith-slate">
                       Try changing the template, scope, or status filters.
                     </div>
                   </div>
@@ -1496,11 +1496,11 @@ export default function FH_P_112_RolesPermissionsPage() {
                       {initials(selectedRole.name)}
                     </div>
                     <div className="min-w-0 flex-1">
-                      <div className="text-2xl font-black tracking-tight text-slate-900 dark:text-slate-100">
+                      <div className="text-2xl font-black tracking-tight text-faith-ink dark:text-slate-100">
                         {selectedRole.name}
                       </div>
-                      <div className="mt-1 text-[13px] text-slate-500 dark:text-slate-400">
-                        {selectedRole.templateFamily} Â· {selectedRole.scope} Â· Owner: {selectedRole.owner}
+                      <div className="mt-1 text-[13px] text-faith-slate">
+                        {selectedRole.templateFamily} · {selectedRole.scope} · Owner: {selectedRole.owner}
                       </div>
                       <div className="mt-3 flex flex-wrap gap-2">
                         <TonePill tone={selectedRole.status === "Healthy" ? "good" : selectedRole.status === "Limited" ? "danger" : "warn"}>
@@ -1521,37 +1521,37 @@ export default function FH_P_112_RolesPermissionsPage() {
                     </div>
                   </div>
 
-                  <div className="mt-5 rounded-[24px] border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950">
-                    <div className="text-[11px] font-black uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">
+                  <div className="mt-5 rounded-[24px] border border-faith-line bg-[var(--fh-surface)] p-4 dark:border-slate-800 dark:bg-slate-950">
+                    <div className="text-[11px] font-black uppercase tracking-[0.16em] text-faith-slate">
                       Role description
                     </div>
-                    <div className="mt-2 text-[13px] leading-6 text-slate-600 dark:text-slate-300">
+                    <div className="mt-2 text-[13px] leading-6 text-faith-slate dark:text-slate-300">
                       {selectedRole.description}
                     </div>
                   </div>
 
                   <div className="mt-4 grid grid-cols-3 gap-3">
-                    <div className="rounded-[24px] border border-slate-200 bg-white p-3 dark:border-slate-800 dark:bg-slate-900">
-                      <div className="text-[10px] font-black uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">
+                    <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] p-3 dark:border-slate-800 dark:bg-slate-900">
+                      <div className="text-[10px] font-black uppercase tracking-[0.16em] text-faith-slate">
                         Last review
                       </div>
-                      <div className="mt-1 text-[15px] font-black text-slate-900 dark:text-slate-100">
+                      <div className="mt-1 text-[15px] font-black text-faith-ink dark:text-slate-100">
                         {fmtDate(selectedRole.lastReviewedISO)}
                       </div>
                     </div>
-                    <div className="rounded-[24px] border border-slate-200 bg-white p-3 dark:border-slate-800 dark:bg-slate-900">
-                      <div className="text-[10px] font-black uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">
+                    <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] p-3 dark:border-slate-800 dark:bg-slate-900">
+                      <div className="text-[10px] font-black uppercase tracking-[0.16em] text-faith-slate">
                         Campus scope
                       </div>
-                      <div className="mt-1 text-[15px] font-black text-slate-900 dark:text-slate-100">
+                      <div className="mt-1 text-[15px] font-black text-faith-ink dark:text-slate-100">
                         {selectedRole.campusScopes.length}
                       </div>
                     </div>
-                    <div className="rounded-[24px] border border-slate-200 bg-white p-3 dark:border-slate-800 dark:bg-slate-900">
-                      <div className="text-[10px] font-black uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">
+                    <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] p-3 dark:border-slate-800 dark:bg-slate-900">
+                      <div className="text-[10px] font-black uppercase tracking-[0.16em] text-faith-slate">
                         Active approval lanes
                       </div>
-                      <div className="mt-1 text-[15px] font-black text-slate-900 dark:text-slate-100">
+                      <div className="mt-1 text-[15px] font-black text-faith-ink dark:text-slate-100">
                         {selectedRole.approvalLanes.filter((lane) => lane.active).length}
                       </div>
                     </div>
@@ -1568,7 +1568,7 @@ export default function FH_P_112_RolesPermissionsPage() {
 
             <SectionCard
               title="Feature access matrix"
-              subtitle={editMode ? "Edit mode is active â€” click any tile to cycle Allow ? Review ? Block." : "Permission states across premium Provider surfaces and operational clusters."}
+              subtitle={editMode ? "Edit mode is active — click any tile to cycle Allow ? Review ? Block." : "Permission states across premium Provider surfaces and operational clusters."}
               right={
                 <TonePill tone={editMode ? "accent" : "neutral"}>
                   {editMode ? "Editing" : "View mode"}
@@ -1637,7 +1637,7 @@ export default function FH_P_112_RolesPermissionsPage() {
                 <button
                   type="button"
                   onClick={() => setPreviewOpen(true)}
-                  className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-[11px] font-bold text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800 xl:hidden"
+                  className="inline-flex items-center gap-2 rounded-full border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-1 text-[11px] font-bold text-slate-700 hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800 xl:hidden"
                 >
                   <Eye className="h-3.5 w-3.5" /> Open preview
                 </button>
@@ -1651,7 +1651,7 @@ export default function FH_P_112_RolesPermissionsPage() {
                     "rounded-full px-3 py-1.5 text-[12px] font-bold transition-colors",
                     previewMode === "desktop"
                       ? "text-white"
-                      : "bg-white text-slate-700 ring-1 ring-slate-200 hover:bg-slate-50 dark:bg-slate-900 dark:text-slate-300 dark:ring-slate-700 dark:hover:bg-slate-800",
+                      : "bg-[var(--fh-surface-bg)] text-slate-700 ring-1 ring-slate-200 hover:bg-[var(--fh-surface)] dark:bg-slate-900 dark:text-slate-300 dark:ring-slate-700 dark:hover:bg-slate-800",
                   )}
                   style={previewMode === "desktop" ? { background: EV_GREEN } : undefined}
                 >
@@ -1664,7 +1664,7 @@ export default function FH_P_112_RolesPermissionsPage() {
                     "rounded-full px-3 py-1.5 text-[12px] font-bold transition-colors",
                     previewMode === "mobile"
                       ? "text-white"
-                      : "bg-white text-slate-700 ring-1 ring-slate-200 hover:bg-slate-50 dark:bg-slate-900 dark:text-slate-300 dark:ring-slate-700 dark:hover:bg-slate-800",
+                      : "bg-[var(--fh-surface-bg)] text-slate-700 ring-1 ring-slate-200 hover:bg-[var(--fh-surface)] dark:bg-slate-900 dark:text-slate-300 dark:ring-slate-700 dark:hover:bg-slate-800",
                   )}
                   style={previewMode === "mobile" ? { background: EV_ORANGE } : undefined}
                 >
@@ -1676,14 +1676,14 @@ export default function FH_P_112_RolesPermissionsPage() {
                 {selectedRole ? <PreviewSurface role={selectedRole} previewMode={previewMode} /> : null}
               </div>
               <div className="xl:hidden">
-                <div className="rounded-[26px] border border-dashed border-slate-300 bg-slate-50 p-5 text-center dark:border-slate-700 dark:bg-slate-950">
-                  <div className="mx-auto grid h-12 w-12 place-items-center rounded-full border border-slate-200 bg-white text-slate-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300">
+                <div className="rounded-[26px] border border-dashed border-slate-300 bg-[var(--fh-surface)] p-5 text-center dark:border-slate-700 dark:bg-slate-950">
+                  <div className="mx-auto grid h-12 w-12 place-items-center rounded-full border border-faith-line bg-[var(--fh-surface-bg)] text-faith-slate dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300">
                     <Eye className="h-5 w-5" />
                   </div>
-                  <div className="mt-3 text-[14px] font-black text-slate-900 dark:text-slate-100">
+                  <div className="mt-3 text-[14px] font-black text-faith-ink dark:text-slate-100">
                     Open the preview rail
                   </div>
-                  <div className="mt-1 text-[12px] text-slate-500 dark:text-slate-400">
+                  <div className="mt-1 text-[12px] text-faith-slate">
                     See how the selected role looks on desktop and mobile companion surfaces.
                   </div>
                   <div className="mt-4">
@@ -1717,8 +1717,8 @@ export default function FH_P_112_RolesPermissionsPage() {
                           : "border-rose-200 bg-rose-50 dark:border-rose-900/40 dark:bg-rose-900/20",
                     )}
                   >
-                    <div className="text-[13px] font-black text-slate-900 dark:text-slate-100">{signal.title}</div>
-                    <div className="mt-2 text-[12px] leading-5 text-slate-600 dark:text-slate-400">{signal.hint}</div>
+                    <div className="text-[13px] font-black text-faith-ink dark:text-slate-100">{signal.title}</div>
+                    <div className="mt-2 text-[12px] leading-5 text-faith-slate">{signal.hint}</div>
                   </div>
                 ))}
               </div>
@@ -1732,7 +1732,7 @@ export default function FH_P_112_RolesPermissionsPage() {
                 <button
                   type="button"
                   onClick={() => safeNav(ROUTES.providerDashboard)}
-                  className="flex w-full items-center justify-between rounded-[22px] border border-slate-200 bg-white px-4 py-3 text-left text-[12px] font-semibold text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+                  className="flex w-full items-center justify-between rounded-[22px] border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-3 text-left text-[12px] font-semibold text-slate-700 hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
                 >
                   <span className="inline-flex items-center gap-2"><Sparkles className="h-4 w-4" /> Provider Dashboard</span>
                   <ChevronRight className="h-4 w-4" />
@@ -1740,7 +1740,7 @@ export default function FH_P_112_RolesPermissionsPage() {
                 <button
                   type="button"
                   onClick={() => safeNav(ROUTES.leadership)}
-                  className="flex w-full items-center justify-between rounded-[22px] border border-slate-200 bg-white px-4 py-3 text-left text-[12px] font-semibold text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+                  className="flex w-full items-center justify-between rounded-[22px] border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-3 text-left text-[12px] font-semibold text-slate-700 hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
                 >
                   <span className="inline-flex items-center gap-2"><Users className="h-4 w-4" /> Leadership</span>
                   <ChevronRight className="h-4 w-4" />
@@ -1748,7 +1748,7 @@ export default function FH_P_112_RolesPermissionsPage() {
                 <button
                   type="button"
                   onClick={() => safeNav(ROUTES.servingTeams)}
-                  className="flex w-full items-center justify-between rounded-[22px] border border-slate-200 bg-white px-4 py-3 text-left text-[12px] font-semibold text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+                  className="flex w-full items-center justify-between rounded-[22px] border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-3 text-left text-[12px] font-semibold text-slate-700 hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
                 >
                   <span className="inline-flex items-center gap-2"><Video className="h-4 w-4" /> Serving Teams</span>
                   <ChevronRight className="h-4 w-4" />
@@ -1756,7 +1756,7 @@ export default function FH_P_112_RolesPermissionsPage() {
                 <button
                   type="button"
                   onClick={() => safeNav(ROUTES.workspaceSettings)}
-                  className="flex w-full items-center justify-between rounded-[22px] border border-slate-200 bg-white px-4 py-3 text-left text-[12px] font-semibold text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+                  className="flex w-full items-center justify-between rounded-[22px] border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-3 text-left text-[12px] font-semibold text-slate-700 hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
                 >
                   <span className="inline-flex items-center gap-2"><Settings2 className="h-4 w-4" /> Workspace Settings</span>
                   <ChevronRight className="h-4 w-4" />
@@ -1764,7 +1764,7 @@ export default function FH_P_112_RolesPermissionsPage() {
                 <button
                   type="button"
                   onClick={() => safeNav(ROUTES.auditLog)}
-                  className="flex w-full items-center justify-between rounded-[22px] border border-slate-200 bg-white px-4 py-3 text-left text-[12px] font-semibold text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+                  className="flex w-full items-center justify-between rounded-[22px] border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-3 text-left text-[12px] font-semibold text-slate-700 hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
                 >
                   <span className="inline-flex items-center gap-2"><ScrollText className="h-4 w-4" /> Audit Log</span>
                   <ChevronRight className="h-4 w-4" />
@@ -1785,6 +1785,7 @@ export default function FH_P_112_RolesPermissionsPage() {
     </div>
   );
 }
+
 
 
 

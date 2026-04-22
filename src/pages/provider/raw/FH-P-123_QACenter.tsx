@@ -1,4 +1,4 @@
-ï»¿// @ts-nocheck
+// @ts-nocheck
 "use client";
 
 import React, { useMemo, useState } from "react";
@@ -26,7 +26,7 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
- * Provider â€” QA Center
+ * Provider — QA Center
  * --------------------------------
  * Purpose:
  * Internal quality-assurance page for testing streams, validating content
@@ -153,7 +153,7 @@ const QA_RESULTS_SEED: QAResult[] = [
     destination: "Mobile form",
     lastCheckedLabel: "14 min ago",
     suggestedFix:
-      "Increase bottom padding, validate safe-area spacing, and confirm tap targets on 390 Ã— 680 layouts.",
+      "Increase bottom padding, validate safe-area spacing, and confirm tap targets on 390 × 680 layouts.",
     tags: ["Forms", "Mobile", "Safe area"],
     confidence: 91,
     steps: [
@@ -365,7 +365,7 @@ function Pill({
           ? "bg-amber-50 border-amber-200 text-amber-800 dark:bg-amber-500/10 dark:border-amber-800 dark:text-amber-300"
           : tone === "danger"
             ? "bg-rose-50 border-rose-200 text-rose-800 dark:bg-rose-500/10 dark:border-rose-800 dark:text-rose-300"
-            : "bg-white border-slate-200 text-slate-700 dark:bg-slate-900 dark:border-slate-700 dark:text-slate-300";
+            : "bg-[var(--fh-surface-bg)] border-faith-line text-slate-700 dark:bg-slate-900 dark:border-slate-700 dark:text-slate-300";
   return (
     <span
       className={cx(
@@ -399,7 +399,7 @@ function Btn({
       ? "border-transparent text-white"
       : tone === "secondary"
         ? "border-transparent text-white"
-        : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-800";
+        : "border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-faith-ink dark:text-slate-100 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800";
   const style =
     tone === "primary"
       ? { background: GREEN }
@@ -429,12 +429,12 @@ function Card({
   className?: string;
 }) {
   return (
-    <div className={cx("rounded-[28px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 transition-colors", className)}>
+    <div className={cx("rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors", className)}>
       <div className="flex items-start justify-between gap-3">
         <div>
-          <div className="text-[13px] font-extrabold text-slate-900 dark:text-slate-100">{title}</div>
+          <div className="text-[13px] font-extrabold text-faith-ink dark:text-slate-100">{title}</div>
           {subtitle ? (
-            <div className="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">{subtitle}</div>
+            <div className="mt-0.5 text-[11px] text-faith-slate">{subtitle}</div>
           ) : null}
         </div>
         {right}
@@ -474,8 +474,8 @@ function ScopeButton({
       className={cx(
         "w-full rounded-[22px] border px-4 py-3 text-left text-[12px] font-extrabold transition-colors flex items-center justify-between gap-2",
         active
-          ? "border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-900/20 text-slate-900 dark:text-slate-100"
-          : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800",
+          ? "border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-900/20 text-faith-ink dark:text-slate-100"
+          : "border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-slate-800 dark:text-slate-300 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800",
       )}
     >
       <span>{label}</span>
@@ -501,17 +501,17 @@ function QARow({
         "w-full rounded-[24px] border p-4 text-left transition-colors",
         selected
           ? "border-amber-200 dark:border-amber-800 bg-amber-50/70 dark:bg-amber-900/10"
-          : "border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800",
+          : "border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800",
       )}
     >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2">
-            <div className="truncate text-[14px] font-black text-slate-900 dark:text-slate-100">{result.title}</div>
+            <div className="truncate text-[14px] font-black text-faith-ink dark:text-slate-100">{result.title}</div>
             <Pill tone={severityTone(result.severity)}>{result.severity}</Pill>
             <Pill tone={stateTone(result.state)}>{result.state}</Pill>
           </div>
-          <div className="mt-1 text-[12px] leading-relaxed text-slate-600 dark:text-slate-400">{result.summary}</div>
+          <div className="mt-1 text-[12px] leading-relaxed text-faith-slate">{result.summary}</div>
           <div className="mt-3 flex flex-wrap gap-2">
             {result.tags.map((tag) => (
               <Pill key={tag}>{tag}</Pill>
@@ -519,8 +519,8 @@ function QARow({
           </div>
         </div>
         <div className="text-right shrink-0">
-          <div className="text-[12px] font-extrabold text-slate-900 dark:text-slate-100">{result.lastCheckedLabel}</div>
-          <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">{result.surface}</div>
+          <div className="text-[12px] font-extrabold text-faith-ink dark:text-slate-100">{result.lastCheckedLabel}</div>
+          <div className="mt-1 text-[11px] text-faith-slate">{result.surface}</div>
         </div>
       </div>
     </button>
@@ -539,7 +539,7 @@ export default function FHP123QACenter() {
   const [checklist, setChecklist] = useState<ChecklistItem[]>(CHECKLIST_SEED);
   const [selectedResultId, setSelectedResultId] = useState<string>(QA_RESULTS_SEED[0]?.id || "");
   const [scanCount, setScanCount] = useState(18);
-  const [lastScanLabel, setLastScanLabel] = useState("Today Â· 10:42 AM");
+  const [lastScanLabel, setLastScanLabel] = useState("Today · 10:42 AM");
   const [isScanning, setIsScanning] = useState(false);
   const [savedChecklistCount, setSavedChecklistCount] = useState(7);
 
@@ -637,7 +637,7 @@ export default function FHP123QACenter() {
               state: "Passing",
               severity: "Info",
               lastCheckedLabel: "Resolved just now",
-              summary: `Resolved Â· ${item.summary}`,
+              summary: `Resolved · ${item.summary}`,
               confidence: Math.min(99, item.confidence + 8),
             }
           : item,
@@ -650,9 +650,9 @@ export default function FHP123QACenter() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-100 dark:bg-slate-950 px-4 py-5 md:px-5 lg:px-6 text-slate-900 dark:text-slate-100 transition-colors">
+    <div className="min-h-screen bg-slate-100 dark:bg-slate-950 px-4 py-5 md:px-5 lg:px-6 text-faith-ink dark:text-slate-100 transition-colors">
       <div className="mx-auto max-w-[1600px]">
-        <div className="rounded-[32px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-4 md:px-6 md:py-5 transition-colors">
+        <div className="rounded-[32px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 py-4 md:px-6 md:py-5 transition-colors">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
             <div className="min-w-0 flex-1">
               <ProviderPageTitle
@@ -669,7 +669,7 @@ export default function FHP123QACenter() {
             </div>
             <div className="flex flex-wrap items-center gap-2 lg:justify-end">
               <Btn tone="primary" left={<RefreshCw className={cx("h-4 w-4", isScanning && "animate-spin")} />} onClick={runQAScan} disabled={isScanning}>
-                {isScanning ? "Scanningâ€¦" : "Run QA Scan"}
+                {isScanning ? "Scanning…" : "Run QA Scan"}
               </Btn>
               <Btn left={<Plus className="h-4 w-4" />} onClick={createChecklist}>Create Checklist</Btn>
               <Btn tone="secondary" left={<Wrench className="h-4 w-4" />} onClick={resolveIssue}>Resolve Issue</Btn>
@@ -677,17 +677,17 @@ export default function FHP123QACenter() {
           </div>
         </div>
 
-        <div className="mt-3 rounded-[24px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3 py-2 md:px-4 transition-colors flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
+        <div className="mt-3 rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 md:px-4 transition-colors flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex items-center gap-3 min-w-0">
             <span className="inline-flex items-center rounded-full px-3 py-1 text-[11px] font-extrabold text-white" style={{ background: ORANGE }}>
               PREMIUM QA SURFACE
             </span>
-            <div className="text-[12px] text-slate-500 dark:text-slate-400 min-w-0 truncate">
+            <div className="text-[12px] text-faith-slate min-w-0 truncate">
               Stream tests, content packages, forms/pages, and preflight launch review all resolve from one provider control surface.
             </div>
           </div>
-          <div className="text-[11px] font-extrabold uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">
-            STREAMS Â· PACKAGES Â· FORMS Â· PREFLIGHT
+          <div className="text-[11px] font-extrabold uppercase tracking-[0.14em] text-faith-slate">
+            STREAMS · PACKAGES · FORMS · PREFLIGHT
           </div>
         </div>
 
@@ -716,21 +716,21 @@ export default function FHP123QACenter() {
             <Card title="Quality pulse" subtitle="High-signal checks shaping launch readiness across the provider workspace.">
               <div className="space-y-3">
                 <div className="rounded-[22px] border border-emerald-200 bg-emerald-50 dark:border-emerald-800 dark:bg-emerald-900/20 p-3 transition-colors">
-                  <div className="text-[13px] font-extrabold text-slate-900 dark:text-slate-100">Scan automation remains stable</div>
-                  <div className="mt-1 text-[12px] text-slate-500 dark:text-slate-400">
+                  <div className="text-[13px] font-extrabold text-faith-ink dark:text-slate-100">Scan automation remains stable</div>
+                  <div className="mt-1 text-[12px] text-faith-slate">
                     Automated stream, surface, and launch checks are feeding the central QA ledger without drift.
                   </div>
                 </div>
                 <div className="rounded-[22px] border border-amber-200 bg-amber-50 dark:border-amber-800 dark:bg-amber-900/20 p-3 transition-colors">
-                  <div className="text-[13px] font-extrabold text-slate-900 dark:text-slate-100">Mobile form regression still open</div>
-                  <div className="mt-1 text-[12px] text-slate-500 dark:text-slate-400">
+                  <div className="text-[13px] font-extrabold text-faith-ink dark:text-slate-100">Mobile form regression still open</div>
+                  <div className="mt-1 text-[12px] text-faith-slate">
                     The prayer-request mobile flow still needs a final safe-area pass before premium sign-off.
                   </div>
                 </div>
-                <div className="rounded-[22px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3 transition-colors">
-                  <div className="text-[11px] font-extrabold uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">Checklist progress</div>
-                  <div className="mt-2 text-[20px] font-black text-slate-900 dark:text-slate-100">{checklistStats.done}/{checklist.length}</div>
-                  <div className="mt-1 text-[12px] text-slate-500 dark:text-slate-400">
+                <div className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
+                  <div className="text-[11px] font-extrabold uppercase tracking-[0.14em] text-faith-slate">Checklist progress</div>
+                  <div className="mt-2 text-[20px] font-black text-faith-ink dark:text-slate-100">{checklistStats.done}/{checklist.length}</div>
+                  <div className="mt-1 text-[12px] text-faith-slate">
                     {checklistStats.criticalOpen} critical item(s) remain open before launch.
                   </div>
                 </div>
@@ -742,12 +742,12 @@ export default function FHP123QACenter() {
             <Card title="Launch assurance console" subtitle="Searchable QA ledger for stream health, page checks, form issues, package validation, and preflight review." right={<Pill tone="good">{filteredResults.length} results visible</Pill>}>
               <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
                 <div className="relative flex-1">
-                  <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400 dark:text-slate-500" />
+                  <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-faith-slate" />
                   <input
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     placeholder="Search surface, owner, issue, tag, or destination"
-                    className="w-full rounded-[22px] border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 pl-10 pr-4 py-3 text-[13px] outline-none text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500"
+                    className="w-full rounded-[22px] border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-950 pl-10 pr-4 py-3 text-[13px] outline-none text-faith-ink dark:text-slate-100 placeholder:text-faith-slate dark:placeholder:text-faith-slate"
                   />
                 </div>
                 <div className="flex flex-wrap gap-2">
@@ -761,14 +761,14 @@ export default function FHP123QACenter() {
                   <QARow key={result.id} result={result} selected={selectedResult?.id === result.id} onSelect={() => setSelectedResultId(result.id)} />
                 ))}
                 {!filteredResults.length ? (
-                  <div className="rounded-[22px] border border-dashed border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 px-4 py-8 text-center text-[13px] text-slate-500 dark:text-slate-400">
+                  <div className="rounded-[22px] border border-dashed border-slate-300 dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-8 text-center text-[13px] text-faith-slate">
                     No QA results match the current filters.
                   </div>
                 ) : null}
               </div>
             </Card>
 
-            <Card title="Checklist builder" subtitle="Reusable QA packs for streams, content packages, forms, and final preflight launch review." right={<Pill tone="brand">Critical open Â· {checklistStats.criticalOpen}</Pill>}>
+            <Card title="Checklist builder" subtitle="Reusable QA packs for streams, content packages, forms, and final preflight launch review." right={<Pill tone="brand">Critical open · {checklistStats.criticalOpen}</Pill>}>
               <div className="grid gap-3 md:grid-cols-2">
                 {checklist.map((item) => (
                   <button
@@ -779,20 +779,20 @@ export default function FHP123QACenter() {
                       "rounded-[24px] border p-4 text-left transition-colors",
                       item.done
                         ? "border-emerald-200 dark:border-emerald-800 bg-emerald-50/60 dark:bg-emerald-900/10"
-                        : "border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800",
+                        : "border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800",
                     )}
                   >
                     <div className="flex items-start justify-between gap-2">
                       <div className="min-w-0 flex-1">
                         <div className="flex items-center gap-2 flex-wrap">
-                          <div className="text-[13px] font-black text-slate-900 dark:text-slate-100">{item.label}</div>
+                          <div className="text-[13px] font-black text-faith-ink dark:text-slate-100">{item.label}</div>
                           <Pill>{item.group}</Pill>
                           {item.critical ? <Pill tone="warn">Critical</Pill> : null}
                         </div>
-                        <div className="mt-1 text-[12px] leading-relaxed text-slate-500 dark:text-slate-400">{item.detail}</div>
+                        <div className="mt-1 text-[12px] leading-relaxed text-faith-slate">{item.detail}</div>
                       </div>
                       <div className="mt-0.5">
-                        {item.done ? <CheckCircle2 className="h-5 w-5" style={{ color: GREEN }} /> : <XCircle className="h-5 w-5 text-slate-300 dark:text-slate-600" />}
+                        {item.done ? <CheckCircle2 className="h-5 w-5" style={{ color: GREEN }} /> : <XCircle className="h-5 w-5 text-slate-300" />}
                       </div>
                     </div>
                   </button>
@@ -812,18 +812,18 @@ export default function FHP123QACenter() {
                 </Btn>
               </div>
 
-              <div className="mt-4 rounded-[24px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-4 transition-colors">
-                <div className="text-[11px] font-extrabold uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">
+              <div className="mt-4 rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 transition-colors">
+                <div className="text-[11px] font-extrabold uppercase tracking-[0.14em] text-faith-slate">
                   {previewMode === "desktop" ? "Desktop launch check" : "Mobile launch check"}
                 </div>
                 <div className={cx(
-                  "mt-3 rounded-[24px] border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 overflow-hidden transition-colors",
+                  "mt-3 rounded-[24px] border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 overflow-hidden transition-colors",
                   previewMode === "desktop" ? "p-4" : "mx-auto max-w-[280px] p-3",
                 )}>
                   <div className="flex items-center justify-between gap-3">
                     <div>
-                      <div className="text-[12px] font-extrabold text-slate-900 dark:text-slate-100">{selectedResult?.surface}</div>
-                      <div className="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">{selectedResult?.destination}</div>
+                      <div className="text-[12px] font-extrabold text-faith-ink dark:text-slate-100">{selectedResult?.surface}</div>
+                      <div className="mt-0.5 text-[11px] text-faith-slate">{selectedResult?.destination}</div>
                     </div>
                     <div className="h-9 w-9 rounded-[14px] flex items-center justify-center text-white" style={{ background: GREEN }}>
                       {previewMode === "desktop" ? <LayoutGrid className="h-4 w-4" /> : <Smartphone className="h-4 w-4" />}
@@ -831,22 +831,22 @@ export default function FHP123QACenter() {
                   </div>
 
                   <div className="mt-4 space-y-3">
-                    <div className="rounded-[18px] border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 p-3 transition-colors">
-                      <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-slate-400 dark:text-slate-500">Status ribbon</div>
+                    <div className="rounded-[18px] border border-faith-line dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
+                      <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">Status ribbon</div>
                       <div className="mt-2 flex items-center gap-2 flex-wrap">
                         <Pill tone={stateTone(selectedResult?.state || "Passing")}>{selectedResult?.state}</Pill>
                         <Pill tone={severityTone(selectedResult?.severity || "Info")}>{selectedResult?.severity}</Pill>
                       </div>
                     </div>
 
-                    <div className="rounded-[18px] border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 p-3 transition-colors">
-                      <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-slate-400 dark:text-slate-500">Preview payload</div>
-                      <div className="mt-2 text-[13px] font-black text-slate-900 dark:text-slate-100">{selectedResult?.title}</div>
-                      <div className="mt-1 text-[12px] leading-relaxed text-slate-500 dark:text-slate-400">{selectedResult?.summary}</div>
+                    <div className="rounded-[18px] border border-faith-line dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
+                      <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">Preview payload</div>
+                      <div className="mt-2 text-[13px] font-black text-faith-ink dark:text-slate-100">{selectedResult?.title}</div>
+                      <div className="mt-1 text-[12px] leading-relaxed text-faith-slate">{selectedResult?.summary}</div>
                     </div>
 
-                    <div className="rounded-[18px] border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 p-3 transition-colors">
-                      <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-slate-400 dark:text-slate-500">Cross-object hooks</div>
+                    <div className="rounded-[18px] border border-faith-line dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
+                      <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">Cross-object hooks</div>
                       <div className="mt-2 flex flex-wrap gap-2">
                         <Pill>Live Builder</Pill>
                         <Pill>Stream-to-Platforms</Pill>
@@ -862,27 +862,27 @@ export default function FHP123QACenter() {
             <Card title="Issue workbench" subtitle="Use the selected issue as the single source of truth for fixing and documenting launch problems.">
               {selectedResult ? (
                 <div className="space-y-3">
-                  <div className="rounded-[22px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3 transition-colors">
+                  <div className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
                     <div className="flex flex-wrap items-center gap-2">
                       <Pill tone={severityTone(selectedResult.severity)}>{selectedResult.severity}</Pill>
                       <Pill tone={stateTone(selectedResult.state)}>{selectedResult.state}</Pill>
                       <Pill>{selectedResult.owner}</Pill>
                     </div>
-                    <div className="mt-3 text-[15px] font-black text-slate-900 dark:text-slate-100">{selectedResult.title}</div>
-                    <div className="mt-1 text-[12px] text-slate-500 dark:text-slate-400">{selectedResult.surface} Â· {selectedResult.destination}</div>
+                    <div className="mt-3 text-[15px] font-black text-faith-ink dark:text-slate-100">{selectedResult.title}</div>
+                    <div className="mt-1 text-[12px] text-faith-slate">{selectedResult.surface} · {selectedResult.destination}</div>
                   </div>
 
-                  <div className="rounded-[22px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3 transition-colors">
-                    <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-slate-400 dark:text-slate-500">Suggested fix</div>
-                    <div className="mt-2 text-[12px] leading-relaxed text-slate-600 dark:text-slate-400">{selectedResult.suggestedFix}</div>
+                  <div className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
+                    <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">Suggested fix</div>
+                    <div className="mt-2 text-[12px] leading-relaxed text-faith-slate">{selectedResult.suggestedFix}</div>
                   </div>
 
-                  <div className="rounded-[22px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3 transition-colors">
-                    <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-slate-400 dark:text-slate-500">Next steps</div>
+                  <div className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
+                    <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">Next steps</div>
                     <div className="mt-2 space-y-2">
                       {selectedResult.steps.map((step, idx) => (
-                        <div key={step} className="flex items-start gap-2 text-[12px] text-slate-600 dark:text-slate-400">
-                          <div className="mt-0.5 h-5 w-5 rounded-full border border-slate-200 dark:border-slate-700 text-[11px] font-black flex items-center justify-center">{idx + 1}</div>
+                        <div key={step} className="flex items-start gap-2 text-[12px] text-faith-slate">
+                          <div className="mt-0.5 h-5 w-5 rounded-full border border-faith-line dark:border-slate-700 text-[11px] font-black flex items-center justify-center">{idx + 1}</div>
                           <div className="flex-1 leading-relaxed">{step}</div>
                         </div>
                       ))}
@@ -905,21 +905,21 @@ export default function FHP123QACenter() {
               <table className="min-w-full text-left border-separate border-spacing-y-2">
                 <thead>
                   <tr>
-                    <th className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-slate-400 dark:text-slate-500 px-3">Surface</th>
-                    <th className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-slate-400 dark:text-slate-500 px-3">Scope</th>
-                    <th className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-slate-400 dark:text-slate-500 px-3">Desktop</th>
-                    <th className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-slate-400 dark:text-slate-500 px-3">Mobile</th>
-                    <th className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-slate-400 dark:text-slate-500 px-3">Child-safe</th>
-                    <th className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-slate-400 dark:text-slate-500 px-3">Status</th>
+                    <th className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate px-3">Surface</th>
+                    <th className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate px-3">Scope</th>
+                    <th className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate px-3">Desktop</th>
+                    <th className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate px-3">Mobile</th>
+                    <th className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate px-3">Child-safe</th>
+                    <th className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate px-3">Status</th>
                   </tr>
                 </thead>
                 <tbody>
                   {scopedCoverage.map((row) => (
-                    <tr key={row.id} className="rounded-[22px] bg-slate-50 dark:bg-slate-950">
+                    <tr key={row.id} className="rounded-[22px] bg-[var(--fh-surface)] dark:bg-slate-950">
                       <td className="px-3 py-3 rounded-l-[18px]">
-                        <div className="text-[13px] font-black text-slate-900 dark:text-slate-100">{row.label}</div>
+                        <div className="text-[13px] font-black text-faith-ink dark:text-slate-100">{row.label}</div>
                       </td>
-                      <td className="px-3 py-3 text-[12px] text-slate-500 dark:text-slate-400">{row.scope}</td>
+                      <td className="px-3 py-3 text-[12px] text-faith-slate">{row.scope}</td>
                       <td className="px-3 py-3"><CoverageBadge value={row.desktop} /></td>
                       <td className="px-3 py-3"><CoverageBadge value={row.mobile} /></td>
                       <td className="px-3 py-3">{row.childSafe ? <Pill tone="good">Protected</Pill> : <Pill>Standard</Pill>}</td>
@@ -935,6 +935,7 @@ export default function FHP123QACenter() {
     </div>
   );
 }
+
 
 
 

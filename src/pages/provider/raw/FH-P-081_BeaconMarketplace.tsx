@@ -1,4 +1,4 @@
-Ôªø// @ts-nocheck
+// @ts-nocheck
 "use client";
 
 import React, { useMemo, useState } from "react";
@@ -29,15 +29,15 @@ import {
 } from "lucide-react";
 
 /**
- * Provider ‚Äî Beacon Marketplace
+ * Provider ó Beacon Marketplace
  * --------------------------------------
  * Premium placement and audience-planning surface for Provider Workspace.
  *
  * Design goals
  * - Adapt the creator/e-commerce marketplace rhythm into a Promotiontional inventory experience.
  * - Use EVzone Green as the primary accent and EVzone Orange as the secondary accent.
- * - Keep the page strategic, visual, and ‚Äúmedia-plan first‚Äù rather than feeling like a hidden backend form.
- * - Preserve an embedded preview workflow: inventory ‚Üí placement preview ‚Üí media plan ‚Üí mobile preview.
+ * - Keep the page strategic, visual, and ìmedia-plan firstî rather than feeling like a hidden backend form.
+ * - Preserve an embedded preview workflow: inventory ? placement preview ? media plan ? mobile preview.
  *
  * Notes
  * - Self-contained mock TSX page. Replace routing, persistence, pricing, and recommendation logic during integration.
@@ -81,7 +81,7 @@ function fmtInt(n: number) {
   return Intl.NumberFormat(undefined, { maximumFractionDigits: 0 }).format(n);
 }
 
-function fmtCurrency(n: number, currency = "¬£") {
+function fmtCurrency(n: number, currency = "£") {
   return `${currency}${Intl.NumberFormat(undefined, {
     maximumFractionDigits: 0,
   }).format(n)}`;
@@ -163,8 +163,8 @@ const AUDIENCE_PACKAGES: AudiencePackage[] = [
   {
     id: "pkg_local_worship",
     name: "Local Worship Momentum",
-    subtitle: "28k‚Äì44k matched users",
-    reachRange: "28k‚Äì44k",
+    subtitle: "28kñ44k matched users",
+    reachRange: "28kñ44k",
     seasonalityNote: "Strong around weekly services and city-specific moments.",
     pricingNote: "Efficient for local ministries with strong proximity intent.",
     performanceRange: "Best for live attendance",
@@ -174,8 +174,8 @@ const AUDIENCE_PACKAGES: AudiencePackage[] = [
   {
     id: "pkg_youth_campus",
     name: "Youth & Campus Energy",
-    subtitle: "18k‚Äì32k matched users",
-    reachRange: "18k‚Äì32k",
+    subtitle: "18kñ32k matched users",
+    reachRange: "18kñ32k",
     seasonalityNote: "Peaks during campus launch, weekends, and youth nights.",
     pricingNote: "Best value when paired with clips or countdown surfaces.",
     performanceRange: "Best for replay growth",
@@ -185,8 +185,8 @@ const AUDIENCE_PACKAGES: AudiencePackage[] = [
   {
     id: "pkg_families_community",
     name: "Families & Community",
-    subtitle: "22k‚Äì38k matched users",
-    reachRange: "22k‚Äì38k",
+    subtitle: "22kñ38k matched users",
+    reachRange: "22kñ38k",
     seasonalityNote: "Performs well around events, prayer nights, and giving campaigns.",
     pricingNote: "Balanced reach and conversion quality.",
     performanceRange: "Best for event and giving campaigns",
@@ -199,21 +199,21 @@ const INVENTORY_SEED: InventoryPlacement[] = [
   {
     id: "pl_home_feed_spotlight",
     title: "Provider Home Feed Spotlight",
-    subtitle: "Feed inventory ¬∑ Home feed",
+    subtitle: "Feed inventory ∑ Home feed",
     type: "Home feed",
     objective: "Awareness",
     accent: "green",
     heroImageUrl: HERO_HOME_FEED,
     reach: 52000,
     price: 420,
-    ctrRange: "4.2%‚Äì5.1%",
+    ctrRange: "4.2%ñ5.1%",
     expectedFit: "Best for linked Live Sessions and replay launches.",
     seasonality: "Performs strongly on mid-week evenings and Sundays.",
     availability: "Open",
     pricingLogic: "Flat package + priority rotation.",
     surfaces: ["Home feed", "Followed tab", "Discovery rail"],
-    formats: ["Static 1200√ó628", "Square 1080√ó1080", "Vertical 1080√ó1920"],
-    videoLengths: ["6‚Äì15 sec", "15‚Äì20 sec"],
+    formats: ["Static 1200◊628", "Square 1080◊1080", "Vertical 1080◊1920"],
+    videoLengths: ["6ñ15 sec", "15ñ20 sec"],
     subtitleExpectation: "Recommended for motion creative.",
     safeAreaRule: "Keep primary text within central 80%.",
     ctaRule: "One primary CTA. Avoid stacked donation + event asks.",
@@ -228,21 +228,21 @@ const INVENTORY_SEED: InventoryPlacement[] = [
   {
     id: "pl_live_countdown_rail",
     title: "Live Sessions Countdown Rail",
-    subtitle: "Live surface ¬∑ Countdown rail",
+    subtitle: "Live surface ∑ Countdown rail",
     type: "Live surface",
     objective: "Live attendance",
     accent: "orange",
     heroImageUrl: HERO_COUNTDOWN,
     reach: 34000,
     price: 560,
-    ctrRange: "5.1%‚Äì6.3%",
+    ctrRange: "5.1%ñ6.3%",
     expectedFit: "Best for same-day pushes and start-now reminders.",
     seasonality: "High-demand around weekend service clusters.",
     availability: "Limited",
     pricingLogic: "Scarce premium slots during high-traffic hours.",
     surfaces: ["Live hub", "Countdown cards", "Session launch rail"],
-    formats: ["Static 1200√ó628", "Vertical 1080√ó1920"],
-    videoLengths: ["6‚Äì12 sec"],
+    formats: ["Static 1200◊628", "Vertical 1080◊1920"],
+    videoLengths: ["6ñ12 sec"],
     subtitleExpectation: "Required for vertical video variants.",
     safeAreaRule: "Reserve lower 20% for countdown and action bar.",
     ctaRule: "CTA must point directly to live session or RSVP surface.",
@@ -257,21 +257,21 @@ const INVENTORY_SEED: InventoryPlacement[] = [
   {
     id: "pl_replay_shelf_spotlight",
     title: "Replay Shelf Spotlight",
-    subtitle: "Replay shelf ¬∑ Replay spotlight",
+    subtitle: "Replay shelf ∑ Replay spotlight",
     type: "Replay shelf",
     objective: "Replay growth",
     accent: "navy",
     heroImageUrl: HERO_REPLAY,
     reach: 28500,
     price: 390,
-    ctrRange: "3.8%‚Äì4.9%",
+    ctrRange: "3.8%ñ4.9%",
     expectedFit: "Best for clips and replay packages with a clear next-step CTA.",
     seasonality: "Good always-on inventory outside peak live windows.",
     availability: "Open",
     pricingLogic: "Efficient evergreen replay package pricing.",
     surfaces: ["Replay shelves", "Continue watching", "Suggested watch"],
-    formats: ["Static 1200√ó628", "Square 1080√ó1080", "Vertical 1080√ó1920"],
-    videoLengths: ["10‚Äì20 sec"],
+    formats: ["Static 1200◊628", "Square 1080◊1080", "Vertical 1080◊1920"],
+    videoLengths: ["10ñ20 sec"],
     subtitleExpectation: "Recommended for all motion placements.",
     safeAreaRule: "Allow room for progress ring and replay metadata chrome.",
     ctaRule: "CTA can drive replay, clip, Beacon follow-up, or giving tie-in.",
@@ -286,21 +286,21 @@ const INVENTORY_SEED: InventoryPlacement[] = [
   {
     id: "pl_giving_momentum_card",
     title: "Giving Momentum Card",
-    subtitle: "Giving spot ¬∑ Cause momentum",
+    subtitle: "Giving spot ∑ Cause momentum",
     type: "Giving spot",
     objective: "Giving conversion",
     accent: "green",
     heroImageUrl: HERO_GIVING,
     reach: 24000,
     price: 460,
-    ctrRange: "4.5%‚Äì5.4%",
+    ctrRange: "4.5%ñ5.4%",
     expectedFit: "Works best for active funds and charity crowdfunds with social proof.",
     seasonality: "Strong during emergency response and end-of-month giving pushes.",
     availability: "Open",
     pricingLogic: "Cause package pricing with mission impact overlays.",
     surfaces: ["Giving hub", "Campaign cards", "Cause moments"],
-    formats: ["Static 1200√ó628", "Square 1080√ó1080"],
-    videoLengths: ["8‚Äì15 sec"],
+    formats: ["Static 1200◊628", "Square 1080◊1080"],
+    videoLengths: ["8ñ15 sec"],
     subtitleExpectation: "Recommended when using testimonial or field footage.",
     safeAreaRule: "Reserve right side for progress and donor-count modules.",
     ctaRule: "Donation CTA must use one clear ask with transparent destination copy.",
@@ -315,21 +315,21 @@ const INVENTORY_SEED: InventoryPlacement[] = [
   {
     id: "pl_event_discovery_pulse",
     title: "Event Discovery Pulse",
-    subtitle: "Event discovery ¬∑ Registration lift",
+    subtitle: "Event discovery ∑ Registration lift",
     type: "Event discovery",
     objective: "Event registration",
     accent: "orange",
     heroImageUrl: HERO_EVENTS,
     reach: 30500,
     price: 510,
-    ctrRange: "4.0%‚Äì5.0%",
+    ctrRange: "4.0%ñ5.0%",
     expectedFit: "Ideal for conferences, retreats, baptisms, and one-off gatherings.",
     seasonality: "Higher demand around conferences and seasonal gatherings.",
     availability: "High demand",
     pricingLogic: "Timed packages around calendar windows and destination saturation.",
     surfaces: ["Event discovery", "Registration feeds", "Related events"],
-    formats: ["Static 1200√ó628", "Square 1080√ó1080", "Vertical 1080√ó1920"],
-    videoLengths: ["8‚Äì20 sec"],
+    formats: ["Static 1200◊628", "Square 1080◊1080", "Vertical 1080◊1920"],
+    videoLengths: ["8ñ20 sec"],
     subtitleExpectation: "Required for audio-led event teaser clips.",
     safeAreaRule: "Keep bottom 22% clear for date and venue chips.",
     ctaRule: "CTA must point to registration or event detail page.",
@@ -344,21 +344,21 @@ const INVENTORY_SEED: InventoryPlacement[] = [
   {
     id: "pl_clip_carousel_takeover",
     title: "Clip Carousel Takeover",
-    subtitle: "Premium takeover ¬∑ Discovery burst",
+    subtitle: "Premium takeover ∑ Discovery burst",
     type: "Premium takeover",
     objective: "Product discovery",
     accent: "navy",
     heroImageUrl: HERO_CLIP,
     reach: 68000,
     price: 980,
-    ctrRange: "5.4%‚Äì7.1%",
+    ctrRange: "5.4%ñ7.1%",
     expectedFit: "Best for short-form discovery bursts and cross-object promotion.",
     seasonality: "Premium inventory tied to key platform traffic windows.",
     availability: "Reserved",
     pricingLogic: "Premium high-share-of-voice booking.",
     surfaces: ["Discovery hero", "Clip carousel", "Swipe stack"],
-    formats: ["Vertical 1080√ó1920", "Square 1080√ó1080"],
-    videoLengths: ["6‚Äì12 sec", "12‚Äì20 sec"],
+    formats: ["Vertical 1080◊1920", "Square 1080◊1080"],
+    videoLengths: ["6ñ12 sec", "12ñ20 sec"],
     subtitleExpectation: "Mandatory for vertical video placements.",
     safeAreaRule: "Keep all key text above lower CTA shelf and away from edge rails.",
     ctaRule: "One CTA only. Product discovery or replay push recommended.",
@@ -418,7 +418,7 @@ function Pill({
             ? "border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-300"
             : tone === "warn"
               ? "border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-900/20 text-amber-800 dark:text-amber-300"
-              : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300";
+              : "border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 text-slate-700 dark:text-slate-300";
   return (
     <span
       className={cx(
@@ -445,7 +445,7 @@ function SoftButton({
       type="button"
       onClick={onClick}
       className={cx(
-        "inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-2 text-[12px] font-bold text-slate-800 dark:text-slate-100 transition-colors hover:bg-slate-50 dark:hover:bg-slate-700",
+        "inline-flex items-center justify-center gap-2 rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 px-4 py-2 text-[12px] font-bold text-slate-800 dark:text-slate-100 transition-colors hover:bg-[var(--fh-surface)] dark:hover:bg-slate-700",
         className,
       )}
     >
@@ -497,17 +497,17 @@ function SectionCard({
   return (
     <div
       className={cx(
-        "rounded-[28px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-sm transition-colors",
+        "rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-5 shadow-soft transition-colors",
         className,
       )}
     >
       <div className="flex items-start justify-between gap-3">
         <div>
-          <div className="text-[16px] font-extrabold text-slate-900 dark:text-slate-100">
+          <div className="text-[16px] font-extrabold text-faith-ink dark:text-slate-100">
             {title}
           </div>
           {subtitle ? (
-            <div className="mt-1 max-w-[560px] text-[12px] leading-relaxed text-slate-500 dark:text-slate-400">
+            <div className="mt-1 max-w-[560px] text-[12px] leading-relaxed text-faith-slate">
               {subtitle}
             </div>
           ) : null}
@@ -556,7 +556,7 @@ function PreviewShell({
           >
             Beacon
           </span>
-          <span className="rounded-full bg-white/14 px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-white/90">
+          <span className="rounded-full bg-[var(--fh-surface-bg)]/14 px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-white/90">
             {placement.type}
           </span>
           {audiencePackage ? (
@@ -572,7 +572,7 @@ function PreviewShell({
           Hope & Healing this Friday
         </div>
         <div className="mt-2 max-w-[520px] text-[12px] leading-relaxed text-white/80">
-          New live session opens soon ¬∑ set a reminder or start with the replay trail.
+          New live session opens soon ∑ set a reminder or start with the replay trail.
         </div>
         <div className="mt-4 flex items-center gap-2">
           <span
@@ -581,7 +581,7 @@ function PreviewShell({
           >
             Open session
           </span>
-          <span className="inline-flex items-center rounded-full bg-white/18 px-4 py-2 text-[12px] font-bold text-white">
+          <span className="inline-flex items-center rounded-full bg-[var(--fh-surface-bg)]/18 px-4 py-2 text-[12px] font-bold text-white">
             View details
           </span>
         </div>
@@ -603,15 +603,15 @@ function PhonePreview({
   return (
     <div className="mx-auto w-full max-w-[220px]">
       <div className="rounded-[36px] bg-slate-950 p-3 shadow-[0_18px_60px_rgba(0,0,0,0.32)]">
-        <div className="relative overflow-hidden rounded-[28px] bg-white dark:bg-slate-900">
+        <div className="relative overflow-hidden rounded-[28px] bg-[var(--fh-surface-bg)] dark:bg-slate-900">
           <div className="absolute left-1/2 top-0 z-20 h-5 w-16 -translate-x-1/2 rounded-b-2xl bg-black" />
-          <div className="h-[208px] overflow-hidden bg-slate-50 dark:bg-slate-950">
+          <div className="h-[208px] overflow-hidden bg-[var(--fh-surface)] dark:bg-slate-950">
             <div className="px-3 pt-6 pb-2">
               <div className="inline-flex rounded-full bg-[#f77f00] px-3 py-1 text-[10px] font-extrabold text-white">
                 Beacon
               </div>
             </div>
-            <div className="mx-3 overflow-hidden rounded-[24px] bg-white shadow-sm ring-1 ring-slate-100">
+            <div className="mx-3 overflow-hidden rounded-[24px] bg-[var(--fh-surface-bg)] shadow-soft ring-1 ring-slate-100">
               <div className="relative h-[82px] overflow-hidden">
                 <img
                   src={placement.heroImageUrl}
@@ -620,18 +620,18 @@ function PhonePreview({
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-[#f77f00]/80 to-[#0b1d49]/35" />
                 <div className="absolute inset-x-3 bottom-3 text-[11px] font-extrabold leading-tight text-white line-clamp-2">
-                  Reserve your place for Friday‚Äôs live gathering.
+                  Reserve your place for Fridayís live gathering.
                 </div>
               </div>
               <div className="p-3">
-                <div className="text-[10px] uppercase tracking-wide text-slate-400">
+                <div className="text-[10px] uppercase tracking-wide text-faith-slate">
                   Audience package
                 </div>
-                <div className="mt-1 text-[12px] font-extrabold text-slate-900">
+                <div className="mt-1 text-[12px] font-extrabold text-faith-ink">
                   {audiencePackage?.name || "Families & Community"}
                 </div>
-                <div className="mt-1 text-[10px] text-slate-500">
-                  CTR 4.5% ¬∑ Reach 31.8k
+                <div className="mt-1 text-[10px] text-faith-slate">
+                  CTR 4.5% ∑ Reach 31.8k
                 </div>
               </div>
             </div>
@@ -659,13 +659,13 @@ function PlacementDrawer({
   return (
     <div className="fixed inset-0 z-[120]">
       <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose} />
-      <div className="absolute right-0 top-0 h-full w-full max-w-[760px] overflow-hidden border-l border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 shadow-2xl transition-colors">
-        <div className="flex items-start justify-between gap-3 border-b border-slate-200 dark:border-slate-800 px-5 py-4">
+      <div className="absolute right-0 top-0 h-full w-full max-w-[760px] overflow-hidden border-l border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 shadow-2xl transition-colors">
+        <div className="flex items-start justify-between gap-3 border-b border-faith-line dark:border-slate-800 px-5 py-4">
           <div className="min-w-0">
-            <div className="text-[15px] font-extrabold text-slate-900 dark:text-slate-100">
+            <div className="text-[15px] font-extrabold text-faith-ink dark:text-slate-100">
               Placement detail
             </div>
-            <div className="mt-1 text-[12px] text-slate-500 dark:text-slate-400">
+            <div className="mt-1 text-[12px] text-faith-slate">
               Review performance examples, policy notes, and transfer to Beacon Builder.
             </div>
           </div>
@@ -680,20 +680,20 @@ function PlacementDrawer({
             >
               <PreviewShell placement={placement} audiencePackage={audiencePackage} />
               <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 p-3">
-                  <div className="text-[11px] uppercase tracking-wide text-slate-400">Historical win</div>
-                  <div className="mt-2 text-[13px] font-bold text-slate-900 dark:text-slate-100">
+                <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-3">
+                  <div className="text-[11px] uppercase tracking-wide text-faith-slate">Historical win</div>
+                  <div className="mt-2 text-[13px] font-bold text-faith-ink dark:text-slate-100">
                     {placement.historicalWin}
                   </div>
                 </div>
-                <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 p-3">
-                  <div className="text-[11px] uppercase tracking-wide text-slate-400">Pricing logic</div>
-                  <div className="mt-2 text-[13px] font-bold text-slate-900 dark:text-slate-100">
+                <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-3">
+                  <div className="text-[11px] uppercase tracking-wide text-faith-slate">Pricing logic</div>
+                  <div className="mt-2 text-[13px] font-bold text-faith-ink dark:text-slate-100">
                     {placement.pricingLogic}
                   </div>
                 </div>
-                <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 p-3 sm:col-span-2">
-                  <div className="text-[11px] uppercase tracking-wide text-slate-400">Policy note</div>
+                <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-3 sm:col-span-2">
+                  <div className="text-[11px] uppercase tracking-wide text-faith-slate">Policy note</div>
                   <div className="mt-2 text-[13px] leading-relaxed text-slate-700 dark:text-slate-300">
                     {placement.policyNote}
                   </div>
@@ -711,21 +711,21 @@ function PlacementDrawer({
               </SectionCard>
 
               <SectionCard title="Creative and CTA rules">
-                <div className="space-y-3 text-[12px] leading-relaxed text-slate-600 dark:text-slate-400">
+                <div className="space-y-3 text-[12px] leading-relaxed text-faith-slate">
                   <div>
-                    <div className="font-bold text-slate-900 dark:text-slate-100">Video length</div>
-                    <div className="mt-1">{placement.videoLengths.join(" ¬∑ ")}</div>
+                    <div className="font-bold text-faith-ink dark:text-slate-100">Video length</div>
+                    <div className="mt-1">{placement.videoLengths.join(" ∑ ")}</div>
                   </div>
                   <div>
-                    <div className="font-bold text-slate-900 dark:text-slate-100">Subtitle expectation</div>
+                    <div className="font-bold text-faith-ink dark:text-slate-100">Subtitle expectation</div>
                     <div className="mt-1">{placement.subtitleExpectation}</div>
                   </div>
                   <div>
-                    <div className="font-bold text-slate-900 dark:text-slate-100">Safe area</div>
+                    <div className="font-bold text-faith-ink dark:text-slate-100">Safe area</div>
                     <div className="mt-1">{placement.safeAreaRule}</div>
                   </div>
                   <div>
-                    <div className="font-bold text-slate-900 dark:text-slate-100">CTA rule</div>
+                    <div className="font-bold text-faith-ink dark:text-slate-100">CTA rule</div>
                     <div className="mt-1">{placement.ctaRule}</div>
                   </div>
                 </div>
@@ -762,7 +762,7 @@ export default function BeaconMarketplacePage() {
   const [search, setSearch] = useState("");
   const [selectedPlacementId, setSelectedPlacementId] = useState<string>(INVENTORY_SEED[0].id);
   const [selectedPackageId, setSelectedPackageId] = useState<string>(AUDIENCE_PACKAGES[0].id);
-  const [mediaPlanName, setMediaPlanName] = useState("Beacon Marketplace Plan ¬∑ Weekend Launch");
+  const [mediaPlanName, setMediaPlanName] = useState("Beacon Marketplace Plan ∑ Weekend Launch");
   const [mediaPlan, setMediaPlan] = useState<MediaPlanPlacement[]>([
     { placementId: "pl_home_feed_spotlight", packageId: "pkg_local_worship" },
     { placementId: "pl_replay_shelf_spotlight", packageId: "pkg_families_community" },
@@ -816,7 +816,7 @@ export default function BeaconMarketplacePage() {
   const projectedCtr = useMemo(() => {
     if (!mediaPlanRows.length) return 0;
     return mediaPlanRows.reduce((sum, row) => {
-      const range = row.placement.ctrRange.split("‚Äì")[0].replace("%", "");
+      const range = row.placement.ctrRange.split("ñ")[0].replace("%", "");
       return sum + Number(range || 0);
     }, 0) / mediaPlanRows.length;
   }, [mediaPlanRows]);
@@ -896,13 +896,13 @@ export default function BeaconMarketplacePage() {
                 right={<Pill>{filteredInventory.length} results</Pill>}
               >
                 <div className="space-y-3">
-                  <div className="flex items-center gap-2 rounded-[22px] border border-slate-200 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-900 px-4 py-3 transition-colors">
-                    <Search className="h-4 w-4 text-slate-400" />
+                  <div className="flex items-center gap-2 rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)]/80 dark:bg-slate-900 px-4 py-3 transition-colors">
+                    <Search className="h-4 w-4 text-faith-slate" />
                     <input
                       value={search}
                       onChange={(e) => setSearch(e.target.value)}
                       placeholder="Search placements, objectives, or surfaces"
-                      className="w-full bg-transparent text-[13px] font-semibold text-slate-900 outline-none placeholder:text-slate-400 dark:text-slate-100"
+                      className="w-full bg-transparent text-[13px] font-semibold text-faith-ink outline-none placeholder:text-faith-slate dark:text-slate-100"
                     />
                   </div>
 
@@ -927,7 +927,7 @@ export default function BeaconMarketplacePage() {
                             "rounded-full border px-3 py-1.5 text-[11px] font-bold transition-colors",
                             active
                               ? "border-[rgba(247,127,0,0.25)] bg-[rgba(247,127,0,0.10)] text-[#f77f00]"
-                              : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300",
+                              : "border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 text-faith-slate dark:text-slate-300",
                           )}
                         >
                           {tag}
@@ -953,7 +953,7 @@ export default function BeaconMarketplacePage() {
                             "w-full rounded-[26px] border p-3 text-left transition-colors",
                             active
                               ? "border-[rgba(3,205,140,0.35)] bg-[rgba(3,205,140,0.08)]"
-                              : "border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800",
+                              : "border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800",
                           )}
                         >
                           <div className="flex items-start gap-3">
@@ -970,10 +970,10 @@ export default function BeaconMarketplacePage() {
                             <div className="min-w-0 flex-1">
                               <div className="flex items-start justify-between gap-3">
                                 <div>
-                                  <div className="text-[13px] font-extrabold text-slate-900 dark:text-slate-100">
+                                  <div className="text-[13px] font-extrabold text-faith-ink dark:text-slate-100">
                                     {placement.title}
                                   </div>
-                                  <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
+                                  <div className="mt-1 text-[11px] text-faith-slate">
                                     {placement.subtitle}
                                   </div>
                                 </div>
@@ -983,20 +983,20 @@ export default function BeaconMarketplacePage() {
                               </div>
                               <div className="mt-3 grid grid-cols-3 gap-3 text-[11px]">
                                 <div>
-                                  <div className="uppercase tracking-wide text-slate-400">Reach</div>
-                                  <div className="mt-1 text-[12px] font-extrabold text-slate-900 dark:text-slate-100">
+                                  <div className="uppercase tracking-wide text-faith-slate">Reach</div>
+                                  <div className="mt-1 text-[12px] font-extrabold text-faith-ink dark:text-slate-100">
                                     {fmtInt(placement.reach)}
                                   </div>
                                 </div>
                                 <div>
-                                  <div className="uppercase tracking-wide text-slate-400">Price</div>
-                                  <div className="mt-1 text-[12px] font-extrabold text-slate-900 dark:text-slate-100">
+                                  <div className="uppercase tracking-wide text-faith-slate">Price</div>
+                                  <div className="mt-1 text-[12px] font-extrabold text-faith-ink dark:text-slate-100">
                                     {fmtCurrency(placement.price)}
                                   </div>
                                 </div>
                                 <div>
-                                  <div className="uppercase tracking-wide text-slate-400">CTR</div>
-                                  <div className="mt-1 text-[12px] font-extrabold text-slate-900 dark:text-slate-100">
+                                  <div className="uppercase tracking-wide text-faith-slate">CTR</div>
+                                  <div className="mt-1 text-[12px] font-extrabold text-faith-ink dark:text-slate-100">
                                     {placement.ctrRange}
                                   </div>
                                 </div>
@@ -1049,7 +1049,7 @@ export default function BeaconMarketplacePage() {
                         "rounded-[24px] border p-4 text-left transition-colors",
                         active
                           ? "border-[rgba(3,205,140,0.35)] bg-[rgba(3,205,140,0.08)]"
-                          : "border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900",
+                          : "border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900",
                       )}
                     >
                       <div
@@ -1062,10 +1062,10 @@ export default function BeaconMarketplacePage() {
                       >
                         {pkg.name}
                       </div>
-                      <div className="mt-3 text-[13px] font-extrabold text-slate-900 dark:text-slate-100">
+                      <div className="mt-3 text-[13px] font-extrabold text-faith-ink dark:text-slate-100">
                         {pkg.subtitle}
                       </div>
-                      <div className="mt-1 text-[12px] text-slate-500 dark:text-slate-400">
+                      <div className="mt-1 text-[12px] text-faith-slate">
                         {pkg.performanceRange}
                       </div>
                     </button>
@@ -1080,7 +1080,7 @@ export default function BeaconMarketplacePage() {
                 subtitle="Preview selected inventory like a premium merchandising experience before handing it into Beacon Builder."
                 right={
                   <div className="flex items-center gap-2">
-                    <div className="inline-flex rounded-full border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-1">
+                    <div className="inline-flex rounded-full border border-faith-line dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-900 p-1">
                       <button
                         type="button"
                         onClick={() => setPreviewMode("desktop")}
@@ -1088,7 +1088,7 @@ export default function BeaconMarketplacePage() {
                           "rounded-full px-3 py-1.5 text-[11px] font-extrabold transition-colors",
                           previewMode === "desktop"
                             ? "text-white"
-                            : "text-slate-600 dark:text-slate-300",
+                            : "text-faith-slate dark:text-slate-300",
                         )}
                         style={previewMode === "desktop" ? { background: EV_GREEN } : undefined}
                       >
@@ -1101,7 +1101,7 @@ export default function BeaconMarketplacePage() {
                           "rounded-full px-3 py-1.5 text-[11px] font-extrabold transition-colors",
                           previewMode === "mobile"
                             ? "text-white"
-                            : "text-slate-600 dark:text-slate-300",
+                            : "text-faith-slate dark:text-slate-300",
                         )}
                         style={previewMode === "mobile" ? { background: EV_ORANGE } : undefined}
                       >
@@ -1131,12 +1131,12 @@ export default function BeaconMarketplacePage() {
                     ].map((row) => (
                       <div
                         key={row.label}
-                        className="rounded-[20px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 px-4 py-3"
+                        className="rounded-[20px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 px-4 py-3"
                       >
-                        <div className="text-[10px] uppercase tracking-wide text-slate-400">
+                        <div className="text-[10px] uppercase tracking-wide text-faith-slate">
                           {row.label}
                         </div>
-                        <div className="mt-1 text-[14px] font-extrabold text-slate-900 dark:text-slate-100">
+                        <div className="mt-1 text-[14px] font-extrabold text-faith-ink dark:text-slate-100">
                           {row.value}
                         </div>
                       </div>
@@ -1151,12 +1151,12 @@ export default function BeaconMarketplacePage() {
                   subtitle="Combine placements, compare expected outcomes, save plan combinations, and hand them into Beacon Builder."
                 >
                   <div className="space-y-3">
-                    <div className="rounded-[20px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 px-4 py-3">
-                      <div className="text-[11px] uppercase tracking-wide text-slate-400">Plan name</div>
+                    <div className="rounded-[20px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 px-4 py-3">
+                      <div className="text-[11px] uppercase tracking-wide text-faith-slate">Plan name</div>
                       <input
                         value={mediaPlanName}
                         onChange={(e) => setMediaPlanName(e.target.value)}
-                        className="mt-2 w-full bg-transparent text-[13px] font-extrabold text-slate-900 outline-none dark:text-slate-100"
+                        className="mt-2 w-full bg-transparent text-[13px] font-extrabold text-faith-ink outline-none dark:text-slate-100"
                       />
                     </div>
 
@@ -1164,14 +1164,14 @@ export default function BeaconMarketplacePage() {
                       {mediaPlanRows.map(({ placement, audiencePackage }) => (
                         <div
                           key={`${placement.id}_${audiencePackage.id}`}
-                          className="rounded-[24px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4"
+                          className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4"
                         >
                           <div className="flex items-start justify-between gap-3">
                             <div>
-                              <div className="text-[14px] font-extrabold text-slate-900 dark:text-slate-100">
+                              <div className="text-[14px] font-extrabold text-faith-ink dark:text-slate-100">
                                 {placement.title}
                               </div>
-                              <div className="mt-1 text-[12px] text-slate-500 dark:text-slate-400">
+                              <div className="mt-1 text-[12px] text-faith-slate">
                                 {placement.reach >= 1000 ? `${Math.round(placement.reach / 100) / 10}k projected reach` : `${placement.reach} projected reach`}
                               </div>
                             </div>
@@ -1180,7 +1180,7 @@ export default function BeaconMarketplacePage() {
                               <button
                                 type="button"
                                 onClick={() => removePlanRow(placement.id, audiencePackage.id)}
-                                className="rounded-full border border-slate-200 px-3 py-1 text-[11px] font-bold text-slate-500 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-800"
+                                className="rounded-full border border-faith-line px-3 py-1 text-[11px] font-bold text-faith-slate transition-colors hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:hover:bg-slate-800"
                               >
                                 Remove
                               </button>
@@ -1199,12 +1199,12 @@ export default function BeaconMarketplacePage() {
                       ].map((metric) => (
                         <div
                           key={metric.label}
-                          className="rounded-[22px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 p-4"
+                          className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-4"
                         >
-                          <div className="text-[10px] uppercase tracking-wide text-slate-400">
+                          <div className="text-[10px] uppercase tracking-wide text-faith-slate">
                             {metric.label}
                           </div>
-                          <div className="mt-2 text-[20px] font-black text-slate-900 dark:text-slate-100">
+                          <div className="mt-2 text-[20px] font-black text-faith-ink dark:text-slate-100">
                             {metric.value}
                           </div>
                         </div>
@@ -1233,26 +1233,26 @@ export default function BeaconMarketplacePage() {
                       ))}
                     </div>
 
-                    <div className="space-y-4 text-[12px] leading-relaxed text-slate-600 dark:text-slate-400">
+                    <div className="space-y-4 text-[12px] leading-relaxed text-faith-slate">
                       <div>
-                        <div className="font-extrabold text-slate-900 dark:text-slate-100">Video length</div>
-                        <div className="mt-1">{selectedPlacement.videoLengths.join(" works best ¬∑ ")} works best</div>
+                        <div className="font-extrabold text-faith-ink dark:text-slate-100">Video length</div>
+                        <div className="mt-1">{selectedPlacement.videoLengths.join(" works best ∑ ")} works best</div>
                       </div>
                       <div>
-                        <div className="font-extrabold text-slate-900 dark:text-slate-100">Subtitle expectation</div>
+                        <div className="font-extrabold text-faith-ink dark:text-slate-100">Subtitle expectation</div>
                         <div className="mt-1">{selectedPlacement.subtitleExpectation}</div>
                       </div>
                       <div>
-                        <div className="font-extrabold text-slate-900 dark:text-slate-100">Safe area</div>
+                        <div className="font-extrabold text-faith-ink dark:text-slate-100">Safe area</div>
                         <div className="mt-1">{selectedPlacement.safeAreaRule}</div>
                       </div>
                       <div>
-                        <div className="font-extrabold text-slate-900 dark:text-slate-100">CTA rules</div>
+                        <div className="font-extrabold text-faith-ink dark:text-slate-100">CTA rules</div>
                         <div className="mt-1">{selectedPlacement.ctaRule}</div>
                       </div>
                     </div>
 
-                    <div className="rounded-[24px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 p-4 text-[12px] leading-relaxed text-slate-600 dark:text-slate-400">
+                    <div className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-4 text-[12px] leading-relaxed text-faith-slate">
                       Policy notes and performance examples are available in the placement detail drawer.
                     </div>
                   </div>
@@ -1275,7 +1275,7 @@ export default function BeaconMarketplacePage() {
                 <div className="space-y-3">
                   {calendarRows.map((row) => (
                     <div key={row.label} className="flex items-center justify-between gap-3">
-                      <div className="text-[13px] font-extrabold text-slate-900 dark:text-slate-100">
+                      <div className="text-[13px] font-extrabold text-faith-ink dark:text-slate-100">
                         {row.label}
                       </div>
                       <Pill tone={row.state === "High demand" ? "orange" : row.state === "Reserved" ? "navy" : "green"}>
@@ -1339,15 +1339,15 @@ export default function BeaconMarketplacePage() {
             ].map((tile) => (
               <div
                 key={tile.title}
-                className="rounded-[24px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 shadow-sm"
+                className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 shadow-soft"
               >
                 <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-[rgba(3,205,140,0.12)] text-[#03cd8c]">
                   <tile.icon className="h-5 w-5" />
                 </div>
-                <div className="mt-3 text-[14px] font-extrabold text-slate-900 dark:text-slate-100">
+                <div className="mt-3 text-[14px] font-extrabold text-faith-ink dark:text-slate-100">
                   {tile.title}
                 </div>
-                <div className="mt-2 text-[12px] leading-relaxed text-slate-500 dark:text-slate-400">
+                <div className="mt-2 text-[12px] leading-relaxed text-faith-slate">
                   {tile.body}
                 </div>
               </div>
@@ -1369,6 +1369,7 @@ export default function BeaconMarketplacePage() {
     </div>
   );
 }
+
 
 
 

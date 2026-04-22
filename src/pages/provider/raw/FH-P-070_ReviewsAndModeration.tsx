@@ -1,4 +1,4 @@
-Ôªø// @ts-nocheck
+// @ts-nocheck
 
 'use client';
 
@@ -31,7 +31,7 @@ import {
 } from 'lucide-react';
 
 /**
- * Provider ‚Äî Reviews & Moderation
+ * Provider ó Reviews & Moderation
  * ---------------------------------------
  * Premium trust-and-safety centre for Provider-side review response,
  * moderation case handling, risk pattern detection, and reputation recovery.
@@ -168,7 +168,7 @@ const reviewsSeed: ReviewRecord[] = [
   {
     id: 'RV-102',
     sourceType: 'Live Session',
-    sourceLabel: 'Sunday Encounter ¬∑ Live Session',
+    sourceLabel: 'Sunday Encounter ∑ Live Session',
     title: 'Audio dropped during the message',
     rating: 2,
     sentiment: 'Negative',
@@ -186,7 +186,7 @@ const reviewsSeed: ReviewRecord[] = [
   {
     id: 'RV-087',
     sourceType: 'Replay',
-    sourceLabel: 'Grace in Motion ¬∑ Replay',
+    sourceLabel: 'Grace in Motion ∑ Replay',
     title: 'The replay notes were very helpful',
     rating: 5,
     sentiment: 'Positive',
@@ -206,7 +206,7 @@ const reviewsSeed: ReviewRecord[] = [
   {
     id: 'RV-091',
     sourceType: 'Clip',
-    sourceLabel: 'Healing in 60 Seconds ¬∑ Clip',
+    sourceLabel: 'Healing in 60 Seconds ∑ Clip',
     title: 'Comments felt unsafe and unmoderated',
     rating: 1,
     sentiment: 'Negative',
@@ -226,7 +226,7 @@ const reviewsSeed: ReviewRecord[] = [
   {
     id: 'RV-074',
     sourceType: 'Institution',
-    sourceLabel: 'Institution Page ¬∑ Grace House Kampala',
+    sourceLabel: 'Institution Page ∑ Grace House Kampala',
     title: 'Warm welcome and clear service times',
     rating: 5,
     sentiment: 'Positive',
@@ -315,7 +315,7 @@ const casesSeed: ModerationCase[] = [
   {
     id: 'MC-198',
     type: 'Chat report',
-    sourceLabel: 'Sunday Encounter ¬∑ Live Session',
+    sourceLabel: 'Sunday Encounter ∑ Live Session',
     title: 'Prayer request queue flooded by spam links',
     urgency: 'High',
     owner: 'Moderation captain',
@@ -341,7 +341,7 @@ const casesSeed: ModerationCase[] = [
   {
     id: 'MC-181',
     type: 'Flagged clip',
-    sourceLabel: 'Healing in 60 Seconds ¬∑ Clip',
+    sourceLabel: 'Healing in 60 Seconds ∑ Clip',
     title: 'Context dispute on clipped testimony moment',
     urgency: 'Medium',
     owner: 'Content lead',
@@ -366,7 +366,7 @@ const casesSeed: ModerationCase[] = [
   {
     id: 'MC-166',
     type: 'Review abuse',
-    sourceLabel: 'Institution Page ¬∑ Grace House Kampala',
+    sourceLabel: 'Institution Page ∑ Grace House Kampala',
     title: 'Possible coordinated 1-star review brigade',
     urgency: 'High',
     owner: 'Trust lead',
@@ -440,7 +440,7 @@ const riskSignalsSeed: RiskSignal[] = [
   },
   {
     title: 'Response quality trend',
-    detail: 'Public response turnaround improved after templated approvals were enabled for 1‚Äì2 star reviews.',
+    detail: 'Public response turnaround improved after templated approvals were enabled for 1ñ2 star reviews.',
     value: '92% within SLA',
     trendLabel: 'Improving',
     tone: 'brand',
@@ -449,7 +449,7 @@ const riskSignalsSeed: RiskSignal[] = [
 
 const policySeed: PolicyItem[] = [
   {
-    title: '1‚Äì2 star review approval route',
+    title: '1ñ2 star review approval route',
     detail: 'Communications lead review required before public response goes live.',
     state: 'Active',
   },
@@ -538,9 +538,9 @@ function Pill({
         : tone === 'bad'
           ? 'bg-rose-50 text-rose-800 ring-rose-200 dark:bg-rose-500/10 dark:text-rose-400 dark:ring-rose-500/20'
           : tone === 'brand'
-            ? 'text-white shadow-sm ring-0'
+            ? 'text-white shadow-soft ring-0'
             : tone === 'accent'
-              ? 'text-white shadow-sm ring-0'
+              ? 'text-white shadow-soft ring-0'
               : 'bg-slate-100 text-slate-800 ring-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:ring-slate-700';
 
   return (
@@ -575,14 +575,14 @@ function Btn({
     'inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-2.5 text-sm font-bold transition focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed';
   const cls =
     tone === 'primary'
-      ? 'text-white hover:brightness-95 shadow-sm'
+      ? 'text-white hover:brightness-95 shadow-soft'
       : tone === 'accent'
-        ? 'text-white hover:brightness-95 shadow-sm'
+        ? 'text-white hover:brightness-95 shadow-soft'
         : tone === 'danger'
-          ? 'bg-rose-600 text-white hover:brightness-95 shadow-sm'
+          ? 'bg-rose-600 text-white hover:brightness-95 shadow-soft'
           : tone === 'ghost'
-            ? 'bg-transparent text-slate-900 dark:text-slate-50 hover:bg-slate-100 dark:hover:bg-slate-800'
-            : 'bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-50 ring-1 ring-slate-200 dark:ring-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 shadow-sm';
+            ? 'bg-transparent text-faith-ink dark:text-slate-50 hover:bg-slate-100 dark:hover:bg-slate-800'
+            : 'bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-faith-ink dark:text-slate-50 ring-1 ring-slate-200 dark:ring-slate-800 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800 shadow-soft';
 
   return (
     <button
@@ -613,11 +613,11 @@ function Card({
   className?: string;
 }) {
   return (
-    <section className={cx('rounded-3xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition', className)}>
+    <section className={cx('rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition', className)}>
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <div className="text-sm font-extrabold text-slate-900 dark:text-slate-50 uppercase tracking-tight">{title}</div>
-          {subtitle ? <div className="mt-1 text-[12px] text-slate-500 dark:text-slate-400">{subtitle}</div> : null}
+          <div className="text-sm font-extrabold text-faith-ink dark:text-slate-50 uppercase tracking-tight">{title}</div>
+          {subtitle ? <div className="mt-1 text-[12px] text-faith-slate">{subtitle}</div> : null}
         </div>
         {right}
       </div>
@@ -655,11 +655,11 @@ function Modal({
   return (
     <div className="fixed inset-0 z-[100] flex items-end justify-center bg-black/40 backdrop-blur-sm p-0 sm:items-center sm:p-4">
       <div className="absolute inset-0" onClick={onClose} />
-      <div className="relative w-full max-w-6xl rounded-t-3xl bg-white dark:bg-slate-900 shadow-2xl ring-1 ring-slate-200 dark:ring-slate-800 sm:rounded-3xl max-h-[92vh] overflow-hidden">
-        <div className="flex items-start justify-between gap-3 border-b border-slate-200 dark:border-slate-800 px-5 py-4">
+      <div className="relative w-full max-w-6xl rounded-t-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 shadow-2xl ring-1 ring-slate-200 dark:ring-slate-800 sm:rounded-3xl max-h-[92vh] overflow-hidden">
+        <div className="flex items-start justify-between gap-3 border-b border-faith-line dark:border-slate-800 px-5 py-4">
           <div className="min-w-0">
-            <div className="text-base font-bold text-slate-900 dark:text-slate-50">{title}</div>
-            {subtitle ? <div className="mt-1 text-sm text-slate-500 dark:text-slate-400">{subtitle}</div> : null}
+            <div className="text-base font-bold text-faith-ink dark:text-slate-50">{title}</div>
+            {subtitle ? <div className="mt-1 text-sm text-faith-slate">{subtitle}</div> : null}
           </div>
           <div className="flex items-center gap-2">
             {right}
@@ -726,16 +726,16 @@ function ScoreTile({
           : tone === 'accent'
             ? 'text-white'
             : tone === 'good'
-              ? 'bg-emerald-50 dark:bg-emerald-500/10 text-slate-900 dark:text-slate-50 ring-emerald-200 dark:ring-emerald-500/20'
-              : 'bg-slate-50 dark:bg-slate-800/70 text-slate-900 dark:text-slate-50 ring-slate-200 dark:ring-slate-700'
+              ? 'bg-emerald-50 dark:bg-emerald-500/10 text-faith-ink dark:text-slate-50 ring-emerald-200 dark:ring-emerald-500/20'
+              : 'bg-[var(--fh-surface)] dark:bg-slate-800/70 text-faith-ink dark:text-slate-50 ring-slate-200 dark:ring-slate-700'
       )}
       style={tone === 'brand' ? { background: EV_GREEN } : tone === 'accent' ? { background: EV_ORANGE } : undefined}
     >
-      <div className={cx('text-[11px] uppercase tracking-[0.16em]', tone === 'brand' || tone === 'accent' ? 'text-white/85' : 'text-slate-500 dark:text-slate-400')}>
+      <div className={cx('text-[11px] uppercase tracking-[0.16em]', tone === 'brand' || tone === 'accent' ? 'text-white/85' : 'text-faith-slate')}>
         {label}
       </div>
       <div className="mt-2 text-[34px] leading-none font-black">{value}</div>
-      <div className={cx('mt-2 text-[12px]', tone === 'brand' || tone === 'accent' ? 'text-white/90' : 'text-slate-600 dark:text-slate-400')}>
+      <div className={cx('mt-2 text-[12px]', tone === 'brand' || tone === 'accent' ? 'text-white/90' : 'text-faith-slate')}>
         {hint}
       </div>
     </div>
@@ -755,13 +755,13 @@ function SurfaceBarList({
       {items.map((item) => {
         const width = Math.max(10, Math.round((item.value / max) * 100));
         return (
-          <div key={item.label} className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3 transition">
+          <div key={item.label} className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition">
             <div className="flex items-start justify-between gap-3">
               <div className="min-w-0">
-                <div className="text-[13px] font-bold text-slate-900 dark:text-slate-100">{item.label}</div>
-                <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">{item.hint}</div>
+                <div className="text-[13px] font-bold text-faith-ink dark:text-slate-100">{item.label}</div>
+                <div className="mt-1 text-[11px] text-faith-slate">{item.hint}</div>
               </div>
-              <div className="text-[13px] font-bold text-slate-900 dark:text-slate-100">{item.value}</div>
+              <div className="text-[13px] font-bold text-faith-ink dark:text-slate-100">{item.value}</div>
             </div>
             <div className="mt-3 h-2.5 rounded-full bg-slate-200 dark:bg-slate-800 overflow-hidden">
               <div
@@ -795,25 +795,25 @@ function ReviewRow({
       type="button"
       onClick={onSelect}
       className={cx(
-        'w-full rounded-3xl border p-4 text-left transition shadow-sm',
+        'w-full rounded-3xl border p-4 text-left transition shadow-soft',
         active
           ? 'border-emerald-300 bg-emerald-50/60 dark:bg-emerald-500/10 dark:border-emerald-500/30'
-          : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 hover:bg-slate-50 dark:hover:bg-slate-900'
+          : 'border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-900'
       )}
     >
       <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-2">
-            <div className="text-[13px] font-extrabold text-slate-900 dark:text-slate-100">{review.title}</div>
+            <div className="text-[13px] font-extrabold text-faith-ink dark:text-slate-100">{review.title}</div>
             <Pill tone={sentimentTone}>{review.sentiment}</Pill>
             <Pill tone={urgencyTone}>{review.urgency}</Pill>
             <Pill tone="neutral">{review.sourceType}</Pill>
           </div>
-          <div className="mt-2 text-[12px] text-slate-500 dark:text-slate-400">
-            {review.sourceLabel} ¬∑ {review.topic} ¬∑ Owner: {review.owner}
+          <div className="mt-2 text-[12px] text-faith-slate">
+            {review.sourceLabel} ∑ {review.topic} ∑ Owner: {review.owner}
           </div>
           <div className="mt-3 line-clamp-3 text-[13px] leading-relaxed text-slate-700 dark:text-slate-300">
-            ‚Äú{review.excerpt}‚Äù
+            ì{review.excerpt}î
           </div>
 
           <div className="mt-3 flex flex-wrap gap-2">
@@ -822,15 +822,15 @@ function ReviewRow({
                 <Star className="h-4 w-4" fill={idx < review.rating ? 'currentColor' : 'none'} />
               </span>
             ))}
-            <span className="ml-2 text-[11px] font-semibold text-slate-500 dark:text-slate-400">{review.createdLabel}</span>
-            <span className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">‚Ä¢ {review.dueLabel}</span>
+            <span className="ml-2 text-[11px] font-semibold text-faith-slate">{review.createdLabel}</span>
+            <span className="text-[11px] font-semibold text-faith-slate">ï {review.dueLabel}</span>
           </div>
         </div>
 
         <div className="flex flex-row md:flex-col items-stretch gap-2 md:min-w-[180px]">
-          <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3 py-2">
-            <div className="text-[10px] uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">Status</div>
-            <div className="mt-1 text-[12px] font-bold text-slate-900 dark:text-slate-100">{review.status}</div>
+          <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2">
+            <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">Status</div>
+            <div className="mt-1 text-[12px] font-bold text-faith-ink dark:text-slate-100">{review.status}</div>
           </div>
           <Btn tone="ghost" onClick={onRespond} left={<MessageCircle className="h-4 w-4" />}>
             Respond
@@ -862,19 +862,19 @@ function CaseRow({
         'rounded-3xl border p-4 transition',
         active
           ? 'border-amber-300 bg-amber-50/60 dark:bg-amber-500/10 dark:border-amber-500/30'
-          : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950'
+          : 'border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950'
       )}
     >
       <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
         <button type="button" onClick={onSelect} className="min-w-0 text-left">
           <div className="flex flex-wrap items-center gap-2">
-            <div className="text-[13px] font-extrabold text-slate-900 dark:text-slate-100">{kase.title}</div>
+            <div className="text-[13px] font-extrabold text-faith-ink dark:text-slate-100">{kase.title}</div>
             <Pill tone={statusTone}>{kase.status}</Pill>
             <Pill tone={kase.childSafe ? 'bad' : 'neutral'}>{kase.type}</Pill>
             {kase.childSafe ? <Pill tone="bad">Child-safe</Pill> : null}
           </div>
-          <div className="mt-2 text-[12px] text-slate-500 dark:text-slate-400">
-            {kase.sourceLabel} ¬∑ Owner: {kase.owner} ¬∑ {kase.lastActionLabel}
+          <div className="mt-2 text-[12px] text-faith-slate">
+            {kase.sourceLabel} ∑ Owner: {kase.owner} ∑ {kase.lastActionLabel}
           </div>
           <div className="mt-3 text-[13px] leading-relaxed text-slate-700 dark:text-slate-300">{kase.summary}</div>
           <div className="mt-3 flex flex-wrap gap-2">
@@ -920,24 +920,24 @@ function PreviewCanvas({
   );
 
   const publicCard = (
-    <div className="rounded-[28px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 p-4 shadow-sm transition-colors">
+    <div className="rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 p-4 shadow-soft transition-colors">
       <div className="flex items-center justify-between gap-2">
         <div>
-          <div className="text-xs font-extrabold text-slate-900 dark:text-slate-100">Public trust surface</div>
-          <div className="text-[11px] text-slate-500 dark:text-slate-400">{review.sourceLabel}</div>
+          <div className="text-xs font-extrabold text-faith-ink dark:text-slate-100">Public trust surface</div>
+          <div className="text-[11px] text-faith-slate">{review.sourceLabel}</div>
         </div>
         <Pill tone={review.sentiment === 'Negative' ? 'warn' : 'good'}>
           {review.status === 'Responded' ? 'Responded' : 'Pending response'}
         </Pill>
       </div>
 
-      <div className="mt-4 rounded-3xl bg-slate-50 dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+      <div className="mt-4 rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
         <div className="flex items-start justify-between gap-3">
           <div>
-            <div className="text-[14px] font-extrabold text-slate-900 dark:text-slate-100">{review.title}</div>
+            <div className="text-[14px] font-extrabold text-faith-ink dark:text-slate-100">{review.title}</div>
             <div className="mt-1 flex items-center gap-2">
               {stars}
-              <span className="text-[11px] text-slate-500 dark:text-slate-400">{review.createdLabel}</span>
+              <span className="text-[11px] text-faith-slate">{review.createdLabel}</span>
             </div>
           </div>
           <div className="h-11 w-11 rounded-2xl grid place-items-center text-white font-black" style={{ background: EV_GREEN }}>
@@ -946,11 +946,11 @@ function PreviewCanvas({
         </div>
 
         <div className="mt-3 text-[13px] leading-relaxed text-slate-700 dark:text-slate-300">
-          ‚Äú{review.excerpt}‚Äù
+          ì{review.excerpt}î
         </div>
 
-        <div className="mt-4 rounded-3xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 p-4">
-          <div className="flex items-center gap-2 text-[12px] font-extrabold text-slate-900 dark:text-slate-100">
+        <div className="mt-4 rounded-3xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-950 p-4">
+          <div className="flex items-center gap-2 text-[12px] font-extrabold text-faith-ink dark:text-slate-100">
             <ShieldCheck className="h-4 w-4" style={{ color: EV_GREEN }} />
             Provider response
           </div>
@@ -971,15 +971,15 @@ function PreviewCanvas({
     return (
       <div className="mx-auto w-full max-w-[290px] md:max-w-[340px]">
         <div className="rounded-[36px] bg-slate-950 p-3 shadow-[0_18px_60px_rgba(15,23,42,0.45)]">
-          <div className="rounded-[28px] bg-white dark:bg-slate-900 p-3 transition-colors">
+          <div className="rounded-[28px] bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
             <div className="mx-auto mb-3 h-5 w-24 rounded-full bg-slate-200 dark:bg-slate-700" />
-            <div className="rounded-[24px] bg-slate-50 dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+            <div className="rounded-[24px] bg-[var(--fh-surface)] dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
               <div className="flex items-center justify-between gap-2">
-                <div className="text-[12px] font-extrabold text-slate-900 dark:text-slate-100">Review card</div>
-                <Pill tone={review.sentiment === 'Negative' ? 'accent' : 'good'}>{review.rating}.0‚òÖ</Pill>
+                <div className="text-[12px] font-extrabold text-faith-ink dark:text-slate-100">Review card</div>
+                <Pill tone={review.sentiment === 'Negative' ? 'accent' : 'good'}>{review.rating}.0?</Pill>
               </div>
-              <div className="mt-3 text-[13px] font-bold text-slate-900 dark:text-slate-100">{review.title}</div>
-              <div className="mt-2 text-[12px] leading-relaxed text-slate-700 dark:text-slate-300">‚Äú{review.excerpt}‚Äù</div>
+              <div className="mt-3 text-[13px] font-bold text-faith-ink dark:text-slate-100">{review.title}</div>
+              <div className="mt-2 text-[12px] leading-relaxed text-slate-700 dark:text-slate-300">ì{review.excerpt}î</div>
 
               <div className="mt-4 rounded-2xl p-3 text-white" style={{ background: EV_GREEN }}>
                 <div className="text-[11px] uppercase tracking-[0.16em] text-white/80">Public response</div>
@@ -987,13 +987,13 @@ function PreviewCanvas({
               </div>
 
               <div className="mt-3 grid grid-cols-2 gap-2 text-[10px]">
-                <div className="rounded-2xl bg-white dark:bg-slate-900 p-2 ring-1 ring-slate-200 dark:ring-slate-800">
-                  <div className="text-slate-400 uppercase tracking-wide">Source</div>
-                  <div className="mt-1 font-bold text-slate-900 dark:text-slate-100">{review.sourceType}</div>
+                <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div className="text-faith-slate uppercase tracking-wide">Source</div>
+                  <div className="mt-1 font-bold text-faith-ink dark:text-slate-100">{review.sourceType}</div>
                 </div>
-                <div className="rounded-2xl bg-white dark:bg-slate-900 p-2 ring-1 ring-slate-200 dark:ring-slate-800">
-                  <div className="text-slate-400 uppercase tracking-wide">Status</div>
-                  <div className="mt-1 font-bold text-slate-900 dark:text-slate-100">{review.status}</div>
+                <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div className="text-faith-slate uppercase tracking-wide">Status</div>
+                  <div className="mt-1 font-bold text-faith-ink dark:text-slate-100">{review.status}</div>
                 </div>
               </div>
             </div>
@@ -1017,7 +1017,7 @@ export default function FaithHubReviewsAndModerationPage() {
   const [selectedCaseId, setSelectedCaseId] = useState<string>(casesSeed[0].id);
   const [templateKey, setTemplateKey] = useState<string>('Technical issue follow-up');
   const [responseTone, setResponseTone] = useState<ToneKey>('Warm');
-  const [approvalRoute, setApprovalRoute] = useState('Communications lead ‚Üí Pastoral lead');
+  const [approvalRoute, setApprovalRoute] = useState('Communications lead ? Pastoral lead');
   const [collabNotes, setCollabNotes] = useState('Mention the audio-chain fix, caption confidence refresh, and the replay fallback already published.');
   const [responseBody, setResponseBody] = useState(REVIEW_TEMPLATE_MAP['Technical issue follow-up']);
   const [previewMode, setPreviewMode] = useState<PreviewMode>('desktop');
@@ -1179,8 +1179,8 @@ export default function FaithHubReviewsAndModerationPage() {
   };
 
   return (
-    <div className="min-h-screen w-full bg-[#f2f2f2] dark:bg-slate-950 text-slate-900 dark:text-slate-50 transition-colors overflow-x-hidden">
-      <div className="sticky top-0 z-40 border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md transition">
+    <div className="min-h-screen w-full bg-[var(--fh-page-bg)] dark:bg-slate-950 text-faith-ink dark:text-slate-50 transition-colors overflow-x-hidden">
+      <div className="sticky top-0 z-40 border-b border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)]/95 dark:bg-slate-900/95 backdrop-blur-md transition">
         <div className="w-full px-4 md:px-6 lg:px-8 py-4">
           <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
             <div className="min-w-0">
@@ -1226,7 +1226,7 @@ export default function FaithHubReviewsAndModerationPage() {
           </div>
         </div>
 
-        <div className="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 transition">
+        <div className="border-t border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 transition">
           <div className="w-full px-4 md:px-6 lg:px-8 py-2.5">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div className="flex flex-wrap items-center gap-2">
@@ -1234,8 +1234,8 @@ export default function FaithHubReviewsAndModerationPage() {
                   <AlertTriangle className="h-3.5 w-3.5" />
                   Trust watch
                 </Pill>
-                <span className="text-[12px] font-semibold text-slate-600 dark:text-slate-400">
-                  Audio complaints are leading negative sentiment this week ‚Ä¢ 1 suspected review brigade ‚Ä¢ safeguarding lane healthy across child-facing surfaces
+                <span className="text-[12px] font-semibold text-faith-slate">
+                  Audio complaints are leading negative sentiment this week ï 1 suspected review brigade ï safeguarding lane healthy across child-facing surfaces
                 </span>
               </div>
 
@@ -1294,11 +1294,11 @@ export default function FaithHubReviewsAndModerationPage() {
 
               <div className="mt-4 grid grid-cols-1 gap-3 xl:grid-cols-[1.1fr_0.9fr]">
                 <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
-                  <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-4">
+                  <div className="rounded-3xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
                     <div className="flex items-start justify-between gap-2">
                       <div>
-                        <div className="text-[11px] uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">Rating trend</div>
-                        <div className="mt-1 text-[13px] font-bold text-slate-900 dark:text-slate-100">Public sentiment is rising</div>
+                        <div className="text-[11px] uppercase tracking-[0.16em] text-faith-slate">Rating trend</div>
+                        <div className="mt-1 text-[13px] font-bold text-faith-ink dark:text-slate-100">Public sentiment is rising</div>
                       </div>
                       <Pill tone="good">+0.5 pts</Pill>
                     </div>
@@ -1307,11 +1307,11 @@ export default function FaithHubReviewsAndModerationPage() {
                     </div>
                   </div>
 
-                  <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-4">
+                  <div className="rounded-3xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
                     <div className="flex items-start justify-between gap-2">
                       <div>
-                        <div className="text-[11px] uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">Open issues</div>
-                        <div className="mt-1 text-[13px] font-bold text-slate-900 dark:text-slate-100">Queue pressure is stabilizing</div>
+                        <div className="text-[11px] uppercase tracking-[0.16em] text-faith-slate">Open issues</div>
+                        <div className="mt-1 text-[13px] font-bold text-faith-ink dark:text-slate-100">Queue pressure is stabilizing</div>
                       </div>
                       <Pill tone="warn">7 active</Pill>
                     </div>
@@ -1320,11 +1320,11 @@ export default function FaithHubReviewsAndModerationPage() {
                     </div>
                   </div>
 
-                  <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-4">
+                  <div className="rounded-3xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
                     <div className="flex items-start justify-between gap-2">
                       <div>
-                        <div className="text-[11px] uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">Recovery confidence</div>
-                        <div className="mt-1 text-[13px] font-bold text-slate-900 dark:text-slate-100">Highest-impact fixes are clear</div>
+                        <div className="text-[11px] uppercase tracking-[0.16em] text-faith-slate">Recovery confidence</div>
+                        <div className="mt-1 text-[13px] font-bold text-faith-ink dark:text-slate-100">Highest-impact fixes are clear</div>
                       </div>
                       <Pill tone="brand">92 score</Pill>
                     </div>
@@ -1334,25 +1334,25 @@ export default function FaithHubReviewsAndModerationPage() {
                   </div>
                 </div>
 
-                <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-4">
-                  <div className="text-[11px] uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">Sentiment distribution</div>
+                <div className="rounded-3xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
+                  <div className="text-[11px] uppercase tracking-[0.16em] text-faith-slate">Sentiment distribution</div>
                   <div className="mt-3 grid grid-cols-3 gap-2">
-                    <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                      <div className="text-[10px] uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">Positive</div>
-                      <div className="mt-2 text-[22px] font-black text-slate-900 dark:text-slate-100">{reviewSentiment.positive}</div>
+                    <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                      <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">Positive</div>
+                      <div className="mt-2 text-[22px] font-black text-faith-ink dark:text-slate-100">{reviewSentiment.positive}</div>
                     </div>
-                    <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                      <div className="text-[10px] uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">Mixed</div>
-                      <div className="mt-2 text-[22px] font-black text-slate-900 dark:text-slate-100">{reviewSentiment.mixed}</div>
+                    <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                      <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">Mixed</div>
+                      <div className="mt-2 text-[22px] font-black text-faith-ink dark:text-slate-100">{reviewSentiment.mixed}</div>
                     </div>
-                    <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                      <div className="text-[10px] uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">Negative</div>
-                      <div className="mt-2 text-[22px] font-black text-slate-900 dark:text-slate-100">{reviewSentiment.negative}</div>
+                    <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                      <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">Negative</div>
+                      <div className="mt-2 text-[22px] font-black text-faith-ink dark:text-slate-100">{reviewSentiment.negative}</div>
                     </div>
                   </div>
 
                   <div className="mt-4">
-                    <div className="text-[11px] uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">Recurring complaints</div>
+                    <div className="text-[11px] uppercase tracking-[0.16em] text-faith-slate">Recurring complaints</div>
                     <div className="mt-2 flex flex-wrap gap-2">
                       {recurringComplaints.map((item) => (
                         <Pill key={item} tone="neutral">
@@ -1366,11 +1366,11 @@ export default function FaithHubReviewsAndModerationPage() {
 
               <div className="mt-4 grid grid-cols-1 gap-3 xl:grid-cols-2">
                 <div>
-                  <div className="mb-2 text-[12px] font-extrabold text-slate-900 dark:text-slate-100">Strongest positive response</div>
+                  <div className="mb-2 text-[12px] font-extrabold text-faith-ink dark:text-slate-100">Strongest positive response</div>
                   <SurfaceBarList items={positiveSurfaceBars} accent="brand" />
                 </div>
                 <div>
-                  <div className="mb-2 text-[12px] font-extrabold text-slate-900 dark:text-slate-100">Highest negative pressure</div>
+                  <div className="mb-2 text-[12px] font-extrabold text-faith-ink dark:text-slate-100">Highest negative pressure</div>
                   <SurfaceBarList items={negativeSurfaceBars} accent="accent" />
                 </div>
               </div>
@@ -1388,12 +1388,12 @@ export default function FaithHubReviewsAndModerationPage() {
             >
               <div className="flex flex-col gap-3 xl:flex-row xl:items-center xl:justify-between">
                 <div className="relative w-full xl:max-w-[320px]">
-                  <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400 dark:text-slate-500" />
+                  <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-faith-slate" />
                   <input
                     value={search}
                     onChange={(event) => setSearch(event.target.value)}
                     placeholder="Search source, topic, owner, or complaint"
-                    className="h-11 w-full rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 pl-10 pr-4 text-sm text-slate-900 dark:text-slate-100 shadow-sm transition focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-700"
+                    className="h-11 w-full rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 pl-10 pr-4 text-sm text-faith-ink dark:text-slate-100 shadow-soft transition focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-700"
                   />
                 </div>
 
@@ -1406,7 +1406,7 @@ export default function FaithHubReviewsAndModerationPage() {
                       className={cx(
                         'rounded-2xl px-3 py-2 text-[12px] font-bold transition',
                         sourceFilter === source
-                          ? 'text-white shadow-sm'
+                          ? 'text-white shadow-soft'
                           : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
                       )}
                       style={sourceFilter === source ? { background: EV_GREEN } : undefined}
@@ -1426,8 +1426,8 @@ export default function FaithHubReviewsAndModerationPage() {
                     className={cx(
                       'rounded-full px-3 py-1.5 text-[12px] font-bold transition',
                       topicFilter === topic
-                        ? 'text-white shadow-sm'
-                        : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 ring-1 ring-slate-200 dark:ring-slate-800'
+                        ? 'text-white shadow-soft'
+                        : 'bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-slate-700 dark:text-slate-300 ring-1 ring-slate-200 dark:ring-slate-800'
                     )}
                     style={topicFilter === topic ? { background: EV_ORANGE } : undefined}
                   >
@@ -1445,8 +1445,8 @@ export default function FaithHubReviewsAndModerationPage() {
                     className={cx(
                       'rounded-full px-3 py-1.5 text-[12px] font-bold transition',
                       statusFilter === status
-                        ? 'bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900'
-                        : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400'
+                        ? 'bg-slate-900 dark:bg-slate-100 text-white dark:text-faith-ink'
+                        : 'bg-slate-100 dark:bg-slate-800 text-faith-slate'
                     )}
                   >
                     {status}
@@ -1469,9 +1469,9 @@ export default function FaithHubReviewsAndModerationPage() {
                     />
                   ))
                 ) : (
-                  <div className="rounded-3xl border border-dashed border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 p-6 text-center">
-                    <div className="text-sm font-bold text-slate-900 dark:text-slate-100">No reviews match this filter</div>
-                    <div className="mt-2 text-[13px] text-slate-500 dark:text-slate-400">Clear one or more filters to reopen the full trust inbox.</div>
+                  <div className="rounded-3xl border border-dashed border-slate-300 dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 p-6 text-center">
+                    <div className="text-sm font-bold text-faith-ink dark:text-slate-100">No reviews match this filter</div>
+                    <div className="mt-2 text-[13px] text-faith-slate">Clear one or more filters to reopen the full trust inbox.</div>
                   </div>
                 )}
               </div>
@@ -1490,26 +1490,26 @@ export default function FaithHubReviewsAndModerationPage() {
                   </div>
                 }
               >
-                <div className="rounded-3xl bg-slate-50 dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
                   <div className="flex flex-wrap items-start justify-between gap-3">
                     <div className="min-w-0">
-                      <div className="text-[14px] font-extrabold text-slate-900 dark:text-slate-100">{selectedReview.title}</div>
-                      <div className="mt-1 text-[12px] text-slate-500 dark:text-slate-400">
-                        {selectedReview.sourceLabel} ¬∑ {selectedReview.topic} ¬∑ Owner: {selectedReview.owner}
+                      <div className="text-[14px] font-extrabold text-faith-ink dark:text-slate-100">{selectedReview.title}</div>
+                      <div className="mt-1 text-[12px] text-faith-slate">
+                        {selectedReview.sourceLabel} ∑ {selectedReview.topic} ∑ Owner: {selectedReview.owner}
                       </div>
                       <div className="mt-3 text-[13px] leading-relaxed text-slate-700 dark:text-slate-300">
-                        ‚Äú{selectedReview.excerpt}‚Äù
+                        ì{selectedReview.excerpt}î
                       </div>
                     </div>
 
                     <div className="grid gap-2 sm:grid-cols-2">
-                      <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                        <div className="text-[10px] uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">Positive signal</div>
-                        <div className="mt-2 text-[12px] font-bold text-slate-900 dark:text-slate-100">{selectedReview.positiveSignals[0] || 'No positive signal logged'}</div>
+                      <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                        <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">Positive signal</div>
+                        <div className="mt-2 text-[12px] font-bold text-faith-ink dark:text-slate-100">{selectedReview.positiveSignals[0] || 'No positive signal logged'}</div>
                       </div>
-                      <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                        <div className="text-[10px] uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">Main concern</div>
-                        <div className="mt-2 text-[12px] font-bold text-slate-900 dark:text-slate-100">{selectedReview.negativeSignals[0] || 'General service concern'}</div>
+                      <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                        <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">Main concern</div>
+                        <div className="mt-2 text-[12px] font-bold text-faith-ink dark:text-slate-100">{selectedReview.negativeSignals[0] || 'General service concern'}</div>
                       </div>
                     </div>
                   </div>
@@ -1517,7 +1517,7 @@ export default function FaithHubReviewsAndModerationPage() {
 
                 <div className="mt-4 grid grid-cols-1 gap-3 xl:grid-cols-[1.15fr_0.85fr]">
                   <div>
-                    <div className="text-[11px] uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">Response templates</div>
+                    <div className="text-[11px] uppercase tracking-[0.16em] text-faith-slate">Response templates</div>
                     <div className="mt-2 flex flex-wrap gap-2">
                       {Object.keys(REVIEW_TEMPLATE_MAP).map((template) => (
                         <button
@@ -1527,8 +1527,8 @@ export default function FaithHubReviewsAndModerationPage() {
                           className={cx(
                             'rounded-2xl px-3 py-2 text-[12px] font-bold transition',
                             templateKey === template
-                              ? 'text-white shadow-sm'
-                              : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 ring-1 ring-slate-200 dark:ring-slate-800'
+                              ? 'text-white shadow-soft'
+                              : 'bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-slate-700 dark:text-slate-300 ring-1 ring-slate-200 dark:ring-slate-800'
                           )}
                           style={templateKey === template ? { background: EV_GREEN } : undefined}
                         >
@@ -1537,42 +1537,42 @@ export default function FaithHubReviewsAndModerationPage() {
                       ))}
                     </div>
 
-                    <div className="mt-4 text-[11px] uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">Response body</div>
+                    <div className="mt-4 text-[11px] uppercase tracking-[0.16em] text-faith-slate">Response body</div>
                     <textarea
                       value={responseBody}
                       onChange={(event) => setResponseBody(event.target.value)}
                       rows={8}
-                      className="mt-2 w-full rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 p-4 text-sm text-slate-900 dark:text-slate-100 shadow-sm transition focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-700"
+                      className="mt-2 w-full rounded-3xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 p-4 text-sm text-faith-ink dark:text-slate-100 shadow-soft transition focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-700"
                     />
 
                     <div className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2">
                       <div>
-                        <div className="text-[11px] uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">Collaboration notes</div>
+                        <div className="text-[11px] uppercase tracking-[0.16em] text-faith-slate">Collaboration notes</div>
                         <textarea
                           value={collabNotes}
                           onChange={(event) => setCollabNotes(event.target.value)}
                           rows={4}
-                          className="mt-2 w-full rounded-3xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-4 text-sm text-slate-900 dark:text-slate-100 shadow-sm transition focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-700"
+                          className="mt-2 w-full rounded-3xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 text-sm text-faith-ink dark:text-slate-100 shadow-soft transition focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-700"
                         />
                       </div>
 
                       <div className="space-y-3">
                         <div>
-                          <div className="text-[11px] uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">Approval routing</div>
+                          <div className="text-[11px] uppercase tracking-[0.16em] text-faith-slate">Approval routing</div>
                           <select
                             value={approvalRoute}
                             onChange={(event) => setApprovalRoute(event.target.value)}
-                            className="mt-2 h-12 w-full rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-4 text-sm text-slate-900 dark:text-slate-100 shadow-sm transition focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-700"
+                            className="mt-2 h-12 w-full rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 px-4 text-sm text-faith-ink dark:text-slate-100 shadow-soft transition focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-700"
                           >
-                            <option>Communications lead ‚Üí Pastoral lead</option>
+                            <option>Communications lead ? Pastoral lead</option>
                             <option>Communications lead only</option>
-                            <option>Trust lead ‚Üí Leadership</option>
-                            <option>Finance lead ‚Üí Communications</option>
+                            <option>Trust lead ? Leadership</option>
+                            <option>Finance lead ? Communications</option>
                           </select>
                         </div>
 
-                        <div className="rounded-3xl bg-slate-50 dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-                          <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">
+                        <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                          <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.16em] text-faith-slate">
                             <Sparkles className="h-4 w-4" />
                             Tone guidance
                           </div>
@@ -1585,8 +1585,8 @@ export default function FaithHubReviewsAndModerationPage() {
                                 className={cx(
                                   'rounded-full px-3 py-1.5 text-[12px] font-bold transition',
                                   responseTone === tone
-                                    ? 'text-white shadow-sm'
-                                    : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 ring-1 ring-slate-200 dark:ring-slate-800'
+                                    ? 'text-white shadow-soft'
+                                    : 'bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-slate-700 dark:text-slate-300 ring-1 ring-slate-200 dark:ring-slate-800'
                                 )}
                                 style={responseTone === tone ? { background: EV_ORANGE } : undefined}
                               >
@@ -1594,7 +1594,7 @@ export default function FaithHubReviewsAndModerationPage() {
                               </button>
                             ))}
                           </div>
-                          <div className="mt-3 text-[12px] leading-relaxed text-slate-600 dark:text-slate-400">
+                          <div className="mt-3 text-[12px] leading-relaxed text-faith-slate">
                             {TONE_GUIDANCE[responseTone]}
                           </div>
                         </div>
@@ -1615,34 +1615,34 @@ export default function FaithHubReviewsAndModerationPage() {
                   </div>
 
                   <div className="space-y-3">
-                    <div className="rounded-3xl bg-slate-50 dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-                      <div className="text-[11px] uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">Response readiness</div>
+                    <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                      <div className="text-[11px] uppercase tracking-[0.16em] text-faith-slate">Response readiness</div>
                       <div className="mt-3 space-y-2">
-                        <div className="flex items-center justify-between rounded-2xl bg-white dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800">
-                          <span className="text-[12px] text-slate-600 dark:text-slate-400">Acknowledges concern clearly</span>
+                        <div className="flex items-center justify-between rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800">
+                          <span className="text-[12px] text-faith-slate">Acknowledges concern clearly</span>
                           <Pill tone="good">Clear</Pill>
                         </div>
-                        <div className="flex items-center justify-between rounded-2xl bg-white dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800">
-                          <span className="text-[12px] text-slate-600 dark:text-slate-400">Explains next operational step</span>
+                        <div className="flex items-center justify-between rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800">
+                          <span className="text-[12px] text-faith-slate">Explains next operational step</span>
                           <Pill tone="good">Ready</Pill>
                         </div>
-                        <div className="flex items-center justify-between rounded-2xl bg-white dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800">
-                          <span className="text-[12px] text-slate-600 dark:text-slate-400">Tone matches issue level</span>
+                        <div className="flex items-center justify-between rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800">
+                          <span className="text-[12px] text-faith-slate">Tone matches issue level</span>
                           <Pill tone="accent">{responseTone}</Pill>
                         </div>
-                        <div className="flex items-center justify-between rounded-2xl bg-white dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800">
-                          <span className="text-[12px] text-slate-600 dark:text-slate-400">Approval chain attached</span>
+                        <div className="flex items-center justify-between rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800">
+                          <span className="text-[12px] text-faith-slate">Approval chain attached</span>
                           <Pill tone="good">Attached</Pill>
                         </div>
                       </div>
                     </div>
 
-                    <div className="rounded-3xl bg-slate-50 dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-                      <div className="text-[11px] uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">Public surface effects</div>
-                      <div className="mt-3 space-y-2 text-[12px] text-slate-600 dark:text-slate-400">
-                        <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">Institution and replay ratings stay contextualized when a public response is attached.</div>
-                        <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">The same response can inform operational follow-up in Live Dashboard and replay notes.</div>
-                        <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">Explainable language is preserved in the evidence trail for future rulings.</div>
+                    <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                      <div className="text-[11px] uppercase tracking-[0.16em] text-faith-slate">Public surface effects</div>
+                      <div className="mt-3 space-y-2 text-[12px] text-faith-slate">
+                        <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">Institution and replay ratings stay contextualized when a public response is attached.</div>
+                        <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">The same response can inform operational follow-up in Live Dashboard and replay notes.</div>
+                        <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">Explainable language is preserved in the evidence trail for future rulings.</div>
                       </div>
                     </div>
                   </div>
@@ -1698,8 +1698,8 @@ export default function FaithHubReviewsAndModerationPage() {
                     className={cx(
                       'flex-1 rounded-xl px-3 py-2 text-[12px] font-bold transition',
                       previewMode === 'desktop'
-                        ? 'bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-sm'
-                        : 'text-slate-600 dark:text-slate-400'
+                        ? 'bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-faith-ink dark:text-slate-100 shadow-soft'
+                        : 'text-faith-slate'
                     )}
                   >
                     Desktop
@@ -1710,8 +1710,8 @@ export default function FaithHubReviewsAndModerationPage() {
                     className={cx(
                       'flex-1 rounded-xl px-3 py-2 text-[12px] font-bold transition',
                       previewMode === 'mobile'
-                        ? 'bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-sm'
-                        : 'text-slate-600 dark:text-slate-400'
+                        ? 'bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-faith-ink dark:text-slate-100 shadow-soft'
+                        : 'text-faith-slate'
                     )}
                   >
                     Mobile
@@ -1747,11 +1747,11 @@ export default function FaithHubReviewsAndModerationPage() {
             >
               <div className="space-y-3">
                 {riskSignalsSeed.map((signal) => (
-                  <div key={signal.title} className="rounded-3xl bg-slate-50 dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div key={signal.title} className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
                     <div className="flex items-start justify-between gap-3">
                       <div>
-                        <div className="text-[13px] font-extrabold text-slate-900 dark:text-slate-100">{signal.title}</div>
-                        <div className="mt-1 text-[12px] leading-relaxed text-slate-600 dark:text-slate-400">{signal.detail}</div>
+                        <div className="text-[13px] font-extrabold text-faith-ink dark:text-slate-100">{signal.title}</div>
+                        <div className="mt-1 text-[12px] leading-relaxed text-faith-slate">{signal.detail}</div>
                       </div>
                       <Pill tone={signal.tone}>{signal.trendLabel}</Pill>
                     </div>
@@ -1770,11 +1770,11 @@ export default function FaithHubReviewsAndModerationPage() {
             >
               <div className="space-y-3">
                 {policySeed.map((policy) => (
-                  <div key={policy.title} className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-4">
+                  <div key={policy.title} className="rounded-3xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
                     <div className="flex items-start justify-between gap-3">
                       <div>
-                        <div className="text-[13px] font-extrabold text-slate-900 dark:text-slate-100">{policy.title}</div>
-                        <div className="mt-1 text-[12px] leading-relaxed text-slate-600 dark:text-slate-400">{policy.detail}</div>
+                        <div className="text-[13px] font-extrabold text-faith-ink dark:text-slate-100">{policy.title}</div>
+                        <div className="mt-1 text-[12px] leading-relaxed text-faith-slate">{policy.detail}</div>
                       </div>
                       <Pill tone={policy.state === 'Active' ? 'good' : policy.state === 'Locked' ? 'brand' : 'warn'}>
                         {policy.state}
@@ -1791,27 +1791,27 @@ export default function FaithHubReviewsAndModerationPage() {
                 subtitle="Screenshots, linked messages, previous rulings, audit notes, and action history for the selected trust case."
                 right={<Pill tone={selectedCase.childSafe ? 'bad' : 'neutral'}>{selectedCase.id}</Pill>}
               >
-                <div className="rounded-3xl bg-slate-50 dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-                  <div className="text-[13px] font-extrabold text-slate-900 dark:text-slate-100">{selectedCase.title}</div>
-                  <div className="mt-1 text-[12px] text-slate-500 dark:text-slate-400">{selectedCase.sourceLabel}</div>
-                  <div className="mt-3 text-[13px] leading-relaxed text-slate-600 dark:text-slate-400">{selectedCase.summary}</div>
+                <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div className="text-[13px] font-extrabold text-faith-ink dark:text-slate-100">{selectedCase.title}</div>
+                  <div className="mt-1 text-[12px] text-faith-slate">{selectedCase.sourceLabel}</div>
+                  <div className="mt-3 text-[13px] leading-relaxed text-faith-slate">{selectedCase.summary}</div>
 
                   <div className="mt-4 grid grid-cols-2 gap-2 text-[11px]">
-                    <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                      <div className="text-slate-400 uppercase tracking-[0.16em]">Evidence</div>
-                      <div className="mt-1 text-[18px] font-black text-slate-900 dark:text-slate-100">{selectedCase.evidenceCount}</div>
+                    <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                      <div className="text-faith-slate uppercase tracking-[0.16em]">Evidence</div>
+                      <div className="mt-1 text-[18px] font-black text-faith-ink dark:text-slate-100">{selectedCase.evidenceCount}</div>
                     </div>
-                    <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                      <div className="text-slate-400 uppercase tracking-[0.16em]">Prior rulings</div>
-                      <div className="mt-1 text-[18px] font-black text-slate-900 dark:text-slate-100">{selectedCase.priorRulings}</div>
+                    <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                      <div className="text-faith-slate uppercase tracking-[0.16em]">Prior rulings</div>
+                      <div className="mt-1 text-[18px] font-black text-faith-ink dark:text-slate-100">{selectedCase.priorRulings}</div>
                     </div>
                   </div>
 
                   <div className="mt-4">
-                    <div className="text-[11px] uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">Latest action history</div>
+                    <div className="text-[11px] uppercase tracking-[0.16em] text-faith-slate">Latest action history</div>
                     <div className="mt-2 space-y-2">
                       {selectedCase.actionHistory.slice(0, 3).map((entry) => (
-                        <div key={entry} className="rounded-2xl bg-white dark:bg-slate-900 p-3 text-[12px] text-slate-600 dark:text-slate-400 ring-1 ring-slate-200 dark:ring-slate-800">
+                        <div key={entry} className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 text-[12px] text-faith-slate ring-1 ring-slate-200 dark:ring-slate-800">
                           {entry}
                         </div>
                       ))}
@@ -1837,11 +1837,11 @@ export default function FaithHubReviewsAndModerationPage() {
             >
               <div className="space-y-3">
                 {recoveryInsightsSeed.map((insight) => (
-                  <div key={insight.title} className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-4">
+                  <div key={insight.title} className="rounded-3xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0">
-                        <div className="text-[13px] font-extrabold text-slate-900 dark:text-slate-100">{insight.title}</div>
-                        <div className="mt-1 text-[12px] leading-relaxed text-slate-600 dark:text-slate-400">{insight.detail}</div>
+                        <div className="text-[13px] font-extrabold text-faith-ink dark:text-slate-100">{insight.title}</div>
+                        <div className="mt-1 text-[12px] leading-relaxed text-faith-slate">{insight.detail}</div>
                       </div>
                       <Pill tone={insight.impact === 'High' ? 'accent' : 'good'}>{insight.impact} impact</Pill>
                     </div>
@@ -1876,29 +1876,29 @@ export default function FaithHubReviewsAndModerationPage() {
         >
           <div className="grid grid-cols-1 gap-6 xl:grid-cols-2">
             <div>
-              <div className="mb-3 text-sm font-extrabold text-slate-900 dark:text-slate-100">Desktop surface</div>
+              <div className="mb-3 text-sm font-extrabold text-faith-ink dark:text-slate-100">Desktop surface</div>
               <PreviewCanvas review={selectedReview} responseText={responseBody} device="desktop" />
             </div>
             <div>
-              <div className="mb-3 text-sm font-extrabold text-slate-900 dark:text-slate-100">Mobile companion</div>
+              <div className="mb-3 text-sm font-extrabold text-faith-ink dark:text-slate-100">Mobile companion</div>
               <PreviewCanvas review={selectedReview} responseText={responseBody} device="mobile" />
             </div>
           </div>
 
-          <div className="mt-6 rounded-3xl bg-slate-50 dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-            <div className="text-[11px] uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">Preview intelligence</div>
+          <div className="mt-6 rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+            <div className="text-[11px] uppercase tracking-[0.16em] text-faith-slate">Preview intelligence</div>
             <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-3">
-              <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                <div className="text-[10px] uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">Response clarity</div>
-                <div className="mt-2 text-[18px] font-black text-slate-900 dark:text-slate-100">Strong</div>
+              <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">Response clarity</div>
+                <div className="mt-2 text-[18px] font-black text-faith-ink dark:text-slate-100">Strong</div>
               </div>
-              <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                <div className="text-[10px] uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">Tone guidance</div>
-                <div className="mt-2 text-[18px] font-black text-slate-900 dark:text-slate-100">{responseTone}</div>
+              <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">Tone guidance</div>
+                <div className="mt-2 text-[18px] font-black text-faith-ink dark:text-slate-100">{responseTone}</div>
               </div>
-              <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                <div className="text-[10px] uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">Approval route</div>
-                <div className="mt-2 text-[13px] font-black text-slate-900 dark:text-slate-100">{approvalRoute}</div>
+              <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">Approval route</div>
+                <div className="mt-2 text-[13px] font-black text-faith-ink dark:text-slate-100">{approvalRoute}</div>
               </div>
             </div>
           </div>
@@ -1909,15 +1909,15 @@ export default function FaithHubReviewsAndModerationPage() {
         <Modal
           open={evidenceOpen}
           onClose={() => setEvidenceOpen(false)}
-          title={`Evidence & action drawer ‚Äî ${selectedCase.id}`}
+          title={`Evidence & action drawer ó ${selectedCase.id}`}
           subtitle="Screenshots, linked messages, prior rulings, audit notes, and explainable action history for the selected moderation case."
           right={<Pill tone={selectedCase.childSafe ? 'bad' : 'accent'}>{selectedCase.status}</Pill>}
         >
           <div className="grid grid-cols-1 gap-6 xl:grid-cols-[1.15fr_0.85fr]">
             <div className="space-y-4">
-              <div className="rounded-3xl bg-slate-50 dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-                <div className="text-sm font-extrabold text-slate-900 dark:text-slate-100">{selectedCase.title}</div>
-                <div className="mt-1 text-[12px] text-slate-500 dark:text-slate-400">{selectedCase.sourceLabel} ¬∑ Owner: {selectedCase.owner}</div>
+              <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                <div className="text-sm font-extrabold text-faith-ink dark:text-slate-100">{selectedCase.title}</div>
+                <div className="mt-1 text-[12px] text-faith-slate">{selectedCase.sourceLabel} ∑ Owner: {selectedCase.owner}</div>
                 <div className="mt-3 text-[13px] leading-relaxed text-slate-700 dark:text-slate-300">{selectedCase.summary}</div>
 
                 <div className="mt-4 flex flex-wrap gap-2">
@@ -1929,18 +1929,18 @@ export default function FaithHubReviewsAndModerationPage() {
                 </div>
               </div>
 
-              <div className="rounded-3xl bg-slate-50 dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-                <div className="text-[11px] uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">Evidence bundle</div>
+              <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                <div className="text-[11px] uppercase tracking-[0.16em] text-faith-slate">Evidence bundle</div>
                 <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-2">
                   {selectedCase.evidence.map((item) => (
-                    <div key={item} className="rounded-2xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                    <div key={item} className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
                       <div className="flex items-start gap-3">
                         <div className="mt-0.5 h-10 w-10 shrink-0 rounded-2xl grid place-items-center text-white" style={{ background: EV_ORANGE }}>
                           <FileText className="h-4 w-4" />
                         </div>
                         <div>
-                          <div className="text-[13px] font-bold text-slate-900 dark:text-slate-100">{item}</div>
-                          <div className="mt-1 text-[12px] text-slate-500 dark:text-slate-400">Evidence preserved for explainable moderation and future appeals.</div>
+                          <div className="text-[13px] font-bold text-faith-ink dark:text-slate-100">{item}</div>
+                          <div className="mt-1 text-[12px] text-faith-slate">Evidence preserved for explainable moderation and future appeals.</div>
                         </div>
                       </div>
                     </div>
@@ -1948,11 +1948,11 @@ export default function FaithHubReviewsAndModerationPage() {
                 </div>
               </div>
 
-              <div className="rounded-3xl bg-slate-50 dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-                <div className="text-[11px] uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">Action history</div>
+              <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                <div className="text-[11px] uppercase tracking-[0.16em] text-faith-slate">Action history</div>
                 <div className="mt-3 space-y-3">
                   {selectedCase.actionHistory.map((entry) => (
-                    <div key={entry} className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                    <div key={entry} className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
                       <div className="flex items-start gap-3">
                         <div className="mt-0.5 h-8 w-8 shrink-0 rounded-2xl grid place-items-center text-white" style={{ background: EV_GREEN }}>
                           <CheckCircle2 className="h-4 w-4" />
@@ -1966,27 +1966,27 @@ export default function FaithHubReviewsAndModerationPage() {
             </div>
 
             <div className="space-y-4">
-              <div className="rounded-3xl bg-slate-50 dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-                <div className="text-[11px] uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">Prior rulings and fairness</div>
-                <div className="mt-3 text-[13px] leading-relaxed text-slate-600 dark:text-slate-400">
+              <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                <div className="text-[11px] uppercase tracking-[0.16em] text-faith-slate">Prior rulings and fairness</div>
+                <div className="mt-3 text-[13px] leading-relaxed text-faith-slate">
                   This case inherits {selectedCase.priorRulings} prior rulings from related moderation incidents. Use them for consistency, but keep this decision grounded in the attached evidence and current context.
                 </div>
 
                 <div className="mt-4 grid grid-cols-2 gap-2">
-                  <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                    <div className="text-[10px] uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">Linked rulings</div>
-                    <div className="mt-1 text-[18px] font-black text-slate-900 dark:text-slate-100">{selectedCase.priorRulings}</div>
+                  <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                    <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">Linked rulings</div>
+                    <div className="mt-1 text-[18px] font-black text-faith-ink dark:text-slate-100">{selectedCase.priorRulings}</div>
                   </div>
-                  <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                    <div className="text-[10px] uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">Evidence items</div>
-                    <div className="mt-1 text-[18px] font-black text-slate-900 dark:text-slate-100">{selectedCase.evidenceCount}</div>
+                  <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                    <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">Evidence items</div>
+                    <div className="mt-1 text-[18px] font-black text-faith-ink dark:text-slate-100">{selectedCase.evidenceCount}</div>
                   </div>
                 </div>
               </div>
 
-              <div className="rounded-3xl bg-slate-50 dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-                <div className="text-[11px] uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">Recommended next step</div>
-                <div className="mt-3 text-[13px] leading-relaxed text-slate-600 dark:text-slate-400">
+              <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                <div className="text-[11px] uppercase tracking-[0.16em] text-faith-slate">Recommended next step</div>
+                <div className="mt-3 text-[13px] leading-relaxed text-faith-slate">
                   {selectedCase.childSafe
                     ? 'Keep the case in safeguarding hold, preserve the evidence bundle, and avoid a public-facing reply until protected-lane checks are complete.'
                     : selectedCase.type === 'Review abuse'
@@ -2021,6 +2021,7 @@ export default function FaithHubReviewsAndModerationPage() {
     </div>
   );
 }
+
 
 
 

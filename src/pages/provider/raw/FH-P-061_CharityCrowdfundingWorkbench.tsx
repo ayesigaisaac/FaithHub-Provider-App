@@ -1,4 +1,4 @@
-ï»¿// @ts-nocheck
+// @ts-nocheck
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -42,7 +42,7 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * Provider â€” Charity Crowdfunding Workbench
+ * Provider — Charity Crowdfunding Workbench
  * --------------------------------------------------
  * Premium charity campaign workspace for Provider Workspace.
  *
@@ -99,7 +99,7 @@ function fmtInt(n: number) {
   return Intl.NumberFormat(undefined, { maximumFractionDigits: 0 }).format(n);
 }
 
-function fmtCurrency(n: number, currency = "Â£") {
+function fmtCurrency(n: number, currency = "£") {
   return `${currency}${Intl.NumberFormat(undefined, {
     maximumFractionDigits: 0,
   }).format(n)}`;
@@ -286,13 +286,13 @@ const SEED: CrowdfundRecord[] = [
     urgency:
       "Two communities lose access within the next 18 days if repair teams cannot begin on time.",
     impactSummary:
-      "Â£60k restores four water points, trains local caretakers, and supplies three months of hygiene materials.",
+      "£60k restores four water points, trains local caretakers, and supplies three months of hygiene materials.",
     raised: 48200,
     goal: 60000,
     stretchGoal: 78000,
     donors: 1284,
     ambassadors: 42,
-    recentActivity: "18 gifts in the last hour Â· one matching partner currently live",
+    recentActivity: "18 gifts in the last hour · one matching partner currently live",
     deadlineISO: new Date(Date.now() + 1000 * 60 * 60 * 24 * 18).toISOString(),
     matchActive: true,
     matchAmount: 7500,
@@ -344,7 +344,7 @@ const SEED: CrowdfundRecord[] = [
         kind: "Photo",
         owner: "Field lead",
         status: "Ready",
-        coverage: "3 villages Â· before-repair proof",
+        coverage: "3 villages · before-repair proof",
         imageUrl: EVIDENCE_WATER,
       },
       {
@@ -413,7 +413,7 @@ const SEED: CrowdfundRecord[] = [
         label: "Sunday Morning Live donation moment",
         surface: "Live Session",
         state: "Live",
-        value: "Â£12.4k influenced",
+        value: "£12.4k influenced",
         ready: true,
         hint: "Crowdfund progress bar and QR prompt already inserted into the run-of-show.",
       },
@@ -500,13 +500,13 @@ const SEED: CrowdfundRecord[] = [
       "Heavy flooding displaced dozens of families. This campaign covers emergency food, dry shelter packs, roof restoration, and transport for families most at risk.",
     urgency: "Emergency supplies need to reach the first 40 homes in the next 72 hours.",
     impactSummary:
-      "Â£35k covers 40 household packs, temporary repairs, and a month of monitored recovery support.",
+      "£35k covers 40 household packs, temporary repairs, and a month of monitored recovery support.",
     raised: 22100,
     goal: 35000,
     stretchGoal: 50000,
     donors: 742,
     ambassadors: 16,
-    recentActivity: "4 new ambassadors joined today Â· donations spiking after evening prayer",
+    recentActivity: "4 new ambassadors joined today · donations spiking after evening prayer",
     deadlineISO: new Date(Date.now() + 1000 * 60 * 60 * 24 * 5).toISOString(),
     matchActive: true,
     matchAmount: 5000,
@@ -686,7 +686,7 @@ const SEED: CrowdfundRecord[] = [
       "This back-to-school crowdfund supports students who are at risk of losing their place because of fees, transport cost, and missing learning materials.",
     urgency: "Campaign launches publicly next week ahead of term start.",
     impactSummary:
-      "Â£22k covers exam fees, transport, uniforms, and emergency support for 55 students.",
+      "£22k covers exam fees, transport, uniforms, and emergency support for 55 students.",
     raised: 6400,
     goal: 22000,
     stretchGoal: 30000,
@@ -872,13 +872,13 @@ const SEED: CrowdfundRecord[] = [
       "The mission bus serves prison visits, village outreaches, and student ministry routes. The current bus can no longer safely support regular travel, so the campaign funded a replacement and initial servicing.",
     urgency: "Primary campaign completed. Closeout report and evergreen support plan remain.",
     impactSummary:
-      "Â£48k funded a replacement bus, safety upgrades, insurance, and initial maintenance reserve.",
+      "£48k funded a replacement bus, safety upgrades, insurance, and initial maintenance reserve.",
     raised: 49850,
     goal: 48000,
     stretchGoal: 55000,
     donors: 912,
     ambassadors: 21,
-    recentActivity: "Campaign completed last week Â· final delivery photos pending",
+    recentActivity: "Campaign completed last week · final delivery photos pending",
     deadlineISO: new Date(Date.now() - 1000 * 60 * 60 * 24 * 8).toISOString(),
     matchActive: false,
     matchAmount: 0,
@@ -1094,14 +1094,14 @@ function Btn({
     "inline-flex items-center justify-center gap-2 rounded-xl px-3.5 py-2 text-sm font-semibold transition focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed";
   const toneCls =
     tone === "primary"
-      ? "text-white hover:brightness-95 shadow-sm"
+      ? "text-white hover:brightness-95 shadow-soft"
       : tone === "secondary"
-        ? "text-white hover:brightness-95 shadow-sm"
+        ? "text-white hover:brightness-95 shadow-soft"
         : tone === "danger"
-          ? "bg-rose-600 text-white hover:brightness-95 shadow-sm"
+          ? "bg-rose-600 text-white hover:brightness-95 shadow-soft"
           : tone === "ghost"
-            ? "bg-transparent text-slate-900 dark:text-slate-50 hover:bg-slate-100 dark:hover:bg-slate-800"
-            : "bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-50 ring-1 ring-slate-200 dark:ring-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 shadow-sm";
+            ? "bg-transparent text-faith-ink dark:text-slate-50 hover:bg-slate-100 dark:hover:bg-slate-800"
+            : "bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-faith-ink dark:text-slate-50 ring-1 ring-slate-200 dark:ring-slate-800 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800 shadow-soft";
   return (
     <button
       title={title}
@@ -1141,11 +1141,11 @@ function Modal({
   return (
     <div className="fixed inset-0 z-[90] flex items-end justify-center sm:items-center p-0 sm:p-4">
       <div className="absolute inset-0 bg-black/40 dark:bg-black/60 backdrop-blur-sm transition-opacity" onClick={onClose} />
-      <div className="relative flex w-full max-w-5xl flex-col bg-white dark:bg-slate-900 shadow-2xl transition-all h-[94vh] sm:h-auto sm:max-h-[92vh] rounded-t-3xl sm:rounded-3xl overflow-hidden ring-1 ring-slate-200 dark:ring-slate-800">
-        <div className="flex items-center justify-between gap-2 border-b border-slate-200 dark:border-slate-800 px-4 py-3">
+      <div className="relative flex w-full max-w-5xl flex-col bg-[var(--fh-surface-bg)] dark:bg-slate-900 shadow-2xl transition-all h-[94vh] sm:h-auto sm:max-h-[92vh] rounded-t-3xl sm:rounded-3xl overflow-hidden ring-1 ring-slate-200 dark:ring-slate-800">
+        <div className="flex items-center justify-between gap-2 border-b border-faith-line dark:border-slate-800 px-4 py-3">
           <div>
-            <div className="text-base font-semibold text-slate-900 dark:text-slate-50">{title}</div>
-            {subtitle ? <div className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">{subtitle}</div> : null}
+            <div className="text-base font-semibold text-faith-ink dark:text-slate-50">{title}</div>
+            {subtitle ? <div className="mt-0.5 text-xs text-faith-slate">{subtitle}</div> : null}
           </div>
           <Btn tone="ghost" onClick={onClose} left={<X className="h-4 w-4" />}>
             Close
@@ -1171,12 +1171,12 @@ function SectionTitle({
   return (
     <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
       <div className="flex items-start gap-3">
-        <div className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-2xl bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 shadow-sm">
+        <div className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-2xl bg-slate-900 text-white dark:bg-slate-100 dark:text-faith-ink shadow-soft">
           {icon}
         </div>
         <div className="min-w-0">
-          <div className="text-base font-bold text-slate-900 dark:text-slate-50 leading-tight">{title}</div>
-          {subtitle ? <div className="mt-1 text-xs text-slate-500 dark:text-slate-400 leading-normal">{subtitle}</div> : null}
+          <div className="text-base font-bold text-faith-ink dark:text-slate-50 leading-tight">{title}</div>
+          {subtitle ? <div className="mt-1 text-xs text-faith-slate leading-normal">{subtitle}</div> : null}
         </div>
       </div>
       {right ? <div className="shrink-0">{right}</div> : null}
@@ -1246,18 +1246,18 @@ function RegistryRow({
       className={cx(
         "rounded-3xl border p-3 transition-all cursor-pointer",
         active
-          ? "bg-white dark:bg-slate-900 border-slate-300 dark:border-slate-700 ring-2 ring-slate-200 dark:ring-slate-700 shadow-sm"
-          : "bg-slate-50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-800 hover:bg-white dark:hover:bg-slate-800"
+          ? "bg-[var(--fh-surface-bg)] dark:bg-slate-900 border-slate-300 dark:border-slate-700 ring-2 ring-slate-200 dark:ring-slate-700 shadow-soft"
+          : "bg-[var(--fh-surface)] dark:bg-slate-800/50 border-faith-line dark:border-slate-800 hover:bg-[var(--fh-surface-bg)] dark:hover:bg-slate-800"
       )}
       onClick={onSelect}
     >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-2">
-            <div className="truncate text-sm font-bold text-slate-900 dark:text-slate-50">{record.title}</div>
+            <div className="truncate text-sm font-bold text-faith-ink dark:text-slate-50">{record.title}</div>
             <Pill tone={toneForLifecycle(record.lifecycle)}>{record.lifecycle}</Pill>
           </div>
-          <div className="mt-1 text-xs text-slate-500 dark:text-slate-400 line-clamp-2">{record.subtitle}</div>
+          <div className="mt-1 text-xs text-faith-slate line-clamp-2">{record.subtitle}</div>
         </div>
         <button
           type="button"
@@ -1265,35 +1265,35 @@ function RegistryRow({
             e.stopPropagation();
             onDuplicate();
           }}
-          className="rounded-xl bg-white dark:bg-slate-900 px-2.5 py-1 text-[11px] font-semibold text-slate-700 dark:text-slate-300 ring-1 ring-slate-200 dark:ring-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800"
+          className="rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-2.5 py-1 text-[11px] font-semibold text-slate-700 dark:text-slate-300 ring-1 ring-slate-200 dark:ring-slate-700 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800"
         >
           Duplicate
         </button>
       </div>
-      <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] text-slate-500 dark:text-slate-400">
+      <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] text-faith-slate">
         <span>{record.category}</span>
-        <span>â€¢</span>
+        <span>•</span>
         <span>{record.region}</span>
-        <span>â€¢</span>
+        <span>•</span>
         <span>{fmtInt(record.donors)} donors</span>
         {record.matchActive ? (
           <>
-            <span>â€¢</span>
+            <span>•</span>
             <span className="font-semibold" style={{ color: EV_ORANGE }}>Match live</span>
           </>
         ) : null}
       </div>
       <div className="mt-3 grid gap-2 sm:grid-cols-[1fr_auto] sm:items-end">
         <div>
-          <div className="flex items-center justify-between gap-2 text-[11px] text-slate-500 dark:text-slate-400">
+          <div className="flex items-center justify-between gap-2 text-[11px] text-faith-slate">
             <span>{fmtCurrency(record.raised)} raised</span>
             <span>{progress}%</span>
           </div>
           <div className="mt-1"><ProgressBar value={progress} tone={record.accent === "navy" ? "navy" : record.accent === "orange" ? "orange" : "green"} /></div>
         </div>
         <div className="text-right">
-          <div className="text-sm font-extrabold text-slate-900 dark:text-slate-50">{fmtCurrency(record.goal)}</div>
-          <div className={cx("text-[11px]", deadlineSoon ? "text-amber-600 dark:text-amber-400" : "text-slate-500 dark:text-slate-400")}>Deadline {fmtDate(record.deadlineISO)}</div>
+          <div className="text-sm font-extrabold text-faith-ink dark:text-slate-50">{fmtCurrency(record.goal)}</div>
+          <div className={cx("text-[11px]", deadlineSoon ? "text-amber-600 dark:text-amber-400" : "text-faith-slate")}>Deadline {fmtDate(record.deadlineISO)}</div>
         </div>
       </div>
     </div>
@@ -1305,12 +1305,12 @@ function BrowserPreview({ record }: { record: CrowdfundRecord }) {
   const stretch = pct(record.raised, record.stretchGoal);
   const latest = record.updates[0];
   return (
-    <div className="overflow-hidden rounded-[28px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 shadow-xl">
-      <div className="flex items-center gap-2 border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 px-4 py-3">
+    <div className="overflow-hidden rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 shadow-xl">
+      <div className="flex items-center gap-2 border-b border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 px-4 py-3">
         <span className="h-3 w-3 rounded-full bg-rose-400" />
         <span className="h-3 w-3 rounded-full bg-amber-400" />
         <span className="h-3 w-3 rounded-full bg-emerald-400" />
-        <div className="ml-2 text-xs font-semibold text-slate-500 dark:text-slate-400">workspace.org/care/crowdfund/{record.id}</div>
+        <div className="ml-2 text-xs font-semibold text-faith-slate">workspace.org/care/crowdfund/{record.id}</div>
       </div>
       <div className="grid gap-0 lg:grid-cols-[1.25fr_0.75fr]">
         <div>
@@ -1330,68 +1330,68 @@ function BrowserPreview({ record }: { record: CrowdfundRecord }) {
           <div className="p-4">
             <div className="grid gap-4 md:grid-cols-2">
               <div>
-                <div className="text-xs font-semibold uppercase tracking-wide text-slate-400">Raised</div>
-                <div className="mt-1 text-3xl font-extrabold text-slate-900 dark:text-slate-50">{fmtCurrency(record.raised)}</div>
-                <div className="mt-1 text-sm text-slate-500 dark:text-slate-400">of {fmtCurrency(record.goal)} Â· {fmtInt(record.donors)} donors</div>
+                <div className="text-xs font-semibold uppercase tracking-wide text-faith-slate">Raised</div>
+                <div className="mt-1 text-3xl font-extrabold text-faith-ink dark:text-slate-50">{fmtCurrency(record.raised)}</div>
+                <div className="mt-1 text-sm text-faith-slate">of {fmtCurrency(record.goal)} · {fmtInt(record.donors)} donors</div>
                 <div className="mt-3"><ProgressBar value={progress} tone={record.accent === "navy" ? "navy" : record.accent === "orange" ? "orange" : "green"} /></div>
-                <div className="mt-2 text-xs text-slate-500 dark:text-slate-400">Stretch goal: {fmtCurrency(record.stretchGoal)} Â· {stretch}% reached</div>
+                <div className="mt-2 text-xs text-faith-slate">Stretch goal: {fmtCurrency(record.stretchGoal)} · {stretch}% reached</div>
                 <div className="mt-4 grid grid-cols-3 gap-2">
-                  <div className="rounded-2xl bg-slate-50 dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                    <div className="text-[10px] uppercase tracking-wide text-slate-400">Donors</div>
-                    <div className="mt-1 text-base font-extrabold text-slate-900 dark:text-slate-50">{fmtInt(record.donors)}</div>
+                  <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                    <div className="text-[10px] uppercase tracking-wide text-faith-slate">Donors</div>
+                    <div className="mt-1 text-base font-extrabold text-faith-ink dark:text-slate-50">{fmtInt(record.donors)}</div>
                   </div>
-                  <div className="rounded-2xl bg-slate-50 dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                    <div className="text-[10px] uppercase tracking-wide text-slate-400">Ambassadors</div>
-                    <div className="mt-1 text-base font-extrabold text-slate-900 dark:text-slate-50">{fmtInt(record.ambassadors)}</div>
+                  <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                    <div className="text-[10px] uppercase tracking-wide text-faith-slate">Ambassadors</div>
+                    <div className="mt-1 text-base font-extrabold text-faith-ink dark:text-slate-50">{fmtInt(record.ambassadors)}</div>
                   </div>
-                  <div className="rounded-2xl bg-slate-50 dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                    <div className="text-[10px] uppercase tracking-wide text-slate-400">Proof</div>
-                    <div className="mt-1 text-base font-extrabold text-slate-900 dark:text-slate-50">{record.proofCoveragePct}%</div>
+                  <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                    <div className="text-[10px] uppercase tracking-wide text-faith-slate">Proof</div>
+                    <div className="mt-1 text-base font-extrabold text-faith-ink dark:text-slate-50">{record.proofCoveragePct}%</div>
                   </div>
                 </div>
               </div>
               <div className="space-y-3">
-                <div className="rounded-3xl bg-slate-50 dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-                  <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Why this matters</div>
-                  <div className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{record.story}</div>
+                <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Why this matters</div>
+                  <div className="mt-2 text-sm leading-relaxed text-faith-slate dark:text-slate-300">{record.story}</div>
                 </div>
-                <div className="rounded-3xl bg-slate-50 dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
                   <div className="flex items-center justify-between gap-2">
-                    <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Latest update</div>
-                    <div className="text-[11px] text-slate-500 dark:text-slate-400">{latest ? fmtRelative(latest.publishedISO) : "No updates"}</div>
+                    <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Latest update</div>
+                    <div className="text-[11px] text-faith-slate">{latest ? fmtRelative(latest.publishedISO) : "No updates"}</div>
                   </div>
                   {latest ? (
                     <>
-                      <div className="mt-2 text-sm font-semibold text-slate-900 dark:text-slate-50">{latest.title}</div>
-                      <div className="mt-1 text-sm text-slate-600 dark:text-slate-300">{latest.summary}</div>
+                      <div className="mt-2 text-sm font-semibold text-faith-ink dark:text-slate-50">{latest.title}</div>
+                      <div className="mt-1 text-sm text-faith-slate dark:text-slate-300">{latest.summary}</div>
                     </>
                   ) : null}
                 </div>
                 <div className="flex flex-wrap gap-2">
                   <button className="rounded-2xl px-4 py-2 text-sm font-extrabold text-white" style={{ background: EV_GREEN }} onClick={() => safeNav("/faithhub/provider/donations-and-funds")}>Give now</button>
                   <button className="rounded-2xl px-4 py-2 text-sm font-extrabold text-white" style={{ background: EV_ORANGE }} onClick={() => navigator.clipboard?.writeText(window.location.href)}>Share story</button>
-                  <button className="rounded-2xl bg-slate-100 dark:bg-slate-800 px-4 py-2 text-sm font-extrabold text-slate-900 dark:text-slate-50 ring-1 ring-slate-200 dark:ring-slate-700" onClick={() => safeNav("/faithhub/provider/community-groups")}>Follow cause</button>
+                  <button className="rounded-2xl bg-slate-100 dark:bg-slate-800 px-4 py-2 text-sm font-extrabold text-faith-ink dark:text-slate-50 ring-1 ring-slate-200 dark:ring-slate-700" onClick={() => safeNav("/faithhub/provider/community-groups")}>Follow cause</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="border-l border-slate-200 dark:border-slate-800 bg-slate-50/90 dark:bg-slate-900/70 p-4">
-          <div className="text-xs font-semibold uppercase tracking-wide text-slate-400">Momentum</div>
-          <div className="mt-3 rounded-3xl bg-white dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-            <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Current urgency</div>
-            <div className="mt-2 text-sm text-slate-600 dark:text-slate-300">{record.urgency}</div>
-            <div className="mt-3 rounded-2xl bg-slate-50 dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800 text-sm text-slate-600 dark:text-slate-300">{record.recentActivity}</div>
+        <div className="border-l border-faith-line dark:border-slate-800 bg-[var(--fh-surface)]/90 dark:bg-slate-900/70 p-4">
+          <div className="text-xs font-semibold uppercase tracking-wide text-faith-slate">Momentum</div>
+          <div className="mt-3 rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+            <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Current urgency</div>
+            <div className="mt-2 text-sm text-faith-slate dark:text-slate-300">{record.urgency}</div>
+            <div className="mt-3 rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800 text-sm text-faith-slate dark:text-slate-300">{record.recentActivity}</div>
           </div>
-          <div className="mt-4 rounded-3xl bg-white dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-            <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Milestones</div>
+          <div className="mt-4 rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+            <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Milestones</div>
             <div className="mt-3 space-y-3">
               {record.milestones.slice(0, 3).map((m) => (
-                <div key={m.id} className="rounded-2xl bg-slate-50 dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                <div key={m.id} className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
                   <div className="flex items-start justify-between gap-2">
                     <div>
-                      <div className="text-sm font-semibold text-slate-900 dark:text-slate-50">{m.label}</div>
-                      <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{fmtCurrency(m.target)} target</div>
+                      <div className="text-sm font-semibold text-faith-ink dark:text-slate-50">{m.label}</div>
+                      <div className="mt-1 text-xs text-faith-slate">{fmtCurrency(m.target)} target</div>
                     </div>
                     <Pill tone={m.unlocked ? "good" : "neutral"}>{m.unlocked ? "Unlocked" : "Next"}</Pill>
                   </div>
@@ -1411,11 +1411,11 @@ function PhonePreview({ record }: { record: CrowdfundRecord }) {
     <div className="mx-auto w-full max-w-[380px] md:max-w-[420px]">
       <div className="relative overflow-hidden rounded-[38px] bg-slate-950 p-3 shadow-2xl ring-1 ring-slate-800">
         <div className="absolute left-1/2 top-0 z-20 h-6 w-28 -translate-x-1/2 rounded-b-2xl bg-black" />
-        <div className="overflow-hidden rounded-[30px] bg-white dark:bg-slate-950">
-          <div className="sticky top-0 z-10 flex items-center justify-between border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-950/95 px-4 py-3 backdrop-blur">
+        <div className="overflow-hidden rounded-[30px] bg-[var(--fh-surface-bg)] dark:bg-slate-950">
+          <div className="sticky top-0 z-10 flex items-center justify-between border-b border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)]/95 dark:bg-slate-950/95 px-4 py-3 backdrop-blur">
             <div className="min-w-0">
-              <div className="truncate text-sm font-bold text-slate-900 dark:text-slate-50">{record.title}</div>
-              <div className="text-[11px] text-slate-500 dark:text-slate-400">Crowdfund</div>
+              <div className="truncate text-sm font-bold text-faith-ink dark:text-slate-50">{record.title}</div>
+              <div className="text-[11px] text-faith-slate">Crowdfund</div>
             </div>
             <div className="rounded-2xl bg-slate-100 dark:bg-slate-800 px-2.5 py-1 text-[10px] font-bold text-slate-700 dark:text-slate-300">{record.category}</div>
           </div>
@@ -1429,48 +1429,48 @@ function PhonePreview({ record }: { record: CrowdfundRecord }) {
               </div>
             </div>
             <div className="space-y-4 p-4">
-              <div className="rounded-3xl bg-slate-50 dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+              <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
                 <div className="flex items-center justify-between gap-2">
                   <div>
-                    <div className="text-[11px] uppercase tracking-wide text-slate-400">Raised</div>
-                    <div className="mt-1 text-2xl font-extrabold text-slate-900 dark:text-slate-50">{fmtCurrency(record.raised)}</div>
+                    <div className="text-[11px] uppercase tracking-wide text-faith-slate">Raised</div>
+                    <div className="mt-1 text-2xl font-extrabold text-faith-ink dark:text-slate-50">{fmtCurrency(record.raised)}</div>
                   </div>
                   <div className="text-right">
-                    <div className="text-sm font-bold text-slate-900 dark:text-slate-50">{fmtCurrency(record.goal)}</div>
-                    <div className="text-[11px] text-slate-500 dark:text-slate-400">Goal</div>
+                    <div className="text-sm font-bold text-faith-ink dark:text-slate-50">{fmtCurrency(record.goal)}</div>
+                    <div className="text-[11px] text-faith-slate">Goal</div>
                   </div>
                 </div>
                 <div className="mt-3"><ProgressBar value={progress} tone={record.accent === "navy" ? "navy" : record.accent === "orange" ? "orange" : "green"} /></div>
-                <div className="mt-2 flex items-center justify-between gap-2 text-xs text-slate-500 dark:text-slate-400">
+                <div className="mt-2 flex items-center justify-between gap-2 text-xs text-faith-slate">
                   <span>{fmtInt(record.donors)} donors</span>
                   <span>{progress}% funded</span>
                 </div>
                 <div className="mt-3 grid grid-cols-3 gap-2 text-center">
-                  <div className="rounded-2xl bg-white dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                    <div className="text-lg font-extrabold text-slate-900 dark:text-slate-50">{fmtInt(record.ambassadors)}</div>
-                    <div className="text-[10px] uppercase tracking-wide text-slate-400">Ambassadors</div>
+                  <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                    <div className="text-lg font-extrabold text-faith-ink dark:text-slate-50">{fmtInt(record.ambassadors)}</div>
+                    <div className="text-[10px] uppercase tracking-wide text-faith-slate">Ambassadors</div>
                   </div>
-                  <div className="rounded-2xl bg-white dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                    <div className="text-lg font-extrabold text-slate-900 dark:text-slate-50">{record.proofCoveragePct}%</div>
-                    <div className="text-[10px] uppercase tracking-wide text-slate-400">Proof</div>
+                  <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                    <div className="text-lg font-extrabold text-faith-ink dark:text-slate-50">{record.proofCoveragePct}%</div>
+                    <div className="text-[10px] uppercase tracking-wide text-faith-slate">Proof</div>
                   </div>
-                  <div className="rounded-2xl bg-white dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                    <div className="text-lg font-extrabold text-slate-900 dark:text-slate-50">{fmtCurrency(record.matchAmount)}</div>
-                    <div className="text-[10px] uppercase tracking-wide text-slate-400">Match</div>
+                  <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                    <div className="text-lg font-extrabold text-faith-ink dark:text-slate-50">{fmtCurrency(record.matchAmount)}</div>
+                    <div className="text-[10px] uppercase tracking-wide text-faith-slate">Match</div>
                   </div>
                 </div>
               </div>
-              <div className="rounded-3xl bg-slate-50 dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-                <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Campaign story</div>
-                <div className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{record.story}</div>
-                <div className="mt-3 rounded-2xl bg-white dark:bg-slate-950 p-3 text-sm text-slate-600 dark:text-slate-300 ring-1 ring-slate-200 dark:ring-slate-800">{record.urgency}</div>
+              <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Campaign story</div>
+                <div className="mt-2 text-sm leading-relaxed text-faith-slate dark:text-slate-300">{record.story}</div>
+                <div className="mt-3 rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-950 p-3 text-sm text-faith-slate dark:text-slate-300 ring-1 ring-slate-200 dark:ring-slate-800">{record.urgency}</div>
               </div>
-              <div className="rounded-3xl bg-slate-50 dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-                <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Latest public update</div>
+              <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Latest public update</div>
                 {record.updates[0] ? (
                   <>
-                    <div className="mt-2 text-sm font-semibold text-slate-900 dark:text-slate-50">{record.updates[0].title}</div>
-                    <div className="mt-1 text-sm text-slate-600 dark:text-slate-300">{record.updates[0].summary}</div>
+                    <div className="mt-2 text-sm font-semibold text-faith-ink dark:text-slate-50">{record.updates[0].title}</div>
+                    <div className="mt-1 text-sm text-faith-slate dark:text-slate-300">{record.updates[0].summary}</div>
                   </>
                 ) : null}
               </div>
@@ -1510,42 +1510,42 @@ function NewCrowdfundComposer({
       <div className="space-y-4">
         <div className="grid gap-4 md:grid-cols-2">
           <label className="block">
-            <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Campaign title</div>
-            <input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Example: Emergency Food Relief" className="mt-1 w-full rounded-2xl bg-slate-50 dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none" />
+            <div className="text-[11px] font-semibold uppercase tracking-wide text-faith-slate">Campaign title</div>
+            <input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Example: Emergency Food Relief" className="mt-1 w-full rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none" />
           </label>
           <label className="block">
-            <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Beneficiary</div>
-            <input value={beneficiary} onChange={(e) => setBeneficiary(e.target.value)} placeholder="Organization or community" className="mt-1 w-full rounded-2xl bg-slate-50 dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none" />
+            <div className="text-[11px] font-semibold uppercase tracking-wide text-faith-slate">Beneficiary</div>
+            <input value={beneficiary} onChange={(e) => setBeneficiary(e.target.value)} placeholder="Organization or community" className="mt-1 w-full rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none" />
           </label>
           <label className="block">
-            <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Primary goal</div>
-            <input value={goal} onChange={(e) => setGoal(e.target.value.replace(/[^\d]/g, ""))} className="mt-1 w-full rounded-2xl bg-slate-50 dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none" />
+            <div className="text-[11px] font-semibold uppercase tracking-wide text-faith-slate">Primary goal</div>
+            <input value={goal} onChange={(e) => setGoal(e.target.value.replace(/[^\d]/g, ""))} className="mt-1 w-full rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none" />
           </label>
           <label className="block">
-            <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Stretch goal</div>
-            <input value={stretchGoal} onChange={(e) => setStretchGoal(e.target.value.replace(/[^\d]/g, ""))} className="mt-1 w-full rounded-2xl bg-slate-50 dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none" />
+            <div className="text-[11px] font-semibold uppercase tracking-wide text-faith-slate">Stretch goal</div>
+            <input value={stretchGoal} onChange={(e) => setStretchGoal(e.target.value.replace(/[^\d]/g, ""))} className="mt-1 w-full rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none" />
           </label>
           <label className="block">
-            <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Region</div>
-            <input value={region} onChange={(e) => setRegion(e.target.value)} className="mt-1 w-full rounded-2xl bg-slate-50 dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none" />
+            <div className="text-[11px] font-semibold uppercase tracking-wide text-faith-slate">Region</div>
+            <input value={region} onChange={(e) => setRegion(e.target.value)} className="mt-1 w-full rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none" />
           </label>
           <label className="block">
-            <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Deadline</div>
-            <input type="date" value={deadlineISO} onChange={(e) => setDeadlineISO(e.target.value)} className="mt-1 w-full rounded-2xl bg-slate-50 dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none" />
+            <div className="text-[11px] font-semibold uppercase tracking-wide text-faith-slate">Deadline</div>
+            <input type="date" value={deadlineISO} onChange={(e) => setDeadlineISO(e.target.value)} className="mt-1 w-full rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none" />
           </label>
         </div>
         <label className="block">
-          <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Cause story</div>
-          <textarea value={story} onChange={(e) => setStory(e.target.value)} rows={6} placeholder="Tell the story, the need, and the outcome this campaign will make possible." className="mt-1 w-full rounded-2xl bg-slate-50 dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none" />
+          <div className="text-[11px] font-semibold uppercase tracking-wide text-faith-slate">Cause story</div>
+          <textarea value={story} onChange={(e) => setStory(e.target.value)} rows={6} placeholder="Tell the story, the need, and the outcome this campaign will make possible." className="mt-1 w-full rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none" />
         </label>
         <label className="block">
-          <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Urgency framing</div>
-          <textarea value={urgency} onChange={(e) => setUrgency(e.target.value)} rows={3} placeholder="What timing or public urgency should the audience understand?" className="mt-1 w-full rounded-2xl bg-slate-50 dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none" />
+          <div className="text-[11px] font-semibold uppercase tracking-wide text-faith-slate">Urgency framing</div>
+          <textarea value={urgency} onChange={(e) => setUrgency(e.target.value)} rows={3} placeholder="What timing or public urgency should the audience understand?" className="mt-1 w-full rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none" />
         </label>
       </div>
       <div className="space-y-4">
-        <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-          <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Campaign style</div>
+        <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+          <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Campaign style</div>
           <div className="mt-3 flex flex-wrap gap-2">
             {[
               ["green", "Trust-led"],
@@ -1558,7 +1558,7 @@ function NewCrowdfundComposer({
                 onClick={() => setAccent(value as Accent)}
                 className={cx(
                   "rounded-full px-3 py-2 text-xs font-semibold transition-colors",
-                  accent === value ? "text-white" : "bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 ring-1 ring-slate-200 dark:ring-slate-700"
+                  accent === value ? "text-white" : "bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-slate-700 dark:text-slate-300 ring-1 ring-slate-200 dark:ring-slate-700"
                 )}
                 style={accent === value ? { background: accentColor(value as Accent) } : undefined}
               >
@@ -1567,11 +1567,11 @@ function NewCrowdfundComposer({
             ))}
           </div>
         </div>
-        <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-          <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Launch notes</div>
-          <div className="mt-3 space-y-3 text-sm text-slate-600 dark:text-slate-300">
-            <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">This starter setup creates the campaign shell, first milestone, first update slot, and standard governance checklist.</div>
-            <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">After creation, route the campaign into Live Sessions, Audience Notifications, and Beacon from the workbench.</div>
+        <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+          <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Launch notes</div>
+          <div className="mt-3 space-y-3 text-sm text-faith-slate dark:text-slate-300">
+            <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">This starter setup creates the campaign shell, first milestone, first update slot, and standard governance checklist.</div>
+            <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">After creation, route the campaign into Live Sessions, Audience Notifications, and Beacon from the workbench.</div>
           </div>
         </div>
         <div className="flex flex-wrap gap-2">
@@ -1610,21 +1610,21 @@ function UpdateComposer({
     <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.8fr)]">
       <div className="space-y-4">
         <label className="block">
-          <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Update title</div>
-          <input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Example: First relief packs delivered" className="mt-1 w-full rounded-2xl bg-slate-50 dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none" />
+          <div className="text-[11px] font-semibold uppercase tracking-wide text-faith-slate">Update title</div>
+          <input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Example: First relief packs delivered" className="mt-1 w-full rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none" />
         </label>
         <div className="grid gap-4 md:grid-cols-2">
           <label className="block">
-            <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Update type</div>
-            <select value={kind} onChange={(e) => setKind(e.target.value as UpdateKind)} className="mt-1 w-full rounded-2xl bg-slate-50 dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none">
+            <div className="text-[11px] font-semibold uppercase tracking-wide text-faith-slate">Update type</div>
+            <select value={kind} onChange={(e) => setKind(e.target.value as UpdateKind)} className="mt-1 w-full rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none">
               {["Impact", "Milestone", "Need", "Prayer", "Thanks"].map((type) => (
                 <option key={type} value={type}>{type}</option>
               ))}
             </select>
           </label>
           <label className="block">
-            <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Linked surface</div>
-            <select value={linkedSurface} onChange={(e) => setLinkedSurface(e.target.value)} className="mt-1 w-full rounded-2xl bg-slate-50 dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none">
+            <div className="text-[11px] font-semibold uppercase tracking-wide text-faith-slate">Linked surface</div>
+            <select value={linkedSurface} onChange={(e) => setLinkedSurface(e.target.value)} className="mt-1 w-full rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none">
               {[
                 "Audience notifications",
                 "Live Session overlay",
@@ -1638,16 +1638,16 @@ function UpdateComposer({
           </label>
         </div>
         <label className="block">
-          <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Public summary</div>
-          <textarea value={summary} onChange={(e) => setSummary(e.target.value)} rows={6} placeholder="Write the public update exactly as supporters should see it." className="mt-1 w-full rounded-2xl bg-slate-50 dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none" />
+          <div className="text-[11px] font-semibold uppercase tracking-wide text-faith-slate">Public summary</div>
+          <textarea value={summary} onChange={(e) => setSummary(e.target.value)} rows={6} placeholder="Write the public update exactly as supporters should see it." className="mt-1 w-full rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none" />
         </label>
       </div>
       <div className="space-y-4">
-        <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-          <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Posting guidance</div>
-          <div className="mt-3 space-y-3 text-sm text-slate-600 dark:text-slate-300">
-            <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">Use updates to show real proof, answered prayers, milestone movement, or urgent new needs.</div>
-            <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">Tie updates to Beacon and notifications while the context is still fresh and credible.</div>
+        <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+          <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Posting guidance</div>
+          <div className="mt-3 space-y-3 text-sm text-faith-slate dark:text-slate-300">
+            <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">Use updates to show real proof, answered prayers, milestone movement, or urgent new needs.</div>
+            <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">Tie updates to Beacon and notifications while the context is still fresh and credible.</div>
           </div>
         </div>
         <div className="flex flex-wrap gap-2">
@@ -1947,12 +1947,12 @@ export default function CharityCrowdfundingWorkbenchPage() {
   };
 
   return (
-    <div className="min-h-screen w-full flex flex-col bg-[#f2f2f2] dark:bg-slate-950 text-slate-900 dark:text-slate-50 transition-colors overflow-x-hidden">
-      <div className="sticky top-0 z-40 border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur transition-colors">
+    <div className="min-h-screen w-full flex flex-col bg-[var(--fh-page-bg)] dark:bg-slate-950 text-faith-ink dark:text-slate-50 transition-colors overflow-x-hidden">
+      <div className="sticky top-0 z-40 border-b border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)]/95 dark:bg-slate-900/95 backdrop-blur transition-colors">
         <div className="w-full px-4 md:px-6 lg:px-8 py-4">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <div className="min-w-0">
-              <div className="flex flex-wrap items-center gap-2 text-[10px] sm:text-xs text-slate-500 dark:text-slate-400">
+              <div className="flex flex-wrap items-center gap-2 text-[10px] sm:text-xs text-faith-slate">
                 <span className="hover:text-slate-700 dark:hover:text-slate-200">Provider Workspace</span>
                 <span className="text-slate-300 dark:text-slate-700">/</span>
                 <span className="hover:text-slate-700 dark:hover:text-slate-200">Events &amp; Giving</span>
@@ -1960,7 +1960,7 @@ export default function CharityCrowdfundingWorkbenchPage() {
                 <span className="font-medium text-slate-700 dark:text-slate-300">Charity Crowdfunding Workbench</span>
               </div>
               <div className="mt-1 flex flex-wrap items-center gap-2">
-                <div className="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50">Charity Crowdfunding Workbench</div>
+                <div className="text-xl sm:text-2xl font-extrabold tracking-tight text-faith-ink dark:text-slate-50">Charity Crowdfunding Workbench</div>
                 <Pill tone="good">
                   <BadgeCheck className="h-3.5 w-3.5" /> Momentum engine
                 </Pill>
@@ -1968,7 +1968,7 @@ export default function CharityCrowdfundingWorkbenchPage() {
                   <Sparkles className="h-3.5 w-3.5" /> Proof of impact
                 </Pill>
               </div>
-              <div className="mt-1 text-[10px] sm:text-xs text-slate-500 dark:text-slate-400">
+              <div className="mt-1 text-[10px] sm:text-xs text-faith-slate">
                 Premium charity campaign operations with goals, public momentum, proof of impact, updates, governance, and cross-links into live, notifications, and Beacon.
               </div>
             </div>
@@ -1980,11 +1980,11 @@ export default function CharityCrowdfundingWorkbenchPage() {
             </div>
           </div>
         </div>
-        <div className="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 transition-colors">
+        <div className="border-t border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 transition-colors">
           <div className="w-full px-4 md:px-6 lg:px-8 py-3">
             <div className="flex flex-col gap-3 xl:flex-row xl:items-center xl:justify-between">
               <div className="flex flex-wrap items-center gap-2">
-                <div className="rounded-2xl bg-slate-50 dark:bg-slate-800 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800 text-sm font-bold text-slate-900 dark:text-slate-100">{selectedRecord.title}</div>
+                <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800 text-sm font-bold text-faith-ink dark:text-slate-100">{selectedRecord.title}</div>
                 <Pill tone="good">{progress}% funded</Pill>
                 <Pill tone={toneForVerification(selectedRecord.verification)}>{selectedRecord.verification}</Pill>
                 <Pill tone={riskFlags ? "warn" : "good"}>{riskFlags ? `${riskFlags} governance reviews` : "Governance clean"}</Pill>
@@ -2003,7 +2003,7 @@ export default function CharityCrowdfundingWorkbenchPage() {
       <div className="flex-1 w-full px-3 sm:px-4 md:px-6 lg:px-8 py-6">
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-12">
           <div className="lg:col-span-4 space-y-4">
-            <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm">
+            <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft">
               <SectionTitle
                 icon={<Layers className="h-5 w-5" />}
                 title="Campaign roster"
@@ -2011,12 +2011,12 @@ export default function CharityCrowdfundingWorkbenchPage() {
               />
               <div className="mt-4 space-y-3">
                 <div className="relative">
-                  <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+                  <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-faith-slate" />
                   <input
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                     placeholder="Search campaigns, beneficiaries, or regions"
-                    className="w-full rounded-2xl bg-slate-50 dark:bg-slate-800 px-10 py-3 text-sm text-slate-900 dark:text-slate-50 ring-1 ring-slate-200 dark:ring-slate-800 outline-none"
+                    className="w-full rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800 px-10 py-3 text-sm text-faith-ink dark:text-slate-50 ring-1 ring-slate-200 dark:ring-slate-800 outline-none"
                   />
                 </div>
                 <div className="flex flex-wrap gap-2">
@@ -2058,7 +2058,7 @@ export default function CharityCrowdfundingWorkbenchPage() {
               </div>
             </div>
 
-            <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm">
+            <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft">
               <SectionTitle
                 icon={<FileText className="h-5 w-5" />}
                 title="Campaign story builder"
@@ -2066,33 +2066,33 @@ export default function CharityCrowdfundingWorkbenchPage() {
               />
               <div className="mt-4 space-y-3">
                 <label className="block">
-                  <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Public subtitle</div>
-                  <input value={subtitleDraft} onChange={(e) => setSubtitleDraft(e.target.value)} className="mt-1 w-full rounded-2xl bg-slate-50 dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none" />
+                  <div className="text-[11px] font-semibold uppercase tracking-wide text-faith-slate">Public subtitle</div>
+                  <input value={subtitleDraft} onChange={(e) => setSubtitleDraft(e.target.value)} className="mt-1 w-full rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none" />
                 </label>
                 <label className="block">
-                  <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Beneficiary</div>
-                  <input value={beneficiaryDraft} onChange={(e) => setBeneficiaryDraft(e.target.value)} className="mt-1 w-full rounded-2xl bg-slate-50 dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none" />
+                  <div className="text-[11px] font-semibold uppercase tracking-wide text-faith-slate">Beneficiary</div>
+                  <input value={beneficiaryDraft} onChange={(e) => setBeneficiaryDraft(e.target.value)} className="mt-1 w-full rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none" />
                 </label>
                 <label className="block">
-                  <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Cause story</div>
-                  <textarea value={storyDraft} onChange={(e) => setStoryDraft(e.target.value)} rows={6} className="mt-1 w-full rounded-2xl bg-slate-50 dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none" />
+                  <div className="text-[11px] font-semibold uppercase tracking-wide text-faith-slate">Cause story</div>
+                  <textarea value={storyDraft} onChange={(e) => setStoryDraft(e.target.value)} rows={6} className="mt-1 w-full rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none" />
                 </label>
                 <label className="block">
-                  <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Urgency framing</div>
-                  <textarea value={urgencyDraft} onChange={(e) => setUrgencyDraft(e.target.value)} rows={3} className="mt-1 w-full rounded-2xl bg-slate-50 dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none" />
+                  <div className="text-[11px] font-semibold uppercase tracking-wide text-faith-slate">Urgency framing</div>
+                  <textarea value={urgencyDraft} onChange={(e) => setUrgencyDraft(e.target.value)} rows={3} className="mt-1 w-full rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none" />
                 </label>
                 <label className="block">
-                  <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Impact promise</div>
-                  <textarea value={impactDraft} onChange={(e) => setImpactDraft(e.target.value)} rows={3} className="mt-1 w-full rounded-2xl bg-slate-50 dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none" />
+                  <div className="text-[11px] font-semibold uppercase tracking-wide text-faith-slate">Impact promise</div>
+                  <textarea value={impactDraft} onChange={(e) => setImpactDraft(e.target.value)} rows={3} className="mt-1 w-full rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none" />
                 </label>
                 <div className="grid gap-3 sm:grid-cols-2">
                   <label className="block">
-                    <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Primary goal</div>
-                    <input value={goalDraft} onChange={(e) => setGoalDraft(e.target.value.replace(/[^\d]/g, ""))} className="mt-1 w-full rounded-2xl bg-slate-50 dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none" />
+                    <div className="text-[11px] font-semibold uppercase tracking-wide text-faith-slate">Primary goal</div>
+                    <input value={goalDraft} onChange={(e) => setGoalDraft(e.target.value.replace(/[^\d]/g, ""))} className="mt-1 w-full rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none" />
                   </label>
                   <label className="block">
-                    <div className="text-[11px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Stretch goal</div>
-                    <input value={stretchDraft} onChange={(e) => setStretchDraft(e.target.value.replace(/[^\d]/g, ""))} className="mt-1 w-full rounded-2xl bg-slate-50 dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none" />
+                    <div className="text-[11px] font-semibold uppercase tracking-wide text-faith-slate">Stretch goal</div>
+                    <input value={stretchDraft} onChange={(e) => setStretchDraft(e.target.value.replace(/[^\d]/g, ""))} className="mt-1 w-full rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none" />
                   </label>
                 </div>
                 <div className="flex flex-wrap gap-2 pt-1">
@@ -2104,7 +2104,7 @@ export default function CharityCrowdfundingWorkbenchPage() {
           </div>
 
           <div className="lg:col-span-4 space-y-4">
-            <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm">
+            <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft">
               <SectionTitle
                 icon={<Target className="h-5 w-5" />}
                 title="Goal and milestone panel"
@@ -2114,42 +2114,42 @@ export default function CharityCrowdfundingWorkbenchPage() {
                 <MetricCard label="Raised" value={fmtCurrency(selectedRecord.raised)} hint={`${progress}% of goal`} tone={selectedRecord.accent === "navy" ? "navy" : selectedRecord.accent === "orange" ? "orange" : "green"} />
                 <MetricCard label="Stretch" value={fmtCurrency(selectedRecord.stretchGoal)} hint={`${stretchProgress}% reached`} tone="orange" />
               </div>
-              <div className="mt-4 rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+              <div className="mt-4 rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
                 <div className="flex items-center justify-between gap-2">
                   <div>
-                    <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Current target</div>
-                    <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{selectedRecord.impactSummary}</div>
+                    <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Current target</div>
+                    <div className="mt-1 text-xs text-faith-slate">{selectedRecord.impactSummary}</div>
                   </div>
                   {selectedRecord.matchActive ? <Pill tone="warn">Match {fmtCurrency(selectedRecord.matchAmount)}</Pill> : null}
                 </div>
                 <div className="mt-3 space-y-2">
                   <div>
-                    <div className="flex items-center justify-between gap-2 text-[11px] text-slate-500 dark:text-slate-400"><span>Primary goal</span><span>{progress}%</span></div>
+                    <div className="flex items-center justify-between gap-2 text-[11px] text-faith-slate"><span>Primary goal</span><span>{progress}%</span></div>
                     <div className="mt-1"><ProgressBar value={progress} tone={selectedRecord.accent === "navy" ? "navy" : selectedRecord.accent === "orange" ? "orange" : "green"} /></div>
                   </div>
                   <div>
-                    <div className="flex items-center justify-between gap-2 text-[11px] text-slate-500 dark:text-slate-400"><span>Stretch goal</span><span>{stretchProgress}%</span></div>
+                    <div className="flex items-center justify-between gap-2 text-[11px] text-faith-slate"><span>Stretch goal</span><span>{stretchProgress}%</span></div>
                     <div className="mt-1"><ProgressBar value={stretchProgress} tone="orange" /></div>
                   </div>
                 </div>
               </div>
               <div className="mt-4 space-y-3">
                 {selectedRecord.milestones.map((milestone) => (
-                  <div key={milestone.id} className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div key={milestone.id} className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
                     <div className="flex items-start justify-between gap-2">
                       <div>
-                        <div className="text-sm font-bold text-slate-900 dark:text-slate-50">{milestone.label}</div>
-                        <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{fmtCurrency(milestone.target)} Â· {milestone.impact}</div>
+                        <div className="text-sm font-bold text-faith-ink dark:text-slate-50">{milestone.label}</div>
+                        <div className="mt-1 text-xs text-faith-slate">{fmtCurrency(milestone.target)} · {milestone.impact}</div>
                       </div>
                       <Pill tone={milestone.unlocked ? "good" : nextMilestone.id === milestone.id ? "warn" : "neutral"}>{milestone.unlocked ? "Unlocked" : nextMilestone.id === milestone.id ? "Next" : "Locked"}</Pill>
                     </div>
-                    <div className="mt-3 rounded-2xl bg-white dark:bg-slate-900 p-3 text-xs text-slate-600 dark:text-slate-300 ring-1 ring-slate-200 dark:ring-slate-800">{milestone.nextFocus}</div>
+                    <div className="mt-3 rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 text-xs text-faith-slate dark:text-slate-300 ring-1 ring-slate-200 dark:ring-slate-800">{milestone.nextFocus}</div>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm">
+            <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft">
               <SectionTitle
                 icon={<ImageIcon className="h-5 w-5" />}
                 title="Evidence and impact gallery"
@@ -2157,36 +2157,36 @@ export default function CharityCrowdfundingWorkbenchPage() {
               />
               <div className="mt-4 grid gap-3 sm:grid-cols-2">
                 {selectedRecord.evidence.map((asset) => (
-                  <div key={asset.id} className="overflow-hidden rounded-3xl bg-slate-50 dark:bg-slate-800/50 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div key={asset.id} className="overflow-hidden rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 ring-1 ring-slate-200 dark:ring-slate-800">
                     <div className="aspect-[4/3] overflow-hidden">
                       <img src={asset.imageUrl} alt={asset.title} className="h-full w-full object-cover" />
                     </div>
                     <div className="p-3">
                       <div className="flex items-start justify-between gap-2">
                         <div>
-                          <div className="text-sm font-bold text-slate-900 dark:text-slate-50">{asset.title}</div>
-                          <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{asset.kind} Â· {asset.owner}</div>
+                          <div className="text-sm font-bold text-faith-ink dark:text-slate-50">{asset.title}</div>
+                          <div className="mt-1 text-xs text-faith-slate">{asset.kind} · {asset.owner}</div>
                         </div>
                         <Pill tone={asset.status === "Ready" ? "good" : asset.status === "Pending" ? "warn" : "bad"}>{asset.status}</Pill>
                       </div>
-                      <div className="mt-2 text-xs text-slate-600 dark:text-slate-300 line-clamp-3">{asset.coverage}</div>
+                      <div className="mt-2 text-xs text-faith-slate dark:text-slate-300 line-clamp-3">{asset.coverage}</div>
                     </div>
                   </div>
                 ))}
               </div>
-              <div className="mt-4 rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+              <div className="mt-4 rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
                 <div className="flex items-center justify-between gap-2">
                   <div>
-                    <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Proof coverage</div>
-                    <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">Evidence, reporting, and beneficiary proof confidence.</div>
+                    <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Proof coverage</div>
+                    <div className="mt-1 text-xs text-faith-slate">Evidence, reporting, and beneficiary proof confidence.</div>
                   </div>
-                  <div className="text-xl font-extrabold text-slate-900 dark:text-slate-50">{selectedRecord.proofCoveragePct}%</div>
+                  <div className="text-xl font-extrabold text-faith-ink dark:text-slate-50">{selectedRecord.proofCoveragePct}%</div>
                 </div>
                 <div className="mt-3"><ProgressBar value={selectedRecord.proofCoveragePct} tone={selectedRecord.proofCoveragePct >= 85 ? "green" : selectedRecord.proofCoveragePct >= 70 ? "orange" : "navy"} /></div>
               </div>
             </div>
 
-            <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm">
+            <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft">
               <SectionTitle
                 icon={<MessageSquare className="h-5 w-5" />}
                 title="Updates timeline"
@@ -2195,19 +2195,19 @@ export default function CharityCrowdfundingWorkbenchPage() {
               />
               <div className="mt-4 space-y-3 max-h-[520px] overflow-y-auto pr-1">
                 {selectedRecord.updates.map((update) => (
-                  <div key={update.id} className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div key={update.id} className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
                     <div className="flex items-start justify-between gap-3">
                       <div>
                         <div className="flex flex-wrap items-center gap-2">
-                          <div className="text-sm font-bold text-slate-900 dark:text-slate-50">{update.title}</div>
+                          <div className="text-sm font-bold text-faith-ink dark:text-slate-50">{update.title}</div>
                           <Pill tone={update.kind === "Need" ? "warn" : update.kind === "Prayer" ? "pro" : update.kind === "Thanks" ? "good" : "neutral"}>{update.kind}</Pill>
                         </div>
-                        <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{fmtDate(update.publishedISO)} Â· {fmtRelative(update.publishedISO)} Â· {update.linkedSurface}</div>
+                        <div className="mt-1 text-xs text-faith-slate">{fmtDate(update.publishedISO)} · {fmtRelative(update.publishedISO)} · {update.linkedSurface}</div>
                       </div>
                       <Pill tone={update.publicVisible ? "good" : "neutral"}>{update.publicVisible ? "Public" : "Internal"}</Pill>
                     </div>
-                    <div className="mt-3 text-sm text-slate-600 dark:text-slate-300">{update.summary}</div>
-                    <div className="mt-3 rounded-2xl bg-white dark:bg-slate-900 p-3 text-xs text-slate-500 dark:text-slate-400 ring-1 ring-slate-200 dark:ring-slate-800">{update.reachHint}</div>
+                    <div className="mt-3 text-sm text-faith-slate dark:text-slate-300">{update.summary}</div>
+                    <div className="mt-3 rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 text-xs text-faith-slate ring-1 ring-slate-200 dark:ring-slate-800">{update.reachHint}</div>
                   </div>
                 ))}
               </div>
@@ -2215,16 +2215,16 @@ export default function CharityCrowdfundingWorkbenchPage() {
           </div>
 
           <div className="lg:col-span-4 space-y-4">
-            <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm">
+            <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft">
               <SectionTitle
                 icon={<MonitorPlay className="h-5 w-5" />}
                 title="Preview + momentum"
                 subtitle="Public-facing campaign preview with momentum mechanics, social proof, and mobile-first donor experience."
                 right={<Btn tone="ghost" onClick={() => setPreviewOpen(true)} left={<Eye className="h-4 w-4" />}>Expand</Btn>}
               />
-              <div className="mt-4 rounded-3xl bg-slate-50 dark:bg-slate-800/40 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+              <div className="mt-4 rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/40 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
                 <div className="grid gap-3 md:grid-cols-[minmax(0,1fr)_220px] items-start">
-                  <div className="overflow-hidden rounded-3xl ring-1 ring-slate-200 dark:ring-slate-800 bg-white dark:bg-slate-950">
+                  <div className="overflow-hidden rounded-3xl ring-1 ring-slate-200 dark:ring-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950">
                     <div className="aspect-[16/10] relative overflow-hidden">
                       <img src={selectedRecord.heroImageUrl} alt={selectedRecord.title} className="h-full w-full object-cover" />
                       <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/70 to-transparent" />
@@ -2236,38 +2236,38 @@ export default function CharityCrowdfundingWorkbenchPage() {
                     <div className="p-4">
                       <div className="flex items-center justify-between gap-2">
                         <div>
-                          <div className="text-xl font-extrabold text-slate-900 dark:text-slate-50">{fmtCurrency(selectedRecord.raised)}</div>
-                          <div className="text-xs text-slate-500 dark:text-slate-400">of {fmtCurrency(selectedRecord.goal)} raised</div>
+                          <div className="text-xl font-extrabold text-faith-ink dark:text-slate-50">{fmtCurrency(selectedRecord.raised)}</div>
+                          <div className="text-xs text-faith-slate">of {fmtCurrency(selectedRecord.goal)} raised</div>
                         </div>
                         <Pill tone="good">{progress}% funded</Pill>
                       </div>
                       <div className="mt-3"><ProgressBar value={progress} tone={selectedRecord.accent === "navy" ? "navy" : selectedRecord.accent === "orange" ? "orange" : "green"} /></div>
                       <div className="mt-3 grid grid-cols-3 gap-2">
-                        <div className="rounded-2xl bg-slate-50 dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800 text-center">
-                          <div className="text-base font-extrabold text-slate-900 dark:text-slate-50">{fmtInt(selectedRecord.donors)}</div>
-                          <div className="text-[10px] uppercase tracking-wide text-slate-400">Donors</div>
+                        <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800 text-center">
+                          <div className="text-base font-extrabold text-faith-ink dark:text-slate-50">{fmtInt(selectedRecord.donors)}</div>
+                          <div className="text-[10px] uppercase tracking-wide text-faith-slate">Donors</div>
                         </div>
-                        <div className="rounded-2xl bg-slate-50 dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800 text-center">
-                          <div className="text-base font-extrabold text-slate-900 dark:text-slate-50">{fmtInt(selectedRecord.ambassadors)}</div>
-                          <div className="text-[10px] uppercase tracking-wide text-slate-400">Ambassadors</div>
+                        <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800 text-center">
+                          <div className="text-base font-extrabold text-faith-ink dark:text-slate-50">{fmtInt(selectedRecord.ambassadors)}</div>
+                          <div className="text-[10px] uppercase tracking-wide text-faith-slate">Ambassadors</div>
                         </div>
-                        <div className="rounded-2xl bg-slate-50 dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800 text-center">
-                          <div className="text-base font-extrabold text-slate-900 dark:text-slate-50">{selectedRecord.matchActive ? fmtCurrency(selectedRecord.matchAmount) : "â€”"}</div>
-                          <div className="text-[10px] uppercase tracking-wide text-slate-400">Matching</div>
+                        <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800 text-center">
+                          <div className="text-base font-extrabold text-faith-ink dark:text-slate-50">{selectedRecord.matchActive ? fmtCurrency(selectedRecord.matchAmount) : "—"}</div>
+                          <div className="text-[10px] uppercase tracking-wide text-faith-slate">Matching</div>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div className="rounded-[28px] bg-slate-950 p-3 shadow-xl">
-                    <div className="overflow-hidden rounded-[24px] bg-white dark:bg-slate-950">
-                      <div className="h-10 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-4 flex items-center justify-between">
-                        <div className="text-[11px] font-bold text-slate-900 dark:text-slate-50 truncate">Mobile preview</div>
+                    <div className="overflow-hidden rounded-[24px] bg-[var(--fh-surface-bg)] dark:bg-slate-950">
+                      <div className="h-10 border-b border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 px-4 flex items-center justify-between">
+                        <div className="text-[11px] font-bold text-faith-ink dark:text-slate-50 truncate">Mobile preview</div>
                         <div className="rounded-full bg-slate-100 dark:bg-slate-800 px-2 py-1 text-[10px] font-bold text-slate-700 dark:text-slate-300">Phone</div>
                       </div>
                       <div className="p-3 space-y-3">
                         <div className="aspect-[4/3] overflow-hidden rounded-2xl"><img src={selectedRecord.heroImageUrl} alt={selectedRecord.title} className="h-full w-full object-cover" /></div>
-                        <div className="text-sm font-extrabold text-slate-900 dark:text-slate-50 line-clamp-2">{selectedRecord.title}</div>
-                        <div className="text-xs text-slate-500 dark:text-slate-400">{fmtCurrency(selectedRecord.raised)} of {fmtCurrency(selectedRecord.goal)}</div>
+                        <div className="text-sm font-extrabold text-faith-ink dark:text-slate-50 line-clamp-2">{selectedRecord.title}</div>
+                        <div className="text-xs text-faith-slate">{fmtCurrency(selectedRecord.raised)} of {fmtCurrency(selectedRecord.goal)}</div>
                         <div><ProgressBar value={progress} tone={selectedRecord.accent === "navy" ? "navy" : selectedRecord.accent === "orange" ? "orange" : "green"} /></div>
                         <div className="grid grid-cols-2 gap-2">
                           <button className="rounded-2xl px-3 py-2 text-[11px] font-extrabold text-white" style={{ background: EV_GREEN }} onClick={() => safeNav("/faithhub/provider/donations-and-funds")}>Give now</button>
@@ -2279,18 +2279,18 @@ export default function CharityCrowdfundingWorkbenchPage() {
                 </div>
               </div>
               <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-                  <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Funding movement</div>
+                <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Funding movement</div>
                   <div className="mt-3"><MiniLine values={timelineSeries} tone={selectedRecord.accent === "navy" ? "navy" : selectedRecord.accent === "orange" ? "orange" : "green"} /></div>
                 </div>
-                <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-                  <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Donor momentum</div>
+                <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Donor momentum</div>
                   <div className="mt-3"><MiniLine values={donorSeries} tone="orange" /></div>
                 </div>
               </div>
             </div>
 
-            <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm">
+            <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft">
               <SectionTitle
                 icon={<Zap className="h-5 w-5" />}
                 title="Distribution and conversion hooks"
@@ -2298,28 +2298,28 @@ export default function CharityCrowdfundingWorkbenchPage() {
               />
               <div className="mt-4 space-y-3">
                 {selectedRecord.hooks.map((hook) => (
-                  <div key={hook.id} className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div key={hook.id} className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
                     <div className="flex items-start justify-between gap-3">
                       <div>
                         <div className="flex flex-wrap items-center gap-2">
-                          <div className="text-sm font-bold text-slate-900 dark:text-slate-50">{hook.label}</div>
+                          <div className="text-sm font-bold text-faith-ink dark:text-slate-50">{hook.label}</div>
                           <Pill tone={toneForHook(hook.state)}>{hook.state}</Pill>
                         </div>
-                        <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{hook.surface} Â· {hook.value}</div>
+                        <div className="mt-1 text-xs text-faith-slate">{hook.surface} · {hook.value}</div>
                       </div>
                       <button
                         type="button"
                         onClick={() => toggleHookReady(hook.id)}
                         className={cx(
                           "rounded-full px-3 py-1.5 text-xs font-semibold transition-colors",
-                          hook.ready ? "text-white" : "bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 ring-1 ring-slate-200 dark:ring-slate-700"
+                          hook.ready ? "text-white" : "bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-slate-700 dark:text-slate-300 ring-1 ring-slate-200 dark:ring-slate-700"
                         )}
                         style={hook.ready ? { background: EV_GREEN } : undefined}
                       >
                         {hook.ready ? "Ready" : "Enable"}
                       </button>
                     </div>
-                    <div className="mt-3 rounded-2xl bg-white dark:bg-slate-900 p-3 text-xs text-slate-600 dark:text-slate-300 ring-1 ring-slate-200 dark:ring-slate-800">{hook.hint}</div>
+                    <div className="mt-3 rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 text-xs text-faith-slate dark:text-slate-300 ring-1 ring-slate-200 dark:ring-slate-800">{hook.hint}</div>
                   </div>
                 ))}
               </div>
@@ -2330,7 +2330,7 @@ export default function CharityCrowdfundingWorkbenchPage() {
               </div>
             </div>
 
-            <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm">
+            <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft">
               <SectionTitle
                 icon={<ShieldCheck className="h-5 w-5" />}
                 title="Risk, governance, and approval lane"
@@ -2338,20 +2338,20 @@ export default function CharityCrowdfundingWorkbenchPage() {
               />
               <div className="mt-4 space-y-3">
                 {selectedRecord.governance.map((item) => (
-                  <div key={item.id} className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div key={item.id} className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
                     <div className="flex items-start justify-between gap-3">
                       <div>
                         <div className="flex flex-wrap items-center gap-2">
-                          <div className="text-sm font-bold text-slate-900 dark:text-slate-50">{item.label}</div>
+                          <div className="text-sm font-bold text-faith-ink dark:text-slate-50">{item.label}</div>
                           <Pill tone={toneForGovernance(item.status)}>{item.status}</Pill>
                         </div>
-                        <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">Owner: {item.owner}</div>
+                        <div className="mt-1 text-xs text-faith-slate">Owner: {item.owner}</div>
                       </div>
                       {item.status !== "Ready" ? (
                         <Btn tone="ghost" onClick={() => markGovernanceReady(item.id)} cls="px-3 py-1.5 text-xs">Mark ready</Btn>
                       ) : null}
                     </div>
-                    <div className="mt-3 rounded-2xl bg-white dark:bg-slate-900 p-3 text-xs text-slate-600 dark:text-slate-300 ring-1 ring-slate-200 dark:ring-slate-800">{item.note}</div>
+                    <div className="mt-3 rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 text-xs text-faith-slate dark:text-slate-300 ring-1 ring-slate-200 dark:ring-slate-800">{item.note}</div>
                   </div>
                 ))}
               </div>
@@ -2361,7 +2361,7 @@ export default function CharityCrowdfundingWorkbenchPage() {
               </div>
             </div>
 
-            <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm">
+            <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft">
               <SectionTitle
                 icon={<Workflow className="h-5 w-5" />}
                 title="Campaign closeout and reporting"
@@ -2375,18 +2375,18 @@ export default function CharityCrowdfundingWorkbenchPage() {
                 <MetricCard label="Completed" value={String(lifecycleCounts.completed)} hint="Needs closeout" tone="navy" />
                 <MetricCard label="Archived" value={String(lifecycleCounts.archived)} hint="Historical" tone="navy" />
               </div>
-              <div className="mt-4 rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+              <div className="mt-4 rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
                 <div className="flex items-start justify-between gap-3">
                   <div>
-                    <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Current closeout status</div>
-                    <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{selectedRecord.finalReportReady ? "Impact report published and ready for evergreen archive." : "Impact report not yet published."}</div>
+                    <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Current closeout status</div>
+                    <div className="mt-1 text-xs text-faith-slate">{selectedRecord.finalReportReady ? "Impact report published and ready for evergreen archive." : "Impact report not yet published."}</div>
                   </div>
                   <Pill tone={selectedRecord.finalReportReady ? "good" : "warn"}>{selectedRecord.finalReportReady ? "Published" : "Pending"}</Pill>
                 </div>
-                <div className="mt-4 space-y-2 text-sm text-slate-600 dark:text-slate-300">
-                  <div className="rounded-2xl bg-white dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800">Archive or repurpose old crowdfunds without losing proof and donor history.</div>
-                  <div className="rounded-2xl bg-white dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800">Transition high-trust campaigns into evergreen support funds where ministry leaders approve it.</div>
-                  <div className="rounded-2xl bg-white dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800">Create donor thank-you follow-up, replay recap, and Beacon afterglow campaigns while context is still fresh.</div>
+                <div className="mt-4 space-y-2 text-sm text-faith-slate dark:text-slate-300">
+                  <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800">Archive or repurpose old crowdfunds without losing proof and donor history.</div>
+                  <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800">Transition high-trust campaigns into evergreen support funds where ministry leaders approve it.</div>
+                  <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800">Create donor thank-you follow-up, replay recap, and Beacon afterglow campaigns while context is still fresh.</div>
                 </div>
               </div>
               <div className="mt-4 flex flex-wrap gap-2">
@@ -2434,12 +2434,12 @@ export default function CharityCrowdfundingWorkbenchPage() {
             {previewMode === "desktop" ? <BrowserPreview record={selectedRecord} /> : <PhonePreview record={selectedRecord} />}
           </div>
           <div className="space-y-4">
-            <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-              <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Preview notes</div>
-              <div className="mt-3 space-y-3 text-sm text-slate-600 dark:text-slate-300">
-                <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">This preview mirrors the premium public destination with goals, donors, milestones, updates, and direct giving CTA placement.</div>
-                <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">Campaign momentum should feel alive: social proof, urgency, proof of impact, and stretch-goal storytelling must all be visible without feeling exploitative.</div>
-                <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">After publish, route the same campaign into Live Sessions, replay follow-up, notifications, and Beacon while preserving governance context.</div>
+            <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+              <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Preview notes</div>
+              <div className="mt-3 space-y-3 text-sm text-faith-slate dark:text-slate-300">
+                <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">This preview mirrors the premium public destination with goals, donors, milestones, updates, and direct giving CTA placement.</div>
+                <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">Campaign momentum should feel alive: social proof, urgency, proof of impact, and stretch-goal storytelling must all be visible without feeling exploitative.</div>
+                <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">After publish, route the same campaign into Live Sessions, replay follow-up, notifications, and Beacon while preserving governance context.</div>
               </div>
             </div>
             <div className="flex flex-wrap gap-2">
@@ -2477,6 +2477,7 @@ export default function CharityCrowdfundingWorkbenchPage() {
     </div>
   );
 }
+
 
 
 

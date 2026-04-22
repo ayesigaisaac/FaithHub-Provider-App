@@ -1,4 +1,4 @@
-ï»¿// @ts-nocheck
+// @ts-nocheck
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -40,7 +40,7 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * Provider â€” Replays & Clips
+ * Provider — Replays & Clips
  * -----------------------------------
  * Premium replay library and clip engine for Provider Workspace.
  *
@@ -162,7 +162,7 @@ type TaskItem = {
 const REPLAYS_SEED: ReplayRecord[] = [
   {
     id: "RP-041",
-    title: "Sunday Encounter Replay Â· Grace in Motion",
+    title: "Sunday Encounter Replay · Grace in Motion",
     parentKind: "Series",
     parentTitle: "Grace in Motion",
     language: "English",
@@ -188,7 +188,7 @@ const REPLAYS_SEED: ReplayRecord[] = [
   },
   {
     id: "RP-042",
-    title: "Prayer That Stays Â· Standalone Teaching",
+    title: "Prayer That Stays · Standalone Teaching",
     parentKind: "Standalone teaching",
     parentTitle: "Prayer That Stays",
     language: "Luganda",
@@ -210,7 +210,7 @@ const REPLAYS_SEED: ReplayRecord[] = [
     clipOpportunities: 4,
     performanceSeries: [6, 7, 9, 10, 13, 15, 17, 18, 21, 25, 27, 29],
     rightsState: "Thumbnail approval pending",
-    highlightHook: "Prayer is not a moment â€” it is a staying place.",
+    highlightHook: "Prayer is not a moment — it is a staying place.",
   },
   {
     id: "RP-043",
@@ -419,13 +419,13 @@ const APPROVALS: ApprovalItem[] = [
 const COMMENTS_SEED: CommentItem[] = [
   {
     id: "cm-1",
-    author: "Ruth Â· Editor",
+    author: "Ruth · Editor",
     time: "12 min ago",
     body: "The closing prayer moment is strong, but the subtitle block needs one more line-break pass for vertical surfaces.",
   },
   {
     id: "cm-2",
-    author: "Ben Â· Outreach",
+    author: "Ben · Outreach",
     time: "33 min ago",
     body: "If we package this as a follow prompt, Beacon should land on the replay, not the institution homepage.",
   },
@@ -499,9 +499,9 @@ function Pill({
         : tone === "bad"
           ? "bg-rose-50 text-rose-800 ring-rose-200 dark:bg-rose-500/10 dark:text-rose-400 dark:ring-rose-500/20"
           : tone === "brand"
-            ? "text-white shadow-sm ring-0"
+            ? "text-white shadow-soft ring-0"
             : tone === "accent"
-              ? "text-white shadow-sm ring-0"
+              ? "text-white shadow-soft ring-0"
               : "bg-slate-100 text-slate-800 ring-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:ring-slate-700";
 
   return (
@@ -536,12 +536,12 @@ function Btn({
     "inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-2.5 text-sm font-bold transition focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed";
   const cls =
     tone === "primary"
-      ? "text-white hover:brightness-95 shadow-sm"
+      ? "text-white hover:brightness-95 shadow-soft"
       : tone === "accent"
-        ? "text-white hover:brightness-95 shadow-sm"
+        ? "text-white hover:brightness-95 shadow-soft"
         : tone === "ghost"
-          ? "bg-transparent text-slate-900 dark:text-slate-50 hover:bg-slate-100 dark:hover:bg-slate-800"
-          : "bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-50 ring-1 ring-slate-200 dark:ring-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 shadow-sm";
+          ? "bg-transparent text-faith-ink dark:text-slate-50 hover:bg-slate-100 dark:hover:bg-slate-800"
+          : "bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-faith-ink dark:text-slate-50 ring-1 ring-slate-200 dark:ring-slate-800 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800 shadow-soft";
 
   return (
     <button
@@ -588,16 +588,16 @@ function Modal({
   return (
     <div className="fixed inset-0 z-[90] flex items-end justify-center sm:items-center p-0 sm:p-4">
       <div className="absolute inset-0 bg-black/45 backdrop-blur-sm" onClick={onClose} />
-      <div className="relative flex w-full max-w-6xl flex-col bg-white dark:bg-slate-900 shadow-2xl h-[94vh] sm:h-auto sm:max-h-[92vh] rounded-t-3xl sm:rounded-3xl overflow-hidden ring-1 ring-slate-200 dark:ring-slate-800 transition">
-        <div className="flex items-start justify-between gap-3 border-b border-slate-200 dark:border-slate-800 px-5 py-4">
+      <div className="relative flex w-full max-w-6xl flex-col bg-[var(--fh-surface-bg)] dark:bg-slate-900 shadow-2xl h-[94vh] sm:h-auto sm:max-h-[92vh] rounded-t-3xl sm:rounded-3xl overflow-hidden ring-1 ring-slate-200 dark:ring-slate-800 transition">
+        <div className="flex items-start justify-between gap-3 border-b border-faith-line dark:border-slate-800 px-5 py-4">
           <div className="min-w-0">
-            <div className="text-base font-bold text-slate-900 dark:text-slate-50">{title}</div>
-            {subtitle ? <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{subtitle}</div> : null}
+            <div className="text-base font-bold text-faith-ink dark:text-slate-50">{title}</div>
+            {subtitle ? <div className="mt-1 text-xs text-faith-slate">{subtitle}</div> : null}
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-100 dark:bg-slate-800 text-faith-slate dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition"
             aria-label="Close"
           >
             <X className="h-5 w-5" />
@@ -644,7 +644,7 @@ function SelectField({
     <select
       value={value}
       onChange={(e) => onChange(e.target.value)}
-      className="h-11 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3 text-sm text-slate-900 dark:text-slate-100 shadow-sm transition focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-700"
+      className="h-11 rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 text-sm text-faith-ink dark:text-slate-100 shadow-soft transition focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-700"
     >
       {options.map((option) => (
         <option key={option} value={option}>
@@ -694,13 +694,13 @@ function PreviewCanvas({
       </div>
 
       {quoteCard ? (
-        <div className="absolute left-3 right-3 top-1/2 -translate-y-1/2 rounded-3xl bg-white/92 px-4 py-4 shadow-xl">
+        <div className="absolute left-3 right-3 top-1/2 -translate-y-1/2 rounded-3xl bg-[var(--fh-surface-bg)]/92 px-4 py-4 shadow-xl">
           <div className="flex items-start gap-3">
             <div className="mt-0.5 h-9 w-9 shrink-0 rounded-2xl grid place-items-center text-white" style={{ background: EV_GREEN }}>
               <Quote className="h-4 w-4" />
             </div>
             <div>
-              <div className="text-[12px] font-extrabold text-slate-900">Quote card</div>
+              <div className="text-[12px] font-extrabold text-faith-ink">Quote card</div>
               <div className="mt-1 text-[12px] leading-relaxed text-slate-700">{quoteCard}</div>
             </div>
           </div>
@@ -708,9 +708,9 @@ function PreviewCanvas({
       ) : null}
 
       <div className="absolute left-3 right-3 bottom-4">
-        <div className="text-lg font-extrabold text-white line-clamp-2 drop-shadow-sm">{clipTitle || replay.title}</div>
+        <div className="text-lg font-extrabold text-white line-clamp-2 drop-shadow-soft">{clipTitle || replay.title}</div>
         <div className="mt-1 text-[12px] text-white/85 line-clamp-2">
-          {replay.parentTitle} Â· {replay.speaker}
+          {replay.parentTitle} · {replay.speaker}
         </div>
 
         <div className={cx("mt-3", ctaPlacement === "End card" ? "" : "")}> 
@@ -732,17 +732,17 @@ function PreviewCanvas({
     return (
       <div className="mx-auto w-full max-w-[290px] md:max-w-[340px]">
         <div className="rounded-[34px] bg-slate-950 p-3 shadow-[0_18px_60px_rgba(15,23,42,0.45)]">
-          <div className="rounded-[28px] bg-white dark:bg-slate-900 p-3 transition-colors">
+          <div className="rounded-[28px] bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
             <div className="mx-auto mb-3 h-5 w-24 rounded-full bg-slate-200 dark:bg-slate-700" />
             {frame}
             <div className="mt-3 grid grid-cols-2 gap-2 text-[10px]">
-              <div className="rounded-2xl bg-slate-50 dark:bg-slate-800 p-2">
-                <div className="text-slate-400 uppercase tracking-wide">Intent</div>
-                <div className="mt-1 font-bold text-slate-900 dark:text-slate-100">{conversionIntent}</div>
+              <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800 p-2">
+                <div className="text-faith-slate uppercase tracking-wide">Intent</div>
+                <div className="mt-1 font-bold text-faith-ink dark:text-slate-100">{conversionIntent}</div>
               </div>
-              <div className="rounded-2xl bg-slate-50 dark:bg-slate-800 p-2">
-                <div className="text-slate-400 uppercase tracking-wide">CTA</div>
-                <div className="mt-1 font-bold text-slate-900 dark:text-slate-100">{ctaPlacement}</div>
+              <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800 p-2">
+                <div className="text-faith-slate uppercase tracking-wide">CTA</div>
+                <div className="mt-1 font-bold text-faith-ink dark:text-slate-100">{ctaPlacement}</div>
               </div>
             </div>
           </div>
@@ -752,11 +752,11 @@ function PreviewCanvas({
   }
 
   return (
-    <div className="rounded-[28px] border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-950 p-4">
+    <div className="rounded-[28px] border border-faith-line dark:border-slate-800 bg-slate-100 dark:bg-slate-950 p-4">
       <div className="flex items-center justify-between gap-2 pb-3">
         <div>
-          <div className="text-xs font-extrabold text-slate-900 dark:text-slate-100">Desktop shelf preview</div>
-          <div className="text-[11px] text-slate-500 dark:text-slate-400">How the clip packaging lands in discovery and replay follow-up.</div>
+          <div className="text-xs font-extrabold text-faith-ink dark:text-slate-100">Desktop shelf preview</div>
+          <div className="text-[11px] text-faith-slate">How the clip packaging lands in discovery and replay follow-up.</div>
         </div>
         <Pill tone="brand">{variant}</Pill>
       </div>
@@ -783,10 +783,10 @@ function ReplayRow({
       type="button"
       onClick={onClick}
       className={cx(
-        "w-full rounded-3xl border p-3 text-left transition-all shadow-sm",
+        "w-full rounded-3xl border p-3 text-left transition-all shadow-soft",
         selected
-          ? "border-transparent ring-2 ring-[rgba(3,205,140,0.45)] bg-white dark:bg-slate-900"
-          : "border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-slate-300 dark:hover:border-slate-700"
+          ? "border-transparent ring-2 ring-[rgba(3,205,140,0.45)] bg-[var(--fh-surface-bg)] dark:bg-slate-900"
+          : "border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 hover:border-slate-300 dark:hover:border-slate-700"
       )}
     >
       <div className="flex gap-3">
@@ -794,9 +794,9 @@ function ReplayRow({
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-start justify-between gap-2">
             <div className="min-w-0">
-              <div className="text-sm font-bold text-slate-900 dark:text-slate-100 line-clamp-2">{replay.title}</div>
-              <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400 line-clamp-2">
-                {replay.parentKind} Â· {replay.parentTitle} Â· {replay.speaker} Â· {replay.language}
+              <div className="text-sm font-bold text-faith-ink dark:text-slate-100 line-clamp-2">{replay.title}</div>
+              <div className="mt-1 text-[11px] text-faith-slate line-clamp-2">
+                {replay.parentKind} · {replay.parentTitle} · {replay.speaker} · {replay.language}
               </div>
             </div>
             <div className="flex flex-wrap items-center justify-end gap-2">
@@ -805,7 +805,7 @@ function ReplayRow({
             </div>
           </div>
 
-          <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px] text-slate-500 dark:text-slate-400">
+          <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px] text-faith-slate">
             <span>{fmtShortDate(replay.dateISO)}</span>
             <span>{durationLabel(replay.durationSec)}</span>
             <span>{fmtInt(replay.views)} views</span>
@@ -828,7 +828,7 @@ function ReplayRow({
                 e.stopPropagation();
                 onPreview();
               }}
-              className="inline-flex items-center gap-2 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-3 py-2 text-[11px] font-bold text-slate-900 dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-800"
+              className="inline-flex items-center gap-2 rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 px-3 py-2 text-[11px] font-bold text-faith-ink dark:text-slate-100 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800"
             >
               <Eye className="h-3.5 w-3.5" /> Preview
             </button>
@@ -838,7 +838,7 @@ function ReplayRow({
                 e.stopPropagation();
                 onArchive();
               }}
-              className="inline-flex items-center gap-2 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-3 py-2 text-[11px] font-bold text-slate-900 dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-800"
+              className="inline-flex items-center gap-2 rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 px-3 py-2 text-[11px] font-bold text-faith-ink dark:text-slate-100 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800"
             >
               <Archive className="h-3.5 w-3.5" /> Archive
             </button>
@@ -872,8 +872,8 @@ export default function FaithHubReplaysAndClipsPage() {
   const [quoteCard, setQuoteCard] = useState("");
   const [deepLink, setDeepLink] = useState("https://faithhub.app/replay/RP-041");
   const [batchClips, setBatchClips] = useState<BatchClip[]>([
-    { id: "bc-1", label: "Grace opener Â· 9:16", startSec: 42, endSec: 78, variant: "9:16", intent: "Follow", status: "Ready" },
-    { id: "bc-2", label: "Donation testimony Â· 1:1", startSec: 1510, endSec: 1570, variant: "1:1", intent: "Donate", status: "Draft" },
+    { id: "bc-1", label: "Grace opener · 9:16", startSec: 42, endSec: 78, variant: "9:16", intent: "Follow", status: "Ready" },
+    { id: "bc-2", label: "Donation testimony · 1:1", startSec: 1510, endSec: 1570, variant: "1:1", intent: "Donate", status: "Draft" },
   ]);
   const [previewMode, setPreviewMode] = useState<PreviewMode>("desktop");
   const [previewOpen, setPreviewOpen] = useState(false);
@@ -958,7 +958,7 @@ export default function FaithHubReplaysAndClipsPage() {
     setBatchClips((current) => [
       {
         id: `bc-${Date.now()}`,
-        label: `${clipTitle || "New clip"} Â· ${selectedVariant}`,
+        label: `${clipTitle || "New clip"} · ${selectedVariant}`,
         startSec: clipStart,
         endSec: clipEnd,
         variant: selectedVariant,
@@ -1007,7 +1007,7 @@ export default function FaithHubReplaysAndClipsPage() {
       `Deep link: ${deepLink}`,
       "",
       "BATCH QUEUE",
-      ...batchClips.map((clip, idx) => `${idx + 1}. ${clip.label} Â· ${secondsToClock(clip.startSec)} ? ${secondsToClock(clip.endSec)} Â· ${clip.variant} Â· ${clip.status}`),
+      ...batchClips.map((clip, idx) => `${idx + 1}. ${clip.label} · ${secondsToClock(clip.startSec)} ? ${secondsToClock(clip.endSec)} · ${clip.variant} · ${clip.status}`),
     ].join("\n");
 
     const blob = new Blob([lines], { type: "text/plain" });
@@ -1027,7 +1027,7 @@ export default function FaithHubReplaysAndClipsPage() {
     setComments((current) => [
       {
         id: `cm-${Date.now()}`,
-        author: "You Â· Editor",
+        author: "You · Editor",
         time: "Just now",
         body: commentDraft.trim(),
       },
@@ -1054,28 +1054,28 @@ export default function FaithHubReplaysAndClipsPage() {
   if (!selectedReplay) return null;
 
   return (
-    <div className="min-h-screen w-full flex flex-col bg-[#f2f2f2] dark:bg-slate-950 text-slate-900 dark:text-slate-50 overflow-x-hidden transition-colors">
-      <div className="sticky top-0 z-40 border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md">
+    <div className="min-h-screen w-full flex flex-col bg-[var(--fh-page-bg)] dark:bg-slate-950 text-faith-ink dark:text-slate-50 overflow-x-hidden transition-colors">
+      <div className="sticky top-0 z-40 border-b border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)]/95 dark:bg-slate-900/95 backdrop-blur-md">
         <div className="w-full px-4 md:px-6 lg:px-8 py-4">
           <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
             <div className="min-w-0">
-              <div className="flex flex-wrap items-center gap-2 text-[10px] sm:text-xs text-slate-500 dark:text-slate-400">
+              <div className="flex flex-wrap items-center gap-2 text-[10px] sm:text-xs text-faith-slate">
                 <button onClick={() => safeNav(ROUTES.postLivePublishing)} className="hover:text-slate-700 dark:hover:text-slate-200">Post-live & Trust</button>
                 <span>/</span>
-                <span className="font-semibold text-slate-900 dark:text-slate-100">Replays & Clips</span>
+                <span className="font-semibold text-faith-ink dark:text-slate-100">Replays & Clips</span>
               </div>
               <div className="mt-2 flex flex-wrap items-center gap-3">
-                <div className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50">Replays & Clips</div>
+                <div className="text-2xl sm:text-3xl font-extrabold tracking-tight text-faith-ink dark:text-slate-50">Replays & Clips</div>
                 <Pill tone="brand">Premium replay growth surface</Pill>
-                <Pill tone="accent">EVzone Green primary Â· Orange secondary</Pill>
+                <Pill tone="accent">EVzone Green primary · Orange secondary</Pill>
               </div>
-              <div className="mt-2 flex flex-wrap items-center gap-2 text-[11px] sm:text-xs text-slate-500 dark:text-slate-400">
+              <div className="mt-2 flex flex-wrap items-center gap-2 text-[11px] sm:text-xs text-faith-slate">
                 <span>Replay catalog ready</span>
-                <span>â€¢</span>
+                <span>•</span>
                 <span>{fmtInt(filteredReplays.length)} visible replays</span>
-                <span>â€¢</span>
+                <span>•</span>
                 <span>{smartMoments.length} smart highlight suggestions</span>
-                <span>â€¢</span>
+                <span>•</span>
                 <span>{batchClips.length} batch clips in queue</span>
               </div>
             </div>
@@ -1100,14 +1100,14 @@ export default function FaithHubReplaysAndClipsPage() {
           </div>
         </div>
 
-        <div className="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+        <div className="border-t border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900">
           <div className="w-full px-4 md:px-6 lg:px-8 py-2.5 flex flex-wrap items-center justify-between gap-3 text-[11px] sm:text-xs">
             <div className="flex flex-wrap items-center gap-2">
               <Pill tone="brand"><CheckCircle2 className="h-3.5 w-3.5" /> Replay library live</Pill>
               <Pill tone="good"><Sparkles className="h-3.5 w-3.5" /> Smart recipe assist on</Pill>
               <Pill tone="warn"><AlertTriangle className="h-3.5 w-3.5" /> 1 caption approval pending</Pill>
             </div>
-            <div className="text-slate-500 dark:text-slate-400">Designed for replay discovery, retention, giving, events, and Beacon conversion.</div>
+            <div className="text-faith-slate">Designed for replay discovery, retention, giving, events, and Beacon conversion.</div>
           </div>
         </div>
       </div>
@@ -1115,12 +1115,12 @@ export default function FaithHubReplaysAndClipsPage() {
       <div className="flex-1 w-full px-3 sm:px-4 md:px-6 lg:px-8 py-6">
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-12">
           <div className="lg:col-span-8 space-y-4">
-            <section className="rounded-3xl bg-white dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <section className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <div className="flex flex-col gap-4">
                 <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-3">
                   <div>
-                    <div className="text-sm font-bold text-slate-900 dark:text-slate-50 uppercase tracking-tight">Replay library</div>
-                    <div className="mt-1 text-[11px] sm:text-xs text-slate-500 dark:text-slate-400">
+                    <div className="text-sm font-bold text-faith-ink dark:text-slate-50 uppercase tracking-tight">Replay library</div>
+                    <div className="mt-1 text-[11px] sm:text-xs text-faith-slate">
                       Filter every finished replay by Series, standalone teachings, events, language, speaker, performance, and publishing status.
                     </div>
                   </div>
@@ -1131,13 +1131,13 @@ export default function FaithHubReplaysAndClipsPage() {
                 </div>
 
                 <div className="grid grid-cols-1 gap-3 xl:grid-cols-[minmax(0,1.3fr)_repeat(5,minmax(0,0.75fr))]">
-                  <label className="rounded-2xl bg-slate-50 dark:bg-slate-800/50 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800 flex items-center gap-2">
-                    <Search className="h-4 w-4 text-slate-400" />
+                  <label className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800/50 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800 flex items-center gap-2">
+                    <Search className="h-4 w-4 text-faith-slate" />
                     <input
                       value={search}
                       onChange={(e) => setSearch(e.target.value)}
                       placeholder="Search replays, parents, or speakers"
-                      className="w-full bg-transparent border-none outline-none text-sm text-slate-900 dark:text-slate-100 placeholder:text-slate-400"
+                      className="w-full bg-transparent border-none outline-none text-sm text-faith-ink dark:text-slate-100 placeholder:text-faith-slate"
                     />
                   </label>
                   <SelectField value={statusFilter} onChange={setStatusFilter} options={statusOptions} />
@@ -1162,7 +1162,7 @@ export default function FaithHubReplaysAndClipsPage() {
                     />
                   ))}
                   {!filteredReplays.length ? (
-                    <div className="rounded-3xl border border-dashed border-slate-300 dark:border-slate-700 p-8 text-center text-sm text-slate-500 dark:text-slate-400">
+                    <div className="rounded-3xl border border-dashed border-slate-300 dark:border-slate-700 p-8 text-center text-sm text-faith-slate">
                       No replay matches the current filters.
                     </div>
                   ) : null}
@@ -1171,12 +1171,12 @@ export default function FaithHubReplaysAndClipsPage() {
             </section>
 
             <div className="grid grid-cols-1 gap-4 xl:grid-cols-12">
-              <section className="xl:col-span-7 rounded-3xl bg-white dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+              <section className="xl:col-span-7 rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
                 <div className="flex flex-col gap-4">
                   <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-3">
                     <div>
-                      <div className="text-sm font-bold text-slate-900 dark:text-slate-50 uppercase tracking-tight">Clip extraction timeline</div>
-                      <div className="mt-1 text-[11px] sm:text-xs text-slate-500 dark:text-slate-400">
+                      <div className="text-sm font-bold text-faith-ink dark:text-slate-50 uppercase tracking-tight">Clip extraction timeline</div>
+                      <div className="mt-1 text-[11px] sm:text-xs text-faith-slate">
                         Build single or multi-clip batches, add intro or outro cards, and reuse winning clip recipes without leaving the page.
                       </div>
                     </div>
@@ -1186,12 +1186,12 @@ export default function FaithHubReplaysAndClipsPage() {
                     </div>
                   </div>
 
-                  <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/30 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+                  <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/30 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                     <div className="flex flex-wrap items-start justify-between gap-3">
                       <div>
-                        <div className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">Selected replay</div>
-                        <div className="mt-1 text-lg font-extrabold text-slate-900 dark:text-slate-100">{selectedReplay.title}</div>
-                        <div className="mt-1 text-[12px] text-slate-500 dark:text-slate-400">{selectedReplay.summary}</div>
+                        <div className="text-xs font-bold uppercase tracking-[0.16em] text-faith-slate">Selected replay</div>
+                        <div className="mt-1 text-lg font-extrabold text-faith-ink dark:text-slate-100">{selectedReplay.title}</div>
+                        <div className="mt-1 text-[12px] text-faith-slate">{selectedReplay.summary}</div>
                       </div>
                       <div className="flex flex-wrap items-center gap-2">
                         <Btn tone="ghost" onClick={copyReplayLink} left={<Copy className="h-4 w-4" />} className="px-3 py-2 text-[12px]">
@@ -1204,21 +1204,21 @@ export default function FaithHubReplaysAndClipsPage() {
                     </div>
 
                     <div className="mt-4">
-                      <div className="flex items-center justify-between text-[11px] font-semibold text-slate-500 dark:text-slate-400">
+                      <div className="flex items-center justify-between text-[11px] font-semibold text-faith-slate">
                         <span>Replay timeline</span>
                         <span>{secondsToClock(selectedReplay.durationSec)}</span>
                       </div>
                       <div className="mt-3 relative h-5 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden">
                         <div className="absolute inset-y-0 rounded-full" style={{ left: `${clipRangePct}%`, width: `${clipWidthPct}%`, background: EV_GREEN }} />
                       </div>
-                      <div className="mt-2 flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
+                      <div className="mt-2 flex items-center justify-between text-[11px] text-faith-slate">
                         <span>{secondsToClock(clipStart)}</span>
                         <span>{secondsToClock(clipEnd)}</span>
                       </div>
 
                       <div className="mt-3 grid grid-cols-2 gap-3">
-                        <label className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                          <div className="text-[10px] uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">Clip in</div>
+                        <label className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                          <div className="text-[10px] uppercase tracking-[0.14em] text-faith-slate">Clip in</div>
                           <input
                             type="range"
                             min={0}
@@ -1231,11 +1231,11 @@ export default function FaithHubReplaysAndClipsPage() {
                             className="mt-3 w-full accent-[var(--ev-green)]"
                             style={{ ["--ev-green" as any]: EV_GREEN }}
                           />
-                          <div className="mt-2 text-sm font-bold text-slate-900 dark:text-slate-100">{secondsToClock(clipStart)}</div>
+                          <div className="mt-2 text-sm font-bold text-faith-ink dark:text-slate-100">{secondsToClock(clipStart)}</div>
                         </label>
 
-                        <label className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                          <div className="text-[10px] uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">Clip out</div>
+                        <label className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                          <div className="text-[10px] uppercase tracking-[0.14em] text-faith-slate">Clip out</div>
                           <input
                             type="range"
                             min={clipStart + 5}
@@ -1245,35 +1245,35 @@ export default function FaithHubReplaysAndClipsPage() {
                             className="mt-3 w-full accent-[var(--ev-orange)]"
                             style={{ ["--ev-orange" as any]: EV_ORANGE }}
                           />
-                          <div className="mt-2 text-sm font-bold text-slate-900 dark:text-slate-100">{secondsToClock(clipEnd)}</div>
+                          <div className="mt-2 text-sm font-bold text-faith-ink dark:text-slate-100">{secondsToClock(clipEnd)}</div>
                         </label>
                       </div>
                     </div>
                   </div>
 
                   <div className="grid gap-3 lg:grid-cols-2">
-                    <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm">
+                    <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft">
                       <div className="flex items-center justify-between gap-2">
                         <div>
-                          <div className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">Smart highlight suggestions</div>
-                          <div className="mt-1 text-sm font-bold text-slate-900 dark:text-slate-100">AI-selected moments worth packaging now</div>
+                          <div className="text-xs font-bold uppercase tracking-[0.16em] text-faith-slate">Smart highlight suggestions</div>
+                          <div className="mt-1 text-sm font-bold text-faith-ink dark:text-slate-100">AI-selected moments worth packaging now</div>
                         </div>
                         <Pill tone="accent"><Wand2 className="h-3.5 w-3.5" /> {smartMoments.length} moments</Pill>
                       </div>
 
                       <div className="mt-3 space-y-3 max-h-[320px] overflow-y-auto pr-1">
                         {smartMoments.map((moment) => (
-                          <div key={moment.id} className="rounded-2xl bg-slate-50 dark:bg-slate-800/50 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                          <div key={moment.id} className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
                             <div className="flex items-start justify-between gap-3">
                               <div>
-                                <div className="text-sm font-bold text-slate-900 dark:text-slate-100">{moment.label}</div>
-                                <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">{secondsToClock(moment.startSec)} ? {secondsToClock(moment.endSec)} Â· {moment.reason}</div>
+                                <div className="text-sm font-bold text-faith-ink dark:text-slate-100">{moment.label}</div>
+                                <div className="mt-1 text-[11px] text-faith-slate">{secondsToClock(moment.startSec)} ? {secondsToClock(moment.endSec)} · {moment.reason}</div>
                               </div>
                               <Pill tone="good">{moment.confidence}%</Pill>
                             </div>
                             <div className="mt-2 flex flex-wrap gap-2">
                               {moment.tags.map((tag) => (
-                                <span key={tag} className="rounded-full bg-white dark:bg-slate-900 px-2 py-1 text-[10px] font-semibold text-slate-700 dark:text-slate-200 ring-1 ring-slate-200 dark:ring-slate-700">
+                                <span key={tag} className="rounded-full bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-2 py-1 text-[10px] font-semibold text-slate-700 dark:text-slate-200 ring-1 ring-slate-200 dark:ring-slate-700">
                                   {tag}
                                 </span>
                               ))}
@@ -1294,11 +1294,11 @@ export default function FaithHubReplaysAndClipsPage() {
                       </div>
                     </div>
 
-                    <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm">
+                    <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft">
                       <div className="flex items-center justify-between gap-2">
                         <div>
-                          <div className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">Reusable clip recipes</div>
-                          <div className="mt-1 text-sm font-bold text-slate-900 dark:text-slate-100">Apply premium packaging rules in one click</div>
+                          <div className="text-xs font-bold uppercase tracking-[0.16em] text-faith-slate">Reusable clip recipes</div>
+                          <div className="mt-1 text-sm font-bold text-faith-ink dark:text-slate-100">Apply premium packaging rules in one click</div>
                         </div>
                         <Pill tone="brand"><RefreshCw className="h-3.5 w-3.5" /> Reusable</Pill>
                       </div>
@@ -1315,21 +1315,21 @@ export default function FaithHubReplaysAndClipsPage() {
                                 "w-full rounded-2xl border p-3 text-left transition",
                                 active
                                   ? "border-transparent ring-2 ring-[rgba(247,127,0,0.4)] bg-amber-50/50 dark:bg-amber-900/20"
-                                  : "border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40 hover:border-slate-300 dark:hover:border-slate-700"
+                                  : "border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-800/40 hover:border-slate-300 dark:hover:border-slate-700"
                               )}
                             >
                               <div className="flex items-start justify-between gap-3">
                                 <div>
-                                  <div className="text-sm font-bold text-slate-900 dark:text-slate-100">{recipe.name}</div>
-                                  <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">{recipe.description}</div>
+                                  <div className="text-sm font-bold text-faith-ink dark:text-slate-100">{recipe.name}</div>
+                                  <div className="mt-1 text-[11px] text-faith-slate">{recipe.description}</div>
                                 </div>
                                 <Pill tone={active ? "accent" : "neutral"}>{recipe.variant}</Pill>
                               </div>
                               <div className="mt-2 flex flex-wrap gap-2 text-[10px]">
-                                <span className="rounded-full bg-white dark:bg-slate-900 px-2 py-1 ring-1 ring-slate-200 dark:ring-slate-700">{recipe.captionStyle}</span>
-                                <span className="rounded-full bg-white dark:bg-slate-900 px-2 py-1 ring-1 ring-slate-200 dark:ring-slate-700">{recipe.ctaPlacement}</span>
-                                <span className="rounded-full bg-white dark:bg-slate-900 px-2 py-1 ring-1 ring-slate-200 dark:ring-slate-700">{recipe.introCard ? "Intro on" : "Intro off"}</span>
-                                <span className="rounded-full bg-white dark:bg-slate-900 px-2 py-1 ring-1 ring-slate-200 dark:ring-slate-700">{recipe.outroCard ? "Outro on" : "Outro off"}</span>
+                                <span className="rounded-full bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-2 py-1 ring-1 ring-slate-200 dark:ring-slate-700">{recipe.captionStyle}</span>
+                                <span className="rounded-full bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-2 py-1 ring-1 ring-slate-200 dark:ring-slate-700">{recipe.ctaPlacement}</span>
+                                <span className="rounded-full bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-2 py-1 ring-1 ring-slate-200 dark:ring-slate-700">{recipe.introCard ? "Intro on" : "Intro off"}</span>
+                                <span className="rounded-full bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-2 py-1 ring-1 ring-slate-200 dark:ring-slate-700">{recipe.outroCard ? "Outro on" : "Outro off"}</span>
                               </div>
                             </button>
                           );
@@ -1338,11 +1338,11 @@ export default function FaithHubReplaysAndClipsPage() {
                     </div>
                   </div>
 
-                  <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/30 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+                  <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/30 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                     <div className="flex items-center justify-between gap-2">
                       <div>
-                        <div className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">Multi-clip batch queue</div>
-                        <div className="mt-1 text-sm font-bold text-slate-900 dark:text-slate-100">Build batches for reels, shelves, Beacon, and replay follow-up</div>
+                        <div className="text-xs font-bold uppercase tracking-[0.16em] text-faith-slate">Multi-clip batch queue</div>
+                        <div className="mt-1 text-sm font-bold text-faith-ink dark:text-slate-100">Build batches for reels, shelves, Beacon, and replay follow-up</div>
                       </div>
                       <Btn tone="neutral" onClick={downloadBatchPlan} left={<Copy className="h-4 w-4" />} className="px-3 py-2 text-[12px]">
                         Export queue
@@ -1351,10 +1351,10 @@ export default function FaithHubReplaysAndClipsPage() {
 
                     <div className="mt-3 space-y-2">
                       {batchClips.map((clip) => (
-                        <div key={clip.id} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 rounded-2xl bg-white dark:bg-slate-900 px-3 py-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                        <div key={clip.id} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-3 ring-1 ring-slate-200 dark:ring-slate-800">
                           <div>
-                            <div className="text-sm font-bold text-slate-900 dark:text-slate-100">{clip.label}</div>
-                            <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">{secondsToClock(clip.startSec)} ? {secondsToClock(clip.endSec)} Â· {clip.intent}</div>
+                            <div className="text-sm font-bold text-faith-ink dark:text-slate-100">{clip.label}</div>
+                            <div className="mt-1 text-[11px] text-faith-slate">{secondsToClock(clip.startSec)} ? {secondsToClock(clip.endSec)} · {clip.intent}</div>
                           </div>
                           <div className="flex flex-wrap items-center gap-2">
                             <Pill tone="neutral">{clip.variant}</Pill>
@@ -1367,11 +1367,11 @@ export default function FaithHubReplaysAndClipsPage() {
                 </div>
               </section>
 
-              <section className="xl:col-span-5 rounded-3xl bg-white dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+              <section className="xl:col-span-5 rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
                 <div className="flex flex-col gap-4">
                   <div>
-                    <div className="text-sm font-bold text-slate-900 dark:text-slate-50 uppercase tracking-tight">Format variants & clip packaging</div>
-                    <div className="mt-1 text-[11px] sm:text-xs text-slate-500 dark:text-slate-400">
+                    <div className="text-sm font-bold text-faith-ink dark:text-slate-50 uppercase tracking-tight">Format variants & clip packaging</div>
+                    <div className="mt-1 text-[11px] sm:text-xs text-faith-slate">
                       Create vertical, square, and landscape cutdowns with premium caption layouts, thumbnail treatments, quote cards, CTA logic, and destination deep links.
                     </div>
                   </div>
@@ -1386,11 +1386,11 @@ export default function FaithHubReplaysAndClipsPage() {
                           "rounded-2xl border p-3 text-left transition",
                           selectedVariant === variant
                             ? "border-transparent ring-2 ring-[rgba(3,205,140,0.45)] bg-emerald-50/40 dark:bg-emerald-900/20"
-                            : "border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40 hover:border-slate-300 dark:hover:border-slate-700"
+                            : "border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-800/40 hover:border-slate-300 dark:hover:border-slate-700"
                         )}
                       >
-                        <div className="text-sm font-extrabold text-slate-900 dark:text-slate-100">{variant}</div>
-                        <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
+                        <div className="text-sm font-extrabold text-faith-ink dark:text-slate-100">{variant}</div>
+                        <div className="mt-1 text-[11px] text-faith-slate">
                           {variant === "9:16" ? "Short-form discovery" : variant === "1:1" ? "Quote cards & feeds" : "Replay shelves & web"}
                         </div>
                       </button>
@@ -1410,9 +1410,9 @@ export default function FaithHubReplaysAndClipsPage() {
                       <div className="text-[11px] font-bold text-slate-700 dark:text-slate-300">Conversion intent</div>
                       <SelectField value={conversionIntent} onChange={(value) => setConversionIntent(value as ConversionIntent)} options={["Watch replay", "Follow", "Donate", "Register", "Crowdfund"]} />
                     </label>
-                    <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/40 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                    <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800/40 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
                       <div className="text-[11px] font-bold text-slate-700 dark:text-slate-300">Aspect readiness</div>
-                      <div className="mt-2 flex items-center gap-2 text-[11px] text-slate-500 dark:text-slate-400">
+                      <div className="mt-2 flex items-center gap-2 text-[11px] text-faith-slate">
                         <Sparkles className="h-4 w-4" /> Alt captions, artwork safe area, and CTA treatments remain synced.
                       </div>
                     </div>
@@ -1421,19 +1421,19 @@ export default function FaithHubReplaysAndClipsPage() {
                   <div className="grid grid-cols-1 gap-3">
                     <label>
                       <div className="text-[11px] font-bold text-slate-700 dark:text-slate-300">Clip title</div>
-                      <input value={clipTitle} onChange={(e) => setClipTitle(e.target.value)} className="mt-1 w-full rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3 py-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-700" />
+                      <input value={clipTitle} onChange={(e) => setClipTitle(e.target.value)} className="mt-1 w-full rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2.5 text-sm text-faith-ink dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-700" />
                     </label>
                     <label>
                       <div className="text-[11px] font-bold text-slate-700 dark:text-slate-300">Hook copy</div>
-                      <textarea value={hookCopy} onChange={(e) => setHookCopy(e.target.value)} rows={3} className="mt-1 w-full rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3 py-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-700" />
+                      <textarea value={hookCopy} onChange={(e) => setHookCopy(e.target.value)} rows={3} className="mt-1 w-full rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2.5 text-sm text-faith-ink dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-700" />
                     </label>
                     <label>
                       <div className="text-[11px] font-bold text-slate-700 dark:text-slate-300">Quote card (optional)</div>
-                      <textarea value={quoteCard} onChange={(e) => setQuoteCard(e.target.value)} rows={2} placeholder="Drop a scripture or quote for square-card packaging" className="mt-1 w-full rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3 py-2.5 text-sm text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-700" />
+                      <textarea value={quoteCard} onChange={(e) => setQuoteCard(e.target.value)} rows={2} placeholder="Drop a scripture or quote for square-card packaging" className="mt-1 w-full rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2.5 text-sm text-faith-ink dark:text-slate-100 placeholder:text-faith-slate focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-700" />
                     </label>
                     <label>
                       <div className="text-[11px] font-bold text-slate-700 dark:text-slate-300">Destination deep link</div>
-                      <input value={deepLink} onChange={(e) => setDeepLink(e.target.value)} className="mt-1 w-full rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3 py-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-700" />
+                      <input value={deepLink} onChange={(e) => setDeepLink(e.target.value)} className="mt-1 w-full rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2.5 text-sm text-faith-ink dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-700" />
                     </label>
                   </div>
 
@@ -1443,43 +1443,43 @@ export default function FaithHubReplaysAndClipsPage() {
                       onClick={() => setIntroCard((value) => !value)}
                       className={cx(
                         "rounded-2xl border p-3 text-left transition",
-                        introCard ? "border-transparent ring-2 ring-[rgba(3,205,140,0.4)] bg-emerald-50/40 dark:bg-emerald-900/20" : "border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40"
+                        introCard ? "border-transparent ring-2 ring-[rgba(3,205,140,0.4)] bg-emerald-50/40 dark:bg-emerald-900/20" : "border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-800/40"
                       )}
                     >
-                      <div className="text-sm font-bold text-slate-900 dark:text-slate-100">Intro card</div>
-                      <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">Use a branded opener before the selected clip range.</div>
+                      <div className="text-sm font-bold text-faith-ink dark:text-slate-100">Intro card</div>
+                      <div className="mt-1 text-[11px] text-faith-slate">Use a branded opener before the selected clip range.</div>
                     </button>
                     <button
                       type="button"
                       onClick={() => setOutroCard((value) => !value)}
                       className={cx(
                         "rounded-2xl border p-3 text-left transition",
-                        outroCard ? "border-transparent ring-2 ring-[rgba(247,127,0,0.4)] bg-amber-50/40 dark:bg-amber-900/20" : "border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40"
+                        outroCard ? "border-transparent ring-2 ring-[rgba(247,127,0,0.4)] bg-amber-50/40 dark:bg-amber-900/20" : "border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-800/40"
                       )}
                     >
-                      <div className="text-sm font-bold text-slate-900 dark:text-slate-100">Outro card</div>
-                      <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">End with a replay or conversion CTA before export.</div>
+                      <div className="text-sm font-bold text-faith-ink dark:text-slate-100">Outro card</div>
+                      <div className="mt-1 text-[11px] text-faith-slate">End with a replay or conversion CTA before export.</div>
                     </button>
                   </div>
 
-                  <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/30 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/30 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
                     <div className="flex flex-wrap items-center justify-between gap-3">
                       <div>
-                        <div className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">Clip packaging summary</div>
-                        <div className="mt-1 text-sm font-bold text-slate-900 dark:text-slate-100">{secondsToClock(clipStart)} ? {secondsToClock(clipEnd)} Â· {secondsToClock(clipDuration)} clip length</div>
+                        <div className="text-xs font-bold uppercase tracking-[0.16em] text-faith-slate">Clip packaging summary</div>
+                        <div className="mt-1 text-sm font-bold text-faith-ink dark:text-slate-100">{secondsToClock(clipStart)} ? {secondsToClock(clipEnd)} · {secondsToClock(clipDuration)} clip length</div>
                       </div>
                       <div className="flex flex-wrap items-center gap-2">
                         <Pill tone="brand">{selectedVariant}</Pill>
                         <Pill tone="accent">{conversionIntent}</Pill>
                       </div>
                     </div>
-                    <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] text-slate-500 dark:text-slate-400">
+                    <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] text-faith-slate">
                       <span>{captionStyle}</span>
-                      <span>â€¢</span>
+                      <span>•</span>
                       <span>{ctaPlacement}</span>
-                      <span>â€¢</span>
+                      <span>•</span>
                       <span>{introCard ? "Intro on" : "Intro off"}</span>
-                      <span>â€¢</span>
+                      <span>•</span>
                       <span>{outroCard ? "Outro on" : "Outro off"}</span>
                     </div>
                     <div className="mt-4 flex flex-wrap gap-2">
@@ -1495,12 +1495,12 @@ export default function FaithHubReplaysAndClipsPage() {
               </section>
             </div>
 
-            <section className="rounded-3xl bg-white dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <section className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <div className="flex flex-col gap-4">
                 <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-3">
                   <div>
-                    <div className="text-sm font-bold text-slate-900 dark:text-slate-50 uppercase tracking-tight">Replay-to-promotion bridge</div>
-                    <div className="mt-1 text-[11px] sm:text-xs text-slate-500 dark:text-slate-400">
+                    <div className="text-sm font-bold text-faith-ink dark:text-slate-50 uppercase tracking-tight">Replay-to-promotion bridge</div>
+                    <div className="mt-1 text-[11px] sm:text-xs text-faith-slate">
                       Push a replay or clip into Beacon, notification journeys, event tie-ins, or giving follow-up while the context is still hot.
                     </div>
                   </div>
@@ -1516,12 +1516,12 @@ export default function FaithHubReplaysAndClipsPage() {
                   ].map((card) => {
                     const Icon = card.icon as any;
                     return (
-                      <button key={card.title} type="button" onClick={card.action} className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/30 p-4 text-left hover:border-slate-300 dark:hover:border-slate-700 transition">
-                        <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl text-white shadow-sm" style={{ background: card.tone === "brand" ? EV_GREEN : card.tone === "accent" ? EV_ORANGE : "#0f172a" }}>
+                      <button key={card.title} type="button" onClick={card.action} className="rounded-3xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-800/30 p-4 text-left hover:border-slate-300 dark:hover:border-slate-700 transition">
+                        <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl text-white shadow-soft" style={{ background: card.tone === "brand" ? EV_GREEN : card.tone === "accent" ? EV_ORANGE : "#0f172a" }}>
                           <Icon className="h-5 w-5" />
                         </div>
-                        <div className="mt-3 text-sm font-extrabold text-slate-900 dark:text-slate-100">{card.title}</div>
-                        <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">{card.hint}</div>
+                        <div className="mt-3 text-sm font-extrabold text-faith-ink dark:text-slate-100">{card.title}</div>
+                        <div className="mt-1 text-[11px] text-faith-slate leading-relaxed">{card.hint}</div>
                         <div className="mt-3 inline-flex items-center gap-1 text-[11px] font-bold" style={{ color: card.tone === "accent" ? EV_ORANGE : card.tone === "brand" ? EV_GREEN : undefined }}>
                           Open path <ChevronRight className="h-3.5 w-3.5" />
                         </div>
@@ -1534,22 +1534,22 @@ export default function FaithHubReplaysAndClipsPage() {
           </div>
 
           <div className="lg:col-span-4 space-y-4">
-            <section className="rounded-3xl bg-white dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <section className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <div className="text-sm font-bold text-slate-900 dark:text-slate-50 uppercase tracking-tight">Performance intelligence</div>
-                  <div className="mt-1 text-[11px] sm:text-xs text-slate-500 dark:text-slate-400">
+                  <div className="text-sm font-bold text-faith-ink dark:text-slate-50 uppercase tracking-tight">Performance intelligence</div>
+                  <div className="mt-1 text-[11px] sm:text-xs text-faith-slate">
                     See which replays and clips are driving watch time, follows, donations, event registration, crowdfunding momentum, and Beacon conversions.
                   </div>
                 </div>
                 <Pill tone={toneForStatus(selectedReplay.performance)}><BarChart3 className="h-3.5 w-3.5" /> {selectedReplay.performance}</Pill>
               </div>
 
-              <div className="mt-4 rounded-3xl bg-slate-50 dark:bg-slate-800/30 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+              <div className="mt-4 rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/30 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
                 <div className="flex items-center justify-between gap-2">
                   <div>
-                    <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-500 dark:text-slate-400">Replay momentum</div>
-                    <div className="mt-1 text-lg font-extrabold text-slate-900 dark:text-slate-100">{selectedReplay.title}</div>
+                    <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-faith-slate">Replay momentum</div>
+                    <div className="mt-1 text-lg font-extrabold text-faith-ink dark:text-slate-100">{selectedReplay.title}</div>
                   </div>
                   <Btn tone="ghost" onClick={() => setToast("Performance refresh queued.")} left={<RefreshCw className="h-4 w-4" />} className="px-3 py-2 text-[12px]">
                     Refresh
@@ -1566,8 +1566,8 @@ export default function FaithHubReplaysAndClipsPage() {
                 </div>
               </div>
 
-              <div className="mt-4 rounded-3xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-                <div className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">Archive & lifecycle controls</div>
+              <div className="mt-4 rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                <div className="text-xs font-bold uppercase tracking-[0.16em] text-faith-slate">Archive & lifecycle controls</div>
                 <div className="mt-2 space-y-2 text-sm">
                   <LifecycleAction label="Archive replay" hint="Move the replay out of active discovery while preserving analytics." onClick={() => archiveReplay()} />
                   <LifecycleAction label="Unlist / republish" hint="Temporarily hide or bring a replay back with one click." onClick={() => setToast("Replay visibility toggle staged.")} />
@@ -1577,11 +1577,11 @@ export default function FaithHubReplaysAndClipsPage() {
               </div>
             </section>
 
-            <section className="rounded-3xl bg-white dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <section className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <div className="text-sm font-bold text-slate-900 dark:text-slate-50 uppercase tracking-tight">Editorial collaboration lane</div>
-                  <div className="mt-1 text-[11px] sm:text-xs text-slate-500 dark:text-slate-400">
+                  <div className="text-sm font-bold text-faith-ink dark:text-slate-50 uppercase tracking-tight">Editorial collaboration lane</div>
+                  <div className="mt-1 text-[11px] sm:text-xs text-faith-slate">
                     Approvals, comments, assigned edit tasks, and quality checks stay inside the clip engine so teams can move fast without losing governance.
                   </div>
                 </div>
@@ -1589,14 +1589,14 @@ export default function FaithHubReplaysAndClipsPage() {
               </div>
 
               <div className="mt-4 space-y-3">
-                <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/30 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-                  <div className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">Approval lane</div>
+                <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/30 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div className="text-xs font-bold uppercase tracking-[0.16em] text-faith-slate">Approval lane</div>
                   <div className="mt-3 space-y-2">
                     {APPROVALS.map((approval) => (
-                      <div key={approval.label} className="flex items-center justify-between gap-2 rounded-2xl bg-white dark:bg-slate-900 px-3 py-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                      <div key={approval.label} className="flex items-center justify-between gap-2 rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-3 ring-1 ring-slate-200 dark:ring-slate-800">
                         <div>
-                          <div className="text-sm font-bold text-slate-900 dark:text-slate-100">{approval.label}</div>
-                          <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">Owner Â· {approval.owner}</div>
+                          <div className="text-sm font-bold text-faith-ink dark:text-slate-100">{approval.label}</div>
+                          <div className="mt-1 text-[11px] text-faith-slate">Owner · {approval.owner}</div>
                         </div>
                         <Pill tone={toneForStatus(approval.status)}>{approval.status}</Pill>
                       </div>
@@ -1604,36 +1604,36 @@ export default function FaithHubReplaysAndClipsPage() {
                   </div>
                 </div>
 
-                <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/30 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-                  <div className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">Comments</div>
+                <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/30 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div className="text-xs font-bold uppercase tracking-[0.16em] text-faith-slate">Comments</div>
                   <div className="mt-3 space-y-3 max-h-[240px] overflow-y-auto pr-1">
                     {comments.map((comment) => (
-                      <div key={comment.id} className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                      <div key={comment.id} className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
                         <div className="flex items-center justify-between gap-2">
-                          <div className="text-sm font-bold text-slate-900 dark:text-slate-100">{comment.author}</div>
-                          <div className="text-[11px] text-slate-400">{comment.time}</div>
+                          <div className="text-sm font-bold text-faith-ink dark:text-slate-100">{comment.author}</div>
+                          <div className="text-[11px] text-faith-slate">{comment.time}</div>
                         </div>
-                        <div className="mt-2 text-[12px] leading-relaxed text-slate-600 dark:text-slate-300">{comment.body}</div>
+                        <div className="mt-2 text-[12px] leading-relaxed text-faith-slate dark:text-slate-300">{comment.body}</div>
                       </div>
                     ))}
                   </div>
                   <div className="mt-3 flex items-center gap-2">
-                    <input value={commentDraft} onChange={(e) => setCommentDraft(e.target.value)} placeholder="Add a collaboration note" className="flex-1 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3 py-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-700" />
+                    <input value={commentDraft} onChange={(e) => setCommentDraft(e.target.value)} placeholder="Add a collaboration note" className="flex-1 rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2.5 text-sm text-faith-ink dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-700" />
                     <Btn tone="accent" onClick={addComment} left={<Send className="h-4 w-4" />} className="px-3 py-2.5 text-[12px]">
                       Add
                     </Btn>
                   </div>
                 </div>
 
-                <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/30 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-                  <div className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">Assigned edit tasks</div>
+                <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/30 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div className="text-xs font-bold uppercase tracking-[0.16em] text-faith-slate">Assigned edit tasks</div>
                   <div className="mt-3 space-y-2">
                     {tasks.map((task) => (
-                      <div key={task.id} className="rounded-2xl bg-white dark:bg-slate-900 px-3 py-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                      <div key={task.id} className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-3 ring-1 ring-slate-200 dark:ring-slate-800">
                         <div className="flex items-start justify-between gap-2">
                           <div>
-                            <div className="text-sm font-bold text-slate-900 dark:text-slate-100">{task.label}</div>
-                            <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">{task.owner} Â· due {task.due}</div>
+                            <div className="text-sm font-bold text-faith-ink dark:text-slate-100">{task.label}</div>
+                            <div className="mt-1 text-[11px] text-faith-slate">{task.owner} · due {task.due}</div>
                           </div>
                           <Pill tone={toneForStatus(task.status)}>{task.status}</Pill>
                         </div>
@@ -1651,18 +1651,18 @@ export default function FaithHubReplaysAndClipsPage() {
               </div>
             </section>
 
-            <section className="rounded-3xl bg-white dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <section className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <div className="flex flex-col gap-4">
                 <div className="flex items-start justify-between gap-3">
                   <div>
-                    <div className="text-sm font-bold text-slate-900 dark:text-slate-50 uppercase tracking-tight">Preview lab</div>
-                    <div className="mt-1 text-[11px] sm:text-xs text-slate-500 dark:text-slate-400">
+                    <div className="text-sm font-bold text-faith-ink dark:text-slate-50 uppercase tracking-tight">Preview lab</div>
+                    <div className="mt-1 text-[11px] sm:text-xs text-faith-slate">
                       Review desktop and mobile clip packaging, CTA placement, and conversion framing before publishing or boosting.
                     </div>
                   </div>
                   <div className="flex rounded-2xl bg-slate-100 dark:bg-slate-800 p-1">
-                    <button type="button" onClick={() => setPreviewMode("desktop")} className={cx("px-3 py-1.5 rounded-xl text-[12px] font-bold transition", previewMode === "desktop" ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-sm" : "text-slate-600 dark:text-slate-400")}>Desktop</button>
-                    <button type="button" onClick={() => setPreviewMode("mobile")} className={cx("px-3 py-1.5 rounded-xl text-[12px] font-bold transition", previewMode === "mobile" ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-sm" : "text-slate-600 dark:text-slate-400")}>Mobile</button>
+                    <button type="button" onClick={() => setPreviewMode("desktop")} className={cx("px-3 py-1.5 rounded-xl text-[12px] font-bold transition", previewMode === "desktop" ? "bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-faith-ink dark:text-slate-100 shadow-soft" : "text-faith-slate")}>Desktop</button>
+                    <button type="button" onClick={() => setPreviewMode("mobile")} className={cx("px-3 py-1.5 rounded-xl text-[12px] font-bold transition", previewMode === "mobile" ? "bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-faith-ink dark:text-slate-100 shadow-soft" : "text-faith-slate")}>Mobile</button>
                   </div>
                 </div>
 
@@ -1679,15 +1679,15 @@ export default function FaithHubReplaysAndClipsPage() {
                 />
 
                 <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                  <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/30 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                    <div className="text-[10px] uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">Live preview notes</div>
-                    <div className="mt-2 text-sm font-bold text-slate-900 dark:text-slate-100">{introCard ? "Intro card active" : "Clip opens cold"}</div>
-                    <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">{outroCard ? "Ends with a branded end card and replay CTA." : "Ends directly on the clip range for faster completion rate."}</div>
+                  <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800/30 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                    <div className="text-[10px] uppercase tracking-[0.14em] text-faith-slate">Live preview notes</div>
+                    <div className="mt-2 text-sm font-bold text-faith-ink dark:text-slate-100">{introCard ? "Intro card active" : "Clip opens cold"}</div>
+                    <div className="mt-1 text-[11px] text-faith-slate">{outroCard ? "Ends with a branded end card and replay CTA." : "Ends directly on the clip range for faster completion rate."}</div>
                   </div>
-                  <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/30 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                    <div className="text-[10px] uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">Destination fit</div>
-                    <div className="mt-2 text-sm font-bold text-slate-900 dark:text-slate-100">{conversionIntent} intent armed</div>
-                    <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">Deep link and CTA framing are ready for replay follow-up, giving, events, or Beacon.</div>
+                  <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800/30 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                    <div className="text-[10px] uppercase tracking-[0.14em] text-faith-slate">Destination fit</div>
+                    <div className="mt-2 text-sm font-bold text-faith-ink dark:text-slate-100">{conversionIntent} intent armed</div>
+                    <div className="mt-1 text-[11px] text-faith-slate">Deep link and CTA framing are ready for replay follow-up, giving, events, or Beacon.</div>
                   </div>
                 </div>
 
@@ -1725,18 +1725,18 @@ export default function FaithHubReplaysAndClipsPage() {
               device="desktop"
             />
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-              <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/30 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-                <div className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">Packaging stack</div>
-                <div className="mt-3 space-y-2 text-sm text-slate-600 dark:text-slate-300">
-                  <div className="flex items-center justify-between"><span>Variant</span><span className="font-bold text-slate-900 dark:text-slate-100">{selectedVariant}</span></div>
-                  <div className="flex items-center justify-between"><span>Caption style</span><span className="font-bold text-slate-900 dark:text-slate-100">{captionStyle}</span></div>
-                  <div className="flex items-center justify-between"><span>CTA placement</span><span className="font-bold text-slate-900 dark:text-slate-100">{ctaPlacement}</span></div>
-                  <div className="flex items-center justify-between"><span>Intent</span><span className="font-bold text-slate-900 dark:text-slate-100">{conversionIntent}</span></div>
+              <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/30 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                <div className="text-xs font-bold uppercase tracking-[0.16em] text-faith-slate">Packaging stack</div>
+                <div className="mt-3 space-y-2 text-sm text-faith-slate dark:text-slate-300">
+                  <div className="flex items-center justify-between"><span>Variant</span><span className="font-bold text-faith-ink dark:text-slate-100">{selectedVariant}</span></div>
+                  <div className="flex items-center justify-between"><span>Caption style</span><span className="font-bold text-faith-ink dark:text-slate-100">{captionStyle}</span></div>
+                  <div className="flex items-center justify-between"><span>CTA placement</span><span className="font-bold text-faith-ink dark:text-slate-100">{ctaPlacement}</span></div>
+                  <div className="flex items-center justify-between"><span>Intent</span><span className="font-bold text-faith-ink dark:text-slate-100">{conversionIntent}</span></div>
                 </div>
               </div>
-              <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/30 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-                <div className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">Promotion handoff</div>
-                <div className="mt-3 space-y-2 text-sm text-slate-600 dark:text-slate-300">
+              <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/30 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                <div className="text-xs font-bold uppercase tracking-[0.16em] text-faith-slate">Promotion handoff</div>
+                <div className="mt-3 space-y-2 text-sm text-faith-slate dark:text-slate-300">
                   <div className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4" style={{ color: EV_GREEN }} /> Beacon-ready creative framing</div>
                   <div className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4" style={{ color: EV_GREEN }} /> Notification deep link prepared</div>
                   <div className="flex items-center gap-2"><AlertTriangle className="h-4 w-4" style={{ color: EV_ORANGE }} /> Caption approval still required for 9:16</div>
@@ -1756,8 +1756,8 @@ export default function FaithHubReplaysAndClipsPage() {
               ctaPlacement={ctaPlacement}
               device="mobile"
             />
-            <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-              <div className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">Open actions</div>
+            <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+              <div className="text-xs font-bold uppercase tracking-[0.16em] text-faith-slate">Open actions</div>
               <div className="mt-3 flex flex-wrap gap-2">
                 <Btn tone="primary" onClick={createClip} left={<Scissors className="h-4 w-4" />}>
                   Create clip
@@ -1789,9 +1789,9 @@ function MetricCard({ label, value, hint }: { label: string; value: string; hint
 
 function LifecycleAction({ label, hint, onClick }: { label: string; hint: string; onClick: () => void }) {
   return (
-    <button type="button" onClick={onClick} className="w-full rounded-2xl bg-slate-50 dark:bg-slate-800/40 px-3 py-3 text-left ring-1 ring-slate-200 dark:ring-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition">
-      <div className="text-sm font-bold text-slate-900 dark:text-slate-100">{label}</div>
-      <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">{hint}</div>
+    <button type="button" onClick={onClick} className="w-full rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800/40 px-3 py-3 text-left ring-1 ring-slate-200 dark:ring-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition">
+      <div className="text-sm font-bold text-faith-ink dark:text-slate-100">{label}</div>
+      <div className="mt-1 text-[11px] text-faith-slate">{hint}</div>
     </button>
   );
 }
@@ -1803,6 +1803,7 @@ function HeartIconPlaceholder(props: any) {
     </svg>
   );
 }
+
 
 
 

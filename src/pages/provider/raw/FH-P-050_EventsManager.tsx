@@ -1,4 +1,4 @@
-ï»¿// @ts-nocheck
+// @ts-nocheck
 
 "use client";
 
@@ -37,7 +37,7 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * Provider â€” Events Manager
+ * Provider — Events Manager
  * ----------------------------------
  * Premium event operating system for Provider Workspace.
  *
@@ -639,9 +639,9 @@ function Pill({
         : tone === "bad"
           ? "bg-rose-50 text-rose-800 ring-rose-200 dark:bg-rose-500/10 dark:text-rose-400 dark:ring-rose-500/20"
           : tone === "brand"
-            ? "text-white shadow-sm ring-0"
+            ? "text-white shadow-soft ring-0"
             : tone === "accent"
-              ? "text-white shadow-sm ring-0"
+              ? "text-white shadow-soft ring-0"
               : "bg-slate-100 text-slate-800 ring-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:ring-slate-700";
 
   return (
@@ -685,12 +685,12 @@ function Btn({
     "inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-2.5 text-sm font-bold transition focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed";
   const cls =
     tone === "primary"
-      ? "text-white hover:brightness-95 shadow-sm"
+      ? "text-white hover:brightness-95 shadow-soft"
       : tone === "accent"
-        ? "text-white hover:brightness-95 shadow-sm"
+        ? "text-white hover:brightness-95 shadow-soft"
         : tone === "ghost"
-          ? "bg-transparent text-slate-900 dark:text-slate-50 hover:bg-slate-100 dark:hover:bg-slate-800"
-          : "bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-50 ring-1 ring-slate-200 dark:ring-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 shadow-sm";
+          ? "bg-transparent text-faith-ink dark:text-slate-50 hover:bg-slate-100 dark:hover:bg-slate-800"
+          : "bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-faith-ink dark:text-slate-50 ring-1 ring-slate-200 dark:ring-slate-800 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800 shadow-soft";
 
   return (
     <button
@@ -738,7 +738,7 @@ function Toggle({
     >
       <span
         className={cx(
-          "inline-block h-5 w-5 transform rounded-full bg-white dark:bg-slate-900 shadow-sm transition",
+          "inline-block h-5 w-5 transform rounded-full bg-[var(--fh-surface-bg)] dark:bg-slate-900 shadow-soft transition",
           value ? "translate-x-5" : "translate-x-1",
         )}
       />
@@ -774,9 +774,9 @@ function Drawer({
         className="absolute inset-0 bg-black/40 dark:bg-black/60 backdrop-blur-sm transition-opacity"
         onClick={onClose}
       />
-      <div className="relative flex w-full max-w-6xl flex-col bg-white dark:bg-slate-900 shadow-2xl transition-all h-[95vh] sm:h-auto sm:max-h-[92vh] rounded-t-3xl sm:rounded-3xl overflow-hidden ring-1 ring-slate-200 dark:ring-slate-800">
-        <div className="flex items-center justify-between gap-2 border-b border-slate-200 dark:border-slate-800 px-4 py-3">
-          <div className="text-base font-semibold text-slate-900 dark:text-slate-50">
+      <div className="relative flex w-full max-w-6xl flex-col bg-[var(--fh-surface-bg)] dark:bg-slate-900 shadow-2xl transition-all h-[95vh] sm:h-auto sm:max-h-[92vh] rounded-t-3xl sm:rounded-3xl overflow-hidden ring-1 ring-slate-200 dark:ring-slate-800">
+        <div className="flex items-center justify-between gap-2 border-b border-faith-line dark:border-slate-800 px-4 py-3">
+          <div className="text-base font-semibold text-faith-ink dark:text-slate-50">
             {title}
           </div>
           <div className="flex items-center gap-2">
@@ -891,7 +891,7 @@ function Input({
       value={value}
       onChange={(e) => onChange(e.target.value)}
       placeholder={placeholder}
-      className="mt-1 h-11 w-full rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3 text-sm text-slate-900 dark:text-slate-100 shadow-sm transition focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-700"
+      className="mt-1 h-11 w-full rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 text-sm text-faith-ink dark:text-slate-100 shadow-soft transition focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-700"
     />
   );
 }
@@ -910,7 +910,7 @@ function TextArea({
       rows={rows}
       value={value}
       onChange={(e) => onChange(e.target.value)}
-      className="mt-1 w-full rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3 py-2 text-sm text-slate-900 dark:text-slate-100 shadow-sm transition focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-700"
+      className="mt-1 w-full rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-sm text-faith-ink dark:text-slate-100 shadow-soft transition focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-700"
     />
   );
 }
@@ -928,7 +928,7 @@ function SelectField({
     <select
       value={value}
       onChange={(e) => onChange(e.target.value)}
-      className="mt-1 h-11 w-full rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3 text-sm text-slate-900 dark:text-slate-100 shadow-sm transition focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-700"
+      className="mt-1 h-11 w-full rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 text-sm text-faith-ink dark:text-slate-100 shadow-soft transition focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-700"
     >
       {options.map((option) => (
         <option key={option} value={option}>
@@ -972,25 +972,25 @@ function EventListItem({
       type="button"
       onClick={onSelect}
       className={cx(
-        "w-full rounded-3xl border p-3 text-left transition-all shadow-sm",
+        "w-full rounded-3xl border p-3 text-left transition-all shadow-soft",
         selected
           ? "border-[rgba(3,205,140,0.4)] bg-emerald-50/50 dark:bg-emerald-900/10 dark:border-emerald-800"
-          : "border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800",
+          : "border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800",
       )}
     >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2">
-            <div className="truncate text-sm font-bold text-slate-900 dark:text-slate-50">
+            <div className="truncate text-sm font-bold text-faith-ink dark:text-slate-50">
               {event.title}
             </div>
             <Pill tone={statusToneForEvent(event.status)}>{event.status}</Pill>
             <Pill tone="neutral">{event.category}</Pill>
           </div>
-          <div className="mt-1 text-[12px] text-slate-500 dark:text-slate-400 line-clamp-2">
+          <div className="mt-1 text-[12px] text-faith-slate line-clamp-2">
             {event.subtitle}
           </div>
-          <div className="mt-2 flex flex-wrap items-center gap-2 text-[11px] text-slate-500 dark:text-slate-400">
+          <div className="mt-2 flex flex-wrap items-center gap-2 text-[11px] text-faith-slate">
             <span>{fmtShortDate(event.startISO)}</span>
             <span>?</span>
             <span>{event.campus}</span>
@@ -1008,7 +1008,7 @@ function EventListItem({
       </div>
 
       <div className="mt-3">
-        <div className="flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
+        <div className="flex items-center justify-between text-[11px] text-faith-slate">
           <span>Capacity fill</span>
           <span>{fillPct}%</span>
         </div>
@@ -1020,7 +1020,7 @@ function EventListItem({
       <div className="mt-3 flex flex-wrap items-center gap-2">
         <button
           type="button"
-          className="inline-flex items-center gap-1 rounded-2xl bg-slate-900 dark:bg-slate-100 px-3 py-2 text-[11px] font-bold text-white dark:text-slate-900"
+          className="inline-flex items-center gap-1 rounded-2xl bg-slate-900 dark:bg-slate-100 px-3 py-2 text-[11px] font-bold text-white dark:text-faith-ink"
           onClick={(e) => {
             e.stopPropagation();
             onOpenCheckIn();
@@ -1030,7 +1030,7 @@ function EventListItem({
         </button>
         <button
           type="button"
-          className="inline-flex items-center gap-1 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-[11px] font-bold text-slate-900 dark:text-slate-100"
+          className="inline-flex items-center gap-1 rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[11px] font-bold text-faith-ink dark:text-slate-100"
           onClick={(e) => {
             e.stopPropagation();
             onBeacon();
@@ -1054,15 +1054,15 @@ function EventPreviewSurface({
 }) {
   const fillPct = pct(event.registrations, event.capacity);
   const baseCard = (
-    <div className="rounded-[28px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 overflow-hidden shadow-sm transition-colors">
+    <div className="rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 overflow-hidden shadow-soft transition-colors">
       <div className={cx("relative overflow-hidden", compact ? "aspect-[16/10]" : "aspect-[16/9]")}>
         <img src={event.heroUrl} alt={event.title} className="absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/20 to-transparent" />
         <div className="absolute left-3 top-3 flex flex-wrap gap-2">
-          <span className="rounded-full bg-white/15 px-2 py-1 text-[10px] font-extrabold text-white backdrop-blur">
+          <span className="rounded-full bg-[var(--fh-surface-bg)]/15 px-2 py-1 text-[10px] font-extrabold text-white backdrop-blur">
             {event.category}
           </span>
-          <span className="rounded-full bg-white/15 px-2 py-1 text-[10px] font-extrabold text-white backdrop-blur">
+          <span className="rounded-full bg-[var(--fh-surface-bg)]/15 px-2 py-1 text-[10px] font-extrabold text-white backdrop-blur">
             {event.venueType}
           </span>
         </div>
@@ -1083,32 +1083,32 @@ function EventPreviewSurface({
 
       <div className="p-4 space-y-3">
         <div className="grid grid-cols-2 gap-3">
-          <div className="rounded-2xl bg-slate-50 dark:bg-slate-800 p-3">
-            <div className="text-[10px] uppercase tracking-wide text-slate-400 dark:text-slate-500">
+          <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800 p-3">
+            <div className="text-[10px] uppercase tracking-wide text-faith-slate">
               Attendance
             </div>
-            <div className="mt-1 text-lg font-extrabold text-slate-900 dark:text-slate-50">
+            <div className="mt-1 text-lg font-extrabold text-faith-ink dark:text-slate-50">
               {fmtInt(event.registrations)}
             </div>
-            <div className="text-[11px] text-slate-500 dark:text-slate-400">
+            <div className="text-[11px] text-faith-slate">
               of {fmtInt(event.capacity)} capacity
             </div>
           </div>
-          <div className="rounded-2xl bg-slate-50 dark:bg-slate-800 p-3">
-            <div className="text-[10px] uppercase tracking-wide text-slate-400 dark:text-slate-500">
+          <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800 p-3">
+            <div className="text-[10px] uppercase tracking-wide text-faith-slate">
               Ticketing
             </div>
-            <div className="mt-1 text-sm font-extrabold text-slate-900 dark:text-slate-50">
+            <div className="mt-1 text-sm font-extrabold text-faith-ink dark:text-slate-50">
               {event.ticketingState}
             </div>
-            <div className="text-[11px] text-slate-500 dark:text-slate-400">
+            <div className="text-[11px] text-faith-slate">
               {event.checkInMode}
             </div>
           </div>
         </div>
 
         <div>
-          <div className="flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
+          <div className="flex items-center justify-between text-[11px] text-faith-slate">
             <span>Registration progress</span>
             <span>{fillPct}%</span>
           </div>
@@ -1117,22 +1117,22 @@ function EventPreviewSurface({
           </div>
         </div>
 
-        <div className="rounded-2xl bg-slate-50 dark:bg-slate-800 p-3">
-          <div className="text-[12px] font-extrabold text-slate-900 dark:text-slate-50">
+        <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800 p-3">
+          <div className="text-[12px] font-extrabold text-faith-ink dark:text-slate-50">
             Next agenda moments
           </div>
           <div className="mt-2 space-y-2">
             {event.agenda.slice(0, compact ? 2 : 3).map((item) => (
               <div key={item.id} className="flex items-center justify-between gap-2 text-[11px]">
                 <div className="min-w-0">
-                  <div className="font-semibold text-slate-900 dark:text-slate-100 truncate">
+                  <div className="font-semibold text-faith-ink dark:text-slate-100 truncate">
                     {item.title}
                   </div>
-                  <div className="text-slate-500 dark:text-slate-400 truncate">
+                  <div className="text-faith-slate truncate">
                     {item.owner}
                   </div>
                 </div>
-                <div className="shrink-0 rounded-full bg-white dark:bg-slate-900 px-2 py-1 font-bold text-slate-900 dark:text-slate-100 ring-1 ring-slate-200 dark:ring-slate-700">
+                <div className="shrink-0 rounded-full bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-2 py-1 font-bold text-faith-ink dark:text-slate-100 ring-1 ring-slate-200 dark:ring-slate-700">
                   {item.time}
                 </div>
               </div>
@@ -1141,10 +1141,10 @@ function EventPreviewSurface({
         </div>
 
         <div className="grid grid-cols-2 gap-2">
-          <button className="inline-flex items-center justify-center gap-2 rounded-2xl bg-slate-900 dark:bg-slate-100 px-4 py-2.5 text-[12px] font-extrabold text-white dark:text-slate-900 shadow-sm" onClick={() => safeNav("/faithhub/provider/events-manager")}>
+          <button className="inline-flex items-center justify-center gap-2 rounded-2xl bg-slate-900 dark:bg-slate-100 px-4 py-2.5 text-[12px] font-extrabold text-white dark:text-faith-ink shadow-soft" onClick={() => safeNav("/faithhub/provider/events-manager")}>
             <Ticket className="h-4 w-4" /> Get ticket
           </button>
-          <button className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white dark:bg-slate-900 px-4 py-2.5 text-[12px] font-extrabold text-slate-900 dark:text-slate-100 ring-1 ring-slate-200 dark:ring-slate-700 shadow-sm" onClick={() => safeNav("/faithhub/provider/donations-and-funds")}>
+          <button className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 py-2.5 text-[12px] font-extrabold text-faith-ink dark:text-slate-100 ring-1 ring-slate-200 dark:ring-slate-700 shadow-soft" onClick={() => safeNav("/faithhub/provider/donations-and-funds")}>
             <HeartHandshake className="h-4 w-4" /> Support
           </button>
         </div>
@@ -1156,7 +1156,7 @@ function EventPreviewSurface({
     return (
       <div className="mx-auto w-full max-w-[320px] md:max-w-[360px]">
         <div className="rounded-[36px] bg-slate-950 p-3 shadow-[0_18px_60px_rgba(15,23,42,0.45)]">
-          <div className="rounded-[30px] bg-white dark:bg-slate-900 p-3 transition-colors">
+          <div className="rounded-[30px] bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
             <div className="mx-auto mb-3 h-5 w-24 rounded-full bg-slate-200 dark:bg-slate-700" />
             {baseCard}
           </div>
@@ -1170,13 +1170,13 @@ function EventPreviewSurface({
 
 function CheckInConsolePreview({ event }: { event: EventRecord }) {
   return (
-    <div className="rounded-[28px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 overflow-hidden shadow-sm transition-colors">
-      <div className="border-b border-slate-200 dark:border-slate-800 px-4 py-3 flex items-center justify-between gap-2">
+    <div className="rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 overflow-hidden shadow-soft transition-colors">
+      <div className="border-b border-faith-line dark:border-slate-800 px-4 py-3 flex items-center justify-between gap-2">
         <div>
-          <div className="text-sm font-extrabold text-slate-900 dark:text-slate-50">
+          <div className="text-sm font-extrabold text-faith-ink dark:text-slate-50">
             Check-in mode
           </div>
-          <div className="text-[11px] text-slate-500 dark:text-slate-400">
+          <div className="text-[11px] text-faith-slate">
             {event.checkInMode}
           </div>
         </div>
@@ -1185,23 +1185,23 @@ function CheckInConsolePreview({ event }: { event: EventRecord }) {
         </Pill>
       </div>
       <div className="p-4 grid grid-cols-1 gap-3 md:grid-cols-2">
-        <div className="rounded-2xl bg-slate-50 dark:bg-slate-800 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-          <div className="h-44 rounded-3xl border-2 border-dashed border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 grid place-items-center">
+        <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+          <div className="h-44 rounded-3xl border-2 border-dashed border-slate-300 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 grid place-items-center">
             <div className="text-center">
               <div className="mx-auto h-20 w-20 rounded-2xl bg-slate-100 dark:bg-slate-800 grid place-items-center">
                 <QrCode className="h-10 w-10 text-slate-700 dark:text-slate-200" />
               </div>
-              <div className="mt-3 text-sm font-bold text-slate-900 dark:text-slate-100">
+              <div className="mt-3 text-sm font-bold text-faith-ink dark:text-slate-100">
                 Scan attendee QR
               </div>
-              <div className="text-[11px] text-slate-500 dark:text-slate-400">
+              <div className="text-[11px] text-faith-slate">
                 Supports walk-in lookup and fast desk check-in.
               </div>
             </div>
           </div>
         </div>
         <div className="space-y-3">
-          <div className="rounded-2xl bg-slate-50 dark:bg-slate-800 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+          <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
             <div className="grid grid-cols-2 gap-3">
               <MetricTile
                 label="Checked in"
@@ -1215,27 +1215,27 @@ function CheckInConsolePreview({ event }: { event: EventRecord }) {
               />
             </div>
           </div>
-          <div className="rounded-2xl bg-slate-50 dark:bg-slate-800 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-            <div className="text-[12px] font-extrabold text-slate-900 dark:text-slate-50">
+          <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+            <div className="text-[12px] font-extrabold text-faith-ink dark:text-slate-50">
               Desk actions
             </div>
             <div className="mt-2 space-y-2 text-[12px]">
-              <div className="flex items-center justify-between gap-2 rounded-2xl bg-white dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-700">
-                <span className="font-semibold text-slate-900 dark:text-slate-100">
+              <div className="flex items-center justify-between gap-2 rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-700">
+                <span className="font-semibold text-faith-ink dark:text-slate-100">
                   Badge print queue
                 </span>
                 <Pill tone="good">12 ready</Pill>
               </div>
-              <div className="flex items-center justify-between gap-2 rounded-2xl bg-white dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-700">
-                <span className="font-semibold text-slate-900 dark:text-slate-100">
+              <div className="flex items-center justify-between gap-2 rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-700">
+                <span className="font-semibold text-faith-ink dark:text-slate-100">
                   Waiver verification
                 </span>
                 <Pill tone={event.waiverRequired ? "warn" : "neutral"}>
                   {event.waiverRequired ? "Required" : "Not required"}
                 </Pill>
               </div>
-              <div className="flex items-center justify-between gap-2 rounded-2xl bg-white dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-700">
-                <span className="font-semibold text-slate-900 dark:text-slate-100">
+              <div className="flex items-center justify-between gap-2 rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-700">
+                <span className="font-semibold text-faith-ink dark:text-slate-100">
                   Overflow routing
                 </span>
                 <Pill tone="brand">Standby</Pill>
@@ -1259,12 +1259,12 @@ function SourceMixPanel({
       {sourceMix.map((item, index) => {
         const barPct = Math.round((item.value / total) * 100);
         return (
-          <div key={item.label} className="rounded-2xl bg-white dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-700">
+          <div key={item.label} className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-700">
             <div className="flex items-center justify-between gap-2">
-              <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+              <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                 {item.label}
               </div>
-              <div className="text-[11px] font-bold text-slate-600 dark:text-slate-300">
+              <div className="text-[11px] font-bold text-faith-slate dark:text-slate-300">
                 {fmtInt(item.value)}
               </div>
             </div>
@@ -1508,7 +1508,7 @@ export default function FaithHubEventsManagerPage() {
       "",
       "LOGISTICS",
       ...selectedEvent.logistics.map(
-        (item) => `${item.label} â€” ${item.status} â€” ${item.note}`,
+        (item) => `${item.label} — ${item.status} — ${item.note}`,
       ),
       "",
       "VOLUNTEER COVERAGE",
@@ -1532,12 +1532,12 @@ export default function FaithHubEventsManagerPage() {
   if (!selectedEvent) return null;
 
   return (
-    <div className="min-h-screen w-full flex flex-col bg-[#f2f2f2] dark:bg-slate-950 text-slate-900 dark:text-slate-50 overflow-x-hidden transition-colors">
-      <div className="sticky top-0 z-40 border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md">
+    <div className="min-h-screen w-full flex flex-col bg-[var(--fh-page-bg)] dark:bg-slate-950 text-faith-ink dark:text-slate-50 overflow-x-hidden transition-colors">
+      <div className="sticky top-0 z-40 border-b border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)]/95 dark:bg-slate-900/95 backdrop-blur-md">
         <div className="w-full px-4 md:px-6 lg:px-8 py-4">
           <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
             <div className="min-w-0">
-              <div className="flex flex-wrap items-center gap-2 text-[10px] sm:text-xs text-slate-500 dark:text-slate-400">
+              <div className="flex flex-wrap items-center gap-2 text-[10px] sm:text-xs text-faith-slate">
                 <button
                   onClick={() => safeNav(ROUTES.liveBuilder)}
                   className="hover:text-slate-700 dark:hover:text-slate-200"
@@ -1545,20 +1545,20 @@ export default function FaithHubEventsManagerPage() {
                   Events & Giving
                 </button>
                 <span>/</span>
-                <span className="font-semibold text-slate-900 dark:text-slate-100">
+                <span className="font-semibold text-faith-ink dark:text-slate-100">
                   Events Manager
                 </span>
               </div>
 
               <div className="mt-2 flex flex-wrap items-center gap-3">
-                <div className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50">
+                <div className="text-2xl sm:text-3xl font-extrabold tracking-tight text-faith-ink dark:text-slate-50">
                   Events Manager
                 </div>
                 <Pill tone="brand">Premium event OS</Pill>
                 <Pill tone="accent">Live + giving + Beacon linked</Pill>
               </div>
 
-              <div className="mt-2 flex flex-wrap items-center gap-2 text-[11px] sm:text-xs text-slate-500 dark:text-slate-400">
+              <div className="mt-2 flex flex-wrap items-center gap-2 text-[11px] sm:text-xs text-faith-slate">
                 <span>{fmtInt(filteredEvents.length)} visible events</span>
                 <span>?</span>
                 <span>{selectedEvent.campus}</span>
@@ -1587,13 +1587,13 @@ export default function FaithHubEventsManagerPage() {
                 left={<Plus className="h-4 w-4" />}
                 disabled={workingAction === "create"}
               >
-                {workingAction === "create" ? "Creatingâ€¦" : "+ New Event"}
+                {workingAction === "create" ? "Creating…" : "+ New Event"}
               </Btn>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+        <div className="border-t border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900">
           <div className="w-full px-4 md:px-6 lg:px-8 py-2.5 flex flex-wrap items-center justify-between gap-3 text-[11px] sm:text-xs">
             <div className="flex flex-wrap items-center gap-2">
               <Pill tone="brand">
@@ -1612,7 +1612,7 @@ export default function FaithHubEventsManagerPage() {
                   : "Logistics stable"}
               </Pill>
             </div>
-            <div className="text-slate-500 dark:text-slate-400">
+            <div className="text-faith-slate">
               Designed to keep event planning, money movement, promotion, and post-event growth on one premium surface.
             </div>
           </div>
@@ -1622,14 +1622,14 @@ export default function FaithHubEventsManagerPage() {
       <div className="flex-1 w-full px-3 sm:px-4 md:px-6 lg:px-8 py-6">
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-12">
           <div className="lg:col-span-8 space-y-4">
-            <section className="rounded-3xl bg-white dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <section className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <div className="flex flex-col gap-4">
                 <div className="flex flex-col xl:flex-row xl:items-end xl:justify-between gap-3">
                   <div>
-                    <div className="text-sm font-bold text-slate-900 dark:text-slate-50 uppercase tracking-tight">
+                    <div className="text-sm font-bold text-faith-ink dark:text-slate-50 uppercase tracking-tight">
                       Events command list
                     </div>
-                    <div className="mt-1 text-[11px] sm:text-xs text-slate-500 dark:text-slate-400">
+                    <div className="mt-1 text-[11px] sm:text-xs text-faith-slate">
                       Upcoming, live, past, and draft events with premium filters, operational quick actions, and team visibility.
                     </div>
                   </div>
@@ -1657,7 +1657,7 @@ export default function FaithHubEventsManagerPage() {
                       className="px-3 py-2 text-[12px]"
                       disabled={workingAction === "duplicate"}
                     >
-                      {workingAction === "duplicate" ? "Duplicatingâ€¦" : "Duplicate"}
+                      {workingAction === "duplicate" ? "Duplicating…" : "Duplicate"}
                     </Btn>
                   </div>
                 </div>
@@ -1665,13 +1665,13 @@ export default function FaithHubEventsManagerPage() {
                 <div className="grid grid-cols-1 gap-3 xl:grid-cols-[minmax(0,1.3fr)_repeat(4,minmax(0,0.7fr))]">
                   <label className="block">
                     <FieldLabel>Search events</FieldLabel>
-                    <div className="mt-1 h-11 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3 flex items-center gap-2 shadow-sm">
-                      <Search className="h-4 w-4 text-slate-400" />
+                    <div className="mt-1 h-11 rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 flex items-center gap-2 shadow-soft">
+                      <Search className="h-4 w-4 text-faith-slate" />
                       <input
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
                         placeholder="Search by title, owner, venue, or subtitle"
-                        className="w-full bg-transparent outline-none text-sm text-slate-900 dark:text-slate-100"
+                        className="w-full bg-transparent outline-none text-sm text-faith-ink dark:text-slate-100"
                       />
                     </div>
                   </label>
@@ -1708,14 +1708,14 @@ export default function FaithHubEventsManagerPage() {
               </div>
             </section>
 
-            <section className="rounded-3xl bg-white dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <section className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <div className="flex flex-col gap-4">
                 <div className="flex flex-col xl:flex-row xl:items-start xl:justify-between gap-3">
                   <div>
-                    <div className="text-sm font-bold text-slate-900 dark:text-slate-50 uppercase tracking-tight">
+                    <div className="text-sm font-bold text-faith-ink dark:text-slate-50 uppercase tracking-tight">
                       Event setup workspace
                     </div>
-                    <div className="mt-1 text-[11px] sm:text-xs text-slate-500 dark:text-slate-400">
+                    <div className="mt-1 text-[11px] sm:text-xs text-faith-slate">
                       Identity, agenda, venue, speakers, volunteer roles, FAQs, and event artwork in one premium planning surface.
                     </div>
                   </div>
@@ -1729,7 +1729,7 @@ export default function FaithHubEventsManagerPage() {
                 </div>
 
                 <div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
-                  <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition-colors">
+                  <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition-colors">
                     <FieldLabel>Event title</FieldLabel>
                     <Input
                       value={selectedEvent.title}
@@ -1818,13 +1818,13 @@ export default function FaithHubEventsManagerPage() {
                       />
                     </div>
 
-                    <div className="mt-3 rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700">
+                    <div className="mt-3 rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700">
                       <div className="flex items-center justify-between gap-3">
                         <div>
-                          <div className="text-[12px] font-bold text-slate-900 dark:text-slate-100">
+                          <div className="text-[12px] font-bold text-faith-ink dark:text-slate-100">
                             Visual asset state
                           </div>
-                          <div className="text-[11px] text-slate-500 dark:text-slate-400">
+                          <div className="text-[11px] text-faith-slate">
                             Hero art, event card variants, QR-ready promo surfaces, and stage screen assets.
                           </div>
                         </div>
@@ -1847,7 +1847,7 @@ export default function FaithHubEventsManagerPage() {
                   </div>
 
                   <div className="space-y-4">
-                    <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition-colors">
+                    <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition-colors">
                       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                         <label className="block">
                           <FieldLabel>Venue / location</FieldLabel>
@@ -1879,15 +1879,15 @@ export default function FaithHubEventsManagerPage() {
                       <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
                         <div>
                           <FieldLabel>Start time</FieldLabel>
-                          <div className="mt-1 h-11 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3 flex items-center gap-2 shadow-sm text-sm text-slate-900 dark:text-slate-100">
-                            <CalendarClock className="h-4 w-4 text-slate-400" />
+                          <div className="mt-1 h-11 rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 flex items-center gap-2 shadow-soft text-sm text-faith-ink dark:text-slate-100">
+                            <CalendarClock className="h-4 w-4 text-faith-slate" />
                             {fmtLocal(selectedEvent.startISO)}
                           </div>
                         </div>
                         <div>
                           <FieldLabel>End time</FieldLabel>
-                          <div className="mt-1 h-11 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3 flex items-center gap-2 shadow-sm text-sm text-slate-900 dark:text-slate-100">
-                            <Clock3 className="h-4 w-4 text-slate-400" />
+                          <div className="mt-1 h-11 rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 flex items-center gap-2 shadow-soft text-sm text-faith-ink dark:text-slate-100">
+                            <Clock3 className="h-4 w-4 text-faith-slate" />
                             {fmtLocal(selectedEvent.endISO)}
                           </div>
                         </div>
@@ -1907,25 +1907,25 @@ export default function FaithHubEventsManagerPage() {
                       </div>
                     </div>
 
-                    <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition-colors">
-                      <div className="text-[12px] font-bold text-slate-900 dark:text-slate-100">
+                    <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition-colors">
+                      <div className="text-[12px] font-bold text-faith-ink dark:text-slate-100">
                         Agenda + speaker roster
                       </div>
                       <div className="mt-3 space-y-2">
                         {selectedEvent.agenda.slice(0, 5).map((item) => (
                           <div
                             key={item.id}
-                            className="flex items-center justify-between gap-3 rounded-2xl bg-white dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-700"
+                            className="flex items-center justify-between gap-3 rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-700"
                           >
                             <div className="min-w-0">
-                              <div className="text-[12px] font-bold text-slate-900 dark:text-slate-100 truncate">
+                              <div className="text-[12px] font-bold text-faith-ink dark:text-slate-100 truncate">
                                 {item.title}
                               </div>
-                              <div className="text-[11px] text-slate-500 dark:text-slate-400 truncate">
+                              <div className="text-[11px] text-faith-slate truncate">
                                 {item.owner} ? {item.kind}
                               </div>
                             </div>
-                            <div className="shrink-0 rounded-full bg-slate-100 dark:bg-slate-800 px-2 py-1 text-[11px] font-bold text-slate-900 dark:text-slate-100">
+                            <div className="shrink-0 rounded-full bg-slate-100 dark:bg-slate-800 px-2 py-1 text-[11px] font-bold text-faith-ink dark:text-slate-100">
                               {item.time}
                             </div>
                           </div>
@@ -1945,13 +1945,13 @@ export default function FaithHubEventsManagerPage() {
             </section>
 
             <div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
-              <section className="rounded-3xl bg-white dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+              <section className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
                 <div className="flex items-start justify-between gap-3">
                   <div>
-                    <div className="text-sm font-bold text-slate-900 dark:text-slate-50 uppercase tracking-tight">
+                    <div className="text-sm font-bold text-faith-ink dark:text-slate-50 uppercase tracking-tight">
                       Attendance and ticket block
                     </div>
-                    <div className="mt-1 text-[11px] sm:text-xs text-slate-500 dark:text-slate-400">
+                    <div className="mt-1 text-[11px] sm:text-xs text-faith-slate">
                       RSVP, capacity, ticket links, access controls, price tiers, and attendance forecasting.
                     </div>
                   </div>
@@ -1993,7 +1993,7 @@ export default function FaithHubEventsManagerPage() {
                 </div>
 
                 <div className="mt-4">
-                  <div className="flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
+                  <div className="flex items-center justify-between text-[11px] text-faith-slate">
                     <span>Capacity and attendance forecast</span>
                     <span>{capacityFill}% full</span>
                   </div>
@@ -2002,22 +2002,22 @@ export default function FaithHubEventsManagerPage() {
                   </div>
                 </div>
 
-                <div className="mt-4 rounded-3xl bg-slate-50 dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition-colors">
-                  <div className="text-[12px] font-bold text-slate-900 dark:text-slate-100">
+                <div className="mt-4 rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition-colors">
+                  <div className="text-[12px] font-bold text-faith-ink dark:text-slate-100">
                     Price tiers and access
                   </div>
                   <div className="mt-3 space-y-2">
                     {selectedEvent.tiers.map((tier) => (
                       <div
                         key={tier.id}
-                        className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700"
+                        className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700"
                       >
                         <div className="flex items-start justify-between gap-3">
                           <div>
-                            <div className="text-[12px] font-bold text-slate-900 dark:text-slate-100">
+                            <div className="text-[12px] font-bold text-faith-ink dark:text-slate-100">
                               {tier.label}
                             </div>
-                            <div className="text-[11px] text-slate-500 dark:text-slate-400">
+                            <div className="text-[11px] text-faith-slate">
                               {tier.priceLabel}
                             </div>
                           </div>
@@ -2031,19 +2031,19 @@ export default function FaithHubEventsManagerPage() {
                       </div>
                     ))}
                   </div>
-                  <div className="mt-3 text-[11px] text-slate-500 dark:text-slate-400">
+                  <div className="mt-3 text-[11px] text-faith-slate">
                     Access rules, ticket links, and attendee forecasting stay tied to the event record so reminders and check-in mode stay accurate.
                   </div>
                 </div>
               </section>
 
-              <section className="rounded-3xl bg-white dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+              <section className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
                 <div className="flex items-start justify-between gap-3">
                   <div>
-                    <div className="text-sm font-bold text-slate-900 dark:text-slate-50 uppercase tracking-tight">
+                    <div className="text-sm font-bold text-faith-ink dark:text-slate-50 uppercase tracking-tight">
                       Live and content ties
                     </div>
-                    <div className="mt-1 text-[11px] sm:text-xs text-slate-500 dark:text-slate-400">
+                    <div className="mt-1 text-[11px] sm:text-xs text-faith-slate">
                       Link events to Live Sessions, teachings, Series content, or post-event replay packages.
                     </div>
                   </div>
@@ -2061,18 +2061,18 @@ export default function FaithHubEventsManagerPage() {
                   ].map((item) => (
                     <div
                       key={item.label}
-                      className="rounded-2xl bg-slate-50 dark:bg-slate-800/40 p-3 ring-1 ring-slate-200 dark:ring-slate-800 transition-colors"
+                      className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800/40 p-3 ring-1 ring-slate-200 dark:ring-slate-800 transition-colors"
                     >
                       <div className="flex items-center justify-between gap-3">
                         <div className="flex items-start gap-3 min-w-0">
-                          <div className="h-10 w-10 rounded-2xl bg-white dark:bg-slate-900 ring-1 ring-slate-200 dark:ring-slate-700 grid place-items-center text-slate-900 dark:text-slate-100 shrink-0">
+                          <div className="h-10 w-10 rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 ring-1 ring-slate-200 dark:ring-slate-700 grid place-items-center text-faith-ink dark:text-slate-100 shrink-0">
                             {item.icon}
                           </div>
                           <div className="min-w-0">
-                            <div className="text-[12px] font-bold text-slate-900 dark:text-slate-100">
+                            <div className="text-[12px] font-bold text-faith-ink dark:text-slate-100">
                               {item.label}
                             </div>
-                            <div className="text-[11px] text-slate-500 dark:text-slate-400 truncate">
+                            <div className="text-[11px] text-faith-slate truncate">
                               {item.value || "Not linked yet"}
                             </div>
                           </div>
@@ -2095,14 +2095,14 @@ export default function FaithHubEventsManagerPage() {
                   ))}
                 </div>
 
-                <div className="mt-4 rounded-3xl bg-slate-50 dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                <div className="mt-4 rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
                   <div className="flex items-center gap-2">
                     <Link2 className="h-4 w-4 text-slate-700 dark:text-slate-300" />
-                    <div className="text-[12px] font-bold text-slate-900 dark:text-slate-100">
+                    <div className="text-[12px] font-bold text-faith-ink dark:text-slate-100">
                       Workflow bridge
                     </div>
                   </div>
-                  <div className="mt-2 text-[12px] text-slate-600 dark:text-slate-400">
+                  <div className="mt-2 text-[12px] text-faith-slate">
                     Events can become content engines: tie them to a live session, turn the replay into clips, and route finished assets into Beacon or donor follow-up without re-entering metadata.
                   </div>
                   <div className="mt-3 flex flex-wrap items-center gap-2">
@@ -2118,13 +2118,13 @@ export default function FaithHubEventsManagerPage() {
             </div>
 
             <div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
-              <section className="rounded-3xl bg-white dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+              <section className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
                 <div className="flex items-start justify-between gap-3">
                   <div>
-                    <div className="text-sm font-bold text-slate-900 dark:text-slate-50 uppercase tracking-tight">
+                    <div className="text-sm font-bold text-faith-ink dark:text-slate-50 uppercase tracking-tight">
                       Operational logistics area
                     </div>
-                    <div className="mt-1 text-[11px] sm:text-xs text-slate-500 dark:text-slate-400">
+                    <div className="mt-1 text-[11px] sm:text-xs text-faith-slate">
                       Venue readiness, equipment notes, travel, waivers, check-in flow, and team assignments.
                     </div>
                   </div>
@@ -2137,17 +2137,17 @@ export default function FaithHubEventsManagerPage() {
                   {selectedEvent.logistics.map((item) => (
                     <div
                       key={item.id}
-                      className="rounded-2xl bg-slate-50 dark:bg-slate-800/40 p-3 ring-1 ring-slate-200 dark:ring-slate-800 transition-colors"
+                      className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800/40 p-3 ring-1 ring-slate-200 dark:ring-slate-800 transition-colors"
                     >
                       <div className="flex items-start justify-between gap-3">
                         <div className="min-w-0">
-                          <div className="text-[12px] font-bold text-slate-900 dark:text-slate-100">
+                          <div className="text-[12px] font-bold text-faith-ink dark:text-slate-100">
                             {item.label}
                           </div>
-                          <div className="text-[11px] text-slate-500 dark:text-slate-400">
+                          <div className="text-[11px] text-faith-slate">
                             {item.owner}
                           </div>
-                          <div className="mt-1 text-[11px] text-slate-600 dark:text-slate-300">
+                          <div className="mt-1 text-[11px] text-faith-slate dark:text-slate-300">
                             {item.note}
                           </div>
                         </div>
@@ -2158,33 +2158,33 @@ export default function FaithHubEventsManagerPage() {
                 </div>
 
                 <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
-                  <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/40 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800/40 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
                     <div className="flex items-center gap-2">
                       <MonitorPlay className="h-4 w-4 text-slate-700 dark:text-slate-300" />
-                      <div className="text-[12px] font-bold text-slate-900 dark:text-slate-100">
+                      <div className="text-[12px] font-bold text-faith-ink dark:text-slate-100">
                         Equipment notes
                       </div>
                     </div>
-                    <div className="mt-2 text-[11px] text-slate-600 dark:text-slate-300">
+                    <div className="mt-2 text-[11px] text-faith-slate dark:text-slate-300">
                       {selectedEvent.equipmentNote}
                     </div>
                   </div>
-                  <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/40 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800/40 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
                     <div className="flex items-center gap-2">
                       <MapPin className="h-4 w-4 text-slate-700 dark:text-slate-300" />
-                      <div className="text-[12px] font-bold text-slate-900 dark:text-slate-100">
+                      <div className="text-[12px] font-bold text-faith-ink dark:text-slate-100">
                         Travel & access
                       </div>
                     </div>
-                    <div className="mt-2 text-[11px] text-slate-600 dark:text-slate-300">
+                    <div className="mt-2 text-[11px] text-faith-slate dark:text-slate-300">
                       {selectedEvent.travelNote}
                     </div>
                   </div>
                 </div>
 
-                <div className="mt-4 rounded-3xl bg-slate-50 dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                <div className="mt-4 rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
                   <div className="flex items-center justify-between gap-3">
-                    <div className="text-[12px] font-bold text-slate-900 dark:text-slate-100">
+                    <div className="text-[12px] font-bold text-faith-ink dark:text-slate-100">
                       Team assignments
                     </div>
                     <Pill tone={volunteerCoverage < 100 ? "warn" : "good"}>
@@ -2198,9 +2198,9 @@ export default function FaithHubEventsManagerPage() {
                     {selectedEvent.volunteerRoles.map((role) => (
                       <div
                         key={role.id}
-                        className="flex items-center justify-between gap-2 rounded-2xl bg-white dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-700"
+                        className="flex items-center justify-between gap-2 rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-700"
                       >
-                        <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+                        <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                           {role.role}
                         </div>
                         <Pill tone={role.assigned >= role.needed ? "good" : "warn"}>
@@ -2209,21 +2209,21 @@ export default function FaithHubEventsManagerPage() {
                       </div>
                     ))}
                   </div>
-                  <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] text-slate-500 dark:text-slate-400">
-                    <span>Check-in mode: <span className="font-semibold text-slate-900 dark:text-slate-100">{selectedEvent.checkInMode}</span></span>
+                  <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] text-faith-slate">
+                    <span>Check-in mode: <span className="font-semibold text-faith-ink dark:text-slate-100">{selectedEvent.checkInMode}</span></span>
                     <span>?</span>
-                    <span>Waiver: <span className="font-semibold text-slate-900 dark:text-slate-100">{selectedEvent.waiverRequired ? "Required" : "Not required"}</span></span>
+                    <span>Waiver: <span className="font-semibold text-faith-ink dark:text-slate-100">{selectedEvent.waiverRequired ? "Required" : "Not required"}</span></span>
                   </div>
                 </div>
               </section>
 
-              <section className="rounded-3xl bg-white dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+              <section className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
                 <div className="flex items-start justify-between gap-3">
                   <div>
-                    <div className="text-sm font-bold text-slate-900 dark:text-slate-50 uppercase tracking-tight">
+                    <div className="text-sm font-bold text-faith-ink dark:text-slate-50 uppercase tracking-tight">
                       Promotion and audience panel
                     </div>
-                    <div className="mt-1 text-[11px] sm:text-xs text-slate-500 dark:text-slate-400">
+                    <div className="mt-1 text-[11px] sm:text-xs text-faith-slate">
                       Route the event into notifications, Beacon, and segment targeting with clear performance visibility.
                     </div>
                   </div>
@@ -2232,13 +2232,13 @@ export default function FaithHubEventsManagerPage() {
                   </Pill>
                 </div>
 
-                <div className="mt-4 rounded-3xl bg-slate-50 dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                <div className="mt-4 rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
                   <div className="flex items-center justify-between gap-3">
                     <div>
-                      <div className="text-[12px] font-bold text-slate-900 dark:text-slate-100">
+                      <div className="text-[12px] font-bold text-faith-ink dark:text-slate-100">
                         Target segments
                       </div>
-                      <div className="text-[11px] text-slate-500 dark:text-slate-400">
+                      <div className="text-[11px] text-faith-slate">
                         Groups likely to respond best to this event.
                       </div>
                     </div>
@@ -2253,9 +2253,9 @@ export default function FaithHubEventsManagerPage() {
                   </div>
                 </div>
 
-                <div className="mt-4 rounded-3xl bg-slate-50 dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                <div className="mt-4 rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
                   <div className="flex items-center justify-between gap-3">
-                    <div className="text-[12px] font-bold text-slate-900 dark:text-slate-100">
+                    <div className="text-[12px] font-bold text-faith-ink dark:text-slate-100">
                       Promotion channels
                     </div>
                     <Pill tone={enabledChannelCount > 1 ? "good" : "warn"}>
@@ -2266,13 +2266,13 @@ export default function FaithHubEventsManagerPage() {
                     {selectedEvent.promotionChannels.map((channel) => (
                       <div
                         key={channel.id}
-                        className="flex items-center justify-between gap-3 rounded-2xl bg-white dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-700"
+                        className="flex items-center justify-between gap-3 rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-700"
                       >
                         <div className="min-w-0">
-                          <div className="text-[12px] font-bold text-slate-900 dark:text-slate-100 truncate">
+                          <div className="text-[12px] font-bold text-faith-ink dark:text-slate-100 truncate">
                             {channel.label}
                           </div>
-                          <div className="text-[11px] text-slate-500 dark:text-slate-400 truncate">
+                          <div className="text-[11px] text-faith-slate truncate">
                             {channel.hint} ? {channel.health}
                           </div>
                         </div>
@@ -2292,11 +2292,11 @@ export default function FaithHubEventsManagerPage() {
                   </div>
                 </div>
 
-                <div className="mt-4 rounded-3xl bg-slate-50 dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-                  <div className="text-[12px] font-bold text-slate-900 dark:text-slate-100">
+                <div className="mt-4 rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div className="text-[12px] font-bold text-faith-ink dark:text-slate-100">
                     Registration source mix
                   </div>
-                  <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
+                  <div className="mt-1 text-[11px] text-faith-slate">
                     Track what is actually filling the room so future media plans get smarter.
                   </div>
                   <div className="mt-3">
@@ -2307,13 +2307,13 @@ export default function FaithHubEventsManagerPage() {
             </div>
 
             <div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
-              <section className="rounded-3xl bg-white dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+              <section className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
                 <div className="flex items-start justify-between gap-3">
                   <div>
-                    <div className="text-sm font-bold text-slate-900 dark:text-slate-50 uppercase tracking-tight">
+                    <div className="text-sm font-bold text-faith-ink dark:text-slate-50 uppercase tracking-tight">
                       Giving and merchandising strip
                     </div>
-                    <div className="mt-1 text-[11px] sm:text-xs text-slate-500 dark:text-slate-400">
+                    <div className="mt-1 text-[11px] sm:text-xs text-faith-slate">
                       Event-linked funds, crowdfunds, merch links, sponsor mentions, and on-site giving moments.
                     </div>
                   </div>
@@ -2326,32 +2326,32 @@ export default function FaithHubEventsManagerPage() {
                   {selectedEvent.givingLines.map((line) => (
                     <div
                       key={line.id}
-                      className="rounded-2xl bg-slate-50 dark:bg-slate-800/40 p-3 ring-1 ring-slate-200 dark:ring-slate-800"
+                      className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800/40 p-3 ring-1 ring-slate-200 dark:ring-slate-800"
                     >
                       <div className="flex items-start justify-between gap-3">
                         <div className="min-w-0">
                           <div className="flex items-center gap-2">
-                            <div className="h-9 w-9 rounded-2xl bg-white dark:bg-slate-900 ring-1 ring-slate-200 dark:ring-slate-700 grid place-items-center">
+                            <div className="h-9 w-9 rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 ring-1 ring-slate-200 dark:ring-slate-700 grid place-items-center">
                               {line.type === "Fund" ? (
-                                <HeartHandshake className="h-4 w-4 text-slate-900 dark:text-slate-100" />
+                                <HeartHandshake className="h-4 w-4 text-faith-ink dark:text-slate-100" />
                               ) : line.type === "Crowdfund" ? (
-                                <Gift className="h-4 w-4 text-slate-900 dark:text-slate-100" />
+                                <Gift className="h-4 w-4 text-faith-ink dark:text-slate-100" />
                               ) : line.type === "Merch" ? (
-                                <ShoppingBag className="h-4 w-4 text-slate-900 dark:text-slate-100" />
+                                <ShoppingBag className="h-4 w-4 text-faith-ink dark:text-slate-100" />
                               ) : (
-                                <Sparkles className="h-4 w-4 text-slate-900 dark:text-slate-100" />
+                                <Sparkles className="h-4 w-4 text-faith-ink dark:text-slate-100" />
                               )}
                             </div>
                             <div className="min-w-0">
-                              <div className="text-[12px] font-bold text-slate-900 dark:text-slate-100 truncate">
+                              <div className="text-[12px] font-bold text-faith-ink dark:text-slate-100 truncate">
                                 {line.label}
                               </div>
-                              <div className="text-[11px] text-slate-500 dark:text-slate-400">
+                              <div className="text-[11px] text-faith-slate">
                                 {line.type} ? {line.status}
                               </div>
                             </div>
                           </div>
-                          <div className="mt-2 text-[11px] text-slate-600 dark:text-slate-300">
+                          <div className="mt-2 text-[11px] text-faith-slate dark:text-slate-300">
                             {line.value}
                           </div>
                         </div>
@@ -2371,14 +2371,14 @@ export default function FaithHubEventsManagerPage() {
                   ))}
                 </div>
 
-                <div className="mt-4 rounded-3xl bg-slate-50 dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                <div className="mt-4 rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
                   <div className="flex items-center gap-2">
                     <Globe2 className="h-4 w-4 text-slate-700 dark:text-slate-300" />
-                    <div className="text-[12px] font-bold text-slate-900 dark:text-slate-100">
+                    <div className="text-[12px] font-bold text-faith-ink dark:text-slate-100">
                       Sponsor and public mention state
                     </div>
                   </div>
-                  <div className="mt-2 text-[11px] text-slate-600 dark:text-slate-300">
+                  <div className="mt-2 text-[11px] text-faith-slate dark:text-slate-300">
                     {selectedEvent.sponsorMention}
                   </div>
                   <div className="mt-3 flex flex-wrap items-center gap-2">
@@ -2389,13 +2389,13 @@ export default function FaithHubEventsManagerPage() {
                 </div>
               </section>
 
-              <section className="rounded-3xl bg-white dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+              <section className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
                 <div className="flex items-start justify-between gap-3">
                   <div>
-                    <div className="text-sm font-bold text-slate-900 dark:text-slate-50 uppercase tracking-tight">
+                    <div className="text-sm font-bold text-faith-ink dark:text-slate-50 uppercase tracking-tight">
                       After-event follow-up lane
                     </div>
-                    <div className="mt-1 text-[11px] sm:text-xs text-slate-500 dark:text-slate-400">
+                    <div className="mt-1 text-[11px] sm:text-xs text-faith-slate">
                       Turn completed events into replay, clip, review, thank-you, and next-step journeys.
                     </div>
                   </div>
@@ -2406,13 +2406,13 @@ export default function FaithHubEventsManagerPage() {
                   {selectedEvent.followUps.map((item) => (
                     <div
                       key={item.id}
-                      className="flex items-center justify-between gap-3 rounded-2xl bg-slate-50 dark:bg-slate-800/40 px-3 py-3 ring-1 ring-slate-200 dark:ring-slate-800"
+                      className="flex items-center justify-between gap-3 rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800/40 px-3 py-3 ring-1 ring-slate-200 dark:ring-slate-800"
                     >
                       <div className="min-w-0">
-                        <div className="text-[12px] font-bold text-slate-900 dark:text-slate-100">
+                        <div className="text-[12px] font-bold text-faith-ink dark:text-slate-100">
                           {item.label}
                         </div>
-                        <div className="text-[11px] text-slate-500 dark:text-slate-400">
+                        <div className="text-[11px] text-faith-slate">
                           {item.hint}
                         </div>
                       </div>
@@ -2431,7 +2431,7 @@ export default function FaithHubEventsManagerPage() {
                   ))}
                 </div>
 
-                <div className="mt-4 rounded-3xl bg-slate-50 dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                <div className="mt-4 rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
                   <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                     <Btn
                       tone="primary"
@@ -2440,7 +2440,7 @@ export default function FaithHubEventsManagerPage() {
                       onClick={publishEventPlan}
                       disabled={workingAction === "publish"}
                     >
-                      {workingAction === "publish" ? "Publishingâ€¦" : "Mark operationally ready"}
+                      {workingAction === "publish" ? "Publishing…" : "Mark operationally ready"}
                     </Btn>
                     <Btn
                       tone="accent"
@@ -2451,7 +2451,7 @@ export default function FaithHubEventsManagerPage() {
                       Promote with Beacon
                     </Btn>
                   </div>
-                  <div className="mt-3 text-[11px] text-slate-500 dark:text-slate-400">
+                  <div className="mt-3 text-[11px] text-faith-slate">
                     Premium follow-up keeps the event alive after the room empties: replay packaging, clip extraction, review collection, and next-step outreach all stay connected.
                   </div>
                 </div>
@@ -2460,25 +2460,25 @@ export default function FaithHubEventsManagerPage() {
           </div>
 
           <div className="lg:col-span-4 space-y-4">
-            <section className="rounded-3xl bg-white dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <section className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <div className="text-sm font-bold text-slate-900 dark:text-slate-50 uppercase tracking-tight">
+                  <div className="text-sm font-bold text-faith-ink dark:text-slate-50 uppercase tracking-tight">
                     Event preview
                   </div>
-                  <div className="mt-1 text-[11px] sm:text-xs text-slate-500 dark:text-slate-400">
+                  <div className="mt-1 text-[11px] sm:text-xs text-faith-slate">
                     Premium public event card preview plus check-in and planning handoff.
                   </div>
                 </div>
-                <div className="inline-flex rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-1">
+                <div className="inline-flex rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-1">
                   <button
                     type="button"
                     onClick={() => setPreviewMode("desktop")}
                     className={cx(
                       "px-3 py-1.5 rounded-xl text-[11px] font-bold transition",
                       previewMode === "desktop"
-                        ? "bg-white dark:bg-slate-900 shadow-sm text-slate-900 dark:text-slate-100"
-                        : "text-slate-500 dark:text-slate-400",
+                        ? "bg-[var(--fh-surface-bg)] dark:bg-slate-900 shadow-soft text-faith-ink dark:text-slate-100"
+                        : "text-faith-slate",
                     )}
                   >
                     Desktop
@@ -2489,8 +2489,8 @@ export default function FaithHubEventsManagerPage() {
                     className={cx(
                       "px-3 py-1.5 rounded-xl text-[11px] font-bold transition",
                       previewMode === "mobile"
-                        ? "bg-white dark:bg-slate-900 shadow-sm text-slate-900 dark:text-slate-100"
-                        : "text-slate-500 dark:text-slate-400",
+                        ? "bg-[var(--fh-surface-bg)] dark:bg-slate-900 shadow-soft text-faith-ink dark:text-slate-100"
+                        : "text-faith-slate",
                     )}
                   >
                     Mobile
@@ -2512,13 +2512,13 @@ export default function FaithHubEventsManagerPage() {
               </div>
             </section>
 
-            <section className="rounded-3xl bg-white dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <section className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <div className="text-sm font-bold text-slate-900 dark:text-slate-50 uppercase tracking-tight">
+                  <div className="text-sm font-bold text-faith-ink dark:text-slate-50 uppercase tracking-tight">
                     Operational health
                   </div>
-                  <div className="mt-1 text-[11px] sm:text-xs text-slate-500 dark:text-slate-400">
+                  <div className="mt-1 text-[11px] sm:text-xs text-faith-slate">
                     Premium readiness, staffing, and schedule visibility.
                   </div>
                 </div>
@@ -2538,11 +2538,11 @@ export default function FaithHubEventsManagerPage() {
                 <MetricTile label="Queue risk" value={blockedCount > 0 ? `${blockedCount}` : "0"} hint="Critical blockers" />
               </div>
 
-              <div className="mt-4 rounded-3xl bg-slate-50 dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-                <div className="text-[12px] font-bold text-slate-900 dark:text-slate-100">
+              <div className="mt-4 rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                <div className="text-[12px] font-bold text-faith-ink dark:text-slate-100">
                   Registration trend
                 </div>
-                <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
+                <div className="mt-1 text-[11px] text-faith-slate">
                   Source-weighted planning pulse for the current event.
                 </div>
                 <div className="mt-3">
@@ -2551,41 +2551,41 @@ export default function FaithHubEventsManagerPage() {
               </div>
             </section>
 
-            <section className="rounded-3xl bg-white dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
-              <div className="text-sm font-bold text-slate-900 dark:text-slate-50 uppercase tracking-tight">
+            <section className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
+              <div className="text-sm font-bold text-faith-ink dark:text-slate-50 uppercase tracking-tight">
                 Quick links
               </div>
               <div className="mt-3 space-y-2">
                 <button
                   type="button"
                   onClick={() => safeNav(ROUTES.liveBuilder)}
-                  className="w-full flex items-center justify-between gap-3 rounded-2xl bg-slate-50 dark:bg-slate-800/40 px-3 py-3 ring-1 ring-slate-200 dark:ring-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+                  className="w-full flex items-center justify-between gap-3 rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800/40 px-3 py-3 ring-1 ring-slate-200 dark:ring-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
                 >
                   <div className="flex items-center gap-3">
                     <MonitorPlay className="h-4 w-4 text-slate-700 dark:text-slate-300" />
-                    <div className="text-[12px] font-bold text-slate-900 dark:text-slate-100">Live Builder</div>
+                    <div className="text-[12px] font-bold text-faith-ink dark:text-slate-100">Live Builder</div>
                   </div>
                   <Pill tone="neutral">Open</Pill>
                 </button>
                 <button
                   type="button"
                   onClick={() => safeNav(ROUTES.donationsFunds)}
-                  className="w-full flex items-center justify-between gap-3 rounded-2xl bg-slate-50 dark:bg-slate-800/40 px-3 py-3 ring-1 ring-slate-200 dark:ring-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+                  className="w-full flex items-center justify-between gap-3 rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800/40 px-3 py-3 ring-1 ring-slate-200 dark:ring-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
                 >
                   <div className="flex items-center gap-3">
                     <Gift className="h-4 w-4 text-slate-700 dark:text-slate-300" />
-                    <div className="text-[12px] font-bold text-slate-900 dark:text-slate-100">Donations & Funds</div>
+                    <div className="text-[12px] font-bold text-faith-ink dark:text-slate-100">Donations & Funds</div>
                   </div>
                   <Pill tone="neutral">Open</Pill>
                 </button>
                 <button
                   type="button"
                   onClick={() => safeNav(ROUTES.beaconBuilder)}
-                  className="w-full flex items-center justify-between gap-3 rounded-2xl bg-slate-50 dark:bg-slate-800/40 px-3 py-3 ring-1 ring-slate-200 dark:ring-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+                  className="w-full flex items-center justify-between gap-3 rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800/40 px-3 py-3 ring-1 ring-slate-200 dark:ring-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
                 >
                   <div className="flex items-center gap-3">
                     <Zap className="h-4 w-4 text-slate-700 dark:text-slate-300" />
-                    <div className="text-[12px] font-bold text-slate-900 dark:text-slate-100">Beacon Builder</div>
+                    <div className="text-[12px] font-bold text-faith-ink dark:text-slate-100">Beacon Builder</div>
                   </div>
                   <Pill tone="accent">Promote</Pill>
                 </button>
@@ -2600,15 +2600,15 @@ export default function FaithHubEventsManagerPage() {
         onClose={() => setPreviewOpen(false)}
         title="Event preview suite"
         right={
-          <div className="inline-flex rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-1">
+          <div className="inline-flex rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-1">
             <button
               type="button"
               onClick={() => setPreviewMode("desktop")}
               className={cx(
                 "px-3 py-1.5 rounded-xl text-[11px] font-bold transition",
                 previewMode === "desktop"
-                  ? "bg-white dark:bg-slate-900 shadow-sm text-slate-900 dark:text-slate-100"
-                  : "text-slate-500 dark:text-slate-400",
+                  ? "bg-[var(--fh-surface-bg)] dark:bg-slate-900 shadow-soft text-faith-ink dark:text-slate-100"
+                  : "text-faith-slate",
               )}
             >
               Desktop
@@ -2619,8 +2619,8 @@ export default function FaithHubEventsManagerPage() {
               className={cx(
                 "px-3 py-1.5 rounded-xl text-[11px] font-bold transition",
                 previewMode === "mobile"
-                  ? "bg-white dark:bg-slate-900 shadow-sm text-slate-900 dark:text-slate-100"
-                  : "text-slate-500 dark:text-slate-400",
+                  ? "bg-[var(--fh-surface-bg)] dark:bg-slate-900 shadow-soft text-faith-ink dark:text-slate-100"
+                  : "text-faith-slate",
               )}
             >
               Mobile
@@ -2634,11 +2634,11 @@ export default function FaithHubEventsManagerPage() {
           </div>
           <div className="space-y-4">
             <CheckInConsolePreview event={selectedEvent} />
-            <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-              <div className="text-[12px] font-bold text-slate-900 dark:text-slate-100">
+            <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+              <div className="text-[12px] font-bold text-faith-ink dark:text-slate-100">
                 Premium preview lab
               </div>
-              <div className="mt-2 text-[12px] text-slate-600 dark:text-slate-300">
+              <div className="mt-2 text-[12px] text-faith-slate dark:text-slate-300">
                 Review public event presentation, attendance positioning, and check-in behavior before launch. Desktop and mobile previews mirror how event discovery and conversion surfaces will feel across the platform.
               </div>
               <div className="mt-3 flex flex-wrap items-center gap-2">
@@ -2677,6 +2677,7 @@ export default function FaithHubEventsManagerPage() {
     </div>
   );
 }
+
 
 
 

@@ -1,4 +1,4 @@
-Ôªø// @ts-nocheck
+// @ts-nocheck
 
 "use client";
 
@@ -40,7 +40,7 @@ import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
- * Provider ‚Äî Book Builder
+ * Provider ó Book Builder
  * --------------------------------
  * Premium Provider-side book creation page.
  *
@@ -151,7 +151,7 @@ type BookDraft = {
   resources: ResourceItem[];
   accessModel: AccessModel;
   price: number;
-  currency: "$" | "¬£" | "‚Ç¶";
+  currency: "$" | "£" | "?";
   sampleEnabled: boolean;
   downloadsEnabled: boolean;
   discoverable: boolean;
@@ -200,7 +200,7 @@ const TEMPLATE_LIBRARY: Record<TemplateKey, TemplatePreset> = {
     accentTone: "Green",
     audienceFit: "Daily readers, prayer groups, new believers, and digital-first followers",
     tone: "Warm, reflective, scripture-first",
-    themeScripture: "Psalm 51 ¬∑ Renewal and spiritual reset",
+    themeScripture: "Psalm 51 ∑ Renewal and spiritual reset",
     promise:
       "Help readers return to prayer, repentance, and steady spiritual rhythm through short guided reading moments.",
     description:
@@ -209,21 +209,21 @@ const TEMPLATE_LIBRARY: Record<TemplateKey, TemplatePreset> = {
     chapterSeed: [
       {
         id: "chap-dev-1",
-        title: "Day 1 ¬∑ Return with humility",
+        title: "Day 1 ∑ Return with humility",
         summary: "Open the journey with repentance, stillness, and a clear spiritual reset.",
         pagesLabel: "6 pages",
         tags: ["Prayer", "Reset"],
       },
       {
         id: "chap-dev-2",
-        title: "Day 2 ¬∑ Prayer in hidden places",
+        title: "Day 2 ∑ Prayer in hidden places",
         summary: "Guide readers into quiet prayer habits that sustain private devotion.",
         pagesLabel: "5 pages",
         tags: ["Prayer", "Discipline"],
       },
       {
         id: "chap-dev-3",
-        title: "Day 3 ¬∑ Grace for weak days",
+        title: "Day 3 ∑ Grace for weak days",
         summary: "Create a compassionate devotional rhythm for inconsistent readers.",
         pagesLabel: "6 pages",
         tags: ["Grace", "Encouragement"],
@@ -253,7 +253,7 @@ const TEMPLATE_LIBRARY: Record<TemplateKey, TemplatePreset> = {
     accentTone: "Orange",
     audienceFit: "Small groups, classes, leaders, and follow-up communities",
     tone: "Structured, discussion-ready, teaching companion",
-    themeScripture: "James 1 ¬∑ Hearing, doing, and living the word",
+    themeScripture: "James 1 ∑ Hearing, doing, and living the word",
     promise:
       "Turn teaching into richer follow-up by giving readers guided questions, takeaways, and discussion prompts.",
     description:
@@ -262,21 +262,21 @@ const TEMPLATE_LIBRARY: Record<TemplateKey, TemplatePreset> = {
     chapterSeed: [
       {
         id: "chap-guide-1",
-        title: "Session 1 ¬∑ Big idea and key scripture",
+        title: "Session 1 ∑ Big idea and key scripture",
         summary: "Frame the teaching, its emotional promise, and the discussion journey.",
         pagesLabel: "8 pages",
         tags: ["Big idea", "Scripture"],
       },
       {
         id: "chap-guide-2",
-        title: "Session 2 ¬∑ Group prompts",
+        title: "Session 2 ∑ Group prompts",
         summary: "Turn the message into conversation with reflection and practice questions.",
         pagesLabel: "7 pages",
         tags: ["Discussion", "Application"],
       },
       {
         id: "chap-guide-3",
-        title: "Session 3 ¬∑ Next-step resources",
+        title: "Session 3 ∑ Next-step resources",
         summary: "Close the episode with readings, prayer prompts, and companion links.",
         pagesLabel: "5 pages",
         tags: ["Resources", "Practice"],
@@ -312,7 +312,7 @@ const TEMPLATE_LIBRARY: Record<TemplateKey, TemplatePreset> = {
     accentTone: "Navy",
     audienceFit: "Staff, volunteers, ministry leaders, production teams",
     tone: "Practical, operational, accountable",
-    themeScripture: "1 Corinthians 14 ¬∑ Decency and order",
+    themeScripture: "1 Corinthians 14 ∑ Decency and order",
     promise:
       "Give teams a trustworthy manual that feels warm and ministry-aware while still keeping version discipline and operational clarity.",
     description:
@@ -365,7 +365,7 @@ const TEMPLATE_LIBRARY: Record<TemplateKey, TemplatePreset> = {
     accentTone: "Green",
     audienceFit: "Discipleship classes, training cohorts, learning journeys",
     tone: "Structured, formative, curriculum-like",
-    themeScripture: "Colossians 1 ¬∑ Growing in wisdom and understanding",
+    themeScripture: "Colossians 1 ∑ Growing in wisdom and understanding",
     promise:
       "Organize structured faith learning into a polished reader with weekly rhythm, resources, and companion actions.",
     description:
@@ -374,21 +374,21 @@ const TEMPLATE_LIBRARY: Record<TemplateKey, TemplatePreset> = {
     chapterSeed: [
       {
         id: "chap-reader-1",
-        title: "Week 1 ¬∑ Orientation and expectations",
+        title: "Week 1 ∑ Orientation and expectations",
         summary: "Frame the learning path, outcomes, and the first reading milestone.",
         pagesLabel: "9 pages",
         tags: ["Orientation", "Outcomes"],
       },
       {
         id: "chap-reader-2",
-        title: "Week 2 ¬∑ Core reading and reflection",
+        title: "Week 2 ∑ Core reading and reflection",
         summary: "Set the central teaching with notes and guided response prompts.",
         pagesLabel: "11 pages",
         tags: ["Reading", "Reflection"],
       },
       {
         id: "chap-reader-3",
-        title: "Week 3 ¬∑ Practice and discussion",
+        title: "Week 3 ∑ Practice and discussion",
         summary: "Move from content into action, questions, and follow-up discipline.",
         pagesLabel: "8 pages",
         tags: ["Practice", "Discussion"],
@@ -500,7 +500,7 @@ function buildDraft(templateId: TemplateKey): BookDraft {
     downloadsEnabled: true,
     discoverable: true,
     publishMode: "Draft",
-    scheduledAt: "Next Thursday ¬∑ 7:30 PM",
+    scheduledAt: "Next Thursday ∑ 7:30 PM",
     locales: [
       {
         id: nextId("loc"),
@@ -605,7 +605,7 @@ function PrimaryActionButton({
       type="button"
       onClick={onClick}
       className={cx(
-        "inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-2.5 text-sm font-bold text-white shadow-sm transition hover:brightness-95",
+        "inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-2.5 text-sm font-bold text-white shadow-soft transition hover:brightness-95",
         className,
       )}
       style={{ background: tone === "green" ? EV_GREEN : EV_ORANGE }}
@@ -629,7 +629,7 @@ function SoftButton({
       type="button"
       onClick={onClick}
       className={cx(
-        "inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-3.5 py-2 text-sm font-bold text-slate-700 transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800",
+        "inline-flex items-center justify-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3.5 py-2 text-sm font-bold text-slate-700 transition hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800",
         className,
       )}
     >
@@ -655,8 +655,8 @@ function Pill({
         : tone === "brand"
           ? "border-transparent text-white"
           : tone === "dark"
-            ? "border-slate-800 bg-slate-900 text-white dark:border-slate-600 dark:bg-slate-100 dark:text-slate-900"
-            : "border-slate-200 bg-white text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300";
+            ? "border-slate-800 bg-slate-900 text-white dark:border-slate-600 dark:bg-slate-100 dark:text-faith-ink"
+            : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300";
   return (
     <span
       className={cx(
@@ -683,14 +683,14 @@ function Card({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-[28px] border border-slate-200 bg-white p-4 shadow-sm transition dark:border-slate-800 dark:bg-slate-900">
+    <div className="rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft transition dark:border-slate-800 dark:bg-slate-900">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="min-w-0">
-          <div className="text-sm font-extrabold text-slate-900 dark:text-slate-100">
+          <div className="text-sm font-extrabold text-faith-ink dark:text-slate-100">
             {title}
           </div>
           {subtitle ? (
-            <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">
+            <div className="mt-1 text-xs text-faith-slate">
               {subtitle}
             </div>
           ) : null}
@@ -704,7 +704,7 @@ function Card({
 
 function Label({ children }: { children: React.ReactNode }) {
   return (
-    <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">
+    <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-faith-slate">
       {children}
     </div>
   );
@@ -727,7 +727,7 @@ function Input({
       onChange={(e) => onChange(e.target.value)}
       placeholder={placeholder}
       type={type}
-      className="mt-1.5 w-full rounded-2xl border border-slate-200 bg-white px-3 py-2.5 text-[13px] text-slate-900 outline-none transition focus:ring-2 focus:ring-emerald-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:focus:ring-emerald-900/30"
+      className="mt-1.5 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2.5 text-[13px] text-faith-ink outline-none transition focus:ring-2 focus:ring-emerald-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:focus:ring-emerald-900/30"
     />
   );
 }
@@ -749,7 +749,7 @@ function TextArea({
       value={value}
       onChange={(e) => onChange(e.target.value)}
       placeholder={placeholder}
-      className="mt-1.5 w-full rounded-2xl border border-slate-200 bg-white px-3 py-2.5 text-[13px] text-slate-900 outline-none transition focus:ring-2 focus:ring-emerald-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:focus:ring-emerald-900/30"
+      className="mt-1.5 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2.5 text-[13px] text-faith-ink outline-none transition focus:ring-2 focus:ring-emerald-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:focus:ring-emerald-900/30"
     />
   );
 }
@@ -764,7 +764,7 @@ function Segmented({
   onChange: (v: string) => void;
 }) {
   return (
-    <div className="inline-flex flex-wrap rounded-2xl border border-slate-200 bg-white p-1 dark:border-slate-700 dark:bg-slate-900">
+    <div className="inline-flex flex-wrap rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-1 dark:border-slate-700 dark:bg-slate-900">
       {items.map((item) => {
         const active = item === value;
         return (
@@ -776,7 +776,7 @@ function Segmented({
               "rounded-xl px-3 py-1.5 text-[12px] font-bold transition",
               active
                 ? "text-white"
-                : "text-slate-600 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-800",
+                : "text-faith-slate hover:bg-[var(--fh-surface)] dark:text-slate-300 dark:hover:bg-slate-800",
             )}
             style={active ? { background: EV_GREEN } : undefined}
           >
@@ -813,17 +813,17 @@ function ToggleCard({
           ? tone === "green"
             ? "border-emerald-200 bg-emerald-50 dark:border-emerald-800 dark:bg-emerald-900/20"
             : "border-amber-200 bg-amber-50 dark:border-amber-800 dark:bg-amber-900/20"
-          : "border-slate-200 bg-white hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800",
+          : "border-faith-line bg-[var(--fh-surface-bg)] hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800",
       )}
     >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
-          <div className="flex items-center gap-2 text-[13px] font-bold text-slate-900 dark:text-slate-100">
+          <div className="flex items-center gap-2 text-[13px] font-bold text-faith-ink dark:text-slate-100">
             {icon}
             {label}
           </div>
           {hint ? (
-            <div className="mt-1 text-[12px] text-slate-500 dark:text-slate-400">
+            <div className="mt-1 text-[12px] text-faith-slate">
               {hint}
             </div>
           ) : null}
@@ -835,12 +835,12 @@ function ToggleCard({
               ? tone === "green"
                 ? "border-emerald-500 bg-emerald-500"
                 : "border-amber-500 bg-amber-500"
-              : "border-slate-200 bg-slate-100 dark:border-slate-700 dark:bg-slate-800",
+              : "border-faith-line bg-slate-100 dark:border-slate-700 dark:bg-slate-800",
           )}
         >
           <div
             className={cx(
-              "mt-[3px] h-4 w-4 rounded-full bg-white shadow transition",
+              "mt-[3px] h-4 w-4 rounded-full bg-[var(--fh-surface-bg)] shadow transition",
               checked ? "translate-x-4" : "translate-x-0",
             )}
           />
@@ -871,7 +871,7 @@ function StepRail({
                 "w-full rounded-2xl border px-3 py-3 text-left transition",
                 active
                   ? "border-emerald-200 bg-emerald-50 dark:border-emerald-800 dark:bg-emerald-900/20"
-                  : "border-slate-200 bg-white hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800",
+                  : "border-faith-line bg-[var(--fh-surface-bg)] hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800",
               )}
             >
               <div className="flex items-start gap-3">
@@ -879,21 +879,21 @@ function StepRail({
                   className={cx(
                     "mt-0.5 grid h-7 w-7 place-items-center rounded-full text-[11px] font-black",
                     active
-                      ? "bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900"
-                      : "bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300",
+                      ? "bg-slate-900 text-white dark:bg-slate-100 dark:text-faith-ink"
+                      : "bg-slate-100 text-faith-slate dark:bg-slate-800 dark:text-slate-300",
                   )}
                 >
                   {index + 1}
                 </div>
                 <div className="min-w-0 flex-1">
-                  <div className="text-[13px] font-extrabold text-slate-900 dark:text-slate-100">
+                  <div className="text-[13px] font-extrabold text-faith-ink dark:text-slate-100">
                     {item.label}
                   </div>
-                  <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
+                  <div className="mt-1 text-[11px] text-faith-slate">
                     {item.hint}
                   </div>
                 </div>
-                {active ? <ChevronRight className="h-4 w-4 text-slate-500" /> : null}
+                {active ? <ChevronRight className="h-4 w-4 text-faith-slate" /> : null}
               </div>
             </button>
           );
@@ -932,7 +932,7 @@ function StorefrontPreview({
     return (
       <div className="mx-auto w-full max-w-[360px] md:max-w-[400px]">
         <div className="rounded-[34px] bg-slate-950 p-3 shadow-[0_18px_60px_rgba(15,23,42,0.28)] transition">
-          <div className="overflow-hidden rounded-[26px] bg-white dark:bg-slate-900">
+          <div className="overflow-hidden rounded-[26px] bg-[var(--fh-surface-bg)] dark:bg-slate-900">
             <div className="relative">
               <div className="aspect-[4/5] w-full overflow-hidden bg-slate-100 dark:bg-slate-800">
                 <img
@@ -951,21 +951,21 @@ function StorefrontPreview({
             </div>
 
             <div className="p-4">
-              <div className="text-[10px] font-black uppercase tracking-[0.24em] text-slate-400">
+              <div className="text-[10px] font-black uppercase tracking-[0.24em] text-faith-slate">
                 Book
               </div>
-              <div className="mt-1 text-lg font-black leading-tight text-slate-900 dark:text-slate-100">
+              <div className="mt-1 text-lg font-black leading-tight text-faith-ink dark:text-slate-100">
                 {draft.title}
               </div>
-              <div className="mt-1 text-sm text-slate-500 dark:text-slate-400">
+              <div className="mt-1 text-sm text-faith-slate">
                 {draft.subtitle}
               </div>
-              <div className="mt-2 text-xs font-semibold text-slate-600 dark:text-slate-300">
+              <div className="mt-2 text-xs font-semibold text-faith-slate dark:text-slate-300">
                 By {draft.author}
               </div>
 
-              <div className="mt-4 rounded-2xl border border-slate-200 bg-slate-50 p-3 dark:border-slate-800 dark:bg-slate-950">
-                <div className="text-[11px] font-black uppercase tracking-[0.18em] text-slate-400">
+              <div className="mt-4 rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3 dark:border-slate-800 dark:bg-slate-950">
+                <div className="text-[11px] font-black uppercase tracking-[0.18em] text-faith-slate">
                   Reader promise
                 </div>
                 <div className="mt-2 text-sm font-semibold leading-relaxed text-slate-800 dark:text-slate-200">
@@ -974,14 +974,14 @@ function StorefrontPreview({
               </div>
 
               <div className="mt-4">
-                <div className="text-[11px] font-black uppercase tracking-[0.18em] text-slate-400">
+                <div className="text-[11px] font-black uppercase tracking-[0.18em] text-faith-slate">
                   Included
                 </div>
                 <div className="mt-2 flex flex-wrap gap-2">
                   {draft.formats.map((format) => (
                     <span
                       key={format}
-                      className="rounded-full border border-slate-200 bg-white px-2.5 py-1 text-[11px] font-bold text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
+                      className="rounded-full border border-faith-line bg-[var(--fh-surface-bg)] px-2.5 py-1 text-[11px] font-bold text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
                     >
                       {format}
                     </span>
@@ -993,15 +993,15 @@ function StorefrontPreview({
                 {draft.chapterItems.slice(0, expanded ? 5 : 3).map((chapter, index) => (
                   <div
                     key={chapter.id}
-                    className="rounded-2xl border border-slate-200 bg-white p-3 dark:border-slate-700 dark:bg-slate-900"
+                    className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-3 dark:border-slate-700 dark:bg-slate-900"
                   >
-                    <div className="text-[11px] font-black uppercase tracking-[0.16em] text-slate-400">
+                    <div className="text-[11px] font-black uppercase tracking-[0.16em] text-faith-slate">
                       Chapter {index + 1}
                     </div>
-                    <div className="mt-1 text-sm font-bold text-slate-900 dark:text-slate-100">
+                    <div className="mt-1 text-sm font-bold text-faith-ink dark:text-slate-100">
                       {chapter.title}
                     </div>
-                    <div className="mt-1 text-xs leading-relaxed text-slate-500 dark:text-slate-400">
+                    <div className="mt-1 text-xs leading-relaxed text-faith-slate">
                       {chapter.summary}
                     </div>
                   </div>
@@ -1032,10 +1032,10 @@ function StorefrontPreview({
   }
 
   return (
-    <div className="overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
+    <div className="overflow-hidden rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] shadow-soft dark:border-slate-800 dark:bg-slate-900">
       <div className="grid gap-0 lg:grid-cols-[280px_minmax(0,1fr)]">
-        <div className="border-b border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950 lg:border-b-0 lg:border-r">
-          <div className="overflow-hidden rounded-3xl shadow-sm">
+        <div className="border-b border-faith-line bg-[var(--fh-surface)] p-4 dark:border-slate-800 dark:bg-slate-950 lg:border-b-0 lg:border-r">
+          <div className="overflow-hidden rounded-3xl shadow-soft">
             <div className="aspect-[4/5] overflow-hidden">
               <img
                 src={draft.coverUrl}
@@ -1055,12 +1055,12 @@ function StorefrontPreview({
             ))}
           </div>
 
-          <div className="mt-4 rounded-3xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
-            <div className="text-[11px] font-black uppercase tracking-[0.18em] text-slate-400">
+          <div className="mt-4 rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 dark:border-slate-800 dark:bg-slate-900">
+            <div className="text-[11px] font-black uppercase tracking-[0.18em] text-faith-slate">
               Cover quote
             </div>
             <div className="mt-2 text-sm font-semibold leading-relaxed text-slate-800 dark:text-slate-200">
-              ‚Äú{draft.heroQuote}‚Äù
+              ì{draft.heroQuote}î
             </div>
           </div>
         </div>
@@ -1072,30 +1072,30 @@ function StorefrontPreview({
             <Pill text={`Chapters ${draft.chapterItems.length}`} />
           </div>
 
-          <div className="mt-4 text-[11px] font-black uppercase tracking-[0.22em] text-slate-400">
+          <div className="mt-4 text-[11px] font-black uppercase tracking-[0.22em] text-faith-slate">
             Book
           </div>
-          <div className="mt-1 text-3xl font-black leading-tight text-slate-900 dark:text-slate-100">
+          <div className="mt-1 text-3xl font-black leading-tight text-faith-ink dark:text-slate-100">
             {draft.title}
           </div>
-          <div className="mt-2 text-base text-slate-500 dark:text-slate-400">
+          <div className="mt-2 text-base text-faith-slate">
             {draft.subtitle}
           </div>
-          <div className="mt-3 flex flex-wrap items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
+          <div className="mt-3 flex flex-wrap items-center gap-3 text-sm text-faith-slate dark:text-slate-300">
             <span className="font-semibold">By {draft.author}</span>
-            <span>‚Ä¢</span>
+            <span>ï</span>
             <span>{draft.audienceFit}</span>
           </div>
 
           <div className="mt-5 grid gap-4 xl:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
-            <div className="rounded-3xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950">
-              <div className="text-[11px] font-black uppercase tracking-[0.16em] text-slate-400">
+            <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface)] p-4 dark:border-slate-800 dark:bg-slate-950">
+              <div className="text-[11px] font-black uppercase tracking-[0.16em] text-faith-slate">
                 Reader promise
               </div>
               <div className="mt-2 text-sm font-semibold leading-relaxed text-slate-800 dark:text-slate-200">
                 {draft.promise}
               </div>
-              <div className="mt-3 text-sm leading-relaxed text-slate-500 dark:text-slate-400">
+              <div className="mt-3 text-sm leading-relaxed text-faith-slate">
                 {draft.description}
               </div>
 
@@ -1103,7 +1103,7 @@ function StorefrontPreview({
                 {draft.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-full border border-slate-200 bg-white px-2.5 py-1 text-[11px] font-bold text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
+                    className="rounded-full border border-faith-line bg-[var(--fh-surface-bg)] px-2.5 py-1 text-[11px] font-bold text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
                   >
                     #{tag}
                   </span>
@@ -1111,8 +1111,8 @@ function StorefrontPreview({
               </div>
             </div>
 
-            <div className="rounded-3xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
-              <div className="text-[11px] font-black uppercase tracking-[0.16em] text-slate-400">
+            <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 dark:border-slate-800 dark:bg-slate-900">
+              <div className="text-[11px] font-black uppercase tracking-[0.16em] text-faith-slate">
                 Primary CTA
               </div>
               <button
@@ -1132,15 +1132,15 @@ function StorefrontPreview({
                 {primaryAction}
               </button>
               <div className="mt-4 grid grid-cols-2 gap-2">
-                <div className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2.5 dark:border-slate-700 dark:bg-slate-950">
-                  <div className="text-[10px] uppercase tracking-[0.14em] text-slate-400">Formats</div>
-                  <div className="mt-1 text-[13px] font-black text-slate-900 dark:text-slate-100">
+                <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2.5 dark:border-slate-700 dark:bg-slate-950">
+                  <div className="text-[10px] uppercase tracking-[0.14em] text-faith-slate">Formats</div>
+                  <div className="mt-1 text-[13px] font-black text-faith-ink dark:text-slate-100">
                     {draft.formats.length}
                   </div>
                 </div>
-                <div className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2.5 dark:border-slate-700 dark:bg-slate-950">
-                  <div className="text-[10px] uppercase tracking-[0.14em] text-slate-400">Resources</div>
-                  <div className="mt-1 text-[13px] font-black text-slate-900 dark:text-slate-100">
+                <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2.5 dark:border-slate-700 dark:bg-slate-950">
+                  <div className="text-[10px] uppercase tracking-[0.14em] text-faith-slate">Resources</div>
+                  <div className="mt-1 text-[13px] font-black text-faith-ink dark:text-slate-100">
                     {draft.resources.length}
                   </div>
                 </div>
@@ -1149,27 +1149,27 @@ function StorefrontPreview({
           </div>
 
           <div className="mt-5">
-            <div className="text-[11px] font-black uppercase tracking-[0.16em] text-slate-400">
+            <div className="text-[11px] font-black uppercase tracking-[0.16em] text-faith-slate">
               Chapter experience
             </div>
             <div className="mt-3 grid gap-3 md:grid-cols-2">
               {draft.chapterItems.slice(0, expanded ? 6 : 4).map((chapter, index) => (
                 <div
                   key={chapter.id}
-                  className="rounded-3xl border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-900"
+                  className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 dark:border-slate-700 dark:bg-slate-900"
                 >
                   <div className="flex items-center justify-between gap-2">
-                    <div className="text-[10px] font-black uppercase tracking-[0.16em] text-slate-400">
+                    <div className="text-[10px] font-black uppercase tracking-[0.16em] text-faith-slate">
                       Chapter {index + 1}
                     </div>
-                    <div className="text-[11px] font-bold text-slate-400">
+                    <div className="text-[11px] font-bold text-faith-slate">
                       {chapter.pagesLabel}
                     </div>
                   </div>
-                  <div className="mt-2 text-sm font-extrabold text-slate-900 dark:text-slate-100">
+                  <div className="mt-2 text-sm font-extrabold text-faith-ink dark:text-slate-100">
                     {chapter.title}
                   </div>
-                  <div className="mt-2 text-xs leading-relaxed text-slate-500 dark:text-slate-400">
+                  <div className="mt-2 text-xs leading-relaxed text-faith-slate">
                     {chapter.summary}
                   </div>
                 </div>
@@ -1200,16 +1200,16 @@ function TemplateSwitchCard({
       className={cx(
         "rounded-3xl border p-4 text-left transition",
         active
-          ? "border-emerald-200 bg-emerald-50 shadow-sm dark:border-emerald-800 dark:bg-emerald-900/20"
-          : "border-slate-200 bg-white hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800",
+          ? "border-emerald-200 bg-emerald-50 shadow-soft dark:border-emerald-800 dark:bg-emerald-900/20"
+          : "border-faith-line bg-[var(--fh-surface-bg)] hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800",
       )}
     >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
-          <div className="text-sm font-extrabold text-slate-900 dark:text-slate-100">
+          <div className="text-sm font-extrabold text-faith-ink dark:text-slate-100">
             {preset.title}
           </div>
-          <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">
+          <div className="mt-1 text-xs text-faith-slate">
             {preset.subtitle}
           </div>
         </div>
@@ -1427,7 +1427,7 @@ export default function FaithHubBookBuilderPage() {
                         "rounded-full border px-3 py-1.5 text-[12px] font-bold transition",
                         active
                           ? "border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-800 dark:bg-emerald-900/20 dark:text-emerald-300"
-                          : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800",
+                          : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800",
                       )}
                     >
                       #{tag}
@@ -1471,17 +1471,17 @@ export default function FaithHubBookBuilderPage() {
               {draft.sourceFiles.map((source) => (
                 <div
                   key={source}
-                  className="rounded-3xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950"
+                  className="rounded-3xl border border-faith-line bg-[var(--fh-surface)] p-4 dark:border-slate-800 dark:bg-slate-950"
                 >
                   <div className="flex items-start gap-3">
-                    <div className="mt-0.5 grid h-10 w-10 place-items-center rounded-2xl bg-white shadow-sm dark:bg-slate-900">
+                    <div className="mt-0.5 grid h-10 w-10 place-items-center rounded-2xl bg-[var(--fh-surface-bg)] shadow-soft dark:bg-slate-900">
                       <FileBadge2 className="h-5 w-5 text-slate-700 dark:text-slate-200" />
                     </div>
                     <div className="min-w-0 flex-1">
-                      <div className="truncate text-sm font-extrabold text-slate-900 dark:text-slate-100">
+                      <div className="truncate text-sm font-extrabold text-faith-ink dark:text-slate-100">
                         {source}
                       </div>
-                      <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">
+                      <div className="mt-1 text-xs text-faith-slate">
                         Approved source package ready for output generation, cover mapping, and metadata sync.
                       </div>
                     </div>
@@ -1553,7 +1553,7 @@ export default function FaithHubBookBuilderPage() {
               {draft.chapterItems.map((chapter, index) => (
                 <div
                   key={chapter.id}
-                  className="rounded-3xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950"
+                  className="rounded-3xl border border-faith-line bg-[var(--fh-surface)] p-4 dark:border-slate-800 dark:bg-slate-950"
                 >
                   <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_160px]">
                     <div>
@@ -1606,11 +1606,11 @@ export default function FaithHubBookBuilderPage() {
                           }))
                         }
                       />
-                      <div className="mt-3 rounded-3xl border border-slate-200 bg-white p-3 dark:border-slate-700 dark:bg-slate-900">
-                        <div className="text-[11px] font-black uppercase tracking-[0.16em] text-slate-400">
+                      <div className="mt-3 rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-3 dark:border-slate-700 dark:bg-slate-900">
+                        <div className="text-[11px] font-black uppercase tracking-[0.16em] text-faith-slate">
                           Reader note
                         </div>
-                        <div className="mt-2 text-xs leading-relaxed text-slate-500 dark:text-slate-400">
+                        <div className="mt-2 text-xs leading-relaxed text-faith-slate">
                           Use concise summaries that work in feeds, search, and chapter previews. This card feeds the premium storefront preview automatically.
                         </div>
                       </div>
@@ -1630,14 +1630,14 @@ export default function FaithHubBookBuilderPage() {
               {draft.resources.map((resource) => (
                 <div
                   key={resource.id}
-                  className="rounded-3xl border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-900"
+                  className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 dark:border-slate-700 dark:bg-slate-900"
                 >
                   <div className="flex items-start justify-between gap-3">
                     <div>
-                      <div className="text-sm font-extrabold text-slate-900 dark:text-slate-100">
+                      <div className="text-sm font-extrabold text-faith-ink dark:text-slate-100">
                         {resource.label}
                       </div>
-                      <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">
+                      <div className="mt-1 text-xs text-faith-slate">
                         {resource.type}
                       </div>
                     </div>
@@ -1723,7 +1723,7 @@ export default function FaithHubBookBuilderPage() {
               ].map((panel) => (
                 <div
                   key={panel.title}
-                  className="rounded-3xl border border-slate-200 bg-slate-50 p-3 dark:border-slate-800 dark:bg-slate-950"
+                  className="rounded-3xl border border-faith-line bg-[var(--fh-surface)] p-3 dark:border-slate-800 dark:bg-slate-950"
                 >
                   <div className="overflow-hidden rounded-2xl">
                     <div className="aspect-[4/5] overflow-hidden bg-slate-100 dark:bg-slate-800">
@@ -1734,10 +1734,10 @@ export default function FaithHubBookBuilderPage() {
                       />
                     </div>
                   </div>
-                  <div className="mt-3 text-sm font-extrabold text-slate-900 dark:text-slate-100">
+                  <div className="mt-3 text-sm font-extrabold text-faith-ink dark:text-slate-100">
                     {panel.title}
                   </div>
-                  <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">
+                  <div className="mt-1 text-xs text-faith-slate">
                     {panel.note}
                   </div>
                 </div>
@@ -1782,7 +1782,7 @@ export default function FaithHubBookBuilderPage() {
               <div>
                 <Label>Currency</Label>
                 <Segmented
-                  items={["$", "¬£", "‚Ç¶"]}
+                  items={["$", "£", "?"]}
                   value={draft.currency}
                   onChange={(value) => update("currency", value as BookDraft["currency"])}
                 />
@@ -1800,7 +1800,7 @@ export default function FaithHubBookBuilderPage() {
                 <Input
                   value={draft.scheduledAt}
                   onChange={(value) => update("scheduledAt", value)}
-                  placeholder="Next Thursday ¬∑ 7:30 PM"
+                  placeholder="Next Thursday ∑ 7:30 PM"
                 />
               </div>
               <div>
@@ -1857,10 +1857,10 @@ export default function FaithHubBookBuilderPage() {
               {draft.locales.map((locale) => (
                 <div
                   key={locale.id}
-                  className="rounded-3xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950"
+                  className="rounded-3xl border border-faith-line bg-[var(--fh-surface)] p-4 dark:border-slate-800 dark:bg-slate-950"
                 >
                   <div className="flex flex-wrap items-center justify-between gap-2">
-                    <div className="text-sm font-extrabold text-slate-900 dark:text-slate-100">
+                    <div className="text-sm font-extrabold text-faith-ink dark:text-slate-100">
                       {locale.language}
                     </div>
                     <Pill
@@ -2000,13 +2000,13 @@ export default function FaithHubBookBuilderPage() {
               <button
                 type="button"
                 onClick={() => safeNav(ROUTES.liveBuilder)}
-                className="rounded-3xl border border-slate-200 bg-white p-4 text-left transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800"
+                className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 text-left transition hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800"
               >
-                <div className="flex items-center gap-2 text-sm font-extrabold text-slate-900 dark:text-slate-100">
+                <div className="flex items-center gap-2 text-sm font-extrabold text-faith-ink dark:text-slate-100">
                   <Workflow className="h-4 w-4 text-emerald-500" />
                   Open Live Builder
                 </div>
-                <div className="mt-2 text-xs text-slate-500 dark:text-slate-400">
+                <div className="mt-2 text-xs text-faith-slate">
                   Build a companion live session or attach this book to an existing teaching workflow.
                 </div>
               </button>
@@ -2014,13 +2014,13 @@ export default function FaithHubBookBuilderPage() {
               <button
                 type="button"
                 onClick={() => safeNav(ROUTES.audienceNotifications)}
-                className="rounded-3xl border border-slate-200 bg-white p-4 text-left transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800"
+                className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 text-left transition hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800"
               >
-                <div className="flex items-center gap-2 text-sm font-extrabold text-slate-900 dark:text-slate-100">
+                <div className="flex items-center gap-2 text-sm font-extrabold text-faith-ink dark:text-slate-100">
                   <Rocket className="h-4 w-4 text-orange-500" />
                   Open Audience Notifications
                 </div>
-                <div className="mt-2 text-xs text-slate-500 dark:text-slate-400">
+                <div className="mt-2 text-xs text-faith-slate">
                   Build a reminder or replay-style reading journey around this book.
                 </div>
               </button>
@@ -2028,13 +2028,13 @@ export default function FaithHubBookBuilderPage() {
               <button
                 type="button"
                 onClick={() => safeNav(ROUTES.beaconBuilder)}
-                className="rounded-3xl border border-slate-200 bg-white p-4 text-left transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800"
+                className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 text-left transition hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800"
               >
-                <div className="flex items-center gap-2 text-sm font-extrabold text-slate-900 dark:text-slate-100">
+                <div className="flex items-center gap-2 text-sm font-extrabold text-faith-ink dark:text-slate-100">
                   <Megaphone className="h-4 w-4 text-orange-500" />
                   Open Beacon Builder
                 </div>
-                <div className="mt-2 text-xs text-slate-500 dark:text-slate-400">
+                <div className="mt-2 text-xs text-faith-slate">
                   Promote the book with a linked campaign or a standalone awareness push.
                 </div>
               </button>
@@ -2055,14 +2055,14 @@ export default function FaithHubBookBuilderPage() {
             {checklist.checks.map((check) => (
               <div
                 key={check.label}
-                className="rounded-3xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950"
+                className="rounded-3xl border border-faith-line bg-[var(--fh-surface)] p-4 dark:border-slate-800 dark:bg-slate-950"
               >
                 <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0">
-                    <div className="text-sm font-extrabold text-slate-900 dark:text-slate-100">
+                    <div className="text-sm font-extrabold text-faith-ink dark:text-slate-100">
                       {check.label}
                     </div>
-                    <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">
+                    <div className="mt-1 text-xs text-faith-slate">
                       {check.hint}
                     </div>
                   </div>
@@ -2123,8 +2123,8 @@ export default function FaithHubBookBuilderPage() {
             />
           </div>
 
-          <div className="mt-5 rounded-3xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950">
-            <div className="text-[11px] font-black uppercase tracking-[0.18em] text-slate-400">
+          <div className="mt-5 rounded-3xl border border-faith-line bg-[var(--fh-surface)] p-4 dark:border-slate-800 dark:bg-slate-950">
+            <div className="text-[11px] font-black uppercase tracking-[0.18em] text-faith-slate">
               Primary outputs
             </div>
             <div className="mt-3 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
@@ -2136,7 +2136,7 @@ export default function FaithHubBookBuilderPage() {
               ].map((output) => (
                 <div
                   key={output}
-                  className="rounded-2xl border border-slate-200 bg-white px-3 py-2.5 text-[12px] font-bold text-slate-800 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
+                  className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2.5 text-[12px] font-bold text-slate-800 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
                 >
                   {output}
                 </div>
@@ -2149,8 +2149,8 @@ export default function FaithHubBookBuilderPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#f2f2f2] text-slate-900 transition dark:bg-slate-950 dark:text-slate-50">
-      <div className="sticky top-0 z-30 border-b border-slate-200 bg-white/95 backdrop-blur dark:border-slate-800 dark:bg-slate-950/95">
+    <div className="min-h-screen bg-[var(--fh-page-bg)] text-faith-ink transition dark:bg-slate-950 dark:text-slate-50">
+      <div className="sticky top-0 z-30 border-b border-faith-line bg-[var(--fh-surface-bg)]/95 backdrop-blur dark:border-slate-800 dark:bg-slate-950/95">
         <div className="mx-auto max-w-[1600px] px-4 py-4 md:px-6 lg:px-8">
           <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
             <div className="min-w-0">
@@ -2193,15 +2193,15 @@ export default function FaithHubBookBuilderPage() {
             {metricCards.map((card) => (
               <div
                 key={card.label}
-                className="rounded-[24px] border border-slate-200 bg-white p-4 shadow-sm transition dark:border-slate-800 dark:bg-slate-900"
+                className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft transition dark:border-slate-800 dark:bg-slate-900"
               >
-                <div className="text-[10px] font-black uppercase tracking-[0.16em] text-slate-400">
+                <div className="text-[10px] font-black uppercase tracking-[0.16em] text-faith-slate">
                   {card.label}
                 </div>
-                <div className="mt-2 text-2xl font-black text-slate-900 dark:text-slate-100">
+                <div className="mt-2 text-2xl font-black text-faith-ink dark:text-slate-100">
                   {card.value}
                 </div>
-                <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">
+                <div className="mt-1 text-xs text-faith-slate">
                   {card.hint}
                 </div>
               </div>
@@ -2220,33 +2220,33 @@ export default function FaithHubBookBuilderPage() {
                 <button
                   type="button"
                   onClick={() => safeNav(ROUTES.liveBuilder)}
-                  className="flex w-full items-center justify-between rounded-2xl border border-slate-200 bg-white px-3 py-3 text-left transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800"
+                  className="flex w-full items-center justify-between rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-3 text-left transition hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800"
                 >
                   <div>
-                    <div className="text-[13px] font-extrabold text-slate-900 dark:text-slate-100">
+                    <div className="text-[13px] font-extrabold text-faith-ink dark:text-slate-100">
                       Companion Live Session
                     </div>
-                    <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
+                    <div className="mt-1 text-[11px] text-faith-slate">
                       Use the book in a live teaching, class, or replay flow.
                     </div>
                   </div>
-                  <ChevronRight className="h-4 w-4 text-slate-400" />
+                  <ChevronRight className="h-4 w-4 text-faith-slate" />
                 </button>
 
                 <button
                   type="button"
                   onClick={() => safeNav(ROUTES.beaconBuilder)}
-                  className="flex w-full items-center justify-between rounded-2xl border border-slate-200 bg-white px-3 py-3 text-left transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800"
+                  className="flex w-full items-center justify-between rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-3 text-left transition hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800"
                 >
                   <div>
-                    <div className="text-[13px] font-extrabold text-slate-900 dark:text-slate-100">
+                    <div className="text-[13px] font-extrabold text-faith-ink dark:text-slate-100">
                       Promote with Beacon
                     </div>
-                    <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
+                    <div className="mt-1 text-[11px] text-faith-slate">
                       Turn this book into a linked promotion or launch a campaign around it.
                     </div>
                   </div>
-                  <ChevronRight className="h-4 w-4 text-slate-400" />
+                  <ChevronRight className="h-4 w-4 text-faith-slate" />
                 </button>
               </div>
             </Card>
@@ -2282,14 +2282,14 @@ export default function FaithHubBookBuilderPage() {
             </Card>
 
             <Card title="Builder summary" subtitle="What this page is shaping">
-              <div className="space-y-3 text-sm text-slate-600 dark:text-slate-300">
-                <div className="rounded-3xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950">
-                  <div className="flex items-center gap-2 text-sm font-extrabold text-slate-900 dark:text-slate-100">
+              <div className="space-y-3 text-sm text-faith-slate dark:text-slate-300">
+                <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface)] p-4 dark:border-slate-800 dark:bg-slate-950">
+                  <div className="flex items-center gap-2 text-sm font-extrabold text-faith-ink dark:text-slate-100">
                     <BookOpen className="h-4 w-4" style={{ color: EV_GREEN }} />
                     Premium book destination
                   </div>
-                  <div className="mt-2 text-xs leading-relaxed text-slate-500 dark:text-slate-400">
-                    Book Builder is the dedicated create/edit surface launched from the <span className="font-semibold text-slate-900 dark:text-slate-100">+ New Book</span> action in Books Manager. It turns ideas, manuscripts, covers, and chapters into a launch-ready provider book object with premium packaging.
+                  <div className="mt-2 text-xs leading-relaxed text-faith-slate">
+                    Book Builder is the dedicated create/edit surface launched from the <span className="font-semibold text-faith-ink dark:text-slate-100">+ New Book</span> action in Books Manager. It turns ideas, manuscripts, covers, and chapters into a launch-ready provider book object with premium packaging.
                   </div>
                 </div>
 
@@ -2314,9 +2314,9 @@ export default function FaithHubBookBuilderPage() {
                   ].map((item) => (
                     <div
                       key={item.label}
-                      className="flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-3 py-2.5 dark:border-slate-700 dark:bg-slate-900"
+                      className="flex items-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2.5 dark:border-slate-700 dark:bg-slate-900"
                     >
-                      <div className="text-slate-500">{item.icon}</div>
+                      <div className="text-faith-slate">{item.icon}</div>
                       <div className="text-[12px] font-bold text-slate-800 dark:text-slate-200">
                         {item.label}
                       </div>
@@ -2335,14 +2335,14 @@ export default function FaithHubBookBuilderPage() {
             className="absolute inset-0 bg-black/55 backdrop-blur-sm"
             onClick={() => setPreviewOpen(false)}
           />
-          <div className="absolute inset-0 overflow-hidden bg-slate-50 p-4 dark:bg-slate-950 md:p-6">
-            <div className="mx-auto flex h-full max-w-[1400px] flex-col overflow-hidden rounded-[32px] border border-slate-200 bg-white shadow-2xl dark:border-slate-800 dark:bg-slate-900">
-              <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 px-5 py-4 dark:border-slate-800">
+          <div className="absolute inset-0 overflow-hidden bg-[var(--fh-surface)] p-4 dark:bg-slate-950 md:p-6">
+            <div className="mx-auto flex h-full max-w-[1400px] flex-col overflow-hidden rounded-[32px] border border-faith-line bg-[var(--fh-surface-bg)] shadow-2xl dark:border-slate-800 dark:bg-slate-900">
+              <div className="flex flex-wrap items-center justify-between gap-3 border-b border-faith-line px-5 py-4 dark:border-slate-800">
                 <div>
-                  <div className="text-sm font-extrabold text-slate-900 dark:text-slate-100">
+                  <div className="text-sm font-extrabold text-faith-ink dark:text-slate-100">
                     Book storefront preview
                   </div>
-                  <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">
+                  <div className="mt-1 text-xs text-faith-slate">
                     Preview how the premium book page feels before launch.
                   </div>
                 </div>
@@ -2368,6 +2368,7 @@ export default function FaithHubBookBuilderPage() {
     </div>
   );
 }
+
 
 
 

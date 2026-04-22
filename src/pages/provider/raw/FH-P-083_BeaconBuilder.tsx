@@ -1,4 +1,4 @@
-Ôªø// @ts-nocheck
+// @ts-nocheck
 
 "use client";
 
@@ -41,7 +41,7 @@ import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
- * Provider ‚Äî Beacon Builder
+ * Provider ó Beacon Builder
  * ----------------------------------
  * Premium dual-path campaign builder for linked and standalone Beacon campaigns.
  *
@@ -122,7 +122,7 @@ function fmtInt(n: number) {
   return Intl.NumberFormat(undefined, { maximumFractionDigits: 0 }).format(n);
 }
 
-function fmtCurrency(n: number, currency = "¬£") {
+function fmtCurrency(n: number, currency = "£") {
   return `${currency}${Intl.NumberFormat(undefined, {
     maximumFractionDigits: 0,
   }).format(n)}`;
@@ -696,7 +696,7 @@ function useToast() {
 
 function Toast({ message }: { message: string }) {
   return (
-    <div className="fixed bottom-5 left-1/2 z-[140] -translate-x-1/2 rounded-full bg-slate-950 px-4 py-2 text-[12px] font-semibold text-white shadow-xl ring-1 ring-white/10 dark:bg-slate-50 dark:text-slate-950 dark:ring-slate-200">
+    <div className="fixed bottom-5 left-1/2 z-[140] -translate-x-1/2 rounded-full bg-slate-950 px-4 py-2 text-[12px] font-semibold text-white shadow-xl ring-1 ring-white/10 dark:bg-[var(--fh-surface)] dark:text-slate-950 dark:ring-slate-200">
       {message}
     </div>
   );
@@ -721,7 +721,7 @@ function Pill({
           : tone === "pro"
             ? "bg-violet-50 text-violet-800 ring-violet-200 dark:bg-violet-500/10 dark:text-violet-400 dark:ring-violet-500/20"
             : tone === "brand"
-              ? "bg-slate-900 text-white ring-slate-900 dark:bg-slate-100 dark:text-slate-900 dark:ring-slate-100"
+              ? "bg-slate-900 text-white ring-slate-900 dark:bg-slate-100 dark:text-faith-ink dark:ring-slate-100"
               : "bg-slate-100 text-slate-800 ring-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:ring-slate-700";
   return (
     <span
@@ -764,7 +764,7 @@ function Btn({
           ? "bg-rose-600 text-white border-transparent"
           : tone === "ghost"
             ? "bg-transparent border-transparent text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
-            : "bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800";
+            : "bg-[var(--fh-surface-bg)] dark:bg-slate-900 border-faith-line dark:border-slate-800 text-slate-700 dark:text-slate-200 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800";
   const style =
     tone === "primary"
       ? { background: EV_ORANGE }
@@ -798,12 +798,12 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 transition-colors">
+    <div className="rounded-3xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div className="min-w-0">
-          <div className="text-[13px] font-semibold text-slate-900 dark:text-slate-100">{title}</div>
+          <div className="text-[13px] font-semibold text-faith-ink dark:text-slate-100">{title}</div>
           {subtitle ? (
-            <div className="mt-0.5 text-[11px] leading-normal text-slate-500 dark:text-slate-400">
+            <div className="mt-0.5 text-[11px] leading-normal text-faith-slate">
               {subtitle}
             </div>
           ) : null}
@@ -819,7 +819,7 @@ function Card({ children, className }: { children: React.ReactNode; className?: 
   return (
     <div
       className={cx(
-        "rounded-3xl bg-white dark:bg-slate-950/80 p-3 ring-1 ring-slate-200 dark:ring-slate-800 transition-colors",
+        "rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-950/80 p-3 ring-1 ring-slate-200 dark:ring-slate-800 transition-colors",
         className,
       )}
     >
@@ -831,10 +831,10 @@ function Card({ children, className }: { children: React.ReactNode; className?: 
 function FieldLabel({ label, hint }: { label: string; hint?: string }) {
   return (
     <div>
-      <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">
+      <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">
         {label}
       </div>
-      {hint ? <div className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">{hint}</div> : null}
+      {hint ? <div className="mt-0.5 text-xs text-faith-slate">{hint}</div> : null}
     </div>
   );
 }
@@ -857,10 +857,10 @@ function TextInput({
       placeholder={placeholder}
       disabled={disabled}
       className={cx(
-        "mt-1 w-full rounded-2xl border bg-white dark:bg-slate-900 px-3 py-2 text-sm transition-colors outline-none",
+        "mt-1 w-full rounded-2xl border bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-sm transition-colors outline-none",
         disabled
-          ? "border-slate-200 dark:border-slate-700 text-slate-400 dark:text-slate-500 cursor-not-allowed"
-          : "border-slate-200 dark:border-slate-700 text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-emerald-200 dark:focus:ring-emerald-800",
+          ? "border-faith-line dark:border-slate-700 text-faith-slate cursor-not-allowed"
+          : "border-faith-line dark:border-slate-700 text-faith-ink dark:text-slate-100 focus:ring-2 focus:ring-emerald-200 dark:focus:ring-emerald-800",
       )}
     />
   );
@@ -883,7 +883,7 @@ function TextArea({
       onChange={(e) => onChange(e.target.value)}
       placeholder={placeholder}
       rows={rows}
-      className="mt-1 w-full rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-sm text-slate-900 dark:text-slate-100 outline-none transition-colors focus:ring-2 focus:ring-emerald-200 dark:focus:ring-emerald-800"
+      className="mt-1 w-full rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-sm text-faith-ink dark:text-slate-100 outline-none transition-colors focus:ring-2 focus:ring-emerald-200 dark:focus:ring-emerald-800"
     />
   );
 }
@@ -907,23 +907,23 @@ function ToggleButton({
         "w-full rounded-2xl border p-3 text-left transition-colors",
         checked
           ? "border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-900/20"
-          : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800",
+          : "border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800",
       )}
     >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
-          <div className="text-sm font-bold text-slate-900 dark:text-slate-100">{label}</div>
-          {hint ? <div className="mt-1 text-xs text-slate-600 dark:text-slate-400">{hint}</div> : null}
+          <div className="text-sm font-bold text-faith-ink dark:text-slate-100">{label}</div>
+          {hint ? <div className="mt-1 text-xs text-faith-slate">{hint}</div> : null}
         </div>
         <span
           className={cx(
             "h-6 w-10 shrink-0 rounded-full border flex items-center px-1 transition-colors",
             checked
               ? "bg-emerald-500 border-emerald-500 justify-end"
-              : "bg-slate-100 dark:bg-slate-700 border-slate-200 dark:border-slate-600 justify-start",
+              : "bg-slate-100 dark:bg-slate-700 border-faith-line dark:border-slate-600 justify-start",
           )}
         >
-          <span className="h-4 w-4 rounded-full bg-white shadow" />
+          <span className="h-4 w-4 rounded-full bg-[var(--fh-surface-bg)] shadow" />
         </span>
       </div>
     </button>
@@ -961,9 +961,9 @@ function Modal({
   return (
     <div className="fixed inset-0 z-[99]">
       <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
-      <div className="absolute inset-0 bg-white dark:bg-slate-950 shadow-2xl flex flex-col transition-colors">
-        <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 px-4 py-3">
-          <div className="truncate text-sm font-extrabold text-slate-900 dark:text-slate-100">{title}</div>
+      <div className="absolute inset-0 bg-[var(--fh-surface-bg)] dark:bg-slate-950 shadow-2xl flex flex-col transition-colors">
+        <div className="flex items-center justify-between border-b border-faith-line dark:border-slate-800 px-4 py-3">
+          <div className="truncate text-sm font-extrabold text-faith-ink dark:text-slate-100">{title}</div>
           <Btn tone="ghost" onClick={onClose} left={<X className="h-4 w-4" />}>
             Close
           </Btn>
@@ -1007,11 +1007,11 @@ function DrawerShell({
   return (
     <div className="fixed inset-0 z-[96]">
       <div className="absolute inset-0 bg-black/55 backdrop-blur-sm" onClick={onClose} />
-      <div className="absolute top-0 right-0 bottom-0 w-full max-w-[1120px] bg-white dark:bg-slate-950 shadow-2xl flex flex-col transition-colors">
-        <div className="flex items-start justify-between gap-2 border-b border-slate-200 dark:border-slate-800 px-4 py-3 shrink-0">
+      <div className="absolute top-0 right-0 bottom-0 w-full max-w-[1120px] bg-[var(--fh-surface-bg)] dark:bg-slate-950 shadow-2xl flex flex-col transition-colors">
+        <div className="flex items-start justify-between gap-2 border-b border-faith-line dark:border-slate-800 px-4 py-3 shrink-0">
           <div className="min-w-0">
-            <div className="truncate text-base font-extrabold text-slate-900 dark:text-slate-100">{title}</div>
-            {subtitle ? <div className="truncate text-xs text-slate-600 dark:text-slate-400">{subtitle}</div> : null}
+            <div className="truncate text-base font-extrabold text-faith-ink dark:text-slate-100">{title}</div>
+            {subtitle ? <div className="truncate text-xs text-faith-slate">{subtitle}</div> : null}
           </div>
           <Btn tone="ghost" onClick={onClose} left={<X className="h-4 w-4" />}>Close</Btn>
         </div>
@@ -1041,23 +1041,23 @@ function ScrollTimePicker({
         disabled={disabled}
         onClick={() => setOpen((s) => !s)}
         className={cx(
-          "w-full rounded-2xl bg-white dark:bg-slate-900 px-3 py-2 text-left text-sm ring-1 ring-slate-200 dark:ring-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors",
+          "w-full rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-left text-sm ring-1 ring-slate-200 dark:ring-slate-700 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800 transition-colors",
           disabled && "opacity-50 cursor-not-allowed",
         )}
       >
         <div className="flex items-center justify-between gap-2">
           <div className="min-w-0">
-            <div className="truncate font-extrabold text-slate-900 dark:text-slate-100">{value || "Select time"}</div>
-            {label ? <div className="truncate text-xs text-slate-600 dark:text-slate-400">{label}</div> : null}
+            <div className="truncate font-extrabold text-faith-ink dark:text-slate-100">{value || "Select time"}</div>
+            {label ? <div className="truncate text-xs text-faith-slate">{label}</div> : null}
           </div>
-          <ChevronDown className="h-4 w-4 text-slate-500 dark:text-slate-400" />
+          <ChevronDown className="h-4 w-4 text-faith-slate" />
         </div>
       </button>
       {open ? (
-        <div className="absolute z-30 mt-2 w-full overflow-hidden rounded-2xl bg-white dark:bg-slate-900 shadow-xl ring-1 ring-slate-200 dark:ring-slate-700">
-          <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-700 px-3 py-2">
-            <div className="text-xs font-extrabold text-slate-900 dark:text-slate-100">Pick time</div>
-            <button className="text-xs font-bold text-slate-500 dark:text-slate-400" onClick={() => setOpen(false)}>Close</button>
+        <div className="absolute z-30 mt-2 w-full overflow-hidden rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 shadow-xl ring-1 ring-slate-200 dark:ring-slate-700">
+          <div className="flex items-center justify-between border-b border-faith-line dark:border-slate-700 px-3 py-2">
+            <div className="text-xs font-extrabold text-faith-ink dark:text-slate-100">Pick time</div>
+            <button className="text-xs font-bold text-faith-slate" onClick={() => setOpen(false)}>Close</button>
           </div>
           <div className="max-h-[240px] overflow-y-auto">
             {TIME_OPTIONS.map((t) => (
@@ -1068,12 +1068,12 @@ function ScrollTimePicker({
                   setOpen(false);
                 }}
                 className={cx(
-                  "flex w-full items-center justify-between px-3 py-2 text-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors",
-                  t === value && "bg-slate-50 dark:bg-slate-800",
+                  "flex w-full items-center justify-between px-3 py-2 text-sm hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800 transition-colors",
+                  t === value && "bg-[var(--fh-surface)] dark:bg-slate-800",
                 )}
               >
-                <span className="font-semibold text-slate-900 dark:text-slate-100">{t}</span>
-                {t === value ? <Check className="h-4 w-4 text-slate-900 dark:text-slate-100" /> : null}
+                <span className="font-semibold text-faith-ink dark:text-slate-100">{t}</span>
+                {t === value ? <Check className="h-4 w-4 text-faith-ink dark:text-slate-100" /> : null}
               </button>
             ))}
           </div>
@@ -1108,16 +1108,16 @@ function StepButton({
         "w-full rounded-2xl border px-3 py-3 text-left transition-colors",
         active
           ? "border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-900/20"
-          : "border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 hover:bg-slate-50 dark:hover:bg-slate-900",
+          : "border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-900",
       )}
     >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
-          <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Step {index}</div>
-          <div className="mt-1 text-sm font-black text-slate-900 dark:text-slate-100">{label}</div>
-          <div className="mt-1 text-xs text-slate-600 dark:text-slate-400">{desc}</div>
+          <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">Step {index}</div>
+          <div className="mt-1 text-sm font-black text-faith-ink dark:text-slate-100">{label}</div>
+          <div className="mt-1 text-xs text-faith-slate">{desc}</div>
         </div>
-        {active ? <ChevronRight className="h-4 w-4 text-slate-500 dark:text-slate-400" /> : null}
+        {active ? <ChevronRight className="h-4 w-4 text-faith-slate" /> : null}
       </div>
     </button>
   );
@@ -1140,7 +1140,7 @@ function AssetCard({
         "rounded-3xl border p-3 text-left transition-colors",
         selected
           ? "border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-900/20"
-          : "border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 hover:bg-slate-50 dark:hover:bg-slate-900",
+          : "border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-900",
       )}
     >
       <div className="relative overflow-hidden rounded-2xl bg-slate-950 text-white">
@@ -1151,14 +1151,14 @@ function AssetCard({
         </div>
         {asset.kind === "video" ? (
           <div className="absolute inset-0 grid place-items-center">
-            <div className="h-12 w-12 rounded-full bg-white/85 shadow grid place-items-center">
-              <Play className="h-5 w-5 text-slate-900" />
+            <div className="h-12 w-12 rounded-full bg-[var(--fh-surface-bg)]/85 shadow grid place-items-center">
+              <Play className="h-5 w-5 text-faith-ink" />
             </div>
           </div>
         ) : null}
       </div>
-      <div className="mt-3 text-sm font-black text-slate-900 dark:text-slate-100">{asset.title}</div>
-      <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{asset.subtitle}</div>
+      <div className="mt-3 text-sm font-black text-faith-ink dark:text-slate-100">{asset.title}</div>
+      <div className="mt-1 text-xs text-faith-slate">{asset.subtitle}</div>
     </button>
   );
 }
@@ -1212,8 +1212,8 @@ function BeaconPreviewCard({
   const surfaceAccent = accentColor(surfaceTone(surface));
 
   return (
-    <div className={cx("overflow-hidden rounded-[28px] ring-1 shadow-sm", isDark ? "bg-slate-950 ring-slate-800" : "bg-white ring-slate-200")}>
-      <div className="px-4 py-3 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between gap-2">
+    <div className={cx("overflow-hidden rounded-[28px] ring-1 shadow-soft", isDark ? "bg-slate-950 ring-slate-800" : "bg-[var(--fh-surface-bg)] ring-slate-200")}>
+      <div className="px-4 py-3 border-b border-faith-line dark:border-slate-800 flex items-center justify-between gap-2">
         <div className="flex items-center gap-2 min-w-0 flex-wrap">
           <Pill tone="brand">
             <Zap className="h-3.5 w-3.5" /> Beacon
@@ -1221,14 +1221,14 @@ function BeaconPreviewCard({
           <Pill>{surface}</Pill>
           <Pill tone="good">{builder.sourceMode}</Pill>
         </div>
-        <div className="text-xs font-bold text-slate-500 dark:text-slate-400 truncate">
+        <div className="text-xs font-bold text-faith-slate truncate">
           {mode === "mobile" ? "Phone preview" : "Desktop preview"}
         </div>
       </div>
 
       <div className={cx(mode === "mobile" ? "max-w-[360px] md:max-w-[400px] mx-auto px-3 py-4" : "px-4 py-4")}>
         <div className={cx(mode === "mobile" ? "mx-auto max-w-[320px] md:max-w-[360px] rounded-[32px] p-3 shadow-[0_18px_60px_rgba(0,0,0,0.24)]" : "rounded-[24px] p-3", isDark ? "bg-black" : "bg-slate-100")}>
-          <div className={cx("overflow-hidden rounded-[24px]", isDark ? "bg-slate-950 text-slate-100" : "bg-white text-slate-900")}>
+          <div className={cx("overflow-hidden rounded-[24px]", isDark ? "bg-slate-950 text-slate-100" : "bg-[var(--fh-surface-bg)] text-faith-ink")}>
             <div className="relative">
               <div className={cx("w-full overflow-hidden", aspectClass)}>
                 <img src={heroImageUrl} alt={campaignTitle} className="h-full w-full object-cover" />
@@ -1249,8 +1249,8 @@ function BeaconPreviewCard({
 
               <div className="absolute right-3 top-3 flex items-center gap-2">
                 {videoEnabled ? (
-                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/85 shadow">
-                    <Play className="h-5 w-5 text-slate-900" />
+                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[var(--fh-surface-bg)]/85 shadow">
+                    <Play className="h-5 w-5 text-faith-ink" />
                   </span>
                 ) : null}
               </div>
@@ -1258,7 +1258,7 @@ function BeaconPreviewCard({
               {showQuote ? (
                 <div className="absolute inset-x-0 bottom-0 p-4 text-white">
                   <div className="max-w-[85%] text-lg font-black leading-tight drop-shadow">
-                    ‚Äú{builder.quoteText || "The next faithful move may be the one you almost postponed."}‚Äù
+                    ì{builder.quoteText || "The next faithful move may be the one you almost postponed."}î
                   </div>
                 </div>
               ) : null}
@@ -1273,7 +1273,7 @@ function BeaconPreviewCard({
                 <Pill tone={builder.variantTesting ? "pro" : "neutral"}>{builder.variantTesting ? "A/B ready" : "Single variant"}</Pill>
               </div>
 
-              <div className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{body}</div>
+              <div className="mt-2 text-sm leading-relaxed text-faith-slate dark:text-slate-300">{body}</div>
 
               {builder.creativeLayout === "Story card" ? (
                 <div className="mt-3 rounded-2xl p-3 text-sm font-semibold" style={{ background: `${EV_GREEN}16`, color: isDark ? "#d1fae5" : EV_NAVY }}>
@@ -1284,7 +1284,7 @@ function BeaconPreviewCard({
               {showCarousel ? (
                 <div className="mt-4 grid grid-cols-3 gap-2">
                   {(builder.carouselCards.length ? builder.carouselCards : ["Message hook", "Impact proof", "Final CTA"]).slice(0, 3).map((card, idx) => (
-                    <div key={`${card}_${idx}`} className="rounded-2xl p-2 ring-1 ring-slate-200 dark:ring-slate-800 bg-slate-50 dark:bg-slate-900">
+                    <div key={`${card}_${idx}`} className="rounded-2xl p-2 ring-1 ring-slate-200 dark:ring-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900">
                       <div className="aspect-square rounded-xl" style={{ background: `${idx % 2 === 0 ? EV_GREEN : EV_ORANGE}22` }} />
                       <div className="mt-2 text-xs font-bold line-clamp-2">{card || `Card ${idx + 1}`}</div>
                     </div>
@@ -1296,12 +1296,12 @@ function BeaconPreviewCard({
                 <button type="button" className="inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-2.5 text-sm font-black text-white" style={{ background: EV_GREEN }} onClick={() => runPreviewAction(resolvePreviewAction(cta))}>
                   {cta}
                 </button>
-                <button type="button" className="inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-2.5 text-sm font-black text-slate-900 ring-1 ring-slate-200 dark:text-slate-100 dark:ring-slate-700" onClick={() => runPreviewAction(resolvePreviewAction(secondary))}>
+                <button type="button" className="inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-2.5 text-sm font-black text-faith-ink ring-1 ring-slate-200 dark:text-slate-100 dark:ring-slate-700" onClick={() => runPreviewAction(resolvePreviewAction(secondary))}>
                   {secondary}
                 </button>
               </div>
 
-              <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+              <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-faith-slate">
                 <Pill>{builder.languages.join(" ? ") || "English"}</Pill>
                 <Pill>{builder.regions.slice(0, 2).join(" ? ") || "Uganda"}</Pill>
                 <Pill tone={builder.ageRule === "Child-safe" ? "good" : builder.ageRule === "Youth-safe" ? "warn" : "neutral"}>{builder.ageRule}</Pill>
@@ -1361,7 +1361,7 @@ export default function BeaconBuilderPage({
     heroVideoId: "asset_replay_video",
     headline: "Catch the message that moved the room.",
     body: "Replay the full teaching, share it with someone who needs it, and step into the next response moment while the message is still fresh.",
-    quoteText: "Grace doesn‚Äôt wait for strength before it shows up.",
+    quoteText: "Grace doesnít wait for strength before it shows up.",
     storyCardLabel: "Why this replay matters now",
     countdownEnabled: false,
     countdownEndISO: countdownDefault.toISOString(),
@@ -1634,8 +1634,8 @@ export default function BeaconBuilderPage({
           <Card>
             <div className="flex items-center justify-between gap-2">
               <div>
-                <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">Creative quality score</div>
-                <div className="mt-1.5 text-[14px] leading-6 text-slate-500 dark:text-slate-400">Preview-driven confidence before spend begins.</div>
+                <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-faith-ink dark:text-slate-100 sm:text-[34px] lg:text-[40px]">Creative quality score</div>
+                <div className="mt-1.5 text-[14px] leading-6 text-faith-slate">Preview-driven confidence before spend begins.</div>
               </div>
               <div className="text-3xl font-black" style={{ color: EV_GREEN }}>{simulation.qualityScore}</div>
             </div>
@@ -1648,7 +1648,7 @@ export default function BeaconBuilderPage({
               <Pill tone={builder.variantTesting ? "pro" : "neutral"}>{builder.variantTesting ? "Variant testing on" : "Variant testing off"}</Pill>
               <Pill tone={builder.duplicateWinningCreative ? "good" : "neutral"}>{builder.duplicateWinningCreative ? "Duplicate winners" : "Manual creative rotation"}</Pill>
             </div>
-            <div className="mt-3 text-xs text-slate-600 dark:text-slate-400">
+            <div className="mt-3 text-xs text-faith-slate">
               {builder.variantTesting
                 ? "This campaign is launch-ready for structured learning and creative comparison."
                 : "Turn on variant testing to unlock richer Beacon optimization after launch."}
@@ -1660,10 +1660,10 @@ export default function BeaconBuilderPage({
       <Section title="Launch gate" subtitle="Every critical signal in one place.">
         <div className="space-y-2">
           {preflight.map((item) => (
-            <div key={item.label} className="flex items-center justify-between gap-3 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-3 py-2.5">
+            <div key={item.label} className="flex items-center justify-between gap-3 rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-2.5">
               <div className="min-w-0">
-                <div className="text-sm font-bold text-slate-900 dark:text-slate-100">{item.label}</div>
-                <div className="text-xs text-slate-500 dark:text-slate-400 truncate">{item.detail}</div>
+                <div className="text-sm font-bold text-faith-ink dark:text-slate-100">{item.label}</div>
+                <div className="text-xs text-faith-slate truncate">{item.detail}</div>
               </div>
               <Pill tone={item.ok ? "good" : "warn"}>{item.ok ? "Ready" : "Needs work"}</Pill>
             </div>
@@ -1705,14 +1705,14 @@ export default function BeaconBuilderPage({
                     "rounded-3xl border p-4 text-left transition-colors",
                     active
                       ? "border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-900/20"
-                      : "border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 hover:bg-slate-50 dark:hover:bg-slate-900",
+                      : "border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-900",
                   )}
                 >
-                  <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl text-white shadow-sm" style={{ background: accentColor(obj.accent) }}>
+                  <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl text-white shadow-soft" style={{ background: accentColor(obj.accent) }}>
                     {obj.icon}
                   </div>
-                  <div className="mt-3 text-base font-black text-slate-900 dark:text-slate-100">{obj.id}</div>
-                  <div className="mt-1 text-sm text-slate-600 dark:text-slate-400">{obj.subtitle}</div>
+                  <div className="mt-3 text-base font-black text-faith-ink dark:text-slate-100">{obj.id}</div>
+                  <div className="mt-1 text-sm text-faith-slate">{obj.subtitle}</div>
                   <div className="mt-3 text-xs font-semibold" style={{ color: accentColor(obj.accent) }}>{obj.recommendation}</div>
                 </button>
               );
@@ -1733,19 +1733,19 @@ export default function BeaconBuilderPage({
           </div>
           <div className="mt-4 grid gap-4 md:grid-cols-3">
             <Card>
-              <div className="text-xs font-extrabold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Linked + standalone parity</div>
-              <div className="mt-2 text-sm font-bold text-slate-900 dark:text-slate-100">Both creation paths stay premium.</div>
-              <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">Beacon never forces content linking if your campaign is a pure announcement, awareness drive, or prayer message.</div>
+              <div className="text-xs font-extrabold uppercase tracking-[0.12em] text-faith-slate">Linked + standalone parity</div>
+              <div className="mt-2 text-sm font-bold text-faith-ink dark:text-slate-100">Both creation paths stay premium.</div>
+              <div className="mt-1 text-xs text-faith-slate">Beacon never forces content linking if your campaign is a pure announcement, awareness drive, or prayer message.</div>
             </Card>
             <Card>
-              <div className="text-xs font-extrabold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Recommended goal pairing</div>
-              <div className="mt-2 text-sm font-bold text-slate-900 dark:text-slate-100">{builder.objective}</div>
-              <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{OBJECTIVES.find((x) => x.id === builder.objective)?.recommendation}</div>
+              <div className="text-xs font-extrabold uppercase tracking-[0.12em] text-faith-slate">Recommended goal pairing</div>
+              <div className="mt-2 text-sm font-bold text-faith-ink dark:text-slate-100">{builder.objective}</div>
+              <div className="mt-1 text-xs text-faith-slate">{OBJECTIVES.find((x) => x.id === builder.objective)?.recommendation}</div>
             </Card>
             <Card>
-              <div className="text-xs font-extrabold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Creative posture</div>
-              <div className="mt-2 text-sm font-bold text-slate-900 dark:text-slate-100">{builder.creativeLayout}</div>
-              <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">Change later without losing the current preview state.</div>
+              <div className="text-xs font-extrabold uppercase tracking-[0.12em] text-faith-slate">Creative posture</div>
+              <div className="mt-2 text-sm font-bold text-faith-ink dark:text-slate-100">{builder.creativeLayout}</div>
+              <div className="mt-1 text-xs text-faith-slate">Change later without losing the current preview state.</div>
             </Card>
           </div>
         </Section>
@@ -1760,7 +1760,7 @@ export default function BeaconBuilderPage({
           title="Source mode chooser"
           subtitle="Choose between a linked Provider object and a completely standalone Beacon campaign."
           right={
-            <div className="inline-flex rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-1 transition-colors">
+            <div className="inline-flex rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-1 transition-colors">
               <button
                 type="button"
                 onClick={() => setField("sourceMode", "Linked")}
@@ -1768,7 +1768,7 @@ export default function BeaconBuilderPage({
                   "px-3 py-1.5 rounded-xl text-[12px] font-bold transition-colors",
                   builder.sourceMode === "Linked"
                     ? "text-white"
-                    : "text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800",
+                    : "text-slate-700 dark:text-slate-300 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800",
                 )}
                 style={builder.sourceMode === "Linked" ? { background: EV_GREEN } : undefined}
               >
@@ -1781,7 +1781,7 @@ export default function BeaconBuilderPage({
                   "px-3 py-1.5 rounded-xl text-[12px] font-bold transition-colors",
                   builder.sourceMode === "Standalone"
                     ? "text-white"
-                    : "text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800",
+                    : "text-slate-700 dark:text-slate-300 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800",
                 )}
                 style={builder.sourceMode === "Standalone" ? { background: EV_ORANGE } : undefined}
               >
@@ -1815,7 +1815,7 @@ export default function BeaconBuilderPage({
                         "rounded-full px-3 py-1.5 text-xs font-black ring-1 transition-colors",
                         active
                           ? "text-white"
-                          : "bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 ring-slate-200 dark:ring-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800",
+                          : "bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-slate-700 dark:text-slate-300 ring-slate-200 dark:ring-slate-700 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800",
                       )}
                       style={active ? { background: EV_GREEN, boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.1)" } : undefined}
                     >
@@ -1828,12 +1828,12 @@ export default function BeaconBuilderPage({
                 <div>
                   <FieldLabel label="Find source object" hint="Search inside the selected source type" />
                   <div className="mt-1 relative">
-                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-faith-slate" />
                     <input
                       value={builder.linkedSearch}
                       onChange={(e) => setField("linkedSearch", e.target.value)}
                       placeholder="Search by title, owner, language, or subtitle"
-                      className="w-full rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 pl-10 pr-3 py-2 text-sm text-slate-900 dark:text-slate-100 outline-none focus:ring-2 focus:ring-emerald-200 dark:focus:ring-emerald-800"
+                      className="w-full rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 pl-10 pr-3 py-2 text-sm text-faith-ink dark:text-slate-100 outline-none focus:ring-2 focus:ring-emerald-200 dark:focus:ring-emerald-800"
                     />
                   </div>
                   <div className="mt-3 grid gap-3 max-h-[520px] overflow-y-auto pr-1">
@@ -1849,7 +1849,7 @@ export default function BeaconBuilderPage({
                             setField(
                               "headline",
                               src.recommendedObjective === "Live attendance"
-                                ? `Don‚Äôt miss ${src.title}.`
+                                ? `Donít miss ${src.title}.`
                                 : src.recommendedObjective === "Giving" || src.recommendedObjective === "Charity momentum"
                                   ? `Support ${src.title}.`
                                   : `Explore ${src.title}.`,
@@ -1864,18 +1864,18 @@ export default function BeaconBuilderPage({
                             "rounded-3xl border p-3 text-left transition-colors",
                             active
                               ? "border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-900/20"
-                              : "border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 hover:bg-slate-50 dark:hover:bg-slate-900",
+                              : "border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-900",
                           )}
                         >
                           <div className="flex items-start gap-3">
                             <img src={src.heroImageUrl} alt={src.title} className="h-20 w-20 rounded-2xl object-cover ring-1 ring-slate-200 dark:ring-slate-800" />
                             <div className="min-w-0 flex-1">
                               <div className="flex flex-wrap items-center gap-2">
-                                <div className="text-sm font-black text-slate-900 dark:text-slate-100">{src.title}</div>
+                                <div className="text-sm font-black text-faith-ink dark:text-slate-100">{src.title}</div>
                                 <Pill>{src.kind}</Pill>
                               </div>
-                              <div className="mt-1 text-xs text-slate-600 dark:text-slate-400 line-clamp-2">{src.subtitle}</div>
-                              <div className="mt-2 flex flex-wrap items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+                              <div className="mt-1 text-xs text-faith-slate line-clamp-2">{src.subtitle}</div>
+                              <div className="mt-2 flex flex-wrap items-center gap-2 text-xs text-faith-slate">
                                 <Pill>{src.status}</Pill>
                                 <Pill>{src.owner}</Pill>
                                 <Pill>{src.language}</Pill>
@@ -1887,32 +1887,32 @@ export default function BeaconBuilderPage({
                     })}
                     {!filteredSources.length ? (
                       <Card>
-                        <div className="text-sm font-bold text-slate-900 dark:text-slate-100">No matching source objects</div>
-                        <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">Try another source type or clear the search term.</div>
+                        <div className="text-sm font-bold text-faith-ink dark:text-slate-100">No matching source objects</div>
+                        <div className="mt-1 text-xs text-faith-slate">Try another source type or clear the search term.</div>
                       </Card>
                     ) : null}
                   </div>
                 </div>
                 <div>
                   <Card className="sticky top-4">
-                    <div className="text-xs font-extrabold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Selected source</div>
+                    <div className="text-xs font-extrabold uppercase tracking-[0.12em] text-faith-slate">Selected source</div>
                     {selectedSource ? (
                       <>
                         <img src={selectedSource.heroImageUrl} alt={selectedSource.title} className="mt-3 aspect-[16/10] w-full rounded-2xl object-cover" />
-                        <div className="mt-3 text-lg font-black text-slate-900 dark:text-slate-100">{selectedSource.title}</div>
-                        <div className="mt-1 text-sm text-slate-600 dark:text-slate-400">{selectedSource.subtitle}</div>
+                        <div className="mt-3 text-lg font-black text-faith-ink dark:text-slate-100">{selectedSource.title}</div>
+                        <div className="mt-1 text-sm text-faith-slate">{selectedSource.subtitle}</div>
                         <div className="mt-3 flex flex-wrap items-center gap-2">
                           <Pill>{selectedSource.kind}</Pill>
                           <Pill>{selectedSource.language}</Pill>
                           <Pill tone="good">Recommended: {selectedSource.recommendedObjective}</Pill>
                         </div>
                         <div className="mt-4 rounded-2xl p-3" style={{ background: `${EV_GREEN}16` }}>
-                          <div className="text-sm font-bold text-slate-900 dark:text-slate-100">Linked campaigns stay context-rich.</div>
-                          <div className="mt-1 text-xs text-slate-600 dark:text-slate-400">The platform pulls source context, status, and conversion pathways into the campaign without flattening everything into generic ads.</div>
+                          <div className="text-sm font-bold text-faith-ink dark:text-slate-100">Linked campaigns stay context-rich.</div>
+                          <div className="mt-1 text-xs text-faith-slate">The platform pulls source context, status, and conversion pathways into the campaign without flattening everything into generic ads.</div>
                         </div>
                       </>
                     ) : (
-                      <div className="mt-3 text-sm text-slate-600 dark:text-slate-400">Select a source object to continue.</div>
+                      <div className="mt-3 text-sm text-faith-slate">Select a source object to continue.</div>
                     )}
                   </Card>
                 </div>
@@ -1933,12 +1933,12 @@ export default function BeaconBuilderPage({
                 <TextArea value={builder.standaloneMessage} onChange={(v) => setField("standaloneMessage", v)} rows={5} placeholder="Describe why this campaign exists, what people should respond to, and where it should send them." />
               </div>
               <Card>
-                <div className="text-sm font-black text-slate-900 dark:text-slate-100">Standalone Beacon is first-class.</div>
-                <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">Use this mode for institution awareness, public notices, prayer drives, seasonal calls, giving pushes, or campaigns that are not anchored to an existing source object.</div>
+                <div className="text-sm font-black text-faith-ink dark:text-slate-100">Standalone Beacon is first-class.</div>
+                <div className="mt-1 text-xs text-faith-slate">Use this mode for institution awareness, public notices, prayer drives, seasonal calls, giving pushes, or campaigns that are not anchored to an existing source object.</div>
               </Card>
               <Card>
-                <div className="text-sm font-black text-slate-900 dark:text-slate-100">Destination can still be rich.</div>
-                <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">Standalone campaigns can still land on internal pages, event forms, giving surfaces, crowdfund destinations, or approved external links.</div>
+                <div className="text-sm font-black text-faith-ink dark:text-slate-100">Destination can still be rich.</div>
+                <div className="mt-1 text-xs text-faith-slate">Standalone campaigns can still land on internal pages, event forms, giving surfaces, crowdfund destinations, or approved external links.</div>
               </Card>
             </div>
           )}
@@ -1973,14 +1973,14 @@ export default function BeaconBuilderPage({
                     "rounded-3xl border p-3 text-left transition-colors",
                     active
                       ? "border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-900/20"
-                      : "border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 hover:bg-slate-50 dark:hover:bg-slate-900",
+                      : "border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-900",
                   )}
                 >
                   <div className="inline-flex h-9 w-9 items-center justify-center rounded-2xl text-white" style={{ background: layout === "Countdown" || layout === "Carousel" ? EV_ORANGE : EV_GREEN }}>
                     {layout === "Video" || layout === "Mixed" ? <Video className="h-4 w-4" /> : layout === "Carousel" ? <Layers className="h-4 w-4" /> : layout === "Quote card" ? <Sparkles className="h-4 w-4" /> : layout === "Countdown" ? <Bell className="h-4 w-4" /> : <ImageIcon className="h-4 w-4" />}
                   </div>
-                  <div className="mt-2 text-sm font-black text-slate-900 dark:text-slate-100">{layout}</div>
-                  <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">
+                  <div className="mt-2 text-sm font-black text-faith-ink dark:text-slate-100">{layout}</div>
+                  <div className="mt-1 text-xs text-faith-slate">
                     {layout === "Image"
                       ? "Simple premium static creative"
                       : layout === "Video"
@@ -2024,15 +2024,15 @@ export default function BeaconBuilderPage({
                       <div className="relative h-full w-full">
                         <img src={previewHeroUrl} alt="Video poster" className="h-full w-full object-cover opacity-80" />
                         <div className="absolute inset-0 grid place-items-center">
-                          <div className="h-14 w-14 rounded-full bg-white/90 shadow grid place-items-center">
-                            <Play className="h-6 w-6 text-slate-900" />
+                          <div className="h-14 w-14 rounded-full bg-[var(--fh-surface-bg)]/90 shadow grid place-items-center">
+                            <Play className="h-6 w-6 text-faith-ink" />
                           </div>
                         </div>
                       </div>
                     ) : (
                       <div className="text-center px-4">
-                        <Video className="h-8 w-8 mx-auto text-slate-400" />
-                        <div className="mt-2 text-xs text-slate-500 dark:text-slate-400">Add a teaser video for motion-first placements.</div>
+                        <Video className="h-8 w-8 mx-auto text-faith-slate" />
+                        <div className="mt-2 text-xs text-faith-slate">Add a teaser video for motion-first placements.</div>
                       </div>
                     )}
                   </div>
@@ -2091,7 +2091,7 @@ export default function BeaconBuilderPage({
                     type="datetime-local"
                     value={builder.countdownEndISO ? new Date(builder.countdownEndISO).toISOString().slice(0, 16) : ""}
                     onChange={(e) => setField("countdownEndISO", new Date(e.target.value).toISOString())}
-                    className="mt-1 w-full rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-sm text-slate-900 dark:text-slate-100"
+                    className="mt-1 w-full rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-sm text-faith-ink dark:text-slate-100"
                   />
                 </Card>
               </div>
@@ -2129,8 +2129,8 @@ export default function BeaconBuilderPage({
               </Card>
 
               <Card>
-                <div className="text-sm font-black text-slate-900 dark:text-slate-100">Creative strategy notes</div>
-                <div className="mt-2 space-y-2 text-xs text-slate-600 dark:text-slate-400">
+                <div className="text-sm font-black text-faith-ink dark:text-slate-100">Creative strategy notes</div>
+                <div className="mt-2 space-y-2 text-xs text-faith-slate">
                   <div>? Countdown, quote cards, story cards, and carousel packages all stay available in both linked and standalone mode.</div>
                   <div>? Mixed layout lets you combine hero motion with multi-card support for modern feed surfaces.</div>
                   <div>? Preview is always live, so the Provider can understand exactly what audiences will see before spend begins.</div>
@@ -2179,7 +2179,7 @@ export default function BeaconBuilderPage({
                         "rounded-full px-3 py-1.5 text-xs font-black ring-1 transition-colors",
                         active
                           ? "text-white"
-                          : "bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 ring-slate-200 dark:ring-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800",
+                          : "bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-slate-700 dark:text-slate-300 ring-slate-200 dark:ring-slate-700 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800",
                       )}
                       style={active ? { background: EV_GREEN } : undefined}
                     >
@@ -2204,16 +2204,16 @@ export default function BeaconBuilderPage({
           </div>
           <div className="mt-4 grid gap-4 md:grid-cols-3">
             <Card>
-              <div className="text-sm font-black text-slate-900 dark:text-slate-100">Deep-link confidence</div>
-              <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">Use internal platform targets whenever possible for cleaner attribution and smoother conversion tracing.</div>
+              <div className="text-sm font-black text-faith-ink dark:text-slate-100">Deep-link confidence</div>
+              <div className="mt-1 text-xs text-faith-slate">Use internal platform targets whenever possible for cleaner attribution and smoother conversion tracing.</div>
             </Card>
             <Card>
-              <div className="text-sm font-black text-slate-900 dark:text-slate-100">Approved external targets</div>
-              <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">External destinations should stay restricted, reviewed, and clearly visible in the launch gate.</div>
+              <div className="text-sm font-black text-faith-ink dark:text-slate-100">Approved external targets</div>
+              <div className="mt-1 text-xs text-faith-slate">External destinations should stay restricted, reviewed, and clearly visible in the launch gate.</div>
             </Card>
             <Card>
-              <div className="text-sm font-black text-slate-900 dark:text-slate-100">Intent clarity</div>
-              <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">Beacon performs best when the CTA and the conversion intent describe the same expected user action.</div>
+              <div className="text-sm font-black text-faith-ink dark:text-slate-100">Intent clarity</div>
+              <div className="mt-1 text-xs text-faith-slate">Beacon performs best when the CTA and the conversion intent describe the same expected user action.</div>
             </Card>
           </div>
         </Section>
@@ -2241,7 +2241,7 @@ export default function BeaconBuilderPage({
                           "rounded-full px-3 py-1.5 text-xs font-black ring-1 transition-colors",
                           active
                             ? "text-white"
-                            : "bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 ring-slate-200 dark:ring-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800",
+                            : "bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-slate-700 dark:text-slate-300 ring-slate-200 dark:ring-slate-700 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800",
                         )}
                         style={active ? { background: EV_GREEN } : undefined}
                       >
@@ -2265,7 +2265,7 @@ export default function BeaconBuilderPage({
                           "rounded-full px-3 py-1.5 text-xs font-black ring-1 transition-colors",
                           active
                             ? "text-white"
-                            : "bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 ring-slate-200 dark:ring-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800",
+                            : "bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-slate-700 dark:text-slate-300 ring-slate-200 dark:ring-slate-700 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800",
                         )}
                         style={active ? { background: EV_ORANGE } : undefined}
                       >
@@ -2289,7 +2289,7 @@ export default function BeaconBuilderPage({
                           "rounded-full px-3 py-1.5 text-xs font-black ring-1 transition-colors",
                           active
                             ? "text-white"
-                            : "bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 ring-slate-200 dark:ring-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800",
+                            : "bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-slate-700 dark:text-slate-300 ring-slate-200 dark:ring-slate-700 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800",
                         )}
                         style={active ? { background: EV_NAVY } : undefined}
                       >
@@ -2315,7 +2315,7 @@ export default function BeaconBuilderPage({
                           "rounded-full px-3 py-1.5 text-xs font-black ring-1 transition-colors",
                           active
                             ? "text-white"
-                            : "bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 ring-slate-200 dark:ring-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800",
+                            : "bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-slate-700 dark:text-slate-300 ring-slate-200 dark:ring-slate-700 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800",
                         )}
                         style={active ? { background: rule === "Child-safe" ? EV_GREEN : rule === "Youth-safe" ? EV_ORANGE : EV_NAVY } : undefined}
                       >
@@ -2343,7 +2343,7 @@ export default function BeaconBuilderPage({
                           "rounded-full px-3 py-1.5 text-xs font-black ring-1 transition-colors",
                           active
                             ? "text-white"
-                            : "bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 ring-slate-200 dark:ring-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800",
+                            : "bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-slate-700 dark:text-slate-300 ring-slate-200 dark:ring-slate-700 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800",
                         )}
                         style={active ? { background: EV_ORANGE } : undefined}
                       >
@@ -2354,8 +2354,8 @@ export default function BeaconBuilderPage({
                 </div>
               </Card>
               <Card>
-                <div className="text-sm font-black text-slate-900 dark:text-slate-100">Audience summary</div>
-                <div className="mt-2 text-xs text-slate-500 dark:text-slate-400">
+                <div className="text-sm font-black text-faith-ink dark:text-slate-100">Audience summary</div>
+                <div className="mt-2 text-xs text-faith-slate">
                   {builder.segments.length || builder.languages.length || builder.regions.length
                     ? `This Beacon campaign currently targets ${builder.segments.length || 0} segment(s), ${builder.languages.length || 0} language variant(s), and ${builder.regions.length || 0} region layer(s).`
                     : "Add at least one segment, language, and region to create a safe premium delivery plan."}
@@ -2388,14 +2388,14 @@ export default function BeaconBuilderPage({
                     "rounded-3xl border p-4 text-left transition-colors",
                     active
                       ? "border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-900/20"
-                      : "border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 hover:bg-slate-50 dark:hover:bg-slate-900",
+                      : "border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-900",
                   )}
                 >
                   <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl text-white" style={{ background: accentColor(surface.accent) }}>
                     {surface.id === "Story rail" || surface.id === "Live countdown rail" ? <Video className="h-4 w-4" /> : surface.id === "Search sponsorship" ? <Search className="h-4 w-4" /> : <Layers className="h-4 w-4" />}
                   </div>
-                  <div className="mt-3 text-sm font-black text-slate-900 dark:text-slate-100">{surface.id}</div>
-                  <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{surface.subtitle}</div>
+                  <div className="mt-3 text-sm font-black text-faith-ink dark:text-slate-100">{surface.id}</div>
+                  <div className="mt-1 text-xs text-faith-slate">{surface.subtitle}</div>
                   <div className="mt-3 flex items-center gap-2 flex-wrap">
                     <Pill>{surface.inventory}</Pill>
                     <Pill tone="good">Best for {surface.bestFor[0]}</Pill>
@@ -2429,7 +2429,7 @@ export default function BeaconBuilderPage({
                           "rounded-full px-3 py-1.5 text-xs font-black ring-1 transition-colors",
                           active
                             ? "text-white"
-                            : "bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 ring-slate-200 dark:ring-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800",
+                            : "bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-slate-700 dark:text-slate-300 ring-slate-200 dark:ring-slate-700 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800",
                         )}
                         style={active ? { background: pacing === "Accelerated" ? EV_ORANGE : pacing === "Guarded" ? EV_NAVY : EV_GREEN } : undefined}
                       >
@@ -2446,14 +2446,14 @@ export default function BeaconBuilderPage({
               <div>
                 <FieldLabel label="Start" hint="Campaign start window" />
                 <div className="mt-1 grid grid-cols-[1fr_128px] gap-2">
-                  <input type="date" value={builder.startDate} onChange={(e) => setField("startDate", e.target.value)} className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-sm text-slate-900 dark:text-slate-100" />
+                  <input type="date" value={builder.startDate} onChange={(e) => setField("startDate", e.target.value)} className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-sm text-faith-ink dark:text-slate-100" />
                   <ScrollTimePicker value={builder.startTime} onChange={(v) => setField("startTime", v)} />
                 </div>
               </div>
               <div>
                 <FieldLabel label="End" hint="Campaign end window" />
                 <div className="mt-1 grid grid-cols-[1fr_128px] gap-2">
-                  <input type="date" value={builder.endDate} onChange={(e) => setField("endDate", e.target.value)} className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-sm text-slate-900 dark:text-slate-100" />
+                  <input type="date" value={builder.endDate} onChange={(e) => setField("endDate", e.target.value)} className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-sm text-faith-ink dark:text-slate-100" />
                   <ScrollTimePicker value={builder.endTime} onChange={(v) => setField("endTime", v)} />
                 </div>
               </div>
@@ -2464,8 +2464,8 @@ export default function BeaconBuilderPage({
                 <TextArea value={builder.seasonalBooking} onChange={(v) => setField("seasonalBooking", v)} rows={4} placeholder="Ordinary week or high-season booking guidance" />
               </Card>
               <Card>
-                <div className="text-sm font-black text-slate-900 dark:text-slate-100">Budget pacing summary</div>
-                <div className="mt-2 text-xs text-slate-500 dark:text-slate-400">{fmtCurrency(builder.budget)} total budget ? {fmtCurrency(builder.dailyCap)} daily cap ? {builder.placementSurfaces.length} selected surface(s)</div>
+                <div className="text-sm font-black text-faith-ink dark:text-slate-100">Budget pacing summary</div>
+                <div className="mt-2 text-xs text-faith-slate">{fmtCurrency(builder.budget)} total budget ? {fmtCurrency(builder.dailyCap)} daily cap ? {builder.placementSurfaces.length} selected surface(s)</div>
                 <div className="mt-3 h-2 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
                   <div className="h-full rounded-full" style={{ width: `${clamp((builder.dailyCap / Math.max(builder.budget, 1)) * 100, 5, 100)}%`, background: builder.pacing === "Accelerated" ? EV_ORANGE : builder.pacing === "Guarded" ? EV_NAVY : EV_GREEN }} />
                 </div>
@@ -2518,10 +2518,10 @@ export default function BeaconBuilderPage({
             <div className="space-y-4">
               <div className="grid gap-3">
                 {preflight.map((item) => (
-                  <div key={item.label} className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-3 py-3 flex items-center justify-between gap-3">
+                  <div key={item.label} className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 px-3 py-3 flex items-center justify-between gap-3">
                     <div className="min-w-0">
-                      <div className="text-sm font-black text-slate-900 dark:text-slate-100">{item.label}</div>
-                      <div className="text-xs text-slate-500 dark:text-slate-400">{item.detail}</div>
+                      <div className="text-sm font-black text-faith-ink dark:text-slate-100">{item.label}</div>
+                      <div className="text-xs text-faith-slate">{item.detail}</div>
                     </div>
                     <Pill tone={item.ok ? "good" : "warn"}>{item.ok ? "Ready" : "Needs work"}</Pill>
                   </div>
@@ -2548,24 +2548,24 @@ export default function BeaconBuilderPage({
             </div>
             <div className="space-y-4">
               <Card>
-                <div className="text-xs font-extrabold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Launch summary</div>
-                <div className="mt-3 text-xl font-black text-slate-900 dark:text-slate-100">{summaryName}</div>
-                <div className="mt-1 text-sm text-slate-600 dark:text-slate-400">{builder.sourceMode === "Standalone" ? builder.standaloneMessage || "Standalone Beacon campaign" : selectedSource?.subtitle || "Linked Beacon campaign"}</div>
+                <div className="text-xs font-extrabold uppercase tracking-[0.12em] text-faith-slate">Launch summary</div>
+                <div className="mt-3 text-xl font-black text-faith-ink dark:text-slate-100">{summaryName}</div>
+                <div className="mt-1 text-sm text-faith-slate">{builder.sourceMode === "Standalone" ? builder.standaloneMessage || "Standalone Beacon campaign" : selectedSource?.subtitle || "Linked Beacon campaign"}</div>
                 <div className="mt-4 flex flex-wrap gap-2">
                   <Pill>{builder.objective}</Pill>
                   <Pill>{builder.destinationType}</Pill>
                   <Pill>{builder.placementSurfaces.length} surfaces</Pill>
                   <Pill tone={launchReady ? "good" : "warn"}>{launchReady ? "Launch-ready" : "Fix items"}</Pill>
                 </div>
-                <div className="mt-4 grid gap-2 text-xs text-slate-500 dark:text-slate-400">
-                  <div>Budget: <span className="font-semibold text-slate-900 dark:text-slate-100">{fmtCurrency(builder.budget)}</span></div>
-                  <div>Dates: <span className="font-semibold text-slate-900 dark:text-slate-100">{builder.startDate} {builder.startTime} ??? ? {builder.endDate} {builder.endTime}</span></div>
-                  <div>Primary CTA: <span className="font-semibold text-slate-900 dark:text-slate-100">{builder.ctaLabel}</span></div>
-                  <div>Source mode: <span className="font-semibold text-slate-900 dark:text-slate-100">{builder.sourceMode}</span></div>
+                <div className="mt-4 grid gap-2 text-xs text-faith-slate">
+                  <div>Budget: <span className="font-semibold text-faith-ink dark:text-slate-100">{fmtCurrency(builder.budget)}</span></div>
+                  <div>Dates: <span className="font-semibold text-faith-ink dark:text-slate-100">{builder.startDate} {builder.startTime} ??? ? {builder.endDate} {builder.endTime}</span></div>
+                  <div>Primary CTA: <span className="font-semibold text-faith-ink dark:text-slate-100">{builder.ctaLabel}</span></div>
+                  <div>Source mode: <span className="font-semibold text-faith-ink dark:text-slate-100">{builder.sourceMode}</span></div>
                 </div>
               </Card>
               <Card>
-                <div className="text-sm font-black text-slate-900 dark:text-slate-100">Next actions</div>
+                <div className="text-sm font-black text-faith-ink dark:text-slate-100">Next actions</div>
                 <div className="mt-3 flex flex-col gap-2">
                   <Btn tone="secondary" left={<CheckCircle2 className="h-4 w-4" />} onClick={handleSaveDraft}>Save campaign draft</Btn>
                   <Btn tone="neutral" left={<Eye className="h-4 w-4" />} onClick={() => setPreviewOpen(true)}>Preview campaign</Btn>
@@ -2615,12 +2615,12 @@ export default function BeaconBuilderPage({
   }
 
   const content = (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-50 transition-colors">
-      <div className="sticky top-0 z-40 border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur transition-colors">
+    <div className="min-h-screen bg-[var(--fh-surface)] dark:bg-slate-950 text-faith-ink dark:text-slate-50 transition-colors">
+      <div className="sticky top-0 z-40 border-b border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)]/95 dark:bg-slate-900/95 backdrop-blur transition-colors">
         <div className="mx-auto max-w-[1680px] px-4 md:px-6 lg:px-8 py-3">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <div className="min-w-0">
-              <div className="flex flex-wrap items-center gap-2 text-[10px] sm:text-xs text-slate-500 dark:text-slate-400">
+              <div className="flex flex-wrap items-center gap-2 text-[10px] sm:text-xs text-faith-slate">
                 <button className="hover:text-slate-700 dark:hover:text-slate-200" onClick={() => safeNav(ROUTES.providerDashboard)}>
                   Provider Workspace
                 </button>
@@ -2634,7 +2634,7 @@ export default function BeaconBuilderPage({
               <ProviderPageTitle
                 icon={<Zap className="h-6 w-6" />}
                 title="Beacon Builder"
-                subtitle="Create a premium Beacon campaign from scratch ‚Äî linked to platform content or fully standalone ‚Äî with rich creative, audience logic, placement planning, and a launch-ready review flow."
+                subtitle="Create a premium Beacon campaign from scratch ó linked to platform content or fully standalone ó with rich creative, audience logic, placement planning, and a launch-ready review flow."
               />
               <div className="mt-3 flex flex-wrap items-center gap-2">
                 <Pill tone="brand"><Zap className="h-3.5 w-3.5" /> Beacon</Pill>
@@ -2684,7 +2684,7 @@ export default function BeaconBuilderPage({
                   <Pill>{builder.creativeLayout}</Pill>
                   <Pill>{builder.placementSurfaces.length} surfaces</Pill>
                 </div>
-                <div className="text-xs text-slate-500 dark:text-slate-400">
+                <div className="text-xs text-faith-slate">
                   Linked and standalone campaigns share the same premium builder surface, creative depth, and preview realism.
                 </div>
               </div>
@@ -2693,11 +2693,11 @@ export default function BeaconBuilderPage({
 
           <div className="space-y-4">
             {renderStepContent()}
-            <div className="flex flex-wrap items-center justify-between gap-2 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3 transition-colors">
+            <div className="flex flex-wrap items-center justify-between gap-2 rounded-3xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
               <Btn tone="ghost" left={<ChevronRight className="h-4 w-4 rotate-180" />} onClick={goToPrev} disabled={step === STEPS[0].id}>
                 Previous step
               </Btn>
-              <div className="text-xs text-slate-500 dark:text-slate-400">
+              <div className="text-xs text-faith-slate">
                 {STEPS.findIndex((entry) => entry.id === step) + 1} of {STEPS.length} ? {STEPS.find((entry) => entry.id === step)?.label}
               </div>
               <Btn tone="primary" left={<ChevronRight className="h-4 w-4" />} onClick={step === "review" ? handleLaunch : goToNext}>
@@ -2733,11 +2733,11 @@ export default function BeaconBuilderPage({
               </div>
             </Section>
             <Section title="Launch context" subtitle="A quick read on the campaign before it goes live.">
-              <div className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
-                <div><span className="font-semibold text-slate-900 dark:text-slate-100">Campaign:</span> {summaryName}</div>
-                <div><span className="font-semibold text-slate-900 dark:text-slate-100">Source path:</span> {builder.sourceMode}</div>
-                <div><span className="font-semibold text-slate-900 dark:text-slate-100">Conversion intent:</span> {builder.conversionIntent}</div>
-                <div><span className="font-semibold text-slate-900 dark:text-slate-100">Destination:</span> {builder.destinationType}</div>
+              <div className="space-y-2 text-sm text-faith-slate">
+                <div><span className="font-semibold text-faith-ink dark:text-slate-100">Campaign:</span> {summaryName}</div>
+                <div><span className="font-semibold text-faith-ink dark:text-slate-100">Source path:</span> {builder.sourceMode}</div>
+                <div><span className="font-semibold text-faith-ink dark:text-slate-100">Conversion intent:</span> {builder.conversionIntent}</div>
+                <div><span className="font-semibold text-faith-ink dark:text-slate-100">Destination:</span> {builder.destinationType}</div>
               </div>
             </Section>
           </div>
@@ -2806,6 +2806,7 @@ export default function BeaconBuilderPage({
 
   return content;
 }
+
 
 
 

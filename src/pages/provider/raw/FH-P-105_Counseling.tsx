@@ -1,4 +1,4 @@
-ï»¿// @ts-nocheck
+// @ts-nocheck
 
 "use client";
 
@@ -28,7 +28,7 @@ import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
- * Provider â€” Counseling
+ * Provider — Counseling
  * ------------------------------
  * Private-first pastoral care and counseling workspace for cases, intake,
  * scheduling, counselor assignment, session planning, notes, and safeguarding.
@@ -247,9 +247,9 @@ const casesSeed: CounselingCaseRecord[] = [
       },
     ],
     checkpoints: [
-      { id: "cp-1", label: "Intake reviewed", when: "Today Â· 11:30 AM", state: "Done" },
-      { id: "cp-2", label: "Counselor assigned", when: "Today Â· 12:15 PM", state: "Done" },
-      { id: "cp-3", label: "Private session booked", when: "Tomorrow Â· 7:00 PM", state: "Ready" },
+      { id: "cp-1", label: "Intake reviewed", when: "Today · 11:30 AM", state: "Done" },
+      { id: "cp-2", label: "Counselor assigned", when: "Today · 12:15 PM", state: "Done" },
+      { id: "cp-3", label: "Private session booked", when: "Tomorrow · 7:00 PM", state: "Ready" },
       { id: "cp-4", label: "Follow-up summary", when: "After session", state: "Pending" },
     ],
   },
@@ -291,8 +291,8 @@ const casesSeed: CounselingCaseRecord[] = [
       },
     ],
     checkpoints: [
-      { id: "cp-5", label: "Leader intake captured", when: "Today Â· 8:40 AM", state: "Done" },
-      { id: "cp-6", label: "Safeguard review", when: "Today Â· 1:30 PM", state: "Ready" },
+      { id: "cp-5", label: "Leader intake captured", when: "Today · 8:40 AM", state: "Done" },
+      { id: "cp-6", label: "Safeguard review", when: "Today · 1:30 PM", state: "Ready" },
       { id: "cp-7", label: "Parent / guardian routing", when: "If required", state: "Pending" },
     ],
   },
@@ -327,7 +327,7 @@ const casesSeed: CounselingCaseRecord[] = [
       },
     ],
     checkpoints: [
-      { id: "cp-8", label: "Intake form submitted", when: "Today Â· 2:05 PM", state: "Done" },
+      { id: "cp-8", label: "Intake form submitted", when: "Today · 2:05 PM", state: "Done" },
       { id: "cp-9", label: "Assign counselor", when: "Today", state: "Ready" },
       { id: "cp-10", label: "Book first session", when: "Next step", state: "Pending" },
     ],
@@ -427,7 +427,7 @@ function toneClass(
   if (tone === "navy") {
     return "border-[#dbe4ff] dark:border-[#33458a] bg-[#eef2ff] dark:bg-[#1e2b6d]/30 text-[#1e2b6d] dark:text-[#dbe4ff]";
   }
-  return "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300";
+  return "border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 text-slate-700 dark:text-slate-300";
 }
 
 function statusTone(status: CaseStatus): "good" | "warn" | "danger" | "neutral" {
@@ -482,14 +482,14 @@ function ActionButton({
       className={cx(
         "inline-flex items-center gap-2 rounded-2xl border px-4 py-2 text-[12px] font-semibold transition-colors",
         disabled
-          ? "cursor-not-allowed opacity-60 bg-slate-50 dark:bg-slate-900 text-slate-400 dark:text-slate-500 border-slate-200 dark:border-slate-800"
+          ? "cursor-not-allowed opacity-60 bg-[var(--fh-surface)] dark:bg-slate-900 text-faith-slate border-faith-line dark:border-slate-800"
           : tone === "primary"
             ? "text-white border-transparent hover:opacity-95"
             : tone === "secondary"
               ? "text-white border-transparent hover:opacity-95"
               : tone === "ghost"
                 ? "bg-transparent border-transparent text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
-                : "bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700",
+                : "bg-[var(--fh-surface-bg)] dark:bg-slate-800 border-faith-line dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-700",
         className,
       )}
       style={
@@ -543,19 +543,19 @@ function StatCard({
   const dot =
     accent === "green" ? EV_GREEN : accent === "orange" ? EV_ORANGE : EV_NAVY;
   return (
-    <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 transition-colors">
+    <div className="rounded-3xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors">
       <div className="flex items-start justify-between gap-3">
         <div>
-          <div className="text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">
+          <div className="text-[11px] font-semibold uppercase tracking-[0.12em] text-faith-slate">
             {label}
           </div>
-          <div className="mt-2 text-[18px] font-black text-slate-900 dark:text-slate-100">
+          <div className="mt-2 text-[18px] font-black text-faith-ink dark:text-slate-100">
             {value}
           </div>
         </div>
         <div className="h-10 w-10 rounded-full" style={{ background: dot }} />
       </div>
-      <div className="mt-3 text-[12px] leading-5 text-slate-600 dark:text-slate-400">
+      <div className="mt-3 text-[12px] leading-5 text-faith-slate">
         {hint}
       </div>
     </div>
@@ -582,15 +582,15 @@ function Drawer({
         className="absolute inset-0 bg-black/50 backdrop-blur-sm"
         onClick={onClose}
       />
-      <div className="absolute inset-0 bg-slate-50 dark:bg-slate-950 shadow-2xl transition-colors flex flex-col">
-        <div className="shrink-0 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3">
+      <div className="absolute inset-0 bg-[var(--fh-surface)] dark:bg-slate-950 shadow-2xl transition-colors flex flex-col">
+        <div className="shrink-0 border-b border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 py-3">
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0">
-              <div className="truncate text-[14px] font-semibold text-slate-900 dark:text-slate-100">
+              <div className="truncate text-[14px] font-semibold text-faith-ink dark:text-slate-100">
                 {title}
               </div>
               {subtitle ? (
-                <div className="mt-0.5 truncate text-[11px] text-slate-500 dark:text-slate-400">
+                <div className="mt-0.5 truncate text-[11px] text-faith-slate">
                   {subtitle}
                 </div>
               ) : null}
@@ -598,7 +598,7 @@ function Drawer({
             <button
               type="button"
               onClick={onClose}
-              className="h-9 w-9 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 grid place-items-center hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors"
+              className="h-9 w-9 rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 grid place-items-center hover:bg-[var(--fh-surface)] dark:hover:bg-slate-700 transition-colors"
             >
               <X className="h-4 w-4 text-slate-700 dark:text-slate-300" />
             </button>
@@ -626,7 +626,7 @@ function CounselingDestinationPreview({
   return (
     <div
       className={cx(
-        "overflow-hidden rounded-[28px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 transition-colors",
+        "overflow-hidden rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 transition-colors",
         previewMode === "mobile" ? "max-w-[340px] md:max-w-[380px]" : "w-full",
       )}
     >
@@ -669,24 +669,24 @@ function CounselingDestinationPreview({
       <div className="p-4">
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
-            <div className="text-[12px] font-bold text-slate-900 dark:text-slate-100">
+            <div className="text-[12px] font-bold text-faith-ink dark:text-slate-100">
               {record.counselee}
             </div>
-            <div className="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">
-              {record.campus} â€¢ {record.category}
+            <div className="mt-0.5 text-[11px] text-faith-slate">
+              {record.campus} • {record.category}
             </div>
           </div>
           <Pill text={record.priority} tone={priorityTone(record.priority)} />
         </div>
 
-        <div className="mt-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3 transition-colors">
-          <div className="text-[10px] font-black uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">
+        <div className="mt-4 rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
+          <div className="text-[10px] font-black uppercase tracking-[0.16em] text-faith-slate">
             Care summary
           </div>
-          <div className="mt-1 text-[13px] font-semibold text-slate-900 dark:text-slate-100 leading-6">
+          <div className="mt-1 text-[13px] font-semibold text-faith-ink dark:text-slate-100 leading-6">
             {record.summary}
           </div>
-          <div className="mt-2 text-[11px] leading-5 text-slate-600 dark:text-slate-400">
+          <div className="mt-2 text-[11px] leading-5 text-faith-slate">
             {record.intakeNotes}
           </div>
         </div>
@@ -698,7 +698,7 @@ function CounselingDestinationPreview({
             onClick={() => safeNav("/faithhub/provider/counseling")}>
             {record.nextSessionISO ? "Join session" : "Request slot"}
           </button>
-          <button className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-[12px] font-bold text-slate-700 dark:text-slate-200 transition-colors" onClick={() => safeNav("/faithhub/provider/counseling")}>
+          <button className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] font-bold text-slate-700 dark:text-slate-200 transition-colors" onClick={() => safeNav("/faithhub/provider/counseling")}>
             Send secure note
           </button>
         </div>
@@ -707,31 +707,31 @@ function CounselingDestinationPreview({
           {checkpointSubset(record).map((step) => (
             <div
               key={step.id}
-              className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-2 transition-colors"
+              className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2 transition-colors"
             >
-              <div className="text-[10px] font-black uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">
+              <div className="text-[10px] font-black uppercase tracking-[0.14em] text-faith-slate">
                 {step.state}
               </div>
-              <div className="mt-1 text-[11px] font-semibold leading-5 text-slate-900 dark:text-slate-100">
+              <div className="mt-1 text-[11px] font-semibold leading-5 text-faith-ink dark:text-slate-100">
                 {step.label}
               </div>
-              <div className="mt-1 text-[10px] text-slate-500 dark:text-slate-400">
+              <div className="mt-1 text-[10px] text-faith-slate">
                 {step.when}
               </div>
             </div>
           ))}
         </div>
 
-        <div className="mt-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3 transition-colors">
-          <div className="text-[10px] font-black uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">
+        <div className="mt-4 rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
+          <div className="text-[10px] font-black uppercase tracking-[0.16em] text-faith-slate">
             Assigned counselor
           </div>
-          <div className="mt-1 text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+          <div className="mt-1 text-[12px] font-semibold text-faith-ink dark:text-slate-100">
             {counselor ? counselor.name : "Awaiting counselor assignment"}
           </div>
-          <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
+          <div className="mt-1 text-[11px] text-faith-slate">
             {counselor
-              ? `${counselor.role} â€¢ ${counselor.focus}`
+              ? `${counselor.role} • ${counselor.focus}`
               : "Assign a counselor to activate scheduling and private communication tools."}
           </div>
         </div>
@@ -750,9 +750,9 @@ function CounselingDestinationPreviewInner({
   previewMode: PreviewMode;
 }) {
   return (
-    <div className="rounded-[34px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 transition-colors">
+    <div className="rounded-[34px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors">
       <div className="mb-3 flex items-center justify-between gap-2">
-        <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+        <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
           Counseling destination preview
         </div>
         <div className="flex items-center gap-2">
@@ -969,9 +969,9 @@ export default function CounselingPage() {
   ] as const;
 
   return (
-    <div className="min-h-screen bg-[#f2f2f2] p-5 text-slate-900 dark:bg-slate-950 dark:text-slate-50">
+    <div className="min-h-screen bg-[var(--fh-page-bg)] p-5 text-faith-ink dark:bg-slate-950 dark:text-slate-50">
       <div className="mx-auto max-w-[1600px] space-y-4">
-        <section className="rounded-[30px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm transition-colors">
+        <section className="rounded-[30px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-6 shadow-soft transition-colors">
           <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
             <div className="min-w-0">
               <ProviderPageTitle
@@ -1018,15 +1018,15 @@ export default function CounselingPage() {
           </div>
         </section>
 
-        <section className="rounded-full border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3 shadow-sm transition-colors">
+        <section className="rounded-full border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 py-3 shadow-soft transition-colors">
           <div className="flex flex-col gap-2 xl:flex-row xl:items-center xl:justify-between">
-            <div className="flex flex-wrap items-center gap-3 text-[12px] text-slate-500 dark:text-slate-400">
+            <div className="flex flex-wrap items-center gap-3 text-[12px] text-faith-slate">
               <span className="rounded-full border border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-900/20 px-3 py-1 font-black uppercase tracking-[0.14em] text-amber-700 dark:text-amber-300">
                 Counseling ops pulse
               </span>
-              <span>{pulseBits.join(" â€¢ ")}</span>
+              <span>{pulseBits.join(" • ")}</span>
             </div>
-            <div className="text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-400 dark:text-slate-500">
+            <div className="text-[11px] font-semibold uppercase tracking-[0.12em] text-faith-slate">
               Premium pastoral care
             </div>
           </div>
@@ -1073,13 +1073,13 @@ export default function CounselingPage() {
 
         <section className="grid gap-4 xl:grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)_360px]">
           <div className="space-y-4">
-            <div className="rounded-[30px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 shadow-sm transition-colors">
+            <div className="rounded-[30px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 shadow-soft transition-colors">
               <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
                 <div className="min-w-0">
-                  <h2 className="text-[20px] font-black tracking-[-0.02em] text-slate-900 dark:text-slate-100">
+                  <h2 className="text-[20px] font-black tracking-[-0.02em] text-faith-ink dark:text-slate-100">
                     Counseling case queue
                   </h2>
-                  <p className="mt-1 text-[13px] leading-6 text-slate-600 dark:text-slate-400">
+                  <p className="mt-1 text-[13px] leading-6 text-faith-slate">
                     Private intake, referrals, prayer-linked counseling, and safeguarding-sensitive cases in one premium care lane.
                   </p>
                 </div>
@@ -1090,14 +1090,14 @@ export default function CounselingPage() {
               </div>
 
               <div className="mt-4 grid gap-3 lg:grid-cols-[minmax(0,1.3fr)_repeat(4,minmax(140px,1fr))]">
-                <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-3 py-2.5 transition-colors">
+                <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-2.5 transition-colors">
                   <div className="flex items-center gap-2">
-                    <Search className="h-4 w-4 text-slate-400 dark:text-slate-500" />
+                    <Search className="h-4 w-4 text-faith-slate" />
                     <input
                       value={query}
                       onChange={(e) => setQuery(e.target.value)}
                       placeholder="Search cases, counselors, categories, or tags"
-                      className="w-full bg-transparent text-[13px] text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 outline-none"
+                      className="w-full bg-transparent text-[13px] text-faith-ink dark:text-slate-100 placeholder:text-faith-slate dark:placeholder:text-faith-slate outline-none"
                     />
                   </div>
                 </div>
@@ -1105,7 +1105,7 @@ export default function CounselingPage() {
                 <select
                   value={statusFilter}
                   onChange={(e) => setStatusFilter(e.target.value)}
-                  className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3 py-2.5 text-[12px] font-semibold text-slate-700 dark:text-slate-300 transition-colors"
+                  className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2.5 text-[12px] font-semibold text-slate-700 dark:text-slate-300 transition-colors"
                 >
                   {[
                     "All statuses",
@@ -1124,7 +1124,7 @@ export default function CounselingPage() {
                 <select
                   value={sourceFilter}
                   onChange={(e) => setSourceFilter(e.target.value)}
-                  className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3 py-2.5 text-[12px] font-semibold text-slate-700 dark:text-slate-300 transition-colors"
+                  className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2.5 text-[12px] font-semibold text-slate-700 dark:text-slate-300 transition-colors"
                 >
                   {[
                     "All sources",
@@ -1141,7 +1141,7 @@ export default function CounselingPage() {
                 <select
                   value={privacyFilter}
                   onChange={(e) => setPrivacyFilter(e.target.value)}
-                  className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3 py-2.5 text-[12px] font-semibold text-slate-700 dark:text-slate-300 transition-colors"
+                  className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2.5 text-[12px] font-semibold text-slate-700 dark:text-slate-300 transition-colors"
                 >
                   {["All privacy", "Private", "Restricted", "Pastoral team"].map(
                     (label) => (
@@ -1153,7 +1153,7 @@ export default function CounselingPage() {
                 <select
                   value={counselorFilter}
                   onChange={(e) => setCounselorFilter(e.target.value)}
-                  className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3 py-2.5 text-[12px] font-semibold text-slate-700 dark:text-slate-300 transition-colors"
+                  className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2.5 text-[12px] font-semibold text-slate-700 dark:text-slate-300 transition-colors"
                 >
                   {["All counselors", "Unassigned", ...counselorsSeed.map((c) => c.name)].map(
                     (label) => (
@@ -1183,7 +1183,7 @@ export default function CounselingPage() {
                         "w-full rounded-[24px] border p-4 text-left transition-colors",
                         isSelected
                           ? "border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-900/20"
-                          : "border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800",
+                          : "border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800",
                       )}
                     >
                       <div className="flex flex-col gap-3 xl:flex-row xl:items-start xl:justify-between">
@@ -1202,19 +1202,19 @@ export default function CounselingPage() {
                             {initial}
                           </div>
                           <div className="min-w-0">
-                            <div className="truncate text-[14px] font-black text-slate-900 dark:text-slate-100">
+                            <div className="truncate text-[14px] font-black text-faith-ink dark:text-slate-100">
                               {record.title}
                             </div>
-                            <div className="mt-1 flex flex-wrap items-center gap-2 text-[12px] text-slate-500 dark:text-slate-400">
+                            <div className="mt-1 flex flex-wrap items-center gap-2 text-[12px] text-faith-slate">
                               <span>{record.counselee}</span>
-                              <span>â€¢</span>
+                              <span>•</span>
                               <span>{counselor ? counselor.name : "Unassigned"}</span>
-                              <span>â€¢</span>
+                              <span>•</span>
                               <span>{record.campus}</span>
-                              <span>â€¢</span>
+                              <span>•</span>
                               <span>{record.nextSessionISO ? fmtLocal(record.nextSessionISO) : "No session booked"}</span>
                             </div>
-                            <div className="mt-2 text-[12px] leading-6 text-slate-600 dark:text-slate-400 line-clamp-2">
+                            <div className="mt-2 text-[12px] leading-6 text-faith-slate line-clamp-2">
                               {record.summary}
                             </div>
                           </div>
@@ -1231,7 +1231,7 @@ export default function CounselingPage() {
                         {record.tags.map((tag) => (
                           <span
                             key={tag}
-                            className="rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-2.5 py-1 text-[10px] font-semibold text-slate-500 dark:text-slate-400"
+                            className="rounded-full border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 px-2.5 py-1 text-[10px] font-semibold text-faith-slate"
                           >
                             {tag}
                           </span>
@@ -1243,13 +1243,13 @@ export default function CounselingPage() {
               </div>
             </div>
 
-            <div className="rounded-[30px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 shadow-sm transition-colors">
+            <div className="rounded-[30px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 shadow-soft transition-colors">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <h3 className="text-[18px] font-black tracking-[-0.02em] text-slate-900 dark:text-slate-100">
+                  <h3 className="text-[18px] font-black tracking-[-0.02em] text-faith-ink dark:text-slate-100">
                     Care pathways + intake templates
                   </h3>
-                  <p className="mt-1 text-[13px] leading-6 text-slate-600 dark:text-slate-400">
+                  <p className="mt-1 text-[13px] leading-6 text-faith-slate">
                     Launch trusted counseling rhythms faster while keeping privacy, counselor routing, and safeguarding standards intact.
                   </p>
                 </div>
@@ -1260,7 +1260,7 @@ export default function CounselingPage() {
                 {pathwayTemplatesSeed.map((template) => (
                   <div
                     key={template.id}
-                    className="rounded-[24px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-4 transition-colors"
+                    className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 transition-colors"
                   >
                     <div
                       className="h-2 w-16 rounded-full"
@@ -1273,10 +1273,10 @@ export default function CounselingPage() {
                               : EV_NAVY,
                       }}
                     />
-                    <div className="mt-3 text-[14px] font-black text-slate-900 dark:text-slate-100">
+                    <div className="mt-3 text-[14px] font-black text-faith-ink dark:text-slate-100">
                       {template.title}
                     </div>
-                    <div className="mt-2 text-[12px] leading-6 text-slate-600 dark:text-slate-400">
+                    <div className="mt-2 text-[12px] leading-6 text-faith-slate">
                       {template.description}
                     </div>
                     <div className="mt-4 text-[12px] font-bold" style={{ color: template.accent === "green" ? EV_GREEN : template.accent === "orange" ? EV_ORANGE : EV_NAVY }}>
@@ -1289,13 +1289,13 @@ export default function CounselingPage() {
           </div>
 
           <div className="space-y-4">
-            <div className="rounded-[30px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 shadow-sm transition-colors">
+            <div className="rounded-[30px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 shadow-soft transition-colors">
               <div className="flex items-start justify-between gap-3">
                 <div className="min-w-0">
-                  <h2 className="text-[20px] font-black tracking-[-0.02em] text-slate-900 dark:text-slate-100">
+                  <h2 className="text-[20px] font-black tracking-[-0.02em] text-faith-ink dark:text-slate-100">
                     Selected case workspace
                   </h2>
-                  <p className="mt-1 text-[13px] leading-6 text-slate-600 dark:text-slate-400">
+                  <p className="mt-1 text-[13px] leading-6 text-faith-slate">
                     Private context, counselor assignment, session scheduling, notes, and safeguarding signals in one protected workspace.
                   </p>
                 </div>
@@ -1335,8 +1335,8 @@ export default function CounselingPage() {
                   </div>
 
                   <div className="grid gap-3 md:grid-cols-2">
-                    <div className="rounded-[24px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-4 transition-colors">
-                      <div className="text-[11px] font-black uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">
+                    <div className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 transition-colors">
+                      <div className="text-[11px] font-black uppercase tracking-[0.14em] text-faith-slate">
                         Intake notes
                       </div>
                       <div className="mt-2 text-[13px] leading-6 text-slate-700 dark:text-slate-300">
@@ -1344,29 +1344,29 @@ export default function CounselingPage() {
                       </div>
                     </div>
 
-                    <div className="rounded-[24px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-4 transition-colors">
-                      <div className="text-[11px] font-black uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">
+                    <div className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 transition-colors">
+                      <div className="text-[11px] font-black uppercase tracking-[0.14em] text-faith-slate">
                         Counselor assignment
                       </div>
                       <div className="mt-2 space-y-3">
                         <select
                           value={selectedCounselorId}
                           onChange={(e) => setSelectedCounselorId(e.target.value)}
-                          className="w-full rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3 py-2.5 text-[12px] font-semibold text-slate-700 dark:text-slate-300 transition-colors"
+                          className="w-full rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2.5 text-[12px] font-semibold text-slate-700 dark:text-slate-300 transition-colors"
                         >
                           {counselorsSeed.map((counselor) => (
                             <option key={counselor.id} value={counselor.id}>
-                              {counselor.name} Â· {counselor.campus}
+                              {counselor.name} · {counselor.campus}
                             </option>
                           ))}
                         </select>
 
-                        <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3 transition-colors">
-                          <div className="text-[12px] font-bold text-slate-900 dark:text-slate-100">
+                        <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
+                          <div className="text-[12px] font-bold text-faith-ink dark:text-slate-100">
                             {selectedCounselor.name}
                           </div>
-                          <div className="mt-1 text-[11px] leading-5 text-slate-500 dark:text-slate-400">
-                            {selectedCounselor.role} â€¢ {selectedCounselor.focus}
+                          <div className="mt-1 text-[11px] leading-5 text-faith-slate">
+                            {selectedCounselor.role} • {selectedCounselor.focus}
                           </div>
                           <div className="mt-2 flex flex-wrap items-center gap-2">
                             <Pill
@@ -1384,9 +1384,9 @@ export default function CounselingPage() {
                   </div>
 
                   <div className="grid gap-3 xl:grid-cols-2">
-                    <div className="rounded-[24px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 transition-colors">
+                    <div className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors">
                       <div className="flex items-center justify-between gap-2">
-                        <div className="text-[11px] font-black uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">
+                        <div className="text-[11px] font-black uppercase tracking-[0.14em] text-faith-slate">
                           Session planning
                         </div>
                         <Pill
@@ -1394,13 +1394,13 @@ export default function CounselingPage() {
                           tone={selectedCase.nextSessionISO ? "good" : "warn"}
                         />
                       </div>
-                      <div className="mt-3 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3 transition-colors">
-                        <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+                      <div className="mt-3 rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
+                        <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                           {selectedCase.nextSessionISO
                             ? fmtLocal(selectedCase.nextSessionISO)
                             : "No private session booked yet"}
                         </div>
-                        <div className="mt-1 text-[11px] leading-5 text-slate-500 dark:text-slate-400">
+                        <div className="mt-1 text-[11px] leading-5 text-faith-slate">
                           Schedule a counseling session, keep it private-first, and preserve the case context for the assigned counselor.
                         </div>
                       </div>
@@ -1408,25 +1408,25 @@ export default function CounselingPage() {
                         {selectedCase.checkpoints.map((checkpoint) => (
                           <div
                             key={checkpoint.id}
-                            className="rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-3 py-1 text-[11px] font-semibold text-slate-600 dark:text-slate-300"
+                            className="rounded-full border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 px-3 py-1 text-[11px] font-semibold text-faith-slate dark:text-slate-300"
                           >
-                            {checkpoint.label} Â· {checkpoint.state}
+                            {checkpoint.label} · {checkpoint.state}
                           </div>
                         ))}
                       </div>
                     </div>
 
-                    <div className="rounded-[24px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 transition-colors">
-                      <div className="text-[11px] font-black uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">
+                    <div className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors">
+                      <div className="text-[11px] font-black uppercase tracking-[0.14em] text-faith-slate">
                         Cross-object hooks
                       </div>
                       <div className="mt-3 space-y-3">
                         {linkedHooks.map((hook) => (
                           <div
                             key={hook.label}
-                            className="flex items-center justify-between gap-3 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-3 py-2.5 transition-colors"
+                            className="flex items-center justify-between gap-3 rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-2.5 transition-colors"
                           >
-                            <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+                            <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                               {hook.label}
                             </div>
                             <Pill
@@ -1439,23 +1439,23 @@ export default function CounselingPage() {
                     </div>
                   </div>
 
-                  <div className="rounded-[24px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 transition-colors">
-                    <div className="text-[11px] font-black uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">
+                  <div className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors">
+                    <div className="text-[11px] font-black uppercase tracking-[0.14em] text-faith-slate">
                       Progress lane
                     </div>
                     <div className="mt-3 grid gap-3 md:grid-cols-3">
                       {selectedCase.checkpoints.map((checkpoint) => (
                         <div
                           key={checkpoint.id}
-                          className="rounded-[22px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3 transition-colors"
+                          className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors"
                         >
-                          <div className="text-[10px] font-black uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">
+                          <div className="text-[10px] font-black uppercase tracking-[0.14em] text-faith-slate">
                             {checkpoint.state}
                           </div>
-                          <div className="mt-1 text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+                          <div className="mt-1 text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                             {checkpoint.label}
                           </div>
-                          <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
+                          <div className="mt-1 text-[11px] text-faith-slate">
                             {checkpoint.when}
                           </div>
                         </div>
@@ -1466,13 +1466,13 @@ export default function CounselingPage() {
               ) : null}
             </div>
 
-            <div className="rounded-[30px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 shadow-sm transition-colors">
+            <div className="rounded-[30px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 shadow-soft transition-colors">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <h3 className="text-[18px] font-black tracking-[-0.02em] text-slate-900 dark:text-slate-100">
+                  <h3 className="text-[18px] font-black tracking-[-0.02em] text-faith-ink dark:text-slate-100">
                     Counseling cadence + linked ministry hooks
                   </h3>
-                  <p className="mt-1 text-[13px] leading-6 text-slate-600 dark:text-slate-400">
+                  <p className="mt-1 text-[13px] leading-6 text-faith-slate">
                     Keep private counseling linked to prayer care, community support, noticeboard follow-up, and trusted ministry pathways without breaking privacy defaults.
                   </p>
                 </div>
@@ -1501,13 +1501,13 @@ export default function CounselingPage() {
                 ].map((row) => (
                   <div
                     key={row.title}
-                    className="flex flex-col gap-2 rounded-[24px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-4 py-3 transition-colors md:flex-row md:items-center md:justify-between"
+                    className="flex flex-col gap-2 rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-3 transition-colors md:flex-row md:items-center md:justify-between"
                   >
                     <div className="min-w-0">
-                      <div className="text-[13px] font-semibold text-slate-900 dark:text-slate-100">
+                      <div className="text-[13px] font-semibold text-faith-ink dark:text-slate-100">
                         {row.title}
                       </div>
-                      <div className="mt-1 text-[12px] leading-6 text-slate-500 dark:text-slate-400">
+                      <div className="mt-1 text-[12px] leading-6 text-faith-slate">
                         {row.hint}
                       </div>
                     </div>
@@ -1519,13 +1519,13 @@ export default function CounselingPage() {
           </div>
 
           <div className="space-y-4">
-            <div className="rounded-[30px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 shadow-sm transition-colors">
+            <div className="rounded-[30px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 shadow-soft transition-colors">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <h2 className="text-[18px] font-black tracking-[-0.02em] text-slate-900 dark:text-slate-100">
+                  <h2 className="text-[18px] font-black tracking-[-0.02em] text-faith-ink dark:text-slate-100">
                     Counseling destination preview
                   </h2>
-                  <p className="mt-1 text-[13px] leading-6 text-slate-600 dark:text-slate-400">
+                  <p className="mt-1 text-[13px] leading-6 text-faith-slate">
                     Persistent preview rail for the selected private care destination, session invite route, and secure member-facing flow.
                   </p>
                 </div>
@@ -1577,13 +1577,13 @@ export default function CounselingPage() {
               ) : null}
             </div>
 
-            <div className="rounded-[30px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 shadow-sm transition-colors">
+            <div className="rounded-[30px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 shadow-soft transition-colors">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <h3 className="text-[18px] font-black tracking-[-0.02em] text-slate-900 dark:text-slate-100">
+                  <h3 className="text-[18px] font-black tracking-[-0.02em] text-faith-ink dark:text-slate-100">
                     Safeguard + escalation lane
                   </h3>
-                  <p className="mt-1 text-[13px] leading-6 text-slate-600 dark:text-slate-400">
+                  <p className="mt-1 text-[13px] leading-6 text-faith-slate">
                     Risk signals, private handling defaults, and youth-safe or consent-sensitive guidance for the selected case.
                   </p>
                 </div>
@@ -1603,10 +1603,10 @@ export default function CounselingPage() {
                           : "border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-900/20",
                     )}
                   >
-                    <div className="text-[13px] font-semibold text-slate-900 dark:text-slate-100">
+                    <div className="text-[13px] font-semibold text-faith-ink dark:text-slate-100">
                       {signal.label}
                     </div>
-                    <div className="mt-1 text-[12px] leading-6 text-slate-600 dark:text-slate-400">
+                    <div className="mt-1 text-[12px] leading-6 text-faith-slate">
                       {signal.hint}
                     </div>
                   </div>
@@ -1614,13 +1614,13 @@ export default function CounselingPage() {
               </div>
             </div>
 
-            <div className="rounded-[30px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 shadow-sm transition-colors">
+            <div className="rounded-[30px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 shadow-soft transition-colors">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <h3 className="text-[18px] font-black tracking-[-0.02em] text-slate-900 dark:text-slate-100">
+                  <h3 className="text-[18px] font-black tracking-[-0.02em] text-faith-ink dark:text-slate-100">
                     Counselor roster
                   </h3>
-                  <p className="mt-1 text-[13px] leading-6 text-slate-600 dark:text-slate-400">
+                  <p className="mt-1 text-[13px] leading-6 text-faith-slate">
                     Coverage visibility for pastoral, counseling, follow-up, and safeguarding-linked care.
                   </p>
                 </div>
@@ -1631,15 +1631,15 @@ export default function CounselingPage() {
                 {counselorsSeed.map((counselor) => (
                   <div
                     key={counselor.id}
-                    className="flex flex-col gap-2 rounded-[24px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-4 py-3 transition-colors"
+                    className="flex flex-col gap-2 rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-3 transition-colors"
                   >
                     <div className="flex items-center justify-between gap-3">
                       <div className="min-w-0">
-                        <div className="text-[13px] font-semibold text-slate-900 dark:text-slate-100">
+                        <div className="text-[13px] font-semibold text-faith-ink dark:text-slate-100">
                           {counselor.name}
                         </div>
-                        <div className="mt-1 text-[12px] leading-6 text-slate-500 dark:text-slate-400">
-                          {counselor.role} Â· {counselor.campus}
+                        <div className="mt-1 text-[12px] leading-6 text-faith-slate">
+                          {counselor.role} · {counselor.campus}
                         </div>
                       </div>
                       <Pill
@@ -1647,11 +1647,11 @@ export default function CounselingPage() {
                         tone={counselorTone(counselor)}
                       />
                     </div>
-                    <div className="flex flex-wrap items-center gap-2 text-[11px] text-slate-500 dark:text-slate-400">
+                    <div className="flex flex-wrap items-center gap-2 text-[11px] text-faith-slate">
                       <span>{counselor.focus}</span>
-                      <span>â€¢</span>
+                      <span>•</span>
                       <span>{counselor.languages.join(" + ")}</span>
-                      <span>â€¢</span>
+                      <span>•</span>
                       <span>{counselor.activeCases} active cases</span>
                     </div>
                   </div>
@@ -1661,7 +1661,7 @@ export default function CounselingPage() {
           </div>
         </section>
 
-        <section className="rounded-full border border-emerald-200 dark:border-emerald-800 bg-emerald-50/70 dark:bg-emerald-900/20 px-4 py-2 text-center text-[12px] text-slate-600 dark:text-slate-300 shadow-sm transition-colors">
+        <section className="rounded-full border border-emerald-200 dark:border-emerald-800 bg-emerald-50/70 dark:bg-emerald-900/20 px-4 py-2 text-center text-[12px] text-faith-slate dark:text-slate-300 shadow-soft transition-colors">
           Preview
         </section>
       </div>
@@ -1671,7 +1671,7 @@ export default function CounselingPage() {
           open={previewOpen}
           onClose={() => setPreviewOpen(false)}
           title="Provider Counseling destination preview"
-          subtitle={`${selectedCase.reference} â€¢ ${selectedCase.title}`}
+          subtitle={`${selectedCase.reference} • ${selectedCase.title}`}
         >
           <div className="space-y-4">
             <div className="flex flex-wrap items-center gap-2">
@@ -1707,6 +1707,7 @@ export default function CounselingPage() {
     </div>
   );
 }
+
 
 
 

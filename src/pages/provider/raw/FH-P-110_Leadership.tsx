@@ -1,4 +1,4 @@
-ï»¿// @ts-nocheck
+// @ts-nocheck
 "use client";
 
 import React, { useMemo, useState } from "react";
@@ -28,7 +28,7 @@ import {
 } from "lucide-react";
 
 /**
- * Provider â€” Leadership
+ * Provider — Leadership
  * --------------------------------
  * Premium Provider-side leadership operating surface for leadership roster,
  * office assignment, public visibility, succession planning, and coverage health.
@@ -198,7 +198,7 @@ const LEADERS: LeaderRecord[] = [
     language: ["English", "Luganda"],
     tenureLabel: "6 years",
     heroUrl: HERO_1,
-    bio: "Leads the institutionâ€™s teaching direction, leadership rhythms, and high-visibility ministry moments across campuses.",
+    bio: "Leads the institution’s teaching direction, leadership rhythms, and high-visibility ministry moments across campuses.",
     reports: 7,
     activeTeams: 4,
     upcomingEvents: 3,
@@ -324,14 +324,14 @@ const COVERAGE_SIGNALS: CoverageSignal[] = [
 
 function MiniStat({ label, value, hint }: { label: string; value: string; hint: string }) {
   return (
-    <div className="rounded-3xl border border-white/10 bg-white/80 p-3 shadow-sm backdrop-blur dark:border-white/5 dark:bg-slate-900/70">
-      <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">
+    <div className="rounded-3xl border border-white/10 bg-[var(--fh-surface-bg)]/80 p-3 shadow-soft backdrop-blur dark:border-white/5 dark:bg-slate-900/70">
+      <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-faith-slate">
         {label}
       </div>
-      <div className="mt-2 text-2xl font-black text-slate-900 dark:text-slate-100">
+      <div className="mt-2 text-2xl font-black text-faith-ink dark:text-slate-100">
         {value}
       </div>
-      <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">{hint}</div>
+      <div className="mt-1 text-[11px] text-faith-slate">{hint}</div>
     </div>
   );
 }
@@ -346,7 +346,7 @@ function TonePill({ tone, children }: { tone: "neutral" | "good" | "warn" | "dan
           ? "border-rose-200 bg-rose-50 text-rose-700 dark:border-rose-900/40 dark:bg-rose-900/20 dark:text-rose-300"
           : tone === "accent"
             ? "text-white"
-            : "border-slate-200 bg-white text-slate-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300";
+            : "border-faith-line bg-[var(--fh-surface-bg)] text-faith-slate dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300";
 
   return (
     <span
@@ -376,7 +376,7 @@ function TemplateCard({
     <button
       type="button"
       onClick={() => safeNav(ROUTES.leadershipBuilder)}
-      className="group rounded-[28px] border border-slate-200 bg-white p-4 text-left shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
+      className="group rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 text-left shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
     >
       <div
         className="inline-flex items-center rounded-full px-3 py-1 text-[10px] font-black uppercase tracking-[0.16em] text-white"
@@ -384,8 +384,8 @@ function TemplateCard({
       >
         Template
       </div>
-      <div className="mt-4 text-[15px] font-bold text-slate-900 dark:text-slate-100">{title}</div>
-      <div className="mt-1 text-[12px] leading-5 text-slate-500 dark:text-slate-400">{subtitle}</div>
+      <div className="mt-4 text-[15px] font-bold text-faith-ink dark:text-slate-100">{title}</div>
+      <div className="mt-1 text-[12px] leading-5 text-faith-slate">{subtitle}</div>
       <div className="mt-4 inline-flex items-center gap-2 text-[12px] font-bold" style={{ color: bg }}>
         Open template <ChevronRight className="h-4 w-4" />
       </div>
@@ -397,25 +397,25 @@ function OfficeCardView({ office }: { office: OfficeCard }) {
   const tone = office.state === "Stable" ? "good" : office.state === "Watch" ? "warn" : "danger";
 
   return (
-    <div className="rounded-[28px] border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+    <div className="rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft dark:border-slate-800 dark:bg-slate-900">
       <div className="flex items-start justify-between gap-3">
         <div>
-          <div className="text-[14px] font-bold text-slate-900 dark:text-slate-100">{office.title}</div>
-          <div className="mt-1 text-[12px] leading-5 text-slate-500 dark:text-slate-400">{office.subtitle}</div>
+          <div className="text-[14px] font-bold text-faith-ink dark:text-slate-100">{office.title}</div>
+          <div className="mt-1 text-[12px] leading-5 text-faith-slate">{office.subtitle}</div>
         </div>
         <TonePill tone={tone}>{office.state}</TonePill>
       </div>
       <div className="mt-4 flex items-end justify-between gap-4">
         <div>
-          <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">
+          <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-faith-slate">
             Active offices
           </div>
-          <div className="mt-1 text-2xl font-black text-slate-900 dark:text-slate-100">{office.count}</div>
+          <div className="mt-1 text-2xl font-black text-faith-ink dark:text-slate-100">{office.count}</div>
         </div>
         <button
           type="button"
           onClick={() => safeNav(ROUTES.officeAssignment)}
-          className="inline-flex items-center gap-2 rounded-2xl border border-slate-200 px-3 py-2 text-[12px] font-bold text-slate-700 transition hover:bg-slate-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
+          className="inline-flex items-center gap-2 rounded-2xl border border-faith-line px-3 py-2 text-[12px] font-bold text-slate-700 transition hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
         >
           Assign office <ChevronRight className="h-4 w-4" />
         </button>
@@ -434,20 +434,20 @@ function LeadershipPreviewCard({
   return (
     <div
       className={cx(
-        "overflow-hidden rounded-[30px] border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900",
+        "overflow-hidden rounded-[30px] border border-faith-line bg-[var(--fh-surface-bg)] shadow-soft dark:border-slate-800 dark:bg-slate-900",
         previewMode === "desktop" ? "w-full" : "mx-auto w-[320px] md:w-[360px]",
       )}
     >
       <div className="relative aspect-[16/9] overflow-hidden bg-slate-200 dark:bg-slate-800">
         <img src={leader.heroUrl} alt={leader.name} className="h-full w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-900/10 to-transparent" />
-        <div className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1 text-[10px] font-black uppercase tracking-[0.16em] text-slate-700 shadow-sm backdrop-blur">
+        <div className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-[var(--fh-surface-bg)]/90 px-3 py-1 text-[10px] font-black uppercase tracking-[0.16em] text-slate-700 shadow-soft backdrop-blur">
           <BadgeCheck className="h-3.5 w-3.5" style={{ color: EV_GREEN }} />
           Leadership profile
         </div>
         <div className="absolute left-4 right-4 bottom-4 text-white">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="rounded-full bg-white/15 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.16em] backdrop-blur">
+            <span className="rounded-full bg-[var(--fh-surface-bg)]/15 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.16em] backdrop-blur">
               {leader.officeTitle}
             </span>
             {leader.publicFeatured ? (
@@ -475,23 +475,23 @@ function LeadershipPreviewCard({
         </div>
 
         <div className="mt-4 grid grid-cols-2 gap-3">
-          <div className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2 dark:border-slate-700 dark:bg-slate-950">
-            <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">Campus</div>
-            <div className="mt-1 text-[13px] font-bold text-slate-900 dark:text-slate-100">{leader.campus}</div>
+          <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2 dark:border-slate-700 dark:bg-slate-950">
+            <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-faith-slate">Campus</div>
+            <div className="mt-1 text-[13px] font-bold text-faith-ink dark:text-slate-100">{leader.campus}</div>
           </div>
-          <div className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2 dark:border-slate-700 dark:bg-slate-950">
-            <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">Languages</div>
-            <div className="mt-1 text-[13px] font-bold text-slate-900 dark:text-slate-100">{leader.language.join(", ")}</div>
+          <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2 dark:border-slate-700 dark:bg-slate-950">
+            <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-faith-slate">Languages</div>
+            <div className="mt-1 text-[13px] font-bold text-faith-ink dark:text-slate-100">{leader.language.join(", ")}</div>
           </div>
         </div>
 
-        <div className="mt-4 text-[13px] leading-6 text-slate-600 dark:text-slate-300">{leader.bio}</div>
+        <div className="mt-4 text-[13px] leading-6 text-faith-slate dark:text-slate-300">{leader.bio}</div>
 
         <div className="mt-4 flex flex-wrap gap-2">
           {leader.tags.map((tag) => (
             <span
               key={tag}
-              className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-semibold text-slate-600 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-300"
+              className="rounded-full border border-faith-line bg-[var(--fh-surface)] px-2.5 py-1 text-[11px] font-semibold text-faith-slate dark:border-slate-700 dark:bg-slate-950 dark:text-slate-300"
             >
               {tag}
             </span>
@@ -516,19 +516,19 @@ function PreviewDrawer({
   return (
     <div className="fixed inset-0 z-[70]">
       <div className="absolute inset-0 bg-slate-950/55 backdrop-blur-sm" onClick={onClose} />
-      <div className="absolute right-0 top-0 h-full w-full max-w-4xl overflow-y-auto border-l border-slate-200 bg-slate-50 p-4 shadow-2xl dark:border-slate-800 dark:bg-slate-950">
-        <div className="flex items-start justify-between gap-3 rounded-[28px] border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+      <div className="absolute right-0 top-0 h-full w-full max-w-4xl overflow-y-auto border-l border-faith-line bg-[var(--fh-surface)] p-4 shadow-2xl dark:border-slate-800 dark:bg-slate-950">
+        <div className="flex items-start justify-between gap-3 rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft dark:border-slate-800 dark:bg-slate-900">
           <div>
-            <div className="text-[10px] font-black uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">
+            <div className="text-[10px] font-black uppercase tracking-[0.16em] text-faith-slate">
               Public leadership preview
             </div>
-            <div className="mt-1 text-lg font-black text-slate-900 dark:text-slate-100">{leader.name}</div>
-            <div className="mt-1 text-[12px] text-slate-500 dark:text-slate-400">Preview how this leadership profile appears across the platform public surfaces.</div>
+            <div className="mt-1 text-lg font-black text-faith-ink dark:text-slate-100">{leader.name}</div>
+            <div className="mt-1 text-[12px] text-faith-slate">Preview how this leadership profile appears across the platform public surfaces.</div>
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-slate-200 bg-white text-slate-700 transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 transition hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800"
           >
             <X className="h-4 w-4" />
           </button>
@@ -590,14 +590,14 @@ export default function FaithHubLeadershipPage() {
   const publishHealth = pct(totals.published, totals.totalLeaders);
 
   return (
-    <div className="min-h-screen bg-[#f7f7f5] text-slate-900 dark:bg-slate-950 dark:text-slate-100">
+    <div className="min-h-screen bg-[#f7f7f5] text-faith-ink dark:bg-slate-950 dark:text-slate-100">
       <PreviewDrawer open={previewOpen} onClose={() => setPreviewOpen(false)} leader={selectedLeader} />
 
       <div className="mx-auto flex w-full max-w-[1600px] flex-col gap-6 px-4 py-6 md:px-6 xl:px-8">
-        <section className="overflow-hidden rounded-[36px] border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
+        <section className="overflow-hidden rounded-[36px] border border-faith-line bg-[var(--fh-surface-bg)] shadow-soft dark:border-slate-800 dark:bg-slate-900">
           <div className="grid gap-6 px-6 py-6 lg:grid-cols-[minmax(0,1.15fr)_420px] lg:px-8 lg:py-8">
             <div>
-              <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-slate-500 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-400">
+              <div className="inline-flex items-center gap-2 rounded-full border border-faith-line bg-[var(--fh-surface)] px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-faith-slate dark:border-slate-700 dark:bg-slate-950">
                 Team command
               </div>
               <div className="mt-4">
@@ -620,7 +620,7 @@ export default function FaithHubLeadershipPage() {
                 <button
                   type="button"
                   onClick={() => safeNav(ROUTES.leadershipBuilder)}
-                  className="inline-flex items-center gap-2 rounded-2xl px-4 py-3 text-[13px] font-bold text-white shadow-sm transition hover:opacity-95"
+                  className="inline-flex items-center gap-2 rounded-2xl px-4 py-3 text-[13px] font-bold text-white shadow-soft transition hover:opacity-95"
                   style={{ background: EV_GREEN }}
                 >
                   <Plus className="h-4 w-4" /> + New Leader
@@ -628,21 +628,21 @@ export default function FaithHubLeadershipPage() {
                 <button
                   type="button"
                   onClick={() => safeNav(ROUTES.officeAssignment)}
-                  className="inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-3 text-[13px] font-bold text-slate-700 transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+                  className="inline-flex items-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-3 text-[13px] font-bold text-slate-700 transition hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
                 >
                   <Briefcase className="h-4 w-4" /> Assign Office
                 </button>
                 <button
                   type="button"
                   onClick={() => safeNav(ROUTES.publishLeadership)}
-                  className="inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-3 text-[13px] font-bold text-slate-700 transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+                  className="inline-flex items-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-3 text-[13px] font-bold text-slate-700 transition hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
                 >
                   <CheckCircle2 className="h-4 w-4" /> Publish Leadership
                 </button>
               </div>
             </div>
 
-            <div className="rounded-[30px] border border-slate-200 bg-slate-50 p-4 shadow-inner dark:border-slate-800 dark:bg-slate-950">
+            <div className="rounded-[30px] border border-faith-line bg-[var(--fh-surface)] p-4 shadow-inner dark:border-slate-800 dark:bg-slate-950">
               <div className="mt-4 grid gap-3 sm:grid-cols-2">
                 <MiniStat label="Total leaders" value={fmtInt(totals.totalLeaders)} hint="Profiles being managed across public and internal surfaces." />
                 <MiniStat label="Published" value={fmtInt(totals.published)} hint="Public leadership profiles already visible on Provider." />
@@ -650,13 +650,13 @@ export default function FaithHubLeadershipPage() {
                 <MiniStat label="Coverage healthy" value={`${leadershipHealth}%`} hint="Offices with named succession coverage or deputies." />
               </div>
 
-              <div className="mt-4 rounded-[24px] border border-white/10 bg-white/90 p-4 dark:bg-slate-900/70">
+              <div className="mt-4 rounded-[24px] border border-white/10 bg-[var(--fh-surface-bg)]/90 p-4 dark:bg-slate-900/70">
                 <div className="flex items-center justify-between gap-3">
                   <div>
-                    <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">{publishHealth}% leadership publish-ready</div>
+                    <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-faith-ink dark:text-slate-100 sm:text-[34px] lg:text-[40px]">{publishHealth}% leadership publish-ready</div>
                   </div>
                   <div
-                    className="inline-flex h-12 w-12 items-center justify-center rounded-2xl text-white shadow-sm"
+                    className="inline-flex h-12 w-12 items-center justify-center rounded-2xl text-white shadow-soft"
                     style={{ background: publishHealth >= 75 ? EV_GREEN : EV_ORANGE }}
                   >
                     <Sparkles className="h-5 w-5" />
@@ -681,35 +681,35 @@ export default function FaithHubLeadershipPage() {
               ))}
             </section>
 
-            <section className="rounded-[32px] border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900 md:p-5">
+            <section className="rounded-[32px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft dark:border-slate-800 dark:bg-slate-900 md:p-5">
               <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
                 <div>
-                  <div className="text-[10px] font-black uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">
+                  <div className="text-[10px] font-black uppercase tracking-[0.18em] text-faith-slate">
                     Leadership roster
                   </div>
                   <div className="mt-1 text-[24px] font-black tracking-[-0.02em] text-slate-950 dark:text-white">
                     Search, review, and maintain the leadership roster
                   </div>
-                  <div className="mt-2 text-[13px] leading-6 text-slate-500 dark:text-slate-400">
+                  <div className="mt-2 text-[13px] leading-6 text-faith-slate">
                     Keep office titles, public visibility, succession coverage, and leadership responsibilities current.
                   </div>
                 </div>
 
                 <div className="grid gap-3 sm:grid-cols-[minmax(0,1fr)_180px] md:min-w-[480px]">
                   <label className="relative block">
-                    <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+                    <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-faith-slate" />
                     <input
                       value={query}
                       onChange={(event) => setQuery(event.target.value)}
                       placeholder="Search by leader, office, campus, or tag"
-                      className="h-12 w-full rounded-2xl border border-slate-200 bg-slate-50 pl-10 pr-4 text-[13px] font-medium text-slate-900 outline-none transition focus:border-transparent focus:ring-2 focus:ring-[rgba(3,205,140,0.35)] dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
+                      className="h-12 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface)] pl-10 pr-4 text-[13px] font-medium text-faith-ink outline-none transition focus:border-transparent focus:ring-2 focus:ring-[rgba(3,205,140,0.35)] dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
                     />
                   </label>
 
                   <button
                     type="button"
                     onClick={() => setPreviewOpen(true)}
-                    className="inline-flex h-12 items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 text-[13px] font-bold text-slate-700 transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+                    className="inline-flex h-12 items-center justify-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-4 text-[13px] font-bold text-slate-700 transition hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
                   >
                     <Eye className="h-4 w-4" /> Open preview
                   </button>
@@ -740,10 +740,10 @@ export default function FaithHubLeadershipPage() {
                         type="button"
                         onClick={() => setSelectedId(leader.id)}
                         className={cx(
-                          "w-full rounded-[26px] border p-4 text-left shadow-sm transition-all",
+                          "w-full rounded-[26px] border p-4 text-left shadow-soft transition-all",
                           selectedId === leader.id
                             ? "border-transparent ring-2 ring-[rgba(3,205,140,0.35)] bg-[rgba(3,205,140,0.06)] dark:bg-[rgba(3,205,140,0.10)]"
-                            : "border-slate-200 bg-white hover:-translate-y-0.5 hover:shadow-md dark:border-slate-800 dark:bg-slate-950",
+                            : "border-faith-line bg-[var(--fh-surface-bg)] hover:-translate-y-0.5 hover:shadow-md dark:border-slate-800 dark:bg-slate-950",
                         )}
                       >
                         <div className="flex items-start gap-3">
@@ -755,11 +755,11 @@ export default function FaithHubLeadershipPage() {
                           <div className="min-w-0 flex-1">
                             <div className="flex flex-wrap items-start justify-between gap-3">
                               <div>
-                                <div className="text-[15px] font-bold text-slate-900 dark:text-slate-100">
+                                <div className="text-[15px] font-bold text-faith-ink dark:text-slate-100">
                                   {leader.name}
                                 </div>
-                                <div className="mt-0.5 text-[12px] text-slate-500 dark:text-slate-400">
-                                  {leader.officeTitle} Â· {leader.campus}
+                                <div className="mt-0.5 text-[12px] text-faith-slate">
+                                  {leader.officeTitle} · {leader.campus}
                                 </div>
                               </div>
                               <div className="flex flex-wrap items-center gap-2">
@@ -769,25 +769,25 @@ export default function FaithHubLeadershipPage() {
                             </div>
 
                             <div className="mt-3 grid gap-2 sm:grid-cols-4">
-                              <div className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2 dark:border-slate-700 dark:bg-slate-900">
-                                <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">Reports</div>
-                                <div className="mt-1 text-[14px] font-black text-slate-900 dark:text-slate-100">{leader.reports}</div>
+                              <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2 dark:border-slate-700 dark:bg-slate-900">
+                                <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-faith-slate">Reports</div>
+                                <div className="mt-1 text-[14px] font-black text-faith-ink dark:text-slate-100">{leader.reports}</div>
                               </div>
-                              <div className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2 dark:border-slate-700 dark:bg-slate-900">
-                                <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">Active teams</div>
-                                <div className="mt-1 text-[14px] font-black text-slate-900 dark:text-slate-100">{leader.activeTeams}</div>
+                              <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2 dark:border-slate-700 dark:bg-slate-900">
+                                <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-faith-slate">Active teams</div>
+                                <div className="mt-1 text-[14px] font-black text-faith-ink dark:text-slate-100">{leader.activeTeams}</div>
                               </div>
-                              <div className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2 dark:border-slate-700 dark:bg-slate-900">
-                                <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">Upcoming events</div>
-                                <div className="mt-1 text-[14px] font-black text-slate-900 dark:text-slate-100">{leader.upcomingEvents}</div>
+                              <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2 dark:border-slate-700 dark:bg-slate-900">
+                                <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-faith-slate">Upcoming events</div>
+                                <div className="mt-1 text-[14px] font-black text-faith-ink dark:text-slate-100">{leader.upcomingEvents}</div>
                               </div>
-                              <div className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2 dark:border-slate-700 dark:bg-slate-900">
-                                <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">Live linked</div>
-                                <div className="mt-1 text-[14px] font-black text-slate-900 dark:text-slate-100">{leader.liveSessions}</div>
+                              <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2 dark:border-slate-700 dark:bg-slate-900">
+                                <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-faith-slate">Live linked</div>
+                                <div className="mt-1 text-[14px] font-black text-faith-ink dark:text-slate-100">{leader.liveSessions}</div>
                               </div>
                             </div>
 
-                            <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] text-slate-500 dark:text-slate-400">
+                            <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] text-faith-slate">
                               <span className="inline-flex items-center gap-1"><MapPin className="h-3.5 w-3.5" /> {leader.campus}</span>
                               <span className="inline-flex items-center gap-1"><CalendarClock className="h-3.5 w-3.5" /> Review {new Date(leader.nextReviewISO).toLocaleDateString()}</span>
                               <span className="inline-flex items-center gap-1"><Users className="h-3.5 w-3.5" /> {leader.tenureLabel}</span>
@@ -799,33 +799,33 @@ export default function FaithHubLeadershipPage() {
                   })}
 
                   {!filteredLeaders.length ? (
-                    <div className="rounded-[26px] border border-dashed border-slate-300 bg-slate-50 p-8 text-center dark:border-slate-700 dark:bg-slate-950">
-                      <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-white shadow-sm dark:bg-slate-900">
-                        <Search className="h-6 w-6 text-slate-500 dark:text-slate-400" />
+                    <div className="rounded-[26px] border border-dashed border-slate-300 bg-[var(--fh-surface)] p-8 text-center dark:border-slate-700 dark:bg-slate-950">
+                      <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-[var(--fh-surface-bg)] shadow-soft dark:bg-slate-900">
+                        <Search className="h-6 w-6 text-faith-slate" />
                       </div>
-                      <div className="mt-4 text-[15px] font-bold text-slate-900 dark:text-slate-100">No leaders match this search</div>
-                      <div className="mt-1 text-[13px] text-slate-500 dark:text-slate-400">Try another office title, campus, or ministry tag.</div>
+                      <div className="mt-4 text-[15px] font-bold text-faith-ink dark:text-slate-100">No leaders match this search</div>
+                      <div className="mt-1 text-[13px] text-faith-slate">Try another office title, campus, or ministry tag.</div>
                     </div>
                   ) : null}
                 </div>
 
-                <div className="space-y-4 rounded-[30px] border border-slate-200 bg-slate-50 p-4 shadow-inner dark:border-slate-800 dark:bg-slate-950">
+                <div className="space-y-4 rounded-[30px] border border-faith-line bg-[var(--fh-surface)] p-4 shadow-inner dark:border-slate-800 dark:bg-slate-950">
                   <div className="flex items-start justify-between gap-3">
                     <div>
-                      <div className="text-[10px] font-black uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">Selected leader</div>
+                      <div className="text-[10px] font-black uppercase tracking-[0.18em] text-faith-slate">Selected leader</div>
                       <div className="mt-1 text-[22px] font-black tracking-[-0.02em] text-slate-950 dark:text-white">{selectedLeader.name}</div>
-                      <div className="mt-1 text-[13px] text-slate-500 dark:text-slate-400">{selectedLeader.officeTitle} Â· {selectedLeader.ministryArea}</div>
+                      <div className="mt-1 text-[13px] text-faith-slate">{selectedLeader.officeTitle} · {selectedLeader.ministryArea}</div>
                     </div>
                     <button
                       type="button"
                       onClick={() => setPreviewOpen(true)}
-                      className="inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-3 py-2 text-[12px] font-bold text-slate-700 transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+                      className="inline-flex items-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] font-bold text-slate-700 transition hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
                     >
                       <Eye className="h-4 w-4" /> Preview
                     </button>
                   </div>
 
-                  <div className="rounded-[26px] border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+                  <div className="rounded-[26px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft dark:border-slate-800 dark:bg-slate-900">
                     <div className="aspect-[16/9] overflow-hidden rounded-[22px] bg-slate-200 dark:bg-slate-800">
                       <img src={selectedLeader.heroUrl} alt={selectedLeader.name} className="h-full w-full object-cover" />
                     </div>
@@ -840,24 +840,24 @@ export default function FaithHubLeadershipPage() {
                         <Workflow className="h-3.5 w-3.5" /> {selectedLeader.succession}
                       </TonePill>
                     </div>
-                    <div className="mt-4 text-[13px] leading-6 text-slate-600 dark:text-slate-300">{selectedLeader.bio}</div>
+                    <div className="mt-4 text-[13px] leading-6 text-faith-slate dark:text-slate-300">{selectedLeader.bio}</div>
 
                     <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                      <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3 dark:border-slate-700 dark:bg-slate-950">
-                        <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">Deputy / backup</div>
-                        <div className="mt-1 text-[14px] font-black text-slate-900 dark:text-slate-100">{selectedLeader.deputy || "Not assigned"}</div>
+                      <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3 dark:border-slate-700 dark:bg-slate-950">
+                        <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-faith-slate">Deputy / backup</div>
+                        <div className="mt-1 text-[14px] font-black text-faith-ink dark:text-slate-100">{selectedLeader.deputy || "Not assigned"}</div>
                       </div>
-                      <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3 dark:border-slate-700 dark:bg-slate-950">
-                        <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">Next review</div>
-                        <div className="mt-1 text-[14px] font-black text-slate-900 dark:text-slate-100">{new Date(selectedLeader.nextReviewISO).toLocaleDateString()}</div>
+                      <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3 dark:border-slate-700 dark:bg-slate-950">
+                        <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-faith-slate">Next review</div>
+                        <div className="mt-1 text-[14px] font-black text-faith-ink dark:text-slate-100">{new Date(selectedLeader.nextReviewISO).toLocaleDateString()}</div>
                       </div>
                     </div>
 
                     <div className="mt-4">
-                      <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">Responsibilities</div>
+                      <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-faith-slate">Responsibilities</div>
                       <div className="mt-2 space-y-2">
                         {selectedLeader.responsibilities.map((responsibility) => (
-                          <div key={responsibility} className="flex items-start gap-2 text-[12px] text-slate-600 dark:text-slate-300">
+                          <div key={responsibility} className="flex items-start gap-2 text-[12px] text-faith-slate dark:text-slate-300">
                             <CheckCircle2 className="mt-0.5 h-4 w-4" style={{ color: EV_GREEN }} />
                             <span>{responsibility}</span>
                           </div>
@@ -870,10 +870,10 @@ export default function FaithHubLeadershipPage() {
             </section>
 
             <section className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-              <div className="rounded-[32px] border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+              <div className="rounded-[32px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft dark:border-slate-800 dark:bg-slate-900">
                 <div className="flex items-start justify-between gap-3">
                   <div>
-                    <div className="text-[10px] font-black uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">Succession & coverage</div>
+                    <div className="text-[10px] font-black uppercase tracking-[0.18em] text-faith-slate">Succession & coverage</div>
                     <div className="mt-1 text-[22px] font-black tracking-[-0.02em] text-slate-950 dark:text-white">Coverage signals that need leadership action</div>
                   </div>
                   <TonePill tone="warn">
@@ -895,8 +895,8 @@ export default function FaithHubLeadershipPage() {
                     >
                       <div className="flex items-start justify-between gap-3">
                         <div>
-                          <div className="text-[14px] font-bold text-slate-900 dark:text-slate-100">{signal.title}</div>
-                          <div className="mt-1 text-[12px] leading-5 text-slate-600 dark:text-slate-300">{signal.hint}</div>
+                          <div className="text-[14px] font-bold text-faith-ink dark:text-slate-100">{signal.title}</div>
+                          <div className="mt-1 text-[12px] leading-5 text-faith-slate dark:text-slate-300">{signal.hint}</div>
                         </div>
                         <TonePill tone={signal.tone === "good" ? "good" : signal.tone === "warn" ? "warn" : "danger"}>
                           {signal.tone === "good" ? "Healthy" : signal.tone === "warn" ? "Watch" : "Urgent"}
@@ -907,10 +907,10 @@ export default function FaithHubLeadershipPage() {
                 </div>
               </div>
 
-              <div className="rounded-[32px] border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+              <div className="rounded-[32px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft dark:border-slate-800 dark:bg-slate-900">
                 <div className="flex items-start justify-between gap-3">
                   <div>
-                    <div className="text-[10px] font-black uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">Quick-create templates</div>
+                    <div className="text-[10px] font-black uppercase tracking-[0.18em] text-faith-slate">Quick-create templates</div>
                     <div className="mt-1 text-[22px] font-black tracking-[-0.02em] text-slate-950 dark:text-white">Launch premium leadership workflows faster</div>
                   </div>
                   <TonePill tone="accent">Premium</TonePill>
@@ -930,13 +930,13 @@ export default function FaithHubLeadershipPage() {
           </div>
 
           <aside className="space-y-6">
-            <section className="rounded-[32px] border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+            <section className="rounded-[32px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft dark:border-slate-800 dark:bg-slate-900">
               <div className="flex items-center justify-between gap-3">
                 <div>
-                  <div className="text-[10px] font-black uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">Public preview rail</div>
+                  <div className="text-[10px] font-black uppercase tracking-[0.18em] text-faith-slate">Public preview rail</div>
                   <div className="mt-1 text-[18px] font-black tracking-[-0.02em] text-slate-950 dark:text-white">Leadership profile destination preview</div>
                 </div>
-                <div className="inline-flex rounded-2xl border border-slate-200 bg-slate-50 p-1 dark:border-slate-700 dark:bg-slate-950">
+                <div className="inline-flex rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-1 dark:border-slate-700 dark:bg-slate-950">
                   <button
                     type="button"
                     onClick={() => setPreviewMode("desktop")}
@@ -944,7 +944,7 @@ export default function FaithHubLeadershipPage() {
                       "rounded-xl px-3 py-1.5 text-[11px] font-bold transition",
                       previewMode === "desktop"
                         ? "text-white"
-                        : "text-slate-600 hover:bg-white dark:text-slate-300 dark:hover:bg-slate-800",
+                        : "text-faith-slate hover:bg-[var(--fh-surface-bg)] dark:text-slate-300 dark:hover:bg-slate-800",
                     )}
                     style={previewMode === "desktop" ? { background: EV_GREEN } : undefined}
                   >
@@ -957,7 +957,7 @@ export default function FaithHubLeadershipPage() {
                       "rounded-xl px-3 py-1.5 text-[11px] font-bold transition",
                       previewMode === "mobile"
                         ? "text-white"
-                        : "text-slate-600 hover:bg-white dark:text-slate-300 dark:hover:bg-slate-800",
+                        : "text-faith-slate hover:bg-[var(--fh-surface-bg)] dark:text-slate-300 dark:hover:bg-slate-800",
                     )}
                     style={previewMode === "mobile" ? { background: EV_GREEN } : undefined}
                   >
@@ -982,40 +982,40 @@ export default function FaithHubLeadershipPage() {
                 <button
                   type="button"
                   onClick={() => safeNav(ROUTES.publishLeadership)}
-                  className="inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-3 text-[13px] font-bold text-slate-700 transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+                  className="inline-flex items-center justify-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-3 text-[13px] font-bold text-slate-700 transition hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
                 >
                   <ArrowRight className="h-4 w-4" /> Publish
                 </button>
               </div>
             </section>
 
-            <section className="rounded-[32px] border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-              <div className="text-[10px] font-black uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">Linked controls</div>
+            <section className="rounded-[32px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft dark:border-slate-800 dark:bg-slate-900">
+              <div className="text-[10px] font-black uppercase tracking-[0.18em] text-faith-slate">Linked controls</div>
               <div className="mt-1 text-[18px] font-black tracking-[-0.02em] text-slate-950 dark:text-white">Related workspace pages</div>
               <div className="mt-4 space-y-3">
                 <button
                   type="button"
                   onClick={() => safeNav(ROUTES.providerDashboard)}
-                  className="flex w-full items-start gap-3 rounded-[24px] border border-slate-200 bg-slate-50 p-4 text-left transition hover:bg-white dark:border-slate-700 dark:bg-slate-950 dark:hover:bg-slate-900"
+                  className="flex w-full items-start gap-3 rounded-[24px] border border-faith-line bg-[var(--fh-surface)] p-4 text-left transition hover:bg-[var(--fh-surface-bg)] dark:border-slate-700 dark:bg-slate-950 dark:hover:bg-slate-900"
                 >
                   <Star className="mt-0.5 h-5 w-5" style={{ color: EV_GREEN }} />
                   <div>
-                    <div className="text-[13px] font-bold text-slate-900 dark:text-slate-100">Provider Dashboard</div>
-                    <div className="mt-1 text-[12px] leading-5 text-slate-500 dark:text-slate-400">Return to mission control for role-aware provider decisions and institution-wide tasks.</div>
+                    <div className="text-[13px] font-bold text-faith-ink dark:text-slate-100">Provider Dashboard</div>
+                    <div className="mt-1 text-[12px] leading-5 text-faith-slate">Return to mission control for role-aware provider decisions and institution-wide tasks.</div>
                   </div>
                 </button>
                 <button
                   type="button"
                   onClick={() => safeNav(ROUTES.rolesPermissions)}
-                  className="flex w-full items-start gap-3 rounded-[24px] border border-slate-200 bg-slate-50 p-4 text-left transition hover:bg-white dark:border-slate-700 dark:bg-slate-950 dark:hover:bg-slate-900"
+                  className="flex w-full items-start gap-3 rounded-[24px] border border-faith-line bg-[var(--fh-surface)] p-4 text-left transition hover:bg-[var(--fh-surface-bg)] dark:border-slate-700 dark:bg-slate-950 dark:hover:bg-slate-900"
                 >
                   <ShieldCheck className="mt-0.5 h-5 w-5" style={{ color: EV_ORANGE }} />
                   <div>
-                    <div className="text-[13px] font-bold text-slate-900 dark:text-slate-100">Roles & Permissions</div>
-                    <div className="mt-1 text-[12px] leading-5 text-slate-500 dark:text-slate-400">Control leadership access, approval routing, and who can publish public office profiles.</div>
+                    <div className="text-[13px] font-bold text-faith-ink dark:text-slate-100">Roles & Permissions</div>
+                    <div className="mt-1 text-[12px] leading-5 text-faith-slate">Control leadership access, approval routing, and who can publish public office profiles.</div>
                   </div>
                 </button>
-                <div className="rounded-[24px] border border-dashed border-slate-300 bg-slate-50 p-4 text-[12px] leading-6 text-slate-500 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-400">
+                <div className="rounded-[24px] border border-dashed border-slate-300 bg-[var(--fh-surface)] p-4 text-[12px] leading-6 text-faith-slate dark:border-slate-700 dark:bg-slate-950">
                   <div className="flex items-start gap-2">
                     <Lock className="mt-0.5 h-4 w-4" />
                     <span>Premium differentiator: keep public leadership storytelling and internal office governance in one premium operational surface.</span>
@@ -1029,6 +1029,7 @@ export default function FaithHubLeadershipPage() {
     </div>
   );
 }
+
 
 
 

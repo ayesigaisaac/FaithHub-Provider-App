@@ -1,4 +1,4 @@
-ï»¿// @ts-nocheck
+// @ts-nocheck
 "use client";
 
 import React, { useMemo, useState } from "react";
@@ -36,7 +36,7 @@ import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
- * Provider â€” Noticeboard
+ * Provider — Noticeboard
  * --------------------------------
  * Premium Provider-side noticeboard / announcements operating surface.
  *
@@ -346,7 +346,7 @@ function toneClasses(tone: Tone) {
   if (tone === "navy") {
     return "bg-[#EEF2FF] text-[#16244c] border-[#C7D2FE] dark:bg-slate-800 dark:text-slate-100 dark:border-slate-600";
   }
-  return "bg-white text-slate-700 border-slate-200";
+  return "bg-[var(--fh-surface-bg)] text-slate-700 border-faith-line";
 }
 
 function Pill({
@@ -393,7 +393,7 @@ function SoftButton({
       onClick={disabled ? undefined : onClick}
       disabled={disabled}
       className={cx(
-        "inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-2 text-[12px] font-semibold text-slate-700 shadow-sm transition-colors hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-60",
+        "inline-flex items-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-2 text-[12px] font-semibold text-slate-700 shadow-soft transition-colors hover:bg-[var(--fh-surface)] disabled:cursor-not-allowed disabled:opacity-60",
         className,
       )}
     >
@@ -419,7 +419,7 @@ function PrimaryButton({
       title={title}
       onClick={onClick}
       className={cx(
-        "inline-flex items-center gap-2 rounded-2xl px-4 py-2 text-[12px] font-semibold text-white shadow-sm transition-opacity hover:opacity-95",
+        "inline-flex items-center gap-2 rounded-2xl px-4 py-2 text-[12px] font-semibold text-white shadow-soft transition-opacity hover:opacity-95",
         className,
       )}
       style={{ background: EV_GREEN }}
@@ -445,15 +445,15 @@ function Card({
   return (
     <div
       className={cx(
-        "rounded-[30px] border border-slate-200 bg-white p-4 shadow-sm transition-colors",
+        "rounded-[30px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft transition-colors",
         className,
       )}
     >
       <div className="flex items-start justify-between gap-3">
         <div>
-          <div className="text-[13px] font-semibold text-slate-900">{title}</div>
+          <div className="text-[13px] font-semibold text-faith-ink">{title}</div>
           {subtitle ? (
-            <div className="mt-0.5 text-[11px] text-slate-500">{subtitle}</div>
+            <div className="mt-0.5 text-[11px] text-faith-slate">{subtitle}</div>
           ) : null}
         </div>
         {right ? <div className="shrink-0">{right}</div> : null}
@@ -483,7 +483,7 @@ function Input({
       value={value}
       onChange={(e) => onChange(e.target.value)}
       placeholder={placeholder}
-      className="mt-1 w-full rounded-2xl border border-slate-200 bg-white px-3 py-2 text-[12px] text-slate-900 outline-none transition-colors focus:ring-2 focus:ring-emerald-200"
+      className="mt-1 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] text-faith-ink outline-none transition-colors focus:ring-2 focus:ring-emerald-200"
     />
   );
 }
@@ -505,7 +505,7 @@ function TextArea({
       onChange={(e) => onChange(e.target.value)}
       placeholder={placeholder}
       rows={rows}
-      className="mt-1 w-full rounded-2xl border border-slate-200 bg-white px-3 py-2 text-[12px] text-slate-900 outline-none transition-colors focus:ring-2 focus:ring-emerald-200"
+      className="mt-1 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] text-faith-ink outline-none transition-colors focus:ring-2 focus:ring-emerald-200"
     />
   );
 }
@@ -524,7 +524,7 @@ function SelectField({
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full appearance-none rounded-2xl border border-slate-200 bg-white px-3 py-2 text-[12px] font-semibold text-slate-900 outline-none transition-colors focus:ring-2 focus:ring-emerald-200"
+        className="w-full appearance-none rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] font-semibold text-faith-ink outline-none transition-colors focus:ring-2 focus:ring-emerald-200"
       >
         {options.map((option) => (
           <option key={option} value={option}>
@@ -532,7 +532,7 @@ function SelectField({
           </option>
         ))}
       </select>
-      <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+      <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-faith-slate" />
     </div>
   );
 }
@@ -560,14 +560,14 @@ function ToggleCard({
           ? accent === "orange"
             ? "border-orange-200 bg-orange-50"
             : "border-emerald-200 bg-emerald-50"
-          : "border-slate-200 bg-white hover:bg-slate-50",
+          : "border-faith-line bg-[var(--fh-surface-bg)] hover:bg-[var(--fh-surface)]",
       )}
     >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
-          <div className="text-[12px] font-semibold text-slate-900">{label}</div>
+          <div className="text-[12px] font-semibold text-faith-ink">{label}</div>
           {hint ? (
-            <div className="mt-0.5 text-[11px] text-slate-500">{hint}</div>
+            <div className="mt-0.5 text-[11px] text-faith-slate">{hint}</div>
           ) : null}
         </div>
         <span
@@ -580,7 +580,7 @@ function ToggleCard({
               : "bg-slate-200 justify-start",
           )}
         >
-          <span className="mt-1 h-4 w-4 rounded-full bg-white shadow-sm" />
+          <span className="mt-1 h-4 w-4 rounded-full bg-[var(--fh-surface-bg)] shadow-soft" />
         </span>
       </div>
     </button>
@@ -628,7 +628,7 @@ function NoticeCard({
         "w-full rounded-[26px] border p-4 text-left transition-colors",
         selected
           ? "border-emerald-200 bg-emerald-50"
-          : "border-slate-200 bg-white hover:bg-slate-50",
+          : "border-faith-line bg-[var(--fh-surface-bg)] hover:bg-[var(--fh-surface)]",
       )}
     >
       <div className="flex items-start justify-between gap-3">
@@ -643,21 +643,21 @@ function NoticeCard({
             <Pill tone={priorityTone(notice.priority)}>{notice.priority}</Pill>
             <Pill tone={statusTone(notice.status)}>{notice.status}</Pill>
           </div>
-          <div className="mt-3 text-[16px] font-bold leading-tight text-slate-900">
+          <div className="mt-3 text-[16px] font-bold leading-tight text-faith-ink">
             {notice.title}
           </div>
-          <div className="mt-1 text-[12px] leading-relaxed text-slate-500">
+          <div className="mt-1 text-[12px] leading-relaxed text-faith-slate">
             {notice.summary}
           </div>
         </div>
         {selected ? (
-          <div className="rounded-2xl bg-white px-3 py-1 text-[11px] font-semibold text-slate-600 shadow-sm">
+          <div className="rounded-2xl bg-[var(--fh-surface-bg)] px-3 py-1 text-[11px] font-semibold text-faith-slate shadow-soft">
             Editing
           </div>
         ) : null}
       </div>
 
-      <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2 text-[11px] text-slate-500">
+      <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2 text-[11px] text-faith-slate">
         <span>{notice.campus}</span>
         <span>{notice.audience}</span>
         <span>{notice.language}</span>
@@ -668,40 +668,40 @@ function NoticeCard({
         {notice.surfaces.slice(0, 4).map((surface) => (
           <span
             key={surface}
-            className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-[10px] font-semibold text-slate-600"
+            className="rounded-full border border-faith-line bg-[var(--fh-surface)] px-2.5 py-1 text-[10px] font-semibold text-faith-slate"
           >
             {surface}
           </span>
         ))}
         {notice.surfaces.length > 4 ? (
-          <span className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-[10px] font-semibold text-slate-600">
+          <span className="rounded-full border border-faith-line bg-[var(--fh-surface)] px-2.5 py-1 text-[10px] font-semibold text-faith-slate">
             +{notice.surfaces.length - 4}
           </span>
         ) : null}
       </div>
 
       <div className="mt-4 grid grid-cols-3 gap-2">
-        <div className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2">
-          <div className="text-[10px] uppercase tracking-[0.14em] text-slate-400">
+        <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2">
+          <div className="text-[10px] uppercase tracking-[0.14em] text-faith-slate">
             Reads
           </div>
-          <div className="mt-1 text-[15px] font-black text-slate-900">
+          <div className="mt-1 text-[15px] font-black text-faith-ink">
             {notice.reads.toLocaleString()}
           </div>
         </div>
-        <div className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2">
-          <div className="text-[10px] uppercase tracking-[0.14em] text-slate-400">
+        <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2">
+          <div className="text-[10px] uppercase tracking-[0.14em] text-faith-slate">
             Taps
           </div>
-          <div className="mt-1 text-[15px] font-black text-slate-900">
+          <div className="mt-1 text-[15px] font-black text-faith-ink">
             {notice.taps.toLocaleString()}
           </div>
         </div>
-        <div className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2">
-          <div className="text-[10px] uppercase tracking-[0.14em] text-slate-400">
+        <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2">
+          <div className="text-[10px] uppercase tracking-[0.14em] text-faith-slate">
             Actions
           </div>
-          <div className="mt-1 text-[15px] font-black text-slate-900">
+          <div className="mt-1 text-[15px] font-black text-faith-ink">
             {notice.conversions.toLocaleString()}
           </div>
         </div>
@@ -713,13 +713,13 @@ function NoticeCard({
 function BoardPreviewDesktop({ draft }: { draft: ComposerState }) {
   const activeSurfaces = draft.surfaces.length ? draft.surfaces : ["Noticeboard"];
   return (
-    <div className="rounded-[28px] border border-slate-200 bg-white p-4 shadow-sm">
+    <div className="rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft">
       <div className="flex items-center justify-between gap-3 border-b border-slate-100 pb-3">
         <div>
-          <div className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
+          <div className="text-[10px] font-black uppercase tracking-[0.2em] text-faith-slate">
             Desktop noticeboard preview
           </div>
-          <div className="mt-1 text-[16px] font-black text-slate-900">
+          <div className="mt-1 text-[16px] font-black text-faith-ink">
             Community Updates
           </div>
         </div>
@@ -737,7 +737,7 @@ function BoardPreviewDesktop({ draft }: { draft: ComposerState }) {
         </div>
       </div>
 
-      <div className="mt-4 rounded-[24px] border border-slate-200 bg-[#F8FAFC] p-4">
+      <div className="mt-4 rounded-[24px] border border-faith-line bg-[#F8FAFC] p-4">
         <div
           className="rounded-[22px] border p-4"
           style={{
@@ -767,10 +767,10 @@ function BoardPreviewDesktop({ draft }: { draft: ComposerState }) {
                   </Pill>
                 ) : null}
               </div>
-              <div className="mt-3 text-[20px] font-black leading-tight text-slate-900">
+              <div className="mt-3 text-[20px] font-black leading-tight text-faith-ink">
                 {draft.title || "Untitled notice"}
               </div>
-              <div className="mt-2 max-w-3xl text-[13px] leading-relaxed text-slate-600">
+              <div className="mt-2 max-w-3xl text-[13px] leading-relaxed text-faith-slate">
                 {draft.summary}
               </div>
             </div>
@@ -789,35 +789,35 @@ function BoardPreviewDesktop({ draft }: { draft: ComposerState }) {
           </div>
 
           <div className="mt-4 grid gap-3 md:grid-cols-2">
-            <div className="rounded-[18px] border border-slate-200 bg-white p-3">
-              <div className="text-[10px] uppercase tracking-[0.18em] text-slate-400">
+            <div className="rounded-[18px] border border-faith-line bg-[var(--fh-surface-bg)] p-3">
+              <div className="text-[10px] uppercase tracking-[0.18em] text-faith-slate">
                 Message body
               </div>
-              <div className="mt-2 text-[12px] leading-relaxed text-slate-600">
+              <div className="mt-2 text-[12px] leading-relaxed text-faith-slate">
                 {draft.body}
               </div>
             </div>
-            <div className="rounded-[18px] border border-slate-200 bg-white p-3">
-              <div className="text-[10px] uppercase tracking-[0.18em] text-slate-400">
+            <div className="rounded-[18px] border border-faith-line bg-[var(--fh-surface-bg)] p-3">
+              <div className="text-[10px] uppercase tracking-[0.18em] text-faith-slate">
                 Routing
               </div>
               <div className="mt-2 flex flex-wrap gap-2">
                 {activeSurfaces.map((surface) => (
                   <span
                     key={surface}
-                    className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-[10px] font-semibold text-slate-600"
+                    className="rounded-full border border-faith-line bg-[var(--fh-surface)] px-2.5 py-1 text-[10px] font-semibold text-faith-slate"
                   >
                     {surface}
                   </span>
                 ))}
               </div>
-              <div className="mt-3 text-[12px] text-slate-500">
+              <div className="mt-3 text-[12px] text-faith-slate">
                 {draft.campus} ? {draft.audience} ? {draft.language}
               </div>
-              <div className="mt-1 text-[12px] text-slate-500">
+              <div className="mt-1 text-[12px] text-faith-slate">
                 Linked to: {draft.linkedTo}
               </div>
-              <div className="mt-1 text-[12px] text-slate-500">
+              <div className="mt-1 text-[12px] text-faith-slate">
                 Window: {draft.scheduledAt} ??? ? {draft.expiresAt}
               </div>
             </div>
@@ -838,7 +838,7 @@ function BoardPreviewDesktop({ draft }: { draft: ComposerState }) {
               label: "Board sections",
               items: [
                 "Pinned notice lane",
-                "Todayâ€™s notices",
+                "Today’s notices",
                 "Campus-only updates",
               ],
             },
@@ -853,16 +853,16 @@ function BoardPreviewDesktop({ draft }: { draft: ComposerState }) {
           ].map((column) => (
             <div
               key={column.label}
-              className="rounded-[20px] border border-slate-200 bg-white p-3"
+              className="rounded-[20px] border border-faith-line bg-[var(--fh-surface-bg)] p-3"
             >
-              <div className="text-[10px] uppercase tracking-[0.18em] text-slate-400">
+              <div className="text-[10px] uppercase tracking-[0.18em] text-faith-slate">
                 {column.label}
               </div>
               <div className="mt-3 space-y-2">
                 {column.items.map((item) => (
                   <div
                     key={item}
-                    className="rounded-[14px] border border-slate-200 bg-slate-50 px-3 py-2 text-[11px] font-semibold text-slate-600"
+                    className="rounded-[14px] border border-faith-line bg-[var(--fh-surface)] px-3 py-2 text-[11px] font-semibold text-faith-slate"
                   >
                     {item}
                   </div>
@@ -880,16 +880,16 @@ function BoardPreviewMobile({ draft }: { draft: ComposerState }) {
   return (
     <div className="mx-auto w-full max-w-[360px] md:max-w-[400px]">
       <div className="rounded-[34px] bg-slate-950 p-3 shadow-[0_18px_60px_rgba(15,23,42,0.28)]">
-        <div className="overflow-hidden rounded-[28px] bg-white">
+        <div className="overflow-hidden rounded-[28px] bg-[var(--fh-surface-bg)]">
           <div className="border-b border-slate-100 px-5 py-4">
-            <div className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
+            <div className="text-[10px] font-black uppercase tracking-[0.2em] text-faith-slate">
               Mobile preview
             </div>
             <div className="mt-1 flex items-center justify-between gap-2">
-              <div className="text-[15px] font-black text-slate-900">
+              <div className="text-[15px] font-black text-faith-ink">
                 Noticeboard
               </div>
-              <div className="rounded-full bg-slate-100 px-3 py-1 text-[10px] font-bold text-slate-600">
+              <div className="rounded-full bg-slate-100 px-3 py-1 text-[10px] font-bold text-faith-slate">
                 {draft.language}
               </div>
             </div>
@@ -922,17 +922,17 @@ function BoardPreviewMobile({ draft }: { draft: ComposerState }) {
                   </Pill>
                 ) : null}
               </div>
-              <div className="mt-3 text-[16px] font-black leading-tight text-slate-900">
+              <div className="mt-3 text-[16px] font-black leading-tight text-faith-ink">
                 {draft.title}
               </div>
-              <div className="mt-2 text-[12px] leading-relaxed text-slate-600">
+              <div className="mt-2 text-[12px] leading-relaxed text-faith-slate">
                 {draft.summary}
               </div>
               <div className="mt-3 flex flex-wrap gap-2">
                 {draft.surfaces.slice(0, 3).map((surface) => (
                   <span
                     key={surface}
-                    className="rounded-full border border-slate-200 bg-white px-2.5 py-1 text-[10px] font-semibold text-slate-600"
+                    className="rounded-full border border-faith-line bg-[var(--fh-surface-bg)] px-2.5 py-1 text-[10px] font-semibold text-faith-slate"
                   >
                     {surface}
                   </span>
@@ -940,11 +940,11 @@ function BoardPreviewMobile({ draft }: { draft: ComposerState }) {
               </div>
             </div>
 
-            <div className="rounded-[22px] border border-slate-200 bg-slate-50 p-4">
-              <div className="text-[11px] font-bold text-slate-900">
+            <div className="rounded-[22px] border border-faith-line bg-[var(--fh-surface)] p-4">
+              <div className="text-[11px] font-bold text-faith-ink">
                 Community details
               </div>
-              <div className="mt-2 space-y-2 text-[11px] text-slate-600">
+              <div className="mt-2 space-y-2 text-[11px] text-faith-slate">
                 <div>{draft.campus}</div>
                 <div>{draft.audience}</div>
                 <div>{draft.scheduledAt}</div>
@@ -1161,17 +1161,17 @@ export default function FaithHubNoticeboardPage() {
 
   return (
     <div
-      className="min-h-screen w-full bg-[#f2f2f2] px-5 py-6 text-slate-900 transition-colors dark:bg-slate-950 dark:text-slate-100"
+      className="min-h-screen w-full bg-[var(--fh-page-bg)] px-5 py-6 text-faith-ink transition-colors dark:bg-slate-950 dark:text-slate-100"
     >
       <div className="mx-auto max-w-[1500px] space-y-5">
-        <div className="rounded-[34px] border border-slate-200 bg-white p-6 shadow-sm">
+        <div className="rounded-[34px] border border-faith-line bg-[var(--fh-surface-bg)] p-6 shadow-soft">
           <div className="flex flex-col gap-5 xl:flex-row xl:items-start xl:justify-between">
             <div className="min-w-0 flex-1">
 
               <ProviderPageTitle
                 icon={<Megaphone className="h-6 w-6" />}
                 title="Noticeboard"
-                subtitle="Run institution-wide announcements, campus updates, prayer alerts, volunteer calls, event reminders, and giving notices from one premium board â€” then route them into Live Sessions, notifications, events, giving, and Beacon without losing control."
+                subtitle="Run institution-wide announcements, campus updates, prayer alerts, volunteer calls, event reminders, and giving notices from one premium board — then route them into Live Sessions, notifications, events, giving, and Beacon without losing control."
               />
 
               <div className="mt-5 flex flex-wrap items-center gap-2">
@@ -1191,14 +1191,14 @@ export default function FaithHubNoticeboardPage() {
             </div>
 
             <div className="grid w-full gap-3 sm:grid-cols-2 xl:w-[470px]">
-              <div className="rounded-[28px] border border-slate-200 bg-slate-50 p-4">
-                <div className="text-[10px] font-black uppercase tracking-[0.18em] text-slate-400">
+              <div className="rounded-[28px] border border-faith-line bg-[var(--fh-surface)] p-4">
+                <div className="text-[10px] font-black uppercase tracking-[0.18em] text-faith-slate">
                   Provider profile
                 </div>
-                <div className="mt-2 text-[28px] font-black leading-none text-slate-900">
+                <div className="mt-2 text-[28px] font-black leading-none text-faith-ink">
                   Ayesigai921
                 </div>
-                <div className="mt-2 text-[12px] leading-relaxed text-slate-500">
+                <div className="mt-2 text-[12px] leading-relaxed text-faith-slate">
                   Provider Workspace ? role-aware notice publishing with campus, audience,
                   language, and safety routing.
                 </div>
@@ -1207,8 +1207,8 @@ export default function FaithHubNoticeboardPage() {
                 </div>
               </div>
 
-              <div className="rounded-[28px] border border-slate-200 bg-slate-50 p-4">
-                <div className="text-[10px] font-black uppercase tracking-[0.18em] text-slate-400">
+              <div className="rounded-[28px] border border-faith-line bg-[var(--fh-surface)] p-4">
+                <div className="text-[10px] font-black uppercase tracking-[0.18em] text-faith-slate">
                   Quick actions
                 </div>
                 <div className="mt-3 flex flex-wrap gap-2">
@@ -1225,7 +1225,7 @@ export default function FaithHubNoticeboardPage() {
                     Boost with Beacon
                   </SoftButton>
                 </div>
-                <div className="mt-4 text-[12px] text-slate-500">
+                <div className="mt-4 text-[12px] text-faith-slate">
                   Turn routine updates into a premium audience flow with one click.
                 </div>
               </div>
@@ -1237,7 +1237,7 @@ export default function FaithHubNoticeboardPage() {
               (pill) => (
                 <span
                   key={pill}
-                  className="rounded-full border border-slate-200 bg-white px-4 py-2 text-[12px] font-semibold text-slate-600"
+                  className="rounded-full border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-2 text-[12px] font-semibold text-faith-slate"
                 >
                   {pill}
                 </span>
@@ -1252,13 +1252,13 @@ export default function FaithHubNoticeboardPage() {
           ))}
         </div>
 
-        <div className="rounded-[30px] border border-slate-200 bg-white p-4 shadow-sm">
+        <div className="rounded-[30px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft">
           <div className="flex flex-col gap-3 xl:flex-row xl:items-center xl:justify-between">
             <div>
-              <div className="text-[24px] font-black tracking-[-0.02em] text-slate-900">
+              <div className="text-[24px] font-black tracking-[-0.02em] text-faith-ink">
                 Search and filter the board
               </div>
-              <div className="mt-1 text-[13px] text-slate-500">
+              <div className="mt-1 text-[13px] text-faith-slate">
                 Move between live notices, scheduled posts, archive items, and analytics without leaving the provider workspace.
               </div>
             </div>
@@ -1274,7 +1274,7 @@ export default function FaithHubNoticeboardPage() {
                       "rounded-full px-4 py-2 text-[12px] font-semibold transition-colors",
                       roleView === role
                         ? "text-white"
-                        : "border border-slate-200 bg-white text-slate-600",
+                        : "border border-faith-line bg-[var(--fh-surface-bg)] text-faith-slate",
                     )}
                     style={roleView === role ? { background: EV_NAVY } : undefined}
                   >
@@ -1287,12 +1287,12 @@ export default function FaithHubNoticeboardPage() {
 
           <div className="mt-4 grid gap-3 xl:grid-cols-[minmax(0,1.2fr)_180px_160px_1fr]">
             <div className="relative">
-              <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+              <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-faith-slate" />
               <input
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search notices, linked objects, owners, or keywords"
-                className="w-full rounded-[22px] border border-slate-200 bg-white py-3 pl-11 pr-4 text-[13px] font-medium text-slate-900 outline-none focus:ring-2 focus:ring-emerald-200"
+                className="w-full rounded-[22px] border border-faith-line bg-[var(--fh-surface-bg)] py-3 pl-11 pr-4 text-[13px] font-medium text-faith-ink outline-none focus:ring-2 focus:ring-emerald-200"
               />
             </div>
 
@@ -1322,7 +1322,7 @@ export default function FaithHubNoticeboardPage() {
                     "rounded-full px-4 py-2 text-[12px] font-semibold transition-colors",
                     view === item
                       ? "text-white"
-                      : "border border-slate-200 bg-white text-slate-600",
+                      : "border border-faith-line bg-[var(--fh-surface-bg)] text-faith-slate",
                   )}
                   style={view === item ? { background: EV_ORANGE } : undefined}
                 >
@@ -1344,7 +1344,7 @@ export default function FaithHubNoticeboardPage() {
                 {pinnedNotices.map((notice) => (
                   <div
                     key={notice.id}
-                    className="rounded-[24px] border border-slate-200 bg-slate-50 p-4"
+                    className="rounded-[24px] border border-faith-line bg-[var(--fh-surface)] p-4"
                   >
                     <div className="flex flex-wrap items-center gap-2">
                       <Pill tone="brand">
@@ -1354,13 +1354,13 @@ export default function FaithHubNoticeboardPage() {
                       <Pill tone={priorityTone(notice.priority)}>{notice.priority}</Pill>
                       <Pill tone={statusTone(notice.status)}>{notice.status}</Pill>
                     </div>
-                    <div className="mt-3 text-[16px] font-bold text-slate-900">
+                    <div className="mt-3 text-[16px] font-bold text-faith-ink">
                       {notice.title}
                     </div>
-                    <div className="mt-1 text-[12px] leading-relaxed text-slate-500">
+                    <div className="mt-1 text-[12px] leading-relaxed text-faith-slate">
                       {notice.summary}
                     </div>
-                    <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2 text-[11px] text-slate-500">
+                    <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2 text-[11px] text-faith-slate">
                       <span>{notice.linkedTo}</span>
                       <span>{notice.campus}</span>
                       <span>{notice.expiresAt}</span>
@@ -1390,21 +1390,21 @@ export default function FaithHubNoticeboardPage() {
             <Card
               title="Board intelligence"
               subtitle="Read health, response quality, and cross-object opportunities."
-              right={<BarChart3 className="h-4 w-4 text-slate-400" />}
+              right={<BarChart3 className="h-4 w-4 text-faith-slate" />}
             >
               <div className="grid gap-3 md:grid-cols-3">
                 {boardInsights.map((insight) => (
                   <div
                     key={insight.label}
-                    className="rounded-[24px] border border-slate-200 bg-slate-50 p-4"
+                    className="rounded-[24px] border border-faith-line bg-[var(--fh-surface)] p-4"
                   >
-                    <div className="text-[10px] font-black uppercase tracking-[0.16em] text-slate-400">
+                    <div className="text-[10px] font-black uppercase tracking-[0.16em] text-faith-slate">
                       {insight.label}
                     </div>
-                    <div className="mt-2 text-[20px] font-black text-slate-900">
+                    <div className="mt-2 text-[20px] font-black text-faith-ink">
                       {insight.value}
                     </div>
-                    <div className="mt-2 text-[12px] leading-relaxed text-slate-500">
+                    <div className="mt-2 text-[12px] leading-relaxed text-faith-slate">
                       {insight.hint}
                     </div>
                   </div>
@@ -1562,7 +1562,7 @@ export default function FaithHubNoticeboardPage() {
                             "rounded-full border px-3 py-2 text-[11px] font-semibold transition-colors",
                             active
                               ? "border-emerald-200 bg-emerald-50 text-emerald-800"
-                              : "border-slate-200 bg-white text-slate-600 hover:bg-slate-50",
+                              : "border-faith-line bg-[var(--fh-surface-bg)] text-faith-slate hover:bg-[var(--fh-surface)]",
                           )}
                         >
                           {surface}
@@ -1655,7 +1655,7 @@ export default function FaithHubNoticeboardPage() {
             <Card
               title="Workflow bridges"
               subtitle="Take a notice into the next best provider workflow."
-              right={<Workflow className="h-4 w-4 text-slate-400" />}
+              right={<Workflow className="h-4 w-4 text-faith-slate" />}
             >
               <div className="grid gap-3">
                 {[
@@ -1686,7 +1686,7 @@ export default function FaithHubNoticeboardPage() {
                 ].map((item) => (
                   <div
                     key={item.title}
-                    className="rounded-[24px] border border-slate-200 bg-slate-50 p-4"
+                    className="rounded-[24px] border border-faith-line bg-[var(--fh-surface)] p-4"
                   >
                     <div className="flex items-start gap-3">
                       <div
@@ -1696,10 +1696,10 @@ export default function FaithHubNoticeboardPage() {
                         {item.icon}
                       </div>
                       <div className="min-w-0">
-                        <div className="text-[13px] font-semibold text-slate-900">
+                        <div className="text-[13px] font-semibold text-faith-ink">
                           {item.title}
                         </div>
-                        <div className="mt-1 text-[12px] leading-relaxed text-slate-500">
+                        <div className="mt-1 text-[12px] leading-relaxed text-faith-slate">
                           {item.detail}
                         </div>
                       </div>
@@ -1718,14 +1718,14 @@ export default function FaithHubNoticeboardPage() {
                 {approvalBacklog.map((notice) => (
                   <div
                     key={notice.id}
-                    className="rounded-[22px] border border-slate-200 bg-slate-50 p-4"
+                    className="rounded-[22px] border border-faith-line bg-[var(--fh-surface)] p-4"
                   >
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0">
-                        <div className="text-[13px] font-semibold text-slate-900">
+                        <div className="text-[13px] font-semibold text-faith-ink">
                           {notice.title}
                         </div>
-                        <div className="mt-1 text-[12px] text-slate-500">
+                        <div className="mt-1 text-[12px] text-faith-slate">
                           {notice.category} ? {notice.campus} ? {notice.owner}
                         </div>
                       </div>
@@ -1762,7 +1762,7 @@ export default function FaithHubNoticeboardPage() {
             <Card
               title="Operational calendar lane"
               subtitle="See how the board behaves over the next 24 hours."
-              right={<CalendarClock className="h-4 w-4 text-slate-400" />}
+              right={<CalendarClock className="h-4 w-4 text-faith-slate" />}
             >
               <div className="space-y-3">
                 {[
@@ -1799,17 +1799,17 @@ export default function FaithHubNoticeboardPage() {
                 ].map((item) => (
                   <div
                     key={`${item.time}-${item.label}`}
-                    className="rounded-[22px] border border-slate-200 bg-slate-50 p-4"
+                    className="rounded-[22px] border border-faith-line bg-[var(--fh-surface)] p-4"
                   >
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0">
-                        <div className="text-[11px] font-black uppercase tracking-[0.16em] text-slate-400">
+                        <div className="text-[11px] font-black uppercase tracking-[0.16em] text-faith-slate">
                           {item.time}
                         </div>
-                        <div className="mt-1 text-[13px] font-semibold text-slate-900">
+                        <div className="mt-1 text-[13px] font-semibold text-faith-ink">
                           {item.label}
                         </div>
-                        <div className="mt-1 text-[12px] text-slate-500">
+                        <div className="mt-1 text-[12px] text-faith-slate">
                           {item.detail}
                         </div>
                       </div>
@@ -1823,7 +1823,7 @@ export default function FaithHubNoticeboardPage() {
             <Card
               title="Executive guidance"
               subtitle="Role-aware recommendations for production, leadership, and outreach teams."
-              right={<Sparkles className="h-4 w-4 text-slate-400" />}
+              right={<Sparkles className="h-4 w-4 text-faith-slate" />}
             >
               <div className="space-y-3">
                 {[
@@ -1851,12 +1851,12 @@ export default function FaithHubNoticeboardPage() {
                 ].map((item) => (
                   <div
                     key={item.title}
-                    className="rounded-[24px] border border-slate-200 bg-slate-50 p-4"
+                    className="rounded-[24px] border border-faith-line bg-[var(--fh-surface)] p-4"
                   >
-                    <div className="text-[13px] font-semibold text-slate-900">
+                    <div className="text-[13px] font-semibold text-faith-ink">
                       {item.title}
                     </div>
-                    <div className="mt-1 text-[12px] leading-relaxed text-slate-500">
+                    <div className="mt-1 text-[12px] leading-relaxed text-faith-slate">
                       {item.detail}
                     </div>
                     <button
@@ -1886,6 +1886,7 @@ export default function FaithHubNoticeboardPage() {
     </div>
   );
 }
+
 
 
 

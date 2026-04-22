@@ -1,4 +1,4 @@
-ï»¿"use client";
+"use client";
 
 import React, { useMemo, useState } from "react";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 
 /**
- * Provider â€” Moderation Settings
+ * Provider — Moderation Settings
  * ---------------------------------------
  * Distinct from Reviews & Moderation.
  * controls policy rules, thresholds, child-safe defaults,
@@ -110,7 +110,7 @@ function Pill({
             ? "bg-rose-50 border-rose-200 text-rose-800 dark:bg-rose-500/10 dark:border-rose-800 dark:text-rose-300"
             : tone === "indigo"
               ? "bg-indigo-50 border-indigo-200 text-indigo-800 dark:bg-indigo-500/10 dark:border-indigo-800 dark:text-indigo-300"
-              : "bg-white border-slate-200 text-slate-700 dark:bg-slate-900 dark:border-slate-700 dark:text-slate-300";
+              : "bg-[var(--fh-surface-bg)] border-faith-line text-slate-700 dark:bg-slate-900 dark:border-slate-700 dark:text-slate-300";
 
   const style =
     tone === "brand"
@@ -149,8 +149,8 @@ function Btn({
     tone === "primary"
       ? "border-transparent text-white"
       : tone === "secondary"
-        ? "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-800"
-        : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-800";
+        ? "border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-faith-ink dark:text-slate-100 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800"
+        : "border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-faith-ink dark:text-slate-100 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800";
   const style = tone === "primary" ? { background: GREEN } : undefined;
 
   return (
@@ -176,12 +176,12 @@ function Toggle({
       onClick={() => onChange(!checked)}
       className={cx(
         "relative inline-flex h-6 w-11 items-center rounded-full transition-colors",
-        checked ? "bg-slate-900 dark:bg-white" : "bg-slate-300 dark:bg-slate-700",
+        checked ? "bg-slate-900 dark:bg-[var(--fh-surface-bg)]" : "bg-slate-300 dark:bg-slate-700",
       )}
     >
       <span
         className={cx(
-          "inline-block h-5 w-5 transform rounded-full bg-white dark:bg-slate-900 shadow-md transition-transform",
+          "inline-block h-5 w-5 transform rounded-full bg-[var(--fh-surface-bg)] dark:bg-slate-900 shadow-md transition-transform",
           checked ? "translate-x-5" : "translate-x-1",
         )}
       />
@@ -205,15 +205,15 @@ function Card({
   return (
     <div
       className={cx(
-        "rounded-[28px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 transition-colors",
+        "rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors",
         className,
       )}
     >
       <div className="flex items-start justify-between gap-3">
         <div>
-          <div className="text-[13px] font-extrabold text-slate-900 dark:text-slate-100">{title}</div>
+          <div className="text-[13px] font-extrabold text-faith-ink dark:text-slate-100">{title}</div>
           {subtitle ? (
-            <div className="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">{subtitle}</div>
+            <div className="mt-0.5 text-[11px] text-faith-slate">{subtitle}</div>
           ) : null}
         </div>
         {right}
@@ -235,15 +235,15 @@ function StatCard({
   dot: string;
 }) {
   return (
-    <div className="rounded-[24px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3 transition-colors">
+    <div className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 py-3 transition-colors">
       <div className="flex items-start justify-between gap-2">
-        <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-slate-400 dark:text-slate-500">
+        <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">
           {label}
         </div>
         <span className="h-7 w-7 rounded-full" style={{ background: dot }} />
       </div>
-      <div className="mt-3 text-[15px] font-black text-slate-900 dark:text-slate-100">{value}</div>
-      <div className="mt-1 text-[11px] leading-snug text-slate-500 dark:text-slate-400">{detail}</div>
+      <div className="mt-3 text-[15px] font-black text-faith-ink dark:text-slate-100">{value}</div>
+      <div className="mt-1 text-[11px] leading-snug text-faith-slate">{detail}</div>
     </div>
   );
 }
@@ -267,26 +267,26 @@ function SectionNavItem({
         "w-full rounded-[22px] border px-4 py-3 text-left transition-colors flex items-center justify-between gap-3",
         active
           ? "border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-900/20"
-          : "border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800",
+          : "border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800",
       )}
     >
       <div className="flex items-center gap-3 min-w-0">
-        <span className="h-8 w-8 rounded-full border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 grid place-items-center shrink-0">
+        <span className="h-8 w-8 rounded-full border border-faith-line dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-800 grid place-items-center shrink-0">
           {icon}
         </span>
-        <span className="truncate text-[13px] font-extrabold text-slate-900 dark:text-slate-100">{label}</span>
+        <span className="truncate text-[13px] font-extrabold text-faith-ink dark:text-slate-100">{label}</span>
       </div>
-      <ChevronRight className="h-4 w-4 text-slate-400" />
+      <ChevronRight className="h-4 w-4 text-faith-slate" />
     </button>
   );
 }
 
 function MiniPolicyPack({ pack }: { pack: PolicyPack }) {
   return (
-    <div className="rounded-[22px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-4 py-3 transition-colors flex items-center justify-between gap-3">
+    <div className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-3 transition-colors flex items-center justify-between gap-3">
       <div className="min-w-0">
-        <div className="truncate text-[13px] font-extrabold text-slate-900 dark:text-slate-100">{pack.title}</div>
-        <div className="mt-0.5 truncate text-[11px] text-slate-500 dark:text-slate-400">{pack.detail}</div>
+        <div className="truncate text-[13px] font-extrabold text-faith-ink dark:text-slate-100">{pack.title}</div>
+        <div className="mt-0.5 truncate text-[11px] text-faith-slate">{pack.detail}</div>
       </div>
       <Pill tone={pack.status === "Active" ? "good" : "warn"}>{pack.status}</Pill>
     </div>
@@ -301,12 +301,12 @@ function SafeguardTile({
   onToggle: (id: string) => void;
 }) {
   return (
-    <div className="rounded-[22px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-4 py-3 transition-colors">
+    <div className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-3 transition-colors">
       <div className="flex items-start justify-between gap-3">
         <div>
-          <div className="text-[13px] font-extrabold leading-tight text-slate-900 dark:text-slate-100">{safeguard.title}</div>
-          <div className="mt-1 text-[11px] leading-snug text-slate-500 dark:text-slate-400">{safeguard.detail}</div>
-          <div className="mt-1 text-[11px] font-semibold text-slate-400 dark:text-slate-500">High-trust safeguard for minors,â€¦</div>
+          <div className="text-[13px] font-extrabold leading-tight text-faith-ink dark:text-slate-100">{safeguard.title}</div>
+          <div className="mt-1 text-[11px] leading-snug text-faith-slate">{safeguard.detail}</div>
+          <div className="mt-1 text-[11px] font-semibold text-faith-slate">High-trust safeguard for minors,…</div>
         </div>
         <Toggle checked={safeguard.enabled} onChange={() => onToggle(safeguard.id)} />
       </div>
@@ -318,8 +318,8 @@ function QueueTile({ item }: { item: QueueItem }) {
   return (
     <div className="rounded-[22px] border border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-900/10 px-4 py-3 transition-colors flex items-center justify-between gap-3">
       <div className="min-w-0">
-        <div className="truncate text-[13px] font-extrabold text-slate-900 dark:text-slate-100">{item.title}</div>
-        <div className="mt-0.5 truncate text-[11px] text-slate-500 dark:text-slate-400">{item.detail}</div>
+        <div className="truncate text-[13px] font-extrabold text-faith-ink dark:text-slate-100">{item.title}</div>
+        <div className="mt-0.5 truncate text-[11px] text-faith-slate">{item.detail}</div>
       </div>
       <Pill tone={item.state === "Ready" ? "good" : item.state === "Testing" ? "warn" : "neutral"}>{item.state}</Pill>
     </div>
@@ -328,10 +328,10 @@ function QueueTile({ item }: { item: QueueItem }) {
 
 function AutomationTile({ item }: { item: AutomationRule }) {
   return (
-    <div className="rounded-[22px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-4 py-3 transition-colors flex items-center justify-between gap-3">
+    <div className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-3 transition-colors flex items-center justify-between gap-3">
       <div className="min-w-0">
-        <div className="truncate text-[13px] font-extrabold text-slate-900 dark:text-slate-100">{item.title}</div>
-        <div className="mt-0.5 truncate text-[11px] text-slate-500 dark:text-slate-400">{item.detail}</div>
+        <div className="truncate text-[13px] font-extrabold text-faith-ink dark:text-slate-100">{item.title}</div>
+        <div className="mt-0.5 truncate text-[11px] text-faith-slate">{item.detail}</div>
       </div>
       <Pill tone={item.state === "Active" ? "good" : item.state === "Testing" ? "warn" : "neutral"}>{item.state}</Pill>
     </div>
@@ -341,10 +341,10 @@ function AutomationTile({ item }: { item: AutomationRule }) {
 function PreviewOutcome({ item }: { item: PreviewExample }) {
   const tone = item.outcome === "Block" ? "danger" : item.outcome === "Hold" ? "warn" : "good";
   return (
-    <div className="rounded-[22px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-4 py-3 transition-colors flex items-center justify-between gap-3">
+    <div className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-3 transition-colors flex items-center justify-between gap-3">
       <div className="min-w-0">
-        <div className="truncate text-[13px] font-extrabold text-slate-900 dark:text-slate-100">{item.title}</div>
-        <div className="mt-0.5 truncate text-[11px] text-slate-500 dark:text-slate-400">{item.surface}</div>
+        <div className="truncate text-[13px] font-extrabold text-faith-ink dark:text-slate-100">{item.title}</div>
+        <div className="mt-0.5 truncate text-[11px] text-faith-slate">{item.surface}</div>
       </div>
       <Pill tone={tone}>{item.outcome}</Pill>
     </div>
@@ -353,10 +353,10 @@ function PreviewOutcome({ item }: { item: PreviewExample }) {
 
 function FeedTile({ item }: { item: FeedPage }) {
   return (
-    <div className="rounded-[22px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-4 py-3 transition-colors flex items-center justify-between gap-3">
+    <div className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-3 transition-colors flex items-center justify-between gap-3">
       <div className="min-w-0">
-        <div className="truncate text-[13px] font-extrabold text-slate-900 dark:text-slate-100">{item.title}</div>
-        <div className="mt-0.5 truncate text-[11px] text-slate-500 dark:text-slate-400">{item.detail}</div>
+        <div className="truncate text-[13px] font-extrabold text-faith-ink dark:text-slate-100">{item.title}</div>
+        <div className="mt-0.5 truncate text-[11px] text-faith-slate">{item.detail}</div>
       </div>
       <Pill tone={item.state === "Healthy" ? "good" : "indigo"}>{item.state}</Pill>
     </div>
@@ -369,37 +369,37 @@ export default function FH_P_121_ModerationSettings() {
   const [safeguards, setSafeguards] = useState<Safeguard[]>([
     {
       id: "sg_1",
-      title: "Disable anonymous repliesâ€¦",
+      title: "Disable anonymous replies…",
       detail: "Reduce hidden participation in child-facing or highly sensitive flows.",
       enabled: true,
     },
     {
       id: "sg_2",
-      title: "Block adult-to-childâ€¦",
+      title: "Block adult-to-child…",
       detail: "Prevent direct adult-to-child routing outside approved care flows.",
       enabled: true,
     },
     {
       id: "sg_3",
-      title: "Require dual approval forâ€¦",
+      title: "Require dual approval for…",
       detail: "Mandate an extra reviewer for child-linked moderation actions.",
       enabled: true,
     },
     {
       id: "sg_4",
-      title: "Disable direct messaging forâ€¦",
+      title: "Disable direct messaging for…",
       detail: "Keep child-safe conversation surfaces group-led and audited.",
       enabled: true,
     },
     {
       id: "sg_5",
-      title: "Require media consent onâ€¦",
+      title: "Require media consent on…",
       detail: "Add stricter consent checks for testimony and prayer uploads.",
       enabled: true,
     },
     {
       id: "sg_6",
-      title: "Freeze public sort order duriâ€¦",
+      title: "Freeze public sort order duri…",
       detail: "Reduce rapid public amplification when risk signals spike.",
       enabled: true,
     },
@@ -460,7 +460,7 @@ export default function FH_P_121_ModerationSettings() {
     {
       id: "p_1",
       title: "Live chat message with repeated links",
-      surface: "Live Sessions Â· Chat",
+      surface: "Live Sessions · Chat",
       outcome: "Hold",
     },
     {
@@ -529,9 +529,9 @@ export default function FH_P_121_ModerationSettings() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f2f2f2] dark:bg-slate-950 text-slate-900 dark:text-slate-100 p-4 md:p-6">
+    <div className="min-h-screen bg-[var(--fh-page-bg)] dark:bg-slate-950 text-faith-ink dark:text-slate-100 p-4 md:p-6">
       <div className="mx-auto max-w-[1460px] space-y-4">
-        <div className="rounded-[30px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 py-5 transition-colors">
+        <div className="rounded-[30px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-6 py-5 transition-colors">
           <div className="flex flex-col gap-5 xl:flex-row xl:items-start xl:justify-between">
             <div className="flex items-start gap-4 min-w-0">
               <div className="min-w-0">
@@ -563,15 +563,15 @@ export default function FH_P_121_ModerationSettings() {
           </div>
         </div>
 
-        <div className="rounded-[24px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3 transition-colors flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+        <div className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 py-3 transition-colors flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
           <div className="flex flex-wrap items-center gap-2 min-w-0">
             <Pill tone="brand">Premium moderation defaults</Pill>
-            <div className="text-[12px] font-extrabold text-slate-500 dark:text-slate-400 truncate">
+            <div className="text-[12px] font-extrabold text-faith-slate truncate">
               Rule definitions here shape Live Sessions, Community, Prayer, Counseling, Reviews, and all linked trust surfaces.
             </div>
           </div>
-          <div className="text-[12px] font-extrabold uppercase tracking-[0.12em] text-slate-400 dark:text-slate-500">
-            Surface engine Â· Safeguards Â· Automation
+          <div className="text-[12px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">
+            Surface engine · Safeguards · Automation
           </div>
         </div>
 
@@ -593,31 +593,31 @@ export default function FH_P_121_ModerationSettings() {
               <div className="space-y-2">
                 <SectionNavItem
                   active={section === "core"}
-                  icon={<Settings2 className="h-4 w-4 text-slate-500" />}
+                  icon={<Settings2 className="h-4 w-4 text-faith-slate" />}
                   label="Core policy packs"
                   onClick={() => setSection("core")}
                 />
                 <SectionNavItem
                   active={section === "live"}
-                  icon={<Siren className="h-4 w-4 text-slate-500" />}
+                  icon={<Siren className="h-4 w-4 text-faith-slate" />}
                   label="Live chat defaults"
                   onClick={() => setSection("live")}
                 />
                 <SectionNavItem
                   active={section === "community"}
-                  icon={<Shield className="h-4 w-4 text-slate-500" />}
+                  icon={<Shield className="h-4 w-4 text-faith-slate" />}
                   label="Community surfaces"
                   onClick={() => setSection("community")}
                 />
                 <SectionNavItem
                   active={section === "childSafe"}
-                  icon={<Lock className="h-4 w-4 text-slate-500" />}
+                  icon={<Lock className="h-4 w-4 text-faith-slate" />}
                   label="Child-safe settings"
                   onClick={() => setSection("childSafe")}
                 />
                 <SectionNavItem
                   active={section === "automation"}
-                  icon={<Bot className="h-4 w-4 text-slate-500" />}
+                  icon={<Bot className="h-4 w-4 text-faith-slate" />}
                   label="Automation rules"
                   onClick={() => setSection("automation")}
                 />
@@ -639,8 +639,8 @@ export default function FH_P_121_ModerationSettings() {
                         : "border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-900/10",
                     )}
                   >
-                    <div className="text-[13px] font-extrabold text-slate-900 dark:text-slate-100">{item.title}</div>
-                    <div className="mt-1 text-[11px] leading-snug text-slate-500 dark:text-slate-400">{item.detail}</div>
+                    <div className="text-[13px] font-extrabold text-faith-ink dark:text-slate-100">{item.title}</div>
+                    <div className="mt-1 text-[11px] leading-snug text-faith-slate">{item.detail}</div>
                   </div>
                 ))}
               </div>
@@ -711,7 +711,7 @@ export default function FH_P_121_ModerationSettings() {
                     "rounded-full border px-3 py-1 text-[11px] font-extrabold transition-colors",
                     previewMode === "desktop"
                       ? "border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-900/10 text-emerald-800 dark:text-emerald-300"
-                      : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400",
+                      : "border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-faith-slate",
                   )}
                 >
                   Desktop preview
@@ -723,20 +723,20 @@ export default function FH_P_121_ModerationSettings() {
                     "rounded-full border px-3 py-1 text-[11px] font-extrabold transition-colors",
                     previewMode === "mobile"
                       ? "border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-900/10 text-emerald-800 dark:text-emerald-300"
-                      : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400",
+                      : "border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-faith-slate",
                   )}
                 >
                   Mobile preview
                 </button>
               </div>
 
-              <div className="mt-4 rounded-[24px] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-4 transition-colors">
+              <div className="mt-4 rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 transition-colors">
                 <div className="flex items-start justify-between gap-3">
                   <div>
-                    <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-slate-400 dark:text-slate-500">
+                    <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">
                       Policy simulation
                     </div>
-                    <div className="mt-1 text-[14px] font-black text-slate-900 dark:text-slate-100">Moderation outcome examples</div>
+                    <div className="mt-1 text-[14px] font-black text-faith-ink dark:text-slate-100">Moderation outcome examples</div>
                   </div>
                   <Pill tone="indigo">Preview linked to settings</Pill>
                 </div>
@@ -745,7 +745,7 @@ export default function FH_P_121_ModerationSettings() {
                     <PreviewOutcome key={item.id} item={item} />
                   ))}
                 </div>
-                <div className="mt-4 text-[11px] text-slate-500 dark:text-slate-400 flex items-center gap-2">
+                <div className="mt-4 text-[11px] text-faith-slate flex items-center gap-2">
                   <Eye className="h-4 w-4" />
                   {previewMode === "desktop"
                     ? "Desktop simulation shows moderator-side handling and rule inheritance."
@@ -770,6 +770,7 @@ export default function FH_P_121_ModerationSettings() {
     </div>
   );
 }
+
 
 
 

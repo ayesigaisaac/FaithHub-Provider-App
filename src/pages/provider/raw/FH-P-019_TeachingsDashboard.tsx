@@ -1,4 +1,4 @@
-ï»¿// @ts-nocheck
+// @ts-nocheck
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -36,7 +36,7 @@ import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
- * Provider â€” Teachings Dashboard
+ * Provider — Teachings Dashboard
  * ---------------------------------------
  * Premium control surface for everything in the Teachings section.
  *
@@ -251,13 +251,13 @@ const TEACHINGS: TeachingRecord[] = [
   },
   {
     id: "teach-episode-week5",
-    title: "Week 5 Â· Return with Humility",
+    title: "Week 5 · Return with Humility",
     subtitle: "Episode inside 40 Days of Renewal with live prayer response and follow-up notes.",
     type: "Episode",
     status: "Scheduled",
     speaker: "Pastor Anna",
     summary:
-      "The next episode in the Renewal series, set to anchor the weekâ€™s live prayer encounter and replay handoff.",
+      "The next episode in the Renewal series, set to anchor the week’s live prayer encounter and replay handoff.",
     coverUrl: HERO_2,
     campus: "Online-first",
     access: "Follower-first",
@@ -454,7 +454,7 @@ function Pill({
       ? "border-rose-200 bg-rose-50 text-rose-700"
       : tone === "navy"
       ? "border-slate-900 bg-slate-900 text-white"
-      : "border-slate-200 bg-white text-slate-700";
+      : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700";
 
   return (
     <span
@@ -488,7 +488,7 @@ function SoftButton({
       onClick={onClick}
       disabled={disabled}
       className={cx(
-        "inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-2 text-[12px] font-semibold text-slate-700 transition-colors hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50",
+        "inline-flex items-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-2 text-[12px] font-semibold text-slate-700 transition-colors hover:bg-[var(--fh-surface)] disabled:cursor-not-allowed disabled:opacity-50",
         className,
       )}
     >
@@ -538,12 +538,12 @@ function Card({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-[28px] border border-slate-200 bg-white p-4 transition-colors">
+    <div className="rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 transition-colors">
       <div className="flex items-start justify-between gap-3">
         <div>
-          <div className="text-[14px] font-bold text-slate-900">{title}</div>
+          <div className="text-[14px] font-bold text-faith-ink">{title}</div>
           {subtitle ? (
-            <div className="mt-0.5 text-[11px] text-slate-500">{subtitle}</div>
+            <div className="mt-0.5 text-[11px] text-faith-slate">{subtitle}</div>
           ) : null}
         </div>
         {right ? <div className="shrink-0">{right}</div> : null}
@@ -583,22 +583,22 @@ function StatCard({
 
   return (
     <div
-      className="rounded-[24px] border border-slate-200 p-4"
+      className="rounded-[24px] border border-faith-line p-4"
       style={{ background: accentBg }}
     >
       <div className="flex items-start justify-between gap-2">
-        <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500">
+        <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-faith-slate">
           {label}
         </div>
         <div
-          className="h-9 w-9 rounded-2xl border border-white/80 shadow-sm"
+          className="h-9 w-9 rounded-2xl border border-white/80 shadow-soft"
           style={{ background: dot, opacity: 0.95 }}
         />
       </div>
-      <div className="mt-3 text-[20px] font-black tracking-tight text-slate-900">
+      <div className="mt-3 text-[20px] font-black tracking-tight text-faith-ink">
         {value}
       </div>
-      <div className="mt-1 text-[12px] leading-5 text-slate-600">{hint}</div>
+      <div className="mt-1 text-[12px] leading-5 text-faith-slate">{hint}</div>
     </div>
   );
 }
@@ -631,20 +631,20 @@ function Drawer({
         className="absolute inset-0 bg-slate-900/40 backdrop-blur-sm"
         onClick={onClose}
       />
-      <div className="absolute right-0 top-0 h-full w-full max-w-5xl bg-white shadow-2xl">
+      <div className="absolute right-0 top-0 h-full w-full max-w-5xl bg-[var(--fh-surface-bg)] shadow-2xl">
         <div className="flex h-full flex-col">
-          <div className="border-b border-slate-200 px-6 py-4">
+          <div className="border-b border-faith-line px-6 py-4">
             <div className="flex items-start justify-between gap-3">
               <div>
-                <div className="text-[14px] font-bold text-slate-900">{title}</div>
+                <div className="text-[14px] font-bold text-faith-ink">{title}</div>
                 {subtitle ? (
-                  <div className="mt-0.5 text-[11px] text-slate-500">{subtitle}</div>
+                  <div className="mt-0.5 text-[11px] text-faith-slate">{subtitle}</div>
                 ) : null}
               </div>
               <button
                 type="button"
                 onClick={onClose}
-                className="grid h-9 w-9 place-items-center rounded-2xl border border-slate-200 text-slate-600 hover:bg-slate-50"
+                className="grid h-9 w-9 place-items-center rounded-2xl border border-faith-line text-faith-slate hover:bg-[var(--fh-surface)]"
                 aria-label="Close"
               >
                 <X className="h-4 w-4" />
@@ -707,7 +707,7 @@ function TeachingRow({
         "w-full rounded-[24px] border p-3 text-left transition-colors",
         selected
           ? "border-emerald-200 bg-emerald-50/70"
-          : "border-slate-200 bg-white hover:bg-slate-50",
+          : "border-faith-line bg-[var(--fh-surface-bg)] hover:bg-[var(--fh-surface)]",
       )}
     >
       <div className="flex items-start gap-3">
@@ -724,22 +724,22 @@ function TeachingRow({
             {teaching.beaconReady ? <Pill tone="good">Beacon-ready</Pill> : null}
           </div>
 
-          <div className="mt-2 text-[15px] font-bold leading-5 text-slate-900">
+          <div className="mt-2 text-[15px] font-bold leading-5 text-faith-ink">
             {teaching.title}
           </div>
-          <div className="mt-0.5 text-[12px] text-slate-600">{teaching.subtitle}</div>
-          <div className="mt-1 text-[11px] text-slate-500">
+          <div className="mt-0.5 text-[12px] text-faith-slate">{teaching.subtitle}</div>
+          <div className="mt-1 text-[11px] text-faith-slate">
             {teaching.speaker}
-            {teaching.seriesLabel ? ` Â· ${teaching.seriesLabel}` : ""}
-            {teaching.episodeLabel ? ` Â· ${teaching.episodeLabel}` : ""}
-            {teaching.upcomingISO ? ` Â· ${fmtDateTime(teaching.upcomingISO)}` : ""}
+            {teaching.seriesLabel ? ` · ${teaching.seriesLabel}` : ""}
+            {teaching.episodeLabel ? ` · ${teaching.episodeLabel}` : ""}
+            {teaching.upcomingISO ? ` · ${fmtDateTime(teaching.upcomingISO)}` : ""}
           </div>
 
           <div className="mt-3 flex flex-wrap gap-2">
             {teaching.tags.map((tag) => (
               <span
                 key={tag}
-                className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-semibold text-slate-600"
+                className="rounded-full border border-faith-line bg-[var(--fh-surface)] px-2.5 py-1 text-[11px] font-semibold text-faith-slate"
               >
                 {tag}
               </span>
@@ -747,33 +747,33 @@ function TeachingRow({
           </div>
 
           <div className="mt-3 grid gap-2 sm:grid-cols-4">
-            <div className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2">
-              <div className="text-[10px] uppercase tracking-[0.16em] text-slate-400">
+            <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2">
+              <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">
                 Live
               </div>
-              <div className="mt-1 text-[13px] font-bold text-slate-900">{teaching.liveCount}</div>
+              <div className="mt-1 text-[13px] font-bold text-faith-ink">{teaching.liveCount}</div>
             </div>
-            <div className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2">
-              <div className="text-[10px] uppercase tracking-[0.16em] text-slate-400">
+            <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2">
+              <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">
                 Replay / Clips
               </div>
-              <div className="mt-1 text-[13px] font-bold text-slate-900">
+              <div className="mt-1 text-[13px] font-bold text-faith-ink">
                 {teaching.replayCount} / {teaching.clipCount}
               </div>
             </div>
-            <div className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2">
-              <div className="text-[10px] uppercase tracking-[0.16em] text-slate-400">
+            <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2">
+              <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">
                 Watch starts
               </div>
-              <div className="mt-1 text-[13px] font-bold text-slate-900">
+              <div className="mt-1 text-[13px] font-bold text-faith-ink">
                 {fmtInt(teaching.watchStarts)}
               </div>
             </div>
-            <div className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2">
-              <div className="text-[10px] uppercase tracking-[0.16em] text-slate-400">
+            <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2">
+              <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">
                 Resources
               </div>
-              <div className="mt-1 text-[13px] font-bold text-slate-900">
+              <div className="mt-1 text-[13px] font-bold text-faith-ink">
                 {teaching.resourceCount}
               </div>
             </div>
@@ -782,8 +782,8 @@ function TeachingRow({
           <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
             <div className="flex flex-wrap items-center gap-2">
               <Pill tone={readinessTone}>{readinessText}</Pill>
-              <span className="text-[11px] text-slate-500">
-                Updated {fmtDate(teaching.updatedISO)} Â· Owner {teaching.owner}
+              <span className="text-[11px] text-faith-slate">
+                Updated {fmtDate(teaching.updatedISO)} · Owner {teaching.owner}
               </span>
             </div>
             <div className="flex flex-wrap gap-2">
@@ -821,7 +821,7 @@ function TeachingPreview({
     teaching.type === "Series" ? "Get reminders" : teaching.resourceCount > 0 ? "View notes" : "Follow";
 
   const frame = (
-    <div className="overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-sm">
+    <div className="overflow-hidden rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] shadow-soft">
       <div className="relative h-52 overflow-hidden bg-slate-100">
         <img src={teaching.coverUrl} alt={teaching.title} className="h-full w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#08122c] via-[#08122c]/10 to-transparent" />
@@ -877,37 +877,37 @@ function TeachingPreview({
 
       <div className="grid gap-4 p-4 md:grid-cols-[1.2fr,0.8fr]">
         <div>
-          <div className="text-[15px] font-bold text-slate-900">Teaching summary</div>
-          <div className="mt-1 text-[12px] leading-6 text-slate-600">{teaching.summary}</div>
+          <div className="text-[15px] font-bold text-faith-ink">Teaching summary</div>
+          <div className="mt-1 text-[12px] leading-6 text-faith-slate">{teaching.summary}</div>
           <div className="mt-4 flex flex-wrap gap-2">
             {teaching.tags.map((tag) => (
               <span
                 key={tag}
-                className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-[11px] font-semibold text-slate-600"
+                className="rounded-full border border-faith-line bg-[var(--fh-surface)] px-3 py-1 text-[11px] font-semibold text-faith-slate"
               >
                 {tag}
               </span>
             ))}
           </div>
         </div>
-        <div className="rounded-[24px] border border-slate-200 bg-slate-50 p-4">
-          <div className="text-[15px] font-bold text-slate-900">Teaching signals</div>
-          <div className="mt-3 space-y-2 text-[12px] text-slate-600">
+        <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface)] p-4">
+          <div className="text-[15px] font-bold text-faith-ink">Teaching signals</div>
+          <div className="mt-3 space-y-2 text-[12px] text-faith-slate">
             <div className="flex items-center justify-between gap-3">
               <span>Watch starts</span>
-              <span className="font-bold text-slate-900">{fmtInt(teaching.watchStarts)}</span>
+              <span className="font-bold text-faith-ink">{fmtInt(teaching.watchStarts)}</span>
             </div>
             <div className="flex items-center justify-between gap-3">
               <span>Followers</span>
-              <span className="font-bold text-slate-900">{fmtInt(teaching.followers)}</span>
+              <span className="font-bold text-faith-ink">{fmtInt(teaching.followers)}</span>
             </div>
             <div className="flex items-center justify-between gap-3">
               <span>Giving influenced</span>
-              <span className="font-bold text-slate-900">{money(teaching.donationsInfluenced)}</span>
+              <span className="font-bold text-faith-ink">{money(teaching.donationsInfluenced)}</span>
             </div>
             <div className="flex items-center justify-between gap-3">
               <span>Languages</span>
-              <span className="font-bold text-slate-900">{teaching.languages.join(", ")}</span>
+              <span className="font-bold text-faith-ink">{teaching.languages.join(", ")}</span>
             </div>
           </div>
         </div>
@@ -919,7 +919,7 @@ function TeachingPreview({
 
   return (
     <div className="mx-auto max-w-[320px] rounded-[36px] bg-slate-900 p-3 shadow-2xl">
-      <div className="overflow-hidden rounded-[28px] bg-white">{frame}</div>
+      <div className="overflow-hidden rounded-[28px] bg-[var(--fh-surface-bg)]">{frame}</div>
     </div>
   );
 }
@@ -948,12 +948,12 @@ function TemplateTile({
     <button
       type="button"
       onClick={onClick}
-      className="rounded-[24px] border border-slate-200 bg-white p-4 text-left transition-colors hover:bg-slate-50"
+      className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 text-left transition-colors hover:bg-[var(--fh-surface)]"
     >
       <div className="flex items-start justify-between gap-3">
         <div>
-          <div className="text-[14px] font-bold text-slate-900">{card.title}</div>
-          <div className="mt-1 text-[12px] leading-5 text-slate-600">{card.subtitle}</div>
+          <div className="text-[14px] font-bold text-faith-ink">{card.title}</div>
+          <div className="mt-1 text-[12px] leading-5 text-faith-slate">{card.subtitle}</div>
         </div>
         <div
           className="grid h-10 w-10 place-items-center rounded-2xl"
@@ -1103,7 +1103,7 @@ export default function TeachingsDashboardPage() {
     if (!selectedTeaching) return [] as string[];
     const items: string[] = [];
     if (selectedTeaching.type !== "Series") items.push("Open the Standalone Teaching Builder and finish the viewer-facing package.");
-    if (selectedTeaching.liveCount === 0) items.push("Create a linked Live Session so this teaching can enter the full live â†’ replay â†’ clips workflow.");
+    if (selectedTeaching.liveCount === 0) items.push("Create a linked Live Session so this teaching can enter the full live ? replay ? clips workflow.");
     if (selectedTeaching.replayCount > 0) items.push("Open Replays & Clips to generate short discovery moments and push them into Beacon.");
     if (selectedTeaching.beaconReady) items.push("Launch a Beacon campaign while the teaching is still fresh and conversion-ready.");
     if (selectedTeaching.translationDue > 0) items.push("Complete translation variants before the next outreach or replay reminder journey.");
@@ -1136,16 +1136,16 @@ export default function TeachingsDashboardPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f2f2f2] text-slate-900">
+    <div className="min-h-screen bg-[var(--fh-page-bg)] text-faith-ink">
       <div className="mx-auto max-w-[1600px] px-5 py-5 md:px-6 lg:px-8">
-        <section className="rounded-[34px] border border-slate-200 bg-white p-4 shadow-sm md:p-5">
+        <section className="rounded-[34px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft md:p-5">
           <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
             <div className="flex min-w-0 gap-4">
               <div className="min-w-0">
                 <ProviderPageTitle
                   icon={<BookOpen className="h-6 w-6" />}
                   title="Teachings Dashboard"
-                  subtitle="Premium operating surface for Series, Episodes, and Standalone teachings â€” built to keep structured journeys and one-off sermons in one calm, world-class control center."
+                  subtitle="Premium operating surface for Series, Episodes, and Standalone teachings — built to keep structured journeys and one-off sermons in one calm, world-class control center."
                 />
                 <div className="mt-3 flex flex-wrap gap-2">
                   <Pill tone="good">Standalone-first</Pill>
@@ -1173,15 +1173,15 @@ export default function TeachingsDashboardPage() {
           </div>
         </section>
 
-        <section className="mt-4 rounded-[28px] border border-slate-200 bg-white px-4 py-3 shadow-sm">
+        <section className="mt-4 rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-3 shadow-soft">
           <div className="flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
-            <div className="flex flex-wrap items-center gap-3 text-[12px] text-slate-600">
+            <div className="flex flex-wrap items-center gap-3 text-[12px] text-faith-slate">
               <Pill tone="orange">TEACHING PIPELINE PULSE</Pill>
               {pulseItems.map((item) => (
                 <span key={item}>{item}</span>
               ))}
             </div>
-            <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400">
+            <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-faith-slate">
               PREMIUM TEACHING OPS
             </div>
           </div>
@@ -1234,21 +1234,21 @@ export default function TeachingsDashboardPage() {
               right={<Pill tone="neutral">{filteredTeachings.length} teachings</Pill>}
             >
               <div className="grid gap-3 lg:grid-cols-[1.1fr,0.35fr,0.35fr]">
-                <div className="rounded-[22px] border border-slate-200 bg-slate-50 px-4 py-3">
+                <div className="rounded-[22px] border border-faith-line bg-[var(--fh-surface)] px-4 py-3">
                   <div className="flex items-center gap-3">
-                    <Search className="h-4 w-4 text-slate-400" />
+                    <Search className="h-4 w-4 text-faith-slate" />
                     <input
                       value={query}
                       onChange={(e) => setQuery(e.target.value)}
                       placeholder="Search teachings, speakers, tags, or series"
-                      className="w-full bg-transparent text-[13px] text-slate-700 outline-none placeholder:text-slate-400"
+                      className="w-full bg-transparent text-[13px] text-slate-700 outline-none placeholder:text-faith-slate"
                     />
                   </div>
                 </div>
-                <div className="rounded-[22px] border border-slate-200 bg-slate-50 px-4 py-3 text-[13px] font-semibold text-slate-700">
+                <div className="rounded-[22px] border border-faith-line bg-[var(--fh-surface)] px-4 py-3 text-[13px] font-semibold text-slate-700">
                   All campuses
                 </div>
-                <div className="rounded-[22px] border border-slate-200 bg-slate-50 px-4 py-3 text-[13px] font-semibold text-slate-700">
+                <div className="rounded-[22px] border border-faith-line bg-[var(--fh-surface)] px-4 py-3 text-[13px] font-semibold text-slate-700">
                   All access models
                 </div>
               </div>
@@ -1271,7 +1271,7 @@ export default function TeachingsDashboardPage() {
                       "rounded-full border px-3 py-1.5 text-[11px] font-semibold transition-colors",
                       filter === key
                         ? "border-transparent text-white"
-                        : "border-slate-200 bg-white text-slate-600 hover:bg-slate-50",
+                        : "border-faith-line bg-[var(--fh-surface-bg)] text-faith-slate hover:bg-[var(--fh-surface)]",
                     )}
                     style={filter === key ? { background: key === "beacon-ready" ? EV_ORANGE : EV_GREEN } : undefined}
                   >
@@ -1290,9 +1290,9 @@ export default function TeachingsDashboardPage() {
                   />
                 ))}
                 {!filteredTeachings.length ? (
-                  <div className="rounded-[24px] border border-dashed border-slate-300 bg-slate-50 px-4 py-10 text-center">
-                    <div className="text-[14px] font-bold text-slate-900">No teachings match this view</div>
-                    <div className="mt-1 text-[12px] text-slate-500">
+                  <div className="rounded-[24px] border border-dashed border-slate-300 bg-[var(--fh-surface)] px-4 py-10 text-center">
+                    <div className="text-[14px] font-bold text-faith-ink">No teachings match this view</div>
+                    <div className="mt-1 text-[12px] text-faith-slate">
                       Clear the search or jump straight into a new standalone teaching.
                     </div>
                     <div className="mt-4 flex justify-center">
@@ -1314,12 +1314,12 @@ export default function TeachingsDashboardPage() {
                   {pipelineItems.map((item) => (
                     <div
                       key={item.id}
-                      className="rounded-[22px] border border-slate-200 bg-slate-50 px-4 py-3"
+                      className="rounded-[22px] border border-faith-line bg-[var(--fh-surface)] px-4 py-3"
                     >
                       <div className="flex items-center justify-between gap-3">
                         <div className="min-w-0">
-                          <div className="truncate text-[13px] font-bold text-slate-900">{item.title}</div>
-                          <div className="mt-0.5 text-[11px] text-slate-500">{item.hint}</div>
+                          <div className="truncate text-[13px] font-bold text-faith-ink">{item.title}</div>
+                          <div className="mt-0.5 text-[11px] text-faith-slate">{item.hint}</div>
                         </div>
                         <Pill tone={item.status === "Blocked" ? "danger" : item.status === "Review" ? "orange" : "good"}>
                           {item.status}
@@ -1338,13 +1338,13 @@ export default function TeachingsDashboardPage() {
                   {liveLinkedTeachings.map((teaching) => (
                     <div
                       key={teaching.id}
-                      className="rounded-[22px] border border-slate-200 bg-slate-50 px-4 py-3"
+                      className="rounded-[22px] border border-faith-line bg-[var(--fh-surface)] px-4 py-3"
                     >
                       <div className="flex items-center justify-between gap-3">
                         <div className="min-w-0">
-                          <div className="truncate text-[13px] font-bold text-slate-900">{teaching.title}</div>
-                          <div className="mt-0.5 text-[11px] text-slate-500">
-                            {teaching.upcomingISO ? fmtDateTime(teaching.upcomingISO) : "TBD"} Â· {teaching.campus}
+                          <div className="truncate text-[13px] font-bold text-faith-ink">{teaching.title}</div>
+                          <div className="mt-0.5 text-[11px] text-faith-slate">
+                            {teaching.upcomingISO ? fmtDateTime(teaching.upcomingISO) : "TBD"} · {teaching.campus}
                           </div>
                         </div>
                         <div className="flex flex-wrap gap-2">
@@ -1371,36 +1371,36 @@ export default function TeachingsDashboardPage() {
                   {topPerformers.map((teaching) => (
                     <div
                       key={teaching.id}
-                      className="rounded-[22px] border border-slate-200 bg-slate-50 px-4 py-3"
+                      className="rounded-[22px] border border-faith-line bg-[var(--fh-surface)] px-4 py-3"
                     >
                       <div className="flex items-center justify-between gap-3">
                         <div className="min-w-0">
-                          <div className="truncate text-[13px] font-bold text-slate-900">{teaching.title}</div>
-                          <div className="mt-0.5 text-[11px] text-slate-500">
-                            {teaching.type} Â· {teaching.speaker}
+                          <div className="truncate text-[13px] font-bold text-faith-ink">{teaching.title}</div>
+                          <div className="mt-0.5 text-[11px] text-faith-slate">
+                            {teaching.type} · {teaching.speaker}
                           </div>
                         </div>
                         <div className="text-right">
-                          <div className="text-[16px] font-black text-slate-900">{fmtInt(teaching.watchStarts)}</div>
-                          <div className="text-[10px] uppercase tracking-[0.16em] text-slate-400">
+                          <div className="text-[16px] font-black text-faith-ink">{fmtInt(teaching.watchStarts)}</div>
+                          <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">
                             Watch starts
                           </div>
                         </div>
                       </div>
                       <div className="mt-3 grid gap-2 sm:grid-cols-3">
-                        <div className="rounded-2xl border border-slate-200 bg-white px-3 py-2">
-                          <div className="text-[10px] uppercase tracking-[0.16em] text-slate-400">Followers</div>
-                          <div className="mt-1 text-[13px] font-bold text-slate-900">{fmtInt(teaching.followers)}</div>
+                        <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2">
+                          <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">Followers</div>
+                          <div className="mt-1 text-[13px] font-bold text-faith-ink">{fmtInt(teaching.followers)}</div>
                         </div>
-                        <div className="rounded-2xl border border-slate-200 bg-white px-3 py-2">
-                          <div className="text-[10px] uppercase tracking-[0.16em] text-slate-400">Replay / Clips</div>
-                          <div className="mt-1 text-[13px] font-bold text-slate-900">
+                        <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2">
+                          <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">Replay / Clips</div>
+                          <div className="mt-1 text-[13px] font-bold text-faith-ink">
                             {teaching.replayCount} / {teaching.clipCount}
                           </div>
                         </div>
-                        <div className="rounded-2xl border border-slate-200 bg-white px-3 py-2">
-                          <div className="text-[10px] uppercase tracking-[0.16em] text-slate-400">Giving influenced</div>
-                          <div className="mt-1 text-[13px] font-bold text-slate-900">
+                        <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2">
+                          <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">Giving influenced</div>
+                          <div className="mt-1 text-[13px] font-bold text-faith-ink">
                             {money(teaching.donationsInfluenced)}
                           </div>
                         </div>
@@ -1416,47 +1416,47 @@ export default function TeachingsDashboardPage() {
               >
                 {selectedTeaching ? (
                   <div className="space-y-3">
-                    <div className="rounded-[22px] border border-slate-200 bg-slate-50 px-4 py-3">
+                    <div className="rounded-[22px] border border-faith-line bg-[var(--fh-surface)] px-4 py-3">
                       <div className="flex items-center justify-between gap-3">
                         <div>
-                          <div className="text-[13px] font-bold text-slate-900">{selectedTeaching.title}</div>
-                          <div className="mt-0.5 text-[11px] text-slate-500">
-                            {selectedTeaching.languages.join(", ")} Â· {selectedTeaching.access}
+                          <div className="text-[13px] font-bold text-faith-ink">{selectedTeaching.title}</div>
+                          <div className="mt-0.5 text-[11px] text-faith-slate">
+                            {selectedTeaching.languages.join(", ")} · {selectedTeaching.access}
                           </div>
                         </div>
                         <Pill tone={accessTone(selectedTeaching.access)}>{selectedTeaching.access}</Pill>
                       </div>
                     </div>
                     <div className="grid gap-2 sm:grid-cols-2">
-                      <div className="rounded-2xl border border-slate-200 bg-white px-3 py-3">
-                        <div className="text-[10px] uppercase tracking-[0.16em] text-slate-400">Notes & resources</div>
-                        <div className="mt-1 text-[13px] font-bold text-slate-900">
+                      <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-3">
+                        <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">Notes & resources</div>
+                        <div className="mt-1 text-[13px] font-bold text-faith-ink">
                           {selectedTeaching.notesReady ? "Ready" : "Missing notes"}
                         </div>
                       </div>
-                      <div className="rounded-2xl border border-slate-200 bg-white px-3 py-3">
-                        <div className="text-[10px] uppercase tracking-[0.16em] text-slate-400">Artwork & cover</div>
-                        <div className="mt-1 text-[13px] font-bold text-slate-900">
+                      <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-3">
+                        <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">Artwork & cover</div>
+                        <div className="mt-1 text-[13px] font-bold text-faith-ink">
                           {selectedTeaching.artworkReady ? "Ready" : "Needs artwork"}
                         </div>
                       </div>
-                      <div className="rounded-2xl border border-slate-200 bg-white px-3 py-3">
-                        <div className="text-[10px] uppercase tracking-[0.16em] text-slate-400">Translation due</div>
-                        <div className="mt-1 text-[13px] font-bold text-slate-900">
+                      <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-3">
+                        <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">Translation due</div>
+                        <div className="mt-1 text-[13px] font-bold text-faith-ink">
                           {selectedTeaching.translationDue}
                         </div>
                       </div>
-                      <div className="rounded-2xl border border-slate-200 bg-white px-3 py-3">
-                        <div className="text-[10px] uppercase tracking-[0.16em] text-slate-400">Trust queue</div>
-                        <div className="mt-1 text-[13px] font-bold text-slate-900">
+                      <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-3">
+                        <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">Trust queue</div>
+                        <div className="mt-1 text-[13px] font-bold text-faith-ink">
                           {selectedTeaching.moderationBacklog}
                         </div>
                       </div>
                     </div>
-                    <div className="rounded-[22px] border border-slate-200 bg-slate-50 px-4 py-3">
-                      <div className="text-[12px] font-bold text-slate-900">Best next action</div>
-                      <div className="mt-1 text-[12px] text-slate-600">{selectedTeaching.topAction}</div>
-                      <div className="mt-0.5 text-[11px] text-slate-500">{selectedTeaching.topActionHint}</div>
+                    <div className="rounded-[22px] border border-faith-line bg-[var(--fh-surface)] px-4 py-3">
+                      <div className="text-[12px] font-bold text-faith-ink">Best next action</div>
+                      <div className="mt-1 text-[12px] text-faith-slate">{selectedTeaching.topAction}</div>
+                      <div className="mt-0.5 text-[11px] text-faith-slate">{selectedTeaching.topActionHint}</div>
                     </div>
                   </div>
                 ) : null}
@@ -1469,13 +1469,13 @@ export default function TeachingsDashboardPage() {
               title="Teaching preview rail"
               subtitle="Persistent preview so the Provider can see how the selected teaching will read across desktop and mobile."
               right={
-                <div className="inline-flex rounded-full border border-slate-200 bg-white p-1">
+                <div className="inline-flex rounded-full border border-faith-line bg-[var(--fh-surface-bg)] p-1">
                   <button
                     type="button"
                     onClick={() => setPreviewMode("desktop")}
                     className={cx(
                       "rounded-full px-3 py-1 text-[11px] font-semibold transition-colors",
-                      previewMode === "desktop" ? "bg-slate-900 text-white" : "text-slate-500 hover:bg-slate-50",
+                      previewMode === "desktop" ? "bg-slate-900 text-white" : "text-faith-slate hover:bg-[var(--fh-surface)]",
                     )}
                   >
                     Desktop
@@ -1485,7 +1485,7 @@ export default function TeachingsDashboardPage() {
                     onClick={() => setPreviewMode("mobile")}
                     className={cx(
                       "rounded-full px-3 py-1 text-[11px] font-semibold transition-colors",
-                      previewMode === "mobile" ? "bg-slate-900 text-white" : "text-slate-500 hover:bg-slate-50",
+                      previewMode === "mobile" ? "bg-slate-900 text-white" : "text-faith-slate hover:bg-[var(--fh-surface)]",
                     )}
                   >
                     Mobile
@@ -1534,7 +1534,7 @@ export default function TeachingsDashboardPage() {
                 {recommendations.map((item) => (
                   <div
                     key={item}
-                    className="rounded-[22px] border border-slate-200 bg-slate-50 px-4 py-3"
+                    className="rounded-[22px] border border-faith-line bg-[var(--fh-surface)] px-4 py-3"
                   >
                     <div className="flex items-start gap-3">
                       <div
@@ -1571,7 +1571,7 @@ export default function TeachingsDashboardPage() {
       <Drawer
         open={previewOpen}
         onClose={() => setPreviewOpen(false)}
-        title={selectedTeaching ? `${selectedTeaching.title} Â· Teaching preview` : "Teaching preview"}
+        title={selectedTeaching ? `${selectedTeaching.title} · Teaching preview` : "Teaching preview"}
         subtitle="Full preview view plus linked workflow signals."
       >
         {selectedTeaching ? (
@@ -1585,7 +1585,7 @@ export default function TeachingsDashboardPage() {
                 title="What this page is carrying"
                 subtitle="Signals that make the teaching premium and operationally ready."
               >
-                <div className="space-y-2 text-[12px] text-slate-600">
+                <div className="space-y-2 text-[12px] text-faith-slate">
                   <div className="flex items-center justify-between gap-3">
                     <span>Type</span>
                     <Pill tone={typeTone(selectedTeaching.type)}>{selectedTeaching.type}</Pill>
@@ -1600,15 +1600,15 @@ export default function TeachingsDashboardPage() {
                   </div>
                   <div className="flex items-center justify-between gap-3">
                     <span>Live sessions</span>
-                    <span className="font-bold text-slate-900">{selectedTeaching.liveCount}</span>
+                    <span className="font-bold text-faith-ink">{selectedTeaching.liveCount}</span>
                   </div>
                   <div className="flex items-center justify-between gap-3">
                     <span>Replays / clips</span>
-                    <span className="font-bold text-slate-900">{selectedTeaching.replayCount} / {selectedTeaching.clipCount}</span>
+                    <span className="font-bold text-faith-ink">{selectedTeaching.replayCount} / {selectedTeaching.clipCount}</span>
                   </div>
                   <div className="flex items-center justify-between gap-3">
                     <span>Resources</span>
-                    <span className="font-bold text-slate-900">{selectedTeaching.resourceCount}</span>
+                    <span className="font-bold text-faith-ink">{selectedTeaching.resourceCount}</span>
                   </div>
                 </div>
               </Card>
@@ -1640,22 +1640,22 @@ export default function TeachingsDashboardPage() {
                 title="Provider signals"
                 subtitle="What the team should fix or keep moving now."
               >
-                <div className="space-y-2 text-[12px] text-slate-600">
-                  <div className="flex items-center justify-between gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2">
+                <div className="space-y-2 text-[12px] text-faith-slate">
+                  <div className="flex items-center justify-between gap-3 rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2">
                     <span>Cover art</span>
-                    <span className="font-bold text-slate-900">{selectedTeaching.artworkReady ? "Ready" : "Missing"}</span>
+                    <span className="font-bold text-faith-ink">{selectedTeaching.artworkReady ? "Ready" : "Missing"}</span>
                   </div>
-                  <div className="flex items-center justify-between gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2">
+                  <div className="flex items-center justify-between gap-3 rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2">
                     <span>Notes</span>
-                    <span className="font-bold text-slate-900">{selectedTeaching.notesReady ? "Ready" : "Missing"}</span>
+                    <span className="font-bold text-faith-ink">{selectedTeaching.notesReady ? "Ready" : "Missing"}</span>
                   </div>
-                  <div className="flex items-center justify-between gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2">
+                  <div className="flex items-center justify-between gap-3 rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2">
                     <span>Translations due</span>
-                    <span className="font-bold text-slate-900">{selectedTeaching.translationDue}</span>
+                    <span className="font-bold text-faith-ink">{selectedTeaching.translationDue}</span>
                   </div>
-                  <div className="flex items-center justify-between gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2">
+                  <div className="flex items-center justify-between gap-3 rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2">
                     <span>Moderation items</span>
-                    <span className="font-bold text-slate-900">{selectedTeaching.moderationBacklog}</span>
+                    <span className="font-bold text-faith-ink">{selectedTeaching.moderationBacklog}</span>
                   </div>
                 </div>
               </Card>
@@ -1666,5 +1666,6 @@ export default function TeachingsDashboardPage() {
     </div>
   );
 }
+
 
 

@@ -1,4 +1,4 @@
-ï»¿// @ts-nocheck
+// @ts-nocheck
 
 "use client";
 
@@ -38,7 +38,7 @@ import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
- * Provider â€” Beacon Manager
+ * Provider — Beacon Manager
  * ----------------------------------
  * Premium operational control surface for Beacon campaigns after build.
  *
@@ -91,7 +91,7 @@ function fmtInt(n: number) {
   return Intl.NumberFormat(undefined, { maximumFractionDigits: 0 }).format(n);
 }
 
-function fmtCurrency(n: number, currency = "Â£") {
+function fmtCurrency(n: number, currency = "£") {
   return `${currency}${Intl.NumberFormat(undefined, {
     maximumFractionDigits: 0,
   }).format(n)}`;
@@ -445,7 +445,7 @@ const CAMPAIGNS_SEED: BeaconCampaign[] = [
     pacePct: 69,
     burnRateLabel: "On pace",
     forecastLabel: "Projected to exceed watch-start target by 14%",
-    budgetMoveLabel: "Recommend +Â£180 over the next 48h",
+    budgetMoveLabel: "Recommend +£180 over the next 48h",
     segmentLeads: ["Replay viewers", "Recent attendees", "Families"],
     regionLeads: ["Kampala", "Nairobi", "Accra"],
     destinationObjects: ["Replay page", "Library shelf", "Beacon follow-up"],
@@ -866,10 +866,10 @@ function approvalTone(state: ApprovalState): "neutral" | "good" | "warn" | "dang
   return "danger";
 }
 
-function spendBand(value: number): "Under Â£1k" | "Â£1kâ€“Â£5k" | "Â£5k+" {
-  if (value < 1000) return "Under Â£1k";
-  if (value < 5000) return "Â£1kâ€“Â£5k";
-  return "Â£5k+";
+function spendBand(value: number): "Under £1k" | "£1k–£5k" | "£5k+" {
+  if (value < 1000) return "Under £1k";
+  if (value < 5000) return "£1k–£5k";
+  return "£5k+";
 }
 
 function primaryOutcomeValue(campaign: BeaconCampaign) {
@@ -937,7 +937,7 @@ function Pill({
           ? "border-rose-200 dark:border-rose-800 bg-rose-50 dark:bg-rose-900/20 text-rose-800 dark:text-rose-300"
           : tone === "pro"
             ? "border-violet-200 dark:border-violet-800 bg-violet-50 dark:bg-violet-900/20 text-violet-800 dark:text-violet-300"
-            : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300";
+            : "border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 text-slate-700 dark:text-slate-300";
   return (
     <span
       className={cx(
@@ -977,7 +977,7 @@ function Btn({
           ? "bg-rose-600 text-white border-transparent"
           : tone === "ghost"
             ? "bg-transparent border-transparent text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
-            : "bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800";
+            : "bg-[var(--fh-surface-bg)] dark:bg-slate-900 border-faith-line dark:border-slate-800 text-slate-700 dark:text-slate-200 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800";
 
   const style =
     tone === "primary"
@@ -1020,15 +1020,15 @@ function SectionTitle({
   return (
     <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
       <div className="flex items-start gap-3">
-        <div className="mt-0.5 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 shadow-sm transition">
+        <div className="mt-0.5 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-slate-900 text-white dark:bg-slate-100 dark:text-faith-ink shadow-soft transition">
           {icon}
         </div>
         <div className="min-w-0">
-          <div className="text-base font-bold text-slate-900 dark:text-slate-50 leading-tight">
+          <div className="text-base font-bold text-faith-ink dark:text-slate-50 leading-tight">
             {title}
           </div>
           {subtitle ? (
-            <div className="mt-1 text-xs text-slate-500 dark:text-slate-400 leading-normal">
+            <div className="mt-1 text-xs text-faith-slate leading-normal">
               {subtitle}
             </div>
           ) : null}
@@ -1065,14 +1065,14 @@ function Card({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 transition-colors">
+    <div className="rounded-3xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors">
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
-          <div className="text-[13px] font-semibold text-slate-900 dark:text-slate-100">
+          <div className="text-[13px] font-semibold text-faith-ink dark:text-slate-100">
             {title}
           </div>
           {subtitle ? (
-            <div className="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">
+            <div className="mt-0.5 text-[11px] text-faith-slate">
               {subtitle}
             </div>
           ) : null}
@@ -1151,12 +1151,12 @@ function Toggle({
       onClick={() => onChange(!checked)}
       className={cx(
         "relative inline-flex h-6 w-11 items-center rounded-full transition-colors",
-        checked ? "bg-slate-900 dark:bg-white" : "bg-slate-300 dark:bg-slate-700",
+        checked ? "bg-slate-900 dark:bg-[var(--fh-surface-bg)]" : "bg-slate-300 dark:bg-slate-700",
       )}
     >
       <span
         className={cx(
-          "inline-block h-4 w-4 rounded-full bg-white dark:bg-slate-900 shadow transition-transform",
+          "inline-block h-4 w-4 rounded-full bg-[var(--fh-surface-bg)] dark:bg-slate-900 shadow transition-transform",
           checked ? "translate-x-6" : "translate-x-1",
         )}
       />
@@ -1189,7 +1189,7 @@ function TextInput({
       type={type}
       onChange={(e) => onChange(e.target.value)}
       placeholder={placeholder}
-      className="mt-1 w-full rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-[12px] text-slate-900 dark:text-slate-100 outline-none transition-colors focus:ring-2 focus:ring-[rgba(3,205,140,0.22)]"
+      className="mt-1 w-full rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] text-faith-ink dark:text-slate-100 outline-none transition-colors focus:ring-2 focus:ring-[rgba(3,205,140,0.22)]"
     />
   );
 }
@@ -1208,13 +1208,13 @@ function SelectField({
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full appearance-none rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 pr-9 text-[12px] font-semibold text-slate-900 dark:text-slate-100 outline-none transition-colors focus:ring-2 focus:ring-[rgba(3,205,140,0.22)]"
+        className="w-full appearance-none rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 pr-9 text-[12px] font-semibold text-faith-ink dark:text-slate-100 outline-none transition-colors focus:ring-2 focus:ring-[rgba(3,205,140,0.22)]"
       >
         {options.map((option) => (
           <option key={option}>{option}</option>
         ))}
       </select>
-      <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500 dark:text-slate-400" />
+      <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-faith-slate" />
     </div>
   );
 }
@@ -1228,18 +1228,18 @@ function BreakdownList({ rows }: { rows: BreakdownRow[] }) {
         return (
           <div
             key={row.label}
-            className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3 transition-colors"
+            className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors"
           >
             <div className="flex items-start justify-between gap-3">
               <div className="min-w-0">
-                <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+                <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                   {row.label}
                 </div>
-                <div className="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">
+                <div className="mt-0.5 text-[11px] text-faith-slate">
                   {row.note}
                 </div>
               </div>
-              <div className="text-[12px] font-extrabold text-slate-900 dark:text-slate-100">
+              <div className="text-[12px] font-extrabold text-faith-ink dark:text-slate-100">
                 {fmtInt(row.value)}
               </div>
             </div>
@@ -1255,14 +1255,14 @@ function BreakdownList({ rows }: { rows: BreakdownRow[] }) {
 
 function AuditItem({ event }: { event: AuditEvent }) {
   return (
-    <div className="relative rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3 transition-colors">
+    <div className="relative rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
       <div
         className="absolute left-0 top-0 h-full w-1 rounded-l-2xl"
         style={{ background: accentColor(event.accent) }}
       />
       <div className="pl-2">
         <div className="flex flex-wrap items-center gap-2">
-          <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+          <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
             {event.action}
           </div>
           <Pill text={event.timeLabel} />
@@ -1270,7 +1270,7 @@ function AuditItem({ event }: { event: AuditEvent }) {
         <div className="mt-1 text-[11px] font-semibold text-slate-700 dark:text-slate-300">
           {event.actor}
         </div>
-        <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
+        <div className="mt-1 text-[11px] text-faith-slate">
           {event.note}
         </div>
       </div>
@@ -1311,16 +1311,16 @@ function Drawer({
   return (
     <div className="fixed inset-0 z-[120]">
       <div className="absolute inset-0 bg-black/55 backdrop-blur-sm" onClick={onClose} />
-      <div className="absolute right-0 top-0 h-full w-full max-w-[1080px] border-l border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 shadow-2xl transition-colors">
+      <div className="absolute right-0 top-0 h-full w-full max-w-[1080px] border-l border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 shadow-2xl transition-colors">
         <div className="flex h-full flex-col">
-          <div className="sticky top-0 z-10 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3 transition-colors">
+          <div className="sticky top-0 z-10 border-b border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 py-3 transition-colors">
             <div className="flex items-start justify-between gap-3">
               <div className="min-w-0">
-                <div className="text-[13px] font-semibold text-slate-900 dark:text-slate-100">
+                <div className="text-[13px] font-semibold text-faith-ink dark:text-slate-100">
                   {title}
                 </div>
                 {subtitle ? (
-                  <div className="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">
+                  <div className="mt-0.5 text-[11px] text-faith-slate">
                     {subtitle}
                   </div>
                 ) : null}
@@ -1328,9 +1328,9 @@ function Drawer({
               <button
                 type="button"
                 onClick={onClose}
-                className="grid h-9 w-9 place-items-center rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-500 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors"
+                className="grid h-9 w-9 place-items-center rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 text-faith-slate dark:text-slate-300 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-700 transition-colors"
               >
-                <span className="text-lg leading-none">Ã—</span>
+                <span className="text-lg leading-none">×</span>
               </button>
             </div>
           </div>
@@ -1351,18 +1351,18 @@ function PreviewSurface({
   const accent = accentColor(campaign.accent);
   const isMobile = mode === "mobile";
   return (
-    <div className={cx("rounded-3xl bg-slate-950 p-3 shadow-sm", isMobile ? "w-[204px] mx-auto" : "w-full")}>
+    <div className={cx("rounded-3xl bg-slate-950 p-3 shadow-soft", isMobile ? "w-[204px] mx-auto" : "w-full")}>
       <div
         className={cx(
-          "overflow-hidden rounded-[24px] bg-white dark:bg-slate-900 ring-1 ring-white/10",
+          "overflow-hidden rounded-[24px] bg-[var(--fh-surface-bg)] dark:bg-slate-900 ring-1 ring-white/10",
           isMobile ? "h-[420px]" : "h-[282px]",
         )}
       >
-        <div className="flex items-center justify-between bg-white/95 dark:bg-slate-900/95 px-3 py-2 shadow-sm">
-          <div className="text-[11px] font-bold text-slate-900 dark:text-slate-100">
+        <div className="flex items-center justify-between bg-[var(--fh-surface-bg)]/95 dark:bg-slate-900/95 px-3 py-2 shadow-soft">
+          <div className="text-[11px] font-bold text-faith-ink dark:text-slate-100">
             {isMobile ? "Provider mobile" : "Provider desktop"}
           </div>
-          <div className="flex items-center gap-2 text-slate-400">
+          <div className="flex items-center gap-2 text-faith-slate">
             <div className="h-2.5 w-2.5 rounded-full" style={{ background: EV_GREEN }} />
             <div className="h-2.5 w-2.5 rounded-full" style={{ background: EV_ORANGE }} />
             <div className="h-2.5 w-2.5 rounded-full" style={{ background: EV_NAVY }} />
@@ -1384,7 +1384,7 @@ function PreviewSurface({
               >
                 Beacon
               </span>
-              <span className="rounded-full bg-white/10 px-2 py-1 text-[10px] font-bold text-white">
+              <span className="rounded-full bg-[var(--fh-surface-bg)]/10 px-2 py-1 text-[10px] font-bold text-white">
                 {campaign.mode}
               </span>
             </div>
@@ -1399,15 +1399,15 @@ function PreviewSurface({
           </div>
 
           <div className="mt-3 grid grid-cols-2 gap-2">
-            <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 p-2">
-              <div className="text-[10px] uppercase tracking-[0.14em] text-slate-400">Outcome</div>
-              <div className="mt-1 text-[13px] font-extrabold text-slate-900 dark:text-slate-100">
+            <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 p-2">
+              <div className="text-[10px] uppercase tracking-[0.14em] text-faith-slate">Outcome</div>
+              <div className="mt-1 text-[13px] font-extrabold text-faith-ink dark:text-slate-100">
                 {campaign.primaryOutcome}
               </div>
             </div>
-            <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 p-2">
-              <div className="text-[10px] uppercase tracking-[0.14em] text-slate-400">Placement</div>
-              <div className="mt-1 text-[13px] font-extrabold text-slate-900 dark:text-slate-100">
+            <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 p-2">
+              <div className="text-[10px] uppercase tracking-[0.14em] text-faith-slate">Placement</div>
+              <div className="mt-1 text-[13px] font-extrabold text-faith-ink dark:text-slate-100">
                 {campaign.placement}
               </div>
             </div>
@@ -1429,21 +1429,21 @@ function PreviewSurface({
           </div>
 
           <div className="mt-3 grid grid-cols-3 gap-2 text-[10px]">
-            <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-2">
-              <div className="text-slate-400 uppercase tracking-[0.14em]">Spend</div>
-              <div className="mt-1 text-[12px] font-black text-slate-900 dark:text-slate-100">
+            <div className="rounded-xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2">
+              <div className="text-faith-slate uppercase tracking-[0.14em]">Spend</div>
+              <div className="mt-1 text-[12px] font-black text-faith-ink dark:text-slate-100">
                 {fmtCurrency(campaign.spend)}
               </div>
             </div>
-            <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-2">
-              <div className="text-slate-400 uppercase tracking-[0.14em]">CTR</div>
-              <div className="mt-1 text-[12px] font-black text-slate-900 dark:text-slate-100">
+            <div className="rounded-xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2">
+              <div className="text-faith-slate uppercase tracking-[0.14em]">CTR</div>
+              <div className="mt-1 text-[12px] font-black text-faith-ink dark:text-slate-100">
                 {fmtPct(campaign.ctr)}
               </div>
             </div>
-            <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-2">
-              <div className="text-slate-400 uppercase tracking-[0.14em]">Health</div>
-              <div className="mt-1 text-[12px] font-black text-slate-900 dark:text-slate-100">
+            <div className="rounded-xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2">
+              <div className="text-faith-slate uppercase tracking-[0.14em]">Health</div>
+              <div className="mt-1 text-[12px] font-black text-faith-ink dark:text-slate-100">
                 {fmtPct(campaign.creativeHealth, 0)}
               </div>
             </div>
@@ -1466,11 +1466,11 @@ function CreativeVersionRow({
   onDuplicate: () => void;
 }) {
   return (
-    <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3 transition-colors">
+    <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-2">
-            <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+            <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
               {version.name}
             </div>
             <Pill text={version.state} tone={creativeTone(version.state)} />
@@ -1478,25 +1478,25 @@ function CreativeVersionRow({
               <Pill text="Primary" tone="good" icon={<BadgeCheck className="h-3.5 w-3.5" />} />
             ) : null}
           </div>
-          <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
-            {version.language} Â· {version.format} Â· {version.subtitleMode}
+          <div className="mt-1 text-[11px] text-faith-slate">
+            {version.language} · {version.format} · {version.subtitleMode}
           </div>
           <div className="mt-2 grid grid-cols-3 gap-2 text-[11px]">
-            <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-2">
-              <div className="text-slate-500 dark:text-slate-400">Health</div>
-              <div className="mt-0.5 font-extrabold text-slate-900 dark:text-slate-100">
+            <div className="rounded-xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2">
+              <div className="text-faith-slate">Health</div>
+              <div className="mt-0.5 font-extrabold text-faith-ink dark:text-slate-100">
                 {fmtPct(version.health, 0)}
               </div>
             </div>
-            <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-2">
-              <div className="text-slate-500 dark:text-slate-400">CTR</div>
-              <div className="mt-0.5 font-extrabold text-slate-900 dark:text-slate-100">
+            <div className="rounded-xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2">
+              <div className="text-faith-slate">CTR</div>
+              <div className="mt-0.5 font-extrabold text-faith-ink dark:text-slate-100">
                 {fmtPct(version.ctr)}
               </div>
             </div>
-            <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-2">
-              <div className="text-slate-500 dark:text-slate-400">Fatigue</div>
-              <div className="mt-0.5 font-extrabold text-slate-900 dark:text-slate-100">
+            <div className="rounded-xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2">
+              <div className="text-faith-slate">Fatigue</div>
+              <div className="mt-0.5 font-extrabold text-faith-ink dark:text-slate-100">
                 {fmtPct(version.fatigue, 0)}
               </div>
             </div>
@@ -1504,7 +1504,7 @@ function CreativeVersionRow({
         </div>
 
         <div
-          className="h-14 w-14 shrink-0 rounded-2xl border border-slate-200 dark:border-slate-700"
+          className="h-14 w-14 shrink-0 rounded-2xl border border-faith-line dark:border-slate-700"
           style={{
             background: `linear-gradient(135deg, ${accentSoft(accent)} 0%, ${accentColor(accent)} 160%)`,
           }}
@@ -1520,7 +1520,7 @@ function CreativeVersionRow({
         </Btn>
       </div>
 
-      <div className="mt-2 text-[11px] text-slate-500 dark:text-slate-400">
+      <div className="mt-2 text-[11px] text-faith-slate">
         Last edited {version.lastEditedLabel}
       </div>
     </div>
@@ -1550,7 +1550,7 @@ function CampaignRow({
         "rounded-3xl border p-3 transition-colors",
         active
           ? "border-emerald-300 dark:border-emerald-700 bg-emerald-50 dark:bg-emerald-900/20"
-          : "border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 hover:bg-white dark:hover:bg-slate-900",
+          : "border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-800/50 hover:bg-[var(--fh-surface-bg)] dark:hover:bg-slate-900",
       )}
     >
       <div className="flex items-start gap-3">
@@ -1568,7 +1568,7 @@ function CampaignRow({
             <button
               type="button"
               onClick={onSelect}
-              className="truncate text-left text-[14px] font-bold text-slate-900 dark:text-slate-50"
+              className="truncate text-left text-[14px] font-bold text-faith-ink dark:text-slate-50"
             >
               {campaign.title}
             </button>
@@ -1576,32 +1576,32 @@ function CampaignRow({
             <Pill text={campaign.mode} />
           </div>
 
-          <div className="mt-1 line-clamp-2 text-[12px] text-slate-500 dark:text-slate-400">
+          <div className="mt-1 line-clamp-2 text-[12px] text-faith-slate">
             {campaign.subtitle}
           </div>
 
           <div className="mt-2 grid grid-cols-2 gap-2 xl:grid-cols-4">
-            <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-2">
-              <div className="text-[10px] uppercase tracking-[0.14em] text-slate-400">Source</div>
-              <div className="mt-1 text-[12px] font-extrabold text-slate-900 dark:text-slate-100">
+            <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2">
+              <div className="text-[10px] uppercase tracking-[0.14em] text-faith-slate">Source</div>
+              <div className="mt-1 text-[12px] font-extrabold text-faith-ink dark:text-slate-100">
                 {campaign.linkedName || campaign.sourceType}
               </div>
             </div>
-            <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-2">
-              <div className="text-[10px] uppercase tracking-[0.14em] text-slate-400">Owner</div>
-              <div className="mt-1 text-[12px] font-extrabold text-slate-900 dark:text-slate-100">
+            <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2">
+              <div className="text-[10px] uppercase tracking-[0.14em] text-faith-slate">Owner</div>
+              <div className="mt-1 text-[12px] font-extrabold text-faith-ink dark:text-slate-100">
                 {campaign.owner}
               </div>
             </div>
-            <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-2">
-              <div className="text-[10px] uppercase tracking-[0.14em] text-slate-400">Spend</div>
-              <div className="mt-1 text-[12px] font-extrabold text-slate-900 dark:text-slate-100">
+            <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2">
+              <div className="text-[10px] uppercase tracking-[0.14em] text-faith-slate">Spend</div>
+              <div className="mt-1 text-[12px] font-extrabold text-faith-ink dark:text-slate-100">
                 {fmtCurrency(campaign.spend)}
               </div>
             </div>
-            <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-2">
-              <div className="text-[10px] uppercase tracking-[0.14em] text-slate-400">{campaign.primaryOutcome}</div>
-              <div className="mt-1 text-[12px] font-extrabold text-slate-900 dark:text-slate-100">
+            <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2">
+              <div className="text-[10px] uppercase tracking-[0.14em] text-faith-slate">{campaign.primaryOutcome}</div>
+              <div className="mt-1 text-[12px] font-extrabold text-faith-ink dark:text-slate-100">
                 {fmtInt(outcomeValue)}
               </div>
             </div>
@@ -1639,14 +1639,14 @@ function CampaignDetailDrawer({
     <Drawer
       open={open}
       onClose={onClose}
-      title={`${campaign.title} Â· Campaign detail drawer`}
+      title={`${campaign.title} · Campaign detail drawer`}
       subtitle="Spend history, delivery state, audience breakdown, conversion paths, creative versions, approvals, and policy notes without leaving the list view."
     >
       <div className="grid gap-4 lg:grid-cols-12">
         <div className="space-y-4 lg:col-span-7">
           <Card
             title="Campaign summary"
-            subtitle={`${campaign.mode} Â· ${campaign.sourceType}${campaign.linkedName ? ` Â· ${campaign.linkedName}` : ""}`}
+            subtitle={`${campaign.mode} · ${campaign.sourceType}${campaign.linkedName ? ` · ${campaign.linkedName}` : ""}`}
             right={<Pill text={campaign.state} tone={stateTone(campaign.state)} />}
           >
             <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
@@ -1657,14 +1657,14 @@ function CampaignDetailDrawer({
             </div>
 
             <div className="mt-4 grid gap-3 sm:grid-cols-2">
-              <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3">
-                <div className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">Spend history</div>
+              <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3">
+                <div className="text-[11px] font-semibold text-faith-slate">Spend history</div>
                 <div className="mt-2">
                   <MiniLine values={campaign.spendSeries} tone={campaign.accent} />
                 </div>
               </div>
-              <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3">
-                <div className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">Conversion trend</div>
+              <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3">
+                <div className="text-[11px] font-semibold text-faith-slate">Conversion trend</div>
                 <div className="mt-2">
                   <MiniLine values={campaign.conversionSeries} tone="orange" />
                 </div>
@@ -1690,31 +1690,31 @@ function CampaignDetailDrawer({
               {campaign.creativeVersions.map((version) => (
                 <div
                   key={version.id}
-                  className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3 transition-colors"
+                  className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors"
                 >
                   <div className="flex items-center justify-between gap-2">
                     <div className="min-w-0">
-                      <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+                      <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                         {version.name}
                       </div>
-                      <div className="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">
-                        {version.language} Â· {version.format}
+                      <div className="mt-0.5 text-[11px] text-faith-slate">
+                        {version.language} · {version.format}
                       </div>
                     </div>
                     <Pill text={version.state} tone={creativeTone(version.state)} />
                   </div>
                   <div className="mt-2 grid grid-cols-3 gap-2 text-[11px]">
-                    <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-2">
-                      <div className="text-slate-500 dark:text-slate-400">Health</div>
-                      <div className="mt-0.5 font-extrabold text-slate-900 dark:text-slate-100">{fmtPct(version.health, 0)}</div>
+                    <div className="rounded-xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2">
+                      <div className="text-faith-slate">Health</div>
+                      <div className="mt-0.5 font-extrabold text-faith-ink dark:text-slate-100">{fmtPct(version.health, 0)}</div>
                     </div>
-                    <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-2">
-                      <div className="text-slate-500 dark:text-slate-400">CTR</div>
-                      <div className="mt-0.5 font-extrabold text-slate-900 dark:text-slate-100">{fmtPct(version.ctr)}</div>
+                    <div className="rounded-xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2">
+                      <div className="text-faith-slate">CTR</div>
+                      <div className="mt-0.5 font-extrabold text-faith-ink dark:text-slate-100">{fmtPct(version.ctr)}</div>
                     </div>
-                    <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-2">
-                      <div className="text-slate-500 dark:text-slate-400">Fatigue</div>
-                      <div className="mt-0.5 font-extrabold text-slate-900 dark:text-slate-100">{fmtPct(version.fatigue, 0)}</div>
+                    <div className="rounded-xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2">
+                      <div className="text-faith-slate">Fatigue</div>
+                      <div className="mt-0.5 font-extrabold text-faith-ink dark:text-slate-100">{fmtPct(version.fatigue, 0)}</div>
                     </div>
                   </div>
                 </div>
@@ -1734,8 +1734,8 @@ function CampaignDetailDrawer({
                 <MetricCard label="Audience health" value={`${Math.round(campaign.audienceHealth)}%`} tone="navy" />
               </div>
 
-              <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3">
-                <div className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">Launch blockers</div>
+              <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3">
+                <div className="text-[11px] font-semibold text-faith-slate">Launch blockers</div>
                 <div className="mt-2 space-y-2">
                   {campaign.launchBlockers.length ? (
                     campaign.launchBlockers.map((blocker) => (
@@ -1754,12 +1754,12 @@ function CampaignDetailDrawer({
                 </div>
               </div>
 
-              <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3">
-                <div className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">Policy notes</div>
+              <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3">
+                <div className="text-[11px] font-semibold text-faith-slate">Policy notes</div>
                 <div className="mt-2 space-y-2">
                   {campaign.policyNotes.map((note) => (
                     <div key={note} className="text-[12px] text-slate-700 dark:text-slate-300">
-                      â€¢ {note}
+                      • {note}
                     </div>
                   ))}
                 </div>
@@ -1794,7 +1794,7 @@ export default function BeaconManagerPage() {
   const [modeFilter, setModeFilter] = useState<CampaignMode | "All">("All");
   const [ownerFilter, setOwnerFilter] = useState<string>("All");
   const [placementFilter, setPlacementFilter] = useState<PlacementType | "All">("All");
-  const [spendFilter, setSpendFilter] = useState<"All" | "Under Â£1k" | "Â£1kâ€“Â£5k" | "Â£5k+">("All");
+  const [spendFilter, setSpendFilter] = useState<"All" | "Under £1k" | "£1k–£5k" | "£5k+">("All");
   const [outcomeFilter, setOutcomeFilter] = useState<OutcomeType | "All">("All");
 
   useEffect(() => {
@@ -2113,12 +2113,12 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
   }, [selectedCampaign]);
 
   return (
-    <div className="min-h-screen w-full flex flex-col bg-[#f2f2f2] dark:bg-slate-950 text-slate-900 dark:text-slate-50 transition-colors overflow-x-hidden">
-      <div className="sticky top-0 z-40 border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md transition-colors">
+    <div className="min-h-screen w-full flex flex-col bg-[var(--fh-page-bg)] dark:bg-slate-950 text-faith-ink dark:text-slate-50 transition-colors overflow-x-hidden">
+      <div className="sticky top-0 z-40 border-b border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)]/95 dark:bg-slate-900/95 backdrop-blur-md transition-colors">
         <div className="w-full px-4 md:px-6 lg:px-8 py-4">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <div className="min-w-0">
-              <div className="flex flex-wrap items-center gap-2 text-[10px] sm:text-xs text-slate-500 dark:text-slate-400">
+              <div className="flex flex-wrap items-center gap-2 text-[10px] sm:text-xs text-faith-slate">
                 <span>Provider Workspace</span>
                 <span className="text-slate-300 dark:text-slate-700">/</span>
                 <span>Beacon</span>
@@ -2172,7 +2172,7 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
       <div className="flex-1 w-full px-3 sm:px-4 md:px-6 lg:px-8 py-6">
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-12">
           <div className="lg:col-span-8 space-y-4">
-            <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <SectionTitle
                 icon={<TrendingUp className="h-5 w-5" />}
                 title="Campaign portfolio hero"
@@ -2184,15 +2184,15 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
                 <MetricCard label="Portfolio spend" value={fmtCurrency(portfolio.spend)} hint="Across all Beacon campaigns" tone="green" />
                 <MetricCard label="Reach" value={fmtInt(portfolio.reach)} hint={`${portfolio.activeCount} active campaigns`} tone="orange" />
                 <MetricCard label="Creative health" value={`${Math.round(portfolio.avgCreativeHealth)}%`} hint={`${portfolio.learningOrRisk} learning or at-risk`} tone="navy" />
-                <MetricCard label="Approval backlog" value={fmtInt(portfolio.approvalBacklog)} hint={`${portfolio.linkedCount} linked Â· ${portfolio.standaloneCount} standalone`} tone="green" />
+                <MetricCard label="Approval backlog" value={fmtInt(portfolio.approvalBacklog)} hint={`${portfolio.linkedCount} linked · ${portfolio.standaloneCount} standalone`} tone="green" />
               </div>
 
               <div className="mt-4 grid grid-cols-1 gap-4 xl:grid-cols-[1.15fr_0.85fr]">
-                <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
                   <div className="flex items-center justify-between gap-2">
                     <div>
-                      <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Campaign state distribution</div>
-                      <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">See which campaigns are active, learning, blocked, paused, completed, or archived.</div>
+                      <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Campaign state distribution</div>
+                      <div className="mt-1 text-xs text-faith-slate">See which campaigns are active, learning, blocked, paused, completed, or archived.</div>
                     </div>
                     <Btn tone="ghost" onClick={() => setStateFilter("All")}>Clear filter</Btn>
                   </div>
@@ -2207,10 +2207,10 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
                           "rounded-3xl border p-3 text-left transition-colors",
                           stateFilter === item.state
                             ? "border-emerald-300 dark:border-emerald-700 bg-emerald-50 dark:bg-emerald-900/20"
-                            : "border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900",
+                            : "border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900",
                         )}
                       >
-                        <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
+                        <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-faith-ink dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
                           {item.count}
                         </div>
                       </button>
@@ -2218,23 +2218,23 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
                   </div>
                 </div>
 
-                <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-                  <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Creative health panel</div>
-                  <div className="mt-1.5 text-[14px] leading-6 text-slate-500 dark:text-slate-400">Creative quality warnings, fatigue risk, and campaigns most likely to need refresh or QA attention.</div>
+                <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Creative health panel</div>
+                  <div className="mt-1.5 text-[14px] leading-6 text-faith-slate">Creative quality warnings, fatigue risk, and campaigns most likely to need refresh or QA attention.</div>
 
                   <div className="mt-4 space-y-3">
                     {qualityRows.map((campaign) => (
                       <div
                         key={campaign.id}
-                        className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3 transition-colors"
+                        className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors"
                       >
                         <div className="flex items-start justify-between gap-2">
                           <div className="min-w-0">
-                            <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+                            <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                               {campaign.title}
                             </div>
-                            <div className="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">
-                              {campaign.mode} Â· {campaign.sourceType}
+                            <div className="mt-0.5 text-[11px] text-faith-slate">
+                              {campaign.mode} · {campaign.sourceType}
                             </div>
                           </div>
                           <Pill text={`${campaign.creativeHealth}%`} tone={campaign.creativeHealth >= 80 ? "good" : campaign.creativeHealth >= 65 ? "warn" : "danger"} />
@@ -2243,7 +2243,7 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
                         <div className="mt-2">
                           <ProgressBar value={campaign.creativeHealth} accent={campaign.accent} />
                         </div>
-                        <div className="mt-2 flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
+                        <div className="mt-2 flex items-center justify-between text-[11px] text-faith-slate">
                           <span>QA {campaign.qaScore}%</span>
                           <span>Audience health {campaign.audienceHealth}%</span>
                         </div>
@@ -2254,7 +2254,7 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
               </div>
             </div>
 
-            <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <SectionTitle
                 icon={<Layers className="h-5 w-5" />}
                 title="Campaign portfolio board"
@@ -2272,22 +2272,22 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
               />
 
               <div className="mt-4 grid gap-3 xl:grid-cols-[1.3fr_1fr_1fr]">
-                <div className="flex items-center gap-2 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-3 py-2 transition-colors">
-                  <Search className="h-4 w-4 text-slate-400" />
+                <div className="flex items-center gap-2 rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-2 transition-colors">
+                  <Search className="h-4 w-4 text-faith-slate" />
                   <input
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     placeholder="Search campaigns, sources, owners, or linked objects"
-                    className="w-full bg-transparent outline-none text-[12px] text-slate-900 dark:text-slate-100 placeholder:text-slate-500"
+                    className="w-full bg-transparent outline-none text-[12px] text-faith-ink dark:text-slate-100 placeholder:text-faith-slate"
                   />
                 </div>
 
-                <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3 py-2 text-[12px] font-extrabold flex items-center gap-2 transition-colors">
+                <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] font-extrabold flex items-center gap-2 transition-colors">
                   <Filter className="h-4 w-4 text-slate-700 dark:text-slate-300" />
                   <span className="text-slate-700 dark:text-slate-300">Portfolio filters</span>
                 </div>
 
-                <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3 py-2 text-[12px] font-extrabold flex items-center gap-2 transition-colors">
+                <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] font-extrabold flex items-center gap-2 transition-colors">
                   <SlidersHorizontal className="h-4 w-4 text-slate-700 dark:text-slate-300" />
                   <span className="text-slate-700 dark:text-slate-300">Rule-based stewardship</span>
                 </div>
@@ -2336,7 +2336,7 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
                 </div>
                 <div>
                   <Label>Spend range</Label>
-                  <SelectField value={spendFilter} onChange={(v) => setSpendFilter(v as "All" | "Under Â£1k" | "Â£1kâ€“Â£5k" | "Â£5k+")} options={["All", "Under Â£1k", "Â£1kâ€“Â£5k", "Â£5k+"]} />
+                  <SelectField value={spendFilter} onChange={(v) => setSpendFilter(v as "All" | "Under £1k" | "£1k–£5k" | "£5k+")} options={["All", "Under £1k", "£1k–£5k", "£5k+"]} />
                 </div>
                 <div>
                   <Label>Outcome type</Label>
@@ -2365,9 +2365,9 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
                 ))}
 
                 {!filteredCampaigns.length ? (
-                  <div className="rounded-3xl border border-dashed border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 px-4 py-8 text-center">
-                    <div className="text-sm font-bold text-slate-900 dark:text-slate-50">No campaigns match these filters</div>
-                    <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">
+                  <div className="rounded-3xl border border-dashed border-slate-300 dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-900 px-4 py-8 text-center">
+                    <div className="text-sm font-bold text-faith-ink dark:text-slate-50">No campaigns match these filters</div>
+                    <div className="mt-1 text-xs text-faith-slate">
                       Clear the filters or launch a new Beacon campaign.
                     </div>
                   </div>
@@ -2376,7 +2376,7 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
             </div>
 
             {selectedCampaign ? (
-              <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+              <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
                 <SectionTitle
                   icon={<BarChart3 className="h-5 w-5" />}
                   title="Attribution and drill-down panel"
@@ -2393,46 +2393,46 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
                 </div>
 
                 <div className="mt-4 grid gap-4 xl:grid-cols-2">
-                  <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-                    <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Delivery + conversion trends</div>
-                    <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">Use placement and time-window patterns to optimize without losing stewardship context.</div>
+                  <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                    <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Delivery + conversion trends</div>
+                    <div className="mt-1 text-xs text-faith-slate">Use placement and time-window patterns to optimize without losing stewardship context.</div>
                     <div className="mt-3 grid gap-3 md:grid-cols-2">
-                      <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                        <div className="text-[11px] uppercase tracking-wide text-slate-400 dark:text-slate-500">Spend trend</div>
+                      <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                        <div className="text-[11px] uppercase tracking-wide text-faith-slate">Spend trend</div>
                         <div className="mt-2"><MiniLine values={selectedCampaign.spendSeries} tone={selectedCampaign.accent} /></div>
                       </div>
-                      <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                        <div className="text-[11px] uppercase tracking-wide text-slate-400 dark:text-slate-500">Conversion trend</div>
+                      <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                        <div className="text-[11px] uppercase tracking-wide text-faith-slate">Conversion trend</div>
                         <div className="mt-2"><MiniLine values={selectedCampaign.conversionSeries} tone="orange" /></div>
                       </div>
                     </div>
                   </div>
 
-                  <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-                    <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Audience + placement intelligence</div>
-                    <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">See which placements, segments, and destinations are carrying the campaign.</div>
+                  <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                    <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Audience + placement intelligence</div>
+                    <div className="mt-1 text-xs text-faith-slate">See which placements, segments, and destinations are carrying the campaign.</div>
                     <div className="mt-3 grid grid-cols-2 gap-3">
-                      <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                        <div className="text-[11px] uppercase tracking-wide text-slate-400 dark:text-slate-500">Top segment</div>
-                        <div className="mt-2 text-sm font-black text-slate-900 dark:text-slate-100">
-                          {selectedCampaign.segmentLeads[0] || "â€”"}
+                      <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                        <div className="text-[11px] uppercase tracking-wide text-faith-slate">Top segment</div>
+                        <div className="mt-2 text-sm font-black text-faith-ink dark:text-slate-100">
+                          {selectedCampaign.segmentLeads[0] || "—"}
                         </div>
                       </div>
-                      <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                        <div className="text-[11px] uppercase tracking-wide text-slate-400 dark:text-slate-500">Top region</div>
-                        <div className="mt-2 text-sm font-black text-slate-900 dark:text-slate-100">
-                          {selectedCampaign.regionLeads[0] || "â€”"}
+                      <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                        <div className="text-[11px] uppercase tracking-wide text-faith-slate">Top region</div>
+                        <div className="mt-2 text-sm font-black text-faith-ink dark:text-slate-100">
+                          {selectedCampaign.regionLeads[0] || "—"}
                         </div>
                       </div>
-                      <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                        <div className="text-[11px] uppercase tracking-wide text-slate-400 dark:text-slate-500">Primary destination</div>
-                        <div className="mt-2 text-sm font-black text-slate-900 dark:text-slate-100">
-                          {selectedCampaign.destinationObjects[0] || "â€”"}
+                      <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                        <div className="text-[11px] uppercase tracking-wide text-faith-slate">Primary destination</div>
+                        <div className="mt-2 text-sm font-black text-faith-ink dark:text-slate-100">
+                          {selectedCampaign.destinationObjects[0] || "—"}
                         </div>
                       </div>
-                      <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                        <div className="text-[11px] uppercase tracking-wide text-slate-400 dark:text-slate-500">Placement</div>
-                        <div className="mt-2 text-sm font-black text-slate-900 dark:text-slate-100">
+                      <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                        <div className="text-[11px] uppercase tracking-wide text-faith-slate">Placement</div>
+                        <div className="mt-2 text-sm font-black text-faith-ink dark:text-slate-100">
                           {selectedCampaign.placement}
                         </div>
                       </div>
@@ -2451,7 +2451,7 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
           <div className="lg:col-span-4 space-y-4">
             {selectedCampaign ? (
               <>
-                <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+                <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
                   <SectionTitle
                     icon={<Eye className="h-5 w-5" />}
                     title="Selected campaign preview"
@@ -2465,7 +2465,7 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
                             "rounded-full px-3 py-1.5 text-[11px] font-semibold border transition-colors",
                             previewMode === "desktop"
                               ? "border-transparent text-white"
-                              : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300",
+                              : "border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-slate-700 dark:text-slate-300",
                           )}
                           style={previewMode === "desktop" ? { background: EV_GREEN } : undefined}
                         >
@@ -2478,7 +2478,7 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
                             "rounded-full px-3 py-1.5 text-[11px] font-semibold border transition-colors",
                             previewMode === "mobile"
                               ? "border-transparent text-white"
-                              : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300",
+                              : "border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-slate-700 dark:text-slate-300",
                           )}
                           style={previewMode === "mobile" ? { background: EV_ORANGE } : undefined}
                         >
@@ -2508,7 +2508,7 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
                   </div>
                 </div>
 
-                <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+                <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
                   <SectionTitle
                     icon={<Wallet className="h-5 w-5" />}
                     title="Budget and pacing controls"
@@ -2516,15 +2516,15 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
                   />
 
                   <div className="mt-4 grid gap-3">
-                    <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/50 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                    <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
                       <div className="flex items-center justify-between gap-2">
-                        <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Current pace</div>
+                        <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Current pace</div>
                         <Pill text={`${Math.round(selectedCampaign.pacePct)}%`} tone={selectedCampaign.pacePct > 75 ? "warn" : "good"} />
                       </div>
                       <div className="mt-3">
                         <ProgressBar value={selectedCampaign.pacePct} accent={selectedCampaign.accent} />
                       </div>
-                      <div className="mt-2 flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
+                      <div className="mt-2 flex items-center justify-between text-[11px] text-faith-slate">
                         <span>{selectedCampaign.burnRateLabel}</span>
                         <span>{selectedCampaign.forecastLabel}</span>
                       </div>
@@ -2597,14 +2597,14 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
                       />
                     </div>
 
-                    <div className="rounded-2xl border border-dashed border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 p-3 text-[12px] text-slate-600 dark:text-slate-400">
-                      <span className="font-semibold text-slate-900 dark:text-slate-100">Rule-based budget move:</span>{" "}
+                    <div className="rounded-2xl border border-dashed border-slate-300 dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 text-[12px] text-faith-slate">
+                      <span className="font-semibold text-faith-ink dark:text-slate-100">Rule-based budget move:</span>{" "}
                       {selectedCampaign.budgetMoveLabel}
                     </div>
                   </div>
                 </div>
 
-                <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+                <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
                   <SectionTitle
                     icon={<Wand2 className="h-5 w-5" />}
                     title="Creative version manager"
@@ -2624,7 +2624,7 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
                   </div>
                 </div>
 
-                <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+                <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
                   <SectionTitle
                     icon={<ShieldCheck className="h-5 w-5" />}
                     title="Approval and QA lane"
@@ -2641,15 +2641,15 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
                     {approvalChecklist.map((item) => (
                       <div
                         key={item.label}
-                        className="flex items-center justify-between rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-3 py-2"
+                        className="flex items-center justify-between rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-2"
                       >
-                        <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">{item.label}</div>
+                        <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">{item.label}</div>
                         <Pill text={item.state === "good" ? "Ready" : item.state === "warn" ? "Review" : "Blocked"} tone={item.state} />
                       </div>
                     ))}
 
-                    <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3">
-                      <div className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">Launch blockers</div>
+                    <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3">
+                      <div className="text-[11px] font-semibold text-faith-slate">Launch blockers</div>
                       <div className="mt-2 space-y-2">
                         {selectedCampaign.launchBlockers.length ? (
                           selectedCampaign.launchBlockers.map((blocker) => (
@@ -2670,7 +2670,7 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
                   </div>
                 </div>
 
-                <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+                <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
                   <SectionTitle
                     icon={<Zap className="h-5 w-5" />}
                     title="Optimization rules"
@@ -2681,17 +2681,17 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
                     {selectedCampaign.optimizationRules.map((rule) => (
                       <div
                         key={rule.id}
-                        className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3 transition-colors"
+                        className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors"
                       >
                         <div className="flex items-start justify-between gap-3">
                           <div className="min-w-0">
                             <div className="flex flex-wrap items-center gap-2">
-                              <div className="text-[12px] font-semibold text-slate-900 dark:text-slate-100">
+                              <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                                 {rule.label}
                               </div>
                               <Pill text={rule.threshold} tone="neutral" />
                             </div>
-                            <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
+                            <div className="mt-1 text-[11px] text-faith-slate">
                               {rule.description}
                             </div>
                           </div>
@@ -2702,7 +2702,7 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
                   </div>
                 </div>
 
-                <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+                <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
                   <SectionTitle
                     icon={<Clock3 className="h-5 w-5" />}
                     title="Audit and collaboration history"
@@ -2724,13 +2724,14 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
       <CampaignDetailDrawer campaign={selectedCampaign} open={detailDrawerOpen} onClose={() => setDetailDrawerOpen(false)} />
 
       {toast ? (
-        <div className="fixed bottom-6 left-1/2 z-[130] -translate-x-1/2 rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow-xl dark:bg-slate-100 dark:text-slate-900">
+        <div className="fixed bottom-6 left-1/2 z-[130] -translate-x-1/2 rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow-xl dark:bg-slate-100 dark:text-faith-ink">
           {toast}
         </div>
       ) : null}
     </div>
   );
 }
+
 
 
 

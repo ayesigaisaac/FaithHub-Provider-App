@@ -1,4 +1,4 @@
-ï»¿// @ts-nocheck
+// @ts-nocheck
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -32,7 +32,7 @@ import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
- * Provider â€” Series Dashboard
+ * Provider — Series Dashboard
  * ------------------------------------
  * Premium operational landing page for structured Series content.
  *
@@ -100,7 +100,7 @@ function fmtDate(iso: string) {
 }
 
 function fmtDateTime(iso?: string) {
-  if (!iso) return "â€”";
+  if (!iso) return "—";
   const d = new Date(iso);
   return d.toLocaleString(undefined, {
     month: "short",
@@ -533,7 +533,7 @@ function Pill({
         ? "border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-900/20 text-amber-800 dark:text-amber-300"
         : tone === "danger"
           ? "border-rose-200 dark:border-rose-800 bg-rose-50 dark:bg-rose-900/20 text-rose-800 dark:text-rose-300"
-          : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300";
+          : "border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 text-slate-700 dark:text-slate-300";
   return <span className={cx("px-2.5 py-1 rounded-full border text-[11px] font-semibold", cls)}>{text}</span>;
 }
 
@@ -559,8 +559,8 @@ function SoftButton({
       className={cx(
         "px-4 py-2 rounded-2xl text-[12px] font-semibold inline-flex items-center gap-2 border transition-colors",
         disabled
-          ? "bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-400 dark:text-slate-500 cursor-not-allowed"
-          : "bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200",
+          ? "bg-[var(--fh-surface)] dark:bg-slate-900 border-faith-line dark:border-slate-800 text-faith-slate cursor-not-allowed"
+          : "bg-[var(--fh-surface-bg)] dark:bg-slate-800 border-faith-line dark:border-slate-700 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200",
         className,
       )}
     >
@@ -617,17 +617,17 @@ function StatCard({
   const softBg = accent === "orange" ? "#fff3e6" : accent === "navy" ? "#e9eef9" : "#e8f8f3";
 
   return (
-    <div className="rounded-[24px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 transition-colors">
+    <div className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors">
       <div className="flex items-start justify-between gap-2">
         <div>
-          <div className="text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">{label}</div>
-          <div className="mt-2 text-[22px] font-black tracking-tight text-slate-900 dark:text-slate-100">{value}</div>
+          <div className="text-[11px] font-semibold uppercase tracking-[0.12em] text-faith-slate">{label}</div>
+          <div className="mt-2 text-[22px] font-black tracking-tight text-faith-ink dark:text-slate-100">{value}</div>
         </div>
         <div className="h-9 w-9 rounded-2xl" style={{ background: softBg, boxShadow: `inset 0 0 0 1px ${accentColor}22` }}>
           <div className="h-full w-full rounded-2xl" style={{ background: `${accentColor}22` }} />
         </div>
       </div>
-      <div className="mt-2 text-[12px] leading-relaxed text-slate-600 dark:text-slate-400">{helper}</div>
+      <div className="mt-2 text-[12px] leading-relaxed text-faith-slate">{helper}</div>
     </div>
   );
 }
@@ -644,11 +644,11 @@ function SectionCard({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-[28px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 transition-colors">
+    <div className="rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors">
       <div className="flex items-start justify-between gap-3">
         <div>
-          <div className="text-[15px] font-bold text-slate-900 dark:text-slate-100">{title}</div>
-          {subtitle ? <div className="mt-1 text-[12px] text-slate-500 dark:text-slate-400">{subtitle}</div> : null}
+          <div className="text-[15px] font-bold text-faith-ink dark:text-slate-100">{title}</div>
+          {subtitle ? <div className="mt-1 text-[12px] text-faith-slate">{subtitle}</div> : null}
         </div>
         {right ? <div className="shrink-0">{right}</div> : null}
       </div>
@@ -668,12 +668,12 @@ function SearchInput({
 }) {
   return (
     <div className="relative">
-      <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+      <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-faith-slate" />
       <input
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="w-full rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 pl-10 pr-4 py-3 text-[13px] text-slate-900 dark:text-slate-100 outline-none transition-colors focus:ring-2 focus:ring-[rgba(3,205,140,0.18)]"
+        className="w-full rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 pl-10 pr-4 py-3 text-[13px] text-faith-ink dark:text-slate-100 outline-none transition-colors focus:ring-2 focus:ring-[rgba(3,205,140,0.18)]"
       />
     </div>
   );
@@ -692,7 +692,7 @@ function SelectPill({
     <select
       value={value}
       onChange={(e) => onChange(e.target.value)}
-      className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-[13px] font-semibold text-slate-700 dark:text-slate-200 outline-none transition-colors"
+      className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 px-4 py-3 text-[13px] font-semibold text-slate-700 dark:text-slate-200 outline-none transition-colors"
     >
       {options.map((option) => (
         <option key={option} value={option}>
@@ -711,35 +711,35 @@ function EpisodeRow({
   seriesId: string;
 }) {
   return (
-    <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-3 transition-colors">
+    <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 p-3 transition-colors">
       <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="rounded-xl bg-slate-100 dark:bg-slate-900 px-2.5 py-1 text-[11px] font-black text-slate-600 dark:text-slate-300">
+            <span className="rounded-xl bg-slate-100 dark:bg-slate-900 px-2.5 py-1 text-[11px] font-black text-faith-slate dark:text-slate-300">
               EP {episode.number}
             </span>
             <Pill text={episode.status} tone={statusTone(episode.status)} />
             {episode.linkedLives > 0 ? <Pill text={`${episode.linkedLives} live-linked`} tone="warn" /> : null}
           </div>
-          <div className="mt-2 text-[14px] font-bold text-slate-900 dark:text-slate-100">{episode.title}</div>
-          <div className="mt-1 text-[12px] text-slate-600 dark:text-slate-400">{episode.focus}</div>
+          <div className="mt-2 text-[14px] font-bold text-faith-ink dark:text-slate-100">{episode.title}</div>
+          <div className="mt-1 text-[12px] text-faith-slate">{episode.focus}</div>
 
           <div className="mt-3 grid grid-cols-2 gap-2 md:grid-cols-4">
-            <div className="rounded-2xl bg-slate-50 dark:bg-slate-900 px-3 py-2 transition-colors">
-              <div className="text-[10px] uppercase tracking-[0.12em] text-slate-400">Watch starts</div>
-              <div className="mt-1 text-[14px] font-black text-slate-900 dark:text-slate-100">{fmtInt(episode.watchStarts)}</div>
+            <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-900 px-3 py-2 transition-colors">
+              <div className="text-[10px] uppercase tracking-[0.12em] text-faith-slate">Watch starts</div>
+              <div className="mt-1 text-[14px] font-black text-faith-ink dark:text-slate-100">{fmtInt(episode.watchStarts)}</div>
             </div>
-            <div className="rounded-2xl bg-slate-50 dark:bg-slate-900 px-3 py-2 transition-colors">
-              <div className="text-[10px] uppercase tracking-[0.12em] text-slate-400">Resources</div>
-              <div className="mt-1 text-[14px] font-black text-slate-900 dark:text-slate-100">{episode.resources}</div>
+            <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-900 px-3 py-2 transition-colors">
+              <div className="text-[10px] uppercase tracking-[0.12em] text-faith-slate">Resources</div>
+              <div className="mt-1 text-[14px] font-black text-faith-ink dark:text-slate-100">{episode.resources}</div>
             </div>
-            <div className="rounded-2xl bg-slate-50 dark:bg-slate-900 px-3 py-2 transition-colors">
-              <div className="text-[10px] uppercase tracking-[0.12em] text-slate-400">Notes</div>
-              <div className="mt-1 text-[14px] font-black text-slate-900 dark:text-slate-100">{episode.notesReady ? "Ready" : "Due"}</div>
+            <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-900 px-3 py-2 transition-colors">
+              <div className="text-[10px] uppercase tracking-[0.12em] text-faith-slate">Notes</div>
+              <div className="mt-1 text-[14px] font-black text-faith-ink dark:text-slate-100">{episode.notesReady ? "Ready" : "Due"}</div>
             </div>
-            <div className="rounded-2xl bg-slate-50 dark:bg-slate-900 px-3 py-2 transition-colors">
-              <div className="text-[10px] uppercase tracking-[0.12em] text-slate-400">Artwork</div>
-              <div className="mt-1 text-[14px] font-black text-slate-900 dark:text-slate-100">{episode.artworkReady ? "Ready" : "Missing"}</div>
+            <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-900 px-3 py-2 transition-colors">
+              <div className="text-[10px] uppercase tracking-[0.12em] text-faith-slate">Artwork</div>
+              <div className="mt-1 text-[14px] font-black text-faith-ink dark:text-slate-100">{episode.artworkReady ? "Ready" : "Missing"}</div>
             </div>
           </div>
         </div>
@@ -754,10 +754,10 @@ function EpisodeRow({
         </div>
       </div>
 
-      <div className="mt-3 flex flex-wrap items-center gap-3 text-[11px] text-slate-500 dark:text-slate-400">
-        <span>Owner: <span className="font-semibold text-slate-900 dark:text-slate-100">{episode.owner}</span></span>
-        <span>Replay: <span className="font-semibold text-slate-900 dark:text-slate-100">{episode.replayReady ? "Ready" : "Not ready"}</span></span>
-        <span>Next live: <span className="font-semibold text-slate-900 dark:text-slate-100">{fmtDateTime(episode.nextLiveISO)}</span></span>
+      <div className="mt-3 flex flex-wrap items-center gap-3 text-[11px] text-faith-slate">
+        <span>Owner: <span className="font-semibold text-faith-ink dark:text-slate-100">{episode.owner}</span></span>
+        <span>Replay: <span className="font-semibold text-faith-ink dark:text-slate-100">{episode.replayReady ? "Ready" : "Not ready"}</span></span>
+        <span>Next live: <span className="font-semibold text-faith-ink dark:text-slate-100">{fmtDateTime(episode.nextLiveISO)}</span></span>
       </div>
     </div>
   );
@@ -773,14 +773,14 @@ function SeriesLandingPreview({
   const isMobile = previewMode === "mobile";
 
   return (
-    <div className={cx("rounded-[28px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3 transition-colors", isMobile ? "max-w-[360px]" : "") }>
-      <div className={cx("overflow-hidden rounded-[22px] border border-slate-200 dark:border-slate-800 bg-[#0e7d72] text-white", isMobile ? "" : "") }>
+    <div className={cx("rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors", isMobile ? "max-w-[360px]" : "") }>
+      <div className={cx("overflow-hidden rounded-[22px] border border-faith-line dark:border-slate-800 bg-[#0e7d72] text-white", isMobile ? "" : "") }>
         <div className="relative h-[184px] overflow-hidden">
           <img src={series.coverUrl} alt={series.title} className="h-full w-full object-cover opacity-30" />
           <div className="absolute inset-0 bg-gradient-to-br from-[#0e7d72] via-[#137f74] to-[#0b3a5f]" style={{ opacity: 0.92 }} />
           <div className="absolute left-4 top-4 flex flex-wrap items-center gap-2">
             <span className="rounded-full bg-[#10223a] px-3 py-1 text-[10px] font-black">SERIES</span>
-            <span className="rounded-full bg-white/90 px-3 py-1 text-[10px] font-black text-[#106f65]">{series.access}</span>
+            <span className="rounded-full bg-[var(--fh-surface-bg)]/90 px-3 py-1 text-[10px] font-black text-[#106f65]">{series.access}</span>
             {series.beaconReady ? (
               <span className="rounded-full bg-[#fff3e6] px-3 py-1 text-[10px] font-black text-[#f77f00]">Beacon-ready</span>
             ) : null}
@@ -796,35 +796,35 @@ function SeriesLandingPreview({
           </div>
         </div>
 
-        <div className="bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 p-4">
+        <div className="bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-faith-ink dark:text-slate-100 p-4">
           <div className="grid grid-cols-2 gap-3">
-            <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 p-3 transition-colors">
-              <div className="text-[10px] uppercase tracking-[0.12em] text-slate-400">Episodes</div>
+            <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
+              <div className="text-[10px] uppercase tracking-[0.12em] text-faith-slate">Episodes</div>
               <div className="mt-1 text-[18px] font-black">{series.episodeCount}</div>
             </div>
-            <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 p-3 transition-colors">
-              <div className="text-[10px] uppercase tracking-[0.12em] text-slate-400">Linked lives</div>
+            <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
+              <div className="text-[10px] uppercase tracking-[0.12em] text-faith-slate">Linked lives</div>
               <div className="mt-1 text-[18px] font-black">{series.linkedLives}</div>
             </div>
           </div>
 
-          <div className="mt-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-3 transition-colors">
+          <div className="mt-3 rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 p-3 transition-colors">
             <div className="text-[12px] font-bold">Series summary</div>
-            <div className="mt-1 text-[12px] leading-relaxed text-slate-600 dark:text-slate-400">{series.summary}</div>
+            <div className="mt-1 text-[12px] leading-relaxed text-faith-slate">{series.summary}</div>
           </div>
 
-          <div className="mt-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-3 transition-colors">
+          <div className="mt-3 rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 p-3 transition-colors">
             <div className="flex items-center justify-between gap-2">
               <div className="text-[12px] font-bold">Episode ladder</div>
-              <span className="text-[11px] text-slate-500 dark:text-slate-400">Episodes live inside this series</span>
+              <span className="text-[11px] text-faith-slate">Episodes live inside this series</span>
             </div>
             <div className="mt-2 space-y-2">
               {series.episodes.slice(0, 3).map((episode) => (
-                <div key={episode.id} className="rounded-2xl bg-slate-50 dark:bg-slate-950 px-3 py-2 transition-colors">
+                <div key={episode.id} className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-2 transition-colors">
                   <div className="flex items-center justify-between gap-2">
                     <div className="min-w-0">
-                      <div className="truncate text-[12px] font-bold text-slate-900 dark:text-slate-100">Episode {episode.number} ? {episode.title}</div>
-                      <div className="mt-0.5 truncate text-[11px] text-slate-500 dark:text-slate-400">{episode.focus}</div>
+                      <div className="truncate text-[12px] font-bold text-faith-ink dark:text-slate-100">Episode {episode.number} ? {episode.title}</div>
+                      <div className="mt-0.5 truncate text-[11px] text-faith-slate">{episode.focus}</div>
                     </div>
                     <Pill text={episode.status} tone={statusTone(episode.status)} />
                   </div>
@@ -971,16 +971,16 @@ export default function SeriesDashboardPage() {
   }, [selectedSeries]);
 
   return (
-    <div className="min-h-screen bg-[#f7f7f7] text-slate-900 dark:bg-slate-950 dark:text-slate-100 px-4 py-5 md:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#f7f7f7] text-faith-ink dark:bg-slate-950 dark:text-slate-100 px-4 py-5 md:px-6 lg:px-8">
       <div className="mx-auto max-w-[1600px] space-y-4">
-        <section className="rounded-[30px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-sm transition-colors">
+        <section className="rounded-[30px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-5 shadow-soft transition-colors">
           <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
             <div className="min-w-0">
               <ProviderPageTitle
                 icon={<Layers className="h-6 w-6" />}
                 title="Series Dashboard"
                 subtitle="Structured series command center for episodes, publishing, and linked live journeys."
-                iconClassName="shadow-sm"
+                iconClassName="shadow-soft"
               />
 
               <div className="mt-5 flex flex-wrap items-center gap-2">
@@ -1008,15 +1008,15 @@ export default function SeriesDashboardPage() {
                   <Plus className="h-4 w-4" /> + New Episode
                 </PrimaryButton>
               </div>
-              <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-3 py-2 text-[12px] text-slate-600 dark:text-slate-400 max-w-[420px]">
-                Episodes are created <span className="font-bold text-slate-900 dark:text-slate-100">inside a selected Series</span>. Use + New Episode on the chosen Series or from the top command bar.
+              <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-800 px-3 py-2 text-[12px] text-faith-slate max-w-[420px]">
+                Episodes are created <span className="font-bold text-faith-ink dark:text-slate-100">inside a selected Series</span>. Use + New Episode on the chosen Series or from the top command bar.
               </div>
             </div>
           </div>
         </section>
 
-        <div className="rounded-[22px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3 transition-colors">
-          <div className="flex flex-wrap items-center gap-3 text-[12px] text-slate-600 dark:text-slate-400">
+        <div className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 py-3 transition-colors">
+          <div className="flex flex-wrap items-center gap-3 text-[12px] text-faith-slate">
             <span className="inline-flex items-center rounded-full border border-[#f77f00]/25 bg-[#fff3e6] px-3 py-1 font-black uppercase tracking-[0.08em] text-[#f77f00]">
               Series pipeline pulse
             </span>
@@ -1027,7 +1027,7 @@ export default function SeriesDashboardPage() {
             <span>{translationReviewCount} translation variants still due</span>
             <span>?</span>
             <span>{beaconReadyCount} series already promotion-ready</span>
-            <span className="ml-auto text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-400">Premium series ops</span>
+            <span className="ml-auto text-[11px] font-semibold uppercase tracking-[0.12em] text-faith-slate">Premium series ops</span>
           </div>
         </div>
 
@@ -1106,7 +1106,7 @@ export default function SeriesDashboardPage() {
                       ? key === "beacon-ready"
                         ? "border-[#f77f00] bg-[#fff3e6] text-[#f77f00]"
                         : "border-transparent text-white"
-                      : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700",
+                      : "border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 text-faith-slate dark:text-slate-300 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-700",
                   )}
                   style={filterKey === key && key !== "beacon-ready" ? { background: EV_GREEN } : undefined}
                 >
@@ -1125,7 +1125,7 @@ export default function SeriesDashboardPage() {
                       "rounded-[28px] border transition-colors",
                       selected
                         ? "border-[#03cd8c]/40 bg-[#edf9f5] dark:bg-emerald-900/10 dark:border-emerald-800"
-                        : "border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900",
+                        : "border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900",
                     )}
                   >
                     <button
@@ -1146,40 +1146,40 @@ export default function SeriesDashboardPage() {
                                 <Pill text={series.access} />
                                 {series.beaconReady ? <Pill text="Beacon-ready" tone="warn" /> : null}
                               </div>
-                              <div className="mt-2 text-[22px] font-black tracking-tight text-slate-900 dark:text-slate-100">{series.title}</div>
-                              <div className="mt-1 text-[13px] font-medium text-slate-500 dark:text-slate-400">{series.subtitle}</div>
-                              <div className="mt-2 text-[13px] leading-relaxed text-slate-600 dark:text-slate-400">{series.summary}</div>
+                              <div className="mt-2 text-[22px] font-black tracking-tight text-faith-ink dark:text-slate-100">{series.title}</div>
+                              <div className="mt-1 text-[13px] font-medium text-faith-slate">{series.subtitle}</div>
+                              <div className="mt-2 text-[13px] leading-relaxed text-faith-slate">{series.summary}</div>
                             </div>
                           </div>
 
                           <div className="mt-4 grid grid-cols-2 gap-2 lg:grid-cols-5">
-                            <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-800 px-3 py-2 transition-colors">
-                              <div className="text-[10px] uppercase tracking-[0.12em] text-slate-400">Episodes</div>
-                              <div className="mt-1 text-[16px] font-black text-slate-900 dark:text-slate-100">{series.episodeCount}</div>
+                            <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)]/70 dark:bg-slate-800 px-3 py-2 transition-colors">
+                              <div className="text-[10px] uppercase tracking-[0.12em] text-faith-slate">Episodes</div>
+                              <div className="mt-1 text-[16px] font-black text-faith-ink dark:text-slate-100">{series.episodeCount}</div>
                             </div>
-                            <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-800 px-3 py-2 transition-colors">
-                              <div className="text-[10px] uppercase tracking-[0.12em] text-slate-400">Linked lives</div>
-                              <div className="mt-1 text-[16px] font-black text-slate-900 dark:text-slate-100">{series.linkedLives}</div>
+                            <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)]/70 dark:bg-slate-800 px-3 py-2 transition-colors">
+                              <div className="text-[10px] uppercase tracking-[0.12em] text-faith-slate">Linked lives</div>
+                              <div className="mt-1 text-[16px] font-black text-faith-ink dark:text-slate-100">{series.linkedLives}</div>
                             </div>
-                            <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-800 px-3 py-2 transition-colors">
-                              <div className="text-[10px] uppercase tracking-[0.12em] text-slate-400">Replay / clips</div>
-                              <div className="mt-1 text-[16px] font-black text-slate-900 dark:text-slate-100">{series.replayCount} / {series.clipCount}</div>
+                            <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)]/70 dark:bg-slate-800 px-3 py-2 transition-colors">
+                              <div className="text-[10px] uppercase tracking-[0.12em] text-faith-slate">Replay / clips</div>
+                              <div className="mt-1 text-[16px] font-black text-faith-ink dark:text-slate-100">{series.replayCount} / {series.clipCount}</div>
                             </div>
-                            <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-800 px-3 py-2 transition-colors">
-                              <div className="text-[10px] uppercase tracking-[0.12em] text-slate-400">Watch starts</div>
-                              <div className="mt-1 text-[16px] font-black text-slate-900 dark:text-slate-100">{fmtInt(series.watchStarts)}</div>
+                            <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)]/70 dark:bg-slate-800 px-3 py-2 transition-colors">
+                              <div className="text-[10px] uppercase tracking-[0.12em] text-faith-slate">Watch starts</div>
+                              <div className="mt-1 text-[16px] font-black text-faith-ink dark:text-slate-100">{fmtInt(series.watchStarts)}</div>
                             </div>
-                            <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-800 px-3 py-2 transition-colors">
-                              <div className="text-[10px] uppercase tracking-[0.12em] text-slate-400">Languages</div>
-                              <div className="mt-1 text-[16px] font-black text-slate-900 dark:text-slate-100">{series.languages.length}</div>
+                            <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)]/70 dark:bg-slate-800 px-3 py-2 transition-colors">
+                              <div className="text-[10px] uppercase tracking-[0.12em] text-faith-slate">Languages</div>
+                              <div className="mt-1 text-[16px] font-black text-faith-ink dark:text-slate-100">{series.languages.length}</div>
                             </div>
                           </div>
 
-                          <div className="mt-3 flex flex-wrap items-center gap-3 text-[12px] text-slate-500 dark:text-slate-400">
-                            <span>Speaker: <span className="font-semibold text-slate-900 dark:text-slate-100">{series.speaker}</span></span>
-                            <span>Campus: <span className="font-semibold text-slate-900 dark:text-slate-100">{series.campus}</span></span>
-                            <span>Updated: <span className="font-semibold text-slate-900 dark:text-slate-100">{fmtDate(series.updatedISO)}</span></span>
-                            <span>Next live: <span className="font-semibold text-slate-900 dark:text-slate-100">{fmtDateTime(series.nextLiveISO)}</span></span>
+                          <div className="mt-3 flex flex-wrap items-center gap-3 text-[12px] text-faith-slate">
+                            <span>Speaker: <span className="font-semibold text-faith-ink dark:text-slate-100">{series.speaker}</span></span>
+                            <span>Campus: <span className="font-semibold text-faith-ink dark:text-slate-100">{series.campus}</span></span>
+                            <span>Updated: <span className="font-semibold text-faith-ink dark:text-slate-100">{fmtDate(series.updatedISO)}</span></span>
+                            <span>Next live: <span className="font-semibold text-faith-ink dark:text-slate-100">{fmtDateTime(series.nextLiveISO)}</span></span>
                           </div>
                         </div>
 
@@ -1195,11 +1195,11 @@ export default function SeriesDashboardPage() {
                     </button>
 
                     {selected ? (
-                      <div className="border-t border-slate-200 dark:border-slate-800 px-4 pb-4 pt-3">
+                      <div className="border-t border-faith-line dark:border-slate-800 px-4 pb-4 pt-3">
                         <div className="flex flex-wrap items-center justify-between gap-2">
                           <div>
-                            <div className="text-[13px] font-bold text-slate-900 dark:text-slate-100">Episode ladder for {series.title}</div>
-                            <div className="mt-1 text-[12px] text-slate-500 dark:text-slate-400">
+                            <div className="text-[13px] font-bold text-faith-ink dark:text-slate-100">Episode ladder for {series.title}</div>
+                            <div className="mt-1 text-[12px] text-faith-slate">
                               Each episode lives inside this Series shell and can carry its own live, replay, resources, and promotion hooks.
                             </div>
                           </div>
@@ -1234,9 +1234,9 @@ export default function SeriesDashboardPage() {
               })}
 
               {!filteredSeries.length ? (
-                <div className="rounded-[28px] border border-dashed border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 p-10 text-center transition-colors">
-                  <div className="text-[18px] font-black text-slate-900 dark:text-slate-100">No Series match this view</div>
-                  <div className="mt-2 text-[13px] text-slate-500 dark:text-slate-400">
+                <div className="rounded-[28px] border border-dashed border-slate-300 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-10 text-center transition-colors">
+                  <div className="text-[18px] font-black text-faith-ink dark:text-slate-100">No Series match this view</div>
+                  <div className="mt-2 text-[13px] text-faith-slate">
                     Clear filters or create a new Series. Episodes can only be created inside a selected Series.
                   </div>
                   <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
@@ -1254,14 +1254,14 @@ export default function SeriesDashboardPage() {
               title="Series preview rail"
               subtitle="Persistent preview so the Provider can see how the selected Series will read across desktop and mobile."
               right={
-                <div className="inline-flex rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-1 transition-colors">
+                <div className="inline-flex rounded-full border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 p-1 transition-colors">
                   <button
                     type="button"
                     className={cx(
                       "rounded-full px-3 py-1 text-[12px] font-semibold transition-colors",
                       previewMode === "desktop"
-                        ? "bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900"
-                        : "text-slate-500 dark:text-slate-400",
+                        ? "bg-slate-900 text-white dark:bg-slate-100 dark:text-faith-ink"
+                        : "text-faith-slate",
                     )}
                     onClick={() => setPreviewMode("desktop")}
                   >
@@ -1272,8 +1272,8 @@ export default function SeriesDashboardPage() {
                     className={cx(
                       "rounded-full px-3 py-1 text-[12px] font-semibold transition-colors",
                       previewMode === "mobile"
-                        ? "bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900"
-                        : "text-slate-500 dark:text-slate-400",
+                        ? "bg-slate-900 text-white dark:bg-slate-100 dark:text-faith-ink"
+                        : "text-faith-slate",
                     )}
                     onClick={() => setPreviewMode("mobile")}
                   >
@@ -1305,39 +1305,39 @@ export default function SeriesDashboardPage() {
                   </div>
 
                   <div className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-[minmax(0,1.2fr)_170px]">
-                    <div className="rounded-[24px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 transition-colors">
-                      <div className="text-[14px] font-bold text-slate-900 dark:text-slate-100">Selected series summary</div>
-                      <div className="mt-2 text-[13px] leading-relaxed text-slate-600 dark:text-slate-400">{selectedSeries.summary}</div>
+                    <div className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors">
+                      <div className="text-[14px] font-bold text-faith-ink dark:text-slate-100">Selected series summary</div>
+                      <div className="mt-2 text-[13px] leading-relaxed text-faith-slate">{selectedSeries.summary}</div>
                       <div className="mt-3 flex flex-wrap gap-2">
                         {selectedSeries.tags.map((tag) => (
-                          <span key={tag} className="rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-3 py-1 text-[11px] font-semibold text-slate-600 dark:text-slate-300">
+                          <span key={tag} className="rounded-full border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 px-3 py-1 text-[11px] font-semibold text-faith-slate dark:text-slate-300">
                             {tag}
                           </span>
                         ))}
                       </div>
                     </div>
-                    <div className="rounded-[24px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 transition-colors">
-                      <div className="text-[14px] font-bold text-slate-900 dark:text-slate-100">Signals</div>
+                    <div className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors">
+                      <div className="text-[14px] font-bold text-faith-ink dark:text-slate-100">Signals</div>
                       <div className="mt-3 space-y-2">
                         {seriesSignals?.map((signal) => (
                           <div key={signal.label} className="flex items-center justify-between gap-2 text-[12px]">
-                            <span className="text-slate-500 dark:text-slate-400">{signal.label}</span>
-                            <span className="font-black text-slate-900 dark:text-slate-100">{signal.value}</span>
+                            <span className="text-faith-slate">{signal.label}</span>
+                            <span className="font-black text-faith-ink dark:text-slate-100">{signal.value}</span>
                           </div>
                         ))}
                       </div>
                     </div>
                   </div>
 
-                  <div className="mt-4 rounded-[24px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 transition-colors">
+                  <div className="mt-4 rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors">
                     <div className="flex items-start gap-3">
                       <div className="grid h-10 w-10 place-items-center rounded-2xl text-white" style={{ background: EV_GREEN }}>
                         <Workflow className="h-5 w-5" />
                       </div>
                       <div>
-                        <div className="text-[14px] font-bold text-slate-900 dark:text-slate-100">Series ??? ? Episodes rule</div>
-                        <div className="mt-1 text-[12px] text-slate-600 dark:text-slate-400">
-                          <span className="font-semibold text-slate-900 dark:text-slate-100">{selectedSeries.title}</span> currently holds <span className="font-semibold text-slate-900 dark:text-slate-100">{selectedSeries.episodeCount} episodes</span>. New episodes should be created from this Series context so they inherit the right identity, audience, and workflow connections.
+                        <div className="text-[14px] font-bold text-faith-ink dark:text-slate-100">Series ??? ? Episodes rule</div>
+                        <div className="mt-1 text-[12px] text-faith-slate">
+                          <span className="font-semibold text-faith-ink dark:text-slate-100">{selectedSeries.title}</span> currently holds <span className="font-semibold text-faith-ink dark:text-slate-100">{selectedSeries.episodeCount} episodes</span>. New episodes should be created from this Series context so they inherit the right identity, audience, and workflow connections.
                         </div>
                       </div>
                     </div>
@@ -1352,9 +1352,9 @@ export default function SeriesDashboardPage() {
                   </div>
                 </>
               ) : (
-                <div className="rounded-[24px] border border-dashed border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 p-8 text-center transition-colors">
-                  <div className="text-[15px] font-black text-slate-900 dark:text-slate-100">Select a series to preview it</div>
-                  <div className="mt-2 text-[12px] text-slate-500 dark:text-slate-400">The preview rail and + New Episode flow depend on a selected Series.</div>
+                <div className="rounded-[24px] border border-dashed border-slate-300 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-8 text-center transition-colors">
+                  <div className="text-[15px] font-black text-faith-ink dark:text-slate-100">Select a series to preview it</div>
+                  <div className="mt-2 text-[12px] text-faith-slate">The preview rail and + New Episode flow depend on a selected Series.</div>
                 </div>
               )}
             </SectionCard>
@@ -1369,10 +1369,10 @@ export default function SeriesDashboardPage() {
             {selectedSeries ? (
               <div className="space-y-2">
                 {episodePipeline.map((row) => (
-                  <div key={row.id} className="flex flex-col gap-2 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3 transition-colors md:flex-row md:items-center md:justify-between">
+                  <div key={row.id} className="flex flex-col gap-2 rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 py-3 transition-colors md:flex-row md:items-center md:justify-between">
                     <div>
-                      <div className="text-[14px] font-bold text-slate-900 dark:text-slate-100">{row.title}</div>
-                      <div className="mt-1 text-[12px] text-slate-500 dark:text-slate-400">{row.detail}</div>
+                      <div className="text-[14px] font-bold text-faith-ink dark:text-slate-100">{row.title}</div>
+                      <div className="mt-1 text-[12px] text-faith-slate">{row.detail}</div>
                     </div>
                     <div className="flex items-center gap-2">
                       <Pill text={row.status} tone={row.tone} />
@@ -1393,7 +1393,7 @@ export default function SeriesDashboardPage() {
                 </div>
               </div>
             ) : (
-              <div className="rounded-2xl border border-dashed border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 p-6 text-center transition-colors text-[12px] text-slate-500 dark:text-slate-400">
+              <div className="rounded-2xl border border-dashed border-slate-300 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-6 text-center transition-colors text-[12px] text-faith-slate">
                 Select a Series to manage its nested episodes.
               </div>
             )}
@@ -1415,11 +1415,11 @@ export default function SeriesDashboardPage() {
                 return (
                   <div
                     key={template.id}
-                    className="rounded-[24px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 transition-colors"
+                    className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors"
                   >
                     <div className="h-2 w-14 rounded-full" style={{ background: accentColor }} />
-                    <div className="mt-3 text-[15px] font-black text-slate-900 dark:text-slate-100">{template.title}</div>
-                    <div className="mt-2 text-[12px] leading-relaxed text-slate-500 dark:text-slate-400">{template.subtitle}</div>
+                    <div className="mt-3 text-[15px] font-black text-faith-ink dark:text-slate-100">{template.title}</div>
+                    <div className="mt-2 text-[12px] leading-relaxed text-faith-slate">{template.subtitle}</div>
                     <div className="mt-4 flex items-center justify-between gap-2">
                       <span className="text-[12px] font-bold" style={{ color: accentColor }}>
                         {template.cta}
@@ -1447,13 +1447,14 @@ export default function SeriesDashboardPage() {
           </SectionCard>
         </div>
 
-        <div className="rounded-[18px] border border-[#03cd8c]/30 bg-[#e8f8f3] px-4 py-3 text-center text-[13px] text-slate-600">
+        <div className="rounded-[18px] border border-[#03cd8c]/30 bg-[#e8f8f3] px-4 py-3 text-center text-[13px] text-faith-slate">
           Preview
         </div>
       </div>
     </div>
   );
 }
+
 
 
 

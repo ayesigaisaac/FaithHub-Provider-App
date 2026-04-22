@@ -1,4 +1,4 @@
-ï»¿// @ts-nocheck
+// @ts-nocheck
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -31,7 +31,7 @@ import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
- * Provider â€” Beacon Dashboard
+ * Provider — Beacon Dashboard
  * ------------------------------------
  * Premium promotional control center for Provider Workspace.
  *
@@ -109,7 +109,7 @@ function fmtInt(n: number) {
   return Intl.NumberFormat(undefined, { maximumFractionDigits: 0 }).format(n);
 }
 
-function fmtCurrency(n: number, currency = "Â£") {
+function fmtCurrency(n: number, currency = "£") {
   return `${currency}${Intl.NumberFormat(undefined, {
     maximumFractionDigits: 0,
   }).format(n)}`;
@@ -240,7 +240,7 @@ const CAMPAIGNS_SEED: BeaconCampaign[] = [
     eventRegistrations: 34,
     productClicks: 0,
     followAdds: 228,
-    efficiencyLabel: "Â£0.14 per watch start",
+    efficiencyLabel: "£0.14 per watch start",
     creativeHealth: 92,
     fatigueRisk: 38,
     copyStrength: 88,
@@ -260,7 +260,7 @@ const CAMPAIGNS_SEED: BeaconCampaign[] = [
   {
     id: "bc_midweek_live",
     title: "Faith & Work Midweek Reminder",
-    subtitle: "Drive attendance into tonightâ€™s live session before the countdown window closes.",
+    subtitle: "Drive attendance into tonight’s live session before the countdown window closes.",
     state: "Learning",
     mode: "Linked",
     sourceType: "Live Session",
@@ -278,7 +278,7 @@ const CAMPAIGNS_SEED: BeaconCampaign[] = [
     eventRegistrations: 12,
     productClicks: 0,
     followAdds: 74,
-    efficiencyLabel: "Â£0.16 per watch start",
+    efficiencyLabel: "£0.16 per watch start",
     creativeHealth: 84,
     fatigueRisk: 19,
     copyStrength: 79,
@@ -316,7 +316,7 @@ const CAMPAIGNS_SEED: BeaconCampaign[] = [
     eventRegistrations: 62,
     productClicks: 0,
     followAdds: 36,
-    efficiencyLabel: "Â£14.68 per registration",
+    efficiencyLabel: "£14.68 per registration",
     creativeHealth: 61,
     fatigueRisk: 71,
     copyStrength: 58,
@@ -354,14 +354,14 @@ const CAMPAIGNS_SEED: BeaconCampaign[] = [
     eventRegistrations: 0,
     productClicks: 0,
     followAdds: 92,
-    efficiencyLabel: "Â£4.83 per donor action",
+    efficiencyLabel: "£4.83 per donor action",
     creativeHealth: 89,
     fatigueRisk: 27,
     copyStrength: 91,
     ctaAlignment: 93,
     pacingPct: 63,
     recommendedBudgetDelta: 300,
-    forecastLabel: "Projected +Â£18.4k movement if spend increases modestly into the strongest diaspora audience.",
+    forecastLabel: "Projected +£18.4k movement if spend increases modestly into the strongest diaspora audience.",
     audienceLeads: ["Donors", "Care team followers", "Diaspora supporters"],
     regionLeads: ["Nairobi", "Kampala", "Johannesburg diaspora"],
     placementLeads: ["Giving surfaces", "Home hero", "Replay companion cards"],
@@ -392,7 +392,7 @@ const CAMPAIGNS_SEED: BeaconCampaign[] = [
     eventRegistrations: 0,
     productClicks: 0,
     followAdds: 164,
-    efficiencyLabel: "Â£3.78 per follow",
+    efficiencyLabel: "£3.78 per follow",
     creativeHealth: 73,
     fatigueRisk: 54,
     copyStrength: 69,
@@ -430,7 +430,7 @@ const CAMPAIGNS_SEED: BeaconCampaign[] = [
     eventRegistrations: 0,
     productClicks: 0,
     followAdds: 412,
-    efficiencyLabel: "Â£2.38 per follow",
+    efficiencyLabel: "£2.38 per follow",
     creativeHealth: 90,
     fatigueRisk: 35,
     copyStrength: 87,
@@ -505,7 +505,7 @@ const CAMPAIGNS_SEED: BeaconCampaign[] = [
     eventRegistrations: 0,
     productClicks: 0,
     followAdds: 62,
-    efficiencyLabel: "Â£0.15 per watch start",
+    efficiencyLabel: "£0.15 per watch start",
     creativeHealth: 68,
     fatigueRisk: 82,
     copyStrength: 73,
@@ -589,7 +589,7 @@ const RECOMMENDATIONS_SEED: Recommendation[] = [
     sourceType: "Crowdfund",
     mode: "Linked",
     why: "Diaspora donor conversion remains strong and current spend is below the efficient range.",
-    projectedLift: "+Â£18.4k campaign movement",
+    projectedLift: "+£18.4k campaign movement",
     accent: "green",
     route: ROUTES.charityCrowdfund,
   },
@@ -717,12 +717,12 @@ function Btn({
     "inline-flex items-center justify-center gap-2 rounded-xl px-3.5 py-2 text-sm font-semibold transition active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed";
   const cls =
     tone === "primary"
-      ? "text-white hover:brightness-95 shadow-sm"
+      ? "text-white hover:brightness-95 shadow-soft"
       : tone === "secondary"
-      ? "text-white hover:brightness-95 shadow-sm"
+      ? "text-white hover:brightness-95 shadow-soft"
       : tone === "ghost"
-      ? "bg-transparent text-slate-900 dark:text-slate-50 hover:bg-slate-100 dark:hover:bg-slate-800"
-      : "bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-50 ring-1 ring-slate-200 dark:ring-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 shadow-sm";
+      ? "bg-transparent text-faith-ink dark:text-slate-50 hover:bg-slate-100 dark:hover:bg-slate-800"
+      : "bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-faith-ink dark:text-slate-50 ring-1 ring-slate-200 dark:ring-slate-800 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800 shadow-soft";
   const style =
     tone === "primary"
       ? { background: EV_GREEN }
@@ -769,18 +769,18 @@ function Modal({
   return (
     <div className="fixed inset-0 z-[90] flex items-end justify-center p-0 sm:items-center sm:p-4">
       <div className="absolute inset-0 bg-black/45 backdrop-blur-sm" onClick={onClose} />
-      <div className="relative flex h-[92vh] w-full max-w-6xl flex-col overflow-hidden rounded-t-3xl bg-white shadow-2xl ring-1 ring-slate-200 transition dark:bg-slate-900 dark:ring-slate-800 sm:h-auto sm:max-h-[90vh] sm:rounded-3xl">
-        <div className="flex items-start justify-between gap-3 border-b border-slate-200 px-5 py-4 dark:border-slate-800">
+      <div className="relative flex h-[92vh] w-full max-w-6xl flex-col overflow-hidden rounded-t-3xl bg-[var(--fh-surface-bg)] shadow-2xl ring-1 ring-slate-200 transition dark:bg-slate-900 dark:ring-slate-800 sm:h-auto sm:max-h-[90vh] sm:rounded-3xl">
+        <div className="flex items-start justify-between gap-3 border-b border-faith-line px-5 py-4 dark:border-slate-800">
           <div className="min-w-0">
-            <div className="truncate text-base font-semibold text-slate-900 dark:text-slate-50">{title}</div>
-            {subtitle ? <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{subtitle}</div> : null}
+            <div className="truncate text-base font-semibold text-faith-ink dark:text-slate-50">{title}</div>
+            {subtitle ? <div className="mt-1 text-xs text-faith-slate">{subtitle}</div> : null}
           </div>
           <button
             type="button"
             onClick={onClose}
             className="inline-flex h-10 w-10 items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800"
           >
-            <X className="h-5 w-5 text-slate-600 dark:text-slate-400" />
+            <X className="h-5 w-5 text-faith-slate" />
           </button>
         </div>
         <div className="flex-1 overflow-auto p-4 sm:p-6">{children}</div>
@@ -803,12 +803,12 @@ function SectionTitle({
   return (
     <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
       <div className="flex items-start gap-3">
-        <div className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-2xl bg-slate-900 text-white shadow-sm dark:bg-slate-100 dark:text-slate-900">
+        <div className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-2xl bg-slate-900 text-white shadow-soft dark:bg-slate-100 dark:text-faith-ink">
           {icon}
         </div>
         <div className="min-w-0">
-          <div className="text-base font-bold text-slate-900 dark:text-slate-50">{title}</div>
-          {subtitle ? <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{subtitle}</div> : null}
+          <div className="text-base font-bold text-faith-ink dark:text-slate-50">{title}</div>
+          {subtitle ? <div className="mt-1 text-xs text-faith-slate">{subtitle}</div> : null}
         </div>
       </div>
       {right ? <div className="shrink-0">{right}</div> : null}
@@ -888,14 +888,14 @@ function BrowserPreview({ campaign }: { campaign: BeaconCampaign }) {
           : "open_beacon_dashboard";
 
   return (
-    <div className="overflow-hidden rounded-[28px] border border-slate-200 dark:border-slate-800 bg-slate-950 shadow-sm transition-colors">
+    <div className="overflow-hidden rounded-[28px] border border-faith-line dark:border-slate-800 bg-slate-950 shadow-soft transition-colors">
       <div className="relative aspect-[16/9] overflow-hidden">
         <img src={campaign.heroImageUrl} alt={campaign.title} className="h-full w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
         <div className="absolute left-4 top-4 flex flex-wrap gap-2">
           <span className="rounded-full bg-black/45 px-3 py-1 text-[10px] font-black uppercase tracking-[0.14em] text-white backdrop-blur">Beacon</span>
-          <span className="rounded-full bg-white/12 px-3 py-1 text-[10px] font-black uppercase tracking-[0.14em] text-white backdrop-blur">{campaign.mode}</span>
-          <span className="rounded-full bg-white/12 px-3 py-1 text-[10px] font-black uppercase tracking-[0.14em] text-white backdrop-blur">{campaign.sourceType}</span>
+          <span className="rounded-full bg-[var(--fh-surface-bg)]/12 px-3 py-1 text-[10px] font-black uppercase tracking-[0.14em] text-white backdrop-blur">{campaign.mode}</span>
+          <span className="rounded-full bg-[var(--fh-surface-bg)]/12 px-3 py-1 text-[10px] font-black uppercase tracking-[0.14em] text-white backdrop-blur">{campaign.sourceType}</span>
         </div>
         <div className="absolute inset-x-0 bottom-0 p-4 text-white">
           <div className="text-lg font-black leading-tight">{campaign.title}</div>
@@ -910,7 +910,7 @@ function BrowserPreview({ campaign }: { campaign: BeaconCampaign }) {
             </button>
             <button
               type="button"
-              className="inline-flex items-center gap-2 rounded-2xl border border-white/20 bg-white/10 px-3 py-2 text-[12px] font-extrabold text-white backdrop-blur"
+              className="inline-flex items-center gap-2 rounded-2xl border border-white/20 bg-[var(--fh-surface-bg)]/10 px-3 py-2 text-[12px] font-extrabold text-white backdrop-blur"
               onClick={() => safeNav("/faithhub/provider/beacon-dashboard")}>
               Learn more
             </button>
@@ -957,15 +957,15 @@ function PhonePreview({ campaign }: { campaign: BeaconCampaign }) {
 
   return (
     <div className="mx-auto w-full max-w-[310px] md:max-w-[360px] rounded-[34px] bg-slate-950 p-3 shadow-[0_18px_60px_rgba(0,0,0,0.35)] transition-colors">
-      <div className="overflow-hidden rounded-[28px] bg-white dark:bg-slate-950 transition-colors">
+      <div className="overflow-hidden rounded-[28px] bg-[var(--fh-surface-bg)] dark:bg-slate-950 transition-colors">
         <div className="h-[560px] overflow-hidden">
           <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 px-3 py-3">
-            <div className="truncate text-[13px] font-extrabold text-slate-900 dark:text-slate-100">Beacon feed preview</div>
+            <div className="truncate text-[13px] font-extrabold text-faith-ink dark:text-slate-100">Beacon feed preview</div>
             <div className="rounded-full bg-slate-100 dark:bg-slate-800 px-2 py-1 text-[10px] font-extrabold text-slate-700 dark:text-slate-300">{campaign.mode}</div>
           </div>
 
           <div className="p-3">
-            <div className="overflow-hidden rounded-3xl border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 shadow-sm">
+            <div className="overflow-hidden rounded-3xl border border-slate-100 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 shadow-soft">
               <div className="relative aspect-[3/4] overflow-hidden">
                 <img src={campaign.heroImageUrl} alt={campaign.title} className="h-full w-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
@@ -984,12 +984,12 @@ function PhonePreview({ campaign }: { campaign: BeaconCampaign }) {
               <div className="space-y-3 p-3">
                 <div className="grid grid-cols-2 gap-2 text-center">
                   <div className="rounded-2xl bg-slate-100 dark:bg-slate-800 px-3 py-2">
-                    <div className="text-[10px] uppercase tracking-[0.12em] text-slate-500">Reach</div>
-                    <div className="mt-1 text-sm font-black text-slate-900 dark:text-slate-100">{fmtInt(campaign.reach)}</div>
+                    <div className="text-[10px] uppercase tracking-[0.12em] text-faith-slate">Reach</div>
+                    <div className="mt-1 text-sm font-black text-faith-ink dark:text-slate-100">{fmtInt(campaign.reach)}</div>
                   </div>
                   <div className="rounded-2xl bg-slate-100 dark:bg-slate-800 px-3 py-2">
-                    <div className="text-[10px] uppercase tracking-[0.12em] text-slate-500">CTR</div>
-                    <div className="mt-1 text-sm font-black text-slate-900 dark:text-slate-100">{fmtPct(campaign.ctr)}</div>
+                    <div className="text-[10px] uppercase tracking-[0.12em] text-faith-slate">CTR</div>
+                    <div className="mt-1 text-sm font-black text-faith-ink dark:text-slate-100">{fmtPct(campaign.ctr)}</div>
                   </div>
                 </div>
                 <div className="flex gap-2">
@@ -1002,7 +1002,7 @@ function PhonePreview({ campaign }: { campaign: BeaconCampaign }) {
                   </button>
                   <button
                     type="button"
-                    className="inline-flex items-center justify-center rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2.5 text-[12px] font-black text-slate-900 dark:text-slate-100"
+                    className="inline-flex items-center justify-center rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2.5 text-[12px] font-black text-faith-ink dark:text-slate-100"
                     onClick={() => navigator.clipboard?.writeText(window.location.href)}>
                     Save
                   </button>
@@ -1010,16 +1010,16 @@ function PhonePreview({ campaign }: { campaign: BeaconCampaign }) {
               </div>
             </div>
 
-            <div className="mt-3 rounded-3xl border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 p-3 shadow-sm">
-              <div className="text-[11px] font-extrabold uppercase tracking-[0.14em] text-slate-400">Surfaces</div>
+            <div className="mt-3 rounded-3xl border border-slate-100 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-3 shadow-soft">
+              <div className="text-[11px] font-extrabold uppercase tracking-[0.14em] text-faith-slate">Surfaces</div>
               <div className="mt-2 flex flex-wrap gap-2">
                 {campaign.surfaceMix.slice(0, 3).map((surface) => (
-                  <span key={surface} className="rounded-full bg-white dark:bg-slate-950 px-3 py-1 text-[11px] font-bold text-slate-700 dark:text-slate-300 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <span key={surface} className="rounded-full bg-[var(--fh-surface-bg)] dark:bg-slate-950 px-3 py-1 text-[11px] font-bold text-slate-700 dark:text-slate-300 ring-1 ring-slate-200 dark:ring-slate-800">
                     {surface}
                   </span>
                 ))}
               </div>
-              <div className="mt-3 text-[12px] text-slate-500 dark:text-slate-400 leading-relaxed">
+              <div className="mt-3 text-[12px] text-faith-slate leading-relaxed">
                 Preview shows how the selected Beacon creative sits inside premium Feed surfaces.
               </div>
             </div>
@@ -1038,10 +1038,10 @@ function InsightBars({ rows }: { rows: InsightRow[] }) {
         <div key={row.label}>
           <div className="flex items-center justify-between gap-2 text-[12px]">
             <div className="min-w-0">
-              <div className="font-bold text-slate-900 dark:text-slate-100 truncate">{row.label}</div>
-              <div className="text-slate-500 dark:text-slate-400 truncate">{row.note}</div>
+              <div className="font-bold text-faith-ink dark:text-slate-100 truncate">{row.label}</div>
+              <div className="text-faith-slate truncate">{row.note}</div>
             </div>
-            <div className="shrink-0 font-black text-slate-900 dark:text-slate-100">{fmtInt(row.value)}</div>
+            <div className="shrink-0 font-black text-faith-ink dark:text-slate-100">{fmtInt(row.value)}</div>
           </div>
           <div className="mt-2 h-2 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
             <div
@@ -1076,14 +1076,14 @@ function CampaignRow({
       className={cx(
         "w-full rounded-3xl border p-3 text-left transition-all",
         active
-          ? "border-slate-300 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-900"
-          : "border-slate-200 bg-slate-50 hover:bg-white dark:border-slate-800 dark:bg-slate-800/50 dark:hover:bg-slate-900",
+          ? "border-slate-300 bg-[var(--fh-surface-bg)] shadow-soft dark:border-slate-700 dark:bg-slate-900"
+          : "border-faith-line bg-[var(--fh-surface)] hover:bg-[var(--fh-surface-bg)] dark:border-slate-800 dark:bg-slate-800/50 dark:hover:bg-slate-900",
       )}
     >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
-          <div className="truncate text-sm font-bold text-slate-900 dark:text-slate-50">{campaign.title}</div>
-          <div className="mt-1 text-xs text-slate-500 dark:text-slate-400 line-clamp-2">{campaign.subtitle}</div>
+          <div className="truncate text-sm font-bold text-faith-ink dark:text-slate-50">{campaign.title}</div>
+          <div className="mt-1 text-xs text-faith-slate line-clamp-2">{campaign.subtitle}</div>
         </div>
         <div
           className="shrink-0 rounded-full px-2 py-1 text-[10px] font-bold text-white"
@@ -1100,20 +1100,20 @@ function CampaignRow({
       </div>
       <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4">
         <div>
-          <div className="text-[10px] uppercase tracking-wide text-slate-400 dark:text-slate-500">Spend</div>
-          <div className="mt-1 text-sm font-bold text-slate-900 dark:text-slate-50">{fmtCurrency(campaign.spend)}</div>
+          <div className="text-[10px] uppercase tracking-wide text-faith-slate">Spend</div>
+          <div className="mt-1 text-sm font-bold text-faith-ink dark:text-slate-50">{fmtCurrency(campaign.spend)}</div>
         </div>
         <div>
-          <div className="text-[10px] uppercase tracking-wide text-slate-400 dark:text-slate-500">Reach</div>
-          <div className="mt-1 text-sm font-bold text-slate-900 dark:text-slate-50">{fmtInt(campaign.reach)}</div>
+          <div className="text-[10px] uppercase tracking-wide text-faith-slate">Reach</div>
+          <div className="mt-1 text-sm font-bold text-faith-ink dark:text-slate-50">{fmtInt(campaign.reach)}</div>
         </div>
         <div>
-          <div className="text-[10px] uppercase tracking-wide text-slate-400 dark:text-slate-500">CTR</div>
-          <div className="mt-1 text-sm font-bold text-slate-900 dark:text-slate-50">{fmtPct(campaign.ctr)}</div>
+          <div className="text-[10px] uppercase tracking-wide text-faith-slate">CTR</div>
+          <div className="mt-1 text-sm font-bold text-faith-ink dark:text-slate-50">{fmtPct(campaign.ctr)}</div>
         </div>
         <div>
-          <div className="text-[10px] uppercase tracking-wide text-slate-400 dark:text-slate-500">Outcome</div>
-          <div className="mt-1 text-sm font-bold text-slate-900 dark:text-slate-50">
+          <div className="text-[10px] uppercase tracking-wide text-faith-slate">Outcome</div>
+          <div className="mt-1 text-sm font-bold text-faith-ink dark:text-slate-50">
             {campaign.watchStarts > 0
               ? `${fmtInt(campaign.watchStarts)} starts`
               : campaign.givingConversions > 0
@@ -1125,7 +1125,7 @@ function CampaignRow({
         </div>
       </div>
       <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
-        <div className="text-[11px] text-slate-500 dark:text-slate-400">{campaign.lastUpdatedLabel} Â· From {campaign.createdFrom}</div>
+        <div className="text-[11px] text-faith-slate">{campaign.lastUpdatedLabel} · From {campaign.createdFrom}</div>
         <div className="flex items-center gap-2">
           <Btn tone="ghost" onClick={onDuplicate} left={<Copy className="h-4 w-4" />}>
             Duplicate
@@ -1287,12 +1287,12 @@ export default function BeaconDashboardPage() {
   }
 
   return (
-    <div className="min-h-screen w-full flex flex-col bg-[#f2f2f2] dark:bg-slate-950 text-slate-900 dark:text-slate-50 transition-colors overflow-x-hidden">
-      <div className="sticky top-0 z-40 border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md transition-colors">
+    <div className="min-h-screen w-full flex flex-col bg-[var(--fh-page-bg)] dark:bg-slate-950 text-faith-ink dark:text-slate-50 transition-colors overflow-x-hidden">
+      <div className="sticky top-0 z-40 border-b border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)]/95 dark:bg-slate-900/95 backdrop-blur-md transition-colors">
         <div className="w-full px-4 md:px-6 lg:px-8 py-4">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <div className="min-w-0">
-              <div className="flex flex-wrap items-center gap-2 text-[10px] sm:text-xs text-slate-500 dark:text-slate-400">
+              <div className="flex flex-wrap items-center gap-2 text-[10px] sm:text-xs text-faith-slate">
                 <span>Provider Workspace</span>
                 <span className="text-slate-300 dark:text-slate-700">/</span>
                 <span>Beacon</span>
@@ -1332,7 +1332,7 @@ export default function BeaconDashboardPage() {
       <div className="flex-1 w-full px-3 sm:px-4 md:px-6 lg:px-8 py-6">
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-12">
           <div className="lg:col-span-8 space-y-4">
-            <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <SectionTitle
                 icon={<TrendingUp className="h-5 w-5" />}
                 title="Performance hero"
@@ -1348,31 +1348,31 @@ export default function BeaconDashboardPage() {
               </div>
 
               <div className="mt-4 grid grid-cols-1 gap-4 xl:grid-cols-[1.2fr_0.8fr]">
-                <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
                   <div className="flex items-center justify-between gap-2">
                     <div>
-                      <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Budget pacing and forecast strip</div>
-                      <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">Tracks spend against budget, burn rate, and projected outcome quality across the portfolio.</div>
+                      <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Budget pacing and forecast strip</div>
+                      <div className="mt-1 text-xs text-faith-slate">Tracks spend against budget, burn rate, and projected outcome quality across the portfolio.</div>
                     </div>
                     <Pill tone={portfolio.pacingPct > 75 ? "warn" : "good"}>Pace {portfolio.pacingPct}%</Pill>
                   </div>
-                  <div className="mt-3 text-xs font-semibold text-slate-600 dark:text-slate-400">Portfolio pacing</div>
+                  <div className="mt-3 text-xs font-semibold text-faith-slate">Portfolio pacing</div>
                   <div className="mt-2"><ProgressBar value={portfolio.pacingPct} accent="green" /></div>
                   <div className="mt-4 grid gap-3 md:grid-cols-2">
-                    <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                      <div className="text-[11px] uppercase tracking-wide text-slate-400 dark:text-slate-500">Projected reach quality</div>
+                    <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                      <div className="text-[11px] uppercase tracking-wide text-faith-slate">Projected reach quality</div>
                       <div className="mt-2"><MiniLine values={forecastSeries} tone="green" /></div>
                     </div>
-                    <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                      <div className="text-[11px] uppercase tracking-wide text-slate-400 dark:text-slate-500">Cost efficiency trend</div>
+                    <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                      <div className="text-[11px] uppercase tracking-wide text-faith-slate">Cost efficiency trend</div>
                       <div className="mt-2"><MiniLine values={efficiencySeries} tone="orange" /></div>
                     </div>
                   </div>
                 </div>
 
-                <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-                  <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Conversion intelligence block</div>
-                  <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">Beacon outcomes tied back to live attendance, replay views, donations, event registrations, and follows.</div>
+                <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Conversion intelligence block</div>
+                  <div className="mt-1 text-xs text-faith-slate">Beacon outcomes tied back to live attendance, replay views, donations, event registrations, and follows.</div>
                   <div className="mt-4 grid grid-cols-2 gap-3">
                     <MetricCard label="Giving" value={fmtInt(portfolio.givingConversions)} hint="Donor actions" tone="green" />
                     <MetricCard label="Events" value={fmtInt(portfolio.eventRegistrations)} hint="Registrations" tone="orange" />
@@ -1383,7 +1383,7 @@ export default function BeaconDashboardPage() {
               </div>
             </div>
 
-            <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <SectionTitle
                 icon={<Layers className="h-5 w-5" />}
                 title="Campaign status board"
@@ -1408,26 +1408,26 @@ export default function BeaconDashboardPage() {
                       "rounded-3xl border p-3 text-left transition-colors",
                       stateFilter === item.state
                         ? "border-emerald-300 dark:border-emerald-700 bg-emerald-50 dark:bg-emerald-900/20"
-                        : "border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 hover:bg-white dark:hover:bg-slate-900",
+                        : "border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-800/50 hover:bg-[var(--fh-surface-bg)] dark:hover:bg-slate-900",
                     )}
                   >
-                    <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">{item.count}</div>
+                    <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-faith-ink dark:text-slate-100 sm:text-[34px] lg:text-[40px]">{item.count}</div>
                   </button>
                 ))}
               </div>
 
               <div className="mt-4 flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
-                <div className="flex flex-1 items-center gap-2 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-3 py-2 transition-colors">
-                  <Search className="h-4 w-4 text-slate-400" />
+                <div className="flex flex-1 items-center gap-2 rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-2 transition-colors">
+                  <Search className="h-4 w-4 text-faith-slate" />
                   <input
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     placeholder="Search title, source type, linked object, or owner"
-                    className="w-full bg-transparent text-[13px] text-slate-700 dark:text-slate-200 placeholder:text-slate-400 outline-none"
+                    className="w-full bg-transparent text-[13px] text-slate-700 dark:text-slate-200 placeholder:text-faith-slate outline-none"
                   />
                 </div>
                 <div className="flex flex-wrap items-center gap-2">
-                  <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3 py-2 text-[12px] font-extrabold flex items-center gap-2 transition-colors">
+                  <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] font-extrabold flex items-center gap-2 transition-colors">
                     <Filter className="h-4 w-4 text-slate-700 dark:text-slate-300" />
                     <span className="text-slate-700 dark:text-slate-300">Mode</span>
                   </div>
@@ -1440,7 +1440,7 @@ export default function BeaconDashboardPage() {
                         "rounded-full px-3 py-1.5 text-[11px] font-semibold border transition-colors",
                         modeFilter === filter
                           ? "border-transparent text-white"
-                          : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300",
+                          : "border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-slate-700 dark:text-slate-300",
                       )}
                       style={modeFilter === filter ? { background: EV_ORANGE } : undefined}
                     >
@@ -1454,7 +1454,7 @@ export default function BeaconDashboardPage() {
                       "rounded-full px-3 py-1.5 text-[11px] font-semibold border transition-colors",
                       stateFilter === "All"
                         ? "border-transparent text-white"
-                        : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300",
+                        : "border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-slate-700 dark:text-slate-300",
                     )}
                     style={stateFilter === "All" ? { background: EV_GREEN } : undefined}
                   >
@@ -1477,16 +1477,16 @@ export default function BeaconDashboardPage() {
                   />
                 ))}
                 {!filtered.length ? (
-                  <div className="rounded-3xl border border-dashed border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 px-4 py-8 text-center">
-                    <div className="text-sm font-bold text-slate-900 dark:text-slate-50">No campaigns match these filters</div>
-                    <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">Clear the filters or launch a new Beacon campaign.</div>
+                  <div className="rounded-3xl border border-dashed border-slate-300 dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-900 px-4 py-8 text-center">
+                    <div className="text-sm font-bold text-faith-ink dark:text-slate-50">No campaigns match these filters</div>
+                    <div className="mt-1 text-xs text-faith-slate">Clear the filters or launch a new Beacon campaign.</div>
                   </div>
                 ) : null}
               </div>
             </div>
 
             <div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
-              <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+              <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
                 <SectionTitle
                   icon={<Sparkles className="h-5 w-5" />}
                   title="Creative health panel"
@@ -1494,29 +1494,29 @@ export default function BeaconDashboardPage() {
                 />
                 <div className="mt-4 space-y-3">
                   {creativeAlerts.map((campaign) => (
-                    <div key={campaign.id} className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                    <div key={campaign.id} className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
                       <div className="flex items-start justify-between gap-3">
                         <div className="min-w-0">
-                          <div className="text-sm font-bold text-slate-900 dark:text-slate-50">{campaign.title}</div>
-                          <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{campaign.sourceType} Â· {campaign.mode} Â· {campaign.objective}</div>
+                          <div className="text-sm font-bold text-faith-ink dark:text-slate-50">{campaign.title}</div>
+                          <div className="mt-1 text-xs text-faith-slate">{campaign.sourceType} · {campaign.mode} · {campaign.objective}</div>
                         </div>
                         <Pill tone={healthTone(campaign.creativeHealth)}>Health {campaign.creativeHealth}%</Pill>
                       </div>
                       <div className="mt-3 grid grid-cols-3 gap-2">
-                        <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800 text-center">
-                          <div className="text-[10px] uppercase tracking-wide text-slate-400 dark:text-slate-500">Fatigue</div>
-                          <div className="mt-1 text-sm font-black text-slate-900 dark:text-slate-100">{campaign.fatigueRisk}%</div>
+                        <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800 text-center">
+                          <div className="text-[10px] uppercase tracking-wide text-faith-slate">Fatigue</div>
+                          <div className="mt-1 text-sm font-black text-faith-ink dark:text-slate-100">{campaign.fatigueRisk}%</div>
                         </div>
-                        <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800 text-center">
-                          <div className="text-[10px] uppercase tracking-wide text-slate-400 dark:text-slate-500">Copy</div>
-                          <div className="mt-1 text-sm font-black text-slate-900 dark:text-slate-100">{campaign.copyStrength}%</div>
+                        <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800 text-center">
+                          <div className="text-[10px] uppercase tracking-wide text-faith-slate">Copy</div>
+                          <div className="mt-1 text-sm font-black text-faith-ink dark:text-slate-100">{campaign.copyStrength}%</div>
                         </div>
-                        <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800 text-center">
-                          <div className="text-[10px] uppercase tracking-wide text-slate-400 dark:text-slate-500">CTA fit</div>
-                          <div className="mt-1 text-sm font-black text-slate-900 dark:text-slate-100">{campaign.ctaAlignment}%</div>
+                        <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800 text-center">
+                          <div className="text-[10px] uppercase tracking-wide text-faith-slate">CTA fit</div>
+                          <div className="mt-1 text-sm font-black text-faith-ink dark:text-slate-100">{campaign.ctaAlignment}%</div>
                         </div>
                       </div>
-                      <div className="mt-3 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">{campaign.recommendation}</div>
+                      <div className="mt-3 text-xs text-faith-slate leading-relaxed">{campaign.recommendation}</div>
                       <div className="mt-3 flex items-center gap-2">
                         <Btn tone="secondary" onClick={() => setToast(`Refresh creative flow opened for ${campaign.title}.`)} left={<RefreshCw className="h-4 w-4" />}>
                           Refresh creative
@@ -1530,24 +1530,24 @@ export default function BeaconDashboardPage() {
                 </div>
               </div>
 
-              <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+              <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
                 <SectionTitle
                   icon={<Users className="h-5 w-5" />}
                   title="Audience and placement insights"
                   subtitle="See where Beacon results are coming from by segment, region, surface, language, and placement type."
                 />
                 <div className="mt-4 grid gap-4">
-                  <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-                    <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Top audience segments</div>
+                  <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                    <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Top audience segments</div>
                     <div className="mt-3"><InsightBars rows={audienceRows} /></div>
                   </div>
                   <div className="grid gap-4 md:grid-cols-2">
-                    <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-                      <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Placements</div>
+                    <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                      <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Placements</div>
                       <div className="mt-3"><InsightBars rows={placementRows} /></div>
                     </div>
-                    <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-                      <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Regions</div>
+                    <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                      <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Regions</div>
                       <div className="mt-3"><InsightBars rows={regionRows} /></div>
                     </div>
                   </div>
@@ -1556,7 +1556,7 @@ export default function BeaconDashboardPage() {
             </div>
 
             <div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
-              <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+              <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
                 <SectionTitle
                   icon={<Bell className="h-5 w-5" />}
                   title="Recommendations panel"
@@ -1564,17 +1564,17 @@ export default function BeaconDashboardPage() {
                 />
                 <div className="mt-4 space-y-3">
                   {RECOMMENDATIONS_SEED.map((item) => (
-                    <div key={item.id} className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                    <div key={item.id} className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
                       <div className="flex items-start justify-between gap-3">
                         <div className="min-w-0">
-                          <div className="text-sm font-bold text-slate-900 dark:text-slate-50">{item.title}</div>
-                          <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{item.sourceType} Â· {item.mode}</div>
+                          <div className="text-sm font-bold text-faith-ink dark:text-slate-50">{item.title}</div>
+                          <div className="mt-1 text-xs text-faith-slate">{item.sourceType} · {item.mode}</div>
                         </div>
                         <div className="rounded-full px-2 py-1 text-[10px] font-bold text-white" style={{ background: accentColor(item.accent) }}>
                           {item.projectedLift}
                         </div>
                       </div>
-                      <div className="mt-3 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">{item.why}</div>
+                      <div className="mt-3 text-xs text-faith-slate leading-relaxed">{item.why}</div>
                       <div className="mt-3 flex items-center gap-2">
                         <Btn tone="primary" onClick={() => safeNav(item.route)} left={<ExternalLink className="h-4 w-4" />}>
                           Act on recommendation
@@ -1585,7 +1585,7 @@ export default function BeaconDashboardPage() {
                 </div>
               </div>
 
-              <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+              <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
                 <SectionTitle
                   icon={<Zap className="h-5 w-5" />}
                   title="Quick-create and duplicate rail"
@@ -1593,11 +1593,11 @@ export default function BeaconDashboardPage() {
                 />
                 <div className="mt-4 grid gap-3 sm:grid-cols-2">
                   {QUICK_CREATE_PRESETS.map((preset) => (
-                    <div key={preset.id} className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                    <div key={preset.id} className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
                       <div className="flex items-start justify-between gap-3">
                         <div className="min-w-0">
-                          <div className="text-sm font-bold text-slate-900 dark:text-slate-50">{preset.title}</div>
-                          <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{preset.subtitle}</div>
+                          <div className="text-sm font-bold text-faith-ink dark:text-slate-50">{preset.title}</div>
+                          <div className="mt-1 text-xs text-faith-slate">{preset.subtitle}</div>
                         </div>
                         <div className="rounded-full px-2 py-1 text-[10px] font-bold text-white" style={{ background: accentColor(preset.accent) }}>
                           {preset.mode}
@@ -1612,13 +1612,13 @@ export default function BeaconDashboardPage() {
                   ))}
                 </div>
 
-                <div className="mt-4 rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-                  <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Duplicate selected campaign</div>
-                  <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">Fastest way to create a variant from the currently selected Beacon campaign.</div>
+                <div className="mt-4 rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Duplicate selected campaign</div>
+                  <div className="mt-1 text-xs text-faith-slate">Fastest way to create a variant from the currently selected Beacon campaign.</div>
                   <div className="mt-3 flex items-center justify-between gap-3">
                     <div>
-                      <div className="text-sm font-bold text-slate-900 dark:text-slate-50">{selectedCampaign.title}</div>
-                      <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{selectedCampaign.mode} Â· {selectedCampaign.sourceType}</div>
+                      <div className="text-sm font-bold text-faith-ink dark:text-slate-50">{selectedCampaign.title}</div>
+                      <div className="mt-1 text-xs text-faith-slate">{selectedCampaign.mode} · {selectedCampaign.sourceType}</div>
                     </div>
                     <Btn tone="primary" onClick={() => setToast(`Duplicated ${selectedCampaign.title} into a new draft.`)} left={<Copy className="h-4 w-4" />}>
                       Duplicate now
@@ -1630,7 +1630,7 @@ export default function BeaconDashboardPage() {
           </div>
 
           <div className="lg:col-span-4 space-y-4">
-            <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition lg:sticky lg:top-24">
+            <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition lg:sticky lg:top-24">
               <SectionTitle
                 icon={<Eye className="h-5 w-5" />}
                 title="Preview + creative snapshot"
@@ -1638,9 +1638,9 @@ export default function BeaconDashboardPage() {
                 right={<Pill tone="good">Preview-ready</Pill>}
               />
 
-              <div className="mt-4 rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+              <div className="mt-4 rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
                 <div className="flex items-center justify-between gap-2">
-                  <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Selected campaign</div>
+                  <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Selected campaign</div>
                   <div className="flex items-center gap-2">
                     <button
                       type="button"
@@ -1687,18 +1687,18 @@ export default function BeaconDashboardPage() {
                 </div>
               </div>
 
-              <div className="mt-4 rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-                <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Selected campaign pacing</div>
-                <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">Budget pacing, recommended increases or cuts, and forecast outcomes for the currently selected flight.</div>
+              <div className="mt-4 rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Selected campaign pacing</div>
+                <div className="mt-1 text-xs text-faith-slate">Budget pacing, recommended increases or cuts, and forecast outcomes for the currently selected flight.</div>
                 <div className="mt-4 grid grid-cols-2 gap-3">
                   <MetricCard label="Spend" value={fmtCurrency(selectedCampaign.spend)} hint={`of ${fmtCurrency(selectedCampaign.budget)}`} tone="green" />
                   <MetricCard label="Pace" value={`${selectedCampaign.pacingPct}%`} hint={selectedCampaign.recommendedBudgetDelta >= 0 ? "In efficient range" : "Budget cut recommended"} tone="orange" />
                 </div>
-                <div className="mt-3 text-xs font-semibold text-slate-600 dark:text-slate-400">Spend vs budget</div>
+                <div className="mt-3 text-xs font-semibold text-faith-slate">Spend vs budget</div>
                 <div className="mt-2"><ProgressBar value={selectedCampaign.pacingPct} accent={selectedCampaign.accent} /></div>
-                <div className="mt-3 rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                  <div className="text-xs font-bold text-slate-900 dark:text-slate-50">Forecast</div>
-                  <div className="mt-1 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">{selectedCampaign.forecastLabel}</div>
+                <div className="mt-3 rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div className="text-xs font-bold text-faith-ink dark:text-slate-50">Forecast</div>
+                  <div className="mt-1 text-xs text-faith-slate leading-relaxed">{selectedCampaign.forecastLabel}</div>
                   <div className="mt-2 text-xs font-semibold" style={{ color: selectedCampaign.recommendedBudgetDelta >= 0 ? EV_GREEN : EV_ORANGE }}>
                     {selectedCampaign.recommendedBudgetDelta >= 0
                       ? `Recommended increase: ${fmtCurrency(selectedCampaign.recommendedBudgetDelta)}`
@@ -1708,24 +1708,24 @@ export default function BeaconDashboardPage() {
               </div>
 
               <div className="mt-4 grid gap-4 md:grid-cols-2 lg:grid-cols-1">
-                <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-                  <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Unified visibility</div>
-                  <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">Linked and standalone campaign mix across the active Beacon portfolio.</div>
+                <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Unified visibility</div>
+                  <div className="mt-1 text-xs text-faith-slate">Linked and standalone campaign mix across the active Beacon portfolio.</div>
                   <div className="mt-4 grid grid-cols-2 gap-3">
                     <MetricCard label="Linked" value={fmtInt(portfolio.linkedCount)} hint="Active and learning linked flights" tone="green" />
                     <MetricCard label="Standalone" value={fmtInt(portfolio.standaloneCount)} hint="Awareness and announcement flights" tone="navy" />
                   </div>
                 </div>
 
-                <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-                  <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Creative notes</div>
+                <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Creative notes</div>
                   <div className="mt-3 flex flex-wrap gap-2">
                     {selectedCampaign.surfaceMix.map((surface) => (
                       <Pill key={surface} tone="neutral">{surface}</Pill>
                     ))}
                   </div>
-                  <div className="mt-3 text-xs text-slate-500 dark:text-slate-400">Top audiences: {selectedCampaign.audienceLeads.join(" Â· ")}</div>
-                  <div className="mt-2 text-xs text-slate-500 dark:text-slate-400">Languages: {selectedCampaign.languageMix.join(" Â· ")}</div>
+                  <div className="mt-3 text-xs text-faith-slate">Top audiences: {selectedCampaign.audienceLeads.join(" · ")}</div>
+                  <div className="mt-2 text-xs text-faith-slate">Languages: {selectedCampaign.languageMix.join(" · ")}</div>
                   <div className="mt-3 flex items-center gap-2">
                     <Btn tone="neutral" onClick={copySummary} left={<Copy className="h-4 w-4" />}>
                       Copy summary
@@ -1744,7 +1744,7 @@ export default function BeaconDashboardPage() {
       <Modal
         open={previewOpen}
         onClose={() => setPreviewOpen(false)}
-        title={`${selectedCampaign.title} Â· Full preview`}
+        title={`${selectedCampaign.title} · Full preview`}
         subtitle="Preview how the selected Beacon campaign appears across premium Promotiontion surfaces."
       >
         <div className="grid grid-cols-1 gap-6 xl:grid-cols-[1.15fr_0.85fr]">
@@ -1778,26 +1778,26 @@ export default function BeaconDashboardPage() {
           </div>
 
           <div className="space-y-4">
-            <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-              <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Preview notes</div>
-              <div className="mt-3 space-y-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-                <div>â€¢ Linked and standalone Beacon campaigns use the same premium preview system so teams can compare quality consistently.</div>
-                <div>â€¢ Creative health warnings and pacing forecasts are preserved beside the preview, so optimization happens with context still visible.</div>
-                <div>â€¢ Surfaces, languages, and audience mixes should feel native rather than copied blindly across every placement.</div>
+            <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+              <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Preview notes</div>
+              <div className="mt-3 space-y-2 text-xs text-faith-slate leading-relaxed">
+                <div>• Linked and standalone Beacon campaigns use the same premium preview system so teams can compare quality consistently.</div>
+                <div>• Creative health warnings and pacing forecasts are preserved beside the preview, so optimization happens with context still visible.</div>
+                <div>• Surfaces, languages, and audience mixes should feel native rather than copied blindly across every placement.</div>
               </div>
             </div>
 
-            <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-              <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Campaign intelligence</div>
+            <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
+              <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Campaign intelligence</div>
               <div className="mt-4 grid grid-cols-2 gap-3">
                 <MetricCard label="CTR" value={fmtPct(selectedCampaign.ctr)} hint="Creative click-through" tone={selectedCampaign.accent} />
                 <MetricCard label="Reach" value={fmtInt(selectedCampaign.reach)} hint="Projected and delivered reach" tone="navy" />
                 <MetricCard label="Health" value={`${selectedCampaign.creativeHealth}%`} hint="Visual + copy quality" tone="green" />
                 <MetricCard label="Fatigue" value={`${selectedCampaign.fatigueRisk}%`} hint="Higher values need refresh" tone="orange" />
               </div>
-              <div className="mt-4 rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                <div className="text-xs font-bold text-slate-900 dark:text-slate-50">Recommended action</div>
-                <div className="mt-1 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">{selectedCampaign.recommendation}</div>
+              <div className="mt-4 rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                <div className="text-xs font-bold text-faith-ink dark:text-slate-50">Recommended action</div>
+                <div className="mt-1 text-xs text-faith-slate leading-relaxed">{selectedCampaign.recommendation}</div>
               </div>
             </div>
           </div>
@@ -1806,7 +1806,7 @@ export default function BeaconDashboardPage() {
 
       {toast ? (
         <div className="fixed bottom-6 inset-x-0 flex justify-center z-[120] pointer-events-none">
-          <div className="pointer-events-auto rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow-xl dark:bg-slate-100 dark:text-slate-900">
+          <div className="pointer-events-auto rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow-xl dark:bg-slate-100 dark:text-faith-ink">
             {toast}
           </div>
         </div>
@@ -1814,6 +1814,7 @@ export default function BeaconDashboardPage() {
     </div>
   );
 }
+
 
 
 

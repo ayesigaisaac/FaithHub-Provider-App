@@ -1,4 +1,4 @@
-ï»¿// @ts-nocheck
+// @ts-nocheck
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -39,7 +39,7 @@ import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
- * Provider â€” Series Builder
+ * Provider — Series Builder
  * ----------------------------------
  * Premium teaching-series control surface for the Provider side.
  *
@@ -257,7 +257,7 @@ type SeriesDraft = {
 const DEFAULT_EPISODES: EpisodeItem[] = [
   {
     id: "ep-1",
-    title: "Week 1 Â· The Call to Hope",
+    title: "Week 1 · The Call to Hope",
     summary: "Set the series promise and begin with renewal, witness, and spiritual confidence.",
     theme: "Renewal",
     durationLabel: "55 min",
@@ -266,7 +266,7 @@ const DEFAULT_EPISODES: EpisodeItem[] = [
   },
   {
     id: "ep-2",
-    title: "Week 2 Â· Hope in the Wilderness",
+    title: "Week 2 · Hope in the Wilderness",
     summary: "Address uncertainty, endurance, and faithful obedience under pressure.",
     theme: "Endurance",
     durationLabel: "60 min",
@@ -275,7 +275,7 @@ const DEFAULT_EPISODES: EpisodeItem[] = [
   },
   {
     id: "ep-3",
-    title: "Week 3 Â· Healing and Restoration",
+    title: "Week 3 · Healing and Restoration",
     summary: "Move into personal healing, prayer ministry, and practical support.",
     theme: "Healing",
     durationLabel: "70 min",
@@ -284,7 +284,7 @@ const DEFAULT_EPISODES: EpisodeItem[] = [
   },
   {
     id: "ep-4",
-    title: "Week 4 Â· Hope in Community",
+    title: "Week 4 · Hope in Community",
     summary: "Focus on serving, community, care, and local mission response.",
     theme: "Community",
     durationLabel: "50 min",
@@ -293,7 +293,7 @@ const DEFAULT_EPISODES: EpisodeItem[] = [
   },
   {
     id: "ep-5",
-    title: "Week 5 Â· Witness and Courage",
+    title: "Week 5 · Witness and Courage",
     summary: "Build toward outward witness, boldness, and testimony.",
     theme: "Witness",
     durationLabel: "65 min",
@@ -302,7 +302,7 @@ const DEFAULT_EPISODES: EpisodeItem[] = [
   },
   {
     id: "ep-6",
-    title: "Week 6 Â· Living the Hope",
+    title: "Week 6 · Living the Hope",
     summary: "Land the series with commitments, next steps, and follow-through resources.",
     theme: "Next steps",
     durationLabel: "60 min",
@@ -316,21 +316,21 @@ const DEFAULT_LOCALES: LocaleVariant[] = [
     code: "en-UG",
     title: "Practicing the Way of Hope",
     description: "A six-week teaching journey on faithful living, healing, and witness.",
-    artworkVariant: "Hero A Â· English",
+    artworkVariant: "Hero A · English",
     notesState: "Ready",
   },
   {
     code: "sw-UG",
     title: "Kuishi Njia ya Tumaini",
     description: "Mfululizo wa wiki sita kuhusu matumaini, uponyaji, na ushuhuda.",
-    artworkVariant: "Hero B Â· Swahili",
+    artworkVariant: "Hero B · Swahili",
     notesState: "Translating",
   },
   {
     code: "fr-FR",
-    title: "Vivre le chemin de l'espÃ©rance",
-    description: "Une sÃ©rie de six semaines sur l'espÃ©rance, la guÃ©rison et le tÃ©moignage.",
-    artworkVariant: "Hero C Â· French",
+    title: "Vivre le chemin de l'espérance",
+    description: "Une série de six semaines sur l'espérance, la guérison et le témoignage.",
+    artworkVariant: "Hero C · French",
     notesState: "Draft",
   },
 ];
@@ -440,7 +440,7 @@ function Pill({
           ? "border-rose-200 bg-rose-50 text-rose-700"
           : tone === "brand"
             ? "border-transparent text-white"
-            : "border-slate-200 bg-white text-slate-700";
+            : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700";
   return (
     <span
       className={cx(
@@ -472,7 +472,7 @@ function SoftButton({
       onClick={onClick}
       disabled={disabled}
       className={cx(
-        "inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-2 text-[12px] font-semibold text-slate-800 transition-colors hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50",
+        "inline-flex items-center justify-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-2 text-[12px] font-semibold text-slate-800 transition-colors hover:bg-[var(--fh-surface)] disabled:cursor-not-allowed disabled:opacity-50",
         className,
       )}
     >
@@ -497,7 +497,7 @@ function PrimaryButton({
       type="button"
       onClick={onClick}
       className={cx(
-        "inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-2 text-[12px] font-semibold text-white shadow-sm transition-opacity hover:opacity-95",
+        "inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-2 text-[12px] font-semibold text-white shadow-soft transition-opacity hover:opacity-95",
         className,
       )}
       style={{ background: color === "orange" ? EV_ORANGE : EV_GREEN }}
@@ -523,14 +523,14 @@ function Card({
   return (
     <div
       className={cx(
-        "rounded-[28px] border border-slate-200 bg-white p-4 shadow-sm transition-colors",
+        "rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft transition-colors",
         className,
       )}
     >
       <div className="flex items-start justify-between gap-3">
         <div>
-          <div className="text-[14px] font-bold text-slate-900">{title}</div>
-          {subtitle ? <div className="mt-1 text-[11px] text-slate-500">{subtitle}</div> : null}
+          <div className="text-[14px] font-bold text-faith-ink">{title}</div>
+          {subtitle ? <div className="mt-1 text-[11px] text-faith-slate">{subtitle}</div> : null}
         </div>
         {right ? <div className="shrink-0">{right}</div> : null}
       </div>
@@ -557,7 +557,7 @@ function TextInput({
       value={value}
       onChange={(e) => onChange(e.target.value)}
       placeholder={placeholder}
-      className="mt-1 w-full rounded-2xl border border-slate-200 bg-white px-3 py-2 text-[12px] text-slate-900 outline-none transition-colors focus:ring-2 focus:ring-[rgba(3,205,140,0.18)]"
+      className="mt-1 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] text-faith-ink outline-none transition-colors focus:ring-2 focus:ring-[rgba(3,205,140,0.18)]"
     />
   );
 }
@@ -579,7 +579,7 @@ function TextArea({
       onChange={(e) => onChange(e.target.value)}
       placeholder={placeholder}
       rows={rows}
-      className="mt-1 w-full rounded-2xl border border-slate-200 bg-white px-3 py-2 text-[12px] text-slate-900 outline-none transition-colors focus:ring-2 focus:ring-[rgba(3,205,140,0.18)]"
+      className="mt-1 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] text-faith-ink outline-none transition-colors focus:ring-2 focus:ring-[rgba(3,205,140,0.18)]"
     />
   );
 }
@@ -614,13 +614,13 @@ function ToggleTile({
         "w-full rounded-3xl border p-3 text-left transition-colors",
         checked
           ? "border-emerald-200 bg-emerald-50"
-          : "border-slate-200 bg-white hover:bg-slate-50",
+          : "border-faith-line bg-[var(--fh-surface-bg)] hover:bg-[var(--fh-surface)]",
       )}
     >
       <div className="flex items-start justify-between gap-3">
         <div>
-          <div className="text-[12px] font-semibold text-slate-900">{title}</div>
-          <div className="mt-1 text-[11px] text-slate-500">{hint}</div>
+          <div className="text-[12px] font-semibold text-faith-ink">{title}</div>
+          <div className="mt-1 text-[11px] text-faith-slate">{hint}</div>
         </div>
         <span
           className={cx(
@@ -628,7 +628,7 @@ function ToggleTile({
             checked ? "justify-end border-emerald-500 bg-emerald-500" : "justify-start border-slate-300 bg-slate-100",
           )}
         >
-          <span className="h-4 w-4 rounded-full bg-white shadow-sm" />
+          <span className="h-4 w-4 rounded-full bg-[var(--fh-surface-bg)] shadow-soft" />
         </span>
       </div>
     </button>
@@ -645,11 +645,11 @@ function StepRail({
   readinessScore: number;
 }) {
   return (
-    <div className="rounded-[30px] border border-slate-200 bg-white p-4 shadow-sm xl:sticky xl:top-6">
+    <div className="rounded-[30px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft xl:sticky xl:top-6">
       <div className="rounded-[24px] border border-emerald-200 bg-emerald-50 p-4">
         <div className="text-[10px] font-black uppercase tracking-[0.18em] text-emerald-700">Series Builder</div>
-        <div className="mt-2 text-[28px] font-black leading-none text-slate-900">{readinessScore}%</div>
-        <div className="mt-1 text-[11px] text-slate-500">Series completeness score</div>
+        <div className="mt-2 text-[28px] font-black leading-none text-faith-ink">{readinessScore}%</div>
+        <div className="mt-1 text-[11px] text-faith-slate">Series completeness score</div>
         <div className="mt-3">
           <ProgressBar value={readinessScore} />
         </div>
@@ -666,8 +666,8 @@ function StepRail({
               className={cx(
                 "flex w-full items-center justify-between rounded-2xl border px-3 py-3 text-left text-[12px] font-semibold transition-colors",
                 active
-                  ? "border-emerald-300 bg-emerald-50 text-slate-900"
-                  : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50",
+                  ? "border-emerald-300 bg-emerald-50 text-faith-ink"
+                  : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 hover:bg-[var(--fh-surface)]",
               )}
             >
               <span>{item.label}</span>
@@ -678,7 +678,7 @@ function StepRail({
       </div>
 
       <div className="mt-4 rounded-[24px] border border-amber-200 bg-amber-50 p-4">
-        <div className="text-[13px] font-bold text-slate-900">Quick handoff</div>
+        <div className="text-[13px] font-bold text-faith-ink">Quick handoff</div>
         <div className="mt-2 space-y-2">
           <SoftButton className="w-full justify-between" onClick={() => safeNav(ROUTES.episodeBuilder)}>
             Episode Builder <ChevronRight className="h-4 w-4" />
@@ -712,9 +712,9 @@ function SectionHeader({
   return (
     <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
       <div>
-        <div className="text-[10px] font-black uppercase tracking-[0.18em] text-slate-400">{eyebrow}</div>
-        <div className="mt-1 text-[18px] font-black text-slate-900">{title}</div>
-        <div className="mt-1 text-[12px] text-slate-500">{subtitle}</div>
+        <div className="text-[10px] font-black uppercase tracking-[0.18em] text-faith-slate">{eyebrow}</div>
+        <div className="mt-1 text-[18px] font-black text-faith-ink">{title}</div>
+        <div className="mt-1 text-[12px] text-faith-slate">{subtitle}</div>
       </div>
       {right ? <div className="shrink-0">{right}</div> : null}
     </div>
@@ -744,28 +744,28 @@ function SeriesLandingPreview({
               <img src={cover.url} alt={cover.name} className="h-full w-full object-cover opacity-90" />
             </div>
             <div className="relative -mt-14 px-4 pb-4">
-              <div className="rounded-[26px] border border-slate-200 bg-white p-4 shadow-sm">
+              <div className="rounded-[26px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft">
                 <div className="flex items-center justify-between gap-2">
                   <Pill tone="brand">Series live</Pill>
                   <button className="text-[11px] font-semibold text-emerald-600" onClick={() => navigator.clipboard?.writeText(window.location.href)}>Share</button>
                 </div>
-                <div className="mt-3 text-[22px] font-black leading-tight text-slate-900">{draft.title}</div>
-                <div className="mt-1 text-[12px] text-slate-500">{draft.subtitle}</div>
+                <div className="mt-3 text-[22px] font-black leading-tight text-faith-ink">{draft.title}</div>
+                <div className="mt-1 text-[12px] text-faith-slate">{draft.subtitle}</div>
                 <div className="mt-3 flex flex-wrap gap-2">
                   <Pill tone="good">{draft.accessModel}</Pill>
                   <Pill tone="neutral">{draft.locales.length} locales</Pill>
                   <Pill tone="warn">{readyEpisodes}/{draft.episodeTarget} ready</Pill>
                 </div>
-                <div className="mt-4 rounded-2xl border border-slate-200 bg-slate-50 p-3">
-                  <div className="text-[11px] font-black uppercase tracking-[0.16em] text-slate-400">Next episode</div>
-                  <div className="mt-2 text-[14px] font-bold text-slate-900">{nextEpisode?.title || "Episode coming soon"}</div>
-                  <div className="mt-1 text-[11px] text-slate-500">{nextEpisode?.summary || "Prepare linked live session and notes."}</div>
+                <div className="mt-4 rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
+                  <div className="text-[11px] font-black uppercase tracking-[0.16em] text-faith-slate">Next episode</div>
+                  <div className="mt-2 text-[14px] font-bold text-faith-ink">{nextEpisode?.title || "Episode coming soon"}</div>
+                  <div className="mt-1 text-[11px] text-faith-slate">{nextEpisode?.summary || "Prepare linked live session and notes."}</div>
                 </div>
                 <div className="mt-4 space-y-2">
                   {draft.resources.slice(0, 3).map((resource) => (
-                    <div key={resource.id} className="rounded-2xl border border-slate-200 bg-white px-3 py-2">
-                      <div className="text-[11px] font-semibold text-slate-400">{resource.type}</div>
-                      <div className="text-[12px] font-bold text-slate-900">{resource.title}</div>
+                    <div key={resource.id} className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2">
+                      <div className="text-[11px] font-semibold text-faith-slate">{resource.type}</div>
+                      <div className="text-[12px] font-bold text-faith-ink">{resource.title}</div>
                     </div>
                   ))}
                 </div>
@@ -782,7 +782,7 @@ function SeriesLandingPreview({
               </div>
             </div>
             <div className="absolute bottom-4 left-4 right-4 rounded-2xl border border-emerald-200 bg-emerald-50 px-3 py-2 text-[11px] font-semibold text-emerald-700">
-              Preview confidence Â· {readinessScore}% complete
+              Preview confidence · {readinessScore}% complete
             </div>
           </div>
         </div>
@@ -791,7 +791,7 @@ function SeriesLandingPreview({
   }
 
   return (
-    <div className="overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-sm">
+    <div className="overflow-hidden rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] shadow-soft">
       <div className="grid grid-cols-[1.2fr_0.8fr]">
         <div className="relative min-h-[420px] overflow-hidden bg-slate-900">
           <img src={cover.url} alt={cover.name} className="h-full w-full object-cover opacity-90" />
@@ -808,7 +808,7 @@ function SeriesLandingPreview({
             <div className="mt-2 max-w-[85%] text-[14px] text-white/85">{draft.subtitle}</div>
             <div className="mt-4 flex flex-wrap gap-2">
               {draft.launchAudience.slice(0, 3).map((audience) => (
-                <span key={audience} className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[11px] font-semibold text-white">
+                <span key={audience} className="rounded-full border border-white/20 bg-[var(--fh-surface-bg)]/10 px-3 py-1 text-[11px] font-semibold text-white">
                   {audience}
                 </span>
               ))}
@@ -824,31 +824,31 @@ function SeriesLandingPreview({
           </div>
         </div>
         <div className="bg-[#fafafa] p-4">
-          <div className="rounded-[24px] border border-slate-200 bg-white p-4">
+          <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] p-4">
             <div className="flex items-center justify-between gap-2">
               <div>
-                <div className="text-[10px] font-black uppercase tracking-[0.16em] text-slate-400">Episode sequence</div>
-                <div className="mt-1 text-[14px] font-bold text-slate-900">Structured journey</div>
+                <div className="text-[10px] font-black uppercase tracking-[0.16em] text-faith-slate">Episode sequence</div>
+                <div className="mt-1 text-[14px] font-bold text-faith-ink">Structured journey</div>
               </div>
               <Pill tone="neutral">{draft.episodes.length} episodes</Pill>
             </div>
             <div className="mt-3 space-y-2">
               {draft.episodes.slice(0, 4).map((episode, idx) => (
-                <div key={episode.id} className="rounded-2xl border border-slate-200 bg-white px-3 py-3">
+                <div key={episode.id} className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-3">
                   <div className="flex items-center justify-between gap-2">
-                    <div className="text-[11px] font-black text-slate-400">{String(idx + 1).padStart(2, "0")}</div>
+                    <div className="text-[11px] font-black text-faith-slate">{String(idx + 1).padStart(2, "0")}</div>
                     <Pill tone={episode.status === "Ready" || episode.status === "Scheduled" ? "good" : "warn"}>{episode.status}</Pill>
                   </div>
-                  <div className="mt-2 text-[13px] font-bold text-slate-900">{episode.title}</div>
-                  <div className="mt-1 text-[11px] text-slate-500">{episode.theme} Â· {episode.durationLabel}</div>
+                  <div className="mt-2 text-[13px] font-bold text-faith-ink">{episode.title}</div>
+                  <div className="mt-1 text-[11px] text-faith-slate">{episode.theme} · {episode.durationLabel}</div>
                 </div>
               ))}
             </div>
-            <div className="mt-4 rounded-2xl border border-slate-200 bg-slate-50 p-3">
-              <div className="text-[10px] font-black uppercase tracking-[0.16em] text-slate-400">Resources & CTAs</div>
+            <div className="mt-4 rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
+              <div className="text-[10px] font-black uppercase tracking-[0.16em] text-faith-slate">Resources & CTAs</div>
               <div className="mt-2 flex flex-wrap gap-2">
                 {draft.resources.slice(0, 4).map((resource) => (
-                  <span key={resource.id} className="rounded-full border border-slate-200 bg-white px-3 py-1 text-[11px] font-semibold text-slate-700">
+                  <span key={resource.id} className="rounded-full border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-1 text-[11px] font-semibold text-slate-700">
                     {resource.type}
                   </span>
                 ))}
@@ -872,13 +872,13 @@ export default function SeriesBuilderPage() {
     subtitle: "A six-week teaching journey on faithful living, healing, and witness.",
     description:
       "Build a structured discipleship path that moves from renewal into healing, witness, and next-step commitment across live teaching, replay, and group resources.",
-    scriptureTheme: "Romans 12 Â· Isaiah 61 Â· Matthew 5",
+    scriptureTheme: "Romans 12 · Isaiah 61 · Matthew 5",
     promise: "A clear, hope-filled pathway for prayer, formation, and public witness.",
-    durationWindow: "6 weeks Â· April to May",
+    durationWindow: "6 weeks · April to May",
     audienceFit: "Adults, young professionals, family ministry",
     speakers: ["Pastor Daniel M.", "Minister Ruth K."],
     coverId: "cover-hope",
-    trailerLabel: "Series trailer cut Â· 45s",
+    trailerLabel: "Series trailer cut · 45s",
     bannerStyle: "Immersive hero with layered scripture quote",
     graphicRule: GRAPHIC_RULES[2],
     accessModel: "Public",
@@ -927,7 +927,7 @@ export default function SeriesBuilderPage() {
         ...current.episodes,
         {
           id: `ep-${Math.random().toString(16).slice(2, 8)}`,
-          title: `Week ${index} Â· New Episode`,
+          title: `Week ${index} · New Episode`,
           summary: "Add the episode purpose, live plan, and resource pack.",
           theme: "New theme",
           durationLabel: "60 min",
@@ -973,7 +973,7 @@ export default function SeriesBuilderPage() {
           code: next.code,
           title: `${current.title} (${next.label})`,
           description: current.description,
-          artworkVariant: `Localized art Â· ${next.label}`,
+          artworkVariant: `Localized art · ${next.label}`,
           notesState: "Draft",
         },
       ],
@@ -1024,15 +1024,15 @@ export default function SeriesBuilderPage() {
                     onClick={() => setDraft((current) => ({ ...current, templateId: template.id }))}
                     className={cx(
                       "rounded-3xl border p-4 text-left transition-colors",
-                      active ? "border-transparent shadow-sm" : "border-slate-200 bg-white hover:bg-slate-50",
+                      active ? "border-transparent shadow-soft" : "border-faith-line bg-[var(--fh-surface-bg)] hover:bg-[var(--fh-surface)]",
                     )}
                     style={active ? { background: `${color}12`, borderColor: `${color}44` } : undefined}
                   >
                     <div className="flex items-center justify-between gap-3">
-                      <div className="text-[13px] font-bold text-slate-900">{template.title}</div>
+                      <div className="text-[13px] font-bold text-faith-ink">{template.title}</div>
                       {active ? <BadgeCheck className="h-4 w-4" style={{ color }} /> : null}
                     </div>
-                    <div className="mt-2 text-[11px] leading-5 text-slate-500">{template.subtitle}</div>
+                    <div className="mt-2 text-[11px] leading-5 text-faith-slate">{template.subtitle}</div>
                   </button>
                 );
               })}
@@ -1056,7 +1056,7 @@ export default function SeriesBuilderPage() {
                 <TextInput
                   value={draft.scriptureTheme}
                   onChange={(scriptureTheme) => setDraft((current) => ({ ...current, scriptureTheme }))}
-                  placeholder="Romans 12 Â· Isaiah 61 Â· Matthew 5"
+                  placeholder="Romans 12 · Isaiah 61 · Matthew 5"
                 />
               </div>
               <div>
@@ -1097,7 +1097,7 @@ export default function SeriesBuilderPage() {
                           speakers: current.speakers.filter((item) => item !== speaker),
                         }))
                       }
-                      className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-[11px] font-semibold text-slate-700"
+                      className="inline-flex items-center gap-2 rounded-full border border-faith-line bg-[var(--fh-surface)] px-3 py-1 text-[11px] font-semibold text-slate-700"
                     >
                       {speaker}
                       <X className="h-3 w-3" />
@@ -1108,12 +1108,12 @@ export default function SeriesBuilderPage() {
               <div>
                 <FieldLabel>Find more speakers</FieldLabel>
                 <div className="relative mt-1">
-                  <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+                  <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-faith-slate" />
                   <input
                     value={seriesSearch}
                     onChange={(e) => setSeriesSearch(e.target.value)}
                     placeholder="Search speakers"
-                    className="w-full rounded-2xl border border-slate-200 bg-white py-2 pl-9 pr-3 text-[12px] text-slate-900 outline-none"
+                    className="w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] py-2 pl-9 pr-3 text-[12px] text-faith-ink outline-none"
                   />
                 </div>
                 <div className="mt-2 flex max-h-[180px] flex-col gap-2 overflow-y-auto pr-1">
@@ -1133,7 +1133,7 @@ export default function SeriesBuilderPage() {
                         }
                         className={cx(
                           "flex items-center justify-between rounded-2xl border px-3 py-2 text-[12px] font-semibold transition-colors",
-                          active ? "border-emerald-300 bg-emerald-50 text-slate-900" : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50",
+                          active ? "border-emerald-300 bg-emerald-50 text-faith-ink" : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 hover:bg-[var(--fh-surface)]",
                         )}
                       >
                         <span>{speaker}</span>
@@ -1172,15 +1172,15 @@ export default function SeriesBuilderPage() {
                     onClick={() => setDraft((current) => ({ ...current, coverId: cover.id }))}
                     className={cx(
                       "overflow-hidden rounded-[26px] border text-left transition-colors",
-                      active ? "border-emerald-300 ring-2 ring-[rgba(3,205,140,0.18)]" : "border-slate-200 bg-white hover:bg-slate-50",
+                      active ? "border-emerald-300 ring-2 ring-[rgba(3,205,140,0.18)]" : "border-faith-line bg-[var(--fh-surface-bg)] hover:bg-[var(--fh-surface)]",
                     )}
                   >
                     <div className="aspect-[4/3] overflow-hidden bg-slate-200">
                       <img src={cover.url} alt={cover.name} className="h-full w-full object-cover" />
                     </div>
                     <div className="p-3">
-                      <div className="text-[12px] font-bold text-slate-900">{cover.name}</div>
-                      <div className="mt-1 text-[11px] text-slate-500">Hero, replay cover, and featured shelf treatment.</div>
+                      <div className="text-[12px] font-bold text-faith-ink">{cover.name}</div>
+                      <div className="mt-1 text-[11px] text-faith-slate">Hero, replay cover, and featured shelf treatment.</div>
                     </div>
                   </button>
                 );
@@ -1208,7 +1208,7 @@ export default function SeriesBuilderPage() {
                         onClick={() => setDraft((current) => ({ ...current, graphicRule: rule }))}
                         className={cx(
                           "rounded-full border px-3 py-1.5 text-[11px] font-semibold transition-colors",
-                          active ? "border-emerald-300 bg-emerald-50 text-emerald-700" : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50",
+                          active ? "border-emerald-300 bg-emerald-50 text-emerald-700" : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 hover:bg-[var(--fh-surface)]",
                         )}
                       >
                         {rule}
@@ -1233,16 +1233,16 @@ export default function SeriesBuilderPage() {
                   checked={draft.abCreativeEnabled}
                   onChange={(abCreativeEnabled) => setDraft((current) => ({ ...current, abCreativeEnabled }))}
                 />
-                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3">
-                  <div className="text-[11px] font-black uppercase tracking-[0.16em] text-slate-400">Variant set</div>
+                <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
+                  <div className="text-[11px] font-black uppercase tracking-[0.16em] text-faith-slate">Variant set</div>
                   <div className="mt-2 grid gap-2 md:grid-cols-2">
-                    <div className="rounded-2xl border border-slate-200 bg-white p-3">
-                      <div className="text-[12px] font-bold text-slate-900">Cover A Â· Sanctuary Light</div>
-                      <div className="mt-1 text-[11px] text-slate-500">For followers and returning viewers.</div>
+                    <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-3">
+                      <div className="text-[12px] font-bold text-faith-ink">Cover A · Sanctuary Light</div>
+                      <div className="mt-1 text-[11px] text-faith-slate">For followers and returning viewers.</div>
                     </div>
-                    <div className="rounded-2xl border border-slate-200 bg-white p-3">
-                      <div className="text-[12px] font-bold text-slate-900">Cover B Â· Scripture Close-up</div>
-                      <div className="mt-1 text-[11px] text-slate-500">For new guests and broad discovery shelves.</div>
+                    <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-3">
+                      <div className="text-[12px] font-bold text-faith-ink">Cover B · Scripture Close-up</div>
+                      <div className="mt-1 text-[11px] text-faith-slate">For new guests and broad discovery shelves.</div>
                     </div>
                   </div>
                 </div>
@@ -1254,23 +1254,23 @@ export default function SeriesBuilderPage() {
               subtitle="See how the series brand package will travel into live overlays, replays, and Beacon prelaunch promotion."
             >
               <div className="space-y-3">
-                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3">
-                  <div className="flex items-center gap-2 text-[12px] font-bold text-slate-900">
+                <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
+                  <div className="flex items-center gap-2 text-[12px] font-bold text-faith-ink">
                     <ImageIcon className="h-4 w-4" /> Cover + banner system
                   </div>
-                  <div className="mt-1 text-[11px] text-slate-500">Reusable across series landing page, replay shelves, and episode previews.</div>
+                  <div className="mt-1 text-[11px] text-faith-slate">Reusable across series landing page, replay shelves, and episode previews.</div>
                 </div>
-                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3">
-                  <div className="flex items-center gap-2 text-[12px] font-bold text-slate-900">
+                <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
+                  <div className="flex items-center gap-2 text-[12px] font-bold text-faith-ink">
                     <PlayCircle className="h-4 w-4" /> Trailer / teaser support
                   </div>
-                  <div className="mt-1 text-[11px] text-slate-500">Perfect for prelaunch announcements and Beacon awareness campaigns.</div>
+                  <div className="mt-1 text-[11px] text-faith-slate">Perfect for prelaunch announcements and Beacon awareness campaigns.</div>
                 </div>
-                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3">
-                  <div className="flex items-center gap-2 text-[12px] font-bold text-slate-900">
+                <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
+                  <div className="flex items-center gap-2 text-[12px] font-bold text-faith-ink">
                     <Layers className="h-4 w-4" /> Graphic rule inheritance
                   </div>
-                  <div className="mt-1 text-[11px] text-slate-500">Linked live sessions and replays can inherit lower-thirds, typography, and scripture treatments.</div>
+                  <div className="mt-1 text-[11px] text-faith-slate">Linked live sessions and replays can inherit lower-thirds, typography, and scripture treatments.</div>
                 </div>
               </div>
             </Card>
@@ -1296,7 +1296,7 @@ export default function SeriesBuilderPage() {
             <div className="mt-4 grid gap-4 xl:grid-cols-[1.2fr_0.8fr]">
               <div className="space-y-3">
                 {draft.episodes.map((episode, index) => (
-                  <div key={episode.id} className="rounded-[26px] border border-slate-200 bg-white p-3">
+                  <div key={episode.id} className="rounded-[26px] border border-faith-line bg-[var(--fh-surface-bg)] p-3">
                     <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
                       <div className="flex min-w-0 gap-3">
                         <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-slate-900 text-sm font-black text-white">
@@ -1304,11 +1304,11 @@ export default function SeriesBuilderPage() {
                         </div>
                         <div className="min-w-0 flex-1">
                           <div className="flex flex-wrap items-center gap-2">
-                            <GripVertical className="h-4 w-4 text-slate-400" />
+                            <GripVertical className="h-4 w-4 text-faith-slate" />
                             <input
                               value={episode.title}
                               onChange={(e) => updateEpisode(episode.id, { title: e.target.value })}
-                              className="min-w-0 flex-1 rounded-xl border border-transparent bg-transparent px-2 py-1 text-[13px] font-bold text-slate-900 outline-none hover:border-slate-200 focus:border-emerald-300"
+                              className="min-w-0 flex-1 rounded-xl border border-transparent bg-transparent px-2 py-1 text-[13px] font-bold text-faith-ink outline-none hover:border-faith-line focus:border-emerald-300"
                             />
                             <Pill tone={episode.status === "Ready" || episode.status === "Scheduled" ? "good" : "warn"}>{episode.status}</Pill>
                           </div>
@@ -1316,7 +1316,7 @@ export default function SeriesBuilderPage() {
                             value={episode.summary}
                             onChange={(e) => updateEpisode(episode.id, { summary: e.target.value })}
                             rows={2}
-                            className="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2 text-[12px] text-slate-700 outline-none focus:ring-2 focus:ring-[rgba(247,127,0,0.18)]"
+                            className="mt-2 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2 text-[12px] text-slate-700 outline-none focus:ring-2 focus:ring-[rgba(247,127,0,0.18)]"
                           />
                           <div className="mt-3 grid gap-2 md:grid-cols-3">
                             <div>
@@ -1351,28 +1351,28 @@ export default function SeriesBuilderPage() {
               </div>
 
               <div className="space-y-3">
-                <div className="rounded-[26px] border border-slate-200 bg-slate-50 p-4">
+                <div className="rounded-[26px] border border-faith-line bg-[var(--fh-surface)] p-4">
                   <div className="mt-3 space-y-2">
                     {draft.episodes.map((episode, index) => (
-                      <div key={episode.id} className="rounded-2xl border border-slate-200 bg-white px-3 py-3">
+                      <div key={episode.id} className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-3">
                         <div className="flex items-center justify-between gap-2">
-                          <div className="text-[12px] font-bold text-slate-900">{String(index + 1).padStart(2, "0")} Â· {episode.theme}</div>
-                          <span className="text-[11px] font-semibold text-slate-500">{episode.durationLabel}</span>
+                          <div className="text-[12px] font-bold text-faith-ink">{String(index + 1).padStart(2, "0")} · {episode.theme}</div>
+                          <span className="text-[11px] font-semibold text-faith-slate">{episode.durationLabel}</span>
                         </div>
-                        <div className="mt-1 text-[11px] text-slate-500">{episode.title}</div>
+                        <div className="mt-1 text-[11px] text-faith-slate">{episode.title}</div>
                       </div>
                     ))}
                   </div>
                 </div>
-                <div className="rounded-[26px] border border-slate-200 bg-slate-50 p-4">
+                <div className="rounded-[26px] border border-faith-line bg-[var(--fh-surface)] p-4">
                   <div className="mt-3 space-y-2">
-                    <div className="rounded-2xl border border-slate-200 bg-white px-3 py-3">
-                      <div className="text-[12px] font-bold text-slate-900">Episode target</div>
-                      <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">{draft.episodes.length}/{draft.episodeTarget}</div>
+                    <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-3">
+                      <div className="text-[12px] font-bold text-faith-ink">Episode target</div>
+                      <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-faith-ink dark:text-slate-100 sm:text-[34px] lg:text-[40px]">{draft.episodes.length}/{draft.episodeTarget}</div>
                     </div>
-                    <div className="rounded-2xl border border-slate-200 bg-white px-3 py-3">
-                      <div className="text-[12px] font-bold text-slate-900">Ready or scheduled</div>
-                      <div className="mt-1 text-[24px] font-black text-slate-900">
+                    <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-3">
+                      <div className="text-[12px] font-bold text-faith-ink">Ready or scheduled</div>
+                      <div className="mt-1 text-[24px] font-black text-faith-ink">
                         {draft.episodes.filter((episode) => episode.status === "Ready" || episode.status === "Scheduled").length}
                       </div>
                     </div>
@@ -1406,7 +1406,7 @@ export default function SeriesBuilderPage() {
                         onClick={() => setDraft((current) => ({ ...current, accessModel: mode }))}
                         className={cx(
                           "rounded-full border px-3 py-1.5 text-[11px] font-semibold transition-colors",
-                          active ? "border-emerald-300 bg-emerald-50 text-emerald-700" : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50",
+                          active ? "border-emerald-300 bg-emerald-50 text-emerald-700" : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 hover:bg-[var(--fh-surface)]",
                         )}
                       >
                         {mode}
@@ -1434,7 +1434,7 @@ export default function SeriesBuilderPage() {
                         }
                         className={cx(
                           "rounded-full border px-3 py-1.5 text-[11px] font-semibold transition-colors",
-                          active ? "border-amber-300 bg-amber-50 text-amber-800" : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50",
+                          active ? "border-amber-300 bg-amber-50 text-amber-800" : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 hover:bg-[var(--fh-surface)]",
                         )}
                       >
                         {group}
@@ -1494,7 +1494,7 @@ export default function SeriesBuilderPage() {
               {draft.locales.map((variant) => {
                 const localeMeta = LOCALE_OPTIONS.find((locale) => locale.code === variant.code);
                 return (
-                  <div key={variant.code} className="rounded-[26px] border border-slate-200 bg-white p-4">
+                  <div key={variant.code} className="rounded-[26px] border border-faith-line bg-[var(--fh-surface-bg)] p-4">
                     <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
                       <div className="min-w-0 flex-1">
                         <div className="flex flex-wrap items-center gap-2">
@@ -1556,7 +1556,7 @@ export default function SeriesBuilderPage() {
                               locales: current.locales.filter((item) => item.code !== variant.code),
                             }))
                           }
-                          className="rounded-2xl border border-slate-200 px-3 py-2 text-[12px] font-semibold text-slate-600 transition-colors hover:bg-slate-50"
+                          className="rounded-2xl border border-faith-line px-3 py-2 text-[12px] font-semibold text-faith-slate transition-colors hover:bg-[var(--fh-surface)]"
                           disabled={draft.locales.length <= 1}
                         >
                           Remove
@@ -1583,7 +1583,7 @@ export default function SeriesBuilderPage() {
             <div className="grid gap-4 xl:grid-cols-[1.15fr_0.85fr]">
               <div className="space-y-3">
                 {draft.resources.map((resource) => (
-                  <div key={resource.id} className="rounded-[24px] border border-slate-200 bg-white p-4">
+                  <div key={resource.id} className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] p-4">
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0 flex-1">
                         <div className="flex flex-wrap items-center gap-2">
@@ -1613,7 +1613,7 @@ export default function SeriesBuilderPage() {
                             resources: current.resources.filter((item) => item.id !== resource.id),
                           }))
                         }
-                        className="rounded-2xl border border-slate-200 px-3 py-2 text-[12px] font-semibold text-slate-600 hover:bg-slate-50"
+                        className="rounded-2xl border border-faith-line px-3 py-2 text-[12px] font-semibold text-faith-slate hover:bg-[var(--fh-surface)]"
                       >
                         Remove
                       </button>
@@ -1622,8 +1622,8 @@ export default function SeriesBuilderPage() {
                 ))}
               </div>
               <div className="space-y-3">
-                <div className="rounded-[26px] border border-slate-200 bg-slate-50 p-4">
-                  <div className="text-[11px] font-black uppercase tracking-[0.16em] text-slate-400">Conversion hooks</div>
+                <div className="rounded-[26px] border border-faith-line bg-[var(--fh-surface)] p-4">
+                  <div className="text-[11px] font-black uppercase tracking-[0.16em] text-faith-slate">Conversion hooks</div>
                   <div className="mt-3 space-y-3">
                     <ToggleTile
                       title="Series reminder prompts"
@@ -1639,9 +1639,9 @@ export default function SeriesBuilderPage() {
                     />
                   </div>
                 </div>
-                <div className="rounded-[26px] border border-slate-200 bg-slate-50 p-4">
-                  <div className="text-[11px] font-black uppercase tracking-[0.16em] text-slate-400">Beacon promotion hook</div>
-                  <div className="mt-2 text-[12px] font-bold text-slate-900">Linked prelaunch campaign</div>
+                <div className="rounded-[26px] border border-faith-line bg-[var(--fh-surface)] p-4">
+                  <div className="text-[11px] font-black uppercase tracking-[0.16em] text-faith-slate">Beacon promotion hook</div>
+                  <div className="mt-2 text-[12px] font-bold text-faith-ink">Linked prelaunch campaign</div>
                   <TextArea
                     value={draft.beaconHook}
                     onChange={(beaconHook) => setDraft((current) => ({ ...current, beaconHook }))}
@@ -1676,7 +1676,7 @@ export default function SeriesBuilderPage() {
                         onClick={() => setDraft((current) => ({ ...current, launchState: state }))}
                         className={cx(
                           "rounded-full border px-3 py-1.5 text-[11px] font-semibold transition-colors",
-                          active ? "border-emerald-300 bg-emerald-50 text-emerald-700" : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50",
+                          active ? "border-emerald-300 bg-emerald-50 text-emerald-700" : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 hover:bg-[var(--fh-surface)]",
                         )}
                       >
                         {state}
@@ -1694,7 +1694,7 @@ export default function SeriesBuilderPage() {
                 <select
                   value={draft.embargoRule}
                   onChange={(e) => setDraft((current) => ({ ...current, embargoRule: e.target.value }))}
-                  className="mt-1 w-full rounded-2xl border border-slate-200 bg-white px-3 py-2 text-[12px] font-medium text-slate-900 outline-none"
+                  className="mt-1 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] font-medium text-faith-ink outline-none"
                 >
                   {EMBARGO_RULES.map((rule) => (
                     <option key={rule} value={rule}>{rule}</option>
@@ -1706,7 +1706,7 @@ export default function SeriesBuilderPage() {
                 <select
                   value={draft.approvalFlow}
                   onChange={(e) => setDraft((current) => ({ ...current, approvalFlow: e.target.value }))}
-                  className="mt-1 w-full rounded-2xl border border-slate-200 bg-white px-3 py-2 text-[12px] font-medium text-slate-900 outline-none"
+                  className="mt-1 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] font-medium text-faith-ink outline-none"
                 >
                   {APPROVAL_FLOWS.map((flow) => (
                     <option key={flow} value={flow}>{flow}</option>
@@ -1732,58 +1732,58 @@ export default function SeriesBuilderPage() {
         >
           <div className="grid gap-4 lg:grid-cols-[0.9fr_1.1fr]">
             <div className="space-y-3">
-              <div className="rounded-[26px] border border-slate-200 bg-slate-50 p-4">
-                <div className="text-[11px] font-black uppercase tracking-[0.16em] text-slate-400">Series completeness</div>
-                <div className="mt-2 text-[34px] font-black text-slate-900">{readiness.score}%</div>
+              <div className="rounded-[26px] border border-faith-line bg-[var(--fh-surface)] p-4">
+                <div className="text-[11px] font-black uppercase tracking-[0.16em] text-faith-slate">Series completeness</div>
+                <div className="mt-2 text-[34px] font-black text-faith-ink">{readiness.score}%</div>
                 <div className="mt-3"><ProgressBar value={readiness.score} /></div>
               </div>
-              <div className="rounded-[26px] border border-slate-200 bg-slate-50 p-4">
-                <div className="text-[11px] font-black uppercase tracking-[0.16em] text-slate-400">Asset gaps</div>
+              <div className="rounded-[26px] border border-faith-line bg-[var(--fh-surface)] p-4">
+                <div className="text-[11px] font-black uppercase tracking-[0.16em] text-faith-slate">Asset gaps</div>
                 <div className="mt-3 space-y-2">
                   {readiness.assetGaps.length ? readiness.assetGaps.map((gap) => (
-                    <div key={gap} className="rounded-2xl border border-amber-200 bg-white px-3 py-3 text-[12px] text-slate-700">{gap}</div>
+                    <div key={gap} className="rounded-2xl border border-amber-200 bg-[var(--fh-surface-bg)] px-3 py-3 text-[12px] text-slate-700">{gap}</div>
                   )) : (
-                    <div className="rounded-2xl border border-emerald-200 bg-white px-3 py-3 text-[12px] text-emerald-700">No blocking asset gaps detected.</div>
+                    <div className="rounded-2xl border border-emerald-200 bg-[var(--fh-surface-bg)] px-3 py-3 text-[12px] text-emerald-700">No blocking asset gaps detected.</div>
                   )}
                 </div>
               </div>
             </div>
             <div className="space-y-3">
-              <div className="rounded-[26px] border border-slate-200 bg-white p-4">
-                <div className="text-[14px] font-bold text-slate-900">Launch confidence board</div>
+              <div className="rounded-[26px] border border-faith-line bg-[var(--fh-surface-bg)] p-4">
+                <div className="text-[14px] font-bold text-faith-ink">Launch confidence board</div>
                 <div className="mt-3 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
-                  <div className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-3">
-                    <div className="text-[11px] text-slate-400">Episode count health</div>
-                    <div className="mt-1 text-[22px] font-black text-slate-900">{draft.episodes.length}/{draft.episodeTarget}</div>
+                  <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-3">
+                    <div className="text-[11px] text-faith-slate">Episode count health</div>
+                    <div className="mt-1 text-[22px] font-black text-faith-ink">{draft.episodes.length}/{draft.episodeTarget}</div>
                   </div>
-                  <div className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-3">
-                    <div className="text-[11px] text-slate-400">Locale variants</div>
-                    <div className="mt-1 text-[22px] font-black text-slate-900">{draft.locales.length}</div>
+                  <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-3">
+                    <div className="text-[11px] text-faith-slate">Locale variants</div>
+                    <div className="mt-1 text-[22px] font-black text-faith-ink">{draft.locales.length}</div>
                   </div>
-                  <div className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-3">
-                    <div className="text-[11px] text-slate-400">Resource blocks</div>
-                    <div className="mt-1 text-[22px] font-black text-slate-900">{draft.resources.length}</div>
+                  <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-3">
+                    <div className="text-[11px] text-faith-slate">Resource blocks</div>
+                    <div className="mt-1 text-[22px] font-black text-faith-ink">{draft.resources.length}</div>
                   </div>
                 </div>
               </div>
-              <div className="rounded-[26px] border border-slate-200 bg-slate-50 p-4">
-                <div className="text-[14px] font-bold text-slate-900">Native cross-links</div>
+              <div className="rounded-[26px] border border-faith-line bg-[var(--fh-surface)] p-4">
+                <div className="text-[14px] font-bold text-faith-ink">Native cross-links</div>
                 <div className="mt-3 grid gap-3 md:grid-cols-2">
-                  <div className="rounded-2xl border border-slate-200 bg-white p-3">
-                    <div className="text-[12px] font-bold text-slate-900">Episode Builder</div>
-                    <div className="mt-1 text-[11px] text-slate-500">Shape each episode with resources, live sessions, and replay expectations.</div>
+                  <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-3">
+                    <div className="text-[12px] font-bold text-faith-ink">Episode Builder</div>
+                    <div className="mt-1 text-[11px] text-faith-slate">Shape each episode with resources, live sessions, and replay expectations.</div>
                   </div>
-                  <div className="rounded-2xl border border-slate-200 bg-white p-3">
-                    <div className="text-[12px] font-bold text-slate-900">Live Builder</div>
-                    <div className="mt-1 text-[11px] text-slate-500">Create linked Live Sessions under this series and preserve the parent relationship.</div>
+                  <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-3">
+                    <div className="text-[12px] font-bold text-faith-ink">Live Builder</div>
+                    <div className="mt-1 text-[11px] text-faith-slate">Create linked Live Sessions under this series and preserve the parent relationship.</div>
                   </div>
-                  <div className="rounded-2xl border border-slate-200 bg-white p-3">
-                    <div className="text-[12px] font-bold text-slate-900">Audience Notifications</div>
-                    <div className="mt-1 text-[11px] text-slate-500">Launch reminder journeys directly from the series identity and launch plan.</div>
+                  <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-3">
+                    <div className="text-[12px] font-bold text-faith-ink">Audience Notifications</div>
+                    <div className="mt-1 text-[11px] text-faith-slate">Launch reminder journeys directly from the series identity and launch plan.</div>
                   </div>
-                  <div className="rounded-2xl border border-slate-200 bg-white p-3">
-                    <div className="text-[12px] font-bold text-slate-900">Beacon Builder</div>
-                    <div className="mt-1 text-[11px] text-slate-500">Promote the series before the first replay is published using teaser creative and metadata.</div>
+                  <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-3">
+                    <div className="text-[12px] font-bold text-faith-ink">Beacon Builder</div>
+                    <div className="mt-1 text-[11px] text-faith-slate">Promote the series before the first replay is published using teaser creative and metadata.</div>
                   </div>
                 </div>
               </div>
@@ -1803,12 +1803,12 @@ export default function SeriesBuilderPage() {
   ]);
 
   return (
-    <div className="min-h-screen bg-[#f2f2f2] text-slate-900">
+    <div className="min-h-screen bg-[var(--fh-page-bg)] text-faith-ink">
       <div className="mx-auto max-w-[1600px] px-4 py-6 sm:px-6 lg:px-10">
-        <div className="rounded-[34px] border border-slate-200 bg-white px-5 py-5 shadow-sm">
+        <div className="rounded-[34px] border border-faith-line bg-[var(--fh-surface-bg)] px-5 py-5 shadow-soft">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
             <div className="min-w-0">
-              <div className="flex flex-wrap items-center gap-2 text-[11px] text-slate-500">
+              <div className="flex flex-wrap items-center gap-2 text-[11px] text-faith-slate">
                 <button className="hover:text-slate-700" onClick={() => safeNav(ROUTES.providerDashboard)}>
                   Provider Dashboard
                 </button>
@@ -1819,7 +1819,7 @@ export default function SeriesBuilderPage() {
                 <ProviderPageTitle
                   icon={<Layers className="h-6 w-6" />}
                   title="Series Builder"
-                  subtitle="Premium provider teaching workflow inspired by the creator base layout â€” now rebuilt for Series, Episodes, linked Live Sessions, localized discovery, and Beacon-ready promotion."
+                  subtitle="Premium provider teaching workflow inspired by the creator base layout — now rebuilt for Series, Episodes, linked Live Sessions, localized discovery, and Beacon-ready promotion."
                 />
               </div>
               <div className="mt-4 flex flex-wrap gap-2">
@@ -1847,19 +1847,19 @@ export default function SeriesBuilderPage() {
           <div className="space-y-4">{centerContent}</div>
 
           <div className="hidden xl:block xl:sticky xl:top-6 xl:self-start">
-            <div className="rounded-[30px] border border-slate-200 bg-white p-4 shadow-sm">
+            <div className="rounded-[30px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft">
               <div className="flex items-center justify-between gap-3">
                 <div>
-                  <div className="text-[14px] font-bold text-slate-900">Series preview</div>
-                  <div className="mt-1 text-[11px] text-slate-500">Embedded landing-page preview updates as the series is configured.</div>
+                  <div className="text-[14px] font-bold text-faith-ink">Series preview</div>
+                  <div className="mt-1 text-[11px] text-faith-slate">Embedded landing-page preview updates as the series is configured.</div>
                 </div>
-                <div className="inline-flex rounded-2xl border border-slate-200 bg-slate-50 p-1">
+                <div className="inline-flex rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-1">
                   <button
                     type="button"
                     onClick={() => setPreviewMode("desktop")}
                     className={cx(
                       "rounded-xl px-3 py-1.5 text-[11px] font-bold transition-colors",
-                      previewMode === "desktop" ? "bg-slate-900 text-white" : "text-slate-600 hover:bg-white",
+                      previewMode === "desktop" ? "bg-slate-900 text-white" : "text-faith-slate hover:bg-[var(--fh-surface-bg)]",
                     )}
                   >
                     Desktop
@@ -1869,7 +1869,7 @@ export default function SeriesBuilderPage() {
                     onClick={() => setPreviewMode("mobile")}
                     className={cx(
                       "rounded-xl px-3 py-1.5 text-[11px] font-bold transition-colors",
-                      previewMode === "mobile" ? "bg-slate-900 text-white" : "text-slate-600 hover:bg-white",
+                      previewMode === "mobile" ? "bg-slate-900 text-white" : "text-faith-slate hover:bg-[var(--fh-surface-bg)]",
                     )}
                   >
                     Mobile
@@ -1887,19 +1887,19 @@ export default function SeriesBuilderPage() {
         </div>
 
         <div className="mt-5 xl:hidden">
-          <div className="rounded-[30px] border border-slate-200 bg-white p-4 shadow-sm">
+          <div className="rounded-[30px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft">
             <div className="flex items-center justify-between gap-3">
               <div>
-                <div className="text-[14px] font-bold text-slate-900">Series preview</div>
-                <div className="mt-1 text-[11px] text-slate-500">Preview the series landing experience on desktop or mobile.</div>
+                <div className="text-[14px] font-bold text-faith-ink">Series preview</div>
+                <div className="mt-1 text-[11px] text-faith-slate">Preview the series landing experience on desktop or mobile.</div>
               </div>
-              <div className="inline-flex rounded-2xl border border-slate-200 bg-slate-50 p-1">
+              <div className="inline-flex rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-1">
                 <button
                   type="button"
                   onClick={() => setPreviewMode("desktop")}
                   className={cx(
                     "rounded-xl px-3 py-1.5 text-[11px] font-bold transition-colors",
-                    previewMode === "desktop" ? "bg-slate-900 text-white" : "text-slate-600 hover:bg-white",
+                    previewMode === "desktop" ? "bg-slate-900 text-white" : "text-faith-slate hover:bg-[var(--fh-surface-bg)]",
                   )}
                 >
                   Desktop
@@ -1909,7 +1909,7 @@ export default function SeriesBuilderPage() {
                   onClick={() => setPreviewMode("mobile")}
                   className={cx(
                     "rounded-xl px-3 py-1.5 text-[11px] font-bold transition-colors",
-                    previewMode === "mobile" ? "bg-slate-900 text-white" : "text-slate-600 hover:bg-white",
+                    previewMode === "mobile" ? "bg-slate-900 text-white" : "text-faith-slate hover:bg-[var(--fh-surface-bg)]",
                   )}
                 >
                   Mobile
@@ -1931,6 +1931,7 @@ export default function SeriesBuilderPage() {
     </div>
   );
 }
+
 
 
 

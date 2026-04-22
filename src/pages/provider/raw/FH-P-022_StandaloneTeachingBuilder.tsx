@@ -1,4 +1,4 @@
-ï»¿// @ts-nocheck
+// @ts-nocheck
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -38,7 +38,7 @@ import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
- * Provider â€” Standalone Teaching Builder
+ * Provider — Standalone Teaching Builder
  * ------------------------------------------------
  * Premium creator-style page for building sermons/teachings that do not
  * belong to any Series or Episode while still supporting Live Sessions,
@@ -219,7 +219,7 @@ const CONTENT_ASSET_LIBRARY = [
   {
     id: "asset-hero",
     type: "Artwork",
-    name: "Hero artwork Â· Sanctuary Light",
+    name: "Hero artwork · Sanctuary Light",
     status: "Ready" as const,
     hint: "Landing image, replay cover, and promo thumbnail treatment.",
   },
@@ -336,8 +336,8 @@ const STEPS: Array<{ key: StepKey; label: string }> = [
 ];
 
 const DEFAULT_LOCALES: LocaleVariant[] = [
-  { code: "en-UG", title: "Sunday Fire Â· English", state: "Ready" },
-  { code: "sw-UG", title: "Sunday Fire Â· Swahili", state: "Draft" },
+  { code: "en-UG", title: "Sunday Fire · English", state: "Ready" },
+  { code: "sw-UG", title: "Sunday Fire · Swahili", state: "Draft" },
 ];
 
 const DEFAULT_CROSS_LINKS: TeachingDraft["crossLinks"] = {
@@ -349,12 +349,12 @@ const DEFAULT_CROSS_LINKS: TeachingDraft["crossLinks"] = {
 };
 
 const DEFAULT_DRAFT: TeachingDraft = {
-  title: "Sunday Fire Â· Hope for the Waiting Heart",
+  title: "Sunday Fire · Hope for the Waiting Heart",
   subtitle: "A standalone sermon for courage, patience, and faithful action in uncertain seasons.",
   speaker: "Pastor Daniel M.",
   ministryContext: "Sunday service",
   theme: "Hope and endurance",
-  scriptureSource: "Romans 8 Â· Isaiah 40 Â· Psalm 27",
+  scriptureSource: "Romans 8 · Isaiah 40 · Psalm 27",
   intendedAudience: "Open to everyone",
   promise: "Help the audience find language for waiting faithfully without losing spiritual confidence.",
   description:
@@ -365,7 +365,7 @@ const DEFAULT_DRAFT: TeachingDraft = {
   liveEnabled: true,
   linkedLiveTitle: "Sunday Fire Live Session",
   linkedLiveState: "Scheduled",
-  linkedLiveTime: "Sun 09:00 Â· Primary + YouTube",
+  linkedLiveTime: "Sun 09:00 · Primary + YouTube",
   releaseTiming: "Publish after the linked live ends",
   visibility: "Public",
   region: "Global",
@@ -447,7 +447,7 @@ function Pill({
           ? "border-rose-200 bg-rose-50 text-rose-700"
           : tone === "brand"
             ? "border-transparent text-white"
-            : "border-slate-200 bg-white text-slate-700";
+            : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700";
 
   return (
     <span
@@ -480,7 +480,7 @@ function SoftButton({
       onClick={onClick}
       disabled={disabled}
       className={cx(
-        "inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-2 text-[12px] font-semibold text-slate-800 transition-colors hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50",
+        "inline-flex items-center justify-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-2 text-[12px] font-semibold text-slate-800 transition-colors hover:bg-[var(--fh-surface)] disabled:cursor-not-allowed disabled:opacity-50",
         className,
       )}
     >
@@ -505,7 +505,7 @@ function PrimaryButton({
       type="button"
       onClick={onClick}
       className={cx(
-        "inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-2 text-[12px] font-semibold text-white shadow-sm transition-opacity hover:opacity-95",
+        "inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-2 text-[12px] font-semibold text-white shadow-soft transition-opacity hover:opacity-95",
         className,
       )}
       style={{ background: color === "orange" ? EV_ORANGE : EV_GREEN }}
@@ -531,15 +531,15 @@ function Card({
   return (
     <div
       className={cx(
-        "rounded-[28px] border border-slate-200 bg-white p-4 shadow-sm transition-colors",
+        "rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft transition-colors",
         className,
       )}
     >
       <div className="flex items-start justify-between gap-3">
         <div>
-          <div className="text-[14px] font-bold text-slate-900">{title}</div>
+          <div className="text-[14px] font-bold text-faith-ink">{title}</div>
           {subtitle ? (
-            <div className="mt-1 text-[11px] text-slate-500">{subtitle}</div>
+            <div className="mt-1 text-[11px] text-faith-slate">{subtitle}</div>
           ) : null}
         </div>
         {right ? <div className="shrink-0">{right}</div> : null}
@@ -567,7 +567,7 @@ function TextInput({
       value={value}
       onChange={(e) => onChange(e.target.value)}
       placeholder={placeholder}
-      className="mt-1 w-full rounded-2xl border border-slate-200 bg-white px-3 py-2 text-[12px] text-slate-900 outline-none transition-colors focus:ring-2 focus:ring-[rgba(3,205,140,0.18)]"
+      className="mt-1 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] text-faith-ink outline-none transition-colors focus:ring-2 focus:ring-[rgba(3,205,140,0.18)]"
     />
   );
 }
@@ -589,7 +589,7 @@ function TextArea({
       onChange={(e) => onChange(e.target.value)}
       placeholder={placeholder}
       rows={rows}
-      className="mt-1 w-full rounded-2xl border border-slate-200 bg-white px-3 py-2 text-[12px] text-slate-900 outline-none transition-colors focus:ring-2 focus:ring-[rgba(3,205,140,0.18)]"
+      className="mt-1 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] text-faith-ink outline-none transition-colors focus:ring-2 focus:ring-[rgba(3,205,140,0.18)]"
     />
   );
 }
@@ -622,13 +622,13 @@ function ToggleTile({
       onClick={() => onChange(!checked)}
       className={cx(
         "w-full rounded-3xl border p-3 text-left transition-colors",
-        checked ? "border-emerald-200 bg-emerald-50" : "border-slate-200 bg-white hover:bg-slate-50",
+        checked ? "border-emerald-200 bg-emerald-50" : "border-faith-line bg-[var(--fh-surface-bg)] hover:bg-[var(--fh-surface)]",
       )}
     >
       <div className="flex items-start justify-between gap-3">
         <div>
-          <div className="text-[12px] font-semibold text-slate-900">{title}</div>
-          <div className="mt-1 text-[11px] text-slate-500">{hint}</div>
+          <div className="text-[12px] font-semibold text-faith-ink">{title}</div>
+          <div className="mt-1 text-[11px] text-faith-slate">{hint}</div>
         </div>
         <span
           className={cx(
@@ -636,7 +636,7 @@ function ToggleTile({
             checked ? "justify-end border-emerald-500 bg-emerald-500" : "justify-start border-slate-300 bg-slate-100",
           )}
         >
-          <span className="h-4 w-4 rounded-full bg-white shadow-sm" />
+          <span className="h-4 w-4 rounded-full bg-[var(--fh-surface-bg)] shadow-soft" />
         </span>
       </div>
     </button>
@@ -657,9 +657,9 @@ function SectionHeader({
   return (
     <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
       <div>
-        <div className="text-[10px] font-black uppercase tracking-[0.18em] text-slate-400">{eyebrow}</div>
-        <div className="mt-1 text-[18px] font-black text-slate-900">{title}</div>
-        <div className="mt-1 text-[12px] text-slate-500">{subtitle}</div>
+        <div className="text-[10px] font-black uppercase tracking-[0.18em] text-faith-slate">{eyebrow}</div>
+        <div className="mt-1 text-[18px] font-black text-faith-ink">{title}</div>
+        <div className="mt-1 text-[12px] text-faith-slate">{subtitle}</div>
       </div>
       {right ? <div className="shrink-0">{right}</div> : null}
     </div>
@@ -676,11 +676,11 @@ function StepRail({
   readinessScore: number;
 }) {
   return (
-    <div className="rounded-[30px] border border-slate-200 bg-white p-4 shadow-sm xl:sticky xl:top-6">
+    <div className="rounded-[30px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft xl:sticky xl:top-6">
       <div className="rounded-[24px] border border-emerald-200 bg-emerald-50 p-4">
         <div className="text-[10px] font-black uppercase tracking-[0.18em] text-emerald-700">Standalone Builder</div>
-        <div className="mt-2 text-[28px] font-black leading-none text-slate-900">{readinessScore}%</div>
-        <div className="mt-1 text-[11px] text-slate-500">Teaching completeness score</div>
+        <div className="mt-2 text-[28px] font-black leading-none text-faith-ink">{readinessScore}%</div>
+        <div className="mt-1 text-[11px] text-faith-slate">Teaching completeness score</div>
         <div className="mt-3">
           <ProgressBar value={readinessScore} />
         </div>
@@ -697,8 +697,8 @@ function StepRail({
               className={cx(
                 "flex w-full items-center justify-between rounded-2xl border px-3 py-3 text-left text-[12px] font-semibold transition-colors",
                 active
-                  ? "border-emerald-300 bg-emerald-50 text-slate-900"
-                  : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50",
+                  ? "border-emerald-300 bg-emerald-50 text-faith-ink"
+                  : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 hover:bg-[var(--fh-surface)]",
               )}
             >
               <span>{item.label}</span>
@@ -709,7 +709,7 @@ function StepRail({
       </div>
 
       <div className="mt-4 rounded-[24px] border border-amber-200 bg-amber-50 p-4">
-        <div className="text-[13px] font-bold text-slate-900">Quick handoff</div>
+        <div className="text-[13px] font-bold text-faith-ink">Quick handoff</div>
         <div className="mt-2 space-y-2">
           <SoftButton className="w-full justify-between" onClick={() => safeNav(ROUTES.liveBuilder)}>
             Live Builder <ChevronRight className="h-4 w-4" />
@@ -748,8 +748,8 @@ function DesktopTeachingPreview({ draft }: { draft: TeachingDraft }) {
   const readyAssets = draft.assets.filter((asset) => asset.status === "Ready");
 
   return (
-    <div className="rounded-[28px] border border-slate-200 bg-white p-4 shadow-sm">
-      <div className="overflow-hidden rounded-[24px] border border-slate-200 bg-slate-950">
+    <div className="rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft">
+      <div className="overflow-hidden rounded-[24px] border border-faith-line bg-slate-950">
         <div className="relative h-[240px] overflow-hidden bg-slate-900">
           <img src={cover.url} alt={cover.name} className="h-full w-full object-cover opacity-90" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent" />
@@ -779,31 +779,31 @@ function DesktopTeachingPreview({ draft }: { draft: TeachingDraft }) {
       </div>
 
       <div className="mt-4 grid gap-4 xl:grid-cols-[1.05fr_0.95fr]">
-        <div className="rounded-[24px] border border-slate-200 bg-slate-50 p-4">
-          <div className="text-[16px] font-black text-slate-900">Teaching package</div>
-          <div className="mt-1 text-[11px] text-slate-500">Standalone landing page preview with notes, replays, and linked actions.</div>
+        <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface)] p-4">
+          <div className="text-[16px] font-black text-faith-ink">Teaching package</div>
+          <div className="mt-1 text-[11px] text-faith-slate">Standalone landing page preview with notes, replays, and linked actions.</div>
           <div className="mt-4 space-y-3">
-            <div className="rounded-2xl border border-slate-200 bg-white p-3">
-              <div className="text-[11px] font-black uppercase tracking-[0.16em] text-slate-400">Core promise</div>
-              <div className="mt-2 text-[13px] font-semibold text-slate-900">{draft.promise}</div>
+            <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-3">
+              <div className="text-[11px] font-black uppercase tracking-[0.16em] text-faith-slate">Core promise</div>
+              <div className="mt-2 text-[13px] font-semibold text-faith-ink">{draft.promise}</div>
             </div>
-            <div className="rounded-2xl border border-slate-200 bg-white p-3">
+            <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-3">
               <div className="flex items-center justify-between gap-2">
                 <div>
-                  <div className="text-[11px] font-black uppercase tracking-[0.16em] text-slate-400">Notes and resources</div>
-                  <div className="mt-1 text-[12px] text-slate-600">{draft.discussionPrompt}</div>
+                  <div className="text-[11px] font-black uppercase tracking-[0.16em] text-faith-slate">Notes and resources</div>
+                  <div className="mt-1 text-[12px] text-faith-slate">{draft.discussionPrompt}</div>
                 </div>
                 <Pill tone="good">{readyAssets.length} ready</Pill>
               </div>
             </div>
-            <div className="rounded-2xl border border-slate-200 bg-white p-3">
-              <div className="text-[11px] font-black uppercase tracking-[0.16em] text-slate-400">Linked live</div>
+            <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-3">
+              <div className="text-[11px] font-black uppercase tracking-[0.16em] text-faith-slate">Linked live</div>
               <div className="mt-2 flex items-center justify-between gap-3">
                 <div>
-                  <div className="text-[13px] font-semibold text-slate-900">
+                  <div className="text-[13px] font-semibold text-faith-ink">
                     {draft.liveEnabled ? draft.linkedLiveTitle : "No live attached yet"}
                   </div>
-                  <div className="mt-1 text-[11px] text-slate-500">
+                  <div className="mt-1 text-[11px] text-faith-slate">
                     {draft.liveEnabled ? draft.linkedLiveTime : "Standalone upload-first path remains active."}
                   </div>
                 </div>
@@ -813,21 +813,21 @@ function DesktopTeachingPreview({ draft }: { draft: TeachingDraft }) {
           </div>
         </div>
 
-        <div className="rounded-[24px] border border-slate-200 bg-slate-50 p-4">
-          <div className="text-[16px] font-black text-slate-900">Related next steps</div>
-          <div className="mt-1 text-[11px] text-slate-500">Cross-links and follow-up opportunities connected to this standalone teaching.</div>
+        <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface)] p-4">
+          <div className="text-[16px] font-black text-faith-ink">Related next steps</div>
+          <div className="mt-1 text-[11px] text-faith-slate">Cross-links and follow-up opportunities connected to this standalone teaching.</div>
           <div className="mt-4 space-y-3">
             {activeLinks.map((link) => (
-              <div key={link.label} className="rounded-2xl border border-slate-200 bg-white p-3">
+              <div key={link.label} className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-3">
                 <div className="flex items-center justify-between gap-2">
-                  <div className="text-[13px] font-semibold text-slate-900">{link.label}</div>
+                  <div className="text-[13px] font-semibold text-faith-ink">{link.label}</div>
                   <Pill tone={link.status === "Ready" ? "good" : link.status === "Draft" ? "warn" : "neutral"}>{link.status}</Pill>
                 </div>
               </div>
             ))}
-            <div className="rounded-2xl border border-slate-200 bg-white p-3">
-              <div className="text-[11px] font-black uppercase tracking-[0.16em] text-slate-400">Migration path</div>
-              <div className="mt-2 text-[13px] font-semibold text-slate-900">
+            <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-3">
+              <div className="text-[11px] font-black uppercase tracking-[0.16em] text-faith-slate">Migration path</div>
+              <div className="mt-2 text-[13px] font-semibold text-faith-ink">
                 {draft.migrationMode === "stay-standalone"
                   ? "Remain a premium standalone teaching"
                   : draft.migrationMode === "new-series"
@@ -855,21 +855,21 @@ function MobileTeachingPreview({ draft }: { draft: TeachingDraft }) {
             <img src={cover.url} alt={cover.name} className="h-full w-full object-cover opacity-90" />
           </div>
           <div className="relative -mt-14 px-4 pb-4">
-            <div className="rounded-[26px] border border-slate-200 bg-white p-4 shadow-sm">
+            <div className="rounded-[26px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft">
               <div className="flex items-center justify-between gap-2">
                 <Pill tone="brand">Standalone</Pill>
                 <button className="text-[11px] font-semibold text-emerald-600" onClick={() => navigator.clipboard?.writeText(window.location.href)}>Share</button>
               </div>
-              <div className="mt-3 text-[22px] font-black leading-tight text-slate-900">{draft.title}</div>
-              <div className="mt-1 text-[12px] text-slate-500">{draft.subtitle}</div>
+              <div className="mt-3 text-[22px] font-black leading-tight text-faith-ink">{draft.title}</div>
+              <div className="mt-1 text-[12px] text-faith-slate">{draft.subtitle}</div>
               <div className="mt-3 flex flex-wrap gap-2">
                 <Pill tone="good">{draft.visibility}</Pill>
                 <Pill tone="warn">{activeFormat.title}</Pill>
               </div>
-              <div className="mt-4 rounded-2xl border border-slate-200 bg-slate-50 p-3">
-                <div className="text-[11px] font-black uppercase tracking-[0.16em] text-slate-400">Speaker</div>
-                <div className="mt-2 text-[14px] font-bold text-slate-900">{draft.speaker}</div>
-                <div className="mt-1 text-[11px] text-slate-500">{draft.scriptureSource}</div>
+              <div className="mt-4 rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
+                <div className="text-[11px] font-black uppercase tracking-[0.16em] text-faith-slate">Speaker</div>
+                <div className="mt-2 text-[14px] font-bold text-faith-ink">{draft.speaker}</div>
+                <div className="mt-1 text-[11px] text-faith-slate">{draft.scriptureSource}</div>
               </div>
               <div className="mt-3 space-y-2">
                 <button
@@ -882,14 +882,14 @@ function MobileTeachingPreview({ draft }: { draft: TeachingDraft }) {
                   Open notes & resources
                 </button>
               </div>
-              <div className="mt-4 rounded-2xl border border-slate-200 bg-slate-50 p-3">
-                <div className="text-[11px] font-black uppercase tracking-[0.16em] text-slate-400">Related actions</div>
+              <div className="mt-4 rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
+                <div className="text-[11px] font-black uppercase tracking-[0.16em] text-faith-slate">Related actions</div>
                 <div className="mt-2 flex flex-wrap gap-2">
                   {Object.entries(draft.crossLinks)
                     .filter(([, link]) => link.enabled)
                     .slice(0, 3)
                     .map(([key]) => (
-                      <span key={key} className="rounded-full border border-slate-200 bg-white px-3 py-1 text-[11px] font-semibold text-slate-700">
+                      <span key={key} className="rounded-full border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-1 text-[11px] font-semibold text-slate-700">
                         {key === "faithmart" ? "FaithMart" : key === "crowdfund" ? "Crowdfund" : key}
                       </span>
                     ))}
@@ -1008,7 +1008,7 @@ export default function StandaloneTeachingBuilderPage() {
                 <select
                   value={draft.ministryContext}
                   onChange={(e) => setDraft((current) => ({ ...current, ministryContext: e.target.value }))}
-                  className="mt-1 w-full rounded-2xl border border-slate-200 bg-white px-3 py-2 text-[12px] text-slate-900 outline-none"
+                  className="mt-1 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] text-faith-ink outline-none"
                 >
                   {MINISTRY_CONTEXTS.map((context) => (
                     <option key={context}>{context}</option>
@@ -1028,7 +1028,7 @@ export default function StandaloneTeachingBuilderPage() {
                 <select
                   value={draft.intendedAudience}
                   onChange={(e) => setDraft((current) => ({ ...current, intendedAudience: e.target.value }))}
-                  className="mt-1 w-full rounded-2xl border border-slate-200 bg-white px-3 py-2 text-[12px] text-slate-900 outline-none"
+                  className="mt-1 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] text-faith-ink outline-none"
                 >
                   {AUDIENCE_OPTIONS.map((audience) => (
                     <option key={audience}>{audience}</option>
@@ -1054,17 +1054,17 @@ export default function StandaloneTeachingBuilderPage() {
             <div className="grid gap-4 lg:grid-cols-[1fr_0.95fr]">
               <div>
                 <FieldLabel>Selected speaker</FieldLabel>
-                <div className="mt-2 rounded-[24px] border border-slate-200 bg-slate-50 p-4">
+                <div className="mt-2 rounded-[24px] border border-faith-line bg-[var(--fh-surface)] p-4">
                   <div className="flex items-center justify-between gap-3">
                     <div>
-                      <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">{draft.speaker}</div>
-                      <div className="mt-1.5 text-[14px] leading-6 text-slate-500 dark:text-slate-400">{draft.ministryContext} Â· {draft.theme}</div>
+                      <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-faith-ink dark:text-slate-100 sm:text-[34px] lg:text-[40px]">{draft.speaker}</div>
+                      <div className="mt-1.5 text-[14px] leading-6 text-faith-slate">{draft.ministryContext} · {draft.theme}</div>
                     </div>
                     <Pill tone="brand">Lead teacher</Pill>
                   </div>
-                  <div className="mt-3 rounded-2xl border border-slate-200 bg-white p-3">
-                    <div className="text-[11px] font-black uppercase tracking-[0.16em] text-slate-400">Why standalone?</div>
-                    <div className="mt-2 text-[12px] text-slate-600">
+                  <div className="mt-3 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-3">
+                    <div className="text-[11px] font-black uppercase tracking-[0.16em] text-faith-slate">Why standalone?</div>
+                    <div className="mt-2 text-[12px] text-faith-slate">
                       This teaching has a complete identity, audience promise, and publishing path of its own. It can later grow into a Series, but it does not need one today.
                     </div>
                   </div>
@@ -1074,12 +1074,12 @@ export default function StandaloneTeachingBuilderPage() {
               <div>
                 <FieldLabel>Search alternate speakers</FieldLabel>
                 <div className="relative mt-1">
-                  <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+                  <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-faith-slate" />
                   <input
                     value={speakerSearch}
                     onChange={(e) => setSpeakerSearch(e.target.value)}
                     placeholder="Search speakers"
-                    className="w-full rounded-2xl border border-slate-200 bg-white py-2 pl-9 pr-3 text-[12px] text-slate-900 outline-none"
+                    className="w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] py-2 pl-9 pr-3 text-[12px] text-faith-ink outline-none"
                   />
                 </div>
                 <div className="mt-2 flex max-h-[200px] flex-col gap-2 overflow-y-auto pr-1">
@@ -1092,7 +1092,7 @@ export default function StandaloneTeachingBuilderPage() {
                         onClick={() => setDraft((current) => ({ ...current, speaker }))}
                         className={cx(
                           "flex items-center justify-between rounded-2xl border px-3 py-2 text-[12px] font-semibold transition-colors",
-                          active ? "border-emerald-300 bg-emerald-50 text-slate-900" : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50",
+                          active ? "border-emerald-300 bg-emerald-50 text-faith-ink" : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 hover:bg-[var(--fh-surface)]",
                         )}
                       >
                         <span>{speaker}</span>
@@ -1132,15 +1132,15 @@ export default function StandaloneTeachingBuilderPage() {
                     onClick={() => setDraft((current) => ({ ...current, formatMode: mode.id }))}
                     className={cx(
                       "rounded-3xl border p-4 text-left transition-colors",
-                      active ? "border-transparent shadow-sm" : "border-slate-200 bg-white hover:bg-slate-50",
+                      active ? "border-transparent shadow-soft" : "border-faith-line bg-[var(--fh-surface-bg)] hover:bg-[var(--fh-surface)]",
                     )}
                     style={active ? { background: `${color}12`, borderColor: `${color}44` } : undefined}
                   >
                     <div className="flex items-center justify-between gap-3">
-                      <div className="text-[13px] font-bold text-slate-900">{mode.title}</div>
+                      <div className="text-[13px] font-bold text-faith-ink">{mode.title}</div>
                       {active ? <BadgeCheck className="h-4 w-4" style={{ color }} /> : null}
                     </div>
-                    <div className="mt-2 text-[11px] leading-5 text-slate-500">{mode.subtitle}</div>
+                    <div className="mt-2 text-[11px] leading-5 text-faith-slate">{mode.subtitle}</div>
                   </button>
                 );
               })}
@@ -1179,7 +1179,7 @@ export default function StandaloneTeachingBuilderPage() {
                           linkedLiveState: e.target.value as TeachingDraft["linkedLiveState"],
                         }))
                       }
-                      className="mt-1 w-full rounded-2xl border border-slate-200 bg-white px-3 py-2 text-[12px] text-slate-900 outline-none"
+                      className="mt-1 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] text-faith-ink outline-none"
                     >
                       {(["Not created", "Draft", "Scheduled"] as const).map((state) => (
                         <option key={state}>{state}</option>
@@ -1192,7 +1192,7 @@ export default function StandaloneTeachingBuilderPage() {
                   <TextInput
                     value={draft.linkedLiveTime}
                     onChange={(linkedLiveTime) => setDraft((current) => ({ ...current, linkedLiveTime }))}
-                    placeholder="Sun 09:00 Â· Primary + YouTube"
+                    placeholder="Sun 09:00 · Primary + YouTube"
                   />
                 </div>
                 <div className="flex flex-wrap gap-2">
@@ -1211,18 +1211,18 @@ export default function StandaloneTeachingBuilderPage() {
               subtitle="The same page supports live-first and upload-first creation without splitting the ministry team into separate tools."
               right={<Pill tone="warn">{activeFormat.title}</Pill>}
             >
-              <div className="rounded-[24px] border border-slate-200 bg-slate-50 p-4">
-                <div className="text-[11px] font-black uppercase tracking-[0.16em] text-slate-400">Selected path</div>
-                <div className="mt-2 text-[18px] font-black text-slate-900">{activeFormat.title}</div>
-                <div className="mt-2 text-[12px] leading-6 text-slate-600">{activeFormat.subtitle}</div>
+              <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface)] p-4">
+                <div className="text-[11px] font-black uppercase tracking-[0.16em] text-faith-slate">Selected path</div>
+                <div className="mt-2 text-[18px] font-black text-faith-ink">{activeFormat.title}</div>
+                <div className="mt-2 text-[12px] leading-6 text-faith-slate">{activeFormat.subtitle}</div>
                 <div className="mt-4 grid gap-2 md:grid-cols-2">
-                  <div className="rounded-2xl border border-slate-200 bg-white p-3">
-                    <div className="text-[12px] font-bold text-slate-900">Replay continuity</div>
-                    <div className="mt-1 text-[11px] text-slate-500">Post-live publishing, clips, and reviews stay attached to the same teaching record.</div>
+                  <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-3">
+                    <div className="text-[12px] font-bold text-faith-ink">Replay continuity</div>
+                    <div className="mt-1 text-[11px] text-faith-slate">Post-live publishing, clips, and reviews stay attached to the same teaching record.</div>
                   </div>
-                  <div className="rounded-2xl border border-slate-200 bg-white p-3">
-                    <div className="text-[12px] font-bold text-slate-900">Promotion continuity</div>
-                    <div className="mt-1 text-[11px] text-slate-500">Beacon, giving, and events can attach even if no Series ever exists.</div>
+                  <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-3">
+                    <div className="text-[12px] font-bold text-faith-ink">Promotion continuity</div>
+                    <div className="mt-1 text-[11px] text-faith-slate">Beacon, giving, and events can attach even if no Series ever exists.</div>
                   </div>
                 </div>
               </div>
@@ -1255,15 +1255,15 @@ export default function StandaloneTeachingBuilderPage() {
                     onClick={() => setDraft((current) => ({ ...current, coverId: cover.id }))}
                     className={cx(
                       "overflow-hidden rounded-[26px] border text-left transition-colors",
-                      active ? "border-emerald-300 ring-2 ring-[rgba(3,205,140,0.18)]" : "border-slate-200 bg-white hover:bg-slate-50",
+                      active ? "border-emerald-300 ring-2 ring-[rgba(3,205,140,0.18)]" : "border-faith-line bg-[var(--fh-surface-bg)] hover:bg-[var(--fh-surface)]",
                     )}
                   >
                     <div className="aspect-[4/3] overflow-hidden bg-slate-200">
                       <img src={cover.url} alt={cover.name} className="h-full w-full object-cover" />
                     </div>
                     <div className="p-3">
-                      <div className="text-[12px] font-bold text-slate-900">{cover.name}</div>
-                      <div className="mt-1 text-[11px] text-slate-500">Hero art for the teaching landing page and replay package.</div>
+                      <div className="text-[12px] font-bold text-faith-ink">{cover.name}</div>
+                      <div className="mt-1 text-[11px] text-faith-slate">Hero art for the teaching landing page and replay package.</div>
                     </div>
                   </button>
                 );
@@ -1279,11 +1279,11 @@ export default function StandaloneTeachingBuilderPage() {
             >
               <div className="space-y-3">
                 {draft.assets.map((asset) => (
-                  <div key={asset.id} className="rounded-2xl border border-slate-200 bg-slate-50 p-3">
+                  <div key={asset.id} className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
                     <div className="flex items-start justify-between gap-3">
                       <div>
-                        <div className="text-[12px] font-bold text-slate-900">{asset.name}</div>
-                        <div className="mt-1 text-[11px] text-slate-500">{asset.type} Â· {asset.hint}</div>
+                        <div className="text-[12px] font-bold text-faith-ink">{asset.name}</div>
+                        <div className="mt-1 text-[11px] text-faith-slate">{asset.type} · {asset.hint}</div>
                       </div>
                       <Pill tone={statusTone(asset.status)}>{asset.status}</Pill>
                     </div>
@@ -1345,25 +1345,25 @@ export default function StandaloneTeachingBuilderPage() {
               right={<PrimaryButton color="orange" onClick={() => setToast("Live session launcher opened.")}>Create live session</PrimaryButton>}
             />
             <div className="mt-4 grid gap-4 lg:grid-cols-[1fr_0.95fr]">
-              <div className="rounded-[24px] border border-slate-200 bg-slate-50 p-4">
-                <div className="text-[11px] font-black uppercase tracking-[0.16em] text-slate-400">Direct link</div>
-                <div className="mt-2 text-[18px] font-black text-slate-900">{draft.liveEnabled ? draft.linkedLiveTitle : "Live Session not created yet"}</div>
-                <div className="mt-1 text-[12px] text-slate-500">{draft.liveEnabled ? draft.linkedLiveTime : "This teaching can still publish as upload-first, audio-first, or text-plus-resource."}</div>
+              <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface)] p-4">
+                <div className="text-[11px] font-black uppercase tracking-[0.16em] text-faith-slate">Direct link</div>
+                <div className="mt-2 text-[18px] font-black text-faith-ink">{draft.liveEnabled ? draft.linkedLiveTitle : "Live Session not created yet"}</div>
+                <div className="mt-1 text-[12px] text-faith-slate">{draft.liveEnabled ? draft.linkedLiveTime : "This teaching can still publish as upload-first, audio-first, or text-plus-resource."}</div>
                 <div className="mt-4 grid gap-3 md:grid-cols-2">
-                  <div className="rounded-2xl border border-slate-200 bg-white p-3">
-                    <div className="text-[11px] font-black uppercase tracking-[0.16em] text-slate-400">State</div>
-                    <div className="mt-1 text-[14px] font-bold text-slate-900">{draft.linkedLiveState}</div>
+                  <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-3">
+                    <div className="text-[11px] font-black uppercase tracking-[0.16em] text-faith-slate">State</div>
+                    <div className="mt-1 text-[14px] font-bold text-faith-ink">{draft.linkedLiveState}</div>
                   </div>
-                  <div className="rounded-2xl border border-slate-200 bg-white p-3">
-                    <div className="text-[11px] font-black uppercase tracking-[0.16em] text-slate-400">Downstream value</div>
-                    <div className="mt-1 text-[14px] font-bold text-slate-900">Replay + clips + reviews</div>
+                  <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-3">
+                    <div className="text-[11px] font-black uppercase tracking-[0.16em] text-faith-slate">Downstream value</div>
+                    <div className="mt-1 text-[14px] font-bold text-faith-ink">Replay + clips + reviews</div>
                   </div>
                 </div>
               </div>
 
               <div className="space-y-3">
-                <div className="rounded-[24px] border border-slate-200 bg-white p-4">
-                  <div className="text-[13px] font-bold text-slate-900">Launch options</div>
+                <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] p-4">
+                  <div className="text-[13px] font-bold text-faith-ink">Launch options</div>
                   <div className="mt-3 space-y-3">
                     <ToggleTile
                       title="Keep linked Live Session enabled"
@@ -1379,8 +1379,8 @@ export default function StandaloneTeachingBuilderPage() {
                     />
                   </div>
                 </div>
-                <div className="rounded-[24px] border border-slate-200 bg-slate-50 p-4">
-                  <div className="text-[13px] font-bold text-slate-900">Fast handoff</div>
+                <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface)] p-4">
+                  <div className="text-[13px] font-bold text-faith-ink">Fast handoff</div>
                   <div className="mt-3 grid gap-2">
                     <SoftButton className="justify-between" onClick={() => safeNav(ROUTES.liveBuilder)}>
                       Open Live Builder <ChevronRight className="h-4 w-4" />
@@ -1419,7 +1419,7 @@ export default function StandaloneTeachingBuilderPage() {
                   <select
                     value={draft.visibility}
                     onChange={(e) => setDraft((current) => ({ ...current, visibility: e.target.value as VisibilityMode }))}
-                    className="mt-1 w-full rounded-2xl border border-slate-200 bg-white px-3 py-2 text-[12px] text-slate-900 outline-none"
+                    className="mt-1 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] text-faith-ink outline-none"
                   >
                     {VISIBILITY_OPTIONS.map((option) => (
                       <option key={option}>{option}</option>
@@ -1431,7 +1431,7 @@ export default function StandaloneTeachingBuilderPage() {
                   <select
                     value={draft.region}
                     onChange={(e) => setDraft((current) => ({ ...current, region: e.target.value }))}
-                    className="mt-1 w-full rounded-2xl border border-slate-200 bg-white px-3 py-2 text-[12px] text-slate-900 outline-none"
+                    className="mt-1 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] text-faith-ink outline-none"
                   >
                     {REGION_OPTIONS.map((option) => (
                       <option key={option}>{option}</option>
@@ -1443,7 +1443,7 @@ export default function StandaloneTeachingBuilderPage() {
                   <select
                     value={draft.reviewsPolicy}
                     onChange={(e) => setDraft((current) => ({ ...current, reviewsPolicy: e.target.value }))}
-                    className="mt-1 w-full rounded-2xl border border-slate-200 bg-white px-3 py-2 text-[12px] text-slate-900 outline-none"
+                    className="mt-1 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] text-faith-ink outline-none"
                   >
                     {REVIEW_POLICIES.map((policy) => (
                       <option key={policy}>{policy}</option>
@@ -1477,11 +1477,11 @@ export default function StandaloneTeachingBuilderPage() {
                 {draft.localeVariants.map((variant) => {
                   const locale = LANGUAGE_OPTIONS.find((option) => option.code === variant.code);
                   return (
-                    <div key={variant.code} className="rounded-2xl border border-slate-200 bg-slate-50 p-3">
+                    <div key={variant.code} className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
                       <div className="flex items-center justify-between gap-3">
                         <div>
-                          <div className="text-[12px] font-bold text-slate-900">{locale?.label || variant.code}</div>
-                          <div className="mt-1 text-[11px] text-slate-500">{variant.title}</div>
+                          <div className="text-[12px] font-bold text-faith-ink">{locale?.label || variant.code}</div>
+                          <div className="mt-1 text-[11px] text-faith-slate">{variant.title}</div>
                         </div>
                         <Pill tone={localeTone(variant.state)}>{variant.state}</Pill>
                       </div>
@@ -1509,7 +1509,7 @@ export default function StandaloneTeachingBuilderPage() {
             <SectionHeader
               eyebrow="Connected journeys"
               title="Attach downstream destinations"
-              subtitle="Cross-links deepen the teachingâ€™s usefulness while preserving it as a standalone message."
+              subtitle="Cross-links deepen the teaching’s usefulness while preserving it as a standalone message."
             />
             <div className="mt-4 grid gap-3 xl:grid-cols-2">
               {CROSS_LINK_TYPES.map((item) => {
@@ -1521,18 +1521,18 @@ export default function StandaloneTeachingBuilderPage() {
                     onClick={() => toggleCrossLink(item.key)}
                     className={cx(
                       "rounded-[26px] border p-4 text-left transition-colors",
-                      state.enabled ? "border-emerald-300 bg-emerald-50" : "border-slate-200 bg-white hover:bg-slate-50",
+                      state.enabled ? "border-emerald-300 bg-emerald-50" : "border-faith-line bg-[var(--fh-surface-bg)] hover:bg-[var(--fh-surface)]",
                     )}
                   >
                     <div className="flex items-start justify-between gap-3">
                       <div>
-                        <div className="text-[13px] font-bold text-slate-900">{item.label}</div>
-                        <div className="mt-1 text-[11px] leading-5 text-slate-500">{item.helper}</div>
+                        <div className="text-[13px] font-bold text-faith-ink">{item.label}</div>
+                        <div className="mt-1 text-[11px] leading-5 text-faith-slate">{item.helper}</div>
                       </div>
                       <Pill tone={state.enabled ? (state.status === "Ready" ? "good" : "warn") : "neutral"}>{state.enabled ? state.status : "Off"}</Pill>
                     </div>
-                    <div className="mt-3 rounded-2xl border border-slate-200 bg-white p-3">
-                      <div className="text-[12px] font-semibold text-slate-900">{state.label}</div>
+                    <div className="mt-3 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-3">
+                      <div className="text-[12px] font-semibold text-faith-ink">{state.label}</div>
                     </div>
                   </button>
                 );
@@ -1547,13 +1547,13 @@ export default function StandaloneTeachingBuilderPage() {
               right={<Pill tone="warn">Conversion-ready</Pill>}
             >
               <div className="grid gap-3 md:grid-cols-2">
-                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3">
-                  <div className="text-[11px] font-black uppercase tracking-[0.16em] text-slate-400">Beacon path</div>
-                  <div className="mt-2 text-[13px] font-semibold text-slate-900">Create teaser, replay boost, or awareness ad</div>
+                <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
+                  <div className="text-[11px] font-black uppercase tracking-[0.16em] text-faith-slate">Beacon path</div>
+                  <div className="mt-2 text-[13px] font-semibold text-faith-ink">Create teaser, replay boost, or awareness ad</div>
                 </div>
-                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3">
-                  <div className="text-[11px] font-black uppercase tracking-[0.16em] text-slate-400">Giving path</div>
-                  <div className="mt-2 text-[13px] font-semibold text-slate-900">Attach an offering moment or campaign narrative</div>
+                <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
+                  <div className="text-[11px] font-black uppercase tracking-[0.16em] text-faith-slate">Giving path</div>
+                  <div className="mt-2 text-[13px] font-semibold text-faith-ink">Attach an offering moment or campaign narrative</div>
                 </div>
               </div>
             </Card>
@@ -1563,11 +1563,11 @@ export default function StandaloneTeachingBuilderPage() {
               subtitle="The teaching remains standalone even when related pages are attached."
               right={<Pill tone="good">First-class standalone</Pill>}
             >
-              <div className="space-y-3 text-[12px] text-slate-600">
-                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3">
-                  Linking an event, fund, crowdfund, FaithMart item, or Beacon campaign does <span className="font-semibold text-slate-900">not</span> force a parent Series or Episode relationship.
+              <div className="space-y-3 text-[12px] text-faith-slate">
+                <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
+                  Linking an event, fund, crowdfund, FaithMart item, or Beacon campaign does <span className="font-semibold text-faith-ink">not</span> force a parent Series or Episode relationship.
                 </div>
-                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3">
+                <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
                   The teaching keeps its own replay, clips, reviews, analytics, and discovery identity no matter how many downstream connections it has.
                 </div>
               </div>
@@ -1588,7 +1588,7 @@ export default function StandaloneTeachingBuilderPage() {
             <SectionHeader
               eyebrow="Future flexibility"
               title="Decide how this teaching could evolve later"
-              subtitle="Ministries often preach one-off messages that later deserve a broader campaign. Preserve that path without disturbing todayâ€™s publishing workflow."
+              subtitle="Ministries often preach one-off messages that later deserve a broader campaign. Preserve that path without disturbing today’s publishing workflow."
             />
             <div className="mt-4 grid gap-3 md:grid-cols-3">
               {MIGRATION_MODES.map((mode) => {
@@ -1600,14 +1600,14 @@ export default function StandaloneTeachingBuilderPage() {
                     onClick={() => setDraft((current) => ({ ...current, migrationMode: mode.id }))}
                     className={cx(
                       "rounded-[26px] border p-4 text-left transition-colors",
-                      active ? "border-emerald-300 bg-emerald-50" : "border-slate-200 bg-white hover:bg-slate-50",
+                      active ? "border-emerald-300 bg-emerald-50" : "border-faith-line bg-[var(--fh-surface-bg)] hover:bg-[var(--fh-surface)]",
                     )}
                   >
                     <div className="flex items-center justify-between gap-2">
-                      <div className="text-[13px] font-bold text-slate-900">{mode.title}</div>
+                      <div className="text-[13px] font-bold text-faith-ink">{mode.title}</div>
                       {active ? <BadgeCheck className="h-4 w-4 text-emerald-700" /> : null}
                     </div>
-                    <div className="mt-2 text-[11px] leading-5 text-slate-500">{mode.subtitle}</div>
+                    <div className="mt-2 text-[11px] leading-5 text-faith-slate">{mode.subtitle}</div>
                   </button>
                 );
               })}
@@ -1652,7 +1652,7 @@ export default function StandaloneTeachingBuilderPage() {
                   "Teaching notes, transcript cleanup, and localization variants remain intact.",
                   "Analytics remain attributable to the original standalone message.",
                 ].map((item) => (
-                  <div key={item} className="rounded-2xl border border-slate-200 bg-slate-50 p-3 text-[12px] text-slate-600">
+                  <div key={item} className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3 text-[12px] text-faith-slate">
                     {item}
                   </div>
                 ))}
@@ -1677,20 +1677,20 @@ export default function StandaloneTeachingBuilderPage() {
           />
 
           <div className="mt-5 grid gap-4 xl:grid-cols-[0.92fr_1.08fr]">
-            <div className="rounded-[24px] border border-slate-200 bg-slate-50 p-4">
-              <div className="text-[44px] font-black leading-none text-slate-900">{readiness.score}%</div>
-              <div className="mt-2 text-[12px] text-slate-500">Standalone teaching readiness</div>
+            <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface)] p-4">
+              <div className="text-[44px] font-black leading-none text-faith-ink">{readiness.score}%</div>
+              <div className="mt-2 text-[12px] text-faith-slate">Standalone teaching readiness</div>
               <div className="mt-4">
                 <ProgressBar value={readiness.score} />
               </div>
-              <div className="mt-4 space-y-2 text-[12px] text-slate-600">
+              <div className="mt-4 space-y-2 text-[12px] text-faith-slate">
                 <div className="flex items-center justify-between gap-2">
                   <span>Ready checks</span>
-                  <span className="font-bold text-slate-900">{readiness.readyCount}/{readiness.checks.length}</span>
+                  <span className="font-bold text-faith-ink">{readiness.readyCount}/{readiness.checks.length}</span>
                 </div>
                 <div className="flex items-center justify-between gap-2">
                   <span>Format mode</span>
-                  <span className="font-bold text-slate-900">{activeFormat.title}</span>
+                  <span className="font-bold text-faith-ink">{activeFormat.title}</span>
                 </div>
                 <div className="flex items-center justify-between gap-2">
                   <span>Standalone parent</span>
@@ -1701,7 +1701,7 @@ export default function StandaloneTeachingBuilderPage() {
 
             <div className="grid gap-3 md:grid-cols-2">
               {readiness.checks.map((item) => (
-                <div key={item.label} className="rounded-[22px] border border-slate-200 bg-white p-4">
+                <div key={item.label} className="rounded-[22px] border border-faith-line bg-[var(--fh-surface-bg)] p-4">
                   <div className="flex items-start gap-3">
                     <div
                       className={cx(
@@ -1712,8 +1712,8 @@ export default function StandaloneTeachingBuilderPage() {
                       {item.ready ? <Check className="h-4 w-4" /> : <AlertTriangle className="h-4 w-4" />}
                     </div>
                     <div>
-                      <div className="text-[13px] font-bold text-slate-900">{item.label}</div>
-                      <div className="mt-1 text-[11px] text-slate-500 leading-5">{item.hint}</div>
+                      <div className="text-[13px] font-bold text-faith-ink">{item.label}</div>
+                      <div className="mt-1 text-[11px] text-faith-slate leading-5">{item.hint}</div>
                     </div>
                   </div>
                 </div>
@@ -1733,7 +1733,7 @@ export default function StandaloneTeachingBuilderPage() {
               "Supports replay, clip, review, giving, event, and Beacon flows for one-off messages.",
               "Preserves future flexibility for ministries that teach both inside and outside Series.",
             ].map((item) => (
-              <div key={item} className="rounded-2xl border border-slate-200 bg-slate-50 p-4 text-[12px] leading-6 text-slate-600">
+              <div key={item} className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4 text-[12px] leading-6 text-faith-slate">
                 {item}
               </div>
             ))}
@@ -1744,12 +1744,12 @@ export default function StandaloneTeachingBuilderPage() {
   }, [activeFormat.title, availableLanguages, draft, filteredSpeakers, readiness.checks, readiness.readyCount, readiness.score, speakerSearch, step]);
 
   return (
-    <div className="min-h-screen bg-[#f2f2f2] text-slate-900">
+    <div className="min-h-screen bg-[var(--fh-page-bg)] text-faith-ink">
       <div className="mx-auto max-w-[1600px] px-6 py-6">
-        <div className="rounded-[34px] border border-slate-200 bg-white p-6 shadow-sm">
+        <div className="rounded-[34px] border border-faith-line bg-[var(--fh-surface-bg)] p-6 shadow-soft">
           <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
             <div className="min-w-0">
-              <div className="text-[11px] font-black uppercase tracking-[0.18em] text-slate-400">Provider Side</div>
+              <div className="text-[11px] font-black uppercase tracking-[0.18em] text-faith-slate">Provider Side</div>
               <div className="mt-2 flex flex-col gap-2 lg:flex-row lg:items-center lg:gap-4">
                 <ProviderPageTitle
                   icon={<Mic className="h-6 w-6" />}
@@ -1779,19 +1779,19 @@ export default function StandaloneTeachingBuilderPage() {
           <div className="min-w-0 space-y-4">{centerContent}</div>
 
           <div className="space-y-4 xl:sticky xl:top-6 self-start">
-            <div className="rounded-[30px] border border-slate-200 bg-white p-4 shadow-sm">
+            <div className="rounded-[30px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <div className="text-[11px] font-black uppercase tracking-[0.18em] text-slate-400">Preview</div>
-                  <div className="mt-1 text-[18px] font-black text-slate-900">Standalone teaching landing page</div>
+                  <div className="text-[11px] font-black uppercase tracking-[0.18em] text-faith-slate">Preview</div>
+                  <div className="mt-1 text-[18px] font-black text-faith-ink">Standalone teaching landing page</div>
                 </div>
-                <div className="inline-flex rounded-full border border-slate-200 bg-slate-50 p-1">
+                <div className="inline-flex rounded-full border border-faith-line bg-[var(--fh-surface)] p-1">
                   <button
                     type="button"
                     onClick={() => setPreviewMode("desktop")}
                     className={cx(
                       "rounded-full px-3 py-1 text-[11px] font-bold transition-colors",
-                      previewMode === "desktop" ? "bg-slate-900 text-white" : "text-slate-500",
+                      previewMode === "desktop" ? "bg-slate-900 text-white" : "text-faith-slate",
                     )}
                   >
                     Desktop
@@ -1801,7 +1801,7 @@ export default function StandaloneTeachingBuilderPage() {
                     onClick={() => setPreviewMode("mobile")}
                     className={cx(
                       "rounded-full px-3 py-1 text-[11px] font-bold transition-colors",
-                      previewMode === "mobile" ? "bg-slate-900 text-white" : "text-slate-500",
+                      previewMode === "mobile" ? "bg-slate-900 text-white" : "text-faith-slate",
                     )}
                   >
                     Mobile
@@ -1814,16 +1814,16 @@ export default function StandaloneTeachingBuilderPage() {
               </div>
             </div>
 
-            <div className="rounded-[30px] border border-slate-200 bg-white p-4 shadow-sm">
-              <div className="text-[15px] font-black text-slate-900">Premium notes</div>
-              <div className="mt-3 space-y-3 text-[12px] leading-6 text-slate-600">
-                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3">
+            <div className="rounded-[30px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft">
+              <div className="text-[15px] font-black text-faith-ink">Premium notes</div>
+              <div className="mt-3 space-y-3 text-[12px] leading-6 text-faith-slate">
+                <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
                   The teaching remains a first-class standalone object even when it links to a live session, event, giving campaign, crowdfund, FaithMart item, or Beacon campaign.
                 </div>
-                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3">
+                <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
                   Live-first and upload-first are both premium paths. Teams can move from this page into Live Builder, Post-live Publishing, or Beacon without rebuilding the teaching record.
                 </div>
-                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3">
+                <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
                   Convertible metadata keeps replays, clips, reviews, and promotions intact if the ministry later expands this one-off message into a bigger teaching campaign.
                 </div>
               </div>
@@ -1840,6 +1840,7 @@ export default function StandaloneTeachingBuilderPage() {
     </div>
   );
 }
+
 
 
 

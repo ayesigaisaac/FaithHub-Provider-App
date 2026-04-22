@@ -1,4 +1,4 @@
-ï»¿// @ts-nocheck
+// @ts-nocheck
 
 "use client";
 
@@ -42,7 +42,7 @@ import {
 import { KpiTile } from "../../../components/ui/KpiTile";
 
 /**
- * Provider â€” Audience Notifications
+ * Provider — Audience Notifications
  * Premium lifecycle journey page rebuilt from the creator-style Audience Notifications base.
  * Primary colour: EVzone Green (#03cd8c)
  * Secondary colour: EVzone Orange (#f77f00)
@@ -155,9 +155,9 @@ function Pill({
         : tone === "bad"
           ? "bg-rose-50 text-rose-800 ring-rose-200 dark:bg-rose-500/10 dark:text-rose-400 dark:ring-rose-500/20"
           : tone === "brand"
-            ? "text-white ring-0 shadow-sm"
+            ? "text-white ring-0 shadow-soft"
             : tone === "accent"
-              ? "text-white ring-0 shadow-sm"
+              ? "text-white ring-0 shadow-soft"
               : "bg-slate-100 text-slate-800 ring-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:ring-slate-700";
 
   const style =
@@ -206,8 +206,8 @@ function Btn({
         : tone === "danger"
           ? "bg-rose-600 text-white hover:brightness-95 shadow-md shadow-rose-500/20"
           : tone === "ghost"
-            ? "bg-transparent text-slate-900 dark:text-slate-50 hover:bg-slate-100 dark:hover:bg-slate-900"
-            : "bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-50 ring-1 ring-slate-200 dark:ring-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 shadow-sm";
+            ? "bg-transparent text-faith-ink dark:text-slate-50 hover:bg-slate-100 dark:hover:bg-slate-900"
+            : "bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-faith-ink dark:text-slate-50 ring-1 ring-slate-200 dark:ring-slate-800 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800 shadow-soft";
 
   const style =
     tone === "primary"
@@ -261,7 +261,7 @@ function Toggle({
     >
       <span
         className={cn(
-          "inline-block h-4 w-4 sm:h-5 sm:w-5 transform rounded-full bg-white shadow-md transition",
+          "inline-block h-4 w-4 sm:h-5 sm:w-5 transform rounded-full bg-[var(--fh-surface-bg)] shadow-md transition",
           value ? "translate-x-5" : "translate-x-1",
         )}
       />
@@ -309,14 +309,14 @@ function Drawer({
       />
       <div
         className={cn(
-          "absolute right-0 top-0 h-full w-full bg-white dark:bg-slate-900 shadow-2xl transition-transform duration-300 ease-out sm:ring-1 sm:ring-slate-200 dark:sm:ring-slate-800",
+          "absolute right-0 top-0 h-full w-full bg-[var(--fh-surface-bg)] dark:bg-slate-900 shadow-2xl transition-transform duration-300 ease-out sm:ring-1 sm:ring-slate-200 dark:sm:ring-slate-800",
           widthClass,
         )}
       >
         <div className="flex h-full flex-col">
           <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 px-6 py-4">
             <div className="min-w-0">
-              <div className="truncate text-lg font-bold text-slate-900 dark:text-slate-50">
+              <div className="truncate text-lg font-bold text-faith-ink dark:text-slate-50">
                 {title}
               </div>
             </div>
@@ -325,7 +325,7 @@ function Drawer({
               <button
                 type="button"
                 onClick={onClose}
-                className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 text-faith-slate hover:bg-slate-200 dark:hover:bg-slate-700 transition"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -365,28 +365,28 @@ function Select({
     <div className="relative" ref={ref}>
       <button
         type="button"
-        className="w-full h-11 rounded-xl bg-white dark:bg-slate-900 px-4 text-left ring-1 ring-slate-200 dark:ring-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 transition"
+        className="w-full h-11 rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 text-left ring-1 ring-slate-200 dark:ring-slate-800 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800 transition"
         onClick={() => setOpen((s) => !s)}
       >
         <div className="flex items-center justify-between gap-2">
           <div className="min-w-0">
-            <div className="truncate text-sm font-bold text-slate-900 dark:text-slate-50">
+            <div className="truncate text-sm font-bold text-faith-ink dark:text-slate-50">
               {selected?.label ?? "Select"}
             </div>
             {selected?.hint ? (
-              <div className="truncate text-[10px] font-semibold text-slate-500 dark:text-slate-500">
+              <div className="truncate text-[10px] font-semibold text-faith-slate">
                 {selected.hint}
               </div>
             ) : null}
           </div>
           <ChevronDown
-            className={cn("h-4 w-4 text-slate-400 transition-transform", open && "rotate-180")}
+            className={cn("h-4 w-4 text-faith-slate transition-transform", open && "rotate-180")}
           />
         </div>
       </button>
 
       {open ? (
-        <div className="absolute z-30 mt-2 w-full overflow-hidden rounded-2xl bg-white dark:bg-slate-900 shadow-xl ring-1 ring-slate-200 dark:ring-slate-800">
+        <div className="absolute z-30 mt-2 w-full overflow-hidden rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 shadow-xl ring-1 ring-slate-200 dark:ring-slate-800">
           <div className="max-h-[300px] overflow-y-auto">
             {options.map((o) => (
               <button
@@ -394,7 +394,7 @@ function Select({
                 type="button"
                 className={cn(
                   "w-full px-4 py-3 text-left transition",
-                  o.value === value ? "bg-slate-100 dark:bg-slate-800" : "hover:bg-slate-50 dark:hover:bg-slate-800/50",
+                  o.value === value ? "bg-slate-100 dark:bg-slate-800" : "hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800/50",
                   o.locked && "opacity-60 cursor-not-allowed",
                 )}
                 onClick={() => {
@@ -406,11 +406,11 @@ function Select({
               >
                 <div className="flex items-center justify-between gap-3">
                   <div className="min-w-0">
-                    <div className="truncate text-sm font-bold text-slate-900 dark:text-slate-50">
+                    <div className="truncate text-sm font-bold text-faith-ink dark:text-slate-50">
                       {o.label}
                     </div>
                     {o.hint ? (
-                      <div className="truncate text-[10px] font-semibold text-slate-500 dark:text-slate-500">
+                      <div className="truncate text-[10px] font-semibold text-faith-slate">
                         {o.hint}
                       </div>
                     ) : null}
@@ -463,13 +463,13 @@ function CardShell({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+    <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
       <div className="flex items-start justify-between gap-3">
         <div>
-          <div className="text-sm font-bold text-slate-900 dark:text-slate-50 uppercase tracking-tight">
+          <div className="text-sm font-bold text-faith-ink dark:text-slate-50 uppercase tracking-tight">
             {title}
           </div>
-          <div className="mt-1 text-[10px] sm:text-xs text-slate-500 dark:text-slate-400">
+          <div className="mt-1 text-[10px] sm:text-xs text-faith-slate">
             {subtitle}
           </div>
         </div>
@@ -490,8 +490,8 @@ function StatBadge({
   tone?: "neutral" | "good" | "warn" | "bad" | "brand" | "accent";
 }) {
   return (
-    <div className="rounded-2xl px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800 bg-slate-50 dark:bg-slate-950 transition">
-      <div className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-500">
+    <div className="rounded-2xl px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 transition">
+      <div className="text-[10px] font-black uppercase tracking-widest text-faith-slate">
         {label}
       </div>
       <div
@@ -507,7 +507,7 @@ function StatBadge({
                   ? ""
                   : tone === "accent"
                     ? ""
-                    : "text-slate-900 dark:text-slate-50",
+                    : "text-faith-ink dark:text-slate-50",
         )}
         style={
           tone === "brand"
@@ -590,18 +590,18 @@ function PhoneMock({
   return (
     <div className="mx-auto w-full max-w-[420px]">
       <div className="relative overflow-hidden rounded-[40px] bg-slate-900 dark:bg-black p-3 shadow-2xl transition ring-1 ring-slate-800">
-        <div className="flex flex-col rounded-[32px] bg-white dark:bg-slate-900 overflow-hidden">
+        <div className="flex flex-col rounded-[32px] bg-[var(--fh-surface-bg)] dark:bg-slate-900 overflow-hidden">
           <div className="border-b border-slate-100 dark:border-slate-800 px-6 py-4">
-            <div className="text-[10px] font-black text-slate-500 dark:text-slate-500 uppercase tracking-widest">
+            <div className="text-[10px] font-black text-faith-slate uppercase tracking-widest">
               {subtitle ?? "Preview"}
             </div>
-            <div className="mt-1 text-sm font-black text-slate-900 dark:text-slate-50">
+            <div className="mt-1 text-sm font-black text-faith-ink dark:text-slate-50">
               {title}
             </div>
           </div>
           <div className="flex-1 p-6">
             <div className="space-y-3">
-              <div className="inline-block max-w-[95%] rounded-2xl bg-slate-50 dark:bg-slate-800/80 px-4 py-3 text-sm font-medium text-slate-800 dark:text-slate-200 ring-1 ring-slate-100 dark:ring-white/5 shadow-sm">
+              <div className="inline-block max-w-[95%] rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800/80 px-4 py-3 text-sm font-medium text-slate-800 dark:text-slate-200 ring-1 ring-slate-100 dark:ring-white/5 shadow-soft">
                 {body}
               </div>
               {footer ? <div className="pt-2">{footer}</div> : null}
@@ -626,20 +626,20 @@ function EmailPreview({
 }) {
   return (
     <div className="rounded-[28px] bg-slate-900 p-3 shadow-2xl ring-1 ring-slate-800">
-      <div className="overflow-hidden rounded-[24px] bg-white dark:bg-slate-900">
+      <div className="overflow-hidden rounded-[24px] bg-[var(--fh-surface-bg)] dark:bg-slate-900">
         <div className="border-b border-slate-100 dark:border-slate-800 px-6 py-4">
-          <div className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-500">
+          <div className="text-[10px] font-black uppercase tracking-widest text-faith-slate">
             Email preview
           </div>
-          <div className="mt-1 text-sm font-black text-slate-900 dark:text-slate-50">
+          <div className="mt-1 text-sm font-black text-faith-ink dark:text-slate-50">
             {subject}
           </div>
-          <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
+          <div className="mt-1 text-[11px] text-faith-slate">
             {preheader}
           </div>
         </div>
         <div className="space-y-4 p-6">
-          <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/80 p-4 text-sm font-medium text-slate-800 dark:text-slate-200 ring-1 ring-slate-100 dark:ring-white/5">
+          <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800/80 p-4 text-sm font-medium text-slate-800 dark:text-slate-200 ring-1 ring-slate-100 dark:ring-white/5">
             {body}
           </div>
           <button
@@ -691,7 +691,7 @@ const journeyBlueprint: JourneyNode[] = [
     label: "Pre-live warm-up",
     hint: "Build anticipation with a high-quality value reminder.",
     offset: "T-24h",
-    recommended: "Followers â€¢ warm audience â€¢ multilingual",
+    recommended: "Followers • warm audience • multilingual",
     outcome: "Drives registrations and calendar adds",
   },
   {
@@ -699,7 +699,7 @@ const journeyBlueprint: JourneyNode[] = [
     label: "Countdown reminder",
     hint: "Drive return traffic with a short, urgent touchpoint.",
     offset: "T-60m",
-    recommended: "Followers â€¢ high-intent â€¢ recent viewers",
+    recommended: "Followers • high-intent • recent viewers",
     outcome: "Lifts attendance at start of broadcast",
   },
   {
@@ -707,7 +707,7 @@ const journeyBlueprint: JourneyNode[] = [
     label: "Start-now blast",
     hint: "Push a live-now call-to-action as the session starts.",
     offset: "Live",
-    recommended: "Active app users â€¢ opted-in push â€¢ SMS",
+    recommended: "Active app users • opted-in push • SMS",
     outcome: "Captures late arrivals and in-the-moment interest",
   },
   {
@@ -715,7 +715,7 @@ const journeyBlueprint: JourneyNode[] = [
     label: "Replay-ready follow-up",
     hint: "Send a polished replay journey once publishing completes.",
     offset: "+20m",
-    recommended: "Missed viewers â€¢ time-zone catch-up",
+    recommended: "Missed viewers • time-zone catch-up",
     outcome: "Recovers missed attendance into replay starts",
   },
   {
@@ -723,7 +723,7 @@ const journeyBlueprint: JourneyNode[] = [
     label: "Clip follow-up",
     hint: "Drop a short-form clip with a strong deep link.",
     offset: "+6h",
-    recommended: "Socially active followers â€¢ new prospects",
+    recommended: "Socially active followers • new prospects",
     outcome: "Creates discovery and Beacon-ready promotion",
   },
   {
@@ -731,7 +731,7 @@ const journeyBlueprint: JourneyNode[] = [
     label: "Event reminder",
     hint: "Connect session attendance to the next physical or virtual event.",
     offset: "+1d",
-    recommended: "Registrants â€¢ volunteers â€¢ event audiences",
+    recommended: "Registrants • volunteers • event audiences",
     outcome: "Pushes registrations and check-ins",
   },
   {
@@ -739,7 +739,7 @@ const journeyBlueprint: JourneyNode[] = [
     label: "Giving reminder",
     hint: "Follow up with a meaningful giving or crowdfund appeal.",
     offset: "+1d",
-    recommended: "Donors â€¢ supporters â€¢ response-ready segments",
+    recommended: "Donors • supporters • response-ready segments",
     outcome: "Converts ministry impact into support",
   },
 ];
@@ -854,20 +854,20 @@ function buildInitialVariants(sourceType: SourceType): Record<LocaleKey, LocaleV
 
   return {
     en: {
-      headline: `${subjectRoot} â€¢ Join with purpose`,
+      headline: `${subjectRoot} • Join with purpose`,
       body: "You asked to stay connected. Here is the right message at the right moment, with a deep link that takes people straight into the most relevant Provider experience.",
       cta: "Open in Provider",
       deepLink: "faithhub://live/sunday-encounter",
     },
     sw: {
-      headline: `${subjectRoot} â€¢ Jiunge sasa`,
+      headline: `${subjectRoot} • Jiunge sasa`,
       body: "Ujumbe huu umeboreshwa kwa wakati unaofaa, lugha sahihi, na kiungo kinachopeleka mtu moja kwa moja kwenye tukio au replay inayohitajika.",
       cta: "Fungua kwenye Provider",
       deepLink: "faithhub://live/sunday-encounter?locale=sw",
     },
     fr: {
-      headline: `${subjectRoot} â€¢ Rejoignez maintenant`,
-      body: "Ce message est localisÃ© pour le bon moment, le bon public, et le bon rÃ©sultat ministÃ©riel â€” participation, replay, don, inscription ou promotion.",
+      headline: `${subjectRoot} • Rejoignez maintenant`,
+      body: "Ce message est localisé pour le bon moment, le bon public, et le bon résultat ministériel — participation, replay, don, inscription ou promotion.",
       cta: "Ouvrir dans Provider",
       deepLink: "faithhub://live/sunday-encounter?locale=fr",
     },
@@ -882,7 +882,7 @@ function stageTone(key: JourneyNodeKey) {
 
 function buildPreviewHeadline(node: JourneyNode, variant: LocaleVariant) {
   if (variant.headline.trim()) return variant.headline;
-    return `${node.label} â€¢ Provider`;
+    return `${node.label} • Provider`;
 }
 
 function buildPreviewBody(node: JourneyNode, variant: LocaleVariant) {
@@ -1089,21 +1089,21 @@ export default function FaithHubAudienceNotificationsPage() {
 
   const nextBestWindow =
     sourceType === "Live Session"
-      ? "Sun â€¢ 18:42 local time"
+      ? "Sun • 18:42 local time"
       : sourceType === "Replay"
-        ? "Mon â€¢ 07:15 local time"
+        ? "Mon • 07:15 local time"
         : sourceType === "Charity Crowdfund"
-          ? "Tue â€¢ 12:10 local time"
-          : "Today â€¢ 19:20 local time";
+          ? "Tue • 12:10 local time"
+          : "Today • 19:20 local time";
 
   return (
-    <div className="min-h-screen w-full flex flex-col bg-[#f2f2f2] dark:bg-slate-950 text-slate-900 dark:text-slate-50 transition-colors overflow-x-hidden">
+    <div className="min-h-screen w-full flex flex-col bg-[var(--fh-page-bg)] dark:bg-slate-950 text-faith-ink dark:text-slate-50 transition-colors overflow-x-hidden">
       {/* Top bar */}
-      <div className="sticky top-0 z-40 border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md transition">
+      <div className="sticky top-0 z-40 border-b border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)]/95 dark:bg-slate-900/95 backdrop-blur-md transition">
         <div className="w-full flex flex-col gap-4 px-4 md:px-6 lg:px-8 py-4 lg:flex-row lg:items-center lg:justify-between">
           <div className="min-w-0">
             <div className="flex items-center gap-2 overflow-x-auto">
-              <div className="flex items-center gap-2 whitespace-nowrap text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400">
+              <div className="flex items-center gap-2 whitespace-nowrap text-[10px] font-black uppercase tracking-widest text-faith-slate">
                 <span className="hover:text-slate-700 dark:hover:text-slate-200 transition cursor-default">
                   Provider Workspace
                 </span>
@@ -1112,14 +1112,14 @@ export default function FaithHubAudienceNotificationsPage() {
                   Audience & Outreach
                 </span>
                 <span className="text-slate-300 dark:text-slate-700">/</span>
-                <span className="text-slate-900 dark:text-slate-100 italic">
+                <span className="text-faith-ink dark:text-slate-100 italic">
                   Audience Notifications
                 </span>
               </div>
             </div>
 
             <div className="mt-2 flex flex-wrap items-center gap-3">
-              <div className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-slate-50 tracking-tight">
+              <div className="text-xl sm:text-2xl font-extrabold text-faith-ink dark:text-slate-50 tracking-tight">
                 Audience Notifications
               </div>
               <div className="flex gap-2 flex-wrap">
@@ -1138,19 +1138,19 @@ export default function FaithHubAudienceNotificationsPage() {
               </div>
             </div>
 
-            <div className="mt-2 text-xs font-bold text-slate-500 dark:text-slate-400 flex flex-wrap items-center gap-x-4 gap-y-1">
+            <div className="mt-2 text-xs font-bold text-faith-slate flex flex-wrap items-center gap-x-4 gap-y-1">
               <span className="flex items-center gap-1.5">
-                <Layers className="h-3.5 w-3.5 text-slate-400" />
+                <Layers className="h-3.5 w-3.5 text-faith-slate" />
                 {sourceType}
               </span>
               <span className="text-slate-200 dark:text-slate-800">|</span>
               <span className="flex items-center gap-1.5">
-                <Globe2 className="h-3.5 w-3.5 text-slate-400" />
-                {languageTarget} â€¢ {regionTarget}
+                <Globe2 className="h-3.5 w-3.5 text-faith-slate" />
+                {languageTarget} • {regionTarget}
               </span>
               <span className="text-slate-200 dark:text-slate-800">|</span>
               <span className="flex items-center gap-1.5">
-                <Activity className="h-3.5 w-3.5 text-slate-400" />
+                <Activity className="h-3.5 w-3.5 text-faith-slate" />
                 Health score {healthScore}%
               </span>
             </div>
@@ -1178,7 +1178,7 @@ export default function FaithHubAudienceNotificationsPage() {
         </div>
 
         {/* Preflight strip */}
-        <div className="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 transition">
+        <div className="border-t border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 transition">
           <div className="w-full px-4 md:px-6 lg:px-8 py-2.5">
             <div className="flex flex-wrap items-center justify-between gap-3 text-sm">
               <div className="flex flex-wrap items-center gap-3">
@@ -1186,7 +1186,7 @@ export default function FaithHubAudienceNotificationsPage() {
                   {systemReady ? <CheckCircle2 className="h-3.5 w-3.5" /> : <AlertTriangle className="h-3.5 w-3.5" />}
                   SYSTEM CHECK
                 </Pill>
-                <span className="text-[11px] font-bold text-slate-600 dark:text-slate-400 uppercase tracking-tight">
+                <span className="text-[11px] font-bold text-faith-slate uppercase tracking-tight">
                   {systemReady
                     ? "Journey, audience, channels, compliance and attribution are ready for activation."
                     : systemIssues[0] || "Configuration required before activation."}
@@ -1198,7 +1198,7 @@ export default function FaithHubAudienceNotificationsPage() {
                   {systemIssues.length} issue{systemIssues.length === 1 ? "" : "s"} detected
                 </div>
               ) : (
-                <div className="hidden sm:flex items-center gap-1.5 text-[10px] font-black text-slate-400 uppercase tracking-widest">
+                <div className="hidden sm:flex items-center gap-1.5 text-[10px] font-black text-faith-slate uppercase tracking-widest">
                   <Wand2 className="h-3 w-3" style={{ color: GREEN }} />
                   Smart send-time recommendations active
                 </div>
@@ -1224,18 +1224,18 @@ export default function FaithHubAudienceNotificationsPage() {
               }
             >
               <div className="space-y-4">
-                <div className="rounded-2xl bg-slate-50 dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                  <div className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-500">
+                <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div className="text-[10px] font-black uppercase tracking-widest text-faith-slate">
                     Journey name
                   </div>
                   <input
                     value={journeyName}
                     onChange={(e) => setJourneyName(e.target.value)}
-                    className="mt-2 h-11 w-full rounded-xl bg-white dark:bg-slate-900 px-4 text-sm font-bold text-slate-900 dark:text-slate-100 ring-1 ring-slate-200 dark:ring-slate-800 outline-none"
+                    className="mt-2 h-11 w-full rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 text-sm font-bold text-faith-ink dark:text-slate-100 ring-1 ring-slate-200 dark:ring-slate-800 outline-none"
                     placeholder="Enter journey name"
                   />
                   <div className="mt-3">
-                    <div className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-500 mb-2">
+                    <div className="text-[10px] font-black uppercase tracking-widest text-faith-slate mb-2">
                       Linked object
                     </div>
                     <Select
@@ -1261,34 +1261,34 @@ export default function FaithHubAudienceNotificationsPage() {
                         type="button"
                         onClick={() => setSelectedNode(node.key)}
                         className={cn(
-                          "w-full rounded-2xl border p-3 text-left transition shadow-sm",
+                          "w-full rounded-2xl border p-3 text-left transition shadow-soft",
                           active
                             ? "border-emerald-300 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-900/10"
-                            : "border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800",
+                            : "border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800",
                         )}
                       >
                         <div className="flex items-start justify-between gap-3">
                           <div className="min-w-0 flex-1">
                             <div className="flex items-center gap-2">
                               <span
-                                className="inline-flex h-8 w-8 items-center justify-center rounded-full text-[11px] font-black text-white shadow-sm"
+                                className="inline-flex h-8 w-8 items-center justify-center rounded-full text-[11px] font-black text-white shadow-soft"
                                 style={{ backgroundColor: idx % 2 === 0 ? GREEN : ORANGE }}
                               >
                                 {String(idx + 1).padStart(2, "0")}
                               </span>
                               <div className="min-w-0">
-                                <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
+                                <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-faith-ink dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
                                   {node.label}
                                 </div>
-                                <div className="mt-1.5 text-[14px] leading-6 text-slate-500 dark:text-slate-400">
-                                  {node.offset} â€¢ {node.hint}
+                                <div className="mt-1.5 text-[14px] leading-6 text-faith-slate">
+                                  {node.offset} • {node.hint}
                                 </div>
                               </div>
                             </div>
                             <div className="mt-3 flex flex-wrap gap-2">
                               <Pill tone={stageTone(node.key)}>{node.recommended}</Pill>
                             </div>
-                            <div className="mt-2 text-[11px] font-semibold text-slate-500 dark:text-slate-400">
+                            <div className="mt-2 text-[11px] font-semibold text-faith-slate">
                               {node.outcome}
                             </div>
                           </div>
@@ -1305,10 +1305,10 @@ export default function FaithHubAudienceNotificationsPage() {
                       <div className="text-[10px] font-black uppercase tracking-widest" style={{ color: GREY }}>
                         Smart send recommendation
                       </div>
-                      <div className="mt-1 text-sm font-black text-slate-900 dark:text-slate-100">
+                      <div className="mt-1 text-sm font-black text-faith-ink dark:text-slate-100">
                         Best next window: {nextBestWindow}
                       </div>
-                      <div className="mt-1 text-[11px] font-semibold text-slate-600 dark:text-slate-400">
+                      <div className="mt-1 text-[11px] font-semibold text-faith-slate">
                         Based on recent audience arrival, fatigue risk, donor responsiveness, and regional quiet hours.
                       </div>
                     </div>
@@ -1319,7 +1319,7 @@ export default function FaithHubAudienceNotificationsPage() {
                   </div>
                   <div className="mt-3">
                     <ProgressBar value={78} tone="brand" />
-                    <div className="mt-2 flex items-center justify-between text-[11px] font-semibold text-slate-500 dark:text-slate-400">
+                    <div className="mt-2 flex items-center justify-between text-[11px] font-semibold text-faith-slate">
                       <span>Recommendation confidence</span>
                       <span>78%</span>
                     </div>
@@ -1336,7 +1336,7 @@ export default function FaithHubAudienceNotificationsPage() {
                         key={preset}
                         type="button"
                         onClick={() => setToast(`${preset} preset loaded`)}
-                        className="rounded-full border border-orange-200 dark:border-orange-800/50 bg-white dark:bg-slate-900 px-3 py-1.5 text-[11px] font-black text-orange-700 dark:text-orange-200"
+                        className="rounded-full border border-orange-200 dark:border-orange-800/50 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-1.5 text-[11px] font-black text-orange-700 dark:text-orange-200"
                       >
                         {preset}
                       </button>
@@ -1363,12 +1363,12 @@ export default function FaithHubAudienceNotificationsPage() {
                 <div className="grid grid-cols-1 gap-4 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,.8fr)]">
                   <div>
                     <div className="relative">
-                      <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+                      <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-faith-slate" />
                       <input
                         value={segmentSearch}
                         onChange={(e) => setSegmentSearch(e.target.value)}
                         placeholder="Search contacts, segments, groups, or behaviours"
-                        className="h-11 w-full rounded-xl bg-slate-50 dark:bg-slate-950 pl-10 pr-4 text-sm font-bold text-slate-900 dark:text-slate-100 ring-1 ring-slate-200 dark:ring-slate-800 outline-none"
+                        className="h-11 w-full rounded-xl bg-[var(--fh-surface)] dark:bg-slate-950 pl-10 pr-4 text-sm font-bold text-faith-ink dark:text-slate-100 ring-1 ring-slate-200 dark:ring-slate-800 outline-none"
                       />
                     </div>
 
@@ -1384,14 +1384,14 @@ export default function FaithHubAudienceNotificationsPage() {
                               "rounded-full border px-3 py-2 text-left transition",
                               active
                                 ? "border-emerald-300 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-900/10"
-                                : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800",
+                                : "border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800",
                             )}
                           >
-                            <div className="text-[11px] font-black text-slate-900 dark:text-slate-100">
+                            <div className="text-[11px] font-black text-faith-ink dark:text-slate-100">
                               {segment.label}
                             </div>
-                            <div className="text-[10px] font-semibold text-slate-500 dark:text-slate-400">
-                              {segment.category} â€¢ {segment.size}
+                            <div className="text-[10px] font-semibold text-faith-slate">
+                              {segment.category} • {segment.size}
                             </div>
                           </button>
                         );
@@ -1409,7 +1409,7 @@ export default function FaithHubAudienceNotificationsPage() {
 
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                   <div>
-                    <div className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-500 mb-2">
+                    <div className="text-[10px] font-black uppercase tracking-widest text-faith-slate mb-2">
                       Language
                     </div>
                     <Select
@@ -1423,21 +1423,21 @@ export default function FaithHubAudienceNotificationsPage() {
                     />
                   </div>
                   <div>
-                    <div className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-500 mb-2">
+                    <div className="text-[10px] font-black uppercase tracking-widest text-faith-slate mb-2">
                       Region
                     </div>
                     <Select
                       value={regionTarget}
                       onChange={setRegionTarget}
                       options={[
-                        { value: "East Africa", label: "East Africa", hint: "Kenya â€¢ Uganda â€¢ Tanzania" },
+                        { value: "East Africa", label: "East Africa", hint: "Kenya • Uganda • Tanzania" },
                         { value: "Global", label: "Global", hint: "All opted-in viewers" },
                         { value: "Francophone regions", label: "Francophone regions", hint: "French-language audiences" },
                       ]}
                     />
                   </div>
                   <div>
-                    <div className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-500 mb-2">
+                    <div className="text-[10px] font-black uppercase tracking-widest text-faith-slate mb-2">
                       Engagement history
                     </div>
                     <Select
@@ -1445,13 +1445,13 @@ export default function FaithHubAudienceNotificationsPage() {
                       onChange={setEngagementTarget}
                       options={[
                         { value: "Watched within 30 days", label: "Watched within 30 days", hint: "Warm viewers" },
-                        { value: "Dormant 31-90 days", label: "Dormant 31â€“90 days", hint: "Recovery segment" },
+                        { value: "Dormant 31-90 days", label: "Dormant 31–90 days", hint: "Recovery segment" },
                         { value: "High-intent clickers", label: "High-intent clickers", hint: "Recent CTA responders" },
                       ]}
                     />
                   </div>
                   <div>
-                    <div className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-500 mb-2">
+                    <div className="text-[10px] font-black uppercase tracking-widest text-faith-slate mb-2">
                       Donor & interaction logic
                     </div>
                     <Select
@@ -1466,26 +1466,26 @@ export default function FaithHubAudienceNotificationsPage() {
                   </div>
                 </div>
 
-                <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-4">
+                <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
                   <div className="flex items-start justify-between gap-3">
                     <div>
-                      <div className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-500">
+                      <div className="text-[10px] font-black uppercase tracking-widest text-faith-slate">
                         Prior content interactions
                       </div>
-                      <div className="mt-1 text-sm font-black text-slate-900 dark:text-slate-100">
+                      <div className="mt-1 text-sm font-black text-faith-ink dark:text-slate-100">
                         {priorInteractionTarget}
                       </div>
                     </div>
                     <button
                       type="button"
                       onClick={() => setPriorInteractionTarget("Live viewers + clip engagers + event registrants")}
-                      className="inline-flex items-center gap-2 rounded-xl bg-white dark:bg-slate-900 px-3 py-2 text-[11px] font-black text-slate-700 dark:text-slate-200 ring-1 ring-slate-200 dark:ring-slate-800"
+                      className="inline-flex items-center gap-2 rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[11px] font-black text-slate-700 dark:text-slate-200 ring-1 ring-slate-200 dark:ring-slate-800"
                     >
                       <Filter className="h-4 w-4" />
                       Refine logic
                     </button>
                   </div>
-                  <div className="mt-3 text-[11px] font-semibold text-slate-500 dark:text-slate-400">
+                  <div className="mt-3 text-[11px] font-semibold text-faith-slate">
                     This audience selector can blend audience groups, behavioural segments, giving data, and prior session interactions into one launch-ready cohort.
                   </div>
                 </div>
@@ -1518,20 +1518,20 @@ export default function FaithHubAudienceNotificationsPage() {
                       className={cn(
                         "rounded-2xl p-4 ring-1 transition group",
                         enabled
-                          ? "bg-slate-100 dark:bg-slate-800/40 ring-slate-200 dark:ring-slate-700 shadow-sm"
-                          : "bg-slate-50/50 dark:bg-slate-900 ring-slate-100 dark:ring-slate-800 opacity-80 hover:opacity-100",
+                          ? "bg-slate-100 dark:bg-slate-800/40 ring-slate-200 dark:ring-slate-700 shadow-soft"
+                          : "bg-[var(--fh-surface)]/50 dark:bg-slate-900 ring-slate-100 dark:ring-slate-800 opacity-80 hover:opacity-100",
                       )}
                     >
                       <div className="flex items-start justify-between gap-4">
                         <div className="min-w-0 flex-1">
                           <div className="flex flex-wrap items-center gap-2">
-                            <div className="text-sm font-black text-slate-900 dark:text-slate-100 uppercase tracking-tight">
+                            <div className="text-sm font-black text-faith-ink dark:text-slate-100 uppercase tracking-tight">
                               {channel.name}
                             </div>
                             <Pill tone={tone}>{channel.connected}</Pill>
                             <Pill tone={enabled ? "brand" : "neutral"}>{channel.priority} priority</Pill>
                           </div>
-                          <div className="mt-2 text-[10px] sm:text-xs font-semibold text-slate-500 dark:text-slate-500 leading-tight">
+                          <div className="mt-2 text-[10px] sm:text-xs font-semibold text-faith-slate leading-tight">
                             {channel.note}
                           </div>
                           <div className="mt-3 flex flex-wrap items-center gap-2">
@@ -1557,7 +1557,7 @@ export default function FaithHubAudienceNotificationsPage() {
                               );
                               setPreviewOpen(true);
                             }}
-                            className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400"
+                            className="text-[10px] font-black uppercase tracking-widest text-faith-slate"
                           >
                             Preview
                           </button>
@@ -1606,13 +1606,13 @@ export default function FaithHubAudienceNotificationsPage() {
                           "rounded-full border px-3 py-2 transition",
                           active
                             ? "border-emerald-300 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-900/10"
-                            : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900",
+                            : "border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900",
                         )}
                       >
-                        <div className="text-[11px] font-black text-slate-900 dark:text-slate-100">
+                        <div className="text-[11px] font-black text-faith-ink dark:text-slate-100">
                           {localeLabels[locale].label}
                         </div>
-                        <div className="text-[10px] font-semibold text-slate-500 dark:text-slate-400">
+                        <div className="text-[10px] font-semibold text-faith-slate">
                           {completed ? "Ready" : "Needs copy"}
                         </div>
                       </button>
@@ -1623,87 +1623,87 @@ export default function FaithHubAudienceNotificationsPage() {
                 <div className="grid grid-cols-1 gap-4 lg:grid-cols-[minmax(0,1fr)_280px]">
                   <div className="space-y-3">
                     <div>
-                      <div className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-500">
+                      <div className="text-[10px] font-black uppercase tracking-widest text-faith-slate">
                         Headline
                       </div>
                       <input
                         value={activeVariant.headline}
                         onChange={(e) => updateVariant(selectedLocale, { headline: e.target.value })}
-                        className="mt-2 h-11 w-full rounded-xl bg-slate-50 dark:bg-slate-950 px-4 text-sm font-bold text-slate-900 dark:text-slate-100 ring-1 ring-slate-200 dark:ring-slate-800 outline-none"
+                        className="mt-2 h-11 w-full rounded-xl bg-[var(--fh-surface)] dark:bg-slate-950 px-4 text-sm font-bold text-faith-ink dark:text-slate-100 ring-1 ring-slate-200 dark:ring-slate-800 outline-none"
                         placeholder="Write the notification headline"
                       />
                     </div>
 
                     <div>
-                      <div className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-500">
+                      <div className="text-[10px] font-black uppercase tracking-widest text-faith-slate">
                         Body copy
                       </div>
                       <textarea
                         value={activeVariant.body}
                         onChange={(e) => updateVariant(selectedLocale, { body: e.target.value })}
                         rows={5}
-                        className="mt-2 w-full rounded-2xl bg-slate-50 dark:bg-slate-950 px-4 py-3 text-sm font-medium text-slate-900 dark:text-slate-100 ring-1 ring-slate-200 dark:ring-slate-800 outline-none"
+                        className="mt-2 w-full rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-3 text-sm font-medium text-faith-ink dark:text-slate-100 ring-1 ring-slate-200 dark:ring-slate-800 outline-none"
                         placeholder="Write the localized message body"
                       />
                     </div>
 
                     <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                       <div>
-                        <div className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-500">
+                        <div className="text-[10px] font-black uppercase tracking-widest text-faith-slate">
                           CTA text
                         </div>
                         <input
                           value={activeVariant.cta}
                           onChange={(e) => updateVariant(selectedLocale, { cta: e.target.value })}
-                          className="mt-2 h-11 w-full rounded-xl bg-slate-50 dark:bg-slate-950 px-4 text-sm font-bold text-slate-900 dark:text-slate-100 ring-1 ring-slate-200 dark:ring-slate-800 outline-none"
+                          className="mt-2 h-11 w-full rounded-xl bg-[var(--fh-surface)] dark:bg-slate-950 px-4 text-sm font-bold text-faith-ink dark:text-slate-100 ring-1 ring-slate-200 dark:ring-slate-800 outline-none"
                           placeholder="Button text"
                         />
                       </div>
                       <div>
-                        <div className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-500">
+                        <div className="text-[10px] font-black uppercase tracking-widest text-faith-slate">
                           Deep link
                         </div>
                         <input
                           value={activeVariant.deepLink}
                           onChange={(e) => updateVariant(selectedLocale, { deepLink: e.target.value })}
-                          className="mt-2 h-11 w-full rounded-xl bg-slate-50 dark:bg-slate-950 px-4 text-sm font-bold text-slate-900 dark:text-slate-100 ring-1 ring-slate-200 dark:ring-slate-800 outline-none"
+                          className="mt-2 h-11 w-full rounded-xl bg-[var(--fh-surface)] dark:bg-slate-950 px-4 text-sm font-bold text-faith-ink dark:text-slate-100 ring-1 ring-slate-200 dark:ring-slate-800 outline-none"
                           placeholder="faithhub://..."
                         />
                       </div>
                     </div>
                   </div>
 
-                  <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-4">
-                    <div className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-500">
+                  <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
+                    <div className="text-[10px] font-black uppercase tracking-widest text-faith-slate">
                       Creative controls
                     </div>
-                    <div className="mt-3 rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                    <div className="mt-3 rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
                       <div className="flex items-center justify-between gap-2">
                         <div>
-                          <div className="text-[12px] font-black text-slate-900 dark:text-slate-100">
+                          <div className="text-[12px] font-black text-faith-ink dark:text-slate-100">
                             Preview image
                           </div>
-                          <div className="text-[11px] text-slate-500 dark:text-slate-400">
+                          <div className="text-[11px] text-faith-slate">
                             {previewImage}
                           </div>
                         </div>
                         <button
                           type="button"
                           onClick={() => setToast("Creative asset picker opened")}
-                          className="inline-flex items-center justify-center h-10 w-10 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300"
+                          className="inline-flex items-center justify-center h-10 w-10 rounded-xl bg-slate-100 dark:bg-slate-800 text-faith-slate dark:text-slate-300"
                         >
                           <Copy className="h-4 w-4" />
                         </button>
                       </div>
                     </div>
 
-                    <div className="mt-3 rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                    <div className="mt-3 rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
                       <div className="flex items-center justify-between gap-2">
                         <div>
-                          <div className="text-[12px] font-black text-slate-900 dark:text-slate-100">
+                          <div className="text-[12px] font-black text-faith-ink dark:text-slate-100">
                             A/B variant
                           </div>
-                          <div className="text-[11px] text-slate-500 dark:text-slate-400">
+                          <div className="text-[11px] text-faith-slate">
                             {variantBLabel}
                           </div>
                         </div>
@@ -1711,11 +1711,11 @@ export default function FaithHubAudienceNotificationsPage() {
                       </div>
                     </div>
 
-                    <div className="mt-3 rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                      <div className="text-[12px] font-black text-slate-900 dark:text-slate-100">
+                    <div className="mt-3 rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                      <div className="text-[12px] font-black text-faith-ink dark:text-slate-100">
                         Creative note
                       </div>
-                      <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
+                      <div className="mt-1 text-[11px] text-faith-slate leading-relaxed">
                         This studio supports premium localized variants, deep links to live or replay surfaces, dynamic preview images, and audience-appropriate tone shifts without rebuilding the whole journey.
                       </div>
                     </div>
@@ -1737,7 +1737,7 @@ export default function FaithHubAudienceNotificationsPage() {
               <div className="space-y-4">
                 <div className="grid grid-cols-1 gap-4 lg:grid-cols-[220px_minmax(0,1fr)]">
                   <div>
-                    <div className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-500 mb-2">
+                    <div className="text-[10px] font-black uppercase tracking-widest text-faith-slate mb-2">
                       Send mode
                     </div>
                     <Select
@@ -1753,8 +1753,8 @@ export default function FaithHubAudienceNotificationsPage() {
                   </div>
                 </div>
 
-                <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-4">
-                  <div className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-500">
+                <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
+                  <div className="text-[10px] font-black uppercase tracking-widest text-faith-slate">
                     Active timeline
                   </div>
                   <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -1767,22 +1767,22 @@ export default function FaithHubAudienceNotificationsPage() {
                             "rounded-2xl border px-4 py-3 transition",
                             selectedNode === node.key
                               ? "border-emerald-300 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-900/10"
-                              : "border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900",
+                              : "border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900",
                           )}
                         >
                           <div className="flex items-center justify-between gap-2">
                             <div>
-                              <div className="text-[12px] font-black text-slate-900 dark:text-slate-100">
+                              <div className="text-[12px] font-black text-faith-ink dark:text-slate-100">
                                 {node.label}
                               </div>
-                              <div className="text-[11px] text-slate-500 dark:text-slate-400">
-                                {node.offset} â€¢ {sendMode === "event_based" ? "event-triggered" : sendMode === "scheduled" ? "calendar-based" : "manual launch"}
+                              <div className="text-[11px] text-faith-slate">
+                                {node.offset} • {sendMode === "event_based" ? "event-triggered" : sendMode === "scheduled" ? "calendar-based" : "manual launch"}
                               </div>
                             </div>
                             <button
                               type="button"
                               onClick={() => setSelectedNode(node.key)}
-                              className="inline-flex h-8 items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 px-3 text-[10px] font-black uppercase tracking-widest text-slate-600 dark:text-slate-300"
+                              className="inline-flex h-8 items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 px-3 text-[10px] font-black uppercase tracking-widest text-faith-slate dark:text-slate-300"
                             >
                               Focus
                             </button>
@@ -1793,66 +1793,66 @@ export default function FaithHubAudienceNotificationsPage() {
                 </div>
 
                 <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-                  <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4">
-                    <div className="text-[12px] font-black text-slate-900 dark:text-slate-100">
+                  <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4">
+                    <div className="text-[12px] font-black text-faith-ink dark:text-slate-100">
                       Smart send-time recommendations
                     </div>
-                    <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
+                    <div className="mt-1 text-[11px] text-faith-slate">
                       Uses prior audience arrival and fatigue signals to adjust launch times per channel.
                     </div>
                     <div className="mt-3 flex items-center justify-between gap-3">
-                      <div className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">
+                      <div className="text-[11px] font-semibold text-faith-slate">
                         Recommendation engine
                       </div>
                       <Toggle value={smartSend} onChange={setSmartSend} tone="brand" />
                     </div>
                   </div>
 
-                  <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4">
-                    <div className="text-[12px] font-black text-slate-900 dark:text-slate-100">
+                  <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4">
+                    <div className="text-[12px] font-black text-faith-ink dark:text-slate-100">
                       Fatigue-aware suppression
                     </div>
-                    <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
+                    <div className="mt-1 text-[11px] text-faith-slate">
                       Blocks over-messaging when a contact already received too many recent prompts.
                     </div>
                     <div className="mt-3 flex items-center justify-between gap-3">
-                      <div className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">
+                      <div className="text-[11px] font-semibold text-faith-slate">
                         Suppression logic
                       </div>
                       <Toggle value={fatigueSuppression} onChange={setFatigueSuppression} tone="accent" />
                     </div>
                   </div>
 
-                  <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4">
-                    <div className="text-[12px] font-black text-slate-900 dark:text-slate-100">
+                  <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4">
+                    <div className="text-[12px] font-black text-faith-ink dark:text-slate-100">
                       Quiet hours & consent windows
                     </div>
-                    <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
+                    <div className="mt-1 text-[11px] text-faith-slate">
                       Respects region-specific quiet hours, child-safe windows, and channel-level consent.
                     </div>
                     <div className="mt-3 flex items-center justify-between gap-3">
-                      <div className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">
+                      <div className="text-[11px] font-semibold text-faith-slate">
                         Quiet hours
                       </div>
                       <Toggle value={quietHours} onChange={setQuietHours} tone="brand" />
                     </div>
                   </div>
 
-                  <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4">
-                    <div className="text-[12px] font-black text-slate-900 dark:text-slate-100">
+                  <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4">
+                    <div className="text-[12px] font-black text-faith-ink dark:text-slate-100">
                       Approval & recovery
                     </div>
-                    <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
+                    <div className="mt-1 text-[11px] text-faith-slate">
                       Supports leadership approval gates and last-minute recovery sends if attendance is low.
                     </div>
                     <div className="mt-3 flex items-center justify-between gap-3">
-                      <div className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">
+                      <div className="text-[11px] font-semibold text-faith-slate">
                         Approval required
                       </div>
                       <Toggle value={approvalRequired} onChange={setApprovalRequired} tone="accent" />
                     </div>
                     <div className="mt-3 flex items-center justify-between gap-3">
-                      <div className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">
+                      <div className="text-[11px] font-semibold text-faith-slate">
                         Last-minute recovery
                       </div>
                       <Toggle value={lastMinuteRecovery} onChange={setLastMinuteRecovery} tone="brand" />
@@ -1892,8 +1892,8 @@ export default function FaithHubAudienceNotificationsPage() {
                         className={cn(
                           "rounded-full px-3 py-2 text-[11px] font-black transition",
                           active
-                            ? "text-white shadow-sm"
-                            : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300",
+                            ? "text-white shadow-soft"
+                            : "bg-slate-100 dark:bg-slate-800 text-faith-slate dark:text-slate-300",
                         )}
                         style={active ? { backgroundColor: tab.key === "email" ? ORANGE : GREEN } : undefined}
                       >
@@ -1906,10 +1906,10 @@ export default function FaithHubAudienceNotificationsPage() {
                 {previewTab === "push" ? (
                   <PhoneMock
                     title="Provider Push"
-                    subtitle={`${activeNode.label} â€¢ ${localeLabels[selectedLocale].label}`}
+                    subtitle={`${activeNode.label} • ${localeLabels[selectedLocale].label}`}
                     body={
                       <div className="space-y-2">
-                        <div className="text-sm font-black text-slate-900 dark:text-slate-100">
+                        <div className="text-sm font-black text-faith-ink dark:text-slate-100">
                           {previewHeadline}
                         </div>
                         <div className="text-[12px] leading-relaxed text-slate-700 dark:text-slate-300">
@@ -1932,7 +1932,7 @@ export default function FaithHubAudienceNotificationsPage() {
                 {previewTab === "email" ? (
                   <EmailPreview
                     subject={previewHeadline}
-                    preheader={`${activeNode.label} â€¢ ${sourceType} â€¢ ${languageTarget}`}
+                    preheader={`${activeNode.label} • ${sourceType} • ${languageTarget}`}
                     body={previewBody}
                     cta={activeVariant.cta || "Open in Provider"}
                   />
@@ -2020,14 +2020,14 @@ export default function FaithHubAudienceNotificationsPage() {
                   { label: "Sender identity", value: "Verified", tone: "good" as const, hint: "Push app identity, email sender, and SMS line are all trusted." },
                   { label: "Approval chain", value: approvalRequired ? "Required" : "Bypassed", tone: approvalRequired ? "accent" as const : "warn" as const, hint: "Pastoral and outreach sign-off can be enforced before activation." },
                 ].map((row) => (
-                  <div key={row.label} className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3">
+                  <div key={row.label} className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3">
                     <div className="flex items-center justify-between gap-2">
-                      <div className="text-[12px] font-black text-slate-900 dark:text-slate-100">
+                      <div className="text-[12px] font-black text-faith-ink dark:text-slate-100">
                         {row.label}
                       </div>
                       <Pill tone={row.tone}>{row.value}</Pill>
                     </div>
-                    <div className="mt-1 text-[11px] font-semibold text-slate-500 dark:text-slate-400">
+                    <div className="mt-1 text-[11px] font-semibold text-faith-slate">
                       {row.hint}
                     </div>
                   </div>
@@ -2047,13 +2047,13 @@ export default function FaithHubAudienceNotificationsPage() {
             >
               <div className="space-y-3">
                 {attributionCards.map((card) => (
-                  <div key={card.label} className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3">
+                  <div key={card.label} className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3">
                     <div className="flex items-center justify-between gap-3">
                       <div>
-                        <div className="text-[12px] font-black text-slate-900 dark:text-slate-100">
+                        <div className="text-[12px] font-black text-faith-ink dark:text-slate-100">
                           {card.label}
                         </div>
-                        <div className="mt-1 text-[11px] font-semibold text-slate-500 dark:text-slate-400">
+                        <div className="mt-1 text-[11px] font-semibold text-faith-slate">
                           {card.hint}
                         </div>
                       </div>
@@ -2066,7 +2066,7 @@ export default function FaithHubAudienceNotificationsPage() {
                               ? ""
                               : card.tone === "good"
                                 ? "text-emerald-600 dark:text-emerald-400"
-                                : "text-slate-900 dark:text-slate-50",
+                                : "text-faith-ink dark:text-slate-50",
                         )}
                         style={
                           card.tone === "brand"
@@ -2103,19 +2103,19 @@ export default function FaithHubAudienceNotificationsPage() {
         }
       >
         <div className="flex flex-col h-full gap-6">
-          <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/40 p-4 sm:p-6 ring-1 ring-slate-200 dark:ring-slate-700">
+          <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/40 p-4 sm:p-6 ring-1 ring-slate-200 dark:ring-slate-700">
             <div className="flex flex-col lg:flex-row items-start justify-between gap-6">
               <div className="min-w-0">
-                <div className="text-[10px] font-black text-slate-500 dark:text-slate-500 uppercase tracking-widest mb-1.5">
+                <div className="text-[10px] font-black text-faith-slate uppercase tracking-widest mb-1.5">
                   Simulation controller
                 </div>
-                <div className="text-sm font-bold text-slate-900 dark:text-slate-50">
+                <div className="text-sm font-bold text-faith-ink dark:text-slate-50">
                   Choose a channel and lifecycle node to preview the campaign exactly the way teams will review it before activation.
                 </div>
               </div>
 
               <div className="flex flex-wrap items-center justify-center gap-3">
-                <div className="flex items-center gap-1.5 rounded-2xl bg-white dark:bg-slate-900 p-1.5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm">
+                <div className="flex items-center gap-1.5 rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-1.5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft">
                   {([
                     { k: "push", label: "Push" },
                     { k: "email", label: "Email" },
@@ -2132,7 +2132,7 @@ export default function FaithHubAudienceNotificationsPage() {
                           "rounded-xl px-4 py-2 text-[10px] font-black uppercase tracking-tight transition-all",
                           active
                             ? "text-white shadow-lg"
-                            : "text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800",
+                            : "text-faith-slate hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800",
                         )}
                         style={active ? { backgroundColor: tab.k === "email" ? ORANGE : GREEN } : undefined}
                       >
@@ -2158,15 +2158,15 @@ export default function FaithHubAudienceNotificationsPage() {
           </div>
 
           <div className="grid grid-cols-1 gap-6 xl:grid-cols-[minmax(0,1.1fr)_360px]">
-            <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/40 p-4 sm:p-6 ring-1 ring-slate-200 dark:ring-slate-700">
-              <div className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-500">
+            <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/40 p-4 sm:p-6 ring-1 ring-slate-200 dark:ring-slate-700">
+              <div className="text-[10px] font-black uppercase tracking-widest text-faith-slate">
                 Channel preview
               </div>
               <div className="mt-4">
                 {previewTab === "push" ? (
                   <PhoneMock
                     title="Provider Push"
-                    subtitle={`${activeNode.label} â€¢ ${sourceType}`}
+                    subtitle={`${activeNode.label} • ${sourceType}`}
                     body={
                       <div className="space-y-2">
                         <div className="text-sm font-black">{previewHeadline}</div>
@@ -2187,7 +2187,7 @@ export default function FaithHubAudienceNotificationsPage() {
                 {previewTab === "email" ? (
                   <EmailPreview
                     subject={previewHeadline}
-                    preheader={`${activeNode.label} â€¢ ${languageTarget} â€¢ ${regionTarget}`}
+                    preheader={`${activeNode.label} • ${languageTarget} • ${regionTarget}`}
                     body={previewBody}
                     cta={activeVariant.cta || "Open in Provider"}
                   />
@@ -2209,17 +2209,17 @@ export default function FaithHubAudienceNotificationsPage() {
                 subtitle="What reviewers and operators should check before activation."
                 right={<Pill tone="brand">Review</Pill>}
               >
-                <div className="space-y-3 text-[12px] font-semibold text-slate-600 dark:text-slate-400">
-                  <div className="rounded-2xl bg-slate-50 dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                    <div className="font-black text-slate-900 dark:text-slate-100">Copy quality</div>
+                <div className="space-y-3 text-[12px] font-semibold text-faith-slate">
+                  <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                    <div className="font-black text-faith-ink dark:text-slate-100">Copy quality</div>
                     <div className="mt-1">Confirm the headline is stage-appropriate, concise, and localized for the selected audience.</div>
                   </div>
-                  <div className="rounded-2xl bg-slate-50 dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                    <div className="font-black text-slate-900 dark:text-slate-100">Deep-link quality</div>
+                  <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                    <div className="font-black text-faith-ink dark:text-slate-100">Deep-link quality</div>
                     <div className="mt-1">Ensure the CTA opens the correct live, replay, event, giving, or Beacon destination without dead ends.</div>
                   </div>
-                  <div className="rounded-2xl bg-slate-50 dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                    <div className="font-black text-slate-900 dark:text-slate-100">Consent + fatigue</div>
+                  <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                    <div className="font-black text-faith-ink dark:text-slate-100">Consent + fatigue</div>
                     <div className="mt-1">The preview lab confirms quiet hours, sender trust, and suppression logic before launch.</div>
                   </div>
                 </div>
@@ -2241,18 +2241,18 @@ export default function FaithHubAudienceNotificationsPage() {
                       type="button"
                       key={entry.label}
                       onClick={() => setToast(`${entry.label} opened`)}
-                      className="w-full rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3 text-left transition hover:bg-slate-50 dark:hover:bg-slate-800"
+                      className="w-full rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 py-3 text-left transition hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800"
                     >
                       <div className="flex items-center justify-between gap-3">
                         <div>
-                          <div className="text-[12px] font-black text-slate-900 dark:text-slate-100">
+                          <div className="text-[12px] font-black text-faith-ink dark:text-slate-100">
                             {entry.label}
                           </div>
-                          <div className="mt-1 text-[11px] font-semibold text-slate-500 dark:text-slate-400">
+                          <div className="mt-1 text-[11px] font-semibold text-faith-slate">
                             {entry.hint}
                           </div>
                         </div>
-                        <ArrowRight className="h-4 w-4 text-slate-400" />
+                        <ArrowRight className="h-4 w-4 text-faith-slate" />
                       </div>
                     </button>
                   ))}
@@ -2264,13 +2264,14 @@ export default function FaithHubAudienceNotificationsPage() {
       </Drawer>
 
       {toast ? (
-        <div className="fixed bottom-5 left-1/2 z-[140] -translate-x-1/2 rounded-full bg-slate-900 dark:bg-slate-100 px-4 py-2 text-[12px] font-black text-white dark:text-slate-900 shadow-xl">
+        <div className="fixed bottom-5 left-1/2 z-[140] -translate-x-1/2 rounded-full bg-slate-900 dark:bg-slate-100 px-4 py-2 text-[12px] font-black text-white dark:text-faith-ink shadow-xl">
           {toast}
         </div>
       ) : null}
     </div>
   );
 }
+
 
 
 

@@ -1,4 +1,4 @@
-ï»¿// @ts-nocheck
+// @ts-nocheck
 'use client';
 
 import React, { useEffect, useMemo, useState } from 'react';
@@ -43,7 +43,7 @@ import {
 } from 'lucide-react';
 
 /**
- * Provider â€” Post-live Publishing
+ * Provider — Post-live Publishing
  * ----------------------------------------
  * Premium replay packaging workspace for Live Sessions.
  *
@@ -161,9 +161,9 @@ function Pill({
         : tone === 'bad'
           ? 'bg-rose-50 text-rose-800 ring-rose-200 dark:bg-rose-500/10 dark:text-rose-400 dark:ring-rose-500/20'
           : tone === 'brand'
-            ? 'text-white shadow-sm ring-0'
+            ? 'text-white shadow-soft ring-0'
             : tone === 'accent'
-              ? 'text-white shadow-sm ring-0'
+              ? 'text-white shadow-soft ring-0'
               : 'bg-slate-100 text-slate-800 ring-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:ring-slate-700';
 
   return (
@@ -196,12 +196,12 @@ function Btn({
     'inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-2.5 text-sm font-bold transition focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed';
   const cls =
     tone === 'primary'
-      ? 'text-white hover:brightness-95 shadow-sm'
+      ? 'text-white hover:brightness-95 shadow-soft'
       : tone === 'accent'
-        ? 'text-white hover:brightness-95 shadow-sm'
+        ? 'text-white hover:brightness-95 shadow-soft'
         : tone === 'ghost'
-          ? 'bg-transparent text-slate-900 dark:text-slate-50 hover:bg-slate-100 dark:hover:bg-slate-800'
-          : 'bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-50 ring-1 ring-slate-200 dark:ring-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 shadow-sm';
+          ? 'bg-transparent text-faith-ink dark:text-slate-50 hover:bg-slate-100 dark:hover:bg-slate-800'
+          : 'bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-faith-ink dark:text-slate-50 ring-1 ring-slate-200 dark:ring-slate-800 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800 shadow-soft';
 
   return (
     <button
@@ -237,7 +237,7 @@ function Toggle({
       )}
       aria-pressed={checked}
     >
-      <span className={cx('inline-block h-5 w-5 transform rounded-full bg-white dark:bg-slate-900 shadow-sm transition', checked ? 'translate-x-5' : 'translate-x-1')} />
+      <span className={cx('inline-block h-5 w-5 transform rounded-full bg-[var(--fh-surface-bg)] dark:bg-slate-900 shadow-soft transition', checked ? 'translate-x-5' : 'translate-x-1')} />
     </button>
   );
 }
@@ -267,17 +267,17 @@ function Drawer({
   return (
     <div className="fixed inset-0 z-[110]">
       <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose} />
-      <div className="absolute right-0 top-0 h-full w-full bg-white dark:bg-slate-900 shadow-2xl ring-1 ring-slate-200 dark:ring-slate-800 transition-colors">
+      <div className="absolute right-0 top-0 h-full w-full bg-[var(--fh-surface-bg)] dark:bg-slate-900 shadow-2xl ring-1 ring-slate-200 dark:ring-slate-800 transition-colors">
         <div className="flex h-full flex-col">
-          <div className="flex items-start justify-between gap-3 border-b border-slate-200 dark:border-slate-800 px-5 py-4">
+          <div className="flex items-start justify-between gap-3 border-b border-faith-line dark:border-slate-800 px-5 py-4">
             <div className="min-w-0">
-              <div className="truncate text-base font-bold text-slate-900 dark:text-slate-50">{title}</div>
-              {subtitle ? <div className="mt-1 text-xs text-slate-500 dark:text-slate-400">{subtitle}</div> : null}
+              <div className="truncate text-base font-bold text-faith-ink dark:text-slate-50">{title}</div>
+              {subtitle ? <div className="mt-1 text-xs text-faith-slate">{subtitle}</div> : null}
             </div>
             <button
               type="button"
               onClick={onClose}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-100 dark:bg-slate-800 text-faith-slate dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition"
             >
               <X className="h-5 w-5" />
             </button>
@@ -311,8 +311,8 @@ function SectionHead({
   return (
     <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
       <div>
-        <div className="text-sm font-bold text-slate-900 dark:text-slate-50">{title}</div>
-        {subtitle ? <div className="mt-1 text-xs text-slate-600 dark:text-slate-400">{subtitle}</div> : null}
+        <div className="text-sm font-bold text-faith-ink dark:text-slate-50">{title}</div>
+        {subtitle ? <div className="mt-1 text-xs text-faith-slate">{subtitle}</div> : null}
       </div>
       {right ? <div className="shrink-0">{right}</div> : null}
     </div>
@@ -320,7 +320,7 @@ function SectionHead({
 }
 
 function FieldLabel({ children }: { children: React.ReactNode }) {
-  return <div className="text-[11px] font-black uppercase tracking-[0.14em] text-slate-500 dark:text-slate-500">{children}</div>;
+  return <div className="text-[11px] font-black uppercase tracking-[0.14em] text-faith-slate">{children}</div>;
 }
 
 function TextInput({
@@ -337,7 +337,7 @@ function TextInput({
       value={value}
       onChange={(e) => onChange(e.target.value)}
       placeholder={placeholder}
-      className="mt-2 w-full rounded-2xl bg-white dark:bg-slate-900 px-4 py-3 text-sm text-slate-900 dark:text-slate-50 ring-1 ring-slate-200 dark:ring-slate-700 outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600 transition"
+      className="mt-2 w-full rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 py-3 text-sm text-faith-ink dark:text-slate-50 ring-1 ring-slate-200 dark:ring-slate-700 outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600 transition"
     />
   );
 }
@@ -359,7 +359,7 @@ function TextArea({
       onChange={(e) => onChange(e.target.value)}
       rows={rows}
       placeholder={placeholder}
-      className="mt-2 w-full rounded-2xl bg-white dark:bg-slate-900 px-4 py-3 text-sm text-slate-900 dark:text-slate-50 ring-1 ring-slate-200 dark:ring-slate-700 outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600 transition"
+      className="mt-2 w-full rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 py-3 text-sm text-faith-ink dark:text-slate-50 ring-1 ring-slate-200 dark:ring-slate-700 outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600 transition"
     />
   );
 }
@@ -384,8 +384,8 @@ function BrowserPreview({
   scheduledLabel: string;
 }) {
   return (
-    <div className="overflow-hidden rounded-[28px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 shadow-sm transition">
-      <div className="flex items-center gap-2 border-b border-slate-200 dark:border-slate-800 px-4 py-2.5">
+    <div className="overflow-hidden rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 shadow-soft transition">
+      <div className="flex items-center gap-2 border-b border-faith-line dark:border-slate-800 px-4 py-2.5">
         <span className="h-3 w-3 rounded-full bg-rose-400" />
         <span className="h-3 w-3 rounded-full bg-amber-400" />
         <span className="h-3 w-3 rounded-full" style={{ background: EV_GREEN }} />
@@ -398,25 +398,25 @@ function BrowserPreview({
             <span>{accessLevel}</span>
           </div>
           <div className="mt-3 h-36 rounded-3xl bg-gradient-to-r from-[#0e274d] via-[#193f6d] to-[#0f1838] p-4">
-            <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-[11px] font-bold backdrop-blur">Replay ready</div>
+            <div className="inline-flex items-center gap-2 rounded-full bg-[var(--fh-surface-bg)]/10 px-3 py-1 text-[11px] font-bold backdrop-blur">Replay ready</div>
             <div className="mt-4 max-w-[420px] text-2xl font-extrabold leading-tight">{title}</div>
             <div className="mt-2 max-w-[460px] line-clamp-2 text-[13px] text-white/80">{description}</div>
             <div className="mt-4 flex flex-wrap gap-2">
-              <span className="rounded-full bg-white/10 px-3 py-1 text-[11px] font-bold">Watch replay</span>
-              <span className="rounded-full bg-white/10 px-3 py-1 text-[11px] font-bold">Read notes</span>
-              {beaconReady ? <span className="rounded-full bg-white/10 px-3 py-1 text-[11px] font-bold">Promoted replay</span> : null}
+              <span className="rounded-full bg-[var(--fh-surface-bg)]/10 px-3 py-1 text-[11px] font-bold">Watch replay</span>
+              <span className="rounded-full bg-[var(--fh-surface-bg)]/10 px-3 py-1 text-[11px] font-bold">Read notes</span>
+              {beaconReady ? <span className="rounded-full bg-[var(--fh-surface-bg)]/10 px-3 py-1 text-[11px] font-bold">Promoted replay</span> : null}
             </div>
           </div>
           <div className="mt-3 grid grid-cols-3 gap-3 text-[11px]">
-            <div className="rounded-2xl bg-white/8 p-3">
+            <div className="rounded-2xl bg-[var(--fh-surface-bg)]/8 p-3">
               <div className="text-white/60">Notes attached</div>
               <div className="mt-1 text-lg font-black">{notesAttached}</div>
             </div>
-            <div className="rounded-2xl bg-white/8 p-3">
+            <div className="rounded-2xl bg-[var(--fh-surface-bg)]/8 p-3">
               <div className="text-white/60">Resources live</div>
               <div className="mt-1 text-lg font-black">{resourcesEnabled}</div>
             </div>
-            <div className="rounded-2xl bg-white/8 p-3">
+            <div className="rounded-2xl bg-[var(--fh-surface-bg)]/8 p-3">
               <div className="text-white/60">Downloads</div>
               <div className="mt-1 text-lg font-black">{downloadsEnabled ? 'ON' : 'OFF'}</div>
             </div>
@@ -443,24 +443,24 @@ function PhonePreview({
   return (
     <div className="mx-auto w-full max-w-[320px] md:max-w-[360px]">
       <div className="overflow-hidden rounded-[36px] bg-[#08132c] p-3 shadow-2xl">
-        <div className="rounded-[28px] bg-white dark:bg-slate-950 overflow-hidden transition-colors">
+        <div className="rounded-[28px] bg-[var(--fh-surface-bg)] dark:bg-slate-950 overflow-hidden transition-colors">
           <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 px-4 py-3">
             <div>
-              <div className="text-[10px] font-black uppercase tracking-[0.14em] text-slate-500">Replay</div>
-              <div className="mt-0.5 text-sm font-black text-slate-900 dark:text-slate-50">{accessLevel}</div>
+              <div className="text-[10px] font-black uppercase tracking-[0.14em] text-faith-slate">Replay</div>
+              <div className="mt-0.5 text-sm font-black text-faith-ink dark:text-slate-50">{accessLevel}</div>
             </div>
             <div className="h-10 w-10 rounded-2xl" style={{ background: EV_GREEN }} />
           </div>
           <div className="p-4">
             <div className="rounded-3xl bg-slate-100 dark:bg-slate-900 p-3">
               <div className="h-32 rounded-3xl bg-slate-300/60 dark:bg-slate-700" />
-              <div className="mt-3 text-[15px] font-black leading-tight text-slate-900 dark:text-slate-50">{title}</div>
-              <div className="mt-2 inline-flex items-center gap-2 rounded-full bg-slate-900 px-3 py-1 text-[11px] font-bold text-white dark:bg-slate-100 dark:text-slate-900">Watch replay</div>
+              <div className="mt-3 text-[15px] font-black leading-tight text-faith-ink dark:text-slate-50">{title}</div>
+              <div className="mt-2 inline-flex items-center gap-2 rounded-full bg-slate-900 px-3 py-1 text-[11px] font-bold text-white dark:bg-slate-100 dark:text-faith-ink">Watch replay</div>
             </div>
             <div className="mt-3 space-y-2 text-[11px]">
-              <div className="rounded-2xl border border-slate-200 dark:border-slate-800 px-3 py-2 text-slate-700 dark:text-slate-300">{watchSurface}</div>
-              <div className="rounded-2xl border border-slate-200 dark:border-slate-800 px-3 py-2 text-slate-700 dark:text-slate-300">Notes attached Â· {notesAttached}</div>
-              {givePromptEnabled ? <div className="rounded-2xl border border-slate-200 dark:border-slate-800 px-3 py-2 text-slate-700 dark:text-slate-300">Giving prompt included</div> : null}
+              <div className="rounded-2xl border border-faith-line dark:border-slate-800 px-3 py-2 text-slate-700 dark:text-slate-300">{watchSurface}</div>
+              <div className="rounded-2xl border border-faith-line dark:border-slate-800 px-3 py-2 text-slate-700 dark:text-slate-300">Notes attached · {notesAttached}</div>
+              {givePromptEnabled ? <div className="rounded-2xl border border-faith-line dark:border-slate-800 px-3 py-2 text-slate-700 dark:text-slate-300">Giving prompt included</div> : null}
               <div className="rounded-2xl px-3 py-3 text-center text-white font-black" style={{ background: EV_ORANGE }}>View follow-up actions</div>
             </div>
           </div>
@@ -477,8 +477,8 @@ export default function PostLivePublishingPage() {
   const session = useMemo(
     () => ({
       id: 'LS-24051',
-      title: 'Sunday Encounter â€” The Way of Grace',
-      source: 'Series Â· Grace in Motion / Episode 03',
+      title: 'Sunday Encounter — The Way of Grace',
+      source: 'Series · Grace in Motion / Episode 03',
       presenter: 'Pastor Miriam K.',
       endedISO: new Date(Date.now() - 42 * 60 * 1000).toISOString(),
       replayUrl: 'https://faithhub.evzone.app/replay/LS-24051',
@@ -489,7 +489,7 @@ export default function PostLivePublishingPage() {
   );
 
   const [processingState, setProcessingState] = useState<ProcessingState>('Ready for publish');
-  const [title, setTitle] = useState('Sunday Encounter Replay â€” The Way of Grace');
+  const [title, setTitle] = useState('Sunday Encounter Replay — The Way of Grace');
   const [description, setDescription] = useState(
     'A polished replay package for Sunday Encounter featuring chaptered scripture moments, cleaned sermon notes, follow-up giving prompts, and post-live resources for Grace in Motion.',
   );
@@ -533,7 +533,7 @@ export default function PostLivePublishingPage() {
       timecode: '06:12',
       title: 'Grace restores identity',
       speaker: 'Pastor Miriam K.',
-      scripture: 'Ephesians 2:8â€“10',
+      scripture: 'Ephesians 2:8–10',
     },
     {
       id: 'ch_3',
@@ -633,7 +633,7 @@ export default function PostLivePublishingPage() {
       id: 'beacon',
       label: 'Beacon promo asset',
       hint: 'Prepare the replay for a Beacon follow-up campaign.',
-      value: 'Grace Replay Booster â€” Beacon asset pack',
+      value: 'Grace Replay Booster — Beacon asset pack',
       enabled: true,
     },
   ]);
@@ -665,12 +665,12 @@ export default function PostLivePublishingPage() {
       {
         label: 'Editorial cleanup',
         status: removeDeadAir && removeWaitingRoom ? 'Pass' : 'Warn',
-        detail: `Head trim ${trimHeadSec}s Â· tail trim ${trimTailSec}s Â· cover ${coverFrame}`,
+        detail: `Head trim ${trimHeadSec}s · tail trim ${trimTailSec}s · cover ${coverFrame}`,
       },
       {
         label: 'Chapter + transcript structure',
         status: chapterCoverage && transcriptCoverage ? 'Pass' : 'Warn',
-        detail: `${chapters.length} chapters Â· speaker labels ${speakerLabelsEnabled ? 'on' : 'off'} Â· scripture index ${searchableScripture ? 'on' : 'off'}`,
+        detail: `${chapters.length} chapters · speaker labels ${speakerLabelsEnabled ? 'on' : 'off'} · scripture index ${searchableScripture ? 'on' : 'off'}`,
       },
       {
         label: 'Notes and resources',
@@ -680,12 +680,12 @@ export default function PostLivePublishingPage() {
       {
         label: 'Replay access and discoverability',
         status: accessCoverage ? 'Pass' : 'Warn',
-        detail: `${visibleSurfaceCount} surfaces enabled${featuredPlacement ? ' Â· featured shelf requested' : ''}.`,
+        detail: `${visibleSurfaceCount} surfaces enabled${featuredPlacement ? ' · featured shelf requested' : ''}.`,
       },
       {
         label: 'Accessibility and subtitle confidence',
         status: subtitleTone,
-        detail: `Transcript ${transcriptReady ? 'ready' : 'pending'} Â· subtitle confidence ${subtitleConfidence}%`,
+        detail: `Transcript ${transcriptReady ? 'ready' : 'pending'} · subtitle confidence ${subtitleConfidence}%`,
       },
       {
         label: 'Moderation and unresolved issues',
@@ -695,7 +695,7 @@ export default function PostLivePublishingPage() {
       {
         label: 'Follow-up actions',
         status: sendReplayJourney || beaconReady || donationAsk ? 'Pass' : 'Warn',
-        detail: `${sendReplayJourney ? 'Replay journey ready' : 'Journey off'} Â· ${beaconReady ? 'Beacon handoff ready' : 'Beacon off'} Â· ${donationAsk ? 'Giving prompt on' : 'Giving prompt off'}`,
+        detail: `${sendReplayJourney ? 'Replay journey ready' : 'Journey off'} · ${beaconReady ? 'Beacon handoff ready' : 'Beacon off'} · ${donationAsk ? 'Giving prompt on' : 'Giving prompt off'}`,
       },
     ];
   }, [
@@ -740,7 +740,7 @@ export default function PostLivePublishingPage() {
   );
 
   const watchSurface = useMemo(() => {
-    if (featuredPlacement) return 'Featured replay shelf Â· ON';
+    if (featuredPlacement) return 'Featured replay shelf · ON';
     if (visibleSurfaceCount >= 4) return 'Replay discovery surfaces configured';
     return 'Standard replay visibility';
   }, [featuredPlacement, visibleSurfaceCount]);
@@ -773,22 +773,22 @@ export default function PostLivePublishingPage() {
   };
 
   return (
-    <div className="min-h-screen w-full flex flex-col bg-[#f2f2f2] dark:bg-slate-950 text-slate-900 dark:text-slate-50 transition-colors overflow-x-hidden">
+    <div className="min-h-screen w-full flex flex-col bg-[var(--fh-page-bg)] dark:bg-slate-950 text-faith-ink dark:text-slate-50 transition-colors overflow-x-hidden">
       {/* Sticky header */}
-      <div className="sticky top-0 z-40 border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md transition">
+      <div className="sticky top-0 z-40 border-b border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)]/95 dark:bg-slate-900/95 backdrop-blur-md transition">
         <div className="w-full px-4 md:px-6 lg:px-8 py-4">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
             <div className="min-w-0">
-              <div className="flex flex-wrap items-center gap-2 text-[10px] font-black uppercase tracking-[0.14em] text-slate-500 dark:text-slate-400">
+              <div className="flex flex-wrap items-center gap-2 text-[10px] font-black uppercase tracking-[0.14em] text-faith-slate">
                     <span>Provider</span>
                 <span className="text-slate-300 dark:text-slate-700">/</span>
                 <span>Provider</span>
                 <span className="text-slate-300 dark:text-slate-700">/</span>
-                <span className="text-slate-900 dark:text-slate-100 italic">Post-live Publishing</span>
+                <span className="text-faith-ink dark:text-slate-100 italic">Post-live Publishing</span>
               </div>
 
               <div className="mt-2 flex flex-wrap items-center gap-3">
-                <div className="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50">
+                <div className="text-xl sm:text-2xl font-extrabold tracking-tight text-faith-ink dark:text-slate-50">
                   Post-live Publishing
                 </div>
                 <div className="flex flex-wrap gap-2">
@@ -804,11 +804,11 @@ export default function PostLivePublishingPage() {
                 </div>
               </div>
 
-              <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs font-semibold text-slate-500 dark:text-slate-400">
+              <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs font-semibold text-faith-slate">
                 <span>{session.title}</span>
-                <span className="text-slate-300 dark:text-slate-700">â€¢</span>
+                <span className="text-slate-300 dark:text-slate-700">•</span>
                 <span>{session.source}</span>
-                <span className="text-slate-300 dark:text-slate-700">â€¢</span>
+                <span className="text-slate-300 dark:text-slate-700">•</span>
                 <span>Ended {fmtLocal(session.endedISO)}</span>
               </div>
             </div>
@@ -849,24 +849,24 @@ export default function PostLivePublishingPage() {
           </div>
         </div>
 
-        <div className="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 transition">
+        <div className="border-t border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 transition">
           <div className="w-full px-4 md:px-6 lg:px-8 py-2.5">
             <div className="flex flex-wrap items-center justify-between gap-3 text-sm">
               <div className="flex flex-wrap items-center gap-3">
                 <Pill tone={readinessScore >= 92 ? 'good' : readinessScore >= 80 ? 'warn' : 'bad'}>
                   {readinessScore >= 92 ? <CheckCircle2 className="h-3.5 w-3.5" /> : <AlertTriangle className="h-3.5 w-3.5" />} SYSTEM CHECK
                 </Pill>
-                <span className="text-[11px] font-bold uppercase tracking-[0.12em] text-slate-600 dark:text-slate-400">
+                <span className="text-[11px] font-bold uppercase tracking-[0.12em] text-faith-slate">
                   {readinessScore >= 92
                     ? 'Replay packaging, discoverability, and follow-up actions are aligned for premium publishing.'
                     : 'Review the highlighted sections before making the replay discoverable.'}
                 </span>
               </div>
-              <div className="flex flex-wrap items-center gap-2 text-[10px] font-black uppercase tracking-[0.14em] text-slate-500 dark:text-slate-400">
+              <div className="flex flex-wrap items-center gap-2 text-[10px] font-black uppercase tracking-[0.14em] text-faith-slate">
                 <span style={{ color: EV_GREEN }}>Readiness {readinessScore}%</span>
-                <span className="text-slate-300 dark:text-slate-700">â€¢</span>
+                <span className="text-slate-300 dark:text-slate-700">•</span>
                 <span>{clipSuggestions.length} clip suggestions</span>
-                <span className="text-slate-300 dark:text-slate-700">â€¢</span>
+                <span className="text-slate-300 dark:text-slate-700">•</span>
                 <span>{visibleSurfaceCount} discovery surfaces</span>
               </div>
             </div>
@@ -880,7 +880,7 @@ export default function PostLivePublishingPage() {
           {/* Left column */}
           <div className="lg:col-span-8 space-y-4">
             {/* Replay packaging header */}
-            <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <SectionHead
                 title="Replay packaging header"
                 subtitle="Source session, processing state, artwork status, recommended title, and replay readiness in one premium block."
@@ -893,58 +893,58 @@ export default function PostLivePublishingPage() {
 
               <div className="mt-4 grid grid-cols-1 gap-4 xl:grid-cols-12">
                 <div className="xl:col-span-5">
-                  <div className="overflow-hidden rounded-3xl ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm">
+                  <div className="overflow-hidden rounded-3xl ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft">
                     <img src={session.coverUrl} alt="Replay cover" className="aspect-[4/3] w-full object-cover" />
                   </div>
-                  <div className="mt-3 rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+                  <div className="mt-3 rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                     <div className="flex items-center justify-between gap-2">
                       <div>
-                        <div className="text-xs font-black uppercase tracking-[0.14em] text-slate-500 dark:text-slate-500">Replay source</div>
-                        <div className="mt-1 text-sm font-bold text-slate-900 dark:text-slate-50">{session.title}</div>
-                        <div className="mt-1 text-xs text-slate-600 dark:text-slate-400">{session.source} Â· {session.presenter}</div>
+                        <div className="text-xs font-black uppercase tracking-[0.14em] text-faith-slate">Replay source</div>
+                        <div className="mt-1 text-sm font-bold text-faith-ink dark:text-slate-50">{session.title}</div>
+                        <div className="mt-1 text-xs text-faith-slate">{session.source} · {session.presenter}</div>
                       </div>
                       <button
                         type="button"
                         onClick={copyReplayLink}
-                        className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 ring-1 ring-slate-200 dark:ring-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition"
+                        className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-slate-700 dark:text-slate-300 ring-1 ring-slate-200 dark:ring-slate-700 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800 transition"
                       >
                         <Copy className="h-4 w-4" />
                       </button>
                     </div>
-                    <div className="mt-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-xs text-slate-600 dark:text-slate-400 break-all">
+                    <div className="mt-3 rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-xs text-faith-slate break-all">
                       {session.replayUrl}
                     </div>
                   </div>
                 </div>
 
                 <div className="xl:col-span-7 space-y-3">
-                  <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+                  <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                     <div className="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-4">
-                      <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
-                        <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[34px] lg:text-[40px]">{readinessScore}%</div>
-                        <div className="mt-1.5 text-[14px] leading-6 text-slate-500 dark:text-slate-400">Packaging confidence</div>
+                      <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
+                        <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-faith-ink dark:text-slate-100 sm:text-[34px] lg:text-[40px]">{readinessScore}%</div>
+                        <div className="mt-1.5 text-[14px] leading-6 text-faith-slate">Packaging confidence</div>
                       </div>
-                      <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
-                        <div className="text-[10px] font-black uppercase tracking-[0.14em] text-slate-500">Artwork status</div>
-                        <div className="mt-1 text-lg font-black text-slate-900 dark:text-slate-50">Approved</div>
-                        <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">Cover frame {coverFrame}</div>
+                      <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
+                        <div className="text-[10px] font-black uppercase tracking-[0.14em] text-faith-slate">Artwork status</div>
+                        <div className="mt-1 text-lg font-black text-faith-ink dark:text-slate-50">Approved</div>
+                        <div className="mt-1 text-[11px] text-faith-slate">Cover frame {coverFrame}</div>
                       </div>
-                      <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
-                        <div className="text-[10px] font-black uppercase tracking-[0.14em] text-slate-500">Chapter score</div>
-                        <div className="mt-1 text-lg font-black text-slate-900 dark:text-slate-50">{chapters.length} markers</div>
-                        <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">Search-ready transcript</div>
+                      <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
+                        <div className="text-[10px] font-black uppercase tracking-[0.14em] text-faith-slate">Chapter score</div>
+                        <div className="mt-1 text-lg font-black text-faith-ink dark:text-slate-50">{chapters.length} markers</div>
+                        <div className="mt-1 text-[11px] text-faith-slate">Search-ready transcript</div>
                       </div>
-                      <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
-                        <div className="text-[10px] font-black uppercase tracking-[0.14em] text-slate-500">Follow-up</div>
-                        <div className="mt-1 text-lg font-black text-slate-900 dark:text-slate-50">{sendReplayJourney ? 'Journey armed' : 'Manual'}</div>
-                        <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">Beacon + replay handoff</div>
+                      <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
+                        <div className="text-[10px] font-black uppercase tracking-[0.14em] text-faith-slate">Follow-up</div>
+                        <div className="mt-1 text-lg font-black text-faith-ink dark:text-slate-50">{sendReplayJourney ? 'Journey armed' : 'Manual'}</div>
+                        <div className="mt-1 text-[11px] text-faith-slate">Beacon + replay handoff</div>
                       </div>
                     </div>
                     <div className="mt-3">
                       <div className="flex items-center justify-between gap-2">
                         <div>
-                          <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Recommended replay title</div>
-                          <div className="mt-1 text-xs text-slate-600 dark:text-slate-400">Suggested from the source session and optimized for search and follow-up discovery.</div>
+                          <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Recommended replay title</div>
+                          <div className="mt-1 text-xs text-faith-slate">Suggested from the source session and optimized for search and follow-up discovery.</div>
                         </div>
                         <Pill tone="brand">
                           <Wand2 className="h-3.5 w-3.5" /> Recommended
@@ -955,11 +955,11 @@ export default function PostLivePublishingPage() {
                     <div className="mt-3">
                       <FieldLabel>Replay readiness meter</FieldLabel>
                       <Meter value={readinessScore} tone={readinessScore >= 92 ? 'brand' : 'warn'} />
-                      <div className="mt-2 flex flex-wrap gap-2 text-[11px] text-slate-500 dark:text-slate-400">
-                        <span>Projected replay reach Â· 12.4k</span>
-                        <span>â€¢</span>
+                      <div className="mt-2 flex flex-wrap gap-2 text-[11px] text-faith-slate">
+                        <span>Projected replay reach · 12.4k</span>
+                        <span>•</span>
                         <span>Promotion surfaces armed</span>
-                        <span>â€¢</span>
+                        <span>•</span>
                         <span>{processingState}</span>
                       </div>
                     </div>
@@ -969,7 +969,7 @@ export default function PostLivePublishingPage() {
             </div>
 
             {/* Editorial cleanup workspace */}
-            <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <SectionHead
                 title="Editorial cleanup workspace"
                 subtitle="Trim heads and tails, remove dead air, tune metadata, select the best cover frame, and decide which live sections remain visible."
@@ -977,11 +977,11 @@ export default function PostLivePublishingPage() {
               />
 
               <div className="mt-4 grid grid-cols-1 gap-4 xl:grid-cols-12">
-                <div className="xl:col-span-6 rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+                <div className="xl:col-span-6 rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                   <FieldLabel>Trim controls</FieldLabel>
                   <div className="mt-3 space-y-4">
                     <div>
-                      <div className="flex items-center justify-between text-sm font-semibold text-slate-900 dark:text-slate-50">
+                      <div className="flex items-center justify-between text-sm font-semibold text-faith-ink dark:text-slate-50">
                         <span>Trim opening</span>
                         <span>{trimHeadSec}s</span>
                       </div>
@@ -996,7 +996,7 @@ export default function PostLivePublishingPage() {
                       />
                     </div>
                     <div>
-                      <div className="flex items-center justify-between text-sm font-semibold text-slate-900 dark:text-slate-50">
+                      <div className="flex items-center justify-between text-sm font-semibold text-faith-ink dark:text-slate-50">
                         <span>Trim ending</span>
                         <span>{trimTailSec}s</span>
                       </div>
@@ -1013,20 +1013,20 @@ export default function PostLivePublishingPage() {
                   </div>
 
                   <div className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2">
-                    <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
+                    <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
                       <div className="flex items-center justify-between gap-2">
                         <div>
-                          <div className="text-sm font-semibold text-slate-900 dark:text-slate-50">Remove dead air</div>
-                          <div className="mt-1 text-xs text-slate-600 dark:text-slate-400">Auto-cut pauses and empty stage moments.</div>
+                          <div className="text-sm font-semibold text-faith-ink dark:text-slate-50">Remove dead air</div>
+                          <div className="mt-1 text-xs text-faith-slate">Auto-cut pauses and empty stage moments.</div>
                         </div>
                         <Toggle checked={removeDeadAir} onChange={setRemoveDeadAir} />
                       </div>
                     </div>
-                    <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
+                    <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
                       <div className="flex items-center justify-between gap-2">
                         <div>
-                          <div className="text-sm font-semibold text-slate-900 dark:text-slate-50">Remove waiting room</div>
-                          <div className="mt-1 text-xs text-slate-600 dark:text-slate-400">Drop countdowns and silent pre-roll.</div>
+                          <div className="text-sm font-semibold text-faith-ink dark:text-slate-50">Remove waiting room</div>
+                          <div className="mt-1 text-xs text-faith-slate">Drop countdowns and silent pre-roll.</div>
                         </div>
                         <Toggle checked={removeWaitingRoom} onChange={setRemoveWaitingRoom} />
                       </div>
@@ -1037,10 +1037,10 @@ export default function PostLivePublishingPage() {
                     <FieldLabel>Visible sections</FieldLabel>
                     <div className="mt-3 space-y-2">
                       {visibleSections.map((section) => (
-                        <div key={section.key} className="flex items-center justify-between gap-3 rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
+                        <div key={section.key} className="flex items-center justify-between gap-3 rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
                           <div className="min-w-0">
-                            <div className="text-sm font-semibold text-slate-900 dark:text-slate-50">{section.label}</div>
-                            <div className="mt-1 text-xs text-slate-600 dark:text-slate-400">{section.hint}</div>
+                            <div className="text-sm font-semibold text-faith-ink dark:text-slate-50">{section.label}</div>
+                            <div className="mt-1 text-xs text-faith-slate">{section.hint}</div>
                           </div>
                           <Toggle
                             checked={section.enabled}
@@ -1055,16 +1055,16 @@ export default function PostLivePublishingPage() {
                 </div>
 
                 <div className="xl:col-span-6 space-y-4">
-                  <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+                  <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                     <FieldLabel>Replay copy</FieldLabel>
                     <TextInput value={title} onChange={setTitle} placeholder="Replay title" />
                     <TextArea value={description} onChange={setDescription} rows={5} placeholder="Polished replay description" />
                   </div>
-                  <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+                  <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                     <div className="flex items-center justify-between gap-2">
                       <div>
                         <FieldLabel>Cover frame selector</FieldLabel>
-                        <div className="mt-1 text-xs text-slate-600 dark:text-slate-400">Choose the frame that best represents the replay destination page.</div>
+                        <div className="mt-1 text-xs text-faith-slate">Choose the frame that best represents the replay destination page.</div>
                       </div>
                       <Pill tone="good"><ImageIcon className="h-3.5 w-3.5" /> Artwork clean</Pill>
                     </div>
@@ -1078,11 +1078,11 @@ export default function PostLivePublishingPage() {
                             'overflow-hidden rounded-2xl border p-2 text-left transition',
                             coverFrame === frame
                               ? 'border-emerald-300 bg-emerald-50 dark:bg-emerald-500/10 dark:border-emerald-600'
-                              : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800',
+                              : 'border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800',
                           )}
                         >
                           <div className="aspect-[3/4] rounded-xl" style={{ background: index % 2 === 0 ? 'linear-gradient(180deg, #10254a 0%, #203d66 100%)' : 'linear-gradient(180deg, #18334a 0%, #284c63 100%)' }} />
-                          <div className="mt-2 text-xs font-bold text-slate-900 dark:text-slate-100">{frame}</div>
+                          <div className="mt-2 text-xs font-bold text-faith-ink dark:text-slate-100">{frame}</div>
                         </button>
                       ))}
                     </div>
@@ -1092,7 +1092,7 @@ export default function PostLivePublishingPage() {
             </div>
 
             {/* Chapters and transcript */}
-            <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <SectionHead
                 title="Chapter and transcript tools"
                 subtitle="Make the replay premium and searchable with chapter markers, transcript cleanup, speaker names, and scripture references."
@@ -1100,11 +1100,11 @@ export default function PostLivePublishingPage() {
               />
 
               <div className="mt-4 grid grid-cols-1 gap-4 xl:grid-cols-12">
-                <div className="xl:col-span-8 rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+                <div className="xl:col-span-8 rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                   <div className="flex items-center justify-between gap-2">
                     <div>
-                      <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Replay chapters</div>
-                      <div className="mt-1 text-xs text-slate-600 dark:text-slate-400">Clean chapter markers improve search, replay navigation, and clip extraction.</div>
+                      <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Replay chapters</div>
+                      <div className="mt-1 text-xs text-faith-slate">Clean chapter markers improve search, replay navigation, and clip extraction.</div>
                     </div>
                     <Btn tone="neutral" onClick={handleAddChapter} left={<PlusIconSmall />}>
                       Add chapter
@@ -1112,13 +1112,13 @@ export default function PostLivePublishingPage() {
                   </div>
                   <div className="mt-4 space-y-3">
                     {chapters.map((chapter, idx) => (
-                      <div key={chapter.id} className="rounded-3xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
+                      <div key={chapter.id} className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
                         <div className="flex items-center justify-between gap-2">
                           <Pill tone="neutral">Chapter {idx + 1}</Pill>
                           <button
                             type="button"
                             onClick={() => handleRemoveChapter(chapter.id)}
-                            className="inline-flex h-9 w-9 items-center justify-center rounded-2xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition"
+                            className="inline-flex h-9 w-9 items-center justify-center rounded-2xl bg-slate-100 dark:bg-slate-800 text-faith-slate dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition"
                           >
                             <X className="h-4 w-4" />
                           </button>
@@ -1147,52 +1147,52 @@ export default function PostLivePublishingPage() {
                 </div>
 
                 <div className="xl:col-span-4 space-y-3">
-                  <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
-                    <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Transcript readiness</div>
+                  <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+                    <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Transcript readiness</div>
                     <div className="mt-3 space-y-3">
-                      <div className="flex items-center justify-between gap-2 rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
+                      <div className="flex items-center justify-between gap-2 rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
                         <div>
-                          <div className="text-sm font-semibold text-slate-900 dark:text-slate-50">Transcript cleaned</div>
-                          <div className="mt-1 text-xs text-slate-600 dark:text-slate-400">Remove filler text and dead-air captions.</div>
+                          <div className="text-sm font-semibold text-faith-ink dark:text-slate-50">Transcript cleaned</div>
+                          <div className="mt-1 text-xs text-faith-slate">Remove filler text and dead-air captions.</div>
                         </div>
                         <Toggle checked={transcriptReady} onChange={setTranscriptReady} />
                       </div>
-                      <div className="flex items-center justify-between gap-2 rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
+                      <div className="flex items-center justify-between gap-2 rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
                         <div>
-                          <div className="text-sm font-semibold text-slate-900 dark:text-slate-50">Speaker labels</div>
-                          <div className="mt-1 text-xs text-slate-600 dark:text-slate-400">Identify speakers throughout the replay.</div>
+                          <div className="text-sm font-semibold text-faith-ink dark:text-slate-50">Speaker labels</div>
+                          <div className="mt-1 text-xs text-faith-slate">Identify speakers throughout the replay.</div>
                         </div>
                         <Toggle checked={speakerLabelsEnabled} onChange={setSpeakerLabelsEnabled} />
                       </div>
-                      <div className="flex items-center justify-between gap-2 rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
+                      <div className="flex items-center justify-between gap-2 rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
                         <div>
-                          <div className="text-sm font-semibold text-slate-900 dark:text-slate-50">Scripture index</div>
-                          <div className="mt-1 text-xs text-slate-600 dark:text-slate-400">Make references searchable in replay search.</div>
+                          <div className="text-sm font-semibold text-faith-ink dark:text-slate-50">Scripture index</div>
+                          <div className="mt-1 text-xs text-faith-slate">Make references searchable in replay search.</div>
                         </div>
                         <Toggle checked={searchableScripture} onChange={setSearchableScripture} />
                       </div>
                     </div>
                   </div>
 
-                  <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+                  <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                     <div className="flex items-center justify-between gap-2">
                       <div>
-                        <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Subtitle confidence</div>
-                        <div className="mt-1 text-xs text-slate-600 dark:text-slate-400">Accessibility quality before publish.</div>
+                        <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Subtitle confidence</div>
+                        <div className="mt-1 text-xs text-faith-slate">Accessibility quality before publish.</div>
                       </div>
                       <Pill tone={subtitleConfidence >= 95 ? 'good' : subtitleConfidence >= 88 ? 'warn' : 'bad'}>
                         <ShieldCheck className="h-3.5 w-3.5" /> {subtitleConfidence}%
                       </Pill>
                     </div>
                     <Meter value={subtitleConfidence} tone={subtitleConfidence >= 95 ? 'brand' : 'warn'} />
-                    <div className="mt-2 text-[11px] text-slate-500 dark:text-slate-400">Provider can flag subtitle confidence below 90% before publishing.</div>
+                    <div className="mt-2 text-[11px] text-faith-slate">Provider can flag subtitle confidence below 90% before publishing.</div>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Notes and resources */}
-            <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <SectionHead
                 title="Notes and resource panel"
                 subtitle="Attach sermon notes, study guides, reading plans, event links, giving prompts, charity crowdfund links, and FaithMart or Beacon assets."
@@ -1200,7 +1200,7 @@ export default function PostLivePublishingPage() {
               />
 
               <div className="mt-4 grid grid-cols-1 gap-4 xl:grid-cols-12">
-                <div className="xl:col-span-5 rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+                <div className="xl:col-span-5 rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                   <FieldLabel>Replay notes summary</FieldLabel>
                   <TextArea
                     value={notesText}
@@ -1208,19 +1208,19 @@ export default function PostLivePublishingPage() {
                     rows={8}
                     placeholder="Add the replay notes, follow-up prompts, discussion cues, and prayer response."
                   />
-                  <div className="mt-3 flex flex-wrap gap-2 text-[11px] text-slate-500 dark:text-slate-400">
+                  <div className="mt-3 flex flex-wrap gap-2 text-[11px] text-faith-slate">
                     <span>Use this area for sermon notes, study prompts, prayer ministry, and follow-up context.</span>
                   </div>
                 </div>
 
-                <div className="xl:col-span-7 rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+                <div className="xl:col-span-7 rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                   <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
                     {resources.map((resource) => (
-                      <div key={resource.id} className="rounded-3xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
+                      <div key={resource.id} className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
                         <div className="flex items-start justify-between gap-3">
                           <div className="min-w-0">
-                            <div className="text-sm font-semibold text-slate-900 dark:text-slate-50">{resource.label}</div>
-                            <div className="mt-1 text-xs text-slate-600 dark:text-slate-400">{resource.hint}</div>
+                            <div className="text-sm font-semibold text-faith-ink dark:text-slate-50">{resource.label}</div>
+                            <div className="mt-1 text-xs text-faith-slate">{resource.hint}</div>
                           </div>
                           <Toggle
                             checked={resource.enabled}
@@ -1240,7 +1240,7 @@ export default function PostLivePublishingPage() {
             </div>
 
             {/* Replay access and discoverability */}
-            <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <SectionHead
                 title="Replay access and discoverability"
                 subtitle="Control who can watch, when the replay goes live, whether downloads are enabled, and where it should appear in feeds, libraries, and search."
@@ -1248,7 +1248,7 @@ export default function PostLivePublishingPage() {
               />
 
               <div className="mt-4 grid grid-cols-1 gap-4 xl:grid-cols-12">
-                <div className="xl:col-span-4 rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+                <div className="xl:col-span-4 rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                   <FieldLabel>Access level</FieldLabel>
                   <div className="mt-3 flex flex-wrap gap-2">
                     {(['Public', 'Members', 'Supporters'] as AccessLevel[]).map((level) => (
@@ -1259,8 +1259,8 @@ export default function PostLivePublishingPage() {
                         className={cx(
                           'inline-flex items-center gap-2 rounded-2xl px-4 py-2 text-sm font-bold transition',
                           accessLevel === level
-                            ? 'text-white shadow-sm'
-                            : 'bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 ring-1 ring-slate-200 dark:ring-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800',
+                            ? 'text-white shadow-soft'
+                            : 'bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-faith-ink dark:text-slate-100 ring-1 ring-slate-200 dark:ring-slate-700 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800',
                         )}
                         style={accessLevel === level ? { background: level === 'Public' ? EV_GREEN : level === 'Members' ? '#0f172a' : EV_ORANGE } : undefined}
                       >
@@ -1270,39 +1270,39 @@ export default function PostLivePublishingPage() {
                   </div>
 
                   <div className="mt-4 space-y-3">
-                    <div className="flex items-center justify-between gap-3 rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
+                    <div className="flex items-center justify-between gap-3 rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
                       <div>
-                        <div className="text-sm font-semibold text-slate-900 dark:text-slate-50">Enable downloads</div>
-                        <div className="mt-1 text-xs text-slate-600 dark:text-slate-400">Offer file downloads to the selected access group.</div>
+                        <div className="text-sm font-semibold text-faith-ink dark:text-slate-50">Enable downloads</div>
+                        <div className="mt-1 text-xs text-faith-slate">Offer file downloads to the selected access group.</div>
                       </div>
                       <Toggle checked={downloadsEnabled} onChange={setDownloadsEnabled} />
                     </div>
-                    <div className="flex items-center justify-between gap-3 rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
+                    <div className="flex items-center justify-between gap-3 rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
                       <div>
-                        <div className="text-sm font-semibold text-slate-900 dark:text-slate-50">Scheduled release</div>
-                        <div className="mt-1 text-xs text-slate-600 dark:text-slate-400">Use timed release for featured placement or supporter windows.</div>
+                        <div className="text-sm font-semibold text-faith-ink dark:text-slate-50">Scheduled release</div>
+                        <div className="mt-1 text-xs text-faith-slate">Use timed release for featured placement or supporter windows.</div>
                       </div>
                       <Toggle checked={scheduleRelease} onChange={setScheduleRelease} />
                     </div>
                     {scheduleRelease ? (
-                      <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
+                      <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
                         <FieldLabel>Replay goes live at</FieldLabel>
                         <input
                           type="datetime-local"
                           value={releaseAt}
                           onChange={(e) => setReleaseAt(e.target.value)}
-                          className="mt-2 w-full rounded-2xl bg-slate-50 dark:bg-slate-800 px-4 py-3 text-sm text-slate-900 dark:text-slate-50 ring-1 ring-slate-200 dark:ring-slate-700 outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600 transition"
+                          className="mt-2 w-full rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800 px-4 py-3 text-sm text-faith-ink dark:text-slate-50 ring-1 ring-slate-200 dark:ring-slate-700 outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600 transition"
                         />
                       </div>
                     ) : null}
                   </div>
                 </div>
 
-                <div className="xl:col-span-8 rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+                <div className="xl:col-span-8 rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                   <div className="flex items-center justify-between gap-2">
                     <div>
                       <FieldLabel>Surfaces</FieldLabel>
-                      <div className="mt-1 text-xs text-slate-600 dark:text-slate-400">Choose where the replay should appear inside the platform and how premium placement should behave.</div>
+                      <div className="mt-1 text-xs text-faith-slate">Choose where the replay should appear inside the platform and how premium placement should behave.</div>
                     </div>
                     <Pill tone={featuredPlacement ? 'good' : 'neutral'}>
                       <Sparkles className="h-3.5 w-3.5" /> {featuredPlacement ? 'Featured shelf requested' : 'Standard placement'}
@@ -1311,11 +1311,11 @@ export default function PostLivePublishingPage() {
 
                   <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-2">
                     {surfaces.map((surface) => (
-                      <div key={surface.key} className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
+                      <div key={surface.key} className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
                         <div className="flex items-center justify-between gap-3">
                           <div className="min-w-0">
-                            <div className="text-sm font-semibold text-slate-900 dark:text-slate-50">{surface.label}</div>
-                            <div className="mt-1 text-xs text-slate-600 dark:text-slate-400">{surface.hint}</div>
+                            <div className="text-sm font-semibold text-faith-ink dark:text-slate-50">{surface.label}</div>
+                            <div className="mt-1 text-xs text-faith-slate">{surface.hint}</div>
                           </div>
                           <Toggle
                             checked={surface.enabled}
@@ -1327,20 +1327,20 @@ export default function PostLivePublishingPage() {
                   </div>
 
                   <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-2">
-                    <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
+                    <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
                       <div className="flex items-center justify-between gap-3">
                         <div>
-                          <div className="text-sm font-semibold text-slate-900 dark:text-slate-50">Featured placement</div>
-                          <div className="mt-1 text-xs text-slate-600 dark:text-slate-400">Request premium shelf placement while replay momentum is fresh.</div>
+                          <div className="text-sm font-semibold text-faith-ink dark:text-slate-50">Featured placement</div>
+                          <div className="mt-1 text-xs text-faith-slate">Request premium shelf placement while replay momentum is fresh.</div>
                         </div>
                         <Toggle checked={featuredPlacement} onChange={setFeaturedPlacement} />
                       </div>
                     </div>
-                    <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
+                    <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
                       <div className="flex items-center justify-between gap-3">
                         <div>
-                          <div className="text-sm font-semibold text-slate-900 dark:text-slate-50">Queue external repost prep</div>
-                          <div className="mt-1 text-xs text-slate-600 dark:text-slate-400">Prepare replay and clip assets for external publishing after review.</div>
+                          <div className="text-sm font-semibold text-faith-ink dark:text-slate-50">Queue external repost prep</div>
+                          <div className="mt-1 text-xs text-faith-slate">Prepare replay and clip assets for external publishing after review.</div>
                         </div>
                         <Toggle checked={queueExternalAssets} onChange={setQueueExternalAssets} />
                       </div>
@@ -1351,7 +1351,7 @@ export default function PostLivePublishingPage() {
             </div>
 
             {/* Follow-up actions */}
-            <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <SectionHead
                 title="Follow-up actions block"
                 subtitle="Trigger replay notifications, create Beacon campaigns, surface donation asks, or tie the replay to an ongoing event or campaign while context is still fresh."
@@ -1360,77 +1360,77 @@ export default function PostLivePublishingPage() {
 
               <div className="mt-4 grid grid-cols-1 gap-4 xl:grid-cols-12">
                 <div className="xl:col-span-7 grid grid-cols-1 gap-3 md:grid-cols-2">
-                  <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+                  <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                     <div className="flex items-center justify-between gap-3">
                       <div>
-                        <div className="text-sm font-semibold text-slate-900 dark:text-slate-50">Replay notification journey</div>
-                        <div className="mt-1 text-xs text-slate-600 dark:text-slate-400">Launch replay-ready reminders and follow-up nudges.</div>
+                        <div className="text-sm font-semibold text-faith-ink dark:text-slate-50">Replay notification journey</div>
+                        <div className="mt-1 text-xs text-faith-slate">Launch replay-ready reminders and follow-up nudges.</div>
                       </div>
                       <Toggle checked={sendReplayJourney} onChange={setSendReplayJourney} />
                     </div>
-                    <div className="mt-3 flex items-center gap-2 text-[11px] text-slate-500 dark:text-slate-400">
-                      <Bell className="h-3.5 w-3.5" /> Journey name Â· Grace Replay Ready
+                    <div className="mt-3 flex items-center gap-2 text-[11px] text-faith-slate">
+                      <Bell className="h-3.5 w-3.5" /> Journey name · Grace Replay Ready
                     </div>
                   </div>
-                  <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+                  <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                     <div className="flex items-center justify-between gap-3">
                       <div>
-                        <div className="text-sm font-semibold text-slate-900 dark:text-slate-50">Beacon campaign handoff</div>
-                        <div className="mt-1 text-xs text-slate-600 dark:text-slate-400">Create a replay booster or promotion campaign directly from the replay.</div>
+                        <div className="text-sm font-semibold text-faith-ink dark:text-slate-50">Beacon campaign handoff</div>
+                        <div className="mt-1 text-xs text-faith-slate">Create a replay booster or promotion campaign directly from the replay.</div>
                       </div>
                       <Toggle checked={beaconReady} onChange={setBeaconReady} />
                     </div>
-                    <div className="mt-3 flex items-center gap-2 text-[11px] text-slate-500 dark:text-slate-400">
+                    <div className="mt-3 flex items-center gap-2 text-[11px] text-faith-slate">
                       <Zap className="h-3.5 w-3.5" /> Beacon asset pack ready
                     </div>
                   </div>
-                  <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+                  <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                     <div className="flex items-center justify-between gap-3">
                       <div>
-                        <div className="text-sm font-semibold text-slate-900 dark:text-slate-50">Donation or giving ask</div>
-                        <div className="mt-1 text-xs text-slate-600 dark:text-slate-400">Carry the generosity moment into the replay destination page.</div>
+                        <div className="text-sm font-semibold text-faith-ink dark:text-slate-50">Donation or giving ask</div>
+                        <div className="mt-1 text-xs text-faith-slate">Carry the generosity moment into the replay destination page.</div>
                       </div>
                       <Toggle checked={donationAsk} onChange={setDonationAsk} />
                     </div>
-                    <div className="mt-3 flex items-center gap-2 text-[11px] text-slate-500 dark:text-slate-400">
+                    <div className="mt-3 flex items-center gap-2 text-[11px] text-faith-slate">
                       <Gift className="h-3.5 w-3.5" /> Grace Ministry Fund attached
                     </div>
                   </div>
-                  <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+                  <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                     <div className="flex items-center justify-between gap-3">
                       <div>
-                        <div className="text-sm font-semibold text-slate-900 dark:text-slate-50">Tie replay to campaigns</div>
-                        <div className="mt-1 text-xs text-slate-600 dark:text-slate-400">Keep the replay working for current events or charity momentum.</div>
+                        <div className="text-sm font-semibold text-faith-ink dark:text-slate-50">Tie replay to campaigns</div>
+                        <div className="mt-1 text-xs text-faith-slate">Keep the replay working for current events or charity momentum.</div>
                       </div>
                       <div className="flex items-center gap-2">
                         <Toggle checked={eventTieIn} onChange={setEventTieIn} />
                         <Toggle checked={campaignTieIn} onChange={setCampaignTieIn} />
                       </div>
                     </div>
-                    <div className="mt-3 flex flex-wrap gap-2 text-[11px] text-slate-500 dark:text-slate-400">
+                    <div className="mt-3 flex flex-wrap gap-2 text-[11px] text-faith-slate">
                       <span>Event tie-in {eventTieIn ? 'on' : 'off'}</span>
-                      <span>â€¢</span>
+                      <span>•</span>
                       <span>Campaign tie-in {campaignTieIn ? 'on' : 'off'}</span>
                     </div>
                   </div>
                 </div>
 
-                <div className="xl:col-span-5 rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+                <div className="xl:col-span-5 rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                   <div className="flex items-center justify-between gap-2">
                     <div>
-                      <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Clip opportunity queue</div>
-                      <div className="mt-1 text-xs text-slate-600 dark:text-slate-400">Detected moments and replay-driven growth opportunities.</div>
+                      <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Clip opportunity queue</div>
+                      <div className="mt-1 text-xs text-faith-slate">Detected moments and replay-driven growth opportunities.</div>
                     </div>
                     <Pill tone="good"><Scissors className="h-3.5 w-3.5" /> {clipSuggestions.length} ready</Pill>
                   </div>
                   <div className="mt-3 space-y-2">
                     {clipSuggestions.map((clip) => (
-                      <div key={clip.label} className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
+                      <div key={clip.label} className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
                         <div className="flex items-center justify-between gap-2">
-                          <div className="text-sm font-semibold text-slate-900 dark:text-slate-50">{clip.label}</div>
+                          <div className="text-sm font-semibold text-faith-ink dark:text-slate-50">{clip.label}</div>
                           <Pill tone="neutral">{clip.duration}</Pill>
                         </div>
-                        <div className="mt-1 text-xs text-slate-600 dark:text-slate-400">{clip.hint}</div>
+                        <div className="mt-1 text-xs text-faith-slate">{clip.hint}</div>
                       </div>
                     ))}
                   </div>
@@ -1450,7 +1450,7 @@ export default function PostLivePublishingPage() {
           {/* Right rail */}
           <div className="lg:col-span-4 space-y-4">
             {/* Replay preview */}
-            <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <SectionHead
                 title="Replay experience preview"
                 subtitle="Desktop and mobile preview update as packaging and discoverability settings change."
@@ -1463,7 +1463,7 @@ export default function PostLivePublishingPage() {
                   onClick={() => setPreviewMode('desktop')}
                   className={cx(
                     'rounded-2xl px-4 py-2 text-xs font-bold transition',
-                    previewMode === 'desktop' ? 'text-white shadow-sm' : 'text-slate-700 dark:text-slate-300',
+                    previewMode === 'desktop' ? 'text-white shadow-soft' : 'text-slate-700 dark:text-slate-300',
                   )}
                   style={previewMode === 'desktop' ? { background: EV_GREEN } : undefined}
                 >
@@ -1474,7 +1474,7 @@ export default function PostLivePublishingPage() {
                   onClick={() => setPreviewMode('mobile')}
                   className={cx(
                     'rounded-2xl px-4 py-2 text-xs font-bold transition',
-                    previewMode === 'mobile' ? 'text-white shadow-sm' : 'text-slate-700 dark:text-slate-300',
+                    previewMode === 'mobile' ? 'text-white shadow-soft' : 'text-slate-700 dark:text-slate-300',
                   )}
                   style={previewMode === 'mobile' ? { background: EV_ORANGE } : undefined}
                 >
@@ -1492,7 +1492,7 @@ export default function PostLivePublishingPage() {
                     resourcesEnabled={resources.filter((item) => item.enabled).length}
                     downloadsEnabled={downloadsEnabled}
                     beaconReady={beaconReady}
-                    scheduledLabel={scheduleRelease ? `Scheduled Â· ${releaseAt.replace('T', ' ')}` : 'Publishes immediately'}
+                    scheduledLabel={scheduleRelease ? `Scheduled · ${releaseAt.replace('T', ' ')}` : 'Publishes immediately'}
                   />
                 ) : (
                   <PhonePreview
@@ -1516,7 +1516,7 @@ export default function PostLivePublishingPage() {
             </div>
 
             {/* Quality review */}
-            <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <SectionHead
                 title="Quality review lane"
                 subtitle="Accessibility, moderation, thumbnails, subtitle confidence, and unresolved issues before publishing."
@@ -1524,11 +1524,11 @@ export default function PostLivePublishingPage() {
               />
               <div className="mt-3 space-y-2">
                 {replayReadyChecks.map((item) => (
-                  <div key={item.label} className="rounded-2xl bg-slate-50 dark:bg-slate-800/50 p-3 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+                  <div key={item.label} className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-3 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0">
-                        <div className="text-sm font-semibold text-slate-900 dark:text-slate-50">{item.label}</div>
-                        <div className="mt-1 text-xs text-slate-600 dark:text-slate-400">{item.detail}</div>
+                        <div className="text-sm font-semibold text-faith-ink dark:text-slate-50">{item.label}</div>
+                        <div className="mt-1 text-xs text-faith-slate">{item.detail}</div>
                       </div>
                       <Pill tone={item.status === 'Pass' ? 'good' : item.status === 'Warn' ? 'warn' : 'bad'}>
                         {item.status === 'Pass' ? <Check className="h-3.5 w-3.5" /> : item.status === 'Warn' ? <Info className="h-3.5 w-3.5" /> : <AlertTriangle className="h-3.5 w-3.5" />}
@@ -1541,7 +1541,7 @@ export default function PostLivePublishingPage() {
             </div>
 
             {/* Distribution summary */}
-            <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <SectionHead
                 title="Distribution summary"
                 subtitle="Where the replay will surface inside Provider and which external prep steps are queued."
@@ -1550,18 +1550,18 @@ export default function PostLivePublishingPage() {
 
               <div className="mt-3 space-y-2">
                 {surfaces.map((surface) => (
-                  <div key={surface.key} className="flex items-center justify-between gap-3 rounded-2xl bg-slate-50 dark:bg-slate-800/50 p-3 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+                  <div key={surface.key} className="flex items-center justify-between gap-3 rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-3 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                     <div className="min-w-0">
-                      <div className="text-sm font-semibold text-slate-900 dark:text-slate-50">{surface.label}</div>
-                      <div className="mt-1 text-xs text-slate-600 dark:text-slate-400">{surface.hint}</div>
+                      <div className="text-sm font-semibold text-faith-ink dark:text-slate-50">{surface.label}</div>
+                      <div className="mt-1 text-xs text-faith-slate">{surface.hint}</div>
                     </div>
                     <Pill tone={surface.enabled ? 'good' : 'neutral'}>{surface.enabled ? 'On' : 'Off'}</Pill>
                   </div>
                 ))}
-                <div className="flex items-center justify-between gap-3 rounded-2xl bg-slate-50 dark:bg-slate-800/50 p-3 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+                <div className="flex items-center justify-between gap-3 rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-3 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                   <div>
-                    <div className="text-sm font-semibold text-slate-900 dark:text-slate-50">External repost queue</div>
-                    <div className="mt-1 text-xs text-slate-600 dark:text-slate-400">Replay cards, thumbnails, clips, and metadata prep after review.</div>
+                    <div className="text-sm font-semibold text-faith-ink dark:text-slate-50">External repost queue</div>
+                    <div className="mt-1 text-xs text-faith-slate">Replay cards, thumbnails, clips, and metadata prep after review.</div>
                   </div>
                   <Pill tone={queueExternalAssets ? 'warn' : 'neutral'}>{queueExternalAssets ? 'Queued' : 'Off'}</Pill>
                 </div>
@@ -1569,8 +1569,8 @@ export default function PostLivePublishingPage() {
             </div>
 
             {/* Quick links */}
-            <div className="rounded-3xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
-              <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Quick actions</div>
+            <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
+              <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Quick actions</div>
               <div className="mt-3 grid grid-cols-1 gap-2">
                 <Btn tone="neutral" onClick={() => safeNav(ROUTES.replaysAndClips)} left={<Scissors className="h-4 w-4" />}>
                   Open Replays & Clips
@@ -1585,8 +1585,8 @@ export default function PostLivePublishingPage() {
                   Return to Live Dashboard
                 </Btn>
               </div>
-              <div className="mt-3 rounded-2xl bg-slate-50 dark:bg-slate-800/50 p-3 ring-1 ring-slate-200 dark:ring-slate-800 text-xs text-slate-600 dark:text-slate-400 transition">
-                Recommended flow: publish replay â†’ send replay-ready journey â†’ generate clips â†’ launch Beacon follow-up.
+              <div className="mt-3 rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-3 ring-1 ring-slate-200 dark:ring-slate-800 text-xs text-faith-slate transition">
+                Recommended flow: publish replay ? send replay-ready journey ? generate clips ? launch Beacon follow-up.
               </div>
             </div>
           </div>
@@ -1610,22 +1610,22 @@ export default function PostLivePublishingPage() {
               resourcesEnabled={resources.filter((item) => item.enabled).length}
               downloadsEnabled={downloadsEnabled}
               beaconReady={beaconReady}
-              scheduledLabel={scheduleRelease ? `Scheduled Â· ${releaseAt.replace('T', ' ')}` : 'Publishes immediately'}
+              scheduledLabel={scheduleRelease ? `Scheduled · ${releaseAt.replace('T', ' ')}` : 'Publishes immediately'}
             />
-            <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
-              <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Preview notes</div>
+            <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+              <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Preview notes</div>
               <div className="mt-2 grid grid-cols-1 gap-3 md:grid-cols-3">
-                <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
-                  <div className="text-[11px] font-black uppercase tracking-[0.14em] text-slate-500">Discoverability</div>
-                  <div className="mt-1 text-lg font-black text-slate-900 dark:text-slate-50">{visibleSurfaceCount} surfaces</div>
+                <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
+                  <div className="text-[11px] font-black uppercase tracking-[0.14em] text-faith-slate">Discoverability</div>
+                  <div className="mt-1 text-lg font-black text-faith-ink dark:text-slate-50">{visibleSurfaceCount} surfaces</div>
                 </div>
-                <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
-                  <div className="text-[11px] font-black uppercase tracking-[0.14em] text-slate-500">Notes + resources</div>
-                  <div className="mt-1 text-lg font-black text-slate-900 dark:text-slate-50">{notesAttached} linked</div>
+                <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
+                  <div className="text-[11px] font-black uppercase tracking-[0.14em] text-faith-slate">Notes + resources</div>
+                  <div className="mt-1 text-lg font-black text-faith-ink dark:text-slate-50">{notesAttached} linked</div>
                 </div>
-                <div className="rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
-                  <div className="text-[11px] font-black uppercase tracking-[0.14em] text-slate-500">Subtitle confidence</div>
-                  <div className="mt-1 text-lg font-black text-slate-900 dark:text-slate-50">{subtitleConfidence}%</div>
+                <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
+                  <div className="text-[11px] font-black uppercase tracking-[0.14em] text-faith-slate">Subtitle confidence</div>
+                  <div className="mt-1 text-lg font-black text-faith-ink dark:text-slate-50">{subtitleConfidence}%</div>
                 </div>
               </div>
             </div>
@@ -1638,18 +1638,18 @@ export default function PostLivePublishingPage() {
               givePromptEnabled={donationAsk}
               watchSurface={watchSurface}
             />
-            <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
-              <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Replay publish summary</div>
+            <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+              <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Replay publish summary</div>
               <div className="mt-3 space-y-2 text-sm">
-                <div className="flex items-center justify-between gap-2 rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
+                <div className="flex items-center justify-between gap-2 rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
                   <span className="text-slate-700 dark:text-slate-300">Replay state</span>
                   <Pill tone={processingState === 'Published' ? 'good' : 'brand'}>{processingState}</Pill>
                 </div>
-                <div className="flex items-center justify-between gap-2 rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
+                <div className="flex items-center justify-between gap-2 rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
                   <span className="text-slate-700 dark:text-slate-300">Release mode</span>
                   <Pill tone={scheduleRelease ? 'warn' : 'good'}>{scheduleRelease ? 'Scheduled' : 'Immediate'}</Pill>
                 </div>
-                <div className="flex items-center justify-between gap-2 rounded-2xl bg-white dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
+                <div className="flex items-center justify-between gap-2 rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
                   <span className="text-slate-700 dark:text-slate-300">Beacon handoff</span>
                   <Pill tone={beaconReady ? 'accent' : 'neutral'}>{beaconReady ? 'Ready' : 'Off'}</Pill>
                 </div>
@@ -1665,6 +1665,7 @@ export default function PostLivePublishingPage() {
 function PlusIconSmall() {
   return <span className="inline-flex h-4 w-4 items-center justify-center text-base leading-none">+</span>;
 }
+
 
 
 

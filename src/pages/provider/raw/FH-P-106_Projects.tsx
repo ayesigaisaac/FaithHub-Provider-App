@@ -1,4 +1,4 @@
-ï»¿// @ts-nocheck
+// @ts-nocheck
 "use client";
 
 import React, { useMemo, useState } from "react";
@@ -34,7 +34,7 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * Provider â€” Projects
+ * Provider — Projects
  * ----------------------------
  * Premium Provider-side operating surface for community missions, outreach drives,
  * volunteer mobilization, build projects, charity actions, and progress tracking.
@@ -88,7 +88,7 @@ function fmtInt(n: number) {
   return Intl.NumberFormat(undefined, { maximumFractionDigits: 0 }).format(n);
 }
 
-function money(n: number, currency = "Â£") {
+function money(n: number, currency = "£") {
   return `${currency}${Intl.NumberFormat(undefined, {
     maximumFractionDigits: 0,
   }).format(n)}`;
@@ -300,7 +300,7 @@ const INITIAL_PROJECTS: ProjectRecord[] = [
       {
         id: "sig-relief-2",
         label: "Crowdfund momentum remains healthy",
-        hint: "Daily donor movement is ahead of last weekâ€™s forecast.",
+        hint: "Daily donor movement is ahead of last week’s forecast.",
         tone: "good",
       },
       {
@@ -344,21 +344,21 @@ const INITIAL_PROJECTS: ProjectRecord[] = [
       {
         id: "role-relief-1",
         label: "Distribution volunteers",
-        shift: "Sat Â· 08:00â€“15:00",
+        shift: "Sat · 08:00–15:00",
         needed: 24,
         filled: 18,
       },
       {
         id: "role-relief-2",
         label: "Prayer response desk",
-        shift: "Thuâ€“Sat Â· rotating",
+        shift: "Thu–Sat · rotating",
         needed: 8,
         filled: 7,
       },
       {
         id: "role-relief-3",
         label: "Transport & loading",
-        shift: "Fri Â· 15:00â€“20:00",
+        shift: "Fri · 15:00–20:00",
         needed: 10,
         filled: 6,
       },
@@ -464,14 +464,14 @@ const INITIAL_PROJECTS: ProjectRecord[] = [
       {
         id: "role-youth-1",
         label: "Campus ambassadors",
-        shift: "Monâ€“Thu Â· afternoon",
+        shift: "Mon–Thu · afternoon",
         needed: 12,
         filled: 6,
       },
       {
         id: "role-youth-2",
         label: "Transport volunteers",
-        shift: "Project week Â· daily",
+        shift: "Project week · daily",
         needed: 8,
         filled: 3,
       },
@@ -788,7 +788,7 @@ function Pill({
             ? "text-white"
             : tone === "navy"
               ? "bg-indigo-50 text-indigo-900 ring-indigo-200"
-              : "bg-white text-slate-700 ring-slate-200";
+              : "bg-[var(--fh-surface-bg)] text-slate-700 ring-slate-200";
   return (
     <span
       className={cx(
@@ -816,7 +816,7 @@ function SoftButton({
       type="button"
       onClick={onClick}
       className={cx(
-        "inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-3.5 py-2 text-[12px] font-bold text-slate-800 transition hover:bg-slate-50",
+        "inline-flex items-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3.5 py-2 text-[12px] font-bold text-slate-800 transition hover:bg-[var(--fh-surface)]",
         className,
       )}
     >
@@ -867,15 +867,15 @@ function Card({
   return (
     <div
       className={cx(
-        "rounded-[28px] border border-slate-200 bg-white p-4 shadow-sm",
+        "rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft",
         className,
       )}
     >
       <div className="flex items-start justify-between gap-3">
         <div>
-          <div className="text-[14px] font-black text-slate-900">{title}</div>
+          <div className="text-[14px] font-black text-faith-ink">{title}</div>
           {subtitle ? (
-            <div className="mt-1 text-[12px] leading-5 text-slate-500">
+            <div className="mt-1 text-[12px] leading-5 text-faith-slate">
               {subtitle}
             </div>
           ) : null}
@@ -900,12 +900,12 @@ function SearchInput({
 }) {
   return (
     <div className="relative flex-1">
-      <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+      <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-faith-slate" />
       <input
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder="Search projects, owners, campuses, tags, or milestones"
-        className="w-full rounded-2xl border border-slate-200 bg-slate-50 pl-11 pr-4 py-3 text-[13px] font-semibold text-slate-700 outline-none transition focus:border-emerald-300 focus:bg-white"
+        className="w-full rounded-2xl border border-faith-line bg-[var(--fh-surface)] pl-11 pr-4 py-3 text-[13px] font-semibold text-slate-700 outline-none transition focus:border-emerald-300 focus:bg-[var(--fh-surface-bg)]"
       />
     </div>
   );
@@ -928,18 +928,18 @@ function Drawer({
   return (
     <div className="fixed inset-0 z-[90]">
       <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={onClose} />
-      <aside className="absolute right-0 top-0 h-full w-full max-w-5xl overflow-hidden bg-white shadow-2xl">
-        <div className="flex items-start justify-between gap-3 border-b border-slate-200 px-5 py-4">
+      <aside className="absolute right-0 top-0 h-full w-full max-w-5xl overflow-hidden bg-[var(--fh-surface-bg)] shadow-2xl">
+        <div className="flex items-start justify-between gap-3 border-b border-faith-line px-5 py-4">
           <div className="min-w-0">
-            <div className="truncate text-[14px] font-black text-slate-900">{title}</div>
+            <div className="truncate text-[14px] font-black text-faith-ink">{title}</div>
             {subtitle ? (
-              <div className="mt-1 truncate text-[12px] text-slate-500">{subtitle}</div>
+              <div className="mt-1 truncate text-[12px] text-faith-slate">{subtitle}</div>
             ) : null}
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="grid h-10 w-10 place-items-center rounded-2xl border border-slate-200 bg-white text-slate-600 transition hover:bg-slate-50"
+            className="grid h-10 w-10 place-items-center rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] text-faith-slate transition hover:bg-[var(--fh-surface)]"
           >
             <X className="h-4 w-4" />
           </button>
@@ -965,13 +965,13 @@ function ProjectDestinationPreview({
   return (
     <div
       className={cx(
-        "mx-auto rounded-[32px] border border-slate-200 bg-white p-3 shadow-sm",
+        "mx-auto rounded-[32px] border border-faith-line bg-[var(--fh-surface-bg)] p-3 shadow-soft",
         widthClass,
       )}
     >
-      <div className="rounded-[24px] border border-slate-200 bg-slate-50 p-3">
+      <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface)] p-3">
         <div className="mb-2 flex items-center justify-between">
-          <div className="text-[10px] font-black uppercase tracking-[0.18em] text-slate-500">
+          <div className="text-[10px] font-black uppercase tracking-[0.18em] text-faith-slate">
             {desktop ? "Desktop project preview" : "Mobile project preview"}
           </div>
           <Pill tone={toneForStatus(project.status)}>{project.status}</Pill>
@@ -1001,27 +1001,27 @@ function ProjectDestinationPreview({
           </div>
         </div>
 
-        <div className="mt-3 rounded-[20px] border border-slate-200 bg-white p-3">
-          <div className="text-[15px] font-black text-slate-900">{project.title}</div>
-          <div className="mt-1 text-[12px] leading-5 text-slate-500">{project.subtitle}</div>
+        <div className="mt-3 rounded-[20px] border border-faith-line bg-[var(--fh-surface-bg)] p-3">
+          <div className="text-[15px] font-black text-faith-ink">{project.title}</div>
+          <div className="mt-1 text-[12px] leading-5 text-faith-slate">{project.subtitle}</div>
 
-          <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] text-slate-500">
+          <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] text-faith-slate">
             <span>{fmtLocal(project.startISO)}</span>
-            <span>â€¢</span>
+            <span>•</span>
             <span>{project.campus}</span>
-            <span>â€¢</span>
+            <span>•</span>
             <span>{project.language.join(" + ")}</span>
           </div>
 
           <div className="mt-4 grid grid-cols-2 gap-2">
-            <div className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2">
-              <div className="text-[10px] uppercase tracking-[0.14em] text-slate-400">
+            <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2">
+              <div className="text-[10px] uppercase tracking-[0.14em] text-faith-slate">
                 Funding progress
               </div>
-              <div className="mt-1 text-[15px] font-black text-slate-900">
+              <div className="mt-1 text-[15px] font-black text-faith-ink">
                 {money(project.raised)} / {money(project.budget)}
               </div>
-              <div className="mt-2 h-2 overflow-hidden rounded-full bg-white">
+              <div className="mt-2 h-2 overflow-hidden rounded-full bg-[var(--fh-surface-bg)]">
                 <div
                   className="h-full rounded-full"
                   style={{ width: `${fundingPct}%`, background: EV_GREEN }}
@@ -1029,14 +1029,14 @@ function ProjectDestinationPreview({
               </div>
             </div>
 
-            <div className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2">
-              <div className="text-[10px] uppercase tracking-[0.14em] text-slate-400">
+            <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2">
+              <div className="text-[10px] uppercase tracking-[0.14em] text-faith-slate">
                 Volunteer coverage
               </div>
-              <div className="mt-1 text-[15px] font-black text-slate-900">
+              <div className="mt-1 text-[15px] font-black text-faith-ink">
                 {project.volunteersFilled}/{project.volunteersNeeded}
               </div>
-              <div className="mt-2 h-2 overflow-hidden rounded-full bg-white">
+              <div className="mt-2 h-2 overflow-hidden rounded-full bg-[var(--fh-surface-bg)]">
                 <div
                   className="h-full rounded-full"
                   style={{ width: `${volunteerPct}%`, background: EV_ORANGE }}
@@ -1046,23 +1046,23 @@ function ProjectDestinationPreview({
           </div>
 
           <div className="mt-4">
-            <div className="text-[11px] font-black uppercase tracking-[0.12em] text-slate-500">
+            <div className="text-[11px] font-black uppercase tracking-[0.12em] text-faith-slate">
               Next milestones
             </div>
             <div className="mt-2 space-y-2">
               {project.milestones.slice(0, 3).map((milestone) => (
                 <div
                   key={milestone.id}
-                  className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2"
+                  className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2"
                 >
                   <div className="flex items-center justify-between gap-2">
-                    <div className="min-w-0 text-[13px] font-bold text-slate-900 truncate">
+                    <div className="min-w-0 text-[13px] font-bold text-faith-ink truncate">
                       {milestone.label}
                     </div>
                     <Pill tone={toneForMilestoneState(milestone.state)}>{milestone.state}</Pill>
                   </div>
-                  <div className="mt-1 text-[11px] text-slate-500">
-                    {fmtLocal(milestone.dueISO)} â€¢ {milestone.owner}
+                  <div className="mt-1 text-[11px] text-faith-slate">
+                    {fmtLocal(milestone.dueISO)} • {milestone.owner}
                   </div>
                 </div>
               ))}
@@ -1109,7 +1109,7 @@ function ProjectCard({
         "w-full rounded-[24px] border px-4 py-4 text-left transition",
         selected
           ? "border-emerald-300 bg-emerald-50/60"
-          : "border-slate-200 bg-white hover:bg-slate-50",
+          : "border-faith-line bg-[var(--fh-surface-bg)] hover:bg-[var(--fh-surface)]",
       )}
     >
       <div className="flex items-start gap-3">
@@ -1132,8 +1132,8 @@ function ProjectCard({
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-start justify-between gap-2">
             <div className="min-w-0">
-              <div className="text-[13px] font-black text-slate-900">{project.title}</div>
-              <div className="mt-1 line-clamp-2 text-[12px] leading-5 text-slate-500">
+              <div className="text-[13px] font-black text-faith-ink">{project.title}</div>
+              <div className="mt-1 line-clamp-2 text-[12px] leading-5 text-faith-slate">
                 {project.subtitle}
               </div>
             </div>
@@ -1143,46 +1143,46 @@ function ProjectCard({
             </div>
           </div>
 
-          <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] text-slate-500">
+          <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] text-faith-slate">
             <span>{project.type}</span>
-            <span>â€¢</span>
+            <span>•</span>
             <span>{project.campus}</span>
-            <span>â€¢</span>
+            <span>•</span>
             <span>{project.owner}</span>
-            <span>â€¢</span>
+            <span>•</span>
             <span>{project.language.join(" + ")}</span>
           </div>
 
           <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
-            <div className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2">
-              <div className="text-[10px] uppercase tracking-[0.14em] text-slate-400">
+            <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2">
+              <div className="text-[10px] uppercase tracking-[0.14em] text-faith-slate">
                 Volunteers
               </div>
-              <div className="mt-1 text-[14px] font-black text-slate-900">
+              <div className="mt-1 text-[14px] font-black text-faith-ink">
                 {project.volunteersFilled}/{project.volunteersNeeded}
               </div>
             </div>
-            <div className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2">
-              <div className="text-[10px] uppercase tracking-[0.14em] text-slate-400">
+            <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2">
+              <div className="text-[10px] uppercase tracking-[0.14em] text-faith-slate">
                 Raised
               </div>
-              <div className="mt-1 text-[14px] font-black text-slate-900">
+              <div className="mt-1 text-[14px] font-black text-faith-ink">
                 {money(project.raised)}
               </div>
             </div>
-            <div className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2">
-              <div className="text-[10px] uppercase tracking-[0.14em] text-slate-400">
+            <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2">
+              <div className="text-[10px] uppercase tracking-[0.14em] text-faith-slate">
                 Beneficiaries
               </div>
-              <div className="mt-1 text-[14px] font-black text-slate-900">
+              <div className="mt-1 text-[14px] font-black text-faith-ink">
                 {fmtInt(project.beneficiaries)}
               </div>
             </div>
-            <div className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2">
-              <div className="text-[10px] uppercase tracking-[0.14em] text-slate-400">
+            <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2">
+              <div className="text-[10px] uppercase tracking-[0.14em] text-faith-slate">
                 Prayer backlog
               </div>
-              <div className="mt-1 text-[14px] font-black text-slate-900">
+              <div className="mt-1 text-[14px] font-black text-faith-ink">
                 {project.prayerRequests}
               </div>
             </div>
@@ -1190,7 +1190,7 @@ function ProjectCard({
 
           <div className="mt-3 grid gap-3 sm:grid-cols-2">
             <div>
-              <div className="flex items-center justify-between text-[11px] font-bold text-slate-500">
+              <div className="flex items-center justify-between text-[11px] font-bold text-faith-slate">
                 <span>Volunteer coverage</span>
                 <span>{volunteerPct}%</span>
               </div>
@@ -1202,7 +1202,7 @@ function ProjectCard({
               </div>
             </div>
             <div>
-              <div className="flex items-center justify-between text-[11px] font-bold text-slate-500">
+              <div className="flex items-center justify-between text-[11px] font-bold text-faith-slate">
                 <span>Funding progress</span>
                 <span>{fundingPct}%</span>
               </div>
@@ -1219,7 +1219,7 @@ function ProjectCard({
             {project.tags.slice(0, 4).map((tag) => (
               <span
                 key={tag}
-                className="rounded-full border border-slate-200 bg-white px-2.5 py-1 text-[10px] font-bold text-slate-500"
+                className="rounded-full border border-faith-line bg-[var(--fh-surface-bg)] px-2.5 py-1 text-[10px] font-bold text-faith-slate"
               >
                 {tag}
               </span>
@@ -1248,7 +1248,7 @@ function ProjectsPage() {
   const [milestoneState, setMilestoneState] = useState<MilestoneState>("Ready");
 
   const [roleLabel, setRoleLabel] = useState("");
-  const [roleShift, setRoleShift] = useState("Sat Â· 09:00â€“14:00");
+  const [roleShift, setRoleShift] = useState("Sat · 09:00–14:00");
   const [roleNeeded, setRoleNeeded] = useState("6");
   const [roleFilled, setRoleFilled] = useState("0");
   const [publishToAudience, setPublishToAudience] = useState(true);
@@ -1429,7 +1429,7 @@ function ProjectsPage() {
 
     setRecruitOpen(false);
     setRoleLabel("");
-    setRoleShift("Sat Â· 09:00â€“14:00");
+    setRoleShift("Sat · 09:00–14:00");
     setRoleNeeded("6");
     setRoleFilled("0");
     setPublishToAudience(true);
@@ -1438,30 +1438,30 @@ function ProjectsPage() {
   if (!selectedProject) return null;
 
   return (
-    <div className="min-h-screen bg-[#f2f2f2] text-slate-900">
+    <div className="min-h-screen bg-[var(--fh-page-bg)] text-faith-ink">
       <div className="mx-auto max-w-[1600px] px-5 py-5">
         <div className="space-y-4">
           {/* Hero */}
-          <div className="rounded-[34px] border border-slate-200 bg-white px-5 py-5 shadow-sm">
+          <div className="rounded-[34px] border border-faith-line bg-[var(--fh-surface-bg)] px-5 py-5 shadow-soft">
             <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
               <div className="min-w-0">
-                <div className="text-[11px] font-black uppercase tracking-[0.2em] text-slate-500">
+                <div className="text-[11px] font-black uppercase tracking-[0.2em] text-faith-slate">
                   Community impact & operations
                 </div>
                 <div className="mt-1 flex items-center gap-3">
                   <div
-                    className="grid h-12 w-12 place-items-center rounded-2xl text-white shadow-sm"
+                    className="grid h-12 w-12 place-items-center rounded-2xl text-white shadow-soft"
                     style={{ background: EV_GREEN }}
                   >
                     <Workflow className="h-6 w-6" />
                   </div>
                   <div>
-                    <div className="text-[22px] font-black leading-tight text-slate-900">
+                    <div className="text-[22px] font-black leading-tight text-faith-ink">
                       Projects
                     </div>
-                    <div className="mt-1 max-w-3xl text-[14px] leading-6 text-slate-500">
+                    <div className="mt-1 max-w-3xl text-[14px] leading-6 text-faith-slate">
                       Premium command page for missions, outreach, volunteer drives, build projects,
-                      charity actions, and impact progress â€” tightly linked to giving, audience journeys,
+                      charity actions, and impact progress — tightly linked to giving, audience journeys,
                       Beacon promotion, Live Sessions, and events.
                     </div>
                   </div>
@@ -1497,9 +1497,9 @@ function ProjectsPage() {
           </div>
 
           {/* Pulse strip */}
-          <div className="rounded-[26px] border border-slate-200 bg-white px-5 py-3 shadow-sm">
+          <div className="rounded-[26px] border border-faith-line bg-[var(--fh-surface-bg)] px-5 py-3 shadow-soft">
             <div className="flex flex-wrap items-center justify-between gap-3">
-              <div className="flex flex-wrap items-center gap-3 text-[13px] text-slate-500">
+              <div className="flex flex-wrap items-center gap-3 text-[13px] text-faith-slate">
                 <span
                   className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[11px] font-black uppercase tracking-[0.14em]"
                   style={{
@@ -1513,16 +1513,16 @@ function ProjectsPage() {
                 <span>
                   2 projects need volunteer reinforcement
                 </span>
-                <span>â€¢</span>
+                <span>•</span>
                 <span>
                   1 charity action is ready for Beacon amplification
                 </span>
-                <span>â€¢</span>
+                <span>•</span>
                 <span>
                   3 milestones are due within the next 48 hours
                 </span>
               </div>
-              <div className="text-[11px] font-black uppercase tracking-[0.16em] text-slate-400">
+              <div className="text-[11px] font-black uppercase tracking-[0.16em] text-faith-slate">
                 Premium community projects
               </div>
             </div>
@@ -1548,13 +1548,13 @@ function ProjectsPage() {
                   <div className="flex flex-col gap-3 lg:flex-row">
                     <SearchInput value={search} onChange={setSearch} />
                     <div className="flex gap-2">
-                      <div className="rounded-2xl border border-slate-200 bg-white px-3 py-3 text-[12px] font-bold text-slate-500">
+                      <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-3 text-[12px] font-bold text-faith-slate">
                         <Filter className="h-4 w-4" />
                       </div>
-                      <div className="min-w-[170px] rounded-2xl border border-slate-200 bg-white px-3 py-3">
+                      <div className="min-w-[170px] rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-3">
                         <div className="flex items-center justify-between gap-2 text-[12px] font-bold text-slate-700">
                           {statusFilter}
-                          <ChevronDown className="h-4 w-4 text-slate-400" />
+                          <ChevronDown className="h-4 w-4 text-faith-slate" />
                         </div>
                       </div>
                     </div>
@@ -1572,7 +1572,7 @@ function ProjectsPage() {
                           "rounded-full border px-3 py-1.5 text-[11px] font-black transition",
                           statusFilter === status
                             ? "border-transparent text-white"
-                            : "border-slate-200 bg-white text-slate-500 hover:bg-slate-50",
+                            : "border-faith-line bg-[var(--fh-surface-bg)] text-faith-slate hover:bg-[var(--fh-surface)]",
                         )}
                         style={
                           statusFilter === status
@@ -1595,7 +1595,7 @@ function ProjectsPage() {
                           "rounded-full border px-3 py-1.5 text-[11px] font-black transition",
                           typeFilter === type
                             ? "border-transparent text-white"
-                            : "border-slate-200 bg-white text-slate-500 hover:bg-slate-50",
+                            : "border-faith-line bg-[var(--fh-surface-bg)] text-faith-slate hover:bg-[var(--fh-surface)]",
                         )}
                         style={
                           typeFilter === type
@@ -1644,20 +1644,20 @@ function ProjectsPage() {
                   {TEMPLATE_CARDS.map((template) => (
                     <div
                       key={template.id}
-                      className="rounded-[24px] border border-slate-200 bg-slate-50 px-4 py-4"
+                      className="rounded-[24px] border border-faith-line bg-[var(--fh-surface)] px-4 py-4"
                     >
                       <div
                         className="h-2 w-20 rounded-full"
                         style={{ background: accentColor(template.accent) }}
                       />
-                      <div className="mt-3 text-[16px] font-black text-slate-900">
+                      <div className="mt-3 text-[16px] font-black text-faith-ink">
                         {template.title}
                       </div>
-                      <div className="mt-2 text-[12px] leading-5 text-slate-500">
+                      <div className="mt-2 text-[12px] leading-5 text-faith-slate">
                         {template.subtitle}
                       </div>
                       <div className="mt-4 flex items-center justify-between">
-                        <div className="text-[11px] font-bold text-slate-400">
+                        <div className="text-[11px] font-bold text-faith-slate">
                           Premium starter
                         </div>
                         <button
@@ -1716,15 +1716,15 @@ function ProjectsPage() {
                     {milestoneDueNow.map((milestone) => (
                       <div
                         key={milestone.id}
-                        className="rounded-[22px] border border-slate-200 bg-slate-50 px-3 py-3"
+                        className="rounded-[22px] border border-faith-line bg-[var(--fh-surface)] px-3 py-3"
                       >
                         <div className="flex items-start justify-between gap-2">
                           <div className="min-w-0">
-                            <div className="truncate text-[13px] font-black text-slate-900">
+                            <div className="truncate text-[13px] font-black text-faith-ink">
                               {milestone.label}
                             </div>
-                            <div className="mt-1 text-[11px] text-slate-500">
-                              {fmtLocal(milestone.dueISO)} â€¢ {milestone.owner}
+                            <div className="mt-1 text-[11px] text-faith-slate">
+                              {fmtLocal(milestone.dueISO)} • {milestone.owner}
                             </div>
                           </div>
                           <Pill tone={toneForMilestoneState(milestone.state)}>
@@ -1748,14 +1748,14 @@ function ProjectsPage() {
                     return (
                       <div
                         key={role.id}
-                        className="rounded-[22px] border border-slate-200 bg-slate-50 px-3 py-3"
+                        className="rounded-[22px] border border-faith-line bg-[var(--fh-surface)] px-3 py-3"
                       >
                         <div className="flex items-start justify-between gap-2">
                           <div className="min-w-0">
-                            <div className="truncate text-[13px] font-black text-slate-900">
+                            <div className="truncate text-[13px] font-black text-faith-ink">
                               {role.label}
                             </div>
-                            <div className="mt-1 text-[11px] text-slate-500">
+                            <div className="mt-1 text-[11px] text-faith-slate">
                               {role.shift}
                             </div>
                           </div>
@@ -1763,7 +1763,7 @@ function ProjectsPage() {
                             {role.filled}/{role.needed}
                           </Pill>
                         </div>
-                        <div className="mt-3 h-2 overflow-hidden rounded-full bg-white">
+                        <div className="mt-3 h-2 overflow-hidden rounded-full bg-[var(--fh-surface-bg)]">
                           <div
                             className="h-full rounded-full"
                             style={{
@@ -1791,12 +1791,12 @@ function ProjectsPage() {
                   {selectedProject.hooks.map((hook) => (
                     <div
                       key={hook.id}
-                      className="rounded-[22px] border border-slate-200 bg-slate-50 px-3 py-3"
+                      className="rounded-[22px] border border-faith-line bg-[var(--fh-surface)] px-3 py-3"
                     >
                       <div className="flex items-start justify-between gap-2">
                         <div className="min-w-0">
-                          <div className="text-[13px] font-black text-slate-900">{hook.label}</div>
-                          <div className="mt-1 text-[11px] leading-5 text-slate-500">
+                          <div className="text-[13px] font-black text-faith-ink">{hook.label}</div>
+                          <div className="mt-1 text-[11px] leading-5 text-faith-slate">
                             {hook.hint}
                           </div>
                         </div>
@@ -1804,14 +1804,14 @@ function ProjectsPage() {
                       </div>
                     </div>
                   ))}
-                  <div className="rounded-[22px] border border-slate-200 bg-white px-3 py-3">
-                    <div className="text-[11px] uppercase tracking-[0.14em] text-slate-400">
+                  <div className="rounded-[22px] border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-3">
+                    <div className="text-[11px] uppercase tracking-[0.14em] text-faith-slate">
                       Ready surfaces
                     </div>
-                    <div className="mt-1 text-[24px] font-black text-slate-900">
+                    <div className="mt-1 text-[24px] font-black text-faith-ink">
                       {totalHookReady}
                     </div>
-                    <div className="mt-1 text-[12px] leading-5 text-slate-500">
+                    <div className="mt-1 text-[12px] leading-5 text-faith-slate">
                       Noticeboard, Audience, Live, Giving, and Beacon handoffs that can be used right now.
                     </div>
                   </div>
@@ -1825,7 +1825,7 @@ function ProjectsPage() {
                 title="Project destination preview"
                 subtitle="Persistent preview rail for the selected public-facing project page, volunteer CTA, and giving path."
                 right={
-                  <div className="inline-flex rounded-full border border-slate-200 bg-slate-50 p-1">
+                  <div className="inline-flex rounded-full border border-faith-line bg-[var(--fh-surface)] p-1">
                     <button
                       type="button"
                       onClick={() => setPreviewMode("desktop")}
@@ -1833,7 +1833,7 @@ function ProjectsPage() {
                         "rounded-full px-3 py-1 text-[11px] font-black transition",
                         previewMode === "desktop"
                           ? "bg-slate-900 text-white"
-                          : "text-slate-500",
+                          : "text-faith-slate",
                       )}
                     >
                       Desktop
@@ -1845,7 +1845,7 @@ function ProjectsPage() {
                         "rounded-full px-3 py-1 text-[11px] font-black transition",
                         previewMode === "mobile"
                           ? "bg-slate-900 text-white"
-                          : "text-slate-500",
+                          : "text-faith-slate",
                       )}
                     >
                       Mobile
@@ -1877,14 +1877,14 @@ function ProjectsPage() {
                 subtitle="Why this project matters now and where momentum is coming from."
               >
                 <div className="space-y-3">
-                  <div className="rounded-[22px] border border-slate-200 bg-slate-50 px-3 py-3">
-                    <div className="text-[11px] uppercase tracking-[0.14em] text-slate-400">
+                  <div className="rounded-[22px] border border-faith-line bg-[var(--fh-surface)] px-3 py-3">
+                    <div className="text-[11px] uppercase tracking-[0.14em] text-faith-slate">
                       Funding mode
                     </div>
-                    <div className="mt-1 text-[15px] font-black text-slate-900">
+                    <div className="mt-1 text-[15px] font-black text-faith-ink">
                       {selectedProject.fundingMode}
                     </div>
-                    <div className="mt-2 text-[12px] leading-5 text-slate-500">
+                    <div className="mt-2 text-[12px] leading-5 text-faith-slate">
                       {selectedProject.linkedCrowdfund
                         ? `Linked crowdfund: ${selectedProject.linkedCrowdfund}`
                         : selectedProject.fundingMode === "Fund-linked"
@@ -1893,8 +1893,8 @@ function ProjectsPage() {
                     </div>
                   </div>
 
-                  <div className="rounded-[22px] border border-slate-200 bg-slate-50 px-3 py-3">
-                    <div className="text-[11px] uppercase tracking-[0.14em] text-slate-400">
+                  <div className="rounded-[22px] border border-faith-line bg-[var(--fh-surface)] px-3 py-3">
+                    <div className="text-[11px] uppercase tracking-[0.14em] text-faith-slate">
                       Linked ministry objects
                     </div>
                     <div className="mt-2 flex flex-wrap gap-2">
@@ -1924,14 +1924,14 @@ function ProjectsPage() {
               {NETWORK_LANES.map((lane) => (
                 <div
                   key={lane.id}
-                  className="rounded-[24px] border border-slate-200 bg-slate-50 px-4 py-4"
+                  className="rounded-[24px] border border-faith-line bg-[var(--fh-surface)] px-4 py-4"
                 >
                   <div className="flex items-start justify-between gap-3">
                     <div>
-                      <div className="text-[16px] font-black text-slate-900">
+                      <div className="text-[16px] font-black text-faith-ink">
                         {lane.title}
                       </div>
-                      <div className="mt-2 text-[12px] leading-5 text-slate-500">
+                      <div className="mt-2 text-[12px] leading-5 text-faith-slate">
                         {lane.subtitle}
                       </div>
                     </div>
@@ -1939,7 +1939,7 @@ function ProjectsPage() {
                       {lane.state}
                     </Pill>
                   </div>
-                  <div className="mt-4 text-[12px] font-bold text-slate-400">
+                  <div className="mt-4 text-[12px] font-bold text-faith-slate">
                     {lane.count} destinations
                   </div>
                 </div>
@@ -1947,7 +1947,7 @@ function ProjectsPage() {
             </div>
           </Card>
 
-          <div className="rounded-full border border-emerald-200 bg-emerald-50 px-4 py-1.5 text-center text-[12px] text-slate-500">
+          <div className="rounded-full border border-emerald-200 bg-emerald-50 px-4 py-1.5 text-center text-[12px] text-faith-slate">
             Preview
           </div>
         </div>
@@ -1957,12 +1957,12 @@ function ProjectsPage() {
       <Drawer
         open={previewOpen}
         onClose={() => setPreviewOpen(false)}
-        title="Projects Â· Large preview"
+        title="Projects · Large preview"
         subtitle="Premium preview of the selected project destination, impact story, volunteer CTA, and funding path."
       >
         <div className="grid gap-6 xl:grid-cols-[minmax(0,1.2fr)_420px]">
           <div className="space-y-4">
-            <div className="rounded-[30px] border border-slate-200 bg-slate-50 p-4">
+            <div className="rounded-[30px] border border-faith-line bg-[var(--fh-surface)] p-4">
               <ProjectDestinationPreview
                 project={selectedProject}
                 previewMode={previewMode}
@@ -1974,16 +1974,16 @@ function ProjectsPage() {
               subtitle="What the community sees when they open this project destination."
             >
               <div className="grid gap-4 md:grid-cols-2">
-                <div className="rounded-[22px] border border-slate-200 bg-slate-50 px-4 py-4">
-                  <div className="text-[11px] uppercase tracking-[0.14em] text-slate-400">
+                <div className="rounded-[22px] border border-faith-line bg-[var(--fh-surface)] px-4 py-4">
+                  <div className="text-[11px] uppercase tracking-[0.14em] text-faith-slate">
                     Story promise
                   </div>
-                  <div className="mt-2 text-[13px] leading-6 text-slate-600">
+                  <div className="mt-2 text-[13px] leading-6 text-faith-slate">
                     {selectedProject.description}
                   </div>
                 </div>
-                <div className="rounded-[22px] border border-slate-200 bg-slate-50 px-4 py-4">
-                  <div className="text-[11px] uppercase tracking-[0.14em] text-slate-400">
+                <div className="rounded-[22px] border border-faith-line bg-[var(--fh-surface)] px-4 py-4">
+                  <div className="text-[11px] uppercase tracking-[0.14em] text-faith-slate">
                     Public trust stack
                   </div>
                   <div className="mt-2 flex flex-wrap gap-2">
@@ -2000,21 +2000,21 @@ function ProjectsPage() {
 
           <div className="space-y-4">
             <Card title="Preview notes" subtitle="Operational interpretation of the selected project destination.">
-              <div className="space-y-3 text-[12px] leading-5 text-slate-500">
+              <div className="space-y-3 text-[12px] leading-5 text-faith-slate">
                 <div>
-                  <span className="font-black text-slate-900">Status:</span> {selectedProject.status}
+                  <span className="font-black text-faith-ink">Status:</span> {selectedProject.status}
                 </div>
                 <div>
-                  <span className="font-black text-slate-900">Funding mode:</span> {selectedProject.fundingMode}
+                  <span className="font-black text-faith-ink">Funding mode:</span> {selectedProject.fundingMode}
                 </div>
                 <div>
-                  <span className="font-black text-slate-900">Volunteer need:</span> {selectedProject.volunteersNeeded - selectedProject.volunteersFilled} open positions still visible.
+                  <span className="font-black text-faith-ink">Volunteer need:</span> {selectedProject.volunteersNeeded - selectedProject.volunteersFilled} open positions still visible.
                 </div>
                 <div>
-                  <span className="font-black text-slate-900">Primary CTA mix:</span> Join team, Give now, Share update.
+                  <span className="font-black text-faith-ink">Primary CTA mix:</span> Join team, Give now, Share update.
                 </div>
                 <div>
-                  <span className="font-black text-slate-900">Linked surfaces:</span> {selectedProject.hooks.map((hook) => hook.label).join(", ")}
+                  <span className="font-black text-faith-ink">Linked surfaces:</span> {selectedProject.hooks.map((hook) => hook.label).join(", ")}
                 </div>
               </div>
             </Card>
@@ -2054,44 +2054,44 @@ function ProjectsPage() {
           <Card title="Milestone composer" subtitle="Create a milestone that keeps the project accountable, visible, and operationally clear.">
             <div className="grid gap-4">
               <div>
-                <div className="text-[11px] font-black uppercase tracking-[0.14em] text-slate-500">
+                <div className="text-[11px] font-black uppercase tracking-[0.14em] text-faith-slate">
                   Milestone title
                 </div>
                 <input
                   value={milestoneTitle}
                   onChange={(e) => setMilestoneTitle(e.target.value)}
                   placeholder="Example: Publish donor impact update"
-                  className="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13px] font-semibold text-slate-800 outline-none transition focus:border-emerald-300 focus:bg-white"
+                  className="mt-2 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-4 py-3 text-[13px] font-semibold text-slate-800 outline-none transition focus:border-emerald-300 focus:bg-[var(--fh-surface-bg)]"
                 />
               </div>
 
               <div className="grid gap-4 md:grid-cols-2">
                 <div>
-                  <div className="text-[11px] font-black uppercase tracking-[0.14em] text-slate-500">
+                  <div className="text-[11px] font-black uppercase tracking-[0.14em] text-faith-slate">
                     Due date
                   </div>
                   <input
                     type="datetime-local"
                     value={milestoneDue}
                     onChange={(e) => setMilestoneDue(e.target.value)}
-                    className="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13px] font-semibold text-slate-800 outline-none transition focus:border-emerald-300 focus:bg-white"
+                    className="mt-2 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-4 py-3 text-[13px] font-semibold text-slate-800 outline-none transition focus:border-emerald-300 focus:bg-[var(--fh-surface-bg)]"
                   />
                 </div>
 
                 <div>
-                  <div className="text-[11px] font-black uppercase tracking-[0.14em] text-slate-500">
+                  <div className="text-[11px] font-black uppercase tracking-[0.14em] text-faith-slate">
                     Owner
                   </div>
                   <input
                     value={milestoneOwner}
                     onChange={(e) => setMilestoneOwner(e.target.value)}
-                    className="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13px] font-semibold text-slate-800 outline-none transition focus:border-emerald-300 focus:bg-white"
+                    className="mt-2 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-4 py-3 text-[13px] font-semibold text-slate-800 outline-none transition focus:border-emerald-300 focus:bg-[var(--fh-surface-bg)]"
                   />
                 </div>
               </div>
 
               <div>
-                <div className="text-[11px] font-black uppercase tracking-[0.14em] text-slate-500">
+                <div className="text-[11px] font-black uppercase tracking-[0.14em] text-faith-slate">
                   State
                 </div>
                 <div className="mt-2 flex flex-wrap gap-2">
@@ -2104,7 +2104,7 @@ function ProjectsPage() {
                         "rounded-full border px-3 py-1.5 text-[11px] font-black transition",
                         milestoneState === state
                           ? "border-transparent text-white"
-                          : "border-slate-200 bg-white text-slate-500 hover:bg-slate-50",
+                          : "border-faith-line bg-[var(--fh-surface-bg)] text-faith-slate hover:bg-[var(--fh-surface)]",
                       )}
                       style={
                         milestoneState === state
@@ -2139,11 +2139,11 @@ function ProjectsPage() {
           </Card>
 
           <Card title="Milestone guidance" subtitle="Premium standard for project execution discipline.">
-            <div className="space-y-3 text-[12px] leading-5 text-slate-500">
+            <div className="space-y-3 text-[12px] leading-5 text-faith-slate">
               <div>Use milestones to create visible moments that operations, finance, care, and communications can all align around.</div>
               <div>Good milestones usually have one clear owner, one real due date, and one linked action such as a noticeboard update, volunteer shift, donor proof post, or live moment.</div>
-              <div className="rounded-[22px] border border-slate-200 bg-slate-50 px-4 py-4">
-                <div className="text-[11px] uppercase tracking-[0.14em] text-slate-400">
+              <div className="rounded-[22px] border border-faith-line bg-[var(--fh-surface)] px-4 py-4">
+                <div className="text-[11px] uppercase tracking-[0.14em] text-faith-slate">
                   Suggested examples
                 </div>
                 <div className="mt-2 space-y-2">
@@ -2169,31 +2169,31 @@ function ProjectsPage() {
           <Card title="Recruitment composer" subtitle="Add a project role, define its target headcount, and prepare outreach for the right people.">
             <div className="grid gap-4">
               <div>
-                <div className="text-[11px] font-black uppercase tracking-[0.14em] text-slate-500">
+                <div className="text-[11px] font-black uppercase tracking-[0.14em] text-faith-slate">
                   Role name
                 </div>
                 <input
                   value={roleLabel}
                   onChange={(e) => setRoleLabel(e.target.value)}
                   placeholder="Example: Distribution volunteers"
-                  className="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13px] font-semibold text-slate-800 outline-none transition focus:border-emerald-300 focus:bg-white"
+                  className="mt-2 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-4 py-3 text-[13px] font-semibold text-slate-800 outline-none transition focus:border-emerald-300 focus:bg-[var(--fh-surface-bg)]"
                 />
               </div>
 
               <div>
-                <div className="text-[11px] font-black uppercase tracking-[0.14em] text-slate-500">
+                <div className="text-[11px] font-black uppercase tracking-[0.14em] text-faith-slate">
                   Shift or coverage window
                 </div>
                 <input
                   value={roleShift}
                   onChange={(e) => setRoleShift(e.target.value)}
-                  className="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13px] font-semibold text-slate-800 outline-none transition focus:border-emerald-300 focus:bg-white"
+                  className="mt-2 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-4 py-3 text-[13px] font-semibold text-slate-800 outline-none transition focus:border-emerald-300 focus:bg-[var(--fh-surface-bg)]"
                 />
               </div>
 
               <div className="grid gap-4 md:grid-cols-2">
                 <div>
-                  <div className="text-[11px] font-black uppercase tracking-[0.14em] text-slate-500">
+                  <div className="text-[11px] font-black uppercase tracking-[0.14em] text-faith-slate">
                     Needed
                   </div>
                   <input
@@ -2201,12 +2201,12 @@ function ProjectsPage() {
                     min={1}
                     value={roleNeeded}
                     onChange={(e) => setRoleNeeded(e.target.value)}
-                    className="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13px] font-semibold text-slate-800 outline-none transition focus:border-emerald-300 focus:bg-white"
+                    className="mt-2 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-4 py-3 text-[13px] font-semibold text-slate-800 outline-none transition focus:border-emerald-300 focus:bg-[var(--fh-surface-bg)]"
                   />
                 </div>
 
                 <div>
-                  <div className="text-[11px] font-black uppercase tracking-[0.14em] text-slate-500">
+                  <div className="text-[11px] font-black uppercase tracking-[0.14em] text-faith-slate">
                     Already filled
                   </div>
                   <input
@@ -2214,18 +2214,18 @@ function ProjectsPage() {
                     min={0}
                     value={roleFilled}
                     onChange={(e) => setRoleFilled(e.target.value)}
-                    className="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13px] font-semibold text-slate-800 outline-none transition focus:border-emerald-300 focus:bg-white"
+                    className="mt-2 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-4 py-3 text-[13px] font-semibold text-slate-800 outline-none transition focus:border-emerald-300 focus:bg-[var(--fh-surface-bg)]"
                   />
                 </div>
               </div>
 
-              <div className="rounded-[22px] border border-slate-200 bg-slate-50 px-4 py-4">
+              <div className="rounded-[22px] border border-faith-line bg-[var(--fh-surface)] px-4 py-4">
                 <div className="flex items-start justify-between gap-3">
                   <div>
-                    <div className="text-[13px] font-black text-slate-900">
+                    <div className="text-[13px] font-black text-faith-ink">
                       Send role into audience recruitment flow
                     </div>
-                    <div className="mt-1 text-[12px] leading-5 text-slate-500">
+                    <div className="mt-1 text-[12px] leading-5 text-faith-slate">
                       Push the role into Audience Notifications or Noticeboard so the right segment can be mobilized quickly.
                     </div>
                   </div>
@@ -2237,7 +2237,7 @@ function ProjectsPage() {
                       publishToAudience ? "bg-slate-900 justify-end" : "bg-slate-300 justify-start",
                     )}
                   >
-                    <span className="mx-1 h-4 w-4 rounded-full bg-white shadow-sm" />
+                    <span className="mx-1 h-4 w-4 rounded-full bg-[var(--fh-surface-bg)] shadow-soft" />
                   </button>
                 </div>
               </div>
@@ -2256,11 +2256,11 @@ function ProjectsPage() {
           </Card>
 
           <Card title="Recruitment guidance" subtitle="Keep project team asks clear, visible, and spiritually warm.">
-            <div className="space-y-3 text-[12px] leading-5 text-slate-500">
+            <div className="space-y-3 text-[12px] leading-5 text-faith-slate">
               <div>Roles should be easy to understand, time-bounded where possible, and clearly tied to the project mission or milestone they support.</div>
               <div>For high-trust ministries, include safety expectations, shift ownership, and whether the role needs approval, training, or child-safe handling.</div>
-              <div className="rounded-[22px] border border-slate-200 bg-slate-50 px-4 py-4">
-                <div className="text-[11px] uppercase tracking-[0.14em] text-slate-400">
+              <div className="rounded-[22px] border border-faith-line bg-[var(--fh-surface)] px-4 py-4">
+                <div className="text-[11px] uppercase tracking-[0.14em] text-faith-slate">
                   Best uses
                 </div>
                 <div className="mt-2 flex flex-wrap gap-2">
@@ -2279,6 +2279,7 @@ function ProjectsPage() {
 }
 
 export default ProjectsPage;
+
 
 
 

@@ -1,4 +1,4 @@
-ï»¿// @ts-nocheck
+// @ts-nocheck
 'use client';
 
 import React, { useEffect, useMemo, useState } from 'react';
@@ -43,7 +43,7 @@ import {
 } from 'lucide-react';
 
 /**
- * Provider â€” Stream-to-Platforms
+ * Provider — Stream-to-Platforms
  * ---------------------------------------
  * Premium multi-destination distribution page for Live Sessions.
  *
@@ -70,7 +70,7 @@ const ROUTES = {
   beaconBuilder: '/faithhub/provider/beacon-builder',
 };
 
-const DEFAULT_SESSION_TITLE = 'Sunday Encounter Live Â· The Way of Grace';
+const DEFAULT_SESSION_TITLE = 'Sunday Encounter Live · The Way of Grace';
 const DEFAULT_THUMBNAIL =
   'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1200&q=60';
 
@@ -240,7 +240,7 @@ function Badge({
             ? 'bg-blue-50 text-blue-700 ring-blue-200 dark:bg-blue-500/10 dark:text-blue-400 dark:ring-blue-500/20'
             : tone === 'purple'
               ? 'bg-purple-50 text-purple-700 ring-purple-200 dark:bg-violet-500/10 dark:text-violet-400 dark:ring-violet-500/20'
-              : 'bg-slate-50 text-slate-700 ring-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:ring-slate-700';
+              : 'bg-[var(--fh-surface)] text-slate-700 ring-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:ring-slate-700';
   return (
     <span title={title} className={cx('inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[10px] sm:text-[11px] font-bold ring-1 whitespace-nowrap', cls)}>
       {children}
@@ -266,8 +266,8 @@ function Pill({
       className={cx(
         'inline-flex items-center justify-center rounded-full px-3 py-1.5 text-[10px] sm:text-xs font-semibold transition active:scale-[0.98]',
         active
-          ? 'bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900'
-          : 'bg-white text-slate-800 ring-1 ring-slate-200 hover:bg-slate-50 dark:bg-slate-900 dark:text-slate-300 dark:ring-slate-800 dark:hover:bg-slate-800'
+          ? 'bg-slate-900 text-white dark:bg-slate-100 dark:text-faith-ink'
+          : 'bg-[var(--fh-surface-bg)] text-slate-800 ring-1 ring-slate-200 hover:bg-[var(--fh-surface)] dark:bg-slate-900 dark:text-slate-300 dark:ring-slate-800 dark:hover:bg-slate-800'
       )}
     >
       {children}
@@ -298,7 +298,7 @@ function Toggle({
     >
       <span
         className={cx(
-          'inline-block h-4 w-4 sm:h-5 sm:w-5 transform rounded-full bg-white dark:bg-slate-100 shadow transition',
+          'inline-block h-4 w-4 sm:h-5 sm:w-5 transform rounded-full bg-[var(--fh-surface-bg)] dark:bg-slate-100 shadow transition',
           checked ? 'translate-x-5' : 'translate-x-1'
         )}
       />
@@ -374,20 +374,20 @@ function Modal({
       <div className="absolute inset-0 bg-black/40 dark:bg-black/60 backdrop-blur-sm transition-opacity" onClick={onClose} />
       <div
         className={cx(
-          'relative flex w-full flex-col bg-white dark:bg-slate-900 shadow-2xl transition-all h-[95vh] sm:h-auto sm:max-h-[90vh] rounded-t-3xl sm:rounded-[14px] overflow-hidden ring-1 ring-slate-200 dark:ring-slate-800',
+          'relative flex w-full flex-col bg-[var(--fh-surface-bg)] dark:bg-slate-900 shadow-2xl transition-all h-[95vh] sm:h-auto sm:max-h-[90vh] rounded-t-3xl sm:rounded-[14px] overflow-hidden ring-1 ring-slate-200 dark:ring-slate-800',
           wide ? 'max-w-6xl' : 'max-w-2xl'
         )}
       >
-        <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 px-5 py-3">
+        <div className="flex items-center justify-between border-b border-faith-line dark:border-slate-800 px-5 py-3">
           <div className="min-w-0">
-            <div className="truncate text-sm sm:text-base font-semibold text-slate-900 dark:text-slate-50">{title}</div>
-            {subtitle ? <div className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400">{subtitle}</div> : null}
+            <div className="truncate text-sm sm:text-base font-semibold text-faith-ink dark:text-slate-50">{title}</div>
+            {subtitle ? <div className="text-[10px] sm:text-xs text-faith-slate">{subtitle}</div> : null}
           </div>
           <button
             onClick={onClose}
             className="inline-flex h-9 w-9 items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
           >
-            <X className="h-5 w-5 text-slate-600 dark:text-slate-400" />
+            <X className="h-5 w-5 text-faith-slate" />
           </button>
         </div>
         <div className="flex-1 overflow-auto p-4 sm:p-6">{children}</div>
@@ -410,12 +410,12 @@ function SectionTitle({
   return (
     <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
       <div className="flex items-start gap-3">
-        <div className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 shadow-sm transition">
+        <div className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-slate-900 text-white dark:bg-slate-100 dark:text-faith-ink shadow-soft transition">
           {icon}
         </div>
         <div className="min-w-0">
-          <div className="text-base font-bold text-slate-900 dark:text-slate-50 leading-tight">{title}</div>
-          {subtitle ? <div className="mt-1 text-xs text-slate-500 dark:text-slate-400 leading-normal">{subtitle}</div> : null}
+          <div className="text-base font-bold text-faith-ink dark:text-slate-50 leading-tight">{title}</div>
+          {subtitle ? <div className="mt-1 text-xs text-faith-slate leading-normal">{subtitle}</div> : null}
         </div>
       </div>
       {right ? <div className="shrink-0">{right}</div> : null}
@@ -483,9 +483,9 @@ const INITIAL_DESTINATIONS: Destination[] = normalizeRouteOrders([
     enabled: true,
     routeOrder: 1,
     owner: 'Provider Core Surface',
-    tokenStatus: 'Core surface healthy Â· no reconnect needed',
+    tokenStatus: 'Core surface healthy · no reconnect needed',
     historyNote: 'Primary in-app destination with viewer-safe fallback logic.',
-    creativeVariant: 'In-app live hero Â· Sunday Encounter',
+    creativeVariant: 'In-app live hero · Sunday Encounter',
     fallbackRule: 'Keep Provider primary',
     supportsPrivacy: true,
     supportsLanguageTracks: true,
@@ -520,7 +520,7 @@ const INITIAL_DESTINATIONS: Destination[] = normalizeRouteOrders([
     enabled: true,
     routeOrder: 2,
     owner: 'Discovery Rail',
-    tokenStatus: 'Placement ready Â· home promo lane mapped',
+    tokenStatus: 'Placement ready · home promo lane mapped',
     historyNote: 'Shows the session card on Home, Discover, and the institution profile.',
     creativeVariant: 'Home rail discovery tile',
     fallbackRule: 'Keep Provider primary',
@@ -532,7 +532,7 @@ const INITIAL_DESTINATIONS: Destination[] = normalizeRouteOrders([
     supportsCustomRTMP: false,
     thumbnailUrl: DEFAULT_THUMBNAIL,
     settings: {
-      title: 'Sunday Encounter Live Â· Home rail card',
+      title: 'Sunday Encounter Live · Home rail card',
       description: 'Discoverable live card with RSVP and caption-aware metadata.',
       privacy: 'Public',
       languageTrack: 'English main + Swahili CC',
@@ -556,8 +556,8 @@ const INITIAL_DESTINATIONS: Destination[] = normalizeRouteOrders([
     status: 'Connected',
     enabled: true,
     routeOrder: 3,
-    owner: 'Digital Media Â· Main channel',
-    tokenStatus: 'OAuth healthy Â· stream key mapped',
+    owner: 'Digital Media · Main channel',
+    tokenStatus: 'OAuth healthy · stream key mapped',
     historyNote: 'Scheduled channel with custom metadata, thumbnail, and replay carry-over.',
     creativeVariant: 'Main sermon cover',
     fallbackRule: 'Keep Provider primary',
@@ -569,7 +569,7 @@ const INITIAL_DESTINATIONS: Destination[] = normalizeRouteOrders([
     supportsCustomRTMP: false,
     thumbnailUrl: 'https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&w=1200&q=60',
     settings: {
-      title: 'Sunday Encounter Live â€¢ The Way of Grace (Official Stream)',
+      title: 'Sunday Encounter Live • The Way of Grace (Official Stream)',
       description: 'Worship, scripture, giving moment, and altar call with translated caption options.',
       privacy: 'Public',
       languageTrack: 'English main + Swahili subtitles',
@@ -593,7 +593,7 @@ const INITIAL_DESTINATIONS: Destination[] = normalizeRouteOrders([
     status: 'Needs re-auth',
     enabled: false,
     routeOrder: null,
-    owner: 'Community Page Â· Central Campus',
+    owner: 'Community Page · Central Campus',
     tokenStatus: 'Session expired 3 hours ago',
     historyNote: 'Audience presence is strong here, but the token must be re-authorized.',
     creativeVariant: 'Community live card',
@@ -608,7 +608,7 @@ const INITIAL_DESTINATIONS: Destination[] = normalizeRouteOrders([
     errorTitle: 'Facebook needs re-authentication',
     errorNext: 'Reconnect the page token before you can publish or schedule distribution.',
     settings: {
-      title: 'Sunday Encounter Live â€¢ Central Campus',
+      title: 'Sunday Encounter Live • Central Campus',
       description: 'Community-facing version with shorter description and direct join callout.',
       privacy: 'Public',
       languageTrack: 'English main track',
@@ -632,8 +632,8 @@ const INITIAL_DESTINATIONS: Destination[] = normalizeRouteOrders([
     status: 'Connected',
     enabled: true,
     routeOrder: 4,
-    owner: 'Social Team Â· Short-form channel',
-    tokenStatus: 'Connected Â· mobile publish relay ready',
+    owner: 'Social Team · Short-form channel',
+    tokenStatus: 'Connected · mobile publish relay ready',
     historyNote: 'Great for real-time reach, safe-area preview uses 9:16 crop guidance.',
     creativeVariant: 'Vertical teaser cover',
     fallbackRule: 'Keep Provider primary',
@@ -645,7 +645,7 @@ const INITIAL_DESTINATIONS: Destination[] = normalizeRouteOrders([
     supportsCustomRTMP: false,
     thumbnailUrl: 'https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1200&q=60',
     settings: {
-      title: 'Sunday Encounter â€¢ Live now',
+      title: 'Sunday Encounter • Live now',
       description: 'Vertical-friendly, urgency-led copy with join-now language.',
       languageTrack: 'English main track',
       safeAreaMode: '9:16 preview',
@@ -668,7 +668,7 @@ const INITIAL_DESTINATIONS: Destination[] = normalizeRouteOrders([
     status: 'Missing credentials',
     enabled: false,
     routeOrder: null,
-    owner: 'Growth Team Â· Creator account',
+    owner: 'Growth Team · Creator account',
     tokenStatus: 'Stream key missing',
     historyNote: 'Short-form audience is available, but the current session key is missing.',
     creativeVariant: 'Vertical hook + swipe copy',
@@ -682,11 +682,11 @@ const INITIAL_DESTINATIONS: Destination[] = normalizeRouteOrders([
     errorTitle: 'TikTok credentials missing',
     errorNext: 'Add a valid session key or region-approved connection before enabling.',
     settings: {
-      title: 'Sunday Encounter â€¢ Join the moment',
+      title: 'Sunday Encounter • Join the moment',
       description: 'Fast hook copy optimized for short attention windows.',
       languageTrack: 'English main track',
       safeAreaMode: '9:16 preview',
-      complianceNote: 'Keep title short. Donâ€™t rely on full lower-thirds in the top or bottom safe areas.',
+      complianceNote: 'Keep title short. Don’t rely on full lower-thirds in the top or bottom safe areas.',
       archiveRule: 'Keep replay internal',
       autoReconnect: false,
     },
@@ -788,7 +788,7 @@ export default function StreamToPlatformsPage() {
       id: 'credential-health',
       label: 'Enabled destinations have valid credentials and access',
       status: invalid.length === 0 ? 'Pass' : 'Fail',
-      detail: invalid.length ? invalid.map((d) => d.name).join(' Â· ') : undefined,
+      detail: invalid.length ? invalid.map((d) => d.name).join(' · ') : undefined,
       fix: invalid.length ? 'Reconnect or complete credentials for every enabled destination.' : undefined,
     });
 
@@ -813,7 +813,7 @@ export default function StreamToPlatformsPage() {
       id: 'bandwidth',
       label: 'Estimated upload can support the active routing plan',
       status: bandwidthOk ? 'Pass' : 'Warn',
-      detail: `Estimated ${estimatedUploadMbps.toFixed(1)} Mbps Â· Required ${requiredUploadMbps.toFixed(1)} Mbps`,
+      detail: `Estimated ${estimatedUploadMbps.toFixed(1)} Mbps · Required ${requiredUploadMbps.toFixed(1)} Mbps`,
       fix: bandwidthOk ? undefined : 'Reduce bitrate, switch to High or Standard quality, or trim active destinations.',
     });
 
@@ -895,7 +895,7 @@ export default function StreamToPlatformsPage() {
                 status: 'Connected',
                 errorTitle: undefined,
                 errorNext: undefined,
-                tokenStatus: 'Reconnected just now Â· healthy',
+                tokenStatus: 'Reconnected just now · healthy',
               }
             : d
         )
@@ -932,7 +932,7 @@ export default function StreamToPlatformsPage() {
               title:
                 d.family === 'Provider Surface'
                   ? DEFAULT_SESSION_TITLE
-                  : `${DEFAULT_SESSION_TITLE} Â· ${d.name.replace(' Live', '')}`,
+                  : `${DEFAULT_SESSION_TITLE} · ${d.name.replace(' Live', '')}`,
             },
           };
         })
@@ -950,7 +950,7 @@ export default function StreamToPlatformsPage() {
     run(async () => {
       if (sessionStatus === 'Draft') setSessionStatus('Scheduled');
     }, {
-      loadingMessage: 'Publishing distribution planâ€¦',
+      loadingMessage: 'Publishing distribution plan…',
       successMessage: 'Distribution plan published and ready for Live Studio handoff.',
       delay: 1600,
     });
@@ -972,12 +972,12 @@ export default function StreamToPlatformsPage() {
   }, [activeDestinations, profile.bitrateKbps]);
 
   return (
-    <div className="min-h-screen w-full flex flex-col bg-[#f2f2f2] dark:bg-slate-950 text-slate-900 dark:text-slate-50 transition-colors overflow-x-hidden">
-      <div className="sticky top-0 z-40 border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur transition-colors">
+    <div className="min-h-screen w-full flex flex-col bg-[var(--fh-page-bg)] dark:bg-slate-950 text-faith-ink dark:text-slate-50 transition-colors overflow-x-hidden">
+      <div className="sticky top-0 z-40 border-b border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)]/95 dark:bg-slate-900/95 backdrop-blur transition-colors">
         <div className="w-full px-4 md:px-6 lg:px-8 py-3">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <div className="min-w-0">
-              <div className="flex flex-wrap items-center gap-2 text-[10px] sm:text-xs text-slate-500 dark:text-slate-400">
+              <div className="flex flex-wrap items-center gap-2 text-[10px] sm:text-xs text-faith-slate">
                 <button className="hover:text-slate-700 dark:hover:text-slate-200" onClick={() => safeNav(ROUTES.liveBuilder)}>
                   Live Builder
                 </button>
@@ -989,14 +989,14 @@ export default function StreamToPlatformsPage() {
                 <span className="font-medium text-slate-700 dark:text-slate-300">Stream-to-Platforms</span>
               </div>
               <div className="mt-1 flex flex-wrap items-center gap-2">
-                <div className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-slate-50 tracking-tight">Stream-to-Platforms</div>
+                <div className="text-xl sm:text-2xl font-extrabold text-faith-ink dark:text-slate-50 tracking-tight">Stream-to-Platforms</div>
                 <Badge tone={masterHealthTone}>
                   <Radio className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
                   {sessionStatus}
                 </Badge>
                 <Badge tone="green">EVzone Green primary</Badge>
               </div>
-              <div className="mt-1 text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 line-clamp-2 sm:line-clamp-1">
+              <div className="mt-1 text-[10px] sm:text-xs text-faith-slate line-clamp-2 sm:line-clamp-1">
                 Single-source distribution planning for Live Sessions across internal EVzone surfaces and external destinations, with platform-safe metadata, fallback logic, archive rules, and Beacon bridge preparation.
               </div>
             </div>
@@ -1006,19 +1006,19 @@ export default function StreamToPlatformsPage() {
                 <select
                   value={sessionStatus}
                   onChange={(e) => setSessionStatus(e.target.value as SessionStatus)}
-                  className="h-10 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3 pr-8 text-sm font-semibold text-slate-800 dark:text-slate-200 shadow-sm transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-slate-600 appearance-none"
+                  className="h-10 rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 pr-8 text-sm font-semibold text-slate-800 dark:text-slate-200 shadow-soft transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-slate-600 appearance-none"
                 >
                   <option>Draft</option>
                   <option>Scheduled</option>
                   <option>Live</option>
                   <option>Ended</option>
                 </select>
-                <ChevronDown className="pointer-events-none absolute right-2 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500 dark:text-slate-400" />
+                <ChevronDown className="pointer-events-none absolute right-2 top-1/2 h-4 w-4 -translate-y-1/2 text-faith-slate" />
               </div>
 
               <button
                 onClick={() => setConnectOpen(true)}
-                className="inline-flex h-10 items-center gap-2 rounded-xl px-3 text-sm font-semibold text-slate-800 dark:text-slate-100 shadow-sm ring-1 ring-slate-200 dark:ring-slate-800 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 transition active:scale-[0.98]"
+                className="inline-flex h-10 items-center gap-2 rounded-xl px-3 text-sm font-semibold text-slate-800 dark:text-slate-100 shadow-soft ring-1 ring-slate-200 dark:ring-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800 transition active:scale-[0.98]"
               >
                 <PlusCircle className="h-4 w-4" />
                 <span className="hidden sm:inline">Connect destination</span>
@@ -1026,7 +1026,7 @@ export default function StreamToPlatformsPage() {
 
               <button
                 onClick={() => setPresetOpen(true)}
-                className="inline-flex h-10 items-center gap-2 rounded-xl px-3 text-sm font-semibold text-white shadow-sm transition active:scale-[0.98]"
+                className="inline-flex h-10 items-center gap-2 rounded-xl px-3 text-sm font-semibold text-white shadow-soft transition active:scale-[0.98]"
                 style={{ background: EV_ORANGE }}
               >
                 <Wand2 className="h-4 w-4" />
@@ -1037,8 +1037,8 @@ export default function StreamToPlatformsPage() {
                 onClick={handlePublishPlan}
                 disabled={!planPublishReady || isPending}
                 className={cx(
-                  'inline-flex h-10 items-center gap-2 rounded-xl px-4 text-sm font-bold text-white shadow-sm transition active:scale-[0.98]',
-                  !planPublishReady || isPending ? 'bg-slate-300 dark:bg-slate-800 text-slate-500 dark:text-slate-600 cursor-not-allowed' : 'hover:opacity-95'
+                  'inline-flex h-10 items-center gap-2 rounded-xl px-4 text-sm font-bold text-white shadow-soft transition active:scale-[0.98]',
+                  !planPublishReady || isPending ? 'bg-slate-300 dark:bg-slate-800 text-faith-slate cursor-not-allowed' : 'hover:opacity-95'
                 )}
                 style={!planPublishReady || isPending ? undefined : { background: EV_GREEN }}
               >
@@ -1048,11 +1048,11 @@ export default function StreamToPlatformsPage() {
             </div>
           </div>
 
-          <div className="mt-4 flex flex-wrap items-center gap-2 text-[11px] text-slate-600 dark:text-slate-300">
+          <div className="mt-4 flex flex-wrap items-center gap-2 text-[11px] text-faith-slate dark:text-slate-300">
             <Badge tone="neutral">{DEFAULT_SESSION_TITLE}</Badge>
             <Badge tone="green">{internalDestinations.length} internal surface{internalDestinations.length === 1 ? '' : 's'}</Badge>
             <Badge tone="blue">{externalDestinations.length} external destination{externalDestinations.length === 1 ? '' : 's'}</Badge>
-            <Badge tone="orange">Preset Â· {selectedPreset.label}</Badge>
+            <Badge tone="orange">Preset · {selectedPreset.label}</Badge>
             <Badge tone="purple">Beacon bridge {beaconBridge ? 'ready' : 'off'}</Badge>
           </div>
         </div>
@@ -1061,7 +1061,7 @@ export default function StreamToPlatformsPage() {
       <div className="flex-1 w-full px-3 sm:px-4 md:px-6 lg:px-8 py-6">
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-12">
           <div className="lg:col-span-8">
-            <div className="rounded-[14px] bg-white dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <div className="rounded-[14px] bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <SectionTitle
                 icon={<MonitorPlay className="h-5 w-5" />}
                 title="Destination library"
@@ -1071,7 +1071,7 @@ export default function StreamToPlatformsPage() {
                     <Badge tone="green"><BadgeCheck className="h-3.5 w-3.5" />{activeDestinations.length} active</Badge>
                     <button
                       onClick={runBandwidthTest}
-                      className="inline-flex h-9 items-center gap-2 rounded-xl bg-white dark:bg-slate-900 px-3 text-[10px] sm:text-xs font-semibold text-slate-800 dark:text-slate-100 ring-1 ring-slate-200 dark:ring-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 transition active:scale-[0.98]"
+                      className="inline-flex h-9 items-center gap-2 rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 text-[10px] sm:text-xs font-semibold text-slate-800 dark:text-slate-100 ring-1 ring-slate-200 dark:ring-slate-800 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800 transition active:scale-[0.98]"
                     >
                       <RefreshCw className="h-4 w-4" />
                       Recheck bandwidth
@@ -1088,22 +1088,22 @@ export default function StreamToPlatformsPage() {
                     <div
                       key={d.id}
                       className={cx(
-                        'rounded-[14px] border p-4 shadow-sm transition-all hover:shadow-md',
+                        'rounded-[14px] border p-4 shadow-soft transition-all hover:shadow-md',
                         d.enabled
-                          ? 'border-slate-200 bg-white ring-1 ring-slate-100 dark:border-slate-700 dark:bg-slate-800/40 dark:ring-slate-800'
-                          : 'border-slate-200/70 bg-slate-50/50 dark:border-slate-800 dark:bg-slate-900/50',
+                          ? 'border-faith-line bg-[var(--fh-surface-bg)] ring-1 ring-slate-100 dark:border-slate-700 dark:bg-slate-800/40 dark:ring-slate-800'
+                          : 'border-faith-line/70 bg-[var(--fh-surface)]/50 dark:border-slate-800 dark:bg-slate-900/50',
                         blocked ? 'opacity-90 grayscale-[0.35]' : ''
                       )}
                     >
                       <div className="flex items-start justify-between gap-3">
                         <div className="min-w-0">
                           <div className="flex items-center gap-2">
-                            <div className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-white shadow-sm" style={{ background: d.family === 'Provider Surface' ? EV_GREEN : d.family === 'Custom RTMP' ? '#312e81' : '#0f172a' }}>
+                            <div className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-white shadow-soft" style={{ background: d.family === 'Provider Surface' ? EV_GREEN : d.family === 'Custom RTMP' ? '#312e81' : '#0f172a' }}>
                               {d.family === 'Provider Surface' ? <Globe2 className="h-5 w-5" /> : d.family === 'Custom RTMP' ? <Radio className="h-5 w-5" /> : <Video className="h-5 w-5" />}
                             </div>
                             <div className="min-w-0">
-                              <div className="truncate text-sm font-bold text-slate-900 dark:text-slate-50">{d.name}</div>
-                              <div className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400">{d.owner}</div>
+                              <div className="truncate text-sm font-bold text-faith-ink dark:text-slate-50">{d.name}</div>
+                              <div className="text-[10px] sm:text-xs text-faith-slate">{d.owner}</div>
                             </div>
                           </div>
                         </div>
@@ -1114,7 +1114,7 @@ export default function StreamToPlatformsPage() {
                             {statusLabel(d.status)}
                           </Badge>
                           <div className="flex items-center gap-2">
-                            <span className="text-[10px] sm:text-[11px] font-bold text-slate-600 dark:text-slate-400">Enable</span>
+                            <span className="text-[10px] sm:text-[11px] font-bold text-faith-slate">Enable</span>
                             <Toggle
                               checked={d.enabled}
                               disabled={blocked}
@@ -1142,7 +1142,7 @@ export default function StreamToPlatformsPage() {
                               <div className="text-[10px] sm:text-xs text-orange-700 dark:text-amber-400">{d.errorNext || 'Resolve this issue before enabling the destination.'}</div>
                               <div className="mt-2 flex flex-wrap items-center gap-2">
                                 <button
-                                  className="inline-flex h-8 items-center gap-2 rounded-xl bg-white dark:bg-slate-900 px-3 text-[10px] sm:text-xs font-semibold text-slate-800 dark:text-slate-100 ring-1 ring-orange-200 dark:ring-slate-800 hover:bg-orange-50 dark:hover:bg-slate-800 transition active:scale-[0.98]"
+                                  className="inline-flex h-8 items-center gap-2 rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 text-[10px] sm:text-xs font-semibold text-slate-800 dark:text-slate-100 ring-1 ring-orange-200 dark:ring-slate-800 hover:bg-orange-50 dark:hover:bg-slate-800 transition active:scale-[0.98]"
                                   onClick={() => showNotification(`Open access panel for ${d.name}`)}
                                 >
                                   <ExternalLink className="h-3.5 w-3.5" />
@@ -1164,18 +1164,18 @@ export default function StreamToPlatformsPage() {
                         </div>
                       ) : null}
 
-                      <div className="mt-3 rounded-xl bg-slate-50 dark:bg-slate-900/50 p-3 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+                      <div className="mt-3 rounded-xl bg-[var(--fh-surface)] dark:bg-slate-900/50 p-3 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                         <div className="flex items-center justify-between gap-2">
                           <div className="text-[10px] sm:text-xs font-bold text-slate-800 dark:text-slate-200">Credential and access panel</div>
-                          <span className="text-[10px] text-slate-500 dark:text-slate-500">{d.tokenStatus}</span>
+                          <span className="text-[10px] text-faith-slate">{d.tokenStatus}</span>
                         </div>
-                        <div className="mt-1 line-clamp-2 text-[10px] sm:text-xs text-slate-600 dark:text-slate-400">{d.historyNote}</div>
+                        <div className="mt-1 line-clamp-2 text-[10px] sm:text-xs text-faith-slate">{d.historyNote}</div>
                       </div>
 
                       <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
                         <button
                           onClick={() => openAdvanced(d.id)}
-                          className="inline-flex h-9 items-center gap-2 rounded-xl bg-white dark:bg-slate-900 px-3 text-[10px] sm:text-xs font-semibold text-slate-800 dark:text-slate-100 ring-1 ring-slate-200 dark:ring-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 transition active:scale-[0.98] shadow-sm"
+                          className="inline-flex h-9 items-center gap-2 rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 text-[10px] sm:text-xs font-semibold text-slate-800 dark:text-slate-100 ring-1 ring-slate-200 dark:ring-slate-800 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800 transition active:scale-[0.98] shadow-soft"
                         >
                           <Settings2 className="h-4 w-4" />
                           Per-platform settings
@@ -1184,10 +1184,10 @@ export default function StreamToPlatformsPage() {
                         <button
                           onClick={() => showNotification(d.enabled ? `Previewing ${d.name} safe-area and surface variant` : `Enable ${d.name} before opening a live preview`)}
                           className={cx(
-                            'inline-flex h-9 items-center gap-2 rounded-xl px-3 text-[10px] sm:text-xs font-semibold ring-1 transition active:scale-[0.98] shadow-sm',
+                            'inline-flex h-9 items-center gap-2 rounded-xl px-3 text-[10px] sm:text-xs font-semibold ring-1 transition active:scale-[0.98] shadow-soft',
                             d.enabled
-                              ? 'bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 ring-slate-900 dark:ring-slate-100 hover:opacity-95'
-                              : 'bg-slate-50 dark:bg-slate-800/50 text-slate-500 dark:text-slate-400 ring-slate-200 dark:ring-slate-800'
+                              ? 'bg-slate-900 dark:bg-slate-100 text-white dark:text-faith-ink ring-slate-900 dark:ring-slate-100 hover:opacity-95'
+                              : 'bg-[var(--fh-surface)] dark:bg-slate-800/50 text-faith-slate ring-slate-200 dark:ring-slate-800'
                           )}
                         >
                           <Eye className="h-4 w-4" />
@@ -1200,7 +1200,7 @@ export default function StreamToPlatformsPage() {
               </div>
             </div>
 
-            <div className="mt-5 rounded-[14px] bg-white dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <div className="mt-5 rounded-[14px] bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <SectionTitle
                 icon={<Layers className="h-5 w-5" />}
                 title="Session routing table"
@@ -1208,8 +1208,8 @@ export default function StreamToPlatformsPage() {
                 right={<Badge tone="orange">{selectedPreset.chip}</Badge>}
               />
 
-              <div className="mt-4 overflow-hidden rounded-[14px] ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm">
-                <div className="grid grid-cols-12 gap-2 bg-slate-50 dark:bg-slate-900/50 px-4 py-3 text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+              <div className="mt-4 overflow-hidden rounded-[14px] ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft">
+                <div className="grid grid-cols-12 gap-2 bg-[var(--fh-surface)] dark:bg-slate-900/50 px-4 py-3 text-[10px] font-bold text-faith-slate uppercase tracking-wider">
                   <div className="col-span-1">Order</div>
                   <div className="col-span-3">Destination</div>
                   <div className="col-span-2">Variant</div>
@@ -1218,7 +1218,7 @@ export default function StreamToPlatformsPage() {
                   <div className="col-span-2 text-right">Actions</div>
                 </div>
 
-                <div className="divide-y divide-slate-200 dark:divide-slate-800 bg-white dark:bg-slate-900">
+                <div className="divide-y divide-slate-200 dark:divide-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900">
                   {activeDestinations.map((d, index) => (
                     <div key={d.id} className="grid grid-cols-12 gap-2 px-4 py-3 items-center text-[11px] sm:text-xs">
                       <div className="col-span-1">
@@ -1227,8 +1227,8 @@ export default function StreamToPlatformsPage() {
                         </div>
                       </div>
                       <div className="col-span-3 min-w-0">
-                        <div className="font-bold text-slate-900 dark:text-slate-100 truncate">{d.name}</div>
-                        <div className="text-[10px] text-slate-500 dark:text-slate-400 truncate">{d.family} Â· {prettyKbps(d.health.outBitrateKbps)}</div>
+                        <div className="font-bold text-faith-ink dark:text-slate-100 truncate">{d.name}</div>
+                        <div className="text-[10px] text-faith-slate truncate">{d.family} · {prettyKbps(d.health.outBitrateKbps)}</div>
                       </div>
                       <div className="col-span-2 min-w-0">
                         <div className="truncate text-slate-700 dark:text-slate-200 font-semibold">{d.creativeVariant}</div>
@@ -1243,7 +1243,7 @@ export default function StreamToPlatformsPage() {
                         <button
                           onClick={() => moveRoute(d.id, -1)}
                           disabled={index === 0}
-                          className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-white dark:bg-slate-900 ring-1 ring-slate-200 dark:ring-slate-800 text-slate-800 dark:text-slate-100 disabled:opacity-40 disabled:cursor-not-allowed"
+                          className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 ring-1 ring-slate-200 dark:ring-slate-800 text-slate-800 dark:text-slate-100 disabled:opacity-40 disabled:cursor-not-allowed"
                           title="Move up"
                         >
                           <ChevronLeft className="h-4 w-4" />
@@ -1251,14 +1251,14 @@ export default function StreamToPlatformsPage() {
                         <button
                           onClick={() => moveRoute(d.id, 1)}
                           disabled={index === activeDestinations.length - 1}
-                          className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-white dark:bg-slate-900 ring-1 ring-slate-200 dark:ring-slate-800 text-slate-800 dark:text-slate-100 disabled:opacity-40 disabled:cursor-not-allowed"
+                          className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 ring-1 ring-slate-200 dark:ring-slate-800 text-slate-800 dark:text-slate-100 disabled:opacity-40 disabled:cursor-not-allowed"
                           title="Move down"
                         >
                           <ChevronRight className="h-4 w-4" />
                         </button>
                         <button
                           onClick={() => openAdvanced(d.id)}
-                          className="inline-flex h-8 items-center gap-1 rounded-xl bg-slate-900 dark:bg-slate-100 px-3 text-[10px] sm:text-xs font-semibold text-white dark:text-slate-900"
+                          className="inline-flex h-8 items-center gap-1 rounded-xl bg-slate-900 dark:bg-slate-100 px-3 text-[10px] sm:text-xs font-semibold text-white dark:text-faith-ink"
                         >
                           <Settings2 className="h-3.5 w-3.5" />
                           Edit
@@ -1267,19 +1267,19 @@ export default function StreamToPlatformsPage() {
                     </div>
                   ))}
                   {!activeDestinations.length ? (
-                    <div className="px-4 py-8 text-sm text-slate-500 dark:text-slate-400">No active destinations yet. Connect or enable at least one surface to build the routing plan.</div>
+                    <div className="px-4 py-8 text-sm text-faith-slate">No active destinations yet. Connect or enable at least one surface to build the routing plan.</div>
                   ) : null}
                 </div>
               </div>
 
               <div className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
-                <div className="rounded-[14px] bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+                <div className="rounded-[14px] bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                   <div className="flex items-start justify-between gap-3">
                     <div>
-                      <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Preset-based distribution flow</div>
-                      <div className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400">Keep repeat sessions fast while still preserving platform-specific quality.</div>
+                      <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Preset-based distribution flow</div>
+                      <div className="text-[10px] sm:text-xs text-faith-slate">Keep repeat sessions fast while still preserving platform-specific quality.</div>
                     </div>
-                    <Badge tone="neutral">Current Â· {selectedPreset.label}</Badge>
+                    <Badge tone="neutral">Current · {selectedPreset.label}</Badge>
                   </div>
                   <div className="mt-3 text-sm text-slate-700 dark:text-slate-200">{selectedPreset.desc}</div>
                   <div className="mt-3 flex flex-wrap gap-2">
@@ -1289,25 +1289,25 @@ export default function StreamToPlatformsPage() {
                       </Pill>
                     ))}
                   </div>
-                  <div className="mt-3 rounded-xl bg-white dark:bg-slate-900/80 p-3 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+                  <div className="mt-3 rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900/80 p-3 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                     <div className="text-[10px] sm:text-xs font-bold text-slate-800 dark:text-slate-200">Beacon bridge note</div>
-                    <div className="mt-1 text-[10px] sm:text-xs text-slate-600 dark:text-slate-400">{selectedPreset.beaconNote}</div>
+                    <div className="mt-1 text-[10px] sm:text-xs text-faith-slate">{selectedPreset.beaconNote}</div>
                   </div>
                 </div>
 
-                <div className="rounded-[14px] bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+                <div className="rounded-[14px] bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                   <div className="flex items-start justify-between gap-3">
                     <div>
-                      <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Per-platform settings quality</div>
-                      <div className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400">Metadata, safe-area preview, and compliance notes stay platform-specific.</div>
+                      <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Per-platform settings quality</div>
+                      <div className="text-[10px] sm:text-xs text-faith-slate">Metadata, safe-area preview, and compliance notes stay platform-specific.</div>
                     </div>
                     <Badge tone="green"><ShieldCheck className="h-3.5 w-3.5" />Quality preserved</Badge>
                   </div>
                   <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2">
                     {activeDestinations.slice(0, 4).map((d) => (
-                      <div key={d.id} className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3 transition">
-                        <div className="text-xs font-bold text-slate-900 dark:text-slate-100 truncate">{d.name}</div>
-                        <div className="mt-1 text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 line-clamp-2">{d.settings.complianceNote}</div>
+                      <div key={d.id} className="rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition">
+                        <div className="text-xs font-bold text-faith-ink dark:text-slate-100 truncate">{d.name}</div>
+                        <div className="mt-1 text-[10px] sm:text-xs text-faith-slate line-clamp-2">{d.settings.complianceNote}</div>
                       </div>
                     ))}
                   </div>
@@ -1315,7 +1315,7 @@ export default function StreamToPlatformsPage() {
               </div>
             </div>
 
-            <div className="mt-5 rounded-[14px] bg-white dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <div className="mt-5 rounded-[14px] bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <SectionTitle
                 icon={<Activity className="h-5 w-5" />}
                 title="Health and feedback panel"
@@ -1330,15 +1330,15 @@ export default function StreamToPlatformsPage() {
 
               <div className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-12">
                 <div className="lg:col-span-5">
-                  <div className="rounded-[14px] bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+                  <div className="rounded-[14px] bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                     <div className="flex items-start justify-between gap-3">
                       <div>
-                        <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Master distribution health</div>
-                        <div className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400">Output bitrate trend across enabled destinations.</div>
+                        <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Master distribution health</div>
+                        <div className="text-[10px] sm:text-xs text-faith-slate">Output bitrate trend across enabled destinations.</div>
                       </div>
                       <div className="text-right">
-                        <div className="text-sm font-bold text-slate-900 dark:text-slate-50">{prettyKbps(profile.bitrateKbps)}</div>
-                        <div className="text-[10px] text-slate-500 dark:text-slate-500">Target</div>
+                        <div className="text-sm font-bold text-faith-ink dark:text-slate-50">{prettyKbps(profile.bitrateKbps)}</div>
+                        <div className="text-[10px] text-faith-slate">Target</div>
                       </div>
                     </div>
 
@@ -1361,7 +1361,7 @@ export default function StreamToPlatformsPage() {
                       </Badge>
                     </div>
 
-                    <div className="mt-4 rounded-xl bg-white dark:bg-slate-900/80 p-3 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+                    <div className="mt-4 rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900/80 p-3 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                       <div className="text-[10px] sm:text-xs font-bold text-slate-800 dark:text-slate-200">Fallback and redundancy controls</div>
                       <div className="mt-2 grid gap-2">
                         {([
@@ -1375,16 +1375,16 @@ export default function StreamToPlatformsPage() {
                             className={cx(
                               'flex items-center justify-between rounded-xl px-3 py-2 text-[10px] sm:text-xs font-semibold ring-1 transition active:scale-[0.98]',
                               fallbackRule === rule
-                                ? 'bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 ring-slate-900 dark:ring-slate-100'
-                                : 'bg-slate-50 dark:bg-slate-800/50 text-slate-800 dark:text-slate-300 ring-slate-200 dark:ring-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800'
+                                ? 'bg-slate-900 dark:bg-slate-100 text-white dark:text-faith-ink ring-slate-900 dark:ring-slate-100'
+                                : 'bg-[var(--fh-surface)] dark:bg-slate-800/50 text-slate-800 dark:text-slate-300 ring-slate-200 dark:ring-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800'
                             )}
                           >
                             <span className="truncate">{rule}</span>
-                            <ArrowRight className={cx('h-3.5 w-3.5', fallbackRule === rule ? 'text-white dark:text-slate-900' : 'text-slate-400 dark:text-slate-600')} />
+                            <ArrowRight className={cx('h-3.5 w-3.5', fallbackRule === rule ? 'text-white dark:text-faith-ink' : 'text-faith-slate')} />
                           </button>
                         ))}
                       </div>
-                      <div className="mt-2 text-[10px] text-slate-500 dark:text-slate-500">
+                      <div className="mt-2 text-[10px] text-faith-slate">
                         Recommended: keep the primary channel so the in-app audience remains protected even when an external route degrades.
                       </div>
                     </div>
@@ -1392,12 +1392,12 @@ export default function StreamToPlatformsPage() {
                 </div>
 
                 <div className="lg:col-span-7">
-                  <div className="overflow-hidden rounded-[14px] ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
-                    <div className="bg-white dark:bg-slate-900 p-4">
+                  <div className="overflow-hidden rounded-[14px] ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
+                    <div className="bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4">
                       <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                         <div>
-                          <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Per-destination feedback</div>
-                          <div className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 line-clamp-1">Connection status, start confirmation, viewer presence, error state, and quick remediation notes.</div>
+                          <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Per-destination feedback</div>
+                          <div className="text-[10px] sm:text-xs text-faith-slate line-clamp-1">Connection status, start confirmation, viewer presence, error state, and quick remediation notes.</div>
                         </div>
                         <Badge tone={sessionStatus === 'Live' ? 'blue' : 'neutral'}>
                           <Activity className="h-3.5 w-3.5" />
@@ -1406,8 +1406,8 @@ export default function StreamToPlatformsPage() {
                       </div>
                     </div>
 
-                    <div className="bg-slate-50 dark:bg-slate-900/50">
-                      <div className="grid grid-cols-12 gap-2 border-t border-slate-200 dark:border-slate-800 px-4 py-2 text-[10px] font-bold text-slate-500 dark:text-slate-500 uppercase tracking-wider">
+                    <div className="bg-[var(--fh-surface)] dark:bg-slate-900/50">
+                      <div className="grid grid-cols-12 gap-2 border-t border-faith-line dark:border-slate-800 px-4 py-2 text-[10px] font-bold text-faith-slate uppercase tracking-wider">
                         <div className="col-span-3">Destination</div>
                         <div className="col-span-2 text-center">Viewers</div>
                         <div className="col-span-2 text-center">Errors</div>
@@ -1418,8 +1418,8 @@ export default function StreamToPlatformsPage() {
                         {activeDestinations.map((d) => (
                           <div key={d.id} className="grid grid-cols-12 gap-2 px-4 py-3 items-center text-[11px] sm:text-xs">
                             <div className="col-span-3 min-w-0">
-                              <div className="font-bold text-slate-900 dark:text-slate-100 truncate">{d.name}</div>
-                              <div className="text-[10px] text-slate-500 dark:text-slate-400 truncate">{d.settings.safeAreaMode}</div>
+                              <div className="font-bold text-faith-ink dark:text-slate-100 truncate">{d.name}</div>
+                              <div className="text-[10px] text-faith-slate truncate">{d.settings.safeAreaMode}</div>
                             </div>
                             <div className="col-span-2 text-center font-semibold text-slate-700 dark:text-slate-200">{d.health.viewers.toLocaleString()}</div>
                             <div className="col-span-2 text-center font-semibold text-slate-700 dark:text-slate-200">{d.health.errors}</div>
@@ -1431,7 +1431,7 @@ export default function StreamToPlatformsPage() {
                           </div>
                         ))}
                         {!activeDestinations.length ? (
-                          <div className="px-4 py-8 text-sm text-slate-500 dark:text-slate-400">No active destinations to monitor yet.</div>
+                          <div className="px-4 py-8 text-sm text-faith-slate">No active destinations to monitor yet.</div>
                         ) : null}
                       </div>
                     </div>
@@ -1440,7 +1440,7 @@ export default function StreamToPlatformsPage() {
               </div>
             </div>
 
-            <div className="mt-5 rounded-[14px] bg-white dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+            <div className="mt-5 rounded-[14px] bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <SectionTitle
                 icon={<PlayCircle className="h-5 w-5" />}
                 title="Cross-posting and archive rules"
@@ -1450,9 +1450,9 @@ export default function StreamToPlatformsPage() {
 
               <div className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
                 <div className="space-y-3">
-                  <div className="rounded-[14px] bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
-                    <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Archive and replay policy</div>
-                    <div className="mt-1 text-[10px] sm:text-xs text-slate-500 dark:text-slate-400">Keeps replay behaviour explicit per live session, instead of letting platforms decide after the broadcast ends.</div>
+                  <div className="rounded-[14px] bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+                    <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Archive and replay policy</div>
+                    <div className="mt-1 text-[10px] sm:text-xs text-faith-slate">Keeps replay behaviour explicit per live session, instead of letting platforms decide after the broadcast ends.</div>
                     <div className="mt-3 grid gap-2">
                       {(['Internal only', 'Replay only', 'Replay + clips', 'Manual after review'] as CrossPostRule[]).map((rule) => (
                         <button
@@ -1461,8 +1461,8 @@ export default function StreamToPlatformsPage() {
                           className={cx(
                             'flex items-center justify-between rounded-xl px-3 py-3 text-sm font-semibold ring-1 transition active:scale-[0.98]',
                             crossPostRule === rule
-                              ? 'bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 ring-slate-900 dark:ring-slate-100 shadow-sm'
-                              : 'bg-slate-50 dark:bg-slate-800/40 text-slate-700 dark:text-slate-300 ring-slate-200 dark:ring-slate-800 hover:bg-white dark:hover:bg-slate-900'
+                              ? 'bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-faith-ink dark:text-slate-100 ring-slate-900 dark:ring-slate-100 shadow-soft'
+                              : 'bg-[var(--fh-surface)] dark:bg-slate-800/40 text-slate-700 dark:text-slate-300 ring-slate-200 dark:ring-slate-800 hover:bg-[var(--fh-surface-bg)] dark:hover:bg-slate-900'
                           )}
                         >
                           <span>{rule}</span>
@@ -1473,38 +1473,38 @@ export default function StreamToPlatformsPage() {
                   </div>
 
                   <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                    <div className="rounded-[14px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 transition">
+                    <div className="rounded-[14px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition">
                       <div className="flex items-start justify-between gap-3">
                         <div>
-                          <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Protect master recording</div>
-                          <div className="mt-1 text-[10px] sm:text-xs text-slate-500 dark:text-slate-400">Keep replay and ISO protection safe even if a destination fails.</div>
+                          <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Protect master recording</div>
+                          <div className="mt-1 text-[10px] sm:text-xs text-faith-slate">Keep replay and ISO protection safe even if a destination fails.</div>
                         </div>
                         <Toggle checked={recordMaster} onChange={setRecordMaster} />
                       </div>
                     </div>
-                    <div className="rounded-[14px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 transition">
+                    <div className="rounded-[14px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition">
                       <div className="flex items-start justify-between gap-3">
                         <div>
-                          <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Protect ISO / backup paths</div>
-                          <div className="mt-1 text-[10px] sm:text-xs text-slate-500 dark:text-slate-400">Preserve isolated or fallback recordings for fast replay packaging.</div>
+                          <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Protect ISO / backup paths</div>
+                          <div className="mt-1 text-[10px] sm:text-xs text-faith-slate">Preserve isolated or fallback recordings for fast replay packaging.</div>
                         </div>
                         <Toggle checked={protectIso} onChange={setProtectIso} />
                       </div>
                     </div>
-                    <div className="rounded-[14px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 transition">
+                    <div className="rounded-[14px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition">
                       <div className="flex items-start justify-between gap-3">
                         <div>
-                          <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Direct Beacon bridge</div>
-                          <div className="mt-1 text-[10px] sm:text-xs text-slate-500 dark:text-slate-400">Open Beacon for replay or clip promotion immediately after broadcast.</div>
+                          <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Direct Beacon bridge</div>
+                          <div className="mt-1 text-[10px] sm:text-xs text-faith-slate">Open Beacon for replay or clip promotion immediately after broadcast.</div>
                         </div>
                         <Toggle checked={beaconBridge} onChange={setBeaconBridge} />
                       </div>
                     </div>
-                    <div className="rounded-[14px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 transition">
+                    <div className="rounded-[14px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition">
                       <div className="flex items-start justify-between gap-3">
                         <div>
-                          <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Internal feed remains primary</div>
-                          <div className="mt-1 text-[10px] sm:text-xs text-slate-500 dark:text-slate-400">Preserve the platform as the central source of truth even when multi-streaming outward.</div>
+                          <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Internal feed remains primary</div>
+                          <div className="mt-1 text-[10px] sm:text-xs text-faith-slate">Preserve the platform as the central source of truth even when multi-streaming outward.</div>
                         </div>
                         <Toggle checked={profile.internalPrimary} onChange={(v) => setProfile((prev) => ({ ...prev, internalPrimary: v }))} />
                       </div>
@@ -1512,51 +1512,51 @@ export default function StreamToPlatformsPage() {
                   </div>
                 </div>
 
-                <div className="rounded-[14px] bg-slate-50 dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
-                  <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Approval and distribution summary</div>
-                  <div className="mt-1 text-[10px] sm:text-xs text-slate-500 dark:text-slate-400">Final confirmation that shows exactly what will go live where, plus the cross-posting and Beacon handoff path.</div>
+                <div className="rounded-[14px] bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+                  <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Approval and distribution summary</div>
+                  <div className="mt-1 text-[10px] sm:text-xs text-faith-slate">Final confirmation that shows exactly what will go live where, plus the cross-posting and Beacon handoff path.</div>
 
-                  <div className="mt-4 rounded-[14px] overflow-hidden ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm">
+                  <div className="mt-4 rounded-[14px] overflow-hidden ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft">
                     <div className="px-4 py-4 text-white" style={{ background: 'linear-gradient(135deg, #03cd8c 0%, #0f766e 45%, #f77f00 100%)' }}>
                       <Badge tone="green">Distribution summary</Badge>
                       <div className="mt-3 text-2xl font-extrabold leading-tight">{DEFAULT_SESSION_TITLE}</div>
-                      <div className="mt-1 text-sm text-white/90">Primary feed Â· {activeDestinations.length} live route{activeDestinations.length === 1 ? '' : 's'} Â· {crossPostRule}</div>
+                      <div className="mt-1 text-sm text-white/90">Primary feed · {activeDestinations.length} live route{activeDestinations.length === 1 ? '' : 's'} · {crossPostRule}</div>
                       <div className="mt-3 flex flex-wrap gap-2">
                         {activeDestinations.map((d) => (
-                          <span key={d.id} className="inline-flex items-center gap-1 rounded-full bg-white/15 px-3 py-1 text-[11px] font-semibold text-white backdrop-blur">
+                          <span key={d.id} className="inline-flex items-center gap-1 rounded-full bg-[var(--fh-surface-bg)]/15 px-3 py-1 text-[11px] font-semibold text-white backdrop-blur">
                             {d.name}
                           </span>
                         ))}
                       </div>
                     </div>
 
-                    <div className="bg-white dark:bg-slate-900 p-4">
+                    <div className="bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4">
                       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                        <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3 transition">
-                          <div className="text-[10px] uppercase tracking-wider text-slate-500 dark:text-slate-400">Creative variant</div>
-                          <div className="mt-1 text-sm font-bold text-slate-900 dark:text-slate-100">{selectedPreset.creativeVariant}</div>
+                        <div className="rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition">
+                          <div className="text-[10px] uppercase tracking-wider text-faith-slate">Creative variant</div>
+                          <div className="mt-1 text-sm font-bold text-faith-ink dark:text-slate-100">{selectedPreset.creativeVariant}</div>
                         </div>
-                        <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3 transition">
-                          <div className="text-[10px] uppercase tracking-wider text-slate-500 dark:text-slate-400">Language tracks</div>
-                          <div className="mt-1 text-sm font-bold text-slate-900 dark:text-slate-100">{selectedPreset.languageTrack}</div>
+                        <div className="rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition">
+                          <div className="text-[10px] uppercase tracking-wider text-faith-slate">Language tracks</div>
+                          <div className="mt-1 text-sm font-bold text-faith-ink dark:text-slate-100">{selectedPreset.languageTrack}</div>
                         </div>
-                        <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3 transition">
-                          <div className="text-[10px] uppercase tracking-wider text-slate-500 dark:text-slate-400">Fallback rule</div>
-                          <div className="mt-1 text-sm font-bold text-slate-900 dark:text-slate-100">{fallbackRule}</div>
+                        <div className="rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition">
+                          <div className="text-[10px] uppercase tracking-wider text-faith-slate">Fallback rule</div>
+                          <div className="mt-1 text-sm font-bold text-faith-ink dark:text-slate-100">{fallbackRule}</div>
                         </div>
-                        <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3 transition">
-                          <div className="text-[10px] uppercase tracking-wider text-slate-500 dark:text-slate-400">Beacon bridge</div>
-                          <div className="mt-1 text-sm font-bold text-slate-900 dark:text-slate-100">{beaconBridge ? 'Replay and clip boost ready' : 'Disabled for this session'}</div>
+                        <div className="rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition">
+                          <div className="text-[10px] uppercase tracking-wider text-faith-slate">Beacon bridge</div>
+                          <div className="mt-1 text-sm font-bold text-faith-ink dark:text-slate-100">{beaconBridge ? 'Replay and clip boost ready' : 'Disabled for this session'}</div>
                         </div>
                       </div>
 
                       <div className="mt-4 space-y-2">
                         {approvalItems.map((item) => (
-                          <div key={item.id} className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3 py-3 transition">
+                          <div key={item.id} className="rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-3 transition">
                             <div className="flex items-start justify-between gap-3">
                               <div className="min-w-0">
-                                <div className="text-xs font-bold text-slate-900 dark:text-slate-100">{item.label}</div>
-                                {item.detail ? <div className="mt-1 text-[10px] sm:text-xs text-slate-500 dark:text-slate-400">{item.detail}</div> : null}
+                                <div className="text-xs font-bold text-faith-ink dark:text-slate-100">{item.label}</div>
+                                {item.detail ? <div className="mt-1 text-[10px] sm:text-xs text-faith-slate">{item.detail}</div> : null}
                                 {item.fix ? <div className="mt-1 text-[10px] sm:text-xs text-orange-700 dark:text-amber-400">{item.fix}</div> : null}
                               </div>
                               <Badge tone={item.status === 'Pass' ? 'green' : item.status === 'Warn' ? 'orange' : 'red'}>{item.status}</Badge>
@@ -1565,10 +1565,10 @@ export default function StreamToPlatformsPage() {
                         ))}
                       </div>
 
-                      <div className="mt-4 flex items-start justify-between gap-3 rounded-xl bg-slate-50 dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+                      <div className="mt-4 flex items-start justify-between gap-3 rounded-xl bg-[var(--fh-surface)] dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                         <div>
-                          <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Approve distribution summary</div>
-                          <div className="mt-1 text-[10px] sm:text-xs text-slate-500 dark:text-slate-400">Required before the plan is published to Live Studio and the operational team.</div>
+                          <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Approve distribution summary</div>
+                          <div className="mt-1 text-[10px] sm:text-xs text-faith-slate">Required before the plan is published to Live Studio and the operational team.</div>
                         </div>
                         <Toggle checked={distributionApproved} onChange={setDistributionApproved} />
                       </div>
@@ -1578,8 +1578,8 @@ export default function StreamToPlatformsPage() {
                           onClick={handlePublishPlan}
                           disabled={!planPublishReady || isPending}
                           className={cx(
-                            'inline-flex h-10 items-center gap-2 rounded-xl px-4 text-sm font-bold text-white shadow-sm transition active:scale-[0.98]',
-                            !planPublishReady || isPending ? 'bg-slate-300 dark:bg-slate-800 text-slate-500 dark:text-slate-600 cursor-not-allowed' : 'hover:opacity-95'
+                            'inline-flex h-10 items-center gap-2 rounded-xl px-4 text-sm font-bold text-white shadow-soft transition active:scale-[0.98]',
+                            !planPublishReady || isPending ? 'bg-slate-300 dark:bg-slate-800 text-faith-slate cursor-not-allowed' : 'hover:opacity-95'
                           )}
                           style={!planPublishReady || isPending ? undefined : { background: EV_GREEN }}
                         >
@@ -1588,13 +1588,13 @@ export default function StreamToPlatformsPage() {
                         </button>
                         <button
                           onClick={handleCopyPlanLink}
-                          className="inline-flex h-10 items-center gap-2 rounded-xl bg-white dark:bg-slate-900 px-4 text-sm font-semibold text-slate-800 dark:text-slate-100 shadow-sm ring-1 ring-slate-200 dark:ring-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 transition active:scale-[0.98]"
+                          className="inline-flex h-10 items-center gap-2 rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 text-sm font-semibold text-slate-800 dark:text-slate-100 shadow-soft ring-1 ring-slate-200 dark:ring-slate-800 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800 transition active:scale-[0.98]"
                         >
                           <Copy className="h-4 w-4" /> Copy plan link
                         </button>
                         <button
                           onClick={() => safeNav(ROUTES.beaconBuilder)}
-                          className="inline-flex h-10 items-center gap-2 rounded-xl px-4 text-sm font-semibold text-white shadow-sm hover:opacity-95 transition active:scale-[0.98]"
+                          className="inline-flex h-10 items-center gap-2 rounded-xl px-4 text-sm font-semibold text-white shadow-soft hover:opacity-95 transition active:scale-[0.98]"
                           style={{ background: EV_ORANGE }}
                         >
                           <Megaphone className="h-4 w-4" /> Open Beacon bridge
@@ -1609,7 +1609,7 @@ export default function StreamToPlatformsPage() {
 
           <div className="lg:col-span-4">
             <div className="space-y-5 lg:sticky lg:top-[104px]">
-              <div className="rounded-[14px] bg-white dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+              <div className="rounded-[14px] bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
                 <SectionTitle
                   icon={<ShieldCheck className="h-5 w-5" />}
                   title="Credential and access panel"
@@ -1618,17 +1618,17 @@ export default function StreamToPlatformsPage() {
 
                 <div className="mt-4 space-y-3">
                   {destinations.map((d) => (
-                    <div key={d.id} className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3 transition">
+                    <div key={d.id} className="rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition">
                       <div className="flex items-start justify-between gap-2">
                         <div className="min-w-0">
-                          <div className="text-sm font-bold text-slate-900 dark:text-slate-100 truncate">{d.name}</div>
-                          <div className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 truncate">{d.owner}</div>
+                          <div className="text-sm font-bold text-faith-ink dark:text-slate-100 truncate">{d.name}</div>
+                          <div className="text-[10px] sm:text-xs text-faith-slate truncate">{d.owner}</div>
                         </div>
                         <Badge tone={statusTone(d.status)}>{statusLabel(d.status)}</Badge>
                       </div>
-                      <div className="mt-2 text-[10px] sm:text-xs text-slate-600 dark:text-slate-400">{d.tokenStatus}</div>
+                      <div className="mt-2 text-[10px] sm:text-xs text-faith-slate">{d.tokenStatus}</div>
                       <div className="mt-2 flex items-center justify-between gap-2 text-[10px] sm:text-xs">
-                        <span className="text-slate-500 dark:text-slate-400">{d.historyNote}</span>
+                        <span className="text-faith-slate">{d.historyNote}</span>
                         {d.status === 'Needs re-auth' || d.status === 'Missing credentials' ? (
                           <button className="font-semibold text-orange-700 dark:text-amber-400" onClick={() => handleReconnect(d.id)}>
                             Fix
@@ -1640,38 +1640,38 @@ export default function StreamToPlatformsPage() {
                 </div>
               </div>
 
-              <div className="rounded-[14px] bg-white dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition overflow-hidden">
+              <div className="rounded-[14px] bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition overflow-hidden">
                 <SectionTitle
                   icon={<Eye className="h-5 w-5" />}
                   title="Distribution preview"
                   subtitle="Preview the in-app surface plus the mobile-safe destination framing before the session goes live."
                 />
 
-                <div className="mt-4 rounded-[14px] overflow-hidden ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm">
+                <div className="mt-4 rounded-[14px] overflow-hidden ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft">
                   <div className="px-4 py-4 text-white" style={{ background: 'linear-gradient(180deg, #03cd8c 0%, #0f766e 55%, #f77f00 100%)' }}>
                     <Badge tone="green">Surface preview</Badge>
                     <div className="mt-3 text-3xl font-extrabold leading-tight">Sunday Encounter Live</div>
-                    <div className="mt-1 text-sm text-white/90">Live Sessions Â· Central Campus Â· Thu 18:30</div>
-                    <div className="mt-3 h-2 w-full rounded-full bg-white/20">
+                    <div className="mt-1 text-sm text-white/90">Live Sessions · Central Campus · Thu 18:30</div>
+                    <div className="mt-3 h-2 w-full rounded-full bg-[var(--fh-surface-bg)]/20">
                       <div className="h-2 rounded-full" style={{ width: '72%', background: EV_ORANGE }} />
                     </div>
-                    <div className="mt-2 text-xs text-white/85">Readiness score Â· 72% Â· Distribution plan pre-approved</div>
+                    <div className="mt-2 text-xs text-white/85">Readiness score · 72% · Distribution plan pre-approved</div>
                   </div>
 
-                  <div className="bg-white dark:bg-slate-900 px-4 py-4">
+                  <div className="bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 py-4">
                     <div className="flex items-start gap-4">
                       <div className="flex-1">
-                        <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-3 bg-slate-50 dark:bg-slate-950 transition">
-                          <div className="text-sm font-bold text-slate-900 dark:text-slate-100">Desktop surface</div>
-                          <div className="mt-2 rounded-xl border border-slate-200 dark:border-slate-800 p-3 bg-white dark:bg-slate-900">
+                        <div className="rounded-xl border border-faith-line dark:border-slate-800 p-3 bg-[var(--fh-surface)] dark:bg-slate-950 transition">
+                          <div className="text-sm font-bold text-faith-ink dark:text-slate-100">Desktop surface</div>
+                          <div className="mt-2 rounded-xl border border-faith-line dark:border-slate-800 p-3 bg-[var(--fh-surface-bg)] dark:bg-slate-900">
                             <div className="h-3 w-28 rounded-full" style={{ background: EV_GREEN }} />
                             <div className="mt-3 h-3 w-40 rounded-full bg-slate-800 dark:bg-slate-100" />
                             <div className="mt-2 h-3 w-32 rounded-full bg-slate-300 dark:bg-slate-700" />
                             <div className="mt-4 grid grid-cols-2 gap-2">
                               {activeDestinations.slice(0, 4).map((d) => (
-                                <div key={d.id} className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-2">
-                                  <div className="text-[11px] font-bold text-slate-900 dark:text-slate-100 truncate">{d.name}</div>
-                                  <div className="text-[10px] text-slate-500 dark:text-slate-400 truncate">{d.settings.safeAreaMode}</div>
+                                <div key={d.id} className="rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-2">
+                                  <div className="text-[11px] font-bold text-faith-ink dark:text-slate-100 truncate">{d.name}</div>
+                                  <div className="text-[10px] text-faith-slate truncate">{d.settings.safeAreaMode}</div>
                                 </div>
                               ))}
                             </div>
@@ -1681,10 +1681,10 @@ export default function StreamToPlatformsPage() {
 
                       <div className="shrink-0">
                         <div className="w-[138px] rounded-[34px] bg-slate-950 p-3 shadow-2xl">
-                          <div className="relative overflow-hidden rounded-[16px] bg-white dark:bg-slate-900 h-[300px] transition-colors">
+                          <div className="relative overflow-hidden rounded-[16px] bg-[var(--fh-surface-bg)] dark:bg-slate-900 h-[300px] transition-colors">
                             <div className="absolute top-0 left-1/2 -translate-x-1/2 z-30 w-20 h-5 bg-black rounded-b-2xl" />
                             <div className="p-3">
-                              <div className="flex items-center justify-between text-[10px] font-bold text-slate-900 dark:text-slate-100">
+                              <div className="flex items-center justify-between text-[10px] font-bold text-faith-ink dark:text-slate-100">
                               <span>Provider</span>
                                 <span style={{ color: EV_GREEN }}>Share</span>
                               </div>
@@ -1696,9 +1696,9 @@ export default function StreamToPlatformsPage() {
                                 </div>
                               </div>
                               <div className="mt-3 space-y-2">
-                                <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-2 text-[10px] font-semibold text-slate-700 dark:text-slate-300">YouTube + Instagram + Primary</div>
-                                <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-2 text-[10px] font-semibold text-slate-700 dark:text-slate-300">Language tracks ready</div>
-                                <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-2 text-[10px] font-semibold text-slate-700 dark:text-slate-300">Fallback Â· Provider primary</div>
+                                <div className="rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-2 text-[10px] font-semibold text-slate-700 dark:text-slate-300">YouTube + Instagram + Primary</div>
+                                <div className="rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-2 text-[10px] font-semibold text-slate-700 dark:text-slate-300">Language tracks ready</div>
+                                <div className="rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-2 text-[10px] font-semibold text-slate-700 dark:text-slate-300">Fallback · Provider primary</div>
                               </div>
                             </div>
                             <div className="absolute bottom-3 left-3 right-3 flex flex-col gap-2">
@@ -1713,7 +1713,7 @@ export default function StreamToPlatformsPage() {
                 </div>
               </div>
 
-              <div className="rounded-[14px] bg-white dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm transition">
+              <div className="rounded-[14px] bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
                 <SectionTitle
                   icon={<Gauge className="h-5 w-5" />}
                   title="Global output profile"
@@ -1722,7 +1722,7 @@ export default function StreamToPlatformsPage() {
 
                 <div className="mt-4 grid gap-3">
                   <div>
-                    <div className="text-[10px] sm:text-xs font-bold text-slate-700 dark:text-slate-400 uppercase tracking-wider">Orientation</div>
+                    <div className="text-[10px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider">Orientation</div>
                     <div className="mt-2 flex flex-wrap gap-2">
                       {(['Landscape', 'Portrait', 'Adaptive'] as OutputOrientation[]).map((orientation) => (
                         <Pill
@@ -1737,7 +1737,7 @@ export default function StreamToPlatformsPage() {
                   </div>
 
                   <div>
-                    <div className="text-[10px] sm:text-xs font-bold text-slate-700 dark:text-slate-400 uppercase tracking-wider">Quality preset</div>
+                    <div className="text-[10px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider">Quality preset</div>
                     <div className="mt-2 flex flex-wrap gap-2">
                       {(['Standard', 'High', 'Broadcast'] as OutputQuality[]).map((quality) => (
                         <Pill
@@ -1757,8 +1757,8 @@ export default function StreamToPlatformsPage() {
                     </div>
                   </div>
 
-                  <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3 transition">
-                    <div className="text-[10px] uppercase tracking-wider text-slate-500 dark:text-slate-400">Translation tracks</div>
+                  <div className="rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition">
+                    <div className="text-[10px] uppercase tracking-wider text-faith-slate">Translation tracks</div>
                     <div className="mt-2 flex flex-wrap gap-2">
                       {['English', 'Swahili', 'French'].map((track) => {
                         const active = profile.translationTracks.includes(track);
@@ -1776,8 +1776,8 @@ export default function StreamToPlatformsPage() {
                             className={cx(
                               'inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-[10px] sm:text-xs font-semibold ring-1 transition active:scale-[0.98]',
                               active
-                                ? 'bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 ring-slate-900 dark:ring-slate-100'
-                                : 'bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-300 ring-slate-200 dark:ring-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800'
+                                ? 'bg-slate-900 dark:bg-slate-100 text-white dark:text-faith-ink ring-slate-900 dark:ring-slate-100'
+                                : 'bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-slate-800 dark:text-slate-300 ring-slate-200 dark:ring-slate-800 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800'
                             )}
                           >
                             {track}
@@ -1787,11 +1787,11 @@ export default function StreamToPlatformsPage() {
                     </div>
                   </div>
 
-                  <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3 transition">
+                  <div className="rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition">
                     <div className="flex items-start justify-between gap-3">
                       <div>
-                        <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Captions and confidence</div>
-                        <div className="mt-1 text-[10px] sm:text-xs text-slate-500 dark:text-slate-400">Accessibility readiness stays visible because it affects both in-app and external quality.</div>
+                        <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Captions and confidence</div>
+                        <div className="mt-1 text-[10px] sm:text-xs text-faith-slate">Accessibility readiness stays visible because it affects both in-app and external quality.</div>
                       </div>
                       <Toggle checked={profile.captions} onChange={(v) => setProfile((prev) => ({ ...prev, captions: v }))} />
                     </div>
@@ -1813,11 +1813,11 @@ export default function StreamToPlatformsPage() {
         {selectedDest ? (
           <div className="grid grid-cols-1 gap-5 lg:grid-cols-12">
             <div className="lg:col-span-7 space-y-5">
-              <div className="rounded-[14px] bg-slate-50 dark:bg-slate-800/40 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+              <div className="rounded-[14px] bg-[var(--fh-surface)] dark:bg-slate-800/40 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                   <div>
-                    <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Per-platform metadata</div>
-                    <div className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400">Protect quality by tuning copy and safe-area details for this single destination.</div>
+                    <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Per-platform metadata</div>
+                    <div className="text-[10px] sm:text-xs text-faith-slate">Protect quality by tuning copy and safe-area details for this single destination.</div>
                   </div>
                   <Badge tone={familyTone(selectedDest.family)}>{selectedDest.family}</Badge>
                 </div>
@@ -1825,31 +1825,31 @@ export default function StreamToPlatformsPage() {
                 <div className="mt-5 grid grid-cols-1 gap-5 lg:grid-cols-2">
                   <div className="space-y-4">
                     <div>
-                      <div className="text-[10px] sm:text-xs font-bold text-slate-700 dark:text-slate-400 uppercase tracking-wider">Title variant</div>
+                      <div className="text-[10px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider">Title variant</div>
                       <input
                         value={selectedDest.settings.title}
                         onChange={(e) => updateDestinationSettings(selectedDest.id, { title: e.target.value })}
-                        className="mt-1.5 h-11 w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 text-sm font-bold text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-slate-600 transition shadow-sm"
+                        className="mt-1.5 h-11 w-full rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 text-sm font-bold text-faith-ink dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-slate-600 transition shadow-soft"
                         placeholder="Custom title"
                       />
                     </div>
 
                     <div>
-                      <div className="text-[10px] sm:text-xs font-bold text-slate-700 dark:text-slate-400 uppercase tracking-wider">Description variant</div>
+                      <div className="text-[10px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider">Description variant</div>
                       <textarea
                         value={selectedDest.settings.description}
                         onChange={(e) => updateDestinationSettings(selectedDest.id, { description: e.target.value })}
-                        className="mt-1.5 min-h-[120px] w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3 text-sm font-semibold text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-slate-600 transition shadow-sm resize-none"
+                        className="mt-1.5 min-h-[120px] w-full rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 py-3 text-sm font-semibold text-faith-ink dark:text-slate-100 placeholder:text-faith-slate dark:placeholder:text-faith-slate focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-slate-600 transition shadow-soft resize-none"
                         placeholder="What should this audience see on this platform?"
                       />
                     </div>
 
                     <div>
-                      <div className="text-[10px] sm:text-xs font-bold text-slate-700 dark:text-slate-400 uppercase tracking-wider">Creative variant label</div>
+                      <div className="text-[10px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider">Creative variant label</div>
                       <input
                         value={selectedDest.creativeVariant}
                         onChange={(e) => updateDestination(selectedDest.id, { creativeVariant: e.target.value })}
-                        className="mt-1.5 h-11 w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 text-sm font-bold text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-slate-600 transition shadow-sm"
+                        className="mt-1.5 h-11 w-full rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 text-sm font-bold text-faith-ink dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-slate-600 transition shadow-soft"
                         placeholder="Creative variant"
                       />
                     </div>
@@ -1858,7 +1858,7 @@ export default function StreamToPlatformsPage() {
                   <div className="space-y-4">
                     {selectedDest.supportsPrivacy ? (
                       <div>
-                        <div className="text-[10px] sm:text-xs font-bold text-slate-700 dark:text-slate-400 uppercase tracking-wider">Privacy</div>
+                        <div className="text-[10px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider">Privacy</div>
                         <div className="mt-2 flex flex-wrap gap-2">
                           {(['Public', 'Unlisted', 'Private'] as Privacy[]).map((privacy) => (
                             <Pill
@@ -1872,27 +1872,27 @@ export default function StreamToPlatformsPage() {
                         </div>
                       </div>
                     ) : (
-                      <div className="rounded-xl bg-white dark:bg-slate-900/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+                      <div className="rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                         <div className="flex items-start gap-2">
-                          <Info className="mt-0.5 h-4 w-4 text-slate-600 dark:text-slate-400" />
-                          <div className="text-[10px] sm:text-xs text-slate-600 dark:text-slate-400 italic">Privacy controls are not supported for this destination.</div>
+                          <Info className="mt-0.5 h-4 w-4 text-faith-slate" />
+                          <div className="text-[10px] sm:text-xs text-faith-slate italic">Privacy controls are not supported for this destination.</div>
                         </div>
                       </div>
                     )}
 
                     <div>
-                      <div className="text-[10px] sm:text-xs font-bold text-slate-700 dark:text-slate-400 uppercase tracking-wider">Language track</div>
+                      <div className="text-[10px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider">Language track</div>
                       <input
                         value={selectedDest.settings.languageTrack || ''}
                         onChange={(e) => updateDestinationSettings(selectedDest.id, { languageTrack: e.target.value })}
-                        className="mt-1.5 h-11 w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 text-sm font-bold text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-slate-600 transition shadow-sm"
+                        className="mt-1.5 h-11 w-full rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 text-sm font-bold text-faith-ink dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-slate-600 transition shadow-soft"
                         placeholder="English main track"
                         disabled={!selectedDest.supportsLanguageTracks}
                       />
                     </div>
 
                     <div>
-                      <div className="text-[10px] sm:text-xs font-bold text-slate-700 dark:text-slate-400 uppercase tracking-wider">Safe-area preview note</div>
+                      <div className="text-[10px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider">Safe-area preview note</div>
                       <div className="mt-2 flex flex-wrap gap-2">
                         {(['16:9 safe', '9:16 preview', 'Square crop'] as Destination['settings']['safeAreaMode'][]).map((mode) => (
                           <Pill
@@ -1908,7 +1908,7 @@ export default function StreamToPlatformsPage() {
                     </div>
 
                     <div>
-                      <div className="text-[10px] sm:text-xs font-bold text-slate-700 dark:text-slate-400 uppercase tracking-wider">Archive rule</div>
+                      <div className="text-[10px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider">Archive rule</div>
                       <div className="mt-2 flex flex-wrap gap-2">
                         {(['Keep replay internal', 'Auto-publish replay', 'Auto-publish replay + clips'] as Destination['settings']['archiveRule'][]).map((rule) => (
                           <Pill
@@ -1926,29 +1926,29 @@ export default function StreamToPlatformsPage() {
                 </div>
               </div>
 
-              <div className="rounded-[14px] bg-white dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+              <div className="rounded-[14px] bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                 <div className="flex items-start justify-between gap-3">
                   <div>
-                    <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Compliance and routing note</div>
-                    <div className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400">Keep operational notes visible so producers understand what makes this destination unique before pressing go live.</div>
+                    <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Compliance and routing note</div>
+                    <div className="text-[10px] sm:text-xs text-faith-slate">Keep operational notes visible so producers understand what makes this destination unique before pressing go live.</div>
                   </div>
                   <Badge tone="orange"><Info className="h-3.5 w-3.5" />Needs review</Badge>
                 </div>
                 <textarea
                   value={selectedDest.settings.complianceNote}
                   onChange={(e) => updateDestinationSettings(selectedDest.id, { complianceNote: e.target.value })}
-                  className="mt-4 min-h-[120px] w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-4 py-3 text-sm font-semibold text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-slate-600 transition shadow-sm resize-none"
+                  className="mt-4 min-h-[120px] w-full rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-3 text-sm font-semibold text-faith-ink dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-slate-600 transition shadow-soft resize-none"
                 />
                 <div className="mt-3 flex flex-wrap items-center gap-2">
                   <button
                     onClick={() => showNotification(`Open ${selectedDest.name} policy notebook`) }
-                    className="inline-flex h-9 items-center gap-2 rounded-xl bg-white dark:bg-slate-900 px-3 text-[10px] sm:text-xs font-semibold text-slate-800 dark:text-slate-100 ring-1 ring-slate-200 dark:ring-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 transition active:scale-[0.98]"
+                    className="inline-flex h-9 items-center gap-2 rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 text-[10px] sm:text-xs font-semibold text-slate-800 dark:text-slate-100 ring-1 ring-slate-200 dark:ring-slate-800 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800 transition active:scale-[0.98]"
                   >
                     <ExternalLink className="h-4 w-4" /> Open platform rules
                   </button>
                   <button
                     onClick={() => handleReconnect(selectedDest.id)}
-                    className="inline-flex h-9 items-center gap-2 rounded-xl px-3 text-[10px] sm:text-xs font-semibold text-white shadow-sm hover:opacity-95 transition active:scale-[0.98]"
+                    className="inline-flex h-9 items-center gap-2 rounded-xl px-3 text-[10px] sm:text-xs font-semibold text-white shadow-soft hover:opacity-95 transition active:scale-[0.98]"
                     style={{ background: EV_GREEN }}
                   >
                     <RefreshCw className="h-4 w-4" /> Refresh access
@@ -1958,16 +1958,16 @@ export default function StreamToPlatformsPage() {
             </div>
 
             <div className="lg:col-span-5 space-y-5">
-              <div className="rounded-[14px] bg-white dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 transition overflow-hidden">
+              <div className="rounded-[14px] bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 transition overflow-hidden">
                 <div className="flex items-start justify-between gap-3">
                   <div>
-                    <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Safe-area and audience preview</div>
-                    <div className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400">See how the session title, subtitle, and CTA framing will land on this destination.</div>
+                    <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Safe-area and audience preview</div>
+                    <div className="text-[10px] sm:text-xs text-faith-slate">See how the session title, subtitle, and CTA framing will land on this destination.</div>
                   </div>
                   <Badge tone={selectedDest.supportsSafeAreaPreview ? 'green' : 'neutral'}>{selectedDest.settings.safeAreaMode}</Badge>
                 </div>
 
-                <div className="mt-4 rounded-[14px] overflow-hidden ring-1 ring-slate-200 dark:ring-slate-800 shadow-sm">
+                <div className="mt-4 rounded-[14px] overflow-hidden ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft">
                   <div className="aspect-[16/9] bg-slate-100 dark:bg-slate-950 relative overflow-hidden">
                     <img src={selectedDest.thumbnailUrl || DEFAULT_THUMBNAIL} alt={selectedDest.name} className="absolute inset-0 h-full w-full object-cover" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
@@ -1985,26 +1985,26 @@ export default function StreamToPlatformsPage() {
                 </div>
 
                 <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
-                  <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3 transition">
-                    <div className="text-[10px] uppercase tracking-wider text-slate-500 dark:text-slate-400">Connection state</div>
-                    <div className="mt-1 text-sm font-bold text-slate-900 dark:text-slate-100">{statusLabel(selectedDest.status)}</div>
+                  <div className="rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition">
+                    <div className="text-[10px] uppercase tracking-wider text-faith-slate">Connection state</div>
+                    <div className="mt-1 text-sm font-bold text-faith-ink dark:text-slate-100">{statusLabel(selectedDest.status)}</div>
                   </div>
-                  <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3 transition">
-                    <div className="text-[10px] uppercase tracking-wider text-slate-500 dark:text-slate-400">Health history</div>
-                    <div className="mt-1 text-sm font-bold text-slate-900 dark:text-slate-100">{selectedDest.health.errors} error{selectedDest.health.errors === 1 ? '' : 's'} Â· ACK {selectedDest.health.lastAckSec}s</div>
+                  <div className="rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition">
+                    <div className="text-[10px] uppercase tracking-wider text-faith-slate">Health history</div>
+                    <div className="mt-1 text-sm font-bold text-faith-ink dark:text-slate-100">{selectedDest.health.errors} error{selectedDest.health.errors === 1 ? '' : 's'} · ACK {selectedDest.health.lastAckSec}s</div>
                   </div>
                 </div>
               </div>
 
-              <div className="rounded-[14px] bg-slate-50 dark:bg-slate-800/40 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 transition">
-                <div className="text-sm font-bold text-slate-900 dark:text-slate-50">Credential and access snapshot</div>
-                <div className="mt-1 text-[10px] sm:text-xs text-slate-500 dark:text-slate-400">Team ownership, token state, and the quick actions this operator is most likely to need.</div>
-                <div className="mt-4 rounded-xl bg-white dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
-                  <div className="text-[10px] uppercase tracking-wider text-slate-500 dark:text-slate-400">Owner</div>
-                  <div className="mt-1 text-sm font-bold text-slate-900 dark:text-slate-100">{selectedDest.owner}</div>
-                  <div className="mt-3 text-[10px] uppercase tracking-wider text-slate-500 dark:text-slate-400">Token status</div>
-                  <div className="mt-1 text-sm font-bold text-slate-900 dark:text-slate-100">{selectedDest.tokenStatus}</div>
-                  <div className="mt-3 text-[10px] uppercase tracking-wider text-slate-500 dark:text-slate-400">Operational note</div>
+              <div className="rounded-[14px] bg-[var(--fh-surface)] dark:bg-slate-800/40 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+                <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Credential and access snapshot</div>
+                <div className="mt-1 text-[10px] sm:text-xs text-faith-slate">Team ownership, token state, and the quick actions this operator is most likely to need.</div>
+                <div className="mt-4 rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+                  <div className="text-[10px] uppercase tracking-wider text-faith-slate">Owner</div>
+                  <div className="mt-1 text-sm font-bold text-faith-ink dark:text-slate-100">{selectedDest.owner}</div>
+                  <div className="mt-3 text-[10px] uppercase tracking-wider text-faith-slate">Token status</div>
+                  <div className="mt-1 text-sm font-bold text-faith-ink dark:text-slate-100">{selectedDest.tokenStatus}</div>
+                  <div className="mt-3 text-[10px] uppercase tracking-wider text-faith-slate">Operational note</div>
                   <div className="mt-1 text-sm text-slate-700 dark:text-slate-200">{selectedDest.historyNote}</div>
                 </div>
               </div>
@@ -2031,13 +2031,13 @@ export default function StreamToPlatformsPage() {
                 'rounded-[14px] border p-4 text-left transition hover:shadow-md',
                 preset.id === selectedPresetId
                   ? 'border-emerald-200 bg-emerald-50 dark:bg-emerald-900/10 dark:border-emerald-800'
-                  : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900'
+                  : 'border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900'
               )}
             >
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <div className="text-sm font-bold text-slate-900 dark:text-slate-100">{preset.label}</div>
-                  <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">{preset.desc}</div>
+                  <div className="text-sm font-bold text-faith-ink dark:text-slate-100">{preset.label}</div>
+                  <div className="mt-1 text-[11px] text-faith-slate">{preset.desc}</div>
                 </div>
                 <Badge tone="orange">{preset.chip}</Badge>
               </div>
@@ -2056,45 +2056,46 @@ export default function StreamToPlatformsPage() {
         open={connectOpen}
         onClose={() => setConnectOpen(false)}
         title="Connect destination"
-        subtitle="Add an external platform or resolve a destination connection before it joins this sessionâ€™s routing plan."
+        subtitle="Add an external platform or resolve a destination connection before it joins this session’s routing plan."
       >
         <div className="grid gap-3">
           {availableToConnect.map((dest) => (
-            <div key={dest.id} className="rounded-[14px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 transition">
+            <div key={dest.id} className="rounded-[14px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <div className="text-sm font-bold text-slate-900 dark:text-slate-100">{dest.name}</div>
-                  <div className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">{dest.owner}</div>
+                  <div className="text-sm font-bold text-faith-ink dark:text-slate-100">{dest.name}</div>
+                  <div className="mt-1 text-[11px] text-faith-slate">{dest.owner}</div>
                 </div>
                 <Badge tone={statusTone(dest.status)}>{statusLabel(dest.status)}</Badge>
               </div>
-              <div className="mt-2 text-[11px] text-slate-600 dark:text-slate-400">{dest.historyNote}</div>
+              <div className="mt-2 text-[11px] text-faith-slate">{dest.historyNote}</div>
               <div className="mt-3 flex flex-wrap gap-2">
                 <button
                   onClick={() => {
                     handleReconnect(dest.id);
                     toggleDestination(dest.id, true);
                   }}
-                  className="inline-flex h-9 items-center gap-2 rounded-xl px-3 text-[11px] font-semibold text-white shadow-sm hover:opacity-95 transition active:scale-[0.98]"
+                  className="inline-flex h-9 items-center gap-2 rounded-xl px-3 text-[11px] font-semibold text-white shadow-soft hover:opacity-95 transition active:scale-[0.98]"
                   style={{ background: EV_GREEN }}
                 >
                   <CheckCircle2 className="h-4 w-4" /> Resolve and enable
                 </button>
                 <button
                   onClick={() => openAdvanced(dest.id)}
-                  className="inline-flex h-9 items-center gap-2 rounded-xl bg-white dark:bg-slate-900 px-3 text-[11px] font-semibold text-slate-800 dark:text-slate-100 shadow-sm ring-1 ring-slate-200 dark:ring-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 transition active:scale-[0.98]"
+                  className="inline-flex h-9 items-center gap-2 rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 text-[11px] font-semibold text-slate-800 dark:text-slate-100 shadow-soft ring-1 ring-slate-200 dark:ring-slate-800 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800 transition active:scale-[0.98]"
                 >
                   <Settings2 className="h-4 w-4" /> Open settings
                 </button>
               </div>
             </div>
           ))}
-          {!availableToConnect.length ? <div className="text-sm text-slate-500 dark:text-slate-400">All destinations are already connected and healthy.</div> : null}
+          {!availableToConnect.length ? <div className="text-sm text-faith-slate">All destinations are already connected and healthy.</div> : null}
         </div>
       </Modal>
     </div>
   );
 }
+
 
 
 
