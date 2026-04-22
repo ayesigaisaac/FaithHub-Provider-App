@@ -627,7 +627,7 @@ function SoftButton({
       className={cx(
         "inline-flex items-center gap-2 rounded-xl border px-3 sm:px-4 py-2 text-[11px] sm:text-[12px] font-semibold transition-colors",
         disabled
-          ? "cursor-not-allowed border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 text-faith-slate dark:text-faith-slate"
+          ? "cursor-not-allowed border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 text-faith-slate"
           : "border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-slate-700 dark:text-slate-200 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800",
         className,
       )}
@@ -684,11 +684,11 @@ function Card({
   className?: string;
 }) {
   return (
-    <div className={cx("rounded-[16px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 sm:p-4 md:p-5 transition-colors", className)}>
+    <div className={cx("rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 sm:p-4 md:p-5 transition-colors", className)}>
       <div className="flex items-start justify-between gap-3">
         <div>
           <div className="text-[14px] font-semibold text-faith-ink dark:text-slate-100">{title}</div>
-          {subtitle ? <div className="mt-0.5 text-[11px] leading-5 text-faith-slate dark:text-faith-slate">{subtitle}</div> : null}
+          {subtitle ? <div className="mt-0.5 text-[11px] leading-5 text-faith-slate">{subtitle}</div> : null}
         </div>
         {right ? <div className="shrink-0">{right}</div> : null}
       </div>
@@ -750,7 +750,7 @@ function Drawer({
               <div className="flex items-start justify-between gap-3">
                 <div className="min-w-0">
                   <div className="text-[14px] font-semibold text-faith-ink dark:text-slate-100">{title}</div>
-                  {subtitle ? <div className="mt-0.5 text-[11px] text-faith-slate dark:text-faith-slate">{subtitle}</div> : null}
+                  {subtitle ? <div className="mt-0.5 text-[11px] text-faith-slate">{subtitle}</div> : null}
                 </div>
                 <button
                   type="button"
@@ -858,7 +858,7 @@ function TimeBadge({
   const pad = (value: number) => String(Math.max(0, value)).padStart(2, "0");
   return (
     <div className="rounded-lg border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 transition-colors">
-      <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-faith-slate dark:text-faith-slate">{label}</div>
+      <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-faith-slate">{label}</div>
       <div className="mt-1 font-mono text-[20px] font-black text-faith-ink dark:text-slate-100">
         {pad(values.hours)}:{pad(values.minutes)}:{pad(values.seconds)}
       </div>
@@ -914,7 +914,7 @@ function QuickToggle({
       <div className="flex items-start justify-between gap-3">
         <div>
           <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">{label}</div>
-          <div className="mt-0.5 text-[11px] text-faith-slate dark:text-faith-slate">{hint}</div>
+          <div className="mt-0.5 text-[11px] text-faith-slate">{hint}</div>
         </div>
         <div className={cx(
           "flex h-6 w-10 items-center rounded-full border px-1 transition-colors",
@@ -953,7 +953,7 @@ function RouteButton({
           </div>
           <div className="min-w-0">
             <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100 truncate">{label}</div>
-            <div className="text-[11px] leading-5 text-faith-slate dark:text-faith-slate truncate">{hint}</div>
+            <div className="text-[11px] leading-5 text-faith-slate truncate">{hint}</div>
           </div>
         </div>
         <ArrowRight className="h-4 w-4 text-faith-slate" />
@@ -998,7 +998,7 @@ function ControlRoomPreview({
       </div>
 
       <div className="mt-4 rounded-lg border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-3 transition-colors">
-        <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-faith-slate dark:text-faith-slate">Active tools</div>
+        <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-faith-slate">Active tools</div>
         <div className="mt-3 flex flex-wrap gap-2">
           {slowMode ? <Pill text="Slow mode" tone="warn" /> : null}
           {pinnedNotice ? <Pill text="Pinned notice" tone="good" /> : null}
@@ -1019,7 +1019,7 @@ function ControlRoomPreview({
         ))}
       </div>
 
-      <div className="mt-4 text-[11px] text-faith-slate dark:text-faith-slate">
+      <div className="mt-4 text-[11px] text-faith-slate">
         {acknowledgedCount} alert{acknowledgedCount === 1 ? "" : "s"} acknowledged in this session.
       </div>
     </Card>
@@ -1223,7 +1223,7 @@ export default function FaithHubLiveDashboardPage() {
               right={<SoftButton onClick={copySessionLink}><Copy className="h-4 w-4" /> Copy link</SoftButton>}
             >
               <div>
-                <div className="text-[11px] font-semibold text-faith-slate dark:text-faith-slate">Active session</div>
+                <div className="text-[11px] font-semibold text-faith-slate">Active session</div>
                 <select
                   value={activeSessionId}
                   onChange={(e) => setActiveSessionId(e.target.value)}
@@ -1248,23 +1248,23 @@ export default function FaithHubLiveDashboardPage() {
               </div>
 
               <div className="mt-4 rounded-lg border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-3 transition-colors">
-                <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-faith-slate dark:text-faith-slate">Session context</div>
+                <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-faith-slate">Session context</div>
                 <div className="mt-2 text-[12px] font-semibold text-faith-ink dark:text-slate-100">{session.title}</div>
-                <div className="mt-1 text-[11px] text-faith-slate dark:text-faith-slate">{session.audienceLabel}</div>
-                <div className="mt-1 text-[11px] text-faith-slate dark:text-faith-slate">{session.locationLabel}</div>
-                <div className="mt-1 text-[11px] text-faith-slate dark:text-faith-slate">{formatDateTime(session.startISO)} • {session.timezone}</div>
+                <div className="mt-1 text-[11px] text-faith-slate">{session.audienceLabel}</div>
+                <div className="mt-1 text-[11px] text-faith-slate">{session.locationLabel}</div>
+                <div className="mt-1 text-[11px] text-faith-slate">{formatDateTime(session.startISO)} • {session.timezone}</div>
               </div>
 
               <div className="mt-4 grid grid-cols-2 gap-2">
                 <div className="rounded-lg border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
-                  <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-faith-slate dark:text-faith-slate">Host</div>
+                  <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-faith-slate">Host</div>
                   <div className="mt-1 text-[13px] font-semibold text-faith-ink dark:text-slate-100">{session.hosts.host}</div>
-                  <div className="mt-1 text-[11px] text-faith-slate dark:text-faith-slate">On stage and checked</div>
+                  <div className="mt-1 text-[11px] text-faith-slate">On stage and checked</div>
                 </div>
                 <div className="rounded-lg border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
-                  <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-faith-slate dark:text-faith-slate">Producer</div>
+                  <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-faith-slate">Producer</div>
                   <div className="mt-1 text-[13px] font-semibold text-faith-ink dark:text-slate-100">{session.hosts.producer}</div>
-                  <div className="mt-1 text-[11px] text-faith-slate dark:text-faith-slate">Backstage operations</div>
+                  <div className="mt-1 text-[11px] text-faith-slate">Backstage operations</div>
                 </div>
               </div>
 
@@ -1286,7 +1286,7 @@ export default function FaithHubLiveDashboardPage() {
                             <Pill text={alert.severity.toUpperCase()} tone={severityTone(alert.severity)} />
                             <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">{alert.title}</div>
                           </div>
-                          <div className="mt-2 text-[11px] text-faith-slate dark:text-faith-slate">{alert.playbook}</div>
+                          <div className="mt-2 text-[11px] text-faith-slate">{alert.playbook}</div>
                         </div>
                       </div>
                       <div className="mt-3 flex flex-wrap gap-2">
@@ -1343,7 +1343,7 @@ export default function FaithHubLiveDashboardPage() {
                 <div className="flex items-center justify-between gap-2">
                   <div>
                     <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">Health telemetry trend</div>
-                    <div className="text-[11px] text-faith-slate dark:text-faith-slate">Combined ingest and sync health over the last few checks.</div>
+                    <div className="text-[11px] text-faith-slate">Combined ingest and sync health over the last few checks.</div>
                   </div>
                   <Pill text={`${session.health.fps} FPS`} icon={<Video className="h-3.5 w-3.5" />} />
                 </div>
@@ -1377,15 +1377,15 @@ export default function FaithHubLiveDashboardPage() {
                     <div className="flex items-start justify-between gap-2">
                       <div>
                         <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">{member.role}</div>
-                        <div className="mt-0.5 text-[11px] text-faith-slate dark:text-faith-slate">{member.name}</div>
+                        <div className="mt-0.5 text-[11px] text-faith-slate">{member.name}</div>
                       </div>
                       <Pill text={member.readiness} tone={readinessTone(member.readiness)} />
                     </div>
-                    <div className="mt-3 flex items-center gap-2 text-[11px] text-faith-slate dark:text-faith-slate">
+                    <div className="mt-3 flex items-center gap-2 text-[11px] text-faith-slate">
                       {member.checked ? <CheckCircle2 className="h-4 w-4 text-emerald-600" /> : <Clock3 className="h-4 w-4 text-amber-600" />}
                       {member.checked ? "Checks complete" : "Checks pending"}
                     </div>
-                    {member.critical ? <div className="mt-2 text-[10px] font-bold uppercase tracking-[0.14em] text-faith-slate dark:text-faith-slate">Critical role</div> : null}
+                    {member.critical ? <div className="mt-2 text-[10px] font-bold uppercase tracking-[0.14em] text-faith-slate">Critical role</div> : null}
                   </div>
                 ))}
               </div>
@@ -1403,7 +1403,7 @@ export default function FaithHubLiveDashboardPage() {
                 <div className="flex items-center justify-between gap-2">
                   <div>
                     <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">Arrival and audience trend</div>
-                    <div className="text-[11px] text-faith-slate dark:text-faith-slate">Forecast alignment and live momentum in one view.</div>
+                    <div className="text-[11px] text-faith-slate">Forecast alignment and live momentum in one view.</div>
                   </div>
                   <Pill text={`${arrivalPct}% of forecast`} tone={arrivalPct >= 90 ? "good" : arrivalPct >= 70 ? "warn" : "danger"} />
                 </div>
@@ -1414,21 +1414,21 @@ export default function FaithHubLiveDashboardPage() {
 
               <div className="mt-4 grid sm:grid-cols-3 gap-3">
                 <div className="rounded-lg border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
-                  <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-faith-slate dark:text-faith-slate">Q&A load</div>
+                  <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-faith-slate">Q&A load</div>
                   <div className="mt-1 text-[18px] font-black text-faith-ink dark:text-slate-100">{session.audience.qnaLoad}</div>
-                  <div className="mt-1 text-[11px] text-faith-slate dark:text-faith-slate">Open questions needing review.</div>
+                  <div className="mt-1 text-[11px] text-faith-slate">Open questions needing review.</div>
                 </div>
                 <div className="rounded-lg border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
-                  <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-faith-slate dark:text-faith-slate">Prayer requests</div>
+                  <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-faith-slate">Prayer requests</div>
                   <div className="mt-1 text-[18px] font-black text-faith-ink dark:text-slate-100">{session.audience.prayerRequests}</div>
-                  <div className="mt-1 text-[11px] text-faith-slate dark:text-faith-slate">Requests flowing into triage.</div>
+                  <div className="mt-1 text-[11px] text-faith-slate">Requests flowing into triage.</div>
                 </div>
                 <div className="rounded-lg border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
-                  <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-faith-slate dark:text-faith-slate">Drop-off risk</div>
+                  <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-faith-slate">Drop-off risk</div>
                   <div className="mt-1 flex items-center gap-2">
                     <Pill text={session.audience.dropOffRisk} tone={session.audience.dropOffRisk === "Low" ? "good" : session.audience.dropOffRisk === "Watch" ? "warn" : "danger"} />
                   </div>
-                  <div className="mt-1 text-[11px] text-faith-slate dark:text-faith-slate">Audience retention warning state.</div>
+                  <div className="mt-1 text-[11px] text-faith-slate">Audience retention warning state.</div>
                 </div>
               </div>
             </Card>
@@ -1465,10 +1465,10 @@ export default function FaithHubLiveDashboardPage() {
                           <div className="flex flex-wrap items-center gap-2">
                             <Pill text={alert.severity.toUpperCase()} tone={severityTone(alert.severity)} />
                             <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">{alert.title}</div>
-                            <div className="text-[11px] text-faith-slate dark:text-faith-slate">• {alert.owner}</div>
+                            <div className="text-[11px] text-faith-slate">• {alert.owner}</div>
                           </div>
-                          <div className="mt-2 text-[12px] text-faith-slate dark:text-faith-slate">{alert.description}</div>
-                          <div className="mt-2 text-[11px] text-faith-slate dark:text-faith-slate">Playbook: {alert.playbook}</div>
+                          <div className="mt-2 text-[12px] text-faith-slate">{alert.description}</div>
+                          <div className="mt-2 text-[11px] text-faith-slate">Playbook: {alert.playbook}</div>
                         </div>
                         <div className="flex shrink-0 gap-2">
                           <SoftButton onClick={() => acknowledgeAlert(alert.id)} className="px-3 py-2">
@@ -1527,6 +1527,7 @@ export default function FaithHubLiveDashboardPage() {
     </div>
   );
 }
+
 
 
 

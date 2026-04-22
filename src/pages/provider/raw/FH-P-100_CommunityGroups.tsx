@@ -704,7 +704,7 @@ function GroupExperiencePreview({
       </div>
 
       {desktop ? (
-        <div className="mt-4 overflow-hidden rounded-2xl border border-faith-line bg-[#f8fafc]">
+        <div className="mt-4 overflow-hidden rounded-2xl border border-faith-line bg-[var(--fh-surface)]">
           <div className="relative h-40 overflow-hidden">
             <img src={group.heroUrl} alt={group.title} className="h-full w-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-900/75 via-slate-900/10 to-transparent" />
@@ -1584,6 +1584,7 @@ export default function CommunityGroupsPage() {
     </div>
   );
 }
+
 
 
 

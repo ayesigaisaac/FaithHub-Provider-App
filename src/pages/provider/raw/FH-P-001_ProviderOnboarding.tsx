@@ -303,7 +303,7 @@ function SoftButton({
       className={cx(
         "inline-flex items-center gap-2 rounded-2xl border px-4 py-2 text-[12px] font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2",
         disabled
-          ? "cursor-not-allowed border-faith-line bg-slate-100 text-faith-slate dark:border-slate-800 dark:bg-slate-900 dark:text-faith-slate"
+          ? "cursor-not-allowed border-faith-line bg-slate-100 text-faith-slate dark:border-slate-800 dark:bg-slate-900"
           : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700",
         className,
       )}
@@ -362,7 +362,7 @@ function Card({
             {title}
           </div>
           {subtitle ? (
-            <div className="mt-0.5 text-[11px] text-faith-slate dark:text-faith-slate">
+            <div className="mt-0.5 text-[11px] text-faith-slate">
               {subtitle}
             </div>
           ) : null}
@@ -453,7 +453,7 @@ function Toggle({
             {label}
           </div>
           {hint ? (
-            <div className="mt-0.5 text-[11px] text-faith-slate dark:text-faith-slate">
+            <div className="mt-0.5 text-[11px] text-faith-slate">
               {hint}
             </div>
           ) : null}
@@ -519,7 +519,7 @@ function StepRail({
         <div className="text-[18px] font-bold text-faith-ink dark:text-slate-100">
           Provider Onboarding
         </div>
-        <div className="mt-1 text-[12px] text-faith-slate dark:text-faith-slate">
+        <div className="mt-1 text-[12px] text-faith-slate">
           Guided setup for identity, brand, roles, giving, channels, and launch readiness.
         </div>
         <div className="mt-4">
@@ -563,7 +563,7 @@ function StepRail({
                   <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                     {item.label}
                   </div>
-                  <div className="mt-0.5 text-[11px] text-faith-slate dark:text-faith-slate">
+                  <div className="mt-0.5 text-[11px] text-faith-slate">
                     {statusLabel}
                   </div>
                   {firstBlocker ? (
@@ -600,7 +600,7 @@ function StepRail({
             <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
               Concierge readiness
             </div>
-            <div className="mt-1 text-[11px] text-faith-slate dark:text-faith-slate">
+            <div className="mt-1 text-[11px] text-faith-slate">
               The page explains exactly what is still blocking verification, payout readiness, and safe launch.
             </div>
           </div>
@@ -679,14 +679,14 @@ function PhonePreview({
               <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                 Mission
               </div>
-              <div className="mt-1 text-[12px] leading-relaxed text-faith-slate dark:text-faith-slate">
+              <div className="mt-1 text-[12px] leading-relaxed text-faith-slate">
                 {mission || "Add your mission statement to show the heart of your institution."}
               </div>
             </div>
 
             <div className="grid grid-cols-2 gap-2">
               <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3 dark:border-slate-800 dark:bg-slate-950">
-                <div className="text-[10px] uppercase tracking-[0.18em] text-faith-slate dark:text-faith-slate">
+                <div className="text-[10px] uppercase tracking-[0.18em] text-faith-slate">
                   Campuses
                 </div>
                 <div className="mt-1 text-[18px] font-black text-faith-ink dark:text-slate-100">
@@ -694,7 +694,7 @@ function PhonePreview({
                 </div>
               </div>
               <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3 dark:border-slate-800 dark:bg-slate-950">
-                <div className="text-[10px] uppercase tracking-[0.18em] text-faith-slate dark:text-faith-slate">
+                <div className="text-[10px] uppercase tracking-[0.18em] text-faith-slate">
                   Launch state
                 </div>
                 <div className="mt-1 text-[18px] font-black text-faith-ink dark:text-slate-100">
@@ -1346,7 +1346,7 @@ export default function ProviderOnboardingPage() {
                   <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                     {profile.label}
                   </div>
-                  <div className="mt-1 text-[11px] leading-relaxed text-faith-slate dark:text-faith-slate">
+                  <div className="mt-1 text-[11px] leading-relaxed text-faith-slate">
                     {profile.hint}
                   </div>
                 </button>
@@ -1421,10 +1421,10 @@ export default function ProviderOnboardingPage() {
                 <div className="text-[15px] font-bold text-faith-ink dark:text-slate-100">
                   {institutionName}
                 </div>
-                <div className="mt-0.5 text-[12px] text-faith-slate dark:text-faith-slate">
+                <div className="mt-0.5 text-[12px] text-faith-slate">
                   {handle} - {faithFamily} - {tradition}
                 </div>
-                <div className="mt-2 text-[12px] leading-relaxed text-faith-slate dark:text-faith-slate">
+                <div className="mt-2 text-[12px] leading-relaxed text-faith-slate">
                   {mission}
                 </div>
                 <div className="mt-3 flex flex-wrap gap-2">
@@ -1443,7 +1443,7 @@ export default function ProviderOnboardingPage() {
                 <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                   Dynamic onboarding branch
                 </div>
-                <div className="mt-1 text-[11px] text-faith-slate dark:text-faith-slate">
+                <div className="mt-1 text-[11px] text-faith-slate">
                   Your selected provider profile tailors role suggestions, campus defaults, content rails, and channel recommendations.
                 </div>
               </div>
@@ -1582,24 +1582,24 @@ export default function ProviderOnboardingPage() {
           </div>
           <div className="grid gap-3 sm:grid-cols-2">
             <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface)] p-4 dark:border-slate-800 dark:bg-slate-950">
-              <div className="text-[11px] uppercase tracking-[0.18em] text-faith-slate dark:text-faith-slate">
+              <div className="text-[11px] uppercase tracking-[0.18em] text-faith-slate">
                 Live Sessions
               </div>
               <div className="mt-2 text-[14px] font-bold text-faith-ink dark:text-slate-100">
                 {liveLayoutPreset}
               </div>
-              <div className="mt-1 text-[12px] text-faith-slate dark:text-faith-slate">
+              <div className="mt-1 text-[12px] text-faith-slate">
                 Typography: {typographyPreset}
               </div>
             </div>
             <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface)] p-4 dark:border-slate-800 dark:bg-slate-950">
-              <div className="text-[11px] uppercase tracking-[0.18em] text-faith-slate dark:text-faith-slate">
+              <div className="text-[11px] uppercase tracking-[0.18em] text-faith-slate">
                 Beacon
               </div>
               <div className="mt-2 text-[14px] font-bold text-faith-ink dark:text-slate-100">
                 {beaconLayoutPreset}
               </div>
-              <div className="mt-1 text-[12px] text-faith-slate dark:text-faith-slate">
+              <div className="mt-1 text-[12px] text-faith-slate">
                 {watermarkEnabled ? "Watermark active" : "Watermark optional"}
               </div>
             </div>
@@ -1747,7 +1747,7 @@ export default function ProviderOnboardingPage() {
                   <div className="text-[13px] font-semibold text-faith-ink dark:text-slate-100">
                     {campus.name}
                   </div>
-                  <div className="mt-0.5 text-[11px] text-faith-slate dark:text-faith-slate">
+                  <div className="mt-0.5 text-[11px] text-faith-slate">
                     {campus.city} - {campus.region}
                   </div>
                 </div>
@@ -1761,7 +1761,7 @@ export default function ProviderOnboardingPage() {
                 <Pill text={campus.timezone} tone="neutral" icon={<CalendarClock className="h-3.5 w-3.5" />} />
                 <Pill text="Accessibility noted" tone="good" icon={<ShieldCheck className="h-3.5 w-3.5" />} />
               </div>
-              <div className="mt-3 text-[12px] leading-relaxed text-faith-slate dark:text-faith-slate">
+              <div className="mt-3 text-[12px] leading-relaxed text-faith-slate">
                 {campus.accessibility}
               </div>
             </div>
@@ -1774,7 +1774,7 @@ export default function ProviderOnboardingPage() {
                 <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                   Multi-campus switching
                 </div>
-                <div className="mt-1 text-[11px] text-faith-slate dark:text-faith-slate">
+                <div className="mt-1 text-[11px] text-faith-slate">
                   Providers can move between campuses and languages without leaving onboarding or later dashboard workflows.
                 </div>
               </div>
@@ -1918,7 +1918,7 @@ export default function ProviderOnboardingPage() {
                     <div className="text-[13px] font-semibold text-faith-ink dark:text-slate-100">
                       {lane.title}
                     </div>
-                    <div className="mt-1 text-[12px] leading-relaxed text-faith-slate dark:text-faith-slate">
+                    <div className="mt-1 text-[12px] leading-relaxed text-faith-slate">
                       {lane.detail}
                     </div>
                   </div>
@@ -2025,7 +2025,7 @@ export default function ProviderOnboardingPage() {
               <div className="text-[13px] font-semibold text-faith-ink dark:text-slate-100">
                 {action.title}
               </div>
-              <div className="mt-1 text-[12px] leading-relaxed text-faith-slate dark:text-faith-slate">
+              <div className="mt-1 text-[12px] leading-relaxed text-faith-slate">
                 {action.detail}
               </div>
             </div>
@@ -2129,7 +2129,7 @@ export default function ProviderOnboardingPage() {
             <div className="rounded-2xl bg-[var(--fh-surface)] px-3 py-3 text-[13px] font-semibold text-faith-ink dark:bg-slate-950 dark:text-slate-100">
               {defaultFund}
             </div>
-            <div className="mt-3 text-[12px] leading-relaxed text-faith-slate dark:text-faith-slate">
+            <div className="mt-3 text-[12px] leading-relaxed text-faith-slate">
               {taxComplianceNote}
             </div>
           </div>
@@ -2157,7 +2157,7 @@ export default function ProviderOnboardingPage() {
                     <div className="text-[13px] font-semibold text-faith-ink dark:text-slate-100">
                       {channel.label}
                     </div>
-                    <div className="mt-0.5 text-[11px] text-faith-slate dark:text-faith-slate">
+                    <div className="mt-0.5 text-[11px] text-faith-slate">
                       {channel.kind} - {state.senderLabel}
                     </div>
                   </div>
@@ -2213,7 +2213,7 @@ export default function ProviderOnboardingPage() {
         <div className="grid gap-3">
           <div className="grid grid-cols-2 gap-3">
             <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface)] p-4 dark:border-slate-800 dark:bg-slate-950">
-              <div className="text-[10px] uppercase tracking-[0.18em] text-faith-slate dark:text-faith-slate">
+              <div className="text-[10px] uppercase tracking-[0.18em] text-faith-slate">
                 Channels ready
               </div>
               <div className="mt-1 text-[22px] font-black text-faith-ink dark:text-slate-100">
@@ -2221,7 +2221,7 @@ export default function ProviderOnboardingPage() {
               </div>
             </div>
             <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface)] p-4 dark:border-slate-800 dark:bg-slate-950">
-              <div className="text-[10px] uppercase tracking-[0.18em] text-faith-slate dark:text-faith-slate">
+              <div className="text-[10px] uppercase tracking-[0.18em] text-faith-slate">
                 Consent defaults
               </div>
               <div className="mt-1 text-[22px] font-black text-faith-ink dark:text-slate-100">
@@ -2372,7 +2372,7 @@ export default function ProviderOnboardingPage() {
             <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
               Verification note
             </div>
-            <div className="mt-2 text-[12px] leading-relaxed text-faith-slate dark:text-faith-slate">
+            <div className="mt-2 text-[12px] leading-relaxed text-faith-slate">
               Once verification is approved, the main Provider Dashboard unlocks with role-aware quick create, live operations, giving visibility, audience activation, and Beacon controls.
             </div>
           </div>
@@ -2475,7 +2475,7 @@ export default function ProviderOnboardingPage() {
             <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 transition-colors dark:border-slate-800 dark:bg-slate-900">
               <div className="flex flex-wrap items-end justify-between gap-3">
                 <div>
-                  <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-faith-slate dark:text-faith-slate">
+                  <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-faith-slate">
                     Step {currentStepIndex} of {STEP_ORDER.length}
                   </div>
                   <h2 className="mt-1 text-[20px] font-black tracking-[-0.02em] text-faith-ink dark:text-slate-100">
@@ -2494,7 +2494,7 @@ export default function ProviderOnboardingPage() {
                   <div className="mt-1 text-[14px] font-semibold text-faith-ink dark:text-slate-100">
                     {continueStepMeta.label}
                   </div>
-                  <div className="mt-1 text-[11px] text-faith-slate dark:text-faith-slate">
+                  <div className="mt-1 text-[11px] text-faith-slate">
                     {readinessSummary.blockersByStep[continueStep].length > 0
                       ? readinessSummary.blockersByStep[continueStep][0]
                       : "No blocker here. Finish this step to move onboarding forward."}
@@ -2592,7 +2592,7 @@ export default function ProviderOnboardingPage() {
               {compareWithPublished ? (
                 <div className="grid gap-4 xl:grid-cols-2">
                   <div>
-                    <div className="mb-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-faith-slate dark:text-faith-slate">
+                    <div className="mb-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-faith-slate">
                       Current draft
                     </div>
                     <PhonePreview
@@ -2611,7 +2611,7 @@ export default function ProviderOnboardingPage() {
                     />
                   </div>
                   <div>
-                    <div className="mb-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-faith-slate dark:text-faith-slate">
+                    <div className="mb-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-faith-slate">
                       Published profile
                     </div>
                     <PhonePreview
@@ -2679,7 +2679,7 @@ export default function ProviderOnboardingPage() {
                     <ShieldCheck className="h-4 w-4 text-emerald-600 dark:text-emerald-300" />
                     Child-safe controls
                   </div>
-                  <div className="text-[12px] leading-relaxed text-faith-slate dark:text-faith-slate">
+                  <div className="text-[12px] leading-relaxed text-faith-slate">
                     {childFacingMinistry
                       ? "Extra moderation, channel restrictions, and compliance checks are enabled before public launch."
                       : "Standard moderation and outreach defaults are active for the wider provider audience."}
@@ -2691,7 +2691,7 @@ export default function ProviderOnboardingPage() {
                     <Languages className="h-4 w-4 text-orange-600 dark:text-orange-300" />
                     Localization
                   </div>
-                  <div className="text-[12px] leading-relaxed text-faith-slate dark:text-faith-slate">
+                  <div className="text-[12px] leading-relaxed text-faith-slate">
                     {localizedVariant
                       ? "Localized metadata and multilingual launch surfaces are configured from day one."
                       : "Provider launches with a single primary locale and can expand later."}
@@ -2703,7 +2703,7 @@ export default function ProviderOnboardingPage() {
                     <Link2 className="h-4 w-4 text-slate-700 dark:text-slate-200" />
                     Next unlock
                   </div>
-                  <div className="text-[12px] leading-relaxed text-faith-slate dark:text-faith-slate">
+                  <div className="text-[12px] leading-relaxed text-faith-slate">
                     Verification unlocks Provider Dashboard, Channels & Contact Manager, Donations & Funds, and the advanced creation workflows for Live Sessions and Beacon.
                   </div>
                 </div>
@@ -2728,6 +2728,7 @@ export default function ProviderOnboardingPage() {
     </div>
   );
 }
+
 
 
 

@@ -1006,7 +1006,7 @@ function SectionCard({
   return (
     <section
       className={cx(
-        "rounded-[16px] border border-faith-line bg-[var(--fh-surface-bg)] p-3 sm:p-4 md:p-5 shadow-soft",
+        "rounded-xl border border-faith-line bg-[var(--fh-surface-bg)] p-3 sm:p-4 md:p-5 shadow-soft",
         className,
       )}
     >
@@ -1249,7 +1249,7 @@ export default function ProviderDashboardPage() {
       <div className="w-full max-w-none px-0 py-0">
         <div className="space-y-4 sm:space-y-5">
           {/* Top hero / mission command */}
-          <section className="rounded-[16px] border border-faith-line bg-[var(--fh-surface-bg)] p-3 sm:p-4 md:p-5 shadow-soft">
+          <section className="rounded-xl border border-faith-line bg-[var(--fh-surface-bg)] p-3 sm:p-4 md:p-5 shadow-soft">
             <div className="grid gap-4 sm:gap-6 xl:grid-cols-[1.25fr,0.9fr]">
               <div className="min-w-0">
                 <ProviderPageTitle
@@ -1478,7 +1478,7 @@ export default function ProviderDashboardPage() {
                     className="rounded-lg border border-faith-line bg-[var(--fh-surface-bg)] p-4 text-left shadow-soft transition hover:-translate-y-[1px] hover:shadow-md"
                   >
                     <div
-                      className="grid h-10 w-10 place-items-center rounded-[12px] text-white"
+                      className="grid h-10 w-10 place-items-center rounded-md text-white"
                       style={{ background: accentBg(action.accent) }}
                     >
                       {action.icon}
@@ -2040,6 +2040,7 @@ export default function ProviderDashboardPage() {
     </div>
   );
 }
+
 
 
 

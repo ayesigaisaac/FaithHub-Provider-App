@@ -893,7 +893,7 @@ function SoftButton({
       className={cx(
         "inline-flex items-center gap-2 rounded-2xl border px-4 py-2 text-[12px] font-semibold transition-colors",
         disabled
-          ? "cursor-not-allowed border-faith-line bg-slate-100 text-faith-slate dark:border-slate-800 dark:bg-slate-900 dark:text-faith-slate"
+          ? "cursor-not-allowed border-faith-line bg-slate-100 text-faith-slate dark:border-slate-800 dark:bg-slate-900"
           : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800",
         className,
       )}
@@ -951,11 +951,11 @@ function Card({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-[0_10px_32px_rgba(15,23,42,0.04)] transition-colors dark:border-slate-800 dark:bg-slate-950">
+    <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft transition-colors dark:border-slate-800 dark:bg-slate-950">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
           <div className="text-[13px] font-semibold text-faith-ink dark:text-slate-100">{title}</div>
-          {subtitle ? <div className="mt-1 text-[11px] leading-5 text-faith-slate dark:text-faith-slate">{subtitle}</div> : null}
+          {subtitle ? <div className="mt-1 text-[11px] leading-5 text-faith-slate">{subtitle}</div> : null}
         </div>
         {right}
       </div>
@@ -1061,7 +1061,7 @@ function Toggle({
       <div className="flex items-start justify-between gap-3">
         <div>
           <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">{label}</div>
-          {hint ? <div className="mt-1 text-[11px] text-faith-slate dark:text-faith-slate">{hint}</div> : null}
+          {hint ? <div className="mt-1 text-[11px] text-faith-slate">{hint}</div> : null}
         </div>
         <div
           className={cx(
@@ -1096,11 +1096,11 @@ function ReadinessCard({ checklist }: { checklist: Array<{ label: string; ok: bo
   const complete = checklist.filter((item) => item.ok).length;
   const percentage = Math.round((complete / checklist.length) * 100);
   return (
-    <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-[0_10px_32px_rgba(15,23,42,0.04)] dark:border-slate-800 dark:bg-slate-950">
+    <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft dark:border-slate-800 dark:bg-slate-950">
       <div className="flex items-start justify-between gap-3">
         <div>
           <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">Pre-live readiness</div>
-          <div className="mt-1 text-[11px] text-faith-slate dark:text-faith-slate">Premium live production checklist</div>
+          <div className="mt-1 text-[11px] text-faith-slate">Premium live production checklist</div>
         </div>
         <Pill tone={percentage >= 80 ? "green" : percentage >= 55 ? "orange" : "danger"}>{percentage}% ready</Pill>
       </div>
@@ -1119,17 +1119,17 @@ function ReadinessCard({ checklist }: { checklist: Array<{ label: string; ok: bo
 function StepNav({ active, onChange, readiness }: { active: StepKey; onChange: (step: StepKey) => void; readiness: number }) {
   return (
     <div className="space-y-4">
-      <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-3 shadow-[0_10px_32px_rgba(15,23,42,0.04)] dark:border-slate-800 dark:bg-slate-950">
+      <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-3 shadow-soft dark:border-slate-800 dark:bg-slate-950">
         <div className="flex items-center justify-between gap-3">
           <div>
             <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">Live Builder</div>
-            <div className="mt-1 text-[11px] text-faith-slate dark:text-faith-slate">provider workflow</div>
+            <div className="mt-1 text-[11px] text-faith-slate">provider workflow</div>
           </div>
           <Pill tone={readiness >= 80 ? "green" : readiness >= 55 ? "orange" : "danger"}>{readiness}% ready</Pill>
         </div>
       </div>
 
-      <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-3 shadow-[0_10px_32px_rgba(15,23,42,0.04)] dark:border-slate-800 dark:bg-slate-950">
+      <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-3 shadow-soft dark:border-slate-800 dark:bg-slate-950">
         <div className="space-y-1">
           {STEPS.map((step) => {
             const activeStyles = active === step.key
@@ -1156,7 +1156,7 @@ function StepNav({ active, onChange, readiness }: { active: StepKey; onChange: (
 function QuickStatsCard({ draft }: { draft: LiveBuilderDraft }) {
   const totalDuration = draft.runOfShow.reduce((sum, item) => sum + item.durationMin, 0);
   return (
-    <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-[0_10px_32px_rgba(15,23,42,0.04)] dark:border-slate-800 dark:bg-slate-950">
+    <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft dark:border-slate-800 dark:bg-slate-950">
       <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">Live at a glance</div>
       <div className="mt-3 grid grid-cols-2 gap-2">
         <MiniStat label="Parent" value={draft.parentType === "standalone" ? "Standalone" : "Linked"} />
@@ -1171,7 +1171,7 @@ function QuickStatsCard({ draft }: { draft: LiveBuilderDraft }) {
 function MiniStat({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2 dark:border-slate-700 dark:bg-slate-900">
-      <div className="text-[10px] uppercase tracking-[0.14em] text-faith-slate dark:text-faith-slate">{label}</div>
+      <div className="text-[10px] uppercase tracking-[0.14em] text-faith-slate">{label}</div>
       <div className="mt-1 text-[13px] font-bold text-faith-ink dark:text-slate-100">{value}</div>
     </div>
   );
@@ -1180,7 +1180,7 @@ function MiniStat({ label, value }: { label: string; value: string }) {
 function SectionDivider({ title }: { title: string }) {
   return (
     <div className="flex items-center gap-3 py-1">
-      <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-faith-slate dark:text-faith-slate">{title}</div>
+      <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-faith-slate">{title}</div>
       <div className="h-px flex-1 bg-slate-200 dark:bg-slate-800" />
     </div>
   );
@@ -1211,7 +1211,7 @@ function TemplateCard({
         <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">{meta.label}</div>
         {selected ? <Pill tone="green">Selected</Pill> : null}
       </div>
-      <div className="mt-2 text-[11px] leading-5 text-faith-slate dark:text-faith-slate">{meta.description}</div>
+      <div className="mt-2 text-[11px] leading-5 text-faith-slate">{meta.description}</div>
       <div className="mt-3 flex flex-wrap gap-2">
         <Pill>{meta.category}</Pill>
         <Pill>{meta.durationMin} min</Pill>
@@ -1243,7 +1243,7 @@ function ParentTypeCard({
       )}
     >
       <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">{title}</div>
-      <div className="mt-2 text-[11px] leading-5 text-faith-slate dark:text-faith-slate">{description}</div>
+      <div className="mt-2 text-[11px] leading-5 text-faith-slate">{description}</div>
     </button>
   );
 }
@@ -1301,7 +1301,7 @@ function Drawer({
               <div className="px-4 py-3 flex items-start justify-between gap-3">
                 <div className="min-w-0">
                   <div className="text-[13px] font-semibold truncate text-faith-ink dark:text-slate-100">{title}</div>
-                  {subtitle ? <div className="text-[11px] text-faith-slate dark:text-faith-slate truncate mt-0.5">{subtitle}</div> : null}
+                  {subtitle ? <div className="text-[11px] text-faith-slate truncate mt-0.5">{subtitle}</div> : null}
                 </div>
                 <button
                   className="h-9 w-9 rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-700 grid place-items-center"
@@ -1362,11 +1362,11 @@ function PreviewPhone({ draft, readiness }: { draft: LiveBuilderDraft; readiness
   const crowdfund = CROWDFUND_OPTIONS.find((item) => item.id === draft.linkedCrowdfundId);
 
   return (
-    <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] shadow-[0_18px_60px_rgba(15,23,42,0.08)] dark:border-slate-800 dark:bg-slate-950">
+    <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] shadow-faith dark:border-slate-800 dark:bg-slate-950">
       <div className="flex items-center justify-between border-b border-faith-line px-4 py-3 dark:border-slate-800">
         <div>
           <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">Audience Preview</div>
-          <div className="mt-1 text-[11px] text-faith-slate dark:text-faith-slate">Mirrors a premium waiting-room/live landing view</div>
+          <div className="mt-1 text-[11px] text-faith-slate">Mirrors a premium waiting-room/live landing view</div>
         </div>
         <Pill tone={draft.status === "Scheduled" ? "green" : draft.status === "Ready" ? "orange" : "neutral"}>{draft.status}</Pill>
       </div>
@@ -1377,7 +1377,7 @@ function PreviewPhone({ draft, readiness }: { draft: LiveBuilderDraft; readiness
             <div className="sticky top-0 z-10 flex items-center justify-between bg-[var(--fh-surface-bg)]/90 px-3 py-2 backdrop-blur dark:bg-slate-950/90">
               <div className="min-w-0">
                 <div className="truncate text-sm font-semibold text-faith-ink dark:text-slate-100">{draft.title || "Untitled live session"}</div>
-                <div className="truncate text-[11px] text-faith-slate dark:text-faith-slate">Live Sessions</div>
+                <div className="truncate text-[11px] text-faith-slate">Live Sessions</div>
               </div>
               <button
                 type="button"
@@ -1419,7 +1419,7 @@ function PreviewPhone({ draft, readiness }: { draft: LiveBuilderDraft; readiness
               <div className="mt-3 space-y-3 px-3">
                 <PreviewCard title="Time & access" icon={<Calendar className="h-4 w-4" />}>
                   <div className="text-[13px] font-semibold text-faith-ink dark:text-slate-100">{formatPrettyDate(draft.startDateISO, draft.startTime, draft.timezone)}</div>
-                  <div className="mt-1 text-[11px] text-faith-slate dark:text-faith-slate">
+                  <div className="mt-1 text-[11px] text-faith-slate">
                     {draft.durationMin} minutes ? {draft.timezone} ? {draft.registrationRequired ? "Registration required" : draft.rsvpEnabled ? "RSVP open" : "Open entry"}
                   </div>
                   {draft.payOrTicketEnabled ? (
@@ -1449,13 +1449,13 @@ function PreviewPhone({ draft, readiness }: { draft: LiveBuilderDraft; readiness
                       <div key={segment.id} className="flex items-start justify-between gap-3 rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2 dark:border-slate-700 dark:bg-slate-900">
                         <div className="min-w-0">
                           <div className="text-[11px] font-semibold text-faith-ink dark:text-slate-100">{index + 1}. {segment.title}</div>
-                          <div className="mt-1 text-[10px] text-faith-slate dark:text-faith-slate">{segment.type}</div>
+                          <div className="mt-1 text-[10px] text-faith-slate">{segment.type}</div>
                         </div>
                         <div className="flex items-center gap-2">
                           {segment.tone === "donation" ? <span className="rounded-full bg-orange-100 px-2 py-1 text-[10px] font-bold text-orange-700 dark:bg-orange-900/20 dark:text-orange-300">Donate</span> : null}
                           {segment.tone === "crowdfund" ? <span className="rounded-full bg-emerald-100 px-2 py-1 text-[10px] font-bold text-emerald-700 dark:bg-emerald-900/20 dark:text-emerald-300">Crowdfund</span> : null}
                           {segment.tone === "event" ? <span className="rounded-full bg-slate-200 px-2 py-1 text-[10px] font-bold text-slate-700 dark:bg-slate-800 dark:text-slate-300">CTA</span> : null}
-                          <span className="text-[10px] font-bold text-faith-slate dark:text-faith-slate">{segment.durationMin}m</span>
+                          <span className="text-[10px] font-bold text-faith-slate">{segment.durationMin}m</span>
                         </div>
                       </div>
                     ))}
@@ -1480,7 +1480,7 @@ function PreviewPhone({ draft, readiness }: { draft: LiveBuilderDraft; readiness
                 {draft.engagement.crowdfundInsertEnabled && crowdfund ? (
                   <PreviewCard title="Campaign moment" icon={<HeartHandshake className="h-4 w-4" />}>
                     <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">{crowdfund.name}</div>
-                    <div className="mt-1 text-[11px] text-faith-slate dark:text-faith-slate">{draft.engagement.crowdfundInsertLabel}</div>
+                    <div className="mt-1 text-[11px] text-faith-slate">{draft.engagement.crowdfundInsertLabel}</div>
                     <div className="mt-3 h-2 rounded-full bg-slate-100 dark:bg-slate-800">
                       <div className="h-full rounded-full" style={{ width: `${crowdfund.progress}%`, background: EV_GREEN }} />
                     </div>
@@ -1489,11 +1489,11 @@ function PreviewPhone({ draft, readiness }: { draft: LiveBuilderDraft; readiness
                 ) : null}
 
                 <div className="rounded-2xl bg-[var(--fh-surface-bg)] p-3 shadow-soft ring-1 ring-slate-100 dark:bg-slate-950 dark:ring-slate-800">
-                  <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-faith-slate dark:text-faith-slate">Readiness</div>
+                  <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-faith-slate">Readiness</div>
                   <div className="mt-2 flex items-center justify-between gap-3">
                     <div>
                       <div className="text-[15px] font-extrabold text-faith-ink dark:text-slate-100">{readiness}% ready</div>
-                      <div className="mt-1 text-[11px] text-faith-slate dark:text-faith-slate">Pre-live checklist and approvals are tracked in real time.</div>
+                      <div className="mt-1 text-[11px] text-faith-slate">Pre-live checklist and approvals are tracked in real time.</div>
                     </div>
                     <div className="grid h-14 w-14 place-items-center rounded-full border-4 border-emerald-100 bg-emerald-50 text-[12px] font-black text-emerald-700 dark:border-emerald-900 dark:bg-emerald-900/20 dark:text-emerald-300">
                       {readiness}%
@@ -2042,7 +2042,7 @@ function TeamStep({ draft, setDraft }: { draft: LiveBuilderDraft; setDraft: Reac
                 onChange={(value) => setDraft((d) => ({ ...d, team: { ...d.team, [role.key]: value } }))}
                 options={PEOPLE.map((person) => ({ value: person, label: person }))}
               />
-              <div className="mt-1 text-[11px] text-faith-slate dark:text-faith-slate">{role.hint}</div>
+              <div className="mt-1 text-[11px] text-faith-slate">{role.hint}</div>
             </div>
           ))}
         </div>
@@ -2051,19 +2051,19 @@ function TeamStep({ draft, setDraft }: { draft: LiveBuilderDraft; setDraft: Reac
       <Card title="Backstage readiness" subtitle="Use role clarity to reduce confusion before the stream starts.">
         <div className="grid gap-3 md:grid-cols-3">
           <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface)] p-4 dark:border-slate-700 dark:bg-slate-900">
-            <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate dark:text-faith-slate">Host lane</div>
+            <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">Host lane</div>
             <div className="mt-2 text-[13px] font-semibold text-faith-ink dark:text-slate-100">{draft.team.host}</div>
-            <div className="mt-1 text-[11px] text-faith-slate dark:text-faith-slate">Primary presenter and audience-facing voice.</div>
+            <div className="mt-1 text-[11px] text-faith-slate">Primary presenter and audience-facing voice.</div>
           </div>
           <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface)] p-4 dark:border-slate-700 dark:bg-slate-900">
-            <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate dark:text-faith-slate">Production lane</div>
+            <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">Production lane</div>
             <div className="mt-2 text-[13px] font-semibold text-faith-ink dark:text-slate-100">{draft.team.producer}</div>
-            <div className="mt-1 text-[11px] text-faith-slate dark:text-faith-slate">Scene control, graphics, and transition safety.</div>
+            <div className="mt-1 text-[11px] text-faith-slate">Scene control, graphics, and transition safety.</div>
           </div>
           <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface)] p-4 dark:border-slate-700 dark:bg-slate-900">
-            <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate dark:text-faith-slate">Safety lane</div>
+            <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">Safety lane</div>
             <div className="mt-2 text-[13px] font-semibold text-faith-ink dark:text-slate-100">{draft.team.moderator}</div>
-            <div className="mt-1 text-[11px] text-faith-slate dark:text-faith-slate">Chat health, moderation, prayer triage, and community safety.</div>
+            <div className="mt-1 text-[11px] text-faith-slate">Chat health, moderation, prayer triage, and community safety.</div>
           </div>
         </div>
       </Card>
@@ -2237,7 +2237,7 @@ function ApprovalsStep({ draft, setDraft }: { draft: LiveBuilderDraft; setDraft:
               <ShieldCheck className="mt-0.5 h-5 w-5 text-slate-700 dark:text-slate-300" />
               <div>
                 <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">Approval-aware workflow</div>
-                <div className="mt-1 text-[11px] leading-5 text-faith-slate dark:text-faith-slate">This page is designed to block risky handoffs into schedule or studio until the essential operational, editorial, and safety checks are complete.</div>
+                <div className="mt-1 text-[11px] leading-5 text-faith-slate">This page is designed to block risky handoffs into schedule or studio until the essential operational, editorial, and safety checks are complete.</div>
               </div>
             </div>
           </div>
@@ -2274,14 +2274,14 @@ function ReviewStep({
         <div className="mt-4 grid gap-3 md:grid-cols-2">
           <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface)] p-4 dark:border-slate-700 dark:bg-slate-900">
             <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">Session summary</div>
-            <div className="mt-2 text-[11px] leading-5 text-faith-slate dark:text-faith-slate">{draft.summary}</div>
+            <div className="mt-2 text-[11px] leading-5 text-faith-slate">{draft.summary}</div>
             <div className="mt-3 flex flex-wrap gap-2">
               {draft.tags.map((tag) => <Pill key={tag}>{tag}</Pill>)}
             </div>
           </div>
           <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface)] p-4 dark:border-slate-700 dark:bg-slate-900">
             <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">Backstage team</div>
-            <div className="mt-2 space-y-1 text-[11px] text-faith-slate dark:text-faith-slate">
+            <div className="mt-2 space-y-1 text-[11px] text-faith-slate">
               <div>Host: <span className="font-semibold text-faith-ink dark:text-slate-100">{draft.team.host}</span></div>
               <div>Producer: <span className="font-semibold text-faith-ink dark:text-slate-100">{draft.team.producer}</span></div>
               <div>Moderator: <span className="font-semibold text-faith-ink dark:text-slate-100">{draft.team.moderator}</span></div>
@@ -2296,22 +2296,22 @@ function ReviewStep({
           <button type="button" onClick={() => onQuickLink("Live Schedule", ROUTES.liveSchedule)} className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 text-left transition-colors hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800">
             <Calendar className="h-5 w-5 text-emerald-600" />
             <div className="mt-3 text-[12px] font-semibold text-faith-ink dark:text-slate-100">Live Schedule</div>
-            <div className="mt-1 text-[11px] leading-5 text-faith-slate dark:text-faith-slate">Place the session onto the operational calendar with staffing and readiness preserved.</div>
+            <div className="mt-1 text-[11px] leading-5 text-faith-slate">Place the session onto the operational calendar with staffing and readiness preserved.</div>
           </button>
           <button type="button" onClick={() => onQuickLink("Live Dashboard", ROUTES.liveDashboard)} className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 text-left transition-colors hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800">
             <MonitorPlay className="h-5 w-5 text-emerald-600" />
             <div className="mt-3 text-[12px] font-semibold text-faith-ink dark:text-slate-100">Live Dashboard</div>
-            <div className="mt-1 text-[11px] leading-5 text-faith-slate dark:text-faith-slate">Open the operational cockpit for readiness, alerts, and audience pulse.</div>
+            <div className="mt-1 text-[11px] leading-5 text-faith-slate">Open the operational cockpit for readiness, alerts, and audience pulse.</div>
           </button>
           <button type="button" onClick={() => onQuickLink("Audience Notifications", ROUTES.audienceNotifications)} className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 text-left transition-colors hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800">
             <Bell className="h-5 w-5 text-orange-500" />
             <div className="mt-3 text-[12px] font-semibold text-faith-ink dark:text-slate-100">Audience Notifications</div>
-            <div className="mt-1 text-[11px] leading-5 text-faith-slate dark:text-faith-slate">Activate reminder journeys and replay follow-up without rebuilding the audience logic.</div>
+            <div className="mt-1 text-[11px] leading-5 text-faith-slate">Activate reminder journeys and replay follow-up without rebuilding the audience logic.</div>
           </button>
           <button type="button" onClick={() => onQuickLink("Stream-to-Platforms", ROUTES.streamToPlatforms)} className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 text-left transition-colors hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800">
             <Globe2 className="h-5 w-5 text-orange-500" />
             <div className="mt-3 text-[12px] font-semibold text-faith-ink dark:text-slate-100">Stream-to-Platforms</div>
-            <div className="mt-1 text-[11px] leading-5 text-faith-slate dark:text-faith-slate">Carry metadata, destination presets, and failover choices into distribution.</div>
+            <div className="mt-1 text-[11px] leading-5 text-faith-slate">Carry metadata, destination presets, and failover choices into distribution.</div>
           </button>
         </div>
       </Card>
@@ -2338,9 +2338,9 @@ function ReviewStep({
 
 function HandoffPanel({ onQuickLink }: { onQuickLink: (label: string, route: string) => void }) {
   return (
-    <div className="mt-4 rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-[0_10px_32px_rgba(15,23,42,0.04)] dark:border-slate-800 dark:bg-slate-950">
+    <div className="mt-4 rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft dark:border-slate-800 dark:bg-slate-950">
       <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">Preview-linked handoff</div>
-      <div className="mt-1 text-[11px] text-faith-slate dark:text-faith-slate">Same premium workflow pattern as the base page: preview stays visible while downstream actions remain one click away.</div>
+      <div className="mt-1 text-[11px] text-faith-slate">Same premium workflow pattern as the base page: preview stays visible while downstream actions remain one click away.</div>
       <div className="mt-3 grid gap-2">
         {[
           { label: "Open Live Schedule", route: ROUTES.liveSchedule },
@@ -2488,7 +2488,7 @@ export default function FaithHubLiveBuilderPage({ embedded = false, onRequestClo
               <div className="text-xl sm:text-2xl font-extrabold truncate text-faith-ink dark:text-slate-100">{draft.title}</div>
               <Pill tone={draft.status === "Scheduled" ? "green" : draft.status === "Ready" ? "orange" : "neutral"}>{draft.status}</Pill>
             </div>
-            <div className="text-[11px] text-faith-slate dark:text-faith-slate mt-1 flex items-center gap-2 flex-wrap">
+            <div className="text-[11px] text-faith-slate mt-1 flex items-center gap-2 flex-wrap">
               <span>{getParentLabel(draft)}</span>
               <span className="text-slate-300 dark:text-slate-700">?</span>
               <span>{formatPrettyDate(draft.startDateISO, draft.startTime, draft.timezone)}</span>
@@ -2528,7 +2528,7 @@ export default function FaithHubLiveBuilderPage({ embedded = false, onRequestClo
 
         <div className="space-y-4 lg:col-span-5">
           {renderStep()}
-          <div className="sticky bottom-4 z-30 rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-3 shadow-[0_12px_30px_rgba(15,23,42,0.08)] dark:border-slate-800 dark:bg-slate-950 lg:hidden">
+          <div className="sticky bottom-4 z-30 rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-3 shadow-medium dark:border-slate-800 dark:bg-slate-950 lg:hidden">
             <div className="flex items-center justify-between gap-2">
               <SoftButton onClick={() => !isFirstStep && setStep(STEPS[currentIndex - 1].key)} disabled={isFirstStep}>
                 <ChevronLeft className="h-4 w-4" /> Back
@@ -2560,6 +2560,7 @@ export default function FaithHubLiveBuilderPage({ embedded = false, onRequestClo
     </div>
   );
 }
+
 
 
 
