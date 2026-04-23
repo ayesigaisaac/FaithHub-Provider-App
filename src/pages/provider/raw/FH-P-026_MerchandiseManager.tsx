@@ -1497,7 +1497,7 @@ export default function MerchandiseManagerPage() {
               <div className="mt-4 flex flex-wrap gap-2">
                 <PrimaryButton onClick={() => safeNav(ROUTES.merchandiseBuilder)}>
                   <Plus className="h-4 w-4" />
-                  + New Merchandise
+                  New Merchandise
                 </PrimaryButton>
                 <SoftButton onClick={() => safeNav(ROUTES.faithMartStorefront)}>
                   <ExternalLink className="h-4 w-4" />
@@ -1726,7 +1726,7 @@ export default function MerchandiseManagerPage() {
                   <div className="mt-4">
                     <PrimaryButton onClick={() => safeNav(ROUTES.merchandiseBuilder)}>
                       <Plus className="h-4 w-4" />
-                      + New Merchandise
+                      New Merchandise
                     </PrimaryButton>
                   </div>
                 </div>
