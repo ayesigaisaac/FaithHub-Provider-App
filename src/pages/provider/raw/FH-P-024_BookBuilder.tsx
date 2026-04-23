@@ -1333,7 +1333,7 @@ export default function FaithHubBookBuilderPage() {
           <Card
             title="Template and creation path"
             subtitle="Start from a premium template, then enrich identity, positioning, and the reader promise."
-            right={<Pill text="Launched from + New Book" tone="brand" icon={<Plus className="h-3.5 w-3.5" />} />}
+            right={<Pill text="Launched from New Book" tone="brand" icon={<Plus className="h-3.5 w-3.5" />} />}
           >
             <div className="grid gap-3 xl:grid-cols-2">
               {Object.values(TEMPLATE_LIBRARY).map((preset) => (

@@ -1472,7 +1472,7 @@ export default function BooksManagerPage() {
           <Card
             title="Quick-create templates"
             subtitle="World-class creation templates so Books Manager leads cleanly into Book Builder."
-            right={<Pill text="+ New Book lives here" tone="good" icon={<Plus className="h-3.5 w-3.5" />} />}
+            right={<Pill text="New Book lives here" tone="good" icon={<Plus className="h-3.5 w-3.5" />} />}
           >
             <div className="grid gap-3 md:grid-cols-2">
               {TEMPLATE_CARDS.map((template) => (

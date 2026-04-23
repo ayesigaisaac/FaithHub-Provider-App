@@ -188,9 +188,10 @@ export function ProviderSidebar({
                 ) : null}
 
                 {group.groups.map(({ page, children }) => {
+                  const visibleChildren = children.filter((child) => child.key !== 'book-builder');
                   const Icon = page.icon;
                   const parentActive = page.path === location.pathname || Boolean(page.aliases?.includes(location.pathname));
-                  const activeChildKey = children.find(
+                  const activeChildKey = visibleChildren.find(
                     (child) => child.path === location.pathname || Boolean(child.aliases?.includes(location.pathname))
                   )?.key;
                   const active = parentActive || Boolean(activeChildKey);
@@ -256,9 +257,9 @@ export function ProviderSidebar({
                           </>
                         ) : null}
                       </ListItemButton>
-                      {!collapsed && children.length ? (
+                      {!collapsed && visibleChildren.length ? (
                         <Box sx={{ pl: 4.5, pr: 0.25, pt: 0.6 }}>
-                          {children.map((child) => {
+                          {visibleChildren.map((child) => {
                             const ChildIcon = child.icon;
                             const childActive =
                               child.path === location.pathname || Boolean(child.aliases?.includes(location.pathname));
