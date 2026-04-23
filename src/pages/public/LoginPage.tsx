@@ -2,10 +2,7 @@ import {
   Alert,
   Box,
   Button,
-  Card,
-  CardContent,
   Checkbox,
-  Container,
   FormControlLabel,
   IconButton,
   InputAdornment,
@@ -119,29 +116,43 @@ export default function LoginPage() {
       sx={{
         minHeight: '100vh',
         display: 'grid',
-        placeItems: 'center',
+        alignItems: 'stretch',
         bgcolor: 'background.default',
         backgroundImage: (theme) =>
           theme.palette.mode === 'dark'
             ? 'radial-gradient(circle at 10% 5%, rgba(3,205,140,0.12), transparent 26%), radial-gradient(circle at 90% 0%, rgba(247,127,0,0.1), transparent 24%)'
             : 'radial-gradient(circle at 10% 5%, rgba(3,205,140,0.08), transparent 26%), radial-gradient(circle at 90% 0%, rgba(247,127,0,0.08), transparent 24%)',
+        px: { xs: 0, md: 2.5 },
+        py: { xs: 0, md: 2.5 },
       }}
     >
-      <Container maxWidth="sm">
-        <Card
+      <Box
+        sx={{
+          width: '100%',
+          minHeight: { xs: '100vh', md: 'calc(100vh - 40px)' },
+          borderRadius: { xs: 0, md: 4 },
+          overflow: 'hidden',
+          border: { xs: 'none', md: '1px solid' },
+          borderColor: 'divider',
+          boxShadow: (theme) =>
+            theme.palette.mode === 'dark'
+              ? '0 18px 60px rgba(2, 6, 23, 0.75)'
+              : '0 18px 60px rgba(15, 23, 42, 0.1)',
+          display: 'grid',
+          gridTemplateColumns: { xs: '1fr', md: 'minmax(420px, 540px) 1fr' },
+          bgcolor: 'background.paper',
+        }}
+      >
+        <Box
           sx={{
-            borderRadius: 3,
-            border: '1px solid',
-            borderColor: 'divider',
+            px: { xs: 2, sm: 4, md: 5 },
+            py: { xs: 3, md: 4.5 },
+            display: 'grid',
+            alignContent: 'center',
             bgcolor: 'background.paper',
-            boxShadow: (theme) =>
-              theme.palette.mode === 'dark'
-                ? '0 16px 48px rgba(2, 6, 23, 0.75)'
-                : '0 16px 48px rgba(15, 23, 42, 0.08)',
           }}
         >
-          <CardContent sx={{ p: 4 }}>
-            <Stack spacing={2.25} component="form" onSubmit={onSubmit}>
+          <Stack spacing={2.25} component="form" onSubmit={onSubmit}>
               <Stack direction="row" justifyContent="space-between" alignItems="flex-start">
                 <Box>
                 <Box sx={{ mb: 1.25 }}>
@@ -235,10 +246,49 @@ export default function LoginPage() {
               <Button type="submit" variant="contained" size="large" disabled={loading}>
                 {loading ? 'Signing in...' : 'Login'}
               </Button>
-            </Stack>
-          </CardContent>
-        </Card>
-      </Container>
+          </Stack>
+        </Box>
+
+        <Box
+          sx={{
+            display: { xs: 'none', md: 'block' },
+            position: 'relative',
+            backgroundImage:
+              'linear-gradient(155deg, rgba(7, 16, 45, 0.86), rgba(8, 27, 64, 0.72)), url("https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1800&q=80")',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        >
+          <Box
+            sx={{
+              position: 'absolute',
+              inset: 0,
+              background:
+                'radial-gradient(circle at 15% 20%, rgba(3,205,140,0.24), transparent 30%), radial-gradient(circle at 84% 78%, rgba(247,127,0,0.2), transparent 34%)',
+            }}
+          />
+          <Stack
+            spacing={1}
+            sx={{
+              position: 'absolute',
+              left: 28,
+              right: 28,
+              bottom: 28,
+              color: 'white',
+            }}
+          >
+            <Typography variant="overline" sx={{ letterSpacing: '0.12em', opacity: 0.9 }}>
+              EVzone FaithHub
+            </Typography>
+            <Typography variant="h4" fontWeight={800} sx={{ maxWidth: 520 }}>
+              Provider workspace for live, community, giving, and growth.
+            </Typography>
+            <Typography variant="body2" sx={{ opacity: 0.92, maxWidth: 520 }}>
+              Manage sessions, publish content, coordinate teams, and launch outreach from one trusted command surface.
+            </Typography>
+          </Stack>
+        </Box>
+      </Box>
     </Box>
   );
 }
