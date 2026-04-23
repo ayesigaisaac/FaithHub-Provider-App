@@ -6,9 +6,11 @@ import {
   Button,
   Divider,
   IconButton,
+  InputAdornment,
   Menu,
   MenuItem,
   Stack,
+  TextField,
   Toolbar,
   Typography,
   useTheme,
@@ -29,10 +31,22 @@ import { ThemeModeToggle } from '@/components/theme/ThemeModeToggle';
 type ProviderTopbarProps = {
   current?: ProviderPageMeta;
   onOpenSidebar: () => void;
-  onOpenSearch: () => void;
+  onOpenSearch: (anchorEl?: HTMLElement | null) => void;
+  onCloseSearch: () => void;
+  searchOpen: boolean;
+  searchQuery: string;
+  onSearchQueryChange: (value: string) => void;
 };
 
-export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: ProviderTopbarProps) {
+export function ProviderTopbar({
+  current,
+  onOpenSidebar,
+  onOpenSearch,
+  onCloseSearch,
+  searchOpen,
+  searchQuery,
+  onSearchQueryChange,
+}: ProviderTopbarProps) {
   const theme = useTheme();
   const isMobileActions = useMediaQuery(theme.breakpoints.down('md'));
   const navigate = useNavigate();
@@ -115,50 +129,79 @@ export function ProviderTopbar({ current, onOpenSidebar, onOpenSearch }: Provide
 
         <Stack direction="row" spacing={{ xs: 0.75, md: 1.5 }} alignItems="center">
           {isMobileActions ? (
-            <IconButton aria-label="Open search" sx={utilityIconSx} onClick={onOpenSearch}>
+            <IconButton aria-label="Open search" sx={utilityIconSx} onClick={() => onOpenSearch()}>
               <SearchRoundedIcon />
             </IconButton>
           ) : (
-            <Button
-              onClick={onOpenSearch}
-              startIcon={<SearchRoundedIcon />}
-              variant="outlined"
-              sx={{
-                borderRadius: 'var(--fh-radius-xl)',
-                textTransform: 'none',
-                minHeight: 48,
-                minWidth: 256,
-                px: 1.8,
-                justifyContent: 'space-between',
-                borderColor: 'var(--fh-line)',
-                bgcolor: 'var(--fh-surface-bg)',
-                color: 'var(--fh-slate)',
-                fontWeight: 700,
-                '&:hover': {
-                  borderColor: 'color-mix(in srgb, var(--fh-line) 72%, var(--fh-ink) 28%)',
-                  bgcolor: 'var(--fh-surface)',
-                },
+            <TextField
+              value={searchQuery}
+              onChange={(event) => {
+                onSearchQueryChange(event.target.value);
+                onOpenSearch(event.currentTarget);
               }}
-            >
-              <Box component="span" sx={{ flex: 1, textAlign: 'left' }}>
-                Search pages...
-              </Box>
-              <Box
-                component="span"
-                sx={{
-                  border: '1px solid',
+              onFocus={(event) => onOpenSearch(event.currentTarget)}
+              onClick={(event) => onOpenSearch(event.currentTarget)}
+              onKeyDown={(event) => {
+                if (event.key === 'Escape') {
+                  onCloseSearch();
+                }
+              }}
+              placeholder="Search pages..."
+              size="small"
+              inputProps={{ 'aria-label': 'Search pages' }}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchRoundedIcon />
+                  </InputAdornment>
+                ),
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <Box
+                      component="span"
+                      sx={{
+                        border: '1px solid',
+                        borderColor: 'var(--fh-line)',
+                        borderRadius: 1.5,
+                        px: 0.8,
+                        py: 0.15,
+                        fontSize: 11,
+                        lineHeight: 1.2,
+                        color: 'var(--fh-slate)',
+                        bgcolor: 'var(--fh-surface)',
+                      }}
+                    >
+                      Ctrl K
+                    </Box>
+                  </InputAdornment>
+                ),
+              }}
+              sx={{
+                '& .MuiOutlinedInput-root': {
+                  borderRadius: 'var(--fh-radius-xl)',
+                  minHeight: 48,
+                  minWidth: 256,
+                  px: 0.4,
                   borderColor: 'var(--fh-line)',
-                  borderRadius: 1.5,
-                  px: 0.8,
-                  py: 0.15,
-                  fontSize: 11,
-                  lineHeight: 1.2,
+                  bgcolor: 'var(--fh-surface-bg)',
                   color: 'var(--fh-slate)',
-                }}
-              >
-                Ctrl K
-              </Box>
-            </Button>
+                  fontWeight: 700,
+                  '& fieldset': {
+                    borderColor: searchOpen ? 'var(--fh-brand)' : 'var(--fh-line)',
+                  },
+                  '&:hover fieldset': {
+                    borderColor: 'color-mix(in srgb, var(--fh-line) 72%, var(--fh-ink) 28%)',
+                  },
+                  '&.Mui-focused fieldset': {
+                    borderColor: 'var(--fh-brand)',
+                  },
+                },
+                '& .MuiInputBase-input': {
+                  py: 1.1,
+                },
+                borderRadius: 'var(--fh-radius-xl)',
+              }}
+            />
           )}
           <Box
             sx={{

@@ -15,6 +15,8 @@ export function ProviderShellLayout() {
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [searchAnchorEl, setSearchAnchorEl] = useState<HTMLElement | null>(null);
+  const [searchQuery, setSearchQuery] = useState('');
   const [sidebarCollapsed, setSidebarCollapsed] = useState<boolean>(() => {
     if (typeof window === 'undefined') return false;
     return window.localStorage.getItem('faithhub.sidebar.collapsed') === 'true';
@@ -56,7 +58,14 @@ export function ProviderShellLayout() {
       <ProviderTopbar
         current={current}
         onOpenSidebar={() => setMobileOpen(true)}
-        onOpenSearch={() => setSearchOpen(true)}
+        onOpenSearch={(anchorEl) => {
+          if (anchorEl) setSearchAnchorEl(anchorEl);
+          setSearchOpen(true);
+        }}
+        onCloseSearch={() => setSearchOpen(false)}
+        searchOpen={searchOpen}
+        searchQuery={searchQuery}
+        onSearchQueryChange={setSearchQuery}
       />
 
       <Box sx={{ flex: 1, minHeight: 0, display: 'flex', minWidth: 0 }}>
@@ -109,7 +118,12 @@ export function ProviderShellLayout() {
 
       <QuickCreateDial />
       <MobileBottomNav />
-      <SearchCommandDialog open={searchOpen} onClose={() => setSearchOpen(false)} />
+      <SearchCommandDialog
+        open={searchOpen}
+        onClose={() => setSearchOpen(false)}
+        anchorEl={searchAnchorEl}
+        query={searchQuery}
+      />
     </Box>
   );
 }

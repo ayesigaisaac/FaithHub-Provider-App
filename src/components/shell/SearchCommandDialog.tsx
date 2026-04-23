@@ -1,23 +1,18 @@
-import { Fragment, useEffect, useMemo, useRef, useState, type KeyboardEvent as ReactKeyboardEvent } from 'react';
+import { Fragment, useEffect, useMemo, useState, type KeyboardEvent as ReactKeyboardEvent } from 'react';
 import {
   Box,
   Chip,
-  Divider,
-  IconButton,
-  InputAdornment,
   List,
   ListItemButton,
   ListItemIcon,
   ListItemText,
   Popover,
   Stack,
-  TextField,
   Typography,
 } from '@mui/material';
-import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import HistoryRoundedIcon from '@mui/icons-material/HistoryRounded';
 import AutoAwesomeRoundedIcon from '@mui/icons-material/AutoAwesomeRounded';
-import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import BoltRoundedIcon from '@mui/icons-material/BoltRounded';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { CalendarPlus, Megaphone, Plus, Radio, UserPlus, Users } from 'lucide-react';
@@ -128,13 +123,21 @@ const searchActions: SearchAction[] = [
   },
 ];
 
-export function SearchCommandDialog({ open, onClose }: { open: boolean; onClose: () => void }) {
+export function SearchCommandDialog({
+  open,
+  onClose,
+  anchorEl,
+  query,
+}: {
+  open: boolean;
+  onClose: () => void;
+  anchorEl?: HTMLElement | null;
+  query: string;
+}) {
   const navigate = useNavigate();
   const location = useLocation();
-  const [query, setQuery] = useState('');
   const [activeIndex, setActiveIndex] = useState(0);
   const [anchorPosition, setAnchorPosition] = useState<{ top: number; left: number }>({ top: 88, left: 640 });
-  const inputRef = useRef<HTMLInputElement>(null);
 
   const visiblePages = useMemo(() => providerPages.filter((page) => !page.hidden), []);
   const pageKeyMap = useMemo(() => new Map(visiblePages.map((page) => [page.key, page])), [visiblePages]);
@@ -167,14 +170,11 @@ export function SearchCommandDialog({ open, onClose }: { open: boolean; onClose:
 
   useEffect(() => {
     if (!open) return;
-    setQuery('');
     setActiveIndex(0);
     if (typeof window !== 'undefined') {
       const top = window.innerWidth < 600 ? 70 : 88;
       setAnchorPosition({ top, left: Math.round(window.innerWidth / 2) });
     }
-    const timer = window.setTimeout(() => inputRef.current?.focus(), 50);
-    return () => window.clearTimeout(timer);
   }, [open]);
 
   useEffect(() => {
@@ -409,15 +409,17 @@ export function SearchCommandDialog({ open, onClose }: { open: boolean; onClose:
     <Popover
       open={open}
       onClose={onClose}
-      anchorReference="anchorPosition"
-      anchorPosition={anchorPosition}
-      transformOrigin={{ vertical: 'top', horizontal: 'center' }}
+      anchorReference={anchorEl ? 'anchorEl' : 'anchorPosition'}
+      anchorEl={anchorEl}
+      anchorPosition={anchorEl ? undefined : anchorPosition}
+      anchorOrigin={anchorEl ? { vertical: 'bottom', horizontal: 'left' } : undefined}
+      transformOrigin={anchorEl ? { vertical: 'top', horizontal: 'left' } : { vertical: 'top', horizontal: 'center' }}
       marginThreshold={8}
       slotProps={{
         paper: {
           onKeyDown: handleKeyDown,
           sx: {
-            width: { xs: 'calc(100vw - 16px)', sm: 760, md: 860 },
+            width: anchorEl ? { xs: 'calc(100vw - 16px)', sm: 700, md: 760 } : { xs: 'calc(100vw - 16px)', sm: 760, md: 860 },
             maxWidth: '100vw',
             borderRadius: { xs: 3, md: 3.5 },
             border: '1px solid',
@@ -429,40 +431,6 @@ export function SearchCommandDialog({ open, onClose }: { open: boolean; onClose:
         },
       }}
     >
-      <Box sx={{ px: { xs: 1.25, md: 1.5 }, pt: 1.25, pb: 1 }}>
-        <TextField
-          inputRef={inputRef}
-          value={query}
-          onChange={(event) => setQuery(event.target.value)}
-          fullWidth
-          placeholder="Search pages, quick actions, sections, or IDs..."
-          size="small"
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <SearchRoundedIcon />
-              </InputAdornment>
-            ),
-            endAdornment: (
-              <InputAdornment position="end">
-                {query ? (
-                  <IconButton aria-label="Clear search" size="small" onClick={() => setQuery('')}>
-                    <CloseRoundedIcon fontSize="small" />
-                  </IconButton>
-                ) : (
-                  <Chip size="small" label="Ctrl K" variant="outlined" sx={{ fontWeight: 700, borderRadius: 1.5, height: 24 }} />
-                )}
-              </InputAdornment>
-            ),
-            sx: {
-              borderRadius: 2,
-            },
-          }}
-        />
-      </Box>
-
-      <Divider />
-
       <List sx={{ px: 1, pb: 1, pt: 1, maxHeight: { xs: 360, md: 430 }, overflowY: 'auto' }}>
           {groupedResults.map((group) => {
             const GroupIcon = group.icon;
