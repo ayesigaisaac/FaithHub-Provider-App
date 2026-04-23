@@ -2,8 +2,6 @@ import { Fragment, useEffect, useMemo, useRef, useState, type KeyboardEvent as R
 import {
   Box,
   Chip,
-  Dialog,
-  DialogContent,
   Divider,
   IconButton,
   InputAdornment,
@@ -11,18 +9,15 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  Popover,
   Stack,
   TextField,
   Typography,
-  useTheme,
 } from '@mui/material';
-import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import HistoryRoundedIcon from '@mui/icons-material/HistoryRounded';
 import AutoAwesomeRoundedIcon from '@mui/icons-material/AutoAwesomeRounded';
-import KeyboardReturnRoundedIcon from '@mui/icons-material/KeyboardReturnRounded';
-import ArrowUpwardRoundedIcon from '@mui/icons-material/ArrowUpwardRounded';
-import ArrowDownwardRoundedIcon from '@mui/icons-material/ArrowDownwardRounded';
+import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import BoltRoundedIcon from '@mui/icons-material/BoltRounded';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { CalendarPlus, Megaphone, Plus, Radio, UserPlus, Users } from 'lucide-react';
@@ -134,11 +129,11 @@ const searchActions: SearchAction[] = [
 ];
 
 export function SearchCommandDialog({ open, onClose }: { open: boolean; onClose: () => void }) {
-  const theme = useTheme();
   const navigate = useNavigate();
   const location = useLocation();
   const [query, setQuery] = useState('');
   const [activeIndex, setActiveIndex] = useState(0);
+  const [anchorPosition, setAnchorPosition] = useState<{ top: number; left: number }>({ top: 88, left: 640 });
   const inputRef = useRef<HTMLInputElement>(null);
 
   const visiblePages = useMemo(() => providerPages.filter((page) => !page.hidden), []);
@@ -174,8 +169,22 @@ export function SearchCommandDialog({ open, onClose }: { open: boolean; onClose:
     if (!open) return;
     setQuery('');
     setActiveIndex(0);
+    if (typeof window !== 'undefined') {
+      const top = window.innerWidth < 600 ? 70 : 88;
+      setAnchorPosition({ top, left: Math.round(window.innerWidth / 2) });
+    }
     const timer = window.setTimeout(() => inputRef.current?.focus(), 50);
     return () => window.clearTimeout(timer);
+  }, [open]);
+
+  useEffect(() => {
+    if (!open || typeof window === 'undefined') return;
+    const handleResize = () => {
+      const top = window.innerWidth < 600 ? 70 : 88;
+      setAnchorPosition({ top, left: Math.round(window.innerWidth / 2) });
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, [open]);
 
   const rankedPages = useMemo(() => {
@@ -397,92 +406,69 @@ export function SearchCommandDialog({ open, onClose }: { open: boolean; onClose:
   };
 
   return (
-    <Dialog
+    <Popover
       open={open}
       onClose={onClose}
-      fullWidth
-      maxWidth="lg"
-      onKeyDown={handleKeyDown}
-      PaperProps={{
-        sx: {
-          borderRadius: { xs: 3, md: 4 },
-          border: '1px solid',
-          borderColor: 'divider',
-          overflow: 'hidden',
-          backdropFilter: 'blur(16px)',
-          bgcolor: theme.palette.mode === 'dark' ? 'rgba(15, 23, 42, 0.96)' : 'rgba(255, 255, 255, 0.96)',
+      anchorReference="anchorPosition"
+      anchorPosition={anchorPosition}
+      transformOrigin={{ vertical: 'top', horizontal: 'center' }}
+      marginThreshold={8}
+      slotProps={{
+        paper: {
+          onKeyDown: handleKeyDown,
+          sx: {
+            width: { xs: 'calc(100vw - 16px)', sm: 760, md: 860 },
+            maxWidth: '100vw',
+            borderRadius: { xs: 3, md: 3.5 },
+            border: '1px solid',
+            borderColor: 'var(--fh-line)',
+            bgcolor: 'var(--fh-surface-bg)',
+            boxShadow: 'var(--fh-shadow-md)',
+            overflow: 'hidden',
+          },
         },
       }}
     >
-      <DialogContent sx={{ p: 0 }}>
-        <Stack
-          direction="row"
-          alignItems="center"
-          justifyContent="space-between"
-          sx={{ px: { xs: 2, md: 3 }, pt: { xs: 2, md: 2.4 }, pb: 1.25 }}
-        >
-          <Box>
-            <Typography variant="h6" fontWeight={900}>
-              Search Provider Workspace
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Jump to pages and run quick actions.
-            </Typography>
-          </Box>
-          <IconButton onClick={onClose}>
-            <CloseRoundedIcon />
-          </IconButton>
-        </Stack>
+      <Box sx={{ px: { xs: 1.25, md: 1.5 }, pt: 1.25, pb: 1 }}>
+        <TextField
+          inputRef={inputRef}
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+          fullWidth
+          placeholder="Search pages, quick actions, sections, or IDs..."
+          size="small"
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <SearchRoundedIcon />
+              </InputAdornment>
+            ),
+            endAdornment: (
+              <InputAdornment position="end">
+                {query ? (
+                  <IconButton aria-label="Clear search" size="small" onClick={() => setQuery('')}>
+                    <CloseRoundedIcon fontSize="small" />
+                  </IconButton>
+                ) : (
+                  <Chip size="small" label="Ctrl K" variant="outlined" sx={{ fontWeight: 700, borderRadius: 1.5, height: 24 }} />
+                )}
+              </InputAdornment>
+            ),
+            sx: {
+              borderRadius: 2,
+            },
+          }}
+        />
+      </Box>
 
-        <Box sx={{ px: { xs: 2, md: 3 }, pb: 1.6 }}>
-          <TextField
-            inputRef={inputRef}
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            fullWidth
-            placeholder="Search pages, quick actions, sections, or IDs..."
-            size="medium"
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <SearchRoundedIcon />
-                </InputAdornment>
-              ),
-              endAdornment: query ? (
-                <InputAdornment position="end">
-                  <Chip size="small" label="ESC" variant="outlined" sx={{ fontWeight: 700, borderRadius: 1.5, height: 24 }} />
-                </InputAdornment>
-              ) : null,
-              sx: {
-                borderRadius: 3,
-                fontSize: 18,
-                py: 0.35,
-                px: 0.3,
-              },
-            }}
-          />
-        </Box>
+      <Divider />
 
-        <Stack direction="row" alignItems="center" spacing={1} sx={{ px: { xs: 2, md: 3 }, pb: 1.2, color: 'text.secondary', fontSize: 12 }}>
-          <Stack direction="row" alignItems="center" spacing={0.5}>
-            <ArrowUpwardRoundedIcon sx={{ fontSize: 14 }} />
-            <ArrowDownwardRoundedIcon sx={{ fontSize: 14 }} />
-            <Typography variant="caption">Move</Typography>
-          </Stack>
-          <Stack direction="row" alignItems="center" spacing={0.5}>
-            <KeyboardReturnRoundedIcon sx={{ fontSize: 14 }} />
-            <Typography variant="caption">Open</Typography>
-          </Stack>
-        </Stack>
-
-        <Divider />
-
-        <List sx={{ px: 1.5, pb: 2, pt: 1.5, maxHeight: 520, overflowY: 'auto' }}>
+      <List sx={{ px: 1, pb: 1, pt: 1, maxHeight: { xs: 360, md: 430 }, overflowY: 'auto' }}>
           {groupedResults.map((group) => {
             const GroupIcon = group.icon;
             return (
               <Box key={group.key} sx={{ mb: 1.3 }}>
-                <Stack direction="row" alignItems="center" spacing={0.75} sx={{ px: 1.25, pb: 0.75 }}>
+                <Stack direction="row" alignItems="center" spacing={0.75} sx={{ px: 1.25, pb: 0.5 }}>
                   <GroupIcon sx={{ fontSize: 16, color: 'text.secondary' }} />
                   <Typography variant="caption" color="text.secondary" sx={{ letterSpacing: '0.08em', fontWeight: 800 }}>
                     {group.label}
@@ -505,11 +491,11 @@ export function SearchCommandDialog({ open, onClose }: { open: boolean; onClose:
                       onMouseEnter={() => setActiveIndex(flatIndex)}
                       onClick={() => handleSelect(entry)}
                       sx={{
-                        mb: 0.7,
-                        borderRadius: 2.5,
+                        mb: 0.5,
+                        borderRadius: 2,
                         alignItems: 'flex-start',
                         border: '1px solid',
-                        borderColor: selected ? 'primary.main' : 'divider',
+                        borderColor: selected ? 'var(--fh-brand)' : 'var(--fh-line)',
                         bgcolor: selected ? 'action.selected' : 'transparent',
                         '&.Mui-selected': { bgcolor: 'action.selected' },
                       }}
@@ -545,9 +531,9 @@ export function SearchCommandDialog({ open, onClose }: { open: boolean; onClose:
                         }
                         secondary={
                           <>
-                            <Typography variant="body2" color="text.secondary" sx={{ mt: 0.15, lineHeight: 1.35 }}>
-                              {renderHighlighted(entry.description, query)}
-                            </Typography>
+                              <Typography variant="body2" color="text.secondary" sx={{ mt: 0.15, lineHeight: 1.35 }}>
+                                {renderHighlighted(entry.description, query)}
+                              </Typography>
                             <Typography variant="caption" color="text.secondary" sx={{ mt: 0.45, display: 'block' }}>
                               {entry.section}
                             </Typography>
@@ -569,8 +555,7 @@ export function SearchCommandDialog({ open, onClose }: { open: boolean; onClose:
               </Typography>
             </Box>
           ) : null}
-        </List>
-      </DialogContent>
-    </Dialog>
+      </List>
+    </Popover>
   );
 }
