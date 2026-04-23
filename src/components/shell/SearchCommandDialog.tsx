@@ -1,6 +1,7 @@
-import { Fragment, useEffect, useMemo, useState, type KeyboardEvent as ReactKeyboardEvent } from 'react';
+import { Fragment, useEffect, useMemo, useRef, useState, type KeyboardEvent as ReactKeyboardEvent } from 'react';
 import {
   Box,
+  Button,
   Chip,
   List,
   ListItemButton,
@@ -136,8 +137,11 @@ export function SearchCommandDialog({
 }) {
   const navigate = useNavigate();
   const location = useLocation();
+  const listRef = useRef<HTMLUListElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [anchorPosition, setAnchorPosition] = useState<{ top: number; left: number }>({ top: 88, left: 640 });
+  const [panelWidth, setPanelWidth] = useState<number>(760);
+  const [recentVersion, setRecentVersion] = useState(0);
 
   const visiblePages = useMemo(() => providerPages.filter((page) => !page.hidden), []);
   const pageKeyMap = useMemo(() => new Map(visiblePages.map((page) => [page.key, page])), [visiblePages]);
@@ -147,7 +151,7 @@ export function SearchCommandDialog({
       const parentTitle = page.parentKey ? pageKeyMap.get(page.parentKey)?.title : undefined;
       const sectionLabel =
         page.navPlacement === 'builder' && parentTitle
-          ? `${page.section} • ${parentTitle} → ${page.title}`
+          ? `${page.section} - ${parentTitle} -> ${page.title}`
           : page.section;
       map.set(page.key, sectionLabel);
     });
@@ -166,7 +170,7 @@ export function SearchCommandDialog({
     } catch {
       return [] as VisiblePage[];
     }
-  }, [pageKeyMap]);
+  }, [pageKeyMap, recentVersion]);
 
   useEffect(() => {
     if (!open) return;
@@ -182,10 +186,18 @@ export function SearchCommandDialog({
     const handleResize = () => {
       const top = window.innerWidth < 600 ? 70 : 88;
       setAnchorPosition({ top, left: Math.round(window.innerWidth / 2) });
+      if (anchorEl) {
+        const anchorWidth = Math.round(anchorEl.getBoundingClientRect().width);
+        setPanelWidth(Math.max(320, Math.min(860, anchorWidth)));
+      }
     };
+    if (anchorEl) {
+      const anchorWidth = Math.round(anchorEl.getBoundingClientRect().width);
+      setPanelWidth(Math.max(320, Math.min(860, anchorWidth)));
+    }
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, [open]);
+  }, [anchorEl, open]);
 
   const rankedPages = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -344,10 +356,26 @@ export function SearchCommandDialog({
     setActiveIndex((prev) => Math.min(prev, flattened.length - 1));
   }, [flattened]);
 
+  useEffect(() => {
+    if (!open || !flattened.length) return;
+    const active = flattened[activeIndex];
+    if (!active) return;
+    const el = listRef.current?.querySelector<HTMLElement>(`[data-search-key="${active.kind}-${active.key}"]`);
+    el?.scrollIntoView({ block: 'nearest' });
+  }, [activeIndex, flattened, open]);
+
   const persistRecent = (key: string) => {
     if (typeof window === 'undefined') return;
     const deduped = [key, ...recentPages.map((page) => page.key).filter((existing) => existing !== key)].slice(0, MAX_RECENTS);
     window.localStorage.setItem(RECENT_SEARCH_KEY, JSON.stringify(deduped));
+    setRecentVersion((prev) => prev + 1);
+  };
+
+  const clearRecent = () => {
+    if (typeof window === 'undefined') return;
+    window.localStorage.removeItem(RECENT_SEARCH_KEY);
+    setActiveIndex(0);
+    setRecentVersion((prev) => prev + 1);
   };
 
   const handleSelect = (entry: SearchEntry) => {
@@ -386,6 +414,32 @@ export function SearchCommandDialog({
     }
   };
 
+  useEffect(() => {
+    if (!open) return;
+    const handleGlobalKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'ArrowDown') {
+        event.preventDefault();
+        if (!flattened.length) return;
+        setActiveIndex((prev) => (prev + 1) % flattened.length);
+      } else if (event.key === 'ArrowUp') {
+        event.preventDefault();
+        if (!flattened.length) return;
+        setActiveIndex((prev) => (prev - 1 + flattened.length) % flattened.length);
+      } else if (event.key === 'Enter') {
+        if (!flattened.length) return;
+        const entry = flattened[activeIndex];
+        if (!entry) return;
+        event.preventDefault();
+        handleSelect(entry);
+      } else if (event.key === 'Escape') {
+        event.preventDefault();
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleGlobalKeyDown, { capture: true });
+    return () => window.removeEventListener('keydown', handleGlobalKeyDown, { capture: true });
+  }, [activeIndex, flattened, onClose, open]);
+
   const renderHighlighted = (text: string, q: string) => {
     const needle = q.trim().toLowerCase();
     if (!needle) return text;
@@ -405,6 +459,8 @@ export function SearchCommandDialog({
     );
   };
 
+  const hasQuery = Boolean(query.trim());
+
   return (
     <Popover
       open={open}
@@ -419,7 +475,9 @@ export function SearchCommandDialog({
         paper: {
           onKeyDown: handleKeyDown,
           sx: {
-            width: anchorEl ? { xs: 'calc(100vw - 16px)', sm: 700, md: 760 } : { xs: 'calc(100vw - 16px)', sm: 760, md: 860 },
+            width: anchorEl
+              ? { xs: 'calc(100vw - 16px)', sm: `${panelWidth}px` }
+              : { xs: 'calc(100vw - 16px)', sm: 760, md: 860 },
             maxWidth: '100vw',
             borderRadius: { xs: 3, md: 3.5 },
             border: '1px solid',
@@ -431,16 +489,35 @@ export function SearchCommandDialog({
         },
       }}
     >
-      <List sx={{ px: 1, pb: 1, pt: 1, maxHeight: { xs: 360, md: 430 }, overflowY: 'auto' }}>
+      <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ px: 1.5, pt: 1, pb: 0.25 }}>
+        <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 700 }}>
+          {hasQuery ? `${flattened.length} result${flattened.length === 1 ? '' : 's'}` : 'Suggestions'}
+        </Typography>
+        <Typography variant="caption" color="text.secondary">
+          Enter open - Up/Down move - Esc close
+        </Typography>
+      </Stack>
+      <List ref={listRef} sx={{ px: 1, pb: 1, pt: 0.5, maxHeight: { xs: 360, md: 430 }, overflowY: 'auto' }}>
           {groupedResults.map((group) => {
             const GroupIcon = group.icon;
             return (
               <Box key={group.key} sx={{ mb: 1.3 }}>
-                <Stack direction="row" alignItems="center" spacing={0.75} sx={{ px: 1.25, pb: 0.5 }}>
-                  <GroupIcon sx={{ fontSize: 16, color: 'text.secondary' }} />
-                  <Typography variant="caption" color="text.secondary" sx={{ letterSpacing: '0.08em', fontWeight: 800 }}>
-                    {group.label}
-                  </Typography>
+                <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ px: 1.25, pb: 0.5 }}>
+                  <Stack direction="row" alignItems="center" spacing={0.75}>
+                    <GroupIcon sx={{ fontSize: 16, color: 'text.secondary' }} />
+                    <Typography variant="caption" color="text.secondary" sx={{ letterSpacing: '0.08em', fontWeight: 800 }}>
+                      {group.label}
+                    </Typography>
+                  </Stack>
+                  {group.key === 'recent' ? (
+                    <Button
+                      size="small"
+                      onClick={clearRecent}
+                      sx={{ minHeight: 24, px: 1, fontSize: 11, textTransform: 'none', color: 'var(--fh-slate)' }}
+                    >
+                      Clear
+                    </Button>
+                  ) : null}
                 </Stack>
 
                 {group.items.map((entry) => {
@@ -455,13 +532,14 @@ export function SearchCommandDialog({
                   return (
                     <ListItemButton
                       key={`${entry.kind}-${entry.key}`}
+                      data-search-key={`${entry.kind}-${entry.key}`}
                       selected={selected}
                       onMouseEnter={() => setActiveIndex(flatIndex)}
                       onClick={() => handleSelect(entry)}
                       sx={{
                         mb: 0.5,
                         borderRadius: 2,
-                        alignItems: 'flex-start',
+                        alignItems: hasQuery ? 'center' : 'flex-start',
                         border: '1px solid',
                         borderColor: selected ? 'var(--fh-brand)' : 'var(--fh-line)',
                         bgcolor: selected ? 'action.selected' : 'transparent',
@@ -499,9 +577,13 @@ export function SearchCommandDialog({
                         }
                         secondary={
                           <>
-                              <Typography variant="body2" color="text.secondary" sx={{ mt: 0.15, lineHeight: 1.35 }}>
-                                {renderHighlighted(entry.description, query)}
-                              </Typography>
+                            <Typography
+                              variant="body2"
+                              color="text.secondary"
+                              sx={{ mt: 0.15, lineHeight: 1.35, display: hasQuery ? '-webkit-box' : 'block', WebkitLineClamp: hasQuery ? 1 : 'unset', WebkitBoxOrient: hasQuery ? 'vertical' : 'unset', overflow: hasQuery ? 'hidden' : 'visible' }}
+                            >
+                              {renderHighlighted(entry.description, query)}
+                            </Typography>
                             <Typography variant="caption" color="text.secondary" sx={{ mt: 0.45, display: 'block' }}>
                               {entry.section}
                             </Typography>

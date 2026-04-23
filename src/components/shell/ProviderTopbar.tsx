@@ -19,6 +19,7 @@ import {
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import NotificationsRoundedIcon from '@mui/icons-material/NotificationsRounded';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
+import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import { useMemo, useState, type MouseEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/auth/useAuth';
@@ -157,22 +158,41 @@ export function ProviderTopbar({
                 ),
                 endAdornment: (
                   <InputAdornment position="end">
-                    <Box
-                      component="span"
-                      sx={{
-                        border: '1px solid',
-                        borderColor: 'var(--fh-line)',
-                        borderRadius: 1.5,
-                        px: 0.8,
-                        py: 0.15,
-                        fontSize: 11,
-                        lineHeight: 1.2,
-                        color: 'var(--fh-slate)',
-                        bgcolor: 'var(--fh-surface)',
-                      }}
-                    >
-                      Ctrl K
-                    </Box>
+                    <Stack direction="row" spacing={0.6} alignItems="center">
+                      {searchQuery ? (
+                        <IconButton
+                          size="small"
+                          aria-label="Clear search"
+                          onClick={(event) => {
+                            event.stopPropagation();
+                            onSearchQueryChange('');
+                          }}
+                          sx={{
+                            width: 24,
+                            height: 24,
+                            color: 'var(--fh-slate)',
+                          }}
+                        >
+                          <CloseRoundedIcon sx={{ fontSize: 16 }} />
+                        </IconButton>
+                      ) : null}
+                      <Box
+                        component="span"
+                        sx={{
+                          border: '1px solid',
+                          borderColor: 'var(--fh-line)',
+                          borderRadius: 1.5,
+                          px: 0.8,
+                          py: 0.15,
+                          fontSize: 11,
+                          lineHeight: 1.2,
+                          color: 'var(--fh-slate)',
+                          bgcolor: 'var(--fh-surface)',
+                        }}
+                      >
+                        Ctrl K
+                      </Box>
+                    </Stack>
                   </InputAdornment>
                 ),
               }}
