@@ -1090,7 +1090,7 @@ export default function TestimoniesPage() {
                 left={<Plus className="h-4 w-4" />}
                 onClick={() => safeNav(ROUTES.testimoniesBuilder)}
               >
-                + New Testimony
+                New Testimony
               </ActionButton>
             </div>
           </div>

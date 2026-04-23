@@ -1115,7 +1115,7 @@ export default function BooksManagerPage() {
                   onClick={() => safeNav(ROUTES.bookBuilder)}
                 >
                   <Plus className="h-4 w-4" />
-                  + New Book
+                  New Book
                 </PrimaryButton>
               </div>
             </div>
@@ -1596,7 +1596,7 @@ export default function BooksManagerPage() {
               <div className="mt-3 flex flex-wrap gap-2">
                 <PrimaryButton tone="green" onClick={() => safeNav(ROUTES.bookBuilder)}>
                   <Plus className="h-4 w-4" />
-                  + New Book
+                  New Book
                 </PrimaryButton>
                 <SoftButton>
                   <Bell className="h-4 w-4" />

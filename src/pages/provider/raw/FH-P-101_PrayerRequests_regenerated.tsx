@@ -776,7 +776,7 @@ function PrayerRequestsPage() {
                   <BadgeCheck className="h-4 w-4" /> Mark Answered
                 </PrimaryButton>
                 <PrimaryButton onClick={handleCreateRequest}>
-                  <Plus className="h-4 w-4" /> + New Request
+                  <Plus className="h-4 w-4" /> New Request
                 </PrimaryButton>
               </div>
             </div>

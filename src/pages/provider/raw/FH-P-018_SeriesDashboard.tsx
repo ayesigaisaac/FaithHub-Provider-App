@@ -997,7 +997,7 @@ export default function SeriesDashboardPage() {
                   Provider Dashboard
                 </SoftButton>
                 <PrimaryButton tone="orange" onClick={() => safeNav(ROUTES.seriesBuilder)}>
-                  <Plus className="h-4 w-4" /> + New Series
+                  <Plus className="h-4 w-4" /> New Series
                 </PrimaryButton>
                 <PrimaryButton
                   tone="green"
@@ -1005,7 +1005,7 @@ export default function SeriesDashboardPage() {
                   disabled={!selectedSeries}
                   title={!selectedSeries ? "Select a series first" : "Create an episode inside the selected series"}
                 >
-                  <Plus className="h-4 w-4" /> + New Episode
+                  <Plus className="h-4 w-4" /> New Episode
                 </PrimaryButton>
               </div>
               <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-800 px-3 py-2 text-[12px] text-faith-slate max-w-[420px]">
@@ -1188,7 +1188,7 @@ export default function SeriesDashboardPage() {
                             Open series
                           </SoftButton>
                           <PrimaryButton tone="green" onClick={() => safeNav(`${ROUTES.episodeBuilder}?seriesId=${series.id}`)}>
-                            <Plus className="h-4 w-4" /> + New Episode
+                            <Plus className="h-4 w-4" /> New Episode
                           </PrimaryButton>
                         </div>
                       </div>
@@ -1241,7 +1241,7 @@ export default function SeriesDashboardPage() {
                   </div>
                   <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
                     <PrimaryButton tone="orange" onClick={() => safeNav(ROUTES.seriesBuilder)}>
-                      <Plus className="h-4 w-4" /> + New Series
+                      <Plus className="h-4 w-4" /> New Series
                     </PrimaryButton>
                   </div>
                 </div>
@@ -1343,7 +1343,7 @@ export default function SeriesDashboardPage() {
                     </div>
                     <div className="mt-3 flex flex-wrap items-center gap-2">
                       <PrimaryButton tone="green" onClick={() => safeNav(`${ROUTES.episodeBuilder}?seriesId=${selectedSeries.id}`)}>
-                        <Plus className="h-4 w-4" /> + New Episode
+                        <Plus className="h-4 w-4" /> New Episode
                       </PrimaryButton>
                       <SoftButton onClick={() => safeNav(`${ROUTES.seriesBuilder}?seriesId=${selectedSeries.id}`)}>
                         Open Series Builder
@@ -1385,7 +1385,7 @@ export default function SeriesDashboardPage() {
 
                 <div className="mt-3 flex flex-wrap items-center gap-2">
                   <PrimaryButton tone="green" onClick={() => safeNav(`${ROUTES.episodeBuilder}?seriesId=${selectedSeries.id}`)}>
-                    <Plus className="h-4 w-4" /> + New Episode
+                    <Plus className="h-4 w-4" /> New Episode
                   </PrimaryButton>
                   <SoftButton onClick={() => safeNav(`${ROUTES.liveBuilder}?seriesId=${selectedSeries.id}`)}>
                     <CalendarClock className="h-4 w-4" /> Plan linked live

@@ -1011,7 +1011,7 @@ export default function CounselingPage() {
                   left={<Plus className="h-4 w-4" />}
                   onClick={handleCreateCase}
                 >
-                  + New Case
+                  New Case
                 </ActionButton>
               </div>
             </div>

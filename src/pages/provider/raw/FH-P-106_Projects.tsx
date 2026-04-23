@@ -1483,7 +1483,7 @@ function ProjectsPage() {
                 </SoftButton>
                 <PrimaryButton onClick={() => safeNav(ROUTES.newProject)}>
                   <Plus className="h-4 w-4" />
-                  + New Project
+                  New Project
                 </PrimaryButton>
               </div>
             </div>

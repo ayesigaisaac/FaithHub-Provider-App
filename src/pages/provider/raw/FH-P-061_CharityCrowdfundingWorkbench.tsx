@@ -1974,7 +1974,7 @@ export default function CharityCrowdfundingWorkbenchPage() {
             </div>
             <div className="flex flex-wrap items-center gap-2">
               <Btn tone="ghost" onClick={() => setPreviewOpen(true)} left={<Eye className="h-4 w-4" />}>Preview</Btn>
-              <Btn tone="primary" onClick={() => setComposerOpen(true)} left={<Plus className="h-4 w-4" />}>+ New Crowdfund</Btn>
+              <Btn tone="primary" onClick={() => setComposerOpen(true)} left={<Plus className="h-4 w-4" />}>New Crowdfund</Btn>
               <Btn tone="secondary" onClick={() => setUpdateOpen(true)} left={<Send className="h-4 w-4" />}>Post campaign update</Btn>
               <Btn tone="neutral" onClick={() => safeNav(ROUTES.beaconBuilder)} left={<Zap className="h-4 w-4" />}>Promote with Beacon</Btn>
             </div>

@@ -1163,10 +1163,10 @@ export default function TeachingsDashboardPage() {
                 <Layers className="h-4 w-4" /> Open Series Builder
               </SoftButton>
               <PrimaryButton tone="orange" onClick={() => safeNav(ROUTES.seriesBuilder)}>
-                <Plus className="h-4 w-4" /> + New Series
+                <Plus className="h-4 w-4" /> New Series
               </PrimaryButton>
               <PrimaryButton onClick={() => safeNav(ROUTES.standaloneTeachingBuilder)}>
-                <Plus className="h-4 w-4" /> + New Teaching
+                <Plus className="h-4 w-4" /> New Teaching
               </PrimaryButton>
             </div>
           </div>
@@ -1296,7 +1296,7 @@ export default function TeachingsDashboardPage() {
                     </div>
                     <div className="mt-4 flex justify-center">
                       <PrimaryButton onClick={() => safeNav(ROUTES.standaloneTeachingBuilder)}>
-                        <Plus className="h-4 w-4" /> + New Teaching
+                        <Plus className="h-4 w-4" /> New Teaching
                       </PrimaryButton>
                     </div>
                   </div>

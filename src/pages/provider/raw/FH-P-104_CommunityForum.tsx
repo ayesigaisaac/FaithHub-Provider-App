@@ -40,7 +40,7 @@ import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
  * leader posts, and faith-community engagement.
  *
  * Primary CTAs
- * - + New Topic
+ * - New Topic
  * - Pin Thread
  * - Open Moderation
  *
@@ -1077,7 +1077,7 @@ export default function CommunityForumPage() {
                   Open Moderation
                 </Button>
                 <Button tone="primary" left={<Plus className="h-4 w-4" />} onClick={() => safeNav(ROUTES.newTopic)}>
-                  + New Topic
+                  New Topic
                 </Button>
               </div>
             </div>

@@ -1207,7 +1207,7 @@ export default function FaithHubNoticeboardPage() {
                 <div className="mt-3 flex flex-wrap gap-2">
                   <PrimaryButton onClick={createNewNotice}>
                     <Plus className="h-4 w-4" />
-                    + New Notice
+                    New Notice
                   </PrimaryButton>
                   <SoftButton>
                     <Bell className="h-4 w-4" />

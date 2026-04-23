@@ -593,7 +593,7 @@ export default function PrayerJournalPage() {
               />
               <div className="mt-4 flex flex-wrap items-center gap-2"><Pill tone="good"><BookOpen className="h-3.5 w-3.5" /> Guided rhythms</Pill><Pill><Lock className="h-3.5 w-3.5" /> Private + public flows</Pill><Pill tone="warn"><HeartHandshake className="h-3.5 w-3.5" /> Care-aware reflection sharing</Pill></div>
             </div>
-            <div className="flex w-full flex-col gap-2 xl:w-[320px]"><ActionButton tone="primary" onClick={handleCreateJournal} left={<Plus className="h-4 w-4" />}>+ New Journal</ActionButton><ActionButton onClick={() => handleAddPrompt()} left={<Plus className="h-4 w-4" />}>Add Prompt</ActionButton><ActionButton onClick={handleShareReflection} left={<Share2 className="h-4 w-4" />}>Share Reflection</ActionButton><ActionButton onClick={() => setPreviewOpen(true)} left={<Eye className="h-4 w-4" />}>Preview</ActionButton></div>
+            <div className="flex w-full flex-col gap-2 xl:w-[320px]"><ActionButton tone="primary" onClick={handleCreateJournal} left={<Plus className="h-4 w-4" />}>New Journal</ActionButton><ActionButton onClick={() => handleAddPrompt()} left={<Plus className="h-4 w-4" />}>Add Prompt</ActionButton><ActionButton onClick={handleShareReflection} left={<Share2 className="h-4 w-4" />}>Share Reflection</ActionButton><ActionButton onClick={() => setPreviewOpen(true)} left={<Eye className="h-4 w-4" />}>Preview</ActionButton></div>
           </div>
         </div>
 

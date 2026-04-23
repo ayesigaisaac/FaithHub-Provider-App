@@ -918,7 +918,7 @@ export default function FH_P_111_ServingTeamsPage() {
                   className="inline-flex items-center gap-2 rounded-2xl px-4 py-2 text-[12px] font-bold text-white"
                   style={{ background: EV_GREEN }}
                 >
-                  <Plus className="h-4 w-4" /> + New Team
+                  <Plus className="h-4 w-4" /> New Team
                 </button>
                 <button
                   type="button"

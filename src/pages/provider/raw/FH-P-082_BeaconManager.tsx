@@ -2156,7 +2156,7 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
                 Duplicate campaign
               </Btn>
               <Btn tone="primary" onClick={() => safeNav(ROUTES.beaconBuilder)} left={<Plus className="h-4 w-4" />}>
-                + New Ad
+                New Ad
               </Btn>
             </div>
           </div>

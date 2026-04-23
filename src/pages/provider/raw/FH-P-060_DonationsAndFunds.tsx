@@ -1085,7 +1085,7 @@ export default function DonationsAndFundsPage() {
                 Preview
               </Btn>
               <Btn tone="primary" onClick={() => openComposer("Fund")} left={<Plus className="h-4 w-4" />}>
-                + New Fund
+                New Fund
               </Btn>
               <Btn tone="secondary" onClick={() => openComposer("Campaign")} left={<Gift className="h-4 w-4" />}>
                 + New Campaign

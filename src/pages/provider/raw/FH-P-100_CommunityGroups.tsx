@@ -1042,7 +1042,7 @@ export default function CommunityGroupsPage() {
                   left={<Plus className="h-4 w-4" />}
                   onClick={() => safeNav(ROUTES.groupBuilder)}
                 >
-                  + New Group
+                  New Group
                 </ActionButton>
               </div>
             </div>

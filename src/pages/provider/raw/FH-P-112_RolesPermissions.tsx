@@ -1297,7 +1297,7 @@ export default function FH_P_112_RolesPermissionsPage() {
                   className="inline-flex items-center gap-2 rounded-2xl px-4 py-2 text-[12px] font-bold text-white"
                   style={{ background: EV_GREEN }}
                 >
-                  <Plus className="h-4 w-4" /> + New Role
+                  <Plus className="h-4 w-4" /> New Role
                 </button>
                 <button
                   type="button"
@@ -1469,7 +1469,7 @@ export default function FH_P_112_RolesPermissionsPage() {
                   onClick={() => safeNav(ROUTES.newRole)}
                   className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-[11px] font-bold text-emerald-700 dark:border-emerald-900/40 dark:bg-emerald-900/20 dark:text-emerald-300"
                 >
-                  <Plus className="h-3.5 w-3.5" /> + New Role lives here
+                  <Plus className="h-3.5 w-3.5" /> New Role lives here
                 </button>
               }
             >

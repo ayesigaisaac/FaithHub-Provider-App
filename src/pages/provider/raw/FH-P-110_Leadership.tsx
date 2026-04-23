@@ -623,7 +623,7 @@ export default function FaithHubLeadershipPage() {
                   className="inline-flex items-center gap-2 rounded-2xl px-4 py-3 text-[13px] font-bold text-white shadow-soft transition hover:opacity-95"
                   style={{ background: EV_GREEN }}
                 >
-                  <Plus className="h-4 w-4" /> + New Leader
+                  <Plus className="h-4 w-4" /> New Leader
                 </button>
                 <button
                   type="button"
