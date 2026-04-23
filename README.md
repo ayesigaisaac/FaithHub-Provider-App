@@ -42,7 +42,7 @@ They are defined in:
 
 ```bash
 npm install
-npm run devd  
+npm run dev   
 ```
 
 Open the local Vite URL shown in the terminal.
@@ -139,7 +139,7 @@ Because several attached pages navigate using full path changes such as `/faithh
 ## Project structure
 
 ```text
-src/
+src/.
   components/1`                       
     shell/
   contexts/

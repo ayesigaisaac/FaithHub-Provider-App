@@ -37,7 +37,7 @@ import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
- * Provider ó Community Groups
+ * Provider √¢‚Ç¨‚Äù Community Groups
  * ------------------------------------
  * Premium Provider-side operating surface for ministries, cells, discipleship circles,
  * prayer groups, youth communities, family groups, and other faith-community structures.
@@ -229,7 +229,7 @@ const GROUPS: GroupRecord[] = [
   {
     id: "grp-young-adults",
     title: "Young Adults Discipleship Circle",
-    subtitle: "Weekly growth, accountability, and live-linked follow-up for ages 20ñ35.",
+    subtitle: "Weekly growth, accountability, and live-linked follow-up for ages 20√¢‚Ç¨‚Äú35.",
     type: "Discipleship",
     status: "Healthy",
     access: "Open",
@@ -275,8 +275,8 @@ const GROUPS: GroupRecord[] = [
       },
     ],
     rhythm: [
-      { id: "rh-1", label: "Weekly circle gathering", when: "Fri ∑ 6:30 PM", state: "Ready" },
-      { id: "rh-2", label: "Post-live follow-up thread", when: "Sun ∑ after service", state: "Ready" },
+      { id: "rh-1", label: "Weekly circle gathering", when: "Fri √Ç¬∑ 6:30 PM", state: "Ready" },
+      { id: "rh-2", label: "Post-live follow-up thread", when: "Sun √Ç¬∑ after service", state: "Ready" },
       { id: "rh-3", label: "April reading plan push", when: "Tomorrow", state: "Pending" },
     ],
     hooks: [
@@ -327,18 +327,18 @@ const GROUPS: GroupRecord[] = [
       {
         id: "cs-6",
         label: "Answered-prayer ratio improving",
-        hint: "3 testimonies published this week from last monthís requests.",
+        hint: "3 testimonies published this week from last month√¢‚Ç¨‚Ñ¢s requests.",
         tone: "good",
       },
     ],
     rhythm: [
-      { id: "rh-4", label: "Night prayer watch", when: "Wed ∑ 8:00 PM", state: "Ready" },
-      { id: "rh-5", label: "Answered-prayer recap", when: "Fri ∑ 11:00 AM", state: "Pending" },
+      { id: "rh-4", label: "Night prayer watch", when: "Wed √Ç¬∑ 8:00 PM", state: "Ready" },
+      { id: "rh-5", label: "Answered-prayer recap", when: "Fri √Ç¬∑ 11:00 AM", state: "Pending" },
       { id: "rh-6", label: "Care-owner assignment sweep", when: "Daily", state: "Watch" },
     ],
     hooks: [
       { id: "hk-4", label: "Prayer intake bridge", hint: "Prayer Requests page has 6 items waiting for routing.", state: "Pending" },
-      { id: "hk-5", label: "Noticeboard card", hint: "Private-only notice is ready for tonightís prayer circle.", state: "Ready" },
+      { id: "hk-5", label: "Noticeboard card", hint: "Private-only notice is ready for tonight√¢‚Ç¨‚Ñ¢s prayer circle.", state: "Ready" },
       { id: "hk-6", label: "Counseling handoff", hint: "Two members need private support channel follow-up.", state: "Pending" },
     ],
   },
@@ -389,9 +389,9 @@ const GROUPS: GroupRecord[] = [
       },
     ],
     rhythm: [
-      { id: "rh-7", label: "Youth circle meet-up", when: "Sat ∑ 3:00 PM", state: "Ready" },
-      { id: "rh-8", label: "Parent reminder run", when: "Thu ∑ 6:00 PM", state: "Pending" },
-      { id: "rh-9", label: "Identity & Purpose replay follow-up", when: "Mon ∑ 5:00 PM", state: "Ready" },
+      { id: "rh-7", label: "Youth circle meet-up", when: "Sat √Ç¬∑ 3:00 PM", state: "Ready" },
+      { id: "rh-8", label: "Parent reminder run", when: "Thu √Ç¬∑ 6:00 PM", state: "Pending" },
+      { id: "rh-9", label: "Identity & Purpose replay follow-up", when: "Mon √Ç¬∑ 5:00 PM", state: "Ready" },
     ],
     hooks: [
       { id: "hk-7", label: "Noticeboard sync", hint: "Youth notice cards waiting for parent-visible approval.", state: "Pending" },
@@ -725,7 +725,7 @@ function GroupExperiencePreview({
                 <div>
                   <div className="text-[12px] font-black text-faith-ink">{group.title}</div>
                   <div className="mt-1 text-[11px] text-faith-slate">
-                    {group.type} ï {group.campus} ï {group.meetingMode}
+                    {group.type} ‚Ä¢ {group.campus} ‚Ä¢ {group.meetingMode}
                   </div>
                 </div>
                 <AccessPill access={group.access} />
@@ -873,7 +873,7 @@ function GroupExperiencePreviewInner({
             <div className="mt-3 space-y-2 text-[13px] text-slate-700">
               <div className="flex items-center gap-2">
                 <Users className="h-4 w-4 text-faith-slate" />
-                {group.type} ï {group.meetingMode}
+                {group.type} ‚Ä¢ {group.meetingMode}
               </div>
               <div className="flex items-center gap-2">
                 <MapPin className="h-4 w-4 text-faith-slate" />
@@ -881,7 +881,7 @@ function GroupExperiencePreviewInner({
               </div>
               <div className="flex items-center gap-2">
                 <Globe2 className="h-4 w-4 text-faith-slate" />
-                {group.language.join(" ï ")}
+                {group.language.join(" ‚Ä¢ ")}
               </div>
               <div className="flex items-center gap-2">
                 <BadgeCheck className="h-4 w-4 text-faith-slate" />
@@ -950,7 +950,7 @@ function GroupExperiencePreviewInner({
           <div className="mt-3 space-y-2">
             {group.childrenSafe ? (
               <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-3 text-[12px] text-emerald-800">
-                Child-safe defaults are active for this groupís communication and visibility patterns.
+                Child-safe defaults are active for this group√¢‚Ç¨‚Ñ¢s communication and visibility patterns.
               </div>
             ) : (
               <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3 text-[12px] text-faith-slate">
@@ -1019,23 +1019,32 @@ export default function CommunityGroupsPage() {
               subtitle="Community group operating system for multi-campus ministry teams."
             />
 
-            <div className="flex flex-wrap items-center gap-2">
-              <Pill>Multi-campus</Pill>
-              <Pill>Child-safe defaults</Pill>
-              <Pill>Live-linked</Pill>
-              <ActionButton left={<Eye className="h-4 w-4" />} onClick={() => setPreviewOpen(true)}>
-                Preview
-              </ActionButton>
-              <ActionButton left={<UserPlus className="h-4 w-4" />} onClick={() => safeNav(ROUTES.channelsContactManager)}>
-                Invite members
-              </ActionButton>
-              <ActionButton
-                tone="primary"
-                left={<Plus className="h-4 w-4" />}
-                onClick={() => safeNav(ROUTES.groupBuilder)}
-              >
-                + New Group
-              </ActionButton>
+            <div className="w-full max-w-[620px] space-y-2">
+              <div className="flex flex-wrap items-center gap-2">
+                <Pill>Multi-campus</Pill>
+                <Pill>Child-safe defaults</Pill>
+                <Pill>Live-linked</Pill>
+              </div>
+              <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 xl:grid-cols-3">
+                <ActionButton className="h-10 w-full" left={<Eye className="h-4 w-4" />} onClick={() => setPreviewOpen(true)}>
+                  Preview
+                </ActionButton>
+                <ActionButton
+                  className="h-10 w-full"
+                  left={<UserPlus className="h-4 w-4" />}
+                  onClick={() => safeNav(ROUTES.channelsContactManager)}
+                >
+                  Invite members
+                </ActionButton>
+                <ActionButton
+                  tone="primary"
+                  className="h-10 w-full"
+                  left={<Plus className="h-4 w-4" />}
+                  onClick={() => safeNav(ROUTES.groupBuilder)}
+                >
+                  + New Group
+                </ActionButton>
+              </div>
             </div>
           </div>
 
@@ -1043,9 +1052,9 @@ export default function CommunityGroupsPage() {
             <div className="flex flex-wrap items-center gap-3 text-[12px] text-faith-slate">
               <Pill tone="brand">COMMUNITY NETWORK PULSE</Pill>
               <span>{coverageGaps} groups need co-leader coverage</span>
-              <span>ï</span>
+              <span>‚Ä¢</span>
               <span>{careBacklog} care escalations need review</span>
-              <span>ï</span>
+              <span>‚Ä¢</span>
               <span>3 groups are ready for noticeboard and live-linked follow-up</span>
                 <span className="ml-auto text-[11px] font-black uppercase tracking-[0.12em] text-faith-slate">
                 Community ops
@@ -1207,17 +1216,17 @@ export default function CommunityGroupsPage() {
                               <Users className="h-3.5 w-3.5" />
                               {fmtInt(group.members)} members
                             </span>
-                            <span>ï</span>
+                            <span>‚Ä¢</span>
                             <span className="inline-flex items-center gap-1">
                               <CalendarClock className="h-3.5 w-3.5" />
                               {fmtLocal(group.upcomingISO)}
                             </span>
-                            <span>ï</span>
+                            <span>‚Ä¢</span>
                             <span className="inline-flex items-center gap-1">
                               <MapPin className="h-3.5 w-3.5" />
                               {group.campus}
                             </span>
-                            <span>ï</span>
+                            <span>‚Ä¢</span>
                             <span>{group.meetingMode}</span>
                           </div>
 
@@ -1576,7 +1585,7 @@ export default function CommunityGroupsPage() {
       <Drawer
         open={previewOpen}
         onClose={() => setPreviewOpen(false)}
-        title="Community Groups ∑ Large preview"
+        title="Community Groups √Ç¬∑ Large preview"
         subtitle="Preview of the selected group destination, care signals, and invite experience."
       >
         <GroupExperiencePreviewInner group={selectedGroup} previewMode={previewMode} />

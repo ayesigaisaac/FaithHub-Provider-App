@@ -1,4 +1,4 @@
-// @ts-nocheck
+Ôªø// @ts-nocheck
 "use client";
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
@@ -38,7 +38,7 @@ import {
 import { KpiTile } from "../../../components/ui/KpiTile";
 
 /**
- * Provider ó Channels & Contact Manager
+ * Provider - Channels & Contact Manager
  * Premium audience data, consent, channel-operations, and contact-intelligence hub.
  * Primary colour: EVzone Green (#03cd8c)
  * Secondary colour: EVzone Orange (#f77f00)
@@ -205,6 +205,7 @@ function Btn({
   disabled,
   left,
   title,
+  className,
 }: {
   children: React.ReactNode;
   onClick?: () => void;
@@ -212,6 +213,7 @@ function Btn({
   disabled?: boolean;
   left?: React.ReactNode;
   title?: string;
+  className?: string;
 }) {
   const base =
     "inline-flex items-center justify-center gap-2 rounded-xl px-3.5 py-2 text-sm font-bold transition focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-slate-600 disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.98]";
@@ -236,7 +238,7 @@ function Btn({
   return (
     <button
       title={title}
-      className={cn(base, cls)}
+      className={cn(base, cls, className)}
       style={style}
       onClick={onClick}
       disabled={disabled}
@@ -532,11 +534,11 @@ const contacts: Contact[] = [
     campus: "Downtown",
     brand: "Main Ministry",
     region: "Kampala, Uganda",
-    language: "English ï Luganda",
+    language: "English ‚Ä¢ Luganda",
     primaryChannel: "WhatsApp",
     channelsAllowed: ["WhatsApp", "Push", "Email", "In-app"],
     consentState: "Full",
-    quietHours: "21:00ñ07:00",
+    quietHours: "21:00√¢‚Ç¨‚Äú07:00",
     childSafe: false,
     highRisk: false,
     email: "amal@workspace.demo",
@@ -551,8 +553,8 @@ const contacts: Contact[] = [
     engagementScore: 94,
     pastoralNote: "Consistent attendee. Responds well to replay reminders and giving updates.",
     timeline: [
-      { id: "1", label: "Sunday Live Session attended", when: "Today ∑ 10:08", type: "Live", detail: "Joined via WhatsApp deep link and stayed 48 minutes." },
-      { id: "2", label: "Replay follow-up opened", when: "Yesterday ∑ 16:22", type: "Replay", detail: "Watched the prayer segment and shared the replay card." },
+      { id: "1", label: "Sunday Live Session attended", when: "Today ¬∑ 10:08", type: "Live", detail: "Joined via WhatsApp deep link and stayed 48 minutes." },
+      { id: "2", label: "Replay follow-up opened", when: "Yesterday ¬∑ 16:22", type: "Replay", detail: "Watched the prayer segment and shared the replay card." },
       { id: "3", label: "Charity campaign donation", when: "2 days ago", type: "Donation", detail: "Contributed to the school-feeding crowdfund after a reminder journey." },
       { id: "4", label: "Beacon awareness touch", when: "4 days ago", type: "Beacon", detail: "Saw 3 community-service ads and tapped the giving campaign." },
     ],
@@ -569,11 +571,11 @@ const contacts: Contact[] = [
     campus: "East Campus",
     brand: "Main Ministry",
     region: "Mukono, Uganda",
-    language: "English ï Swahili",
+    language: "English ‚Ä¢ Swahili",
     primaryChannel: "Email",
     channelsAllowed: ["Email", "SMS", "In-app"],
     consentState: "Limited",
-    quietHours: "22:00ñ06:30",
+    quietHours: "22:00√¢‚Ç¨‚Äú06:30",
     childSafe: false,
     highRisk: false,
     email: "ezra@workspace.demo",
@@ -588,7 +590,7 @@ const contacts: Contact[] = [
     engagementScore: 81,
     pastoralNote: "Reliable on events. Prefers email planning updates and avoids late-night SMS.",
     timeline: [
-      { id: "5", label: "Volunteer briefing opened", when: "Today ∑ 08:14", type: "Message", detail: "Opened production call-sheet from Audience Notifications." },
+      { id: "5", label: "Volunteer briefing opened", when: "Today ¬∑ 08:14", type: "Message", detail: "Opened production call-sheet from Audience Notifications." },
       { id: "6", label: "Baptism event checked in", when: "Last Sunday", type: "Event", detail: "Registered early and completed volunteer duty." },
       { id: "7", label: "Beacon click-through", when: "6 days ago", type: "Beacon", detail: "Tapped youth retreat promo but did not complete RSVP." },
     ],
@@ -628,7 +630,7 @@ const contacts: Contact[] = [
       { id: "9", label: "Safeguarding check triggered", when: "3 days ago", type: "Message", detail: "Consent refresh required before the next reminder send." },
     ],
     consentAudit: [
-      { at: "02 Mar 2026", label: "Parent push opt-in", detail: "Parent accepted notifications for childrenís ministry updates only." },
+      { at: "02 Mar 2026", label: "Parent push opt-in", detail: "Parent accepted notifications for children√¢‚Ç¨‚Ñ¢s ministry updates only." },
       { at: "02 Mar 2026", label: "Child-safe lane active", detail: "Quiet hours locked, messaging channels limited." },
       { at: "18 Mar 2026", label: "Consent review due", detail: "Parental reconfirmation required within 7 days." },
     ],
@@ -640,11 +642,11 @@ const contacts: Contact[] = [
     campus: "Global",
     brand: "Outreach Nights",
     region: "London, UK",
-    language: "English ï French",
+    language: "English ‚Ä¢ French",
     primaryChannel: "Email",
     channelsAllowed: ["Email", "Push", "WhatsApp", "In-app"],
     consentState: "Full",
-    quietHours: "23:00ñ07:00",
+    quietHours: "23:00√¢‚Ç¨‚Äú07:00",
     childSafe: false,
     highRisk: false,
     email: "samira@workspace.demo",
@@ -659,7 +661,7 @@ const contacts: Contact[] = [
     engagementScore: 92,
     pastoralNote: "Global donor with strong replay affinity. Excellent candidate for Beacon replay boosts.",
     timeline: [
-      { id: "10", label: "Crowdfund donation completed", when: "Today ∑ 06:42", type: "Donation", detail: "Responded to ëimpact updateí journey and completed donation." },
+      { id: "10", label: "Crowdfund donation completed", when: "Today ¬∑ 06:42", type: "Donation", detail: "Responded to 'impact update' journey and completed donation." },
       { id: "11", label: "Replay binge", when: "Yesterday", type: "Replay", detail: "Watched 3 clips and 1 full replay from the prayer summit." },
       { id: "12", label: "Beacon donation ad conversion", when: "1 week ago", type: "Beacon", detail: "Clicked a replay boost and completed a giving action." },
     ],
@@ -680,7 +682,7 @@ const contacts: Contact[] = [
     primaryChannel: "SMS",
     channelsAllowed: ["SMS", "In-app"],
     consentState: "Limited",
-    quietHours: "21:00ñ06:00",
+    quietHours: "21:00√¢‚Ç¨‚Äú06:00",
     childSafe: false,
     highRisk: true,
     email: "david.kaggwa@workspace.demo",
@@ -695,7 +697,7 @@ const contacts: Contact[] = [
     engagementScore: 28,
     pastoralNote: "Needs hygiene review. SMS bounced and profile is marked for verification before the next reminder.",
     timeline: [
-      { id: "13", label: "SMS bounce", when: "Today ∑ 07:52", type: "Message", detail: "Carrier returned invalid endpoint. Do not contact until fixed." },
+      { id: "13", label: "SMS bounce", when: "Today ¬∑ 07:52", type: "Message", detail: "Carrier returned invalid endpoint. Do not contact until fixed." },
       { id: "14", label: "Event RSVP started", when: "3 days ago", type: "Event", detail: "Did not complete RSVP after first step." },
     ],
     consentAudit: [
@@ -711,7 +713,7 @@ const segments: Segment[] = [
     label: "Weekly Live Core",
     mode: "Smart",
     campus: "Multi-campus",
-    ruleSummary: "Live attendance = 2 in 30 days ï watched replay = 1 ï follows main ministry",
+    ruleSummary: "Live attendance = 2 in 30 days ‚Ä¢ watched replay = 1 ‚Ä¢ follows main ministry",
     size: 12480,
     health: "High",
     growth: "+8.4% in 30 days",
@@ -724,7 +726,7 @@ const segments: Segment[] = [
     label: "Warm Donors",
     mode: "Smart",
     campus: "Global",
-    ruleSummary: "Donated in last 90 days ï opened 2+ giving reminders ï replay viewers",
+    ruleSummary: "Donated in last 90 days ‚Ä¢ opened 2+ giving reminders ‚Ä¢ replay viewers",
     size: 3920,
     health: "High",
     growth: "+4.1% in 30 days",
@@ -737,7 +739,7 @@ const segments: Segment[] = [
     label: "Children Guarded Lane",
     mode: "Manual",
     campus: "Youth Chapel",
-    ruleSummary: "Parent-approved contacts only ï child-safe restrictions enforced ï in-app/push only",
+    ruleSummary: "Parent-approved contacts only ‚Ä¢ child-safe restrictions enforced ‚Ä¢ in-app/push only",
     size: 410,
     health: "Watch",
     growth: "+1.7% in 30 days",
@@ -750,7 +752,7 @@ const segments: Segment[] = [
     label: "Event Ready Attendees",
     mode: "Smart",
     campus: "Downtown",
-    ruleSummary: "Opened event reminder in 14 days ï RSVP intent present ï donor score not required",
+    ruleSummary: "Opened event reminder in 14 days ‚Ä¢ RSVP intent present ‚Ä¢ donor score not required",
     size: 1840,
     health: "Needs work",
     growth: "-2.3% in 30 days",
@@ -763,7 +765,7 @@ const segments: Segment[] = [
     label: "Family Updates",
     mode: "Manual",
     campus: "Youth Chapel",
-    ruleSummary: "Family ministry parents ï parent-approved channels ï quiet-hour compliance strict",
+    ruleSummary: "Family ministry parents ‚Ä¢ parent-approved channels ‚Ä¢ quiet-hour compliance strict",
     size: 650,
     health: "High",
     growth: "+3.2% in 30 days",
@@ -776,7 +778,7 @@ const segments: Segment[] = [
     label: "Women Weekly Path",
     mode: "Smart",
     campus: "Downtown",
-    ruleSummary: "Womenís group tag ï weekly watch history ï accepted WhatsApp or push",
+    ruleSummary: "Women√¢‚Ç¨‚Ñ¢s group tag ‚Ä¢ weekly watch history ‚Ä¢ accepted WhatsApp or push",
     size: 2740,
     health: "High",
     growth: "+5.0% in 30 days",
@@ -802,7 +804,7 @@ const segments: Segment[] = [
     label: "Global Donors",
     mode: "Smart",
     campus: "Global",
-    ruleSummary: "International donors ï replay viewers ï opened email in last 21 days",
+    ruleSummary: "International donors ‚Ä¢ replay viewers ‚Ä¢ opened email in last 21 days",
     size: 1120,
     health: "High",
     growth: "+6.8% in 30 days",
@@ -815,7 +817,7 @@ const segments: Segment[] = [
     label: "Replay Loyalists",
     mode: "Smart",
     campus: "Global",
-    ruleSummary: "Watched 3+ replays in 30 days ï clip taps present ï live attendance optional",
+    ruleSummary: "Watched 3+ replays in 30 days ‚Ä¢ clip taps present ‚Ä¢ live attendance optional",
     size: 5080,
     health: "Watch",
     growth: "+1.3% in 30 days",
@@ -993,7 +995,7 @@ function ContactPreviewCard({
           <div className="min-w-0">
             <div className="truncate text-sm font-black text-faith-ink dark:text-slate-50">{contact.name}</div>
             <div className="text-[11px] text-faith-slate">
-              {contact.title} ï {contact.campus} ï {contact.language}
+              {contact.title} ‚Ä¢ {contact.campus} ‚Ä¢ {contact.language}
             </div>
             <div className="mt-1 flex flex-wrap items-center gap-1.5">
               <Pill tone={consentTone(contact.consentState)}>{contact.consentState} consent</Pill>
@@ -1285,14 +1287,24 @@ export default function ChannelsContactManagerPage() {
               />
             </div>
 
-            <div className="flex h-10 items-center gap-2 rounded-xl bg-slate-100 dark:bg-slate-800/50 p-1 ring-1 ring-slate-200/50 dark:ring-slate-800/50">
-              <Btn tone="ghost" onClick={() => setPreviewOpen(true)} left={<Eye className="h-4 w-4" />}>
+            <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 xl:flex xl:w-auto xl:flex-wrap xl:justify-end">
+              <Btn
+                tone="ghost"
+                className="h-10 px-4 justify-start sm:justify-center bg-[var(--fh-surface-bg)] dark:bg-slate-900 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800"
+                onClick={() => setPreviewOpen(true)}
+                left={<Eye className="h-4 w-4" />}
+              >
                 Preview
               </Btn>
-              <div className="w-px h-4 bg-slate-200 dark:bg-slate-700 mx-1" />
-              <Btn tone="primary" left={<Download className="h-4 w-4" />} onClick={() => setToast("Import workflow opened")}>Import contacts</Btn>
-              <Btn tone="secondary" left={<Plus className="h-4 w-4" />} onClick={() => setToast("Segment builder focused")}>Create segment</Btn>
-              <Btn tone="neutral" left={<Zap className="h-4 w-4" />} onClick={() => setToast("Channel connection flow opened")}>Connect channel</Btn>
+              <Btn tone="primary" className="h-10 px-4" left={<Download className="h-4 w-4" />} onClick={() => setToast("Import workflow opened")}>
+                Import contacts
+              </Btn>
+              <Btn tone="secondary" className="h-10 px-4" left={<Plus className="h-4 w-4" />} onClick={() => setToast("Segment builder focused")}>
+                Create segment
+              </Btn>
+              <Btn tone="neutral" className="h-10 px-4" left={<Zap className="h-4 w-4" />} onClick={() => setToast("Channel connection flow opened")}>
+                Connect channel
+              </Btn>
             </div>
           </div>
         </div>
@@ -1307,7 +1319,7 @@ export default function ChannelsContactManagerPage() {
                 </Pill>
                 <span className="text-[11px] font-bold text-faith-slate uppercase tracking-tight">
                   {systemIssues.length
-                    ? systemIssues.join(" ï ")
+                    ? systemIssues.join(" ‚Ä¢ ")
                     : "Consent trails, deliverability, and contact hygiene are all operating within premium thresholds."}
                 </span>
               </div>
@@ -1457,9 +1469,9 @@ export default function ChannelsContactManagerPage() {
                               </div>
                               <div className="mt-1 text-[11px] text-faith-slate flex flex-wrap gap-x-2 gap-y-1">
                                 <span>{contact.campus}</span>
-                                <span>ï</span>
+                                <span>‚Ä¢</span>
                                 <span>{contact.brand}</span>
-                                <span>ï</span>
+                                <span>‚Ä¢</span>
                                 <span>{contact.region}</span>
                               </div>
                             </div>
@@ -1478,7 +1490,7 @@ export default function ChannelsContactManagerPage() {
                           <div className="text-[12px] text-faith-slate dark:text-slate-300">
                             <div className="font-bold text-faith-ink dark:text-slate-50">{contact.segmentIds.length} segments</div>
                             <div className="mt-1 text-[11px] text-faith-slate line-clamp-1">
-                              {contact.segmentIds.map((id) => segmentLookup.get(id)?.label || id).join(" ï ")}
+                              {contact.segmentIds.map((id) => segmentLookup.get(id)?.label || id).join(" ‚Ä¢ ")}
                             </div>
                           </div>
 
@@ -1557,7 +1569,7 @@ export default function ChannelsContactManagerPage() {
                     <div className="mt-4 rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                       <div className="text-[12px] font-bold text-faith-ink dark:text-slate-50">Manual roster controls</div>
                       <div className="mt-2 text-[11px] text-faith-slate leading-relaxed">
-                        Build protected ministry lists for choir, ushers, childrenís ministry parents, translators, or pastoral care groups with strict child-safe and quiet-hour rules.
+                        Build protected ministry lists for choir, ushers, children√¢‚Ç¨‚Ñ¢s ministry parents, translators, or pastoral care groups with strict child-safe and quiet-hour rules.
                       </div>
                       <div className="mt-3 grid grid-cols-2 gap-2 text-[11px]">
                         <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">CSV import + approval review</div>
@@ -1771,7 +1783,7 @@ export default function ChannelsContactManagerPage() {
                           <Pill tone={statusTone(channel.status)}>{channel.status}</Pill>
                         </div>
                         <div className="mt-1 text-[11px] text-faith-slate">
-                          {channel.sender} ï {channel.campus}
+                          {channel.sender} ‚Ä¢ {channel.campus}
                         </div>
                       </div>
                       <Btn tone="ghost" left={<ExternalLink className="h-4 w-4" />} onClick={() => setToast(`Opened ${channel.name} settings`)}>Open</Btn>
@@ -1906,7 +1918,7 @@ export default function ChannelsContactManagerPage() {
                   <>
                     <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800/80 px-4 py-3 ring-1 ring-slate-100 dark:ring-white/5 shadow-soft">
                       <div className="text-xs font-black uppercase tracking-widest text-faith-slate">Consent state</div>
-                      <div className="mt-1 text-sm font-black text-faith-ink dark:text-slate-100">{selectedContact.consentState} ï {selectedContact.primaryChannel}</div>
+                      <div className="mt-1 text-sm font-black text-faith-ink dark:text-slate-100">{selectedContact.consentState} ‚Ä¢ {selectedContact.primaryChannel}</div>
                     </div>
                     <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800/80 px-4 py-3 ring-1 ring-slate-100 dark:ring-white/5 shadow-soft">
                       <div className="text-xs font-black uppercase tracking-widest text-faith-slate">Recent touch</div>
@@ -1924,7 +1936,7 @@ export default function ChannelsContactManagerPage() {
                       <div key={segment.id} className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800/80 px-4 py-3 ring-1 ring-slate-100 dark:ring-white/5 shadow-soft">
                         <div className="text-xs font-black uppercase tracking-widest text-faith-slate">{segment.mode} segment</div>
                         <div className="mt-1 text-sm font-black text-faith-ink dark:text-slate-100">{segment.label}</div>
-                        <div className="mt-1 text-[11px] text-faith-slate">{segment.size.toLocaleString()} contacts ï {segment.growth}</div>
+                        <div className="mt-1 text-[11px] text-faith-slate">{segment.size.toLocaleString()} contacts ‚Ä¢ {segment.growth}</div>
                       </div>
                     ))}
                   </>
