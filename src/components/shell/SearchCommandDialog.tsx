@@ -1,5 +1,6 @@
 import { Fragment, useCallback, useEffect, useMemo, useRef, useState, type KeyboardEvent as ReactKeyboardEvent } from 'react';
 import {
+  alpha,
   Box,
   Button,
   Chip,
@@ -471,6 +472,7 @@ export function SearchCommandDialog({
   };
 
   const hasQuery = Boolean(query.trim());
+  const activeEntry = flattened[activeIndex];
 
   return (
     <Popover
@@ -494,21 +496,66 @@ export function SearchCommandDialog({
             border: '1px solid',
             borderColor: 'var(--fh-line)',
             bgcolor: 'var(--fh-surface-bg)',
-            boxShadow: 'var(--fh-shadow-md)',
+            boxShadow: '0 22px 46px color-mix(in srgb, var(--fh-ink) 24%, transparent)',
             overflow: 'hidden',
+            backdropFilter: 'blur(8px)',
           },
         },
       }}
     >
-      <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ px: 1.5, pt: 1, pb: 0.25 }}>
-        <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 700 }}>
-          {hasQuery ? `${flattened.length} result${flattened.length === 1 ? '' : 's'}` : 'Suggestions'}
-        </Typography>
-        <Typography variant="caption" color="text.secondary">
-          Enter open - Up/Down move - Esc close
-        </Typography>
-      </Stack>
-      <List ref={listRef} sx={{ px: 1, pb: 1, pt: 0.5, maxHeight: { xs: 360, md: 430 }, overflowY: 'auto' }}>
+      <Box
+        sx={{
+          px: { xs: 1.35, md: 1.75 },
+          pt: 1.1,
+          pb: 1,
+          borderBottom: '1px solid',
+          borderColor: 'var(--fh-line)',
+          background:
+            'linear-gradient(180deg, color-mix(in srgb, var(--fh-brand) 7%, var(--fh-surface-bg) 93%) 0%, var(--fh-surface-bg) 100%)',
+        }}
+      >
+        <Stack direction="row" justifyContent="space-between" alignItems="center" spacing={1}>
+          <Stack direction="row" alignItems="center" spacing={0.8}>
+            <SearchRoundedIcon sx={{ fontSize: 17, color: 'var(--fh-brand)' }} />
+            <Typography variant="subtitle2" sx={{ fontWeight: 900, color: 'var(--fh-ink)' }}>
+              {hasQuery ? `Search results` : 'Quick navigator'}
+            </Typography>
+            <Chip
+              size="small"
+              label={hasQuery ? `${flattened.length} found` : `${flattened.length} items`}
+              sx={{
+                height: 22,
+                fontSize: 11,
+                fontWeight: 800,
+                bgcolor: alpha('#00B894', 0.14),
+                color: 'var(--fh-brand-dark)',
+                border: '1px solid',
+                borderColor: alpha('#00B894', 0.32),
+              }}
+            />
+          </Stack>
+          <Stack direction="row" spacing={0.45}>
+            <Chip size="small" label="↑↓ Move" variant="outlined" sx={{ height: 21, fontSize: 10, borderColor: 'var(--fh-line)' }} />
+            <Chip size="small" label="Enter Open" variant="outlined" sx={{ height: 21, fontSize: 10, borderColor: 'var(--fh-line)' }} />
+            <Chip size="small" label="Esc Close" variant="outlined" sx={{ height: 21, fontSize: 10, borderColor: 'var(--fh-line)' }} />
+          </Stack>
+        </Stack>
+      </Box>
+      <List
+        ref={listRef}
+        sx={{
+          px: 1,
+          pb: 1,
+          pt: 0.75,
+          maxHeight: { xs: 360, md: 430 },
+          overflowY: 'auto',
+          '&::-webkit-scrollbar': { width: 8 },
+          '&::-webkit-scrollbar-thumb': {
+            backgroundColor: 'color-mix(in srgb, var(--fh-line) 78%, var(--fh-ink) 22%)',
+            borderRadius: 999,
+          },
+        }}
+      >
           {groupedResults.map((group) => {
             const GroupIcon = group.icon;
             return (
@@ -524,7 +571,14 @@ export function SearchCommandDialog({
                     <Button
                       size="small"
                       onClick={clearRecent}
-                      sx={{ minHeight: 24, px: 1, fontSize: 11, textTransform: 'none', color: 'var(--fh-slate)' }}
+                      sx={{
+                        minHeight: 24,
+                        px: 1,
+                        fontSize: 11,
+                        fontWeight: 700,
+                        textTransform: 'none',
+                        color: 'var(--fh-slate)',
+                      }}
                     >
                       Clear
                     </Button>
@@ -553,8 +607,22 @@ export function SearchCommandDialog({
                         alignItems: hasQuery ? 'center' : 'flex-start',
                         border: '1px solid',
                         borderColor: selected ? 'var(--fh-brand)' : 'var(--fh-line)',
-                        bgcolor: selected ? 'action.selected' : 'transparent',
-                        '&.Mui-selected': { bgcolor: 'action.selected' },
+                        bgcolor: selected
+                          ? 'color-mix(in srgb, var(--fh-brand) 10%, var(--fh-surface-bg) 90%)'
+                          : 'transparent',
+                        boxShadow: selected
+                          ? 'inset 0 0 0 1px color-mix(in srgb, var(--fh-brand) 28%, transparent)'
+                          : 'none',
+                        transition: 'all 160ms ease',
+                        '&.Mui-selected': {
+                          bgcolor: 'color-mix(in srgb, var(--fh-brand) 10%, var(--fh-surface-bg) 90%)',
+                        },
+                        '&:hover': {
+                          borderColor: selected ? 'var(--fh-brand)' : 'color-mix(in srgb, var(--fh-line) 72%, var(--fh-ink) 28%)',
+                          bgcolor: selected
+                            ? 'color-mix(in srgb, var(--fh-brand) 10%, var(--fh-surface-bg) 90%)'
+                            : 'color-mix(in srgb, var(--fh-surface) 76%, var(--fh-surface-bg) 24%)',
+                        },
                       }}
                     >
                       <ListItemIcon sx={{ minWidth: 44, mt: 0.3 }}>
@@ -591,7 +659,14 @@ export function SearchCommandDialog({
                             <Typography
                               variant="body2"
                               color="text.secondary"
-                              sx={{ mt: 0.15, lineHeight: 1.35, display: hasQuery ? '-webkit-box' : 'block', WebkitLineClamp: hasQuery ? 1 : 'unset', WebkitBoxOrient: hasQuery ? 'vertical' : 'unset', overflow: hasQuery ? 'hidden' : 'visible' }}
+                              sx={{
+                                mt: 0.15,
+                                lineHeight: 1.35,
+                                display: hasQuery ? '-webkit-box' : 'block',
+                                WebkitLineClamp: hasQuery ? 1 : 'unset',
+                                WebkitBoxOrient: hasQuery ? 'vertical' : 'unset',
+                                overflow: hasQuery ? 'hidden' : 'visible',
+                              }}
                             >
                               {renderHighlighted(entry.description, query)}
                             </Typography>
@@ -617,6 +692,21 @@ export function SearchCommandDialog({
             </Box>
           ) : null}
       </List>
+      <Box
+        sx={{
+          px: 1.5,
+          py: 0.8,
+          borderTop: '1px solid',
+          borderColor: 'var(--fh-line)',
+          bgcolor: 'color-mix(in srgb, var(--fh-surface) 74%, var(--fh-surface-bg) 26%)',
+        }}
+      >
+        <Typography variant="caption" sx={{ color: 'var(--fh-slate)', fontWeight: 700 }}>
+          {activeEntry
+            ? `Selected: ${activeEntry.title} - ${activeEntry.section}`
+            : 'Use arrow keys to browse and press Enter to open'}
+        </Typography>
+      </Box>
     </Popover>
   );
 }
