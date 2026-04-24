@@ -2043,7 +2043,7 @@ function ProjectsPage() {
         title="Add milestone"
         subtitle={`Create a new project milestone for ${selectedProject.title}.`}
       >
-        <div className="grid gap-4 xl:grid-cols-[minmax(0,1.2fr)_360px]">
+        <div className="grid gap-4 2xl:grid-cols-[minmax(0,1.2fr)_360px]">
           <Card title="Milestone composer" subtitle="Create a milestone that keeps the project accountable, visible, and operationally clear.">
             <div className="grid gap-4">
               <div>
@@ -2158,7 +2158,7 @@ function ProjectsPage() {
         title="Recruit team"
         subtitle={`Create a new role or recruitment lane for ${selectedProject.title}.`}
       >
-        <div className="grid gap-4 lg:grid-cols-[minmax(0,1.2fr)_360px]">
+        <div className="grid gap-4 2xl:grid-cols-[minmax(0,1.2fr)_360px]">
           <Card title="Recruitment composer" subtitle="Add a project role, define its target headcount, and prepare outreach for the right people.">
             <div className="grid gap-4">
               <div>

@@ -848,7 +848,7 @@ function GroupExperiencePreviewInner({
   previewMode: PreviewMode;
 }) {
   return (
-    <div className="grid gap-4 lg:grid-cols-[minmax(0,1.15fr)_380px]">
+    <div className="grid gap-4 xl:grid-cols-[minmax(0,1.15fr)_380px]">
       <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft">
         <div className="relative overflow-hidden rounded-2xl">
           <img src={group.heroUrl} alt={group.title} className="h-[280px] w-full object-cover" />
@@ -1101,7 +1101,7 @@ export default function CommunityGroupsPage() {
             />
           </div>
 
-          <div className="grid gap-4 sm:gap-5 px-3 sm:px-4 pb-3 sm:pb-4 xl:grid-cols-[minmax(0,1.4fr)_minmax(0,0.95fr)_360px]">
+          <div className="grid gap-4 sm:gap-5 px-3 sm:px-4 pb-3 sm:pb-4 2xl:grid-cols-[minmax(0,1.4fr)_minmax(0,0.95fr)_360px]">
             <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-3 sm:p-4 shadow-soft">
               <div className="flex flex-wrap items-start justify-between gap-3">
                 <div>

@@ -1145,7 +1145,7 @@ export default function BeaconMarketplacePage() {
                 </div>
               </SectionCard>
 
-              <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_360px]">
+              <div className="grid gap-4 2xl:grid-cols-[minmax(0,1fr)_360px]">
                 <SectionCard
                   title="Media plan builder"
                   subtitle="Combine placements, compare expected outcomes, save plan combinations, and hand them into Beacon Builder."

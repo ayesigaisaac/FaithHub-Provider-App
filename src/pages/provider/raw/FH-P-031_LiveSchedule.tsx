@@ -2961,7 +2961,7 @@ export default function FaithHubLiveSchedulePage() {
                   </div>
                 </div>
 
-                <div className="grid gap-3 lg:grid-cols-6">
+                <div className="grid gap-3 xl:grid-cols-6">
                   <div className="lg:col-span-2">
                     <Label>Search</Label>
                     <div className="relative mt-1">

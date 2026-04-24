@@ -700,7 +700,7 @@ export default function FHP123QACenter() {
           <MetricCard label="Saved checklists" value={fmtCompact(savedChecklistCount)} hint={`Last scan ${lastScanLabel}`} accent="gray" />
         </div>
 
-        <div className="mt-5 grid grid-cols-1 gap-4 xl:grid-cols-[290px_minmax(0,1fr)_360px]">
+        <div className="mt-5 grid grid-cols-1 gap-4 2xl:grid-cols-[290px_minmax(0,1fr)_360px]">
           <div className="space-y-4">
             <Card title="QA map" subtitle="Saved views for streams, content packages, forms, safeguards, and launch review.">
               <div className="space-y-2">

@@ -579,7 +579,7 @@ export default function FH_P_121_ModerationSettings() {
           <StatCard label="Pending changes" value="3" detail="Queued adjustments waiting for save or approval." dot={MEDIUM} />
         </div>
 
-        <div className="grid grid-cols-1 xl:grid-cols-[270px_minmax(0,1fr)_300px] gap-4 items-start">
+        <div className="grid grid-cols-1 2xl:grid-cols-[270px_minmax(0,1fr)_300px] gap-4 items-start">
           <div className="space-y-4">
             <Card
               title="Policy map"
@@ -655,7 +655,7 @@ export default function FH_P_121_ModerationSettings() {
               </div>
             </Card>
 
-            <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_320px] gap-4">
+            <div className="grid grid-cols-1 2xl:grid-cols-[minmax(0,1fr)_320px] gap-4">
               <Card
                 title="Child-safe restrictions"
                 subtitle="Child-safe controls are strongest when reply routing, counseling approvals, and direct-message restrictions remain locked together."

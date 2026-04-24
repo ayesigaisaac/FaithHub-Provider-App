@@ -1313,7 +1313,7 @@ export default function MerchandiseBuilderPage() {
             </div>
           </div>
 
-          <div className="grid gap-6 p-6 lg:grid-cols-[270px_minmax(0,1fr)_390px]">
+          <div className="grid gap-6 p-6 2xl:grid-cols-[270px_minmax(0,1fr)_390px]">
             <div className="space-y-3">
               <StepNav step={step} setStep={setStep} />
               <ReadinessCard checks={readinessChecks} />

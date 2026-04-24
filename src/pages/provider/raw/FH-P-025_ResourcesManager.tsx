@@ -1247,7 +1247,7 @@ export default function ResourcesManagerPage() {
   return (
     <div className="min-h-screen bg-[var(--fh-page-bg)] text-faith-ink">
       <main className="mx-auto max-w-[1720px] p-4 md:p-6 lg:p-8">
-        <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_380px]">
+        <div className="grid gap-5 2xl:grid-cols-[minmax(0,1fr)_380px]">
           <div className="space-y-5">
             <section className="rounded-[32px] border border-faith-line bg-[var(--fh-surface-bg)] p-6 shadow-soft md:p-7">
               <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
@@ -1334,7 +1334,7 @@ export default function ResourcesManagerPage() {
                 subtitle="Search title, author, tag, and then narrow the library by category, type, audience, denomination, or age group."
               />
 
-              <div className="mt-5 grid gap-3 lg:grid-cols-[minmax(0,1fr)_220px_180px]">
+              <div className="mt-5 grid gap-3 xl:grid-cols-[minmax(0,1fr)_220px_180px]">
                 <SearchField value={search} onChange={setSearch} />
                 <div>
                   <Label>Category</Label>

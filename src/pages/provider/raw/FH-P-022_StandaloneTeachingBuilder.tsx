@@ -1767,7 +1767,7 @@ export default function StandaloneTeachingBuilderPage() {
           </div>
         </div>
 
-        <div className="mt-6 grid gap-6 xl:grid-cols-[260px_minmax(0,1fr)_440px]">
+        <div className="mt-6 grid gap-6 2xl:grid-cols-[260px_minmax(0,1fr)_440px]">
           <StepRail step={step} setStep={setStep} readinessScore={readiness.score} />
 
           <div className="min-w-0 space-y-4">{centerContent}</div>

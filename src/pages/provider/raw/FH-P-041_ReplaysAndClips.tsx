@@ -1130,7 +1130,7 @@ export default function FaithHubReplaysAndClipsPage() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 gap-3 xl:grid-cols-[minmax(0,1.3fr)_repeat(5,minmax(0,0.75fr))]">
+                <div className="grid grid-cols-1 gap-3 2xl:grid-cols-[minmax(0,1.3fr)_repeat(5,minmax(0,0.75fr))]">
                   <label className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800/50 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800 flex items-center gap-2">
                     <Search className="h-4 w-4 text-faith-slate" />
                     <input

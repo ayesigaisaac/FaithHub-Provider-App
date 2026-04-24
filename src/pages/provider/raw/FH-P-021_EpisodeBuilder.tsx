@@ -1004,7 +1004,7 @@ export default function EpisodeBuilderPage() {
           </div>
         </div>
 
-        <div className="mt-6 grid gap-6 xl:grid-cols-[242px_minmax(0,1fr)_500px]">
+        <div className="mt-6 grid gap-6 2xl:grid-cols-[242px_minmax(0,1fr)_500px]">
           <aside>
             <StepNav step={step} setStep={setStep} readinessScore={readinessScore} />
           </aside>
