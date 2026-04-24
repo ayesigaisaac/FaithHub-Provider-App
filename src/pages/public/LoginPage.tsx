@@ -1,8 +1,10 @@
 import {
+  Collapse,
   Alert,
   Box,
   Button,
   Checkbox,
+  Divider,
   FormControlLabel,
   IconButton,
   InputAdornment,
@@ -53,8 +55,10 @@ export default function LoginPage() {
   });
   const [rememberMe, setRememberMe] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
+  const [workspaceExpanded, setWorkspaceExpanded] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [fieldErrors, setFieldErrors] = useState<{ email?: string; password?: string }>({});
+  const isDev = import.meta.env.DEV;
 
   const from = useMemo(() => {
     const state = location.state as { from?: string } | undefined;
@@ -110,6 +114,10 @@ export default function LoginPage() {
       if (error) setError(null);
     },
   } as const;
+  const emailValue = email.trim();
+  const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue);
+  const passwordValid = password.length >= 8;
+  const canSubmit = emailValid && passwordValid && !loading;
 
   return (
     <Box
@@ -152,7 +160,7 @@ export default function LoginPage() {
             bgcolor: 'background.paper',
           }}
         >
-          <Stack spacing={2.25} component="form" onSubmit={onSubmit}>
+          <Stack spacing={1.8} component="form" onSubmit={onSubmit}>
               <Stack direction="row" justifyContent="space-between" alignItems="flex-start">
                 <Box>
                 <Box sx={{ mb: 1.25 }}>
@@ -164,9 +172,11 @@ export default function LoginPage() {
                 <Typography variant="h4" fontWeight={800}>
                   Sign in
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Use mock users like `leadership@faithhub.dev` with password `password123`.
-                </Typography>
+                {isDev ? (
+                  <Typography variant="body2" color="text.secondary">
+                    Use mock users like `leadership@faithhub.dev` with password `password123`.
+                  </Typography>
+                ) : null}
                 </Box>
                 <ThemeModeToggle />
               </Stack>
@@ -176,6 +186,7 @@ export default function LoginPage() {
               <TextField
                 label="Email"
                 type="email"
+                size="small"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 error={Boolean(fieldErrors.email)}
@@ -186,6 +197,7 @@ export default function LoginPage() {
               <TextField
                 label="Password"
                 type={showPassword ? 'text' : 'password'}
+                size="small"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 error={Boolean(fieldErrors.password)}
@@ -220,32 +232,91 @@ export default function LoginPage() {
                 label="Remember me on this device"
               />
 
-              <TextField
-                select
-                label="Campus"
-                value={workspace.campus}
-                onChange={(e) => setWorkspaceDraft((prev) => ({ ...prev, campus: e.target.value }))}
-                disabled={loading}
+              <Button
+                variant="text"
+                size="small"
+                onClick={() => setWorkspaceExpanded((prev) => !prev)}
+                sx={{ justifyContent: 'flex-start', px: 0.5, alignSelf: 'flex-start', textTransform: 'none', fontWeight: 700 }}
               >
-                <MenuItem value="Kampala Central">Kampala Central</MenuItem>
-                <MenuItem value="East Campus">East Campus</MenuItem>
-                <MenuItem value="Online Studio">Online Studio</MenuItem>
-              </TextField>
+                {workspaceExpanded ? 'Hide workspace options' : 'Workspace options'}
+              </Button>
 
-              <TextField
-                select
-                label="Brand"
-                value={workspace.brand}
-                onChange={(e) => setWorkspaceDraft((prev) => ({ ...prev, brand: e.target.value }))}
-                disabled={loading}
-              >
-                <MenuItem value="FaithHub">FaithHub</MenuItem>
-                <MenuItem value="FaithHub Plus">FaithHub Plus</MenuItem>
-              </TextField>
+              <Collapse in={workspaceExpanded}>
+                <Stack spacing={1.2}>
+                  <TextField
+                    select
+                    size="small"
+                    label="Campus"
+                    value={workspace.campus}
+                    onChange={(e) => setWorkspaceDraft((prev) => ({ ...prev, campus: e.target.value }))}
+                    disabled={loading}
+                  >
+                    <MenuItem value="Kampala Central">Kampala Central</MenuItem>
+                    <MenuItem value="East Campus">East Campus</MenuItem>
+                    <MenuItem value="Online Studio">Online Studio</MenuItem>
+                  </TextField>
 
-              <Button type="submit" variant="contained" size="large" disabled={loading}>
+                  <TextField
+                    select
+                    size="small"
+                    label="Brand"
+                    value={workspace.brand}
+                    onChange={(e) => setWorkspaceDraft((prev) => ({ ...prev, brand: e.target.value }))}
+                    disabled={loading}
+                  >
+                    <MenuItem value="FaithHub">FaithHub</MenuItem>
+                    <MenuItem value="FaithHub Plus">FaithHub Plus</MenuItem>
+                  </TextField>
+                </Stack>
+              </Collapse>
+
+              <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ mt: -0.4 }}>
+                <Typography variant="caption" color="text.secondary">
+                  Campus: {workspace.campus} • Brand: {workspace.brand}
+                </Typography>
+                <Button
+                  variant="text"
+                  size="small"
+                  data-no-auto-action="true"
+                  sx={{ textTransform: 'none', fontWeight: 700 }}
+                  onClick={() => setError('Password reset is managed by your workspace administrator.')}
+                >
+                  Forgot password?
+                </Button>
+              </Stack>
+
+              <Button type="submit" variant="contained" size="large" disabled={!canSubmit}>
                 {loading ? 'Signing in...' : 'Login'}
               </Button>
+
+              <Typography variant="caption" color="text.secondary" sx={{ mt: -0.35 }}>
+                Secure sign-in • Role-based access
+              </Typography>
+
+              <Divider sx={{ my: 0.2 }}>or</Divider>
+
+              <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1}>
+                <Button
+                  fullWidth
+                  variant="outlined"
+                  size="medium"
+                  data-no-auto-action="true"
+                  sx={{ textTransform: 'none', fontWeight: 700 }}
+                  onClick={() => setError('Google SSO is not enabled for this workspace yet.')}
+                >
+                  Continue with Google
+                </Button>
+                <Button
+                  fullWidth
+                  variant="outlined"
+                  size="medium"
+                  data-no-auto-action="true"
+                  sx={{ textTransform: 'none', fontWeight: 700 }}
+                  onClick={() => setError('Microsoft SSO is not enabled for this workspace yet.')}
+                >
+                  Continue with Microsoft
+                </Button>
+              </Stack>
           </Stack>
         </Box>
 
@@ -273,7 +344,7 @@ export default function LoginPage() {
               display: 'grid',
               placeItems: 'center',
               px: 4,
-              pb: 10,
+              pb: 18,
             }}
           >
             <Box
@@ -298,12 +369,16 @@ export default function LoginPage() {
               right: 28,
               bottom: 28,
               color: 'white',
+              p: 2,
+              borderRadius: 3,
+              bgcolor: 'rgba(3, 10, 28, 0.34)',
+              backdropFilter: 'blur(3px)',
             }}
           >
             <Typography variant="overline" sx={{ letterSpacing: '0.12em', opacity: 0.9 }}>
               EVzone FaithHub
             </Typography>
-            <Typography variant="h4" fontWeight={800} sx={{ maxWidth: 520 }}>
+            <Typography variant="h4" fontWeight={800} sx={{ maxWidth: 560, fontSize: { md: 44, lg: 56 }, lineHeight: 1.05 }}>
               Provider workspace for live, community, giving, and growth.
             </Typography>
             <Typography variant="body2" sx={{ opacity: 0.92, maxWidth: 520 }}>
