@@ -253,10 +253,9 @@ export default function LoginPage() {
           sx={{
             display: { xs: 'none', md: 'block' },
             position: 'relative',
-            backgroundImage:
-              'linear-gradient(155deg, rgba(7, 16, 45, 0.86), rgba(8, 27, 64, 0.72)), url("https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1800&q=80")',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
+            overflow: 'hidden',
+            background:
+              'linear-gradient(160deg, rgba(5, 12, 34, 0.96) 0%, rgba(7, 23, 58, 0.92) 48%, rgba(8, 30, 66, 0.9) 100%)',
           }}
         >
           <Box
@@ -267,6 +266,30 @@ export default function LoginPage() {
                 'radial-gradient(circle at 15% 20%, rgba(3,205,140,0.24), transparent 30%), radial-gradient(circle at 84% 78%, rgba(247,127,0,0.2), transparent 34%)',
             }}
           />
+          <Box
+            sx={{
+              position: 'absolute',
+              inset: 0,
+              display: 'grid',
+              placeItems: 'center',
+              px: 4,
+              pb: 10,
+            }}
+          >
+            <Box
+              component="img"
+              src="/assets/EV Zone FaithHub Logo (Single).png"
+              alt="FaithHub global faith emblem"
+              sx={{
+                width: 'min(72%, 430px)',
+                maxWidth: '100%',
+                objectFit: 'contain',
+                filter: 'drop-shadow(0 22px 40px rgba(0, 0, 0, 0.5))',
+                userSelect: 'none',
+                pointerEvents: 'none',
+              }}
+            />
+          </Box>
           <Stack
             spacing={1}
             sx={{
