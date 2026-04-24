@@ -1826,7 +1826,7 @@ export default function BeaconBuilderPage({
                   );
                 })}
               </div>
-              <div className="grid gap-4 md:grid-cols-[minmax(0,1fr)_360px]">
+              <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_360px]">
                 <div>
                   <FieldLabel label="Find source object" hint="Search inside the selected source type" />
                   <div className="mt-1 relative">
@@ -2663,7 +2663,7 @@ export default function BeaconBuilderPage({
       </div>
 
       <div className="mx-auto max-w-[1680px] px-4 md:px-6 lg:px-8 py-4 lg:py-6">
-        <div className="grid gap-4 xl:grid-cols-[280px_minmax(0,1fr)_420px]">
+        <div className="grid gap-4 2xl:grid-cols-[280px_minmax(0,1fr)_420px]">
           <div className="space-y-4 xl:sticky xl:top-[106px] self-start">
             <Section title="Builder steps" subtitle="Preview-driven creation from objective to launch gate.">
               <div className="space-y-2">
@@ -2715,7 +2715,7 @@ export default function BeaconBuilderPage({
       </div>
 
       <Modal open={previewOpen} onClose={() => setPreviewOpen(false)} title="Beacon preview suite">
-        <div className="grid gap-4 lg:grid-cols-[360px_minmax(0,1fr)]">
+        <div className="grid gap-4 xl:grid-cols-[360px_minmax(0,1fr)]">
           <div className="space-y-4">
             <Section title="Preview controls" subtitle="Stress-test the campaign across devices and themes before launch.">
               <div className="space-y-3">

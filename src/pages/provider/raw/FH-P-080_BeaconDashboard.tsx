@@ -1347,7 +1347,7 @@ export default function BeaconDashboardPage() {
                 <MetricCard label="Creative health" value={`${Math.round(portfolio.avgHealth)}%`} hint="Portfolio average across active flights" tone="green" />
               </div>
 
-              <div className="mt-4 grid grid-cols-1 gap-4 xl:grid-cols-[1.2fr_0.8fr]">
+              <div className="mt-4 grid grid-cols-1 gap-4 2xl:grid-cols-[1.2fr_0.8fr]">
                 <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
                   <div className="flex items-center justify-between gap-2">
                     <div>
@@ -1747,7 +1747,7 @@ export default function BeaconDashboardPage() {
         title={`${selectedCampaign.title} · Full preview`}
         subtitle="Preview how the selected Beacon campaign appears across premium Promotiontion surfaces."
       >
-        <div className="grid grid-cols-1 gap-6 xl:grid-cols-[1.15fr_0.85fr]">
+        <div className="grid grid-cols-1 gap-6 2xl:grid-cols-[1.15fr_0.85fr]">
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <button

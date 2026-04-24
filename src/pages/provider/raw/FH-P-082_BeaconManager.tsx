@@ -2181,7 +2181,7 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
                 <MetricCard label="Approval backlog" value={fmtInt(portfolio.approvalBacklog)} hint={`${portfolio.linkedCount} linked � ${portfolio.standaloneCount} standalone`} tone="green" />
               </div>
 
-              <div className="mt-4 grid grid-cols-1 gap-4 xl:grid-cols-[1.15fr_0.85fr]">
+              <div className="mt-4 grid grid-cols-1 gap-4 2xl:grid-cols-[1.15fr_0.85fr]">
                 <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
                   <div className="flex items-center justify-between gap-2">
                     <div>
@@ -2265,7 +2265,7 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
                 }
               />
 
-              <div className="mt-4 grid gap-3 xl:grid-cols-[1.3fr_1fr_1fr]">
+              <div className="mt-4 grid gap-3 2xl:grid-cols-[1.3fr_1fr_1fr]">
                 <div className="flex items-center gap-2 rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-2 transition-colors">
                   <Search className="h-4 w-4 text-faith-slate" />
                   <input

@@ -672,7 +672,7 @@ function PlacementDrawer({
           <SoftButton onClick={onClose}>Close</SoftButton>
         </div>
         <div className="h-[calc(100%-76px)] overflow-y-auto p-5">
-          <div className="grid gap-4 xl:grid-cols-[minmax(0,1.15fr)_280px]">
+          <div className="grid gap-4 2xl:grid-cols-[minmax(0,1.15fr)_280px]">
             <SectionCard
               title={placement.title}
               subtitle={placement.detailNote}
@@ -888,7 +888,7 @@ export default function BeaconMarketplacePage() {
             </div>
           </div>
 
-          <div className="grid gap-4 xl:grid-cols-[450px_minmax(0,1fr)_326px]">
+          <div className="grid gap-4 2xl:grid-cols-[450px_minmax(0,1fr)_326px]">
             <div className="space-y-4">
               <SectionCard
                 title="Inventory catalog"

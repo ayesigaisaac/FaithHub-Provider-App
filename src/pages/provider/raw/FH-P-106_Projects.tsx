@@ -1953,7 +1953,7 @@ function ProjectsPage() {
         title="Projects � Large preview"
         subtitle="Premium preview of the selected project destination, impact story, volunteer CTA, and funding path."
       >
-        <div className="grid gap-6 xl:grid-cols-[minmax(0,1.2fr)_420px]">
+        <div className="grid gap-6 2xl:grid-cols-[minmax(0,1.2fr)_420px]">
           <div className="space-y-4">
             <div className="rounded-[30px] border border-faith-line bg-[var(--fh-surface)] p-4">
               <ProjectDestinationPreview
@@ -2043,7 +2043,7 @@ function ProjectsPage() {
         title="Add milestone"
         subtitle={`Create a new project milestone for ${selectedProject.title}.`}
       >
-        <div className="grid gap-4 lg:grid-cols-[minmax(0,1.2fr)_360px]">
+        <div className="grid gap-4 xl:grid-cols-[minmax(0,1.2fr)_360px]">
           <Card title="Milestone composer" subtitle="Create a milestone that keeps the project accountable, visible, and operationally clear.">
             <div className="grid gap-4">
               <div>

@@ -1662,7 +1662,7 @@ export default function FaithHubEventsManagerPage() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 gap-3 xl:grid-cols-[minmax(0,1.3fr)_repeat(4,minmax(0,0.7fr))]">
+                <div className="grid grid-cols-1 gap-3 2xl:grid-cols-[minmax(0,1.3fr)_repeat(4,minmax(0,0.7fr))]">
                   <label className="block">
                     <FieldLabel>Search events</FieldLabel>
                     <div className="mt-1 h-11 rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 flex items-center gap-2 shadow-soft">
@@ -2628,7 +2628,7 @@ export default function FaithHubEventsManagerPage() {
           </div>
         }
       >
-        <div className="grid grid-cols-1 gap-4 xl:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)]">
+        <div className="grid grid-cols-1 gap-4 2xl:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)]">
           <div>
             <EventPreviewSurface event={selectedEvent} mode={previewMode} />
           </div>
