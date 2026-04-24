@@ -1152,7 +1152,7 @@ export default function SeriesDashboardPage() {
                             </div>
                           </div>
 
-                          <div className="mt-4 grid grid-cols-2 gap-2 lg:grid-cols-5">
+                          <div className="mt-4 grid grid-cols-2 gap-2 xl:grid-cols-5">
                             <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)]/70 dark:bg-slate-800 px-3 py-2 transition-colors">
                               <div className="text-[10px] uppercase tracking-[0.12em] text-faith-slate">Episodes</div>
                               <div className="mt-1 text-[16px] font-black text-faith-ink dark:text-slate-100">{series.episodeCount}</div>
