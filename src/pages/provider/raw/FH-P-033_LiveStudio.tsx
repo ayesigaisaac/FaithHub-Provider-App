@@ -625,14 +625,14 @@ function CardShell({
 }) {
   return (
     <section className={cx("rounded-3xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors shadow-soft", className)}>
-      <div className="flex items-start justify-between gap-3">
+      <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="min-w-0">
-          <h3 className="text-[13px] font-semibold text-faith-ink dark:text-slate-100">{title}</h3>
-          {subtitle ? <p className="mt-0.5 text-[11px] text-faith-slate">{subtitle}</p> : null}
+          <h3 className="break-words text-[13px] font-semibold text-faith-ink dark:text-slate-100">{title}</h3>
+          {subtitle ? <p className="mt-0.5 break-words text-[11px] text-faith-slate">{subtitle}</p> : null}
         </div>
-        {right ? <div className="shrink-0">{right}</div> : null}
+        {right ? <div className="w-full sm:w-auto sm:shrink-0">{right}</div> : null}
       </div>
-      <div className="mt-4">{children}</div>
+      <div className="mt-4 min-w-0">{children}</div>
     </section>
   );
 }
@@ -908,8 +908,8 @@ export default function FaithHubLiveStudioPage() {
       />
 
       <div className="hidden xl:flex h-[calc(100dvh-76px)] flex-col overflow-hidden">
-        <main className="flex min-h-0 flex-1 gap-4 overflow-hidden p-4 sm:p-6 lg:p-8">
-          <section className="w-[330px] shrink-0 space-y-4 overflow-y-auto pb-28 pr-1">
+        <main className="grid min-h-0 flex-1 gap-4 overflow-hidden p-4 sm:p-6 lg:p-8 xl:grid-cols-[minmax(280px,330px)_minmax(0,1fr)] 2xl:grid-cols-[minmax(280px,330px)_minmax(0,1fr)_minmax(320px,360px)]">
+          <section className="min-h-0 space-y-4 overflow-y-auto pb-28 pr-1">
             <CardShell
               title="Session & scene builder"
               subtitle="Queue the next scene and keep reusable templates close."
@@ -1158,7 +1158,7 @@ export default function FaithHubLiveStudioPage() {
             </CardShell>
           </section>
 
-          <section className="min-w-0 flex-1 space-y-4 overflow-y-auto pb-28 pr-1">
+          <section className="min-h-0 min-w-0 space-y-4 overflow-y-auto pb-28 pr-1">
             <CardShell
               title="Program & preview monitors"
               subtitle="See what is live, what is queued next, and the health of every production layer."
@@ -1169,7 +1169,7 @@ export default function FaithHubLiveStudioPage() {
                 </div>
               }
             >
-              <div className="grid gap-4 xl:grid-cols-2">
+              <div className="grid gap-4 2xl:grid-cols-2">
                 <div className="overflow-hidden rounded-3xl border border-faith-line dark:border-slate-700">
                   <div className="flex items-center justify-between border-b border-faith-line bg-[var(--fh-surface-bg)]/90 px-4 py-3 text-[12px] font-semibold text-faith-ink dark:border-slate-700 dark:bg-slate-950/90 dark:text-slate-100">
                     <span className="inline-flex items-center gap-2">
@@ -1547,7 +1547,7 @@ export default function FaithHubLiveStudioPage() {
             </CardShell>
           </section>
 
-          <section className="w-[360px] shrink-0 space-y-4 overflow-y-auto pb-28 pr-1">
+          <section className="min-h-0 space-y-4 overflow-y-auto pb-28 pr-1 xl:col-span-2 2xl:col-span-1">
             <CardShell
               title="Interaction hub"
               subtitle="Live chat, moderated questions, prayer requests and polls without leaving studio."
