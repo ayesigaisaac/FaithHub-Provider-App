@@ -1278,7 +1278,7 @@ export default function FaithHubNoticeboardPage() {
             </div>
           </div>
 
-          <div className="mt-4 grid gap-3 xl:grid-cols-[minmax(0,1.2fr)_180px_160px_1fr]">
+          <div className="mt-4 grid gap-3 2xl:grid-cols-[minmax(0,1.2fr)_180px_160px_1fr]">
             <div className="relative">
               <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-faith-slate" />
               <input

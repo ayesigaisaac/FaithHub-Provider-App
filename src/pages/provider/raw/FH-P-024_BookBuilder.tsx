@@ -2208,7 +2208,7 @@ export default function FaithHubBookBuilderPage() {
       </div>
 
       <div className="mx-auto max-w-[1600px] px-4 py-6 md:px-6 lg:px-8">
-        <div className="grid gap-6 xl:grid-cols-[300px_minmax(0,1fr)_420px]">
+        <div className="grid gap-6 2xl:grid-cols-[300px_minmax(0,1fr)_420px]">
           <div className="space-y-4">
             <StepRail step={step} setStep={setStep} />
 

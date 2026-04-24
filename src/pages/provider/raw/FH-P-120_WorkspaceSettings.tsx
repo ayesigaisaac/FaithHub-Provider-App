@@ -1088,7 +1088,7 @@ export default function WorkspaceSettingsPage() {
           <MetricCard label="Pending changes" value={stats.pendingChanges} hint="Unsaved or recently modified defaults" accent="gray" />
         </section>
 
-        <section className="grid gap-4 xl:grid-cols-[280px_minmax(0,1fr)_360px]">
+        <section className="grid gap-4 2xl:grid-cols-[280px_minmax(0,1fr)_360px]">
           <div className="space-y-4">
             <Card title="Settings map" subtitle="Control surfaces for identity, campuses, localization, integrations, and operations.">
               <div className="space-y-2">

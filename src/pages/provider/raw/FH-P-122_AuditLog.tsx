@@ -1125,7 +1125,7 @@ export default function AuditLogPage() {
           <MetricCard label="Export packs" value={fmtCompact(exportBundlesReady)} hint="Prepared or available evidence bundles" accent="gray" />
         </div>
 
-        <div className="mt-4 grid gap-4 xl:grid-cols-[280px_minmax(0,1fr)_360px]">
+        <div className="mt-4 grid gap-4 2xl:grid-cols-[280px_minmax(0,1fr)_360px]">
           <div className="space-y-4">
             <Card title="Audit map" subtitle="Saved views for governance, finance, trust, publishing, and admin activity.">
               <div className="space-y-2">

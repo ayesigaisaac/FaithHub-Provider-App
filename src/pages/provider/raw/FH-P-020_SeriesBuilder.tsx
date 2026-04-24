@@ -1835,7 +1835,7 @@ export default function SeriesBuilderPage() {
           </div>
         </div>
 
-        <div className="mt-5 grid gap-5 xl:grid-cols-[260px_minmax(0,1fr)_390px]">
+        <div className="mt-5 grid gap-5 2xl:grid-cols-[260px_minmax(0,1fr)_390px]">
           <div className="xl:sticky xl:top-6 xl:self-start">
             <StepRail step={step} setStep={setStep} readinessScore={readiness.score} />
           </div>
