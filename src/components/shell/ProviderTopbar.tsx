@@ -149,13 +149,11 @@ export function ProviderTopbar({
               }}
               placeholder="Search pages..."
               size="small"
-              aria-haspopup="dialog"
-              aria-expanded={searchOpen}
               inputProps={{ 'aria-label': 'Search pages' }}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <SearchRoundedIcon sx={{ color: searchOpen ? 'var(--fh-brand)' : 'var(--fh-slate)' }} />
+                    <SearchRoundedIcon />
                   </InputAdornment>
                 ),
                 endAdornment: (
@@ -173,7 +171,6 @@ export function ProviderTopbar({
                             width: 24,
                             height: 24,
                             color: 'var(--fh-slate)',
-                            '&:hover': { color: 'var(--fh-ink)', bgcolor: 'transparent' },
                           }}
                         >
                           <CloseRoundedIcon sx={{ fontSize: 16 }} />
@@ -189,11 +186,8 @@ export function ProviderTopbar({
                           py: 0.15,
                           fontSize: 11,
                           lineHeight: 1.2,
-                          color: searchOpen ? 'var(--fh-brand)' : 'var(--fh-slate)',
-                          bgcolor: searchOpen
-                            ? 'color-mix(in srgb, var(--fh-brand) 10%, transparent)'
-                            : 'var(--fh-surface)',
-                          transition: 'all 160ms ease',
+                          color: 'var(--fh-slate)',
+                          bgcolor: 'var(--fh-surface)',
                         }}
                       >
                         Ctrl K
@@ -207,29 +201,19 @@ export function ProviderTopbar({
                   borderRadius: 'var(--fh-radius-xl)',
                   minHeight: 48,
                   minWidth: 256,
-                  width: { md: 360, lg: 420 },
                   px: 0.4,
                   borderColor: 'var(--fh-line)',
                   bgcolor: 'var(--fh-surface-bg)',
                   color: 'var(--fh-slate)',
-                  fontWeight: 800,
-                  transition: 'box-shadow 180ms ease, border-color 180ms ease, transform 180ms ease',
+                  fontWeight: 700,
                   '& fieldset': {
                     borderColor: searchOpen ? 'var(--fh-brand)' : 'var(--fh-line)',
                   },
                   '&:hover fieldset': {
                     borderColor: 'color-mix(in srgb, var(--fh-line) 72%, var(--fh-ink) 28%)',
                   },
-                  '&:hover': {
-                    boxShadow: '0 4px 16px color-mix(in srgb, var(--fh-ink) 8%, transparent)',
-                  },
                   '&.Mui-focused fieldset': {
                     borderColor: 'var(--fh-brand)',
-                  },
-                  '&.Mui-focused': {
-                    transform: 'translateY(-1px)',
-                    boxShadow:
-                      '0 8px 24px color-mix(in srgb, var(--fh-brand) 18%, transparent), inset 0 0 0 1px color-mix(in srgb, var(--fh-brand) 35%, transparent)',
                   },
                 },
                 '& .MuiInputBase-input': {
