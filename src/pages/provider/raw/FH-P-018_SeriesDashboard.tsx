@@ -1070,7 +1070,7 @@ export default function SeriesDashboardPage() {
           />
         </div>
 
-        <div className="grid grid-cols-1 gap-4 xl:grid-cols-[minmax(0,1.75fr)_430px]">
+        <div className="grid grid-cols-1 gap-4 2xl:grid-cols-[minmax(0,1.75fr)_430px]">
           <SectionCard
             title="Series command center"
             subtitle="Search, filter, and manage structured teaching journeys. Each series can hold multiple episodes, linked lives, replays, and resources."

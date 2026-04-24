@@ -1071,7 +1071,7 @@ export default function CounselingPage() {
           />
         </section>
 
-        <section className="grid gap-4 xl:grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)_360px]">
+        <section className="grid gap-4 2xl:grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)_360px]">
           <div className="space-y-4">
             <div className="rounded-[30px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 shadow-soft transition-colors">
               <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">

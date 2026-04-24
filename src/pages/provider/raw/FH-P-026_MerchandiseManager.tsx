@@ -1888,7 +1888,7 @@ export default function MerchandiseManagerPage() {
             mode={previewMode}
           />
 
-          <div className="grid gap-4 xl:grid-cols-[minmax(0,1.1fr)_380px]">
+          <div className="grid gap-4 2xl:grid-cols-[minmax(0,1.1fr)_380px]">
             <DetailSection
               title="Readiness and merchandising quality"
               subtitle="A premium readiness surface that shows whether this item is truly shelf-ready and promotion-ready."
