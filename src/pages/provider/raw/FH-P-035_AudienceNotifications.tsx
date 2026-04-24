@@ -1632,7 +1632,7 @@ export default function FaithHubAudienceNotificationsPage() {
                   })}
                 </div>
 
-                <div className="grid grid-cols-1 gap-4 lg:grid-cols-[minmax(0,1fr)_280px]">
+                <div className="grid grid-cols-1 gap-4 xl:grid-cols-[minmax(0,1fr)_280px]">
                   <div className="space-y-3">
                     <div>
                       <div className="text-[10px] font-black uppercase tracking-widest text-faith-slate">
@@ -1747,7 +1747,7 @@ export default function FaithHubAudienceNotificationsPage() {
               }
             >
               <div className="space-y-4">
-                <div className="grid grid-cols-1 gap-4 lg:grid-cols-[220px_minmax(0,1fr)]">
+                <div className="grid grid-cols-1 gap-4 xl:grid-cols-[220px_minmax(0,1fr)]">
                   <div>
                     <div className="text-[10px] font-black uppercase tracking-widest text-faith-slate mb-2">
                       Send mode
@@ -2169,7 +2169,7 @@ export default function FaithHubAudienceNotificationsPage() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 gap-6 xl:grid-cols-[minmax(0,1.1fr)_360px]">
+          <div className="grid grid-cols-1 gap-6 2xl:grid-cols-[minmax(0,1.1fr)_360px]">
             <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/40 p-4 sm:p-6 ring-1 ring-slate-200 dark:ring-slate-700">
               <div className="text-[10px] font-black uppercase tracking-widest text-faith-slate">
                 Channel preview

@@ -1826,7 +1826,7 @@ export default function BeaconBuilderPage({
                   );
                 })}
               </div>
-              <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_360px]">
+              <div className="grid gap-4 2xl:grid-cols-[minmax(0,1fr)_360px]">
                 <div>
                   <FieldLabel label="Find source object" hint="Search inside the selected source type" />
                   <div className="mt-1 relative">
@@ -2407,7 +2407,7 @@ export default function BeaconBuilderPage({
             })}
           </div>
 
-          <div className="mt-4 grid gap-4 xl:grid-cols-[minmax(0,1fr)_320px]">
+          <div className="mt-4 grid gap-4 2xl:grid-cols-[minmax(0,1fr)_320px]">
             <div className="grid gap-4 md:grid-cols-2">
               <div>
                 <FieldLabel label="Total budget" hint="Overall spend envelope for this Beacon campaign" />
@@ -2516,7 +2516,7 @@ export default function BeaconBuilderPage({
     return (
       <div className="space-y-4">
         <Section title="Policy, approvals, and launch gate" subtitle="Run the campaign through compliance notes, internal approval, quality checks, asset validation, and final launch confirmation.">
-          <div className="grid gap-4 xl:grid-cols-[minmax(0,1.2fr)_360px]">
+          <div className="grid gap-4 2xl:grid-cols-[minmax(0,1.2fr)_360px]">
             <div className="space-y-4">
               <div className="grid gap-3">
                 {preflight.map((item) => (
@@ -2715,7 +2715,7 @@ export default function BeaconBuilderPage({
       </div>
 
       <Modal open={previewOpen} onClose={() => setPreviewOpen(false)} title="Beacon preview suite">
-        <div className="grid gap-4 xl:grid-cols-[360px_minmax(0,1fr)]">
+        <div className="grid gap-4 2xl:grid-cols-[360px_minmax(0,1fr)]">
           <div className="space-y-4">
             <Section title="Preview controls" subtitle="Stress-test the campaign across devices and themes before launch.">
               <div className="space-y-3">

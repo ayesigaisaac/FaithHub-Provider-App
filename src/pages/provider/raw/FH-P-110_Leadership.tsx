@@ -534,7 +534,7 @@ function PreviewDrawer({
           </button>
         </div>
 
-        <div className="mt-4 grid gap-4 lg:grid-cols-[minmax(0,1.25fr)_340px]">
+        <div className="mt-4 grid gap-4 xl:grid-cols-[minmax(0,1.25fr)_340px]">
           <LeadershipPreviewCard leader={leader} previewMode="desktop" />
           <LeadershipPreviewCard leader={leader} previewMode="mobile" />
         </div>
@@ -595,7 +595,7 @@ export default function FaithHubLeadershipPage() {
 
       <div className="mx-auto flex w-full max-w-[1600px] flex-col gap-6 px-4 py-6 md:px-6 xl:px-8">
         <section className="overflow-hidden rounded-[36px] border border-faith-line bg-[var(--fh-surface-bg)] shadow-soft dark:border-slate-800 dark:bg-slate-900">
-          <div className="grid gap-6 px-6 py-6 lg:grid-cols-[minmax(0,1.15fr)_420px] lg:px-8 lg:py-8">
+          <div className="grid gap-6 px-6 py-6 xl:grid-cols-[minmax(0,1.15fr)_420px] lg:px-8 lg:py-8">
             <div>
               <div className="inline-flex items-center gap-2 rounded-full border border-faith-line bg-[var(--fh-surface)] px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-faith-slate dark:border-slate-700 dark:bg-slate-950">
                 Team command
@@ -673,7 +673,7 @@ export default function FaithHubLeadershipPage() {
           </div>
         </section>
 
-        <section className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_360px]">
+        <section className="grid gap-6 2xl:grid-cols-[minmax(0,1fr)_360px]">
           <div className="space-y-6">
             <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
               {OFFICE_CARDS.map((office) => (
