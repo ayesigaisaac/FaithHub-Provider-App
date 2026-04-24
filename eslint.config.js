@@ -41,5 +41,15 @@ export default [
       'react-hooks/exhaustive-deps': 'off',
     },
   },
+  {
+    files: ['scripts/**/*.cjs'],
+    languageOptions: {
+      globals: {
+        console: 'readonly',
+        process: 'readonly',
+        require: 'readonly',
+      },
+    },
+  },
   prettier,
 ];

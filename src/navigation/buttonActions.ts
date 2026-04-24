@@ -85,7 +85,7 @@ export function resolveActionFromLabel(label: string): ButtonActionId | null {
     }
   }
 
-  return 'open_provider_dashboard';
+  return null;
 }
 
 function validateButtonActionTargets(): void {

@@ -10,6 +10,16 @@ import { SearchCommandDialog } from './SearchCommandDialog';
 import { PageLoader } from '@/components/PageLoader';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { MediaFallbackContainer } from '@/components/MediaFallbackContainer';
+import { runRawPlaceholderActionForElement } from '@/pages/provider/raw/placeholderActions';
+
+function hasReactOnClickHandler(button: HTMLButtonElement): boolean {
+  const keys = Object.keys(button as unknown as Record<string, unknown>);
+  const reactPropsKey = keys.find((key) => key.startsWith('__reactProps$'));
+  if (!reactPropsKey) return false;
+
+  const reactProps = (button as unknown as Record<string, unknown>)[reactPropsKey] as { onClick?: unknown } | undefined;
+  return typeof reactProps?.onClick === 'function';
+}
 
 export function ProviderShellLayout() {
   const location = useLocation();
@@ -39,6 +49,27 @@ export function ProviderShellLayout() {
   useEffect(() => {
     window.localStorage.setItem('faithhub.sidebar.collapsed', String(sidebarCollapsed));
   }, [sidebarCollapsed]);
+
+  useEffect(() => {
+    const onDocumentClick = (event: MouseEvent) => {
+      const target = event.target as HTMLElement | null;
+      if (!target) return;
+
+      const button = target.closest('button');
+      if (!button) return;
+      if (!(button instanceof HTMLButtonElement)) return;
+      if (button.disabled) return;
+      if (button.type === 'submit') return;
+      if (button.dataset.noAutoAction === 'true') return;
+      if (!button.closest('.provider-shell-surface')) return;
+      if (hasReactOnClickHandler(button)) return;
+
+      void runRawPlaceholderActionForElement(button);
+    };
+
+    document.addEventListener('click', onDocumentClick);
+    return () => document.removeEventListener('click', onDocumentClick);
+  }, []);
 
   return (
     <Box

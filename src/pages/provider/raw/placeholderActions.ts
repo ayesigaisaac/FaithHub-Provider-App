@@ -78,7 +78,13 @@ async function copyCurrentLink(): Promise<void> {
   document.body.removeChild(temp);
 }
 
-async function executeAction(actionId: ButtonActionId, event: MouseEvent<HTMLButtonElement>): Promise<void> {
+async function executeAction(
+  actionId: ButtonActionId,
+  options?: {
+    event?: MouseEvent<HTMLButtonElement>;
+    targetPath?: string;
+  },
+): Promise<void> {
   const action = getButtonAction(actionId);
 
   if (action.kind === 'preview_mode' && action.previewMode) {
@@ -97,15 +103,16 @@ async function executeAction(actionId: ButtonActionId, event: MouseEvent<HTMLBut
   }
 
   if (action.kind === 'navigate' && action.targetPath) {
-    const explicitTarget = event.currentTarget.dataset.targetPath;
+    const explicitTarget = options?.targetPath ?? options?.event?.currentTarget?.dataset?.targetPath;
     go(explicitTarget || action.targetPath);
     return;
   }
-
-  go('/faithhub/provider/dashboard');
 }
 
-function resolveActionId(explicitActionId: ButtonActionId | undefined, event: MouseEvent<HTMLButtonElement>): ButtonActionId {
+function resolveActionId(
+  explicitActionId: ButtonActionId | undefined,
+  event: MouseEvent<HTMLButtonElement>,
+): ButtonActionId | null {
   if (explicitActionId) {
     return explicitActionId;
   }
@@ -117,7 +124,7 @@ function resolveActionId(explicitActionId: ButtonActionId | undefined, event: Mo
 
   const label = normalizeLabel(event.currentTarget.textContent ?? '');
   const resolved = resolveActionFromLabel(label);
-  return resolved ?? 'open_provider_dashboard';
+  return resolved ?? null;
 }
 
 async function runPlaceholderAction(
@@ -125,7 +132,24 @@ async function runPlaceholderAction(
   event: MouseEvent<HTMLButtonElement>,
 ): Promise<void> {
   const actionId = resolveActionId(explicitActionId, event);
-  await executeAction(actionId, event);
+  if (!actionId) return;
+  await executeAction(actionId, { event });
+}
+
+function resolveActionIdFromElement(button: HTMLButtonElement): ButtonActionId | null {
+  const dataAction = button.dataset.action;
+  if (dataAction && isButtonActionId(dataAction)) {
+    return dataAction;
+  }
+
+  return resolveActionFromLabel(normalizeLabel(button.textContent ?? ''));
+}
+
+export async function runRawPlaceholderActionForElement(button: HTMLButtonElement): Promise<boolean> {
+  const actionId = resolveActionIdFromElement(button);
+  if (!actionId) return false;
+  await executeAction(actionId, { targetPath: button.dataset.targetPath });
+  return true;
 }
 
 type PlaceholderActionHandler = {
