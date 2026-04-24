@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+set -e
+
+echo "Running pre-push quality checks..."
+npm run -s lint
+npm run -s check
+npm run -s test
+echo "Pre-push checks passed."
