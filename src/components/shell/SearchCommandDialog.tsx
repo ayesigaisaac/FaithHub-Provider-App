@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useMemo, useRef, useState, type KeyboardEvent as ReactKeyboardEvent } from 'react';
+import { Fragment, useCallback, useEffect, useMemo, useRef, useState, type KeyboardEvent as ReactKeyboardEvent } from 'react';
 import {
   Box,
   Button,
@@ -141,7 +141,7 @@ export function SearchCommandDialog({
   const [activeIndex, setActiveIndex] = useState(0);
   const [anchorPosition, setAnchorPosition] = useState<{ top: number; left: number }>({ top: 88, left: 640 });
   const [panelWidth, setPanelWidth] = useState<number>(760);
-  const [recentVersion, setRecentVersion] = useState(0);
+  const [recentKeys, setRecentKeys] = useState<string[]>([]);
 
   const visiblePages = useMemo(() => providerPages.filter((page) => !page.hidden), []);
   const pageKeyMap = useMemo(() => new Map(visiblePages.map((page) => [page.key, page])), [visiblePages]);
@@ -158,19 +158,28 @@ export function SearchCommandDialog({
     return map;
   }, [pageKeyMap, visiblePages]);
 
-  const recentPages = useMemo(() => {
-    if (typeof window === 'undefined') return [] as VisiblePage[];
+  useEffect(() => {
+    if (!open || typeof window === 'undefined') return;
     try {
       const raw = window.localStorage.getItem(RECENT_SEARCH_KEY);
-      if (!raw) return [] as VisiblePage[];
-      const keys = JSON.parse(raw) as string[];
-      return keys
-        .map((key) => pageKeyMap.get(key))
-        .filter((page): page is VisiblePage => Boolean(page));
+      if (!raw) {
+        setRecentKeys([]);
+        return;
+      }
+      const parsed = JSON.parse(raw) as string[];
+      setRecentKeys(Array.isArray(parsed) ? parsed.filter((key): key is string => typeof key === 'string') : []);
     } catch {
-      return [] as VisiblePage[];
+      setRecentKeys([]);
     }
-  }, [pageKeyMap, recentVersion]);
+  }, [open]);
+
+  const recentPages = useMemo(
+    () =>
+      recentKeys
+        .map((key) => pageKeyMap.get(key))
+        .filter((page): page is VisiblePage => Boolean(page)),
+    [pageKeyMap, recentKeys]
+  );
 
   useEffect(() => {
     if (!open) return;
@@ -364,27 +373,29 @@ export function SearchCommandDialog({
     el?.scrollIntoView({ block: 'nearest' });
   }, [activeIndex, flattened, open]);
 
-  const persistRecent = (key: string) => {
+  const persistRecent = useCallback((key: string) => {
     if (typeof window === 'undefined') return;
-    const deduped = [key, ...recentPages.map((page) => page.key).filter((existing) => existing !== key)].slice(0, MAX_RECENTS);
-    window.localStorage.setItem(RECENT_SEARCH_KEY, JSON.stringify(deduped));
-    setRecentVersion((prev) => prev + 1);
-  };
+    setRecentKeys((prev) => {
+      const deduped = [key, ...prev.filter((existing) => existing !== key)].slice(0, MAX_RECENTS);
+      window.localStorage.setItem(RECENT_SEARCH_KEY, JSON.stringify(deduped));
+      return deduped;
+    });
+  }, []);
 
-  const clearRecent = () => {
+  const clearRecent = useCallback(() => {
     if (typeof window === 'undefined') return;
     window.localStorage.removeItem(RECENT_SEARCH_KEY);
+    setRecentKeys([]);
     setActiveIndex(0);
-    setRecentVersion((prev) => prev + 1);
-  };
+  }, []);
 
-  const handleSelect = (entry: SearchEntry) => {
+  const handleSelect = useCallback((entry: SearchEntry) => {
     if (entry.kind === 'page') {
       persistRecent(entry.key);
     }
     navigate(entry.path);
     onClose();
-  };
+  }, [navigate, onClose, persistRecent]);
 
   const handleKeyDown = (event: ReactKeyboardEvent<HTMLDivElement>) => {
     if (!flattened.length) return;
@@ -438,7 +449,7 @@ export function SearchCommandDialog({
     };
     window.addEventListener('keydown', handleGlobalKeyDown, { capture: true });
     return () => window.removeEventListener('keydown', handleGlobalKeyDown, { capture: true });
-  }, [activeIndex, flattened, onClose, open]);
+  }, [activeIndex, flattened, handleSelect, onClose, open]);
 
   const renderHighlighted = (text: string, q: string) => {
     const needle = q.trim().toLowerCase();
