@@ -33,7 +33,7 @@ import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
- * Provider — Resources Manager
+ * Provider â€” Resources Manager
  * -------------------------------------
  * Premium Provider-side control surface for free learning resources,
  * downloadable PDFs, devotionals, prayer guides, study packs, and audio teachings.
@@ -507,7 +507,7 @@ function ResourceFeatureCard({
               {resource.providerUploaded ? <Pill tone="soft">PROVIDER</Pill> : null}
             </div>
             <div className="mt-1 text-sm text-faith-slate">
-              {resource.author} · {resource.type} · {resource.category}
+              {resource.author} Â· {resource.type} Â· {resource.category}
             </div>
           </div>
           <div
@@ -586,7 +586,7 @@ function ResourceMiniRow({
           {resource.title}
         </div>
         <div className="truncate text-sm text-faith-slate">
-          {resource.type} · {fmtInt(resource.downloads)} downloads
+          {resource.type} Â· {fmtInt(resource.downloads)} downloads
         </div>
       </div>
       <ChevronRight className="h-4 w-4 shrink-0 text-faith-slate" />
@@ -617,7 +617,7 @@ function LibraryCard({
             {resource.title}
           </div>
           <div className="mt-1 text-sm text-faith-slate">
-            {resource.author} · {resource.type} · {resource.category}
+            {resource.author} Â· {resource.type} Â· {resource.category}
           </div>
         </div>
         <div className="inline-flex flex-wrap items-center justify-end gap-2">
@@ -698,7 +698,7 @@ function ManageRow({
     <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft">
       <div className="text-[17px] font-black tracking-tight text-faith-ink">{resource.title}</div>
       <div className="mt-1 text-sm text-faith-slate">
-        {fmtInt(resource.downloads)} downloads · {resource.category}
+        {fmtInt(resource.downloads)} downloads Â· {resource.category}
       </div>
       <div className="mt-3 text-[11px] font-bold uppercase tracking-[0.18em] text-faith-slate">
         Tags
@@ -871,7 +871,7 @@ function PreviewRail({
           <div className="mt-3 text-[20px] font-black tracking-tight text-faith-ink">
             {resource.title}
           </div>
-          <div className="mt-1 text-sm text-faith-slate">{resource.author} · {resource.type}</div>
+          <div className="mt-1 text-sm text-faith-slate">{resource.author} Â· {resource.type}</div>
           <div className="mt-4 text-sm leading-6 text-slate-700">{resource.summary}</div>
         </div>
         <div className="grid grid-cols-2 gap-3">
@@ -1268,9 +1268,10 @@ export default function ResourcesManagerPage() {
                   </div>
                 </div>
 
-                <div className="flex flex-wrap items-center gap-2 lg:justify-end">
+                <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 xl:flex xl:w-auto xl:flex-wrap xl:justify-end">
                   <Btn
                     tone="primary"
+                    className="h-10 px-4"
                     left={<Plus className="h-4 w-4" />}
                     onClick={() => {
                       const el = document.getElementById("provider-upload-panel");
@@ -1280,6 +1281,7 @@ export default function ResourcesManagerPage() {
                     + New Resource
                   </Btn>
                   <Btn
+                    className="h-10 px-4 justify-start sm:justify-center bg-[var(--fh-surface-bg)] dark:bg-slate-900 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800"
                     left={<Eye className="h-4 w-4" />}
                     onClick={() => setDetailResourceId(selectedResource?.id || null)}
                   >
@@ -1287,6 +1289,7 @@ export default function ResourcesManagerPage() {
                   </Btn>
                   <Btn
                     tone="secondary"
+                    className="h-10 px-4"
                     left={<ExternalLink className="h-4 w-4" />}
                     onClick={() => safeNav(ROUTES.faithMart)}
                   >

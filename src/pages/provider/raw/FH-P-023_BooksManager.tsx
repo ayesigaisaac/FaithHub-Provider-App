@@ -1101,17 +1101,18 @@ export default function BooksManagerPage() {
                 </div>
               </div>
 
-              <div className="flex flex-wrap items-center gap-2">
-                <SoftButton onClick={() => setPreviewDrawerOpen(true)}>
+              <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 xl:flex xl:w-auto xl:flex-wrap xl:justify-end">
+                <SoftButton className="h-10 px-4 justify-start sm:justify-center bg-[var(--fh-surface-bg)] dark:bg-slate-900 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800" onClick={() => setPreviewDrawerOpen(true)}>
                   <Eye className="h-4 w-4" />
                   Preview
                 </SoftButton>
-                <SoftButton>
+                <SoftButton className="h-10 px-4">
                   <Download className="h-4 w-4" />
                   Import manuscript
                 </SoftButton>
                 <PrimaryButton
                   tone="green"
+                  className="h-10 px-4"
                   onClick={() => safeNav(ROUTES.bookBuilder)}
                 >
                   <Plus className="h-4 w-4" />

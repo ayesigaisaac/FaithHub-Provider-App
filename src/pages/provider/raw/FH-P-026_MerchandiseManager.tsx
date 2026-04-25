@@ -1494,16 +1494,16 @@ export default function MerchandiseManagerPage() {
                   </div>
               </div>
 
-              <div className="mt-4 flex flex-wrap gap-2">
-                <PrimaryButton onClick={() => safeNav(ROUTES.merchandiseBuilder)}>
+              <div className="mt-4 grid w-full grid-cols-1 gap-2 sm:grid-cols-2 xl:grid-cols-3">
+                <PrimaryButton className="h-10 px-4 justify-center" onClick={() => safeNav(ROUTES.merchandiseBuilder)}>
                   <Plus className="h-4 w-4" />
                   New Merchandise
                 </PrimaryButton>
-                <SoftButton onClick={() => safeNav(ROUTES.faithMartStorefront)}>
+                <SoftButton className="h-10 px-4 justify-center" onClick={() => safeNav(ROUTES.faithMartStorefront)}>
                   <ExternalLink className="h-4 w-4" />
                   Open FaithMart
                 </SoftButton>
-                <SoftButton onClick={() => safeNav(ROUTES.beaconBuilder)}>
+                <SoftButton className="h-10 px-4 justify-center" onClick={() => safeNav(ROUTES.beaconBuilder)}>
                   <Megaphone className="h-4 w-4" />
                   Promote with Beacon
                 </SoftButton>
