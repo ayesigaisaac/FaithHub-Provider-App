@@ -2644,17 +2644,17 @@ export default function BeaconBuilderPage({
                 <Pill tone="pro">Preview-first workflow</Pill>
               </div>
             </div>
-            <div className="flex flex-wrap items-center gap-2">
-              <Btn tone="neutral" left={<ExternalLink className="h-4 w-4" />} onClick={() => safeNav(ROUTES.beaconMarketplace)}>
+            <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 xl:flex xl:w-auto xl:flex-wrap xl:justify-end">
+              <Btn className="h-10 w-full justify-center px-4 xl:w-auto" tone="neutral" left={<ExternalLink className="h-4 w-4" />} onClick={() => safeNav(ROUTES.beaconMarketplace)}>
                 Open Marketplace
               </Btn>
-              <Btn tone="secondary" left={<CheckCircle2 className="h-4 w-4" />} onClick={handleSaveDraft}>
+              <Btn className="h-10 w-full justify-center px-4 xl:w-auto" tone="secondary" left={<CheckCircle2 className="h-4 w-4" />} onClick={handleSaveDraft}>
                 Save campaign draft
               </Btn>
-              <Btn tone="neutral" left={<Eye className="h-4 w-4" />} onClick={() => setPreviewOpen(true)}>
+              <Btn className="h-10 w-full justify-center px-4 xl:w-auto" tone="neutral" left={<Eye className="h-4 w-4" />} onClick={() => setPreviewOpen(true)}>
                 Preview campaign
               </Btn>
-              <Btn tone="primary" left={<Zap className="h-4 w-4" />} onClick={handleLaunch}>
+              <Btn className="h-10 w-full justify-center px-4 xl:w-auto" tone="primary" left={<Zap className="h-4 w-4" />} onClick={handleLaunch}>
                 Launch Beacon
               </Btn>
             </div>

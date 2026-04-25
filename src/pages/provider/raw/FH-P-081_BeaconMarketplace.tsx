@@ -872,17 +872,17 @@ export default function BeaconMarketplacePage() {
               </div>
             </div>
 
-            <div className="flex flex-wrap items-center gap-2 xl:justify-end">
-              <AccentButton tone="green" onClick={() => safeNav(ROUTES.beaconBuilder)}>
+            <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 xl:flex xl:w-auto xl:flex-wrap xl:justify-end">
+              <AccentButton className="h-10 w-full justify-center px-4 xl:w-auto" tone="green" onClick={() => safeNav(ROUTES.beaconBuilder)}>
                 <Plus className="h-4 w-4" /> New Ad
               </AccentButton>
-              <AccentButton tone="orange">
+              <AccentButton className="h-10 w-full justify-center px-4 xl:w-auto" tone="orange">
                 <Copy className="h-4 w-4" /> Save media plan
               </AccentButton>
-              <SoftButton>
+              <SoftButton className="h-10 w-full justify-center px-4 xl:w-auto">
                 <BadgeCheck className="h-4 w-4" /> Book placements
               </SoftButton>
-              <SoftButton onClick={() => safeNav(ROUTES.beaconManager)}>
+              <SoftButton className="h-10 w-full justify-center px-4 xl:w-auto" onClick={() => safeNav(ROUTES.beaconManager)}>
                 <ExternalLink className="h-4 w-4" /> Open manager
               </SoftButton>
             </div>
@@ -1369,6 +1369,9 @@ export default function BeaconMarketplacePage() {
     </div>
   );
 }
+
+
+
 
 
 

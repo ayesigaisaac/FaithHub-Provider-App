@@ -1159,10 +1159,10 @@ export default function FaithHubAudienceNotificationsPage() {
           </div>
 
           <div className="flex flex-wrap items-center gap-3">
-            <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 lg:flex lg:w-auto lg:flex-wrap lg:justify-end">
+            <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 xl:flex xl:w-auto xl:flex-wrap xl:justify-end">
               <Btn
                 tone="ghost"
-                className="h-10 px-4 justify-start sm:justify-center bg-[var(--fh-surface-bg)] dark:bg-slate-900 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800"
+                className="h-10 w-full justify-center px-4 xl:w-auto bg-[var(--fh-surface-bg)] dark:bg-slate-900 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800"
                 onClick={() => setPreviewOpen(true)}
                 left={<Eye className="h-4 w-4" />}
               >
@@ -1170,7 +1170,7 @@ export default function FaithHubAudienceNotificationsPage() {
               </Btn>
               <Btn
                 tone="secondary"
-                className="h-10 px-4"
+                className="h-10 w-full justify-center px-4 xl:w-auto"
                 onClick={() => setToast("Test notification sent to preview endpoints")}
                 left={<Send className="h-4 w-4" />}
               >
@@ -1178,7 +1178,7 @@ export default function FaithHubAudienceNotificationsPage() {
               </Btn>
               <Btn
                 tone="primary"
-                className="h-10 px-4"
+                className="h-10 w-full justify-center px-4 xl:w-auto"
                 onClick={() => setToast(systemReady ? "Audience journey activated" : "Finish the remaining checks first")}
                 left={<Zap className="h-4 w-4" />}
                 disabled={!systemReady}
