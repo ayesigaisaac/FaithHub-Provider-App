@@ -320,12 +320,14 @@ function PrimaryButton({
   disabled,
   title,
   secondary,
+  className,
 }: {
   children: React.ReactNode;
   onClick?: () => void;
   disabled?: boolean;
   title?: string;
   secondary?: boolean;
+  className?: string;
 }) {
   return (
     <button
@@ -334,8 +336,9 @@ function PrimaryButton({
       onClick={onClick}
       disabled={disabled}
       className={cx(
-        "inline-flex items-center gap-2 rounded-2xl border border-transparent px-4 py-2 text-[12px] font-semibold text-white transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2",
+        "inline-flex items-center justify-center gap-2 rounded-2xl border border-transparent px-4 py-2 text-[12px] font-semibold text-white transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2",
         disabled ? "cursor-not-allowed opacity-60" : "hover:opacity-95",
+        className,
       )}
       style={{ background: secondary ? EV_ORANGE : EV_GREEN }}
     >
@@ -2418,16 +2421,16 @@ export default function ProviderOnboardingPage() {
               </div>
             </div>
 
-            <div className="flex flex-wrap gap-2">
-              <SoftButton onClick={saveDraft}>
+            <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 xl:flex xl:w-auto xl:flex-wrap xl:justify-end">
+              <SoftButton className="h-10 w-full justify-center px-4 xl:w-auto" onClick={saveDraft}>
                 <CheckCircle2 className="h-4 w-4" />
                 Save onboarding draft
               </SoftButton>
-              <PrimaryButton onClick={inviteTeam} secondary>
+              <PrimaryButton className="h-10 w-full justify-center px-4 xl:w-auto" onClick={inviteTeam} secondary>
                 <Users className="h-4 w-4" />
                 Invite team members
               </PrimaryButton>
-              <PrimaryButton onClick={submitForVerification} title={canSubmit ? "Ready to submit" : "Resolve blockers first"}>
+              <PrimaryButton className="h-10 w-full justify-center px-4 xl:w-auto" onClick={submitForVerification} title={canSubmit ? "Ready to submit" : "Resolve blockers first"}>
                 <BadgeCheck className="h-4 w-4" />
                 Submit for verification
               </PrimaryButton>

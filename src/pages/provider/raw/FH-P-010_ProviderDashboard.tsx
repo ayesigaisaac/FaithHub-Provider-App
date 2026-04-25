@@ -1033,11 +1033,13 @@ function GhostButton({
   icon,
   accent = "navy",
   onClick,
+  className,
 }: {
   label: string;
   icon?: React.ReactNode;
   accent?: "green" | "orange" | "navy";
   onClick?: () => void;
+  className?: string;
 }) {
   const activeColor =
     accent === "green"
@@ -1050,8 +1052,9 @@ function GhostButton({
       type="button"
       onClick={onClick}
       className={cx(
-        "inline-flex items-center gap-2 rounded-xl border bg-[var(--fh-surface-bg)] px-3 py-1.5 text-[12px] font-semibold transition-colors",
+        "inline-flex items-center justify-center gap-2 rounded-xl border bg-[var(--fh-surface-bg)] px-3 py-1.5 text-[12px] font-semibold transition-colors",
         activeColor,
+        className,
       )}
     >
       {icon}
@@ -1065,17 +1068,19 @@ function SolidButton({
   icon,
   accent = "green",
   onClick,
+  className,
 }: {
   label: string;
   icon?: React.ReactNode;
   accent?: "green" | "orange" | "navy";
   onClick?: () => void;
+  className?: string;
 }) {
   return (
     <button
       type="button"
       onClick={onClick}
-      className="inline-flex items-center gap-2 rounded-xl px-3.5 py-1.5 text-[12px] font-semibold text-white transition hover:brightness-95"
+      className={cx("inline-flex items-center justify-center gap-2 rounded-xl px-3.5 py-1.5 text-[12px] font-semibold text-white transition hover:brightness-95", className)}
       style={{ background: accentBg(accent) }}
     >
       {icon}
@@ -1278,30 +1283,34 @@ export default function ProviderDashboardPage() {
                   />
                 </div>
 
-                <div className="mt-6 flex flex-wrap gap-2">
+                <div className="mt-6 grid w-full grid-cols-1 gap-2 sm:grid-cols-2 xl:flex xl:w-auto xl:flex-wrap xl:justify-end">
                   <SolidButton
                     label="+ New Live Session"
                     accent="green"
                     icon={<Video className="h-4 w-4" />}
                     onClick={() => safeNav(ROUTES.liveBuilder)}
+                    className="h-10 w-full justify-center px-4 xl:w-auto"
                   />
                   <GhostButton
                     label="+ New Teaching"
                     accent="navy"
                     icon={<BookOpen className="h-4 w-4" />}
                     onClick={() => safeNav(ROUTES.teachingsDashboard)}
+                    className="h-10 w-full justify-center px-4 xl:w-auto"
                   />
                   <GhostButton
                     label="+ New Campaign"
                     accent="orange"
                     icon={<Wallet className="h-4 w-4" />}
                     onClick={() => safeNav(ROUTES.donationsFunds)}
+                    className="h-10 w-full justify-center px-4 xl:w-auto"
                   />
                   <GhostButton
                     label="+ New Ad"
                     accent="orange"
                     icon={<Megaphone className="h-4 w-4" />}
                     onClick={() => safeNav(ROUTES.beaconBuilder)}
+                    className="h-10 w-full justify-center px-4 xl:w-auto"
                   />
                 </div>
               </div>
@@ -2040,6 +2049,9 @@ export default function ProviderDashboardPage() {
     </div>
   );
 }
+
+
+
 
 
 

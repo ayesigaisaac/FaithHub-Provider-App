@@ -1025,12 +1025,12 @@ export default function CommunityGroupsPage() {
                 <Pill>Child-safe defaults</Pill>
                 <Pill>Live-linked</Pill>
               </div>
-              <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 xl:grid-cols-3">
-                <ActionButton className="h-10 w-full" left={<Eye className="h-4 w-4" />} onClick={() => setPreviewOpen(true)}>
+              <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 xl:flex xl:w-auto xl:flex-wrap xl:justify-end">
+                <ActionButton className="h-10 w-full justify-center px-4 xl:w-auto" left={<Eye className="h-4 w-4" />} onClick={() => setPreviewOpen(true)}>
                   Preview
                 </ActionButton>
                 <ActionButton
-                  className="h-10 w-full"
+                  className="h-10 w-full justify-center px-4 xl:w-auto"
                   left={<UserPlus className="h-4 w-4" />}
                   onClick={() => safeNav(ROUTES.channelsContactManager)}
                 >
@@ -1038,7 +1038,7 @@ export default function CommunityGroupsPage() {
                 </ActionButton>
                 <ActionButton
                   tone="primary"
-                  className="h-10 w-full"
+                  className="h-10 w-full justify-center px-4 xl:w-auto"
                   left={<Plus className="h-4 w-4" />}
                   onClick={() => safeNav(ROUTES.groupBuilder)}
                 >
