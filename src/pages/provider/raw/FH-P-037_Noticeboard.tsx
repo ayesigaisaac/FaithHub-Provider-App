@@ -1204,16 +1204,16 @@ export default function FaithHubNoticeboardPage() {
                 <div className="text-[10px] font-black uppercase tracking-[0.18em] text-faith-slate">
                   Quick actions
                 </div>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  <PrimaryButton onClick={createNewNotice}>
+                <div className="mt-3 grid w-full grid-cols-1 gap-2 sm:grid-cols-2 xl:grid-cols-3">
+                  <PrimaryButton className="h-10 w-full justify-center px-4" onClick={createNewNotice}>
                     <Plus className="h-4 w-4" />
                     New Notice
                   </PrimaryButton>
-                  <SoftButton>
+                  <SoftButton className="h-10 w-full justify-center px-4">
                     <Bell className="h-4 w-4" />
                     Create journey
                   </SoftButton>
-                  <SoftButton>
+                  <SoftButton className="h-10 w-full justify-center px-4">
                     <Sparkles className="h-4 w-4" />
                     Boost with Beacon
                   </SoftButton>
@@ -1628,16 +1628,16 @@ export default function FaithHubNoticeboardPage() {
                   />
                 </div>
 
-                <div className="flex flex-wrap gap-2 border-t border-slate-100 pt-2">
-                  <SoftButton onClick={() => saveNotice("Draft")}>
+                <div className="grid w-full grid-cols-1 gap-2 border-t border-slate-100 pt-2 sm:grid-cols-2 xl:grid-cols-3">
+                  <SoftButton className="h-10 w-full justify-center px-4" onClick={() => saveNotice("Draft")}>
                     <CheckCircle2 className="h-4 w-4" />
                     Save draft
                   </SoftButton>
-                  <SoftButton onClick={() => saveNotice("Scheduled")}>
+                  <SoftButton className="h-10 w-full justify-center px-4" onClick={() => saveNotice("Scheduled")}>
                     <CalendarClock className="h-4 w-4" />
                     Schedule notice
                   </SoftButton>
-                  <SoftButton>
+                  <SoftButton className="h-10 w-full justify-center px-4">
                     <Workflow className="h-4 w-4" />
                     Open audience sync
                   </SoftButton>
