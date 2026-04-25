@@ -946,14 +946,17 @@ export default function WalletAndPayoutsPage() {
                 Command actions
               </div>
               <div className="mt-1 text-[16px] font-black text-faith-ink">Wallet control</div>
-              <div className="mt-3 flex flex-wrap gap-2">
-                <PrimaryButton onClick={() => setTransferOpen(true)}>
+              <div className="mt-3 grid w-full grid-cols-1 gap-2 sm:grid-cols-2 xl:flex xl:w-auto xl:flex-wrap xl:justify-end">
+                <PrimaryButton className="h-10 w-full justify-center px-4 xl:w-auto" onClick={() => setTransferOpen(true)}>
                   <ArrowUpRight className="h-4 w-4" /> Transfer now
                 </PrimaryButton>
-                <SoftButton onClick={() => setMethodOpen(true)}>
+                <SoftButton className="h-10 w-full justify-center px-4 xl:w-auto" onClick={() => setMethodOpen(true)}>
                   <Plus className="h-4 w-4" /> Add payout method
                 </SoftButton>
-                <SoftButton onClick={exportStatement}>
+                <SoftButton
+                  className="h-10 w-full justify-center px-4 xl:w-auto bg-[var(--fh-surface-bg)] text-faith-ink ring-1 ring-slate-200 hover:bg-[var(--fh-surface)] dark:bg-slate-900 dark:text-slate-50 dark:ring-slate-800 dark:hover:bg-slate-800"
+                  onClick={exportStatement}
+                >
                   <Download className="h-4 w-4" /> Export statement
                 </SoftButton>
               </div>

@@ -2134,14 +2134,15 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
               </div>
             </div>
 
-            <div className="flex flex-wrap items-center gap-2">
-              <Btn tone="neutral" onClick={() => safeNav(ROUTES.beaconDashboard)} left={<BarChart3 className="h-4 w-4" />}>
+            <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 xl:flex xl:w-auto xl:flex-wrap xl:justify-end">
+              <Btn className="h-10 w-full justify-center px-4 xl:w-auto" tone="neutral" onClick={() => safeNav(ROUTES.beaconDashboard)} left={<BarChart3 className="h-4 w-4" />}>
                 Beacon Dashboard
               </Btn>
-              <Btn tone="neutral" onClick={() => safeNav(ROUTES.beaconMarketplace)} left={<Layers className="h-4 w-4" />}>
+              <Btn className="h-10 w-full justify-center px-4 xl:w-auto" tone="neutral" onClick={() => safeNav(ROUTES.beaconMarketplace)} left={<Layers className="h-4 w-4" />}>
                 Beacon Marketplace
               </Btn>
               <Btn
+                className="h-10 w-full justify-center px-4 xl:w-auto"
                 tone="secondary"
                 onClick={() => selectedCampaign && pauseResumeCampaign(selectedCampaign.id)}
                 left={selectedCampaign?.state === "Paused" ? <Play className="h-4 w-4" /> : <Pause className="h-4 w-4" />}
@@ -2149,13 +2150,14 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
                 {selectedCampaign?.state === "Paused" ? "Resume campaign" : "Pause campaign"}
               </Btn>
               <Btn
+                className="h-10 w-full justify-center px-4 xl:w-auto"
                 tone="neutral"
                 onClick={() => selectedCampaign && duplicateCampaignById(selectedCampaign.id)}
                 left={<Copy className="h-4 w-4" />}
               >
                 Duplicate campaign
               </Btn>
-              <Btn tone="primary" onClick={() => safeNav(ROUTES.beaconBuilder)} left={<Plus className="h-4 w-4" />}>
+              <Btn className="h-10 w-full justify-center px-4 xl:w-auto" tone="primary" onClick={() => safeNav(ROUTES.beaconBuilder)} left={<Plus className="h-4 w-4" />}>
                 New Ad
               </Btn>
             </div>

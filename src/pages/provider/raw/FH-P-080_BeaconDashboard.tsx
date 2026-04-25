@@ -1311,17 +1311,17 @@ export default function BeaconDashboardPage() {
               </div>
             </div>
 
-            <div className="flex flex-wrap items-center gap-2">
-              <Btn tone="neutral" onClick={() => safeNav(ROUTES.beaconMarketplace)} left={<Layers className="h-4 w-4" />}>
+            <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 xl:flex xl:w-auto xl:flex-wrap xl:justify-end">
+              <Btn className="h-10 w-full justify-center px-4 xl:w-auto" tone="neutral" onClick={() => safeNav(ROUTES.beaconMarketplace)} left={<Layers className="h-4 w-4" />}>
                 Beacon Marketplace
               </Btn>
-              <Btn tone="neutral" onClick={() => safeNav(ROUTES.beaconManager)} left={<BarChart3 className="h-4 w-4" />}>
+              <Btn className="h-10 w-full justify-center px-4 xl:w-auto" tone="neutral" onClick={() => safeNav(ROUTES.beaconManager)} left={<BarChart3 className="h-4 w-4" />}>
                 Open campaign manager
               </Btn>
-              <Btn tone="secondary" onClick={() => setToast("Recommendations panel refreshed.")} left={<Sparkles className="h-4 w-4" />}>
+              <Btn className="h-10 w-full justify-center px-4 xl:w-auto" tone="secondary" onClick={() => setToast("Recommendations panel refreshed.")} left={<Sparkles className="h-4 w-4" />}>
                 Review recommendations
               </Btn>
-              <Btn tone="primary" onClick={() => safeNav(ROUTES.beaconBuilder)} left={<Plus className="h-4 w-4" />}>
+              <Btn className="h-10 w-full justify-center px-4 xl:w-auto" tone="primary" onClick={() => safeNav(ROUTES.beaconBuilder)} left={<Plus className="h-4 w-4" />}>
                 New Ad
               </Btn>
             </div>
@@ -1426,7 +1426,7 @@ export default function BeaconDashboardPage() {
                     className="w-full bg-transparent text-[13px] text-slate-700 dark:text-slate-200 placeholder:text-faith-slate outline-none"
                   />
                 </div>
-                <div className="flex flex-wrap items-center gap-2">
+                <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 xl:flex xl:w-auto xl:flex-wrap xl:justify-end">
                   <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] font-extrabold flex items-center gap-2 transition-colors">
                     <Filter className="h-4 w-4 text-slate-700 dark:text-slate-300" />
                     <span className="text-slate-700 dark:text-slate-300">Mode</span>
@@ -1814,6 +1814,8 @@ export default function BeaconDashboardPage() {
     </div>
   );
 }
+
+
 
 
 
