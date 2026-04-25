@@ -1196,20 +1196,20 @@ export default function FaithHubLiveDashboardPage() {
             />
           </div>
 
-          <div className="flex flex-wrap items-center gap-2">
-            <SoftButton onClick={() => safeNav(ROUTES.liveSchedule)}>
+          <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 xl:flex xl:w-auto xl:flex-wrap xl:justify-end">
+            <SoftButton className="h-10 w-full justify-center px-4" onClick={() => safeNav(ROUTES.liveSchedule)}>
               <ChevronLeft className="h-4 w-4" /> Live Schedule
             </SoftButton>
-            <SoftButton onClick={() => setPreviewOpen(true)} className="lg:hidden">
+            <SoftButton onClick={() => setPreviewOpen(true)} className="h-10 w-full justify-center px-4 lg:hidden">
               <MonitorPlay className="h-4 w-4" /> Preview
             </SoftButton>
-            <PrimaryButton tone="green" onClick={() => safeNav(`${ROUTES.liveStudio}?sessionId=${encodeURIComponent(session.id)}`)}>
+            <PrimaryButton className="h-10 w-full justify-center px-4" tone="green" onClick={() => safeNav(`${ROUTES.liveStudio}?sessionId=${encodeURIComponent(session.id)}`)}>
               <Video className="h-4 w-4" /> Launch studio
             </PrimaryButton>
-            <PrimaryButton tone="orange" onClick={sendReminder} disabled={!canSendReminder || reminderSent}>
+            <PrimaryButton className="h-10 w-full justify-center px-4" tone="orange" onClick={sendReminder} disabled={!canSendReminder || reminderSent}>
               <Bell className="h-4 w-4" /> {reminderSent ? "Reminder sent" : "Send last-minute reminder"}
             </PrimaryButton>
-            <SoftButton onClick={openModerationPanel}>
+            <SoftButton className="h-10 w-full justify-center px-4" onClick={openModerationPanel}>
               <ShieldCheck className="h-4 w-4" /> Open moderation panel
             </SoftButton>
           </div>

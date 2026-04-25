@@ -54,7 +54,7 @@ import {
 } from "lucide-react";
 
 /**
- * Provider ó Live Studio
+ * Provider ‚Äî Live Studio
  * --------------------------------
  * Premium production studio for Live Sessions.
  *
@@ -174,11 +174,11 @@ type ClipMark = {
 
 const SESSION = {
   title: "Sunday Encounter Live",
-  parentLabel: "The Way of Grace ï Episode 4",
+  parentLabel: "The Way of Grace ‚Ä¢ Episode 4",
   subtitle:
     "Premium control room for a live teaching session with prayer, scripture moments, giving prompts, translated tracks, and replay-ready clip markers.",
-  hostLine: "Pastor Daniel M. ï Minister Ruth K. ï Central Campus",
-  locations: "Main Sanctuary ∑ Central Campus",
+  hostLine: "Pastor Daniel M. ‚Ä¢ Minister Ruth K. ‚Ä¢ Central Campus",
+  locations: "Main Sanctuary ¬∑ Central Campus",
   destinations: [
     { label: "Provider", health: "healthy" as HealthTone },
     { label: "YouTube", health: "healthy" as HealthTone },
@@ -263,49 +263,49 @@ const SCENES: Scene[] = [
 const SOURCES: SourceItem[] = [
   {
     id: "cam-host",
-    label: "Camera 1 ∑ Host",
+    label: "Camera 1 ¬∑ Host",
     kind: "camera",
     health: "healthy",
-    detail: "Sony FX3 ∑ 1080p30 ∑ Audio linked",
+    detail: "Sony FX3 ¬∑ 1080p30 ¬∑ Audio linked",
   },
   {
     id: "cam-pulpit",
-    label: "Camera 2 ∑ Pulpit",
+    label: "Camera 2 ¬∑ Pulpit",
     kind: "camera",
     health: "healthy",
-    detail: "PTZ preset active ∑ Clean framing",
+    detail: "PTZ preset active ¬∑ Clean framing",
   },
   {
     id: "cam-wide",
-    label: "Camera 3 ∑ Wide Room",
+    label: "Camera 3 ¬∑ Wide Room",
     kind: "camera",
     health: "watch",
     detail: "Low light on rear aisle",
   },
   {
     id: "screen-share",
-    label: "Screen Share ∑ Scripture Deck",
+    label: "Screen Share ¬∑ Scripture Deck",
     kind: "screen",
     health: "healthy",
-    detail: "Slides synced ∑ Verse pack loaded",
+    detail: "Slides synced ¬∑ Verse pack loaded",
   },
   {
     id: "worship-loop",
-    label: "Media Loop ∑ Worship Intro",
+    label: "Media Loop ¬∑ Worship Intro",
     kind: "media",
     health: "healthy",
     detail: "3 motion clips ready",
   },
   {
     id: "graphics",
-    label: "Graphics Bus ∑ Lower Thirds",
+    label: "Graphics Bus ¬∑ Lower Thirds",
     kind: "graphics",
     health: "healthy",
     detail: "12 overlays and 4 scripture cards",
   },
   {
     id: "fallback",
-    label: "Fallback Source ∑ Sanctuary Slate",
+    label: "Fallback Source ¬∑ Sanctuary Slate",
     kind: "fallback",
     health: "healthy",
     detail: "Ready for instant switch",
@@ -318,7 +318,7 @@ const STAGE_MEMBERS: StageMember[] = [
     role: "Host",
     name: "Pastor Daniel M.",
     status: "On stage",
-    controlNote: "Lead voice ∑ camera 1 and pulpit scenes",
+    controlNote: "Lead voice ¬∑ camera 1 and pulpit scenes",
     critical: true,
   },
   {
@@ -573,7 +573,7 @@ function formatLiveTimer(totalSeconds: number) {
 }
 
 function formatCurrency(amount: number) {
-  return `£${amount.toLocaleString()}`;
+  return `¬£${amount.toLocaleString()}`;
 }
 
 function TopStat({ label, value }: { label: string; value: string }) {
@@ -658,7 +658,7 @@ function StudioStatusBadge({ mode, timer }: { mode: Mode; timer: string }) {
       )}
     >
       <span className={cx("h-2 w-2 rounded-full", mode === "live" ? "bg-emerald-500 animate-pulse" : "bg-slate-400")} />
-      {mode === "live" ? `Live ï ${timer}` : "Pre-live lobby"}
+      {mode === "live" ? `Live ‚Ä¢ ${timer}` : "Pre-live lobby"}
     </span>
   );
 }
@@ -711,7 +711,7 @@ function AudienceMiniPreview({
               </div>
               {captionsEnabled ? (
                 <div className="mt-3 max-w-[70%] rounded-lg bg-black/55 px-2 py-1 text-[10px] leading-relaxed text-white">
-                  ìGrace changes not just what we do, but who we become.î
+                  ‚ÄúGrace changes not just what we do, but who we become.‚Äù
                 </div>
               ) : null}
             </div>
@@ -823,7 +823,7 @@ export default function FaithHubLiveStudioPage() {
       return;
     }
     setMode("standby");
-    showToast("Live ended ï Post-live handoff ready");
+    showToast("Live ended ‚Ä¢ Post-live handoff ready");
   };
 
   const handleMarkClip = (label = "Manual highlight marker") => {
@@ -864,7 +864,7 @@ export default function FaithHubLiveStudioPage() {
   };
 
   const headerBadge = (
-    <div className="flex flex-wrap items-center gap-2 md:gap-3">
+    <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 xl:flex xl:w-auto xl:flex-wrap xl:justify-end">
       <StudioStatusBadge mode={mode} timer={liveTimer} />
       <TopStat label="Viewers" value={audienceViewers.toLocaleString()} />
       <TopStat label="Chat/min" value={`${SESSION.audience.chatVelocity}`} />
@@ -873,7 +873,7 @@ export default function FaithHubLiveStudioPage() {
       <button
         type="button"
         onClick={handleInviteCoHost}
-        className="inline-flex items-center gap-2 rounded-2xl border border-orange-200 bg-orange-50 px-3 py-2 text-xs font-semibold text-orange-700 transition-colors hover:bg-orange-100 dark:border-orange-900 dark:bg-orange-900/20 dark:text-orange-300"
+        className="inline-flex h-10 items-center justify-center gap-2 rounded-2xl border border-orange-200 bg-orange-50 px-4 text-sm font-semibold text-orange-700 transition-colors hover:bg-orange-100 dark:border-orange-900 dark:bg-orange-900/20 dark:text-orange-300"
       >
         <Plus className="h-4 w-4" />
         Invite co-host
@@ -881,7 +881,7 @@ export default function FaithHubLiveStudioPage() {
       <button
         type="button"
         onClick={() => handleTriggerCTA()}
-        className="inline-flex items-center gap-2 rounded-2xl border border-transparent px-3 py-2 text-xs font-semibold text-white transition-opacity hover:opacity-95"
+        className="inline-flex h-10 items-center justify-center gap-2 rounded-2xl border border-transparent px-4 text-sm font-semibold text-white transition-opacity hover:opacity-95"
         style={{ background: EV_ORANGE }}
       >
         <Wand2 className="h-4 w-4" />
@@ -890,7 +890,7 @@ export default function FaithHubLiveStudioPage() {
       <button
         type="button"
         onClick={handleGoLive}
-        className="inline-flex items-center gap-2 rounded-2xl border border-transparent px-3 py-2 text-xs font-semibold text-white transition-opacity hover:opacity-95"
+        className="inline-flex h-10 items-center justify-center gap-2 rounded-2xl border border-transparent px-4 text-sm font-semibold text-white transition-opacity hover:opacity-95"
         style={{ background: mode === "live" ? "#dc2626" : EV_GREEN }}
       >
         <Radio className="h-4 w-4" />
@@ -965,7 +965,7 @@ export default function FaithHubLiveStudioPage() {
                 <button
                   type="button"
                   onClick={handleTakeScene}
-                  className="inline-flex items-center gap-2 rounded-2xl border border-transparent px-3 py-2 text-xs font-semibold text-white transition-opacity hover:opacity-95"
+                  className="inline-flex h-10 items-center justify-center gap-2 rounded-2xl border border-transparent px-4 text-sm font-semibold text-white transition-opacity hover:opacity-95"
                   style={{ background: EV_GREEN }}
                 >
                   <MoveRight className="h-4 w-4" />
@@ -974,7 +974,7 @@ export default function FaithHubLiveStudioPage() {
                 <button
                   type="button"
                   onClick={() => handleTriggerCTA("lower-third")}
-                  className="inline-flex items-center gap-2 rounded-2xl border border-orange-200 bg-orange-50 px-3 py-2 text-xs font-semibold text-orange-700 transition-colors hover:bg-orange-100 dark:border-orange-900 dark:bg-orange-900/20 dark:text-orange-300"
+                  className="inline-flex h-10 items-center justify-center gap-2 rounded-2xl border border-orange-200 bg-orange-50 px-4 text-sm font-semibold text-orange-700 transition-colors hover:bg-orange-100 dark:border-orange-900 dark:bg-orange-900/20 dark:text-orange-300"
                 >
                   <Sparkles className="h-4 w-4" />
                   Fire lower third
@@ -1083,7 +1083,7 @@ export default function FaithHubLiveStudioPage() {
                       <button
                         type="button"
                         onClick={handleInviteCoHost}
-                        className="inline-flex items-center gap-2 rounded-2xl border border-orange-200 bg-orange-50 px-3 py-2 text-xs font-semibold text-orange-700 transition-colors hover:bg-orange-100 dark:border-orange-900 dark:bg-orange-900/20 dark:text-orange-300"
+                        className="inline-flex h-10 items-center justify-center gap-2 rounded-2xl border border-orange-200 bg-orange-50 px-4 text-sm font-semibold text-orange-700 transition-colors hover:bg-orange-100 dark:border-orange-900 dark:bg-orange-900/20 dark:text-orange-300"
                       >
                         <PhoneCall className="h-4 w-4" />
                         Backstage call
@@ -1215,7 +1215,7 @@ export default function FaithHubLiveStudioPage() {
                           </div>
                           {captionsEnabled ? (
                             <div className="mt-4 max-w-[72%] rounded-lg bg-black/55 px-2.5 py-1.5 text-[11px] leading-relaxed text-white">
-                              ìGrace changes not just what we do, but who we become.î
+                              ‚ÄúGrace changes not just what we do, but who we become.‚Äù
                             </div>
                           ) : null}
                         </div>
@@ -1500,7 +1500,7 @@ export default function FaithHubLiveStudioPage() {
                     <button
                       type="button"
                       onClick={() => handleMarkClip("Manual highlight")}
-                      className="inline-flex items-center gap-2 rounded-2xl border border-transparent px-3 py-2 text-xs font-semibold text-white transition-opacity hover:opacity-95"
+                      className="inline-flex h-10 items-center justify-center gap-2 rounded-2xl border border-transparent px-4 text-sm font-semibold text-white transition-opacity hover:opacity-95"
                       style={{ background: EV_GREEN }}
                     >
                       <BookmarkPlus className="h-4 w-4" />
@@ -1509,7 +1509,7 @@ export default function FaithHubLiveStudioPage() {
                     <button
                       type="button"
                       onClick={() => handleMarkClip("Scripture marker")}
-                      className="inline-flex items-center gap-2 rounded-2xl border border-orange-200 bg-orange-50 px-3 py-2 text-xs font-semibold text-orange-700 transition-colors hover:bg-orange-100 dark:border-orange-900 dark:bg-orange-900/20 dark:text-orange-300"
+                      className="inline-flex h-10 items-center justify-center gap-2 rounded-2xl border border-orange-200 bg-orange-50 px-4 text-sm font-semibold text-orange-700 transition-colors hover:bg-orange-100 dark:border-orange-900 dark:bg-orange-900/20 dark:text-orange-300"
                     >
                       <Zap className="h-4 w-4" />
                       Mark scripture
@@ -1830,11 +1830,11 @@ export default function FaithHubLiveStudioPage() {
         </main>
 
         <div className="border-t border-faith-line bg-[var(--fh-surface-bg)]/90 px-4 py-3 backdrop-blur dark:border-slate-800 dark:bg-slate-950/90">
-          <div className="flex flex-wrap items-center gap-2 lg:gap-3">
+          <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 xl:flex xl:w-auto xl:flex-wrap xl:justify-end">
             <button
               type="button"
               onClick={handleGoLive}
-              className="inline-flex items-center gap-2 rounded-2xl border border-transparent px-4 py-2 text-sm font-semibold text-white transition-opacity hover:opacity-95"
+              className="inline-flex h-10 items-center justify-center gap-2 rounded-2xl border border-transparent px-4 text-sm font-semibold text-white transition-opacity hover:opacity-95"
               style={{ background: mode === "live" ? "#dc2626" : EV_GREEN }}
             >
               <Radio className="h-4 w-4" />
@@ -1843,7 +1843,7 @@ export default function FaithHubLiveStudioPage() {
             <button
               type="button"
               onClick={handleInviteCoHost}
-              className="inline-flex items-center gap-2 rounded-2xl border border-orange-200 bg-orange-50 px-4 py-2 text-sm font-semibold text-orange-700 transition-colors hover:bg-orange-100 dark:border-orange-900 dark:bg-orange-900/20 dark:text-orange-300"
+              className="inline-flex h-10 items-center justify-center gap-2 rounded-2xl border border-orange-200 bg-orange-50 px-4 text-sm font-semibold text-orange-700 transition-colors hover:bg-orange-100 dark:border-orange-900 dark:bg-orange-900/20 dark:text-orange-300"
             >
               <PhoneCall className="h-4 w-4" />
               Invite co-host
@@ -1851,7 +1851,7 @@ export default function FaithHubLiveStudioPage() {
             <button
               type="button"
               onClick={() => handleTriggerCTA()}
-              className="inline-flex items-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-2 text-sm font-semibold text-slate-700 transition-colors hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800"
+              className="inline-flex h-10 items-center justify-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-4 text-sm font-semibold text-slate-700 transition-colors hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800"
             >
               <Sparkles className="h-4 w-4" />
               Trigger scene/CTA
@@ -1859,7 +1859,7 @@ export default function FaithHubLiveStudioPage() {
             <button
               type="button"
               onClick={() => handleMarkClip()}
-              className="inline-flex items-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-2 text-sm font-semibold text-slate-700 transition-colors hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800"
+              className="inline-flex h-10 items-center justify-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-4 text-sm font-semibold text-slate-700 transition-colors hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800"
             >
               <BookmarkPlus className="h-4 w-4" />
               Mark clip
@@ -2011,7 +2011,7 @@ function MobileLiveStudio({
                 <div className="mt-1 text-sm text-white/80">{selectedCTA.label}</div>
                 {captionsEnabled ? (
                   <div className="mt-4 inline-block rounded-lg bg-black/55 px-2.5 py-1.5 text-[11px] text-white">
-                    ìGrace changes who we become.î
+                    ‚ÄúGrace changes who we become.‚Äù
                   </div>
                 ) : null}
               </div>

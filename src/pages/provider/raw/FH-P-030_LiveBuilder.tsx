@@ -2499,22 +2499,22 @@ export default function FaithHubLiveBuilderPage({ embedded = false, onRequestClo
             </div>
           </div>
 
-          <div className="flex items-center gap-2 flex-wrap">
-            <SoftButton onClick={() => (onRequestClose ? onRequestClose() : safeNav(ROUTES.providerDashboard))} title="Back to Provider Dashboard">
+          <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 xl:flex xl:w-auto xl:flex-wrap xl:justify-end">
+            <SoftButton className="h-10 w-full justify-center px-4" onClick={() => (onRequestClose ? onRequestClose() : safeNav(ROUTES.providerDashboard))} title="Back to Provider Dashboard">
               <ChevronLeft className="h-4 w-4" /> Dashboard
             </SoftButton>
             {isMobile ? (
-              <SoftButton onClick={() => setPreviewOpen(true)} title="Open preview">
+              <SoftButton className="h-10 w-full justify-center px-4" onClick={() => setPreviewOpen(true)} title="Open preview">
                 <Eye className="h-4 w-4" /> Preview
               </SoftButton>
             ) : null}
-            <SoftButton onClick={saveLiveSession} title="Save live session">
+            <SoftButton className="h-10 w-full justify-center px-4" onClick={saveLiveSession} title="Save live session">
               <CheckCircle2 className="h-4 w-4" /> Save live session
             </SoftButton>
-            <PrimaryButton secondary onClick={scheduleAndNotify} title="Schedule and notify">
+            <PrimaryButton className="h-10 w-full justify-center px-4" secondary onClick={scheduleAndNotify} title="Schedule and notify">
               <Bell className="h-4 w-4" /> Schedule and notify
             </PrimaryButton>
-            <PrimaryButton onClick={openStudioSetup} title="Open studio setup">
+            <PrimaryButton className="h-10 w-full justify-center px-4" onClick={openStudioSetup} title="Open studio setup">
               <MonitorPlay className="h-4 w-4" /> Open studio setup
             </PrimaryButton>
           </div>
