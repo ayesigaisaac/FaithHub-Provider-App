@@ -42,7 +42,8 @@ They are defined in:
 
 ```bash
 npm install
-npm run dev   
+
+d o   
 ```
 
 Open the local Vite URL shown in the terminal.
