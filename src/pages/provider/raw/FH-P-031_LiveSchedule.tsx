@@ -2711,14 +2711,15 @@ export default function FaithHubLiveSchedulePage() {
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center gap-2">
-            <SoftButton onClick={() => setPreviewOpen(true)} className="lg:hidden">
+          <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 xl:flex xl:w-auto xl:flex-wrap xl:justify-end">
+            <SoftButton onClick={() => setPreviewOpen(true)} className="h-10 w-full justify-center px-4 lg:hidden">
               <Eye className="h-4 w-4" /> Preview
             </SoftButton>
-            <PrimaryButton onClick={() => setQuickAddOpen(true)}>
+            <PrimaryButton className="h-10 w-full justify-center px-4" onClick={() => setQuickAddOpen(true)}>
               <Plus className="h-4 w-4" /> Add to schedule
             </PrimaryButton>
             <SoftButton
+              className="h-10 w-full justify-center px-4"
               onClick={() => {
                 if (!firstConflictSession) {
                   showToast("No active conflicts right now.");
@@ -2730,7 +2731,7 @@ export default function FaithHubLiveSchedulePage() {
             >
               <Wand2 className="h-4 w-4" /> Resolve conflict
             </SoftButton>
-            <PrimaryButton tone="green" onClick={openSelectedDashboard}>
+            <PrimaryButton className="h-10 w-full justify-center px-4" tone="green" onClick={openSelectedDashboard}>
               <MonitorPlay className="h-4 w-4" /> Open session dashboard
             </PrimaryButton>
           </div>

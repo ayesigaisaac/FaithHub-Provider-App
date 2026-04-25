@@ -1,4 +1,4 @@
-// @ts-nocheck
+﻿// @ts-nocheck
 
 "use client";
 
@@ -37,7 +37,7 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * Provider � Events Manager
+ * Provider â€” Events Manager
  * ----------------------------------
  * Premium event operating system for Provider Workspace.
  *
@@ -1508,7 +1508,7 @@ export default function FaithHubEventsManagerPage() {
       "",
       "LOGISTICS",
       ...selectedEvent.logistics.map(
-        (item) => `${item.label} � ${item.status} � ${item.note}`,
+        (item) => `${item.label} â€” ${item.status} â€” ${item.note}`,
       ),
       "",
       "VOLUNTEER COVERAGE",
@@ -1571,23 +1571,24 @@ export default function FaithHubEventsManagerPage() {
               </div>
             </div>
 
-            <div className="flex flex-wrap items-center gap-2">
-              <Btn tone="ghost" onClick={() => setPreviewOpen(true)} left={<Eye className="h-4 w-4" />}>
+            <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 xl:flex xl:w-auto xl:flex-wrap xl:justify-end">
+              <Btn tone="ghost" className="h-10 px-4 justify-start sm:justify-center bg-[var(--fh-surface-bg)] dark:bg-slate-900 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800" onClick={() => setPreviewOpen(true)} left={<Eye className="h-4 w-4" />}>
                 Preview
               </Btn>
-              <Btn tone="neutral" onClick={openCheckInMode} left={<QrCode className="h-4 w-4" />}>
+              <Btn tone="neutral" className="h-10 px-4" onClick={openCheckInMode} left={<QrCode className="h-4 w-4" />}>
                 Open check-in mode
               </Btn>
-              <Btn tone="accent" onClick={promoteWithBeacon} left={<Zap className="h-4 w-4" />}>
+              <Btn tone="accent" className="h-10 px-4" onClick={promoteWithBeacon} left={<Zap className="h-4 w-4" />}>
                 Promote with Beacon
               </Btn>
               <Btn
                 tone="primary"
+                className="h-10 px-4"
                 onClick={createNewEvent}
                 left={<Plus className="h-4 w-4" />}
                 disabled={workingAction === "create"}
               >
-                {workingAction === "create" ? "Creating�" : "+ New Event"}
+                {workingAction === "create" ? "Creating..." : "+ New Event"}
               </Btn>
             </div>
           </div>
@@ -1657,7 +1658,7 @@ export default function FaithHubEventsManagerPage() {
                       className="px-3 py-2 text-[12px]"
                       disabled={workingAction === "duplicate"}
                     >
-                      {workingAction === "duplicate" ? "Duplicating�" : "Duplicate"}
+                      {workingAction === "duplicate" ? "Duplicatingâ€¦" : "Duplicate"}
                     </Btn>
                   </div>
                 </div>
@@ -2440,7 +2441,7 @@ export default function FaithHubEventsManagerPage() {
                       onClick={publishEventPlan}
                       disabled={workingAction === "publish"}
                     >
-                      {workingAction === "publish" ? "Publishing�" : "Mark operationally ready"}
+                      {workingAction === "publish" ? "Publishingâ€¦" : "Mark operationally ready"}
                     </Btn>
                     <Btn
                       tone="accent"

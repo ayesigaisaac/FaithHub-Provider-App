@@ -43,7 +43,7 @@ import {
 } from 'lucide-react';
 
 /**
- * Provider — Stream-to-Platforms
+ * Provider â€” Stream-to-Platforms
  * ---------------------------------------
  * Premium multi-destination distribution page for Live Sessions.
  *
@@ -70,7 +70,7 @@ const ROUTES = {
   beaconBuilder: '/faithhub/provider/beacon-builder',
 };
 
-const DEFAULT_SESSION_TITLE = 'Sunday Encounter Live · The Way of Grace';
+const DEFAULT_SESSION_TITLE = 'Sunday Encounter Live Â· The Way of Grace';
 const DEFAULT_THUMBNAIL =
   'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1200&q=60';
 
@@ -483,9 +483,9 @@ const INITIAL_DESTINATIONS: Destination[] = normalizeRouteOrders([
     enabled: true,
     routeOrder: 1,
     owner: 'Provider Core Surface',
-    tokenStatus: 'Core surface healthy · no reconnect needed',
+    tokenStatus: 'Core surface healthy Â· no reconnect needed',
     historyNote: 'Primary in-app destination with viewer-safe fallback logic.',
-    creativeVariant: 'In-app live hero · Sunday Encounter',
+    creativeVariant: 'In-app live hero Â· Sunday Encounter',
     fallbackRule: 'Keep Provider primary',
     supportsPrivacy: true,
     supportsLanguageTracks: true,
@@ -520,7 +520,7 @@ const INITIAL_DESTINATIONS: Destination[] = normalizeRouteOrders([
     enabled: true,
     routeOrder: 2,
     owner: 'Discovery Rail',
-    tokenStatus: 'Placement ready · home promo lane mapped',
+    tokenStatus: 'Placement ready Â· home promo lane mapped',
     historyNote: 'Shows the session card on Home, Discover, and the institution profile.',
     creativeVariant: 'Home rail discovery tile',
     fallbackRule: 'Keep Provider primary',
@@ -532,7 +532,7 @@ const INITIAL_DESTINATIONS: Destination[] = normalizeRouteOrders([
     supportsCustomRTMP: false,
     thumbnailUrl: DEFAULT_THUMBNAIL,
     settings: {
-      title: 'Sunday Encounter Live · Home rail card',
+      title: 'Sunday Encounter Live Â· Home rail card',
       description: 'Discoverable live card with RSVP and caption-aware metadata.',
       privacy: 'Public',
       languageTrack: 'English main + Swahili CC',
@@ -556,8 +556,8 @@ const INITIAL_DESTINATIONS: Destination[] = normalizeRouteOrders([
     status: 'Connected',
     enabled: true,
     routeOrder: 3,
-    owner: 'Digital Media · Main channel',
-    tokenStatus: 'OAuth healthy · stream key mapped',
+    owner: 'Digital Media Â· Main channel',
+    tokenStatus: 'OAuth healthy Â· stream key mapped',
     historyNote: 'Scheduled channel with custom metadata, thumbnail, and replay carry-over.',
     creativeVariant: 'Main sermon cover',
     fallbackRule: 'Keep Provider primary',
@@ -569,7 +569,7 @@ const INITIAL_DESTINATIONS: Destination[] = normalizeRouteOrders([
     supportsCustomRTMP: false,
     thumbnailUrl: 'https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&w=1200&q=60',
     settings: {
-      title: 'Sunday Encounter Live • The Way of Grace (Official Stream)',
+      title: 'Sunday Encounter Live â€¢ The Way of Grace (Official Stream)',
       description: 'Worship, scripture, giving moment, and altar call with translated caption options.',
       privacy: 'Public',
       languageTrack: 'English main + Swahili subtitles',
@@ -593,7 +593,7 @@ const INITIAL_DESTINATIONS: Destination[] = normalizeRouteOrders([
     status: 'Needs re-auth',
     enabled: false,
     routeOrder: null,
-    owner: 'Community Page · Central Campus',
+    owner: 'Community Page Â· Central Campus',
     tokenStatus: 'Session expired 3 hours ago',
     historyNote: 'Audience presence is strong here, but the token must be re-authorized.',
     creativeVariant: 'Community live card',
@@ -608,7 +608,7 @@ const INITIAL_DESTINATIONS: Destination[] = normalizeRouteOrders([
     errorTitle: 'Facebook needs re-authentication',
     errorNext: 'Reconnect the page token before you can publish or schedule distribution.',
     settings: {
-      title: 'Sunday Encounter Live • Central Campus',
+      title: 'Sunday Encounter Live â€¢ Central Campus',
       description: 'Community-facing version with shorter description and direct join callout.',
       privacy: 'Public',
       languageTrack: 'English main track',
@@ -632,8 +632,8 @@ const INITIAL_DESTINATIONS: Destination[] = normalizeRouteOrders([
     status: 'Connected',
     enabled: true,
     routeOrder: 4,
-    owner: 'Social Team · Short-form channel',
-    tokenStatus: 'Connected · mobile publish relay ready',
+    owner: 'Social Team Â· Short-form channel',
+    tokenStatus: 'Connected Â· mobile publish relay ready',
     historyNote: 'Great for real-time reach, safe-area preview uses 9:16 crop guidance.',
     creativeVariant: 'Vertical teaser cover',
     fallbackRule: 'Keep Provider primary',
@@ -645,7 +645,7 @@ const INITIAL_DESTINATIONS: Destination[] = normalizeRouteOrders([
     supportsCustomRTMP: false,
     thumbnailUrl: 'https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1200&q=60',
     settings: {
-      title: 'Sunday Encounter • Live now',
+      title: 'Sunday Encounter â€¢ Live now',
       description: 'Vertical-friendly, urgency-led copy with join-now language.',
       languageTrack: 'English main track',
       safeAreaMode: '9:16 preview',
@@ -668,7 +668,7 @@ const INITIAL_DESTINATIONS: Destination[] = normalizeRouteOrders([
     status: 'Missing credentials',
     enabled: false,
     routeOrder: null,
-    owner: 'Growth Team · Creator account',
+    owner: 'Growth Team Â· Creator account',
     tokenStatus: 'Stream key missing',
     historyNote: 'Short-form audience is available, but the current session key is missing.',
     creativeVariant: 'Vertical hook + swipe copy',
@@ -682,11 +682,11 @@ const INITIAL_DESTINATIONS: Destination[] = normalizeRouteOrders([
     errorTitle: 'TikTok credentials missing',
     errorNext: 'Add a valid session key or region-approved connection before enabling.',
     settings: {
-      title: 'Sunday Encounter • Join the moment',
+      title: 'Sunday Encounter â€¢ Join the moment',
       description: 'Fast hook copy optimized for short attention windows.',
       languageTrack: 'English main track',
       safeAreaMode: '9:16 preview',
-      complianceNote: 'Keep title short. Don’t rely on full lower-thirds in the top or bottom safe areas.',
+      complianceNote: 'Keep title short. Donâ€™t rely on full lower-thirds in the top or bottom safe areas.',
       archiveRule: 'Keep replay internal',
       autoReconnect: false,
     },
@@ -788,7 +788,7 @@ export default function StreamToPlatformsPage() {
       id: 'credential-health',
       label: 'Enabled destinations have valid credentials and access',
       status: invalid.length === 0 ? 'Pass' : 'Fail',
-      detail: invalid.length ? invalid.map((d) => d.name).join(' · ') : undefined,
+      detail: invalid.length ? invalid.map((d) => d.name).join(' Â· ') : undefined,
       fix: invalid.length ? 'Reconnect or complete credentials for every enabled destination.' : undefined,
     });
 
@@ -813,7 +813,7 @@ export default function StreamToPlatformsPage() {
       id: 'bandwidth',
       label: 'Estimated upload can support the active routing plan',
       status: bandwidthOk ? 'Pass' : 'Warn',
-      detail: `Estimated ${estimatedUploadMbps.toFixed(1)} Mbps · Required ${requiredUploadMbps.toFixed(1)} Mbps`,
+      detail: `Estimated ${estimatedUploadMbps.toFixed(1)} Mbps Â· Required ${requiredUploadMbps.toFixed(1)} Mbps`,
       fix: bandwidthOk ? undefined : 'Reduce bitrate, switch to High or Standard quality, or trim active destinations.',
     });
 
@@ -895,7 +895,7 @@ export default function StreamToPlatformsPage() {
                 status: 'Connected',
                 errorTitle: undefined,
                 errorNext: undefined,
-                tokenStatus: 'Reconnected just now · healthy',
+                tokenStatus: 'Reconnected just now Â· healthy',
               }
             : d
         )
@@ -932,7 +932,7 @@ export default function StreamToPlatformsPage() {
               title:
                 d.family === 'Provider Surface'
                   ? DEFAULT_SESSION_TITLE
-                  : `${DEFAULT_SESSION_TITLE} · ${d.name.replace(' Live', '')}`,
+                  : `${DEFAULT_SESSION_TITLE} Â· ${d.name.replace(' Live', '')}`,
             },
           };
         })
@@ -950,7 +950,7 @@ export default function StreamToPlatformsPage() {
     run(async () => {
       if (sessionStatus === 'Draft') setSessionStatus('Scheduled');
     }, {
-      loadingMessage: 'Publishing distribution plan…',
+      loadingMessage: 'Publishing distribution planâ€¦',
       successMessage: 'Distribution plan published and ready for Live Studio handoff.',
       delay: 1600,
     });
@@ -1001,7 +1001,7 @@ export default function StreamToPlatformsPage() {
               </div>
             </div>
 
-            <div className="flex flex-wrap items-center gap-2">
+            <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 xl:flex xl:w-auto xl:flex-wrap xl:justify-end">
               <div className="relative">
                 <select
                   value={sessionStatus}
@@ -1018,19 +1018,19 @@ export default function StreamToPlatformsPage() {
 
               <button
                 onClick={() => setConnectOpen(true)}
-                className="inline-flex h-10 items-center gap-2 rounded-xl px-3 text-sm font-semibold text-slate-800 dark:text-slate-100 shadow-soft ring-1 ring-slate-200 dark:ring-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800 transition active:scale-[0.98]"
+                className="inline-flex h-10 items-center justify-center gap-2 rounded-xl px-4 text-sm font-semibold text-slate-800 dark:text-slate-100 shadow-soft ring-1 ring-slate-200 dark:ring-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800 transition active:scale-[0.98]"
               >
                 <PlusCircle className="h-4 w-4" />
-                <span className="hidden sm:inline">Connect destination</span>
+                <span>Connect destination</span>
               </button>
 
               <button
                 onClick={() => setPresetOpen(true)}
-                className="inline-flex h-10 items-center gap-2 rounded-xl px-3 text-sm font-semibold text-white shadow-soft transition active:scale-[0.98]"
+                className="inline-flex h-10 items-center justify-center gap-2 rounded-xl px-4 text-sm font-semibold text-white shadow-soft transition active:scale-[0.98]"
                 style={{ background: EV_ORANGE }}
               >
                 <Wand2 className="h-4 w-4" />
-                <span className="hidden sm:inline">Apply destination preset</span>
+                <span>Apply destination preset</span>
               </button>
 
               <button
@@ -1052,7 +1052,7 @@ export default function StreamToPlatformsPage() {
             <Badge tone="neutral">{DEFAULT_SESSION_TITLE}</Badge>
             <Badge tone="green">{internalDestinations.length} internal surface{internalDestinations.length === 1 ? '' : 's'}</Badge>
             <Badge tone="blue">{externalDestinations.length} external destination{externalDestinations.length === 1 ? '' : 's'}</Badge>
-            <Badge tone="orange">Preset · {selectedPreset.label}</Badge>
+            <Badge tone="orange">Preset Â· {selectedPreset.label}</Badge>
             <Badge tone="purple">Beacon bridge {beaconBridge ? 'ready' : 'off'}</Badge>
           </div>
         </div>
@@ -1228,7 +1228,7 @@ export default function StreamToPlatformsPage() {
                       </div>
                       <div className="col-span-3 min-w-0">
                         <div className="font-bold text-faith-ink dark:text-slate-100 truncate">{d.name}</div>
-                        <div className="text-[10px] text-faith-slate truncate">{d.family} · {prettyKbps(d.health.outBitrateKbps)}</div>
+                        <div className="text-[10px] text-faith-slate truncate">{d.family} Â· {prettyKbps(d.health.outBitrateKbps)}</div>
                       </div>
                       <div className="col-span-2 min-w-0">
                         <div className="truncate text-slate-700 dark:text-slate-200 font-semibold">{d.creativeVariant}</div>
@@ -1279,7 +1279,7 @@ export default function StreamToPlatformsPage() {
                       <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Preset-based distribution flow</div>
                       <div className="text-[10px] sm:text-xs text-faith-slate">Keep repeat sessions fast while still preserving platform-specific quality.</div>
                     </div>
-                    <Badge tone="neutral">Current · {selectedPreset.label}</Badge>
+                    <Badge tone="neutral">Current Â· {selectedPreset.label}</Badge>
                   </div>
                   <div className="mt-3 text-sm text-slate-700 dark:text-slate-200">{selectedPreset.desc}</div>
                   <div className="mt-3 flex flex-wrap gap-2">
@@ -1520,7 +1520,7 @@ export default function StreamToPlatformsPage() {
                     <div className="px-4 py-4 text-white" style={{ background: 'linear-gradient(135deg, #03cd8c 0%, #0f766e 45%, #f77f00 100%)' }}>
                       <Badge tone="green">Distribution summary</Badge>
                       <div className="mt-3 text-2xl font-extrabold leading-tight">{DEFAULT_SESSION_TITLE}</div>
-                      <div className="mt-1 text-sm text-white/90">Primary feed · {activeDestinations.length} live route{activeDestinations.length === 1 ? '' : 's'} · {crossPostRule}</div>
+                      <div className="mt-1 text-sm text-white/90">Primary feed Â· {activeDestinations.length} live route{activeDestinations.length === 1 ? '' : 's'} Â· {crossPostRule}</div>
                       <div className="mt-3 flex flex-wrap gap-2">
                         {activeDestinations.map((d) => (
                           <span key={d.id} className="inline-flex items-center gap-1 rounded-full bg-[var(--fh-surface-bg)]/15 px-3 py-1 text-[11px] font-semibold text-white backdrop-blur">
@@ -1651,11 +1651,11 @@ export default function StreamToPlatformsPage() {
                   <div className="px-4 py-4 text-white" style={{ background: 'linear-gradient(180deg, #03cd8c 0%, #0f766e 55%, #f77f00 100%)' }}>
                     <Badge tone="green">Surface preview</Badge>
                     <div className="mt-3 text-3xl font-extrabold leading-tight">Sunday Encounter Live</div>
-                    <div className="mt-1 text-sm text-white/90">Live Sessions · Central Campus · Thu 18:30</div>
+                    <div className="mt-1 text-sm text-white/90">Live Sessions Â· Central Campus Â· Thu 18:30</div>
                     <div className="mt-3 h-2 w-full rounded-full bg-[var(--fh-surface-bg)]/20">
                       <div className="h-2 rounded-full" style={{ width: '72%', background: EV_ORANGE }} />
                     </div>
-                    <div className="mt-2 text-xs text-white/85">Readiness score · 72% · Distribution plan pre-approved</div>
+                    <div className="mt-2 text-xs text-white/85">Readiness score Â· 72% Â· Distribution plan pre-approved</div>
                   </div>
 
                   <div className="bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 py-4">
@@ -1698,7 +1698,7 @@ export default function StreamToPlatformsPage() {
                               <div className="mt-3 space-y-2">
                                 <div className="rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-2 text-[10px] font-semibold text-slate-700 dark:text-slate-300">YouTube + Instagram + Primary</div>
                                 <div className="rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-2 text-[10px] font-semibold text-slate-700 dark:text-slate-300">Language tracks ready</div>
-                                <div className="rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-2 text-[10px] font-semibold text-slate-700 dark:text-slate-300">Fallback · Provider primary</div>
+                                <div className="rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-2 text-[10px] font-semibold text-slate-700 dark:text-slate-300">Fallback Â· Provider primary</div>
                               </div>
                             </div>
                             <div className="absolute bottom-3 left-3 right-3 flex flex-col gap-2">
@@ -1991,7 +1991,7 @@ export default function StreamToPlatformsPage() {
                   </div>
                   <div className="rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition">
                     <div className="text-[10px] uppercase tracking-wider text-faith-slate">Health history</div>
-                    <div className="mt-1 text-sm font-bold text-faith-ink dark:text-slate-100">{selectedDest.health.errors} error{selectedDest.health.errors === 1 ? '' : 's'} · ACK {selectedDest.health.lastAckSec}s</div>
+                    <div className="mt-1 text-sm font-bold text-faith-ink dark:text-slate-100">{selectedDest.health.errors} error{selectedDest.health.errors === 1 ? '' : 's'} Â· ACK {selectedDest.health.lastAckSec}s</div>
                   </div>
                 </div>
               </div>
@@ -2056,7 +2056,7 @@ export default function StreamToPlatformsPage() {
         open={connectOpen}
         onClose={() => setConnectOpen(false)}
         title="Connect destination"
-        subtitle="Add an external platform or resolve a destination connection before it joins this session’s routing plan."
+        subtitle="Add an external platform or resolve a destination connection before it joins this sessionâ€™s routing plan."
       >
         <div className="grid gap-3">
           {availableToConnect.map((dest) => (
