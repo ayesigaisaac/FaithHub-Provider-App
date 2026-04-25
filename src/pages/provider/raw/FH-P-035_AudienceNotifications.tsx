@@ -42,7 +42,7 @@ import {
 import { KpiTile } from "../../../components/ui/KpiTile";
 
 /**
- * Provider — Audience Notifications
+ * Provider - Audience Notifications
  * Premium lifecycle journey page rebuilt from the creator-style Audience Notifications base.
  * Primary colour: EVzone Green (#03cd8c)
  * Secondary colour: EVzone Orange (#f77f00)
@@ -869,7 +869,7 @@ function buildInitialVariants(sourceType: SourceType): Record<LocaleKey, LocaleV
     },
     fr: {
       headline: `${subjectRoot} • Rejoignez maintenant`,
-      body: "Ce message est localisé pour le bon moment, le bon public, et le bon résultat ministériel — participation, replay, don, inscription ou promotion.",
+      body: "Ce message est localisÃ© pour le bon moment, le bon public, et le bon rÃ©sultat ministÃ©riel - participation, replay, don, inscription ou promotion.",
       cta: "Ouvrir dans Provider",
       deepLink: "faithhub://live/sunday-encounter?locale=fr",
     },
@@ -1457,7 +1457,7 @@ export default function FaithHubAudienceNotificationsPage() {
                       onChange={setEngagementTarget}
                       options={[
                         { value: "Watched within 30 days", label: "Watched within 30 days", hint: "Warm viewers" },
-                        { value: "Dormant 31-90 days", label: "Dormant 31–90 days", hint: "Recovery segment" },
+                        { value: "Dormant 31-90 days", label: "Dormant 31-90 days", hint: "Recovery segment" },
                         { value: "High-intent clickers", label: "High-intent clickers", hint: "Recent CTA responders" },
                       ]}
                     />

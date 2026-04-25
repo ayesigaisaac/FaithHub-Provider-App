@@ -86,6 +86,10 @@ export function ProviderShellLayout() {
             : 'linear-gradient(180deg, #edf3f2 0%, #dfe9e8 45%, #d7e4e3 100%)',
       }}
     >
+      <a href="#provider-main-content" className="fh-skip-link">
+        Skip to main content
+      </a>
+
       <ProviderTopbar
         current={current}
         onOpenSidebar={() => setMobileOpen(true)}
@@ -109,6 +113,8 @@ export function ProviderShellLayout() {
 
         <Box
           component="main"
+          id="provider-main-content"
+          tabIndex={-1}
           sx={{
             flex: 1,
             minWidth: 0,

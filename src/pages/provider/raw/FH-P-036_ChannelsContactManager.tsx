@@ -1,4 +1,4 @@
-﻿// @ts-nocheck
+// @ts-nocheck
 "use client";
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
@@ -538,7 +538,7 @@ const contacts: Contact[] = [
     primaryChannel: "WhatsApp",
     channelsAllowed: ["WhatsApp", "Push", "Email", "In-app"],
     consentState: "Full",
-    quietHours: "21:00â€“07:00",
+    quietHours: "21:00-07:00",
     childSafe: false,
     highRisk: false,
     email: "amal@workspace.demo",
@@ -575,7 +575,7 @@ const contacts: Contact[] = [
     primaryChannel: "Email",
     channelsAllowed: ["Email", "SMS", "In-app"],
     consentState: "Limited",
-    quietHours: "22:00â€“06:30",
+    quietHours: "22:00-06:30",
     childSafe: false,
     highRisk: false,
     email: "ezra@workspace.demo",
@@ -630,7 +630,7 @@ const contacts: Contact[] = [
       { id: "9", label: "Safeguarding check triggered", when: "3 days ago", type: "Message", detail: "Consent refresh required before the next reminder send." },
     ],
     consentAudit: [
-      { at: "02 Mar 2026", label: "Parent push opt-in", detail: "Parent accepted notifications for childrenâ€™s ministry updates only." },
+      { at: "02 Mar 2026", label: "Parent push opt-in", detail: "Parent accepted notifications for children's ministry updates only." },
       { at: "02 Mar 2026", label: "Child-safe lane active", detail: "Quiet hours locked, messaging channels limited." },
       { at: "18 Mar 2026", label: "Consent review due", detail: "Parental reconfirmation required within 7 days." },
     ],
@@ -646,7 +646,7 @@ const contacts: Contact[] = [
     primaryChannel: "Email",
     channelsAllowed: ["Email", "Push", "WhatsApp", "In-app"],
     consentState: "Full",
-    quietHours: "23:00â€“07:00",
+    quietHours: "23:00-07:00",
     childSafe: false,
     highRisk: false,
     email: "samira@workspace.demo",
@@ -682,7 +682,7 @@ const contacts: Contact[] = [
     primaryChannel: "SMS",
     channelsAllowed: ["SMS", "In-app"],
     consentState: "Limited",
-    quietHours: "21:00â€“06:00",
+    quietHours: "21:00-06:00",
     childSafe: false,
     highRisk: true,
     email: "david.kaggwa@workspace.demo",
@@ -778,7 +778,7 @@ const segments: Segment[] = [
     label: "Women Weekly Path",
     mode: "Smart",
     campus: "Downtown",
-    ruleSummary: "Womenâ€™s group tag • weekly watch history • accepted WhatsApp or push",
+    ruleSummary: "Women's group tag • weekly watch history • accepted WhatsApp or push",
     size: 2740,
     health: "High",
     growth: "+5.0% in 30 days",
@@ -1569,7 +1569,7 @@ export default function ChannelsContactManagerPage() {
                     <div className="mt-4 rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                       <div className="text-[12px] font-bold text-faith-ink dark:text-slate-50">Manual roster controls</div>
                       <div className="mt-2 text-[11px] text-faith-slate leading-relaxed">
-                        Build protected ministry lists for choir, ushers, childrenâ€™s ministry parents, translators, or pastoral care groups with strict child-safe and quiet-hour rules.
+                        Build protected ministry lists for choir, ushers, children's ministry parents, translators, or pastoral care groups with strict child-safe and quiet-hour rules.
                       </div>
                       <div className="mt-3 grid grid-cols-2 gap-2 text-[11px]">
                         <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">CSV import + approval review</div>

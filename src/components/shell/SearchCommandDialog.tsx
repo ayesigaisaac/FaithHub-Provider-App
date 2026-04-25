@@ -505,7 +505,7 @@ export function SearchCommandDialog({
           {hasQuery ? `${flattened.length} result${flattened.length === 1 ? '' : 's'}` : 'Suggestions'}
         </Typography>
         <Typography variant="caption" color="text.secondary">
-          Enter open - Up/Down move - Esc close
+          Enter open | Up/Down move | Esc close
         </Typography>
       </Stack>
       <List ref={listRef} sx={{ px: 1, pb: 1, pt: 0.5, maxHeight: { xs: 360, md: 430 }, overflowY: 'auto' }}>

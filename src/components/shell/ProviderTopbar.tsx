@@ -117,7 +117,7 @@ export function ProviderTopbar({
         }}
       >
         <Stack direction="row" alignItems="center" spacing={1.25} sx={{ flex: 1 }}>
-          <IconButton sx={{ display: { md: 'none' } }} onClick={onOpenSidebar}>
+          <IconButton aria-label="Open navigation menu" sx={{ display: { md: 'none' } }} onClick={onOpenSidebar}>
             <MenuRoundedIcon />
           </IconButton>
           <Box sx={{ display: { xs: 'block', sm: 'none' } }}>
@@ -232,7 +232,7 @@ export function ProviderTopbar({
           >
             <ThemeModeToggle size="small" />
           </Box>
-          <IconButton sx={utilityIconSx}>
+          <IconButton aria-label="View notifications" sx={utilityIconSx}>
             <Badge badgeContent={2} color="success">
               <NotificationsRoundedIcon />
             </Badge>
@@ -317,6 +317,7 @@ export function ProviderTopbar({
                     startIcon={tab.icon}
                     variant="outlined"
                     onClick={() => navigate(resolveKnownProviderPath(tab.to))}
+                    aria-current={activeTopTab?.label === tab.label ? 'page' : undefined}
                     sx={{
                       borderRadius: 999,
                       textTransform: 'none',

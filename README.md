@@ -43,7 +43,7 @@ They are defined in:
 ```bash
 npm install
 
-d o   
+npm run dev
 ```
 
 Open the local Vite URL shown in the terminal.
@@ -141,7 +141,7 @@ Because several attached pages navigate using full path changes such as `/faithh
 
 ```text
 src/.
-  components/1`                       
+  components/
     shell/
   contexts/
   hooks/

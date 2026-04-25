@@ -48,10 +48,18 @@ export function MobileBottomNav() {
         bgcolor: (theme) => (theme.palette.mode === 'dark' ? 'rgba(15,23,42,0.94)' : 'rgba(255,255,255,0.94)'),
       }}
     >
-      <BottomNavigation value={value} onChange={(_, nextValue) => navigate(nextValue)} showLabels>
+      <BottomNavigation aria-label="Primary mobile navigation" value={value} onChange={(_, nextValue) => navigate(nextValue)} showLabels>
         {tabs.map((tab) => {
           const Icon = tab.icon;
-          return <BottomNavigationAction key={tab.value} value={tab.value} label={tab.label} icon={<Icon size={18} />} />;
+          return (
+            <BottomNavigationAction
+              key={tab.value}
+              value={tab.value}
+              label={tab.label}
+              aria-label={tab.label}
+              icon={<Icon size={18} />}
+            />
+          );
         })}
       </BottomNavigation>
     </Paper>
