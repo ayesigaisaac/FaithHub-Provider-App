@@ -30,7 +30,7 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * Provider — Donations & Funds
+ * Provider â€” Donations & Funds
  * -------------------------------------
  * Premium giving workspace for Provider Workspace.
  *
@@ -80,7 +80,7 @@ function fmtInt(n: number) {
   return Intl.NumberFormat(undefined, { maximumFractionDigits: 0 }).format(n);
 }
 
-function fmtCurrency(n: number, currency = "£") {
+function fmtCurrency(n: number, currency = "Â£") {
   return `${currency}${Intl.NumberFormat(undefined, {
     maximumFractionDigits: 0,
   }).format(n)}`;
@@ -357,7 +357,7 @@ const BRIDGE_SEED: BridgeSurface[] = [
     label: "Sunday Morning Live donation moment",
     surface: "Live Session",
     state: "Ready",
-    value: "£12.8k influenced",
+    value: "Â£12.8k influenced",
     hint: "Pinned donor CTA and progress strip inside the sermon run-of-show.",
     ready: true,
   },
@@ -497,6 +497,7 @@ function Btn({
   disabled,
   left,
   title,
+  className,
 }: {
   tone?: "neutral" | "primary" | "secondary" | "ghost";
   children: React.ReactNode;
@@ -504,6 +505,7 @@ function Btn({
   disabled?: boolean;
   left?: React.ReactNode;
   title?: string;
+  className?: string;
 }) {
   const base =
     "inline-flex items-center justify-center gap-2 rounded-xl px-3.5 py-2 text-sm font-semibold transition active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed";
@@ -523,7 +525,7 @@ function Btn({
         : undefined;
 
   return (
-    <button title={title} onClick={disabled ? undefined : onClick} disabled={disabled} className={cx(base, cls)} style={style}>
+    <button title={title} onClick={disabled ? undefined : onClick} disabled={disabled} className={cx(base, cls, className)} style={style}>
       {left}
       {children}
     </button>
@@ -1080,17 +1082,22 @@ export default function DonationsAndFundsPage() {
               </div>
             </div>
 
-            <div className="flex flex-wrap items-center gap-2">
-              <Btn tone="ghost" onClick={() => setPreviewOpen(true)} left={<Eye className="h-4 w-4" />}>
+            <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 xl:flex xl:w-auto xl:flex-wrap xl:justify-end">
+              <Btn
+                tone="ghost"
+                className="h-10 px-4 justify-start sm:justify-center bg-[var(--fh-surface-bg)] dark:bg-slate-900 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800"
+                onClick={() => setPreviewOpen(true)}
+                left={<Eye className="h-4 w-4" />}
+              >
                 Preview
               </Btn>
-              <Btn tone="primary" onClick={() => openComposer("Fund")} left={<Plus className="h-4 w-4" />}>
+              <Btn tone="primary" className="h-10 px-4" onClick={() => openComposer("Fund")} left={<Plus className="h-4 w-4" />}>
                 New Fund
               </Btn>
-              <Btn tone="secondary" onClick={() => openComposer("Campaign")} left={<Gift className="h-4 w-4" />}>
+              <Btn tone="secondary" className="h-10 px-4" onClick={() => openComposer("Campaign")} left={<Gift className="h-4 w-4" />}>
                 + New Campaign
               </Btn>
-              <Btn tone="neutral" onClick={() => setInsightsOpen(true)} left={<BarChart3 className="h-4 w-4" />}>
+              <Btn tone="neutral" className="h-10 px-4" onClick={() => setInsightsOpen(true)} left={<BarChart3 className="h-4 w-4" />}>
                 Open donor insights
               </Btn>
             </div>
@@ -1320,7 +1327,7 @@ export default function DonationsAndFundsPage() {
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0">
                         <div className="text-sm font-bold text-faith-ink dark:text-slate-50">{item.label}</div>
-                        <div className="mt-1 text-xs text-faith-slate">{item.surface} · {item.hint}</div>
+                        <div className="mt-1 text-xs text-faith-slate">{item.surface} Â· {item.hint}</div>
                       </div>
                       <Pill tone={item.ready ? "good" : "warn"}>{item.state}</Pill>
                     </div>
@@ -1474,7 +1481,7 @@ export default function DonationsAndFundsPage() {
                   <div className="flex items-center justify-between gap-2">
                     <div>
                       <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Finance ownership</div>
-                      <div className="mt-1 text-xs text-faith-slate">{selectedRecord.owner} · {selectedRecord.financeHealth} state</div>
+                      <div className="mt-1 text-xs text-faith-slate">{selectedRecord.owner} Â· {selectedRecord.financeHealth} state</div>
                     </div>
                     <Pill tone={badgeToneForFinance(selectedRecord.financeHealth)}>{selectedRecord.financeHealth}</Pill>
                   </div>

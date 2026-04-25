@@ -32,7 +32,7 @@ import {
 } from 'lucide-react';
 
 /**
- * Provider � Reviews & Moderation
+ * Provider ï¿½ Reviews & Moderation
  * ---------------------------------------
  * Premium trust-and-safety centre for Provider-side review response,
  * moderation case handling, risk pattern detection, and reputation recovery.
@@ -169,7 +169,7 @@ const reviewsSeed: ReviewRecord[] = [
   {
     id: 'RV-102',
     sourceType: 'Live Session',
-    sourceLabel: 'Sunday Encounter � Live Session',
+    sourceLabel: 'Sunday Encounter ï¿½ Live Session',
     title: 'Audio dropped during the message',
     rating: 2,
     sentiment: 'Negative',
@@ -187,7 +187,7 @@ const reviewsSeed: ReviewRecord[] = [
   {
     id: 'RV-087',
     sourceType: 'Replay',
-    sourceLabel: 'Grace in Motion � Replay',
+    sourceLabel: 'Grace in Motion ï¿½ Replay',
     title: 'The replay notes were very helpful',
     rating: 5,
     sentiment: 'Positive',
@@ -207,7 +207,7 @@ const reviewsSeed: ReviewRecord[] = [
   {
     id: 'RV-091',
     sourceType: 'Clip',
-    sourceLabel: 'Healing in 60 Seconds � Clip',
+    sourceLabel: 'Healing in 60 Seconds ï¿½ Clip',
     title: 'Comments felt unsafe and unmoderated',
     rating: 1,
     sentiment: 'Negative',
@@ -227,7 +227,7 @@ const reviewsSeed: ReviewRecord[] = [
   {
     id: 'RV-074',
     sourceType: 'Institution',
-    sourceLabel: 'Institution Page � Grace House Kampala',
+    sourceLabel: 'Institution Page ï¿½ Grace House Kampala',
     title: 'Warm welcome and clear service times',
     rating: 5,
     sentiment: 'Positive',
@@ -316,7 +316,7 @@ const casesSeed: ModerationCase[] = [
   {
     id: 'MC-198',
     type: 'Chat report',
-    sourceLabel: 'Sunday Encounter � Live Session',
+    sourceLabel: 'Sunday Encounter ï¿½ Live Session',
     title: 'Prayer request queue flooded by spam links',
     urgency: 'High',
     owner: 'Moderation captain',
@@ -342,7 +342,7 @@ const casesSeed: ModerationCase[] = [
   {
     id: 'MC-181',
     type: 'Flagged clip',
-    sourceLabel: 'Healing in 60 Seconds � Clip',
+    sourceLabel: 'Healing in 60 Seconds ï¿½ Clip',
     title: 'Context dispute on clipped testimony moment',
     urgency: 'Medium',
     owner: 'Content lead',
@@ -367,7 +367,7 @@ const casesSeed: ModerationCase[] = [
   {
     id: 'MC-166',
     type: 'Review abuse',
-    sourceLabel: 'Institution Page � Grace House Kampala',
+    sourceLabel: 'Institution Page ï¿½ Grace House Kampala',
     title: 'Possible coordinated 1-star review brigade',
     urgency: 'High',
     owner: 'Trust lead',
@@ -441,7 +441,7 @@ const riskSignalsSeed: RiskSignal[] = [
   },
   {
     title: 'Response quality trend',
-    detail: 'Public response turnaround improved after templated approvals were enabled for 1�2 star reviews.',
+    detail: 'Public response turnaround improved after templated approvals were enabled for 1ï¿½2 star reviews.',
     value: '92% within SLA',
     trendLabel: 'Improving',
     tone: 'brand',
@@ -450,7 +450,7 @@ const riskSignalsSeed: RiskSignal[] = [
 
 const policySeed: PolicyItem[] = [
   {
-    title: '1�2 star review approval route',
+    title: '1ï¿½2 star review approval route',
     detail: 'Communications lead review required before public response goes live.',
     state: 'Active',
   },
@@ -563,6 +563,7 @@ function Btn({
   loading,
   left,
   title,
+  className,
 }: {
   children: React.ReactNode;
   onClick?: () => void;
@@ -571,6 +572,7 @@ function Btn({
   loading?: boolean;
   left?: React.ReactNode;
   title?: string;
+  className?: string;
 }) {
   const base =
     'inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-2.5 text-sm font-bold transition focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed';
@@ -589,7 +591,7 @@ function Btn({
     <button
       type="button"
       title={title}
-      className={cx(base, cls)}
+      className={cx(base, cls, className)}
       style={tone === 'primary' ? { background: EV_GREEN } : tone === 'accent' ? { background: EV_ORANGE } : undefined}
       onClick={disabled || loading ? undefined : onClick}
       disabled={disabled || loading}
@@ -812,10 +814,10 @@ function ReviewRow({
             <Pill tone="neutral">{review.sourceType}</Pill>
           </div>
           <div className="mt-2 text-[12px] text-faith-slate">
-            {review.sourceLabel} � {review.topic} � Owner: {review.owner}
+            {review.sourceLabel} ï¿½ {review.topic} ï¿½ Owner: {review.owner}
           </div>
           <div className="mt-3 line-clamp-3 text-[13px] leading-relaxed text-slate-700 dark:text-slate-300">
-            �{review.excerpt}�
+            ï¿½{review.excerpt}ï¿½
           </div>
 
           <div className="mt-3 flex flex-wrap gap-2">
@@ -825,7 +827,7 @@ function ReviewRow({
               </span>
             ))}
             <span className="ml-2 text-[11px] font-semibold text-faith-slate">{review.createdLabel}</span>
-            <span className="text-[11px] font-semibold text-faith-slate">� {review.dueLabel}</span>
+            <span className="text-[11px] font-semibold text-faith-slate">ï¿½ {review.dueLabel}</span>
           </div>
         </div>
 
@@ -876,7 +878,7 @@ function CaseRow({
             {kase.childSafe ? <Pill tone="bad">Child-safe</Pill> : null}
           </div>
           <div className="mt-2 text-[12px] text-faith-slate">
-            {kase.sourceLabel} � Owner: {kase.owner} � {kase.lastActionLabel}
+            {kase.sourceLabel} ï¿½ Owner: {kase.owner} ï¿½ {kase.lastActionLabel}
           </div>
           <div className="mt-3 text-[13px] leading-relaxed text-slate-700 dark:text-slate-300">{kase.summary}</div>
           <div className="mt-3 flex flex-wrap gap-2">
@@ -948,7 +950,7 @@ function PreviewCanvas({
         </div>
 
         <div className="mt-3 text-[13px] leading-relaxed text-slate-700 dark:text-slate-300">
-          �{review.excerpt}�
+          ï¿½{review.excerpt}ï¿½
         </div>
 
         <div className="mt-4 rounded-3xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-950 p-4">
@@ -981,7 +983,7 @@ function PreviewCanvas({
                 <Pill tone={review.sentiment === 'Negative' ? 'accent' : 'good'}>{review.rating}.0?</Pill>
               </div>
               <div className="mt-3 text-[13px] font-bold text-faith-ink dark:text-slate-100">{review.title}</div>
-              <div className="mt-2 text-[12px] leading-relaxed text-slate-700 dark:text-slate-300">�{review.excerpt}�</div>
+              <div className="mt-2 text-[12px] leading-relaxed text-slate-700 dark:text-slate-300">ï¿½{review.excerpt}ï¿½</div>
 
               <div className="mt-4 rounded-2xl p-3 text-white" style={{ background: EV_GREEN }}>
                 <div className="text-[11px] uppercase tracking-[0.16em] text-white/80">Public response</div>
@@ -1208,20 +1210,20 @@ export default function FaithHubReviewsAndModerationPage() {
               </div>
             </div>
 
-            <div className="flex flex-wrap items-center gap-2">
-              <Btn tone="ghost" onClick={() => setPreviewOpen(true)} left={<Eye className="h-4 w-4" />}>
+            <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 xl:flex xl:w-auto xl:flex-wrap xl:justify-end">
+              <Btn tone="ghost" className="h-10 px-4 justify-start sm:justify-center bg-[var(--fh-surface-bg)] dark:bg-slate-900 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800" onClick={() => setPreviewOpen(true)} left={<Eye className="h-4 w-4" />}>
                 Preview
               </Btn>
-              <Btn tone="neutral" onClick={() => safeNav(ROUTES.providerDashboard)} left={<Layers className="h-4 w-4" />}>
+              <Btn tone="neutral" className="h-10 px-4" onClick={() => safeNav(ROUTES.providerDashboard)} left={<Layers className="h-4 w-4" />}>
                 Provider Dashboard
               </Btn>
-              <Btn tone="primary" onClick={handleSendResponse} loading={pendingAction === 'respond'} left={<Send className="h-4 w-4" />}>
+              <Btn tone="primary" className="h-10 px-4" onClick={handleSendResponse} loading={pendingAction === 'respond'} left={<Send className="h-4 w-4" />}>
                 Respond to review
               </Btn>
-              <Btn tone="accent" onClick={handleResolveCase} loading={pendingAction === 'resolve'} left={<CheckCircle2 className="h-4 w-4" />}>
+              <Btn tone="accent" className="h-10 px-4" onClick={handleResolveCase} loading={pendingAction === 'resolve'} left={<CheckCircle2 className="h-4 w-4" />}>
                 Resolve moderation case
               </Btn>
-              <Btn tone="danger" onClick={handleEscalateCase} loading={pendingAction === 'escalate'} left={<Flag className="h-4 w-4" />}>
+              <Btn tone="danger" className="h-10 px-4" onClick={handleEscalateCase} loading={pendingAction === 'escalate'} left={<Flag className="h-4 w-4" />}>
                 Escalate issue
               </Btn>
             </div>
@@ -1237,7 +1239,7 @@ export default function FaithHubReviewsAndModerationPage() {
                   Trust watch
                 </Pill>
                 <span className="text-[12px] font-semibold text-faith-slate">
-                  Audio complaints are leading negative sentiment this week � 1 suspected review brigade � safeguarding lane healthy across child-facing surfaces
+                  Audio complaints are leading negative sentiment this week ï¿½ 1 suspected review brigade ï¿½ safeguarding lane healthy across child-facing surfaces
                 </span>
               </div>
 
@@ -1497,10 +1499,10 @@ export default function FaithHubReviewsAndModerationPage() {
                     <div className="min-w-0">
                       <div className="text-[14px] font-extrabold text-faith-ink dark:text-slate-100">{selectedReview.title}</div>
                       <div className="mt-1 text-[12px] text-faith-slate">
-                        {selectedReview.sourceLabel} � {selectedReview.topic} � Owner: {selectedReview.owner}
+                        {selectedReview.sourceLabel} ï¿½ {selectedReview.topic} ï¿½ Owner: {selectedReview.owner}
                       </div>
                       <div className="mt-3 text-[13px] leading-relaxed text-slate-700 dark:text-slate-300">
-                        �{selectedReview.excerpt}�
+                        ï¿½{selectedReview.excerpt}ï¿½
                       </div>
                     </div>
 
@@ -1911,7 +1913,7 @@ export default function FaithHubReviewsAndModerationPage() {
         <Modal
           open={evidenceOpen}
           onClose={() => setEvidenceOpen(false)}
-          title={`Evidence & action drawer � ${selectedCase.id}`}
+          title={`Evidence & action drawer ï¿½ ${selectedCase.id}`}
           subtitle="Screenshots, linked messages, prior rulings, audit notes, and explainable action history for the selected moderation case."
           right={<Pill tone={selectedCase.childSafe ? 'bad' : 'accent'}>{selectedCase.status}</Pill>}
         >
@@ -1919,7 +1921,7 @@ export default function FaithHubReviewsAndModerationPage() {
             <div className="space-y-4">
               <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
                 <div className="text-sm font-extrabold text-faith-ink dark:text-slate-100">{selectedCase.title}</div>
-                <div className="mt-1 text-[12px] text-faith-slate">{selectedCase.sourceLabel} � Owner: {selectedCase.owner}</div>
+                <div className="mt-1 text-[12px] text-faith-slate">{selectedCase.sourceLabel} ï¿½ Owner: {selectedCase.owner}</div>
                 <div className="mt-3 text-[13px] leading-relaxed text-slate-700 dark:text-slate-300">{selectedCase.summary}</div>
 
                 <div className="mt-4 flex flex-wrap gap-2">
