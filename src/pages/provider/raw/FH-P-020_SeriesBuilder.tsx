@@ -39,6 +39,7 @@ import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 import {
+  getTeachingFlowState,
   publishSeries,
   saveSeriesDraft,
   validateSeriesDraft,
@@ -909,6 +910,31 @@ export default function SeriesBuilderPage() {
     const timer = window.setTimeout(() => setToast(null), 2200);
     return () => window.clearTimeout(timer);
   }, [toast]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const seriesId = new URLSearchParams(window.location.search).get("seriesId");
+    if (!seriesId) return;
+
+    const target = getTeachingFlowState().series.find((item) => item.id === seriesId);
+    if (!target) return;
+
+    setSeriesRecordId(target.id);
+    setDraft((current) => ({
+      ...current,
+      title: target.title || current.title,
+      subtitle: target.subtitle || current.subtitle,
+      description: target.description || current.description,
+      speakers: target.speaker ? [target.speaker] : current.speakers,
+      episodeTarget: target.episodeTarget || current.episodeTarget,
+      launchState:
+        target.publishingState === "Published"
+          ? "Published"
+          : target.publishingState === "Scheduled"
+          ? "Scheduled"
+          : "Draft",
+    }));
+  }, []);
 
   const readiness = useMemo(() => scoreReadiness(draft), [draft]);
   const availableLocaleOptions = useMemo(

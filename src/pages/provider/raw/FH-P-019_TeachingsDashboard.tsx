@@ -662,8 +662,13 @@ function Drawer({
 }
 
 function getPrimaryRoute(teaching: TeachingRecord) {
-  if (teaching.type === "Series") return ROUTES.seriesBuilder;
-  if (teaching.type === "Episode") return ROUTES.episodeBuilder;
+  const syncedId = teaching.id.startsWith("synced-") ? teaching.id.replace("synced-", "") : null;
+  if (teaching.type === "Series") {
+    return syncedId ? `${ROUTES.seriesBuilder}?seriesId=${encodeURIComponent(syncedId)}` : ROUTES.seriesBuilder;
+  }
+  if (teaching.type === "Episode") {
+    return syncedId ? `${ROUTES.episodeBuilder}?episodeId=${encodeURIComponent(syncedId)}` : ROUTES.episodeBuilder;
+  }
   return ROUTES.standaloneTeachingBuilder;
 }
 

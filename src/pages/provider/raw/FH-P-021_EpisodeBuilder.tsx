@@ -893,6 +893,37 @@ export default function EpisodeBuilderPage() {
   }, [teachingFlow.series]);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+    const episodeId = new URLSearchParams(window.location.search).get("episodeId");
+    if (!episodeId) return;
+
+    const target = getTeachingFlowState().episodes.find((item) => item.id === episodeId);
+    if (!target) return;
+
+    setEpisodeRecordId(target.id);
+    setDraft((current) => ({
+      ...current,
+      title: target.title || current.title,
+      parentSeriesTitle: target.parentSeriesTitle || current.parentSeriesTitle,
+      focusStatement: target.focusStatement || current.focusStatement,
+      scripture: target.scripture || current.scripture,
+      collaborators: target.speaker
+        ? [
+            {
+              id: "linked-speaker",
+              name: target.speaker,
+              role: "Pastor",
+              state: "Approved",
+              note: "Loaded from saved teaching flow record.",
+            },
+            ...current.collaborators.filter((item) => item.id !== "linked-speaker"),
+          ]
+        : current.collaborators,
+      publicReplay: target.publishingState !== "Draft",
+    }));
+  }, []);
+
+  useEffect(() => {
     if (!toast) return;
     const timer = window.setTimeout(() => setToast(null), 2200);
     return () => window.clearTimeout(timer);
