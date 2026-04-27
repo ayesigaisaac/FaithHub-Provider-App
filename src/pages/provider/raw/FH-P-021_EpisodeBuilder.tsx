@@ -25,8 +25,16 @@ import {
   X,
   Zap,
 } from "lucide-react";
+import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
+import {
+  getTeachingFlowState,
+  publishEpisode,
+  saveEpisodeDraft,
+  subscribeToTeachingFlow,
+  validateEpisodeDraft,
+} from "@/features/teachings/teachingFlowStore";
 
 /**
  * Provider � Episode Builder
@@ -335,6 +343,10 @@ const STEP_ITEMS: Array<{ key: StepKey; label: string }> = [
 
 function cx(...values: Array<string | false | null | undefined>) {
   return values.filter(Boolean).join(" ");
+}
+
+function safeNav(path: string) {
+  navigateWithRouter(path);
 }
 
 function Pill({
@@ -817,6 +829,9 @@ export default function EpisodeBuilderPage() {
   const [newOutcome, setNewOutcome] = useState("");
   const [newTag, setNewTag] = useState("");
   const [toast, setToast] = useState<string | null>(null);
+  const [episodeRecordId, setEpisodeRecordId] = useState<string | undefined>(undefined);
+  const [formErrors, setFormErrors] = useState<string[]>([]);
+  const [teachingFlow, setTeachingFlow] = useState(() => getTeachingFlowState());
 
   const [draft, setDraft] = useState<EpisodeDraft>({
     parentSeriesTitle: "Practicing the Way of Hope",
@@ -859,6 +874,23 @@ export default function EpisodeBuilderPage() {
   useEffect(() => {
     setDraft((current) => sanitizeEpisodeDraft(current));
   }, []);
+
+  useEffect(() => {
+    return subscribeToTeachingFlow(() => {
+      setTeachingFlow(getTeachingFlowState());
+    });
+  }, []);
+
+  useEffect(() => {
+    if (teachingFlow.series.length === 0) return;
+    setDraft((current) => {
+      const matchesSavedSeries = teachingFlow.series.some(
+        (series) => series.title.toLowerCase() === current.parentSeriesTitle.trim().toLowerCase(),
+      );
+      if (matchesSavedSeries) return current;
+      return { ...current, parentSeriesTitle: teachingFlow.series[0].title };
+    });
+  }, [teachingFlow.series]);
 
   useEffect(() => {
     if (!toast) return;
@@ -977,6 +1009,80 @@ export default function EpisodeBuilderPage() {
     setToast("Discovery tag added.");
   };
 
+  const seriesOptions = useMemo(() => teachingFlow.series, [teachingFlow.series]);
+
+  const toPublishingState = () => {
+    return draft.publicReplay ? "Scheduled" as const : "Draft" as const;
+  };
+
+  const saveCurrentEpisodeDraft = () => {
+    const errors = validateEpisodeDraft({
+      title: draft.title,
+      parentSeriesTitle: draft.parentSeriesTitle,
+      focusStatement: draft.focusStatement,
+      scripture: draft.scripture,
+    });
+
+    if (errors.length > 0) {
+      setFormErrors(errors);
+      setToast("Episode draft has validation issues.");
+      return;
+    }
+
+    const linkedSeries = seriesOptions.find(
+      (series) => series.title.toLowerCase() === draft.parentSeriesTitle.trim().toLowerCase(),
+    );
+
+    const saved = saveEpisodeDraft({
+      id: episodeRecordId,
+      title: draft.title,
+      parentSeriesTitle: linkedSeries?.title || draft.parentSeriesTitle,
+      parentSeriesId: linkedSeries?.id ?? null,
+      focusStatement: draft.focusStatement,
+      scripture: draft.scripture,
+      speaker: draft.collaborators[0]?.name || "Unassigned",
+      publishingState: toPublishingState(),
+    });
+
+    setEpisodeRecordId(saved.id);
+    setFormErrors([]);
+    setToast("Episode draft saved and synced to Teachings Dashboard.");
+  };
+
+  const publishCurrentEpisode = () => {
+    const errors = validateEpisodeDraft({
+      title: draft.title,
+      parentSeriesTitle: draft.parentSeriesTitle,
+      focusStatement: draft.focusStatement,
+      scripture: draft.scripture,
+    });
+
+    if (errors.length > 0) {
+      setFormErrors(errors);
+      setToast("Resolve validation issues before publishing.");
+      return;
+    }
+
+    const linkedSeries = seriesOptions.find(
+      (series) => series.title.toLowerCase() === draft.parentSeriesTitle.trim().toLowerCase(),
+    );
+
+    const saved = publishEpisode({
+      id: episodeRecordId,
+      title: draft.title,
+      parentSeriesTitle: linkedSeries?.title || draft.parentSeriesTitle,
+      parentSeriesId: linkedSeries?.id ?? null,
+      focusStatement: draft.focusStatement,
+      scripture: draft.scripture,
+      speaker: draft.collaborators[0]?.name || "Unassigned",
+      publishingState: "Published",
+    });
+
+    setEpisodeRecordId(saved.id);
+    setFormErrors([]);
+    setToast("Episode published and synced to Teachings Dashboard.");
+  };
+
   const activeCard = (key: StepKey) => step === key;
 
   return (
@@ -993,16 +1099,27 @@ export default function EpisodeBuilderPage() {
             </div>
 
             <div className="flex flex-wrap items-center gap-3">
-              <SoftButton onClick={() => setToast("Episode saved as draft.")}>Save episode</SoftButton>
+              <SoftButton onClick={saveCurrentEpisodeDraft}>Save episode</SoftButton>
               <PrimaryButton tone="orange" onClick={addLiveAttachment}>
                 Attach live session
               </PrimaryButton>
-              <PrimaryButton tone="green" onClick={() => setToast("Episode published.")}>
+              <PrimaryButton tone="green" onClick={publishCurrentEpisode}>
                 Publish episode
               </PrimaryButton>
             </div>
           </div>
         </div>
+
+        {formErrors.length > 0 ? (
+          <div className="mt-4 rounded-[24px] border border-rose-200 bg-rose-50 p-4">
+            <div className="text-[12px] font-black uppercase tracking-[0.16em] text-rose-700">Validation issues</div>
+            <div className="mt-2 space-y-1 text-[12px] text-rose-700">
+              {formErrors.map((error) => (
+                <div key={error}>{error}</div>
+              ))}
+            </div>
+          </div>
+        ) : null}
 
         <div className="mt-6 grid gap-6 2xl:grid-cols-[242px_minmax(0,1fr)_500px]">
           <aside>
@@ -1029,6 +1146,24 @@ export default function EpisodeBuilderPage() {
                         value={draft.parentSeriesTitle}
                         onChange={(value) => setDraft((current) => ({ ...current, parentSeriesTitle: value }))}
                       />
+                      {seriesOptions.length > 0 ? (
+                        <select
+                          value={draft.parentSeriesTitle}
+                          onChange={(event) =>
+                            setDraft((current) => ({
+                              ...current,
+                              parentSeriesTitle: event.target.value,
+                            }))
+                          }
+                          className="mt-2 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] font-semibold text-faith-ink outline-none"
+                        >
+                          {seriesOptions.map((series) => (
+                            <option key={series.id} value={series.title}>
+                              {series.title}
+                            </option>
+                          ))}
+                        </select>
+                      ) : null}
                     </div>
                     <div>
                       <Label>Episode title</Label>

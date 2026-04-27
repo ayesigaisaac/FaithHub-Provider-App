@@ -38,6 +38,11 @@ import {
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
+import {
+  publishSeries,
+  saveSeriesDraft,
+  validateSeriesDraft,
+} from "@/features/teachings/teachingFlowStore";
 
 /**
  * Provider — Series Builder
@@ -862,6 +867,8 @@ export default function SeriesBuilderPage() {
   const [previewMode, setPreviewMode] = useState<PreviewMode>("desktop");
   const [seriesSearch, setSeriesSearch] = useState("");
   const [toast, setToast] = useState<string | null>(null);
+  const [seriesRecordId, setSeriesRecordId] = useState<string | undefined>(undefined);
+  const [formErrors, setFormErrors] = useState<string[]>([]);
   const [draft, setDraft] = useState<SeriesDraft>({
     templateId: "tpl-sermon",
     title: "Practicing the Way of Hope",
@@ -991,6 +998,71 @@ export default function SeriesBuilderPage() {
       ],
     }));
     setToast("Resource block added.");
+  };
+
+  const toPublishingState = (launchState: SeriesDraft["launchState"]) => {
+    if (launchState === "Published") return "Published" as const;
+    if (launchState === "Scheduled") return "Scheduled" as const;
+    return "Draft" as const;
+  };
+
+  const saveCurrentSeriesDraft = () => {
+    const errors = validateSeriesDraft({
+      title: draft.title,
+      subtitle: draft.subtitle,
+      description: draft.description,
+      speaker: draft.speakers[0] || "",
+    });
+
+    if (errors.length > 0) {
+      setFormErrors(errors);
+      setToast("Series draft has validation issues.");
+      return;
+    }
+
+    const saved = saveSeriesDraft({
+      id: seriesRecordId,
+      title: draft.title,
+      subtitle: draft.subtitle,
+      description: draft.description,
+      speaker: draft.speakers[0] || "Unassigned",
+      episodeTarget: draft.episodeTarget,
+      publishingState: toPublishingState(draft.launchState),
+    });
+
+    setSeriesRecordId(saved.id);
+    setFormErrors([]);
+    setToast("Series draft saved and synced to Teachings Dashboard.");
+  };
+
+  const publishCurrentSeries = () => {
+    const errors = validateSeriesDraft({
+      title: draft.title,
+      subtitle: draft.subtitle,
+      description: draft.description,
+      speaker: draft.speakers[0] || "",
+    });
+
+    if (errors.length > 0) {
+      setFormErrors(errors);
+      setToast("Resolve validation issues before publishing.");
+      return;
+    }
+
+    const saved = publishSeries({
+      id: seriesRecordId,
+      title: draft.title,
+      subtitle: draft.subtitle,
+      description: draft.description,
+      speaker: draft.speakers[0] || "Unassigned",
+      episodeTarget: draft.episodeTarget,
+      publishingState: "Published",
+    });
+
+    setSeriesRecordId(saved.id);
+    setFormErrors([]);
+    setDraft((current) => ({ ...current, launchState: "Published" }));
+    setToast("Series published and synced to Teachings Dashboard.");
   };
 
   const activeTemplate = SERIES_TEMPLATES.find((template) => template.id === draft.templateId) || SERIES_TEMPLATES[0];
@@ -1828,12 +1900,23 @@ export default function SeriesBuilderPage() {
             <div className="flex flex-wrap items-center gap-2 lg:justify-end">
               <SoftButton onClick={() => setToast("Series draft copied.")}> <Copy className="h-4 w-4" /> Duplicate draft</SoftButton>
               <SoftButton onClick={() => setToast("Series preview opened.")}> <Eye className="h-4 w-4" /> Preview series</SoftButton>
-              <SoftButton onClick={() => setToast("Series draft saved.")}>Save series draft</SoftButton>
+              <SoftButton onClick={saveCurrentSeriesDraft}>Save series draft</SoftButton>
               <PrimaryButton color="orange" onClick={addEpisode}><Plus className="h-4 w-4" /> Add episode</PrimaryButton>
-              <PrimaryButton onClick={() => setToast("Series submitted to publishing flow.")}><Zap className="h-4 w-4" /> Publish series</PrimaryButton>
+              <PrimaryButton onClick={publishCurrentSeries}><Zap className="h-4 w-4" /> Publish series</PrimaryButton>
             </div>
           </div>
         </div>
+
+        {formErrors.length > 0 ? (
+          <div className="mt-4 rounded-[22px] border border-rose-200 bg-rose-50 p-4">
+            <div className="text-[12px] font-black uppercase tracking-[0.16em] text-rose-700">Validation issues</div>
+            <div className="mt-2 space-y-1 text-[12px] text-rose-700">
+              {formErrors.map((error) => (
+                <div key={error}>{error}</div>
+              ))}
+            </div>
+          </div>
+        ) : null}
 
         <div className="mt-5 grid gap-5 2xl:grid-cols-[260px_minmax(0,1fr)_390px]">
           <div className="xl:sticky xl:top-6 xl:self-start">

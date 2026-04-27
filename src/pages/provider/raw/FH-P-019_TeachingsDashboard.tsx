@@ -35,6 +35,10 @@ import {
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
+import {
+  getTeachingFlowState,
+  subscribeToTeachingFlow,
+} from "@/features/teachings/teachingFlowStore";
 
 /**
  * Provider � Teachings Dashboard
@@ -969,6 +973,7 @@ function TemplateTile({
 }
 
 export default function TeachingsDashboardPage() {
+  const [teachingFlow, setTeachingFlow] = useState(() => getTeachingFlowState());
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState<FilterKey>("all");
   const [selectedId, setSelectedId] = useState(TEACHINGS[0]?.id || "");
@@ -976,9 +981,97 @@ export default function TeachingsDashboardPage() {
   const [previewOpen, setPreviewOpen] = useState(false);
   const [copied, setCopied] = useState(false);
 
+  useEffect(() => {
+    return subscribeToTeachingFlow(() => {
+      setTeachingFlow(getTeachingFlowState());
+    });
+  }, []);
+
+  const syncedTeachings = useMemo<TeachingRecord[]>(() => {
+    const nowISO = new Date().toISOString();
+
+    const syncedSeries = teachingFlow.series.map((series) => ({
+      id: `synced-${series.id}`,
+      title: series.title,
+      subtitle: series.subtitle || "Series draft synced from Series Builder.",
+      type: "Series" as const,
+      status: series.publishingState,
+      speaker: series.speaker,
+      summary: series.description || "Series draft synced from Series Builder.",
+      coverUrl: HERO_1,
+      campus: "Workspace",
+      access: "Public" as const,
+      languages: ["English"],
+      tags: ["Series", "Synced"],
+      episodeCount: series.episodeTarget,
+      liveCount: 0,
+      replayCount: series.publishingState === "Published" ? 1 : 0,
+      clipCount: 0,
+      resourceCount: 0,
+      watchStarts: 0,
+      followers: 0,
+      donationsInfluenced: 0,
+      beaconReady: series.publishingState === "Published",
+      translationDue: 0,
+      notesReady: true,
+      artworkReady: true,
+      moderationBacklog: 0,
+      updatedISO: series.updatedAtISO || nowISO,
+      owner: series.speaker || "Unassigned",
+      topAction: series.publishingState === "Published" ? "Review performance" : "Continue editing series",
+      topActionHint:
+        series.publishingState === "Published"
+          ? "Published from Series Builder and ready for optimization."
+          : "Saved in Series Builder and ready for next updates.",
+    }));
+
+    const syncedEpisodes = teachingFlow.episodes.map((episode) => ({
+      id: `synced-${episode.id}`,
+      title: episode.title,
+      subtitle: episode.focusStatement || "Episode draft synced from Episode Builder.",
+      type: "Episode" as const,
+      status: episode.publishingState,
+      speaker: episode.speaker,
+      summary: episode.focusStatement || "Episode draft synced from Episode Builder.",
+      coverUrl: HERO_2,
+      campus: "Workspace",
+      access: "Public" as const,
+      languages: ["English"],
+      tags: ["Episode", "Synced"],
+      seriesLabel: episode.parentSeriesTitle || "Unlinked Series",
+      episodeLabel: "Latest",
+      episodeCount: 1,
+      liveCount: 0,
+      replayCount: episode.publishingState === "Published" ? 1 : 0,
+      clipCount: 0,
+      resourceCount: 0,
+      watchStarts: 0,
+      followers: 0,
+      donationsInfluenced: 0,
+      beaconReady: episode.publishingState === "Published",
+      translationDue: 0,
+      notesReady: true,
+      artworkReady: true,
+      moderationBacklog: 0,
+      updatedISO: episode.updatedAtISO || nowISO,
+      owner: episode.speaker || "Unassigned",
+      topAction: episode.publishingState === "Published" ? "Monitor replay impact" : "Continue editing episode",
+      topActionHint:
+        episode.publishingState === "Published"
+          ? "Published from Episode Builder and now visible in the teaching pipeline."
+          : "Saved in Episode Builder and ready for live/resource linking.",
+    }));
+
+    return [...syncedSeries, ...syncedEpisodes];
+  }, [teachingFlow.episodes, teachingFlow.series]);
+
+  const allTeachings = useMemo(() => {
+    return [...syncedTeachings, ...TEACHINGS];
+  }, [syncedTeachings]);
+
   const filteredTeachings = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return TEACHINGS.filter((teaching) => {
+    return allTeachings.filter((teaching) => {
       const matchesQuery =
         !q ||
         [
@@ -1010,12 +1103,12 @@ export default function TeachingsDashboardPage() {
 
       return matchesQuery && matchesFilter;
     });
-  }, [filter, query]);
+  }, [allTeachings, filter, query]);
 
   const selectedTeaching =
     filteredTeachings.find((teaching) => teaching.id === selectedId) ||
     filteredTeachings[0] ||
-    TEACHINGS[0];
+    allTeachings[0];
 
   useEffect(() => {
     if (!selectedTeaching) return;
@@ -1023,16 +1116,16 @@ export default function TeachingsDashboardPage() {
   }, [selectedTeaching, selectedId]);
 
   const stats = useMemo(() => {
-    const activeSeries = TEACHINGS.filter((t) => t.type === "Series").length;
-    const standalone = TEACHINGS.filter((t) => t.type === "Standalone").length;
-    const liveLinked = TEACHINGS.filter(
+    const activeSeries = allTeachings.filter((t) => t.type === "Series").length;
+    const standalone = allTeachings.filter((t) => t.type === "Standalone").length;
+    const liveLinked = allTeachings.filter(
       (t) => t.status === "Live-linked" || t.liveCount > 0,
     ).length;
-    const replayReady = TEACHINGS.filter(
+    const replayReady = allTeachings.filter(
       (t) => t.replayCount > 0 || t.status === "Published",
     ).length;
-    const watchStarts = TEACHINGS.reduce((sum, t) => sum + t.watchStarts, 0);
-    const beaconReady = TEACHINGS.filter((t) => t.beaconReady).length;
+    const watchStarts = allTeachings.reduce((sum, t) => sum + t.watchStarts, 0);
+    const beaconReady = allTeachings.filter((t) => t.beaconReady).length;
 
     return {
       activeSeries,
@@ -1042,23 +1135,23 @@ export default function TeachingsDashboardPage() {
       watchStarts,
       beaconReady,
     };
-  }, []);
+  }, [allTeachings]);
 
   const pulseItems = useMemo(() => {
-    const missingArtwork = TEACHINGS.filter((t) => !t.artworkReady).length;
-    const missingNotes = TEACHINGS.filter((t) => !t.notesReady).length;
-    const translationDue = TEACHINGS.filter((t) => t.translationDue > 0).length;
-    const readyForBeacon = TEACHINGS.filter((t) => t.beaconReady).length;
+    const missingArtwork = allTeachings.filter((t) => !t.artworkReady).length;
+    const missingNotes = allTeachings.filter((t) => !t.notesReady).length;
+    const translationDue = allTeachings.filter((t) => t.translationDue > 0).length;
+    const readyForBeacon = allTeachings.filter((t) => t.beaconReady).length;
     return [
       `${missingArtwork} teachings need artwork`,
       `${missingNotes} teachings need notes`,
       `${translationDue} teachings need translation review`,
       `${readyForBeacon} teachings are ready for notifications and Beacon`,
     ];
-  }, []);
+  }, [allTeachings]);
 
   const pipelineItems = useMemo(() => {
-    return TEACHINGS.map((teaching) => ({
+    return allTeachings.map((teaching) => ({
       id: teaching.id,
       title: teaching.title,
       hint:
@@ -1083,19 +1176,19 @@ export default function TeachingsDashboardPage() {
       const order = { Blocked: 0, Review: 1, Ready: 2 } as Record<string, number>;
       return order[a.status] - order[b.status];
     });
-  }, []);
+  }, [allTeachings]);
 
   const liveLinkedTeachings = useMemo(
     () =>
-      TEACHINGS.filter((t) => t.upcomingISO)
+      allTeachings.filter((t) => t.upcomingISO)
         .sort((a, b) => new Date(a.upcomingISO || "").getTime() - new Date(b.upcomingISO || "").getTime())
         .slice(0, 4),
-    [],
+    [allTeachings],
   );
 
   const topPerformers = useMemo(
-    () => [...TEACHINGS].sort((a, b) => b.watchStarts - a.watchStarts).slice(0, 4),
-    [],
+    () => [...allTeachings].sort((a, b) => b.watchStarts - a.watchStarts).slice(0, 4),
+    [allTeachings],
   );
 
   const recommendations = useMemo(() => {
