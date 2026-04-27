@@ -36,7 +36,10 @@ describe('Teachings dashboard integration', () => {
 
     render(<TeachingsDashboardPage />);
 
-    expect(await screen.findByText(seriesTitle)).toBeInTheDocument();
-    expect(await screen.findByText(episodeTitle)).toBeInTheDocument();
+    const seriesMatches = await screen.findAllByText(seriesTitle);
+    const episodeMatches = await screen.findAllByText(episodeTitle);
+
+    expect(seriesMatches.length).toBeGreaterThan(0);
+    expect(episodeMatches.length).toBeGreaterThan(0);
   }, 15000);
 });

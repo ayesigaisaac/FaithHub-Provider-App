@@ -50,7 +50,7 @@ Open the local Vite URL shown in the terminal.
 
 ## Production build
 
-```bash
+```bash 
 npm run build
 npm run preview
 ```
