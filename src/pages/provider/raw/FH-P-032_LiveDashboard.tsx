@@ -40,6 +40,7 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
+import { getLiveFlowState, subscribeToLiveFlow } from "@/features/live/liveFlowStore";
 
 /**
  * Provider � Live Dashboard
@@ -515,6 +516,102 @@ const SESSIONS: SessionData[] = [
     },
   },
 ];
+
+function mapLiveFlowRecordToDashboardSession(
+  record: ReturnType<typeof getLiveFlowState>["sessions"][number],
+): SessionData {
+  const state: SessionState =
+    record.status === "Scheduled" ? "Upcoming" : record.status === "Ready" ? "Live" : "Upcoming";
+
+  return {
+    id: record.id,
+    title: record.title,
+    state,
+    parentLabel: record.parentLabel || "Standalone Live",
+    parentType:
+      record.parentType === "Series Episode" ||
+      record.parentType === "Standalone Teaching" ||
+      record.parentType === "Event" ||
+      record.parentType === "Giving Moment"
+        ? record.parentType
+        : "Standalone Live",
+    audienceLabel: `${record.audience} · ${record.language}`,
+    locationLabel: record.campus || "Online Campus",
+    timezone: record.timezone || "Africa/Kampala",
+    startISO: record.startISO,
+    endISO: record.endISO,
+    hosts: {
+      host: record.speaker || "Unassigned",
+      cohost: "",
+      producer: "Producer Claire N.",
+      moderator: "Moderator Tobi E.",
+    },
+    health: {
+      critical: "Healthy",
+      ingestHealth: 92,
+      bitrateMbps: 6.0,
+      fps: 30,
+      audioConfidence: 90,
+      latencySec: 2.6,
+      destinationSync: 95,
+      recording: true,
+      backupReady: true,
+      trend: [64, 66, 68, 67, 70, 72, 73, 74, 75, 76, 77, 79],
+    },
+    destinations: [
+      { name: "Provider", status: "Healthy" },
+      { name: "YouTube", status: "Standby" },
+    ],
+    team: [
+      { role: "Host", name: record.speaker || "Unassigned", readiness: "Ready", checked: true, critical: true },
+      { role: "Producer", name: "Producer Claire N.", readiness: "Ready", checked: true, critical: true },
+      { role: "Moderator", name: "Moderator Tobi E.", readiness: "Ready", checked: true, critical: true },
+    ],
+    audience: {
+      registrants: 0,
+      waitingRoom: 0,
+      viewers: 0,
+      peakViewers: 0,
+      chatVelocity: 0,
+      qnaLoad: 0,
+      prayerRequests: 0,
+      forecastArrival: 120,
+      dropOffRisk: "Low",
+      arrivalTrend: [10, 11, 12, 14, 16, 18, 20, 22, 24, 27, 30, 32],
+    },
+    conversion: {
+      donationTotal: 0,
+      crowdfundRaised: 0,
+      crowdfundTarget: 1,
+      eventSignups: 0,
+      merchClicks: 0,
+      beaconHandoffs: 0,
+      responseLabel: "Session saved from Live Builder and ready for live operations.",
+    },
+    alerts: [],
+    postLive: {
+      replayReadiness: 60,
+      clipOpportunities: 0,
+      followUpSegments: 1,
+      markersCaptured: 0,
+      nextActions: [
+        "Finalize destination routing in Live Studio.",
+        "Send reminder to target audience before start.",
+      ],
+    },
+    cover: {
+      eyebrow: "Live Session Operations",
+      promise: record.subtitle || "Session configured in Live Builder.",
+      gradient: "linear-gradient(135deg, #0f3f49 0%, #115b56 40%, #03cd8c 100%)",
+    },
+    moderationDefaults: {
+      slowMode: false,
+      pinnedNotice: true,
+      audienceMute: false,
+      prayerTriage: true,
+    },
+  };
+}
 
 function formatDateTime(iso: string) {
   const date = new Date(iso);
@@ -1069,7 +1166,14 @@ function PostLiveLaunchPad({ session }: { session: SessionData }) {
 
 export default function FaithHubLiveDashboardPage() {
   const [nowMs, setNowMs] = useState(Date.now());
-  const [activeSessionId, setActiveSessionId] = useState(SESSIONS[1].id);
+  const [liveFlow, setLiveFlow] = useState(() => getLiveFlowState());
+  const [activeSessionId, setActiveSessionId] = useState(() => {
+    if (typeof window !== "undefined") {
+      const routedId = new URLSearchParams(window.location.search).get("sessionId");
+      if (routedId) return routedId;
+    }
+    return SESSIONS[1].id;
+  });
   const [previewOpen, setPreviewOpen] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
   const [acknowledgedAlerts, setAcknowledgedAlerts] = useState<string[]>([]);
@@ -1085,14 +1189,31 @@ export default function FaithHubLiveDashboardPage() {
   }, []);
 
   useEffect(() => {
+    return subscribeToLiveFlow(() => {
+      setLiveFlow(getLiveFlowState());
+    });
+  }, []);
+
+  useEffect(() => {
     if (!toast) return;
     const t = window.setTimeout(() => setToast(null), 2800);
     return () => window.clearTimeout(t);
   }, [toast]);
 
+  const allSessions = useMemo(
+    () => [...liveFlow.sessions.map(mapLiveFlowRecordToDashboardSession), ...SESSIONS],
+    [liveFlow.sessions],
+  );
+
+  useEffect(() => {
+    if (!allSessions.some((item) => item.id === activeSessionId) && allSessions.length) {
+      setActiveSessionId(allSessions[0].id);
+    }
+  }, [activeSessionId, allSessions]);
+
   const session = useMemo(
-    () => SESSIONS.find((item) => item.id === activeSessionId) || SESSIONS[0],
-    [activeSessionId],
+    () => allSessions.find((item) => item.id === activeSessionId) || allSessions[0] || SESSIONS[0],
+    [activeSessionId, allSessions],
   );
 
   useEffect(() => {
@@ -1229,7 +1350,7 @@ export default function FaithHubLiveDashboardPage() {
                   onChange={(e) => setActiveSessionId(e.target.value)}
                   className="mt-2 w-full rounded-xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[13px] font-semibold text-faith-ink dark:text-slate-100 transition-colors"
                 >
-                  {SESSIONS.map((item) => (
+                  {allSessions.map((item) => (
                     <option key={item.id} value={item.id}>
                       {item.title} � {item.state}
                     </option>

@@ -6,6 +6,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
+import { getLiveFlowState, subscribeToLiveFlow } from "@/features/live/liveFlowStore";
 import {
   AlertTriangle,
   ArrowRight,
@@ -534,6 +535,71 @@ function cx(...parts: Array<string | false | null | undefined>) {
 
 function safeNav(path: string) {
   navigateWithRouter(path);
+}
+
+function mapLiveFlowRecordToScheduleSession(record: ReturnType<typeof getLiveFlowState>["sessions"][number]): LiveSession {
+  const normalizeCampus = (value: string): LiveSession["campus"] => {
+    if (value === "Central Campus" || value === "East Campus" || value === "City Hub") return value;
+    return "Online Campus";
+  };
+  const normalizeLanguage = (value: string): LiveSession["language"] => {
+    if (value === "Swahili" || value === "French" || value === "Arabic") return value;
+    return "English";
+  };
+  const normalizeAudience = (value: string): LiveSession["audience"] => {
+    if (value === "Youth" || value === "Women" || value === "Leaders" || value === "Families" || value === "Community") return value;
+    return "All Church";
+  };
+  const normalizeParentType = (value: string): LiveSession["parentType"] => {
+    if (
+      value === "Series Episode" ||
+      value === "Standalone Teaching" ||
+      value === "Event" ||
+      value === "Giving Moment"
+    ) {
+      return value;
+    }
+    return "Standalone Live";
+  };
+
+  return {
+    id: record.id,
+    title: record.title,
+    parentLabel: record.parentLabel,
+    parentType: normalizeParentType(record.parentType),
+    sessionType: SESSION_TYPES.includes(record.sessionType as LiveSession["sessionType"])
+      ? (record.sessionType as LiveSession["sessionType"])
+      : "Special Event",
+    campus: normalizeCampus(record.campus),
+    venue: "Studio A",
+    language: normalizeLanguage(record.language),
+    audience: normalizeAudience(record.audience),
+    speaker: record.speaker || "Unassigned",
+    startISO: record.startISO,
+    endISO: record.endISO,
+    timezone: record.timezone,
+    destinations: ["Provider"],
+    avResources: ["Studio Switcher A"],
+    roles: {
+      host: record.speaker || "Unassigned",
+      producer: "Producer Claire N.",
+      moderator: "",
+      caption: "",
+      support: "Support Team – Central Campus",
+    },
+    recurrence: "One-time",
+    registrations: 0,
+    notesReady: true,
+    graphicsReady: true,
+    credentialsReady: true,
+    translationEnabled: normalizeLanguage(record.language) !== "English",
+  };
+}
+
+function mergeLiveFlowSessions(base: LiveSession[], incoming: LiveSession[]): LiveSession[] {
+  const incomingIds = new Set(incoming.map((session) => session.id));
+  const withoutIncoming = base.filter((session) => !incomingIds.has(session.id));
+  return [...incoming, ...withoutIncoming];
 }
 
 function pad2(n: number) {
@@ -2461,7 +2527,10 @@ function MobilePreviewDrawer(props: React.ComponentProps<typeof Drawer> & { chil
 }
 
 export default function FaithHubLiveSchedulePage() {
-  const [sessions, setSessions] = useState<LiveSession[]>(SESSION_SEED);
+  const [sessions, setSessions] = useState<LiveSession[]>(() => {
+    const synced = getLiveFlowState().sessions.map(mapLiveFlowRecordToScheduleSession);
+    return mergeLiveFlowSessions(SESSION_SEED, synced);
+  });
   const [viewMode, setViewMode] = useState<ViewMode>("week");
   const [savedView, setSavedView] = useState<SavedView>("production");
   const [anchorDate, setAnchorDate] = useState<Date>(new Date("2026-04-15T10:00:00"));
@@ -2482,6 +2551,13 @@ export default function FaithHubLiveSchedulePage() {
   const [rescheduleOpen, setRescheduleOpen] = useState(false);
   const [previewOpen, setPreviewOpen] = useState(false);
   const [draggingSessionId, setDraggingSessionId] = useState<string | null>(null);
+
+  useEffect(() => {
+    return subscribeToLiveFlow(() => {
+      const synced = getLiveFlowState().sessions.map(mapLiveFlowRecordToScheduleSession);
+      setSessions((current) => mergeLiveFlowSessions(current, synced));
+    });
+  }, []);
 
   const showToast = (message: string) => setToast(message);
 
@@ -2507,6 +2583,15 @@ export default function FaithHubLiveSchedulePage() {
       if (filteredSessions.length) setSelectedSessionId(filteredSessions[0].id);
     }
   }, [filteredSessions, selectedSessionId]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const routedSessionId = new URLSearchParams(window.location.search).get("sessionId");
+    if (!routedSessionId) return;
+    if (sessions.some((session) => session.id === routedSessionId)) {
+      setSelectedSessionId(routedSessionId);
+    }
+  }, [sessions]);
 
   const weekStart = startOfWeek(anchorDate);
   const weekEnd = addDays(weekStart, 7);

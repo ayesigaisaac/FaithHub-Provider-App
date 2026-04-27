@@ -42,6 +42,12 @@ import {
 } from "lucide-react";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
+import {
+  getLiveFlowSessionById,
+  saveLiveFlowDraft,
+  scheduleLiveFlowSession,
+  validateLiveFlowDraft,
+} from "@/features/live/liveFlowStore";
 
 /**
  * Provider � Live Builder (Provider)
@@ -618,6 +624,24 @@ function cx(...items: Array<string | false | undefined | null>) {
 
 function safeNav(url: string) {
   navigateWithRouter(url);
+}
+
+function mapDraftParentTypeToStoreParentType(parentType: ParentType) {
+  if (parentType === "seriesEpisode") return "Series Episode" as const;
+  if (parentType === "standaloneTeaching") return "Standalone Teaching" as const;
+  if (parentType === "event") return "Event" as const;
+  if (parentType === "givingCampaign" || parentType === "charityCrowdfund") return "Giving Moment" as const;
+  return "Standalone Live" as const;
+}
+
+function mapStoreParentTypeToDraftParentType(
+  parentType: "Series Episode" | "Standalone Teaching" | "Event" | "Giving Moment" | "Standalone Live",
+): ParentType {
+  if (parentType === "Series Episode") return "seriesEpisode";
+  if (parentType === "Standalone Teaching") return "standaloneTeaching";
+  if (parentType === "Event") return "event";
+  if (parentType === "Giving Moment") return "givingCampaign";
+  return "standalone";
 }
 
 function pad2(n: number) {
@@ -2394,6 +2418,7 @@ export default function FaithHubLiveBuilderPage({ embedded = false, onRequestClo
   const [step, setStep] = useState<StepKey>("setup");
   const [toast, setToast] = useState<string | null>(null);
   const [previewOpen, setPreviewOpen] = useState(false);
+  const [formErrors, setFormErrors] = useState<string[]>([]);
   const isMobile = useIsMobile(1024);
 
   const checklist = useMemo(() => buildChecklist(draft), [draft]);
@@ -2404,6 +2429,46 @@ export default function FaithHubLiveBuilderPage({ embedded = false, onRequestClo
   const isLastStep = currentIndex === STEPS.length - 1;
 
   const showToast = (message: string) => setToast(message);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const sessionId = new URLSearchParams(window.location.search).get("sessionId");
+    if (!sessionId) return;
+
+    const session = getLiveFlowSessionById(sessionId);
+    if (!session) return;
+
+    const startDate = new Date(session.startISO);
+    const endDate = new Date(session.endISO);
+    const durationMin = Math.max(
+      15,
+      Math.round((endDate.getTime() - startDate.getTime()) / 60000) || 60,
+    );
+
+    setDraft((current) => ({
+      ...current,
+      id: session.id,
+      title: session.title || current.title,
+      subtitle: session.subtitle || current.subtitle,
+      summary: session.summary || current.summary,
+      parentType: mapStoreParentTypeToDraftParentType(session.parentType),
+      category: session.sessionType || current.category,
+      language: session.language || current.language,
+      startDateISO: session.startISO.slice(0, 10) || current.startDateISO,
+      startTime: session.startISO.slice(11, 16) || current.startTime,
+      durationMin,
+      timezone: session.timezone || current.timezone,
+      status: session.status,
+      team: {
+        ...current.team,
+        host: session.speaker || current.team.host,
+      },
+      presenters:
+        session.speaker && !current.presenters.includes(session.speaker)
+          ? [session.speaker, ...current.presenters]
+          : current.presenters,
+    }));
+  }, []);
 
   const applyTemplate = (template: LiveTemplate) => {
     const meta = TEMPLATE_META[template];
@@ -2430,8 +2495,46 @@ export default function FaithHubLiveBuilderPage({ embedded = false, onRequestClo
   };
 
   const saveLiveSession = () => {
-    setDraft((d) => ({ ...d, status: "Draft" }));
-    showToast("Live session saved.");
+    const startISO = `${draft.startDateISO}T${draft.startTime}:00`;
+    const endISO = new Date(new Date(startISO).getTime() + draft.durationMin * 60000)
+      .toISOString()
+      .slice(0, 19);
+
+    const errors = validateLiveFlowDraft({
+      title: draft.title,
+      speaker: draft.team.host || draft.presenters[0] || "",
+      startISO,
+      endISO,
+      timezone: draft.timezone,
+    });
+
+    if (errors.length > 0) {
+      setFormErrors(errors);
+      showToast("Live session has validation issues.");
+      return;
+    }
+
+    const saved = saveLiveFlowDraft({
+      id: draft.id,
+      title: draft.title,
+      subtitle: draft.subtitle,
+      summary: draft.summary,
+      parentLabel: getParentLabel(draft),
+      parentType: mapDraftParentTypeToStoreParentType(draft.parentType),
+      sessionType: draft.category || TEMPLATE_META[draft.template].label,
+      campus: "Online Campus",
+      language: draft.language,
+      audience: "All Church",
+      speaker: draft.team.host || draft.presenters[0] || "Unassigned",
+      startISO,
+      endISO,
+      timezone: draft.timezone,
+      status: "Draft",
+    });
+
+    setDraft((d) => ({ ...d, id: saved.id, status: "Draft" }));
+    setFormErrors([]);
+    showToast("Live session saved and synced to schedule/dashboard.");
   };
 
   const scheduleAndNotify = () => {
@@ -2439,8 +2542,47 @@ export default function FaithHubLiveBuilderPage({ embedded = false, onRequestClo
       showToast("Complete more checklist items before scheduling and notifications.");
       return;
     }
-    setDraft((d) => ({ ...d, status: "Scheduled" }));
-    showToast("Live session scheduled. Notification journey is ready for the next handoff.");
+    const startISO = `${draft.startDateISO}T${draft.startTime}:00`;
+    const endISO = new Date(new Date(startISO).getTime() + draft.durationMin * 60000)
+      .toISOString()
+      .slice(0, 19);
+
+    const errors = validateLiveFlowDraft({
+      title: draft.title,
+      speaker: draft.team.host || draft.presenters[0] || "",
+      startISO,
+      endISO,
+      timezone: draft.timezone,
+    });
+
+    if (errors.length > 0) {
+      setFormErrors(errors);
+      showToast("Resolve validation issues before scheduling.");
+      return;
+    }
+
+    const scheduled = scheduleLiveFlowSession({
+      id: draft.id,
+      title: draft.title,
+      subtitle: draft.subtitle,
+      summary: draft.summary,
+      parentLabel: getParentLabel(draft),
+      parentType: mapDraftParentTypeToStoreParentType(draft.parentType),
+      sessionType: draft.category || TEMPLATE_META[draft.template].label,
+      campus: "Online Campus",
+      language: draft.language,
+      audience: "All Church",
+      speaker: draft.team.host || draft.presenters[0] || "Unassigned",
+      startISO,
+      endISO,
+      timezone: draft.timezone,
+      status: "Scheduled",
+    });
+
+    setDraft((d) => ({ ...d, id: scheduled.id, status: "Scheduled" }));
+    setFormErrors([]);
+    showToast("Live session scheduled. Opening Live Schedule.");
+    safeNav(`${ROUTES.liveSchedule}?sessionId=${encodeURIComponent(scheduled.id)}`);
   };
 
   const openStudioSetup = () => {
@@ -2453,7 +2595,9 @@ export default function FaithHubLiveBuilderPage({ embedded = false, onRequestClo
   };
 
   const onQuickLink = (label: string, route: string) => {
-    showToast(`${label} ready: ${route}`);
+    const routeWithSession = `${route}?sessionId=${encodeURIComponent(draft.id)}`;
+    showToast(`${label} ready: ${routeWithSession}`);
+    safeNav(routeWithSession);
   };
 
   const renderStep = () => {
@@ -2517,6 +2661,17 @@ export default function FaithHubLiveBuilderPage({ embedded = false, onRequestClo
             <PrimaryButton className="h-10 w-full justify-center px-4" onClick={openStudioSetup} title="Open studio setup">
               <MonitorPlay className="h-4 w-4" /> Open studio setup
             </PrimaryButton>
+          </div>
+        </div>
+      ) : null}
+
+      {formErrors.length > 0 ? (
+        <div className="rounded-3xl border border-rose-200 bg-rose-50 px-4 py-3 dark:border-rose-800 dark:bg-rose-900/20">
+          <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-rose-700 dark:text-rose-300">Validation issues</div>
+          <div className="mt-2 space-y-1 text-[12px] text-rose-700 dark:text-rose-300">
+            {formErrors.map((error) => (
+              <div key={error}>{error}</div>
+            ))}
           </div>
         </div>
       ) : null}
