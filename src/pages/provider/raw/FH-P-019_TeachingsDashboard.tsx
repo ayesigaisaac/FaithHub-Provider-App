@@ -481,7 +481,7 @@ function SoftButton({
   title,
 }: {
   children: React.ReactNode;
-  onClick?: () => void;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
   disabled?: boolean;
   className?: string;
   title?: string;
@@ -510,7 +510,7 @@ function PrimaryButton({
   title,
 }: {
   children: React.ReactNode;
-  onClick?: () => void;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
   className?: string;
   tone?: "green" | "orange";
   title?: string;
@@ -708,11 +708,19 @@ function TeachingRow({
       : "good";
 
   return (
-    <button
-      type="button"
+    <div
+      role="button"
+      tabIndex={0}
+      aria-label={`Open teaching ${teaching.title}`}
       onClick={onSelect}
+      onKeyDown={(event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          onSelect();
+        }
+      }}
       className={cx(
-        "w-full rounded-[24px] border p-3 text-left transition-colors",
+        "w-full rounded-[24px] border p-3 text-left transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300",
         selected
           ? "border-emerald-200 bg-emerald-50/70"
           : "border-faith-line bg-[var(--fh-surface-bg)] hover:bg-[var(--fh-surface)]",
@@ -795,17 +803,28 @@ function TeachingRow({
               </span>
             </div>
             <div className="flex flex-wrap gap-2">
-              <SoftButton onClick={() => safeNav(getPrimaryRoute(teaching))}>
+              <SoftButton
+                onClick={(event) => {
+                  event.stopPropagation();
+                  safeNav(getPrimaryRoute(teaching));
+                }}
+              >
                 {getOpenLabel(teaching)}
               </SoftButton>
-              <PrimaryButton tone="orange" onClick={() => safeNav(ROUTES.liveBuilder)}>
+              <PrimaryButton
+                tone="orange"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  safeNav(ROUTES.liveBuilder);
+                }}
+              >
                 Attach live
               </PrimaryButton>
             </div>
           </div>
         </div>
       </div>
-    </button>
+    </div>
   );
 }
 
