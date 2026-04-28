@@ -648,6 +648,16 @@ function pad2(n: number) {
   return String(n).padStart(2, "0");
 }
 
+function toLocalDateTimeISO(date: Date) {
+  const year = date.getFullYear();
+  const month = pad2(date.getMonth() + 1);
+  const day = pad2(date.getDate());
+  const hours = pad2(date.getHours());
+  const minutes = pad2(date.getMinutes());
+  const seconds = pad2(date.getSeconds());
+  return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
+}
+
 function toISODate(date: Date) {
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, "0");
@@ -2496,9 +2506,9 @@ export default function FaithHubLiveBuilderPage({ embedded = false, onRequestClo
 
   const saveLiveSession = () => {
     const startISO = `${draft.startDateISO}T${draft.startTime}:00`;
-    const endISO = new Date(new Date(startISO).getTime() + draft.durationMin * 60000)
-      .toISOString()
-      .slice(0, 19);
+    const endISO = toLocalDateTimeISO(
+      new Date(new Date(startISO).getTime() + draft.durationMin * 60000),
+    );
 
     const errors = validateLiveFlowDraft({
       title: draft.title,
@@ -2543,9 +2553,9 @@ export default function FaithHubLiveBuilderPage({ embedded = false, onRequestClo
       return;
     }
     const startISO = `${draft.startDateISO}T${draft.startTime}:00`;
-    const endISO = new Date(new Date(startISO).getTime() + draft.durationMin * 60000)
-      .toISOString()
-      .slice(0, 19);
+    const endISO = toLocalDateTimeISO(
+      new Date(new Date(startISO).getTime() + draft.durationMin * 60000),
+    );
 
     const errors = validateLiveFlowDraft({
       title: draft.title,
