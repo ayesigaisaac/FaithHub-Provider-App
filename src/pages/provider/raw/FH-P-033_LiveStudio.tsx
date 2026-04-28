@@ -6,6 +6,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { PageHeader } from "../../components/PageHeader";
 import { AnimatePresence, motion } from "framer-motion";
 import { getLiveFlowSessionById } from "@/features/live/liveFlowStore";
+import { recordStudioOp } from "@/features/live/liveStudioOpsStore";
 import { LiveFlowProgressRibbon } from "@/features/live/LiveFlowProgressRibbon";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 import {
@@ -805,12 +806,28 @@ export default function FaithHubLiveStudioPage() {
   const handleQueueScene = (sceneId: string) => {
     setPreviewSceneId(sceneId);
     const next = SCENES.find((scene) => scene.id === sceneId);
+    if (sessionId && next) {
+      recordStudioOp({
+        sessionId,
+        type: "scene_queued",
+        label: `Queued scene: ${next.label}`,
+        meta: { sceneId: next.id, sceneLabel: next.label },
+      });
+    }
     showToast(`${next?.label || "Scene"} queued in preview`);
   };
 
   const handleTakeScene = () => {
     setActiveSceneId(previewSceneId);
     const nextScene = SCENES.find((scene) => scene.id === previewSceneId);
+    if (sessionId && nextScene) {
+      recordStudioOp({
+        sessionId,
+        type: "scene_switched",
+        label: `Program switched to ${nextScene.label}`,
+        meta: { sceneId: nextScene.id, sceneLabel: nextScene.label },
+      });
+    }
     showToast(`${nextScene?.label || "Scene"} moved to program`);
   };
 
@@ -844,6 +861,14 @@ export default function FaithHubLiveStudioPage() {
       category: "Highlight",
     };
     setClipMarks((current) => [nextMark, ...current]);
+    if (sessionId) {
+      recordStudioOp({
+        sessionId,
+        type: "clip_marked",
+        label,
+        meta: { timecode: nextMark.time, category: nextMark.category },
+      });
+    }
     showToast("Highlight marker added");
   };
 
@@ -859,13 +884,31 @@ export default function FaithHubLiveStudioPage() {
   };
 
   const handleEmergencySlate = () => {
-    setEmergencySlate((current) => !current);
-    showToast(!emergencySlate ? "Emergency slate armed" : "Emergency slate removed");
+    const next = !emergencySlate;
+    setEmergencySlate(next);
+    if (sessionId) {
+      recordStudioOp({
+        sessionId,
+        type: "emergency_slate_toggled",
+        label: next ? "Emergency slate armed" : "Emergency slate removed",
+        meta: { active: next },
+      });
+    }
+    showToast(next ? "Emergency slate armed" : "Emergency slate removed");
   };
 
   const handleFallback = () => {
-    setFallbackArmed((current) => !current);
-    showToast(!fallbackArmed ? "Fallback source engaged" : "Fallback source returned to standby");
+    const next = !fallbackArmed;
+    setFallbackArmed(next);
+    if (sessionId) {
+      recordStudioOp({
+        sessionId,
+        type: "fallback_toggled",
+        label: next ? "Fallback source engaged" : "Fallback source returned to standby",
+        meta: { active: next },
+      });
+    }
+    showToast(next ? "Fallback source engaged" : "Fallback source returned to standby");
   };
 
   const handleMuteAll = () => {

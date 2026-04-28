@@ -6,6 +6,7 @@ import { CircularProgress } from '@mui/material';
 import { useNotification } from '@/contexts/NotificationContext';
 import { useAsyncAction } from '@/hooks/useAsyncAction';
 import { getLiveFlowSessionById } from '@/features/live/liveFlowStore';
+import { getStudioOpsSummary, subscribeToStudioOps } from '@/features/live/liveStudioOpsStore';
 import { LiveFlowProgressRibbon } from '@/features/live/LiveFlowProgressRibbon';
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 import {
@@ -536,6 +537,7 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
   const [moderationClear, setModerationClear] = useState(true);
   const [previewMode, setPreviewMode] = useState<PreviewMode>('desktop');
   const [previewOpen, setPreviewOpen] = useState(false);
+  const [studioOps, setStudioOps] = useState(() => getStudioOpsSummary(sessionId));
 
   const [chapters, setChapters] = useState<Chapter[]>([
     {
@@ -747,14 +749,40 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
 
   const readinessLabel = readinessScore >= 92 ? 'Ready for publish' : readinessScore >= 80 ? 'Needs review' : 'At risk';
 
-  const clipSuggestions = useMemo(
-    () => [
+  const clipSuggestions = useMemo(() => {
+    const fromStudioMarks = studioOps.clipMarks.slice(0, 3).map((mark) => ({
+      label: mark.label,
+      duration: mark.timecode || 'Live mark',
+      hint: 'Imported from Live Studio clip marker',
+    }));
+    const fromSceneSwitches = studioOps.sceneSwitches.slice(0, 2).map((scene) => ({
+      label: scene.label,
+      duration: 'Scene switch',
+      hint: 'Program transition captured from Studio',
+    }));
+    const fallback = [
       { label: 'Grace restores identity', duration: '0:44', hint: 'Strong replay opener + social clip candidate' },
       { label: 'Prayer response moment', duration: '1:08', hint: 'High emotional resonance for replay follow-up' },
       { label: 'Giving + crowdfund invitation', duration: '0:31', hint: 'Use for donor and campaign promotion' },
-    ],
-    [routedSession],
+    ];
+    const merged = [...fromStudioMarks, ...fromSceneSwitches];
+    return merged.length ? merged : fallback;
+  }, [studioOps.clipMarks, studioOps.sceneSwitches]);
+
+  const incidentNotes = useMemo(
+    () =>
+      studioOps.incidents.length
+        ? studioOps.incidents.map((incident) => `${incident.label} (${fmtLocal(incident.atISO)})`)
+        : ['No emergency or fallback incidents were recorded in Live Studio for this session.'],
+    [studioOps.incidents],
   );
+
+  useEffect(() => {
+    setStudioOps(getStudioOpsSummary(sessionId));
+    return subscribeToStudioOps(() => {
+      setStudioOps(getStudioOpsSummary(sessionId));
+    });
+  }, [sessionId]);
 
   const watchSurface = useMemo(() => {
     if (featuredPlacement) return 'Featured replay shelf Ãƒâ€šÃ‚Â· ON';
@@ -1470,6 +1498,14 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
                         <div className="mt-1 text-xs text-faith-slate">{clip.hint}</div>
                       </div>
                     ))}
+                  </div>
+                  <div className="mt-3 rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
+                    <div className="text-[11px] font-black uppercase tracking-[0.14em] text-faith-slate">Incident notes (auto)</div>
+                    <div className="mt-2 space-y-1 text-xs text-faith-slate">
+                      {incidentNotes.map((note) => (
+                        <div key={note}>- {note}</div>
+                      ))}
+                    </div>
                   </div>
                   <div className="mt-4 flex flex-wrap gap-2">
                     <Btn tone="accent" onClick={() => showSuccess('Clip generation requested')} left={<Scissors className="h-4 w-4" />}>
