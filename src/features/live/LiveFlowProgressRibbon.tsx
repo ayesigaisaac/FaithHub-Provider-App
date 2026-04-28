@@ -7,6 +7,7 @@ export type LiveFlowStepId =
   | "studio"
   | "stream"
   | "publish";
+export type LiveFlowStatusBadge = "Draft" | "Ready" | "Scheduled" | "Live" | "Ended";
 
 type StepDef = {
   id: LiveFlowStepId;
@@ -35,10 +36,12 @@ function withSession(route: string, sessionId?: string) {
 export function LiveFlowProgressRibbon({
   currentStep,
   sessionId,
+  status,
   className,
 }: {
   currentStep: LiveFlowStepId;
   sessionId?: string;
+  status?: LiveFlowStatusBadge;
   className?: string;
 }) {
   const currentIndex = STEPS.findIndex((step) => step.id === currentStep);
@@ -74,6 +77,24 @@ export function LiveFlowProgressRibbon({
                 {stateLabel}
               </span>
             </button>
+          );
+        })}
+      </div>
+      <div className="mt-2 flex items-center gap-2 overflow-x-auto">
+        {(["Draft", "Ready", "Scheduled", "Live", "Ended"] as LiveFlowStatusBadge[]).map((item) => {
+          const active = status === item;
+          return (
+            <span
+              key={item}
+              className={cx(
+                "inline-flex shrink-0 rounded-full border px-2 py-0.5 text-[10px] font-semibold",
+                active
+                  ? "border-orange-300 bg-orange-50 text-orange-800 dark:border-orange-800 dark:bg-orange-950/30 dark:text-orange-300"
+                  : "border-faith-line bg-[var(--fh-surface)] text-faith-slate dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300",
+              )}
+            >
+              {item}
+            </span>
           );
         })}
       </div>

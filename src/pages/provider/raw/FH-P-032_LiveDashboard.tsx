@@ -1336,7 +1336,12 @@ export default function FaithHubLiveDashboardPage() {
             </SoftButton>
           </div>
         </div>
-        <LiveFlowProgressRibbon currentStep="dashboard" sessionId={session.id} className="mt-3 sm:mt-4" />
+        <LiveFlowProgressRibbon
+          currentStep="dashboard"
+          sessionId={session.id}
+          status={session.state === "Live" ? "Live" : session.state === "Ended" ? "Ended" : "Scheduled"}
+          className="mt-3 sm:mt-4"
+        />
 
         <div className="mt-3 sm:mt-4 grid grid-cols-1 gap-4 sm:gap-5 lg:grid-cols-12">
           <div className="lg:col-span-3 space-y-4 sm:space-y-5">

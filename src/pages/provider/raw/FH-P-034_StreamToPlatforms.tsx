@@ -1070,7 +1070,11 @@ export default function StreamToPlatformsPage() {
         </div>
       </div>
       <div className="px-4 pt-3 md:px-6 lg:px-8">
-        <LiveFlowProgressRibbon currentStep="stream" sessionId={sessionId || undefined} />
+        <LiveFlowProgressRibbon
+          currentStep="stream"
+          sessionId={sessionId || undefined}
+          status={sessionStatus}
+        />
       </div>
 
       <div className="flex-1 w-full px-3 sm:px-4 md:px-6 lg:px-8 py-6">

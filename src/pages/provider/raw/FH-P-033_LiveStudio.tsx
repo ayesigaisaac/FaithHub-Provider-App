@@ -917,7 +917,19 @@ export default function FaithHubLiveStudioPage() {
         className="border-b border-faith-line bg-[var(--fh-surface-bg)]/80 backdrop-blur-sm dark:border-slate-800 dark:bg-slate-950/80"
       />
       <div className="px-4 pt-3 sm:px-6 lg:px-8">
-        <LiveFlowProgressRibbon currentStep="studio" sessionId={sessionId || undefined} />
+        <LiveFlowProgressRibbon
+          currentStep="studio"
+          sessionId={sessionId || undefined}
+          status={
+            mode === "live"
+              ? "Live"
+              : routedSession?.status === "Ready"
+                ? "Ready"
+                : routedSession?.status === "Draft"
+                  ? "Draft"
+                  : "Scheduled"
+          }
+        />
       </div>
 
       <div className="hidden xl:flex h-[calc(100dvh-76px)] flex-col overflow-hidden">

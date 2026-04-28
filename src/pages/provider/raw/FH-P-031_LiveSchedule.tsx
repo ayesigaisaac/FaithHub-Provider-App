@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 import { getLiveFlowState, subscribeToLiveFlow } from "@/features/live/liveFlowStore";
+import { LiveFlowProgressRibbon } from "@/features/live/LiveFlowProgressRibbon";
 import {
   AlertTriangle,
   ArrowRight,
@@ -2821,6 +2822,18 @@ export default function FaithHubLiveSchedulePage() {
             </PrimaryButton>
           </div>
         </div>
+        <LiveFlowProgressRibbon
+          currentStep="schedule"
+          sessionId={selectedSession?.id || undefined}
+          status={
+            selectedSession?.state === "Live"
+              ? "Live"
+              : selectedSession?.state === "Ended"
+                ? "Ended"
+                : "Scheduled"
+          }
+          className="mt-3"
+        />
 
         <div className="mt-5 grid grid-cols-1 gap-4 lg:grid-cols-12">
           <div className="space-y-4 lg:col-span-2">

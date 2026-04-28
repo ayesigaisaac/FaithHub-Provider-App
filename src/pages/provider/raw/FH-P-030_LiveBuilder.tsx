@@ -48,6 +48,7 @@ import {
   scheduleLiveFlowSession,
   validateLiveFlowDraft,
 } from "@/features/live/liveFlowStore";
+import { LiveFlowProgressRibbon } from "@/features/live/LiveFlowProgressRibbon";
 
 /**
  * Provider � Live Builder (Provider)
@@ -2673,6 +2674,13 @@ export default function FaithHubLiveBuilderPage({ embedded = false, onRequestClo
             </PrimaryButton>
           </div>
         </div>
+      ) : null}
+      {!embedded ? (
+        <LiveFlowProgressRibbon
+          currentStep="builder"
+          sessionId={draft.id || undefined}
+          status={draft.status}
+        />
       ) : null}
 
       {formErrors.length > 0 ? (

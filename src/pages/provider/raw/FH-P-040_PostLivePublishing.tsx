@@ -894,7 +894,21 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
       </div>
 
       <div className="px-4 pt-3 md:px-6 lg:px-8">
-        <LiveFlowProgressRibbon currentStep="publish" sessionId={sessionId || undefined} />
+        <LiveFlowProgressRibbon
+          currentStep="publish"
+          sessionId={sessionId || undefined}
+          status={
+            processingState === "Published"
+              ? "Ended"
+              : routedSession?.status === "Draft"
+                ? "Draft"
+                : routedSession?.status === "Ready"
+                  ? "Ready"
+                  : routedSession?.status === "Scheduled"
+                    ? "Scheduled"
+                    : "Ended"
+          }
+        />
       </div>
 
       {/* Body */}
