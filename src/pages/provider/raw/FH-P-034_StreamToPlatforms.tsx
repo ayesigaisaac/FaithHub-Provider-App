@@ -5,6 +5,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { useNotification } from '@/contexts/NotificationContext';
 import { useAsyncAction } from '@/hooks/useAsyncAction';
 import { getLiveFlowSessionById } from '@/features/live/liveFlowStore';
+import { LiveFlowProgressRibbon } from '@/features/live/LiveFlowProgressRibbon';
 import { CircularProgress } from '@mui/material';
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 import {
@@ -68,6 +69,7 @@ const EV_LIGHT = '#f2f2f2';
 const ROUTES = {
   liveBuilder: '/faithhub/provider/live-builder',
   liveStudio: '/faithhub/provider/live-studio',
+  postLivePublishing: '/faithhub/provider/post-live-publishing',
   beaconBuilder: '/faithhub/provider/beacon-builder',
 };
 
@@ -958,6 +960,7 @@ export default function StreamToPlatformsPage() {
 
     run(async () => {
       if (sessionStatus === 'Draft') setSessionStatus('Scheduled');
+      safeNav(routeWithSession(ROUTES.postLivePublishing));
     }, {
       loadingMessage: 'Publishing distribution plan…',
       successMessage: 'Distribution plan published and ready for Live Studio handoff.',
@@ -1065,6 +1068,9 @@ export default function StreamToPlatformsPage() {
             <Badge tone="purple">Beacon bridge {beaconBridge ? 'ready' : 'off'}</Badge>
           </div>
         </div>
+      </div>
+      <div className="px-4 pt-3 md:px-6 lg:px-8">
+        <LiveFlowProgressRibbon currentStep="stream" sessionId={sessionId || undefined} />
       </div>
 
       <div className="flex-1 w-full px-3 sm:px-4 md:px-6 lg:px-8 py-6">
@@ -1583,6 +1589,14 @@ export default function StreamToPlatformsPage() {
                       </div>
 
                       <div className="mt-4 flex flex-wrap items-center gap-2">
+                        <button
+                          onClick={() => safeNav(routeWithSession(ROUTES.postLivePublishing))}
+                          className="inline-flex h-10 items-center gap-2 rounded-xl px-4 text-sm font-bold text-white shadow-soft hover:opacity-95 transition active:scale-[0.98]"
+                          style={{ background: EV_GREEN }}
+                        >
+                          <PlayCircle className="h-4 w-4" />
+                          Open Post-live Publishing
+                        </button>
                         <button
                           onClick={handlePublishPlan}
                           disabled={!planPublishReady || isPending}

@@ -1,10 +1,12 @@
-// @ts-nocheck
+﻿// @ts-nocheck
 'use client';
 
 import React, { useEffect, useMemo, useState } from 'react';
 import { CircularProgress } from '@mui/material';
 import { useNotification } from '@/contexts/NotificationContext';
 import { useAsyncAction } from '@/hooks/useAsyncAction';
+import { getLiveFlowSessionById } from '@/features/live/liveFlowStore';
+import { LiveFlowProgressRibbon } from '@/features/live/LiveFlowProgressRibbon';
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 import {
   AlertTriangle,
@@ -43,7 +45,7 @@ import {
 } from 'lucide-react';
 
 /**
- * Provider Ã¢â‚¬â€ Post-live Publishing
+ * Provider ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Post-live Publishing
  * ----------------------------------------
  * Premium replay packaging workspace for Live Sessions.
  *
@@ -461,7 +463,7 @@ function PhonePreview({
             </div>
             <div className="mt-3 space-y-2 text-[11px]">
               <div className="rounded-2xl border border-faith-line dark:border-slate-800 px-3 py-2 text-slate-700 dark:text-slate-300">{watchSurface}</div>
-              <div className="rounded-2xl border border-faith-line dark:border-slate-800 px-3 py-2 text-slate-700 dark:text-slate-300">Notes attached Ã‚Â· {notesAttached}</div>
+              <div className="rounded-2xl border border-faith-line dark:border-slate-800 px-3 py-2 text-slate-700 dark:text-slate-300">Notes attached Ãƒâ€šÃ‚Â· {notesAttached}</div>
               {givePromptEnabled ? <div className="rounded-2xl border border-faith-line dark:border-slate-800 px-3 py-2 text-slate-700 dark:text-slate-300">Giving prompt included</div> : null}
               <div className="rounded-2xl px-3 py-3 text-center text-white font-black" style={{ background: EV_ORANGE }}>View follow-up actions</div>
             </div>
@@ -475,39 +477,52 @@ function PhonePreview({
 export default function PostLivePublishingPage() {
   const { showSuccess, showNotification } = useNotification();
   const { run, isPending } = useAsyncAction();
+  const sessionId =
+    typeof window !== "undefined"
+      ? new URLSearchParams(window.location.search).get("sessionId") || ""
+      : "";
+  const routedSession = getLiveFlowSessionById(sessionId);
+  const routeWithSession = (route: string) =>
+    sessionId ? `${route}?sessionId=${encodeURIComponent(sessionId)}` : route;
 
   const session = useMemo(
-    () => ({
-      id: 'LS-24051',
-      title: 'Sunday Encounter Ã¢â‚¬â€ The Way of Grace',
-      source: 'Series Ã‚Â· Grace in Motion / Episode 03',
-      presenter: 'Pastor Miriam K.',
-      endedISO: new Date(Date.now() - 42 * 60 * 1000).toISOString(),
-      replayUrl: 'https://faithhub.evzone.app/replay/LS-24051',
-      coverUrl: DEFAULT_COVER,
-      destinationLabel: 'Provider Home + Replay Library',
-    }),
-    [],
-  );
+  () => ({
+    id: routedSession?.id || 'LS-24051',
+    title: routedSession?.title || 'Sunday Encounter Live',
+    source: `Session · ${routedSession?.parentLabel || 'Grace in Motion / Episode 03'}`,
+    presenter: routedSession?.speaker || 'Pastor Miriam K.',
+    endedISO: routedSession?.endISO || new Date(Date.now() - 42 * 60 * 1000).toISOString(),
+    replayUrl: `https://faithhub.evzone.app/replay/${routedSession?.id || 'LS-24051'}`,
+    coverUrl: DEFAULT_COVER,
+    destinationLabel: 'Provider Home + Replay Library',
+  }),
+  [routedSession],
+);
 
-  const [processingState, setProcessingState] = useState<ProcessingState>('Ready for publish');
-  const [title, setTitle] = useState('Sunday Encounter Replay Ã¢â‚¬â€ The Way of Grace');
-  const [description, setDescription] = useState(
-    'A polished replay package for Sunday Encounter featuring chaptered scripture moments, cleaned sermon notes, follow-up giving prompts, and post-live resources for Grace in Motion.',
-  );
-  const [trimHeadSec, setTrimHeadSec] = useState(18);
-  const [trimTailSec, setTrimTailSec] = useState(24);
-  const [removeDeadAir, setRemoveDeadAir] = useState(true);
-  const [removeWaitingRoom, setRemoveWaitingRoom] = useState(true);
-  const [coverFrame, setCoverFrame] = useState('Frame 03');
-  const [transcriptReady, setTranscriptReady] = useState(true);
-  const [speakerLabelsEnabled, setSpeakerLabelsEnabled] = useState(true);
-  const [searchableScripture, setSearchableScripture] = useState(true);
-  const [subtitleConfidence, setSubtitleConfidence] = useState(96);
-  const [notesText, setNotesText] = useState(
-    'Main takeaway: grace restores identity before it changes behavior. Add study prompts, ministry reflection, and a clear prayer response for replay viewers.',
-  );
-  const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
+const [processingState, setProcessingState] = useState<ProcessingState>('Ready for publish');
+const [title, setTitle] = useState(
+  routedSession?.title ? `${routedSession.title} Replay` : 'Sunday Encounter Replay',
+);
+const [description, setDescription] = useState(
+  routedSession?.summary
+    ? `${routedSession.summary} Replay package includes chapters, cleaned notes, and follow-up resources.`
+    : 'A polished replay package for Sunday Encounter featuring chaptered scripture moments, cleaned sermon notes, follow-up giving prompts, and post-live resources for Grace in Motion.',
+);
+const [trimHeadSec, setTrimHeadSec] = useState(18);
+const [trimTailSec, setTrimTailSec] = useState(24);
+const [removeDeadAir, setRemoveDeadAir] = useState(true);
+const [removeWaitingRoom, setRemoveWaitingRoom] = useState(true);
+const [coverFrame, setCoverFrame] = useState('Frame 03');
+const [transcriptReady, setTranscriptReady] = useState(true);
+const [speakerLabelsEnabled, setSpeakerLabelsEnabled] = useState(true);
+const [searchableScripture, setSearchableScripture] = useState(true);
+const [subtitleConfidence, setSubtitleConfidence] = useState(96);
+const [notesText, setNotesText] = useState(
+  routedSession?.summary
+    ? `Main takeaway: ${routedSession.summary} Add study prompts, ministry reflection, and a clear prayer response for replay viewers.`
+    : 'Main takeaway: grace restores identity before it changes behavior. Add study prompts, ministry reflection, and a clear prayer response for replay viewers.',
+);
+const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
   const [downloadsEnabled, setDownloadsEnabled] = useState(false);
   const [scheduleRelease, setScheduleRelease] = useState(false);
   const [releaseAt, setReleaseAt] = useState('2026-04-09T20:30');
@@ -535,7 +550,7 @@ export default function PostLivePublishingPage() {
       timecode: '06:12',
       title: 'Grace restores identity',
       speaker: 'Pastor Miriam K.',
-      scripture: 'Ephesians 2:8Ã¢â‚¬â€œ10',
+      scripture: 'Ephesians 2:8ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“10',
     },
     {
       id: 'ch_3',
@@ -635,7 +650,7 @@ export default function PostLivePublishingPage() {
       id: 'beacon',
       label: 'Beacon promo asset',
       hint: 'Prepare the replay for a Beacon follow-up campaign.',
-      value: 'Grace Replay Booster Ã¢â‚¬â€ Beacon asset pack',
+      value: 'Grace Replay Booster ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Beacon asset pack',
       enabled: true,
     },
   ]);
@@ -667,12 +682,12 @@ export default function PostLivePublishingPage() {
       {
         label: 'Editorial cleanup',
         status: removeDeadAir && removeWaitingRoom ? 'Pass' : 'Warn',
-        detail: `Head trim ${trimHeadSec}s Ã‚Â· tail trim ${trimTailSec}s Ã‚Â· cover ${coverFrame}`,
+        detail: `Head trim ${trimHeadSec}s Ãƒâ€šÃ‚Â· tail trim ${trimTailSec}s Ãƒâ€šÃ‚Â· cover ${coverFrame}`,
       },
       {
         label: 'Chapter + transcript structure',
         status: chapterCoverage && transcriptCoverage ? 'Pass' : 'Warn',
-        detail: `${chapters.length} chapters Ã‚Â· speaker labels ${speakerLabelsEnabled ? 'on' : 'off'} Ã‚Â· scripture index ${searchableScripture ? 'on' : 'off'}`,
+        detail: `${chapters.length} chapters Ãƒâ€šÃ‚Â· speaker labels ${speakerLabelsEnabled ? 'on' : 'off'} Ãƒâ€šÃ‚Â· scripture index ${searchableScripture ? 'on' : 'off'}`,
       },
       {
         label: 'Notes and resources',
@@ -682,12 +697,12 @@ export default function PostLivePublishingPage() {
       {
         label: 'Replay access and discoverability',
         status: accessCoverage ? 'Pass' : 'Warn',
-        detail: `${visibleSurfaceCount} surfaces enabled${featuredPlacement ? ' Ã‚Â· featured shelf requested' : ''}.`,
+        detail: `${visibleSurfaceCount} surfaces enabled${featuredPlacement ? ' · featured shelf requested' : ''}.`,
       },
       {
         label: 'Accessibility and subtitle confidence',
         status: subtitleTone,
-        detail: `Transcript ${transcriptReady ? 'ready' : 'pending'} Ã‚Â· subtitle confidence ${subtitleConfidence}%`,
+        detail: `Transcript ${transcriptReady ? 'ready' : 'pending'} Ãƒâ€šÃ‚Â· subtitle confidence ${subtitleConfidence}%`,
       },
       {
         label: 'Moderation and unresolved issues',
@@ -697,7 +712,7 @@ export default function PostLivePublishingPage() {
       {
         label: 'Follow-up actions',
         status: sendReplayJourney || beaconReady || donationAsk ? 'Pass' : 'Warn',
-        detail: `${sendReplayJourney ? 'Replay journey ready' : 'Journey off'} Ã‚Â· ${beaconReady ? 'Beacon handoff ready' : 'Beacon off'} Ã‚Â· ${donationAsk ? 'Giving prompt on' : 'Giving prompt off'}`,
+        detail: `${sendReplayJourney ? 'Replay journey ready' : 'Journey off'} Ãƒâ€šÃ‚Â· ${beaconReady ? 'Beacon handoff ready' : 'Beacon off'} Ãƒâ€šÃ‚Â· ${donationAsk ? 'Giving prompt on' : 'Giving prompt off'}`,
       },
     ];
   }, [
@@ -738,11 +753,11 @@ export default function PostLivePublishingPage() {
       { label: 'Prayer response moment', duration: '1:08', hint: 'High emotional resonance for replay follow-up' },
       { label: 'Giving + crowdfund invitation', duration: '0:31', hint: 'Use for donor and campaign promotion' },
     ],
-    [],
+    [routedSession],
   );
 
   const watchSurface = useMemo(() => {
-    if (featuredPlacement) return 'Featured replay shelf Ã‚Â· ON';
+    if (featuredPlacement) return 'Featured replay shelf Ãƒâ€šÃ‚Â· ON';
     if (visibleSurfaceCount >= 4) return 'Replay discovery surfaces configured';
     return 'Standard replay visibility';
   }, [featuredPlacement, visibleSurfaceCount]);
@@ -808,9 +823,9 @@ export default function PostLivePublishingPage() {
 
               <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs font-semibold text-faith-slate">
                 <span>{session.title}</span>
-                <span className="text-slate-300 dark:text-slate-700">Ã¢â‚¬Â¢</span>
+                <span className="text-slate-300 dark:text-slate-700">ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢</span>
                 <span>{session.source}</span>
-                <span className="text-slate-300 dark:text-slate-700">Ã¢â‚¬Â¢</span>
+                <span className="text-slate-300 dark:text-slate-700">ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢</span>
                 <span>Ended {fmtLocal(session.endedISO)}</span>
               </div>
             </div>
@@ -868,14 +883,18 @@ export default function PostLivePublishingPage() {
               </div>
               <div className="flex flex-wrap items-center gap-2 text-[10px] font-black uppercase tracking-[0.14em] text-faith-slate">
                 <span style={{ color: EV_GREEN }}>Readiness {readinessScore}%</span>
-                <span className="text-slate-300 dark:text-slate-700">Ã¢â‚¬Â¢</span>
+                <span className="text-slate-300 dark:text-slate-700">ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢</span>
                 <span>{clipSuggestions.length} clip suggestions</span>
-                <span className="text-slate-300 dark:text-slate-700">Ã¢â‚¬Â¢</span>
+                <span className="text-slate-300 dark:text-slate-700">ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢</span>
                 <span>{visibleSurfaceCount} discovery surfaces</span>
               </div>
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="px-4 pt-3 md:px-6 lg:px-8">
+        <LiveFlowProgressRibbon currentStep="publish" sessionId={sessionId || undefined} />
       </div>
 
       {/* Body */}
@@ -905,7 +924,7 @@ export default function PostLivePublishingPage() {
                       <div>
                         <div className="text-xs font-black uppercase tracking-[0.14em] text-faith-slate">Replay source</div>
                         <div className="mt-1 text-sm font-bold text-faith-ink dark:text-slate-50">{session.title}</div>
-                        <div className="mt-1 text-xs text-faith-slate">{session.source} Ã‚Â· {session.presenter}</div>
+                        <div className="mt-1 text-xs text-faith-slate">{session.source} Ãƒâ€šÃ‚Â· {session.presenter}</div>
                       </div>
                       <button
                         type="button"
@@ -960,10 +979,10 @@ export default function PostLivePublishingPage() {
                       <FieldLabel>Replay readiness meter</FieldLabel>
                       <Meter value={readinessScore} tone={readinessScore >= 92 ? 'brand' : 'warn'} />
                       <div className="mt-2 flex flex-wrap gap-2 text-[11px] text-faith-slate">
-                        <span>Projected replay reach Ã‚Â· 12.4k</span>
-                        <span>Ã¢â‚¬Â¢</span>
+                        <span>Projected replay reach Ãƒâ€šÃ‚Â· 12.4k</span>
+                        <span>ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢</span>
                         <span>Promotion surfaces armed</span>
-                        <span>Ã¢â‚¬Â¢</span>
+                        <span>ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢</span>
                         <span>{processingState}</span>
                       </div>
                     </div>
@@ -1373,7 +1392,7 @@ export default function PostLivePublishingPage() {
                       <Toggle checked={sendReplayJourney} onChange={setSendReplayJourney} />
                     </div>
                     <div className="mt-3 flex items-center gap-2 text-[11px] text-faith-slate">
-                      <Bell className="h-3.5 w-3.5" /> Journey name Ã‚Â· Grace Replay Ready
+                      <Bell className="h-3.5 w-3.5" /> Journey name Ãƒâ€šÃ‚Â· Grace Replay Ready
                     </div>
                   </div>
                   <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
@@ -1413,7 +1432,7 @@ export default function PostLivePublishingPage() {
                     </div>
                     <div className="mt-3 flex flex-wrap gap-2 text-[11px] text-faith-slate">
                       <span>Event tie-in {eventTieIn ? 'on' : 'off'}</span>
-                      <span>Ã¢â‚¬Â¢</span>
+                      <span>ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢</span>
                       <span>Campaign tie-in {campaignTieIn ? 'on' : 'off'}</span>
                     </div>
                   </div>
@@ -1442,7 +1461,7 @@ export default function PostLivePublishingPage() {
                     <Btn tone="accent" onClick={() => showSuccess('Clip generation requested')} left={<Scissors className="h-4 w-4" />}>
                       Generate clips
                     </Btn>
-                    <Btn tone="neutral" onClick={() => safeNav(ROUTES.beaconBuilder)} left={<Zap className="h-4 w-4" />}>
+                    <Btn tone="neutral" onClick={() => safeNav(routeWithSession(ROUTES.beaconBuilder))} left={<Zap className="h-4 w-4" />}>
                       Create Beacon booster
                     </Btn>
                   </div>
@@ -1496,7 +1515,7 @@ export default function PostLivePublishingPage() {
                     resourcesEnabled={resources.filter((item) => item.enabled).length}
                     downloadsEnabled={downloadsEnabled}
                     beaconReady={beaconReady}
-                    scheduledLabel={scheduleRelease ? `Scheduled Ã‚Â· ${releaseAt.replace('T', ' ')}` : 'Publishes immediately'}
+                    scheduledLabel={scheduleRelease ? `Scheduled Ãƒâ€šÃ‚Â· ${releaseAt.replace('T', ' ')}` : 'Publishes immediately'}
                   />
                 ) : (
                   <PhonePreview
@@ -1576,16 +1595,16 @@ export default function PostLivePublishingPage() {
             <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Quick actions</div>
               <div className="mt-3 grid grid-cols-1 gap-2">
-                <Btn tone="neutral" onClick={() => safeNav(ROUTES.replaysAndClips)} left={<Scissors className="h-4 w-4" />}>
+                <Btn tone="neutral" onClick={() => safeNav(routeWithSession(ROUTES.replaysAndClips))} left={<Scissors className="h-4 w-4" />}>
                   Open Replays & Clips
                 </Btn>
-                <Btn tone="neutral" onClick={() => safeNav(ROUTES.audienceNotifications)} left={<MessageCircle className="h-4 w-4" />}>
+                <Btn tone="neutral" onClick={() => safeNav(routeWithSession(ROUTES.audienceNotifications))} left={<MessageCircle className="h-4 w-4" />}>
                   Audience Notifications
                 </Btn>
-                <Btn tone="neutral" onClick={() => safeNav(ROUTES.beaconBuilder)} left={<Zap className="h-4 w-4" />}>
+                <Btn tone="neutral" onClick={() => safeNav(routeWithSession(ROUTES.beaconBuilder))} left={<Zap className="h-4 w-4" />}>
                   Beacon Builder
                 </Btn>
-                <Btn tone="ghost" onClick={() => safeNav(ROUTES.liveDashboard)} left={<Radio className="h-4 w-4" />}>
+                <Btn tone="ghost" onClick={() => safeNav(routeWithSession(ROUTES.liveDashboard))} left={<Radio className="h-4 w-4" />}>
                   Return to Live Dashboard
                 </Btn>
               </div>
@@ -1614,7 +1633,7 @@ export default function PostLivePublishingPage() {
               resourcesEnabled={resources.filter((item) => item.enabled).length}
               downloadsEnabled={downloadsEnabled}
               beaconReady={beaconReady}
-              scheduledLabel={scheduleRelease ? `Scheduled Ã‚Â· ${releaseAt.replace('T', ' ')}` : 'Publishes immediately'}
+              scheduledLabel={scheduleRelease ? `Scheduled Ãƒâ€šÃ‚Â· ${releaseAt.replace('T', ' ')}` : 'Publishes immediately'}
             />
             <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
               <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Preview notes</div>
@@ -1669,6 +1688,11 @@ export default function PostLivePublishingPage() {
 function PlusIconSmall() {
   return <span className="inline-flex h-4 w-4 items-center justify-center text-base leading-none">+</span>;
 }
+
+
+
+
+
 
 
 

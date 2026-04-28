@@ -6,6 +6,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { PageHeader } from "../../components/PageHeader";
 import { AnimatePresence, motion } from "framer-motion";
 import { getLiveFlowSessionById } from "@/features/live/liveFlowStore";
+import { LiveFlowProgressRibbon } from "@/features/live/LiveFlowProgressRibbon";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 import {
   AlertTriangle,
@@ -915,6 +916,9 @@ export default function FaithHubLiveStudioPage() {
         badge={headerBadge}
         className="border-b border-faith-line bg-[var(--fh-surface-bg)]/80 backdrop-blur-sm dark:border-slate-800 dark:bg-slate-950/80"
       />
+      <div className="px-4 pt-3 sm:px-6 lg:px-8">
+        <LiveFlowProgressRibbon currentStep="studio" sessionId={sessionId || undefined} />
+      </div>
 
       <div className="hidden xl:flex h-[calc(100dvh-76px)] flex-col overflow-hidden">
         <main className="grid min-h-0 flex-1 gap-4 overflow-hidden p-4 sm:p-6 lg:p-8 xl:grid-cols-[minmax(280px,330px)_minmax(0,1fr)] 2xl:grid-cols-[minmax(280px,330px)_minmax(0,1fr)_minmax(320px,360px)]">
