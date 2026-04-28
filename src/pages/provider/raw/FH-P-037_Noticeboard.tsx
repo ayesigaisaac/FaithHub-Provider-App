@@ -35,6 +35,7 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
+import { useAuth } from "@/auth/useAuth";
 
 /**
  * Provider — Noticeboard
@@ -961,6 +962,7 @@ function BoardPreviewMobile({ draft }: { draft: ComposerState }) {
 }
 
 export default function FaithHubNoticeboardPage() {
+  const { user, role, workspace } = useAuth();
   const [roleView, setRoleView] = useState<
     "Pastoral" | "Production" | "Outreach" | "Moderation"
   >("Pastoral");
@@ -997,6 +999,10 @@ export default function FaithHubNoticeboardPage() {
     () => notices.find((notice) => notice.id === selectedId) || notices[0],
     [notices, selectedId],
   );
+
+  const profileName = user?.name?.trim() || "Provider User";
+  const profileRole = role ? role.charAt(0).toUpperCase() + role.slice(1) : "Provider";
+  const profileWorkspace = workspace?.brand?.trim() || "Provider Workspace";
 
   const filteredNotices = useMemo(() => {
     return notices.filter((notice) => {
@@ -1189,10 +1195,10 @@ export default function FaithHubNoticeboardPage() {
                   Provider profile
                 </div>
                 <div className="mt-2 text-[28px] font-black leading-none text-faith-ink">
-                  Ayesigai921
+                  {profileName}
                 </div>
                 <div className="mt-2 text-[12px] leading-relaxed text-faith-slate">
-                  Provider Workspace ? role-aware notice publishing with campus, audience,
+                  {profileWorkspace} · {profileRole} notice publishing with campus, audience,
                   language, and safety routing.
                 </div>
                 <div className="mt-3">

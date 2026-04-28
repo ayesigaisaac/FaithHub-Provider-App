@@ -1,4 +1,4 @@
-// @ts-nocheck
+ï»¿// @ts-nocheck
 
 "use client";
 
@@ -39,9 +39,10 @@ import {
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
+import { useAuth } from "@/auth/useAuth";
 
 /**
- * Provider — Provider Dashboard
+ * Provider â€” Provider Dashboard
  * --------------------------------------
  * Premium provider-side mission control page.
  *
@@ -427,7 +428,7 @@ const EXECUTIVE_METRICS: Record<RoleKey, MetricCard[]> = {
     {
       id: "spend",
       label: "Beacon spend",
-      value: "£3.9k",
+      value: "Â£3.9k",
       hint: "Current spend against plan and placement pacing",
       delta: "64% pace",
       accent: "orange",
@@ -610,20 +611,20 @@ const LIVE_SESSIONS: LiveSessionRow[] = [
   {
     id: "ls-1",
     title: "Evening Prayer Revival",
-    time: "18:30 — 19:45",
+    time: "18:30 â€” 19:45",
     campus: "Kampala Central",
-    audience: "Prayer community · Public",
+    audience: "Prayer community Â· Public",
     readiness: "At risk",
     health: "Watching",
-    backstage: "Host joined · Captioner pending",
+    backstage: "Host joined Â· Captioner pending",
     warning: "Caption operator check still open",
   },
   {
     id: "ls-2",
     title: "Faith & Work Midweek Class",
-    time: "20:00 — 21:00",
+    time: "20:00 â€” 21:00",
     campus: "Online Studio",
-    audience: "Series audience · Members first",
+    audience: "Series audience Â· Members first",
     readiness: "Ready",
     health: "Healthy",
     backstage: "All roles confirmed",
@@ -633,10 +634,10 @@ const LIVE_SESSIONS: LiveSessionRow[] = [
     title: "Youth Outreach Q&A",
     time: "Sat 15:00",
     campus: "Youth Hall",
-    audience: "Youth ministry · RSVP",
+    audience: "Youth ministry Â· RSVP",
     readiness: "Blocked",
     health: "Watching",
-    backstage: "Moderator gap · venue AV unresolved",
+    backstage: "Moderator gap Â· venue AV unresolved",
     warning: "Venue mic routing conflict detected",
   },
 ];
@@ -644,7 +645,7 @@ const LIVE_SESSIONS: LiveSessionRow[] = [
 const PIPELINE_ITEMS: PipelineItem[] = [
   {
     id: "p-1",
-    title: "Hope in the Wilderness — Episode 02",
+    title: "Hope in the Wilderness â€” Episode 02",
     type: "Episode draft",
     status: "Missing assets",
     owner: "Content editor",
@@ -652,7 +653,7 @@ const PIPELINE_ITEMS: PipelineItem[] = [
   },
   {
     id: "p-2",
-    title: "Stand Firm — Standalone Teaching",
+    title: "Stand Firm â€” Standalone Teaching",
     type: "Standalone teaching",
     status: "Awaiting review",
     owner: "Pastoral review",
@@ -738,7 +739,7 @@ const BEACON_ITEMS: BeaconItem[] = [
     id: "b-1",
     title: "Sunday Encounter replay boost",
     mode: "Linked",
-    spend: "£1.2k",
+    spend: "Â£1.2k",
     outcome: "784 watch starts",
     status: "Healthy",
   },
@@ -746,7 +747,7 @@ const BEACON_ITEMS: BeaconItem[] = [
     id: "b-2",
     title: "Youth Camp registration push",
     mode: "Linked",
-    spend: "£820",
+    spend: "Â£820",
     outcome: "41 registrations",
     status: "Learning",
   },
@@ -754,7 +755,7 @@ const BEACON_ITEMS: BeaconItem[] = [
     id: "b-3",
     title: "Care & Missions awareness",
     mode: "Standalone",
-    spend: "£460",
+    spend: "Â£460",
     outcome: "183 giving clicks",
     status: "Needs approval",
   },
@@ -762,7 +763,7 @@ const BEACON_ITEMS: BeaconItem[] = [
     id: "b-4",
     title: "Prayer Night announcement",
     mode: "Standalone",
-    spend: "£210",
+    spend: "Â£210",
     outcome: "CTR softening",
     status: "Fatigue risk",
   },
@@ -772,21 +773,21 @@ const TRUST_CASES: TrustCase[] = [
   {
     id: "t-1",
     title: "Audio complaint cluster on Prayer Night replay",
-    source: "Reviews · Replay",
+    source: "Reviews Â· Replay",
     priority: "High",
     owner: "Production team",
   },
   {
     id: "t-2",
     title: "Reported chat messages during Youth Outreach live",
-    source: "Moderation · Live chat",
+    source: "Moderation Â· Live chat",
     priority: "Critical",
     owner: "Moderator lead",
   },
   {
     id: "t-3",
     title: "Flagged clip comment thread",
-    source: "Clips · Public comments",
+    source: "Clips Â· Public comments",
     priority: "Medium",
     owner: "Community manager",
   },
@@ -814,7 +815,7 @@ const RECOMMENDATIONS_BY_ROLE: Record<
     {
       id: "r-2",
       title: "Convert Flood Relief into a live fundraiser moment",
-      detail: "Tonight’s prayer stream is the strongest fit for donor urgency and public momentum.",
+      detail: "Tonightâ€™s prayer stream is the strongest fit for donor urgency and public momentum.",
       cta: "Open Live Builder",
       tone: "good",
     },
@@ -889,7 +890,7 @@ const RECOMMENDATIONS_BY_ROLE: Record<
     },
     {
       id: "r-3",
-      title: "Insert a giving moment into tonight’s live",
+      title: "Insert a giving moment into tonightâ€™s live",
       detail: "Prayer Night already has strong attendance forecasts and could support a clear donor CTA.",
       cta: "Open Live Builder",
       tone: "good",
@@ -1183,9 +1184,23 @@ function SelectPill({
 }
 
 export default function ProviderDashboardPage() {
+  const { user, role: authRole, workspace } = useAuth();
   const [role, setRole] = useState<RoleKey>("Leadership");
   const [campus, setCampus] = useState(CAMPUSES[0]);
   const [language, setLanguage] = useState(LANGUAGES[0]);
+
+  const profileName = user?.name?.trim() || "Provider User";
+  const profileRole = authRole
+    ? authRole.charAt(0).toUpperCase() + authRole.slice(1)
+    : "Provider";
+  const profileWorkspace = workspace?.brand?.trim() || "Provider Workspace";
+  const profileInitials = profileName
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((part) => part[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase() || "PU";
   const [timeFilter, setTimeFilter] = useState("Today");
   const [objectFilter, setObjectFilter] = useState("All categories");
   const [search, setSearch] = useState("");
@@ -1277,7 +1292,7 @@ export default function ProviderDashboardPage() {
                     left={<AlertTriangle className="h-3.5 w-3.5" />}
                   />
                   <Pill
-                    text={`${readinessSummary.ready} ready · ${readinessSummary.atRisk} at risk · ${readinessSummary.blocked} blocked`}
+                    text={`${readinessSummary.ready} ready Â· ${readinessSummary.atRisk} at risk Â· ${readinessSummary.blocked} blocked`}
                     tone="brand"
                     left={<Radio className="h-3.5 w-3.5" />}
                   />
@@ -1325,15 +1340,15 @@ export default function ProviderDashboardPage() {
                       className="grid h-14 w-14 place-items-center rounded-xl text-white text-[18px] font-black"
                       style={{ background: EV_GREEN }}
                     >
-                      FH
+                      {profileInitials}
                     </div>
                     <div className="min-w-0">
                       <div className="text-[20px] font-black tracking-tight text-faith-ink">
-                        Ayesigai921
+                        {profileName}
                       </div>
-                      <div className="mt-1 text-[13px] text-faith-slate">Provider</div>
+                      <div className="mt-1 text-[13px] text-faith-slate">{profileRole}</div>
                       <div className="text-[13px] text-faith-slate">
-                        Provider Workspace
+                        {profileWorkspace}
                       </div>
                     </div>
                   </div>
@@ -1600,7 +1615,7 @@ export default function ProviderDashboardPage() {
           <div className="grid gap-3 sm:gap-4 xl:grid-cols-12">
             <SectionCard
               title="Live Sessions command center"
-              subtitle="Today’s schedule, readiness state, late-start warnings, stream health, backstage availability, and one-click handoff into operations."
+              subtitle="Todayâ€™s schedule, readiness state, late-start warnings, stream health, backstage availability, and one-click handoff into operations."
               className="xl:col-span-7"
               right={
                 <div className="flex flex-wrap gap-2">
@@ -1654,9 +1669,9 @@ export default function ProviderDashboardPage() {
                         </div>
                         <div className="mt-2 flex flex-wrap items-center gap-2 text-[12px] text-faith-slate">
                           <span>{item.time}</span>
-                          <span>•</span>
+                          <span>â€¢</span>
                           <span>{item.campus}</span>
-                          <span>•</span>
+                          <span>â€¢</span>
                           <span>{item.audience}</span>
                         </div>
                         <div className="mt-2 text-[12px] font-medium text-slate-700">
@@ -1714,7 +1729,7 @@ export default function ProviderDashboardPage() {
                           {item.title}
                         </div>
                         <div className="mt-1 text-[12px] text-faith-slate">
-                          {item.type} · {item.owner} · Due {item.due}
+                          {item.type} Â· {item.owner} Â· Due {item.due}
                         </div>
                       </div>
                       <Pill
@@ -1854,7 +1869,7 @@ export default function ProviderDashboardPage() {
                           {item.title}
                         </div>
                         <div className="mt-1 text-[12px] text-faith-slate">
-                          {item.mode} campaign · {item.spend}
+                          {item.mode} campaign Â· {item.spend}
                         </div>
                       </div>
                       <Pill
@@ -1911,7 +1926,7 @@ export default function ProviderDashboardPage() {
                           {item.title}
                         </div>
                         <div className="mt-1 text-[12px] text-faith-slate">
-                          {item.source} · {item.owner}
+                          {item.source} Â· {item.owner}
                         </div>
                       </div>
                       <Pill
@@ -2049,6 +2064,7 @@ export default function ProviderDashboardPage() {
     </div>
   );
 }
+
 
 
 
