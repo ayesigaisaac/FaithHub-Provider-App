@@ -1,7 +1,9 @@
 import { createContext, useCallback, useEffect, useMemo, useState, type ReactNode } from 'react';
 import { loginRequest, logoutRequest, meRequest } from './authApi';
 import { clearStoredToken, clearStoredWorkspace, getStoredToken, getStoredWorkspace, setStoredToken, setStoredWorkspace } from './storage';
+import { hasAllPermissions } from './permissions';
 import type { AuthUser, UserRole, WorkspaceContext } from './types';
+import type { Permission } from './types';
 
 type LoginInput = {
   email: string;
@@ -13,11 +15,16 @@ type AuthContextValue = {
   user: AuthUser | null;
   role: UserRole | null;
   workspace: WorkspaceContext | null;
+  permissions: Permission[];
+  routePermissions: Record<string, Permission[]>;
+  actionPermissions: Record<string, Permission[]>;
   isAuthenticated: boolean;
   loading: boolean;
   login: (input: LoginInput) => Promise<void>;
   logout: () => Promise<void>;
   setWorkspace: (workspace: WorkspaceContext) => void;
+  canAccessPath: (path: string) => boolean;
+  canPerform: (action: string) => boolean;
 };
 
 export const AuthContext = createContext<AuthContextValue | null>(null);
@@ -27,6 +34,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [role, setRole] = useState<UserRole | null>(null);
   const [workspace, setWorkspaceState] = useState<WorkspaceContext | null>(null);
   const [token, setToken] = useState<string | null>(null);
+  const [permissions, setPermissions] = useState<Permission[]>([]);
+  const [routePermissions, setRoutePermissions] = useState<Record<string, Permission[]>>({});
+  const [actionPermissions, setActionPermissions] = useState<Record<string, Permission[]>>({});
   const [loading, setLoading] = useState(true);
 
   const hardClear = useCallback(() => {
@@ -36,6 +46,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setUser(null);
     setRole(null);
     setWorkspaceState(null);
+    setPermissions([]);
+    setRoutePermissions({});
+    setActionPermissions({});
   }, []);
 
   useEffect(() => {
@@ -52,6 +65,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         setToken(storedToken);
         setUser(profile.user);
         setRole(profile.role);
+        setPermissions(profile.permissions);
+        setRoutePermissions(profile.routePermissions);
+        setActionPermissions(profile.actionPermissions);
         const nextWorkspace = storedWorkspace ?? profile.workspace;
         setWorkspaceState(nextWorkspace);
         setStoredWorkspace(nextWorkspace);
@@ -79,6 +95,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setUser(session.user);
       setRole(session.role);
       setWorkspaceState(session.workspace);
+      setPermissions(session.permissions);
+      setRoutePermissions(session.routePermissions);
+      setActionPermissions(session.actionPermissions);
     } finally {
       setLoading(false);
     }
@@ -103,13 +122,24 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       user,
       role,
       workspace,
+      permissions,
+      routePermissions,
+      actionPermissions,
       isAuthenticated: Boolean(user && token),
       loading,
       login,
       logout,
       setWorkspace,
+      canAccessPath: (path: string) => {
+        const required = routePermissions[path] ?? [];
+        return hasAllPermissions(permissions, required);
+      },
+      canPerform: (action: string) => {
+        const required = actionPermissions[action] ?? [];
+        return hasAllPermissions(permissions, required);
+      },
     }),
-    [login, loading, logout, role, setWorkspace, token, user, workspace],
+    [actionPermissions, loading, login, logout, permissions, role, routePermissions, setWorkspace, token, user, workspace],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

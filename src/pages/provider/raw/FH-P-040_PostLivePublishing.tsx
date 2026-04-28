@@ -5,6 +5,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { CircularProgress } from '@mui/material';
 import { useNotification } from '@/contexts/NotificationContext';
 import { useAsyncAction } from '@/hooks/useAsyncAction';
+import { useAuth } from '@/auth/useAuth';
 import { getLiveFlowSessionById } from '@/features/live/liveFlowStore';
 import { getStudioOpsSummary, subscribeToStudioOps } from '@/features/live/liveStudioOpsStore';
 import { LiveFlowProgressRibbon } from '@/features/live/LiveFlowProgressRibbon';
@@ -476,6 +477,8 @@ function PhonePreview({
 }
 
 export default function PostLivePublishingPage() {
+  const { canPerform } = useAuth();
+  const canPublishReplay = canPerform("replay:publish");
   const { showSuccess, showNotification } = useNotification();
   const { run, isPending } = useAsyncAction();
   const sessionId =
@@ -879,14 +882,20 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
               <Btn
                 tone="primary"
                 className="h-10 px-4"
-                disabled={isPending || readinessScore < 70}
+                disabled={isPending || readinessScore < 70 || !canPublishReplay}
                 onClick={() =>
-                  run(
-                    async () => {
-                      setProcessingState('Published');
-                    },
-                    { successMessage: 'Replay published successfully!' },
-                  )
+                  canPublishReplay
+                    ? run(
+                        async () => {
+                          setProcessingState('Published');
+                        },
+                        { successMessage: 'Replay published successfully!' },
+                      )
+                    : showNotification({
+                        title: "Permission required",
+                        message: "You don't have permission to publish replays.",
+                        severity: "warning",
+                      })
                 }
                 left={isPending ? <CircularProgress size={16} color="inherit" /> : <CheckCircle2 className="h-4 w-4" />}
               >

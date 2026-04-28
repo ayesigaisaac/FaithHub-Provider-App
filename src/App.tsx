@@ -8,7 +8,6 @@ import { usePageTitle } from '@/hooks/usePageTitle';
 import Dashboard from '@/pages/Dashboard';
 import LoginPage from '@/pages/public/LoginPage';
 import { ProtectedRoute } from '@/routes/ProtectedRoute';
-import type { Permission, UserRole } from '@/auth/types';
 
 function ScrollToTop(): null {
   const location = useLocation();
@@ -31,26 +30,6 @@ function ProviderPageMount({ page }: { page: ProviderPageMeta }) {
 function LandingMount() {
   usePageTitle('FaithHub Home');
   return <FaithHubHomeLandingPage />;
-}
-
-const roleRestrictedPaths: Record<string, UserRole[]> = {
-  '/faithhub/provider/donations-and-funds': ['finance', 'leadership'],
-  '/faithhub/provider/wallet-payouts': ['finance', 'leadership'],
-  '/faithhub/provider/subscriptions': ['finance', 'leadership'],
-};
-
-const permissionRestrictedPaths: Record<string, Permission[]> = {
-  '/faithhub/provider/donations-and-funds': ['finance:read'],
-  '/faithhub/provider/wallet-payouts': ['finance:read'],
-  '/faithhub/provider/subscriptions': ['finance:read'],
-};
-
-function getAllowedRoles(path: string): UserRole[] | undefined {
-  return roleRestrictedPaths[path];
-}
-
-function getRequiredPermissions(path: string): Permission[] | undefined {
-  return permissionRestrictedPaths[path];
 }
 
 export default function App() {
@@ -76,10 +55,7 @@ export default function App() {
                 key={`${page.key}:${path}`}
                 path={path}
                 element={
-                  <ProtectedRoute
-                    allowedRoles={getAllowedRoles(path)}
-                    requiredPermissions={getRequiredPermissions(path)}
-                  >
+                  <ProtectedRoute routePath={path}>
                     <ProviderPageMount page={page} />
                   </ProtectedRoute>
                 }

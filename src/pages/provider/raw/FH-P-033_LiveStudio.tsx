@@ -4,6 +4,7 @@
 
 import React, { useEffect, useMemo, useState } from "react";
 import { PageHeader } from "../../components/PageHeader";
+import { useAuth } from "@/auth/useAuth";
 import { AnimatePresence, motion } from "framer-motion";
 import { getLiveFlowSessionById } from "@/features/live/liveFlowStore";
 import { recordStudioOp } from "@/features/live/liveStudioOpsStore";
@@ -740,6 +741,8 @@ function AudienceMiniPreview({
 }
 
 export default function FaithHubLiveStudioPage() {
+  const { canPerform } = useAuth();
+  const canGoLive = canPerform("stream:go-live");
   const navigate = (target: string) => navigateWithRouter(target);
   const sessionId =
     typeof window !== "undefined"
@@ -842,6 +845,10 @@ export default function FaithHubLiveStudioPage() {
   };
 
   const handleGoLive = () => {
+    if (!canGoLive) {
+      showToast("You don't have permission to control go-live actions.");
+      return;
+    }
     if (mode === "standby") {
       setMode("live");
       setElapsedSec(0);
@@ -943,6 +950,7 @@ export default function FaithHubLiveStudioPage() {
       <button
         type="button"
         onClick={handleGoLive}
+        disabled={!canGoLive}
         className="inline-flex h-10 items-center justify-center gap-2 rounded-2xl border border-transparent px-4 text-sm font-semibold text-white transition-opacity hover:opacity-95"
         style={{ background: mode === "live" ? "#dc2626" : EV_GREEN }}
       >
@@ -1902,6 +1910,7 @@ export default function FaithHubLiveStudioPage() {
             <button
               type="button"
               onClick={handleGoLive}
+              disabled={!canGoLive}
               className="inline-flex h-10 items-center justify-center gap-2 rounded-2xl border border-transparent px-4 text-sm font-semibold text-white transition-opacity hover:opacity-95"
               style={{ background: mode === "live" ? "#dc2626" : EV_GREEN }}
             >
@@ -1993,6 +2002,7 @@ export default function FaithHubLiveStudioPage() {
         handleQueueScene={handleQueueScene}
         navigate={(target) => navigate(routeWithSession(target))}
         sessionTitle={sessionTitle}
+        canGoLive={canGoLive}
       />
 
       <AnimatePresence>
@@ -2035,6 +2045,7 @@ function MobileLiveStudio({
   handleQueueScene,
   navigate,
   sessionTitle,
+  canGoLive,
 }: {
   mode: Mode;
   liveTimer: string;
@@ -2058,6 +2069,7 @@ function MobileLiveStudio({
   handleQueueScene: (sceneId: string) => void;
   navigate: (target: string) => void;
   sessionTitle: string;
+  canGoLive: boolean;
 }) {
   return (
     <div className="xl:hidden">
@@ -2282,6 +2294,7 @@ function MobileLiveStudio({
           <button
             type="button"
             onClick={handleGoLive}
+            disabled={!canGoLive}
             className="inline-flex items-center justify-center gap-2 rounded-2xl border border-transparent px-3 py-3 text-xs font-semibold text-white transition-opacity hover:opacity-95"
             style={{ background: mode === "live" ? "#dc2626" : EV_GREEN }}
           >

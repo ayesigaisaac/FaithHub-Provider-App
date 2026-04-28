@@ -2,16 +2,16 @@ import { Box, CircularProgress } from '@mui/material';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import { useAuth } from '@/auth/useAuth';
 import { hasAllPermissions } from '@/auth/permissions';
-import type { Permission, UserRole } from '@/auth/types';
+import type { Permission } from '@/auth/types';
 
 type ProtectedRouteProps = {
-  allowedRoles?: UserRole[];
+  routePath?: string;
   requiredPermissions?: Permission[];
   children?: React.ReactNode;
 };
 
-export function ProtectedRoute({ allowedRoles, requiredPermissions, children }: ProtectedRouteProps) {
-  const { isAuthenticated, loading, role } = useAuth();
+export function ProtectedRoute({ routePath, requiredPermissions, children }: ProtectedRouteProps) {
+  const { isAuthenticated, loading, permissions, canAccessPath } = useAuth();
   const location = useLocation();
 
   if (loading) {
@@ -27,11 +27,12 @@ export function ProtectedRoute({ allowedRoles, requiredPermissions, children }: 
     return <Navigate to="/login" replace state={{ from }} />;
   }
 
-  if (allowedRoles?.length && role && !allowedRoles.includes(role)) {
+  const targetPath = routePath ?? location.pathname;
+  if (!canAccessPath(targetPath)) {
     return <Navigate to="/faithhub/provider/dashboard" replace />;
   }
 
-  if (requiredPermissions?.length && !hasAllPermissions(role, requiredPermissions)) {
+  if (requiredPermissions?.length && !hasAllPermissions(permissions, requiredPermissions)) {
     return <Navigate to="/faithhub/provider/dashboard" replace />;
   }
 

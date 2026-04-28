@@ -22,8 +22,8 @@ export function permissionsForRole(role: UserRole | null): Permission[] {
   return rolePermissions[role] ?? [];
 }
 
-export function hasAllPermissions(role: UserRole | null, required: Permission[]): boolean {
+export function hasAllPermissions(grantedPermissions: Permission[], required: Permission[]): boolean {
   if (!required.length) return true;
-  const granted = new Set(permissionsForRole(role));
+  const granted = new Set(grantedPermissions);
   return required.every((permission) => granted.has(permission));
 }

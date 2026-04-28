@@ -1079,7 +1079,8 @@ function PreviewDrawer({
 }
 
 export default function FH_P_112_RolesPermissionsPage() {
-  const { user } = useAuth();
+  const { user, canPerform } = useAuth();
+  const canEditRoles = canPerform("rbac:role-edit");
   const initialRoles = useMemo<RoleRecord[]>(
     () =>
       ROLE_RECORDS.map((role) => ({
@@ -1315,7 +1316,12 @@ export default function FH_P_112_RolesPermissionsPage() {
                 </button>
                 <button
                   type="button"
-                  onClick={() => setEditMode((v) => !v)}
+                  onClick={() => {
+                    if (!canEditRoles) return;
+                    setEditMode((v) => !v);
+                  }}
+                  disabled={!canEditRoles}
+                  title={!canEditRoles ? "You don't have permission to edit role permissions." : undefined}
                   className="inline-flex items-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-2 text-[12px] font-bold text-slate-700 hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
                 >
                   <KeyRound className="h-4 w-4" /> {editMode ? "Stop Editing" : "Edit Permissions"}

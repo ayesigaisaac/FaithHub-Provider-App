@@ -1,4 +1,5 @@
-import type { AuthSession, AuthUser, UserRole, WorkspaceContext } from './types';
+import { permissionsForRole } from './permissions';
+import type { AuthSession, AuthUser, Permission, UserRole, WorkspaceContext } from './types';
 
 type LoginPayload = {
   email: string;
@@ -64,6 +65,61 @@ function getMockByToken(token: string) {
   return MOCK_USERS.find((item) => item.user.email === email);
 }
 
+function normalizePermissionList(value: unknown): Permission[] {
+  if (!Array.isArray(value)) return [];
+  return value.filter((entry): entry is Permission => typeof entry === 'string');
+}
+
+function buildDefaultRoutePermissions(role: UserRole): Record<string, Permission[]> {
+  if (role === 'finance' || role === 'leadership') {
+    return {};
+  }
+  return {
+    '/faithhub/provider/donations-and-funds': ['finance:read'],
+    '/faithhub/provider/wallet-payouts': ['finance:read'],
+    '/faithhub/provider/subscriptions': ['finance:read'],
+  };
+}
+
+function normalizeRoutePermissions(value: unknown): Record<string, Permission[]> {
+  if (!value || typeof value !== 'object') return {};
+  return Object.entries(value as Record<string, unknown>).reduce<Record<string, Permission[]>>((acc, [path, required]) => {
+    const permissions = normalizePermissionList(required);
+    if (permissions.length) {
+      acc[path] = permissions;
+    }
+    return acc;
+  }, {});
+}
+
+function normalizeActionPermissions(value: unknown): Record<string, Permission[]> {
+  if (!value || typeof value !== 'object') return {};
+  return Object.entries(value as Record<string, unknown>).reduce<Record<string, Permission[]>>((acc, [action, required]) => {
+    const permissions = normalizePermissionList(required);
+    if (permissions.length) {
+      acc[action] = permissions;
+    }
+    return acc;
+  }, {});
+}
+
+function resolveAuthorization(payload: unknown, role: UserRole) {
+  const authz = (payload && typeof payload === 'object' ? payload : {}) as Record<string, unknown>;
+  const nested = (authz.authorization && typeof authz.authorization === 'object'
+    ? authz.authorization
+    : {}) as Record<string, unknown>;
+
+  const permissions = normalizePermissionList(authz.permissions ?? nested.permissions);
+  const routePermissions = normalizeRoutePermissions(authz.routePermissions ?? nested.routePermissions ?? nested.routes);
+  const actionPermissions = normalizeActionPermissions(authz.actionPermissions ?? nested.actionPermissions ?? nested.actions);
+
+  return {
+    permissions: permissions.length ? permissions : permissionsForRole(role),
+    routePermissions: Object.keys(routePermissions).length ? routePermissions : buildDefaultRoutePermissions(role),
+    actionPermissions,
+  };
+}
+
 async function mockLogin(payload: LoginPayload): Promise<AuthSession> {
   const hit = MOCK_USERS.find((item) => item.user.email.toLowerCase() === payload.email.toLowerCase());
   if (!hit || hit.password !== payload.password) {
@@ -79,6 +135,9 @@ async function mockLogin(payload: LoginPayload): Promise<AuthSession> {
     },
     role: hit.role,
     workspace: hit.workspace,
+    permissions: permissionsForRole(hit.role),
+    routePermissions: buildDefaultRoutePermissions(hit.role),
+    actionPermissions: {},
   };
 }
 
@@ -94,6 +153,9 @@ async function mockMe(token: string): Promise<Omit<AuthSession, 'token'>> {
     },
     role: hit.role,
     workspace: hit.workspace,
+    permissions: permissionsForRole(hit.role),
+    routePermissions: buildDefaultRoutePermissions(hit.role),
+    actionPermissions: {},
   };
 }
 
@@ -125,6 +187,8 @@ async function backendLogin(payload: LoginPayload): Promise<AuthSession> {
     throw new Error('Unable to load profile after login.');
   }
   const meData = await meRes.json();
+  const role = normalizeRole(meData?.role);
+  const authorization = resolveAuthorization(meData, role);
 
   return {
     token,
@@ -133,8 +197,11 @@ async function backendLogin(payload: LoginPayload): Promise<AuthSession> {
       name: meData?.name || meData?.fullName || toDisplayNameFromEmail(payload.email),
       email: meData?.email || payload.email,
     },
-    role: normalizeRole(meData?.role),
+    role,
     workspace: normalizeWorkspace(meData?.workspace),
+    permissions: authorization.permissions,
+    routePermissions: authorization.routePermissions,
+    actionPermissions: authorization.actionPermissions,
   };
 }
 
@@ -159,14 +226,19 @@ export async function meRequest(token: string): Promise<Omit<AuthSession, 'token
     throw new Error('Session invalid.');
   }
   const meData = await meRes.json();
+  const role = normalizeRole(meData?.role);
+  const authorization = resolveAuthorization(meData, role);
   return {
     user: {
       id: meData?.id || 'u-fallback',
       name: meData?.name || meData?.fullName || toDisplayNameFromEmail(meData?.email || 'user@faithhub.dev'),
       email: meData?.email || 'unknown@faithhub.dev',
     },
-    role: normalizeRole(meData?.role),
+    role,
     workspace: normalizeWorkspace(meData?.workspace),
+    permissions: authorization.permissions,
+    routePermissions: authorization.routePermissions,
+    actionPermissions: authorization.actionPermissions,
   };
 }
 

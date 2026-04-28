@@ -8,7 +8,8 @@ export type Permission =
   | 'beacon:manage'
   | 'community:manage'
   | 'teams:manage'
-  | 'workspace:admin';
+  | 'workspace:admin'
+  | (string & {});
 
 export type WorkspaceContext = {
   campus: string;
@@ -26,4 +27,7 @@ export type AuthSession = {
   user: AuthUser;
   role: UserRole;
   workspace: WorkspaceContext;
+  permissions: Permission[];
+  routePermissions: Record<string, Permission[]>;
+  actionPermissions: Record<string, Permission[]>;
 };

@@ -34,6 +34,7 @@ import {
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
+import { useAuth } from "@/auth/useAuth";
 
 /**
  * Provider — Wallet & Payouts
@@ -573,19 +574,22 @@ function PrimaryButton({
   onClick,
   className,
   title,
+  disabled,
 }: {
   children: React.ReactNode;
   onClick?: () => void;
   className?: string;
   title?: string;
+  disabled?: boolean;
 }) {
   return (
     <button
       type="button"
       title={title}
-      onClick={onClick}
+      onClick={disabled ? undefined : onClick}
+      disabled={disabled}
       className={cx(
-        "inline-flex items-center gap-2 rounded-2xl border border-transparent px-4 py-2 text-[12px] font-semibold text-white transition-opacity hover:opacity-95",
+        "inline-flex items-center gap-2 rounded-2xl border border-transparent px-4 py-2 text-[12px] font-semibold text-white transition-opacity hover:opacity-95 disabled:cursor-not-allowed disabled:opacity-50",
         className,
       )}
       style={{ background: EV_ORANGE }}
@@ -830,6 +834,8 @@ function PreviewRail({ mode, onModeChange }: { mode: PreviewMode; onModeChange: 
 }
 
 export default function WalletAndPayoutsPage() {
+  const { canPerform } = useAuth();
+  const canQueuePayoutTransfer = canPerform("wallet:payout-transfer");
   const [previewMode, setPreviewMode] = useState<PreviewMode>("desktop");
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState<"All" | LedgerCategory | "Failed">("All");
@@ -947,7 +953,12 @@ export default function WalletAndPayoutsPage() {
               </div>
               <div className="mt-1 text-[16px] font-black text-faith-ink">Wallet control</div>
               <div className="mt-3 grid w-full grid-cols-1 gap-2 sm:grid-cols-2 xl:flex xl:w-auto xl:flex-wrap xl:justify-end">
-                <PrimaryButton className="h-10 w-full justify-center px-4 xl:w-auto" onClick={() => setTransferOpen(true)}>
+                <PrimaryButton
+                  className="h-10 w-full justify-center px-4 xl:w-auto"
+                  onClick={() => setTransferOpen(true)}
+                  disabled={!canQueuePayoutTransfer}
+                  title={!canQueuePayoutTransfer ? "You don't have permission to queue payouts." : undefined}
+                >
                   <ArrowUpRight className="h-4 w-4" /> Transfer now
                 </PrimaryButton>
                 <SoftButton className="h-10 w-full justify-center px-4 xl:w-auto" onClick={() => setMethodOpen(true)}>
@@ -1370,7 +1381,12 @@ export default function WalletAndPayoutsPage() {
           <div className="flex flex-wrap justify-end gap-2">
             <SoftButton onClick={() => setTransferOpen(false)}>Cancel</SoftButton>
             <PrimaryButton
+              disabled={!canQueuePayoutTransfer}
               onClick={() => {
+                if (!canQueuePayoutTransfer) {
+                  showToast("You don't have permission to queue payout transfers.");
+                  return;
+                }
                 setTransferOpen(false);
                 showToast(`Transfer queued to ${selectedMethod.label}.`);
               }}
