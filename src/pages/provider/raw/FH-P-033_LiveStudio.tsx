@@ -4,7 +4,7 @@
 
 import React, { useEffect, useMemo, useState } from "react";
 import { PageHeader } from "../../components/PageHeader";
-import { useAuth } from "@/auth/useAuth";
+import { AuthContext } from "@/auth/AuthContext";
 import { AnimatePresence, motion } from "framer-motion";
 import { getLiveFlowSessionById } from "@/features/live/liveFlowStore";
 import { recordStudioOp } from "@/features/live/liveStudioOpsStore";
@@ -741,8 +741,8 @@ function AudienceMiniPreview({
 }
 
 export default function FaithHubLiveStudioPage() {
-  const { canPerform } = useAuth();
-  const canGoLive = canPerform("stream:go-live");
+  const auth = React.useContext(AuthContext);
+  const canGoLive = auth ? auth.canPerform("stream:go-live") : true;
   const navigate = (target: string) => navigateWithRouter(target);
   const sessionId =
     typeof window !== "undefined"

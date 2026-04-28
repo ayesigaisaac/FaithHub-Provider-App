@@ -237,7 +237,7 @@ const ROLE_RECORDS: RoleRecord[] = [
       { id: "ap-3", label: "Child-safe overrides", steps: ["Safeguarding Lead", "Workspace Owner"], sla: "24h SLA", active: true },
     ],
     assignments: [
-      { id: "as-1", name: "Ayesigai921", title: "Provider Owner", campus: "Institution-wide", state: "Active" },
+      { id: "as-1", name: "Provider User", title: "Provider Owner", campus: "Institution-wide", state: "Active" },
       { id: "as-2", name: "Rita N.", title: "Executive Assistant", campus: "Central Campus", state: "Active" },
       { id: "as-3", name: "Daniel Okoro", title: "Operations Director", campus: "Institution-wide", state: "Pending review" },
       { id: "as-4", name: "Grace Nansubuga", title: "Campus Admin", campus: "East Campus", state: "Active" },

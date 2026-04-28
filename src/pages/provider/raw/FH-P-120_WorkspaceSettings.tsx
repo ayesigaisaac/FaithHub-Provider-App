@@ -33,6 +33,7 @@ import {
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
+import { useAuth } from "@/auth/useAuth";
 
 /**
  * Provider � Workspace Settings
@@ -458,15 +459,22 @@ const connectableIntegrations = [
 ];
 
 export default function WorkspaceSettingsPage() {
+  const { user, workspace } = useAuth();
+  const workspaceBrand = workspace?.brand?.trim() || "FaithHub";
+  const workspaceCampus = workspace?.campus?.trim() || "Kampala Central";
+  const workspaceHandleSeed = useMemo(
+    () => `@${workspaceBrand.toLowerCase().replace(/[^a-z0-9]+/g, "").slice(0, 20) || "faithhub"}`,
+    [workspaceBrand],
+  );
   const [tab, setTab] = useState<SettingsTab>("identity");
   const [previewMode, setPreviewMode] = useState<PreviewMode>("desktop");
   const [campuses, setCampuses] = useState<Campus[]>(initialCampuses);
   const [integrations, setIntegrations] = useState<Integration[]>(initialIntegrations);
 
-  const [workspaceName, setWorkspaceName] = useState("GlowUp Faith Community");
-  const [workspaceHandle, setWorkspaceHandle] = useState("@glowupfaith");
-  const [missionLine, setMissionLine] = useState("Helping people encounter God, grow in truth, and stay connected across every campus.");
-  const [publicBio, setPublicBio] = useState("A multi-campus faith community with strong live ministry, generous giving journeys, and healthy audience care defaults.");
+  const [workspaceName, setWorkspaceName] = useState(workspaceBrand);
+  const [workspaceHandle, setWorkspaceHandle] = useState(workspaceHandleSeed);
+  const [missionLine, setMissionLine] = useState(`Helping people encounter God, grow in truth, and stay connected across ${workspaceCampus}.`);
+  const [publicBio, setPublicBio] = useState(`${workspaceBrand} is a faith community with strong live ministry, generous giving journeys, and healthy audience care defaults.`);
   const [brandVoice, setBrandVoice] = useState("Warm, trustworthy, hopeful, scripture-rooted, and globally welcoming.");
   const [defaultLanguage, setDefaultLanguage] = useState("English (Uganda)");
   const [secondaryLanguage, setSecondaryLanguage] = useState("Swahili (Kenya)");
@@ -494,6 +502,14 @@ export default function WorkspaceSettingsPage() {
   const [newCampusMode, setNewCampusMode] = useState<Campus["serviceMode"]>("Hybrid");
   const [newCampusAccess, setNewCampusAccess] = useState("Family entry � Caption screens");
   const [selectedConnectId, setSelectedConnectId] = useState("ci_1");
+
+  useEffect(() => {
+    setWorkspaceName(workspaceBrand);
+  }, [workspaceBrand]);
+
+  useEffect(() => {
+    setWorkspaceHandle(workspaceHandleSeed);
+  }, [workspaceHandleSeed]);
 
   useEffect(() => {
     if (!toast) return;
@@ -1217,7 +1233,7 @@ export default function WorkspaceSettingsPage() {
                       <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 px-3 py-3">
                         <div className="text-[11px] font-extrabold text-faith-ink dark:text-slate-100">Campus & locale</div>
                         <div className="mt-2 flex flex-wrap gap-2">
-                          <Pill tone="good">Kampala</Pill>
+                          <Pill tone="good">{workspaceCampus.split(" ")[0] || "Campus"}</Pill>
                           <Pill>{defaultLanguage}</Pill>
                         </div>
                       </div>
