@@ -2,6 +2,7 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import FaithHubLiveBuilderPage from "@/pages/provider/raw/FH-P-030_LiveBuilder";
 import FaithHubLiveSchedulePage from "@/pages/provider/raw/FH-P-031_LiveSchedule";
 import FaithHubLiveDashboardPage from "@/pages/provider/raw/FH-P-032_LiveDashboard";
+import FaithHubLiveStudioPage from "@/pages/provider/raw/FH-P-033_LiveStudio";
 import { getLiveFlowState } from "./liveFlowStore";
 
 describe("Live flow integration", () => {
@@ -49,6 +50,38 @@ describe("Live flow integration", () => {
 
       const activeSessionSelect = await screen.findByRole("combobox");
       expect(activeSessionSelect).toHaveValue(saved.id);
+    },
+    20000,
+  );
+
+  it(
+    "preserves sessionId from dashboard to live studio and stream-to-platforms",
+    async () => {
+      const builder = render(<FaithHubLiveBuilderPage />);
+      fireEvent.click(await screen.findByRole("button", { name: /save live session/i }));
+
+      await waitFor(() => {
+        expect(getLiveFlowState().sessions.length).toBeGreaterThan(0);
+      });
+      const saved = getLiveFlowState().sessions[0];
+      builder.unmount();
+
+      window.history.pushState(
+        {},
+        "",
+        `/faithhub/provider/live-dashboard?sessionId=${encodeURIComponent(saved.id)}`,
+      );
+      const dashboard = render(<FaithHubLiveDashboardPage />);
+      fireEvent.click((await screen.findAllByRole("button", { name: /live studio/i }))[0]);
+      expect(window.location.pathname).toBe("/faithhub/provider/live-studio");
+      expect(new URLSearchParams(window.location.search).get("sessionId")).toBe(saved.id);
+      dashboard.unmount();
+
+      const studio = render(<FaithHubLiveStudioPage />);
+      fireEvent.click((await screen.findAllByRole("button", { name: /stream-to-platforms/i }))[0]);
+      expect(window.location.pathname).toBe("/faithhub/provider/stream-to-platforms");
+      expect(new URLSearchParams(window.location.search).get("sessionId")).toBe(saved.id);
+      studio.unmount();
     },
     20000,
   );

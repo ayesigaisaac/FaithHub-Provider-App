@@ -4,6 +4,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useNotification } from '@/contexts/NotificationContext';
 import { useAsyncAction } from '@/hooks/useAsyncAction';
+import { getLiveFlowSessionById } from '@/features/live/liveFlowStore';
 import { CircularProgress } from '@mui/material';
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 import {
@@ -738,6 +739,14 @@ const INITIAL_DESTINATIONS: Destination[] = normalizeRouteOrders([
 export default function StreamToPlatformsPage() {
   const { showSuccess, showError, showNotification } = useNotification();
   const { run, isPending } = useAsyncAction();
+  const sessionId =
+    typeof window !== 'undefined'
+      ? new URLSearchParams(window.location.search).get('sessionId') || ''
+      : '';
+  const routedSession = getLiveFlowSessionById(sessionId);
+  const sessionTitle = routedSession?.title || DEFAULT_SESSION_TITLE;
+  const routeWithSession = (route: string) =>
+    sessionId ? `${route}?sessionId=${encodeURIComponent(sessionId)}` : route;
 
   const [sessionStatus, setSessionStatus] = useState<SessionStatus>('Scheduled');
   const [selectedDestId, setSelectedDestId] = useState<string | null>(null);
@@ -931,8 +940,8 @@ export default function StreamToPlatformsPage() {
               languageTrack: preset.languageTrack,
               title:
                 d.family === 'Provider Surface'
-                  ? DEFAULT_SESSION_TITLE
-                  : `${DEFAULT_SESSION_TITLE} · ${d.name.replace(' Live', '')}`,
+                  ? sessionTitle
+                  : `${sessionTitle} · ${d.name.replace(' Live', '')}`,
             },
           };
         })
@@ -978,11 +987,11 @@ export default function StreamToPlatformsPage() {
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <div className="min-w-0">
               <div className="flex flex-wrap items-center gap-2 text-[10px] sm:text-xs text-faith-slate">
-                <button className="hover:text-slate-700 dark:hover:text-slate-200" onClick={() => safeNav(ROUTES.liveBuilder)}>
+                <button className="hover:text-slate-700 dark:hover:text-slate-200" onClick={() => safeNav(routeWithSession(ROUTES.liveBuilder))}>
                   Live Builder
                 </button>
                 <span className="text-slate-300 dark:text-slate-700">/</span>
-                <button className="hover:text-slate-700 dark:hover:text-slate-200" onClick={() => safeNav(ROUTES.liveStudio)}>
+                <button className="hover:text-slate-700 dark:hover:text-slate-200" onClick={() => safeNav(routeWithSession(ROUTES.liveStudio))}>
                   Live Studio
                 </button>
                 <span className="text-slate-300 dark:text-slate-700">/</span>
@@ -1049,7 +1058,7 @@ export default function StreamToPlatformsPage() {
           </div>
 
           <div className="mt-4 flex flex-wrap items-center gap-2 text-[11px] text-faith-slate dark:text-slate-300">
-            <Badge tone="neutral">{DEFAULT_SESSION_TITLE}</Badge>
+            <Badge tone="neutral">{sessionTitle}</Badge>
             <Badge tone="green">{internalDestinations.length} internal surface{internalDestinations.length === 1 ? '' : 's'}</Badge>
             <Badge tone="blue">{externalDestinations.length} external destination{externalDestinations.length === 1 ? '' : 's'}</Badge>
             <Badge tone="orange">Preset · {selectedPreset.label}</Badge>
@@ -1519,7 +1528,7 @@ export default function StreamToPlatformsPage() {
                   <div className="mt-4 rounded-[14px] overflow-hidden ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft">
                     <div className="px-4 py-4 text-white" style={{ background: 'linear-gradient(135deg, #03cd8c 0%, #0f766e 45%, #f77f00 100%)' }}>
                       <Badge tone="green">Distribution summary</Badge>
-                      <div className="mt-3 text-2xl font-extrabold leading-tight">{DEFAULT_SESSION_TITLE}</div>
+                      <div className="mt-3 text-2xl font-extrabold leading-tight">{sessionTitle}</div>
                       <div className="mt-1 text-sm text-white/90">Primary feed · {activeDestinations.length} live route{activeDestinations.length === 1 ? '' : 's'} · {crossPostRule}</div>
                       <div className="mt-3 flex flex-wrap gap-2">
                         {activeDestinations.map((d) => (
@@ -1978,7 +1987,7 @@ export default function StreamToPlatformsPage() {
                       <Badge tone="orange">{selectedDest.settings.safeAreaMode}</Badge>
                     </div>
                     <div className="absolute left-4 right-4 bottom-4 text-white">
-                      <div className="text-xl font-extrabold leading-tight line-clamp-2">{selectedDest.settings.title || DEFAULT_SESSION_TITLE}</div>
+                      <div className="text-xl font-extrabold leading-tight line-clamp-2">{selectedDest.settings.title || sessionTitle}</div>
                       <div className="mt-2 text-sm text-white/90 line-clamp-2">{selectedDest.settings.description}</div>
                     </div>
                   </div>

@@ -3,9 +3,10 @@
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { PageHeader } from "../../components/PageHeader";
 import { AnimatePresence, motion } from "framer-motion";
+import { getLiveFlowSessionById } from "@/features/live/liveFlowStore";
+import { navigateWithRouter } from "@/navigation/routerNavigate";
 import {
   AlertTriangle,
   BadgeCheck,
@@ -737,7 +738,15 @@ function AudienceMiniPreview({
 }
 
 export default function FaithHubLiveStudioPage() {
-  const navigate = useNavigate();
+  const navigate = (target: string) => navigateWithRouter(target);
+  const sessionId =
+    typeof window !== "undefined"
+      ? new URLSearchParams(window.location.search).get("sessionId") || ""
+      : "";
+  const routedSession = getLiveFlowSessionById(sessionId);
+  const routeWithSession = (route: string) =>
+    sessionId ? `${route}?sessionId=${encodeURIComponent(sessionId)}` : route;
+  const sessionTitle = routedSession?.title || SESSION.title;
 
   const [mode, setMode] = useState<Mode>("standby");
   const [elapsedSec, setElapsedSec] = useState(0);
@@ -1716,7 +1725,7 @@ export default function FaithHubLiveStudioPage() {
                 </button>
                 <button
                   type="button"
-                  onClick={() => navigate(ROUTES.liveDashboard)}
+                  onClick={() => navigate(routeWithSession(ROUTES.liveDashboard))}
                   className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-3 text-left text-[12px] font-semibold text-slate-700 transition-colors hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800"
                 >
                   <div className="flex items-center justify-between gap-2">
@@ -1793,7 +1802,7 @@ export default function FaithHubLiveStudioPage() {
               <div className="space-y-2">
                 <button
                   type="button"
-                  onClick={() => navigate(ROUTES.streamToPlatforms)}
+                  onClick={() => navigate(routeWithSession(ROUTES.streamToPlatforms))}
                   className="flex w-full items-center justify-between rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-4 py-3 text-left transition-colors hover:bg-[var(--fh-surface-bg)] dark:border-slate-700 dark:bg-slate-950 dark:hover:bg-slate-900"
                 >
                   <div>
@@ -1804,7 +1813,7 @@ export default function FaithHubLiveStudioPage() {
                 </button>
                 <button
                   type="button"
-                  onClick={() => navigate(ROUTES.postLivePublishing)}
+                  onClick={() => navigate(routeWithSession(ROUTES.postLivePublishing))}
                   className="flex w-full items-center justify-between rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-4 py-3 text-left transition-colors hover:bg-[var(--fh-surface-bg)] dark:border-slate-700 dark:bg-slate-950 dark:hover:bg-slate-900"
                 >
                   <div>
@@ -1892,7 +1901,7 @@ export default function FaithHubLiveStudioPage() {
             </button>
             <button
               type="button"
-              onClick={() => navigate(ROUTES.streamToPlatforms)}
+              onClick={() => navigate(routeWithSession(ROUTES.streamToPlatforms))}
               className="ml-auto inline-flex items-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-2 text-sm font-semibold text-slate-700 transition-colors hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800"
             >
               <ExternalLink className="h-4 w-4" />
@@ -1923,7 +1932,8 @@ export default function FaithHubLiveStudioPage() {
         handleTriggerCTA={handleTriggerCTA}
         handleMarkClip={handleMarkClip}
         handleQueueScene={handleQueueScene}
-        navigate={navigate}
+        navigate={(target) => navigate(routeWithSession(target))}
+        sessionTitle={sessionTitle}
       />
 
       <AnimatePresence>
@@ -1965,6 +1975,7 @@ function MobileLiveStudio({
   handleMarkClip,
   handleQueueScene,
   navigate,
+  sessionTitle,
 }: {
   mode: Mode;
   liveTimer: string;
@@ -1986,14 +1997,15 @@ function MobileLiveStudio({
   handleTriggerCTA: () => void;
   handleMarkClip: () => void;
   handleQueueScene: (sceneId: string) => void;
-  navigate: ReturnType<typeof useNavigate>;
+  navigate: (target: string) => void;
+  sessionTitle: string;
 }) {
   return (
     <div className="xl:hidden">
       <div className="space-y-4 px-4 pb-28 pt-4 sm:px-6">
         <CardShell
           title="Program monitor"
-          subtitle={SESSION.title}
+          subtitle={sessionTitle}
           right={<StudioStatusBadge mode={mode} timer={liveTimer} />}
         >
           <div className="overflow-hidden rounded-3xl border border-faith-line dark:border-slate-700">
@@ -2188,7 +2200,7 @@ function MobileLiveStudio({
           <div className="space-y-2">
             <button
               type="button"
-              onClick={() => navigate(ROUTES.streamToPlatforms)}
+              onClick={() => navigate(routeWithSession(ROUTES.streamToPlatforms))}
               className="flex w-full items-center justify-between rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-4 py-3 text-left text-[12px] font-semibold text-slate-700 transition-colors hover:bg-[var(--fh-surface-bg)] dark:border-slate-700 dark:bg-slate-950 dark:text-slate-300 dark:hover:bg-slate-900"
             >
               Stream-to-Platforms
@@ -2196,7 +2208,7 @@ function MobileLiveStudio({
             </button>
             <button
               type="button"
-              onClick={() => navigate(ROUTES.postLivePublishing)}
+              onClick={() => navigate(routeWithSession(ROUTES.postLivePublishing))}
               className="flex w-full items-center justify-between rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-4 py-3 text-left text-[12px] font-semibold text-slate-700 transition-colors hover:bg-[var(--fh-surface-bg)] dark:border-slate-700 dark:bg-slate-950 dark:text-slate-300 dark:hover:bg-slate-900"
             >
               Post-live Publishing
