@@ -49,6 +49,8 @@ import {
   validateLiveFlowDraft,
 } from "@/features/live/liveFlowStore";
 import { LiveFlowProgressRibbon } from "@/features/live/LiveFlowProgressRibbon";
+import { recordLiveActivity } from "@/features/live/liveActivityStore";
+import { AuthContext } from "@/auth/AuthContext";
 
 /**
  * Provider � Live Builder (Provider)
@@ -2425,6 +2427,8 @@ export function FaithHubLiveBuilderDrawer({
 }
 
 export default function FaithHubLiveBuilderPage({ embedded = false, onRequestClose }: { embedded?: boolean; onRequestClose?: () => void } = {}) {
+  const auth = React.useContext(AuthContext);
+  const actorName = auth?.user?.name || "Provider operator";
   const [draft, setDraft] = useState<LiveBuilderDraft>(() => buildDefaultDraft());
   const [step, setStep] = useState<StepKey>("setup");
   const [toast, setToast] = useState<string | null>(null);
@@ -2545,6 +2549,13 @@ export default function FaithHubLiveBuilderPage({ embedded = false, onRequestClo
 
     setDraft((d) => ({ ...d, id: saved.id, status: "Draft" }));
     setFormErrors([]);
+    recordLiveActivity({
+      sessionId: saved.id,
+      flow: "builder",
+      action: "Saved live session draft",
+      actorName,
+      detail: saved.title,
+    });
     showToast("Live session saved and synced to schedule/dashboard.");
   };
 
@@ -2592,6 +2603,13 @@ export default function FaithHubLiveBuilderPage({ embedded = false, onRequestClo
 
     setDraft((d) => ({ ...d, id: scheduled.id, status: "Scheduled" }));
     setFormErrors([]);
+    recordLiveActivity({
+      sessionId: scheduled.id,
+      flow: "builder",
+      action: "Scheduled live session",
+      actorName,
+      detail: scheduled.title,
+    });
     showToast("Live session scheduled. Opening Live Schedule.");
     safeNav(`${ROUTES.liveSchedule}?sessionId=${encodeURIComponent(scheduled.id)}`);
   };
@@ -2602,6 +2620,15 @@ export default function FaithHubLiveBuilderPage({ embedded = false, onRequestClo
       return;
     }
     setDraft((d) => ({ ...d, status: d.status === "Scheduled" ? d.status : "Ready" }));
+    if (draft.id) {
+      recordLiveActivity({
+        sessionId: draft.id,
+        flow: "builder",
+        action: "Opened Studio from Builder",
+        actorName,
+        detail: draft.title,
+      });
+    }
     showToast("Studio setup is ready. Map this button to your Live Studio route.");
   };
 

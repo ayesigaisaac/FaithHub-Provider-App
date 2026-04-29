@@ -8,6 +8,7 @@ import { AuthContext } from "@/auth/AuthContext";
 import { AnimatePresence, motion } from "framer-motion";
 import { getLiveFlowSessionById } from "@/features/live/liveFlowStore";
 import { recordStudioOp } from "@/features/live/liveStudioOpsStore";
+import { recordLiveActivity } from "@/features/live/liveActivityStore";
 import { LiveFlowProgressRibbon } from "@/features/live/LiveFlowProgressRibbon";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 import {
@@ -743,6 +744,7 @@ function AudienceMiniPreview({
 export default function FaithHubLiveStudioPage() {
   const auth = React.useContext(AuthContext);
   const canGoLive = auth ? auth.canPerform("stream:go-live") : true;
+  const actorName = auth?.user?.name || "Provider operator";
   const navigate = (target: string) => navigateWithRouter(target);
   const sessionId =
     typeof window !== "undefined"
@@ -853,10 +855,28 @@ export default function FaithHubLiveStudioPage() {
       setMode("live");
       setElapsedSec(0);
       setEmergencySlate(false);
+      if (sessionId) {
+        recordLiveActivity({
+          sessionId,
+          flow: "studio",
+          action: "Started live stream",
+          actorName,
+          detail: sessionTitle,
+        });
+      }
       showToast("Provider session is now live");
       return;
     }
     setMode("standby");
+    if (sessionId) {
+      recordLiveActivity({
+        sessionId,
+        flow: "studio",
+        action: "Ended live stream",
+        actorName,
+        detail: sessionTitle,
+      });
+    }
     showToast("Live ended • Post-live handoff ready");
   };
 
@@ -869,6 +889,13 @@ export default function FaithHubLiveStudioPage() {
     };
     setClipMarks((current) => [nextMark, ...current]);
     if (sessionId) {
+      recordLiveActivity({
+        sessionId,
+        flow: "studio",
+        action: "Marked clip",
+        actorName,
+        detail: `${label} @ ${nextMark.time}`,
+      });
       recordStudioOp({
         sessionId,
         type: "clip_marked",

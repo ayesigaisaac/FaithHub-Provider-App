@@ -8,6 +8,8 @@ import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 import { getLiveFlowState, subscribeToLiveFlow } from "@/features/live/liveFlowStore";
 import { LiveFlowProgressRibbon } from "@/features/live/LiveFlowProgressRibbon";
+import { recordLiveActivity } from "@/features/live/liveActivityStore";
+import { AuthContext } from "@/auth/AuthContext";
 import {
   AlertTriangle,
   ArrowRight,
@@ -2528,6 +2530,8 @@ function MobilePreviewDrawer(props: React.ComponentProps<typeof Drawer> & { chil
 }
 
 export default function FaithHubLiveSchedulePage() {
+  const auth = React.useContext(AuthContext);
+  const actorName = auth?.user?.name || "Provider operator";
   const [sessions, setSessions] = useState<LiveSession[]>(() => {
     const synced = getLiveFlowState().sessions.map(mapLiveFlowRecordToScheduleSession);
     return mergeLiveFlowSessions(SESSION_SEED, synced);
@@ -2670,6 +2674,16 @@ export default function FaithHubLiveSchedulePage() {
     );
 
     setSelectedSessionId(sessionId);
+    const moved = sessions.find((session) => session.id === sessionId);
+    if (moved) {
+      recordLiveActivity({
+        sessionId,
+        flow: "schedule",
+        action: "Rescheduled session",
+        actorName,
+        detail: moved.title,
+      });
+    }
     showToast("Session rescheduled. Review impacted staff, reminders, and destinations.");
   }
 
@@ -2714,6 +2728,13 @@ export default function FaithHubLiveSchedulePage() {
 
     setSessions((current) => [...current, nextSession]);
     setSelectedSessionId(nextSession.id);
+    recordLiveActivity({
+      sessionId: nextSession.id,
+      flow: "schedule",
+      action: "Added session to schedule",
+      actorName,
+      detail: nextSession.title,
+    });
     showToast("Live session added to the operational calendar.");
   }
 
@@ -2724,6 +2745,16 @@ export default function FaithHubLiveSchedulePage() {
       ),
     );
     setSelectedSessionId(sessionId);
+    const moved = sessions.find((session) => session.id === sessionId);
+    if (moved) {
+      recordLiveActivity({
+        sessionId,
+        flow: "schedule",
+        action: "Applied auto-reschedule suggestion",
+        actorName,
+        detail: moved.title,
+      });
+    }
     showToast("Auto-reschedule suggestion applied.");
   }
 

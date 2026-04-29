@@ -8,8 +8,10 @@ import { useAsyncAction } from '@/hooks/useAsyncAction';
 import { useAuth } from '@/auth/useAuth';
 import { getLiveFlowSessionById } from '@/features/live/liveFlowStore';
 import { getStudioOpsSummary, subscribeToStudioOps } from '@/features/live/liveStudioOpsStore';
+import { recordLiveActivity } from '@/features/live/liveActivityStore';
 import { LiveFlowProgressRibbon } from '@/features/live/LiveFlowProgressRibbon';
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { AuthContext } from '@/auth/AuthContext';
 import {
   AlertTriangle,
   ArrowRight,
@@ -477,6 +479,8 @@ function PhonePreview({
 }
 
 export default function PostLivePublishingPage() {
+  const auth = React.useContext(AuthContext);
+  const actorName = auth?.user?.name || 'Provider operator';
   const { canPerform } = useAuth();
   const canPublishReplay = canPerform("replay:publish");
   const { showSuccess, showNotification } = useNotification();
@@ -868,7 +872,23 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
               <Btn tone="ghost" className="h-10 px-4 justify-start sm:justify-center bg-[var(--fh-surface-bg)] dark:bg-slate-900 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800" onClick={() => setPreviewOpen(true)} left={<Eye className="h-4 w-4" />}>
                 Preview replay
               </Btn>
-              <Btn tone="accent" className="h-10 px-4" onClick={() => showSuccess('Clip generation queued')} left={<Scissors className="h-4 w-4" />}>
+              <Btn
+                tone="accent"
+                className="h-10 px-4"
+                onClick={() => {
+                  if (sessionId) {
+                    recordLiveActivity({
+                      sessionId,
+                      flow: "publish",
+                      action: "Queued clip generation",
+                      actorName,
+                      detail: title,
+                    });
+                  }
+                  showSuccess('Clip generation queued');
+                }}
+                left={<Scissors className="h-4 w-4" />}
+              >
                 Generate clips
               </Btn>
               <Btn
@@ -888,6 +908,15 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
                     ? run(
                         async () => {
                           setProcessingState('Published');
+                          if (sessionId) {
+                            recordLiveActivity({
+                              sessionId,
+                              flow: "publish",
+                              action: "Published replay",
+                              actorName,
+                              detail: title,
+                            });
+                          }
                         },
                         { successMessage: 'Replay published successfully!' },
                       )

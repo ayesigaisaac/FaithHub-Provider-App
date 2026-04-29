@@ -42,6 +42,7 @@ import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 import { getLiveFlowState, subscribeToLiveFlow } from "@/features/live/liveFlowStore";
 import { LiveFlowProgressRibbon } from "@/features/live/LiveFlowProgressRibbon";
+import { exportLiveActivityCsv, getLiveActivityRecords, subscribeToLiveActivity } from "@/features/live/liveActivityStore";
 
 /**
  * Provider � Live Dashboard
@@ -1183,6 +1184,9 @@ export default function FaithHubLiveDashboardPage() {
   const [audienceMute, setAudienceMute] = useState(false);
   const [prayerTriage, setPrayerTriage] = useState(true);
   const [reminderSent, setReminderSent] = useState(false);
+  const [activityFlowFilter, setActivityFlowFilter] = useState<"all" | "builder" | "schedule" | "studio" | "publish">("all");
+  const [activitySearch, setActivitySearch] = useState("");
+  const [activityRecords, setActivityRecords] = useState(() => getLiveActivityRecords());
 
   useEffect(() => {
     const timer = window.setInterval(() => setNowMs(Date.now()), 1000);
@@ -1200,6 +1204,12 @@ export default function FaithHubLiveDashboardPage() {
     const t = window.setTimeout(() => setToast(null), 2800);
     return () => window.clearTimeout(t);
   }, [toast]);
+
+  useEffect(() => {
+    return subscribeToLiveActivity(() => {
+      setActivityRecords(getLiveActivityRecords());
+    });
+  }, []);
 
   const allSessions = useMemo(
     () => [...liveFlow.sessions.map(mapLiveFlowRecordToDashboardSession), ...SESSIONS],
@@ -1245,6 +1255,17 @@ export default function FaithHubLiveDashboardPage() {
   const activeAlerts = session.alerts.filter((alert) => !acknowledgedAlerts.includes(alert.id));
   const firstPlaybooks = activeAlerts.slice(0, 2);
   const canSendReminder = session.state !== "Ended";
+  const filteredActivity = useMemo(() => {
+    const q = activitySearch.trim().toLowerCase();
+    return activityRecords
+      .filter((record) => record.sessionId === session.id)
+      .filter((record) => activityFlowFilter === "all" || record.flow === activityFlowFilter)
+      .filter((record) => {
+        if (!q) return true;
+        return [record.action, record.actorName, record.detail || "", record.flow].join(" ").toLowerCase().includes(q);
+      })
+      .slice(0, 80);
+  }, [activityFlowFilter, activityRecords, activitySearch, session.id]);
 
   const countdownLabel =
     session.state === "Upcoming"
@@ -1609,6 +1630,59 @@ export default function FaithHubLiveDashboardPage() {
                 ) : (
                   <div className="rounded-lg border border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-900/20 p-4 text-[12px] text-emerald-800 dark:text-emerald-300 transition-colors">
                     No unresolved alerts. Stream health, destinations, moderation, and caption readiness are all within expected thresholds.
+                  </div>
+                )}
+              </div>
+            </Card>
+
+            <Card
+              title="Activity timeline + audit feed"
+              subtitle="Who did what across Live Builder, Schedule, Studio, and Publish for this session."
+              right={
+                <SoftButton
+                  onClick={() => {
+                    exportLiveActivityCsv(filteredActivity, `live_activity_${session.id}.csv`);
+                    setToast("Activity feed exported.");
+                  }}
+                >
+                  <Copy className="h-4 w-4" /> Export CSV
+                </SoftButton>
+              }
+            >
+              <div className="grid gap-2 sm:grid-cols-3">
+                <select
+                  value={activityFlowFilter}
+                  onChange={(e) => setActivityFlowFilter(e.target.value as "all" | "builder" | "schedule" | "studio" | "publish")}
+                  className="rounded-xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] font-semibold text-faith-ink dark:text-slate-100"
+                >
+                  <option value="all">All flows</option>
+                  <option value="builder">Live Builder</option>
+                  <option value="schedule">Live Schedule</option>
+                  <option value="studio">Live Studio</option>
+                  <option value="publish">Post-live Publish</option>
+                </select>
+                <input
+                  value={activitySearch}
+                  onChange={(e) => setActivitySearch(e.target.value)}
+                  placeholder="Search actor/action"
+                  className="sm:col-span-2 rounded-xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] font-semibold text-faith-ink dark:text-slate-100"
+                />
+              </div>
+              <div className="mt-3 space-y-2">
+                {filteredActivity.length ? (
+                  filteredActivity.map((item) => (
+                    <div key={item.id} className="rounded-lg border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-3">
+                      <div className="flex items-center justify-between gap-2">
+                        <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">{item.action}</div>
+                        <Pill text={item.flow.toUpperCase()} />
+                      </div>
+                      <div className="mt-1 text-[11px] text-faith-slate">{item.actorName} · {formatDateTime(item.atISO)}</div>
+                      {item.detail ? <div className="mt-1 text-[11px] text-faith-slate">{item.detail}</div> : null}
+                    </div>
+                  ))
+                ) : (
+                  <div className="rounded-lg border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-3 text-[12px] text-faith-slate">
+                    No activity has been recorded yet for this session.
                   </div>
                 )}
               </div>
