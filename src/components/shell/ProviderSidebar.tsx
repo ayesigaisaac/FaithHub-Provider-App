@@ -27,13 +27,9 @@ import BoltRoundedIcon from '@mui/icons-material/BoltRounded';
 import GroupsRoundedIcon from '@mui/icons-material/GroupsRounded';
 import SupervisorAccountRoundedIcon from '@mui/icons-material/SupervisorAccountRounded';
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
-import { useEffect, useMemo, useState } from 'react';
+import { useState } from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { getProviderSidebarGroupsBySection, providerSections } from '@/navigation/providerPages';
-import { getTeachingFlowState, subscribeToTeachingFlow } from '@/features/teachings/teachingFlowStore';
-import { getLiveFlowState, subscribeToLiveFlow } from '@/features/live/liveFlowStore';
-import { getLiveActivityRecords, subscribeToLiveActivity } from '@/features/live/liveActivityStore';
-import { subscribeToStudioOps } from '@/features/live/liveStudioOpsStore';
 
 const drawerWidth = 318;
 const topbarOffsetMobile = 110;
@@ -66,30 +62,6 @@ const sectionIconMap: Record<string, typeof GridViewRoundedIcon> = {
   Leadership: SupervisorAccountRoundedIcon,
   Settings: SettingsRoundedIcon,
 };
-const fallbackSectionSignalCounts: Record<string, number> = {
-  Core: 2,
-  Content: 7,
-  Streams: 3,
-  Outreach: 5,
-  'Post-live': 4,
-  Giving: 2,
-  Beacon: 6,
-  Community: 8,
-  Leadership: 1,
-  Settings: 3,
-};
-const sectionSignalTone: Record<string, 'success' | 'warning'> = {
-  Core: 'success',
-  Content: 'warning',
-  Streams: 'warning',
-  Outreach: 'success',
-  'Post-live': 'warning',
-  Giving: 'success',
-  Beacon: 'warning',
-  Community: 'success',
-  Leadership: 'warning',
-  Settings: 'warning',
-};
 
 export function ProviderSidebar({
   open,
@@ -104,7 +76,6 @@ export function ProviderSidebar({
 }) {
   const location = useLocation();
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({});
-  const [sectionSignalCounts, setSectionSignalCounts] = useState<Record<string, number>>(fallbackSectionSignalCounts);
   const sections = providerSections
     .map((section) => ({
       section,
@@ -115,58 +86,6 @@ export function ProviderSidebar({
   const toggleSection = (section: string) => {
     setOpenSections((prev) => ({ ...prev, [section]: !prev[section] }));
   };
-  const sectionsByLabel = useMemo(() => {
-    return new Map(sections.map((section) => [section.label, section]));
-  }, [sections]);
-
-  useEffect(() => {
-    const computeSignals = () => {
-      const next = { ...fallbackSectionSignalCounts };
-
-      const teachings = getTeachingFlowState();
-      const teachingDrafts =
-        teachings.series.filter((item) => item.publishingState === 'Draft').length +
-        teachings.episodes.filter((item) => item.publishingState === 'Draft').length;
-      const teachingScheduled =
-        teachings.series.filter((item) => item.publishingState === 'Scheduled').length +
-        teachings.episodes.filter((item) => item.publishingState === 'Scheduled').length;
-      next.Content = teachingDrafts + teachingScheduled;
-
-      const liveFlow = getLiveFlowState();
-      const livePending = liveFlow.sessions.filter((session) => session.status !== 'Scheduled').length;
-      const liveRecentActivity = getLiveActivityRecords().filter((record) => {
-        const age = Date.now() - new Date(record.atISO).getTime();
-        return age >= 0 && age <= 24 * 60 * 60 * 1000;
-      }).length;
-      next.Streams = livePending + liveRecentActivity;
-
-      const coreSection = sectionsByLabel.get('Core');
-      if (coreSection) {
-        const corePagePaths = new Set(coreSection.groups.map(({ page }) => page.path));
-        const coreRelatedLiveSessions = liveFlow.sessions.filter(
-          (session) =>
-            session.parentType === 'Series Episode' || session.parentType === 'Standalone Teaching'
-        ).length;
-        next.Core = Math.max(corePagePaths.size, coreRelatedLiveSessions);
-      }
-
-      setSectionSignalCounts(next);
-    };
-
-    computeSignals();
-
-    const unsubTeaching = subscribeToTeachingFlow(computeSignals);
-    const unsubLive = subscribeToLiveFlow(computeSignals);
-    const unsubLiveActivity = subscribeToLiveActivity(computeSignals);
-    const unsubStudioOps = subscribeToStudioOps(computeSignals);
-
-    return () => {
-      unsubTeaching();
-      unsubLive();
-      unsubLiveActivity();
-      unsubStudioOps();
-    };
-  }, [sectionsByLabel]);
 
   const content = (
     <Box
@@ -246,9 +165,6 @@ export function ProviderSidebar({
                   <Box sx={{ mb: 0.58 }}>
                     {(() => {
                       const SectionIcon = sectionIconMap[group.label] ?? GridViewRoundedIcon;
-                      const totalPagesInSection = group.groups.reduce((sum, item) => sum + 1 + item.children.length, 0);
-                      const signalCount = sectionSignalCounts[group.label] ?? 0;
-                      const signalTone = sectionSignalTone[group.label] ?? 'warning';
                       return (
                     <ListItemButton
                       onClick={() => toggleSection(group.section)}
@@ -302,56 +218,6 @@ export function ProviderSidebar({
                             >
                               {group.label}
                             </Typography>
-                            <Stack direction="row" spacing={0.6} sx={{ mt: 0.5 }}>
-                              <Box
-                                component="span"
-                                sx={{
-                                  display: 'inline-flex',
-                                  alignItems: 'center',
-                                  justifyContent: 'center',
-                                  minWidth: 26,
-                                  height: 18,
-                                  borderRadius: 999,
-                                  px: 0.8,
-                                  fontSize: 10,
-                                  fontWeight: 800,
-                                  lineHeight: 1,
-                                  border: '1px solid',
-                                  borderColor: 'color-mix(in srgb, var(--fh-line) 75%, #d1d5db 25%)',
-                                  bgcolor: '#ffffff',
-                                  color: 'var(--fh-slate)',
-                                }}
-                              >
-                                {totalPagesInSection} pages
-                              </Box>
-                              <Box
-                                component="span"
-                                sx={{
-                                  display: 'inline-flex',
-                                  alignItems: 'center',
-                                  justifyContent: 'center',
-                                  minWidth: 22,
-                                  height: 18,
-                                  borderRadius: 999,
-                                  px: 0.75,
-                                  fontSize: 10,
-                                  fontWeight: 900,
-                                  lineHeight: 1,
-                                  border: '1px solid',
-                                  borderColor:
-                                    signalTone === 'success'
-                                      ? 'color-mix(in srgb, #10b981 65%, #a7f3d0 35%)'
-                                      : 'color-mix(in srgb, #f59e0b 65%, #fde68a 35%)',
-                                  bgcolor:
-                                    signalTone === 'success'
-                                      ? 'color-mix(in srgb, #10b981 22%, #ffffff 78%)'
-                                      : 'color-mix(in srgb, #f59e0b 22%, #ffffff 78%)',
-                                  color: signalTone === 'success' ? '#047857' : '#92400e',
-                                }}
-                              >
-                                {signalCount}
-                              </Box>
-                            </Stack>
                           </Box>
                         }
                       />

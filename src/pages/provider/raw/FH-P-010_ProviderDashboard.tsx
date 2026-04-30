@@ -1330,7 +1330,7 @@ export default function ProviderDashboardPage() {
                 </div>
               </div>
 
-              <div className="grid gap-3 sm:gap-4 lg:grid-cols-2 xl:grid-cols-1">
+              <div className="grid gap-3 sm:gap-4 lg:grid-cols-2">
                 <div className="rounded-lg border border-faith-line bg-[var(--fh-surface)] p-3 sm:p-4 md:p-5">
                   <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-faith-slate">
                     Profile summary
