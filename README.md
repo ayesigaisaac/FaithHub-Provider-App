@@ -45,7 +45,7 @@ npm install
 
 npm run dev
 ```
-flo
+flor
 Open the local Vite URL shown in the terminal.
 
 ## Production build

@@ -62,6 +62,30 @@ const sectionIconMap: Record<string, typeof GridViewRoundedIcon> = {
   Leadership: SupervisorAccountRoundedIcon,
   Settings: SettingsRoundedIcon,
 };
+const sectionSignalCounts: Record<string, number> = {
+  Core: 2,
+  Content: 7,
+  Streams: 3,
+  Outreach: 5,
+  'Post-live': 4,
+  Giving: 2,
+  Beacon: 6,
+  Community: 8,
+  Leadership: 1,
+  Settings: 3,
+};
+const sectionSignalTone: Record<string, 'success' | 'warning'> = {
+  Core: 'success',
+  Content: 'warning',
+  Streams: 'warning',
+  Outreach: 'success',
+  'Post-live': 'warning',
+  Giving: 'success',
+  Beacon: 'warning',
+  Community: 'success',
+  Leadership: 'warning',
+  Settings: 'warning',
+};
 
 export function ProviderSidebar({
   open,
@@ -160,18 +184,21 @@ export function ProviderSidebar({
             }}
           >
             {sections.map((group) => (
-              <Box key={group.section} sx={{ mb: collapsed ? 0.45 : 0.95 }}>
+              <Box key={group.section} sx={{ mb: collapsed ? 0.4 : 0.72 }}>
                 {!collapsed ? (
-                  <Box sx={{ mb: 0.9 }}>
+                  <Box sx={{ mb: 0.58 }}>
                     {(() => {
                       const SectionIcon = sectionIconMap[group.label] ?? GridViewRoundedIcon;
+                      const totalPagesInSection = group.groups.reduce((sum, item) => sum + 1 + item.children.length, 0);
+                      const signalCount = sectionSignalCounts[group.label] ?? 0;
+                      const signalTone = sectionSignalTone[group.label] ?? 'warning';
                       return (
                     <ListItemButton
                       onClick={() => toggleSection(group.section)}
                       sx={{
-                        px: 1.35,
-                        py: 0.95,
-                        minHeight: 76,
+                        px: 1.25,
+                        py: 0.8,
+                        minHeight: 70,
                         borderRadius: '22px',
                         border: '1px solid',
                         borderColor: 'color-mix(in srgb, var(--fh-line) 80%, #d6d8dd 20%)',
@@ -188,11 +215,11 @@ export function ProviderSidebar({
                         },
                       }}
                     >
-                      <ListItemIcon sx={{ minWidth: 58 }}>
+                      <ListItemIcon sx={{ minWidth: 54 }}>
                         <Avatar
                           sx={{
-                            width: 46,
-                            height: 46,
+                            width: 42,
+                            height: 42,
                             borderRadius: 3.2,
                             bgcolor: 'color-mix(in srgb, var(--fh-brand-soft) 52%, #ffffff 48%)',
                             color: 'var(--fh-brand-dark)',
@@ -205,30 +232,83 @@ export function ProviderSidebar({
                       </ListItemIcon>
                       <ListItemText
                         primary={
-                          <Typography
-                            sx={{
-                              fontWeight: 700,
-                              fontSize: 18,
-                              letterSpacing: '0.12em',
-                              color: 'var(--fh-slate)',
-                              textTransform: 'uppercase',
-                            }}
-                          >
-                            {group.label}
-                          </Typography>
+                          <Box>
+                            <Typography
+                              sx={{
+                                fontWeight: 700,
+                                fontSize: 17,
+                                letterSpacing: '0.15em',
+                                color: 'var(--fh-slate)',
+                                textTransform: 'uppercase',
+                                lineHeight: 1,
+                              }}
+                            >
+                              {group.label}
+                            </Typography>
+                            <Stack direction="row" spacing={0.6} sx={{ mt: 0.5 }}>
+                              <Box
+                                component="span"
+                                sx={{
+                                  display: 'inline-flex',
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                  minWidth: 26,
+                                  height: 18,
+                                  borderRadius: 999,
+                                  px: 0.8,
+                                  fontSize: 10,
+                                  fontWeight: 800,
+                                  lineHeight: 1,
+                                  border: '1px solid',
+                                  borderColor: 'color-mix(in srgb, var(--fh-line) 75%, #d1d5db 25%)',
+                                  bgcolor: '#ffffff',
+                                  color: 'var(--fh-slate)',
+                                }}
+                              >
+                                {totalPagesInSection} pages
+                              </Box>
+                              <Box
+                                component="span"
+                                sx={{
+                                  display: 'inline-flex',
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                  minWidth: 22,
+                                  height: 18,
+                                  borderRadius: 999,
+                                  px: 0.75,
+                                  fontSize: 10,
+                                  fontWeight: 900,
+                                  lineHeight: 1,
+                                  border: '1px solid',
+                                  borderColor:
+                                    signalTone === 'success'
+                                      ? 'color-mix(in srgb, #10b981 65%, #a7f3d0 35%)'
+                                      : 'color-mix(in srgb, #f59e0b 65%, #fde68a 35%)',
+                                  bgcolor:
+                                    signalTone === 'success'
+                                      ? 'color-mix(in srgb, #10b981 22%, #ffffff 78%)'
+                                      : 'color-mix(in srgb, #f59e0b 22%, #ffffff 78%)',
+                                  color: signalTone === 'success' ? '#047857' : '#92400e',
+                                }}
+                              >
+                                {signalCount}
+                              </Box>
+                            </Stack>
+                          </Box>
                         }
                       />
                       {openSections[group.section] ? (
                         <KeyboardArrowDownRoundedIcon
                           sx={{
-                            fontSize: 32,
+                            fontSize: 30,
                             color: 'var(--fh-slate)',
                           }}
                         />
                       ) : (
                         <KeyboardArrowRightRoundedIcon
                           sx={{
-                            fontSize: 32,
+                            fontSize: 30,
                             color: 'var(--fh-slate)',
                           }}
                         />
@@ -238,7 +318,7 @@ export function ProviderSidebar({
                     })()}
 
                     <Collapse in={Boolean(openSections[group.section])} timeout="auto" unmountOnExit>
-                      <Box sx={{ pl: 2.5, pr: 0.5, pt: 0.7 }}>
+                      <Box sx={{ pl: 2.2, pr: 0.4, pt: 0.52 }}>
                         {group.groups.map(({ page, children }) => {
                           const visibleChildren = children.filter((child) => child.key !== 'book-builder');
                           const parentActive = page.path === location.pathname || Boolean(page.aliases?.includes(location.pathname));
@@ -247,16 +327,16 @@ export function ProviderSidebar({
                           )?.key;
                           const active = parentActive || Boolean(activeChildKey);
                           return (
-                            <Box key={`${group.section}-${page.key}`} sx={{ mb: 0.6 }}>
+                            <Box key={`${group.section}-${page.key}`} sx={{ mb: 0.45 }}>
                               <ListItemButton
                                 component={RouterLink}
                                 to={page.path}
                                 onClick={onClose}
                                 sx={{
-                                  mb: 0.5,
-                                  px: 1.1,
-                                  py: 0.8,
-                                  minHeight: 46,
+                                  mb: 0.34,
+                                  px: 1.05,
+                                  py: 0.66,
+                                  minHeight: 42,
                                   borderRadius: '14px',
                                   border: '1px solid',
                                   borderColor: active
@@ -274,7 +354,7 @@ export function ProviderSidebar({
                                     <Typography
                                       sx={{
                                         fontWeight: active ? 800 : 650,
-                                        fontSize: 13.5,
+                                        fontSize: 13,
                                         lineHeight: 1.2,
                                         color: active ? 'var(--fh-ink)' : 'var(--fh-slate)',
                                       }}
@@ -285,7 +365,7 @@ export function ProviderSidebar({
                                 />
                               </ListItemButton>
                               {visibleChildren.length ? (
-                                <Box sx={{ pl: 2.1 }}>
+                                <Box sx={{ pl: 1.85 }}>
                                   {visibleChildren.map((child) => {
                                     const childActive =
                                       child.path === location.pathname || Boolean(child.aliases?.includes(location.pathname));
@@ -296,10 +376,10 @@ export function ProviderSidebar({
                                         to={child.path}
                                         onClick={onClose}
                                         sx={{
-                                          mb: 0.38,
-                                          px: 1,
-                                          py: 0.6,
-                                          minHeight: 39,
+                                          mb: 0.3,
+                                          px: 0.95,
+                                          py: 0.52,
+                                          minHeight: 36,
                                           borderRadius: '12px',
                                           border: '1px solid',
                                           borderColor: childActive ? 'var(--fh-brand-dark)' : 'transparent',
@@ -315,7 +395,7 @@ export function ProviderSidebar({
                                             <Typography
                                               sx={{
                                                 fontWeight: childActive ? 700 : 500,
-                                                fontSize: 12.5,
+                                                fontSize: 12,
                                                 lineHeight: 1.2,
                                                 color: childActive ? 'var(--fh-ink)' : 'var(--fh-slate)',
                                               }}
