@@ -112,9 +112,10 @@ export function Sidebar({ children, className = '', ...props }: HTMLAttributes<H
   return (
     <>
       <aside
-        className={`fixed inset-y-0 left-0 z-40 hidden w-72 border-r border-slate-200 bg-[#f4f6f6] lg:block ${
-          open ? 'lg:translate-x-0' : 'lg:-translate-x-full'
-        } transition-transform ${className}`.trim()}
+        className={`fixed inset-y-0 left-0 z-40 hidden border-r border-slate-200 bg-[#f4f6f6] transition-[width] lg:block ${
+          open ? 'w-72' : 'w-20'
+        } ${className}`.trim()}
+        data-state={open ? 'expanded' : 'collapsed'}
         {...props}
       >
         {children}
