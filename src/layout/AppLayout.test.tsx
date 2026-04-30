@@ -1,27 +1,37 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { MemoryRouter } from 'react-router-dom';
 import { AppLayout } from '@/layout/AppLayout';
 
-vi.mock('@/layout/Sidebar', () => ({
-  Sidebar: ({ onClose }: { onClose?: () => void }) => (
-    <div>
-      <p>Sidebar mock</p>
-      {onClose ? (
-        <button type="button" onClick={onClose}>
-          Close sidebar
-        </button>
-      ) : null}
-    </div>
-  ),
-}));
-
-describe('AppLayout', () => {
-  it('renders skip link and main content region', () => {
-    render(
+function renderLayout() {
+  render(
+    <MemoryRouter initialEntries={['/dashboard-ui']}>
       <AppLayout>
         <h1>Dashboard Content</h1>
-      </AppLayout>,
-    );
+      </AppLayout>
+    </MemoryRouter>,
+  );
+}
+
+describe('AppLayout', () => {
+  beforeEach(() => {
+    Object.defineProperty(window, 'matchMedia', {
+      writable: true,
+      value: vi.fn().mockImplementation((query: string) => ({
+        matches: query.includes('max-width'),
+        media: query,
+        onchange: null,
+        addEventListener: vi.fn(),
+        removeEventListener: vi.fn(),
+        addListener: vi.fn(),
+        removeListener: vi.fn(),
+        dispatchEvent: vi.fn(),
+      })),
+    });
+  });
+
+  it('renders skip link and main content region', () => {
+    renderLayout();
 
     expect(screen.getByRole('link', { name: /skip to main content/i })).toBeInTheDocument();
     expect(screen.getByRole('main')).toBeInTheDocument();
@@ -30,11 +40,7 @@ describe('AppLayout', () => {
 
   it('opens and closes mobile navigation dialog', async () => {
     const user = userEvent.setup();
-    render(
-      <AppLayout>
-        <h1>Dashboard Content</h1>
-      </AppLayout>,
-    );
+    renderLayout();
 
     await user.click(screen.getByRole('button', { name: /open navigation/i }));
     expect(screen.getByRole('dialog', { name: /mobile navigation/i })).toBeInTheDocument();
@@ -45,11 +51,7 @@ describe('AppLayout', () => {
 
   it('closes dialog on Escape key', async () => {
     const user = userEvent.setup();
-    render(
-      <AppLayout>
-        <h1>Dashboard Content</h1>
-      </AppLayout>,
-    );
+    renderLayout();
 
     await user.click(screen.getByRole('button', { name: /open navigation/i }));
     expect(screen.getByRole('dialog', { name: /mobile navigation/i })).toBeInTheDocument();
