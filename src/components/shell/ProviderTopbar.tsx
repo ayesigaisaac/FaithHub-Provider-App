@@ -58,9 +58,9 @@ export function ProviderTopbar({
   const utilityIconSx = {
     border: '1px solid',
     borderColor: 'var(--fh-line)',
-    borderRadius: 'var(--fh-radius-xl)',
-    width: { xs: 40, md: 48 },
-    height: { xs: 40, md: 48 },
+    borderRadius: '12px',
+    width: { xs: 42, md: 46 },
+    height: { xs: 42, md: 46 },
     bgcolor: 'var(--fh-surface-bg)',
     color: 'var(--fh-slate)',
     '&:hover': {
@@ -109,7 +109,7 @@ export function ProviderTopbar({
     >
       <Toolbar
         sx={{
-          minHeight: { xs: 60, md: 76 },
+          minHeight: { xs: 64, md: 78 },
           px: { xs: 1.25, md: 3 },
           py: { xs: 0.35, md: 0.9 },
           borderBottom: '1px solid',
@@ -198,8 +198,8 @@ export function ProviderTopbar({
               }}
               sx={{
                 '& .MuiOutlinedInput-root': {
-                  borderRadius: 'var(--fh-radius-xl)',
-                  minHeight: 48,
+                  borderRadius: '12px',
+                  minHeight: 46,
                   minWidth: 256,
                   px: 0.4,
                   borderColor: 'var(--fh-line)',
@@ -219,7 +219,7 @@ export function ProviderTopbar({
                 '& .MuiInputBase-input': {
                   py: 1.1,
                 },
-                borderRadius: 'var(--fh-radius-xl)',
+                borderRadius: '12px',
               }}
             />
           )}
@@ -247,7 +247,7 @@ export function ProviderTopbar({
 
       <Toolbar
         sx={{
-          minHeight: { xs: 50, md: 62 },
+          minHeight: { xs: 54, md: 60 },
           px: { xs: 1.25, md: 3 },
           py: { xs: 0.2, md: 0.35 },
           mt: 0,
@@ -296,12 +296,12 @@ export function ProviderTopbar({
                 }}
               >
                 <Box
-                  sx={{
-                    bgcolor: 'var(--fh-brand)',
-                    color: 'var(--fh-surface-bg)',
-                    borderRadius: 999,
-                    px: { xs: 1.35, md: 1.9 },
-                    py: { xs: 0.45, md: 0.6 },
+                sx={{
+                  bgcolor: 'var(--fh-brand)',
+                  color: 'var(--fh-surface-bg)',
+                  borderRadius: '12px',
+                  px: { xs: 1.35, md: 1.9 },
+                  py: { xs: 0.55, md: 0.75 },
                     fontSize: { xs: 14, md: 17 },
                     fontWeight: 800,
                     lineHeight: 1,
@@ -319,10 +319,10 @@ export function ProviderTopbar({
                     onClick={() => navigate(resolveKnownProviderPath(tab.to))}
                     aria-current={activeTopTab?.label === tab.label ? 'page' : undefined}
                     sx={{
-                      borderRadius: 999,
+                      borderRadius: '12px',
                       textTransform: 'none',
                       fontWeight: 800,
-                      minHeight: { xs: 36, md: 44 },
+                      minHeight: { xs: 40, md: 44 },
                       px: { xs: 1.35, md: 2.1 },
                       fontSize: { xs: 13, md: 16 },
                       borderWidth: 1,

@@ -981,7 +981,7 @@ function Pill({
   return (
     <span
       className={cx(
-        "inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[11px] font-semibold",
+        "inline-flex h-9 items-center gap-1.5 rounded-full border px-3 text-[12px] font-semibold",
         tonePill(tone),
       )}
     >
@@ -1007,7 +1007,7 @@ function SectionCard({
   return (
     <section
       className={cx(
-        "rounded-xl border border-faith-line bg-[var(--fh-surface-bg)] p-3 sm:p-4 md:p-5 shadow-soft",
+        "rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 sm:p-5 shadow-soft",
         className,
       )}
     >
@@ -1053,7 +1053,7 @@ function GhostButton({
       type="button"
       onClick={onClick}
       className={cx(
-        "inline-flex items-center justify-center gap-2 rounded-xl border bg-[var(--fh-surface-bg)] px-3 py-1.5 text-[12px] font-semibold transition-colors",
+        "inline-flex h-11 items-center justify-center gap-2 rounded-xl border bg-[var(--fh-surface-bg)] px-4 text-[12px] font-semibold transition-colors",
         activeColor,
         className,
       )}
@@ -1081,7 +1081,7 @@ function SolidButton({
     <button
       type="button"
       onClick={onClick}
-      className={cx("inline-flex items-center justify-center gap-2 rounded-xl px-3.5 py-1.5 text-[12px] font-semibold text-white transition hover:brightness-95", className)}
+      className={cx("inline-flex h-11 items-center justify-center gap-2 rounded-xl px-4 text-[12px] font-semibold text-white transition hover:brightness-95", className)}
       style={{ background: accentBg(accent) }}
     >
       {icon}
@@ -1145,7 +1145,7 @@ function RoleChip({
       type="button"
       onClick={onClick}
       className={cx(
-        "inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-[12px] font-semibold transition-colors",
+        "inline-flex h-10 items-center gap-2 rounded-full border px-3.5 text-[12px] font-semibold transition-colors",
         active
           ? "border-transparent text-white"
           : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 hover:bg-[var(--fh-surface)]",
@@ -1172,7 +1172,7 @@ function SelectPill({
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="h-11 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 pr-9 text-[12px] font-semibold text-slate-700 shadow-soft outline-none focus:border-slate-300"
+        className="h-11 w-full rounded-xl border border-faith-line bg-[var(--fh-surface-bg)] px-3.5 pr-9 text-[12px] font-semibold text-slate-700 shadow-soft outline-none focus:border-slate-300"
       >
         {options.map((option) => (
           <option key={option}>{option}</option>
@@ -1269,7 +1269,7 @@ export default function ProviderDashboardPage() {
       <div className="w-full max-w-none px-0 py-0">
         <div className="space-y-4 sm:space-y-5">
           {/* Top hero / mission command */}
-          <section className="rounded-xl border border-faith-line bg-[var(--fh-surface-bg)] p-3 sm:p-4 md:p-5 shadow-soft">
+          <section className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 sm:p-5 shadow-soft">
             <div className="grid gap-4 sm:gap-6 xl:grid-cols-[1.25fr,0.9fr]">
               <div className="min-w-0">
                 <ProviderPageTitle
@@ -1331,7 +1331,7 @@ export default function ProviderDashboardPage() {
               </div>
 
               <div className="grid gap-3 sm:gap-4 lg:grid-cols-2">
-                <div className="rounded-lg border border-faith-line bg-[var(--fh-surface)] p-3 sm:p-4 md:p-5">
+                <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4 sm:p-5">
                   <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-faith-slate">
                     Profile summary
                   </div>
@@ -1371,7 +1371,7 @@ export default function ProviderDashboardPage() {
                   </div>
                 </div>
 
-                <div className="rounded-lg border border-faith-line bg-[var(--fh-surface)] p-3 sm:p-4 md:p-5">
+                <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4 sm:p-5">
                   <div className="flex items-center justify-between gap-2">
                     <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-faith-slate">
                       Role-aware views
@@ -1437,7 +1437,7 @@ export default function ProviderDashboardPage() {
             </div>
 
             {/* Executive command header */}
-            <div className="mt-4 rounded-lg border border-faith-line bg-[var(--fh-surface)] p-3 sm:p-4 md:p-5">
+            <div className="mt-4 rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4 sm:p-5">
               <div className="flex flex-wrap items-start justify-between gap-3">
                 <div>
                   <div className="text-[15px] font-bold tracking-tight text-faith-ink">

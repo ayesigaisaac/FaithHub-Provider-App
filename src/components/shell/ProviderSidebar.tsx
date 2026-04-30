@@ -6,7 +6,6 @@ import {
   Divider,
   Drawer,
   List,
-  ListSubheader,
   ListItemButton,
   ListItemIcon,
   ListItemText,
@@ -127,8 +126,8 @@ export function ProviderSidebar({
                   color: 'var(--fh-ink)',
                   border: '1px solid',
                   borderColor: 'var(--fh-line)',
-                  width: 42,
-                  height: 42,
+                  width: 44,
+                  height: 44,
                   borderRadius: 999,
                   '&:hover': { bgcolor: 'var(--fh-surface)' },
                 }}
@@ -160,7 +159,7 @@ export function ProviderSidebar({
             }}
           >
             {sections.map((group) => (
-              <Box key={group.section} sx={{ mb: collapsed ? 0.4 : 0.72 }}>
+              <Box key={group.section} sx={{ mb: collapsed ? 0.45 : 0.85 }}>
                 {!collapsed ? (
                   <Box sx={{ mb: 0.58 }}>
                     {(() => {
@@ -171,7 +170,7 @@ export function ProviderSidebar({
                       sx={{
                         px: 1.25,
                         py: 0.8,
-                        minHeight: 70,
+                        minHeight: 72,
                         borderRadius: '22px',
                         border: '1px solid',
                         borderColor: 'color-mix(in srgb, var(--fh-line) 80%, #d6d8dd 20%)',
@@ -191,8 +190,8 @@ export function ProviderSidebar({
                       <ListItemIcon sx={{ minWidth: 54 }}>
                         <Avatar
                           sx={{
-                            width: 42,
-                            height: 42,
+                            width: 44,
+                            height: 44,
                             borderRadius: 3.2,
                             bgcolor: 'color-mix(in srgb, var(--fh-brand-soft) 52%, #ffffff 48%)',
                             color: 'var(--fh-brand-dark)',
@@ -209,7 +208,7 @@ export function ProviderSidebar({
                             <Typography
                               sx={{
                                 fontWeight: 700,
-                                fontSize: 17,
+                                fontSize: 16,
                                 letterSpacing: '0.15em',
                                 color: 'var(--fh-slate)',
                                 textTransform: 'uppercase',
@@ -224,14 +223,14 @@ export function ProviderSidebar({
                       {openSections[group.section] ? (
                         <KeyboardArrowDownRoundedIcon
                           sx={{
-                            fontSize: 30,
+                            fontSize: 28,
                             color: 'var(--fh-slate)',
                           }}
                         />
                       ) : (
                         <KeyboardArrowRightRoundedIcon
                           sx={{
-                            fontSize: 30,
+                            fontSize: 28,
                             color: 'var(--fh-slate)',
                           }}
                         />
@@ -259,8 +258,8 @@ export function ProviderSidebar({
                                   mb: 0.34,
                                   px: 1.05,
                                   py: 0.66,
-                                  minHeight: 42,
-                                  borderRadius: '14px',
+                                  minHeight: 44,
+                                  borderRadius: '12px',
                                   border: '1px solid',
                                   borderColor: active
                                     ? 'color-mix(in srgb, var(--fh-brand-dark) 70%, var(--fh-brand) 30%)'
@@ -302,8 +301,8 @@ export function ProviderSidebar({
                                           mb: 0.3,
                                           px: 0.95,
                                           py: 0.52,
-                                          minHeight: 36,
-                                          borderRadius: '12px',
+                                          minHeight: 38,
+                                          borderRadius: '10px',
                                           border: '1px solid',
                                           borderColor: childActive ? 'var(--fh-brand-dark)' : 'transparent',
                                           bgcolor: childActive
