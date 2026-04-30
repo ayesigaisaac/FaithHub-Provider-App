@@ -40,15 +40,18 @@ export function AppSidebar() {
 
         <SidebarContent>
           {sidebarSections.map((section) => (
-            <SidebarGroup key={section.id}>
+            <SidebarGroup key={section.id} className={collapsed ? 'mb-3' : ''}>
               {!collapsed ? <SidebarGroupLabel>{section.title}</SidebarGroupLabel> : null}
+              {collapsed ? <div className="mb-2 h-px w-full bg-slate-200" /> : null}
               <SidebarGroupContent>
                 {section.items.map((item) => (
                   <NavItem
                     key={item.path}
-                    label={collapsed ? item.label.charAt(0).toUpperCase() : item.label}
+                    label={collapsed ? item.label.slice(0, 2).toUpperCase() : item.label}
                     path={item.path}
                     onClose={handleItemClose}
+                    compact={collapsed}
+                    srLabel={item.label}
                   />
                 ))}
               </SidebarGroupContent>

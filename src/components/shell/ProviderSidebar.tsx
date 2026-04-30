@@ -1,6 +1,7 @@
 import {
   Avatar,
   Box,
+  Collapse,
   IconButton,
   Divider,
   Drawer,
@@ -15,6 +16,9 @@ import {
 } from '@mui/material';
 import KeyboardArrowRightRoundedIcon from '@mui/icons-material/KeyboardArrowRightRounded';
 import KeyboardDoubleArrowLeftRoundedIcon from '@mui/icons-material/KeyboardDoubleArrowLeftRounded';
+import GridViewRoundedIcon from '@mui/icons-material/GridViewRounded';
+import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded';
+import { useState } from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { getProviderSidebarGroupsBySection, providerSections } from '@/navigation/providerPages';
 
@@ -50,6 +54,7 @@ export function ProviderSidebar({
   onToggleCollapse?: () => void;
 }) {
   const location = useLocation();
+  const [openSections, setOpenSections] = useState<Record<string, boolean>>({});
   const sections = providerSections
     .map((section) => ({
       section,
@@ -57,6 +62,9 @@ export function ProviderSidebar({
       groups: getProviderSidebarGroupsBySection(section),
     }))
     .filter((group) => group.groups.length > 0);
+  const toggleSection = (section: string) => {
+    setOpenSections((prev) => ({ ...prev, [section]: !prev[section] }));
+  };
 
   const content = (
     <Box
@@ -169,25 +177,163 @@ export function ProviderSidebar({
             {sections.map((group) => (
               <Box key={group.section} sx={{ mb: collapsed ? 0.25 : 0.75 }}>
                 {!collapsed ? (
-                  <ListSubheader
-                    disableSticky
-                    sx={{
-                      bgcolor: 'transparent',
-                      px: 1.25,
-                      py: 0.25,
-                      color: 'var(--fh-slate)',
-                      fontSize: 11,
-                      lineHeight: 1.4,
-                      letterSpacing: '0.09em',
-                      textTransform: 'uppercase',
-                      fontWeight: 800,
-                    }}
-                  >
-                    {group.label}
-                  </ListSubheader>
+                  <Box sx={{ mb: 0.9 }}>
+                    <ListItemButton
+                      onClick={() => toggleSection(group.section)}
+                      sx={{
+                        px: 1.25,
+                        py: 0.9,
+                        minHeight: 72,
+                        borderRadius: '20px',
+                        border: '1px solid',
+                        borderColor: 'var(--fh-line)',
+                        bgcolor: '#f4f4f5',
+                        '&:hover': { bgcolor: '#efeff1' },
+                      }}
+                    >
+                      <ListItemIcon sx={{ minWidth: 58 }}>
+                        <Avatar
+                          sx={{
+                            width: 44,
+                            height: 44,
+                            borderRadius: 3.2,
+                            bgcolor: '#e9e9eb',
+                            color: '#18c48f',
+                          }}
+                        >
+                          <GridViewRoundedIcon sx={{ fontSize: 25 }} />
+                        </Avatar>
+                      </ListItemIcon>
+                      <ListItemText
+                        primary={
+                          <Typography
+                            sx={{
+                              fontWeight: 700,
+                              fontSize: 19,
+                              letterSpacing: '0.1em',
+                              color: '#86888f',
+                              textTransform: 'uppercase',
+                            }}
+                          >
+                            {group.label}
+                          </Typography>
+                        }
+                      />
+                      {openSections[group.section] ? (
+                        <KeyboardArrowDownRoundedIcon
+                          sx={{
+                            fontSize: 34,
+                            color: '#86888f',
+                          }}
+                        />
+                      ) : (
+                        <KeyboardArrowRightRoundedIcon
+                          sx={{
+                            fontSize: 34,
+                            color: '#86888f',
+                          }}
+                        />
+                      )}
+                    </ListItemButton>
+
+                    <Collapse in={Boolean(openSections[group.section])} timeout="auto" unmountOnExit>
+                      <Box sx={{ pl: 2.5, pr: 0.5, pt: 0.7 }}>
+                        {group.groups.map(({ page, children }) => {
+                          const visibleChildren = children.filter((child) => child.key !== 'book-builder');
+                          const parentActive = page.path === location.pathname || Boolean(page.aliases?.includes(location.pathname));
+                          const activeChildKey = visibleChildren.find(
+                            (child) => child.path === location.pathname || Boolean(child.aliases?.includes(location.pathname))
+                          )?.key;
+                          const active = parentActive || Boolean(activeChildKey);
+                          return (
+                            <Box key={`${group.section}-${page.key}`} sx={{ mb: 0.6 }}>
+                              <ListItemButton
+                                component={RouterLink}
+                                to={page.path}
+                                onClick={onClose}
+                                sx={{
+                                  mb: 0.45,
+                                  px: 1,
+                                  py: 0.75,
+                                  minHeight: 44,
+                                  borderRadius: 'var(--fh-radius-xl)',
+                                  border: '1px solid',
+                                  borderColor: active ? 'var(--fh-brand-dark)' : 'transparent',
+                                  bgcolor: active
+                                    ? 'color-mix(in srgb, var(--fh-brand-soft) 35%, var(--fh-surface-bg) 65%)'
+                                    : 'transparent',
+                                  '&:hover': { bgcolor: 'var(--fh-surface)' },
+                                }}
+                              >
+                                <ListItemText
+                                  primary={
+                                    <Typography
+                                      sx={{
+                                        fontWeight: active ? 800 : 600,
+                                        fontSize: 13,
+                                        lineHeight: 1.2,
+                                        color: active ? 'var(--fh-ink)' : 'var(--fh-slate)',
+                                      }}
+                                    >
+                                      {page.shortTitle ?? page.title}
+                                    </Typography>
+                                  }
+                                />
+                              </ListItemButton>
+                              {visibleChildren.length ? (
+                                <Box sx={{ pl: 2 }}>
+                                  {visibleChildren.map((child) => {
+                                    const childActive =
+                                      child.path === location.pathname || Boolean(child.aliases?.includes(location.pathname));
+                                    return (
+                                      <ListItemButton
+                                        key={`${group.section}-${child.key}`}
+                                        component={RouterLink}
+                                        to={child.path}
+                                        onClick={onClose}
+                                        sx={{
+                                          mb: 0.35,
+                                          px: 1,
+                                          py: 0.55,
+                                          minHeight: 38,
+                                          borderRadius: 'var(--fh-radius-lg)',
+                                          border: '1px solid',
+                                          borderColor: childActive ? 'var(--fh-brand-dark)' : 'transparent',
+                                          bgcolor: childActive
+                                            ? 'color-mix(in srgb, var(--fh-brand-soft) 32%, var(--fh-surface-bg) 68%)'
+                                            : 'transparent',
+                                          '&:hover': { bgcolor: 'var(--fh-surface)' },
+                                        }}
+                                      >
+                                        <ListItemText
+                                          primary={
+                                            <Typography
+                                              sx={{
+                                                fontWeight: childActive ? 700 : 500,
+                                                fontSize: 12.5,
+                                                lineHeight: 1.2,
+                                                color: childActive ? 'var(--fh-ink)' : 'var(--fh-slate)',
+                                              }}
+                                            >
+                                              {child.shortTitle ?? child.title}
+                                            </Typography>
+                                          }
+                                        />
+                                      </ListItemButton>
+                                    );
+                                  })}
+                                </Box>
+                              ) : null}
+                            </Box>
+                          );
+                        })}
+                      </Box>
+                    </Collapse>
+                  </Box>
                 ) : null}
 
                 {group.groups.map(({ page, children }) => {
+                  if (!collapsed) return null;
                   const visibleChildren = children.filter((child) => child.key !== 'book-builder');
                   const Icon = page.icon;
                   const parentActive = page.path === location.pathname || Boolean(page.aliases?.includes(location.pathname));
