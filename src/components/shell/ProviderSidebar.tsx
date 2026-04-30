@@ -18,6 +18,15 @@ import KeyboardArrowRightRoundedIcon from '@mui/icons-material/KeyboardArrowRigh
 import KeyboardDoubleArrowLeftRoundedIcon from '@mui/icons-material/KeyboardDoubleArrowLeftRounded';
 import GridViewRoundedIcon from '@mui/icons-material/GridViewRounded';
 import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded';
+import MenuBookRoundedIcon from '@mui/icons-material/MenuBookRounded';
+import LiveTvRoundedIcon from '@mui/icons-material/LiveTvRounded';
+import CampaignRoundedIcon from '@mui/icons-material/CampaignRounded';
+import MovieFilterRoundedIcon from '@mui/icons-material/MovieFilterRounded';
+import VolunteerActivismRoundedIcon from '@mui/icons-material/VolunteerActivismRounded';
+import BoltRoundedIcon from '@mui/icons-material/BoltRounded';
+import GroupsRoundedIcon from '@mui/icons-material/GroupsRounded';
+import SupervisorAccountRoundedIcon from '@mui/icons-material/SupervisorAccountRounded';
+import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 import { useState } from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { getProviderSidebarGroupsBySection, providerSections } from '@/navigation/providerPages';
@@ -41,6 +50,18 @@ const sectionLabelMap: Partial<Record<(typeof providerSections)[number], string>
 
 const expandedDrawerWidth = 318;
 const collapsedDrawerWidth = 88;
+const sectionIconMap: Record<string, typeof GridViewRoundedIcon> = {
+  Core: GridViewRoundedIcon,
+  Content: MenuBookRoundedIcon,
+  Streams: LiveTvRoundedIcon,
+  Outreach: CampaignRoundedIcon,
+  'Post-live': MovieFilterRoundedIcon,
+  Giving: VolunteerActivismRoundedIcon,
+  Beacon: BoltRoundedIcon,
+  Community: GroupsRoundedIcon,
+  Leadership: SupervisorAccountRoundedIcon,
+  Settings: SettingsRoundedIcon,
+};
 
 export function ProviderSidebar({
   open,
@@ -126,7 +147,7 @@ export function ProviderSidebar({
 
           <List
             sx={{
-              p: 1,
+              p: 1.2,
               flex: 1,
               minHeight: 0,
               overflowY: 'auto',
@@ -139,33 +160,47 @@ export function ProviderSidebar({
             }}
           >
             {sections.map((group) => (
-              <Box key={group.section} sx={{ mb: collapsed ? 0.25 : 0.75 }}>
+              <Box key={group.section} sx={{ mb: collapsed ? 0.45 : 0.95 }}>
                 {!collapsed ? (
                   <Box sx={{ mb: 0.9 }}>
+                    {(() => {
+                      const SectionIcon = sectionIconMap[group.label] ?? GridViewRoundedIcon;
+                      return (
                     <ListItemButton
                       onClick={() => toggleSection(group.section)}
                       sx={{
-                        px: 1.25,
-                        py: 0.9,
-                        minHeight: 72,
-                        borderRadius: '20px',
+                        px: 1.35,
+                        py: 0.95,
+                        minHeight: 76,
+                        borderRadius: '22px',
                         border: '1px solid',
-                        borderColor: 'var(--fh-line)',
-                        bgcolor: '#f4f4f5',
-                        '&:hover': { bgcolor: '#efeff1' },
+                        borderColor: 'color-mix(in srgb, var(--fh-line) 80%, #d6d8dd 20%)',
+                        bgcolor: openSections[group.section]
+                          ? 'color-mix(in srgb, var(--fh-brand-soft) 30%, #f4f6f8 70%)'
+                          : '#f4f6f8',
+                        boxShadow: openSections[group.section]
+                          ? '0 10px 28px -24px rgba(0,0,0,0.35)'
+                          : '0 6px 18px -24px rgba(0,0,0,0.3)',
+                        transition: 'all 180ms ease',
+                        '&:hover': {
+                          bgcolor: 'color-mix(in srgb, var(--fh-brand-soft) 22%, #eef2f4 78%)',
+                          borderColor: 'color-mix(in srgb, var(--fh-brand) 35%, var(--fh-line) 65%)',
+                        },
                       }}
                     >
                       <ListItemIcon sx={{ minWidth: 58 }}>
                         <Avatar
                           sx={{
-                            width: 44,
-                            height: 44,
+                            width: 46,
+                            height: 46,
                             borderRadius: 3.2,
-                            bgcolor: '#e9e9eb',
-                            color: '#18c48f',
+                            bgcolor: 'color-mix(in srgb, var(--fh-brand-soft) 52%, #ffffff 48%)',
+                            color: 'var(--fh-brand-dark)',
+                            border: '1px solid',
+                            borderColor: 'color-mix(in srgb, var(--fh-brand) 38%, #e5e7eb 62%)',
                           }}
                         >
-                          <GridViewRoundedIcon sx={{ fontSize: 25 }} />
+                          <SectionIcon sx={{ fontSize: 25 }} />
                         </Avatar>
                       </ListItemIcon>
                       <ListItemText
@@ -173,9 +208,9 @@ export function ProviderSidebar({
                           <Typography
                             sx={{
                               fontWeight: 700,
-                              fontSize: 19,
-                              letterSpacing: '0.1em',
-                              color: '#86888f',
+                              fontSize: 18,
+                              letterSpacing: '0.12em',
+                              color: 'var(--fh-slate)',
                               textTransform: 'uppercase',
                             }}
                           >
@@ -186,19 +221,21 @@ export function ProviderSidebar({
                       {openSections[group.section] ? (
                         <KeyboardArrowDownRoundedIcon
                           sx={{
-                            fontSize: 34,
-                            color: '#86888f',
+                            fontSize: 32,
+                            color: 'var(--fh-slate)',
                           }}
                         />
                       ) : (
                         <KeyboardArrowRightRoundedIcon
                           sx={{
-                            fontSize: 34,
-                            color: '#86888f',
+                            fontSize: 32,
+                            color: 'var(--fh-slate)',
                           }}
                         />
                       )}
                     </ListItemButton>
+                      );
+                    })()}
 
                     <Collapse in={Boolean(openSections[group.section])} timeout="auto" unmountOnExit>
                       <Box sx={{ pl: 2.5, pr: 0.5, pt: 0.7 }}>
@@ -216,25 +253,28 @@ export function ProviderSidebar({
                                 to={page.path}
                                 onClick={onClose}
                                 sx={{
-                                  mb: 0.45,
-                                  px: 1,
-                                  py: 0.75,
-                                  minHeight: 44,
-                                  borderRadius: 'var(--fh-radius-xl)',
+                                  mb: 0.5,
+                                  px: 1.1,
+                                  py: 0.8,
+                                  minHeight: 46,
+                                  borderRadius: '14px',
                                   border: '1px solid',
-                                  borderColor: active ? 'var(--fh-brand-dark)' : 'transparent',
-                                  bgcolor: active
-                                    ? 'color-mix(in srgb, var(--fh-brand-soft) 35%, var(--fh-surface-bg) 65%)'
+                                  borderColor: active
+                                    ? 'color-mix(in srgb, var(--fh-brand-dark) 70%, var(--fh-brand) 30%)'
                                     : 'transparent',
-                                  '&:hover': { bgcolor: 'var(--fh-surface)' },
+                                  bgcolor: active
+                                    ? 'color-mix(in srgb, var(--fh-brand-soft) 55%, #effdf7 45%)'
+                                    : 'transparent',
+                                  transition: 'all 140ms ease',
+                                  '&:hover': { bgcolor: 'color-mix(in srgb, var(--fh-surface) 85%, #ffffff 15%)' },
                                 }}
                               >
                                 <ListItemText
                                   primary={
                                     <Typography
                                       sx={{
-                                        fontWeight: active ? 800 : 600,
-                                        fontSize: 13,
+                                        fontWeight: active ? 800 : 650,
+                                        fontSize: 13.5,
                                         lineHeight: 1.2,
                                         color: active ? 'var(--fh-ink)' : 'var(--fh-slate)',
                                       }}
@@ -245,7 +285,7 @@ export function ProviderSidebar({
                                 />
                               </ListItemButton>
                               {visibleChildren.length ? (
-                                <Box sx={{ pl: 2 }}>
+                                <Box sx={{ pl: 2.1 }}>
                                   {visibleChildren.map((child) => {
                                     const childActive =
                                       child.path === location.pathname || Boolean(child.aliases?.includes(location.pathname));
@@ -256,17 +296,18 @@ export function ProviderSidebar({
                                         to={child.path}
                                         onClick={onClose}
                                         sx={{
-                                          mb: 0.35,
+                                          mb: 0.38,
                                           px: 1,
-                                          py: 0.55,
-                                          minHeight: 38,
-                                          borderRadius: 'var(--fh-radius-lg)',
+                                          py: 0.6,
+                                          minHeight: 39,
+                                          borderRadius: '12px',
                                           border: '1px solid',
                                           borderColor: childActive ? 'var(--fh-brand-dark)' : 'transparent',
                                           bgcolor: childActive
                                             ? 'color-mix(in srgb, var(--fh-brand-soft) 32%, var(--fh-surface-bg) 68%)'
                                             : 'transparent',
-                                          '&:hover': { bgcolor: 'var(--fh-surface)' },
+                                          transition: 'all 140ms ease',
+                                          '&:hover': { bgcolor: 'color-mix(in srgb, var(--fh-surface) 85%, #ffffff 15%)' },
                                         }}
                                       >
                                         <ListItemText
