@@ -48,7 +48,8 @@ describe("Live flow integration", () => {
       );
       render(<FaithHubLiveDashboardPage />);
 
-      const activeSessionSelect = await screen.findByRole("combobox");
+      const sessionSelects = await screen.findAllByRole("combobox");
+      const activeSessionSelect = sessionSelects[0];
       expect(activeSessionSelect).toHaveValue(saved.id);
     },
     20000,

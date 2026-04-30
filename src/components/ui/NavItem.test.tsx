@@ -1,36 +1,38 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Home } from 'lucide-react';
+import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { NavItem } from '@/components/ui/NavItem';
 
-describe('NavItem', () => {
-  it('renders label, hint, and badge', () => {
-    render(
-      <NavItem
-        icon={<Home className="h-5 w-5" />}
-        label="Overview"
-        hint="Global workspace pulse"
-        badge="3"
-      />,
-    );
+function renderNavItem(initialPathname: string, itemPath: string, onClose?: () => void) {
+  return render(
+    <MemoryRouter initialEntries={[initialPathname]}>
+      <Routes>
+        <Route path="*" element={<NavItem label="Overview" path={itemPath} onClose={onClose} />} />
+      </Routes>
+    </MemoryRouter>,
+  );
+}
 
+describe('NavItem', () => {
+  it('renders navigation button label', () => {
+    renderNavItem('/faithhub/provider', '/faithhub/provider/dashboard');
     expect(screen.getByRole('button', { name: /overview/i })).toBeInTheDocument();
-    expect(screen.getByText(/global workspace pulse/i)).toBeInTheDocument();
-    expect(screen.getByText('3')).toBeInTheDocument();
   });
 
   it('sets aria-current for active navigation items', () => {
-    render(<NavItem icon={<Home className="h-5 w-5" />} label="Overview" active />);
+    renderNavItem('/faithhub/provider/dashboard', '/faithhub/provider/dashboard');
     expect(screen.getByRole('button', { name: /overview/i })).toHaveAttribute('aria-current', 'page');
   });
 
-  it('invokes click handler', async () => {
+  it('navigates to target path and invokes onClose callback', async () => {
     const user = userEvent.setup();
-    const onClick = vi.fn();
+    const onClose = vi.fn();
+    renderNavItem('/faithhub/provider', '/faithhub/provider/dashboard', onClose);
 
-    render(<NavItem icon={<Home className="h-5 w-5" />} label="Overview" onClick={onClick} />);
-    await user.click(screen.getByRole('button', { name: /overview/i }));
+    const button = screen.getByRole('button', { name: /overview/i });
+    await user.click(button);
 
-    expect(onClick).toHaveBeenCalledTimes(1);
+    expect(onClose).toHaveBeenCalledTimes(1);
+    expect(button).toHaveAttribute('aria-current', 'page');
   });
 });
