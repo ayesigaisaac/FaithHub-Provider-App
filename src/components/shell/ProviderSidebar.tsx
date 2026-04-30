@@ -91,43 +91,7 @@ export function ProviderSidebar({
           }}
         >
           <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ px: 1.25, py: 0.9, gap: 1 }}>
-            <Tooltip title="Open provider dashboard">
-              <ListItemButton
-                component={RouterLink}
-                to="/faithhub/provider/dashboard"
-                onClick={onClose}
-                sx={{
-                  flex: 1,
-                  minHeight: 42,
-                  borderRadius: 'var(--fh-radius-2xl)',
-                  border: '1px solid',
-                  borderColor: 'var(--fh-line)',
-                  bgcolor: 'var(--fh-surface)',
-                  px: collapsed ? 1 : 1.15,
-                  py: 0.65,
-                  justifyContent: collapsed ? 'center' : 'flex-start',
-                  '&:hover': { bgcolor: 'var(--fh-surface-bg)' },
-                }}
-              >
-                <Avatar
-                  sx={{
-                    width: 24,
-                    height: 24,
-                    bgcolor: 'color-mix(in srgb, var(--fh-brand-soft) 68%, var(--fh-surface-bg) 32%)',
-                    color: 'var(--fh-brand-dark)',
-                    fontSize: 12,
-                    fontWeight: 800,
-                  }}
-                >
-                  P
-                </Avatar>
-                {!collapsed ? (
-                  <Typography sx={{ ml: 1, fontWeight: 700, fontSize: 12.5, color: 'var(--fh-ink)', lineHeight: 1.15 }}>
-                    Provider Navigation
-                  </Typography>
-                ) : null}
-              </ListItemButton>
-            </Tooltip>
+            <Box sx={{ flex: 1 }} />
             <Tooltip title={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}>
               <IconButton
                 onClick={() => {
