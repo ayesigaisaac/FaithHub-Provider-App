@@ -27,9 +27,13 @@ import BoltRoundedIcon from '@mui/icons-material/BoltRounded';
 import GroupsRoundedIcon from '@mui/icons-material/GroupsRounded';
 import SupervisorAccountRoundedIcon from '@mui/icons-material/SupervisorAccountRounded';
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { getProviderSidebarGroupsBySection, providerSections } from '@/navigation/providerPages';
+import { getTeachingFlowState, subscribeToTeachingFlow } from '@/features/teachings/teachingFlowStore';
+import { getLiveFlowState, subscribeToLiveFlow } from '@/features/live/liveFlowStore';
+import { getLiveActivityRecords, subscribeToLiveActivity } from '@/features/live/liveActivityStore';
+import { subscribeToStudioOps } from '@/features/live/liveStudioOpsStore';
 
 const drawerWidth = 318;
 const topbarOffsetMobile = 110;
@@ -62,7 +66,7 @@ const sectionIconMap: Record<string, typeof GridViewRoundedIcon> = {
   Leadership: SupervisorAccountRoundedIcon,
   Settings: SettingsRoundedIcon,
 };
-const sectionSignalCounts: Record<string, number> = {
+const fallbackSectionSignalCounts: Record<string, number> = {
   Core: 2,
   Content: 7,
   Streams: 3,
@@ -100,6 +104,7 @@ export function ProviderSidebar({
 }) {
   const location = useLocation();
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({});
+  const [sectionSignalCounts, setSectionSignalCounts] = useState<Record<string, number>>(fallbackSectionSignalCounts);
   const sections = providerSections
     .map((section) => ({
       section,
@@ -110,6 +115,58 @@ export function ProviderSidebar({
   const toggleSection = (section: string) => {
     setOpenSections((prev) => ({ ...prev, [section]: !prev[section] }));
   };
+  const sectionsByLabel = useMemo(() => {
+    return new Map(sections.map((section) => [section.label, section]));
+  }, [sections]);
+
+  useEffect(() => {
+    const computeSignals = () => {
+      const next = { ...fallbackSectionSignalCounts };
+
+      const teachings = getTeachingFlowState();
+      const teachingDrafts =
+        teachings.series.filter((item) => item.publishingState === 'Draft').length +
+        teachings.episodes.filter((item) => item.publishingState === 'Draft').length;
+      const teachingScheduled =
+        teachings.series.filter((item) => item.publishingState === 'Scheduled').length +
+        teachings.episodes.filter((item) => item.publishingState === 'Scheduled').length;
+      next.Content = teachingDrafts + teachingScheduled;
+
+      const liveFlow = getLiveFlowState();
+      const livePending = liveFlow.sessions.filter((session) => session.status !== 'Scheduled').length;
+      const liveRecentActivity = getLiveActivityRecords().filter((record) => {
+        const age = Date.now() - new Date(record.atISO).getTime();
+        return age >= 0 && age <= 24 * 60 * 60 * 1000;
+      }).length;
+      next.Streams = livePending + liveRecentActivity;
+
+      const coreSection = sectionsByLabel.get('Core');
+      if (coreSection) {
+        const corePagePaths = new Set(coreSection.groups.map(({ page }) => page.path));
+        const coreRelatedLiveSessions = liveFlow.sessions.filter(
+          (session) =>
+            session.parentType === 'Series Episode' || session.parentType === 'Standalone Teaching'
+        ).length;
+        next.Core = Math.max(corePagePaths.size, coreRelatedLiveSessions);
+      }
+
+      setSectionSignalCounts(next);
+    };
+
+    computeSignals();
+
+    const unsubTeaching = subscribeToTeachingFlow(computeSignals);
+    const unsubLive = subscribeToLiveFlow(computeSignals);
+    const unsubLiveActivity = subscribeToLiveActivity(computeSignals);
+    const unsubStudioOps = subscribeToStudioOps(computeSignals);
+
+    return () => {
+      unsubTeaching();
+      unsubLive();
+      unsubLiveActivity();
+      unsubStudioOps();
+    };
+  }, [sectionsByLabel]);
 
   const content = (
     <Box
