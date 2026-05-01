@@ -62,6 +62,18 @@ const sectionIconMap: Record<string, typeof GridViewRoundedIcon> = {
   Leadership: SupervisorAccountRoundedIcon,
   Settings: SettingsRoundedIcon,
 };
+const sectionToneMap: Record<string, { icon: string; bg: string; border: string }> = {
+  Core: { icon: '#00b57a', bg: '#e9f8f2', border: '#bfe9d9' },
+  Content: { icon: '#f77f00', bg: '#fff2e4', border: '#ffd7ad' },
+  Streams: { icon: '#64748b', bg: '#edf1f5', border: '#d5dde6' },
+  Outreach: { icon: '#00b57a', bg: '#e9f8f2', border: '#bfe9d9' },
+  'Post-live': { icon: '#f77f00', bg: '#fff2e4', border: '#ffd7ad' },
+  Giving: { icon: '#64748b', bg: '#edf1f5', border: '#d5dde6' },
+  Beacon: { icon: '#00b57a', bg: '#e9f8f2', border: '#bfe9d9' },
+  Community: { icon: '#f77f00', bg: '#fff2e4', border: '#ffd7ad' },
+  Leadership: { icon: '#64748b', bg: '#edf1f5', border: '#d5dde6' },
+  Settings: { icon: '#64748b', bg: '#edf1f5', border: '#d5dde6' },
+};
 
 export function ProviderSidebar({
   open,
@@ -167,6 +179,7 @@ export function ProviderSidebar({
                   <Box sx={{ mb: 0.58 }}>
                     {(() => {
                       const SectionIcon = sectionIconMap[group.label] ?? GridViewRoundedIcon;
+                      const tone = sectionToneMap[group.label] ?? sectionToneMap.Settings;
                       return (
                     <ListItemButton
                       onClick={() => toggleSection(group.section)}
@@ -200,10 +213,10 @@ export function ProviderSidebar({
                             width: 44,
                             height: 44,
                             borderRadius: 2.8,
-                            bgcolor: isDark ? '#111827' : '#eef3f1',
-                            color: 'var(--fh-brand-dark)',
+                            bgcolor: isDark ? '#111827' : tone.bg,
+                            color: tone.icon,
                             border: '1px solid',
-                            borderColor: isDark ? '#334155' : '#d8e1dd',
+                            borderColor: isDark ? '#334155' : tone.border,
                           }}
                         >
                           <SectionIcon sx={{ fontSize: 25 }} />
