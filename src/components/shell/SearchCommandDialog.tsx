@@ -21,8 +21,10 @@ import type { LucideIcon } from 'lucide-react';
 import { providerPages } from '@/navigation/providerPages';
 
 const RECENT_SEARCH_KEY = 'faithhub.provider.search.recents';
+const RECENT_ACTIONS_KEY = 'faithhub.provider.search.recent-actions';
 const MAX_RECENTS = 6;
 const MAX_RESULTS = 20;
+const MAX_RECENT_ACTIONS = 4;
 
 type VisiblePage = (typeof providerPages)[number];
 
@@ -48,6 +50,7 @@ type SearchEntry =
       aliases?: string[];
       icon: VisiblePage['icon'];
       payload: VisiblePage;
+      matchReasons?: string[];
     }
   | {
       kind: 'action';
@@ -58,6 +61,7 @@ type SearchEntry =
       path: string;
       icon: SearchAction['icon'];
       payload: SearchAction;
+      matchReasons?: string[];
     };
 
 type ResultGroup = {
@@ -142,6 +146,7 @@ export function SearchCommandDialog({
   const [anchorPosition, setAnchorPosition] = useState<{ top: number; left: number }>({ top: 88, left: 640 });
   const [panelWidth, setPanelWidth] = useState<number>(760);
   const [recentKeys, setRecentKeys] = useState<string[]>([]);
+  const [recentActionKeys, setRecentActionKeys] = useState<string[]>([]);
 
   const visiblePages = useMemo(() => providerPages.filter((page) => !page.hidden), []);
   const pageKeyMap = useMemo(() => new Map(visiblePages.map((page) => [page.key, page])), [visiblePages]);
@@ -170,6 +175,21 @@ export function SearchCommandDialog({
       setRecentKeys(Array.isArray(parsed) ? parsed.filter((key): key is string => typeof key === 'string') : []);
     } catch {
       setRecentKeys([]);
+    }
+  }, [open]);
+
+  useEffect(() => {
+    if (!open || typeof window === 'undefined') return;
+    try {
+      const raw = window.localStorage.getItem(RECENT_ACTIONS_KEY);
+      if (!raw) {
+        setRecentActionKeys([]);
+        return;
+      }
+      const parsed = JSON.parse(raw) as string[];
+      setRecentActionKeys(Array.isArray(parsed) ? parsed.filter((key): key is string => typeof key === 'string') : []);
+    } catch {
+      setRecentActionKeys([]);
     }
   }, [open]);
 
@@ -221,16 +241,35 @@ export function SearchCommandDialog({
         const path = page.path.toLowerCase();
 
         let score = 0;
+        const matchReasons = new Set<string>();
         if (title === q) score += 120;
-        if (title.startsWith(q)) score += 80;
-        if (title.includes(q)) score += 60;
-        if (section.includes(q)) score += 35;
-        if (description.includes(q)) score += 25;
+        if (title.startsWith(q)) {
+          score += 80;
+          matchReasons.add('Title');
+        }
+        if (title.includes(q)) {
+          score += 60;
+          matchReasons.add('Title');
+        }
+        if (section.includes(q)) {
+          score += 35;
+          matchReasons.add('Section');
+        }
+        if (description.includes(q)) {
+          score += 25;
+          matchReasons.add('Description');
+        }
         if (id === q) score += 95;
-        if (id.startsWith(q)) score += 65;
-        if (path.includes(q)) score += 20;
+        if (id.startsWith(q)) {
+          score += 65;
+          matchReasons.add('ID');
+        }
+        if (path.includes(q)) {
+          score += 20;
+          matchReasons.add('Path');
+        }
 
-        return { page, score };
+        return { page, score, matchReasons: Array.from(matchReasons).slice(0, 2) };
       })
       .filter((entry) => entry.score > 0)
       .sort((a, b) => b.score - a.score || a.page.title.localeCompare(b.page.title))
@@ -246,6 +285,7 @@ export function SearchCommandDialog({
         aliases: entry.page.aliases,
         icon: entry.page.icon,
         payload: entry.page,
+        matchReasons: entry.matchReasons,
       }));
   }, [pageSectionLabelMap, query, visiblePages]);
 
@@ -261,14 +301,30 @@ export function SearchCommandDialog({
         const path = action.targetPath.toLowerCase();
 
         let score = 0;
+        const matchReasons = new Set<string>();
         if (title === q) score += 120;
-        if (title.startsWith(q)) score += 90;
-        if (title.includes(q)) score += 70;
-        if (subtitle.includes(q)) score += 30;
-        if (keywords.includes(q)) score += 55;
-        if (path.includes(q)) score += 20;
+        if (title.startsWith(q)) {
+          score += 90;
+          matchReasons.add('Title');
+        }
+        if (title.includes(q)) {
+          score += 70;
+          matchReasons.add('Title');
+        }
+        if (subtitle.includes(q)) {
+          score += 30;
+          matchReasons.add('Description');
+        }
+        if (keywords.includes(q)) {
+          score += 55;
+          matchReasons.add('Keywords');
+        }
+        if (path.includes(q)) {
+          score += 20;
+          matchReasons.add('Path');
+        }
 
-        return { action, score };
+        return { action, score, matchReasons: Array.from(matchReasons).slice(0, 2) };
       })
       .filter((entry) => entry.score > 0)
       .sort((a, b) => b.score - a.score || a.action.title.localeCompare(b.action.title))
@@ -282,6 +338,7 @@ export function SearchCommandDialog({
         path: entry.action.targetPath,
         icon: entry.action.icon,
         payload: entry.action,
+        matchReasons: entry.matchReasons,
       }));
   }, [query]);
 
@@ -334,6 +391,22 @@ export function SearchCommandDialog({
     if (recentPageEntries.length) {
       groups.push({ key: 'recent', label: 'Recent', icon: HistoryRoundedIcon, items: recentPageEntries });
     }
+    const recentActions = recentActionKeys
+      .map((key) => searchActions.find((action) => action.key === key))
+      .filter((action): action is SearchAction => Boolean(action))
+      .map((action) => ({
+        kind: 'action' as const,
+        key: action.key,
+        title: action.title,
+        description: action.subtitle,
+        section: 'Recently Used Actions',
+        path: action.targetPath,
+        icon: action.icon,
+        payload: action,
+      }));
+    if (recentActions.length) {
+      groups.push({ key: 'recent-actions', label: 'Recently Used Actions', icon: BoltRoundedIcon, items: recentActions });
+    }
 
     groups.push({
       key: 'quick-actions',
@@ -353,7 +426,7 @@ export function SearchCommandDialog({
 
     groups.push({ key: 'suggested', label: 'Suggested Pages', icon: AutoAwesomeRoundedIcon, items: suggestedPages });
     return groups;
-  }, [query, rankedActions, rankedPages, recentPageEntries, suggestedPages]);
+  }, [query, rankedActions, rankedPages, recentActionKeys, recentPageEntries, suggestedPages]);
 
   const flattened = useMemo(() => groupedResults.flatMap((group) => group.items), [groupedResults]);
 
@@ -392,6 +465,12 @@ export function SearchCommandDialog({
   const handleSelect = useCallback((entry: SearchEntry) => {
     if (entry.kind === 'page') {
       persistRecent(entry.key);
+    } else if (typeof window !== 'undefined') {
+      setRecentActionKeys((prev) => {
+        const deduped = [entry.key, ...prev.filter((existing) => existing !== entry.key)].slice(0, MAX_RECENT_ACTIONS);
+        window.localStorage.setItem(RECENT_ACTIONS_KEY, JSON.stringify(deduped));
+        return deduped;
+      });
     }
     navigate(entry.path);
     onClose();
@@ -483,6 +562,14 @@ export function SearchCommandDialog({
       transformOrigin={anchorEl ? { vertical: 'top', horizontal: 'left' } : { vertical: 'top', horizontal: 'center' }}
       marginThreshold={8}
       slotProps={{
+        root: {
+          sx: {
+            '& .MuiBackdrop-root': {
+              backgroundColor: 'rgba(15, 23, 42, 0.14)',
+              backdropFilter: 'blur(2px)',
+            },
+          },
+        },
         paper: {
           onKeyDown: handleKeyDown,
           sx: {
@@ -492,15 +579,34 @@ export function SearchCommandDialog({
             maxWidth: '100vw',
             borderRadius: { xs: 3, md: 3.5 },
             border: '1px solid',
-            borderColor: 'var(--fh-line)',
-            bgcolor: 'var(--fh-surface-bg)',
-            boxShadow: 'var(--fh-shadow-md)',
+            borderColor: 'color-mix(in srgb, var(--fh-brand) 34%, var(--fh-line) 66%)',
+            bgcolor: 'color-mix(in srgb, var(--fh-surface-bg) 90%, white 10%)',
+            boxShadow: '0 22px 48px -26px rgba(15, 23, 42, 0.46), 0 14px 34px -26px rgba(15, 23, 42, 0.34)',
+            backdropFilter: 'blur(10px)',
             overflow: 'hidden',
+            transformOrigin: anchorEl ? 'top left' : 'top center',
+            animation: 'fhSearchPopIn .16s ease-out',
+            '@keyframes fhSearchPopIn': {
+              from: { opacity: 0, transform: 'translateY(-6px) scale(0.985)' },
+              to: { opacity: 1, transform: 'translateY(0) scale(1)' },
+            },
           },
         },
       }}
     >
-      <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ px: 1.5, pt: 1, pb: 0.25 }}>
+      <Stack
+        direction="row"
+        justifyContent="space-between"
+        alignItems="center"
+        sx={{
+          px: 1.8,
+          pt: 1.2,
+          pb: 0.6,
+          borderBottom: '1px solid',
+          borderColor: 'color-mix(in srgb, var(--fh-line) 84%, transparent)',
+          background: 'linear-gradient(180deg, color-mix(in srgb, var(--fh-surface) 90%, white 10%) 0%, transparent 100%)',
+        }}
+      >
         <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 700 }}>
           {hasQuery ? `${flattened.length} result${flattened.length === 1 ? '' : 's'}` : 'Suggestions'}
         </Typography>
@@ -508,14 +614,36 @@ export function SearchCommandDialog({
           Enter open | Up/Down move | Esc close
         </Typography>
       </Stack>
-      <List ref={listRef} sx={{ px: 1, pb: 1, pt: 0.5, maxHeight: { xs: 360, md: 430 }, overflowY: 'auto' }}>
+      <List
+        ref={listRef}
+        sx={{
+          px: 1,
+          pb: 1,
+          pt: 0.7,
+          maxHeight: { xs: 360, md: 430 },
+          overflowY: 'auto',
+          scrollbarWidth: 'thin',
+          '&::-webkit-scrollbar': { width: 10 },
+          '&::-webkit-scrollbar-thumb': {
+            backgroundColor: 'color-mix(in srgb, var(--fh-brand) 30%, var(--fh-line) 70%)',
+            borderRadius: 999,
+            border: '2px solid transparent',
+            backgroundClip: 'padding-box',
+          },
+        }}
+      >
           {groupedResults.map((group) => {
             const GroupIcon = group.icon;
             return (
               <Box key={group.key} sx={{ mb: 1.3 }}>
-                <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ px: 1.25, pb: 0.5 }}>
+                <Stack
+                  direction="row"
+                  alignItems="center"
+                  justifyContent="space-between"
+                  sx={{ px: 1.25, pb: 0.7, pt: 0.4, position: 'sticky', top: 0, zIndex: 1, bgcolor: 'inherit' }}
+                >
                   <Stack direction="row" alignItems="center" spacing={0.75}>
-                    <GroupIcon sx={{ fontSize: 16, color: 'text.secondary' }} />
+                    <GroupIcon sx={{ fontSize: 16, color: 'var(--fh-brand)' }} />
                     <Typography variant="caption" color="text.secondary" sx={{ letterSpacing: '0.08em', fontWeight: 800 }}>
                       {group.label}
                     </Typography>
@@ -548,13 +676,26 @@ export function SearchCommandDialog({
                       onMouseEnter={() => setActiveIndex(flatIndex)}
                       onClick={() => handleSelect(entry)}
                       sx={{
-                        mb: 0.5,
-                        borderRadius: 2,
+                        mb: 0.65,
+                        borderRadius: 3,
                         alignItems: hasQuery ? 'center' : 'flex-start',
                         border: '1px solid',
-                        borderColor: selected ? 'var(--fh-brand)' : 'var(--fh-line)',
-                        bgcolor: selected ? 'action.selected' : 'transparent',
-                        '&.Mui-selected': { bgcolor: 'action.selected' },
+                        borderColor: selected
+                          ? 'color-mix(in srgb, var(--fh-brand) 75%, var(--fh-line) 25%)'
+                          : 'color-mix(in srgb, var(--fh-line) 82%, white 18%)',
+                        bgcolor: selected
+                          ? 'color-mix(in srgb, var(--fh-brand) 10%, var(--fh-surface-bg) 90%)'
+                          : 'color-mix(in srgb, var(--fh-surface-bg) 85%, white 15%)',
+                        boxShadow: selected ? '0 10px 20px -16px rgba(15,23,42,0.6)' : 'none',
+                        transition: 'all .16s ease',
+                        '&:hover': {
+                          borderColor: 'color-mix(in srgb, var(--fh-brand) 50%, var(--fh-line) 50%)',
+                          bgcolor: 'color-mix(in srgb, var(--fh-brand) 7%, var(--fh-surface-bg) 93%)',
+                          transform: 'translateY(-1px)',
+                        },
+                        '&.Mui-selected': {
+                          bgcolor: 'color-mix(in srgb, var(--fh-brand) 10%, var(--fh-surface-bg) 90%)',
+                        },
                       }}
                     >
                       <ListItemIcon sx={{ minWidth: 44, mt: 0.3 }}>
@@ -584,6 +725,22 @@ export function SearchCommandDialog({
                             ) : null}
                             {entry.kind === 'action' ? <Chip label="Action" size="small" color="warning" sx={{ height: 21 }} /> : null}
                             {isCurrent ? <Chip label="Current" size="small" color="success" sx={{ height: 21 }} /> : null}
+                            {hasQuery && entry.matchReasons?.length
+                              ? entry.matchReasons.map((reason) => (
+                                  <Chip
+                                    key={`${entry.kind}-${entry.key}-${reason}`}
+                                    label={`Match: ${reason}`}
+                                    size="small"
+                                    variant="outlined"
+                                    sx={{
+                                      height: 21,
+                                      borderColor: 'color-mix(in srgb, var(--fh-brand) 44%, var(--fh-line) 56%)',
+                                      color: 'var(--fh-slate)',
+                                      bgcolor: 'color-mix(in srgb, var(--fh-surface-bg) 88%, white 12%)',
+                                    }}
+                                  />
+                                ))
+                              : null}
                           </Stack>
                         }
                         secondary={

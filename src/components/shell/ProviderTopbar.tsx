@@ -136,6 +136,7 @@ export function ProviderTopbar({
             </IconButton>
           ) : (
             <TextField
+              type="search"
               value={searchQuery}
               onChange={(event) => {
                 onSearchQueryChange(event.target.value);
@@ -151,10 +152,11 @@ export function ProviderTopbar({
               placeholder="Search pages..."
               size="small"
               inputProps={{ 'aria-label': 'Search pages' }}
+              autoComplete="off"
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <SearchRoundedIcon />
+                    <SearchRoundedIcon sx={{ fontSize: 18, color: 'var(--fh-slate)' }} />
                   </InputAdornment>
                 ),
                 endAdornment: (
@@ -180,6 +182,7 @@ export function ProviderTopbar({
                       <Box
                         component="span"
                         sx={{
+                          display: { xs: 'none', lg: 'inline-flex' },
                           border: '1px solid',
                           borderColor: 'var(--fh-line)',
                           borderRadius: 1.5,
@@ -198,27 +201,39 @@ export function ProviderTopbar({
                 ),
               }}
               sx={{
+                width: { md: 300, lg: 380, xl: 460 },
+                maxWidth: '46vw',
                 '& .MuiOutlinedInput-root': {
-                  borderRadius: '14px',
-                  minHeight: 46,
-                  minWidth: 256,
-                  px: 0.7,
-                  borderColor: 'var(--fh-line)',
-                  bgcolor: isDark ? '#0f172a' : '#ffffff',
+                  borderRadius: '18px',
+                  minHeight: { md: 46, lg: 48 },
+                  px: 1.05,
+                  border: '1px solid',
+                  borderColor: searchOpen
+                    ? 'color-mix(in srgb, var(--fh-brand) 72%, var(--fh-line) 28%)'
+                    : 'color-mix(in srgb, var(--fh-line) 84%, white 16%)',
+                  bgcolor: isDark ? '#0f172a' : '#f8fcfa',
                   color: 'var(--fh-slate)',
-                  fontWeight: 700,
+                  fontWeight: 650,
+                  boxShadow: searchOpen
+                    ? '0 0 0 3px color-mix(in srgb, var(--fh-brand) 22%, transparent), 0 10px 24px -18px rgba(15,23,42,0.45)'
+                    : 'inset 0 1px 0 rgba(255,255,255,0.55), 0 6px 16px -16px rgba(15,23,42,0.28)',
+                  transition: 'border-color .18s ease, box-shadow .18s ease, background-color .18s ease, transform .18s ease',
                   '& fieldset': {
-                    borderColor: searchOpen ? 'var(--fh-brand)' : 'var(--fh-line)',
+                    border: 'none',
                   },
-                  '&:hover fieldset': {
-                    borderColor: 'color-mix(in srgb, var(--fh-line) 72%, var(--fh-ink) 28%)',
+                  '&:hover': {
+                    borderColor: 'color-mix(in srgb, var(--fh-brand) 35%, var(--fh-line) 65%)',
+                    bgcolor: isDark ? '#111c30' : '#ffffff',
+                    transform: 'translateY(-1px)',
                   },
-                  '&.Mui-focused fieldset': {
+                  '&.Mui-focused': {
                     borderColor: 'var(--fh-brand)',
+                    bgcolor: isDark ? '#111c30' : '#ffffff',
                   },
                 },
                 '& .MuiInputBase-input': {
-                  py: 1.1,
+                  py: 1.25,
+                  fontSize: { md: 13, lg: 14 },
                 },
                 borderRadius: '12px',
               }}
