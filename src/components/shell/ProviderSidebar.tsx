@@ -110,16 +110,7 @@ export function ProviderSidebar({
             minHeight: 0,
           }}
         >
-          <Stack sx={{ px: 2.1, pt: 2, pb: 1.25 }}>
-            <Typography sx={{ fontSize: 34, lineHeight: 1.05, fontWeight: 750, letterSpacing: '-0.03em', color: '#1f2c2a' }}>
-              Navigation
-            </Typography>
-            <Typography sx={{ mt: 0.45, fontSize: 12, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#758583' }}>
-              Modules
-            </Typography>
-          </Stack>
-
-          <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ px: 1.25, py: 0.9, gap: 1 }}>
+          <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ px: 1.25, py: 1.35, gap: 1 }}>
             <Box sx={{ flex: 1 }} />
             <Tooltip title={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}>
               <IconButton
