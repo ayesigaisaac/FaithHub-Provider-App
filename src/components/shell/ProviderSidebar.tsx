@@ -12,6 +12,7 @@ import {
   Stack,
   Tooltip,
   Typography,
+  useTheme,
 } from '@mui/material';
 import KeyboardArrowRightRoundedIcon from '@mui/icons-material/KeyboardArrowRightRounded';
 import KeyboardDoubleArrowLeftRoundedIcon from '@mui/icons-material/KeyboardDoubleArrowLeftRounded';
@@ -73,6 +74,8 @@ export function ProviderSidebar({
   collapsed?: boolean;
   onToggleCollapse?: () => void;
 }) {
+  const theme = useTheme();
+  const isDark = theme.palette.mode === 'dark';
   const location = useLocation();
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({});
   const sections = providerSections
@@ -100,8 +103,8 @@ export function ProviderSidebar({
           sx={{
             borderRadius: 'var(--fh-radius-3xl)',
             border: '1px solid',
-            borderColor: '#d2dad7',
-            bgcolor: '#f5f7f6',
+            borderColor: isDark ? '#334155' : '#d2dad7',
+            bgcolor: isDark ? '#0f172a' : '#f5f7f6',
             overflow: 'hidden',
             boxShadow: 'var(--fh-shadow-md)',
             display: 'flex',
@@ -173,10 +176,14 @@ export function ProviderSidebar({
                         minHeight: 70,
                         borderRadius: '18px',
                         border: '1px solid',
-                        borderColor: openSections[group.section] ? '#15171f' : '#d7dfdc',
+                        borderColor: openSections[group.section] ? (isDark ? '#10b981' : '#15171f') : isDark ? '#334155' : '#d7dfdc',
                         bgcolor: openSections[group.section]
-                          ? '#f1f6f4'
-                          : '#fafbfb',
+                          ? isDark
+                            ? '#0b1220'
+                            : '#f1f6f4'
+                          : isDark
+                            ? '#111827'
+                            : '#fafbfb',
                         boxShadow: openSections[group.section]
                           ? '0 10px 28px -24px rgba(0,0,0,0.35)'
                           : '0 6px 18px -24px rgba(0,0,0,0.3)',
@@ -193,10 +200,10 @@ export function ProviderSidebar({
                             width: 44,
                             height: 44,
                             borderRadius: 2.8,
-                            bgcolor: '#eef3f1',
+                            bgcolor: isDark ? '#111827' : '#eef3f1',
                             color: 'var(--fh-brand-dark)',
                             border: '1px solid',
-                            borderColor: '#d8e1dd',
+                            borderColor: isDark ? '#334155' : '#d8e1dd',
                           }}
                         >
                           <SectionIcon sx={{ fontSize: 25 }} />

@@ -49,6 +49,7 @@ export function ProviderTopbar({
   onSearchQueryChange,
 }: ProviderTopbarProps) {
   const theme = useTheme();
+  const isDark = theme.palette.mode === 'dark';
   const isMobileActions = useMediaQuery(theme.breakpoints.down('md'));
   const navigate = useNavigate();
   const { user, role, workspace, logout, setWorkspace } = useAuth();
@@ -57,11 +58,11 @@ export function ProviderTopbar({
   const isTinyScreen = useMediaQuery('(max-width:399.95px)');
   const utilityIconSx = {
     border: '1px solid',
-    borderColor: '#d4ddd9',
+    borderColor: isDark ? '#334155' : '#d4ddd9',
     borderRadius: '16px',
     width: { xs: 42, md: 46 },
     height: { xs: 42, md: 46 },
-    bgcolor: '#ffffff',
+    bgcolor: isDark ? '#0f172a' : '#ffffff',
     color: 'var(--fh-slate)',
     '&:hover': {
       borderColor: 'color-mix(in srgb, var(--fh-line) 72%, var(--fh-ink) 28%)',
@@ -203,7 +204,7 @@ export function ProviderTopbar({
                   minWidth: 256,
                   px: 0.7,
                   borderColor: 'var(--fh-line)',
-                  bgcolor: '#ffffff',
+                  bgcolor: isDark ? '#0f172a' : '#ffffff',
                   color: 'var(--fh-slate)',
                   fontWeight: 700,
                   '& fieldset': {
@@ -251,9 +252,9 @@ export function ProviderTopbar({
           px: { xs: 1.25, md: 3 },
           py: { xs: 0.28, md: 0.45 },
           mt: 0,
-          bgcolor: '#eef2f1',
+          bgcolor: isDark ? '#0b1220' : '#eef2f1',
           borderTop: '1px solid',
-          borderColor: '#dbe3e0',
+          borderColor: isDark ? '#1f2937' : '#dbe3e0',
         }}
       >
         <Stack direction="row" alignItems="center" justifyContent="flex-start" sx={{ width: '100%' }}>
@@ -291,9 +292,9 @@ export function ProviderTopbar({
                   py: 0.3,
                   pl: 0.4,
                   pr: 0.4,
-                  border: '1px solid #d7dfdc',
+                  border: `1px solid ${isDark ? '#334155' : '#d7dfdc'}`,
                   borderRadius: '999px',
-                  bgcolor: '#f7f9f8',
+                  bgcolor: isDark ? '#0f172a' : '#f7f9f8',
                   '&::-webkit-scrollbar': { height: 7 },
                   '&::-webkit-scrollbar-thumb': { backgroundColor: 'var(--fh-line)', borderRadius: 10 },
                   '&::-webkit-scrollbar-track': { backgroundColor: 'transparent' },
@@ -330,8 +331,8 @@ export function ProviderTopbar({
                       px: { xs: 1.35, md: 2.1 },
                       fontSize: { xs: 13, md: 16 },
                       borderWidth: 1,
-                      borderColor: activeTopTab?.label === tab.label ? '#13c98b' : '#d2dad7',
-                      bgcolor: activeTopTab?.label === tab.label ? '#13c98b' : '#ffffff',
+                      borderColor: activeTopTab?.label === tab.label ? '#13c98b' : isDark ? '#334155' : '#d2dad7',
+                      bgcolor: activeTopTab?.label === tab.label ? '#13c98b' : isDark ? '#0f172a' : '#ffffff',
                       color: activeTopTab?.label === tab.label ? '#ffffff' : 'var(--fh-ink)',
                       whiteSpace: 'nowrap',
                       '& .MuiButton-startIcon': {
