@@ -3,6 +3,7 @@ import {
   Box,
   Button,
   Chip,
+  ClickAwayListener,
   List,
   ListItemButton,
   ListItemIcon,
@@ -414,16 +415,18 @@ export function SearchCommandDialog({
       key: 'quick-actions',
       label: 'Quick Actions',
       icon: BoltRoundedIcon,
-      items: searchActions.map((action) => ({
-        kind: 'action' as const,
-        key: action.key,
-        title: action.title,
-        description: action.subtitle,
-        section: action.section,
-        path: action.targetPath,
-        icon: action.icon,
-        payload: action,
-      })),
+      items: searchActions
+        .filter((action) => !recentActions.some((recent) => recent.key === action.key))
+        .map((action) => ({
+          kind: 'action' as const,
+          key: action.key,
+          title: action.title,
+          description: action.subtitle,
+          section: action.section,
+          path: action.targetPath,
+          icon: action.icon,
+          payload: action,
+        })),
     });
 
     groups.push({ key: 'suggested', label: 'Suggested Pages', icon: AutoAwesomeRoundedIcon, items: suggestedPages });
@@ -598,6 +601,7 @@ export function SearchCommandDialog({
         },
         paper: {
           onKeyDown: handleKeyDown,
+          onMouseDown: (event) => event.stopPropagation(),
           sx: {
             width: anchorEl
               ? { xs: 'calc(100vw - 16px)', sm: `${panelWidth}px` }
@@ -620,6 +624,8 @@ export function SearchCommandDialog({
         },
       }}
     >
+      <ClickAwayListener onClickAway={onClose} mouseEvent="onMouseDown" touchEvent="onTouchStart">
+        <Box>
       <Stack
         direction="row"
         alignItems="center"
@@ -833,6 +839,8 @@ export function SearchCommandDialog({
             </Box>
           ) : null}
       </List>
+        </Box>
+      </ClickAwayListener>
     </Popover>
   );
 }
