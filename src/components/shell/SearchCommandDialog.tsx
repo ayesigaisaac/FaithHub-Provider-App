@@ -15,6 +15,7 @@ import HistoryRoundedIcon from '@mui/icons-material/HistoryRounded';
 import AutoAwesomeRoundedIcon from '@mui/icons-material/AutoAwesomeRounded';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import BoltRoundedIcon from '@mui/icons-material/BoltRounded';
+import TuneRoundedIcon from '@mui/icons-material/TuneRounded';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { CalendarPlus, Megaphone, Plus, Radio, UserPlus, Users } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
@@ -147,6 +148,7 @@ export function SearchCommandDialog({
   const [panelWidth, setPanelWidth] = useState<number>(760);
   const [recentKeys, setRecentKeys] = useState<string[]>([]);
   const [recentActionKeys, setRecentActionKeys] = useState<string[]>([]);
+  const [activeScope, setActiveScope] = useState<'all' | 'live' | 'teachings' | 'team'>('all');
 
   const visiblePages = useMemo(() => providerPages.filter((page) => !page.hidden), []);
   const pageKeyMap = useMemo(() => new Map(visiblePages.map((page) => [page.key, page])), [visiblePages]);
@@ -217,12 +219,12 @@ export function SearchCommandDialog({
       setAnchorPosition({ top, left: Math.round(window.innerWidth / 2) });
       if (anchorEl) {
         const anchorWidth = Math.round(anchorEl.getBoundingClientRect().width);
-        setPanelWidth(Math.max(320, Math.min(860, anchorWidth)));
+        setPanelWidth(Math.max(760, Math.min(1120, anchorWidth)));
       }
     };
     if (anchorEl) {
       const anchorWidth = Math.round(anchorEl.getBoundingClientRect().width);
-      setPanelWidth(Math.max(320, Math.min(860, anchorWidth)));
+      setPanelWidth(Math.max(760, Math.min(1120, anchorWidth)));
     }
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
@@ -428,7 +430,23 @@ export function SearchCommandDialog({
     return groups;
   }, [query, rankedActions, rankedPages, recentActionKeys, recentPageEntries, suggestedPages]);
 
-  const flattened = useMemo(() => groupedResults.flatMap((group) => group.items), [groupedResults]);
+  const filteredGroupedResults = useMemo(() => {
+    if (activeScope === 'all') return groupedResults;
+    return groupedResults
+      .map((group) => {
+        const items = group.items.filter((entry) => {
+          const haystack = `${entry.title} ${entry.description} ${entry.section}`.toLowerCase();
+          if (activeScope === 'live') return haystack.includes('live') || haystack.includes('stream') || haystack.includes('broadcast');
+          if (activeScope === 'teachings') return haystack.includes('teaching') || haystack.includes('series') || haystack.includes('episode');
+          if (activeScope === 'team') return haystack.includes('team') || haystack.includes('member') || haystack.includes('invite');
+          return true;
+        });
+        return { ...group, items };
+      })
+      .filter((group) => group.items.length > 0);
+  }, [activeScope, groupedResults]);
+
+  const flattened = useMemo(() => filteredGroupedResults.flatMap((group) => group.items), [filteredGroupedResults]);
 
   useEffect(() => {
     if (!flattened.length) {
@@ -550,7 +568,15 @@ export function SearchCommandDialog({
   };
 
   const hasQuery = Boolean(query.trim());
-
+  const scopeChips = useMemo(
+    () => [
+      { key: 'all' as const, label: 'All Provider' },
+      { key: 'live' as const, label: 'Live Sessions' },
+      { key: 'teachings' as const, label: 'Teachings' },
+      { key: 'team' as const, label: 'From Team' },
+    ],
+    []
+  );
   return (
     <Popover
       open={open}
@@ -575,12 +601,12 @@ export function SearchCommandDialog({
           sx: {
             width: anchorEl
               ? { xs: 'calc(100vw - 16px)', sm: `${panelWidth}px` }
-              : { xs: 'calc(100vw - 16px)', sm: 760, md: 860 },
+              : { xs: 'calc(100vw - 16px)', sm: 860, md: 1020 },
             maxWidth: '100vw',
-            borderRadius: { xs: 3, md: 3.5 },
+            borderRadius: { xs: 4, md: 5 },
             border: '1px solid',
-            borderColor: 'color-mix(in srgb, var(--fh-brand) 34%, var(--fh-line) 66%)',
-            bgcolor: 'color-mix(in srgb, var(--fh-surface-bg) 90%, white 10%)',
+            borderColor: 'color-mix(in srgb, var(--fh-line) 80%, var(--fh-brand) 20%)',
+            bgcolor: 'color-mix(in srgb, var(--fh-surface-bg) 95%, white 5%)',
             boxShadow: '0 22px 48px -26px rgba(15, 23, 42, 0.46), 0 14px 34px -26px rgba(15, 23, 42, 0.34)',
             backdropFilter: 'blur(10px)',
             overflow: 'hidden',
@@ -596,31 +622,61 @@ export function SearchCommandDialog({
     >
       <Stack
         direction="row"
-        justifyContent="space-between"
         alignItems="center"
+        justifyContent="space-between"
         sx={{
-          px: 1.8,
-          pt: 1.2,
-          pb: 0.6,
+          px: { xs: 1.6, md: 2.5 },
+          pt: 1.55,
+          pb: 1.45,
           borderBottom: '1px solid',
-          borderColor: 'color-mix(in srgb, var(--fh-line) 84%, transparent)',
-          background: 'linear-gradient(180deg, color-mix(in srgb, var(--fh-surface) 90%, white 10%) 0%, transparent 100%)',
+          borderColor: 'color-mix(in srgb, var(--fh-line) 90%, transparent)',
+          background: 'color-mix(in srgb, var(--fh-surface-bg) 94%, white 6%)',
         }}
       >
-        <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 700 }}>
-          {hasQuery ? `${flattened.length} result${flattened.length === 1 ? '' : 's'}` : 'Suggestions'}
-        </Typography>
-        <Typography variant="caption" color="text.secondary">
-          Enter open | Up/Down move | Esc close
-        </Typography>
+        <Stack direction="row" spacing={1.2} alignItems="center" sx={{ minWidth: 0 }}>
+          <SearchRoundedIcon sx={{ fontSize: 31, color: 'var(--fh-slate)' }} />
+          <Typography
+            sx={{
+              fontSize: { xs: '1.55rem', md: '1.7rem' },
+              fontWeight: 500,
+              color: hasQuery ? 'var(--fh-ink)' : 'text.secondary',
+              lineHeight: 1.15,
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+            }}
+          >
+            {hasQuery ? query : 'Search FaithHub provider'}
+          </Typography>
+        </Stack>
+        <TuneRoundedIcon sx={{ fontSize: 28, color: 'var(--fh-slate)' }} />
+      </Stack>
+      <Stack direction="row" spacing={1.1} sx={{ px: { xs: 1.6, md: 2.5 }, py: 1.3, borderBottom: '1px solid', borderColor: 'color-mix(in srgb, var(--fh-line) 90%, transparent)', overflowX: 'auto' }}>
+        {scopeChips.map((chip) => (
+          <Chip
+            key={chip.key}
+            label={chip.label}
+            onClick={() => setActiveScope(chip.key)}
+            variant={activeScope === chip.key ? 'filled' : 'outlined'}
+            sx={{
+              borderRadius: 3,
+              fontWeight: 500,
+              fontSize: 14,
+              px: 0.55,
+              height: 46,
+              bgcolor: activeScope === chip.key ? 'color-mix(in srgb, var(--fh-brand) 14%, white 86%)' : 'transparent',
+              borderColor: 'color-mix(in srgb, var(--fh-line) 80%, var(--fh-ink) 20%)',
+            }}
+          />
+        ))}
       </Stack>
       <List
         ref={listRef}
         sx={{
-          px: 1,
+          px: { xs: 1.25, md: 2 },
           pb: 1,
-          pt: 0.7,
-          maxHeight: { xs: 360, md: 430 },
+          pt: 1.15,
+          maxHeight: { xs: 390, md: 500 },
           overflowY: 'auto',
           scrollbarWidth: 'thin',
           '&::-webkit-scrollbar': { width: 10 },
@@ -632,7 +688,7 @@ export function SearchCommandDialog({
           },
         }}
       >
-          {groupedResults.map((group) => {
+          {filteredGroupedResults.map((group) => {
             const GroupIcon = group.icon;
             return (
               <Box key={group.key} sx={{ mb: 1.3 }}>
@@ -640,7 +696,7 @@ export function SearchCommandDialog({
                   direction="row"
                   alignItems="center"
                   justifyContent="space-between"
-                  sx={{ px: 1.25, pb: 0.7, pt: 0.4, position: 'sticky', top: 0, zIndex: 1, bgcolor: 'inherit' }}
+                  sx={{ px: 0.9, pb: 0.6, pt: 0.2, position: 'sticky', top: 0, zIndex: 1, bgcolor: 'inherit', display: hasQuery ? 'flex' : group.key === 'recent' ? 'flex' : 'none' }}
                 >
                   <Stack direction="row" alignItems="center" spacing={0.75}>
                     <GroupIcon sx={{ fontSize: 16, color: 'var(--fh-brand)' }} />
@@ -676,48 +732,51 @@ export function SearchCommandDialog({
                       onMouseEnter={() => setActiveIndex(flatIndex)}
                       onClick={() => handleSelect(entry)}
                       sx={{
-                        mb: 0.65,
-                        borderRadius: 3,
+                        mb: hasQuery ? 0.65 : 0.15,
+                        borderRadius: hasQuery ? 3 : 2.4,
+                        minHeight: hasQuery ? 84 : 58,
                         alignItems: hasQuery ? 'center' : 'flex-start',
-                        border: '1px solid',
+                        border: hasQuery ? '1px solid' : '1px solid transparent',
                         borderColor: selected
                           ? 'color-mix(in srgb, var(--fh-brand) 75%, var(--fh-line) 25%)'
-                          : 'color-mix(in srgb, var(--fh-line) 82%, white 18%)',
+                          : hasQuery ? 'color-mix(in srgb, var(--fh-line) 82%, white 18%)' : 'transparent',
                         bgcolor: selected
                           ? 'color-mix(in srgb, var(--fh-brand) 10%, var(--fh-surface-bg) 90%)'
-                          : 'color-mix(in srgb, var(--fh-surface-bg) 85%, white 15%)',
+                          : hasQuery ? 'color-mix(in srgb, var(--fh-surface-bg) 85%, white 15%)' : 'transparent',
                         boxShadow: selected ? '0 10px 20px -16px rgba(15,23,42,0.6)' : 'none',
                         transition: 'all .16s ease',
                         '&:hover': {
                           borderColor: 'color-mix(in srgb, var(--fh-brand) 50%, var(--fh-line) 50%)',
                           bgcolor: 'color-mix(in srgb, var(--fh-brand) 7%, var(--fh-surface-bg) 93%)',
-                          transform: 'translateY(-1px)',
+                          transform: hasQuery ? 'translateY(-1px)' : 'none',
                         },
                         '&.Mui-selected': {
                           bgcolor: 'color-mix(in srgb, var(--fh-brand) 10%, var(--fh-surface-bg) 90%)',
                         },
                       }}
                     >
-                      <ListItemIcon sx={{ minWidth: 44, mt: 0.3 }}>
+                      <ListItemIcon sx={{ minWidth: 44, mt: hasQuery ? 0.3 : 0.1 }}>
                         <Box
                           sx={{
-                            width: 30,
-                            height: 30,
-                            borderRadius: 1.5,
+                            width: hasQuery ? 30 : 26,
+                            height: hasQuery ? 30 : 26,
+                            borderRadius: hasQuery ? 1.5 : 999,
                             display: 'grid',
                             placeItems: 'center',
-                            bgcolor: isCurrent ? 'success.light' : 'action.hover',
-                            color: isCurrent ? 'success.dark' : entry.kind === 'action' ? 'warning.dark' : 'primary.main',
+                            bgcolor: hasQuery ? (isCurrent ? 'success.light' : 'action.hover') : 'transparent',
+                            color: hasQuery ? (isCurrent ? 'success.dark' : entry.kind === 'action' ? 'warning.dark' : 'primary.main') : 'text.secondary',
                           }}
                         >
-                          <Icon size={16} />
+                          <Icon size={hasQuery ? 16 : 15} />
                         </Box>
                       </ListItemIcon>
 
                       <ListItemText
                         primary={
                           <Stack direction="row" spacing={1} alignItems="center" flexWrap="wrap">
-                            <Typography fontWeight={800}>{renderHighlighted(entry.title, query)}</Typography>
+                            <Typography fontWeight={hasQuery ? 800 : 500} fontSize={hasQuery ? undefined : '1.03rem'} lineHeight={hasQuery ? undefined : 1.16}>
+                              {renderHighlighted(entry.title, query)}
+                            </Typography>
                             {entry.kind === 'page' && entry.id ? (
                               <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 700 }}>
                                 {entry.id}
@@ -743,7 +802,7 @@ export function SearchCommandDialog({
                               : null}
                           </Stack>
                         }
-                        secondary={
+                        secondary={hasQuery ? (
                           <>
                             <Typography
                               variant="body2"
@@ -756,7 +815,7 @@ export function SearchCommandDialog({
                               {entry.section}
                             </Typography>
                           </>
-                        }
+                        ) : undefined}
                       />
                     </ListItemButton>
                   );
@@ -765,7 +824,7 @@ export function SearchCommandDialog({
             );
           })}
 
-          {!groupedResults.length ? (
+          {!filteredGroupedResults.length ? (
             <Box sx={{ px: 2, py: 4, textAlign: 'center' }}>
               <Typography fontWeight={800}>No matches found</Typography>
               <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>

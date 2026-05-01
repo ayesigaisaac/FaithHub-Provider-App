@@ -20,6 +20,7 @@ import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import NotificationsRoundedIcon from '@mui/icons-material/NotificationsRounded';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+import TuneRoundedIcon from '@mui/icons-material/TuneRounded';
 import { useMemo, useState, type MouseEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/auth/useAuth';
@@ -196,6 +197,17 @@ export function ProviderTopbar({
                       >
                         Ctrl K
                       </Box>
+                      <IconButton
+                        size="small"
+                        aria-label="Search filters"
+                        sx={{
+                          width: 24,
+                          height: 24,
+                          color: 'var(--fh-slate)',
+                        }}
+                      >
+                        <TuneRoundedIcon sx={{ fontSize: 16 }} />
+                      </IconButton>
                     </Stack>
                   </InputAdornment>
                 ),
