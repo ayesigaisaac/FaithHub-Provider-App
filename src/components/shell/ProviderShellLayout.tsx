@@ -79,11 +79,11 @@ export function ProviderShellLayout() {
         minHeight: '100vh',
         maxHeight: '100vh',
         overflow: 'hidden',
-        bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#0b1220' : '#dfe9e8'),
+        bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#0b1220' : '#e8eeec'),
         backgroundImage: (theme) =>
           theme.palette.mode === 'dark'
             ? 'linear-gradient(180deg, #0f172a 0%, #0b1220 45%, #0a1020 100%)'
-            : 'linear-gradient(180deg, #edf3f2 0%, #dfe9e8 45%, #d7e4e3 100%)',
+            : 'linear-gradient(180deg, #eff4f2 0%, #e8eeec 45%, #e3ebe9 100%)',
       }}
     >
       <a href="#provider-main-content" className="fh-skip-link">
@@ -132,14 +132,14 @@ export function ProviderShellLayout() {
             sx={{
               borderRadius: { xs: 0, md: 3 },
               border: '1px solid',
-              borderColor: 'divider',
-              bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#0f172a' : '#f8faf9'),
-              p: { xs: 0.5, md: 0.75 },
+              borderColor: (theme) => (theme.palette.mode === 'dark' ? '#1f2937' : '#d2ddd8'),
+              bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#0f172a' : '#f4f7f6'),
+              p: { xs: 0.4, md: 0.65 },
               minHeight: '100%',
               boxShadow: (theme) =>
                 theme.palette.mode === 'dark'
                   ? '0 20px 40px -34px rgba(2, 6, 23, 0.92)'
-                  : '0 20px 40px -36px rgba(15, 23, 42, 0.55)',
+                  : '0 24px 42px -38px rgba(15, 23, 42, 0.52)',
             }}
           >
             <ErrorBoundary key={location.pathname} label={current?.title}>

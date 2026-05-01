@@ -57,11 +57,11 @@ export function ProviderTopbar({
   const isTinyScreen = useMediaQuery('(max-width:399.95px)');
   const utilityIconSx = {
     border: '1px solid',
-    borderColor: 'var(--fh-line)',
-    borderRadius: '12px',
+    borderColor: '#d4ddd9',
+    borderRadius: '16px',
     width: { xs: 42, md: 46 },
     height: { xs: 42, md: 46 },
-    bgcolor: 'var(--fh-surface-bg)',
+    bgcolor: '#ffffff',
     color: 'var(--fh-slate)',
     '&:hover': {
       borderColor: 'color-mix(in srgb, var(--fh-line) 72%, var(--fh-ink) 28%)',
@@ -102,8 +102,8 @@ export function ProviderTopbar({
         top: 0,
         zIndex: 1100,
         borderBottom: '1px solid',
-        borderColor: 'divider',
-        bgcolor: 'background.paper',
+        borderColor: (theme) => (theme.palette.mode === 'dark' ? '#1f2937' : '#d1d9d6'),
+        bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#0f172a' : '#f2f5f4'),
         boxShadow: 'var(--fh-shadow-sm)',
       }}
     >
@@ -113,7 +113,7 @@ export function ProviderTopbar({
           px: { xs: 1.25, md: 3 },
           py: { xs: 0.35, md: 0.9 },
           borderBottom: '1px solid',
-          borderColor: 'divider',
+          borderColor: (theme) => (theme.palette.mode === 'dark' ? '#1f2937' : '#dce4e1'),
         }}
       >
         <Stack direction="row" alignItems="center" spacing={1.25} sx={{ flex: 1 }}>
@@ -198,12 +198,12 @@ export function ProviderTopbar({
               }}
               sx={{
                 '& .MuiOutlinedInput-root': {
-                  borderRadius: '12px',
+                  borderRadius: '14px',
                   minHeight: 46,
                   minWidth: 256,
-                  px: 0.4,
+                  px: 0.7,
                   borderColor: 'var(--fh-line)',
-                  bgcolor: 'var(--fh-surface-bg)',
+                  bgcolor: '#ffffff',
                   color: 'var(--fh-slate)',
                   fontWeight: 700,
                   '& fieldset': {
@@ -249,14 +249,14 @@ export function ProviderTopbar({
         sx={{
           minHeight: { xs: 54, md: 60 },
           px: { xs: 1.25, md: 3 },
-          py: { xs: 0.2, md: 0.35 },
+          py: { xs: 0.28, md: 0.45 },
           mt: 0,
-          bgcolor: 'var(--fh-surface)',
+          bgcolor: '#eef2f1',
           borderTop: '1px solid',
-          borderColor: 'var(--fh-line)',
+          borderColor: '#dbe3e0',
         }}
       >
-        <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ width: '100%' }}>
+        <Stack direction="row" alignItems="center" justifyContent="flex-start" sx={{ width: '100%' }}>
           {isTinyScreen ? (
             <Stack direction="row" spacing={1} alignItems="center" sx={{ width: '100%' }}>
               <Button
@@ -288,8 +288,12 @@ export function ProviderTopbar({
                 alignItems="center"
                 sx={{
                   overflowX: 'auto',
-                  py: 0.25,
-                  pl: 0.25,
+                  py: 0.3,
+                  pl: 0.4,
+                  pr: 0.4,
+                  border: '1px solid #d7dfdc',
+                  borderRadius: '999px',
+                  bgcolor: '#f7f9f8',
                   '&::-webkit-scrollbar': { height: 7 },
                   '&::-webkit-scrollbar-thumb': { backgroundColor: 'var(--fh-line)', borderRadius: 10 },
                   '&::-webkit-scrollbar-track': { backgroundColor: 'transparent' },
@@ -297,15 +301,15 @@ export function ProviderTopbar({
               >
                 <Box
                 sx={{
-                  bgcolor: 'var(--fh-brand)',
-                  color: 'var(--fh-surface-bg)',
-                  borderRadius: '12px',
+                  bgcolor: '#13c98b',
+                  color: '#ffffff',
+                  borderRadius: '999px',
                   px: { xs: 1.35, md: 1.9 },
                   py: { xs: 0.55, md: 0.75 },
                     fontSize: { xs: 14, md: 17 },
                     fontWeight: 800,
                     lineHeight: 1,
-                    border: '1px solid var(--fh-brand-dark)',
+                    border: '1px solid #0fae78',
                     whiteSpace: 'nowrap',
                   }}
                 >
@@ -319,16 +323,16 @@ export function ProviderTopbar({
                     onClick={() => navigate(resolveKnownProviderPath(tab.to))}
                     aria-current={activeTopTab?.label === tab.label ? 'page' : undefined}
                     sx={{
-                      borderRadius: '12px',
+                      borderRadius: '999px',
                       textTransform: 'none',
                       fontWeight: 800,
                       minHeight: { xs: 40, md: 44 },
                       px: { xs: 1.35, md: 2.1 },
                       fontSize: { xs: 13, md: 16 },
                       borderWidth: 1,
-                      borderColor: activeTopTab?.label === tab.label ? 'var(--fh-brand)' : 'var(--fh-line)',
-                      bgcolor: activeTopTab?.label === tab.label ? 'var(--fh-brand)' : 'var(--fh-surface-bg)',
-                      color: activeTopTab?.label === tab.label ? 'var(--fh-surface-bg)' : 'var(--fh-ink)',
+                      borderColor: activeTopTab?.label === tab.label ? '#13c98b' : '#d2dad7',
+                      bgcolor: activeTopTab?.label === tab.label ? '#13c98b' : '#ffffff',
+                      color: activeTopTab?.label === tab.label ? '#ffffff' : 'var(--fh-ink)',
                       whiteSpace: 'nowrap',
                       '& .MuiButton-startIcon': {
                         color: activeTopTab?.label === tab.label ? 'var(--fh-surface-bg)' : 'var(--fh-slate)',

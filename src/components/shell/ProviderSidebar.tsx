@@ -100,8 +100,8 @@ export function ProviderSidebar({
           sx={{
             borderRadius: 'var(--fh-radius-3xl)',
             border: '1px solid',
-            borderColor: 'var(--fh-line)',
-            bgcolor: 'var(--fh-surface-bg)',
+            borderColor: '#d2dad7',
+            bgcolor: '#f5f7f6',
             overflow: 'hidden',
             boxShadow: 'var(--fh-shadow-md)',
             display: 'flex',
@@ -110,6 +110,15 @@ export function ProviderSidebar({
             minHeight: 0,
           }}
         >
+          <Stack sx={{ px: 2.1, pt: 2, pb: 1.25 }}>
+            <Typography sx={{ fontSize: 34, lineHeight: 1.05, fontWeight: 750, letterSpacing: '-0.03em', color: '#1f2c2a' }}>
+              Navigation
+            </Typography>
+            <Typography sx={{ mt: 0.45, fontSize: 12, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#758583' }}>
+              Modules
+            </Typography>
+          </Stack>
+
           <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ px: 1.25, py: 0.9, gap: 1 }}>
             <Box sx={{ flex: 1 }} />
             <Tooltip title={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}>
@@ -146,7 +155,7 @@ export function ProviderSidebar({
 
           <List
             sx={{
-              p: 1.2,
+              p: 1.35,
               flex: 1,
               minHeight: 0,
               overflowY: 'auto',
@@ -159,7 +168,7 @@ export function ProviderSidebar({
             }}
           >
             {sections.map((group) => (
-              <Box key={group.section} sx={{ mb: collapsed ? 0.45 : 0.85 }}>
+              <Box key={group.section} sx={{ mb: collapsed ? 0.55 : 1 }}>
                 {!collapsed ? (
                   <Box sx={{ mb: 0.58 }}>
                     {(() => {
@@ -169,14 +178,14 @@ export function ProviderSidebar({
                       onClick={() => toggleSection(group.section)}
                       sx={{
                         px: 1.25,
-                        py: 0.8,
-                        minHeight: 72,
-                        borderRadius: '22px',
+                        py: 0.75,
+                        minHeight: 70,
+                        borderRadius: '18px',
                         border: '1px solid',
-                        borderColor: 'color-mix(in srgb, var(--fh-line) 80%, #d6d8dd 20%)',
+                        borderColor: openSections[group.section] ? '#15171f' : '#d7dfdc',
                         bgcolor: openSections[group.section]
-                          ? 'color-mix(in srgb, var(--fh-brand-soft) 30%, #f4f6f8 70%)'
-                          : '#f4f6f8',
+                          ? '#f1f6f4'
+                          : '#fafbfb',
                         boxShadow: openSections[group.section]
                           ? '0 10px 28px -24px rgba(0,0,0,0.35)'
                           : '0 6px 18px -24px rgba(0,0,0,0.3)',
@@ -192,11 +201,11 @@ export function ProviderSidebar({
                           sx={{
                             width: 44,
                             height: 44,
-                            borderRadius: 3.2,
-                            bgcolor: 'color-mix(in srgb, var(--fh-brand-soft) 52%, #ffffff 48%)',
+                            borderRadius: 2.8,
+                            bgcolor: '#eef3f1',
                             color: 'var(--fh-brand-dark)',
                             border: '1px solid',
-                            borderColor: 'color-mix(in srgb, var(--fh-brand) 38%, #e5e7eb 62%)',
+                            borderColor: '#d8e1dd',
                           }}
                         >
                           <SectionIcon sx={{ fontSize: 25 }} />
@@ -208,7 +217,7 @@ export function ProviderSidebar({
                             <Typography
                               sx={{
                                 fontWeight: 700,
-                                fontSize: 16,
+                                fontSize: 15,
                                 letterSpacing: '0.15em',
                                 color: 'var(--fh-slate)',
                                 textTransform: 'uppercase',
@@ -240,7 +249,7 @@ export function ProviderSidebar({
                     })()}
 
                     <Collapse in={Boolean(openSections[group.section])} timeout="auto" unmountOnExit>
-                      <Box sx={{ pl: 2.2, pr: 0.4, pt: 0.52 }}>
+                      <Box sx={{ pl: 2.2, pr: 0.55, pt: 0.7 }}>
                         {group.groups.map(({ page, children }) => {
                           const visibleChildren = children.filter((child) => child.key !== 'book-builder');
                           const parentActive = page.path === location.pathname || Boolean(page.aliases?.includes(location.pathname));
