@@ -66,6 +66,20 @@ type WorkflowSummarySnapshot = {
   totalCount: number;
   updatedAt: string;
 };
+
+function formatWorkflowUpdatedAt(updatedAt: string): string {
+  if (!updatedAt) return 'updated just now';
+  const timestamp = Date.parse(updatedAt);
+  if (Number.isNaN(timestamp)) return 'updated just now';
+  const diffMs = Date.now() - timestamp;
+  if (diffMs < 60_000) return 'updated just now';
+  const minutes = Math.floor(diffMs / 60_000);
+  if (minutes < 60) return `updated ${minutes}m ago`;
+  const hours = Math.floor(minutes / 60);
+  if (hours < 24) return `updated ${hours}h ago`;
+  const days = Math.floor(hours / 24);
+  return `updated ${days}d ago`;
+}
 type WorkflowTone = 'warning' | 'success' | 'neutral';
 type WorkflowItem = {
   key: string;
@@ -321,17 +335,28 @@ export function ProviderSidebar({
           >
             <Box sx={{ mb: 1.25 }}>
               {!collapsed ? (
-                <Typography
-                  variant="overline"
-                  sx={{
-                    px: 0.9,
-                    letterSpacing: '0.08em',
-                    fontWeight: 800,
-                    color: 'var(--fh-slate)',
-                  }}
-                >
-                  Workflow
-                </Typography>
+                <Stack direction="row" alignItems="baseline" justifyContent="space-between" sx={{ px: 0.9 }}>
+                  <Typography
+                    variant="overline"
+                    sx={{
+                      letterSpacing: '0.08em',
+                      fontWeight: 800,
+                      color: 'var(--fh-slate)',
+                    }}
+                  >
+                    Workflow
+                  </Typography>
+                  <Typography
+                    variant="caption"
+                    sx={{
+                      fontSize: 11,
+                      fontWeight: 600,
+                      color: 'var(--fh-slate)',
+                    }}
+                  >
+                    {formatWorkflowUpdatedAt(workflowSummary.updatedAt)}
+                  </Typography>
+                </Stack>
               ) : null}
               <Box sx={{ mt: 0.6 }}>
                 {workflowItems.map((item) => {
