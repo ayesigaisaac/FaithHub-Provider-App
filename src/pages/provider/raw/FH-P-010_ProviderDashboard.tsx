@@ -1285,6 +1285,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
   const [isRecentCollapsed, setIsRecentCollapsed] = useState(false);
   const [isPendingCollapsed, setIsPendingCollapsed] = useState(false);
   const [actionToast, setActionToast] = useState<string | null>(null);
+  const [usageMap, setUsageMap] = useState<Record<string, number>>({});
   const metrics = useMemo(() => EXECUTIVE_METRICS[role], [role]);
   const recommendations = useMemo(() => RECOMMENDATIONS_BY_ROLE[role], [role]);
   const primaryCtaLabel = "Create Teaching";
@@ -1367,10 +1368,20 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
     if (draftCount > 0) return `${draftCount} draft${draftCount > 1 ? "s are" : " is"} ready to finish.`;
     return "You're caught up. Start a new teaching task.";
   }, [needsReviewCount, pendingWork]);
+  const recentlyEditedTeachings = useMemo(() => teachingItems.slice(0, 5), [teachingItems]);
+  const quickAccessTeachings = useMemo(() => {
+    const withUsage = teachingItems
+      .map((item) => ({ item, score: usageMap[item.id] ?? 0 }))
+      .filter((entry) => entry.score > 0)
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 4)
+      .map((entry) => entry.item);
+    return withUsage;
+  }, [teachingItems, usageMap]);
 
   const handlePrimaryCta = () => {
     trackDashboardEvent("start_new_task");
-    safeNav(ROUTES.liveBuilder);
+    safeNav(ROUTES.teachingsDashboard);
   };
   const formatLastEdited = (due: string) => {
     const dueLower = due.toLowerCase();
@@ -1380,6 +1391,13 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
     return due;
   };
   const openTeachingItem = (itemId: string) => {
+    setUsageMap((prev) => {
+      const next = { ...prev, [itemId]: (prev[itemId] ?? 0) + 1 };
+      if (typeof window !== "undefined") {
+        window.localStorage.setItem("fh.dashboard.teachingUsage", JSON.stringify(next));
+      }
+      return next;
+    });
     safeNav(`${ROUTES.teachingsDashboard}?teachingId=${encodeURIComponent(itemId)}`);
   };
   const handleTeachingAction = (
@@ -1408,6 +1426,18 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
     return () => window.clearTimeout(timer);
   }, [actionToast]);
 
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const raw = window.localStorage.getItem("fh.dashboard.teachingUsage");
+    if (!raw) return;
+    try {
+      const parsed = JSON.parse(raw) as Record<string, number>;
+      if (parsed && typeof parsed === "object") setUsageMap(parsed);
+    } catch {
+      // no-op
+    }
+  }, []);
+
   if (!hasDashboardData) {
     return (
       <div className="min-h-screen w-full bg-[var(--fh-page-bg)] text-faith-ink transition-colors dark:bg-slate-950 dark:text-slate-100">
@@ -1422,7 +1452,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                   <Plus className="h-8 w-8" />
                 </div>
                 <h2 className="mt-5 text-[26px] font-black tracking-tight text-faith-ink">
-                  Your dashboard is ready
+                  Start your first teaching
                 </h2>
                 <p className="mt-2 max-w-xl text-[14px] leading-6 text-slate-700">
                   Create and manage your teachings from here.
@@ -1437,9 +1467,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                   <Plus className="h-4 w-4" />
                   Create Teaching
                 </button>
-                <p className="mt-3 text-[12px] font-medium text-slate-700">
-                  Start your first teaching
-                </p>
+                <p className="mt-3 text-[12px] font-medium text-slate-700">Create Teaching</p>
               </div>
             </section>
           </div>
@@ -1535,6 +1563,59 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                   </div>
                 </div>
               </section>
+            ) : null}
+
+            {recentlyEditedTeachings.length > 0 ? (
+              <SectionCard
+                title="Recently edited"
+                subtitle="Your latest teaching updates across drafts and published items."
+                titleTag="h2"
+                right={<Pill text={`${recentlyEditedTeachings.length} recent`} tone="navy" />}
+                className="bg-[var(--fh-surface)] p-4 sm:p-4 shadow-none"
+              >
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {recentlyEditedTeachings.slice(0, 4).map((item) => (
+                    <button
+                      key={`recently-edited-${item.id}`}
+                      type="button"
+                      onClick={() => openTeachingItem(item.id)}
+                      className={`w-full rounded-xl border border-faith-line bg-[var(--fh-surface-bg)] p-3.5 text-left transition hover:bg-[var(--fh-surface)] ${cardFocusRingClass}`}
+                      aria-label={`Open recently edited ${item.title}`}
+                    >
+                      <div className="flex items-start justify-between gap-2">
+                        <h3 className="text-[14px] font-bold text-faith-ink">{item.title}</h3>
+                        <Pill text={item.status} tone={item.status === "Published" ? "good" : "warn"} />
+                      </div>
+                      <p className="mt-1 text-[12px] text-slate-700">Updated {formatLastEdited(item.updatedAt)}</p>
+                    </button>
+                  ))}
+                </div>
+              </SectionCard>
+            ) : null}
+
+            {quickAccessTeachings.length > 0 ? (
+              <SectionCard
+                title="Quick access"
+                subtitle="Frequently used teachings based on your recent activity."
+                titleTag="h2"
+                right={<Pill text={`${quickAccessTeachings.length} frequent`} tone="good" />}
+                className="bg-[var(--fh-surface)] p-4 sm:p-4 shadow-none"
+              >
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {quickAccessTeachings.map((item) => (
+                    <button
+                      key={`quick-access-${item.id}`}
+                      type="button"
+                      onClick={() => openTeachingItem(item.id)}
+                      className={`w-full rounded-xl border border-faith-line bg-[var(--fh-surface-bg)] p-3.5 text-left transition hover:bg-[var(--fh-surface)] ${cardFocusRingClass}`}
+                      aria-label={`Open quick access ${item.title}`}
+                    >
+                      <div className="text-[14px] font-bold text-faith-ink">{item.title}</div>
+                      <div className="mt-1 text-[12px] text-slate-700">Used {(usageMap[item.id] ?? 0)} times</div>
+                    </button>
+                  ))}
+                </div>
+              </SectionCard>
             ) : null}
 
             <SectionCard
