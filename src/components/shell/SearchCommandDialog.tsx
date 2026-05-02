@@ -15,7 +15,21 @@ import AddRoundedIcon from '@mui/icons-material/AddRounded';
 import EditNoteRoundedIcon from '@mui/icons-material/EditNoteRounded';
 import AutoAwesomeRoundedIcon from '@mui/icons-material/AutoAwesomeRounded';
 import { useEffect, useMemo, useRef, useState } from 'react';
+import type { ReactNode } from 'react';
 import { navigateWithRouter } from '@/navigation/routerNavigate';
+import { providerPages } from '@/navigation/providerPages';
+
+type PaletteItem = {
+  id: string;
+  title: string;
+  subtitle: string;
+  icon: ReactNode;
+  group: 'Action' | 'Page';
+  section?: string;
+  description?: string;
+  keywords?: string;
+  onSelect: () => void;
+};
 
 export function SearchCommandDialog({
   open,
@@ -35,13 +49,17 @@ export function SearchCommandDialog({
   const hasQuery = Boolean(query.trim());
   const normalizedQuery = query.trim().toLowerCase();
 
-  const commands = useMemo(() => {
-    const base = [
+  const commands = useMemo<PaletteItem[]>(() => {
+    const actionItems: PaletteItem[] = [
       {
         id: 'create-teaching',
         title: 'Create teaching',
         subtitle: 'Start a new teaching workflow',
         icon: <AddRoundedIcon fontSize="small" />,
+        group: 'Action',
+        section: 'Actions',
+        description: 'Start a new teaching workflow',
+        keywords: 'new teaching create sermon',
         onSelect: () => navigateWithRouter('/faithhub/provider/teachings-dashboard'),
       },
       {
@@ -49,6 +67,10 @@ export function SearchCommandDialog({
         title: 'Open last draft',
         subtitle: 'Jump back to your most recent draft',
         icon: <EditNoteRoundedIcon fontSize="small" />,
+        group: 'Action',
+        section: 'Actions',
+        description: 'Jump back to your most recent draft',
+        keywords: 'draft continue edit',
         onSelect: () => navigateWithRouter('/faithhub/provider/dashboard'),
       },
       {
@@ -56,6 +78,10 @@ export function SearchCommandDialog({
         title: 'Search teachings by title',
         subtitle: normalizedQuery ? `Find matches for "${query.trim()}"` : 'Type a title to filter teachings',
         icon: <SearchRoundedIcon fontSize="small" />,
+        group: 'Action',
+        section: 'Actions',
+        description: 'Search teachings by title',
+        keywords: 'search find title teachings',
         onSelect: () => navigateWithRouter('/faithhub/provider/teachings-dashboard'),
       },
       {
@@ -63,11 +89,52 @@ export function SearchCommandDialog({
         title: 'Open workflow dashboard',
         subtitle: 'Continue editing, drafts, and publishing',
         icon: <AutoAwesomeRoundedIcon fontSize="small" />,
+        group: 'Action',
+        section: 'Actions',
+        description: 'Continue editing, drafts, and publishing',
+        keywords: 'workflow dashboard pending published',
         onSelect: () => navigateWithRouter('/faithhub/provider/dashboard'),
       },
     ];
-    if (!normalizedQuery) return base;
-    return base.filter((item) => `${item.title} ${item.subtitle}`.toLowerCase().includes(normalizedQuery));
+
+    const pageItems: PaletteItem[] = providerPages
+      .filter((page) => !page.hidden)
+      .map((page) => ({
+        id: `page-${page.key}`,
+        title: page.shortTitle || page.title,
+        subtitle: `${page.section} - ${page.description}`,
+        icon: <SearchRoundedIcon fontSize="small" />,
+        group: 'Page',
+        section: page.section,
+        description: page.description,
+        keywords: `${page.title} ${page.shortTitle ?? ''} ${page.description} ${page.id ?? ''} ${page.path} ${(page.aliases ?? []).join(' ')}`,
+        onSelect: () => navigateWithRouter(page.path),
+      }));
+
+    const allItems = [...actionItems, ...pageItems];
+    if (!normalizedQuery) return allItems.slice(0, 18);
+
+    const scoreItem = (item: PaletteItem) => {
+      const title = item.title.toLowerCase();
+      const section = (item.section ?? '').toLowerCase();
+      const description = (item.description ?? item.subtitle).toLowerCase();
+      const keywords = (item.keywords ?? '').toLowerCase();
+
+      if (title === normalizedQuery) return 1000;
+      if (title.startsWith(normalizedQuery)) return 800;
+      if (title.includes(normalizedQuery)) return 650;
+      if (section.includes(normalizedQuery)) return 450;
+      if (description.includes(normalizedQuery)) return 300;
+      if (keywords.includes(normalizedQuery)) return 180;
+      return 0;
+    };
+
+    return allItems
+      .map((item, index) => ({ item, index, score: scoreItem(item) }))
+      .filter((entry) => entry.score > 0)
+      .sort((a, b) => b.score - a.score || a.index - b.index)
+      .slice(0, 24)
+      .map((entry) => entry.item);
   }, [normalizedQuery, query]);
 
   useEffect(() => {
@@ -178,7 +245,7 @@ export function SearchCommandDialog({
                 }}
               />
               <Typography variant="caption" color="text.secondary" sx={{ whiteSpace: 'nowrap' }}>
-                Use ? ? Enter
+                Use Up/Down + Enter
               </Typography>
             </Stack>
 
@@ -224,7 +291,7 @@ export function SearchCommandDialog({
                     </Box>
                     <ListItemText
                       primary={command.title}
-                      secondary={command.subtitle}
+                      secondary={`${command.group} - ${command.subtitle}`}
                       primaryTypographyProps={{ fontSize: 14, fontWeight: 700 }}
                       secondaryTypographyProps={{ fontSize: 12 }}
                     />
