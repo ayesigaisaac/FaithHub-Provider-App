@@ -130,6 +130,26 @@ function trackSidebarClick(payload: { section: string; label: string; route: str
   if (Array.isArray(dataLayer)) dataLayer.push(detail);
 }
 
+function trackWorkflowClick(workflowKey: string, label: string, route: string) {
+  if (typeof window === 'undefined') return;
+  const eventNameMap: Record<string, string> = {
+    'continue-editing': 'continue_editing_clicked',
+    review: 'review_clicked',
+    publish: 'publish_clicked',
+    'create-teaching': 'create_teaching_clicked',
+    published: 'published_clicked',
+  };
+  const detail = {
+    event: eventNameMap[workflowKey] ?? 'workflow_item_clicked',
+    workflow_key: workflowKey,
+    label,
+    route,
+  };
+  window.dispatchEvent(new CustomEvent('fh:analytics', { detail }));
+  const dataLayer = (window as unknown as { dataLayer?: Array<Record<string, string>> }).dataLayer;
+  if (Array.isArray(dataLayer)) dataLayer.push(detail);
+}
+
 export function ProviderSidebar({
   open,
   onClose,
@@ -386,6 +406,7 @@ export function ProviderSidebar({
                       <ListItemButton
                         component={RouterLink}
                         to={item.path}
+                        aria-current={active ? 'page' : undefined}
                         onClick={() => {
                           trackSidebarClick({
                             section: 'Workflow',
@@ -393,6 +414,7 @@ export function ProviderSidebar({
                             route: item.path,
                             level: 'primary',
                           });
+                          trackWorkflowClick(item.key, item.label, item.path);
                           onClose();
                         }}
                         sx={{
