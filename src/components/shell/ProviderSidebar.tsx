@@ -1,10 +1,11 @@
 import {
   Avatar,
   Box,
+  Chip,
   Collapse,
-  IconButton,
   Divider,
   Drawer,
+  IconButton,
   List,
   ListItemButton,
   ListItemIcon,
@@ -18,6 +19,11 @@ import KeyboardArrowRightRoundedIcon from '@mui/icons-material/KeyboardArrowRigh
 import KeyboardDoubleArrowLeftRoundedIcon from '@mui/icons-material/KeyboardDoubleArrowLeftRounded';
 import GridViewRoundedIcon from '@mui/icons-material/GridViewRounded';
 import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded';
+import PlayArrowRoundedIcon from '@mui/icons-material/PlayArrowRounded';
+import EditRoundedIcon from '@mui/icons-material/EditRounded';
+import RateReviewRoundedIcon from '@mui/icons-material/RateReviewRounded';
+import SendRoundedIcon from '@mui/icons-material/SendRounded';
+import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 import MenuBookRoundedIcon from '@mui/icons-material/MenuBookRounded';
 import LiveTvRoundedIcon from '@mui/icons-material/LiveTvRounded';
 import CampaignRoundedIcon from '@mui/icons-material/CampaignRounded';
@@ -29,7 +35,7 @@ import SupervisorAccountRoundedIcon from '@mui/icons-material/SupervisorAccountR
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 import { useState } from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
-import { getProviderSidebarGroupsBySection, providerSections } from '@/navigation/providerPages';
+import { getProviderSidebarGroupsBySection, providerPages, providerSections } from '@/navigation/providerPages';
 
 const drawerWidth = 318;
 const topbarOffsetMobile = 110;
@@ -50,6 +56,23 @@ const sectionLabelMap: Partial<Record<(typeof providerSections)[number], string>
 
 const expandedDrawerWidth = 318;
 const collapsedDrawerWidth = 88;
+type WorkflowTone = 'warning' | 'success' | 'neutral';
+type WorkflowItem = {
+  key: string;
+  label: string;
+  path: string;
+  aliases?: string[];
+  icon: typeof PlayArrowRoundedIcon;
+  status: string;
+  tone: WorkflowTone;
+};
+
+const workflowBadgeSx: Record<WorkflowTone, object> = {
+  warning: { bgcolor: '#fff2e8', color: '#b45309', borderColor: '#fed7aa' },
+  success: { bgcolor: '#ecfdf3', color: '#047857', borderColor: '#a7f3d0' },
+  neutral: { bgcolor: '#f1f5f9', color: '#475569', borderColor: '#dbe5ef' },
+};
+
 const sectionIconMap: Record<string, typeof GridViewRoundedIcon> = {
   Continue: GridViewRoundedIcon,
   Create: MenuBookRoundedIcon,
@@ -98,6 +121,55 @@ export function ProviderSidebar({
   const isDark = theme.palette.mode === 'dark';
   const location = useLocation();
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({});
+  const pageByKey = new Map(providerPages.map((page) => [page.key, page]));
+  const workflowItems: WorkflowItem[] = [
+    {
+      key: 'continue-editing',
+      label: 'Continue editing',
+      path: pageByKey.get('provider-dashboard')?.path ?? '/faithhub/provider/dashboard',
+      aliases: pageByKey.get('provider-dashboard')?.aliases,
+      icon: PlayArrowRoundedIcon,
+      status: '1 draft',
+      tone: 'warning',
+    },
+    {
+      key: 'create-teaching',
+      label: 'Create teaching',
+      path: pageByKey.get('teachings-dashboard')?.path ?? '/faithhub/provider/teachings-dashboard',
+      aliases: pageByKey.get('teachings-dashboard')?.aliases,
+      icon: EditRoundedIcon,
+      status: 'New',
+      tone: 'neutral',
+    },
+    {
+      key: 'review',
+      label: 'Review',
+      path: pageByKey.get('reviews-and-moderation')?.path ?? '/faithhub/provider/reviews-and-moderation',
+      aliases: pageByKey.get('reviews-and-moderation')?.aliases,
+      icon: RateReviewRoundedIcon,
+      status: 'Needs review',
+      tone: 'warning',
+    },
+    {
+      key: 'publish',
+      label: 'Ready to publish',
+      path: pageByKey.get('live-builder')?.path ?? '/faithhub/provider/live-builder',
+      aliases: pageByKey.get('live-builder')?.aliases,
+      icon: SendRoundedIcon,
+      status: '2 queued',
+      tone: 'neutral',
+    },
+    {
+      key: 'published',
+      label: 'Published',
+      path: pageByKey.get('live-dashboard')?.path ?? '/faithhub/provider/live-dashboard',
+      aliases: pageByKey.get('live-dashboard')?.aliases,
+      icon: CheckCircleRoundedIcon,
+      status: '3 items',
+      tone: 'success',
+    },
+  ];
+
   const sections = providerSections
     .map((section) => ({
       section,
@@ -181,6 +253,136 @@ export function ProviderSidebar({
               '&::-webkit-scrollbar-track': { backgroundColor: 'transparent' },
             }}
           >
+            <Box sx={{ mb: 1.25 }}>
+              {!collapsed ? (
+                <Typography
+                  variant="overline"
+                  sx={{
+                    px: 0.9,
+                    letterSpacing: '0.08em',
+                    fontWeight: 800,
+                    color: 'var(--fh-slate)',
+                  }}
+                >
+                  Workflow
+                </Typography>
+              ) : null}
+              <Box sx={{ mt: 0.6 }}>
+                {workflowItems.map((item) => {
+                  const Icon = item.icon;
+                  const active = item.path === location.pathname || Boolean(item.aliases?.includes(location.pathname));
+                  const badge = (
+                    <Chip
+                      size="small"
+                      label={item.status}
+                      sx={{
+                        height: 22,
+                        borderRadius: '999px',
+                        border: '1px solid',
+                        fontSize: 11,
+                        fontWeight: 700,
+                        ...workflowBadgeSx[item.tone],
+                      }}
+                    />
+                  );
+                  return (
+                    <Tooltip
+                      key={item.key}
+                      placement="right"
+                      title={collapsed ? `${item.label} - ${item.status}` : ''}
+                      disableHoverListener={!collapsed}
+                    >
+                      <ListItemButton
+                        component={RouterLink}
+                        to={item.path}
+                        onClick={() => {
+                          trackSidebarClick({
+                            section: 'Workflow',
+                            label: item.label,
+                            route: item.path,
+                            level: 'primary',
+                          });
+                          onClose();
+                        }}
+                        sx={{
+                          mb: 0.65,
+                          minHeight: 52,
+                          px: collapsed ? 1 : 1.2,
+                          py: 0.7,
+                          borderRadius: '14px',
+                          border: '1px solid',
+                          borderColor: active
+                            ? 'color-mix(in srgb, var(--fh-brand) 75%, #0f172a 25%)'
+                            : 'color-mix(in srgb, var(--fh-line) 82%, var(--fh-surface-bg) 18%)',
+                          bgcolor: active
+                            ? 'color-mix(in srgb, var(--fh-brand-soft) 45%, var(--fh-surface-bg) 55%)'
+                            : 'var(--fh-surface-bg)',
+                          position: 'relative',
+                          transition: 'all 140ms ease',
+                          '&::before': active
+                            ? {
+                                content: '""',
+                                position: 'absolute',
+                                left: 0,
+                                top: 7,
+                                bottom: 7,
+                                width: 4,
+                                borderRadius: 99,
+                                bgcolor: 'var(--fh-brand)',
+                              }
+                            : {},
+                          '&:hover': {
+                            bgcolor: active
+                              ? 'color-mix(in srgb, var(--fh-brand-soft) 56%, var(--fh-surface-bg) 44%)'
+                              : 'color-mix(in srgb, var(--fh-surface) 92%, var(--fh-surface-bg) 8%)',
+                          },
+                          '&:focus-visible': {
+                            outline: '2px solid color-mix(in srgb, var(--fh-brand) 70%, #ffffff 30%)',
+                            outlineOffset: 2,
+                          },
+                        }}
+                      >
+                        <ListItemIcon sx={{ minWidth: collapsed ? 0 : 38, mr: collapsed ? 0 : 0.4 }}>
+                          <Avatar
+                            sx={{
+                              width: 30,
+                              height: 30,
+                              bgcolor: active ? 'var(--fh-brand-soft)' : 'var(--fh-surface)',
+                              color: active ? 'var(--fh-brand-dark)' : 'var(--fh-slate)',
+                              border: '1px solid',
+                              borderColor: 'var(--fh-line)',
+                            }}
+                          >
+                            <Icon sx={{ fontSize: 18 }} />
+                          </Avatar>
+                        </ListItemIcon>
+                        {!collapsed ? (
+                          <>
+                            <ListItemText
+                              primary={
+                                <Typography
+                                  sx={{
+                                    fontWeight: active ? 800 : 650,
+                                    fontSize: 14,
+                                    color: active ? 'var(--fh-ink)' : 'var(--fh-slate)',
+                                    lineHeight: 1.2,
+                                  }}
+                                >
+                                  {item.label}
+                                </Typography>
+                              }
+                            />
+                            {badge}
+                          </>
+                        ) : null}
+                      </ListItemButton>
+                    </Tooltip>
+                  );
+                })}
+              </Box>
+              <Divider sx={{ mt: 0.95, mb: 1.1 }} />
+            </Box>
+
             {sections.map((group) => (
               <Box key={group.section} sx={{ mb: collapsed ? 0.55 : 1 }}>
                 {!collapsed ? (
