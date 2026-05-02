@@ -33,7 +33,7 @@ import BoltRoundedIcon from '@mui/icons-material/BoltRounded';
 import GroupsRoundedIcon from '@mui/icons-material/GroupsRounded';
 import SupervisorAccountRoundedIcon from '@mui/icons-material/SupervisorAccountRounded';
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { getProviderSidebarGroupsBySection, providerPages, providerSections } from '@/navigation/providerPages';
 
@@ -56,6 +56,16 @@ const sectionLabelMap: Partial<Record<(typeof providerSections)[number], string>
 
 const expandedDrawerWidth = 318;
 const collapsedDrawerWidth = 88;
+const WORKFLOW_SUMMARY_STORAGE_KEY = 'fh.workflow.summary';
+const WORKFLOW_SUMMARY_EVENT = 'fh:workflow-summary';
+
+type WorkflowSummarySnapshot = {
+  draftCount: number;
+  needsReviewCount: number;
+  publishedCount: number;
+  totalCount: number;
+  updatedAt: string;
+};
 type WorkflowTone = 'warning' | 'success' | 'neutral';
 type WorkflowItem = {
   key: string;
@@ -121,6 +131,59 @@ export function ProviderSidebar({
   const isDark = theme.palette.mode === 'dark';
   const location = useLocation();
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({});
+  const [workflowSummary, setWorkflowSummary] = useState<WorkflowSummarySnapshot>({
+    draftCount: 1,
+    needsReviewCount: 1,
+    publishedCount: 3,
+    totalCount: 5,
+    updatedAt: '',
+  });
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const applySnapshot = (snapshot: WorkflowSummarySnapshot | null | undefined) => {
+      if (!snapshot) return;
+      if (
+        typeof snapshot.draftCount !== 'number' ||
+        typeof snapshot.needsReviewCount !== 'number' ||
+        typeof snapshot.publishedCount !== 'number'
+      ) {
+        return;
+      }
+      setWorkflowSummary(snapshot);
+    };
+
+    const raw = window.localStorage.getItem(WORKFLOW_SUMMARY_STORAGE_KEY);
+    if (raw) {
+      try {
+        applySnapshot(JSON.parse(raw) as WorkflowSummarySnapshot);
+      } catch {
+        // no-op
+      }
+    }
+
+    const onSummary = (event: Event) => {
+      const detail = (event as CustomEvent<WorkflowSummarySnapshot>).detail;
+      applySnapshot(detail);
+    };
+
+    const onStorage = (event: StorageEvent) => {
+      if (event.key !== WORKFLOW_SUMMARY_STORAGE_KEY || !event.newValue) return;
+      try {
+        applySnapshot(JSON.parse(event.newValue) as WorkflowSummarySnapshot);
+      } catch {
+        // no-op
+      }
+    };
+
+    window.addEventListener(WORKFLOW_SUMMARY_EVENT, onSummary as EventListener);
+    window.addEventListener('storage', onStorage);
+    return () => {
+      window.removeEventListener(WORKFLOW_SUMMARY_EVENT, onSummary as EventListener);
+      window.removeEventListener('storage', onStorage);
+    };
+  }, []);
+
   const pageByKey = new Map(providerPages.map((page) => [page.key, page]));
   const workflowItems: WorkflowItem[] = [
     {
@@ -129,8 +192,8 @@ export function ProviderSidebar({
       path: pageByKey.get('provider-dashboard')?.path ?? '/faithhub/provider/dashboard',
       aliases: pageByKey.get('provider-dashboard')?.aliases,
       icon: PlayArrowRoundedIcon,
-      status: '1 draft',
-      tone: 'warning',
+      status: `${workflowSummary.draftCount} draft${workflowSummary.draftCount === 1 ? '' : 's'}`,
+      tone: workflowSummary.draftCount > 0 ? 'warning' : 'neutral',
     },
     {
       key: 'create-teaching',
@@ -147,8 +210,11 @@ export function ProviderSidebar({
       path: pageByKey.get('reviews-and-moderation')?.path ?? '/faithhub/provider/reviews-and-moderation',
       aliases: pageByKey.get('reviews-and-moderation')?.aliases,
       icon: RateReviewRoundedIcon,
-      status: 'Needs review',
-      tone: 'warning',
+      status:
+        workflowSummary.needsReviewCount > 0
+          ? `${workflowSummary.needsReviewCount} need review`
+          : 'No blockers',
+      tone: workflowSummary.needsReviewCount > 0 ? 'warning' : 'success',
     },
     {
       key: 'publish',
@@ -156,7 +222,7 @@ export function ProviderSidebar({
       path: pageByKey.get('live-builder')?.path ?? '/faithhub/provider/live-builder',
       aliases: pageByKey.get('live-builder')?.aliases,
       icon: SendRoundedIcon,
-      status: '2 queued',
+      status: `${workflowSummary.draftCount + workflowSummary.needsReviewCount} queued`,
       tone: 'neutral',
     },
     {
@@ -165,8 +231,8 @@ export function ProviderSidebar({
       path: pageByKey.get('live-dashboard')?.path ?? '/faithhub/provider/live-dashboard',
       aliases: pageByKey.get('live-dashboard')?.aliases,
       icon: CheckCircleRoundedIcon,
-      status: '3 items',
-      tone: 'success',
+      status: `${workflowSummary.publishedCount} item${workflowSummary.publishedCount === 1 ? '' : 's'}`,
+      tone: workflowSummary.publishedCount > 0 ? 'success' : 'neutral',
     },
   ];
 

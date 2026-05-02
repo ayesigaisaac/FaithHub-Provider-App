@@ -187,6 +187,14 @@ export type WorkflowDerivedData = {
   needsReviewCount: number;
 };
 
+export type WorkflowSummarySnapshot = {
+  draftCount: number;
+  needsReviewCount: number;
+  publishedCount: number;
+  totalCount: number;
+  updatedAt: string;
+};
+
 const ROLES: RoleKey[] = [
   "Leadership",
   "Production",
@@ -230,6 +238,9 @@ const ROUTES = {
   reviewsModeration: "/faithhub/provider/reviews-moderation",
   eventsManager: "/faithhub/provider/events-manager",
 } as const;
+
+const WORKFLOW_SUMMARY_STORAGE_KEY = "fh.workflow.summary";
+const WORKFLOW_SUMMARY_EVENT = "fh:workflow-summary";
 
 function safeNav(path: string) {
   navigateWithRouter(path);
@@ -1292,6 +1303,17 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
   const workflowSourceItems = workflowItemsOverride ?? PIPELINE_ITEMS;
   const workflowData = useMemo(() => deriveTeachingWorkflowData(workflowSourceItems), [workflowSourceItems]);
   const { teachingItems, recentTeachings, continueItem, pendingWork, needsReviewCount } = workflowData;
+  const workflowSummary = useMemo<WorkflowSummarySnapshot>(() => {
+    const draftCount = teachingItems.filter((item) => item.status === "Draft").length;
+    const publishedCount = teachingItems.filter((item) => item.status === "Published").length;
+    return {
+      draftCount,
+      needsReviewCount,
+      publishedCount,
+      totalCount: teachingItems.length,
+      updatedAt: new Date().toISOString(),
+    };
+  }, [teachingItems, needsReviewCount]);
   const filteredRecentTeachings = useMemo(() => {
     if (workflowFilter === "all") return recentTeachings;
     if (workflowFilter === "draft") return recentTeachings.filter((item) => item.status === "Draft");
@@ -1437,6 +1459,12 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
       // no-op
     }
   }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    window.localStorage.setItem(WORKFLOW_SUMMARY_STORAGE_KEY, JSON.stringify(workflowSummary));
+    window.dispatchEvent(new CustomEvent(WORKFLOW_SUMMARY_EVENT, { detail: workflowSummary }));
+  }, [workflowSummary]);
 
   if (!hasDashboardData) {
     return (
