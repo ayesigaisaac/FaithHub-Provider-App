@@ -1206,6 +1206,7 @@ export default function ProviderDashboardPage() {
   const [search, setSearch] = useState("");
   const metrics = useMemo(() => EXECUTIVE_METRICS[role], [role]);
   const recommendations = useMemo(() => RECOMMENDATIONS_BY_ROLE[role], [role]);
+  const primaryCtaLabel = "Start New Task";
 
   const anomalyCount = useMemo(() => {
     const liveAnomalies = LIVE_SESSIONS.filter(
@@ -1262,6 +1263,59 @@ export default function ProviderDashboardPage() {
     safeNav(routeByCta[cta] ?? ROUTES.providerDashboard);
   };
 
+  const hasDashboardData =
+    metrics.length > 0 ||
+    LIVE_SESSIONS.length > 0 ||
+    PIPELINE_ITEMS.length > 0 ||
+    AUDIENCE_STATS.length > 0 ||
+    CAMPAIGNS.length > 0 ||
+    BEACON_ITEMS.length > 0 ||
+    TRUST_QUEUE.length > 0;
+
+  const handlePrimaryCta = () => {
+    safeNav(ROUTES.liveBuilder);
+  };
+
+  if (!hasDashboardData) {
+    return (
+      <div className="min-h-screen w-full bg-[var(--fh-page-bg)] text-faith-ink transition-colors dark:bg-slate-950 dark:text-slate-100">
+        <div className="w-full max-w-none px-0 py-0">
+          <div className="space-y-4 sm:space-y-5">
+            <section className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-6 sm:p-10 shadow-soft">
+              <div className="mx-auto flex max-w-2xl flex-col items-center text-center">
+                <div
+                  className="grid h-16 w-16 place-items-center rounded-2xl text-white shadow-md"
+                  style={{ background: EV_GREEN }}
+                >
+                  <Plus className="h-8 w-8" />
+                </div>
+                <h2 className="mt-5 text-[26px] font-black tracking-tight text-faith-ink">
+                  Your dashboard is ready
+                </h2>
+                <p className="mt-2 max-w-xl text-[14px] leading-6 text-faith-slate">
+                  Get started by creating your first workflow and bringing your provider operations to life.
+                </p>
+                <button
+                  type="button"
+                  aria-label={primaryCtaLabel}
+                  onClick={handlePrimaryCta}
+                  className="mt-6 inline-flex h-12 items-center gap-2 rounded-2xl px-7 text-[14px] font-extrabold text-white shadow-md transition hover:-translate-y-[1px] hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+                  style={{ background: EV_GREEN, boxShadow: "0 10px 24px -14px rgba(3,205,140,0.85)" }}
+                >
+                  <Plus className="h-4 w-4" />
+                  {primaryCtaLabel}
+                </button>
+                <p className="mt-3 text-[12px] font-medium text-faith-slate">
+                  Get started by creating your first order.
+                </p>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div
       className="min-h-screen w-full bg-[var(--fh-page-bg)] text-faith-ink transition-colors dark:bg-slate-950 dark:text-slate-100"
@@ -1272,12 +1326,29 @@ export default function ProviderDashboardPage() {
           <section className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 sm:p-5 shadow-soft">
             <div className="grid gap-4 sm:gap-6 xl:grid-cols-[1.25fr,0.9fr]">
               <div className="min-w-0">
-                <ProviderPageTitle
-                  icon={<LayoutDashboard className="h-6 w-6" />}
-                  title="Provider Dashboard"
-                  subtitle="Daily overview of live sessions, teachings, audience health, giving performance, and trust operations."
-                  className="mt-2"
-                />
+                <div className="flex flex-wrap items-start justify-between gap-4">
+                  <ProviderPageTitle
+                    icon={<LayoutDashboard className="h-6 w-6" />}
+                    title="Provider Dashboard"
+                    subtitle="Daily overview of live sessions, teachings, audience health, giving performance, and trust operations."
+                    className="mt-2"
+                  />
+                  <div className="min-w-[260px] rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3 shadow-soft">
+                    <button
+                      type="button"
+                      aria-label={primaryCtaLabel}
+                      onClick={handlePrimaryCta}
+                      className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-2xl px-6 text-[14px] font-extrabold text-white transition hover:-translate-y-[1px] hover:shadow-lg active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+                      style={{ background: EV_GREEN, boxShadow: "0 12px 24px -14px rgba(3,205,140,0.9)" }}
+                    >
+                      <Plus className="h-4 w-4" />
+                      {primaryCtaLabel}
+                    </button>
+                    <p className="mt-2 text-center text-[12px] font-medium text-faith-slate">
+                      Get started by creating your first order.
+                    </p>
+                  </div>
+                </div>
 
                 <div className="mt-5 flex flex-wrap items-center gap-2">
                   <Pill
@@ -1521,7 +1592,6 @@ export default function ProviderDashboardPage() {
               </div>
             </div>
           </section>
-
           {/* Notifications / continue / search */}
           <div className="grid gap-3 sm:gap-4 xl:grid-cols-2">
             <SectionCard
