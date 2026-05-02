@@ -75,6 +75,14 @@ const sectionToneMap: Record<string, { icon: string; bg: string; border: string 
   Settings: { icon: '#64748b', bg: '#edf1f5', border: '#d5dde6' },
 };
 
+function trackSidebarClick(payload: { section: string; label: string; route: string; level: 'primary' | 'secondary' }) {
+  if (typeof window === 'undefined') return;
+  const detail = { event: 'sidebar_task_click', ...payload };
+  window.dispatchEvent(new CustomEvent('fh:analytics', { detail }));
+  const dataLayer = (window as unknown as { dataLayer?: Array<Record<string, string>> }).dataLayer;
+  if (Array.isArray(dataLayer)) dataLayer.push(detail);
+}
+
 export function ProviderSidebar({
   open,
   onClose,
@@ -273,7 +281,15 @@ export function ProviderSidebar({
                               <ListItemButton
                                 component={RouterLink}
                                 to={page.path}
-                                onClick={onClose}
+                                onClick={() => {
+                                  trackSidebarClick({
+                                    section: group.label,
+                                    label: page.shortTitle ?? page.title,
+                                    route: page.path,
+                                    level: 'primary',
+                                  });
+                                  onClose();
+                                }}
                                 sx={{
                                   mb: 0.34,
                                   px: 1.05,
@@ -316,7 +332,15 @@ export function ProviderSidebar({
                                         key={`${group.section}-${child.key}`}
                                         component={RouterLink}
                                         to={child.path}
-                                        onClick={onClose}
+                                        onClick={() => {
+                                          trackSidebarClick({
+                                            section: group.label,
+                                            label: child.shortTitle ?? child.title,
+                                            route: child.path,
+                                            level: 'secondary',
+                                          });
+                                          onClose();
+                                        }}
                                         sx={{
                                           mb: 0.3,
                                           px: 0.95,
@@ -374,7 +398,15 @@ export function ProviderSidebar({
                       <ListItemButton
                         component={RouterLink}
                         to={page.path}
-                        onClick={onClose}
+                        onClick={() => {
+                          trackSidebarClick({
+                            section: group.label,
+                            label: page.shortTitle ?? page.title,
+                            route: page.path,
+                            level: 'primary',
+                          });
+                          onClose();
+                        }}
                         title={collapsed ? page.shortTitle ?? page.title : undefined}
                         sx={{
                           px: collapsed ? 1 : 1.25,
@@ -441,7 +473,15 @@ export function ProviderSidebar({
                                 key={child.key}
                                 component={RouterLink}
                                 to={child.path}
-                                onClick={onClose}
+                                onClick={() => {
+                                  trackSidebarClick({
+                                    section: group.label,
+                                    label: child.shortTitle ?? child.title,
+                                    route: child.path,
+                                    level: 'secondary',
+                                  });
+                                  onClose();
+                                }}
                                 sx={{
                                   mb: 0.55,
                                   px: 1,

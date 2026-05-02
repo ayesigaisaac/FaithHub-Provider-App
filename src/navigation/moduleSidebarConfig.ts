@@ -32,15 +32,15 @@ export interface ModuleSubItem {
 
 export interface SidebarModule {
   title:
-    | 'CORE'
-    | 'CONTENT'
-    | 'STREAM'
-    | 'OUTREACH'
-    | 'POST-LIVE'
-    | 'GIVING'
-    | 'BEACON'
+    | 'CONTINUE'
+    | 'CREATE'
+    | 'PUBLISH'
+    | 'PROMOTE'
+    | 'REFINE'
+    | 'MEASURE'
+    | 'DISCOVER'
     | 'COMMUNITY'
-    | 'LEADERSHIP'
+    | 'TEAM'
     | 'SETTINGS';
   icon: LucideIcon;
   items: ModuleSubItem[];
@@ -48,7 +48,7 @@ export interface SidebarModule {
 
 export const moduleSidebarConfig: SidebarModule[] = [
   {
-    title: 'CORE',
+    title: 'CONTINUE',
     icon: LayoutDashboard,
     items: [
       { label: 'Continue Editing', description: 'Jump back into your active teaching workflow immediately.', route: '/dashboard-ui', icon: Gauge },
@@ -61,7 +61,7 @@ export const moduleSidebarConfig: SidebarModule[] = [
     ],
   },
   {
-    title: 'CONTENT',
+    title: 'CREATE',
     icon: BookOpen,
     items: [
       {
@@ -85,7 +85,7 @@ export const moduleSidebarConfig: SidebarModule[] = [
     ],
   },
   {
-    title: 'STREAM',
+    title: 'PUBLISH',
     icon: Video,
     items: [
       {
@@ -109,7 +109,7 @@ export const moduleSidebarConfig: SidebarModule[] = [
     ],
   },
   {
-    title: 'OUTREACH',
+    title: 'PROMOTE',
     icon: Megaphone,
     items: [
       {
@@ -127,7 +127,7 @@ export const moduleSidebarConfig: SidebarModule[] = [
     ],
   },
   {
-    title: 'POST-LIVE',
+    title: 'REFINE',
     icon: PlayCircle,
     items: [
       {
@@ -145,7 +145,7 @@ export const moduleSidebarConfig: SidebarModule[] = [
     ],
   },
   {
-    title: 'GIVING',
+    title: 'MEASURE',
     icon: HandHeart,
     items: [
       {
@@ -163,7 +163,7 @@ export const moduleSidebarConfig: SidebarModule[] = [
     ],
   },
   {
-    title: 'BEACON',
+    title: 'DISCOVER',
     icon: Sparkles,
     items: [
       {
@@ -199,7 +199,7 @@ export const moduleSidebarConfig: SidebarModule[] = [
     ],
   },
   {
-    title: 'LEADERSHIP',
+    title: 'TEAM',
     icon: ShieldCheck,
     items: [
       {

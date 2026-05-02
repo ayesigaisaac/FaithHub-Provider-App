@@ -10,7 +10,7 @@ interface ModuleSidebarProps {
 }
 
 export function ModuleSidebar({ onClose }: ModuleSidebarProps) {
-  const [openModule, setOpenModule] = useState<string | null>('CORE');
+  const [openModule, setOpenModule] = useState<string | null>('CONTINUE');
 
   return (
     <aside className="flex h-full w-full flex-col border-r border-slate-200 bg-[#f8faf9]">

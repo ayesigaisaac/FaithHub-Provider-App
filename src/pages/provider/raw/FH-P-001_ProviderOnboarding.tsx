@@ -122,12 +122,12 @@ const CAMPUS_TIMEZONES = [
 ];
 
 const CONTENT_MODES = [
-  "Series",
-  "Standalone teachings",
-  "Live Sessions",
-  "Events",
-  "Giving campaigns",
-  "Beacon campaigns",
+  "Create teaching series",
+  "Create standalone teachings",
+  "Publish live sessions",
+  "Launch events",
+  "Run giving campaigns",
+  "Promote with Beacon campaigns",
 ];
 
 const DASHBOARD_PRESETS = [

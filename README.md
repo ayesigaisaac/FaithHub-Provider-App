@@ -11,6 +11,7 @@ This project wraps the attached FaithHub Provider page files into a real runnabl
 - image and video fallbacks for attached pages that reference remote media
 - global toast notifications and async action helpers for pages that depended on Creator-style shared utilities
 - SPA rewrite helpers for common hosting targets
+- task-driven sidebar and dashboard language focused on actions (create, continue, publish, review)
 
 ## Stack
 
@@ -43,7 +44,7 @@ They are defined in:
 ```bash
 npm install
 
-npm run dev
+21 bn76
 ```
 flor
 Open the local Vite URL shown in the terminal.
@@ -111,6 +112,12 @@ The responsive workspace shell lives in `src/components/shell/` and includes:
 - mobile bottom navigation
 - page search dialog
 - floating quick-create speed dial
+
+Navigation and dashboard labels are intentionally action-oriented, for example:
+- `Create Teaching`
+- `Continue Editing`
+- `Published teachings`
+- `My drafts`
 
 ## Shared infrastructure added around the attached pages
 
