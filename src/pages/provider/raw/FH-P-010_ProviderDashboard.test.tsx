@@ -26,7 +26,7 @@ describe("FH-P-010 Provider dashboard workflow UX", () => {
     render(<ProviderDashboardPage workflowItemsOverride={[]} />);
 
     expect(screen.getByText("Your dashboard is ready")).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Start New Task" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Create Teaching" })).toBeInTheDocument();
   });
 
   it("shows continue section only when recent teachings exist", () => {
@@ -52,10 +52,10 @@ describe("FH-P-010 Provider dashboard workflow UX", () => {
     ];
 
     const { rerender } = render(<ProviderDashboardPage workflowItemsOverride={withTeaching} />);
-    expect(screen.getByText("Continue where you left off")).toBeInTheDocument();
+    expect(screen.getByText("Continue Editing")).toBeInTheDocument();
 
     rerender(<ProviderDashboardPage workflowItemsOverride={withoutTeaching} />);
-    expect(screen.queryByText("Continue where you left off")).not.toBeInTheDocument();
+    expect(screen.queryByText("Continue Editing")).not.toBeInTheDocument();
     expect(screen.getByText("Your dashboard is ready")).toBeInTheDocument();
   });
 
