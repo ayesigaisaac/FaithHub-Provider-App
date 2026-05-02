@@ -1214,6 +1214,7 @@ export default function ProviderDashboardPage() {
   const [timeFilter, setTimeFilter] = useState("Today");
   const [objectFilter, setObjectFilter] = useState("All categories");
   const [search, setSearch] = useState("");
+  const [workflowFilter, setWorkflowFilter] = useState<"all" | "draft" | "needs_review" | "published">("all");
   const metrics = useMemo(() => EXECUTIVE_METRICS[role], [role]);
   const recommendations = useMemo(() => RECOMMENDATIONS_BY_ROLE[role], [role]);
   const primaryCtaLabel = "Start New Task";
@@ -1244,6 +1245,18 @@ export default function ProviderDashboardPage() {
     () => teachingItems.filter((item) => item.status === "Draft" || item.status === "Needs review").slice(0, 5),
     [teachingItems]
   );
+  const filteredRecentTeachings = useMemo(() => {
+    if (workflowFilter === "all") return recentTeachings;
+    if (workflowFilter === "draft") return recentTeachings.filter((item) => item.status === "Draft");
+    if (workflowFilter === "needs_review") return recentTeachings.filter((item) => item.status === "Needs review");
+    return recentTeachings.filter((item) => item.status === "Published");
+  }, [recentTeachings, workflowFilter]);
+  const filteredPendingWork = useMemo(() => {
+    if (workflowFilter === "all") return pendingWork;
+    if (workflowFilter === "draft") return pendingWork.filter((item) => item.status === "Draft");
+    if (workflowFilter === "needs_review") return pendingWork.filter((item) => item.status === "Needs review");
+    return pendingWork.filter((item) => item.status === "Published");
+  }, [pendingWork, workflowFilter]);
 
   const anomalyCount = useMemo(() => {
     const liveAnomalies = LIVE_SESSIONS.filter(
@@ -1304,6 +1317,16 @@ export default function ProviderDashboardPage() {
 
   const handlePrimaryCta = () => {
     safeNav(ROUTES.liveBuilder);
+  };
+  const formatLastEdited = (due: string) => {
+    const dueLower = due.toLowerCase();
+    if (dueLower === "now") return "just now";
+    if (dueLower === "today") return "today, 2h ago";
+    if (dueLower === "tomorrow") return "yesterday, 1d ago";
+    return due;
+  };
+  const openTeachingItem = (itemId: string) => {
+    safeNav(`${ROUTES.teachingsDashboard}?teachingId=${encodeURIComponent(itemId)}`);
   };
 
   if (!hasDashboardData) {
@@ -1390,13 +1413,13 @@ export default function ProviderDashboardPage() {
                         {continueItem.title}
                       </h3>
                       <p className="mt-1 text-[12px] text-faith-slate">
-                        Last edited {continueItem.updatedAt}
+                        Last edited {formatLastEdited(continueItem.updatedAt)}
                       </p>
                     </div>
                     <button
                       type="button"
                       aria-label="Continue editing"
-                      onClick={() => safeNav(ROUTES.teachingsDashboard)}
+                      onClick={() => openTeachingItem(continueItem.id)}
                       className="inline-flex h-11 items-center gap-2 rounded-2xl px-5 text-[13px] font-extrabold text-white transition hover:-translate-y-[1px] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
                       style={{ background: EV_GREEN }}
                     >
@@ -1411,20 +1434,43 @@ export default function ProviderDashboardPage() {
             <SectionCard
               title="Recent teachings"
               subtitle="Your latest teaching content updates."
-              right={<Pill text={`${recentTeachings.length} items`} tone="navy" />}
+              right={<Pill text={`${filteredRecentTeachings.length} items`} tone="navy" />}
             >
+              <div className="mb-3 flex flex-wrap gap-2">
+                {[
+                  { key: "all", label: "All" },
+                  { key: "draft", label: "Draft" },
+                  { key: "needs_review", label: "Needs review" },
+                  { key: "published", label: "Published" },
+                ].map((filter) => (
+                  <button
+                    key={filter.key}
+                    type="button"
+                    onClick={() => setWorkflowFilter(filter.key as "all" | "draft" | "needs_review" | "published")}
+                    className="rounded-full border px-3 py-1.5 text-[11px] font-bold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+                    style={{
+                      borderColor: "var(--fh-line)",
+                      background: workflowFilter === filter.key ? "rgba(3,205,140,0.14)" : "var(--fh-surface)",
+                      color: "var(--fh-ink)",
+                    }}
+                    aria-label={`Filter teachings by ${filter.label}`}
+                  >
+                    {filter.label}
+                  </button>
+                ))}
+              </div>
               <div className="grid gap-3 sm:grid-cols-2">
-                {recentTeachings.map((item) => (
+                {filteredRecentTeachings.map((item) => (
                   <button
                     key={item.id}
                     type="button"
-                    onClick={() => safeNav(ROUTES.teachingsDashboard)}
+                    onClick={() => openTeachingItem(item.id)}
                     className="w-full rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4 text-left transition hover:bg-[var(--fh-surface-bg)]"
                   >
                     <div className="flex items-start justify-between gap-2">
                       <div className="min-w-0">
                         <h3 className="text-[14px] font-bold text-faith-ink">{item.title}</h3>
-                        <p className="mt-1 text-[12px] text-faith-slate">Updated {item.updatedAt}</p>
+                        <p className="mt-1 text-[12px] text-faith-slate">Updated {formatLastEdited(item.updatedAt)}</p>
                       </div>
                       <Pill text={item.status} tone={item.status === "Published" ? "good" : "warn"} />
                     </div>
@@ -1436,16 +1482,38 @@ export default function ProviderDashboardPage() {
             <SectionCard
               title="Pending work"
               subtitle="Drafts and reviews that need your attention."
-              right={<Pill text={`${pendingWork.length} pending`} tone="warn" />}
+              right={<Pill text={`${filteredPendingWork.length} pending`} tone="warn" />}
             >
+              <div className="mb-3 flex flex-wrap gap-2">
+                {[
+                  { key: "all", label: "All pending" },
+                  { key: "draft", label: "Draft" },
+                  { key: "needs_review", label: "Needs review" },
+                ].map((filter) => (
+                  <button
+                    key={filter.key}
+                    type="button"
+                    onClick={() => setWorkflowFilter(filter.key as "all" | "draft" | "needs_review" | "published")}
+                    className="rounded-full border px-3 py-1.5 text-[11px] font-bold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+                    style={{
+                      borderColor: "var(--fh-line)",
+                      background: workflowFilter === filter.key ? "rgba(247,127,0,0.14)" : "var(--fh-surface)",
+                      color: "var(--fh-ink)",
+                    }}
+                    aria-label={`Filter pending work by ${filter.label}`}
+                  >
+                    {filter.label}
+                  </button>
+                ))}
+              </div>
               <div className="space-y-3">
-                {pendingWork.map((item) => (
+                {filteredPendingWork.map((item) => (
                   <div key={item.id} className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4">
                     <div className="flex items-start justify-between gap-2">
                       <div className="min-w-0">
                         <h3 className="text-[14px] font-bold text-faith-ink">{item.title}</h3>
                         <p className="mt-1 text-[12px] text-faith-slate">
-                          {item.type} · Updated {item.updatedAt}
+                          {item.type} · Updated {formatLastEdited(item.updatedAt)}
                         </p>
                       </div>
                       <Pill text={item.status === "Draft" ? "Draft" : "Needs review"} tone="warn" />
