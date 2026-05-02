@@ -2,7 +2,7 @@
 
 "use client";
 
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import {
   Activity,
   AlertTriangle,
@@ -177,6 +177,16 @@ type TeachingWorkflowItem = {
   type: string;
 };
 
+export type WorkflowFilter = "all" | "draft" | "needs_review" | "published";
+
+export type WorkflowDerivedData = {
+  teachingItems: TeachingWorkflowItem[];
+  recentTeachings: TeachingWorkflowItem[];
+  continueItem?: TeachingWorkflowItem;
+  pendingWork: TeachingWorkflowItem[];
+  needsReviewCount: number;
+};
+
 const ROLES: RoleKey[] = [
   "Leadership",
   "Production",
@@ -223,6 +233,49 @@ const ROUTES = {
 
 function safeNav(path: string) {
   navigateWithRouter(path);
+}
+
+function trackDashboardEvent(
+  eventName: "start_new_task" | "continue_editing" | "open_recent_item",
+  payload?: Record<string, string>,
+) {
+  if (typeof window === "undefined") return;
+  const eventPayload = { event: eventName, ...payload };
+  window.dispatchEvent(new CustomEvent("fh:analytics", { detail: eventPayload }));
+  const dataLayer = (window as unknown as { dataLayer?: Array<Record<string, string>> }).dataLayer;
+  if (Array.isArray(dataLayer)) dataLayer.push(eventPayload);
+}
+
+export function deriveTeachingWorkflowData(items: PipelineItem[]): WorkflowDerivedData {
+  const teachingItems = items
+    .filter((item) => {
+      const text = `${item.title} ${item.type}`.toLowerCase();
+      return text.includes("teaching") || text.includes("series") || text.includes("episode");
+    })
+    .map((item) => {
+      const statusMap: Record<PipelineItem["status"], TeachingWorkflowStatus> = {
+        Draft: "Draft",
+        "Missing assets": "Draft",
+        "Ready to publish": "Published",
+        "Clip opportunity": "Needs review",
+        "Awaiting review": "Needs review",
+      };
+      return {
+        id: item.id,
+        title: item.title,
+        status: statusMap[item.status],
+        updatedAt: item.due,
+        type: item.type,
+      };
+    });
+  const recentTeachings = teachingItems.slice(0, 4);
+  const continueItem = recentTeachings[0];
+  const pendingWork = teachingItems
+    .filter((item) => item.status === "Draft" || item.status === "Needs review")
+    .slice(0, 5);
+  const needsReviewCount = pendingWork.filter((item) => item.status === "Needs review").length;
+
+  return { teachingItems, recentTeachings, continueItem, pendingWork, needsReviewCount };
 }
 
 const EXECUTIVE_METRICS: Record<RoleKey, MetricCard[]> = {
@@ -1193,7 +1246,11 @@ function SelectPill({
   );
 }
 
-export default function ProviderDashboardPage() {
+type ProviderDashboardPageProps = {
+  workflowItemsOverride?: PipelineItem[];
+};
+
+export default function ProviderDashboardPage({ workflowItemsOverride }: ProviderDashboardPageProps = {}) {
   const { user, role: authRole, workspace } = useAuth();
   const [role, setRole] = useState<RoleKey>("Leadership");
   const [campus, setCampus] = useState(CAMPUSES[0]);
@@ -1214,37 +1271,14 @@ export default function ProviderDashboardPage() {
   const [timeFilter, setTimeFilter] = useState("Today");
   const [objectFilter, setObjectFilter] = useState("All categories");
   const [search, setSearch] = useState("");
-  const [workflowFilter, setWorkflowFilter] = useState<"all" | "draft" | "needs_review" | "published">("all");
+  const [workflowFilter, setWorkflowFilter] = useState<WorkflowFilter>("all");
+  const [isWorkflowLoading, setIsWorkflowLoading] = useState(true);
   const metrics = useMemo(() => EXECUTIVE_METRICS[role], [role]);
   const recommendations = useMemo(() => RECOMMENDATIONS_BY_ROLE[role], [role]);
   const primaryCtaLabel = "Start New Task";
-  const teachingItems = useMemo<TeachingWorkflowItem[]>(() => {
-    return PIPELINE_ITEMS.filter((item) => {
-      const text = `${item.title} ${item.type}`.toLowerCase();
-      return text.includes("teaching") || text.includes("series") || text.includes("episode");
-    }).map((item) => {
-      const statusMap: Record<PipelineItem["status"], TeachingWorkflowStatus> = {
-        Draft: "Draft",
-        "Missing assets": "Draft",
-        "Ready to publish": "Published",
-        "Clip opportunity": "Needs review",
-        "Awaiting review": "Needs review",
-      };
-      return {
-        id: item.id,
-        title: item.title,
-        status: statusMap[item.status],
-        updatedAt: item.due,
-        type: item.type,
-      };
-    });
-  }, []);
-  const recentTeachings = useMemo(() => teachingItems.slice(0, 4), [teachingItems]);
-  const continueItem = useMemo(() => recentTeachings[0], [recentTeachings]);
-  const pendingWork = useMemo(
-    () => teachingItems.filter((item) => item.status === "Draft" || item.status === "Needs review").slice(0, 5),
-    [teachingItems]
-  );
+  const workflowSourceItems = workflowItemsOverride ?? PIPELINE_ITEMS;
+  const workflowData = useMemo(() => deriveTeachingWorkflowData(workflowSourceItems), [workflowSourceItems]);
+  const { teachingItems, recentTeachings, continueItem, pendingWork, needsReviewCount } = workflowData;
   const filteredRecentTeachings = useMemo(() => {
     if (workflowFilter === "all") return recentTeachings;
     if (workflowFilter === "draft") return recentTeachings.filter((item) => item.status === "Draft");
@@ -1257,7 +1291,6 @@ export default function ProviderDashboardPage() {
     if (workflowFilter === "needs_review") return pendingWork.filter((item) => item.status === "Needs review");
     return pendingWork.filter((item) => item.status === "Published");
   }, [pendingWork, workflowFilter]);
-
   const anomalyCount = useMemo(() => {
     const liveAnomalies = LIVE_SESSIONS.filter(
       (item) => item.readiness !== "Ready" || item.health !== "Healthy",
@@ -1314,8 +1347,11 @@ export default function ProviderDashboardPage() {
   };
 
   const hasDashboardData = teachingItems.length > 0;
+  const cardFocusRingClass =
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0a7f5a] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--fh-surface-bg)]";
 
   const handlePrimaryCta = () => {
+    trackDashboardEvent("start_new_task");
     safeNav(ROUTES.liveBuilder);
   };
   const formatLastEdited = (due: string) => {
@@ -1328,6 +1364,21 @@ export default function ProviderDashboardPage() {
   const openTeachingItem = (itemId: string) => {
     safeNav(`${ROUTES.teachingsDashboard}?teachingId=${encodeURIComponent(itemId)}`);
   };
+  const handleTeachingAction = (
+    itemId: string,
+    action: "publish" | "request_review" | "open"
+  ) => {
+    if (action === "open") {
+      openTeachingItem(itemId);
+      return;
+    }
+    safeNav(`${ROUTES.teachingsDashboard}?teachingId=${encodeURIComponent(itemId)}&action=${action}`);
+  };
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setIsWorkflowLoading(false), 450);
+    return () => window.clearTimeout(timer);
+  }, []);
 
   if (!hasDashboardData) {
     return (
@@ -1345,20 +1396,20 @@ export default function ProviderDashboardPage() {
                 <h2 className="mt-5 text-[26px] font-black tracking-tight text-faith-ink">
                   Your dashboard is ready
                 </h2>
-                <p className="mt-2 max-w-xl text-[14px] leading-6 text-faith-slate">
+                <p className="mt-2 max-w-xl text-[14px] leading-6 text-slate-700">
                   Create and manage your teachings from here.
                 </p>
                 <button
                   type="button"
                   aria-label={primaryCtaLabel}
                   onClick={handlePrimaryCta}
-                  className="mt-6 inline-flex h-12 items-center gap-2 rounded-2xl px-7 text-[14px] font-extrabold text-white shadow-md transition hover:-translate-y-[1px] hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+                  className={`mt-6 inline-flex h-12 items-center gap-2 rounded-2xl px-7 text-[14px] font-extrabold text-white shadow-md transition hover:-translate-y-[1px] hover:shadow-lg ${cardFocusRingClass}`}
                   style={{ background: EV_GREEN, boxShadow: "0 10px 24px -14px rgba(3,205,140,0.85)" }}
                 >
                   <Plus className="h-4 w-4" />
                   Start New Task
                 </button>
-                <p className="mt-3 text-[12px] font-medium text-faith-slate">
+                <p className="mt-3 text-[12px] font-medium text-slate-700">
                   Start your first teaching
                 </p>
               </div>
@@ -1386,17 +1437,25 @@ export default function ProviderDashboardPage() {
                   <button
                     type="button"
                     aria-label={primaryCtaLabel}
-                    onClick={() => safeNav(ROUTES.teachingsDashboard)}
-                    className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-2xl px-6 text-[14px] font-extrabold text-white transition hover:-translate-y-[1px] hover:shadow-lg active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+                    onClick={() => {
+                      trackDashboardEvent("start_new_task");
+                      safeNav(ROUTES.teachingsDashboard);
+                    }}
+                    className={`inline-flex h-12 w-full items-center justify-center gap-2 rounded-2xl px-6 text-[14px] font-extrabold text-white transition hover:-translate-y-[1px] hover:shadow-lg active:translate-y-0 ${cardFocusRingClass}`}
                     style={{ background: EV_GREEN, boxShadow: "0 12px 24px -14px rgba(3,205,140,0.9)" }}
                   >
                     <Plus className="h-4 w-4" />
                     {primaryCtaLabel}
                   </button>
-                  <p className="mt-2 text-center text-[12px] font-medium text-faith-slate">
+                  <p className="mt-2 text-center text-[12px] font-medium text-slate-700">
                     Get started by creating your first order.
                   </p>
                 </div>
+              </div>
+              <div className="mt-4 flex flex-wrap items-center gap-2">
+                <Pill text={`${filteredRecentTeachings.length} Recent`} tone="navy" />
+                <Pill text={`${filteredPendingWork.length} Pending`} tone="warn" />
+                <Pill text={`${needsReviewCount} Needs review`} tone="brand" />
               </div>
             </section>
 
@@ -1412,15 +1471,18 @@ export default function ProviderDashboardPage() {
                       <h3 className="text-[16px] font-black tracking-tight text-faith-ink">
                         {continueItem.title}
                       </h3>
-                      <p className="mt-1 text-[12px] text-faith-slate">
+                      <p className="mt-1 text-[12px] text-slate-700">
                         Last edited {formatLastEdited(continueItem.updatedAt)}
                       </p>
                     </div>
                     <button
                       type="button"
                       aria-label="Continue editing"
-                      onClick={() => openTeachingItem(continueItem.id)}
-                      className="inline-flex h-11 items-center gap-2 rounded-2xl px-5 text-[13px] font-extrabold text-white transition hover:-translate-y-[1px] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+                      onClick={() => {
+                        trackDashboardEvent("continue_editing", { item_id: continueItem.id });
+                        openTeachingItem(continueItem.id);
+                      }}
+                      className={`inline-flex h-11 items-center gap-2 rounded-2xl px-5 text-[13px] font-extrabold text-white transition hover:-translate-y-[1px] hover:shadow-md ${cardFocusRingClass}`}
                       style={{ background: EV_GREEN }}
                     >
                       <ArrowRight className="h-4 w-4" />
@@ -1447,7 +1509,7 @@ export default function ProviderDashboardPage() {
                     key={filter.key}
                     type="button"
                     onClick={() => setWorkflowFilter(filter.key as "all" | "draft" | "needs_review" | "published")}
-                    className="rounded-full border px-3 py-1.5 text-[11px] font-bold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+                    className={`rounded-full border px-3 py-1.5 text-[11px] font-bold transition ${cardFocusRingClass}`}
                     style={{
                       borderColor: "var(--fh-line)",
                       background: workflowFilter === filter.key ? "rgba(3,205,140,0.14)" : "var(--fh-surface)",
@@ -1460,21 +1522,83 @@ export default function ProviderDashboardPage() {
                 ))}
               </div>
               <div className="grid gap-3 sm:grid-cols-2">
-                {filteredRecentTeachings.map((item) => (
-                  <button
+                {isWorkflowLoading
+                  ? Array.from({ length: 4 }).map((_, idx) => (
+                      <div
+                        key={`recent-skeleton-${idx}`}
+                        className="w-full animate-pulse rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4"
+                      >
+                        <div className="h-4 w-2/3 rounded bg-slate-200/70" />
+                        <div className="mt-2 h-3 w-1/3 rounded bg-slate-200/60" />
+                        <div className="mt-3 flex gap-2">
+                          <div className="h-8 w-20 rounded-lg bg-slate-200/70" />
+                          <div className="h-8 w-24 rounded-lg bg-slate-200/70" />
+                          <div className="h-8 w-16 rounded-lg bg-slate-200/70" />
+                        </div>
+                      </div>
+                    ))
+                  : filteredRecentTeachings.map((item) => (
+                  <div
                     key={item.id}
-                    type="button"
-                    onClick={() => openTeachingItem(item.id)}
-                    className="w-full rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4 text-left transition hover:bg-[var(--fh-surface-bg)]"
+                    role="button"
+                    tabIndex={0}
+                    aria-label={`Open recent item ${item.title}`}
+                    onClick={() => {
+                      trackDashboardEvent("open_recent_item", { item_id: item.id });
+                      openTeachingItem(item.id);
+                    }}
+                    onKeyDown={(event) => {
+                      if (event.key === "Enter" || event.key === " ") {
+                        event.preventDefault();
+                        trackDashboardEvent("open_recent_item", { item_id: item.id });
+                        openTeachingItem(item.id);
+                      }
+                    }}
+                    className={`w-full cursor-pointer rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4 text-left transition hover:bg-[var(--fh-surface-bg)] ${cardFocusRingClass}`}
                   >
                     <div className="flex items-start justify-between gap-2">
                       <div className="min-w-0">
                         <h3 className="text-[14px] font-bold text-faith-ink">{item.title}</h3>
-                        <p className="mt-1 text-[12px] text-faith-slate">Updated {formatLastEdited(item.updatedAt)}</p>
+                        <p className="mt-1 text-[12px] text-slate-700">Updated {formatLastEdited(item.updatedAt)}</p>
                       </div>
                       <Pill text={item.status} tone={item.status === "Published" ? "good" : "warn"} />
                     </div>
-                  </button>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      <button
+                        type="button"
+                        aria-label={`Publish ${item.title}`}
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          handleTeachingAction(item.id, "publish");
+                        }}
+                        className={`rounded-lg border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-1.5 text-[11px] font-bold text-faith-ink transition hover:bg-emerald-50 ${cardFocusRingClass}`}
+                      >
+                        Publish
+                      </button>
+                      <button
+                        type="button"
+                        aria-label={`Request review for ${item.title}`}
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          handleTeachingAction(item.id, "request_review");
+                        }}
+                        className={`rounded-lg border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-1.5 text-[11px] font-bold text-faith-ink transition hover:bg-amber-50 ${cardFocusRingClass}`}
+                      >
+                        Request review
+                      </button>
+                      <button
+                        type="button"
+                        aria-label={`Open ${item.title}`}
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          handleTeachingAction(item.id, "open");
+                        }}
+                        className={`rounded-lg border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-1.5 text-[11px] font-bold text-faith-ink transition hover:bg-slate-100 ${cardFocusRingClass}`}
+                      >
+                        Open
+                      </button>
+                    </div>
+                  </div>
                 ))}
               </div>
             </SectionCard>
@@ -1494,7 +1618,7 @@ export default function ProviderDashboardPage() {
                     key={filter.key}
                     type="button"
                     onClick={() => setWorkflowFilter(filter.key as "all" | "draft" | "needs_review" | "published")}
-                    className="rounded-full border px-3 py-1.5 text-[11px] font-bold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+                    className={`rounded-full border px-3 py-1.5 text-[11px] font-bold transition ${cardFocusRingClass}`}
                     style={{
                       borderColor: "var(--fh-line)",
                       background: workflowFilter === filter.key ? "rgba(247,127,0,0.14)" : "var(--fh-surface)",
@@ -1507,16 +1631,68 @@ export default function ProviderDashboardPage() {
                 ))}
               </div>
               <div className="space-y-3">
-                {filteredPendingWork.map((item) => (
+                {isWorkflowLoading
+                  ? Array.from({ length: 3 }).map((_, idx) => (
+                      <div
+                        key={`pending-skeleton-${idx}`}
+                        className="animate-pulse rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4"
+                      >
+                        <div className="h-4 w-1/2 rounded bg-slate-200/70" />
+                        <div className="mt-2 h-3 w-2/3 rounded bg-slate-200/60" />
+                        <div className="mt-3 flex gap-2">
+                          <div className="h-8 w-20 rounded-lg bg-slate-200/70" />
+                          <div className="h-8 w-24 rounded-lg bg-slate-200/70" />
+                          <div className="h-8 w-16 rounded-lg bg-slate-200/70" />
+                        </div>
+                      </div>
+                    ))
+                  : null}
+                {!isWorkflowLoading && filteredPendingWork.length === 0 ? (
+                  <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-4 py-6 text-center">
+                    <div className="text-[14px] font-bold text-faith-ink">
+                      No pending work, you're all caught up.
+                    </div>
+                    <div className="mt-1 text-[12px] text-slate-700">
+                      Great work. New drafts and review requests will appear here.
+                    </div>
+                  </div>
+                ) : null}
+                {!isWorkflowLoading && filteredPendingWork.map((item) => (
                   <div key={item.id} className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4">
                     <div className="flex items-start justify-between gap-2">
                       <div className="min-w-0">
                         <h3 className="text-[14px] font-bold text-faith-ink">{item.title}</h3>
-                        <p className="mt-1 text-[12px] text-faith-slate">
+                        <p className="mt-1 text-[12px] text-slate-700">
                           {item.type} · Updated {formatLastEdited(item.updatedAt)}
                         </p>
                       </div>
                       <Pill text={item.status === "Draft" ? "Draft" : "Needs review"} tone="warn" />
+                    </div>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      <button
+                        type="button"
+                        aria-label={`Publish ${item.title}`}
+                        onClick={() => handleTeachingAction(item.id, "publish")}
+                        className={`rounded-lg border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-1.5 text-[11px] font-bold text-faith-ink transition hover:bg-emerald-50 ${cardFocusRingClass}`}
+                      >
+                        Publish
+                      </button>
+                      <button
+                        type="button"
+                        aria-label={`Request review for ${item.title}`}
+                        onClick={() => handleTeachingAction(item.id, "request_review")}
+                        className={`rounded-lg border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-1.5 text-[11px] font-bold text-faith-ink transition hover:bg-amber-50 ${cardFocusRingClass}`}
+                      >
+                        Request review
+                      </button>
+                      <button
+                        type="button"
+                        aria-label={`Open ${item.title}`}
+                        onClick={() => handleTeachingAction(item.id, "open")}
+                        className={`rounded-lg border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-1.5 text-[11px] font-bold text-faith-ink transition hover:bg-slate-100 ${cardFocusRingClass}`}
+                      >
+                        Open
+                      </button>
                     </div>
                   </div>
                 ))}
