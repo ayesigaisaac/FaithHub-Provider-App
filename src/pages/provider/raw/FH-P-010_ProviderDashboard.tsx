@@ -167,6 +167,16 @@ type QuickCreateAction = {
   accent: "green" | "orange" | "navy";
 };
 
+type TeachingWorkflowStatus = "Draft" | "Published" | "Needs review";
+
+type TeachingWorkflowItem = {
+  id: string;
+  title: string;
+  status: TeachingWorkflowStatus;
+  updatedAt: string;
+  type: string;
+};
+
 const ROLES: RoleKey[] = [
   "Leadership",
   "Production",
@@ -1207,6 +1217,33 @@ export default function ProviderDashboardPage() {
   const metrics = useMemo(() => EXECUTIVE_METRICS[role], [role]);
   const recommendations = useMemo(() => RECOMMENDATIONS_BY_ROLE[role], [role]);
   const primaryCtaLabel = "Start New Task";
+  const teachingItems = useMemo<TeachingWorkflowItem[]>(() => {
+    return PIPELINE_ITEMS.filter((item) => {
+      const text = `${item.title} ${item.type}`.toLowerCase();
+      return text.includes("teaching") || text.includes("series") || text.includes("episode");
+    }).map((item) => {
+      const statusMap: Record<PipelineItem["status"], TeachingWorkflowStatus> = {
+        Draft: "Draft",
+        "Missing assets": "Draft",
+        "Ready to publish": "Published",
+        "Clip opportunity": "Needs review",
+        "Awaiting review": "Needs review",
+      };
+      return {
+        id: item.id,
+        title: item.title,
+        status: statusMap[item.status],
+        updatedAt: item.due,
+        type: item.type,
+      };
+    });
+  }, []);
+  const recentTeachings = useMemo(() => teachingItems.slice(0, 4), [teachingItems]);
+  const continueItem = useMemo(() => recentTeachings[0], [recentTeachings]);
+  const pendingWork = useMemo(
+    () => teachingItems.filter((item) => item.status === "Draft" || item.status === "Needs review").slice(0, 5),
+    [teachingItems]
+  );
 
   const anomalyCount = useMemo(() => {
     const liveAnomalies = LIVE_SESSIONS.filter(
@@ -1263,14 +1300,7 @@ export default function ProviderDashboardPage() {
     safeNav(routeByCta[cta] ?? ROUTES.providerDashboard);
   };
 
-  const hasDashboardData =
-    metrics.length > 0 ||
-    LIVE_SESSIONS.length > 0 ||
-    PIPELINE_ITEMS.length > 0 ||
-    AUDIENCE_STATS.length > 0 ||
-    CAMPAIGNS.length > 0 ||
-    BEACON_ITEMS.length > 0 ||
-    TRUST_QUEUE.length > 0;
+  const hasDashboardData = teachingItems.length > 0;
 
   const handlePrimaryCta = () => {
     safeNav(ROUTES.liveBuilder);
@@ -1293,7 +1323,7 @@ export default function ProviderDashboardPage() {
                   Your dashboard is ready
                 </h2>
                 <p className="mt-2 max-w-xl text-[14px] leading-6 text-faith-slate">
-                  Get started by creating your first workflow and bringing your provider operations to life.
+                  Create and manage your teachings from here.
                 </p>
                 <button
                   type="button"
@@ -1303,13 +1333,127 @@ export default function ProviderDashboardPage() {
                   style={{ background: EV_GREEN, boxShadow: "0 10px 24px -14px rgba(3,205,140,0.85)" }}
                 >
                   <Plus className="h-4 w-4" />
-                  {primaryCtaLabel}
+                  Start New Task
                 </button>
                 <p className="mt-3 text-[12px] font-medium text-faith-slate">
-                  Get started by creating your first order.
+                  Start your first teaching
                 </p>
               </div>
             </section>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (hasDashboardData) {
+    return (
+      <div className="min-h-screen w-full bg-[var(--fh-page-bg)] text-faith-ink transition-colors dark:bg-slate-950 dark:text-slate-100">
+        <div className="w-full max-w-none px-0 py-0">
+          <div className="space-y-4 sm:space-y-5">
+            <section className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 sm:p-5 shadow-soft">
+              <div className="flex flex-wrap items-start justify-between gap-4">
+                <ProviderPageTitle
+                  icon={<BookOpen className="h-6 w-6" />}
+                  title="Teachings Workflow"
+                  subtitle="Continue, review recent teaching updates, and finish pending content tasks."
+                  className="mt-2"
+                />
+                <div className="min-w-[260px] rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3 shadow-soft">
+                  <button
+                    type="button"
+                    aria-label={primaryCtaLabel}
+                    onClick={() => safeNav(ROUTES.teachingsDashboard)}
+                    className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-2xl px-6 text-[14px] font-extrabold text-white transition hover:-translate-y-[1px] hover:shadow-lg active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+                    style={{ background: EV_GREEN, boxShadow: "0 12px 24px -14px rgba(3,205,140,0.9)" }}
+                  >
+                    <Plus className="h-4 w-4" />
+                    {primaryCtaLabel}
+                  </button>
+                  <p className="mt-2 text-center text-[12px] font-medium text-faith-slate">
+                    Get started by creating your first order.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            {continueItem ? (
+              <SectionCard
+                title="Continue where you left off"
+                subtitle="Pick up your latest teaching workflow instantly."
+                right={<Pill text={continueItem.status} tone={continueItem.status === "Published" ? "good" : "warn"} />}
+              >
+                <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4">
+                  <div className="flex flex-wrap items-start justify-between gap-3">
+                    <div className="min-w-0">
+                      <h3 className="text-[16px] font-black tracking-tight text-faith-ink">
+                        {continueItem.title}
+                      </h3>
+                      <p className="mt-1 text-[12px] text-faith-slate">
+                        Last edited {continueItem.updatedAt}
+                      </p>
+                    </div>
+                    <button
+                      type="button"
+                      aria-label="Continue editing"
+                      onClick={() => safeNav(ROUTES.teachingsDashboard)}
+                      className="inline-flex h-11 items-center gap-2 rounded-2xl px-5 text-[13px] font-extrabold text-white transition hover:-translate-y-[1px] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+                      style={{ background: EV_GREEN }}
+                    >
+                      <ArrowRight className="h-4 w-4" />
+                      Continue editing
+                    </button>
+                  </div>
+                </div>
+              </SectionCard>
+            ) : null}
+
+            <SectionCard
+              title="Recent teachings"
+              subtitle="Your latest teaching content updates."
+              right={<Pill text={`${recentTeachings.length} items`} tone="navy" />}
+            >
+              <div className="grid gap-3 sm:grid-cols-2">
+                {recentTeachings.map((item) => (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={() => safeNav(ROUTES.teachingsDashboard)}
+                    className="w-full rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4 text-left transition hover:bg-[var(--fh-surface-bg)]"
+                  >
+                    <div className="flex items-start justify-between gap-2">
+                      <div className="min-w-0">
+                        <h3 className="text-[14px] font-bold text-faith-ink">{item.title}</h3>
+                        <p className="mt-1 text-[12px] text-faith-slate">Updated {item.updatedAt}</p>
+                      </div>
+                      <Pill text={item.status} tone={item.status === "Published" ? "good" : "warn"} />
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </SectionCard>
+
+            <SectionCard
+              title="Pending work"
+              subtitle="Drafts and reviews that need your attention."
+              right={<Pill text={`${pendingWork.length} pending`} tone="warn" />}
+            >
+              <div className="space-y-3">
+                {pendingWork.map((item) => (
+                  <div key={item.id} className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4">
+                    <div className="flex items-start justify-between gap-2">
+                      <div className="min-w-0">
+                        <h3 className="text-[14px] font-bold text-faith-ink">{item.title}</h3>
+                        <p className="mt-1 text-[12px] text-faith-slate">
+                          {item.type} · Updated {item.updatedAt}
+                        </p>
+                      </div>
+                      <Pill text={item.status === "Draft" ? "Draft" : "Needs review"} tone="warn" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </SectionCard>
           </div>
         </div>
       </div>
