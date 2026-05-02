@@ -25,7 +25,7 @@ describe("FH-P-010 Provider dashboard workflow UX", () => {
   it("renders empty state when no teachings exist", () => {
     render(<ProviderDashboardPage workflowItemsOverride={[]} />);
 
-    expect(screen.getByText("Your dashboard is ready")).toBeInTheDocument();
+    expect(screen.getByText("Start your first teaching")).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Create Teaching" })).toBeInTheDocument();
   });
 
@@ -56,7 +56,7 @@ describe("FH-P-010 Provider dashboard workflow UX", () => {
 
     rerender(<ProviderDashboardPage workflowItemsOverride={withoutTeaching} />);
     expect(screen.queryByText("Continue Editing")).not.toBeInTheDocument();
-    expect(screen.getByText("Your dashboard is ready")).toBeInTheDocument();
+    expect(screen.getByText("Start your first teaching")).toBeInTheDocument();
   });
 
   it("derives pending work from draft and needs review statuses", () => {
