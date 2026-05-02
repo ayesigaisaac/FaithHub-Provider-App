@@ -114,11 +114,12 @@ export function ProviderTopbar({
           minHeight: { xs: 64, md: 78 },
           px: { xs: 1.25, md: 3 },
           py: { xs: 0.35, md: 0.9 },
+          gap: { xs: 0.6, md: 1.1 },
           borderBottom: '1px solid',
           borderColor: (theme) => (theme.palette.mode === 'dark' ? '#1f2937' : '#dce4e1'),
         }}
       >
-        <Stack direction="row" alignItems="center" spacing={1.25} sx={{ flex: 1 }}>
+        <Stack direction="row" alignItems="center" spacing={1.25} sx={{ flex: 1, minWidth: 0 }}>
           <IconButton aria-label="Open navigation menu" sx={{ display: { md: 'none' } }} onClick={onOpenSidebar}>
             <MenuRoundedIcon />
           </IconButton>
@@ -126,11 +127,11 @@ export function ProviderTopbar({
             <BrandLogo variant="symbol" alt="Provider Workspace" style={{ height: 34, width: 34 }} />
           </Box>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            <BrandLogo variant="landscape" alt="Provider Workspace" style={{ height: 62, width: 'auto' }} />
+            <BrandLogo variant="landscape" alt="Provider Workspace" style={{ height: 54, width: 'auto' }} />
           </Box>
         </Stack>
 
-        <Stack direction="row" spacing={{ xs: 0.75, md: 1.5 }} alignItems="center">
+        <Stack direction="row" spacing={{ xs: 0.5, md: 1.2 }} alignItems="center" sx={{ flexShrink: 0 }}>
           {isMobileActions ? (
             <IconButton aria-label="Open search" sx={utilityIconSx} onClick={() => onOpenSearch()}>
               <SearchRoundedIcon />
@@ -213,7 +214,7 @@ export function ProviderTopbar({
                 ),
               }}
               sx={{
-                width: { md: 300, lg: 380, xl: 460 },
+                width: { md: 280, lg: 360, xl: 460 },
                 maxWidth: '46vw',
                 '& .MuiOutlinedInput-root': {
                   borderRadius: '18px',

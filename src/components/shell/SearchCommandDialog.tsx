@@ -221,8 +221,8 @@ export function SearchCommandDialog({
             sx={{
               width: { xs: '100%', md: 920, lg: 980 },
               maxWidth: '100%',
-              maxHeight: { xs: 'calc(100vh - 16px)', md: 'min(82vh, 760px)' },
-              borderRadius: { xs: 3, md: 4 },
+              maxHeight: { xs: 'calc(100vh - 8px)', md: 'min(82vh, 760px)' },
+              borderRadius: { xs: 2, md: 4 },
               border: '1px solid',
               borderColor: 'var(--fh-line)',
               bgcolor: 'var(--fh-surface-bg)',
@@ -286,7 +286,11 @@ export function SearchCommandDialog({
                   ),
                 }}
               />
-              <Typography variant="caption" color="text.secondary" sx={{ whiteSpace: 'nowrap' }}>
+              <Typography
+                variant="caption"
+                color="text.secondary"
+                sx={{ whiteSpace: 'nowrap', display: { xs: 'none', sm: 'inline' } }}
+              >
                 Use Up/Down + Enter
               </Typography>
             </Stack>

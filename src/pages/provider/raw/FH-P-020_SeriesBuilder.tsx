@@ -794,7 +794,7 @@ function SeriesLandingPreview({
 
   return (
     <div className="overflow-hidden rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] shadow-soft">
-      <div className="grid grid-cols-[1.2fr_0.8fr]">
+      <div className="grid lg:grid-cols-[1.2fr_0.8fr]">
         <div className="relative min-h-[420px] overflow-hidden bg-slate-900">
           <img src={cover.url} alt={cover.name} className="h-full w-full object-cover opacity-90" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-900/15 to-transparent" />
@@ -815,7 +815,7 @@ function SeriesLandingPreview({
                 </span>
               ))}
             </div>
-            <div className="mt-5 flex gap-3">
+            <div className="mt-5 flex flex-wrap gap-3">
               <button className="rounded-2xl px-4 py-2 text-[12px] font-bold text-white" style={{ background: EV_GREEN }} onClick={() => safeNav("/faithhub/provider/series-dashboard")}>
                 Follow series
               </button>
@@ -1944,7 +1944,7 @@ export default function SeriesBuilderPage() {
           </div>
         ) : null}
 
-        <div className="mt-5 grid gap-5 2xl:grid-cols-[260px_minmax(0,1fr)_390px]">
+        <div className="mt-5 grid gap-5 2xl:grid-cols-[240px_minmax(0,1fr)_360px]">
           <div className="xl:sticky xl:top-6 xl:self-start">
             <StepRail step={step} setStep={setStep} readinessScore={readiness.score} />
           </div>
@@ -1952,7 +1952,7 @@ export default function SeriesBuilderPage() {
           <div className="space-y-4">{centerContent}</div>
 
           <div className="hidden xl:block xl:sticky xl:top-6 xl:self-start">
-            <div className="rounded-[30px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft">
+            <div className="rounded-[30px] border border-faith-line bg-[var(--fh-surface-bg)] p-3 sm:p-4 shadow-soft">
               <div className="flex items-center justify-between gap-3">
                 <div>
                   <div className="text-[14px] font-bold text-faith-ink">Series preview</div>
@@ -1992,7 +1992,7 @@ export default function SeriesBuilderPage() {
         </div>
 
         <div className="mt-5 xl:hidden">
-          <div className="rounded-[30px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft">
+          <div className="rounded-[30px] border border-faith-line bg-[var(--fh-surface-bg)] p-3 sm:p-4 shadow-soft">
             <div className="flex items-center justify-between gap-3">
               <div>
                 <div className="text-[14px] font-bold text-faith-ink">Series preview</div>

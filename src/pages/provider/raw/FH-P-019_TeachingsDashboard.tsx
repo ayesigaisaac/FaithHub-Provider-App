@@ -636,7 +636,7 @@ function Drawer({
       />
       <div className="absolute right-0 top-0 h-full w-full max-w-5xl bg-[var(--fh-surface-bg)] shadow-2xl">
         <div className="flex h-full flex-col">
-          <div className="border-b border-faith-line px-6 py-4">
+          <div className="border-b border-faith-line px-4 py-3 sm:px-6 sm:py-4">
             <div className="flex items-start justify-between gap-3">
               <div>
                 <div className="text-[14px] font-bold text-faith-ink">{title}</div>
@@ -654,7 +654,7 @@ function Drawer({
               </button>
             </div>
           </div>
-          <div className="flex-1 overflow-y-auto p-6">{children}</div>
+          <div className="flex-1 overflow-y-auto p-4 sm:p-6">{children}</div>
         </div>
       </div>
     </div>
@@ -1253,7 +1253,7 @@ export default function TeachingsDashboardPage() {
 
   return (
     <div className="min-h-screen bg-[var(--fh-page-bg)] text-faith-ink">
-      <div className="mx-auto max-w-[1600px] px-5 py-5 md:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1600px] px-4 py-4 sm:px-5 sm:py-5 md:px-6 lg:px-8">
         <section className="rounded-[34px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft md:p-5">
           <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
             <div className="flex min-w-0 gap-4">
@@ -1342,14 +1342,14 @@ export default function TeachingsDashboardPage() {
           />
         </section>
 
-        <section className="mt-4 grid gap-4 xl:grid-cols-[1.6fr,0.95fr]">
+        <section className="mt-4 grid gap-4 2xl:grid-cols-[1.6fr,0.95fr]">
           <div className="space-y-4">
             <Card
               title="Teachings command center"
               subtitle="Search, filter, and manage every teaching object across structured series and standalone sermons."
               right={<Pill tone="neutral">{filteredTeachings.length} teachings</Pill>}
             >
-              <div className="grid gap-3 lg:grid-cols-[1.1fr,0.35fr,0.35fr]">
+              <div className="grid gap-3 xl:grid-cols-[1.1fr,0.35fr,0.35fr]">
                 <div className="rounded-[22px] border border-faith-line bg-[var(--fh-surface)] px-4 py-3">
                   <div className="flex items-center gap-3">
                     <Search className="h-4 w-4 text-faith-slate" />
@@ -1432,7 +1432,7 @@ export default function TeachingsDashboardPage() {
                       key={item.id}
                       className="rounded-[22px] border border-faith-line bg-[var(--fh-surface)] px-4 py-3"
                     >
-                      <div className="flex items-center justify-between gap-3">
+                      <div className="flex flex-wrap items-center justify-between gap-3">
                         <div className="min-w-0">
                           <div className="truncate text-[13px] font-bold text-faith-ink">{item.title}</div>
                           <div className="mt-0.5 text-[11px] text-faith-slate">{item.hint}</div>
@@ -1456,7 +1456,7 @@ export default function TeachingsDashboardPage() {
                       key={teaching.id}
                       className="rounded-[22px] border border-faith-line bg-[var(--fh-surface)] px-4 py-3"
                     >
-                      <div className="flex items-center justify-between gap-3">
+                      <div className="flex flex-wrap items-center justify-between gap-3">
                         <div className="min-w-0">
                           <div className="truncate text-[13px] font-bold text-faith-ink">{teaching.title}</div>
                           <div className="mt-0.5 text-[11px] text-faith-slate">

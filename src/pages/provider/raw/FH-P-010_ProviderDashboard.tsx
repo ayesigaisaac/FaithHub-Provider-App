@@ -1540,7 +1540,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                   subtitle="Continue editing, manage drafts, and publish completed teachings."
                   className="mt-2"
                 />
-                <div className="min-w-[260px] rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3 shadow-soft">
+                <div className="w-full sm:w-auto sm:min-w-[260px] rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3 shadow-soft">
                   <button
                     type="button"
                     aria-label={primaryCtaLabel}
