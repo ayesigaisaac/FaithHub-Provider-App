@@ -1296,13 +1296,30 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
   const [isRecentCollapsed, setIsRecentCollapsed] = useState(false);
   const [isPendingCollapsed, setIsPendingCollapsed] = useState(false);
   const [actionToast, setActionToast] = useState<string | null>(null);
+  const [optimisticStatusById, setOptimisticStatusById] = useState<Record<string, TeachingWorkflowStatus>>({});
   const [usageMap, setUsageMap] = useState<Record<string, number>>({});
   const metrics = useMemo(() => EXECUTIVE_METRICS[role], [role]);
   const recommendations = useMemo(() => RECOMMENDATIONS_BY_ROLE[role], [role]);
   const primaryCtaLabel = "Create Teaching";
   const workflowSourceItems = workflowItemsOverride ?? PIPELINE_ITEMS;
   const workflowData = useMemo(() => deriveTeachingWorkflowData(workflowSourceItems), [workflowSourceItems]);
-  const { teachingItems, recentTeachings, continueItem, pendingWork, needsReviewCount } = workflowData;
+  const optimisticWorkflowData = useMemo<WorkflowDerivedData>(() => {
+    if (!Object.keys(optimisticStatusById).length) return workflowData;
+
+    const teachingItems = workflowData.teachingItems.map((item) => ({
+      ...item,
+      status: optimisticStatusById[item.id] ?? item.status,
+    }));
+    const recentTeachings = teachingItems.slice(0, 4);
+    const continueItem = recentTeachings[0];
+    const pendingWork = teachingItems
+      .filter((item) => item.status === "Draft" || item.status === "Needs review")
+      .slice(0, 5);
+    const needsReviewCount = pendingWork.filter((item) => item.status === "Needs review").length;
+
+    return { teachingItems, recentTeachings, continueItem, pendingWork, needsReviewCount };
+  }, [optimisticStatusById, workflowData]);
+  const { teachingItems, recentTeachings, continueItem, pendingWork, needsReviewCount } = optimisticWorkflowData;
   const workflowSummary = useMemo<WorkflowSummarySnapshot>(() => {
     const draftCount = teachingItems.filter((item) => item.status === "Draft").length;
     const publishedCount = teachingItems.filter((item) => item.status === "Published").length;
@@ -1426,6 +1443,12 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
     itemId: string,
     action: "publish" | "request_review" | "open"
   ) => {
+    if (action === "publish") {
+      setOptimisticStatusById((prev) => ({ ...prev, [itemId]: "Published" }));
+    } else if (action === "request_review") {
+      setOptimisticStatusById((prev) => ({ ...prev, [itemId]: "Needs review" }));
+    }
+
     trackDashboardEvent("quick_action_completed", { item_id: itemId, action });
     const actionLabel =
       action === "publish" ? "Publish" : action === "request_review" ? "Request review" : "Open";
