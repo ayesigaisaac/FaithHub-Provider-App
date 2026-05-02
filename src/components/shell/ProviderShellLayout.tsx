@@ -158,8 +158,9 @@ export function ProviderShellLayout() {
       <SearchCommandDialog
         open={searchOpen}
         onClose={() => setSearchOpen(false)}
-        anchorEl={searchAnchorEl}
         query={searchQuery}
+        onQueryChange={setSearchQuery}
+        returnFocusEl={searchAnchorEl}
       />
     </Box>
   );
