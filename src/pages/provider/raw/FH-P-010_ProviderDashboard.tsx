@@ -1,4 +1,4 @@
-ï»¿// @ts-nocheck
+// @ts-nocheck
 
 "use client";
 
@@ -42,7 +42,7 @@ import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { useAuth } from "@/auth/useAuth";
 
 /**
- * Provider â€” Provider Dashboard
+ * Provider — Provider Dashboard
  * --------------------------------------
  * Premium provider-side mission control page.
  *
@@ -236,8 +236,14 @@ function safeNav(path: string) {
 }
 
 function trackDashboardEvent(
-  eventName: "start_new_task" | "continue_editing" | "open_recent_item",
-  payload?: Record<string, string>,
+  eventName:
+    | "start_new_task"
+    | "continue_editing"
+    | "open_recent_item"
+    | "toggle_recent_section"
+    | "toggle_pending_section"
+    | "quick_action_completed",
+  payload?: Record<string, string | boolean>,
 ) {
   if (typeof window === "undefined") return;
   const eventPayload = { event: eventName, ...payload };
@@ -491,7 +497,7 @@ const EXECUTIVE_METRICS: Record<RoleKey, MetricCard[]> = {
     {
       id: "spend",
       label: "Beacon spend",
-      value: "Â£3.9k",
+      value: "£3.9k",
       hint: "Current spend against plan and placement pacing",
       delta: "64% pace",
       accent: "orange",
@@ -674,20 +680,20 @@ const LIVE_SESSIONS: LiveSessionRow[] = [
   {
     id: "ls-1",
     title: "Evening Prayer Revival",
-    time: "18:30 â€” 19:45",
+    time: "18:30 — 19:45",
     campus: "Kampala Central",
-    audience: "Prayer community Â· Public",
+    audience: "Prayer community · Public",
     readiness: "At risk",
     health: "Watching",
-    backstage: "Host joined Â· Captioner pending",
+    backstage: "Host joined · Captioner pending",
     warning: "Caption operator check still open",
   },
   {
     id: "ls-2",
     title: "Faith & Work Midweek Class",
-    time: "20:00 â€” 21:00",
+    time: "20:00 — 21:00",
     campus: "Online Studio",
-    audience: "Series audience Â· Members first",
+    audience: "Series audience · Members first",
     readiness: "Ready",
     health: "Healthy",
     backstage: "All roles confirmed",
@@ -697,10 +703,10 @@ const LIVE_SESSIONS: LiveSessionRow[] = [
     title: "Youth Outreach Q&A",
     time: "Sat 15:00",
     campus: "Youth Hall",
-    audience: "Youth ministry Â· RSVP",
+    audience: "Youth ministry · RSVP",
     readiness: "Blocked",
     health: "Watching",
-    backstage: "Moderator gap Â· venue AV unresolved",
+    backstage: "Moderator gap · venue AV unresolved",
     warning: "Venue mic routing conflict detected",
   },
 ];
@@ -708,7 +714,7 @@ const LIVE_SESSIONS: LiveSessionRow[] = [
 const PIPELINE_ITEMS: PipelineItem[] = [
   {
     id: "p-1",
-    title: "Hope in the Wilderness â€” Episode 02",
+    title: "Hope in the Wilderness — Episode 02",
     type: "Episode draft",
     status: "Missing assets",
     owner: "Content editor",
@@ -716,7 +722,7 @@ const PIPELINE_ITEMS: PipelineItem[] = [
   },
   {
     id: "p-2",
-    title: "Stand Firm â€” Standalone Teaching",
+    title: "Stand Firm — Standalone Teaching",
     type: "Standalone teaching",
     status: "Awaiting review",
     owner: "Pastoral review",
@@ -802,7 +808,7 @@ const BEACON_ITEMS: BeaconItem[] = [
     id: "b-1",
     title: "Sunday Encounter replay boost",
     mode: "Linked",
-    spend: "Â£1.2k",
+    spend: "£1.2k",
     outcome: "784 watch starts",
     status: "Healthy",
   },
@@ -810,7 +816,7 @@ const BEACON_ITEMS: BeaconItem[] = [
     id: "b-2",
     title: "Youth Camp registration push",
     mode: "Linked",
-    spend: "Â£820",
+    spend: "£820",
     outcome: "41 registrations",
     status: "Learning",
   },
@@ -818,7 +824,7 @@ const BEACON_ITEMS: BeaconItem[] = [
     id: "b-3",
     title: "Care & Missions awareness",
     mode: "Standalone",
-    spend: "Â£460",
+    spend: "£460",
     outcome: "183 giving clicks",
     status: "Needs approval",
   },
@@ -826,7 +832,7 @@ const BEACON_ITEMS: BeaconItem[] = [
     id: "b-4",
     title: "Prayer Night announcement",
     mode: "Standalone",
-    spend: "Â£210",
+    spend: "£210",
     outcome: "CTR softening",
     status: "Fatigue risk",
   },
@@ -836,21 +842,21 @@ const TRUST_CASES: TrustCase[] = [
   {
     id: "t-1",
     title: "Audio complaint cluster on Prayer Night replay",
-    source: "Reviews Â· Replay",
+    source: "Reviews · Replay",
     priority: "High",
     owner: "Production team",
   },
   {
     id: "t-2",
     title: "Reported chat messages during Youth Outreach live",
-    source: "Moderation Â· Live chat",
+    source: "Moderation · Live chat",
     priority: "Critical",
     owner: "Moderator lead",
   },
   {
     id: "t-3",
     title: "Flagged clip comment thread",
-    source: "Clips Â· Public comments",
+    source: "Clips · Public comments",
     priority: "Medium",
     owner: "Community manager",
   },
@@ -878,7 +884,7 @@ const RECOMMENDATIONS_BY_ROLE: Record<
     {
       id: "r-2",
       title: "Convert Flood Relief into a live fundraiser moment",
-      detail: "Tonightâ€™s prayer stream is the strongest fit for donor urgency and public momentum.",
+      detail: "Tonight’s prayer stream is the strongest fit for donor urgency and public momentum.",
       cta: "Open Live Builder",
       tone: "good",
     },
@@ -953,7 +959,7 @@ const RECOMMENDATIONS_BY_ROLE: Record<
     },
     {
       id: "r-3",
-      title: "Insert a giving moment into tonightâ€™s live",
+      title: "Insert a giving moment into tonight’s live",
       detail: "Prayer Night already has strong attendance forecasts and could support a clear donor CTA.",
       cta: "Open Live Builder",
       tone: "good",
@@ -1060,13 +1066,16 @@ function SectionCard({
   right,
   children,
   className,
+  titleTag = "h2",
 }: {
   title: string;
   subtitle?: string;
   right?: React.ReactNode;
   children: React.ReactNode;
   className?: string;
+  titleTag?: "h2" | "h3";
 }) {
+  const TitleTag = titleTag;
   return (
     <section
       className={cx(
@@ -1076,9 +1085,9 @@ function SectionCard({
     >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
-          <h3 className="text-[15px] font-bold tracking-tight text-faith-ink">
+          <TitleTag className="text-[15px] font-bold tracking-tight text-faith-ink">
             {title}
-          </h3>
+          </TitleTag>
           {subtitle ? (
             <p className="mt-1 text-[12px] leading-5 text-faith-slate">
               {subtitle}
@@ -1273,6 +1282,9 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
   const [search, setSearch] = useState("");
   const [workflowFilter, setWorkflowFilter] = useState<WorkflowFilter>("all");
   const [isWorkflowLoading, setIsWorkflowLoading] = useState(true);
+  const [isRecentCollapsed, setIsRecentCollapsed] = useState(false);
+  const [isPendingCollapsed, setIsPendingCollapsed] = useState(false);
+  const [actionToast, setActionToast] = useState<string | null>(null);
   const metrics = useMemo(() => EXECUTIVE_METRICS[role], [role]);
   const recommendations = useMemo(() => RECOMMENDATIONS_BY_ROLE[role], [role]);
   const primaryCtaLabel = "Start New Task";
@@ -1349,6 +1361,12 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
   const hasDashboardData = teachingItems.length > 0;
   const cardFocusRingClass =
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0a7f5a] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--fh-surface-bg)]";
+  const smartNextStep = useMemo(() => {
+    if (needsReviewCount > 0) return `${needsReviewCount} item${needsReviewCount > 1 ? "s" : ""} need review first.`;
+    const draftCount = pendingWork.filter((item) => item.status === "Draft").length;
+    if (draftCount > 0) return `${draftCount} draft${draftCount > 1 ? "s are" : " is"} ready to finish.`;
+    return "You're caught up. Start a new teaching task.";
+  }, [needsReviewCount, pendingWork]);
 
   const handlePrimaryCta = () => {
     trackDashboardEvent("start_new_task");
@@ -1368,6 +1386,10 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
     itemId: string,
     action: "publish" | "request_review" | "open"
   ) => {
+    trackDashboardEvent("quick_action_completed", { item_id: itemId, action });
+    const actionLabel =
+      action === "publish" ? "Publish" : action === "request_review" ? "Request review" : "Open";
+    setActionToast(`${actionLabel} action queued.`);
     if (action === "open") {
       openTeachingItem(itemId);
       return;
@@ -1379,6 +1401,12 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
     const timer = window.setTimeout(() => setIsWorkflowLoading(false), 450);
     return () => window.clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    if (!actionToast) return;
+    const timer = window.setTimeout(() => setActionToast(null), 2200);
+    return () => window.clearTimeout(timer);
+  }, [actionToast]);
 
   if (!hasDashboardData) {
     return (
@@ -1424,8 +1452,8 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
     return (
       <div className="min-h-screen w-full bg-[var(--fh-page-bg)] text-faith-ink transition-colors dark:bg-slate-950 dark:text-slate-100">
         <div className="w-full max-w-none px-0 py-0">
-          <div className="space-y-4 sm:space-y-5">
-            <section className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 sm:p-5 shadow-soft">
+          <div className="space-y-6 sm:space-y-7">
+            <section className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 sm:p-5">
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <ProviderPageTitle
                   icon={<BookOpen className="h-6 w-6" />}
@@ -1460,18 +1488,34 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
             </section>
 
             {continueItem ? (
-              <SectionCard
-                title="Continue where you left off"
-                subtitle="Pick up your latest teaching workflow instantly."
-                right={<Pill text={continueItem.status} tone={continueItem.status === "Published" ? "good" : "warn"} />}
+              <section
+                className="rounded-3xl border p-5 sm:p-7 shadow-lg"
+                style={{
+                  borderColor: "rgba(3,205,140,0.35)",
+                  background: "linear-gradient(180deg, rgba(3,205,140,0.10) 0%, var(--fh-surface-bg) 100%)",
+                }}
               >
-                <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4">
-                  <div className="flex flex-wrap items-start justify-between gap-3">
+                <div className="flex flex-wrap items-start justify-between gap-4">
+                  <div className="min-w-0">
+                    <h2 className="text-[22px] font-black tracking-tight text-faith-ink sm:text-[26px]">
+                      Continue where you left off
+                    </h2>
+                    <p className="mt-1 text-[13px] leading-6 text-slate-700">
+                      Pick up your latest teaching workflow instantly.
+                    </p>
+                    <p className="mt-2 text-[12px] font-semibold text-emerald-800">
+                      Next step: {smartNextStep}
+                    </p>
+                  </div>
+                  <Pill text={continueItem.status} tone={continueItem.status === "Published" ? "good" : "warn"} />
+                </div>
+                <div className="mt-5 rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-5">
+                  <div className="flex flex-wrap items-start justify-between gap-4">
                     <div className="min-w-0">
-                      <h3 className="text-[16px] font-black tracking-tight text-faith-ink">
+                      <h3 className="text-[18px] font-black tracking-tight text-faith-ink">
                         {continueItem.title}
                       </h3>
-                      <p className="mt-1 text-[12px] text-slate-700">
+                      <p className="mt-1 text-[13px] text-slate-700">
                         Last edited {formatLastEdited(continueItem.updatedAt)}
                       </p>
                     </div>
@@ -1482,22 +1526,42 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                         trackDashboardEvent("continue_editing", { item_id: continueItem.id });
                         openTeachingItem(continueItem.id);
                       }}
-                      className={`inline-flex h-11 items-center gap-2 rounded-2xl px-5 text-[13px] font-extrabold text-white transition hover:-translate-y-[1px] hover:shadow-md ${cardFocusRingClass}`}
-                      style={{ background: EV_GREEN }}
+                      className={`inline-flex h-12 items-center gap-2 rounded-2xl px-6 text-[14px] font-extrabold text-white transition hover:-translate-y-[1px] hover:shadow-lg ${cardFocusRingClass}`}
+                      style={{ background: EV_GREEN, boxShadow: "0 12px 24px -14px rgba(3,205,140,0.9)" }}
                     >
                       <ArrowRight className="h-4 w-4" />
                       Continue editing
                     </button>
                   </div>
                 </div>
-              </SectionCard>
+              </section>
             ) : null}
 
             <SectionCard
               title="Recent teachings"
               subtitle="Your latest teaching content updates."
-              right={<Pill text={`${filteredRecentTeachings.length} items`} tone="navy" />}
+              titleTag="h2"
+              right={
+                <div className="flex items-center gap-2">
+                  <Pill text={`${filteredRecentTeachings.length} items`} tone="navy" />
+                  <button
+                    type="button"
+                    aria-label={isRecentCollapsed ? "Expand recent teachings" : "Collapse recent teachings"}
+                    onClick={() => {
+                      const next = !isRecentCollapsed;
+                      setIsRecentCollapsed(next);
+                      trackDashboardEvent("toggle_recent_section", { collapsed: next });
+                    }}
+                    className={`inline-flex h-9 w-9 items-center justify-center rounded-full border border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 transition hover:bg-[var(--fh-surface)] ${cardFocusRingClass}`}
+                  >
+                    {isRecentCollapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+                  </button>
+                </div>
+              }
+              className="bg-[var(--fh-surface)] p-4 sm:p-4 shadow-none"
             >
+              {!isRecentCollapsed ? (
+                <>
               <div className="mb-3 flex flex-wrap gap-2">
                 {[
                   { key: "all", label: "All" },
@@ -1554,7 +1618,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                         openTeachingItem(item.id);
                       }
                     }}
-                    className={`w-full cursor-pointer rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4 text-left transition hover:bg-[var(--fh-surface-bg)] ${cardFocusRingClass}`}
+                    className={`w-full cursor-pointer rounded-xl border border-faith-line bg-[var(--fh-surface-bg)] p-3.5 text-left transition hover:bg-[var(--fh-surface)] ${cardFocusRingClass}`}
                   >
                     <div className="flex items-start justify-between gap-2">
                       <div className="min-w-0">
@@ -1601,13 +1665,37 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                   </div>
                 ))}
               </div>
+                </>
+              ) : (
+                <div className="text-[12px] text-slate-700">Section collapsed.</div>
+              )}
             </SectionCard>
 
             <SectionCard
               title="Pending work"
               subtitle="Drafts and reviews that need your attention."
-              right={<Pill text={`${filteredPendingWork.length} pending`} tone="warn" />}
+              titleTag="h2"
+              right={
+                <div className="flex items-center gap-2">
+                  <Pill text={`${filteredPendingWork.length} pending`} tone="warn" />
+                  <button
+                    type="button"
+                    aria-label={isPendingCollapsed ? "Expand pending work" : "Collapse pending work"}
+                    onClick={() => {
+                      const next = !isPendingCollapsed;
+                      setIsPendingCollapsed(next);
+                      trackDashboardEvent("toggle_pending_section", { collapsed: next });
+                    }}
+                    className={`inline-flex h-9 w-9 items-center justify-center rounded-full border border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 transition hover:bg-[var(--fh-surface)] ${cardFocusRingClass}`}
+                  >
+                    {isPendingCollapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+                  </button>
+                </div>
+              }
+              className="bg-[var(--fh-surface)] p-4 sm:p-4 shadow-none"
             >
+              {!isPendingCollapsed ? (
+                <>
               <div className="mb-3 flex flex-wrap gap-2">
                 {[
                   { key: "all", label: "All pending" },
@@ -1658,12 +1746,12 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                   </div>
                 ) : null}
                 {!isWorkflowLoading && filteredPendingWork.map((item) => (
-                  <div key={item.id} className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4">
+                  <div key={item.id} className="rounded-xl border border-faith-line bg-[var(--fh-surface-bg)] p-3.5">
                     <div className="flex items-start justify-between gap-2">
                       <div className="min-w-0">
                         <h3 className="text-[14px] font-bold text-faith-ink">{item.title}</h3>
                         <p className="mt-1 text-[12px] text-slate-700">
-                          {item.type} Â· Updated {formatLastEdited(item.updatedAt)}
+                          {item.type} · Updated {formatLastEdited(item.updatedAt)}
                         </p>
                       </div>
                       <Pill text={item.status === "Draft" ? "Draft" : "Needs review"} tone="warn" />
@@ -1697,842 +1785,24 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                   </div>
                 ))}
               </div>
+                </>
+              ) : (
+                <div className="text-[12px] text-slate-700">Section collapsed.</div>
+              )}
             </SectionCard>
+            {actionToast ? (
+              <div
+                role="status"
+                aria-live="polite"
+                className="fixed bottom-4 right-4 z-50 rounded-xl border border-faith-line bg-[var(--fh-surface)] px-4 py-2 text-[12px] font-semibold text-faith-ink shadow-soft"
+              >
+                {actionToast}
+              </div>
+            ) : null}
           </div>
         </div>
       </div>
     );
   }
 
-  return (
-    <div
-      className="min-h-screen w-full bg-[var(--fh-page-bg)] text-faith-ink transition-colors dark:bg-slate-950 dark:text-slate-100"
-    >
-      <div className="w-full max-w-none px-0 py-0">
-        <div className="space-y-4 sm:space-y-5">
-          {/* Top hero / mission command */}
-          <section className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 sm:p-5 shadow-soft">
-            <div className="grid gap-4 sm:gap-6 xl:grid-cols-[1.25fr,0.9fr]">
-              <div className="min-w-0">
-                <div className="flex flex-wrap items-start justify-between gap-4">
-                  <ProviderPageTitle
-                    icon={<LayoutDashboard className="h-6 w-6" />}
-                    title="Provider Dashboard"
-                    subtitle="Daily overview of live sessions, teachings, audience health, giving performance, and trust operations."
-                    className="mt-2"
-                  />
-                  <div className="min-w-[260px] rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3 shadow-soft">
-                    <button
-                      type="button"
-                      aria-label={primaryCtaLabel}
-                      onClick={handlePrimaryCta}
-                      className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-2xl px-6 text-[14px] font-extrabold text-white transition hover:-translate-y-[1px] hover:shadow-lg active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
-                      style={{ background: EV_GREEN, boxShadow: "0 12px 24px -14px rgba(3,205,140,0.9)" }}
-                    >
-                      <Plus className="h-4 w-4" />
-                      {primaryCtaLabel}
-                    </button>
-                    <p className="mt-2 text-center text-[12px] font-medium text-faith-slate">
-                      Get started by creating your first order.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="mt-5 flex flex-wrap items-center gap-2">
-                  <Pill
-                    text="Provider"
-                    tone="good"
-                    left={<BadgeCheck className="h-3.5 w-3.5" />}
-                  />
-                  <Pill text="Provider Workspace" tone="navy" />
-                  <Pill
-                    text={`${anomalyCount} live issues or campaign warnings`}
-                    tone="warn"
-                    left={<AlertTriangle className="h-3.5 w-3.5" />}
-                  />
-                  <Pill
-                    text={`${readinessSummary.ready} ready Â· ${readinessSummary.atRisk} at risk Â· ${readinessSummary.blocked} blocked`}
-                    tone="brand"
-                    left={<Radio className="h-3.5 w-3.5" />}
-                  />
-                </div>
-
-                <div className="mt-6 grid w-full grid-cols-1 gap-2 sm:grid-cols-2 xl:flex xl:w-auto xl:flex-wrap xl:justify-end">
-                  <SolidButton
-                    label="+ New Live Session"
-                    accent="green"
-                    icon={<Video className="h-4 w-4" />}
-                    onClick={() => safeNav(ROUTES.liveBuilder)}
-                    className="h-10 w-full justify-center px-4 xl:w-auto"
-                  />
-                  <GhostButton
-                    label="+ New Teaching"
-                    accent="navy"
-                    icon={<BookOpen className="h-4 w-4" />}
-                    onClick={() => safeNav(ROUTES.teachingsDashboard)}
-                    className="h-10 w-full justify-center px-4 xl:w-auto"
-                  />
-                  <GhostButton
-                    label="+ New Campaign"
-                    accent="orange"
-                    icon={<Wallet className="h-4 w-4" />}
-                    onClick={() => safeNav(ROUTES.donationsFunds)}
-                    className="h-10 w-full justify-center px-4 xl:w-auto"
-                  />
-                  <GhostButton
-                    label="+ New Ad"
-                    accent="orange"
-                    icon={<Megaphone className="h-4 w-4" />}
-                    onClick={() => safeNav(ROUTES.beaconBuilder)}
-                    className="h-10 w-full justify-center px-4 xl:w-auto"
-                  />
-                </div>
-              </div>
-
-              <div className="grid gap-3 sm:gap-4 lg:grid-cols-2">
-                <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4 sm:p-5">
-                  <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-faith-slate">
-                    Profile summary
-                  </div>
-                  <div className="mt-3 flex items-start gap-3">
-                    <div
-                      className="grid h-14 w-14 place-items-center rounded-xl text-white text-[18px] font-black"
-                      style={{ background: EV_GREEN }}
-                    >
-                      {profileInitials}
-                    </div>
-                    <div className="min-w-0">
-                      <div className="text-[20px] font-black tracking-tight text-faith-ink">
-                        {profileName}
-                      </div>
-                      <div className="mt-1 text-[13px] text-faith-slate">{profileRole}</div>
-                      <div className="text-[13px] text-faith-slate">
-                        {profileWorkspace}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="mt-4 flex flex-wrap items-center gap-2">
-                    <Pill
-                      text="Active"
-                      tone="good"
-                      left={<CheckCircle2 className="h-3.5 w-3.5" />}
-                    />
-                    <Pill
-                      text={campus}
-                      tone="navy"
-                      left={<LayoutDashboard className="h-3.5 w-3.5" />}
-                    />
-                    <Pill
-                      text={language}
-                      tone="brand"
-                      left={<Globe2 className="h-3.5 w-3.5" />}
-                    />
-                  </div>
-                </div>
-
-                <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4 sm:p-5">
-                  <div className="flex items-center justify-between gap-2">
-                    <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-faith-slate">
-                      Role-aware views
-                    </div>
-                    <Pill
-                      text={role}
-                      tone="navy"
-                      left={<Sparkles className="h-3.5 w-3.5" />}
-                    />
-                  </div>
-
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {ROLES.map((item) => (
-                      <RoleChip
-                        key={item}
-                        role={item}
-                        active={item === role}
-                        onClick={() => setRole(item)}
-                      />
-                    ))}
-                  </div>
-
-                  <div className="mt-4 grid gap-3 sm:grid-cols-3 xl:grid-cols-3">
-                    <div>
-                      <div className="text-[11px] font-semibold text-faith-slate">
-                        Campus
-                      </div>
-                      <div className="mt-1">
-                        <SelectPill
-                          value={campus}
-                          options={CAMPUSES}
-                          onChange={setCampus}
-                        />
-                      </div>
-                    </div>
-                    <div>
-                      <div className="text-[11px] font-semibold text-faith-slate">
-                        Language
-                      </div>
-                      <div className="mt-1">
-                        <SelectPill
-                          value={language}
-                          options={LANGUAGES}
-                          onChange={setLanguage}
-                        />
-                      </div>
-                    </div>
-                    <div>
-                      <div className="text-[11px] font-semibold text-faith-slate">
-                        Saved view
-                      </div>
-                      <div className="mt-1">
-                        <SelectPill
-                          value={role}
-                          options={ROLES}
-                          onChange={(value) => setRole(value as RoleKey)}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Executive command header */}
-            <div className="mt-4 rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4 sm:p-5">
-              <div className="flex flex-wrap items-start justify-between gap-3">
-                <div>
-                  <div className="text-[15px] font-bold tracking-tight text-faith-ink">
-                    Top KPIs
-                  </div>
-                  <div className="mt-1 text-[12px] text-faith-slate">
-                    Snapshot of audience growth, live readiness, replay performance, and giving health.
-                  </div>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  <GhostButton
-                    label="Open live dashboard"
-                    icon={<MonitorPlay className="h-4 w-4" />}
-                    accent="green"
-                    onClick={() => safeNav(ROUTES.liveDashboard)}
-                  />
-                  <GhostButton
-                    label="Open donor insights"
-                    icon={<DollarSign className="h-4 w-4" />}
-                    accent="orange"
-                    onClick={() => safeNav(ROUTES.donationsFunds)}
-                  />
-                  <GhostButton
-                    label="Review recommendations"
-                    icon={<Sparkles className="h-4 w-4" />}
-                    accent="navy"
-                    onClick={() => safeNav(ROUTES.reviewsModeration)}
-                  />
-                </div>
-              </div>
-
-              <div className="mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-                {metrics.slice(0, 4).map((metric) => (
-                  <MetricTile key={metric.id} metric={metric} />
-                ))}
-              </div>
-            </div>
-
-            {/* Quick-create rail */}
-            <div className="mt-4 rounded-lg border border-faith-line bg-[var(--fh-surface)] p-3 sm:p-4 md:p-5">
-              <div className="flex items-center justify-between gap-3">
-                <div>
-                  <div className="text-[15px] font-bold tracking-tight text-faith-ink">
-                    Quick-create rail
-                  </div>
-                  <div className="mt-1 text-[12px] text-faith-slate">
-                    Launch the most important provider workflows in one click.
-                  </div>
-                </div>
-                <Pill
-                  text="Role-aware defaults active"
-                  tone="good"
-                  left={<Sparkles className="h-3.5 w-3.5" />}
-                />
-              </div>
-              <div className="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
-                {QUICK_ACTIONS.map((action) => (
-                  <button
-                    key={action.id}
-                    type="button"
-                    onClick={() => openQuickAction(action.id)}
-                    className="rounded-lg border border-faith-line bg-[var(--fh-surface-bg)] p-4 text-left shadow-soft transition hover:-translate-y-[1px] hover:shadow-md"
-                  >
-                    <div
-                      className="grid h-10 w-10 place-items-center rounded-md text-white"
-                      style={{ background: accentBg(action.accent) }}
-                    >
-                      {action.icon}
-                    </div>
-                    <div className="mt-3 text-[14px] font-bold text-faith-ink">
-                      {action.label}
-                    </div>
-                    <div className="mt-1 text-[12px] leading-5 text-faith-slate">
-                      {action.detail}
-                    </div>
-                    <div className="mt-3 inline-flex items-center gap-1 text-[12px] font-semibold text-slate-700">
-                      Open <ArrowRight className="h-3.5 w-3.5" />
-                    </div>
-                  </button>
-                ))}
-              </div>
-            </div>
-          </section>
-          {/* Notifications / continue / search */}
-          <div className="grid gap-3 sm:gap-4 xl:grid-cols-2">
-            <SectionCard
-              title="Notifications"
-              subtitle="Live sessions, reminders, donor alerts, and Beacon tasks requiring immediate attention."
-              right={<Pill text={`${NOTIFICATIONS.length} active`} tone="navy" />}
-            >
-              <div className="space-y-3">
-                {NOTIFICATIONS.map((item) => (
-                  <div
-                    key={item.id}
-                    className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4"
-                  >
-                    <div className="flex items-start justify-between gap-3">
-                      <div className="min-w-0">
-                        <div className="text-[14px] font-bold text-faith-ink">
-                          {item.title}
-                        </div>
-                        <div className="mt-1 text-[12px] leading-5 text-faith-slate">
-                          {item.detail}
-                        </div>
-                      </div>
-                      <Pill text={item.badge} tone={item.tone} />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </SectionCard>
-
-            <SectionCard
-              title="Continue where you left off"
-              subtitle="Resume your latest journey across content, community, giving, and promotion."
-            >
-              <div className="space-y-3">
-                {CONTINUE_ITEMS.map((item) => (
-                  <button
-                    key={item.id}
-                    type="button"
-                    onClick={() => openContinueItem(item.cta)}
-                    className="w-full rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4 text-left transition hover:bg-[var(--fh-surface-bg)]"
-                  >
-                    <div className="flex items-start justify-between gap-2">
-                      <div className="min-w-0">
-                        <div className="text-[14px] font-bold text-faith-ink">
-                          {item.label}
-                        </div>
-                        <div className="mt-1 text-[12px] leading-5 text-faith-slate">
-                          {item.detail}
-                        </div>
-                      </div>
-                      <ChevronRight className="mt-1 h-4 w-4 shrink-0 text-faith-slate" />
-                    </div>
-                  </button>
-                ))}
-              </div>
-            </SectionCard>
-          </div>
-
-          <SectionCard
-            title="Search and filter"
-            subtitle="Find sessions, series, donors, events, reviews, or Beacon campaigns faster."
-          >
-            <div className="grid gap-3 xl:grid-cols-[minmax(0,1fr),160px,190px]">
-              <div className="relative">
-                <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-faith-slate" />
-                <input
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                  placeholder="Search live sessions, series, events, campaigns, reviews, or contacts"
-                  className="h-12 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] pl-11 pr-4 text-[13px] font-medium text-slate-700 outline-none focus:border-slate-300"
-                />
-              </div>
-              <SelectPill value={timeFilter} options={["Today", "This week", "This month"]} onChange={setTimeFilter} />
-              <SelectPill
-                value={objectFilter}
-                options={[
-                  "All categories",
-                  "Live Sessions",
-                  "Teachings",
-                  "Events",
-                  "Giving",
-                  "Beacon",
-                  "Trust queue",
-                ]}
-                onChange={setObjectFilter}
-              />
-            </div>
-          </SectionCard>
-
-          {/* Main dashboard modules */}
-          <div className="grid gap-3 sm:gap-4 xl:grid-cols-12">
-            <SectionCard
-              title="Live Sessions command center"
-              subtitle="Todayâ€™s schedule, readiness state, late-start warnings, stream health, backstage availability, and one-click handoff into operations."
-              className="xl:col-span-7"
-              right={
-                <div className="flex flex-wrap gap-2">
-                  <GhostButton
-                    label="Open Live Schedule"
-                    icon={<CalendarClock className="h-4 w-4" />}
-                    accent="green"
-                    onClick={() => safeNav(ROUTES.liveSchedule)}
-                  />
-                  <SolidButton
-                    label="Open session dashboard"
-                    accent="green"
-                    icon={<MonitorPlay className="h-4 w-4" />}
-                    onClick={() => safeNav(`${ROUTES.liveDashboard}?sessionId=${encodeURIComponent(LIVE_SESSIONS[0]?.id ?? "ls-1")}`)}
-                  />
-                </div>
-              }
-            >
-              <div className="space-y-3">
-                {LIVE_SESSIONS.map((item) => (
-                  <div
-                    key={item.id}
-                    className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4"
-                  >
-                    <div className="flex flex-col gap-3 xl:flex-row xl:items-center xl:justify-between">
-                      <div className="min-w-0">
-                        <div className="flex flex-wrap items-center gap-2">
-                          <div className="text-[16px] font-bold tracking-tight text-faith-ink">
-                            {item.title}
-                          </div>
-                          <Pill
-                            text={item.readiness}
-                            tone={
-                              item.readiness === "Ready"
-                                ? "good"
-                                : item.readiness === "At risk"
-                                  ? "warn"
-                                  : "danger"
-                            }
-                          />
-                          <Pill
-                            text={item.health}
-                            tone={
-                              item.health === "Healthy"
-                                ? "good"
-                                : item.health === "Watching"
-                                  ? "warn"
-                                  : "danger"
-                            }
-                          />
-                        </div>
-                        <div className="mt-2 flex flex-wrap items-center gap-2 text-[12px] text-faith-slate">
-                          <span>{item.time}</span>
-                          <span>â€¢</span>
-                          <span>{item.campus}</span>
-                          <span>â€¢</span>
-                          <span>{item.audience}</span>
-                        </div>
-                        <div className="mt-2 text-[12px] font-medium text-slate-700">
-                          {item.backstage}
-                        </div>
-                        {item.warning ? (
-                          <div className="mt-2 inline-flex items-center gap-1 rounded-full bg-amber-50 px-2.5 py-1 text-[11px] font-semibold text-amber-700">
-                            <AlertTriangle className="h-3.5 w-3.5" />
-                            {item.warning}
-                          </div>
-                        ) : null}
-                      </div>
-
-                      <div className="flex flex-wrap gap-2">
-                        <GhostButton
-                          label="Launch studio"
-                          icon={<Video className="h-4 w-4" />}
-                          accent="green"
-                          onClick={() => safeNav(`${ROUTES.liveStudio}?sessionId=${encodeURIComponent(item.id)}`)}
-                        />
-                        <GhostButton
-                          label="Send reminder"
-                          icon={<Bell className="h-4 w-4" />}
-                          accent="orange"
-                          onClick={() => safeNav(`${ROUTES.audienceNotifications}?sessionId=${encodeURIComponent(item.id)}`)}
-                        />
-                        <GhostButton
-                          label="Moderation"
-                          icon={<ShieldCheck className="h-4 w-4" />}
-                          accent="navy"
-                          onClick={() => safeNav(`${ROUTES.reviewsModeration}?sessionId=${encodeURIComponent(item.id)}&panel=live`)}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </SectionCard>
-
-            <SectionCard
-              title="Content pipeline panel"
-              subtitle="Drafts awaiting completion, unpublished replays, clip opportunities, upcoming episode deadlines, and blocked teaching work."
-              className="xl:col-span-5"
-              right={<Pill text="4 open items" tone="navy" />}
-            >
-              <div className="space-y-3">
-                {PIPELINE_ITEMS.map((item) => (
-                  <div
-                    key={item.id}
-                    className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4"
-                  >
-                    <div className="flex items-start justify-between gap-3">
-                      <div className="min-w-0">
-                        <div className="text-[14px] font-bold text-faith-ink">
-                          {item.title}
-                        </div>
-                        <div className="mt-1 text-[12px] text-faith-slate">
-                          {item.type} Â· {item.owner} Â· Due {item.due}
-                        </div>
-                      </div>
-                      <Pill
-                        text={item.status}
-                        tone={
-                          item.status === "Ready to publish"
-                            ? "good"
-                            : item.status === "Clip opportunity"
-                              ? "brand"
-                              : item.status === "Missing assets"
-                                ? "warn"
-                                : "navy"
-                        }
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </SectionCard>
-
-            <SectionCard
-              title="Audience and outreach summary"
-              subtitle="Growth, contact health, journey performance, and the segments driving the strongest ministry outcomes."
-              className="xl:col-span-4"
-              right={
-                <GhostButton
-                  label="Open audience tools"
-                  icon={<Users className="h-4 w-4" />}
-                  accent="green"
-                  onClick={() => safeNav(ROUTES.audienceNotifications)}
-                />
-              }
-            >
-              <div className="grid gap-3">
-                {AUDIENCE_STATS.map((item) => (
-                  <div
-                    key={item.id}
-                    className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4"
-                  >
-                    <div className="flex items-start justify-between gap-3">
-                      <div>
-                        <div className="text-[12px] font-semibold uppercase tracking-[0.14em] text-faith-slate">
-                          {item.label}
-                        </div>
-                        <div className="mt-2 text-[24px] font-black tracking-tight text-faith-ink">
-                          {item.value}
-                        </div>
-                        <div className="mt-1 text-[12px] leading-5 text-faith-slate">
-                          {item.sublabel}
-                        </div>
-                      </div>
-                      {item.tone ? <Pill text={item.tone === "good" ? "Healthy" : item.tone === "brand" ? "High performer" : item.tone === "warn" ? "Watch" : "Focus"} tone={item.tone} /> : null}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </SectionCard>
-
-            <SectionCard
-              title="Giving and campaign snapshot"
-              subtitle="Giving totals, recurring donor movement, active campaign momentum, crowdfund progress, and urgency signals."
-              className="xl:col-span-4"
-              right={
-                <GhostButton
-                  label="Open donor insights"
-                  icon={<HeartHandshake className="h-4 w-4" />}
-                  accent="orange"
-                  onClick={() => safeNav(ROUTES.donationsFunds)}
-                />
-              }
-            >
-              <div className="space-y-3">
-                {GIVING_CAMPAIGNS.map((item) => (
-                  <div
-                    key={item.id}
-                    className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4"
-                  >
-                    <div className="flex items-start justify-between gap-3">
-                      <div className="min-w-0">
-                        <div className="text-[14px] font-bold text-faith-ink">
-                          {item.title}
-                        </div>
-                        <div className="mt-1 text-[12px] text-faith-slate">
-                          {item.type}
-                        </div>
-                      </div>
-                      <Pill
-                        text={item.status}
-                        tone={
-                          item.status === "Stable"
-                            ? "good"
-                            : item.status === "Urgent"
-                              ? "danger"
-                              : item.status === "Ending soon"
-                                ? "warn"
-                                : "navy"
-                        }
-                      />
-                    </div>
-                    <div className="mt-3 flex items-center justify-between text-[12px] font-semibold text-slate-700">
-                      <span>{item.amount}</span>
-                      <span>{item.progress}%</span>
-                    </div>
-                    <div className="mt-2">
-                      <ProgressBar
-                        value={item.progress}
-                        accent={item.type === "Charity crowdfund" ? "orange" : "green"}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </SectionCard>
-
-            <SectionCard
-              title="Beacon performance strip"
-              subtitle="Spend, reach, creative fatigue, approvals, best performers, and ads needing optimization."
-              className="xl:col-span-4"
-              right={
-                <GhostButton
-                  label="Open Beacon Dashboard"
-                  icon={<Megaphone className="h-4 w-4" />}
-                  accent="orange"
-                  onClick={() => safeNav(ROUTES.beaconDashboard)}
-                />
-              }
-            >
-              <div className="space-y-3">
-                {BEACON_ITEMS.map((item) => (
-                  <div
-                    key={item.id}
-                    className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4"
-                  >
-                    <div className="flex items-start justify-between gap-3">
-                      <div className="min-w-0">
-                        <div className="text-[14px] font-bold text-faith-ink">
-                          {item.title}
-                        </div>
-                        <div className="mt-1 text-[12px] text-faith-slate">
-                          {item.mode} campaign Â· {item.spend}
-                        </div>
-                      </div>
-                      <Pill
-                        text={item.status}
-                        tone={
-                          item.status === "Healthy"
-                            ? "good"
-                            : item.status === "Learning"
-                              ? "navy"
-                              : item.status === "Needs approval"
-                                ? "warn"
-                                : "danger"
-                        }
-                      />
-                    </div>
-                    <div className="mt-2 text-[12px] font-semibold text-slate-700">
-                      {item.outcome}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </SectionCard>
-
-            <SectionCard
-              title="Trust, moderation, and review queue"
-              subtitle="Reported content, review trends, unanswered reviews, moderation backlog, and sentiment shifts in one premium queue."
-              className="xl:col-span-7"
-              right={
-                <div className="flex flex-wrap gap-2">
-                  <GhostButton
-                    label="Open moderation"
-                    icon={<ShieldCheck className="h-4 w-4" />}
-                    accent="navy"
-                    onClick={() => safeNav(ROUTES.reviewsModeration)}
-                  />
-                  <GhostButton
-                    label="Respond to reviews"
-                    icon={<MessageSquare className="h-4 w-4" />}
-                    accent="green"
-                    onClick={() => safeNav(ROUTES.reviewsModeration)}
-                  />
-                </div>
-              }
-            >
-              <div className="grid gap-3 sm:grid-cols-2">
-                {TRUST_CASES.map((item) => (
-                  <div
-                    key={item.id}
-                    className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4"
-                  >
-                    <div className="flex items-start justify-between gap-3">
-                      <div className="min-w-0">
-                        <div className="text-[14px] font-bold text-faith-ink">
-                          {item.title}
-                        </div>
-                        <div className="mt-1 text-[12px] text-faith-slate">
-                          {item.source} Â· {item.owner}
-                        </div>
-                      </div>
-                      <Pill
-                        text={item.priority}
-                        tone={
-                          item.priority === "Critical"
-                            ? "danger"
-                            : item.priority === "High"
-                              ? "warn"
-                              : "navy"
-                        }
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </SectionCard>
-
-            <SectionCard
-              title="Role-aware insight cards"
-              subtitle="Saved views, recommendations, and cross-object actions for leadership, production, outreach, finance, promotion, and moderation."
-              className="xl:col-span-5"
-              right={<Pill text={`${role} view`} tone="navy" />}
-            >
-              <div className="space-y-3">
-                {recommendations.map((item) => (
-                  <div
-                    key={item.id}
-                    className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4"
-                  >
-                    <div className="flex items-start justify-between gap-3">
-                      <div className="min-w-0">
-                        <div className="text-[14px] font-bold text-faith-ink">
-                          {item.title}
-                        </div>
-                        <div className="mt-1 text-[12px] leading-5 text-faith-slate">
-                          {item.detail}
-                        </div>
-                      </div>
-                      <Pill text={item.tone === "good" ? "Recommended" : item.tone === "warn" ? "Needs action" : item.tone === "brand" ? "Growth idea" : "Review"} tone={item.tone} />
-                    </div>
-                    <button
-                      type="button"
-                      onClick={() => openRecommendation(item.cta)}
-                      className="mt-3 inline-flex items-center gap-1 text-[12px] font-semibold text-slate-700"
-                    >
-                      {item.cta} <ArrowRight className="h-3.5 w-3.5" />
-                    </button>
-                  </div>
-                ))}
-              </div>
-            </SectionCard>
-          </div>
-
-          {/* Analytics strip */}
-          <SectionCard
-            title="Analytics strip"
-            subtitle="Fast-glance operating metrics for attendance, giving, registrations, engaged members, and content views."
-            right={<Pill text={`Role: ${role.toLowerCase()}`} tone="navy" />}
-          >
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-5">
-              {[
-                {
-                  label: "Live attendance",
-                  value: "378",
-                  hint: "Audience in recent live sessions",
-                  accent: "green" as const,
-                  icon: <Radio className="h-4 w-4" />,
-                },
-                {
-                  label: "Donations received",
-                  value: "$16,010",
-                  hint: "Funds raised across active campaigns",
-                  accent: "orange" as const,
-                  icon: <DollarSign className="h-4 w-4" />,
-                },
-                {
-                  label: "Event registrations",
-                  value: "142",
-                  hint: "Registrations awaiting event day",
-                  accent: "navy" as const,
-                  icon: <CalendarClock className="h-4 w-4" />,
-                },
-                {
-                  label: "Active members",
-                  value: "48",
-                  hint: "Engaged followers and participants",
-                  accent: "green" as const,
-                  icon: <Users className="h-4 w-4" />,
-                },
-                {
-                  label: "Content views",
-                  value: "12,900",
-                  hint: "Total views from series and live replays",
-                  accent: "navy" as const,
-                  icon: <Activity className="h-4 w-4" />,
-                },
-              ].map((item) => (
-                <div
-                  key={item.label}
-                  className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 min-h-[170px] shadow-soft"
-                >
-                  <div className="flex items-center justify-between gap-3">
-                    <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-faith-slate">
-                      {item.label}
-                    </div>
-                    <div
-                      className="grid h-12 w-12 place-items-center rounded-lg"
-                      style={{
-                        background:
-                          item.accent === "green"
-                            ? "rgba(3,205,140,0.12)"
-                            : item.accent === "orange"
-                              ? "rgba(247,127,0,0.12)"
-                              : "rgba(22,36,76,0.10)",
-                        color: accentBg(item.accent),
-                      }}
-                    >
-                      {item.icon}
-                    </div>
-                  </div>
-                  <div className="mt-3 text-[30px] font-black leading-none tracking-[-0.02em] text-faith-ink">
-                    {item.value}
-                  </div>
-                  <div className="mt-2 text-[13px] leading-5 text-faith-slate">
-                    {item.hint}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </SectionCard>
-        </div>
-      </div>
-
-    </div>
-  );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
