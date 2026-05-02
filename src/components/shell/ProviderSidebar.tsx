@@ -36,42 +36,42 @@ const topbarOffsetMobile = 110;
 const topbarOffsetDesktop = 138;
 
 const sectionLabelMap: Partial<Record<(typeof providerSections)[number], string>> = {
-  'Foundation & Mission Control': 'Core',
-  'Content Structure & Teaching Creation': 'Content',
-  'Live Sessions Operations': 'Streams',
-  'Audience & Outreach': 'Outreach',
-  'Post-live & Trust': 'Post-live',
-  'Events & Giving': 'Giving',
-  Beacon: 'Beacon',
+  'Foundation & Mission Control': 'Continue',
+  'Content Structure & Teaching Creation': 'Create',
+  'Live Sessions Operations': 'Publish',
+  'Audience & Outreach': 'Published',
+  'Post-live & Trust': 'Review',
+  'Events & Giving': 'Analytics',
+  Beacon: 'Reach',
   'Community & Care': 'Community',
-  'Leadership & Team': 'Leadership',
+  'Leadership & Team': 'Team',
   'Workspace Settings': 'Settings',
 };
 
 const expandedDrawerWidth = 318;
 const collapsedDrawerWidth = 88;
 const sectionIconMap: Record<string, typeof GridViewRoundedIcon> = {
-  Core: GridViewRoundedIcon,
-  Content: MenuBookRoundedIcon,
-  Streams: LiveTvRoundedIcon,
-  Outreach: CampaignRoundedIcon,
-  'Post-live': MovieFilterRoundedIcon,
-  Giving: VolunteerActivismRoundedIcon,
-  Beacon: BoltRoundedIcon,
+  Continue: GridViewRoundedIcon,
+  Create: MenuBookRoundedIcon,
+  Publish: LiveTvRoundedIcon,
+  Published: CampaignRoundedIcon,
+  Review: MovieFilterRoundedIcon,
+  Analytics: VolunteerActivismRoundedIcon,
+  Reach: BoltRoundedIcon,
   Community: GroupsRoundedIcon,
-  Leadership: SupervisorAccountRoundedIcon,
+  Team: SupervisorAccountRoundedIcon,
   Settings: SettingsRoundedIcon,
 };
 const sectionToneMap: Record<string, { icon: string; bg: string; border: string }> = {
-  Core: { icon: '#00b57a', bg: '#e9f8f2', border: '#bfe9d9' },
-  Content: { icon: '#f77f00', bg: '#fff2e4', border: '#ffd7ad' },
-  Streams: { icon: '#64748b', bg: '#edf1f5', border: '#d5dde6' },
-  Outreach: { icon: '#00b57a', bg: '#e9f8f2', border: '#bfe9d9' },
-  'Post-live': { icon: '#f77f00', bg: '#fff2e4', border: '#ffd7ad' },
-  Giving: { icon: '#64748b', bg: '#edf1f5', border: '#d5dde6' },
-  Beacon: { icon: '#00b57a', bg: '#e9f8f2', border: '#bfe9d9' },
+  Continue: { icon: '#00b57a', bg: '#e9f8f2', border: '#bfe9d9' },
+  Create: { icon: '#f77f00', bg: '#fff2e4', border: '#ffd7ad' },
+  Publish: { icon: '#64748b', bg: '#edf1f5', border: '#d5dde6' },
+  Published: { icon: '#00b57a', bg: '#e9f8f2', border: '#bfe9d9' },
+  Review: { icon: '#f77f00', bg: '#fff2e4', border: '#ffd7ad' },
+  Analytics: { icon: '#64748b', bg: '#edf1f5', border: '#d5dde6' },
+  Reach: { icon: '#00b57a', bg: '#e9f8f2', border: '#bfe9d9' },
   Community: { icon: '#f77f00', bg: '#fff2e4', border: '#ffd7ad' },
-  Leadership: { icon: '#64748b', bg: '#edf1f5', border: '#d5dde6' },
+  Team: { icon: '#64748b', bg: '#edf1f5', border: '#d5dde6' },
   Settings: { icon: '#64748b', bg: '#edf1f5', border: '#d5dde6' },
 };
 

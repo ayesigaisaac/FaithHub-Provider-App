@@ -1,4 +1,4 @@
-// @ts-nocheck
+ï»¿// @ts-nocheck
 
 "use client";
 
@@ -42,7 +42,7 @@ import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { useAuth } from "@/auth/useAuth";
 
 /**
- * Provider — Provider Dashboard
+ * Provider â€” Provider Dashboard
  * --------------------------------------
  * Premium provider-side mission control page.
  *
@@ -497,7 +497,7 @@ const EXECUTIVE_METRICS: Record<RoleKey, MetricCard[]> = {
     {
       id: "spend",
       label: "Beacon spend",
-      value: "£3.9k",
+      value: "Â£3.9k",
       hint: "Current spend against plan and placement pacing",
       delta: "64% pace",
       accent: "orange",
@@ -680,20 +680,20 @@ const LIVE_SESSIONS: LiveSessionRow[] = [
   {
     id: "ls-1",
     title: "Evening Prayer Revival",
-    time: "18:30 — 19:45",
+    time: "18:30 â€” 19:45",
     campus: "Kampala Central",
-    audience: "Prayer community · Public",
+    audience: "Prayer community Â· Public",
     readiness: "At risk",
     health: "Watching",
-    backstage: "Host joined · Captioner pending",
+    backstage: "Host joined Â· Captioner pending",
     warning: "Caption operator check still open",
   },
   {
     id: "ls-2",
     title: "Faith & Work Midweek Class",
-    time: "20:00 — 21:00",
+    time: "20:00 â€” 21:00",
     campus: "Online Studio",
-    audience: "Series audience · Members first",
+    audience: "Series audience Â· Members first",
     readiness: "Ready",
     health: "Healthy",
     backstage: "All roles confirmed",
@@ -703,10 +703,10 @@ const LIVE_SESSIONS: LiveSessionRow[] = [
     title: "Youth Outreach Q&A",
     time: "Sat 15:00",
     campus: "Youth Hall",
-    audience: "Youth ministry · RSVP",
+    audience: "Youth ministry Â· RSVP",
     readiness: "Blocked",
     health: "Watching",
-    backstage: "Moderator gap · venue AV unresolved",
+    backstage: "Moderator gap Â· venue AV unresolved",
     warning: "Venue mic routing conflict detected",
   },
 ];
@@ -714,7 +714,7 @@ const LIVE_SESSIONS: LiveSessionRow[] = [
 const PIPELINE_ITEMS: PipelineItem[] = [
   {
     id: "p-1",
-    title: "Hope in the Wilderness — Episode 02",
+    title: "Hope in the Wilderness â€” Episode 02",
     type: "Episode draft",
     status: "Missing assets",
     owner: "Content editor",
@@ -722,7 +722,7 @@ const PIPELINE_ITEMS: PipelineItem[] = [
   },
   {
     id: "p-2",
-    title: "Stand Firm — Standalone Teaching",
+    title: "Stand Firm â€” Standalone Teaching",
     type: "Standalone teaching",
     status: "Awaiting review",
     owner: "Pastoral review",
@@ -808,7 +808,7 @@ const BEACON_ITEMS: BeaconItem[] = [
     id: "b-1",
     title: "Sunday Encounter replay boost",
     mode: "Linked",
-    spend: "£1.2k",
+    spend: "Â£1.2k",
     outcome: "784 watch starts",
     status: "Healthy",
   },
@@ -816,7 +816,7 @@ const BEACON_ITEMS: BeaconItem[] = [
     id: "b-2",
     title: "Youth Camp registration push",
     mode: "Linked",
-    spend: "£820",
+    spend: "Â£820",
     outcome: "41 registrations",
     status: "Learning",
   },
@@ -824,7 +824,7 @@ const BEACON_ITEMS: BeaconItem[] = [
     id: "b-3",
     title: "Care & Missions awareness",
     mode: "Standalone",
-    spend: "£460",
+    spend: "Â£460",
     outcome: "183 giving clicks",
     status: "Needs approval",
   },
@@ -832,7 +832,7 @@ const BEACON_ITEMS: BeaconItem[] = [
     id: "b-4",
     title: "Prayer Night announcement",
     mode: "Standalone",
-    spend: "£210",
+    spend: "Â£210",
     outcome: "CTR softening",
     status: "Fatigue risk",
   },
@@ -842,21 +842,21 @@ const TRUST_CASES: TrustCase[] = [
   {
     id: "t-1",
     title: "Audio complaint cluster on Prayer Night replay",
-    source: "Reviews · Replay",
+    source: "Reviews Â· Replay",
     priority: "High",
     owner: "Production team",
   },
   {
     id: "t-2",
     title: "Reported chat messages during Youth Outreach live",
-    source: "Moderation · Live chat",
+    source: "Moderation Â· Live chat",
     priority: "Critical",
     owner: "Moderator lead",
   },
   {
     id: "t-3",
     title: "Flagged clip comment thread",
-    source: "Clips · Public comments",
+    source: "Clips Â· Public comments",
     priority: "Medium",
     owner: "Community manager",
   },
@@ -884,7 +884,7 @@ const RECOMMENDATIONS_BY_ROLE: Record<
     {
       id: "r-2",
       title: "Convert Flood Relief into a live fundraiser moment",
-      detail: "Tonight’s prayer stream is the strongest fit for donor urgency and public momentum.",
+      detail: "Tonightâ€™s prayer stream is the strongest fit for donor urgency and public momentum.",
       cta: "Open Live Builder",
       tone: "good",
     },
@@ -959,7 +959,7 @@ const RECOMMENDATIONS_BY_ROLE: Record<
     },
     {
       id: "r-3",
-      title: "Insert a giving moment into tonight’s live",
+      title: "Insert a giving moment into tonightâ€™s live",
       detail: "Prayer Night already has strong attendance forecasts and could support a clear donor CTA.",
       cta: "Open Live Builder",
       tone: "good",
@@ -1287,7 +1287,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
   const [actionToast, setActionToast] = useState<string | null>(null);
   const metrics = useMemo(() => EXECUTIVE_METRICS[role], [role]);
   const recommendations = useMemo(() => RECOMMENDATIONS_BY_ROLE[role], [role]);
-  const primaryCtaLabel = "Start New Task";
+  const primaryCtaLabel = "Create Teaching";
   const workflowSourceItems = workflowItemsOverride ?? PIPELINE_ITEMS;
   const workflowData = useMemo(() => deriveTeachingWorkflowData(workflowSourceItems), [workflowSourceItems]);
   const { teachingItems, recentTeachings, continueItem, pendingWork, needsReviewCount } = workflowData;
@@ -1435,7 +1435,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                   style={{ background: EV_GREEN, boxShadow: "0 10px 24px -14px rgba(3,205,140,0.85)" }}
                 >
                   <Plus className="h-4 w-4" />
-                  Start New Task
+                  Create Teaching
                 </button>
                 <p className="mt-3 text-[12px] font-medium text-slate-700">
                   Start your first teaching
@@ -1458,7 +1458,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                 <ProviderPageTitle
                   icon={<BookOpen className="h-6 w-6" />}
                   title="Teachings Workflow"
-                  subtitle="Continue, review recent teaching updates, and finish pending content tasks."
+                  subtitle="Continue editing, manage drafts, and publish completed teachings."
                   className="mt-2"
                 />
                 <div className="min-w-[260px] rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3 shadow-soft">
@@ -1476,13 +1476,13 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                     {primaryCtaLabel}
                   </button>
                   <p className="mt-2 text-center text-[12px] font-medium text-slate-700">
-                    Get started by creating your first order.
+                    Get started by creating your first teaching.
                   </p>
                 </div>
               </div>
               <div className="mt-4 flex flex-wrap items-center gap-2">
-                <Pill text={`${filteredRecentTeachings.length} Recent`} tone="navy" />
-                <Pill text={`${filteredPendingWork.length} Pending`} tone="warn" />
+                <Pill text={`${filteredRecentTeachings.length} Published`} tone="navy" />
+                <Pill text={`${filteredPendingWork.length} Drafts`} tone="warn" />
                 <Pill text={`${needsReviewCount} Needs review`} tone="brand" />
               </div>
             </section>
@@ -1498,7 +1498,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                 <div className="flex flex-wrap items-start justify-between gap-4">
                   <div className="min-w-0">
                     <h2 className="text-[22px] font-black tracking-tight text-faith-ink sm:text-[26px]">
-                      Continue where you left off
+                      Continue Editing
                     </h2>
                     <p className="mt-1 text-[13px] leading-6 text-slate-700">
                       Pick up your latest teaching workflow instantly.
@@ -1538,15 +1538,15 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
             ) : null}
 
             <SectionCard
-              title="Recent teachings"
-              subtitle="Your latest teaching content updates."
+              title="Published teachings"
+              subtitle="Published sermons ready to open, review, and share."
               titleTag="h2"
               right={
                 <div className="flex items-center gap-2">
                   <Pill text={`${filteredRecentTeachings.length} items`} tone="navy" />
                   <button
                     type="button"
-                    aria-label={isRecentCollapsed ? "Expand recent teachings" : "Collapse recent teachings"}
+                    aria-label={isRecentCollapsed ? "Expand published teachings" : "Collapse published teachings"}
                     onClick={() => {
                       const next = !isRecentCollapsed;
                       setIsRecentCollapsed(next);
@@ -1606,7 +1606,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                     key={item.id}
                     role="button"
                     tabIndex={0}
-                    aria-label={`Open recent item ${item.title}`}
+                    aria-label={`Open published teaching ${item.title}`}
                     onClick={() => {
                       trackDashboardEvent("open_recent_item", { item_id: item.id });
                       openTeachingItem(item.id);
@@ -1672,15 +1672,15 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
             </SectionCard>
 
             <SectionCard
-              title="Pending work"
-              subtitle="Drafts and reviews that need your attention."
+              title="My drafts"
+              subtitle="Draft sermons and review items that still need work."
               titleTag="h2"
               right={
                 <div className="flex items-center gap-2">
-                  <Pill text={`${filteredPendingWork.length} pending`} tone="warn" />
+                  <Pill text={`${filteredPendingWork.length} drafts`} tone="warn" />
                   <button
                     type="button"
-                    aria-label={isPendingCollapsed ? "Expand pending work" : "Collapse pending work"}
+                    aria-label={isPendingCollapsed ? "Expand my drafts" : "Collapse my drafts"}
                     onClick={() => {
                       const next = !isPendingCollapsed;
                       setIsPendingCollapsed(next);
@@ -1738,7 +1738,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                 {!isWorkflowLoading && filteredPendingWork.length === 0 ? (
                   <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-4 py-6 text-center">
                     <div className="text-[14px] font-bold text-faith-ink">
-                      No pending work, you're all caught up.
+                      No drafts pending, you're all caught up.
                     </div>
                     <div className="mt-1 text-[12px] text-slate-700">
                       Great work. New drafts and review requests will appear here.
@@ -1751,7 +1751,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                       <div className="min-w-0">
                         <h3 className="text-[14px] font-bold text-faith-ink">{item.title}</h3>
                         <p className="mt-1 text-[12px] text-slate-700">
-                          {item.type} · Updated {formatLastEdited(item.updatedAt)}
+                          {item.type} Â· Updated {formatLastEdited(item.updatedAt)}
                         </p>
                       </div>
                       <Pill text={item.status === "Draft" ? "Draft" : "Needs review"} tone="warn" />
@@ -1806,3 +1806,5 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
   }
 
 }
+
+

@@ -12,28 +12,28 @@ export interface SidebarSection {
 export const sidebarSections: SidebarSection[] = [
   {
     id: 'core',
-    title: 'CORE',
+    title: 'CONTINUE',
     items: [
-      { label: 'Dashboard', path: '/dashboard-ui' },
-      { label: 'Provider Dashboard', path: '/faithhub/provider/dashboard' },
+      { label: 'Continue Editing', path: '/dashboard-ui' },
+      { label: 'Workflow Dashboard', path: '/faithhub/provider/dashboard' },
     ],
   },
   {
     id: 'content',
-    title: 'CONTENT',
+    title: 'CREATE & DRAFTS',
     items: [
-      { label: 'Teachings Dashboard', path: '/faithhub/provider/teachings-dashboard' },
-      { label: 'Series Dashboard', path: '/faithhub/provider/series-dashboard' },
-      { label: 'Resources Manager', path: '/faithhub/provider/resources-manager' },
+      { label: 'All Teachings', path: '/faithhub/provider/teachings-dashboard' },
+      { label: 'Manage Content', path: '/faithhub/provider/series-dashboard' },
+      { label: 'Create Teaching Assets', path: '/faithhub/provider/resources-manager' },
     ],
   },
   {
     id: 'live',
-    title: 'LIVE',
+    title: 'PUBLISH',
     items: [
-      { label: 'Live Builder', path: '/faithhub/provider/live-builder' },
-      { label: 'Live Schedule', path: '/faithhub/provider/live-schedule' },
-      { label: 'Live Dashboard', path: '/faithhub/provider/live-dashboard' },
+      { label: 'Create Teaching Live', path: '/faithhub/provider/live-builder' },
+      { label: 'Publish Schedule', path: '/faithhub/provider/live-schedule' },
+      { label: 'Publishing Monitor', path: '/faithhub/provider/live-dashboard' },
     ],
   },
   {

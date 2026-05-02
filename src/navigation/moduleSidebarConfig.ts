@@ -51,10 +51,10 @@ export const moduleSidebarConfig: SidebarModule[] = [
     title: 'CORE',
     icon: LayoutDashboard,
     items: [
-      { label: 'Overview', description: 'Workspace performance and operational pulse at a glance.', route: '/dashboard-ui', icon: Gauge },
+      { label: 'Continue Editing', description: 'Jump back into your active teaching workflow immediately.', route: '/dashboard-ui', icon: Gauge },
       {
-        label: 'Provider Dashboard',
-        description: 'Primary command center for ministry workflows and updates.',
+        label: 'Workflow Dashboard',
+        description: 'Action-first dashboard for creating, editing, and publishing teachings.',
         route: '/faithhub/provider/dashboard',
         icon: LayoutDashboard,
       },
@@ -65,20 +65,20 @@ export const moduleSidebarConfig: SidebarModule[] = [
     icon: BookOpen,
     items: [
       {
-        label: 'Teachings Dashboard',
-        description: 'Manage sermon collections, standalones, and publishing readiness.',
+        label: 'All Teachings',
+        description: 'View all teachings by state and take the next action quickly.',
         route: '/faithhub/provider/teachings-dashboard',
         icon: BookOpen,
       },
       {
-        label: 'Series Dashboard',
-        description: 'Organize teaching series, episodes, and narrative structure.',
+        label: 'Manage Content',
+        description: 'Organize series, episodes, and draft structure for publishing.',
         route: '/faithhub/provider/series-dashboard',
         icon: FileText,
       },
       {
-        label: 'Resources Manager',
-        description: 'Maintain downloadable files, notes, and supplementary material.',
+        label: 'Create Teaching Assets',
+        description: 'Prepare notes, files, and support material for active teachings.',
         route: '/faithhub/provider/resources-manager',
         icon: FileText,
       },
@@ -89,20 +89,20 @@ export const moduleSidebarConfig: SidebarModule[] = [
     icon: Video,
     items: [
       {
-        label: 'Live Builder',
-        description: 'Prepare live sessions with agenda blocks and stream metadata.',
+        label: 'Create Teaching Live',
+        description: 'Prepare live teaching sessions and publishing metadata.',
         route: '/faithhub/provider/live-builder',
         icon: Video,
       },
       {
-        label: 'Live Schedule',
-        description: 'Coordinate upcoming broadcasts, reminders, and delivery windows.',
+        label: 'Publish Schedule',
+        description: 'Plan publish windows, reminders, and broadcast timing.',
         route: '/faithhub/provider/live-schedule',
         icon: CalendarDays,
       },
       {
-        label: 'Live Dashboard',
-        description: 'Monitor stream health, audience activity, and runtime controls.',
+        label: 'Publishing Monitor',
+        description: 'Monitor delivery health and publishing outcomes in real time.',
         route: '/faithhub/provider/live-dashboard',
         icon: RadioTower,
       },
