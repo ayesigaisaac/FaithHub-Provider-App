@@ -19,6 +19,8 @@ import type { ReactNode } from 'react';
 import { navigateWithRouter } from '@/navigation/routerNavigate';
 import { providerPages } from '@/navigation/providerPages';
 
+const RECENT_COMMANDS_KEY = 'fh.provider.search.recents.v1';
+
 type PaletteItem = {
   id: string;
   title: string;
@@ -45,6 +47,7 @@ export function SearchCommandDialog({
   returnFocusEl?: HTMLElement | null;
 }) {
   const [highlightIndex, setHighlightIndex] = useState(0);
+  const [recentIds, setRecentIds] = useState<string[]>([]);
   const inputRef = useRef<HTMLInputElement | null>(null);
   const hasQuery = Boolean(query.trim());
   const normalizedQuery = query.trim().toLowerCase();
@@ -137,9 +140,34 @@ export function SearchCommandDialog({
       .map((entry) => entry.item);
   }, [normalizedQuery, query]);
 
+  const commandById = useMemo(() => new Map(commands.map((command) => [command.id, command])), [commands]);
+  const recentCommands = useMemo(
+    () =>
+      recentIds
+        .map((id) => commandById.get(id))
+        .filter((item): item is PaletteItem => Boolean(item))
+        .slice(0, 5),
+    [commandById, recentIds],
+  );
+
+  const actionCommands = useMemo(() => commands.filter((item) => item.group === 'Action'), [commands]);
+  const pageCommands = useMemo(() => commands.filter((item) => item.group === 'Page'), [commands]);
+
   useEffect(() => {
     setHighlightIndex(0);
   }, [normalizedQuery, open]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    try {
+      const raw = window.localStorage.getItem(RECENT_COMMANDS_KEY);
+      if (!raw) return;
+      const parsed = JSON.parse(raw) as string[];
+      if (Array.isArray(parsed)) setRecentIds(parsed.filter((item) => typeof item === 'string').slice(0, 5));
+    } catch {
+      // no-op
+    }
+  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -162,6 +190,16 @@ export function SearchCommandDialog({
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
   }, [open, onClose]);
+
+  const rememberRecent = (id: string) => {
+    setRecentIds((prev) => {
+      const next = [id, ...prev.filter((entry) => entry !== id)].slice(0, 5);
+      if (typeof window !== 'undefined') {
+        window.localStorage.setItem(RECENT_COMMANDS_KEY, JSON.stringify(next));
+      }
+      return next;
+    });
+  };
 
   return (
     <Backdrop
@@ -225,7 +263,11 @@ export function SearchCommandDialog({
                     setHighlightIndex((prev) => (prev - 1 + commands.length) % commands.length);
                   } else if (event.key === 'Enter') {
                     event.preventDefault();
-                    commands[highlightIndex]?.onSelect();
+                    const selected = commands[highlightIndex];
+                    if (selected) {
+                      rememberRecent(selected.id);
+                      selected.onSelect();
+                    }
                     onClose();
                   } else if (event.key === 'Escape') {
                     event.preventDefault();
@@ -253,11 +295,77 @@ export function SearchCommandDialog({
               <Typography variant="body2" color="text.secondary" sx={{ px: 1.2, pb: 0.8, fontWeight: 700 }}>
                 {hasQuery ? 'Searching commands...' : 'Quick commands'}
               </Typography>
+
+              {!hasQuery && recentCommands.length > 0 ? (
+                <Box sx={{ px: 1.2, pb: 1 }}>
+                  <Typography sx={{ fontSize: 11, fontWeight: 800, color: 'var(--fh-slate)', letterSpacing: '0.08em' }}>
+                    RECENT
+                  </Typography>
+                  <List sx={{ py: 0, mt: 0.4 }}>
+                    {recentCommands.map((command) => {
+                      const commandIndex = commands.findIndex((item) => item.id === command.id);
+                      return (
+                        <ListItemButton
+                          key={`recent-${command.id}`}
+                          onClick={() => {
+                            rememberRecent(command.id);
+                            command.onSelect();
+                            onClose();
+                          }}
+                          selected={highlightIndex === commandIndex}
+                          sx={{
+                            borderRadius: 2,
+                            mb: 0.5,
+                            border: '1px solid',
+                            borderColor: highlightIndex === commandIndex ? 'var(--fh-brand)' : 'var(--fh-line)',
+                            bgcolor:
+                              highlightIndex === commandIndex
+                                ? 'color-mix(in srgb, var(--fh-brand-soft) 34%, var(--fh-surface-bg) 66%)'
+                                : 'transparent',
+                          }}
+                        >
+                          <Box
+                            sx={{
+                              width: 28,
+                              height: 28,
+                              mr: 1.2,
+                              borderRadius: 1.5,
+                              display: 'grid',
+                              placeItems: 'center',
+                              color: 'var(--fh-slate)',
+                              bgcolor: 'var(--fh-surface)',
+                              border: '1px solid',
+                              borderColor: 'var(--fh-line)',
+                            }}
+                          >
+                            {command.icon}
+                          </Box>
+                          <ListItemText
+                            primary={command.title}
+                            secondary={`${command.group} - ${command.subtitle}`}
+                            primaryTypographyProps={{ fontSize: 14, fontWeight: 700 }}
+                            secondaryTypographyProps={{ fontSize: 12 }}
+                          />
+                        </ListItemButton>
+                      );
+                    })}
+                  </List>
+                </Box>
+              ) : null}
+
+              <Box sx={{ px: 1.2, pb: 0.5 }}>
+                <Typography sx={{ fontSize: 11, fontWeight: 800, color: 'var(--fh-slate)', letterSpacing: '0.08em' }}>
+                  ACTIONS
+                </Typography>
+              </Box>
               <List sx={{ py: 0 }}>
-                {commands.map((command, index) => (
+                {actionCommands.map((command) => {
+                  const index = commands.findIndex((item) => item.id === command.id);
+                  return (
                   <ListItemButton
                     key={command.id}
                     onClick={() => {
+                      rememberRecent(command.id);
                       command.onSelect();
                       onClose();
                     }}
@@ -296,7 +404,63 @@ export function SearchCommandDialog({
                       secondaryTypographyProps={{ fontSize: 12 }}
                     />
                   </ListItemButton>
-                ))}
+                  );
+                })}
+              </List>
+
+              <Box sx={{ px: 1.2, pt: 0.8, pb: 0.5 }}>
+                <Typography sx={{ fontSize: 11, fontWeight: 800, color: 'var(--fh-slate)', letterSpacing: '0.08em' }}>
+                  PAGES
+                </Typography>
+              </Box>
+              <List sx={{ py: 0 }}>
+                {pageCommands.map((command) => {
+                  const index = commands.findIndex((item) => item.id === command.id);
+                  return (
+                    <ListItemButton
+                      key={command.id}
+                      onClick={() => {
+                        rememberRecent(command.id);
+                        command.onSelect();
+                        onClose();
+                      }}
+                      selected={highlightIndex === index}
+                      sx={{
+                        borderRadius: 2,
+                        mb: 0.5,
+                        border: '1px solid',
+                        borderColor: highlightIndex === index ? 'var(--fh-brand)' : 'var(--fh-line)',
+                        bgcolor:
+                          highlightIndex === index
+                            ? 'color-mix(in srgb, var(--fh-brand-soft) 34%, var(--fh-surface-bg) 66%)'
+                            : 'transparent',
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          width: 28,
+                          height: 28,
+                          mr: 1.2,
+                          borderRadius: 1.5,
+                          display: 'grid',
+                          placeItems: 'center',
+                          color: 'var(--fh-slate)',
+                          bgcolor: 'var(--fh-surface)',
+                          border: '1px solid',
+                          borderColor: 'var(--fh-line)',
+                        }}
+                      >
+                        {command.icon}
+                      </Box>
+                      <ListItemText
+                        primary={command.title}
+                        secondary={`${command.group} - ${command.subtitle}`}
+                        primaryTypographyProps={{ fontSize: 14, fontWeight: 700 }}
+                        secondaryTypographyProps={{ fontSize: 12 }}
+                      />
+                    </ListItemButton>
+                  );
+                })}
               </List>
               {!commands.length ? (
                 <Box sx={{ px: 2, py: 2, textAlign: 'center' }}>

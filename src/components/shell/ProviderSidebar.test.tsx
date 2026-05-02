@@ -24,15 +24,22 @@ describe('ProviderSidebar workflow sync + analytics', () => {
     (window as unknown as { dataLayer?: Array<Record<string, string>> }).dataLayer = [];
   });
 
-  it('consumes workflow summary from localStorage and renders live badges', async () => {
+  it('consumes teaching flow from localStorage and renders live badges', async () => {
     window.localStorage.setItem(
-      'fh.workflow.summary',
+      'faithhub.provider.teachings.flow.v1',
       JSON.stringify({
-        draftCount: 4,
-        needsReviewCount: 3,
-        publishedCount: 1,
-        totalCount: 8,
-        updatedAt: new Date().toISOString(),
+        series: [
+          { id: 's1', publishingState: 'Draft', updatedAtISO: new Date().toISOString() },
+          { id: 's2', publishingState: 'Draft', updatedAtISO: new Date().toISOString() },
+        ],
+        episodes: [
+          { id: 'e1', publishingState: 'Draft', updatedAtISO: new Date().toISOString() },
+          { id: 'e2', publishingState: 'Draft', updatedAtISO: new Date().toISOString() },
+          { id: 'e3', publishingState: 'Scheduled', updatedAtISO: new Date().toISOString() },
+          { id: 'e4', publishingState: 'Scheduled', updatedAtISO: new Date().toISOString() },
+          { id: 'e5', publishingState: 'Scheduled', updatedAtISO: new Date().toISOString() },
+          { id: 'e6', publishingState: 'Published', updatedAtISO: new Date().toISOString() },
+        ],
       }),
     );
 
@@ -49,7 +56,15 @@ describe('ProviderSidebar workflow sync + analytics', () => {
     expect(screen.getAllByText('1 item').length).toBeGreaterThan(0);
   });
 
-  it('updates badges from workflow summary event', async () => {
+  it('updates badges from teaching flow update event', async () => {
+    window.localStorage.setItem(
+      'faithhub.provider.teachings.flow.v1',
+      JSON.stringify({
+        series: [],
+        episodes: [],
+      }),
+    );
+
     render(
       <MemoryRouter initialEntries={['/faithhub/provider/dashboard']}>
         <ProviderSidebar open={false} onClose={() => undefined} collapsed={false} />
@@ -57,16 +72,24 @@ describe('ProviderSidebar workflow sync + analytics', () => {
     );
 
     act(() => {
-      window.dispatchEvent(
-        new CustomEvent('fh:workflow-summary', {
-          detail: {
-            draftCount: 2,
-            needsReviewCount: 1,
-            publishedCount: 6,
-            totalCount: 9,
-            updatedAt: new Date().toISOString(),
-          },
+      window.localStorage.setItem(
+        'faithhub.provider.teachings.flow.v1',
+        JSON.stringify({
+          series: [{ id: 's1', publishingState: 'Draft', updatedAtISO: new Date().toISOString() }],
+          episodes: [
+            { id: 'e1', publishingState: 'Draft', updatedAtISO: new Date().toISOString() },
+            { id: 'e2', publishingState: 'Scheduled', updatedAtISO: new Date().toISOString() },
+            { id: 'e3', publishingState: 'Published', updatedAtISO: new Date().toISOString() },
+            { id: 'e4', publishingState: 'Published', updatedAtISO: new Date().toISOString() },
+            { id: 'e5', publishingState: 'Published', updatedAtISO: new Date().toISOString() },
+            { id: 'e6', publishingState: 'Published', updatedAtISO: new Date().toISOString() },
+            { id: 'e7', publishingState: 'Published', updatedAtISO: new Date().toISOString() },
+            { id: 'e8', publishingState: 'Published', updatedAtISO: new Date().toISOString() },
+          ],
         }),
+      );
+      window.dispatchEvent(
+        new CustomEvent('faithhub:teachings-flow-updated'),
       );
     });
 

@@ -36,6 +36,7 @@ import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 import { useEffect, useState } from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { getProviderSidebarGroupsBySection, providerPages, providerSections } from '@/navigation/providerPages';
+import { getTeachingFlowState, subscribeToTeachingFlow } from '@/features/teachings/teachingFlowStore';
 
 const drawerWidth = 318;
 const topbarOffsetMobile = 110;
@@ -56,9 +57,6 @@ const sectionLabelMap: Partial<Record<(typeof providerSections)[number], string>
 
 const expandedDrawerWidth = 318;
 const collapsedDrawerWidth = 88;
-const WORKFLOW_SUMMARY_STORAGE_KEY = 'fh.workflow.summary';
-const WORKFLOW_SUMMARY_EVENT = 'fh:workflow-summary';
-
 type WorkflowSummarySnapshot = {
   draftCount: number;
   needsReviewCount: number;
@@ -88,6 +86,7 @@ type WorkflowItem = {
   aliases?: string[];
   icon: typeof PlayArrowRoundedIcon;
   status: string;
+  shortcut: string;
   tone: WorkflowTone;
 };
 
@@ -150,6 +149,26 @@ function trackWorkflowClick(workflowKey: string, label: string, route: string) {
   if (Array.isArray(dataLayer)) dataLayer.push(detail);
 }
 
+function buildWorkflowSummaryFromTeachingFlow(): WorkflowSummarySnapshot {
+  const flow = getTeachingFlowState();
+  const all = [...flow.series, ...flow.episodes];
+  const draftCount = all.filter((item) => item.publishingState === 'Draft').length;
+  const needsReviewCount = all.filter((item) => item.publishingState === 'Scheduled').length;
+  const publishedCount = all.filter((item) => item.publishingState === 'Published').length;
+  const updatedAt = all
+    .map((item) => item.updatedAtISO)
+    .filter(Boolean)
+    .sort((a, b) => b.localeCompare(a))[0] ?? '';
+
+  return {
+    draftCount,
+    needsReviewCount,
+    publishedCount,
+    totalCount: all.length,
+    updatedAt,
+  };
+}
+
 export function ProviderSidebar({
   open,
   onClose,
@@ -165,57 +184,15 @@ export function ProviderSidebar({
   const isDark = theme.palette.mode === 'dark';
   const location = useLocation();
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({});
-  const [workflowSummary, setWorkflowSummary] = useState<WorkflowSummarySnapshot>({
-    draftCount: 1,
-    needsReviewCount: 1,
-    publishedCount: 3,
-    totalCount: 5,
-    updatedAt: '',
-  });
+  const [workflowSummary, setWorkflowSummary] = useState<WorkflowSummarySnapshot>(() =>
+    buildWorkflowSummaryFromTeachingFlow(),
+  );
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
-    const applySnapshot = (snapshot: WorkflowSummarySnapshot | null | undefined) => {
-      if (!snapshot) return;
-      if (
-        typeof snapshot.draftCount !== 'number' ||
-        typeof snapshot.needsReviewCount !== 'number' ||
-        typeof snapshot.publishedCount !== 'number'
-      ) {
-        return;
-      }
-      setWorkflowSummary(snapshot);
-    };
-
-    const raw = window.localStorage.getItem(WORKFLOW_SUMMARY_STORAGE_KEY);
-    if (raw) {
-      try {
-        applySnapshot(JSON.parse(raw) as WorkflowSummarySnapshot);
-      } catch {
-        // no-op
-      }
-    }
-
-    const onSummary = (event: Event) => {
-      const detail = (event as CustomEvent<WorkflowSummarySnapshot>).detail;
-      applySnapshot(detail);
-    };
-
-    const onStorage = (event: StorageEvent) => {
-      if (event.key !== WORKFLOW_SUMMARY_STORAGE_KEY || !event.newValue) return;
-      try {
-        applySnapshot(JSON.parse(event.newValue) as WorkflowSummarySnapshot);
-      } catch {
-        // no-op
-      }
-    };
-
-    window.addEventListener(WORKFLOW_SUMMARY_EVENT, onSummary as EventListener);
-    window.addEventListener('storage', onStorage);
-    return () => {
-      window.removeEventListener(WORKFLOW_SUMMARY_EVENT, onSummary as EventListener);
-      window.removeEventListener('storage', onStorage);
-    };
+    setWorkflowSummary(buildWorkflowSummaryFromTeachingFlow());
+    return subscribeToTeachingFlow(() => {
+      setWorkflowSummary(buildWorkflowSummaryFromTeachingFlow());
+    });
   }, []);
 
   const pageByKey = new Map(providerPages.map((page) => [page.key, page]));
@@ -227,6 +204,7 @@ export function ProviderSidebar({
       aliases: pageByKey.get('provider-dashboard')?.aliases,
       icon: PlayArrowRoundedIcon,
       status: `${workflowSummary.draftCount} draft${workflowSummary.draftCount === 1 ? '' : 's'}`,
+      shortcut: 'G D',
       tone: workflowSummary.draftCount > 0 ? 'warning' : 'neutral',
     },
     {
@@ -236,6 +214,7 @@ export function ProviderSidebar({
       aliases: pageByKey.get('teachings-dashboard')?.aliases,
       icon: EditRoundedIcon,
       status: 'New',
+      shortcut: 'C T',
       tone: 'neutral',
     },
     {
@@ -248,6 +227,7 @@ export function ProviderSidebar({
         workflowSummary.needsReviewCount > 0
           ? `${workflowSummary.needsReviewCount} need review`
           : 'No blockers',
+      shortcut: 'G R',
       tone: workflowSummary.needsReviewCount > 0 ? 'warning' : 'success',
     },
     {
@@ -257,6 +237,7 @@ export function ProviderSidebar({
       aliases: pageByKey.get('live-builder')?.aliases,
       icon: SendRoundedIcon,
       status: `${workflowSummary.draftCount + workflowSummary.needsReviewCount} queued`,
+      shortcut: 'G P',
       tone: 'neutral',
     },
     {
@@ -266,6 +247,7 @@ export function ProviderSidebar({
       aliases: pageByKey.get('live-dashboard')?.aliases,
       icon: CheckCircleRoundedIcon,
       status: `${workflowSummary.publishedCount} item${workflowSummary.publishedCount === 1 ? '' : 's'}`,
+      shortcut: 'G U',
       tone: workflowSummary.publishedCount > 0 ? 'success' : 'neutral',
     },
   ];
@@ -400,7 +382,7 @@ export function ProviderSidebar({
                     <Tooltip
                       key={item.key}
                       placement="right"
-                      title={collapsed ? `${item.label} - ${item.status}` : ''}
+                      title={collapsed ? `${item.label} - ${item.status} (${item.shortcut})` : ''}
                       disableHoverListener={!collapsed}
                     >
                       <ListItemButton
@@ -482,6 +464,11 @@ export function ProviderSidebar({
                                   }}
                                 >
                                   {item.label}
+                                </Typography>
+                              }
+                              secondary={
+                                <Typography sx={{ fontSize: 11, color: 'var(--fh-slate)', mt: 0.2 }}>
+                                  Shortcut: {item.shortcut}
                                 </Typography>
                               }
                             />
