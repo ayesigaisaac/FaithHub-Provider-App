@@ -31,6 +31,8 @@
   --fh-accent-soft: #fff1df;
   --fh-ink: #0f172a;
   --fh-slate: #64748b;
+  --fh-muted: #475569;
+  --fh-muted-strong: #334155;
   --fh-line: #e2e8f0;
   --fh-surface: #f8fafc;
   --fh-page-bg: #f4f8f6;
@@ -142,7 +144,24 @@ video {
   font-family: var(--fh-font-family);
   font-size: var(--fh-font-size-sm);
   line-height: 1.6;
-  color: var(--fh-slate);
+  color: var(--fh-muted);
+}
+
+/* Global readability defaults for secondary text tokens/classes. */
+.text-faith-slate {
+  color: var(--fh-muted) !important;
+}
+
+.text-slate-500,
+.text-slate-400 {
+  color: var(--fh-muted) !important;
+}
+
+.placeholder\:text-faith-slate::placeholder,
+.placeholder\:text-slate-500::placeholder,
+.placeholder\:text-slate-400::placeholder {
+  color: color-mix(in srgb, var(--fh-muted) 78%, white 22%) !important;
+  opacity: 1;
 }
 
 .provider-page-density {
@@ -218,12 +237,19 @@ video {
 .provider-page-density--compact :is(
     .text-slate-600,
     .text-slate-500,
+    .text-slate-400,
     .text-gray-600,
     .text-gray-500,
     .text-neutral-600,
     .text-neutral-500
   ) {
-  color: var(--fh-slate) !important;
+  color: var(--fh-muted) !important;
+}
+
+/* Uplift tiny utility text sizes in dense provider pages for legibility. */
+.provider-page-density--compact :is([class*='text-[10px]'], [class*='text-[11px]']) {
+  font-size: 12px !important;
+  line-height: 1.4 !important;
 }
 
 .provider-page-density--compact :is(
@@ -302,6 +328,15 @@ html.dark .provider-page-density--compact :is(
     [class*='text-neutral-400']
   ) {
   color: #94a3b8 !important;
+}
+
+html.dark .text-faith-slate {
+  color: #cbd5e1 !important;
+}
+
+html.dark .text-slate-500,
+html.dark .text-slate-400 {
+  color: #cbd5e1 !important;
 }
 
 html.dark .provider-page-density--compact :is(

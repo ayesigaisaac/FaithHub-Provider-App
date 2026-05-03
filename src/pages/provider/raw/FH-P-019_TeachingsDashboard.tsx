@@ -864,7 +864,7 @@ function TeachingPreview({
           <div className="mt-1 text-[30px] font-black leading-tight tracking-tight">
             {teaching.title}
           </div>
-          <div className="mt-2 max-w-xl text-[13px] text-white/90">
+          <div className="mt-2 max-w-xl text-[13px] text-white/95 [text-shadow:0_1px_2px_rgba(0,0,0,0.45)]">
             {teaching.subtitle}
           </div>
           <div className="mt-4 flex flex-wrap gap-3">

@@ -43,7 +43,7 @@ export function ProviderSurfaceCard({
               </div>
             ) : null}
             {subtitle ? (
-              <div className={cx("mt-0.5 break-words text-[11px] text-faith-slate", subtitleClassName)}>{subtitle}</div>
+              <div className={cx("mt-0.5 break-words text-[12px] leading-5 text-faith-slate", subtitleClassName)}>{subtitle}</div>
             ) : null}
           </div>
           {right ? <div className={cx("w-full sm:w-auto sm:shrink-0", rightClassName)}>{right}</div> : null}

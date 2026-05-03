@@ -807,7 +807,7 @@ function SeriesLandingPreview({
           </div>
           <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
             <div className="text-[34px] font-black leading-[1.05]">{draft.title}</div>
-            <div className="mt-2 max-w-[85%] text-[14px] text-white/85">{draft.subtitle}</div>
+            <div className="mt-2 max-w-[85%] text-[14px] text-white/95 [text-shadow:0_1px_2px_rgba(0,0,0,0.45)]">{draft.subtitle}</div>
             <div className="mt-4 flex flex-wrap gap-2">
               {draft.launchAudience.slice(0, 3).map((audience) => (
                 <span key={audience} className="rounded-full border border-white/20 bg-[var(--fh-surface-bg)]/10 px-3 py-1 text-[11px] font-semibold text-white">
