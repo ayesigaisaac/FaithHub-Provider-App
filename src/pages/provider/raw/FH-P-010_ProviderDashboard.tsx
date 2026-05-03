@@ -1418,7 +1418,15 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
     return withUsage;
   }, [teachingItems, usageMap]);
 
+  const hasDraftToContinue = pendingWork.some((item) => item.status === "Draft");
+  const workflowPrimaryLabel = hasDraftToContinue && continueItem ? "Continue latest draft" : "Create Teaching";
+
   const handlePrimaryCta = () => {
+    if (hasDraftToContinue && continueItem) {
+      trackDashboardEvent("continue_editing", { item_id: continueItem.id, source: "primary_cta" });
+      openTeachingItem(continueItem.id);
+      return;
+    }
     trackDashboardEvent("start_new_task");
     safeNav(ROUTES.teachingsDashboard);
   };
@@ -1543,7 +1551,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                 <div className="w-full sm:w-auto sm:min-w-[260px] rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3 shadow-soft">
                   <button
                     type="button"
-                    aria-label={primaryCtaLabel}
+                    aria-label={workflowPrimaryLabel}
                     onClick={() => {
                       trackDashboardEvent("start_new_task");
                       safeNav(ROUTES.teachingsDashboard);
@@ -1552,10 +1560,12 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                     style={{ background: EV_GREEN, boxShadow: "0 12px 24px -14px rgba(3,205,140,0.9)" }}
                   >
                     <Plus className="h-4 w-4" />
-                    {primaryCtaLabel}
+                    {workflowPrimaryLabel}
                   </button>
                   <p className="mt-2 text-center text-[12px] font-medium text-slate-700">
-                    Get started by creating your first teaching.
+                    {hasDraftToContinue && continueItem
+                      ? "Resume your latest draft and finish faster."
+                      : "Get started by creating your first teaching."}
                   </p>
                 </div>
               </div>
@@ -1615,6 +1625,49 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                 </div>
               </section>
             ) : null}
+
+            {needsReviewCount > 0 ? (
+              <SectionCard
+                title="Needs your attention"
+                subtitle={`${needsReviewCount} teaching item${needsReviewCount > 1 ? "s need" : " needs"} review before publishing.`}
+                titleTag="h2"
+                right={<Pill text="Needs review" tone="warn" left={<AlertTriangle className="h-3.5 w-3.5" />} />}
+                className="border-amber-200 bg-amber-50/40"
+              >
+                <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-amber-200 bg-[var(--fh-surface-bg)] p-3.5">
+                  <div className="text-[13px] font-semibold text-faith-ink">
+                    Next step: review pending teachings and resolve blockers.
+                  </div>
+                  <button
+                    type="button"
+                    aria-label="Review now"
+                    onClick={() => safeNav(ROUTES.reviewsModeration)}
+                    className={`inline-flex h-10 items-center gap-2 rounded-xl border border-amber-300 bg-amber-100 px-4 text-[12px] font-bold text-amber-900 transition hover:bg-amber-200 ${cardFocusRingClass}`}
+                  >
+                    <Flag className="h-4 w-4" />
+                    Review now
+                  </button>
+                </div>
+              </SectionCard>
+            ) : null}
+
+            <SectionCard
+              title="Start something new"
+              subtitle="Create a new teaching flow when you’re ready."
+              titleTag="h2"
+              className="bg-[var(--fh-surface)] p-4 sm:p-4 shadow-none"
+            >
+              <div className="flex flex-wrap gap-2">
+                <SolidButton
+                  label="Create teaching"
+                  icon={<Plus className="h-4 w-4" />}
+                  onClick={() => {
+                    trackDashboardEvent("start_new_task", { source: "start_something_new" });
+                    safeNav(ROUTES.teachingsDashboard);
+                  }}
+                />
+              </div>
+            </SectionCard>
 
             {recentlyEditedTeachings.length > 0 ? (
               <SectionCard

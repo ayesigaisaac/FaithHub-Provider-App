@@ -251,6 +251,9 @@ export function ProviderSidebar({
       tone: workflowSummary.publishedCount > 0 ? 'success' : 'neutral',
     },
   ];
+  const activeWorkflowIndex = workflowItems.findIndex(
+    (item) => item.path === location.pathname || Boolean(item.aliases?.includes(location.pathname)),
+  );
 
   const sections = providerSections
     .map((section) => ({
@@ -364,17 +367,20 @@ export function ProviderSidebar({
                 {workflowItems.map((item) => {
                   const Icon = item.icon;
                   const active = item.path === location.pathname || Boolean(item.aliases?.includes(location.pathname));
+                  const workflowIndex = workflowItems.findIndex((workflowItem) => workflowItem.key === item.key);
+                  const completed = activeWorkflowIndex > -1 && workflowIndex < activeWorkflowIndex;
+                  const pending = activeWorkflowIndex > -1 && workflowIndex > activeWorkflowIndex;
                   const badge = (
                     <Chip
                       size="small"
-                      label={item.status}
+                      label={completed ? 'Completed' : item.status}
                       sx={{
                         height: 22,
                         borderRadius: '999px',
                         border: '1px solid',
                         fontSize: 11,
                         fontWeight: 700,
-                        ...workflowBadgeSx[item.tone],
+                        ...(completed ? workflowBadgeSx.success : workflowBadgeSx[item.tone]),
                       }}
                     />
                   );
@@ -411,8 +417,11 @@ export function ProviderSidebar({
                             : 'color-mix(in srgb, var(--fh-line) 82%, var(--fh-surface-bg) 18%)',
                           bgcolor: active
                             ? 'color-mix(in srgb, var(--fh-brand-soft) 45%, var(--fh-surface-bg) 55%)'
-                            : 'var(--fh-surface-bg)',
+                            : pending
+                              ? 'color-mix(in srgb, var(--fh-surface) 88%, #ffffff 12%)'
+                              : 'var(--fh-surface-bg)',
                           position: 'relative',
+                          opacity: pending ? 0.78 : 1,
                           transition: 'all 140ms ease',
                           '&::before': active
                             ? {
@@ -459,10 +468,11 @@ export function ProviderSidebar({
                                   sx={{
                                     fontWeight: active ? 800 : 650,
                                     fontSize: 14,
-                                    color: active ? 'var(--fh-ink)' : 'var(--fh-slate)',
-                                    lineHeight: 1.2,
-                                  }}
-                                >
+                              color: active ? 'var(--fh-ink)' : 'var(--fh-slate)',
+                              lineHeight: 1.2,
+                            }}
+                          >
+                                    {completed ? <CheckCircleRoundedIcon sx={{ fontSize: 14, mr: 0.6, color: '#047857', verticalAlign: 'text-bottom' }} /> : null}
                                   {item.label}
                                 </Typography>
                               }
