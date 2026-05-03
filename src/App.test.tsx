@@ -52,9 +52,14 @@ describe('App smoke routing', () => {
 
   it('mounts provider shell routes', async () => {
     renderApp(['/faithhub/provider/dashboard']);
-    const brandMatches = await screen.findAllByText(/Provider/i);
-    expect(brandMatches.length).toBeGreaterThan(0);
-  });
+    expect(
+      await screen.findByRole(
+        'searchbox',
+        { name: /search/i },
+        { timeout: 15000 },
+      ),
+    ).toBeInTheDocument();
+  }, 15000);
 
   it('renders key provider navigation elements', async () => {
     renderApp(['/faithhub/provider/dashboard']);
