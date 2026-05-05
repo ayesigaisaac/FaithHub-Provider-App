@@ -29,7 +29,9 @@ import {
   Zap,
 } from "lucide-react";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderSectionCard } from "@/components/provider/ProviderSectionCard";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
+import { ProviderStatusPill } from "@/components/provider/ProviderStatusPill";
 
 /**
  * Provider — Series Dashboard
@@ -519,23 +521,7 @@ function statusTone(status: SeriesStatus | EpisodeStatus) {
   return "neutral" as const;
 }
 
-function Pill({
-  text,
-  tone = "neutral",
-}: {
-  text: string;
-  tone?: "neutral" | "good" | "warn" | "danger";
-}) {
-  const cls =
-    tone === "good"
-      ? "border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-300"
-      : tone === "warn"
-        ? "border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-900/20 text-amber-800 dark:text-amber-300"
-        : tone === "danger"
-          ? "border-rose-200 dark:border-rose-800 bg-rose-50 dark:bg-rose-900/20 text-rose-800 dark:text-rose-300"
-          : "border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 text-slate-700 dark:text-slate-300";
-  return <span className={cx("px-2.5 py-1 rounded-full border text-[11px] font-semibold", cls)}>{text}</span>;
-}
+const Pill = ProviderStatusPill;
 
 function SoftButton({
   children,
@@ -632,30 +618,7 @@ function StatCard({
   );
 }
 
-function SectionCard({
-  title,
-  subtitle,
-  right,
-  children,
-}: {
-  title: string;
-  subtitle?: string;
-  right?: React.ReactNode;
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors">
-      <div className="flex items-start justify-between gap-3">
-        <div>
-          <div className="text-[15px] font-bold text-faith-ink dark:text-slate-100">{title}</div>
-          {subtitle ? <div className="mt-1 text-[12px] text-faith-slate">{subtitle}</div> : null}
-        </div>
-        {right ? <div className="shrink-0">{right}</div> : null}
-      </div>
-      <div className="mt-4">{children}</div>
-    </div>
-  );
-}
+const SectionCard = ProviderSectionCard;
 
 function SearchInput({
   value,

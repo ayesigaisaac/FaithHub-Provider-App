@@ -39,6 +39,8 @@ import {
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
+import { ProviderSectionCard } from "@/components/provider/ProviderSectionCard";
+import { ProviderStatusPill } from "@/components/provider/ProviderStatusPill";
 import { useAuth } from "@/auth/useAuth";
 
 /**
@@ -1036,93 +1038,14 @@ const RECOMMENDATIONS_BY_ROLE: Record<
   ],
 };
 
-function tonePill(tone: Tone) {
-  if (tone === "good") {
-    return "bg-emerald-50 text-emerald-700 border-emerald-200";
-  }
-  if (tone === "warn") {
-    return "bg-amber-50 text-amber-700 border-amber-200";
-  }
-  if (tone === "danger") {
-    return "bg-rose-50 text-rose-700 border-rose-200";
-  }
-  if (tone === "brand") {
-    return "bg-orange-50 text-orange-700 border-orange-200";
-  }
-  if (tone === "navy") {
-    return "bg-slate-100 text-slate-800 border-faith-line";
-  }
-  return "bg-[var(--fh-surface-bg)] text-slate-700 border-faith-line";
-}
-
 function accentBg(accent: "green" | "orange" | "navy") {
   if (accent === "green") return EV_GREEN;
   if (accent === "orange") return EV_ORANGE;
   return EV_NAVY;
 }
 
-function Pill({
-  text,
-  tone = "neutral",
-  left,
-}: {
-  text: string;
-  tone?: Tone;
-  left?: React.ReactNode;
-}) {
-  return (
-    <span
-      className={cx(
-        "inline-flex h-9 items-center gap-1.5 rounded-full border px-3 text-[12px] font-semibold",
-        tonePill(tone),
-      )}
-    >
-      {left}
-      {text}
-    </span>
-  );
-}
-
-function SectionCard({
-  title,
-  subtitle,
-  right,
-  children,
-  className,
-  titleTag = "h2",
-}: {
-  title: string;
-  subtitle?: string;
-  right?: React.ReactNode;
-  children: React.ReactNode;
-  className?: string;
-  titleTag?: "h2" | "h3";
-}) {
-  const TitleTag = titleTag;
-  return (
-    <section
-      className={cx(
-        "rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 sm:p-5 shadow-soft",
-        className,
-      )}
-    >
-      <div className="flex items-start justify-between gap-3">
-        <div className="min-w-0">
-          <TitleTag className="text-[15px] font-bold tracking-tight text-faith-ink">
-            {title}
-          </TitleTag>
-          {subtitle ? (
-            <p className="mt-1 text-[12px] leading-5 text-faith-slate">
-              {subtitle}
-            </p>
-          ) : null}
-        </div>
-        {right ? <div className="shrink-0">{right}</div> : null}
-      </div>
-      <div className="mt-4">{children}</div>
-    </section>
-  );
-}
+const Pill = ProviderStatusPill;
+const SectionCard = ProviderSectionCard;
 
 function GhostButton({
   label,

@@ -29,11 +29,12 @@ import {
   Users,
   Wand2,
   Workflow,
-  X,
   Zap,
 } from "lucide-react";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderDrawer } from "@/components/provider/ProviderDrawer";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
+import { ProviderStatusPill } from "@/components/provider/ProviderStatusPill";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 import {
   getTeachingFlowState,
@@ -443,35 +444,7 @@ function accessTone(access: AccessModel) {
   return "neutral" as const;
 }
 
-function Pill({
-  tone = "neutral",
-  children,
-}: {
-  tone?: "neutral" | "good" | "orange" | "danger" | "navy";
-  children: React.ReactNode;
-}) {
-  const cls =
-    tone === "good"
-      ? "border-emerald-200 bg-emerald-50 text-emerald-700"
-      : tone === "orange"
-      ? "border-amber-200 bg-amber-50 text-amber-800"
-      : tone === "danger"
-      ? "border-rose-200 bg-rose-50 text-rose-700"
-      : tone === "navy"
-      ? "border-slate-900 bg-slate-900 text-white"
-      : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700";
-
-  return (
-    <span
-      className={cx(
-        "inline-flex items-center gap-1 rounded-full border px-3 py-1 text-[11px] font-semibold",
-        cls,
-      )}
-    >
-      {children}
-    </span>
-  );
-}
+const Pill = ProviderStatusPill;
 
 function SoftButton({
   children,
@@ -606,60 +579,7 @@ function StatCard({
   );
 }
 
-function Drawer({
-  open,
-  onClose,
-  title,
-  subtitle,
-  children,
-}: {
-  open: boolean;
-  onClose: () => void;
-  title: string;
-  subtitle?: string;
-  children: React.ReactNode;
-}) {
-  useEffect(() => {
-    if (!open) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [open, onClose]);
-
-  if (!open) return null;
-
-  return (
-    <div className="fixed inset-0 z-[100]">
-      <div
-        className="absolute inset-0 bg-slate-900/40 backdrop-blur-sm"
-        onClick={onClose}
-      />
-      <div className="absolute right-0 top-0 h-full w-full max-w-5xl bg-[var(--fh-surface-bg)] shadow-2xl">
-        <div className="flex h-full flex-col">
-          <div className="border-b border-faith-line px-4 py-3 sm:px-6 sm:py-4">
-            <div className="flex items-start justify-between gap-3">
-              <div>
-                <div className="text-[14px] font-bold text-faith-ink">{title}</div>
-                {subtitle ? (
-                  <div className="mt-0.5 text-[11px] text-faith-slate">{subtitle}</div>
-                ) : null}
-              </div>
-              <button
-                type="button"
-                onClick={onClose}
-                className="grid h-9 w-9 place-items-center rounded-2xl border border-faith-line text-faith-slate hover:bg-[var(--fh-surface)]"
-                aria-label="Close"
-              >
-                <X className="h-4 w-4" />
-              </button>
-            </div>
-          </div>
-          <div className="flex-1 overflow-y-auto p-4 sm:p-6">{children}</div>
-        </div>
-      </div>
-    </div>
-  );
-}
+const Drawer = ProviderDrawer;
 
 function getPrimaryRoute(teaching: TeachingRecord) {
   const syncedId = teaching.id.startsWith("synced-") ? teaching.id.replace("synced-", "") : null;

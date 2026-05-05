@@ -3,8 +3,10 @@
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderDrawer } from "@/components/provider/ProviderDrawer";
+import { ProviderStatusPill } from "@/components/provider/ProviderStatusPill";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 import { getLiveFlowState, subscribeToLiveFlow } from "@/features/live/liveFlowStore";
 import { LiveFlowProgressRibbon } from "@/features/live/LiveFlowProgressRibbon";
@@ -43,7 +45,6 @@ import {
   Sparkles,
   Users,
   Wand2,
-  X,
   Zap,
 } from "lucide-react";
 
@@ -1228,27 +1229,7 @@ function Card({
   );
 }
 
-function Pill({
-  text,
-  tone = "neutral",
-  icon,
-}: {
-  text: string;
-  tone?: "neutral" | "good" | "warn" | "danger";
-  icon?: React.ReactNode;
-}) {
-  return (
-    <span
-      className={cx(
-        "inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[11px] font-semibold",
-        toneClasses(tone),
-      )}
-    >
-      {icon}
-      {text}
-    </span>
-  );
-}
+const Pill = ProviderStatusPill;
 
 function Label({ children }: { children: React.ReactNode }) {
   return (
@@ -1338,59 +1319,25 @@ function Drawer({
     const previousHtml = document.documentElement.style.overflow;
     document.body.style.overflow = "hidden";
     document.documentElement.style.overflow = "hidden";
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") onClose();
-    };
-    window.addEventListener("keydown", onKey);
     return () => {
       document.body.style.overflow = previousBody;
       document.documentElement.style.overflow = previousHtml;
-      window.removeEventListener("keydown", onKey);
     };
-  }, [open, onClose]);
+  }, [open]);
 
   return (
     <AnimatePresence>
       {open ? (
-        <div className="fixed inset-0" style={{ zIndex }}>
-          <motion.div
-            className="absolute inset-0 bg-black/55 backdrop-blur-sm"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={onClose}
-          />
-          <motion.div
-            className="absolute inset-y-0 right-0 flex h-full w-full max-w-xl flex-col bg-[var(--fh-surface)] dark:bg-slate-950 shadow-2xl"
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ type: "spring", damping: 28, stiffness: 260 }}
-          >
-            <div className="border-b border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 py-3">
-              <div className="flex items-start justify-between gap-3">
-                <div className="min-w-0">
-                  <div className="text-[13px] font-semibold text-faith-ink dark:text-slate-100">
-                    {title}
-                  </div>
-                  {subtitle ? (
-                    <div className="mt-0.5 text-[11px] text-faith-slate">
-                      {subtitle}
-                    </div>
-                  ) : null}
-                </div>
-                <button
-                  type="button"
-                  onClick={onClose}
-                  className="grid h-9 w-9 place-items-center rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 transition-colors hover:bg-[var(--fh-surface)] dark:hover:bg-slate-700"
-                >
-                  <X className="h-4 w-4 text-slate-700 dark:text-slate-300" />
-                </button>
-              </div>
-            </div>
-            <div className="flex-1 overflow-y-auto p-4">{children}</div>
-          </motion.div>
-        </div>
+        <ProviderDrawer
+          open={open}
+          onClose={onClose}
+          title={title}
+          subtitle={subtitle}
+          zIndex={zIndex}
+          maxWidthClassName="max-w-xl"
+        >
+          {children}
+        </ProviderDrawer>
       ) : null}
     </AnimatePresence>
   );
