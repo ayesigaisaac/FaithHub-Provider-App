@@ -1,11 +1,19 @@
-import { SpeedDial, SpeedDialAction, SpeedDialIcon } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import { SpeedDial, SpeedDialAction, SpeedDialIcon, useMediaQuery, useTheme } from '@mui/material';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { providerPages } from '@/navigation/providerPages';
 
 const quickActions = providerPages.filter((page) => page.quickAction && !page.hidden);
 
 export function QuickCreateDial() {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const location = useLocation();
   const navigate = useNavigate();
+  const isProviderDashboard = location.pathname === '/faithhub/provider/dashboard';
+
+  if (isProviderDashboard && !isMobile) {
+    return null;
+  }
 
   return (
     <SpeedDial
@@ -14,11 +22,11 @@ export function QuickCreateDial() {
       sx={{
         position: 'fixed',
         right: { xs: 16, md: 28 },
-        bottom: { xs: 88, md: 28 },
+        bottom: { xs: 88, md: 24 },
         '& .MuiFab-primary': {
           bgcolor: 'primary.main',
           color: 'primary.contrastText',
-          boxShadow: '0 18px 36px rgba(3,205,140,0.25)',
+          boxShadow: '0 14px 28px rgba(3,205,140,0.22)',
           '&:hover': {
             bgcolor: 'primary.dark',
           },

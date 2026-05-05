@@ -40,7 +40,7 @@ import { getTeachingFlowState, subscribeToTeachingFlow } from '@/features/teachi
 
 const drawerWidth = 318;
 const topbarOffsetMobile = 110;
-const topbarOffsetDesktop = 138;
+const topbarOffsetDesktop = 128;
 
 const sectionLabelMap: Partial<Record<(typeof providerSections)[number], string>> = {
   'Foundation & Mission Control': 'Continue',
@@ -203,7 +203,10 @@ export function ProviderSidebar({
       path: pageByKey.get('provider-dashboard')?.path ?? '/faithhub/provider/dashboard',
       aliases: pageByKey.get('provider-dashboard')?.aliases,
       icon: PlayArrowRoundedIcon,
-      status: `${workflowSummary.draftCount} draft${workflowSummary.draftCount === 1 ? '' : 's'}`,
+      status:
+        workflowSummary.draftCount > 0
+          ? `${workflowSummary.draftCount} active draft${workflowSummary.draftCount === 1 ? '' : 's'}`
+          : 'No active drafts',
       shortcut: 'G D',
       tone: workflowSummary.draftCount > 0 ? 'warning' : 'neutral',
     },
@@ -213,7 +216,7 @@ export function ProviderSidebar({
       path: pageByKey.get('teachings-dashboard')?.path ?? '/faithhub/provider/teachings-dashboard',
       aliases: pageByKey.get('teachings-dashboard')?.aliases,
       icon: EditRoundedIcon,
-      status: 'New',
+      status: 'New draft',
       shortcut: 'C T',
       tone: 'neutral',
     },
@@ -225,8 +228,8 @@ export function ProviderSidebar({
       icon: RateReviewRoundedIcon,
       status:
         workflowSummary.needsReviewCount > 0
-          ? `${workflowSummary.needsReviewCount} need review`
-          : 'No blockers',
+          ? `${workflowSummary.needsReviewCount} waiting review`
+          : 'Clear',
       shortcut: 'G R',
       tone: workflowSummary.needsReviewCount > 0 ? 'warning' : 'success',
     },
@@ -236,7 +239,7 @@ export function ProviderSidebar({
       path: pageByKey.get('live-builder')?.path ?? '/faithhub/provider/live-builder',
       aliases: pageByKey.get('live-builder')?.aliases,
       icon: SendRoundedIcon,
-      status: `${workflowSummary.draftCount + workflowSummary.needsReviewCount} queued`,
+      status: `${workflowSummary.draftCount + workflowSummary.needsReviewCount} in flow`,
       shortcut: 'G P',
       tone: 'neutral',
     },
@@ -330,6 +333,8 @@ export function ProviderSidebar({
               flex: 1,
               minHeight: 0,
               overflowY: 'auto',
+              overscrollBehavior: 'contain',
+              pb: 2,
               '&::-webkit-scrollbar': { width: 8 },
               '&::-webkit-scrollbar-thumb': {
                 backgroundColor: 'var(--fh-line)',
@@ -862,11 +867,12 @@ export function ProviderSidebar({
         sx={{
           display: { xs: 'block', md: 'none' },
           '& .MuiDrawer-paper': {
-            width: drawerWidth,
-            maxWidth: '100vw',
+            width: 'calc(100vw - 12px)',
+            maxWidth: `${drawerWidth}px`,
             top: `${topbarOffsetMobile}px`,
             height: `calc(100% - ${topbarOffsetMobile}px)`,
-            borderRadius: 0,
+            borderTopLeftRadius: 18,
+            borderTopRightRadius: 18,
             overflow: 'hidden',
             borderRight: '1px solid',
             borderColor: 'divider',

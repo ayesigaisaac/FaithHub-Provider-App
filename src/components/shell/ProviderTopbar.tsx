@@ -111,9 +111,9 @@ export function ProviderTopbar({
     >
       <Toolbar
         sx={{
-          minHeight: { xs: 64, md: 78 },
+          minHeight: { xs: 60, md: 72 },
           px: { xs: 1.25, md: 3 },
-          py: { xs: 0.35, md: 0.9 },
+          py: { xs: 0.25, md: 0.7 },
           gap: { xs: 0.6, md: 1.1 },
           borderBottom: '1px solid',
           borderColor: (theme) => (theme.palette.mode === 'dark' ? '#1f2937' : '#dce4e1'),
@@ -127,7 +127,7 @@ export function ProviderTopbar({
             <BrandLogo variant="symbol" alt="Provider Workspace" style={{ height: 34, width: 34 }} />
           </Box>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            <BrandLogo variant="landscape" alt="Provider Workspace" style={{ height: 54, width: 'auto' }} />
+            <BrandLogo variant="landscape" alt="Provider Workspace" style={{ height: 48, width: 'auto' }} />
           </Box>
         </Stack>
 
@@ -214,11 +214,11 @@ export function ProviderTopbar({
                 ),
               }}
               sx={{
-                width: { md: 280, lg: 360, xl: 460 },
-                maxWidth: '46vw',
+                width: { md: 250, lg: 320, xl: 400 },
+                maxWidth: '42vw',
                 '& .MuiOutlinedInput-root': {
                   borderRadius: '18px',
-                  minHeight: { md: 46, lg: 48 },
+                  minHeight: { md: 42, lg: 46 },
                   px: 1.05,
                   border: '1px solid',
                   borderColor: searchOpen
@@ -276,9 +276,9 @@ export function ProviderTopbar({
 
       <Toolbar
         sx={{
-          minHeight: { xs: 54, md: 60 },
+          minHeight: { xs: 50, md: 56 },
           px: { xs: 1.25, md: 3 },
-          py: { xs: 0.28, md: 0.45 },
+          py: { xs: 0.2, md: 0.35 },
           mt: 0,
           bgcolor: isDark ? '#0b1220' : '#eef2f1',
           borderTop: '1px solid',
@@ -317,7 +317,7 @@ export function ProviderTopbar({
                 alignItems="center"
                 sx={{
                   overflowX: 'auto',
-                  py: 0.3,
+                  py: 0.2,
                   pl: 0.4,
                   pr: 0.4,
                   border: `1px solid ${isDark ? '#334155' : '#d7dfdc'}`,
@@ -355,9 +355,9 @@ export function ProviderTopbar({
                       borderRadius: '999px',
                       textTransform: 'none',
                       fontWeight: 800,
-                      minHeight: { xs: 40, md: 44 },
-                      px: { xs: 1.35, md: 2.1 },
-                      fontSize: { xs: 13, md: 16 },
+                      minHeight: { xs: 38, md: 42 },
+                      px: { xs: 1.2, md: 1.8 },
+                      fontSize: { xs: 13, md: 15 },
                       borderWidth: 1,
                       borderColor: activeTopTab?.label === tab.label ? '#13c98b' : isDark ? '#334155' : '#d2dad7',
                       bgcolor: activeTopTab?.label === tab.label ? '#13c98b' : isDark ? '#0f172a' : '#ffffff',

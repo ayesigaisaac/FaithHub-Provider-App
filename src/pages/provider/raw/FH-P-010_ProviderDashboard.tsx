@@ -241,6 +241,18 @@ const ROUTES = {
 
 const WORKFLOW_SUMMARY_STORAGE_KEY = "fh.workflow.summary";
 const WORKFLOW_SUMMARY_EVENT = "fh:workflow-summary";
+const DASHBOARD_AUDIT_LOG_KEY = "fh.dashboard.actionAudit.v1";
+
+type DashboardActionKind = "publish" | "request_review" | "continue" | "open";
+type DashboardActionStatus = "pending" | "success" | "error";
+type DashboardAuditEntry = {
+  id: string;
+  itemId: string;
+  action: DashboardActionKind;
+  status: DashboardActionStatus;
+  message: string;
+  atISO: string;
+};
 
 function safeNav(path: string) {
   navigateWithRouter(path);
@@ -1297,6 +1309,8 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
   const [isPendingCollapsed, setIsPendingCollapsed] = useState(false);
   const [actionToast, setActionToast] = useState<string | null>(null);
   const [optimisticStatusById, setOptimisticStatusById] = useState<Record<string, TeachingWorkflowStatus>>({});
+  const [actionPendingById, setActionPendingById] = useState<Record<string, DashboardActionKind | undefined>>({});
+  const [auditTrail, setAuditTrail] = useState<DashboardAuditEntry[]>([]);
   const [usageMap, setUsageMap] = useState<Record<string, number>>({});
   const metrics = useMemo(() => EXECUTIVE_METRICS[role], [role]);
   const recommendations = useMemo(() => RECOMMENDATIONS_BY_ROLE[role], [role]);
@@ -1419,11 +1433,35 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
   }, [teachingItems, usageMap]);
 
   const hasDraftToContinue = pendingWork.some((item) => item.status === "Draft");
-  const workflowPrimaryLabel = hasDraftToContinue && continueItem ? "Continue latest draft" : "Create Teaching";
+  const workflowPrimaryLabel = hasDraftToContinue && continueItem ? "Continue editing" : "Create Teaching";
+
+  const appendAudit = (
+    itemId: string,
+    action: DashboardActionKind,
+    status: DashboardActionStatus,
+    message: string,
+  ) => {
+    const entry: DashboardAuditEntry = {
+      id: `${action}_${itemId}_${Date.now()}`,
+      itemId,
+      action,
+      status,
+      message,
+      atISO: new Date().toISOString(),
+    };
+    setAuditTrail((prev) => {
+      const next = [entry, ...prev].slice(0, 50);
+      if (typeof window !== "undefined") {
+        window.localStorage.setItem(DASHBOARD_AUDIT_LOG_KEY, JSON.stringify(next));
+      }
+      return next;
+    });
+  };
 
   const handlePrimaryCta = () => {
     if (hasDraftToContinue && continueItem) {
       trackDashboardEvent("continue_editing", { item_id: continueItem.id, source: "primary_cta" });
+      appendAudit(continueItem.id, "continue", "success", "continue opened");
       openTeachingItem(continueItem.id);
       return;
     }
@@ -1447,25 +1485,57 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
     });
     safeNav(`${ROUTES.teachingsDashboard}?teachingId=${encodeURIComponent(itemId)}`);
   };
+  const runTeachingAction = async (itemId: string, action: "publish" | "request_review" | "open") => {
+    const nextStatus: TeachingWorkflowStatus | undefined =
+      action === "publish" ? "Published" : action === "request_review" ? "Needs review" : undefined;
+    const previousStatus = optimisticStatusById[itemId];
+
+    setActionPendingById((prev) => ({ ...prev, [itemId]: action }));
+    appendAudit(itemId, action, "pending", `${action} started`);
+
+    if (nextStatus) {
+      setOptimisticStatusById((prev) => ({ ...prev, [itemId]: nextStatus }));
+    }
+
+    try {
+      await new Promise<void>((resolve) => window.setTimeout(resolve, 220));
+      trackDashboardEvent("quick_action_completed", { item_id: itemId, action });
+      appendAudit(itemId, action, "success", `${action} completed`);
+      setActionToast(
+        action === "publish"
+          ? "Publish completed."
+          : action === "request_review"
+            ? "Review request sent."
+            : "Opened teaching.",
+      );
+      if (action === "open") {
+        openTeachingItem(itemId);
+      } else {
+        safeNav(`${ROUTES.teachingsDashboard}?teachingId=${encodeURIComponent(itemId)}&action=${action}`);
+      }
+    } catch {
+      setOptimisticStatusById((prev) => {
+        const next = { ...prev };
+        if (previousStatus) next[itemId] = previousStatus;
+        else delete next[itemId];
+        return next;
+      });
+      appendAudit(itemId, action, "error", `${action} failed and rolled back`);
+      setActionToast("Action failed. Rolled back.");
+    } finally {
+      setActionPendingById((prev) => {
+        const next = { ...prev };
+        delete next[itemId];
+        return next;
+      });
+    }
+  };
+
   const handleTeachingAction = (
     itemId: string,
     action: "publish" | "request_review" | "open"
   ) => {
-    if (action === "publish") {
-      setOptimisticStatusById((prev) => ({ ...prev, [itemId]: "Published" }));
-    } else if (action === "request_review") {
-      setOptimisticStatusById((prev) => ({ ...prev, [itemId]: "Needs review" }));
-    }
-
-    trackDashboardEvent("quick_action_completed", { item_id: itemId, action });
-    const actionLabel =
-      action === "publish" ? "Publish" : action === "request_review" ? "Request review" : "Open";
-    setActionToast(`${actionLabel} action queued.`);
-    if (action === "open") {
-      openTeachingItem(itemId);
-      return;
-    }
-    safeNav(`${ROUTES.teachingsDashboard}?teachingId=${encodeURIComponent(itemId)}&action=${action}`);
+    void runTeachingAction(itemId, action);
   };
 
   useEffect(() => {
@@ -1493,6 +1563,18 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
 
   useEffect(() => {
     if (typeof window === "undefined") return;
+    const raw = window.localStorage.getItem(DASHBOARD_AUDIT_LOG_KEY);
+    if (!raw) return;
+    try {
+      const parsed = JSON.parse(raw) as DashboardAuditEntry[];
+      if (Array.isArray(parsed)) setAuditTrail(parsed.slice(0, 50));
+    } catch {
+      // no-op
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
     window.localStorage.setItem(WORKFLOW_SUMMARY_STORAGE_KEY, JSON.stringify(workflowSummary));
     window.dispatchEvent(new CustomEvent(WORKFLOW_SUMMARY_EVENT, { detail: workflowSummary }));
   }, [workflowSummary]);
@@ -1502,7 +1584,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
       <div className="min-h-screen w-full bg-[var(--fh-page-bg)] text-faith-ink transition-colors dark:bg-slate-950 dark:text-slate-100">
         <div className="w-full max-w-none px-0 py-0">
           <div className="space-y-4 sm:space-y-5">
-            <section className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-6 sm:p-10 shadow-soft">
+            <section className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-5 sm:p-10 shadow-soft">
               <div className="mx-auto flex max-w-2xl flex-col items-center text-center">
                 <div
                   className="grid h-16 w-16 place-items-center rounded-2xl text-white shadow-md"
@@ -1520,7 +1602,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                   type="button"
                   aria-label={primaryCtaLabel}
                   onClick={handlePrimaryCta}
-                  className={`mt-6 inline-flex h-12 items-center gap-2 rounded-2xl px-7 text-[14px] font-extrabold text-white shadow-md transition hover:-translate-y-[1px] hover:shadow-lg ${cardFocusRingClass}`}
+                  className={`mt-6 inline-flex h-12 w-full justify-center items-center gap-2 rounded-2xl px-7 text-[14px] font-extrabold text-white shadow-md transition hover:-translate-y-[1px] hover:shadow-lg sm:w-auto ${cardFocusRingClass}`}
                   style={{ background: EV_GREEN, boxShadow: "0 10px 24px -14px rgba(3,205,140,0.85)" }}
                 >
                   <Plus className="h-4 w-4" />
@@ -1541,25 +1623,22 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
         <div className="w-full max-w-none px-0 py-0">
           <div className="space-y-6 sm:space-y-7">
             <section className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 sm:p-5">
-              <div className="flex flex-wrap items-start justify-between gap-4">
+              <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
                 <ProviderPageTitle
                   icon={<BookOpen className="h-6 w-6" />}
                   title="Teachings Workflow"
-                  subtitle="Continue editing, manage drafts, and publish completed teachings."
+                  subtitle="Pick up the next teaching action, clear blockers, and publish with confidence."
                   className="mt-2"
                 />
-                <div className="w-full sm:w-auto sm:min-w-[260px] rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3 shadow-soft">
+                <div className="w-full rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3 shadow-soft lg:max-w-[320px] lg:min-w-[280px]">
                   <button
                     type="button"
                     aria-label={workflowPrimaryLabel}
-                    onClick={() => {
-                      trackDashboardEvent("start_new_task");
-                      safeNav(ROUTES.teachingsDashboard);
-                    }}
+                    onClick={handlePrimaryCta}
                     className={`inline-flex h-12 w-full items-center justify-center gap-2 rounded-2xl px-6 text-[14px] font-extrabold text-white transition hover:-translate-y-[1px] hover:shadow-lg active:translate-y-0 ${cardFocusRingClass}`}
                     style={{ background: EV_GREEN, boxShadow: "0 12px 24px -14px rgba(3,205,140,0.9)" }}
                   >
-                    <Plus className="h-4 w-4" />
+                    {hasDraftToContinue && continueItem ? <ArrowRight className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
                     {workflowPrimaryLabel}
                   </button>
                   <p className="mt-2 text-center text-[12px] font-medium text-slate-700">
@@ -1567,64 +1646,56 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                       ? "Resume your latest draft and finish faster."
                       : "Get started by creating your first teaching."}
                   </p>
-                </div>
-              </div>
-              <div className="mt-4 flex flex-wrap items-center gap-2">
-                <Pill text={`${filteredRecentTeachings.length} Published`} tone="navy" />
-                <Pill text={`${filteredPendingWork.length} Drafts`} tone="warn" />
-                <Pill text={`${needsReviewCount} Needs review`} tone="brand" />
-              </div>
-            </section>
-
-            {continueItem ? (
-              <section
-                className="rounded-3xl border p-5 sm:p-7 shadow-lg"
-                style={{
-                  borderColor: "rgba(3,205,140,0.35)",
-                  background: "linear-gradient(180deg, rgba(3,205,140,0.10) 0%, var(--fh-surface-bg) 100%)",
-                }}
-              >
-                <div className="flex flex-wrap items-start justify-between gap-4">
-                  <div className="min-w-0">
-                    <h2 className="text-[22px] font-black tracking-tight text-faith-ink sm:text-[26px]">
-                      Continue Editing
-                    </h2>
-                    <p className="mt-1 text-[13px] leading-6 text-slate-700">
-                      Pick up your latest teaching workflow instantly.
-                    </p>
-                    <p className="mt-2 text-[12px] font-semibold text-emerald-800">
-                      Next step: {smartNextStep}
-                    </p>
-                  </div>
-                  <Pill text={continueItem.status} tone={continueItem.status === "Published" ? "good" : "warn"} />
-                </div>
-                <div className="mt-5 rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-5">
-                  <div className="flex flex-wrap items-start justify-between gap-4">
-                    <div className="min-w-0">
-                      <h3 className="text-[18px] font-black tracking-tight text-faith-ink">
-                        {continueItem.title}
-                      </h3>
-                      <p className="mt-1 text-[13px] text-slate-700">
-                        Last edited {formatLastEdited(continueItem.updatedAt)}
-                      </p>
-                    </div>
+                  {hasDraftToContinue ? (
                     <button
                       type="button"
-                      aria-label="Continue editing"
+                      aria-label="Create a new teaching"
                       onClick={() => {
-                        trackDashboardEvent("continue_editing", { item_id: continueItem.id });
-                        openTeachingItem(continueItem.id);
+                        trackDashboardEvent("start_new_task", { source: "hero_secondary" });
+                        safeNav(ROUTES.teachingsDashboard);
                       }}
-                      className={`inline-flex h-12 items-center gap-2 rounded-2xl px-6 text-[14px] font-extrabold text-white transition hover:-translate-y-[1px] hover:shadow-lg ${cardFocusRingClass}`}
-                      style={{ background: EV_GREEN, boxShadow: "0 12px 24px -14px rgba(3,205,140,0.9)" }}
+                      className={`mt-3 inline-flex h-10 w-full items-center justify-center gap-2 rounded-xl border border-faith-line bg-[var(--fh-surface-bg)] px-4 text-[12px] font-bold text-faith-ink transition hover:bg-[var(--fh-surface)] ${cardFocusRingClass}`}
                     >
-                      <ArrowRight className="h-4 w-4" />
-                      Continue editing
+                      <Plus className="h-4 w-4" />
+                      Create new teaching
                     </button>
-                  </div>
+                  ) : null}
                 </div>
-              </section>
-            ) : null}
+              </div>
+              <div className="-mx-1 mt-4 flex gap-2 overflow-x-auto px-1 pb-1 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 sm:pb-0">
+                <div className="shrink-0">
+                  <Pill text={`${filteredRecentTeachings.length} Published`} tone="navy" />
+                </div>
+                <div className="shrink-0">
+                  <Pill text={`${filteredPendingWork.length} Drafts`} tone="warn" />
+                </div>
+                <div className="shrink-0">
+                  <Pill text={`${needsReviewCount} Needs review`} tone="brand" />
+                </div>
+              </div>
+              <div className="mt-4 grid gap-3 md:grid-cols-[minmax(0,1.35fr)_minmax(240px,0.95fr)]">
+                <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4">
+                  <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-slate-500">
+                    {continueItem ? "Resume now" : "Start here"}
+                  </div>
+                  <div className="mt-2 text-[20px] font-black tracking-tight text-faith-ink">
+                    {continueItem ? continueItem.title : "Create your next teaching"}
+                  </div>
+                  <p className="mt-2 text-[13px] leading-6 text-slate-700">
+                    {continueItem
+                      ? `Last edited ${formatLastEdited(continueItem.updatedAt)}. Jump back in without scanning multiple cards.`
+                      : "Open a new teaching flow and start building your next sermon, episode, or series update."}
+                  </p>
+                </div>
+                <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4">
+                  <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-slate-500">Focus today</div>
+                  <div className="mt-2 text-[16px] font-black tracking-tight text-faith-ink">{smartNextStep}</div>
+                  <p className="mt-2 text-[13px] leading-6 text-slate-700">
+                    Review tasks, drafts, and published momentum are summarized here so the next move is obvious.
+                  </p>
+                </div>
+              </div>
+            </section>
 
             {needsReviewCount > 0 ? (
               <SectionCard
@@ -1650,24 +1721,6 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                 </div>
               </SectionCard>
             ) : null}
-
-            <SectionCard
-              title="Start something new"
-              subtitle="Create a new teaching flow when you’re ready."
-              titleTag="h2"
-              className="bg-[var(--fh-surface)] p-4 sm:p-4 shadow-none"
-            >
-              <div className="flex flex-wrap gap-2">
-                <SolidButton
-                  label="Create teaching"
-                  icon={<Plus className="h-4 w-4" />}
-                  onClick={() => {
-                    trackDashboardEvent("start_new_task", { source: "start_something_new" });
-                    safeNav(ROUTES.teachingsDashboard);
-                  }}
-                />
-              </div>
-            </SectionCard>
 
             {recentlyEditedTeachings.length > 0 ? (
               <SectionCard
@@ -1747,7 +1800,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
             >
               {!isRecentCollapsed ? (
                 <>
-              <div className="mb-3 flex flex-wrap gap-2">
+              <div className="-mx-1 mb-3 flex gap-2 overflow-x-auto px-1 pb-1 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 sm:pb-0">
                 {[
                   { key: "all", label: "All" },
                   { key: "draft", label: "Draft" },
@@ -1812,7 +1865,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                       </div>
                       <Pill text={item.status} tone={item.status === "Published" ? "good" : "warn"} />
                     </div>
-                    <div className="mt-3 flex flex-wrap gap-2">
+                    <div className="mt-3 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
                       <button
                         type="button"
                         aria-label={`Publish ${item.title}`}
@@ -1820,9 +1873,10 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                           event.stopPropagation();
                           handleTeachingAction(item.id, "publish");
                         }}
-                        className={`rounded-lg border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-1.5 text-[11px] font-bold text-faith-ink transition hover:bg-emerald-50 ${cardFocusRingClass}`}
+                        disabled={Boolean(actionPendingById[item.id])}
+                        className={`w-full rounded-lg border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[11px] font-bold text-faith-ink transition hover:bg-emerald-50 sm:w-auto sm:py-1.5 ${cardFocusRingClass}`}
                       >
-                        Publish
+                        {actionPendingById[item.id] === "publish" ? "Publishing..." : "Publish"}
                       </button>
                       <button
                         type="button"
@@ -1831,9 +1885,10 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                           event.stopPropagation();
                           handleTeachingAction(item.id, "request_review");
                         }}
-                        className={`rounded-lg border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-1.5 text-[11px] font-bold text-faith-ink transition hover:bg-amber-50 ${cardFocusRingClass}`}
+                        disabled={Boolean(actionPendingById[item.id])}
+                        className={`w-full rounded-lg border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[11px] font-bold text-faith-ink transition hover:bg-amber-50 sm:w-auto sm:py-1.5 ${cardFocusRingClass}`}
                       >
-                        Request review
+                        {actionPendingById[item.id] === "request_review" ? "Requesting..." : "Request review"}
                       </button>
                       <button
                         type="button"
@@ -1842,9 +1897,10 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                           event.stopPropagation();
                           handleTeachingAction(item.id, "open");
                         }}
-                        className={`rounded-lg border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-1.5 text-[11px] font-bold text-faith-ink transition hover:bg-slate-100 ${cardFocusRingClass}`}
+                        disabled={Boolean(actionPendingById[item.id])}
+                        className={`w-full rounded-lg border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[11px] font-bold text-faith-ink transition hover:bg-slate-100 sm:w-auto sm:py-1.5 ${cardFocusRingClass}`}
                       >
-                        Open
+                        {actionPendingById[item.id] === "open" ? "Opening..." : "Open"}
                       </button>
                     </div>
                   </div>
@@ -1881,7 +1937,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
             >
               {!isPendingCollapsed ? (
                 <>
-              <div className="mb-3 flex flex-wrap gap-2">
+              <div className="-mx-1 mb-3 flex gap-2 overflow-x-auto px-1 pb-1 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 sm:pb-0">
                 {[
                   { key: "all", label: "All pending" },
                   { key: "draft", label: "Draft" },
@@ -1941,30 +1997,33 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                       </div>
                       <Pill text={item.status === "Draft" ? "Draft" : "Needs review"} tone="warn" />
                     </div>
-                    <div className="mt-3 flex flex-wrap gap-2">
+                    <div className="mt-3 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
                       <button
                         type="button"
                         aria-label={`Publish ${item.title}`}
                         onClick={() => handleTeachingAction(item.id, "publish")}
-                        className={`rounded-lg border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-1.5 text-[11px] font-bold text-faith-ink transition hover:bg-emerald-50 ${cardFocusRingClass}`}
+                        disabled={Boolean(actionPendingById[item.id])}
+                        className={`w-full rounded-lg border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[11px] font-bold text-faith-ink transition hover:bg-emerald-50 sm:w-auto sm:py-1.5 ${cardFocusRingClass}`}
                       >
-                        Publish
+                        {actionPendingById[item.id] === "publish" ? "Publishing..." : "Publish"}
                       </button>
                       <button
                         type="button"
                         aria-label={`Request review for ${item.title}`}
                         onClick={() => handleTeachingAction(item.id, "request_review")}
-                        className={`rounded-lg border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-1.5 text-[11px] font-bold text-faith-ink transition hover:bg-amber-50 ${cardFocusRingClass}`}
+                        disabled={Boolean(actionPendingById[item.id])}
+                        className={`w-full rounded-lg border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[11px] font-bold text-faith-ink transition hover:bg-amber-50 sm:w-auto sm:py-1.5 ${cardFocusRingClass}`}
                       >
-                        Request review
+                        {actionPendingById[item.id] === "request_review" ? "Requesting..." : "Request review"}
                       </button>
                       <button
                         type="button"
                         aria-label={`Open ${item.title}`}
                         onClick={() => handleTeachingAction(item.id, "open")}
-                        className={`rounded-lg border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-1.5 text-[11px] font-bold text-faith-ink transition hover:bg-slate-100 ${cardFocusRingClass}`}
+                        disabled={Boolean(actionPendingById[item.id])}
+                        className={`w-full rounded-lg border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[11px] font-bold text-faith-ink transition hover:bg-slate-100 sm:w-auto sm:py-1.5 ${cardFocusRingClass}`}
                       >
-                        Open
+                        {actionPendingById[item.id] === "open" ? "Opening..." : "Open"}
                       </button>
                     </div>
                   </div>
@@ -1975,6 +2034,31 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                 <div className="text-[12px] text-slate-700">Section collapsed.</div>
               )}
             </SectionCard>
+            {auditTrail.length > 0 ? (
+              <SectionCard
+                title="Action audit trail"
+                subtitle="Recent action outcomes with rollback visibility."
+                titleTag="h3"
+                className="bg-[var(--fh-surface)] p-4 sm:p-4 shadow-none"
+              >
+                <div className="space-y-2">
+                  {auditTrail.slice(0, 5).map((entry) => (
+                    <div key={entry.id} className="rounded-xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2">
+                      <div className="flex items-center justify-between gap-2">
+                        <div className="text-[12px] font-semibold text-faith-ink">{entry.message}</div>
+                        <Pill
+                          text={entry.status}
+                          tone={entry.status === "success" ? "good" : entry.status === "error" ? "danger" : "navy"}
+                        />
+                      </div>
+                      <div className="mt-1 text-[12px] text-slate-700">
+                        {entry.action} · {formatLastEdited(entry.atISO)}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </SectionCard>
+            ) : null}
             {actionToast ? (
               <div
                 role="status"

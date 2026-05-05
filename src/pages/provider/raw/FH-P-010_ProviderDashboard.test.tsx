@@ -52,10 +52,10 @@ describe("FH-P-010 Provider dashboard workflow UX", () => {
     ];
 
     const { rerender } = render(<ProviderDashboardPage workflowItemsOverride={withTeaching} />);
-    expect(screen.getByText("Continue Editing")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Continue editing" })).toBeInTheDocument();
 
     rerender(<ProviderDashboardPage workflowItemsOverride={withoutTeaching} />);
-    expect(screen.queryByText("Continue Editing")).not.toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "Continue editing" })).not.toBeInTheDocument();
     expect(screen.getByText("Start your first teaching")).toBeInTheDocument();
   });
 

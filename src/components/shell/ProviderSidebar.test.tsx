@@ -50,10 +50,11 @@ describe('ProviderSidebar workflow sync + analytics', () => {
     );
 
     await waitFor(() => {
-      expect(screen.getAllByText('4 drafts').length).toBeGreaterThan(0);
+      expect(screen.getAllByText('4 active drafts').length).toBeGreaterThan(0);
     });
-    expect(screen.getAllByText('3 need review').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('3 waiting review').length).toBeGreaterThan(0);
     expect(screen.getAllByText('1 item').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('7 in flow').length).toBeGreaterThan(0);
   });
 
   it('updates badges from teaching flow update event', async () => {
@@ -94,10 +95,11 @@ describe('ProviderSidebar workflow sync + analytics', () => {
     });
 
     await waitFor(() => {
-      expect(screen.getAllByText('2 drafts').length).toBeGreaterThan(0);
+      expect(screen.getAllByText('2 active drafts').length).toBeGreaterThan(0);
     });
-    expect(screen.getAllByText('1 need review').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('1 waiting review').length).toBeGreaterThan(0);
     expect(screen.getAllByText('6 items').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('3 in flow').length).toBeGreaterThan(0);
   });
 
   it('marks only one workflow item active by route and emits analytics on click', async () => {
