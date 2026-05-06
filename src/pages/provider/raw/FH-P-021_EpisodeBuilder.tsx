@@ -59,7 +59,7 @@ const ROUTES = {
   seriesBuilder: "/faithhub/provider/series-builder",
   liveBuilder: "/faithhub/provider/live-builder",
   postLivePublishing: "/faithhub/provider/post-live-publishing",
-  replaysAndClips: "/faithhub/provider/replays-clips",
+  replaysAndClips: "/faithhub/provider/replays-and-clips",
 };
 
 const PRESET_BLUEPRINTS = [
@@ -548,18 +548,18 @@ function StepNav({
       <div className="mt-6 rounded-[24px] border border-amber-200 bg-amber-50 px-4 py-4">
         <div className="text-[12px] font-black text-faith-ink">Quick handoff</div>
         <div className="mt-3 space-y-2">
-          <a href={ROUTES.seriesBuilder} className="flex items-center justify-between rounded-full border border-amber-300 bg-[var(--fh-surface-bg)] px-3 py-1.5 text-[11px] font-semibold text-amber-700">
+          <button type="button" onClick={() => safeNav(ROUTES.seriesBuilder)} className="flex w-full items-center justify-between rounded-full border border-amber-300 bg-[var(--fh-surface-bg)] px-3 py-1.5 text-[11px] font-semibold text-amber-700">
             Series Builder <ExternalLink className="h-3.5 w-3.5" />
-          </a>
-          <a href={ROUTES.liveBuilder} className="flex items-center justify-between rounded-full border border-amber-300 bg-[var(--fh-surface-bg)] px-3 py-1.5 text-[11px] font-semibold text-amber-700">
+          </button>
+          <button type="button" onClick={() => safeNav(ROUTES.liveBuilder)} className="flex w-full items-center justify-between rounded-full border border-amber-300 bg-[var(--fh-surface-bg)] px-3 py-1.5 text-[11px] font-semibold text-amber-700">
             Live Builder <ExternalLink className="h-3.5 w-3.5" />
-          </a>
-          <a href={ROUTES.postLivePublishing} className="flex items-center justify-between rounded-full border border-amber-300 bg-[var(--fh-surface-bg)] px-3 py-1.5 text-[11px] font-semibold text-amber-700">
+          </button>
+          <button type="button" onClick={() => safeNav(ROUTES.postLivePublishing)} className="flex w-full items-center justify-between rounded-full border border-amber-300 bg-[var(--fh-surface-bg)] px-3 py-1.5 text-[11px] font-semibold text-amber-700">
             Post-live Publishing <ExternalLink className="h-3.5 w-3.5" />
-          </a>
-          <a href={ROUTES.replaysAndClips} className="flex items-center justify-between rounded-full border border-amber-300 bg-[var(--fh-surface-bg)] px-3 py-1.5 text-[11px] font-semibold text-amber-700">
+          </button>
+          <button type="button" onClick={() => safeNav(ROUTES.replaysAndClips)} className="flex w-full items-center justify-between rounded-full border border-amber-300 bg-[var(--fh-surface-bg)] px-3 py-1.5 text-[11px] font-semibold text-amber-700">
             Replays & Clips <ExternalLink className="h-3.5 w-3.5" />
-          </a>
+          </button>
         </div>
       </div>
     </div>

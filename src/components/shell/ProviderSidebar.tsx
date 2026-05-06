@@ -33,7 +33,7 @@ import BoltRoundedIcon from '@mui/icons-material/BoltRounded';
 import GroupsRoundedIcon from '@mui/icons-material/GroupsRounded';
 import SupervisorAccountRoundedIcon from '@mui/icons-material/SupervisorAccountRounded';
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { getProviderSidebarGroupsBySection, providerPages, providerSections } from '@/navigation/providerPages';
 import { getTeachingFlowState, subscribeToTeachingFlow } from '@/features/teachings/teachingFlowStore';
@@ -265,8 +265,23 @@ export function ProviderSidebar({
       groups: getProviderSidebarGroupsBySection(section),
     }))
     .filter((group) => group.groups.length > 0);
+  const activeSection = useMemo(() => {
+    const activePage = providerPages.find(
+      (page) => page.path === location.pathname || Boolean(page.aliases?.includes(location.pathname)),
+    );
+    return activePage?.section;
+  }, [location.pathname]);
+
+  useEffect(() => {
+    if (!activeSection) return;
+    setOpenSections((prev) => {
+      if (prev[activeSection]) return prev;
+      return { [activeSection]: true };
+    });
+  }, [activeSection]);
+
   const toggleSection = (section: string) => {
-    setOpenSections((prev) => ({ ...prev, [section]: !prev[section] }));
+    setOpenSections((prev) => (prev[section] ? {} : { [section]: true }));
   };
 
   const content = (

@@ -139,7 +139,7 @@ export const moduleSidebarConfig: SidebarModule[] = [
       {
         label: 'Replays & Clips',
         description: 'Edit highlights and archive broadcasts for long-tail engagement.',
-        route: '/faithhub/provider/replays-clips',
+        route: '/faithhub/provider/replays-and-clips',
         icon: ChevronRight,
       },
     ],
