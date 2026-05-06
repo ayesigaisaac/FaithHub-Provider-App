@@ -1,4 +1,4 @@
-// @ts-nocheck
+﻿// @ts-nocheck
 
 "use client";
 
@@ -37,7 +37,7 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * Provider — Events Manager
+ * Provider â€” Events Manager
  * ----------------------------------
  * Premium event operating system for Provider Workspace.
  *
@@ -61,7 +61,7 @@ const EV_NAVY = "#0b1d49";
 
 const ROUTES = {
   liveBuilder: "/faithhub/provider/live-builder",
-  donationsFunds: "/faithhub/provider/donations-funds",
+  donationsFunds: "/faithhub/provider/donations-and-funds",
   beaconBuilder: "/faithhub/provider/beacon-builder",
   liveDashboard: "/faithhub/provider/live-dashboard",
   postLivePublishing: "/faithhub/provider/post-live-publishing",
@@ -1508,7 +1508,7 @@ export default function FaithHubEventsManagerPage() {
       "",
       "LOGISTICS",
       ...selectedEvent.logistics.map(
-        (item) => `${item.label} — ${item.status} — ${item.note}`,
+        (item) => `${item.label} â€” ${item.status} â€” ${item.note}`,
       ),
       "",
       "VOLUNTEER COVERAGE",
@@ -1658,7 +1658,7 @@ export default function FaithHubEventsManagerPage() {
                       className="px-3 py-2 text-[12px]"
                       disabled={workingAction === "duplicate"}
                     >
-                      {workingAction === "duplicate" ? "Duplicating…" : "Duplicate"}
+                      {workingAction === "duplicate" ? "Duplicatingâ€¦" : "Duplicate"}
                     </Btn>
                   </div>
                 </div>
@@ -2441,7 +2441,7 @@ export default function FaithHubEventsManagerPage() {
                       onClick={publishEventPlan}
                       disabled={workingAction === "publish"}
                     >
-                      {workingAction === "publish" ? "Publishing…" : "Mark operationally ready"}
+                      {workingAction === "publish" ? "Publishingâ€¦" : "Mark operationally ready"}
                     </Btn>
                     <Btn
                       tone="accent"
@@ -2678,6 +2678,7 @@ export default function FaithHubEventsManagerPage() {
     </div>
   );
 }
+
 
 
 

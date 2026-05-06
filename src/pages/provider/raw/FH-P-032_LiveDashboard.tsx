@@ -1,4 +1,4 @@
-// @ts-nocheck
+﻿// @ts-nocheck
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -45,7 +45,7 @@ import { LiveFlowProgressRibbon } from "@/features/live/LiveFlowProgressRibbon";
 import { exportLiveActivityCsv, getLiveActivityRecords, subscribeToLiveActivity } from "@/features/live/liveActivityStore";
 
 /**
- * Provider � Live Dashboard
+ * Provider ï¿½ Live Dashboard
  * ----------------------------------
  * Premium control-room page for a specific Live Session.
  *
@@ -72,7 +72,7 @@ const ROUTES = {
   liveSchedule: "/faithhub/provider/live-schedule",
   liveStudio: "/faithhub/provider/live-studio",
   audienceNotifications: "/faithhub/provider/audience-notifications",
-  reviewsModeration: "/faithhub/provider/reviews-moderation",
+  reviewsModeration: "/faithhub/provider/reviews-and-moderation",
   postLivePublishing: "/faithhub/provider/post-live-publishing",
   beaconBuilder: "/faithhub/provider/beacon-builder",
 };
@@ -198,10 +198,10 @@ const SESSIONS: SessionData[] = [
     id: "fh-live-032-a",
     title: "Sunday Encounter Live",
     state: "Upcoming",
-    parentLabel: "The Way of Grace � Episode 4",
+    parentLabel: "The Way of Grace ï¿½ Episode 4",
     parentType: "Series Episode",
-    audienceLabel: "All Church � Families � Swahili track enabled",
-    locationLabel: "Main Sanctuary � Central Campus",
+    audienceLabel: "All Church ï¿½ Families ï¿½ Swahili track enabled",
+    locationLabel: "Main Sanctuary ï¿½ Central Campus",
     timezone: "Africa/Kampala",
     startISO: shiftMinutes(18),
     endISO: shiftMinutes(108),
@@ -235,7 +235,7 @@ const SESSIONS: SessionData[] = [
       { role: "Moderator", name: "Moderator Tobi E.", readiness: "Ready", checked: true, critical: true },
       { role: "Captioner", name: "Caption Lead Mercy J.", readiness: "Joining", checked: false, critical: true },
       { role: "Interpreter", name: "Grace L.", readiness: "Ready", checked: true },
-      { role: "Support", name: "Support Team � Central", readiness: "Ready", checked: true },
+      { role: "Support", name: "Support Team ï¿½ Central", readiness: "Ready", checked: true },
     ],
     audience: {
       registrants: 1428,
@@ -256,7 +256,7 @@ const SESSIONS: SessionData[] = [
       eventSignups: 46,
       merchClicks: 28,
       beaconHandoffs: 3,
-      responseLabel: "Waiting-room arrival is tracking 76% of forecast � a last-minute reminder could push the room above baseline before start.",
+      responseLabel: "Waiting-room arrival is tracking 76% of forecast ï¿½ a last-minute reminder could push the room above baseline before start.",
     },
     alerts: [
       {
@@ -305,8 +305,8 @@ const SESSIONS: SessionData[] = [
     state: "Live",
     parentLabel: "Youth Revival Night 2026",
     parentType: "Event",
-    audienceLabel: "Youth � English + French captions",
-    locationLabel: "Community Arena � East Campus",
+    audienceLabel: "Youth ï¿½ English + French captions",
+    locationLabel: "Community Arena ï¿½ East Campus",
     timezone: "Africa/Kampala",
     startISO: shiftMinutes(-37),
     endISO: shiftMinutes(53),
@@ -340,7 +340,7 @@ const SESSIONS: SessionData[] = [
       { role: "Moderator", name: "Moderator Sarah A.", readiness: "Ready", checked: true, critical: true },
       { role: "Captioner", name: "Caption Lead Mercy J.", readiness: "Ready", checked: true, critical: true },
       { role: "Interpreter", name: "Interpreter Caleb O.", readiness: "Ready", checked: true },
-      { role: "Support", name: "Support Team � East", readiness: "Ready", checked: true },
+      { role: "Support", name: "Support Team ï¿½ East", readiness: "Ready", checked: true },
     ],
     audience: {
       registrants: 2140,
@@ -401,7 +401,7 @@ const SESSIONS: SessionData[] = [
       ],
     },
     cover: {
-      eyebrow: "Live now � Control room",
+      eyebrow: "Live now ï¿½ Control room",
       promise: "High-energy youth gathering with testimony, worship, live prayer, and a strong response moment.",
       gradient: "linear-gradient(135deg, #10253d 0%, #165a5f 46%, var(--fh-brand) 100%)",
     },
@@ -418,8 +418,8 @@ const SESSIONS: SessionData[] = [
     state: "Ended",
     parentLabel: "Community Borehole Appeal",
     parentType: "Giving Moment",
-    audienceLabel: "Community � Supporters � Donation responders",
-    locationLabel: "Online Campus � Outreach Broadcast Room",
+    audienceLabel: "Community ï¿½ Supporters ï¿½ Donation responders",
+    locationLabel: "Online Campus ï¿½ Outreach Broadcast Room",
     timezone: "Africa/Kampala",
     startISO: shiftMinutes(-88),
     endISO: shiftMinutes(-12),
@@ -453,7 +453,7 @@ const SESSIONS: SessionData[] = [
       { role: "Moderator", name: "Moderator Tobi E.", readiness: "Ready", checked: true, critical: true },
       { role: "Captioner", name: "Caption Lead Mercy J.", readiness: "Ready", checked: true },
       { role: "Interpreter", name: "Interpreter Grace L.", readiness: "Ready", checked: true },
-      { role: "Support", name: "Support Team � Outreach", readiness: "Ready", checked: true },
+      { role: "Support", name: "Support Team ï¿½ Outreach", readiness: "Ready", checked: true },
     ],
     audience: {
       registrants: 986,
@@ -474,7 +474,7 @@ const SESSIONS: SessionData[] = [
       eventSignups: 18,
       merchClicks: 0,
       beaconHandoffs: 8,
-      responseLabel: "Crowdfund movement remained strong after the final prayer appeal � this session is ideal for replay plus campaign-update follow-up.",
+      responseLabel: "Crowdfund movement remained strong after the final prayer appeal ï¿½ this session is ideal for replay plus campaign-update follow-up.",
     },
     alerts: [
       {
@@ -537,7 +537,7 @@ function mapLiveFlowRecordToDashboardSession(
       record.parentType === "Giving Moment"
         ? record.parentType
         : "Standalone Live",
-    audienceLabel: `${record.audience} · ${record.language}`,
+    audienceLabel: `${record.audience} Â· ${record.language}`,
     locationLabel: record.campus || "Online Campus",
     timezone: record.timezone || "Africa/Kampala",
     startISO: record.startISO,
@@ -1380,7 +1380,7 @@ export default function FaithHubLiveDashboardPage() {
                 >
                   {allSessions.map((item) => (
                     <option key={item.id} value={item.id}>
-                      {item.title} � {item.state}
+                      {item.title} ï¿½ {item.state}
                     </option>
                   ))}
                 </select>
@@ -1401,7 +1401,7 @@ export default function FaithHubLiveDashboardPage() {
                 <div className="mt-2 text-[12px] font-semibold text-faith-ink dark:text-slate-100">{session.title}</div>
                 <div className="mt-1 text-[11px] text-faith-slate">{session.audienceLabel}</div>
                 <div className="mt-1 text-[11px] text-faith-slate">{session.locationLabel}</div>
-                <div className="mt-1 text-[11px] text-faith-slate">{formatDateTime(session.startISO)} � {session.timezone}</div>
+                <div className="mt-1 text-[11px] text-faith-slate">{formatDateTime(session.startISO)} ï¿½ {session.timezone}</div>
               </div>
 
               <div className="mt-4 grid grid-cols-2 gap-2">
@@ -1419,7 +1419,7 @@ export default function FaithHubLiveDashboardPage() {
 
               <div className="mt-4 flex flex-wrap gap-2">
                 {session.destinations.map((dest) => (
-                  <Pill key={dest.name} text={`${dest.name} � ${dest.status}`} tone={destinationTone(dest.status)} />
+                  <Pill key={dest.name} text={`${dest.name} ï¿½ ${dest.status}`} tone={destinationTone(dest.status)} />
                 ))}
               </div>
             </Card>
@@ -1614,7 +1614,7 @@ export default function FaithHubLiveDashboardPage() {
                           <div className="flex flex-wrap items-center gap-2">
                             <Pill text={alert.severity.toUpperCase()} tone={severityTone(alert.severity)} />
                             <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">{alert.title}</div>
-                            <div className="text-[11px] text-faith-slate">� {alert.owner}</div>
+                            <div className="text-[11px] text-faith-slate">ï¿½ {alert.owner}</div>
                           </div>
                           <div className="mt-2 text-[12px] text-faith-slate">{alert.description}</div>
                           <div className="mt-2 text-[11px] text-faith-slate">Playbook: {alert.playbook}</div>
@@ -1676,7 +1676,7 @@ export default function FaithHubLiveDashboardPage() {
                         <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">{item.action}</div>
                         <Pill text={item.flow.toUpperCase()} />
                       </div>
-                      <div className="mt-1 text-[11px] text-faith-slate">{item.actorName} · {formatDateTime(item.atISO)}</div>
+                      <div className="mt-1 text-[11px] text-faith-slate">{item.actorName} Â· {formatDateTime(item.atISO)}</div>
                       {item.detail ? <div className="mt-1 text-[11px] text-faith-slate">{item.detail}</div> : null}
                     </div>
                   ))
@@ -1729,6 +1729,7 @@ export default function FaithHubLiveDashboardPage() {
     </div>
   );
 }
+
 
 
 

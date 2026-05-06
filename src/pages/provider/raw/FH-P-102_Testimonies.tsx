@@ -1,4 +1,4 @@
-// @ts-nocheck
+Ôªø// @ts-nocheck
 "use client";
 
 import React, { useMemo, useState } from "react";
@@ -27,7 +27,7 @@ import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
- * Provider ó Testimonies
+ * Provider ‚Äî Testimonies
  * --------------------------------
  * Premium Provider-side page for collecting, reviewing, approving,
  * publishing, and featuring testimonies across the institution.
@@ -54,7 +54,7 @@ const ROUTES = {
   communityGroups: "/faithhub/provider/community-groups",
   prayerRequests: "/faithhub/provider/prayer-requests",
   noticeboard: "/faithhub/provider/noticeboard",
-  replaysClips: "/faithhub/provider/replays-clips",
+  replaysClips: "/faithhub/provider/replays-and-clips",
   testimoniesBuilder: "/faithhub/provider/testimonies/new",
 };
 
@@ -206,7 +206,7 @@ const testimoniesSeed: TestimonyRecord[] = [
     anonymousRequested: false,
     childSafe: false,
     linkedLive: "Night of Hope Revival",
-    linkedReplay: "Night of Hope ó Replay",
+    linkedReplay: "Night of Hope ‚Äî Replay",
     heroUrl: HERO_1,
     tags: ["Provision", "Jobs", "Night of Hope"],
     safeguards: [
@@ -397,7 +397,7 @@ const testimoniesSeed: TestimonyRecord[] = [
     anonymousRequested: false,
     childSafe: false,
     linkedEvent: "Baptism Sunday",
-    linkedReplay: "Baptism Sunday ó Replay",
+    linkedReplay: "Baptism Sunday ‚Äî Replay",
     heroUrl: HERO_4,
     tags: ["Baptism", "Salvation", "Replay"],
     safeguards: [
@@ -843,7 +843,7 @@ function TestimonyPreview({
               {story.displayName}
             </div>
             <div className="mt-0.5 text-[11px] text-faith-slate">
-              {story.category} ï {story.mediaType}
+              {story.category} ‚Ä¢ {story.mediaType}
             </div>
           </div>
           <Pill text={story.status} tone={statusTone(story.status)} />
@@ -854,10 +854,10 @@ function TestimonyPreview({
             Story highlight
           </div>
           <div className="mt-1 text-[13px] font-semibold text-faith-ink dark:text-slate-100 leading-6">
-            ì{story.storyText.slice(0, 160)}{story.storyText.length > 160 ? "Ö" : ""}î
+            ‚Äú{story.storyText.slice(0, 160)}{story.storyText.length > 160 ? "‚Ä¶" : ""}‚Äù
           </div>
           <div className="mt-2 text-[11px] text-faith-slate">
-            Key verse ï {story.keyVerse}
+            Key verse ‚Ä¢ {story.keyVerse}
           </div>
         </div>
 
@@ -1101,9 +1101,9 @@ export default function TestimoniesPage() {
             <div className="min-w-0 flex flex-wrap items-center gap-2 text-[13px] text-faith-slate">
               <Pill text="STORY OPS ALERTS" tone="warn" icon={<AlertTriangle className="h-3 w-3" />} />
               <span>{fmtInt(needsReview.length)} stories still need first review</span>
-              <span>ï</span>
+              <span>‚Ä¢</span>
               <span>{fmtInt(consentGaps.length)} stories have consent or release gaps</span>
-              <span>ï</span>
+              <span>‚Ä¢</span>
               <span>{fmtInt(featureReady.length)} approved stories are ready for featuring</span>
             </div>
             <div className="text-[11px] font-semibold uppercase tracking-[0.12em] text-faith-slate">
@@ -1298,7 +1298,7 @@ export default function TestimoniesPage() {
                               <Pill text={featureState} tone={featureState === "Blocked" ? "danger" : featureState === "Featured" ? "good" : featureState === "Feature ready" ? "warn" : "navy"} />
                             </div>
                             <div className="mt-1 text-[13px] text-faith-slate">
-                              {story.displayName} ï {story.category} ï {story.mediaType}
+                              {story.displayName} ‚Ä¢ {story.category} ‚Ä¢ {story.mediaType}
                             </div>
                             <div className="mt-2 max-w-[820px] text-[13px] leading-6 text-slate-700 dark:text-slate-300">
                               {story.summary}
@@ -1330,7 +1330,7 @@ export default function TestimoniesPage() {
                             {fmtLocal(story.submittedISO)}
                           </div>
                           <div className="mt-3 text-[11px] text-faith-slate">
-                            Reads ï {fmtInt(story.impact.reads)}
+                            Reads ‚Ä¢ {fmtInt(story.impact.reads)}
                           </div>
                         </div>
                       </div>
@@ -1429,13 +1429,13 @@ export default function TestimoniesPage() {
                         Linked destinations
                       </div>
                       <div className="mt-3 flex flex-wrap gap-2">
-                        {selectedStory.linkedLive ? <Pill text={`Live ï ${selectedStory.linkedLive}`} tone="navy" icon={<PlayCircle className="h-3 w-3" />} /> : null}
-                        {selectedStory.linkedReplay ? <Pill text={`Replay ï ${selectedStory.linkedReplay}`} tone="good" icon={<Link2 className="h-3 w-3" />} /> : null}
-                        {selectedStory.linkedGroup ? <Pill text={`Group ï ${selectedStory.linkedGroup}`} tone="warn" icon={<LayoutGrid className="h-3 w-3" />} /> : null}
-                        {selectedStory.linkedEvent ? <Pill text={`Event ï ${selectedStory.linkedEvent}`} tone="warn" icon={<CalendarClock className="h-3 w-3" />} /> : null}
+                        {selectedStory.linkedLive ? <Pill text={`Live ‚Ä¢ ${selectedStory.linkedLive}`} tone="navy" icon={<PlayCircle className="h-3 w-3" />} /> : null}
+                        {selectedStory.linkedReplay ? <Pill text={`Replay ‚Ä¢ ${selectedStory.linkedReplay}`} tone="good" icon={<Link2 className="h-3 w-3" />} /> : null}
+                        {selectedStory.linkedGroup ? <Pill text={`Group ‚Ä¢ ${selectedStory.linkedGroup}`} tone="warn" icon={<LayoutGrid className="h-3 w-3" />} /> : null}
+                        {selectedStory.linkedEvent ? <Pill text={`Event ‚Ä¢ ${selectedStory.linkedEvent}`} tone="warn" icon={<CalendarClock className="h-3 w-3" />} /> : null}
                       </div>
                       <div className="mt-3 text-[11px] leading-5 text-faith-slate">
-                        Tags ï {selectedStory.tags.join(" ï ")}
+                        Tags ‚Ä¢ {selectedStory.tags.join(" ‚Ä¢ ")}
                       </div>
                     </div>
                     <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
@@ -1503,7 +1503,7 @@ export default function TestimoniesPage() {
                     Decide where the story should surface next and which safeguards still gate public visibility.
                   </div>
                 </div>
-                <Pill text={selectedStory?.status || "ó"} tone={selectedStory ? statusTone(selectedStory.status) : "neutral"} />
+                <Pill text={selectedStory?.status || "‚Äî"} tone={selectedStory ? statusTone(selectedStory.status) : "neutral"} />
               </div>
 
               {selectedStory ? (
@@ -1715,6 +1715,7 @@ export default function TestimoniesPage() {
     </div>
   );
 }
+
 
 
 

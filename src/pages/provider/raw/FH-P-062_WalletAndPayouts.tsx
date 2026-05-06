@@ -1,4 +1,4 @@
-// @ts-nocheck
+﻿// @ts-nocheck
 "use client";
 
 import React, { useMemo, useState } from "react";
@@ -37,7 +37,7 @@ import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 import { useAuth } from "@/auth/useAuth";
 
 /**
- * Provider — Wallet & Payouts
+ * Provider â€” Wallet & Payouts
  * ------------------------------------
  * Premium Provider-side treasury surface for wallet visibility, payout methods,
  * transfer controls, settlement sources, compliance health, and reconciliation.
@@ -57,7 +57,7 @@ const EV_NAVY = "#0f172a";
 
 const ROUTES = {
   providerDashboard: "/faithhub/provider/dashboard",
-  donationsFunds: "/faithhub/provider/donations-funds",
+  donationsFunds: "/faithhub/provider/donations-and-funds",
   crowdfundingWorkbench: "/faithhub/provider/charity-crowdfund",
   eventsManager: "/faithhub/provider/events-manager",
   merchandiseManager: "/faithhub/provider/merchandise",
@@ -70,7 +70,7 @@ function safeNav(url: string) {
   navigateWithRouter(url);
 }
 
-function fmtMoney(n: number, currency = "£") {
+function fmtMoney(n: number, currency = "Â£") {
   return `${currency}${Intl.NumberFormat(undefined, {
     maximumFractionDigits: 0,
   }).format(n)}`;
@@ -656,7 +656,7 @@ function Drawer({
                 onClick={onClose}
                 className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 hover:bg-[var(--fh-surface)]"
               >
-                ×
+                Ã—
               </button>
             </div>
           </div>
@@ -750,7 +750,7 @@ function PreviewRail({ mode, onModeChange }: { mode: PreviewMode; onModeChange: 
               <Wallet className="h-3.5 w-3.5" /> Treasury desk
             </div>
             <div className="mt-4 text-[28px] font-black">{fmtMoney(18420)}</div>
-            <div className="mt-1 text-[12px] text-slate-300">Available to transfer • Trust-ready 96%</div>
+            <div className="mt-1 text-[12px] text-slate-300">Available to transfer â€¢ Trust-ready 96%</div>
             <div className="mt-4 h-3 rounded-full bg-[var(--fh-surface-bg)]/10 overflow-hidden">
               <div className="h-full rounded-full" style={{ width: "74%", background: EV_GREEN }} />
             </div>
@@ -938,7 +938,7 @@ export default function WalletAndPayoutsPage() {
               />
               <p className="mt-3 max-w-[900px] text-[15px] leading-7 text-faith-slate">
                 A dedicated wallet and payouts command surface for donations, charity crowdfunding, event registrations,
-                supporter memberships, and FaithMart-linked revenue — with finance trust, payout readiness, and reconciliation all in one place.
+                supporter memberships, and FaithMart-linked revenue â€” with finance trust, payout readiness, and reconciliation all in one place.
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
                 <Pill text="Treasury-ready" tone="good" icon={<BadgeCheck className="h-3.5 w-3.5" />} />
@@ -1102,7 +1102,7 @@ export default function WalletAndPayoutsPage() {
                         </div>
                         <div>
                           <div className="text-[13px] font-semibold text-faith-ink">{method.label}</div>
-                          <div className="text-[11px] text-faith-slate">{method.kind} · {method.owner}</div>
+                          <div className="text-[11px] text-faith-slate">{method.kind} Â· {method.owner}</div>
                         </div>
                       </div>
                     </div>
@@ -1142,7 +1142,7 @@ export default function WalletAndPayoutsPage() {
                 <div className="flex items-start justify-between gap-3">
                   <div>
                     <div className="text-[12px] font-semibold text-faith-ink">Primary auto payout</div>
-                    <div className="mt-1 text-[22px] font-black text-faith-ink">Thursday · 14:00</div>
+                    <div className="mt-1 text-[22px] font-black text-faith-ink">Thursday Â· 14:00</div>
                     <div className="mt-1 text-[11px] text-faith-slate">Weekly treasury sweep into the main ministry current account.</div>
                   </div>
                   <Pill text="Auto" tone="good" icon={<RefreshCcw className="h-3.5 w-3.5" />} />
@@ -1251,7 +1251,7 @@ export default function WalletAndPayoutsPage() {
                         </div>
                         <div className="min-w-0">
                           <div className="text-[13px] font-semibold text-faith-ink truncate">{tx.title}</div>
-                          <div className="text-[11px] text-faith-slate truncate">{tx.source} · {tx.reference} · {tx.campus}</div>
+                          <div className="text-[11px] text-faith-slate truncate">{tx.source} Â· {tx.reference} Â· {tx.campus}</div>
                         </div>
                       </div>
                       <div className="mt-2 text-[11px] leading-5 text-faith-slate line-clamp-2">{tx.note}</div>
@@ -1332,7 +1332,7 @@ export default function WalletAndPayoutsPage() {
                     <div className="flex items-start justify-between gap-3">
                       <div>
                         <div className="text-[13px] font-semibold text-faith-ink">{method.label}</div>
-                        <div className="mt-1 text-[11px] text-faith-slate">{method.kind} · {method.currency}</div>
+                        <div className="mt-1 text-[11px] text-faith-slate">{method.kind} Â· {method.currency}</div>
                       </div>
                       <Pill
                         text={method.status}
@@ -1455,7 +1455,7 @@ export default function WalletAndPayoutsPage() {
         open={!!selectedTx}
         onClose={() => setSelectedTx(null)}
         title={selectedTx?.title || "Transaction details"}
-        subtitle={selectedTx ? `${selectedTx.reference} · ${selectedTx.source}` : undefined}
+        subtitle={selectedTx ? `${selectedTx.reference} Â· ${selectedTx.source}` : undefined}
       >
         {selectedTx ? (
           <div className="space-y-4">
@@ -1535,6 +1535,7 @@ export default function WalletAndPayoutsPage() {
     </div>
   );
 }
+
 
 
 
