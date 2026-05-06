@@ -1945,14 +1945,14 @@ export default function SeriesBuilderPage() {
           </div>
         ) : null}
 
-        <div className="mt-5 grid gap-5 2xl:grid-cols-[240px_minmax(0,1fr)_360px]">
+        <div className="mt-5 grid gap-5 xl:grid-cols-[220px_minmax(0,1fr)] 2xl:grid-cols-[240px_minmax(0,1fr)_360px]">
           <div className="xl:sticky xl:top-6 xl:self-start">
             <StepRail step={step} setStep={setStep} readinessScore={readiness.score} />
           </div>
 
           <div className="space-y-4">{centerContent}</div>
 
-          <div className="hidden xl:block xl:sticky xl:top-6 xl:self-start">
+          <div className="hidden 2xl:block 2xl:sticky 2xl:top-6 2xl:self-start">
             <div className="rounded-[30px] border border-faith-line bg-[var(--fh-surface-bg)] p-3 sm:p-4 shadow-soft">
               <div className="flex items-center justify-between gap-3">
                 <div>
@@ -1992,7 +1992,7 @@ export default function SeriesBuilderPage() {
           </div>
         </div>
 
-        <div className="mt-5 xl:hidden">
+        <div className="mt-5 2xl:hidden">
           <div className="rounded-[30px] border border-faith-line bg-[var(--fh-surface-bg)] p-3 sm:p-4 shadow-soft">
             <div className="flex items-center justify-between gap-3">
               <div>
