@@ -114,6 +114,7 @@ export function ProviderShellLayout() {
         <Box
           component="main"
           id="provider-main-content"
+          className="provider-main-scroll"
           tabIndex={-1}
           sx={{
             flex: 1,
@@ -134,7 +135,7 @@ export function ProviderShellLayout() {
               border: '1px solid',
               borderColor: (theme) => (theme.palette.mode === 'dark' ? '#1f2937' : '#d2ddd8'),
               bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#0f172a' : '#f4f7f6'),
-              p: { xs: 0.4, md: 0.65 },
+              p: { xs: 0.5, md: 0.8 },
               minHeight: '100%',
               boxShadow: (theme) =>
                 theme.palette.mode === 'dark'

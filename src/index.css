@@ -43,6 +43,7 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -53,6 +54,12 @@ body {
   color: var(--fh-ink);
   background-color: var(--fh-page-bg, #f4f8f6);
   transition: background-color 200ms ease, color 200ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 html.dark body {
@@ -124,6 +131,22 @@ video {
 
 .fh-skip-link:focus-visible {
   transform: translateY(0);
+}
+
+.provider-main-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--fh-brand) 55%, var(--fh-line) 45%) transparent;
+}
+
+.provider-main-scroll::-webkit-scrollbar {
+  width: 10px;
+}
+
+.provider-main-scroll::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--fh-brand) 58%, var(--fh-line) 42%);
+  border: 2px solid transparent;
+  background-clip: padding-box;
 }
 
 .ds-card {
