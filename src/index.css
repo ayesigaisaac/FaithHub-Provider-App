@@ -22,20 +22,22 @@
   --fh-shadow-sm: 0 8px 20px rgba(2, 15, 23, 0.06);
   --fh-shadow-md: 0 14px 28px rgba(2, 15, 23, 0.08);
   --fh-shadow-lg: 0 20px 45px rgba(2, 15, 23, 0.1);
-  --fh-shadow-glow: 0 18px 40px rgba(3, 205, 140, 0.14);
+  --fh-shadow-glow: 0 18px 40px rgba(3, 205, 140, 0.18);
 
   --fh-brand: #03cd8c;
-  --fh-brand-dark: #00b57a;
-  --fh-brand-soft: #d7f5e8;
+  --fh-brand-dark: #03cd8c;
+  --fh-brand-soft: #03cd8c1a;
   --fh-accent: #f77f00;
-  --fh-accent-soft: #fff1df;
+  --fh-accent-soft: #f77f001a;
+  --fh-ev-medium-grey: #a6a6a6;
+  --fh-ev-light-grey: #f2f2f2;
   --fh-ink: #0f172a;
   --fh-slate: #64748b;
   --fh-muted: #475569;
   --fh-muted-strong: #334155;
-  --fh-line: #e2e8f0;
-  --fh-surface: #f8fafc;
-  --fh-page-bg: #f4f8f6;
+  --fh-line: #a6a6a6;
+  --fh-surface: #f2f2f2;
+  --fh-page-bg: #f2f2f2;
   --fh-surface-bg: #ffffff;
 }
 

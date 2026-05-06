@@ -44,10 +44,10 @@ import {
  * - Tailwind-style utility classes assumed.
  */
 
-const EV_GREEN = "#03cd8c";
-const EV_ORANGE = "#f77f00";
-const EV_GREY = "#a6a6a6";
-const EV_LIGHT = "#f2f2f2";
+const EV_GREEN = "var(--fh-brand)";
+const EV_ORANGE = "var(--fh-accent)";
+const EV_GREY = "var(--fh-ev-medium-grey)";
+const EV_LIGHT = "var(--fh-ev-light-grey)";
 const EV_NAVY = "#0b1d49";
 
 const ROUTES = {
@@ -409,9 +409,9 @@ function Pill({
 }) {
   const cls =
     tone === "green"
-      ? "border-[rgba(3,205,140,0.28)] bg-[rgba(3,205,140,0.10)] text-[#03cd8c]"
+      ? "border-[rgba(3,205,140,0.28)] bg-[rgba(3,205,140,0.10)] text-[var(--fh-brand)]"
       : tone === "orange"
-        ? "border-[rgba(247,127,0,0.28)] bg-[rgba(247,127,0,0.10)] text-[#f77f00]"
+        ? "border-[rgba(247,127,0,0.28)] bg-[rgba(247,127,0,0.10)] text-[var(--fh-accent)]"
         : tone === "navy"
           ? "border-[rgba(11,29,73,0.20)] bg-[rgba(11,29,73,0.08)] text-[#0b1d49] dark:text-slate-100"
           : tone === "good"
@@ -607,7 +607,7 @@ function PhonePreview({
           <div className="absolute left-1/2 top-0 z-20 h-5 w-16 -translate-x-1/2 rounded-b-2xl bg-black" />
           <div className="h-[208px] overflow-hidden bg-[var(--fh-surface)] dark:bg-slate-950">
             <div className="px-3 pt-6 pb-2">
-              <div className="inline-flex rounded-full bg-[#f77f00] px-3 py-1 text-[10px] font-extrabold text-white">
+              <div className="inline-flex rounded-full bg-[var(--fh-accent)] px-3 py-1 text-[10px] font-extrabold text-white">
                 Beacon
               </div>
             </div>
@@ -618,7 +618,7 @@ function PhonePreview({
                   alt={placement.title}
                   className="h-full w-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#f77f00]/80 to-[#0b1d49]/35" />
+                <div className="absolute inset-0 bg-gradient-to-r from-[var(--fh-accent)]/80 to-[#0b1d49]/35" />
                 <div className="absolute inset-x-3 bottom-3 text-[11px] font-extrabold leading-tight text-white line-clamp-2">
                   Reserve your place for Friday’s live gathering.
                 </div>
@@ -926,7 +926,7 @@ export default function BeaconMarketplacePage() {
                           className={cx(
                             "rounded-full border px-3 py-1.5 text-[11px] font-bold transition-colors",
                             active
-                              ? "border-[rgba(247,127,0,0.25)] bg-[rgba(247,127,0,0.10)] text-[#f77f00]"
+                              ? "border-[rgba(247,127,0,0.25)] bg-[rgba(247,127,0,0.10)] text-[var(--fh-accent)]"
                               : "border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 text-faith-slate dark:text-slate-300",
                           )}
                         >
@@ -1009,7 +1009,7 @@ export default function BeaconMarketplacePage() {
                                     setSelectedPlacementId(placement.id);
                                     setDetailOpen(true);
                                   }}
-                                  className="inline-flex items-center gap-1 rounded-full border px-3 py-1 text-[11px] font-bold text-[#03cd8c]"
+                                  className="inline-flex items-center gap-1 rounded-full border px-3 py-1 text-[11px] font-bold text-[var(--fh-brand)]"
                                   style={{ borderColor: accent.border, background: accent.bg }}
                                 >
                                   <Eye className="h-3.5 w-3.5" /> Open
@@ -1341,7 +1341,7 @@ export default function BeaconMarketplacePage() {
                 key={tile.title}
                 className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 shadow-soft"
               >
-                <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-[rgba(3,205,140,0.12)] text-[#03cd8c]">
+                <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-[rgba(3,205,140,0.12)] text-[var(--fh-brand)]">
                   <tile.icon className="h-5 w-5" />
                 </div>
                 <div className="mt-3 text-[14px] font-extrabold text-faith-ink dark:text-slate-100">

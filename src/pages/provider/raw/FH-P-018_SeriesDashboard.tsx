@@ -50,10 +50,10 @@ import { ProviderStatusPill } from "@/components/provider/ProviderStatusPill";
  * - Strong emphasis on the Series ??? ? Episodes relationship.
  */
 
-const EV_GREEN = "#03cd8c";
-const EV_ORANGE = "#f77f00";
-const EV_GREY = "#a6a6a6";
-const EV_LIGHT = "#f2f2f2";
+const EV_GREEN = "var(--fh-brand)";
+const EV_ORANGE = "var(--fh-accent)";
+const EV_GREY = "var(--fh-ev-medium-grey)";
+const EV_LIGHT = "var(--fh-ev-light-grey)";
 const EV_NAVY = "#0f172a";
 
 const ROUTES = {
@@ -745,7 +745,7 @@ function SeriesLandingPreview({
             <span className="rounded-full bg-[#10223a] px-3 py-1 text-[10px] font-black">SERIES</span>
             <span className="rounded-full bg-[var(--fh-surface-bg)]/90 px-3 py-1 text-[10px] font-black text-[#106f65]">{series.access}</span>
             {series.beaconReady ? (
-              <span className="rounded-full bg-[#fff3e6] px-3 py-1 text-[10px] font-black text-[#f77f00]">Beacon-ready</span>
+              <span className="rounded-full bg-[#fff3e6] px-3 py-1 text-[10px] font-black text-[var(--fh-accent)]">Beacon-ready</span>
             ) : null}
           </div>
 
@@ -753,8 +753,8 @@ function SeriesLandingPreview({
             <div className="text-[15px] font-black tracking-tight">{series.title}</div>
             <div className="mt-2 max-w-[90%] text-[12px] leading-relaxed text-white/90">{series.subtitle}</div>
             <div className="mt-4 flex flex-wrap items-center gap-2">
-              <button className="rounded-full bg-[#03cd8c] px-4 py-2 text-[12px] font-black text-white" onClick={() => safeNav("/faithhub/provider/series-dashboard")}>Follow series</button>
-              <button className="rounded-full bg-[#f77f00] px-4 py-2 text-[12px] font-black text-white" onClick={() => safeNav("/faithhub/provider/live-dashboard")}>Watch trailer</button>
+              <button className="rounded-full bg-[var(--fh-brand)] px-4 py-2 text-[12px] font-black text-white" onClick={() => safeNav("/faithhub/provider/series-dashboard")}>Follow series</button>
+              <button className="rounded-full bg-[var(--fh-accent)] px-4 py-2 text-[12px] font-black text-white" onClick={() => safeNav("/faithhub/provider/live-dashboard")}>Watch trailer</button>
             </div>
           </div>
         </div>
@@ -980,7 +980,7 @@ export default function SeriesDashboardPage() {
 
         <div className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 py-3 transition-colors">
           <div className="flex flex-wrap items-center gap-3 text-[12px] text-faith-slate">
-            <span className="inline-flex items-center rounded-full border border-[#f77f00]/25 bg-[#fff3e6] px-3 py-1 font-black uppercase tracking-[0.08em] text-[#f77f00]">
+            <span className="inline-flex items-center rounded-full border border-[var(--fh-accent)]/25 bg-[#fff3e6] px-3 py-1 font-black uppercase tracking-[0.08em] text-[var(--fh-accent)]">
               Series pipeline pulse
             </span>
             <span>1 series needs artwork</span>
@@ -1067,7 +1067,7 @@ export default function SeriesDashboardPage() {
                     "rounded-full border px-3 py-1.5 text-[12px] font-semibold transition-colors",
                     filterKey === key
                       ? key === "beacon-ready"
-                        ? "border-[#f77f00] bg-[#fff3e6] text-[#f77f00]"
+                        ? "border-[var(--fh-accent)] bg-[#fff3e6] text-[var(--fh-accent)]"
                         : "border-transparent text-white"
                       : "border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 text-faith-slate dark:text-slate-300 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-700",
                   )}
@@ -1087,7 +1087,7 @@ export default function SeriesDashboardPage() {
                     className={cx(
                       "rounded-[28px] border transition-colors",
                       selected
-                        ? "border-[#03cd8c]/40 bg-[#edf9f5] dark:bg-emerald-900/10 dark:border-emerald-800"
+                        ? "border-[var(--fh-brand)]/40 bg-[#edf9f5] dark:bg-emerald-900/10 dark:border-emerald-800"
                         : "border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900",
                     )}
                   >
@@ -1410,7 +1410,7 @@ export default function SeriesDashboardPage() {
           </SectionCard>
         </div>
 
-        <div className="rounded-[18px] border border-[#03cd8c]/30 bg-[#e8f8f3] px-4 py-3 text-center text-[13px] text-faith-slate">
+        <div className="rounded-[18px] border border-[var(--fh-brand)]/30 bg-[#e8f8f3] px-4 py-3 text-center text-[13px] text-faith-slate">
           Preview
         </div>
       </div>

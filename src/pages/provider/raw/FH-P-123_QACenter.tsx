@@ -39,13 +39,13 @@ import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
  * - Resolve Issue
  *
  * Design system:
- * - EVzone Green #03cd8c
- * - EVzone Orange #f77f00
+ * - EVzone Green var(--fh-brand)
+ * - EVzone Orange var(--fh-accent)
  */
 
-const GREEN = "#03cd8c";
-const ORANGE = "#f77f00";
-const MEDIUM = "#a6a6a6";
+const GREEN = "var(--fh-brand)";
+const ORANGE = "var(--fh-accent)";
+const MEDIUM = "var(--fh-ev-medium-grey)";
 const NAVY = "#24327a";
 
 type QAScope =

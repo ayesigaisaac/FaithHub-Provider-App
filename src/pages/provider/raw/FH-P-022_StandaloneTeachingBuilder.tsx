@@ -53,10 +53,10 @@ import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
  * - Standalone teachings can later migrate into a Series or become a new Series.
  */
 
-const EV_GREEN = "#03cd8c";
-const EV_ORANGE = "#f77f00";
-const EV_GREY = "#a6a6a6";
-const EV_LIGHT = "#f2f2f2";
+const EV_GREEN = "var(--fh-brand)";
+const EV_ORANGE = "var(--fh-accent)";
+const EV_GREY = "var(--fh-ev-medium-grey)";
+const EV_LIGHT = "var(--fh-ev-light-grey)";
 const EV_NAVY = "#0f172a";
 
 const ROUTES = {
@@ -759,12 +759,12 @@ function DesktopTeachingPreview({ draft }: { draft: TeachingDraft }) {
             <div className="mt-1 max-w-[520px] text-[13px] text-white/80">{draft.subtitle}</div>
             <div className="mt-3 flex flex-wrap gap-2">
               <button
-                className="inline-flex items-center gap-2 rounded-full bg-[#03cd8c] px-4 py-2 text-[12px] font-black text-white"
+                className="inline-flex items-center gap-2 rounded-full bg-[var(--fh-brand)] px-4 py-2 text-[12px] font-black text-white"
                 onClick={() => safeNav(draft.liveEnabled ? "/faithhub/provider/live-dashboard" : "/faithhub/provider/teachings-dashboard")}
               >
                 {draft.liveEnabled ? "Join teaching" : "Watch teaching"}
               </button>
-              <button className="inline-flex items-center gap-2 rounded-full bg-[#f77f00] px-4 py-2 text-[12px] font-black text-white" onClick={() => safeNav("/faithhub/provider/resources-manager")}>
+              <button className="inline-flex items-center gap-2 rounded-full bg-[var(--fh-accent)] px-4 py-2 text-[12px] font-black text-white" onClick={() => safeNav("/faithhub/provider/resources-manager")}>
                 Open notes
               </button>
             </div>
@@ -867,12 +867,12 @@ function MobileTeachingPreview({ draft }: { draft: TeachingDraft }) {
               </div>
               <div className="mt-3 space-y-2">
                 <button
-                  className="inline-flex w-full items-center justify-center rounded-2xl bg-[#03cd8c] px-4 py-3 text-[13px] font-black text-white"
+                  className="inline-flex w-full items-center justify-center rounded-2xl bg-[var(--fh-brand)] px-4 py-3 text-[13px] font-black text-white"
                   onClick={() => safeNav(draft.liveEnabled ? "/faithhub/provider/live-dashboard" : "/faithhub/provider/teachings-dashboard")}
                 >
                   {draft.liveEnabled ? "Join linked live" : "Watch teaching"}
                 </button>
-                <button className="inline-flex w-full items-center justify-center rounded-2xl bg-[#f77f00] px-4 py-3 text-[13px] font-black text-white" onClick={() => safeNav("/faithhub/provider/resources-manager")}>
+                <button className="inline-flex w-full items-center justify-center rounded-2xl bg-[var(--fh-accent)] px-4 py-3 text-[13px] font-black text-white" onClick={() => safeNav("/faithhub/provider/resources-manager")}>
                   Open notes & resources
                 </button>
               </div>

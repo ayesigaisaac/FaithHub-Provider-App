@@ -49,14 +49,14 @@ import { useAuth } from "@/auth/useAuth";
  * - Connect Integration
  *
  * Design:
- * - EVzone Green as primary (#03cd8c)
- * - EVzone Orange as secondary (#f77f00)
+ * - EVzone Green as primary (var(--fh-brand))
+ * - EVzone Orange as secondary (var(--fh-accent))
  */
 
-const GREEN = "#03cd8c";
-const ORANGE = "#f77f00";
-const MEDIUM = "#a6a6a6";
-const LIGHT = "#f2f2f2";
+const GREEN = "var(--fh-brand)";
+const ORANGE = "var(--fh-accent)";
+const MEDIUM = "var(--fh-ev-medium-grey)";
+const LIGHT = "var(--fh-ev-light-grey)";
 
 type SettingsTab =
   | "identity"
@@ -716,7 +716,7 @@ export default function WorkspaceSettingsPage() {
                       <div className="text-[11px] text-faith-slate">Approved for light and dark modes</div>
                     </div>
                     <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3">
-                      <div className="h-16 rounded-xl" style={{ background: "linear-gradient(135deg, #03cd8c, #f77f00)" }} />
+                      <div className="h-16 rounded-xl" style={{ background: "linear-gradient(135deg, var(--fh-brand), var(--fh-accent))" }} />
                       <div className="mt-2 text-[12px] font-extrabold text-faith-ink dark:text-slate-100">Cover gradient</div>
                       <div className="text-[11px] text-faith-slate">Used on dashboard, campus cards, and public entry</div>
                     </div>
@@ -1180,7 +1180,7 @@ export default function WorkspaceSettingsPage() {
                         <div className="mt-1 text-[18px] font-black text-faith-ink dark:text-slate-100">{workspaceName}</div>
                         <div className="mt-1 text-[12px] text-faith-slate">{missionLine}</div>
                       </div>
-                      <div className="h-10 w-10 rounded-2xl" style={{ background: "linear-gradient(135deg, #03cd8c, #f77f00)" }} />
+                      <div className="h-10 w-10 rounded-2xl" style={{ background: "linear-gradient(135deg, var(--fh-brand), var(--fh-accent))" }} />
                     </div>
                     <div className="mt-4 flex flex-wrap gap-2">
                       <Pill tone="good">{defaultLanguage}</Pill>

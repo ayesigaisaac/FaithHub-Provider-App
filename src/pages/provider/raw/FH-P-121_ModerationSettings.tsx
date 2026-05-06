@@ -29,13 +29,13 @@ import {
  * - Save Policy
  *
  * Design notes:
- * - EVzone Green as primary (#03cd8c)
- * - EVzone Orange as secondary (#f77f00)
+ * - EVzone Green as primary (var(--fh-brand))
+ * - EVzone Orange as secondary (var(--fh-accent))
  */
 
-const GREEN = "#03cd8c";
-const ORANGE = "#f77f00";
-const MEDIUM = "#a6a6a6";
+const GREEN = "var(--fh-brand)";
+const ORANGE = "var(--fh-accent)";
+const MEDIUM = "var(--fh-ev-medium-grey)";
 const INDIGO = "#2f3f9f";
 
 type PolicySection =

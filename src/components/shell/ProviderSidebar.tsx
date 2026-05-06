@@ -109,14 +109,14 @@ const sectionIconMap: Record<string, typeof GridViewRoundedIcon> = {
   Settings: SettingsRoundedIcon,
 };
 const sectionToneMap: Record<string, { icon: string; bg: string; border: string }> = {
-  Continue: { icon: '#00b57a', bg: '#e9f8f2', border: '#bfe9d9' },
-  Create: { icon: '#f77f00', bg: '#fff2e4', border: '#ffd7ad' },
+  Continue: { icon: 'var(--fh-brand-dark)', bg: '#e9f8f2', border: '#bfe9d9' },
+  Create: { icon: 'var(--fh-accent)', bg: '#fff2e4', border: '#ffd7ad' },
   Publish: { icon: '#64748b', bg: '#edf1f5', border: '#d5dde6' },
-  Published: { icon: '#00b57a', bg: '#e9f8f2', border: '#bfe9d9' },
-  Review: { icon: '#f77f00', bg: '#fff2e4', border: '#ffd7ad' },
+  Published: { icon: 'var(--fh-brand-dark)', bg: '#e9f8f2', border: '#bfe9d9' },
+  Review: { icon: 'var(--fh-accent)', bg: '#fff2e4', border: '#ffd7ad' },
   Analytics: { icon: '#64748b', bg: '#edf1f5', border: '#d5dde6' },
-  Reach: { icon: '#00b57a', bg: '#e9f8f2', border: '#bfe9d9' },
-  Community: { icon: '#f77f00', bg: '#fff2e4', border: '#ffd7ad' },
+  Reach: { icon: 'var(--fh-brand-dark)', bg: '#e9f8f2', border: '#bfe9d9' },
+  Community: { icon: 'var(--fh-accent)', bg: '#fff2e4', border: '#ffd7ad' },
   Team: { icon: '#64748b', bg: '#edf1f5', border: '#d5dde6' },
   Settings: { icon: '#64748b', bg: '#edf1f5', border: '#d5dde6' },
 };

@@ -61,10 +61,10 @@ import {
  * - Replace route constants and mocked records with production data sources when integrating.
  */
 
-const EV_GREEN = '#03cd8c';
-const EV_ORANGE = '#f77f00';
-const EV_GREY = '#a6a6a6';
-const EV_LIGHT = '#f2f2f2';
+const EV_GREEN = 'var(--fh-brand)';
+const EV_ORANGE = 'var(--fh-accent)';
+const EV_GREY = 'var(--fh-ev-medium-grey)';
+const EV_LIGHT = 'var(--fh-ev-light-grey)';
 
 const ROUTES = {
   liveBuilder: '/faithhub/provider/live-builder',
@@ -1536,7 +1536,7 @@ export default function StreamToPlatformsPage() {
                   <div className="mt-1 text-[10px] sm:text-xs text-faith-slate">Final confirmation that shows exactly what will go live where, plus the cross-posting and Beacon handoff path.</div>
 
                   <div className="mt-4 rounded-[14px] overflow-hidden ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft">
-                    <div className="px-4 py-4 text-white" style={{ background: 'linear-gradient(135deg, #03cd8c 0%, #0f766e 45%, #f77f00 100%)' }}>
+                    <div className="px-4 py-4 text-white" style={{ background: 'linear-gradient(135deg, var(--fh-brand) 0%, #0f766e 45%, var(--fh-accent) 100%)' }}>
                       <Badge tone="green">Distribution summary</Badge>
                       <div className="mt-3 text-2xl font-extrabold leading-tight">{sessionTitle}</div>
                       <div className="mt-1 text-sm text-white/90">Primary feed · {activeDestinations.length} live route{activeDestinations.length === 1 ? '' : 's'} · {crossPostRule}</div>
@@ -1675,7 +1675,7 @@ export default function StreamToPlatformsPage() {
                 />
 
                 <div className="mt-4 rounded-[14px] overflow-hidden ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft">
-                  <div className="px-4 py-4 text-white" style={{ background: 'linear-gradient(180deg, #03cd8c 0%, #0f766e 55%, #f77f00 100%)' }}>
+                  <div className="px-4 py-4 text-white" style={{ background: 'linear-gradient(180deg, var(--fh-brand) 0%, #0f766e 55%, var(--fh-accent) 100%)' }}>
                     <Badge tone="green">Surface preview</Badge>
                     <div className="mt-3 text-3xl font-extrabold leading-tight">Sunday Encounter Live</div>
                     <div className="mt-1 text-sm text-white/90">Live Sessions · Central Campus · Thu 18:30</div>

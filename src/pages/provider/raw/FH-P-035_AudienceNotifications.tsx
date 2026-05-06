@@ -44,14 +44,14 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 /**
  * Provider - Audience Notifications
  * Premium lifecycle journey page rebuilt from the creator-style Audience Notifications base.
- * Primary colour: EVzone Green (#03cd8c)
- * Secondary colour: EVzone Orange (#f77f00)
+ * Primary colour: EVzone Green (var(--fh-brand))
+ * Secondary colour: EVzone Orange (var(--fh-accent))
  */
 
-const GREEN = "#03cd8c";
-const ORANGE = "#f77f00";
-const GREY = "#a6a6a6";
-const LIGHT = "#f2f2f2";
+const GREEN = "var(--fh-brand)";
+const ORANGE = "var(--fh-accent)";
+const GREY = "var(--fh-ev-medium-grey)";
+const LIGHT = "var(--fh-ev-light-grey)";
 
 type SourceType =
   | "Live Session"

@@ -34,8 +34,8 @@ import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
  * shared reflections, and private/public journal controls.
  */
 
-const EV_GREEN = "#03cd8c";
-const EV_ORANGE = "#f77f00";
+const EV_GREEN = "var(--fh-brand)";
+const EV_ORANGE = "var(--fh-accent)";
 const EV_NAVY = "#172554";
 
 const ROUTES = {

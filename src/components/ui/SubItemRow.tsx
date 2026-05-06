@@ -25,11 +25,11 @@ export function SubItemRow({ title, description, route, icon: Icon, onClose }: S
       type="button"
       onClick={handleClick}
       aria-current={isActive ? 'page' : undefined}
-      className={`flex w-full items-start gap-3 rounded-xl px-3 py-2.5 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#03cd8c] focus-visible:ring-offset-2 ${
+      className={`flex w-full items-start gap-3 rounded-xl px-3 py-2.5 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--fh-brand)] focus-visible:ring-offset-2 ${
         isActive ? 'bg-[#e6f4ef]' : 'hover:bg-slate-50'
       }`}
     >
-      <span className={`mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md ${isActive ? 'bg-[#03cd8c]/15 text-[#03cd8c]' : 'bg-slate-100 text-slate-600'}`}>
+      <span className={`mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md ${isActive ? 'bg-[var(--fh-brand)]/15 text-[var(--fh-brand)]' : 'bg-slate-100 text-slate-600'}`}>
         <Icon className="h-4 w-4" />
       </span>
       <span className="min-w-0">

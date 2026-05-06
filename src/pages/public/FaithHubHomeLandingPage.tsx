@@ -1,4 +1,4 @@
-﻿import React from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import {
@@ -175,9 +175,9 @@ function SocialIconButton({ href = "#", label, children }: { href?: string; labe
 function Chip({ children, tone = "green" }: { children: React.ReactNode; tone?: "green" | "orange" | "neutral" }) {
   const styles =
     tone === "green"
-      ? "bg-[#03cd8c]/10 text-[#03cd8c] border-[#03cd8c]/20"
+      ? "bg-[var(--fh-brand)]/10 text-[var(--fh-brand)] border-[var(--fh-brand)]/20"
       : tone === "orange"
-        ? "bg-[#f77f00]/10 text-[#f77f00] border-[#f77f00]/20"
+        ? "bg-[var(--fh-accent)]/10 text-[var(--fh-accent)] border-[var(--fh-accent)]/20"
         : "bg-white/80 text-slate-600 border-slate-200";
 
   return (
@@ -190,7 +190,7 @@ function Chip({ children, tone = "green" }: { children: React.ReactNode; tone?: 
 function SectionHeading({ eyebrow, title, body }: { eyebrow: string; title: string; body: string }) {
   return (
     <div className="max-w-3xl">
-      <div className="text-xs font-black uppercase tracking-[0.24em] text-[#03cd8c]">{eyebrow}</div>
+      <div className="text-xs font-black uppercase tracking-[0.24em] text-[var(--fh-brand)]">{eyebrow}</div>
       <h2 className="mt-4 text-4xl font-black tracking-tight text-slate-950 sm:text-5xl">{title}</h2>
       <p className="mt-5 text-lg leading-8 text-slate-600">{body}</p>
     </div>
@@ -231,11 +231,11 @@ export default function FaithHubHomeLandingPageV3Fixed() {
   };
 
   return (
-    <div className="min-h-screen overflow-hidden bg-[#f2f2f2] text-slate-900">
+    <div className="min-h-screen overflow-hidden bg-[var(--fh-ev-light-grey)] text-slate-900">
       <div className="relative">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(3,205,140,0.18),transparent_30%),radial-gradient(circle_at_top_right,rgba(247,127,0,0.16),transparent_26%),linear-gradient(to_bottom,#ffffff,rgba(242,242,242,0.9))]" />
-        <div className="absolute -top-10 left-[-8rem] h-80 w-80 rounded-full bg-[#03cd8c]/20 blur-3xl" />
-        <div className="absolute right-[-6rem] top-20 h-80 w-80 rounded-full bg-[#f77f00]/20 blur-3xl" />
+        <div className="absolute -top-10 left-[-8rem] h-80 w-80 rounded-full bg-[var(--fh-brand)]/20 blur-3xl" />
+        <div className="absolute right-[-6rem] top-20 h-80 w-80 rounded-full bg-[var(--fh-accent)]/20 blur-3xl" />
 
         <header className="relative z-20 mx-auto flex max-w-7xl items-center justify-between px-6 py-6 lg:px-10">
           <div className="flex items-center gap-3">
@@ -247,10 +247,10 @@ export default function FaithHubHomeLandingPageV3Fixed() {
           </div>
 
           <nav className="hidden items-center gap-8 text-sm font-bold text-slate-600 lg:flex">
-            <a href="#features" className="transition hover:text-[#03cd8c]">Features</a>
-            <a href="#who" className="transition hover:text-[#03cd8c]">Who it serves</a>
-            <a href="#experience" className="transition hover:text-[#03cd8c]">Experience</a>
-            <a href="#footer" className="transition hover:text-[#03cd8c]">Contact</a>
+            <a href="#features" className="transition hover:text-[var(--fh-brand)]">Features</a>
+            <a href="#who" className="transition hover:text-[var(--fh-brand)]">Who it serves</a>
+            <a href="#experience" className="transition hover:text-[var(--fh-brand)]">Experience</a>
+            <a href="#footer" className="transition hover:text-[var(--fh-brand)]">Contact</a>
           </nav>
 
           <div className="flex items-center gap-3">
@@ -262,7 +262,7 @@ export default function FaithHubHomeLandingPageV3Fixed() {
               Sign in
             </button>
             <button
-              className="rounded-2xl bg-[#03cd8c] px-5 py-3 text-sm font-black text-white shadow-[0_16px_40px_rgba(3,205,140,0.28)] transition hover:-translate-y-0.5 hover:shadow-[0_20px_50px_rgba(3,205,140,0.34)]"
+              className="rounded-2xl bg-[var(--fh-brand)] px-5 py-3 text-sm font-black text-white shadow-[0_16px_40px_rgba(3,205,140,0.28)] transition hover:-translate-y-0.5 hover:shadow-[0_20px_50px_rgba(3,205,140,0.34)]"
               onClick={() => navigate("/faithhub/provider/onboarding")}
             >
               Join FaithHub
@@ -282,7 +282,7 @@ export default function FaithHubHomeLandingPageV3Fixed() {
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <button
-                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[#03cd8c] px-6 py-4 text-base font-black text-white shadow-[0_16px_40px_rgba(3,205,140,0.28)] transition hover:-translate-y-0.5 hover:shadow-[0_20px_50px_rgba(3,205,140,0.34)]"
+                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[var(--fh-brand)] px-6 py-4 text-base font-black text-white shadow-[0_16px_40px_rgba(3,205,140,0.28)] transition hover:-translate-y-0.5 hover:shadow-[0_20px_50px_rgba(3,205,140,0.34)]"
                 onClick={() => navigate("/faithhub/provider/onboarding")}
               >
                 Start with FaithHub
@@ -296,7 +296,7 @@ export default function FaithHubHomeLandingPageV3Fixed() {
                 Watch the experience
               </button>
               <button
-                className="inline-flex items-center justify-center gap-2 rounded-2xl border border-[#03cd8c]/30 bg-white px-6 py-4 text-base font-black text-[#047857] shadow-sm transition hover:bg-emerald-50"
+                className="inline-flex items-center justify-center gap-2 rounded-2xl border border-[var(--fh-brand)]/30 bg-white px-6 py-4 text-base font-black text-[var(--fh-brand)] shadow-sm transition hover:bg-[var(--fh-brand-soft)]"
                 onClick={() => navigate("/faithhub/provider/dashboard")}
               >
                 Open Provider Dashboard
@@ -324,8 +324,8 @@ export default function FaithHubHomeLandingPageV3Fixed() {
           </motion.div>
 
           <motion.div {...fadeUp} className="relative">
-            <div className="absolute left-4 top-6 hidden h-24 w-24 rounded-[2rem] bg-[#03cd8c]/15 blur-2xl lg:block" />
-            <div className="absolute bottom-10 right-2 hidden h-28 w-28 rounded-[2rem] bg-[#f77f00]/15 blur-2xl lg:block" />
+            <div className="absolute left-4 top-6 hidden h-24 w-24 rounded-[2rem] bg-[var(--fh-brand)]/15 blur-2xl lg:block" />
+            <div className="absolute bottom-10 right-2 hidden h-28 w-28 rounded-[2rem] bg-[var(--fh-accent)]/15 blur-2xl lg:block" />
 
             <div className="relative rounded-[2.2rem] border border-white/70 bg-white/90 p-4 shadow-[0_30px_70px_rgba(15,23,42,0.10)] backdrop-blur lg:p-5">
               <div className="grid gap-4">
@@ -338,12 +338,12 @@ export default function FaithHubHomeLandingPageV3Fixed() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent" />
                     <div className="absolute left-4 top-4 flex flex-wrap gap-2">
-                      <Chip tone="green"><span className="h-2.5 w-2.5 rounded-full bg-[#03cd8c] animate-pulse" /> Live now</Chip>
+                      <Chip tone="green"><span className="h-2.5 w-2.5 rounded-full bg-[var(--fh-brand)] animate-pulse" /> Live now</Chip>
                       <Chip tone="orange"><BellRing className="h-3.5 w-3.5" /> 18.4K watching</Chip>
                     </div>
                     <div className="absolute bottom-4 left-4 right-4 grid gap-4 md:grid-cols-[1fr_auto] md:items-end">
                       <div>
-                        <div className="text-[11px] font-black uppercase tracking-[0.22em] text-[#03cd8c]">Featured experience</div>
+                        <div className="text-[11px] font-black uppercase tracking-[0.22em] text-[var(--fh-brand)]">Featured experience</div>
                         <div className="mt-2 max-w-xl text-2xl font-black text-white sm:text-3xl">Sunday Worship, Live Teaching, Prayer, and Giving</div>
                         <p className="mt-2 max-w-xl text-sm leading-7 text-white/75">
                           Beautiful livestreaming with chat, follow-up, translation, giving prompts, replay packaging, and premium engagement journeys.
@@ -368,10 +368,10 @@ export default function FaithHubHomeLandingPageV3Fixed() {
                         <div className="text-xs font-black uppercase tracking-[0.18em] text-slate-400">Beacon</div>
                         <div className="mt-2 text-xl font-black">Promotion engine built in</div>
                       </div>
-                      <div className="rounded-2xl bg-[#f77f00]/10 px-3 py-2 text-sm font-black text-[#f77f00]">Active</div>
+                      <div className="rounded-2xl bg-[var(--fh-accent)]/10 px-3 py-2 text-sm font-black text-[var(--fh-accent)]">Active</div>
                     </div>
                     <div className="mt-4 h-2 rounded-full bg-slate-100">
-                      <div className="h-2 w-[76%] rounded-full bg-[#f77f00]" />
+                      <div className="h-2 w-[76%] rounded-full bg-[var(--fh-accent)]" />
                     </div>
                     <div className="mt-3 flex items-center justify-between text-sm font-semibold text-slate-500">
                       <span>Campaign momentum</span>
@@ -403,28 +403,28 @@ export default function FaithHubHomeLandingPageV3Fixed() {
       <section className="mx-auto max-w-7xl px-6 py-6 lg:px-10">
         <motion.div {...fadeUp} className="grid gap-4 rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm md:grid-cols-4">
           <div className="flex items-center gap-3 rounded-2xl bg-slate-50 p-4">
-            <Radio className="h-5 w-5 text-[#03cd8c]" />
+            <Radio className="h-5 w-5 text-[var(--fh-brand)]" />
             <div>
               <div className="text-sm font-black">Live broadcasts</div>
               <div className="text-xs text-slate-500">Worship, teaching, prayer, community</div>
             </div>
           </div>
           <div className="flex items-center gap-3 rounded-2xl bg-slate-50 p-4">
-            <Users className="h-5 w-5 text-[#03cd8c]" />
+            <Users className="h-5 w-5 text-[var(--fh-brand)]" />
             <div>
               <div className="text-sm font-black">Community journeys</div>
               <div className="text-xs text-slate-500">Prayer, groups, testimonies, counseling</div>
             </div>
           </div>
           <div className="flex items-center gap-3 rounded-2xl bg-slate-50 p-4">
-            <CalendarDays className="h-5 w-5 text-[#03cd8c]" />
+            <CalendarDays className="h-5 w-5 text-[var(--fh-brand)]" />
             <div>
               <div className="text-sm font-black">Events & notices</div>
               <div className="text-xs text-slate-500">Services, conferences, retreats, outreach</div>
             </div>
           </div>
           <div className="flex items-center gap-3 rounded-2xl bg-slate-50 p-4">
-            <HeartHandshake className="h-5 w-5 text-[#03cd8c]" />
+            <HeartHandshake className="h-5 w-5 text-[var(--fh-brand)]" />
             <div>
               <div className="text-sm font-black">Giving with trust</div>
               <div className="text-xs text-slate-500">Funds, campaigns, charity crowdfunding</div>
@@ -449,12 +449,12 @@ export default function FaithHubHomeLandingPageV3Fixed() {
                 whileHover={{ y: -6 }}
                 className="group rounded-[2rem] border border-white/70 bg-white p-6 shadow-[0_16px_35px_rgba(15,23,42,0.06)] transition"
               >
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-950 text-white shadow-lg transition group-hover:bg-[#03cd8c]">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-950 text-white shadow-lg transition group-hover:bg-[var(--fh-brand)]">
                   <Icon className="h-7 w-7" />
                 </div>
                 <div className="mt-5 text-xl font-black tracking-tight">{feature.title}</div>
                 <p className="mt-3 text-sm leading-7 text-slate-600">{feature.body}</p>
-                <div className="mt-5 inline-flex items-center gap-2 text-sm font-black text-[#03cd8c]">
+                <div className="mt-5 inline-flex items-center gap-2 text-sm font-black text-[var(--fh-brand)]">
                   Explore
                   <ChevronRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
                 </div>
@@ -480,7 +480,7 @@ export default function FaithHubHomeLandingPageV3Fixed() {
                   <div className="mt-5 space-y-3">
                     {journey.points.map((point) => (
                       <div key={point} className="flex items-start gap-3 text-sm leading-7 text-slate-600">
-                        <div className="mt-2 h-2.5 w-2.5 rounded-full bg-[#03cd8c]" />
+                        <div className="mt-2 h-2.5 w-2.5 rounded-full bg-[var(--fh-brand)]" />
                         <span>{point}</span>
                       </div>
                     ))}
@@ -497,7 +497,7 @@ export default function FaithHubHomeLandingPageV3Fixed() {
           <div className="grid gap-5">
             {experiencePillars.map((pillar) => (
               <motion.div key={pillar.title} {...fadeUp} className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
-                <div className="text-xs font-black uppercase tracking-[0.2em] text-[#f77f00]">{pillar.eyebrow}</div>
+                <div className="text-xs font-black uppercase tracking-[0.2em] text-[var(--fh-accent)]">{pillar.eyebrow}</div>
                 <div className="mt-3 text-2xl font-black tracking-tight">{pillar.title}</div>
                 <p className="mt-3 text-sm leading-7 text-slate-600">{pillar.body}</p>
               </motion.div>
@@ -505,8 +505,8 @@ export default function FaithHubHomeLandingPageV3Fixed() {
           </div>
 
           <motion.div {...fadeUp} className="relative">
-            <div className="absolute inset-x-12 top-8 h-20 rounded-full bg-[#03cd8c]/15 blur-3xl" />
-            <div className="absolute bottom-10 right-8 h-24 w-24 rounded-full bg-[#f77f00]/15 blur-3xl" />
+            <div className="absolute inset-x-12 top-8 h-20 rounded-full bg-[var(--fh-brand)]/15 blur-3xl" />
+            <div className="absolute bottom-10 right-8 h-24 w-24 rounded-full bg-[var(--fh-accent)]/15 blur-3xl" />
             <div className="relative overflow-hidden rounded-[2.3rem] border border-white/70 bg-slate-950 shadow-[0_30px_80px_rgba(15,23,42,0.16)]">
               <div className="grid gap-0 md:grid-cols-[0.62fr_0.38fr]">
                 <div className="relative aspect-[4/3] overflow-hidden md:aspect-auto">
@@ -523,7 +523,7 @@ export default function FaithHubHomeLandingPageV3Fixed() {
                 </div>
                 <div className="flex flex-col justify-between gap-4 border-l border-white/10 bg-slate-950/90 p-5 text-white backdrop-blur">
                   <div>
-                    <div className="text-[11px] font-black uppercase tracking-[0.18em] text-[#03cd8c]">What people can do</div>
+                    <div className="text-[11px] font-black uppercase tracking-[0.18em] text-[var(--fh-brand)]">What people can do</div>
                     <div className="mt-4 space-y-3 text-sm text-white/80">
                       <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">Watch live and catch up later</div>
                       <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">Explore teachings, books, and free resources</div>
@@ -531,7 +531,7 @@ export default function FaithHubHomeLandingPageV3Fixed() {
                       <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">Support causes, campaigns, and missions with confidence</div>
                     </div>
                   </div>
-                  <div className="rounded-[1.5rem] bg-[#03cd8c] p-5 text-white shadow-[0_16px_35px_rgba(3,205,140,0.28)]">
+                  <div className="rounded-[1.5rem] bg-[var(--fh-brand)] p-5 text-white shadow-[0_16px_35px_rgba(3,205,140,0.28)]">
                     <div className="text-[11px] font-black uppercase tracking-[0.18em] text-white/70">Why it persuades</div>
                     <div className="mt-2 text-2xl font-black">Because every action feels immediate, credible, elegant, and emotionally clear.</div>
                   </div>
@@ -546,21 +546,21 @@ export default function FaithHubHomeLandingPageV3Fixed() {
         <motion.div {...fadeUp} className="grid gap-5 rounded-[2.2rem] border border-slate-200 bg-white p-6 shadow-sm lg:grid-cols-[1fr_1fr_1fr]">
           <div className="rounded-[1.6rem] bg-slate-50 p-5">
             <div className="flex items-center gap-3">
-              <div className="rounded-2xl bg-[#03cd8c]/10 p-3 text-[#03cd8c]"><Building2 className="h-5 w-5" /></div>
+              <div className="rounded-2xl bg-[var(--fh-brand)]/10 p-3 text-[var(--fh-brand)]"><Building2 className="h-5 w-5" /></div>
               <div className="text-xl font-black">Provider-ready</div>
             </div>
             <p className="mt-4 text-sm leading-7 text-slate-600">World-class provider tools for onboarding, live production, teaching creation, events, giving, promotions, resources, books, merchandise, and governance.</p>
           </div>
           <div className="rounded-[1.6rem] bg-slate-50 p-5">
             <div className="flex items-center gap-3">
-              <div className="rounded-2xl bg-[#03cd8c]/10 p-3 text-[#03cd8c]"><MessageSquareHeart className="h-5 w-5" /></div>
+              <div className="rounded-2xl bg-[var(--fh-brand)]/10 p-3 text-[var(--fh-brand)]"><MessageSquareHeart className="h-5 w-5" /></div>
               <div className="text-xl font-black">Community-first</div>
             </div>
             <p className="mt-4 text-sm leading-7 text-slate-600">Prayer requests, journals, testimonies, counseling, projects, forums, groups, and notices bring human warmth into the platform rather than making it feel like a cold tool.</p>
           </div>
           <div className="rounded-[1.6rem] bg-slate-50 p-5">
             <div className="flex items-center gap-3">
-              <div className="rounded-2xl bg-[#03cd8c]/10 p-3 text-[#03cd8c]"><ShieldCheck className="h-5 w-5" /></div>
+              <div className="rounded-2xl bg-[var(--fh-brand)]/10 p-3 text-[var(--fh-brand)]"><ShieldCheck className="h-5 w-5" /></div>
               <div className="text-xl font-black">High trust by design</div>
             </div>
             <p className="mt-4 text-sm leading-7 text-slate-600">FaithHub is designed for quality, moderation, role control, approvals, audit visibility, and thoughtful experiences across sensitive faith and community contexts.</p>
@@ -571,11 +571,11 @@ export default function FaithHubHomeLandingPageV3Fixed() {
       <section className="pb-20 pt-10 lg:pb-28">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <motion.div {...fadeUp} className="relative overflow-hidden rounded-[2.4rem] border border-white/70 bg-slate-950 px-8 py-12 shadow-[0_30px_80px_rgba(15,23,42,0.16)] lg:px-12 lg:py-16">
-            <div className="absolute left-0 top-0 h-48 w-48 rounded-full bg-[#03cd8c]/25 blur-3xl" />
-            <div className="absolute right-0 top-0 h-48 w-48 rounded-full bg-[#f77f00]/20 blur-3xl" />
+            <div className="absolute left-0 top-0 h-48 w-48 rounded-full bg-[var(--fh-brand)]/25 blur-3xl" />
+            <div className="absolute right-0 top-0 h-48 w-48 rounded-full bg-[var(--fh-accent)]/20 blur-3xl" />
             <div className="relative z-10 grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
               <div>
-                <div className="text-xs font-black uppercase tracking-[0.22em] text-[#03cd8c]">Ready to begin</div>
+                <div className="text-xs font-black uppercase tracking-[0.22em] text-[var(--fh-brand)]">Ready to begin</div>
                 <h2 className="mt-4 text-4xl font-black tracking-tight text-white sm:text-5xl">
                   Launch your institution, ministry, or creator presence on FaithHub.
                 </h2>
@@ -585,7 +585,7 @@ export default function FaithHubHomeLandingPageV3Fixed() {
               </div>
               <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
                 <button
-                  className="rounded-2xl bg-[#03cd8c] px-6 py-4 text-base font-black text-white shadow-[0_16px_35px_rgba(3,205,140,0.28)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_40px_rgba(3,205,140,0.34)]"
+                  className="rounded-2xl bg-[var(--fh-brand)] px-6 py-4 text-base font-black text-white shadow-[0_16px_35px_rgba(3,205,140,0.28)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_40px_rgba(3,205,140,0.34)]"
                   onClick={() => navigate("/faithhub/provider/onboarding")}
                 >
                   Get started
@@ -642,7 +642,7 @@ export default function FaithHubHomeLandingPageV3Fixed() {
                       key={link}
                       type="button"
                       onClick={() => navigateFooterLink(link)}
-                      className="block text-left text-sm font-semibold text-slate-600 transition hover:text-[#03cd8c]"
+                      className="block text-left text-sm font-semibold text-slate-600 transition hover:text-[var(--fh-brand)]"
                     >
                       {link}
                     </button>
@@ -655,10 +655,10 @@ export default function FaithHubHomeLandingPageV3Fixed() {
           <div className="mt-12 flex flex-col gap-4 border-t border-slate-200 pt-6 text-sm text-slate-500 md:flex-row md:items-center md:justify-between">
             <div>&copy; 2026 FaithHub. All rights reserved.</div>
             <div className="flex flex-wrap items-center gap-5">
-              <button type="button" onClick={() => navigateFooterLink("Privacy")} className="transition hover:text-[#03cd8c]">Privacy</button>
-              <button type="button" onClick={() => navigateFooterLink("Terms")} className="transition hover:text-[#03cd8c]">Terms</button>
-              <button type="button" onClick={() => navigateFooterLink("Support")} className="transition hover:text-[#03cd8c]">Support</button>
-              <button type="button" onClick={() => navigate("/faithhub/home#footer")} className="transition hover:text-[#03cd8c]">Contact</button>
+              <button type="button" onClick={() => navigateFooterLink("Privacy")} className="transition hover:text-[var(--fh-brand)]">Privacy</button>
+              <button type="button" onClick={() => navigateFooterLink("Terms")} className="transition hover:text-[var(--fh-brand)]">Terms</button>
+              <button type="button" onClick={() => navigateFooterLink("Support")} className="transition hover:text-[var(--fh-brand)]">Support</button>
+              <button type="button" onClick={() => navigate("/faithhub/home#footer")} className="transition hover:text-[var(--fh-brand)]">Contact</button>
             </div>
           </div>
         </div>

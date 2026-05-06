@@ -74,10 +74,10 @@ import {
  * - Replace route constants and data hooks with your production sources.
  */
 
-const EV_GREEN = "#03cd8c";
-const EV_ORANGE = "#f77f00";
-const EV_GREY = "#a6a6a6";
-const EV_LIGHT = "#f2f2f2";
+const EV_GREEN = "var(--fh-brand)";
+const EV_ORANGE = "var(--fh-accent)";
+const EV_GREY = "var(--fh-ev-medium-grey)";
+const EV_LIGHT = "var(--fh-ev-light-grey)";
 
 const ROUTES = {
   liveDashboard: "/faithhub/provider/live-dashboard",

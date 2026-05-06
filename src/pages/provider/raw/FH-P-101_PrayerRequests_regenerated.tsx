@@ -39,16 +39,16 @@ import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
  * - Mark Answered
  *
  * Product notes
- * - EVzone Green (#03cd8c) is primary and Orange (#f77f00) is secondary.
+ * - EVzone Green (var(--fh-brand)) is primary and Orange (var(--fh-accent)) is secondary.
  * - The page keeps the premium Provider-side grammar used across the platform:
  *   strong command hero, KPI strip, inbox + care lane + detail pane,
  *   quick-create templates, persistent preview rail, and a larger preview drawer.
  */
 
-const EV_GREEN = "#03cd8c";
-const EV_ORANGE = "#f77f00";
-const EV_GREY = "#a6a6a6";
-const EV_LIGHT = "#f2f2f2";
+const EV_GREEN = "var(--fh-brand)";
+const EV_ORANGE = "var(--fh-accent)";
+const EV_GREY = "var(--fh-ev-medium-grey)";
+const EV_LIGHT = "var(--fh-ev-light-grey)";
 const EV_NAVY = "#1e2e6d";
 
 const ROUTES = {

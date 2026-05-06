@@ -63,10 +63,10 @@ import { exportLiveActivityCsv, getLiveActivityRecords, subscribeToLiveActivity 
  * - Replace mock data and safe navigation hooks with your real Provider data sources and routing.
  */
 
-const EV_GREEN = "#03cd8c";
-const EV_ORANGE = "#f77f00";
-const EV_GREY = "#a6a6a6";
-const EV_LIGHT = "#f2f2f2";
+const EV_GREEN = "var(--fh-brand)";
+const EV_ORANGE = "var(--fh-accent)";
+const EV_GREY = "var(--fh-ev-medium-grey)";
+const EV_LIGHT = "var(--fh-ev-light-grey)";
 
 const ROUTES = {
   liveSchedule: "/faithhub/provider/live-schedule",
@@ -290,7 +290,7 @@ const SESSIONS: SessionData[] = [
     cover: {
       eyebrow: "Live Session Operations",
       promise: "Hope-filled service with worship, teaching, prayer, and a focused giving moment.",
-      gradient: "linear-gradient(135deg, #0f3f49 0%, #115b56 40%, #03cd8c 100%)",
+      gradient: "linear-gradient(135deg, #0f3f49 0%, #115b56 40%, var(--fh-brand) 100%)",
     },
     moderationDefaults: {
       slowMode: false,
@@ -403,7 +403,7 @@ const SESSIONS: SessionData[] = [
     cover: {
       eyebrow: "Live now � Control room",
       promise: "High-energy youth gathering with testimony, worship, live prayer, and a strong response moment.",
-      gradient: "linear-gradient(135deg, #10253d 0%, #165a5f 46%, #03cd8c 100%)",
+      gradient: "linear-gradient(135deg, #10253d 0%, #165a5f 46%, var(--fh-brand) 100%)",
     },
     moderationDefaults: {
       slowMode: true,
@@ -508,7 +508,7 @@ const SESSIONS: SessionData[] = [
     cover: {
       eyebrow: "Post-live launch pad",
       promise: "Focused prayer, urgent giving, and clear community impact storytelling for the borehole campaign.",
-      gradient: "linear-gradient(135deg, #134e4a 0%, #0d5a60 48%, #f77f00 100%)",
+      gradient: "linear-gradient(135deg, #134e4a 0%, #0d5a60 48%, var(--fh-accent) 100%)",
     },
     moderationDefaults: {
       slowMode: false,
@@ -604,7 +604,7 @@ function mapLiveFlowRecordToDashboardSession(
     cover: {
       eyebrow: "Live Session Operations",
       promise: record.subtitle || "Session configured in Live Builder.",
-      gradient: "linear-gradient(135deg, #0f3f49 0%, #115b56 40%, #03cd8c 100%)",
+      gradient: "linear-gradient(135deg, #0f3f49 0%, #115b56 40%, var(--fh-brand) 100%)",
     },
     moderationDefaults: {
       slowMode: false,

@@ -1,4 +1,4 @@
-﻿// @ts-nocheck
+// @ts-nocheck
 
 "use client";
 
@@ -37,7 +37,7 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * Provider â€” Events Manager
+ * Provider — Events Manager
  * ----------------------------------
  * Premium event operating system for Provider Workspace.
  *
@@ -53,10 +53,10 @@ import { navigateWithRouter } from "@/navigation/routerNavigate";
  * - Tailwind-style utility classes assumed.
  */
 
-const EV_GREEN = "#03cd8c";
-const EV_ORANGE = "#f77f00";
-const EV_GREY = "#a6a6a6";
-const EV_LIGHT = "#f2f2f2";
+const EV_GREEN = "var(--fh-brand)";
+const EV_ORANGE = "var(--fh-accent)";
+const EV_GREY = "var(--fh-ev-medium-grey)";
+const EV_LIGHT = "var(--fh-ev-light-grey)";
 const EV_NAVY = "#0b1d49";
 
 const ROUTES = {
@@ -1508,7 +1508,7 @@ export default function FaithHubEventsManagerPage() {
       "",
       "LOGISTICS",
       ...selectedEvent.logistics.map(
-        (item) => `${item.label} â€” ${item.status} â€” ${item.note}`,
+        (item) => `${item.label} — ${item.status} — ${item.note}`,
       ),
       "",
       "VOLUNTEER COVERAGE",
@@ -1658,7 +1658,7 @@ export default function FaithHubEventsManagerPage() {
                       className="px-3 py-2 text-[12px]"
                       disabled={workingAction === "duplicate"}
                     >
-                      {workingAction === "duplicate" ? "Duplicatingâ€¦" : "Duplicate"}
+                      {workingAction === "duplicate" ? "Duplicating…" : "Duplicate"}
                     </Btn>
                   </div>
                 </div>
@@ -2441,7 +2441,7 @@ export default function FaithHubEventsManagerPage() {
                       onClick={publishEventPlan}
                       disabled={workingAction === "publish"}
                     >
-                      {workingAction === "publish" ? "Publishingâ€¦" : "Mark operationally ready"}
+                      {workingAction === "publish" ? "Publishing…" : "Mark operationally ready"}
                     </Btn>
                     <Btn
                       tone="accent"

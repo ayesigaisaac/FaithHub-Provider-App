@@ -14,7 +14,7 @@ export function ModuleCard({ title, icon: Icon, isOpen, onToggle }: ModuleCardPr
       type="button"
       onClick={onToggle}
       aria-expanded={isOpen}
-      className={`flex w-full items-center justify-between rounded-xl border bg-[#ffffff] p-[14px] text-left transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#03cd8c] focus-visible:ring-offset-2 ${
+      className={`flex w-full items-center justify-between rounded-xl border bg-[#ffffff] p-[14px] text-left transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--fh-brand)] focus-visible:ring-offset-2 ${
         isOpen ? 'border-2 border-black shadow-sm' : 'border-slate-200 hover:shadow-md'
       }`}
     >
@@ -25,7 +25,7 @@ export function ModuleCard({ title, icon: Icon, isOpen, onToggle }: ModuleCardPr
         <span className="text-sm font-semibold tracking-wide text-slate-900">{title}</span>
       </span>
       <ChevronRight
-        className={`h-5 w-5 text-slate-500 transition-transform duration-200 ${isOpen ? 'rotate-90 text-[#03cd8c]' : ''}`}
+        className={`h-5 w-5 text-slate-500 transition-transform duration-200 ${isOpen ? 'rotate-90 text-[var(--fh-brand)]' : ''}`}
       />
     </button>
   );

@@ -1,4 +1,4 @@
-ï»¿// @ts-nocheck
+// @ts-nocheck
 
 "use client";
 
@@ -44,7 +44,7 @@ import { ProviderStatusPill } from "@/components/provider/ProviderStatusPill";
 import { useAuth } from "@/auth/useAuth";
 
 /**
- * Provider â€” Provider Dashboard
+ * Provider — Provider Dashboard
  * --------------------------------------
  * Premium provider-side mission control page.
  *
@@ -60,10 +60,10 @@ import { useAuth } from "@/auth/useAuth";
  * - Keep the component self-contained and easy to adapt inside the Provider provider shell.
  */
 
-const EV_GREEN = "#03cd8c";
-const EV_ORANGE = "#f77f00";
-const EV_GREY = "#a6a6a6";
-const EV_LIGHT = "#f2f2f2";
+const EV_GREEN = "var(--fh-brand)";
+const EV_ORANGE = "var(--fh-accent)";
+const EV_GREY = "var(--fh-ev-medium-grey)";
+const EV_LIGHT = "var(--fh-ev-light-grey)";
 const EV_NAVY = "#16244c";
 
 const cx = (...xs: Array<string | false | null | undefined>) =>
@@ -522,7 +522,7 @@ const EXECUTIVE_METRICS: Record<RoleKey, MetricCard[]> = {
     {
       id: "spend",
       label: "Beacon spend",
-      value: "Â£3.9k",
+      value: "£3.9k",
       hint: "Current spend against plan and placement pacing",
       delta: "64% pace",
       accent: "orange",
@@ -705,20 +705,20 @@ const LIVE_SESSIONS: LiveSessionRow[] = [
   {
     id: "ls-1",
     title: "Evening Prayer Revival",
-    time: "18:30 â€” 19:45",
+    time: "18:30 — 19:45",
     campus: "Kampala Central",
-    audience: "Prayer community Â· Public",
+    audience: "Prayer community · Public",
     readiness: "At risk",
     health: "Watching",
-    backstage: "Host joined Â· Captioner pending",
+    backstage: "Host joined · Captioner pending",
     warning: "Caption operator check still open",
   },
   {
     id: "ls-2",
     title: "Faith & Work Midweek Class",
-    time: "20:00 â€” 21:00",
+    time: "20:00 — 21:00",
     campus: "Online Studio",
-    audience: "Series audience Â· Members first",
+    audience: "Series audience · Members first",
     readiness: "Ready",
     health: "Healthy",
     backstage: "All roles confirmed",
@@ -728,10 +728,10 @@ const LIVE_SESSIONS: LiveSessionRow[] = [
     title: "Youth Outreach Q&A",
     time: "Sat 15:00",
     campus: "Youth Hall",
-    audience: "Youth ministry Â· RSVP",
+    audience: "Youth ministry · RSVP",
     readiness: "Blocked",
     health: "Watching",
-    backstage: "Moderator gap Â· venue AV unresolved",
+    backstage: "Moderator gap · venue AV unresolved",
     warning: "Venue mic routing conflict detected",
   },
 ];
@@ -739,7 +739,7 @@ const LIVE_SESSIONS: LiveSessionRow[] = [
 const PIPELINE_ITEMS: PipelineItem[] = [
   {
     id: "p-1",
-    title: "Hope in the Wilderness â€” Episode 02",
+    title: "Hope in the Wilderness — Episode 02",
     type: "Episode draft",
     status: "Missing assets",
     owner: "Content editor",
@@ -747,7 +747,7 @@ const PIPELINE_ITEMS: PipelineItem[] = [
   },
   {
     id: "p-2",
-    title: "Stand Firm â€” Standalone Teaching",
+    title: "Stand Firm — Standalone Teaching",
     type: "Standalone teaching",
     status: "Awaiting review",
     owner: "Pastoral review",
@@ -833,7 +833,7 @@ const BEACON_ITEMS: BeaconItem[] = [
     id: "b-1",
     title: "Sunday Encounter replay boost",
     mode: "Linked",
-    spend: "Â£1.2k",
+    spend: "£1.2k",
     outcome: "784 watch starts",
     status: "Healthy",
   },
@@ -841,7 +841,7 @@ const BEACON_ITEMS: BeaconItem[] = [
     id: "b-2",
     title: "Youth Camp registration push",
     mode: "Linked",
-    spend: "Â£820",
+    spend: "£820",
     outcome: "41 registrations",
     status: "Learning",
   },
@@ -849,7 +849,7 @@ const BEACON_ITEMS: BeaconItem[] = [
     id: "b-3",
     title: "Care & Missions awareness",
     mode: "Standalone",
-    spend: "Â£460",
+    spend: "£460",
     outcome: "183 giving clicks",
     status: "Needs approval",
   },
@@ -857,7 +857,7 @@ const BEACON_ITEMS: BeaconItem[] = [
     id: "b-4",
     title: "Prayer Night announcement",
     mode: "Standalone",
-    spend: "Â£210",
+    spend: "£210",
     outcome: "CTR softening",
     status: "Fatigue risk",
   },
@@ -867,21 +867,21 @@ const TRUST_CASES: TrustCase[] = [
   {
     id: "t-1",
     title: "Audio complaint cluster on Prayer Night replay",
-    source: "Reviews Â· Replay",
+    source: "Reviews · Replay",
     priority: "High",
     owner: "Production team",
   },
   {
     id: "t-2",
     title: "Reported chat messages during Youth Outreach live",
-    source: "Moderation Â· Live chat",
+    source: "Moderation · Live chat",
     priority: "Critical",
     owner: "Moderator lead",
   },
   {
     id: "t-3",
     title: "Flagged clip comment thread",
-    source: "Clips Â· Public comments",
+    source: "Clips · Public comments",
     priority: "Medium",
     owner: "Community manager",
   },
@@ -909,7 +909,7 @@ const RECOMMENDATIONS_BY_ROLE: Record<
     {
       id: "r-2",
       title: "Convert Flood Relief into a live fundraiser moment",
-      detail: "Tonightâ€™s prayer stream is the strongest fit for donor urgency and public momentum.",
+      detail: "Tonight’s prayer stream is the strongest fit for donor urgency and public momentum.",
       cta: "Open Live Builder",
       tone: "good",
     },
@@ -984,7 +984,7 @@ const RECOMMENDATIONS_BY_ROLE: Record<
     },
     {
       id: "r-3",
-      title: "Insert a giving moment into tonightâ€™s live",
+      title: "Insert a giving moment into tonight’s live",
       detail: "Prayer Night already has strong attendance forecasts and could support a clear donor CTA.",
       cta: "Open Live Builder",
       tone: "good",
@@ -1062,7 +1062,7 @@ function GhostButton({
 }) {
   const activeColor =
     accent === "green"
-      ? "text-emerald-700 border-emerald-200 hover:bg-emerald-50"
+      ? "text-[var(--fh-brand)] border-[color-mix(in_srgb,var(--fh-brand)_28%,white)] hover:bg-[var(--fh-brand-soft)]"
       : accent === "orange"
         ? "text-orange-700 border-orange-200 hover:bg-orange-50"
         : "text-slate-700 border-faith-line hover:bg-[var(--fh-surface)]";
@@ -1337,7 +1337,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
 
   const hasDashboardData = teachingItems.length > 0;
   const cardFocusRingClass =
-    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0a7f5a] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--fh-surface-bg)]";
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--fh-brand)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--fh-surface-bg)]";
   const smartNextStep = useMemo(() => {
     if (needsReviewCount > 0) return `${needsReviewCount} item${needsReviewCount > 1 ? "s" : ""} need review first.`;
     const draftCount = pendingWork.filter((item) => item.status === "Draft").length;
@@ -1737,7 +1737,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                     className={`rounded-full border px-3 py-1.5 text-[11px] font-bold transition ${cardFocusRingClass}`}
                     style={{
                       borderColor: "var(--fh-line)",
-                      background: workflowFilter === filter.key ? "rgba(3,205,140,0.14)" : "var(--fh-surface)",
+                      background: workflowFilter === filter.key ? "color-mix(in srgb, var(--fh-brand) 14%, transparent)" : "var(--fh-surface)",
                       color: "var(--fh-ink)",
                     }}
                     aria-label={`Filter teachings by ${filter.label}`}
@@ -1797,7 +1797,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                           handleTeachingAction(item.id, "publish");
                         }}
                         disabled={Boolean(actionPendingById[item.id])}
-                        className={`w-full rounded-lg border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[11px] font-bold text-faith-ink transition hover:bg-emerald-50 sm:w-auto sm:py-1.5 ${cardFocusRingClass}`}
+                        className={`w-full rounded-lg border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[11px] font-bold text-faith-ink transition hover:bg-[var(--fh-brand-soft)] sm:w-auto sm:py-1.5 ${cardFocusRingClass}`}
                       >
                         {actionPendingById[item.id] === "publish" ? "Publishing..." : "Publish"}
                       </button>
@@ -1873,7 +1873,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                     className={`rounded-full border px-3 py-1.5 text-[11px] font-bold transition ${cardFocusRingClass}`}
                     style={{
                       borderColor: "var(--fh-line)",
-                      background: workflowFilter === filter.key ? "rgba(247,127,0,0.14)" : "var(--fh-surface)",
+                      background: workflowFilter === filter.key ? "color-mix(in srgb, var(--fh-accent) 14%, transparent)" : "var(--fh-surface)",
                       color: "var(--fh-ink)",
                     }}
                     aria-label={`Filter pending work by ${filter.label}`}
@@ -1915,7 +1915,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                       <div className="min-w-0">
                         <h3 className="text-[14px] font-bold text-faith-ink">{item.title}</h3>
                         <p className="mt-1 text-[12px] text-slate-700">
-                          {item.type} Â· Updated {formatLastEdited(item.updatedAt)}
+                          {item.type} · Updated {formatLastEdited(item.updatedAt)}
                         </p>
                       </div>
                       <Pill text={item.status === "Draft" ? "Draft" : "Needs review"} tone="warn" />
@@ -1926,7 +1926,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                         aria-label={`Publish ${item.title}`}
                         onClick={() => handleTeachingAction(item.id, "publish")}
                         disabled={Boolean(actionPendingById[item.id])}
-                        className={`w-full rounded-lg border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[11px] font-bold text-faith-ink transition hover:bg-emerald-50 sm:w-auto sm:py-1.5 ${cardFocusRingClass}`}
+                        className={`w-full rounded-lg border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[11px] font-bold text-faith-ink transition hover:bg-[var(--fh-brand-soft)] sm:w-auto sm:py-1.5 ${cardFocusRingClass}`}
                       >
                         {actionPendingById[item.id] === "publish" ? "Publishing..." : "Publish"}
                       </button>
@@ -1975,7 +1975,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                         />
                       </div>
                       <div className="mt-1 text-[12px] text-slate-700">
-                        {entry.action} Â· {formatLastEdited(entry.atISO)}
+                        {entry.action} · {formatLastEdited(entry.atISO)}
                       </div>
                     </div>
                   ))}
