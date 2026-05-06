@@ -2253,7 +2253,7 @@ export default function FaithHubBookBuilderPage() {
             {renderStepContent()}
           </div>
 
-          <div className="space-y-4 xl:sticky xl:top-[152px] xl:self-start">
+          <div className="space-y-4 2xl:sticky 2xl:top-[152px] 2xl:self-start">
             <Card
               title="Reader preview"
               subtitle="Desktop and mobile storefront simulation"

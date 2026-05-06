@@ -520,7 +520,7 @@ function StepNav({
   readinessScore: number;
 }) {
   return (
-    <div className="rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 xl:sticky xl:top-6">
+    <div className="rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 2xl:sticky 2xl:top-6">
       <div className="rounded-[24px] border border-emerald-200 bg-emerald-50 px-4 py-4">
         <div className="text-[16px] font-black text-faith-ink">Episode Builder</div>
         <div className="mt-2 h-3 rounded-full bg-emerald-100">
@@ -1855,7 +1855,7 @@ export default function EpisodeBuilderPage() {
           </main>
 
           <aside className="min-h-0">
-            <div className="space-y-4 xl:sticky xl:top-6">
+            <div className="space-y-4 2xl:sticky 2xl:top-6">
               <div className="rounded-[30px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-[0_12px_30px_rgba(15,23,42,0.06)]">
                 <div className="flex items-center justify-between gap-3">
                   <div>

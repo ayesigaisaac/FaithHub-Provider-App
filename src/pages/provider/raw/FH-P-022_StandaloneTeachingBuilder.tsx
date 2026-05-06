@@ -673,7 +673,7 @@ function StepRail({
   readinessScore: number;
 }) {
   return (
-    <div className="rounded-[30px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft xl:sticky xl:top-6">
+    <div className="rounded-[30px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft 2xl:sticky 2xl:top-6">
       <div className="rounded-[24px] border border-emerald-200 bg-emerald-50 p-4">
         <div className="text-[10px] font-black uppercase tracking-[0.18em] text-emerald-700">Standalone Builder</div>
         <div className="mt-2 text-[28px] font-black leading-none text-faith-ink">{readinessScore}%</div>
@@ -1775,7 +1775,7 @@ export default function StandaloneTeachingBuilderPage() {
 
           <div className="min-w-0 space-y-4">{centerContent}</div>
 
-          <div className="space-y-4 xl:sticky xl:top-6 self-start">
+          <div className="space-y-4 2xl:sticky 2xl:top-6 self-start">
             <div className="rounded-[30px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft">
               <div className="flex items-start justify-between gap-3">
                 <div>

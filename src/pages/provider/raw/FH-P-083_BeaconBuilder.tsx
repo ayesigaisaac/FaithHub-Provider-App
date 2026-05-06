@@ -2664,7 +2664,7 @@ export default function BeaconBuilderPage({
 
       <div className="mx-auto max-w-[1680px] px-4 md:px-6 lg:px-8 py-4 lg:py-6">
         <div className="grid gap-4 2xl:grid-cols-[280px_minmax(0,1fr)_420px]">
-          <div className="space-y-4 xl:sticky xl:top-[106px] self-start">
+          <div className="space-y-4 2xl:sticky 2xl:top-[106px] self-start">
             <Section title="Builder steps" subtitle="Preview-driven creation from objective to launch gate.">
               <div className="space-y-2">
                 {STEPS.map((entry, idx) => (
@@ -2708,7 +2708,7 @@ export default function BeaconBuilderPage({
             </div>
           </div>
 
-          <div className="space-y-4 xl:sticky xl:top-[106px] self-start">
+          <div className="space-y-4 2xl:sticky 2xl:top-[106px] self-start">
             {rightRail}
           </div>
         </div>
