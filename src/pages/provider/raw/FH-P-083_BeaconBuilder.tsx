@@ -1896,7 +1896,7 @@ export default function BeaconBuilderPage({
                   </div>
                 </div>
                 <div>
-                  <Card className="sticky top-4">
+                  <Card className="2xl:sticky 2xl:top-4">
                     <div className="text-xs font-extrabold uppercase tracking-[0.12em] text-faith-slate">Selected source</div>
                     {selectedSource ? (
                       <>

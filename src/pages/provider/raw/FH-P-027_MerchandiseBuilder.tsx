@@ -978,7 +978,7 @@ function PreviewRail({
     ? money(draft.supporterPrice, draft.currency)
     : "";
   return (
-    <div className="space-y-3 lg:sticky lg:top-6">
+    <div className="space-y-3 2xl:sticky 2xl:top-6">
       <Card
         title="Preview surfaces"
         subtitle="See how the merch item will appear in FaithMart, live pins, events, and premium promotion surfaces."

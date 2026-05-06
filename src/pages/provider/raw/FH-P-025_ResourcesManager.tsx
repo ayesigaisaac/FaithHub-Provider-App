@@ -951,7 +951,7 @@ function PreviewRail({
   );
 
   return (
-    <div className="sticky top-6 space-y-4">
+    <div className="2xl:sticky 2xl:top-6 space-y-4">
       <div className="rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft">
         <div className="flex items-start justify-between gap-3">
           <div>
