@@ -68,6 +68,7 @@ const EV_NAVY = "#0f172a";
 
 const ROUTES = {
   providerDashboard: "/faithhub/provider/dashboard",
+  seriesDashboard: "/faithhub/provider/series-dashboard",
   episodeBuilder: "/faithhub/provider/episode-builder",
   liveBuilder: "/faithhub/provider/live-builder",
   audienceNotifications: "/faithhub/provider/audience-notifications",
@@ -777,7 +778,7 @@ function SeriesLandingPreview({
                     type="button"
                     className="flex-1 rounded-2xl bg-amber-500 px-3 py-2 text-[12px] font-bold text-white"
                     style={{ background: EV_ORANGE }}
-                    onClick={() => safeNav("/faithhub/provider/audience-notifications")}>
+                    onClick={() => safeNav(ROUTES.audienceNotifications)}>
                     Notify me
                   </button>
                 </div>
@@ -816,10 +817,10 @@ function SeriesLandingPreview({
               ))}
             </div>
             <div className="mt-5 flex flex-wrap gap-3">
-              <button className="rounded-2xl px-4 py-2 text-[12px] font-bold text-white" style={{ background: EV_GREEN }} onClick={() => safeNav("/faithhub/provider/series-dashboard")}>
+              <button className="rounded-2xl px-4 py-2 text-[12px] font-bold text-white" style={{ background: EV_GREEN }} onClick={() => safeNav(ROUTES.seriesDashboard)}>
                 Follow series
               </button>
-              <button className="rounded-2xl px-4 py-2 text-[12px] font-bold text-white" style={{ background: EV_ORANGE }} onClick={() => safeNav("/faithhub/provider/audience-notifications")}>
+              <button className="rounded-2xl px-4 py-2 text-[12px] font-bold text-white" style={{ background: EV_ORANGE }} onClick={() => safeNav(ROUTES.audienceNotifications)}>
                 Get reminders
               </button>
             </div>

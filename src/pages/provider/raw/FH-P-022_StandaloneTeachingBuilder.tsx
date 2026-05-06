@@ -61,6 +61,9 @@ const EV_NAVY = "#0f172a";
 
 const ROUTES = {
   liveBuilder: "/faithhub/provider/live-builder",
+  liveDashboard: "/faithhub/provider/live-dashboard",
+  teachingsDashboard: "/faithhub/provider/teachings-dashboard",
+  resourcesManager: "/faithhub/provider/resources-manager",
   postLivePublishing: "/faithhub/provider/post-live-publishing",
   replaysAndClips: "/faithhub/provider/replays-and-clips",
   beaconBuilder: "/faithhub/provider/beacon-builder",
@@ -760,11 +763,11 @@ function DesktopTeachingPreview({ draft }: { draft: TeachingDraft }) {
             <div className="mt-3 flex flex-wrap gap-2">
               <button
                 className="inline-flex items-center gap-2 rounded-full bg-[var(--fh-brand)] px-4 py-2 text-[12px] font-black text-white"
-                onClick={() => safeNav(draft.liveEnabled ? "/faithhub/provider/live-dashboard" : "/faithhub/provider/teachings-dashboard")}
+                onClick={() => safeNav(draft.liveEnabled ? ROUTES.liveDashboard : ROUTES.teachingsDashboard)}
               >
                 {draft.liveEnabled ? "Join teaching" : "Watch teaching"}
               </button>
-              <button className="inline-flex items-center gap-2 rounded-full bg-[var(--fh-accent)] px-4 py-2 text-[12px] font-black text-white" onClick={() => safeNav("/faithhub/provider/resources-manager")}>
+              <button className="inline-flex items-center gap-2 rounded-full bg-[var(--fh-accent)] px-4 py-2 text-[12px] font-black text-white" onClick={() => safeNav(ROUTES.resourcesManager)}>
                 Open notes
               </button>
             </div>
@@ -868,11 +871,11 @@ function MobileTeachingPreview({ draft }: { draft: TeachingDraft }) {
               <div className="mt-3 space-y-2">
                 <button
                   className="inline-flex w-full items-center justify-center rounded-2xl bg-[var(--fh-brand)] px-4 py-3 text-[13px] font-black text-white"
-                  onClick={() => safeNav(draft.liveEnabled ? "/faithhub/provider/live-dashboard" : "/faithhub/provider/teachings-dashboard")}
+                  onClick={() => safeNav(draft.liveEnabled ? ROUTES.liveDashboard : ROUTES.teachingsDashboard)}
                 >
                   {draft.liveEnabled ? "Join linked live" : "Watch teaching"}
                 </button>
-                <button className="inline-flex w-full items-center justify-center rounded-2xl bg-[var(--fh-accent)] px-4 py-3 text-[13px] font-black text-white" onClick={() => safeNav("/faithhub/provider/resources-manager")}>
+                <button className="inline-flex w-full items-center justify-center rounded-2xl bg-[var(--fh-accent)] px-4 py-3 text-[13px] font-black text-white" onClick={() => safeNav(ROUTES.resourcesManager)}>
                   Open notes & resources
                 </button>
               </div>

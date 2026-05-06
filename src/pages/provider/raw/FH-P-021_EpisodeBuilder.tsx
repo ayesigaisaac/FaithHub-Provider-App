@@ -58,6 +58,9 @@ const EV_NAVY = "#0f172a";
 const ROUTES = {
   seriesBuilder: "/faithhub/provider/series-builder",
   liveBuilder: "/faithhub/provider/live-builder",
+  liveDashboard: "/faithhub/provider/live-dashboard",
+  audienceNotifications: "/faithhub/provider/audience-notifications",
+  resourcesManager: "/faithhub/provider/resources-manager",
   postLivePublishing: "/faithhub/provider/post-live-publishing",
   replaysAndClips: "/faithhub/provider/replays-and-clips",
 };
@@ -517,7 +520,7 @@ function StepNav({
   readinessScore: number;
 }) {
   return (
-    <div className="rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] p-4">
+    <div className="rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 xl:sticky xl:top-6">
       <div className="rounded-[24px] border border-emerald-200 bg-emerald-50 px-4 py-4">
         <div className="text-[16px] font-black text-faith-ink">Episode Builder</div>
         <div className="mt-2 h-3 rounded-full bg-emerald-100">
@@ -637,10 +640,10 @@ function EpisodePreview({
                 </div>
 
                 <div className="mt-4 flex gap-2">
-                  <button className="flex-1 rounded-2xl px-3 py-2 text-[12px] font-bold text-white" style={{ background: EV_GREEN }} onClick={() => safeNav("/faithhub/provider/live-dashboard")}>
+                  <button className="flex-1 rounded-2xl px-3 py-2 text-[12px] font-bold text-white" style={{ background: EV_GREEN }} onClick={() => safeNav(ROUTES.liveDashboard)}>
                     Join live
                   </button>
-                  <button className="flex-1 rounded-2xl px-3 py-2 text-[12px] font-bold text-white" style={{ background: EV_ORANGE }} onClick={() => safeNav("/faithhub/provider/audience-notifications")}>
+                  <button className="flex-1 rounded-2xl px-3 py-2 text-[12px] font-bold text-white" style={{ background: EV_ORANGE }} onClick={() => safeNav(ROUTES.audienceNotifications)}>
                     Save reminder
                   </button>
                 </div>
@@ -682,10 +685,10 @@ function EpisodePreview({
               ))}
             </div>
             <div className="mt-4 flex gap-3">
-              <button className="rounded-2xl px-4 py-2 text-[12px] font-bold text-white" style={{ background: EV_GREEN }} onClick={() => safeNav("/faithhub/provider/live-dashboard")}>
+              <button className="rounded-2xl px-4 py-2 text-[12px] font-bold text-white" style={{ background: EV_GREEN }} onClick={() => safeNav(ROUTES.liveDashboard)}>
                 Join session
               </button>
-              <button className="rounded-2xl px-4 py-2 text-[12px] font-bold text-white" style={{ background: EV_ORANGE }} onClick={() => safeNav("/faithhub/provider/resources-manager")}>
+              <button className="rounded-2xl px-4 py-2 text-[12px] font-bold text-white" style={{ background: EV_ORANGE }} onClick={() => safeNav(ROUTES.resourcesManager)}>
                 Episode resources
               </button>
             </div>
@@ -1852,7 +1855,7 @@ export default function EpisodeBuilderPage() {
           </main>
 
           <aside className="min-h-0">
-            <div className="sticky top-6 space-y-4">
+            <div className="space-y-4 xl:sticky xl:top-6">
               <div className="rounded-[30px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-[0_12px_30px_rgba(15,23,42,0.06)]">
                 <div className="flex items-center justify-between gap-3">
                   <div>
