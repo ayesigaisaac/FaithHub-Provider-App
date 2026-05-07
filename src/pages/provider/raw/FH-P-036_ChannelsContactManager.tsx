@@ -38,7 +38,7 @@ import {
 import { KpiTile } from "../../../components/ui/KpiTile";
 
 /**
- * Provider - Channels & Contact Manager
+ * FaithHub Provider - Channels & Contact Manager
  * Premium audience data, consent, channel-operations, and contact-intelligence hub.
  * Primary colour: EVzone Green (var(--fh-brand))
  * Secondary colour: EVzone Orange (var(--fh-accent))
@@ -1225,7 +1225,7 @@ export default function ChannelsContactManagerPage() {
           <div className="min-w-0">
             <div className="flex items-center gap-2 overflow-x-auto no-scrollbar">
               <div className="flex items-center gap-2 whitespace-nowrap text-[10px] font-black uppercase tracking-widest text-faith-slate">
-                <span className="hover:text-slate-700 dark:hover:text-slate-200 transition cursor-default">Provider Workspace</span>
+                <span className="hover:text-slate-700 dark:hover:text-slate-200 transition cursor-default">FaithHub Provider workspace</span>
                 <span className="text-slate-300 dark:text-slate-700">/</span>
                 <span className="hover:text-slate-700 dark:hover:text-slate-200 transition cursor-default">Audience & Outreach</span>
                 <span className="text-slate-300 dark:text-slate-700">/</span>
@@ -1987,6 +1987,8 @@ export default function ChannelsContactManagerPage() {
     </div>
   );
 }
+
+
 
 
 

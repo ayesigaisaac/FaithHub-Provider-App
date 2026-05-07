@@ -29,13 +29,13 @@ import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
- * Provider — Subscriptions
+ * FaithHub Provider - Subscriptions
  * ---------------------------------
  * Workspace / team subscriptions surface for billing plans, seats, entitlements,
  * add-ons, renewals, invoices, and feature access.
  *
  * Important scope rule
- * - This page is for Provider workspace subscriptions, not end-user memberships.
+ * - This page is for FaithHub Provider workspace subscriptions, not end-user memberships.
  * - It is designed as an operational control surface for plan stewardship,
  *   seat growth, billing visibility, and premium feature governance.
  */
@@ -161,7 +161,7 @@ const KPI_STRIP: KPI[] = [
     id: "plan",
     label: "Current plan",
     value: "Growth Workspace",
-    hint: "Premium provider workspace with Beacon, live ops, and team controls.",
+    hint: "Premium FaithHub Provider workspace with Beacon, live ops, and team controls.",
     tone: "good",
   },
   {
@@ -250,7 +250,7 @@ const ENTITLEMENTS: Entitlement[] = [
     group: "Operations",
     label: "Multi-campus switching",
     state: "Included",
-    hint: "Run multiple locations from one provider workspace.",
+    hint: "Run multiple locations from one FaithHub Provider workspace.",
     tone: "good",
   },
   {
@@ -1361,7 +1361,7 @@ export default function SubscriptionsPage() {
                     onClick: () => safeNav(ROUTES.walletPayouts),
                   },
                   {
-                    label: "Provider Dashboard",
+                    label: "FaithHub Provider dashboard",
                     hint: "Jump back to the overall provider mission-control surface.",
                     icon: <Building2 className="h-4 w-4" />,
                     onClick: () => safeNav(ROUTES.providerDashboard),
@@ -1532,6 +1532,8 @@ export default function SubscriptionsPage() {
     </div>
   );
 }
+
+
 
 
 

@@ -35,21 +35,21 @@ import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 
 /**
- * Provider - Provider Onboarding
+ * FaithHub Provider - Provider Onboarding
  * ---------------------------------------
  * Premium provider onboarding surface for institutions, ministries,
  * faith creators, and multi-campus organizations.
  *
  * Design goals
  * - Keep the same creator-style premium grammar used across the rest of the
- *   generated Provider provider pages: bold header, left step rail,
+ *   generated FaithHub Provider pages: bold header, left step rail,
  *   rich central workspace, and persistent preview panel.
  * - Use EVzone Green as the primary colour and Orange as the secondary accent.
  * - Cover the complete onboarding scope:
  *   institution identity, brand setup, campus model, team roles,
  *   content preferences, giving readiness, channels, and verification.
  * - Include a true preview area so the provider can see how their public
- *   institution profile and provider workspace will feel before launch.
+ *   institution profile and FaithHub Provider workspace will feel before launch.
  */
 
 const EV_GREEN = "var(--fh-brand)";
@@ -1140,7 +1140,7 @@ export default function ProviderOnboardingPage() {
       return "Invite the exact people who will own production, moderation, finance, and promotion workflows.";
     }
     if (step === "model") {
-      return "Tailor the provider dashboard so quick-create rails reflect how your ministry actually works.";
+      return "Tailor the FaithHub Provider dashboard so quick-create rails reflect how your ministry actually works.";
     }
     if (step === "giving") {
       return "Prepare receipts, payout trust, and default giving visibility before donor journeys go live.";
@@ -1229,7 +1229,7 @@ export default function ProviderOnboardingPage() {
   const connectedChannelsList = CHANNEL_LIBRARY.filter((channel) => channels[channel.id].connected);
 
   const linkedPages = [
-    { label: "Provider Dashboard", icon: <LayoutGrid className="h-4 w-4" />, tone: "navy" as const },
+    { label: "FaithHub Provider dashboard", icon: <LayoutGrid className="h-4 w-4" />, tone: "navy" as const },
     { label: "Channels & Contact Manager", icon: <MessageSquare className="h-4 w-4" />, tone: "brand" as const },
     { label: "Donations & Funds", icon: <Wallet className="h-4 w-4" />, tone: "warn" as const },
   ];
@@ -1648,7 +1648,7 @@ export default function ProviderOnboardingPage() {
               checked={multiCampus}
               onChange={setMultiCampus}
               label="Multi-campus provider"
-              hint="Enable campus switching on the Provider Dashboard and schedule overlays."
+              hint="Enable campus switching on the FaithHub Provider dashboard and schedule overlays."
             />
             <Toggle
               checked={multiBrand}
@@ -1731,7 +1731,7 @@ export default function ProviderOnboardingPage() {
 
       <Card
         title="Campus preview"
-        subtitle="See how campus selection, time zones, and accessibility notes will appear in the provider workspace."
+        subtitle="See how campus selection, time zones, and accessibility notes will appear in the FaithHub Provider workspace."
       >
         <div className="space-y-3">
           {campuses.map((campus) => (
@@ -1999,7 +1999,7 @@ export default function ProviderOnboardingPage() {
 
       <Card
         title="Quick-create preview"
-        subtitle="This is the type of provider dashboard launch rail your team will see first."
+        subtitle="This is the type of FaithHub Provider dashboard launch rail your team will see first."
         right={<Pill text={dashboardPreset} tone="warn" icon={<LayoutGrid className="h-3.5 w-3.5" />} />}
       >
         <div className="grid gap-3 sm:grid-cols-2">
@@ -2370,7 +2370,7 @@ export default function ProviderOnboardingPage() {
               Verification note
             </div>
             <div className="mt-2 text-[12px] leading-relaxed text-faith-slate">
-              Once verification is approved, the main Provider Dashboard unlocks with role-aware quick create, live operations, giving visibility, audience activation, and Beacon controls.
+              Once verification is approved, the main FaithHub Provider dashboard unlocks with role-aware quick create, live operations, giving visibility, audience activation, and Beacon controls.
             </div>
           </div>
         </div>
@@ -2577,7 +2577,7 @@ export default function ProviderOnboardingPage() {
 
             <Card
               title="Provider preview"
-              subtitle="See how the institution profile and provider workspace will feel before launch."
+              subtitle="See how the institution profile and FaithHub Provider workspace will feel before launch."
               right={
                 <Pill
                   text={isPreviewSynced ? "Synced preview" : "Unsaved changes"}
@@ -2701,7 +2701,7 @@ export default function ProviderOnboardingPage() {
                     Next unlock
                   </div>
                   <div className="text-[12px] leading-relaxed text-faith-slate">
-                    Verification unlocks Provider Dashboard, Channels & Contact Manager, Donations & Funds, and the advanced creation workflows for Live Sessions and Beacon.
+                    Verification unlocks FaithHub Provider dashboard, Channels & Contact Manager, Donations & Funds, and the advanced creation workflows for Live Sessions and Beacon.
                   </div>
                 </div>
               </div>
@@ -2725,6 +2725,8 @@ export default function ProviderOnboardingPage() {
     </div>
   );
 }
+
+
 
 
 

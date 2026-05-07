@@ -379,7 +379,7 @@ export default function LoginPage() {
               EVzone FaithHub
             </Typography>
             <Typography variant="h4" fontWeight={800} sx={{ maxWidth: 560, fontSize: { md: 44, lg: 56 }, lineHeight: 1.05 }}>
-              Provider workspace for live, community, giving, and growth.
+              FaithHub Provider workspace for live, community, giving, and growth.
             </Typography>
             <Typography variant="body2" sx={{ opacity: 0.92, maxWidth: 520 }}>
               Manage sessions, publish content, coordinate teams, and launch outreach from one trusted command surface.
@@ -390,3 +390,5 @@ export default function LoginPage() {
     </Box>
   );
 }
+
+

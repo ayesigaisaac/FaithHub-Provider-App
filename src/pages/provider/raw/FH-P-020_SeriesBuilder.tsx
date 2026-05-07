@@ -1905,7 +1905,7 @@ export default function SeriesBuilderPage() {
             <div className="min-w-0">
               <div className="flex flex-wrap items-center gap-2 text-[11px] text-faith-slate">
                 <button className="hover:text-slate-700" onClick={() => safeNav(ROUTES.providerDashboard)}>
-                  Provider Dashboard
+                  FaithHub Provider dashboard
                 </button>
                 <ChevronRight className="h-4 w-4" />
                 <span className="font-semibold text-slate-700">Series Builder</span>
@@ -2037,6 +2037,8 @@ export default function SeriesBuilderPage() {
     </div>
   );
 }
+
+
 
 
 

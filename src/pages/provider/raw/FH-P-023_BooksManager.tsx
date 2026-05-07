@@ -46,7 +46,7 @@ import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
  * study guides, and downloadable teaching resources.
  *
  * Page goals
- * - Keep the same premium creator-style grammar already used across the Provider Workspace pages.
+ * - Keep the same premium creator-style grammar already used across the FaithHub Provider workspace pages.
  * - Use EVzone Green as the primary accent and Orange as the secondary accent.
  * - Make Books Manager the operational control page and push creation into Book Builder
  *   through a strong "+ New Book" primary CTA.
@@ -1092,7 +1092,7 @@ export default function BooksManagerPage() {
                 <ProviderPageTitle
                   icon={<BookOpen className="h-6 w-6" />}
                   title="Books Manager"
-                  subtitle="Manage devotionals, eBooks, study guides, manuals, and reading resources from one premium publishing surface. Track readiness, formats, access, translations, promotion hooks, and storefront quality without leaving the provider workspace."
+                  subtitle="Manage devotionals, eBooks, study guides, manuals, and reading resources from one premium publishing surface. Track readiness, formats, access, translations, promotion hooks, and storefront quality without leaving the FaithHub Provider workspace."
                 />
                 <div className="mt-3 flex flex-wrap items-center gap-2">
                   <Pill text="BOOK CATALOG" tone="good" icon={<BookOpen className="h-3.5 w-3.5" />} />
@@ -1586,7 +1586,7 @@ export default function BooksManagerPage() {
                 <TagChip>Book Builder</TagChip>
                 <TagChip>Audience Notifications</TagChip>
                 <TagChip>Beacon Builder</TagChip>
-                <TagChip>Provider Dashboard</TagChip>
+                <TagChip>FaithHub Provider dashboard</TagChip>
               </div>
             </div>
 
@@ -1680,6 +1680,8 @@ export default function BooksManagerPage() {
     </div>
   );
 }
+
+
 
 
 

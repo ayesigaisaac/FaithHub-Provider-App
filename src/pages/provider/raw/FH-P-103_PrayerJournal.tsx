@@ -28,7 +28,7 @@ import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
- * Provider — Prayer Journal
+ * FaithHub Provider - Prayer Journal
  * ----------------------------------
  * Premium Provider-side page for guided prompts, journaling flows,
  * shared reflections, and private/public journal controls.
@@ -636,6 +636,8 @@ export default function PrayerJournalPage() {
     </div>
   );
 }
+
+
 
 
 

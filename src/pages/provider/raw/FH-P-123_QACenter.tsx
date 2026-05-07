@@ -27,7 +27,7 @@ import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 
 /**
- * Provider | QA Center
+ * FaithHub Provider | QA Center
  * --------------------------------
  * Purpose:
  * Internal quality-assurance page for testing streams, validating content
@@ -713,7 +713,7 @@ export default function FHP123QACenter() {
               </div>
             </Card>
 
-            <Card title="Quality pulse" subtitle="High-signal checks shaping launch readiness across the provider workspace.">
+            <Card title="Quality pulse" subtitle="High-signal checks shaping launch readiness across the FaithHub Provider workspace.">
               <div className="space-y-3">
                 <div className="rounded-[22px] border border-emerald-200 bg-emerald-50 dark:border-emerald-800 dark:bg-emerald-900/20 p-3 transition-colors">
                   <div className="text-[13px] font-extrabold text-faith-ink dark:text-slate-100">Scan automation remains stable</div>
@@ -900,7 +900,7 @@ export default function FHP123QACenter() {
         </div>
 
         <div className="mt-5">
-          <Card title="Surface coverage matrix" subtitle="Desktop, mobile, and child-safe validation across core Provider provider surfaces." right={<Pill>{scopedCoverage.length} rows in scope</Pill>}>
+          <Card title="Surface coverage matrix" subtitle="Desktop, mobile, and child-safe validation across core FaithHub Provider surfaces." right={<Pill>{scopedCoverage.length} rows in scope</Pill>}>
             <div className="overflow-auto">
               <table className="min-w-full text-left border-separate border-spacing-y-2">
                 <thead>
@@ -935,6 +935,8 @@ export default function FHP123QACenter() {
     </div>
   );
 }
+
+
 
 
 

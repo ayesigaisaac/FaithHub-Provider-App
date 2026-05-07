@@ -29,9 +29,9 @@ import {
 } from "lucide-react";
 
 /**
- * Provider — Beacon Marketplace
+ * FaithHub Provider - Beacon Marketplace
  * --------------------------------------
- * Premium placement and audience-planning surface for Provider Workspace.
+ * Premium placement and audience-planning surface for FaithHub Provider workspace.
  *
  * Design goals
  * - Adapt the creator/e-commerce marketplace rhythm into a Promotiontional inventory experience.
@@ -1369,6 +1369,8 @@ export default function BeaconMarketplacePage() {
     </div>
   );
 }
+
+
 
 
 

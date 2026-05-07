@@ -39,7 +39,7 @@ import {
  *
  * Notes
  * - Self-contained mock page built to match the premium creator-style format used
- *   across the Provider Workspace pages.
+ *   across the FaithHub Provider workspace pages.
  * - Uses EVzone Green as primary and Orange as secondary, with calm neutrals for trust workflows.
  * - Replace routes and mocked datasets during integration.
  */
@@ -1215,7 +1215,7 @@ export default function FaithHubReviewsAndModerationPage() {
                 Preview
               </Btn>
               <Btn tone="neutral" className="h-10 px-4" onClick={() => safeNav(ROUTES.providerDashboard)} left={<Layers className="h-4 w-4" />}>
-                Provider Dashboard
+                FaithHub Provider dashboard
               </Btn>
               <Btn tone="primary" className="h-10 px-4" onClick={handleSendResponse} loading={pendingAction === 'respond'} left={<Send className="h-4 w-4" />}>
                 Respond to review
@@ -2025,6 +2025,8 @@ export default function FaithHubReviewsAndModerationPage() {
     </div>
   );
 }
+
+
 
 
 

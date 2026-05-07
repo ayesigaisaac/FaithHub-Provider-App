@@ -27,7 +27,7 @@ import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
- * Provider — Serving Teams
+ * FaithHub Provider - Serving Teams
  * Premium Provider-side volunteer and service-team management page.
  *
  * Primary CTAs
@@ -1412,6 +1412,8 @@ export default function FH_P_111_ServingTeamsPage() {
     </div>
   );
 }
+
+
 
 
 

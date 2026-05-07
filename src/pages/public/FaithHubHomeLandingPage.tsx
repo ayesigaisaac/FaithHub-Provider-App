@@ -112,7 +112,7 @@ const footerCols = [
   },
   {
     title: "For providers",
-    links: ["Provider onboarding", "Provider dashboard", "Audience tools", "Books & resources", "Merchandise", "Wallet & payouts"],
+    links: ["FaithHub Provider onboarding", "FaithHub Provider Dashboard", "Audience tools", "Books & resources", "Merchandise", "Wallet & payouts"],
   },
   {
     title: "Explore",
@@ -206,8 +206,8 @@ export default function FaithHubHomeLandingPageV3Fixed() {
     Events: "/faithhub/provider/events-manager",
     Beacon: "/faithhub/provider/beacon-dashboard",
     Community: "/faithhub/provider/community-groups",
-    "Provider onboarding": "/faithhub/provider/onboarding",
-    "Provider dashboard": "/faithhub/provider/dashboard",
+    "FaithHub Provider onboarding": "/faithhub/provider/onboarding",
+    "FaithHub Provider Dashboard": "/faithhub/provider/dashboard",
     "Audience tools": "/faithhub/provider/audience-notifications",
     "Books & resources": "/faithhub/provider/books-manager",
     Merchandise: "/faithhub/provider/merchandise-manager",
@@ -299,7 +299,7 @@ export default function FaithHubHomeLandingPageV3Fixed() {
                 className="inline-flex items-center justify-center gap-2 rounded-2xl border border-[var(--fh-brand)]/30 bg-white px-6 py-4 text-base font-black text-[var(--fh-brand)] shadow-sm transition hover:bg-[var(--fh-brand-soft)]"
                 onClick={() => navigate("/faithhub/provider/dashboard")}
               >
-                Open Provider Dashboard
+                Open FaithHub Provider Dashboard
               </button>
             </div>
 
@@ -547,7 +547,7 @@ export default function FaithHubHomeLandingPageV3Fixed() {
           <div className="rounded-[1.6rem] bg-slate-50 p-5">
             <div className="flex items-center gap-3">
               <div className="rounded-2xl bg-[var(--fh-brand)]/10 p-3 text-[var(--fh-brand)]"><Building2 className="h-5 w-5" /></div>
-              <div className="text-xl font-black">Provider-ready</div>
+              <div className="text-xl font-black">FaithHub-ready Provider</div>
             </div>
             <p className="mt-4 text-sm leading-7 text-slate-600">World-class provider tools for onboarding, live production, teaching creation, events, giving, promotions, resources, books, merchandise, and governance.</p>
           </div>
@@ -666,5 +666,7 @@ export default function FaithHubHomeLandingPageV3Fixed() {
     </div>
   );
 }
+
+
 
 

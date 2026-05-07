@@ -16,7 +16,7 @@ vi.mock("@/auth/useAuth", () => ({
   }),
 }));
 
-describe("FH-P-010 Provider dashboard workflow UX", () => {
+describe("FH-P-010 FaithHub Provider dashboard workflow UX", () => {
   beforeEach(() => {
     navigateWithRouterMock.mockReset();
     vi.useFakeTimers();
@@ -119,3 +119,5 @@ describe("FH-P-010 Provider dashboard workflow UX", () => {
     );
   });
 });
+
+

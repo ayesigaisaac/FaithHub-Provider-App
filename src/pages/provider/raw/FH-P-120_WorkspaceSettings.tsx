@@ -36,7 +36,7 @@ import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 import { useAuth } from "@/auth/useAuth";
 
 /**
- * Provider | Workspace Settings
+ * FaithHub Provider | Workspace Settings
  * --------------------------------------
  * Purpose:
  * Premium operating page for institution-wide defaults across branding,
@@ -938,7 +938,7 @@ export default function WorkspaceSettingsPage() {
         <div className="space-y-4">
           <Card
             title="Integration control hub"
-            subtitle="Messaging, scheduling, streaming, maps, analytics, and finance connections that power the Provider workspace."
+            subtitle="Messaging, scheduling, streaming, maps, analytics, and finance connections that power the FaithHub Provider workspace."
             right={<Pill tone="brand"><Link2 className="h-3.5 w-3.5" /> Integration health</Pill>}
           >
             <div className="grid gap-3 xl:grid-cols-2">
@@ -1116,7 +1116,7 @@ export default function WorkspaceSettingsPage() {
               </div>
             </Card>
 
-            <Card title="Workspace health" subtitle="High-signal checks that shape the readiness of the whole Provider workspace.">
+            <Card title="Workspace health" subtitle="High-signal checks that shape the readiness of the whole FaithHub Provider workspace.">
               <div className="space-y-2">
                 <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-emerald-50 dark:bg-emerald-900/15 px-3 py-2">
                   <div className="text-[12px] font-extrabold text-faith-ink dark:text-slate-100">Brand system is stable</div>
@@ -1139,7 +1139,7 @@ export default function WorkspaceSettingsPage() {
           <div className="space-y-4">
             <Card
               title="Workspace preview rail"
-              subtitle="See how branding, campuses, locale defaults, and integrations shape the Provider workspace."
+              subtitle="See how branding, campuses, locale defaults, and integrations shape the FaithHub Provider workspace."
               right={
                 <div className="inline-flex rounded-full border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-1">
                   <button
@@ -1434,7 +1434,7 @@ export default function WorkspaceSettingsPage() {
                         <div className="mt-1 text-[11px] text-faith-slate">The integration will appear in the control hub with status, owner, and health signals.</div>
                       </div>
                       <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-3">
-                        <div className="text-[12px] font-extrabold text-faith-ink dark:text-slate-100">Defaults propagate to Provider workflows</div>
+                        <div className="text-[12px] font-extrabold text-faith-ink dark:text-slate-100">Defaults propagate to FaithHub Provider workflows</div>
                         <div className="mt-1 text-[11px] text-faith-slate">Live Sessions, events, audience journeys, and giving surfaces can use this integration immediately.</div>
                       </div>
                     </div>
@@ -1457,6 +1457,8 @@ export default function WorkspaceSettingsPage() {
     </div>
   );
 }
+
+
 
 
 

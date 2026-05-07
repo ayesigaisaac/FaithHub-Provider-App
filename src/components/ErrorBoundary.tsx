@@ -55,7 +55,7 @@ export class ErrorBoundary extends React.Component<
               </Box>
             ) : null}
             <Typography variant="body2" color="text.secondary">
-              Reload the page or move to another workspace page. The app shell stays alive so one broken page does not take down the whole provider workspace.
+              Reload the page or move to another workspace page. The app shell stays alive so one broken page does not take down the whole FaithHub Provider workspace.
             </Typography>
             <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1.5}>
               <Button variant="contained" onClick={() => window.location.reload()}>
@@ -72,3 +72,5 @@ export class ErrorBoundary extends React.Component<
     return this.props.children;
   }
 }
+
+

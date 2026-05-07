@@ -1,4 +1,4 @@
-﻿// @ts-nocheck
+// @ts-nocheck
 
 "use client";
 
@@ -37,9 +37,9 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * Provider â€” Events Manager
+ * Provider — Events Manager
  * ----------------------------------
- * Premium event operating system for Provider Workspace.
+ * Premium event operating system for FaithHub Provider workspace.
  *
  * Design goals
  * - Keep the same premium creator-style control-surface direction used across earlier Provider pages.
@@ -1508,7 +1508,7 @@ export default function FaithHubEventsManagerPage() {
       "",
       "LOGISTICS",
       ...selectedEvent.logistics.map(
-        (item) => `${item.label} â€” ${item.status} â€” ${item.note}`,
+        (item) => `${item.label} — ${item.status} — ${item.note}`,
       ),
       "",
       "VOLUNTEER COVERAGE",
@@ -1658,7 +1658,7 @@ export default function FaithHubEventsManagerPage() {
                       className="px-3 py-2 text-[12px]"
                       disabled={workingAction === "duplicate"}
                     >
-                      {workingAction === "duplicate" ? "Duplicatingâ€¦" : "Duplicate"}
+                      {workingAction === "duplicate" ? "Duplicating…" : "Duplicate"}
                     </Btn>
                   </div>
                 </div>
@@ -2441,7 +2441,7 @@ export default function FaithHubEventsManagerPage() {
                       onClick={publishEventPlan}
                       disabled={workingAction === "publish"}
                     >
-                      {workingAction === "publish" ? "Publishingâ€¦" : "Mark operationally ready"}
+                      {workingAction === "publish" ? "Publishing…" : "Mark operationally ready"}
                     </Btn>
                     <Btn
                       tone="accent"
@@ -2678,6 +2678,8 @@ export default function FaithHubEventsManagerPage() {
     </div>
   );
 }
+
+
 
 
 

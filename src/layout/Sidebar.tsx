@@ -54,7 +54,7 @@ const moduleGroups: SidebarModuleGroup[] = [
     label: 'Core',
     items: [
       { label: 'Overview', hint: 'Global workspace pulse', path: '/dashboard-ui', icon: <Home className="h-5 w-5" /> },
-      { label: 'Provider dashboard', hint: 'Main workspace board', path: '/faithhub/provider/dashboard', icon: <Gauge className="h-5 w-5" /> },
+      { label: 'FaithHub Provider dashboard', hint: 'Main workspace board', path: '/faithhub/provider/dashboard', icon: <Gauge className="h-5 w-5" /> },
     ],
   },
   {
@@ -231,3 +231,5 @@ export function Sidebar({ onClose }: SidebarProps) {
     </aside>
   );
 }
+
+

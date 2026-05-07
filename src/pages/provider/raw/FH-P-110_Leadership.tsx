@@ -28,7 +28,7 @@ import {
 } from "lucide-react";
 
 /**
- * Provider — Leadership
+ * FaithHub Provider - Leadership
  * --------------------------------
  * Premium Provider-side leadership operating surface for leadership roster,
  * office assignment, public visibility, succession planning, and coverage health.
@@ -39,7 +39,7 @@ import {
  * - Publish Leadership
  *
  * Direction
- * - Same premium creator-style grammar used across the Provider Workspace pages.
+ * - Same premium creator-style grammar used across the FaithHub Provider workspace pages.
  * - EVzone Green is primary. Orange is secondary.
  * - Strong command hero, KPI strip, searchable roster, office structure,
  *   succession/coverage lane, and persistent public-preview rail.
@@ -613,7 +613,7 @@ export default function FaithHubLeadershipPage() {
                   <BadgeCheck className="h-3.5 w-3.5" /> Leadership published
                 </TonePill>
                 <TonePill tone="accent">Team cluster</TonePill>
-                <TonePill tone="neutral">Provider Workspace workspace</TonePill>
+                <TonePill tone="neutral">FaithHub Provider workspace</TonePill>
               </div>
 
               <div className="mt-6 flex flex-wrap gap-3">
@@ -1000,7 +1000,7 @@ export default function FaithHubLeadershipPage() {
                 >
                   <Star className="mt-0.5 h-5 w-5" style={{ color: EV_GREEN }} />
                   <div>
-                    <div className="text-[13px] font-bold text-faith-ink dark:text-slate-100">Provider Dashboard</div>
+                    <div className="text-[13px] font-bold text-faith-ink dark:text-slate-100">FaithHub Provider dashboard</div>
                     <div className="mt-1 text-[12px] leading-5 text-faith-slate">Return to mission control for role-aware provider decisions and institution-wide tasks.</div>
                   </div>
                 </button>
@@ -1029,6 +1029,8 @@ export default function FaithHubLeadershipPage() {
     </div>
   );
 }
+
+
 
 
 

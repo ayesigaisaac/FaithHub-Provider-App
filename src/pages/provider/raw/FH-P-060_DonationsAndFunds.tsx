@@ -32,7 +32,7 @@ import { navigateWithRouter } from "@/navigation/routerNavigate";
 /**
  * Provider — Donations & Funds
  * -------------------------------------
- * Premium giving workspace for Provider Workspace.
+ * Premium giving workspace for FaithHub Provider workspace.
  *
  * Design goals
  * - Keep the same premium creator-style layout direction used across the other generated Provider pages.
@@ -1057,7 +1057,7 @@ export default function DonationsAndFundsPage() {
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <div className="min-w-0">
               <div className="flex flex-wrap items-center gap-2 text-[10px] sm:text-xs text-faith-slate">
-                <span className="hover:text-slate-700 dark:hover:text-slate-200">Provider Workspace</span>
+                <span className="hover:text-slate-700 dark:hover:text-slate-200">FaithHub Provider workspace</span>
                 <span className="text-slate-300 dark:text-slate-700">/</span>
                 <span className="hover:text-slate-700 dark:hover:text-slate-200">Events &amp; Giving</span>
                 <span className="text-slate-300 dark:text-slate-700">/</span>
@@ -1711,6 +1711,8 @@ export default function DonationsAndFundsPage() {
     </div>
   );
 }
+
+
 
 
 

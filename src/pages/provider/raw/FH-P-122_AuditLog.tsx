@@ -26,7 +26,7 @@ import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 
 /**
- * Provider | Audit Log
+ * FaithHub Provider | Audit Log
  * --------------------------------
  * Purpose:
  * Immutable-style operational history for role changes, publishing actions,
@@ -753,14 +753,14 @@ const initialEvents: AuditEvent[] = [
     objectLabel: "Workspace authentication controls",
     objectType: "Admin setting",
     campus: "Global",
-    surface: "Provider admin controls",
+    surface: "FaithHub Provider admin controls",
     summary:
       "Single-sign-on enforcement was enabled for leadership, finance, and trust roles ahead of the quarterly security review.",
     sessionLabel: "Security change 2A8",
     ipLabel: "102.88.11.90 | London",
     deviceLabel: "Firefox on macOS | Trusted device",
     approvalPath: "Owner ? Security lead",
-    linkedPage: "Provider admin controls",
+    linkedPage: "FaithHub Provider admin controls",
     exportBundle: "Authentication governance pack",
     tags: ["SSO", "Leadership", "Sensitive"],
     diff: [
@@ -1647,6 +1647,7 @@ export default function AuditLogPage() {
     </div>
   );
 }
+
 
 
 

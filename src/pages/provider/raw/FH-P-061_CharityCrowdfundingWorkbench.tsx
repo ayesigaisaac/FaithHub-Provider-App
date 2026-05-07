@@ -1,4 +1,4 @@
-﻿// @ts-nocheck
+// @ts-nocheck
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -42,9 +42,9 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * Provider â€” Charity Crowdfunding Workbench
+ * Provider — Charity Crowdfunding Workbench
  * --------------------------------------------------
- * Premium charity campaign workspace for Provider Workspace.
+ * Premium charity campaign workspace for FaithHub Provider workspace.
  *
  * Design goals
  * - Match the premium creator-style layout direction already used across the generated Provider pages.
@@ -99,7 +99,7 @@ function fmtInt(n: number) {
   return Intl.NumberFormat(undefined, { maximumFractionDigits: 0 }).format(n);
 }
 
-function fmtCurrency(n: number, currency = "Â£") {
+function fmtCurrency(n: number, currency = "£") {
   return `${currency}${Intl.NumberFormat(undefined, {
     maximumFractionDigits: 0,
   }).format(n)}`;
@@ -286,13 +286,13 @@ const SEED: CrowdfundRecord[] = [
     urgency:
       "Two communities lose access within the next 18 days if repair teams cannot begin on time.",
     impactSummary:
-      "Â£60k restores four water points, trains local caretakers, and supplies three months of hygiene materials.",
+      "£60k restores four water points, trains local caretakers, and supplies three months of hygiene materials.",
     raised: 48200,
     goal: 60000,
     stretchGoal: 78000,
     donors: 1284,
     ambassadors: 42,
-    recentActivity: "18 gifts in the last hour Â· one matching partner currently live",
+    recentActivity: "18 gifts in the last hour · one matching partner currently live",
     deadlineISO: new Date(Date.now() + 1000 * 60 * 60 * 24 * 18).toISOString(),
     matchActive: true,
     matchAmount: 7500,
@@ -344,7 +344,7 @@ const SEED: CrowdfundRecord[] = [
         kind: "Photo",
         owner: "Field lead",
         status: "Ready",
-        coverage: "3 villages Â· before-repair proof",
+        coverage: "3 villages · before-repair proof",
         imageUrl: EVIDENCE_WATER,
       },
       {
@@ -413,7 +413,7 @@ const SEED: CrowdfundRecord[] = [
         label: "Sunday Morning Live donation moment",
         surface: "Live Session",
         state: "Live",
-        value: "Â£12.4k influenced",
+        value: "£12.4k influenced",
         ready: true,
         hint: "Crowdfund progress bar and QR prompt already inserted into the run-of-show.",
       },
@@ -500,13 +500,13 @@ const SEED: CrowdfundRecord[] = [
       "Heavy flooding displaced dozens of families. This campaign covers emergency food, dry shelter packs, roof restoration, and transport for families most at risk.",
     urgency: "Emergency supplies need to reach the first 40 homes in the next 72 hours.",
     impactSummary:
-      "Â£35k covers 40 household packs, temporary repairs, and a month of monitored recovery support.",
+      "£35k covers 40 household packs, temporary repairs, and a month of monitored recovery support.",
     raised: 22100,
     goal: 35000,
     stretchGoal: 50000,
     donors: 742,
     ambassadors: 16,
-    recentActivity: "4 new ambassadors joined today Â· donations spiking after evening prayer",
+    recentActivity: "4 new ambassadors joined today · donations spiking after evening prayer",
     deadlineISO: new Date(Date.now() + 1000 * 60 * 60 * 24 * 5).toISOString(),
     matchActive: true,
     matchAmount: 5000,
@@ -686,7 +686,7 @@ const SEED: CrowdfundRecord[] = [
       "This back-to-school crowdfund supports students who are at risk of losing their place because of fees, transport cost, and missing learning materials.",
     urgency: "Campaign launches publicly next week ahead of term start.",
     impactSummary:
-      "Â£22k covers exam fees, transport, uniforms, and emergency support for 55 students.",
+      "£22k covers exam fees, transport, uniforms, and emergency support for 55 students.",
     raised: 6400,
     goal: 22000,
     stretchGoal: 30000,
@@ -872,13 +872,13 @@ const SEED: CrowdfundRecord[] = [
       "The mission bus serves prison visits, village outreaches, and student ministry routes. The current bus can no longer safely support regular travel, so the campaign funded a replacement and initial servicing.",
     urgency: "Primary campaign completed. Closeout report and evergreen support plan remain.",
     impactSummary:
-      "Â£48k funded a replacement bus, safety upgrades, insurance, and initial maintenance reserve.",
+      "£48k funded a replacement bus, safety upgrades, insurance, and initial maintenance reserve.",
     raised: 49850,
     goal: 48000,
     stretchGoal: 55000,
     donors: 912,
     ambassadors: 21,
-    recentActivity: "Campaign completed last week Â· final delivery photos pending",
+    recentActivity: "Campaign completed last week · final delivery photos pending",
     deadlineISO: new Date(Date.now() - 1000 * 60 * 60 * 24 * 8).toISOString(),
     matchActive: false,
     matchAmount: 0,
@@ -1272,13 +1272,13 @@ function RegistryRow({
       </div>
       <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] text-faith-slate">
         <span>{record.category}</span>
-        <span>â€¢</span>
+        <span>•</span>
         <span>{record.region}</span>
-        <span>â€¢</span>
+        <span>•</span>
         <span>{fmtInt(record.donors)} donors</span>
         {record.matchActive ? (
           <>
-            <span>â€¢</span>
+            <span>•</span>
             <span className="font-semibold" style={{ color: EV_ORANGE }}>Match live</span>
           </>
         ) : null}
@@ -1332,9 +1332,9 @@ function BrowserPreview({ record }: { record: CrowdfundRecord }) {
               <div>
                 <div className="text-xs font-semibold uppercase tracking-wide text-faith-slate">Raised</div>
                 <div className="mt-1 text-3xl font-extrabold text-faith-ink dark:text-slate-50">{fmtCurrency(record.raised)}</div>
-                <div className="mt-1 text-sm text-faith-slate">of {fmtCurrency(record.goal)} Â· {fmtInt(record.donors)} donors</div>
+                <div className="mt-1 text-sm text-faith-slate">of {fmtCurrency(record.goal)} · {fmtInt(record.donors)} donors</div>
                 <div className="mt-3"><ProgressBar value={progress} tone={record.accent === "navy" ? "navy" : record.accent === "orange" ? "orange" : "green"} /></div>
-                <div className="mt-2 text-xs text-faith-slate">Stretch goal: {fmtCurrency(record.stretchGoal)} Â· {stretch}% reached</div>
+                <div className="mt-2 text-xs text-faith-slate">Stretch goal: {fmtCurrency(record.stretchGoal)} · {stretch}% reached</div>
                 <div className="mt-4 grid grid-cols-3 gap-2">
                   <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
                     <div className="text-[10px] uppercase tracking-wide text-faith-slate">Donors</div>
@@ -1953,7 +1953,7 @@ export default function CharityCrowdfundingWorkbenchPage() {
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <div className="min-w-0">
               <div className="flex flex-wrap items-center gap-2 text-[10px] sm:text-xs text-faith-slate">
-                <span className="hover:text-slate-700 dark:hover:text-slate-200">Provider Workspace</span>
+                <span className="hover:text-slate-700 dark:hover:text-slate-200">FaithHub Provider workspace</span>
                 <span className="text-slate-300 dark:text-slate-700">/</span>
                 <span className="hover:text-slate-700 dark:hover:text-slate-200">Events &amp; Giving</span>
                 <span className="text-slate-300 dark:text-slate-700">/</span>
@@ -2139,7 +2139,7 @@ export default function CharityCrowdfundingWorkbenchPage() {
                     <div className="flex items-start justify-between gap-2">
                       <div>
                         <div className="text-sm font-bold text-faith-ink dark:text-slate-50">{milestone.label}</div>
-                        <div className="mt-1 text-xs text-faith-slate">{fmtCurrency(milestone.target)} Â· {milestone.impact}</div>
+                        <div className="mt-1 text-xs text-faith-slate">{fmtCurrency(milestone.target)} · {milestone.impact}</div>
                       </div>
                       <Pill tone={milestone.unlocked ? "good" : nextMilestone.id === milestone.id ? "warn" : "neutral"}>{milestone.unlocked ? "Unlocked" : nextMilestone.id === milestone.id ? "Next" : "Locked"}</Pill>
                     </div>
@@ -2165,7 +2165,7 @@ export default function CharityCrowdfundingWorkbenchPage() {
                       <div className="flex items-start justify-between gap-2">
                         <div>
                           <div className="text-sm font-bold text-faith-ink dark:text-slate-50">{asset.title}</div>
-                          <div className="mt-1 text-xs text-faith-slate">{asset.kind} Â· {asset.owner}</div>
+                          <div className="mt-1 text-xs text-faith-slate">{asset.kind} · {asset.owner}</div>
                         </div>
                         <Pill tone={asset.status === "Ready" ? "good" : asset.status === "Pending" ? "warn" : "bad"}>{asset.status}</Pill>
                       </div>
@@ -2202,7 +2202,7 @@ export default function CharityCrowdfundingWorkbenchPage() {
                           <div className="text-sm font-bold text-faith-ink dark:text-slate-50">{update.title}</div>
                           <Pill tone={update.kind === "Need" ? "warn" : update.kind === "Prayer" ? "pro" : update.kind === "Thanks" ? "good" : "neutral"}>{update.kind}</Pill>
                         </div>
-                        <div className="mt-1 text-xs text-faith-slate">{fmtDate(update.publishedISO)} Â· {fmtRelative(update.publishedISO)} Â· {update.linkedSurface}</div>
+                        <div className="mt-1 text-xs text-faith-slate">{fmtDate(update.publishedISO)} · {fmtRelative(update.publishedISO)} · {update.linkedSurface}</div>
                       </div>
                       <Pill tone={update.publicVisible ? "good" : "neutral"}>{update.publicVisible ? "Public" : "Internal"}</Pill>
                     </div>
@@ -2252,7 +2252,7 @@ export default function CharityCrowdfundingWorkbenchPage() {
                           <div className="text-[10px] uppercase tracking-wide text-faith-slate">Ambassadors</div>
                         </div>
                         <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800 text-center">
-                          <div className="text-base font-extrabold text-faith-ink dark:text-slate-50">{selectedRecord.matchActive ? fmtCurrency(selectedRecord.matchAmount) : "â€”"}</div>
+                          <div className="text-base font-extrabold text-faith-ink dark:text-slate-50">{selectedRecord.matchActive ? fmtCurrency(selectedRecord.matchAmount) : "—"}</div>
                           <div className="text-[10px] uppercase tracking-wide text-faith-slate">Matching</div>
                         </div>
                       </div>
@@ -2305,7 +2305,7 @@ export default function CharityCrowdfundingWorkbenchPage() {
                           <div className="text-sm font-bold text-faith-ink dark:text-slate-50">{hook.label}</div>
                           <Pill tone={toneForHook(hook.state)}>{hook.state}</Pill>
                         </div>
-                        <div className="mt-1 text-xs text-faith-slate">{hook.surface} Â· {hook.value}</div>
+                        <div className="mt-1 text-xs text-faith-slate">{hook.surface} · {hook.value}</div>
                       </div>
                       <button
                         type="button"
@@ -2477,6 +2477,8 @@ export default function CharityCrowdfundingWorkbenchPage() {
     </div>
   );
 }
+
+
 
 
 

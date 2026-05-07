@@ -117,7 +117,7 @@ export const providerPageCatalog: ProviderPageMeta[] = [
   {
     key: 'provider-onboarding',
     id: 'FH-P-001',
-    title: 'Provider Onboarding',
+    title: 'FaithHub Provider Onboarding',
     description: 'Verification, brand setup, campus configuration, team roles, and launch readiness.',
     path: '/faithhub/provider/onboarding',
     section: 'Foundation & Mission Control',
@@ -128,7 +128,7 @@ export const providerPageCatalog: ProviderPageMeta[] = [
   {
     key: 'provider-dashboard',
     id: 'FH-P-010',
-    title: 'Provider Dashboard',
+    title: 'FaithHub Provider Dashboard',
     description: 'Premium provider-side mission control with live, content, audience, giving, and Beacon signals.',
     path: '/faithhub/provider/dashboard',
     aliases: ['/faithhub/provider'],
@@ -330,7 +330,7 @@ export const providerPageCatalog: ProviderPageMeta[] = [
     key: 'noticeboard',
     id: 'FH-P-037',
     title: 'Noticeboard',
-    description: 'Provider-wide notices, announcements, pinned moments, and communication highlights.',
+    description: 'FaithHub Provider-wide notices, announcements, pinned moments, and communication highlights.',
     path: '/faithhub/provider/noticeboard',
     section: 'Audience & Outreach',
     icon: MessageSquare,
@@ -565,7 +565,7 @@ export const providerPageCatalog: ProviderPageMeta[] = [
     key: 'roles-permissions',
     id: 'FH-P-112',
     title: 'Roles & Permissions',
-    description: 'Granular access control, approvals, and role visibility across the provider workspace.',
+    description: 'Granular access control, approvals, and role visibility across the FaithHub Provider workspace.',
     path: '/faithhub/provider/roles-permissions',
     aliases: [
       '/faithhub/provider/roles-permissions/new',
@@ -638,7 +638,7 @@ export const providerPageCatalog: ProviderPageMeta[] = [
   },
   {
     key: 'provider-shell-preview',
-    title: 'Provider Shell Preview',
+    title: 'FaithHub Provider Shell Preview',
     description: 'Original shell preview attached to the project inputs.',
     path: '/faithhub/provider/preview-shell',
     section: 'Previews',
@@ -647,3 +647,5 @@ export const providerPageCatalog: ProviderPageMeta[] = [
     component: ProviderShellPreview,
   },
 ];
+
+

@@ -37,13 +37,13 @@ import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
- * Provider - Community Groups
+ * FaithHub Provider - Community Groups
  * ------------------------------------
  * Premium Provider-side operating surface for ministries, cells, discipleship circles,
  * prayer groups, youth communities, family groups, and other faith-community structures.
  *
  * Page goals
- * - Keep the same premium creator-style grammar already used across the Provider Workspace pages.
+ * - Keep the same premium creator-style grammar already used across the FaithHub Provider workspace pages.
  * - Use EVzone Green as the primary accent and Orange as the secondary accent.
  * - Make Community Groups the command page for group lifecycle, leader coverage,
  *   safety, care, events, live follow-up, and noticeboard distribution.
@@ -1593,6 +1593,8 @@ export default function CommunityGroupsPage() {
     </div>
   );
 }
+
+
 
 
 

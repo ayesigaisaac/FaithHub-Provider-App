@@ -2682,7 +2682,7 @@ export default function FaithHubLiveBuilderPage({ embedded = false, onRequestClo
           </div>
 
           <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 xl:flex xl:w-auto xl:flex-wrap xl:justify-end">
-            <SoftButton className="h-10 w-full justify-center px-4" onClick={() => (onRequestClose ? onRequestClose() : safeNav(ROUTES.providerDashboard))} title="Back to Provider Dashboard">
+            <SoftButton className="h-10 w-full justify-center px-4" onClick={() => (onRequestClose ? onRequestClose() : safeNav(ROUTES.providerDashboard))} title="Back to FaithHub Provider dashboard">
               <ChevronLeft className="h-4 w-4" /> Dashboard
             </SoftButton>
             {isMobile ? (
@@ -2762,6 +2762,8 @@ export default function FaithHubLiveBuilderPage({ embedded = false, onRequestClo
     </div>
   );
 }
+
+
 
 
 

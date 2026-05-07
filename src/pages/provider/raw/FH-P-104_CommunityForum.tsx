@@ -1,4 +1,4 @@
-ï»¿// @ts-nocheck
+// @ts-nocheck
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -34,7 +34,7 @@ import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
- * Provider â€” Community Forum
+ * FaithHub Provider - Community Forum
  * -----------------------------------
  * Premium Provider-side moderated discussion space for threads, categories,
  * leader posts, and faith-community engagement.
@@ -45,7 +45,7 @@ import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
  * - Open Moderation
  *
  * Design intent
- * - Follow the same premium creator-style grammar used across the Provider Workspace pages.
+ * - Follow the same premium creator-style grammar used across the FaithHub Provider workspace pages.
  * - Use EVzone Green as primary and Orange as secondary.
  * - Position Community Forum as the institutional discussion operating surface,
  *   not just a flat thread list.
@@ -194,7 +194,7 @@ const INITIAL_THREADS: ThreadRecord[] = [
     id: "CF-201",
     title: "Sunday message follow-up: grace in daily work",
     excerpt:
-      "Continue the conversation from this weekâ€™s teaching with practical stories, scripture reflections, and leader prompts.",
+      "Continue the conversation from this week’s teaching with practical stories, scripture reflections, and leader prompts.",
     body:
       "This leader-led thread is linked to the Everyday Grace series and the Sunday replay. Members are invited to share what stood out, where they need prayer, and how the teaching intersects with work, family, and service this week.",
     category: "Series Follow-up",
@@ -204,7 +204,7 @@ const INITIAL_THREADS: ThreadRecord[] = [
     owner: "Pastor Ada N.",
     campus: "Kampala Central",
     languages: ["English", "Luganda"],
-    linkedObject: "Series â€¢ Everyday Grace",
+    linkedObject: "Series • Everyday Grace",
     liveLinked: true,
     leaderPost: true,
     pinned: true,
@@ -245,7 +245,7 @@ const INITIAL_THREADS: ThreadRecord[] = [
     owner: "Care Team",
     campus: "Online First",
     languages: ["English"],
-    linkedObject: "Prayer lane â€¢ Care routing",
+    linkedObject: "Prayer lane • Care routing",
     liveLinked: false,
     leaderPost: false,
     pinned: false,
@@ -286,7 +286,7 @@ const INITIAL_THREADS: ThreadRecord[] = [
     owner: "Youth Desk",
     campus: "Entebbe South",
     languages: ["English", "Swahili"],
-    linkedObject: "Event â€¢ Youth Camp Weekend",
+    linkedObject: "Event • Youth Camp Weekend",
     liveLinked: false,
     leaderPost: true,
     pinned: false,
@@ -327,7 +327,7 @@ const INITIAL_THREADS: ThreadRecord[] = [
     owner: "Outreach Desk",
     campus: "All campuses",
     languages: ["English"],
-    linkedObject: "Event â€¢ Community Outreach Saturday",
+    linkedObject: "Event • Community Outreach Saturday",
     liveLinked: true,
     leaderPost: true,
     pinned: false,
@@ -362,7 +362,7 @@ const INITIAL_THREADS: ThreadRecord[] = [
     owner: "Story Team",
     campus: "Kampala Central",
     languages: ["English"],
-    linkedObject: "Series â€¢ 40 Days of Renewal",
+    linkedObject: "Series • 40 Days of Renewal",
     liveLinked: true,
     leaderPost: false,
     pinned: true,
@@ -397,7 +397,7 @@ const INITIAL_THREADS: ThreadRecord[] = [
     owner: "Moderation Desk",
     campus: "Online Studio",
     languages: ["English", "French"],
-    linkedObject: "Live Session â€¢ Baptism Q&A",
+    linkedObject: "Live Session • Baptism Q&A",
     liveLinked: true,
     leaderPost: false,
     pinned: false,
@@ -464,25 +464,25 @@ const LEADER_POSTS: LeaderPost[] = [
     id: "LP-1",
     title: "Leader summary: grace in daily work",
     owner: "Pastor Ada N.",
-    scheduledAt: "Today Â· 7:30 PM",
+    scheduledAt: "Today · 7:30 PM",
     status: "Ready",
-    linkedObject: "Series â€¢ Everyday Grace",
+    linkedObject: "Series • Everyday Grace",
   },
   {
     id: "LP-2",
     title: "Youth camp parent update and arrival checklist",
     owner: "Youth Desk",
-    scheduledAt: "Tomorrow Â· 9:00 AM",
+    scheduledAt: "Tomorrow · 9:00 AM",
     status: "Awaiting review",
-    linkedObject: "Event â€¢ Youth Camp Weekend",
+    linkedObject: "Event • Youth Camp Weekend",
   },
   {
     id: "LP-3",
     title: "Pinned answer: baptism next steps",
     owner: "Pastoral Office",
-    scheduledAt: "Tomorrow Â· 12:30 PM",
+    scheduledAt: "Tomorrow · 12:30 PM",
     status: "Scheduled",
-    linkedObject: "Live Session â€¢ Baptism Q&A",
+    linkedObject: "Live Session • Baptism Q&A",
   },
 ];
 
@@ -685,7 +685,7 @@ function ThreadRow({
             {thread.childSafe ? <Pill tone="good">Child-safe</Pill> : null}
           </div>
           <div className="mt-1 text-[12px] text-faith-slate">
-            {thread.category} â€¢ {thread.campus} â€¢ {thread.languages.join(" + ")}
+            {thread.category} • {thread.campus} • {thread.languages.join(" + ")}
           </div>
           <div className="mt-2 line-clamp-2 text-[13px] leading-snug text-slate-700">
             {thread.excerpt}
@@ -749,7 +749,7 @@ function ModerationDrawer({
                         <Pill tone={toneForSeverity(item.severity)}>{item.severity}</Pill>
                       </div>
                       <div className="mt-1 text-[12px] text-faith-slate">
-                        {thread?.title || item.lane} â€¢ {item.owner} â€¢ {item.ageLabel}
+                        {thread?.title || item.lane} • {item.owner} • {item.ageLabel}
                       </div>
                       <div className="mt-2 text-[13px] leading-snug text-slate-700">
                         {item.reason}
@@ -876,13 +876,13 @@ function PreviewDrawer({
                 </div>
                 <div className="mt-3 grid gap-2 text-[13px] text-slate-700">
                   <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2">
-                    Linked object â€¢ <span className="font-bold">{thread.linkedObject}</span>
+                    Linked object • <span className="font-bold">{thread.linkedObject}</span>
                   </div>
                   <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2">
-                    Last active â€¢ <span className="font-bold">{fmtLocal(thread.lastActiveISO)}</span>
+                    Last active • <span className="font-bold">{fmtLocal(thread.lastActiveISO)}</span>
                   </div>
                   <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2">
-                    Owner â€¢ <span className="font-bold">{thread.owner}</span>
+                    Owner • <span className="font-bold">{thread.owner}</span>
                   </div>
                 </div>
               </div>
@@ -928,7 +928,7 @@ export default function CommunityForumPage() {
   const [moderationOpen, setModerationOpen] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
   const [composerTitle, setComposerTitle] = useState(
-    "Leader prompt: what is your takeaway from this weekâ€™s live session?",
+    "Leader prompt: what is your takeaway from this week’s live session?",
   );
   const [composerExcerpt, setComposerExcerpt] = useState(
     "Invite the community to share one insight, one question, and one prayer point.",
@@ -1089,9 +1089,9 @@ export default function CommunityForumPage() {
             <div className="flex min-w-0 flex-wrap items-center gap-3">
               <Pill tone="brand">FORUM TRUST PULSE</Pill>
               <span>{metrics.moderation} threads need moderation review</span>
-              <span>â€¢</span>
+              <span>•</span>
               <span>{LEADER_POSTS.filter((post) => post.status === "Ready").length} leader posts are ready to publish</span>
-              <span>â€¢</span>
+              <span>•</span>
               <span>{moderationCounts.liveLinked} discussion lanes are linked to live follow-up</span>
             </div>
             <div className="text-[11px] uppercase tracking-[0.08em] text-faith-slate">
@@ -1144,7 +1144,7 @@ export default function CommunityForumPage() {
             Search and filter the forum
           </div>
           <div className="mt-1 text-[14px] text-faith-slate">
-            Move between categories, pinned threads, leader posts, moderation cases, and child-safe lanes without leaving the provider workspace.
+            Move between categories, pinned threads, leader posts, moderation cases, and child-safe lanes without leaving the FaithHub Provider workspace.
           </div>
           <div className="mt-4 flex flex-col gap-3 xl:flex-row xl:items-center xl:justify-between">
             <div className="relative flex-1">
@@ -1373,7 +1373,7 @@ export default function CommunityForumPage() {
                             : "border-rose-200 bg-rose-50 text-rose-800",
                         )}
                       >
-                        <span className="font-black">{signal.label}</span> â€¢ {signal.hint}
+                        <span className="font-black">{signal.label}</span> • {signal.hint}
                       </div>
                     ))}
                   </div>
@@ -1452,7 +1452,7 @@ export default function CommunityForumPage() {
                       <div className="text-[11px] text-faith-slate">{previewMode === "desktop" ? "Desktop forum preview" : "Mobile preview"}</div>
                       <div className="mt-2 text-[14px] font-black text-faith-ink">{selectedThread.excerpt}</div>
                       <div className="mt-2 text-[12px] text-faith-slate">
-                        {selectedThread.owner} â€¢ {selectedThread.category} â€¢ {selectedThread.campus}
+                        {selectedThread.owner} • {selectedThread.category} • {selectedThread.campus}
                       </div>
                       <div className="mt-4 flex flex-wrap items-center gap-2">
                         <Button tone="primary" left={<MessageSquare className="h-4 w-4" />}>
@@ -1584,7 +1584,7 @@ export default function CommunityForumPage() {
                         {post.title}
                       </div>
                       <div className="mt-1 text-[12px] text-faith-slate">
-                        {post.owner} â€¢ {post.scheduledAt} â€¢ {post.linkedObject}
+                        {post.owner} • {post.scheduledAt} • {post.linkedObject}
                       </div>
                     </div>
                     <Pill
@@ -1630,6 +1630,8 @@ export default function CommunityForumPage() {
     </div>
   );
 }
+
+
 
 
 

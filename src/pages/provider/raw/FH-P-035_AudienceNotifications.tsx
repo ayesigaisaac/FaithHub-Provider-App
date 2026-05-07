@@ -42,7 +42,7 @@ import {
 import { KpiTile } from "../../../components/ui/KpiTile";
 
 /**
- * Provider - Audience Notifications
+ * FaithHub Provider - Audience Notifications
  * Premium lifecycle journey page rebuilt from the creator-style Audience Notifications base.
  * Primary colour: EVzone Green (var(--fh-brand))
  * Secondary colour: EVzone Orange (var(--fh-accent))
@@ -858,19 +858,19 @@ function buildInitialVariants(sourceType: SourceType): Record<LocaleKey, LocaleV
     en: {
       headline: `${subjectRoot} • Join with purpose`,
       body: "You asked to stay connected. Here is the right message at the right moment, with a deep link that takes people straight into the most relevant Provider experience.",
-      cta: "Open in Provider",
+      cta: "Open in FaithHub Provider",
       deepLink: "faithhub://live/sunday-encounter",
     },
     sw: {
       headline: `${subjectRoot} • Jiunge sasa`,
       body: "Ujumbe huu umeboreshwa kwa wakati unaofaa, lugha sahihi, na kiungo kinachopeleka mtu moja kwa moja kwenye tukio au replay inayohitajika.",
-      cta: "Fungua kwenye Provider",
+      cta: "Fungua kwenye FaithHub Provider",
       deepLink: "faithhub://live/sunday-encounter?locale=sw",
     },
     fr: {
       headline: `${subjectRoot} • Rejoignez maintenant`,
       body: "Ce message est localisÃ© pour le bon moment, le bon public, et le bon rÃ©sultat ministÃ©riel - participation, replay, don, inscription ou promotion.",
-      cta: "Ouvrir dans Provider",
+      cta: "Ouvrir dans FaithHub Provider",
       deepLink: "faithhub://live/sunday-encounter?locale=fr",
     },
   };
@@ -1107,7 +1107,7 @@ export default function FaithHubAudienceNotificationsPage() {
             <div className="flex items-center gap-2 overflow-x-auto">
               <div className="flex items-center gap-2 whitespace-nowrap text-[10px] font-black uppercase tracking-widest text-faith-slate">
                 <span className="hover:text-slate-700 dark:hover:text-slate-200 transition cursor-default">
-                  Provider Workspace
+                  FaithHub Provider workspace
                 </span>
                 <span className="text-slate-300 dark:text-slate-700">/</span>
                 <span className="hover:text-slate-700 dark:hover:text-slate-200 transition cursor-default">
@@ -1928,7 +1928,7 @@ export default function FaithHubAudienceNotificationsPage() {
                           {previewBody}
                         </div>
                         <div className="inline-flex items-center rounded-full px-2.5 py-1 text-[10px] font-black text-white" style={{ backgroundColor: GREEN }}>
-                          {activeVariant.cta || "Open in Provider"}
+                          {activeVariant.cta || "Open in FaithHub Provider"}
                         </div>
                       </div>
                     }
@@ -1946,7 +1946,7 @@ export default function FaithHubAudienceNotificationsPage() {
                     subject={previewHeadline}
                     preheader={`${activeNode.label} • ${sourceType} • ${languageTarget}`}
                     body={previewBody}
-                    cta={activeVariant.cta || "Open in Provider"}
+                    cta={activeVariant.cta || "Open in FaithHub Provider"}
                   />
                 ) : null}
 
@@ -2185,7 +2185,7 @@ export default function FaithHubAudienceNotificationsPage() {
                         <div className="text-[12px] leading-relaxed">{previewBody}</div>
                         <div className="flex flex-wrap gap-2 pt-1">
                           <span className="inline-flex items-center rounded-full px-2.5 py-1 text-[10px] font-black text-white" style={{ backgroundColor: GREEN }}>
-                            {activeVariant.cta || "Open in Provider"}
+                            {activeVariant.cta || "Open in FaithHub Provider"}
                           </span>
                           <span className="inline-flex items-center rounded-full px-2.5 py-1 text-[10px] font-black text-white" style={{ backgroundColor: ORANGE }}>
                             {activeNode.offset}
@@ -2201,7 +2201,7 @@ export default function FaithHubAudienceNotificationsPage() {
                     subject={previewHeadline}
                     preheader={`${activeNode.label} • ${languageTarget} • ${regionTarget}`}
                     body={previewBody}
-                    cta={activeVariant.cta || "Open in Provider"}
+                    cta={activeVariant.cta || "Open in FaithHub Provider"}
                   />
                 ) : null}
 
@@ -2283,6 +2283,8 @@ export default function FaithHubAudienceNotificationsPage() {
     </div>
   );
 }
+
+
 
 
 

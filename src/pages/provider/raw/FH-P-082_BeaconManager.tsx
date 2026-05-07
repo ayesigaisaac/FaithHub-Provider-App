@@ -2113,7 +2113,7 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <div className="min-w-0">
               <div className="flex flex-wrap items-center gap-2 text-[10px] sm:text-xs text-faith-slate">
-                <span>Provider Workspace</span>
+                <span>FaithHub Provider workspace</span>
                 <span className="text-slate-300 dark:text-slate-700">/</span>
                 <span>Beacon</span>
                 <span className="text-slate-300 dark:text-slate-700">/</span>
@@ -2727,6 +2727,8 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
     </div>
   );
 }
+
+
 
 
 

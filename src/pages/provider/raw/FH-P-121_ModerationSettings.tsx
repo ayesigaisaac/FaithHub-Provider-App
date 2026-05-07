@@ -17,7 +17,7 @@ import {
 } from "lucide-react";
 
 /**
- * Provider | Moderation Settings
+ * FaithHub Provider | Moderation Settings
  * ---------------------------------------
  * Distinct from Reviews & Moderation.
  * controls policy rules, thresholds, child-safe defaults,
@@ -403,7 +403,7 @@ export default function FH_P_121_ModerationSettings() {
   const policyPacks: PolicyPack[] = [
     {
       id: "pk_1",
-      title: "Provider default ministry rules",
+      title: "FaithHub Provider default ministry rules",
       detail: "Base provider-wide policy set for live, replay, and community flows.",
       status: "Active",
     },
@@ -536,7 +536,7 @@ export default function FH_P_121_ModerationSettings() {
                   subtitle="Institution-wide policy rules, filters, defaults, thresholds, child-safe settings, and automation rules. This page governs rule definitions that feed live chat, community, prayer, counseling, reviews, and all linked trust surfaces."
                 />
                 <div className="mt-3 flex flex-wrap items-center gap-2">
-                  <Pill tone="good">Provider governance active</Pill>
+                  <Pill tone="good">FaithHub Provider governance active</Pill>
                   <Pill>Feeds </Pill>
                   <Pill tone="warn">3 policy changes pending save</Pill>
                   <Pill tone="indigo">Child-safe defaults locked</Pill>
@@ -571,7 +571,7 @@ export default function FH_P_121_ModerationSettings() {
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3">
-          <StatCard label="Active rule sets" value="8" detail="Provider-wide policies currently enforcing defaults." dot={GREEN} />
+          <StatCard label="Active rule sets" value="8" detail="FaithHub Provider-wide policies currently enforcing defaults." dot={GREEN} />
           <StatCard label="Automation rules" value="17" detail="Live, community, testimony, and child-safe automations." dot={ORANGE} />
           <StatCard label="Child-safe safeguards" value="4" detail="High-trust restrictions for children and counseling." dot={INDIGO} />
           <StatCard label="Surfaces protected" value="11" detail="Live, Forum, Prayer, Testimonies, Counseling, more." dot={GREEN} />
@@ -765,6 +765,7 @@ export default function FH_P_121_ModerationSettings() {
     </div>
   );
 }
+
 
 
 

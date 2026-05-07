@@ -31,12 +31,12 @@ import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
- * Provider — Beacon Dashboard
+ * FaithHub Provider - Beacon Dashboard
  * ------------------------------------
- * Premium promotional control center for Provider Workspace.
+ * Premium promotional control center for FaithHub Provider workspace.
  *
  * Design goals
- * - Follow the premium creator-style card format already used across the generated Provider Workspace pages.
+ * - Follow the premium creator-style card format already used across the generated FaithHub Provider workspace pages.
  * - Use EVzone Green as the primary accent and EVzone Orange as the secondary accent.
  * - Reflect the Beacon model clearly: linked and standalone campaigns, spend pacing, creative quality,
  *   recommendations, quick-create actions, and strong in-page previews.
@@ -1293,7 +1293,7 @@ export default function BeaconDashboardPage() {
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <div className="min-w-0">
               <div className="flex flex-wrap items-center gap-2 text-[10px] sm:text-xs text-faith-slate">
-                <span>Provider Workspace</span>
+                <span>FaithHub Provider workspace</span>
                 <span className="text-slate-300 dark:text-slate-700">/</span>
                 <span>Beacon</span>
                 <span className="text-slate-300 dark:text-slate-700">/</span>
@@ -1814,6 +1814,8 @@ export default function BeaconDashboardPage() {
     </div>
   );
 }
+
+
 
 
 

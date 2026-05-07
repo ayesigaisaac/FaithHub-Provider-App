@@ -34,7 +34,7 @@ import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { ProviderStatusPill } from "@/components/provider/ProviderStatusPill";
 
 /**
- * Provider — Series Dashboard
+ * FaithHub Provider - Series Dashboard
  * ------------------------------------
  * Premium operational landing page for structured Series content.
  *
@@ -957,7 +957,7 @@ export default function SeriesDashboardPage() {
             <div className="flex flex-col items-stretch gap-3 xl:items-end">
               <div className="flex flex-wrap items-center gap-2 xl:justify-end">
                 <SoftButton onClick={() => safeNav(ROUTES.providerDashboard)}>
-                  Provider Dashboard
+                  FaithHub Provider dashboard
                 </SoftButton>
                 <PrimaryButton tone="orange" onClick={() => safeNav(ROUTES.seriesBuilder)}>
                   <Plus className="h-4 w-4" /> New Series
@@ -1417,6 +1417,8 @@ export default function SeriesDashboardPage() {
     </div>
   );
 }
+
+
 
 
 

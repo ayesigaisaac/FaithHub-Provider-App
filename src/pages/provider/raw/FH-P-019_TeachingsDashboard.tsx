@@ -1194,7 +1194,7 @@ export default function TeachingsDashboardPage() {
 
             <div className="flex flex-wrap items-center gap-2 xl:justify-end">
               <SoftButton onClick={() => safeNav(ROUTES.providerDashboard)}>
-                Provider Dashboard
+                FaithHub Provider dashboard
               </SoftButton>
               <SoftButton onClick={() => safeNav(ROUTES.seriesBuilder)}>
                 <Layers className="h-4 w-4" /> Open Series Builder
@@ -1702,6 +1702,8 @@ export default function TeachingsDashboardPage() {
     </div>
   );
 }
+
+
 
 
 

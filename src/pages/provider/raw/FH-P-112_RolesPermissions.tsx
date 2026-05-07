@@ -36,7 +36,7 @@ import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { useAuth } from "@/auth/useAuth";
 
 /**
- * Provider — Roles & Permissions
+ * FaithHub Provider - Roles & Permissions
  * Premium Provider-side RBAC control center for workspace access, role templates,
  * approval paths, scope control, and sensitive-action permissions.
  *
@@ -212,7 +212,7 @@ const ROLE_RECORDS: RoleRecord[] = [
     previewBody:
       "Dashboard, live, events, Beacon, and finance are visible. Critical changes still route through approval and audit.",
     featureAccess: [
-      { id: "fa-1", label: "Provider Dashboard", group: "Workspace", hint: "Mission-control metrics and institution alerts.", state: "Allow" },
+      { id: "fa-1", label: "FaithHub Provider dashboard", group: "Workspace", hint: "Mission-control metrics and institution alerts.", state: "Allow" },
       { id: "fa-2", label: "Teachings & Series", group: "Content", hint: "Series, episodes, and standalone teachings.", state: "Allow" },
       { id: "fa-3", label: "Live Sessions", group: "Production", hint: "Live Builder, Live Dashboard, Studio, and schedule.", state: "Allow" },
       { id: "fa-4", label: "Audience & Outreach", group: "Audience", hint: "Notifications, segments, channels, and contact health.", state: "Review" },
@@ -263,7 +263,7 @@ const ROLE_RECORDS: RoleRecord[] = [
     previewBody:
       "Studio, schedule, and post-live are fully visible. Wallet, payouts, and raw contact exports remain blocked.",
     featureAccess: [
-      { id: "fa-11", label: "Provider Dashboard", group: "Workspace", hint: "Operational hero, alerts, and quick-create surfaces.", state: "Allow" },
+      { id: "fa-11", label: "FaithHub Provider dashboard", group: "Workspace", hint: "Operational hero, alerts, and quick-create surfaces.", state: "Allow" },
       { id: "fa-12", label: "Teachings & Series", group: "Content", hint: "Series, episodes, and teaching metadata.", state: "Allow" },
       { id: "fa-13", label: "Live Sessions", group: "Production", hint: "Builder, Schedule, Dashboard, Studio, and destinations.", state: "Allow" },
       { id: "fa-14", label: "Audience & Outreach", group: "Audience", hint: "Last-minute reminders and session-linked journeys.", state: "Review" },
@@ -314,7 +314,7 @@ const ROLE_RECORDS: RoleRecord[] = [
     previewBody:
       "Funds, donor insights, and wallet are visible. Live Studio, counseling, and forum publishing remain outside scope.",
     featureAccess: [
-      { id: "fa-21", label: "Provider Dashboard", group: "Workspace", hint: "Finance-weighted dashboard and campaign snapshot.", state: "Allow" },
+      { id: "fa-21", label: "FaithHub Provider dashboard", group: "Workspace", hint: "Finance-weighted dashboard and campaign snapshot.", state: "Allow" },
       { id: "fa-22", label: "Teachings & Series", group: "Content", hint: "Content structure is visible but not editable.", state: "Review" },
       { id: "fa-23", label: "Live Sessions", group: "Production", hint: "Live controls remain hidden to protect production flow.", state: "Block" },
       { id: "fa-24", label: "Audience & Outreach", group: "Audience", hint: "View donor journeys without broad contact editing.", state: "Review" },
@@ -364,7 +364,7 @@ const ROLE_RECORDS: RoleRecord[] = [
     previewBody:
       "Forum, testimonies, prayer intake, and reviews are visible. Wallet, Beacon budget, and production controls stay locked.",
     featureAccess: [
-      { id: "fa-31", label: "Provider Dashboard", group: "Workspace", hint: "Shows trust queue and reputation cards only.", state: "Review" },
+      { id: "fa-31", label: "FaithHub Provider dashboard", group: "Workspace", hint: "Shows trust queue and reputation cards only.", state: "Review" },
       { id: "fa-32", label: "Teachings & Series", group: "Content", hint: "May review comments and linked clip quality only.", state: "Review" },
       { id: "fa-33", label: "Live Sessions", group: "Production", hint: "Can open moderation surfaces, not production controls.", state: "Review" },
       { id: "fa-34", label: "Audience & Outreach", group: "Audience", hint: "Can view message context for moderation escalations.", state: "Review" },
@@ -415,7 +415,7 @@ const ROLE_RECORDS: RoleRecord[] = [
     previewBody:
       "Events, serving teams, and local live health are visible. Global settings, payouts, and cross-campus promotion remain gated.",
     featureAccess: [
-      { id: "fa-41", label: "Provider Dashboard", group: "Workspace", hint: "Campus-weighted dashboard widgets only.", state: "Allow" },
+      { id: "fa-41", label: "FaithHub Provider dashboard", group: "Workspace", hint: "Campus-weighted dashboard widgets only.", state: "Allow" },
       { id: "fa-42", label: "Teachings & Series", group: "Content", hint: "May view series and campus-linked teaching plans.", state: "Review" },
       { id: "fa-43", label: "Live Sessions", group: "Production", hint: "Can monitor readiness and open live dashboards for local sessions.", state: "Review" },
       { id: "fa-44", label: "Audience & Outreach", group: "Audience", hint: "Segment views are limited to campus-level audiences.", state: "Review" },
@@ -465,7 +465,7 @@ const ROLE_RECORDS: RoleRecord[] = [
     previewBody:
       "Prayer requests, counseling, and care cases are visible. Public publishing, payout actions, and promotion controls remain blocked.",
     featureAccess: [
-      { id: "fa-51", label: "Provider Dashboard", group: "Workspace", hint: "Shows care queue, unresolved cases, and follow-up reminders.", state: "Review" },
+      { id: "fa-51", label: "FaithHub Provider dashboard", group: "Workspace", hint: "Shows care queue, unresolved cases, and follow-up reminders.", state: "Review" },
       { id: "fa-52", label: "Teachings & Series", group: "Content", hint: "Teaching pages stay out of scope for care leads.", state: "Block" },
       { id: "fa-53", label: "Live Sessions", group: "Production", hint: "May view prayer and care intake from live sessions.", state: "Review" },
       { id: "fa-54", label: "Audience & Outreach", group: "Audience", hint: "Can view care-linked contacts and consent markers.", state: "Review" },
@@ -846,7 +846,7 @@ function PreviewSurface({
   previewMode: PreviewMode;
 }) {
   const previewGroups = [
-    { key: "workspace", label: "Dashboard", state: role.featureAccess.find((f) => f.label === "Provider Dashboard")?.state || "Block" },
+    { key: "workspace", label: "Dashboard", state: role.featureAccess.find((f) => f.label === "FaithHub Provider dashboard")?.state || "Block" },
     { key: "content", label: "Teachings", state: role.featureAccess.find((f) => f.group === "Content")?.state || "Block" },
     { key: "production", label: "Live Sessions", state: role.featureAccess.find((f) => f.group === "Production")?.state || "Block" },
     { key: "audience", label: "Audience", state: role.featureAccess.find((f) => f.group === "Audience")?.state || "Block" },
@@ -1754,7 +1754,7 @@ export default function FH_P_112_RolesPermissionsPage() {
                   onClick={() => safeNav(ROUTES.providerDashboard)}
                   className="flex w-full items-center justify-between rounded-[22px] border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-3 text-left text-[12px] font-semibold text-slate-700 hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
                 >
-                  <span className="inline-flex items-center gap-2"><Sparkles className="h-4 w-4" /> Provider Dashboard</span>
+                  <span className="inline-flex items-center gap-2"><Sparkles className="h-4 w-4" /> FaithHub Provider dashboard</span>
                   <ChevronRight className="h-4 w-4" />
                 </button>
                 <button
@@ -1805,6 +1805,8 @@ export default function FH_P_112_RolesPermissionsPage() {
     </div>
   );
 }
+
+
 
 
 

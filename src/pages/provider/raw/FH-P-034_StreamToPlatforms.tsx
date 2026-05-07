@@ -50,7 +50,7 @@ import {
  * Premium multi-destination distribution page for Live Sessions.
  *
  * Design intent
- * - Rebuild the creator/e-commerce base page into a Provider provider operations surface.
+ * - Rebuild the creator/e-commerce base page into a FaithHub Provider operations surface.
  * - Keep the same premium format: sticky command header, rich destination cards, health intelligence,
  *   advanced settings modal, and a live audience/distribution preview.
  * - Use EVzone Green as the primary color, Orange as the secondary action color,
@@ -2122,6 +2122,7 @@ export default function StreamToPlatformsPage() {
     </div>
   );
 }
+
 
 
 

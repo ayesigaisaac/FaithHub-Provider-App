@@ -28,7 +28,7 @@ import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
- * Provider — Counseling
+ * FaithHub Provider - Counseling
  * ------------------------------
  * Private-first pastoral care and counseling workspace for cases, intake,
  * scheduling, counselor assignment, session planning, notes, and safeguarding.
@@ -1707,6 +1707,8 @@ export default function CounselingPage() {
     </div>
   );
 }
+
+
 
 
 

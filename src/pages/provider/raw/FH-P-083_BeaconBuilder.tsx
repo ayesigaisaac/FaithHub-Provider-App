@@ -2624,7 +2624,7 @@ export default function BeaconBuilderPage({
             <div className="min-w-0">
               <div className="flex flex-wrap items-center gap-2 text-[10px] sm:text-xs text-faith-slate">
                 <button className="hover:text-slate-700 dark:hover:text-slate-200" onClick={() => safeNav(ROUTES.providerDashboard)}>
-                  Provider Workspace
+                  FaithHub Provider workspace
                 </button>
                 <span className="text-slate-300 dark:text-slate-700">/</span>
                 <button className="hover:text-slate-700 dark:hover:text-slate-200" onClick={() => safeNav(ROUTES.beaconDashboard)}>
@@ -2808,6 +2808,8 @@ export default function BeaconBuilderPage({
 
   return content;
 }
+
+
 
 
 

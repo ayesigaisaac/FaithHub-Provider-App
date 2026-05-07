@@ -45,7 +45,7 @@ import { useAuth } from "@/auth/useAuth";
  * Design intent
  * - Extend the old community/announcements block into a world-class Noticeboard page.
  * - Use EVzone Green as the primary accent and Orange as the secondary accent.
- * - Keep the same premium creator-style format used across the Provider Workspace pages:
+ * - Keep the same premium creator-style format used across the FaithHub Provider workspace pages:
  *   command hero, KPI cards, filter rail, operational list, live composer, workflow hooks,
  *   governance signals, and a persistent preview surface.
  * - Treat notices as first-class provider objects that can be scheduled, pinned, localized,
@@ -1002,7 +1002,7 @@ export default function FaithHubNoticeboardPage() {
 
   const profileName = user?.name?.trim() || "Provider User";
   const profileRole = role ? role.charAt(0).toUpperCase() + role.slice(1) : "Provider";
-  const profileWorkspace = workspace?.brand?.trim() || "Provider Workspace";
+  const profileWorkspace = workspace?.brand?.trim() || "FaithHub Provider workspace";
 
   const filteredNotices = useMemo(() => {
     return notices.filter((notice) => {
@@ -1176,7 +1176,7 @@ export default function FaithHubNoticeboardPage() {
               <div className="mt-5 flex flex-wrap items-center gap-2">
                 <Pill tone="good">
                   <Megaphone className="h-3.5 w-3.5" />
-                  Provider workspace
+                  FaithHub Provider workspace
                 </Pill>
                 <Pill tone="navy">
                   <Layers3 className="h-3.5 w-3.5" />
@@ -1258,7 +1258,7 @@ export default function FaithHubNoticeboardPage() {
                 Search and filter the board
               </div>
               <div className="mt-1 text-[13px] text-faith-slate">
-                Move between live notices, scheduled posts, archive items, and analytics without leaving the provider workspace.
+                Move between live notices, scheduled posts, archive items, and analytics without leaving the FaithHub Provider workspace.
               </div>
             </div>
 
@@ -1885,6 +1885,8 @@ export default function FaithHubNoticeboardPage() {
     </div>
   );
 }
+
+
 
 
 

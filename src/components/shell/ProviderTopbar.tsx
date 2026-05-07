@@ -124,10 +124,10 @@ export function ProviderTopbar({
             <MenuRoundedIcon />
           </IconButton>
           <Box sx={{ display: { xs: 'block', sm: 'none' } }}>
-            <BrandLogo variant="symbol" alt="Provider Workspace" style={{ height: 34, width: 34 }} />
+            <BrandLogo variant="symbol" alt="FaithHub Provider workspace" style={{ height: 34, width: 34 }} />
           </Box>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            <BrandLogo variant="landscape" alt="Provider Workspace" style={{ height: 48, width: 'auto' }} />
+            <BrandLogo variant="landscape" alt="FaithHub Provider workspace" style={{ height: 48, width: 'auto' }} />
           </Box>
         </Stack>
 
@@ -342,7 +342,7 @@ export function ProviderTopbar({
                     whiteSpace: 'nowrap',
                   }}
                 >
-                  Provider
+                  FaithHub
                 </Box>
                 {topbarTabs.map((tab) => (
                   <Button
@@ -482,3 +482,5 @@ export function ProviderTopbar({
     </AppBar>
   );
 }
+
+
