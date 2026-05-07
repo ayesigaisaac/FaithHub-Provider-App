@@ -17,7 +17,7 @@ import {
 } from "lucide-react";
 
 /**
- * Provider � Moderation Settings
+ * Provider | Moderation Settings
  * ---------------------------------------
  * Distinct from Reviews & Moderation.
  * controls policy rules, thresholds, child-safe defaults,
@@ -301,7 +301,7 @@ function SafeguardTile({
         <div>
           <div className="text-[13px] font-extrabold leading-tight text-faith-ink dark:text-slate-100">{safeguard.title}</div>
           <div className="mt-1 text-[11px] leading-snug text-faith-slate">{safeguard.detail}</div>
-          <div className="mt-1 text-[11px] font-semibold text-faith-slate">High-trust safeguard for minors,�</div>
+          <div className="mt-1 text-[11px] font-semibold text-faith-slate">High-trust safeguard for minors.</div>
         </div>
         <Toggle checked={safeguard.enabled} onChange={() => onToggle(safeguard.id)} />
       </div>
@@ -364,37 +364,37 @@ export default function FH_P_121_ModerationSettings() {
   const [safeguards, setSafeguards] = useState<Safeguard[]>([
     {
       id: "sg_1",
-      title: "Disable anonymous replies�",
+      title: "Disable anonymous replies",
       detail: "Reduce hidden participation in child-facing or highly sensitive flows.",
       enabled: true,
     },
     {
       id: "sg_2",
-      title: "Block adult-to-child�",
+      title: "Block adult-to-child direct contact",
       detail: "Prevent direct adult-to-child routing outside approved care flows.",
       enabled: true,
     },
     {
       id: "sg_3",
-      title: "Require dual approval for�",
+      title: "Require dual approval for escalations",
       detail: "Mandate an extra reviewer for child-linked moderation actions.",
       enabled: true,
     },
     {
       id: "sg_4",
-      title: "Disable direct messaging for�",
+      title: "Disable direct messaging for minors",
       detail: "Keep child-safe conversation surfaces group-led and audited.",
       enabled: true,
     },
     {
       id: "sg_5",
-      title: "Require media consent on�",
+      title: "Require media consent on uploads",
       detail: "Add stricter consent checks for testimony and prayer uploads.",
       enabled: true,
     },
     {
       id: "sg_6",
-      title: "Freeze public sort order duri�",
+      title: "Freeze public sort order during incidents",
       detail: "Reduce rapid public amplification when risk signals spike.",
       enabled: true,
     },
@@ -455,7 +455,7 @@ export default function FH_P_121_ModerationSettings() {
     {
       id: "p_1",
       title: "Live chat message with repeated links",
-      surface: "Live Sessions � Chat",
+      surface: "Live Sessions | Chat",
       outcome: "Hold",
     },
     {
@@ -524,7 +524,7 @@ export default function FH_P_121_ModerationSettings() {
   };
 
   return (
-    <div className="min-h-screen bg-[var(--fh-page-bg)] dark:bg-slate-950 text-faith-ink dark:text-slate-100 p-4 md:p-6">
+    <div className="min-h-screen w-full overflow-x-hidden bg-[var(--fh-page-bg)] dark:bg-slate-950 text-faith-ink dark:text-slate-100 p-4 md:p-6">
       <div className="mx-auto max-w-[1460px] space-y-4">
         <div className="rounded-[30px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-6 py-5 transition-colors">
           <div className="flex flex-col gap-5 xl:flex-row xl:items-start xl:justify-between">
@@ -566,7 +566,7 @@ export default function FH_P_121_ModerationSettings() {
             </div>
           </div>
           <div className="text-[12px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">
-            Surface engine � Safeguards � Automation
+            Surface engine | Safeguards | Automation
           </div>
         </div>
 
@@ -765,6 +765,8 @@ export default function FH_P_121_ModerationSettings() {
     </div>
   );
 }
+
+
 
 
 
