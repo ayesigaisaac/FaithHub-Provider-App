@@ -1,6 +1,6 @@
-import { Box } from '@mui/material';
+import { Alert, Box, Button } from '@mui/material';
 import { Suspense, useEffect, useMemo, useState } from 'react';
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { findProviderPageByPath } from '@/navigation/providerPages';
 import { ProviderSidebar } from './ProviderSidebar';
 import { ProviderTopbar } from './ProviderTopbar';
@@ -11,6 +11,9 @@ import { PageLoader } from '@/components/PageLoader';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { MediaFallbackContainer } from '@/components/MediaFallbackContainer';
 import { runRawPlaceholderActionForElement } from '@/pages/provider/raw/placeholderActions';
+import { useAuth } from '@/auth/useAuth';
+
+const ONBOARDING_BANNER_DISMISS_KEY = 'faithhub.onboarding.banner.dismissed';
 
 function hasReactOnClickHandler(button: HTMLButtonElement): boolean {
   const keys = Object.keys(button as unknown as Record<string, unknown>);
@@ -22,7 +25,9 @@ function hasReactOnClickHandler(button: HTMLButtonElement): boolean {
 }
 
 export function ProviderShellLayout() {
+  const navigate = useNavigate();
   const location = useLocation();
+  const { onboardingStatus } = useAuth();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchAnchorEl, setSearchAnchorEl] = useState<HTMLElement | null>(null);
@@ -31,8 +36,16 @@ export function ProviderShellLayout() {
     if (typeof window === 'undefined') return false;
     return window.localStorage.getItem('faithhub.sidebar.collapsed') === 'true';
   });
+  const [onboardingBannerDismissed, setOnboardingBannerDismissed] = useState<boolean>(() => {
+    if (typeof window === 'undefined') return false;
+    return window.sessionStorage.getItem(ONBOARDING_BANNER_DISMISS_KEY) === 'true';
+  });
 
   const current = useMemo(() => findProviderPageByPath(location.pathname), [location.pathname]);
+  const showOnboardingReminder =
+    !onboardingBannerDismissed &&
+    onboardingStatus !== 'approved' &&
+    location.pathname !== '/faithhub/provider/onboarding';
 
   useEffect(() => {
     const handleKeydown = (event: KeyboardEvent) => {
@@ -102,6 +115,40 @@ export function ProviderShellLayout() {
         searchQuery={searchQuery}
         onSearchQueryChange={setSearchQuery}
       />
+
+      {showOnboardingReminder ? (
+        <Alert
+          severity="info"
+          action={
+            <Box sx={{ display: 'flex', gap: 1 }}>
+              <Button
+                color="inherit"
+                size="small"
+                onClick={() => navigate('/faithhub/provider/onboarding')}
+              >
+                Continue onboarding
+              </Button>
+              <Button
+                color="inherit"
+                size="small"
+                onClick={() => {
+                  setOnboardingBannerDismissed(true);
+                  window.sessionStorage.setItem(ONBOARDING_BANNER_DISMISS_KEY, 'true');
+                }}
+              >
+                Dismiss
+              </Button>
+            </Box>
+          }
+          sx={{
+            mx: { xs: 1, md: 1.5 },
+            mt: 1,
+            borderRadius: 1.5,
+          }}
+        >
+          Onboarding is not complete yet. You can keep working and finish it anytime.
+        </Alert>
+      ) : null}
 
       <Box sx={{ flex: 1, minHeight: 0, display: 'flex', minWidth: 0 }}>
         <ProviderSidebar

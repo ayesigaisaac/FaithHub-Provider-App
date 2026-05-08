@@ -25,6 +25,8 @@ describe('Provider onboarding page', () => {
     const user = userEvent.setup();
     const setOnboardingDraft = vi.fn();
     const setOnboardingStatus = vi.fn();
+    const saveOnboardingDraft = vi.fn(async () => {});
+    const submitOnboarding = vi.fn(async () => {});
 
     render(
       <AuthContext.Provider
@@ -45,6 +47,9 @@ describe('Provider onboarding page', () => {
           setWorkspace: () => {},
           setOnboardingDraft,
           setOnboardingStatus,
+          refreshOnboarding: async () => {},
+          saveOnboardingDraft,
+          submitOnboarding,
           canAccessPath: () => true,
           canPerform: () => true,
         }}

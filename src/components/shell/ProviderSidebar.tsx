@@ -42,18 +42,7 @@ const drawerWidth = 318;
 const topbarOffsetMobile = 110;
 const topbarOffsetDesktop = 128;
 
-const sectionLabelMap: Partial<Record<(typeof providerSections)[number], string>> = {
-  'Foundation & Mission Control': 'Continue',
-  'Content Structure & Teaching Creation': 'Create',
-  'Live Sessions Operations': 'Publish',
-  'Audience & Outreach': 'Published',
-  'Post-live & Trust': 'Review',
-  'Events & Giving': 'Analytics',
-  Beacon: 'Reach',
-  'Community & Care': 'Community',
-  'Leadership & Team': 'Team',
-  'Workspace Settings': 'Settings',
-};
+const sectionLabelMap: Partial<Record<(typeof providerSections)[number], string>> = {};
 
 const expandedDrawerWidth = 318;
 const collapsedDrawerWidth = 88;
@@ -120,6 +109,26 @@ const sectionToneMap: Record<string, { icon: string; bg: string; border: string 
   Team: { icon: '#64748b', bg: '#edf1f5', border: '#d5dde6' },
   Settings: { icon: '#64748b', bg: '#edf1f5', border: '#d5dde6' },
 };
+
+function getSidebarPageLabel(input: { key: string; title: string; shortTitle?: string }) {
+  if (input.shortTitle) return input.shortTitle;
+
+  const explicit: Record<string, string> = {
+    'provider-onboarding': 'Provider Onboarding',
+    'provider-dashboard': 'Provider Dashboard',
+    'charity-crowdfunding-workbench': 'Charity Crowdfunding',
+    'channels-contact-manager': 'Channels & Contacts',
+    'standalone-teaching-builder': 'Standalone Builder',
+    'stream-to-platforms': 'Stream to Platforms',
+    'reviews-and-moderation': 'Reviews & Moderation',
+  };
+  if (explicit[input.key]) return explicit[input.key];
+
+  return input.title
+    .replace(/^FaithHub Provider\s+/i, '')
+    .replace(/\s+Workbench$/i, '')
+    .trim();
+}
 
 function trackSidebarClick(payload: { section: string; label: string; route: string; level: 'primary' | 'secondary' }) {
   if (typeof window === 'undefined') return;
@@ -616,7 +625,7 @@ export function ProviderSidebar({
                                 onClick={() => {
                                   trackSidebarClick({
                                     section: group.label,
-                                    label: page.shortTitle ?? page.title,
+                                    label: getSidebarPageLabel(page),
                                     route: page.path,
                                     level: 'primary',
                                   });
@@ -649,7 +658,7 @@ export function ProviderSidebar({
                                         color: active ? 'var(--fh-ink)' : 'var(--fh-slate)',
                                       }}
                                     >
-                                      {page.shortTitle ?? page.title}
+                                      {getSidebarPageLabel(page)}
                                     </Typography>
                                   }
                                 />
@@ -667,7 +676,7 @@ export function ProviderSidebar({
                                         onClick={() => {
                                           trackSidebarClick({
                                             section: group.label,
-                                            label: child.shortTitle ?? child.title,
+                                            label: getSidebarPageLabel(child),
                                             route: child.path,
                                             level: 'secondary',
                                           });
@@ -698,7 +707,7 @@ export function ProviderSidebar({
                                                 color: childActive ? 'var(--fh-ink)' : 'var(--fh-slate)',
                                               }}
                                             >
-                                              {child.shortTitle ?? child.title}
+                                              {getSidebarPageLabel(child)}
                                             </Typography>
                                           }
                                         />
@@ -733,13 +742,13 @@ export function ProviderSidebar({
                         onClick={() => {
                           trackSidebarClick({
                             section: group.label,
-                            label: page.shortTitle ?? page.title,
+                            label: getSidebarPageLabel(page),
                             route: page.path,
                             level: 'primary',
                           });
                           onClose();
                         }}
-                        title={collapsed ? page.shortTitle ?? page.title : undefined}
+                        title={collapsed ? getSidebarPageLabel(page) : undefined}
                         sx={{
                           px: collapsed ? 1 : 1.25,
                           py: 1,
@@ -786,7 +795,7 @@ export function ProviderSidebar({
                                     color: 'var(--fh-ink)',
                                   }}
                                 >
-                                  {page.shortTitle ?? page.title}
+                                  {getSidebarPageLabel(page)}
                                 </Typography>
                               }
                             />
@@ -808,7 +817,7 @@ export function ProviderSidebar({
                                 onClick={() => {
                                   trackSidebarClick({
                                     section: group.label,
-                                    label: child.shortTitle ?? child.title,
+                                    label: getSidebarPageLabel(child),
                                     route: child.path,
                                     level: 'secondary',
                                   });
@@ -852,7 +861,7 @@ export function ProviderSidebar({
                                         color: childActive ? 'var(--fh-ink)' : 'var(--fh-slate)',
                                       }}
                                     >
-                                      {child.shortTitle ?? child.title}
+                                      {getSidebarPageLabel(child)}
                                     </Typography>
                                   }
                                 />

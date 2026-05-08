@@ -1,5 +1,13 @@
 import { permissionsForRole } from './permissions';
-import type { AuthSession, AuthUser, Permission, UserRole, WorkspaceContext } from './types';
+import type {
+  AuthSession,
+  AuthUser,
+  Permission,
+  ProviderOnboardingDraft,
+  ProviderOnboardingStatus,
+  UserRole,
+  WorkspaceContext,
+} from './types';
 
 type LoginPayload = {
   email: string;
@@ -7,6 +15,29 @@ type LoginPayload = {
 };
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL as string | undefined;
+const MOCK_ONBOARDING_KEY = 'faithhub.mock.onboarding.byToken';
+
+type ProviderOnboardingState = {
+  status: ProviderOnboardingStatus;
+  draft: ProviderOnboardingDraft;
+};
+
+const DEFAULT_ONBOARDING_STATE: ProviderOnboardingState = {
+  status: 'not_started',
+  draft: {
+    organizationName: '',
+    contactName: '',
+    contactEmail: '',
+    contactPhone: '',
+    organizationType: 'church',
+    country: 'Uganda',
+    city: 'Kampala',
+    mission: '',
+    website: '',
+    primaryLanguage: 'English',
+    agreedToTerms: false,
+  },
+};
 
 function toDisplayNameFromEmail(email: string) {
   const local = (email.split('@')[0] || 'user').trim();
@@ -63,6 +94,32 @@ function normalizeWorkspace(raw?: Partial<WorkspaceContext>): WorkspaceContext {
 function getMockByToken(token: string) {
   const email = token.replace('mock-token-', '');
   return MOCK_USERS.find((item) => item.user.email === email);
+}
+
+function readMockOnboardingMap(): Record<string, ProviderOnboardingState> {
+  if (typeof window === 'undefined') return {};
+  try {
+    const raw = window.localStorage.getItem(MOCK_ONBOARDING_KEY);
+    return raw ? (JSON.parse(raw) as Record<string, ProviderOnboardingState>) : {};
+  } catch {
+    return {};
+  }
+}
+
+function writeMockOnboardingMap(data: Record<string, ProviderOnboardingState>) {
+  if (typeof window === 'undefined') return;
+  window.localStorage.setItem(MOCK_ONBOARDING_KEY, JSON.stringify(data));
+}
+
+function getMockOnboardingState(token: string): ProviderOnboardingState {
+  const map = readMockOnboardingMap();
+  return map[token] ?? DEFAULT_ONBOARDING_STATE;
+}
+
+function setMockOnboardingState(token: string, state: ProviderOnboardingState) {
+  const map = readMockOnboardingMap();
+  map[token] = state;
+  writeMockOnboardingMap(map);
 }
 
 function normalizePermissionList(value: unknown): Permission[] {
@@ -248,4 +305,74 @@ export async function logoutRequest(token?: string): Promise<void> {
     method: 'POST',
     headers: { Authorization: `Bearer ${token}` },
   });
+}
+
+export async function getProviderOnboardingRequest(token: string): Promise<ProviderOnboardingState> {
+  if (!API_BASE_URL) {
+    return getMockOnboardingState(token);
+  }
+
+  const res = await fetch(`${API_BASE_URL}/provider/onboarding`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (!res.ok) {
+    throw new Error('Unable to load onboarding state.');
+  }
+  const data = (await res.json()) as Partial<ProviderOnboardingState>;
+  return {
+    status: data.status ?? 'not_started',
+    draft: { ...DEFAULT_ONBOARDING_STATE.draft, ...(data.draft ?? {}) },
+  };
+}
+
+export async function saveProviderOnboardingDraftRequest(
+  token: string,
+  draft: ProviderOnboardingDraft,
+): Promise<ProviderOnboardingState> {
+  if (!API_BASE_URL) {
+    const current = getMockOnboardingState(token);
+    const nextStatus: ProviderOnboardingStatus = current.status === 'submitted' ? 'submitted' : 'in_progress';
+    const next = { status: nextStatus, draft };
+    setMockOnboardingState(token, next);
+    return next;
+  }
+
+  const res = await fetch(`${API_BASE_URL}/provider/onboarding/draft`, {
+    method: 'PUT',
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ draft }),
+  });
+  if (!res.ok) {
+    throw new Error('Unable to save onboarding draft.');
+  }
+  const data = (await res.json()) as Partial<ProviderOnboardingState>;
+  return {
+    status: data.status ?? 'in_progress',
+    draft: { ...DEFAULT_ONBOARDING_STATE.draft, ...(data.draft ?? draft) },
+  };
+}
+
+export async function submitProviderOnboardingRequest(token: string): Promise<ProviderOnboardingState> {
+  if (!API_BASE_URL) {
+    const current = getMockOnboardingState(token);
+    const next = { ...current, status: 'submitted' as ProviderOnboardingStatus };
+    setMockOnboardingState(token, next);
+    return next;
+  }
+
+  const res = await fetch(`${API_BASE_URL}/provider/onboarding/submit`, {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (!res.ok) {
+    throw new Error('Unable to submit onboarding.');
+  }
+  const data = (await res.json()) as Partial<ProviderOnboardingState>;
+  return {
+    status: data.status ?? 'submitted',
+    draft: { ...DEFAULT_ONBOARDING_STATE.draft, ...(data.draft ?? {}) },
+  };
 }

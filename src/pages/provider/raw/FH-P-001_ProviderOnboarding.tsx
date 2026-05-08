@@ -61,6 +61,8 @@ export default function ProviderOnboardingPage() {
     onboardingStatus,
     setOnboardingDraft,
     setOnboardingStatus,
+    saveOnboardingDraft,
+    submitOnboarding,
     isOnboardingComplete,
   } = useAuth();
 
@@ -100,9 +102,13 @@ export default function ProviderOnboardingPage() {
     setNotice(null);
   };
 
-  const saveDraft = () => {
-    setOnboardingStatus(canSubmit ? onboardingStatus : 'in_progress');
-    setNotice('Draft saved. You can safely continue later.');
+  const saveDraft = async () => {
+    try {
+      await saveOnboardingDraft(onboardingDraft);
+      setNotice('Draft saved. You can safely continue later.');
+    } catch (error) {
+      setNotice(error instanceof Error ? error.message : 'Unable to save draft right now.');
+    }
   };
 
   const resetDraft = () => {
@@ -123,10 +129,14 @@ export default function ProviderOnboardingPage() {
     }
 
     setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 500));
-    setOnboardingStatus('submitted');
-    setIsSubmitting(false);
-    setNotice('Onboarding submitted. Awaiting verification approval.');
+    try {
+      await submitOnboarding();
+      setNotice('Onboarding submitted. Awaiting verification approval.');
+    } catch (error) {
+      setNotice(error instanceof Error ? error.message : 'Unable to submit onboarding.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const approve = () => {
@@ -327,7 +337,7 @@ export default function ProviderOnboardingPage() {
 
               <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1.2} mt={3}>
                 <Button variant="text" color="warning" onClick={resetDraft}>Reset draft</Button>
-                <Button variant="outlined" onClick={saveDraft}>Save draft</Button>
+                <Button variant="outlined" onClick={() => void saveDraft()}>Save draft</Button>
                 <Button variant="outlined" onClick={() => setStep(resumeStep)}>Jump to resume step</Button>
                 <Box sx={{ flex: 1 }} />
                 <Button variant="outlined" disabled={step === 0} onClick={() => setStep((prev) => Math.max(0, prev - 1) as StepIndex)}>
