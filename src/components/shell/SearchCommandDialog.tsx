@@ -311,6 +311,70 @@ export function SearchCommandDialog({
                 Use Up/Down + Enter
               </Typography>
             </Stack>
+            <Stack
+              direction="row"
+              alignItems="center"
+              spacing={0.7}
+              sx={{
+                px: { xs: 1.6, md: 2.3 },
+                py: 0.8,
+                borderBottom: '1px solid',
+                borderColor: 'var(--fh-line)',
+                overflowX: 'auto',
+                scrollbarWidth: 'thin',
+                '&::-webkit-scrollbar': { height: 5 },
+              }}
+            >
+              <Typography
+                variant="caption"
+                sx={{
+                  fontWeight: 800,
+                  color: 'var(--fh-slate)',
+                  letterSpacing: '0.08em',
+                  pr: 0.3,
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                SHORTCUTS
+              </Typography>
+              {teachingsQuickActions.map((action) => (
+                <Box
+                  key={action.key}
+                  sx={{
+                    px: 1,
+                    py: 0.35,
+                    borderRadius: 999,
+                    border: '1px solid',
+                    borderColor: 'var(--fh-line)',
+                    bgcolor: 'color-mix(in srgb, var(--fh-surface) 84%, var(--fh-surface-bg) 16%)',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: 0.65,
+                    whiteSpace: 'nowrap',
+                  }}
+                >
+                  <Typography sx={{ fontSize: 11.5, fontWeight: 700, color: 'var(--fh-text)' }}>{action.label}</Typography>
+                  <Box
+                    component="kbd"
+                    sx={{
+                      px: 0.55,
+                      py: 0.1,
+                      borderRadius: 0.8,
+                      border: '1px solid',
+                      borderColor: 'var(--fh-line)',
+                      bgcolor: 'var(--fh-surface-bg)',
+                      fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace',
+                      fontSize: 10.5,
+                      fontWeight: 700,
+                      letterSpacing: '0.01em',
+                      color: 'var(--fh-slate)',
+                    }}
+                  >
+                    {action.shortcut}
+                  </Box>
+                </Box>
+              ))}
+            </Stack>
 
             <Box sx={{ px: { xs: 1, md: 1.5 }, py: { xs: 1.2, md: 1.5 }, overflowY: 'auto' }}>
               <Typography variant="body2" color="text.secondary" sx={{ px: 1.2, pb: 0.8, fontWeight: 700 }}>
