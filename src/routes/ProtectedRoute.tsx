@@ -10,8 +10,12 @@ type ProtectedRouteProps = {
   children?: React.ReactNode;
 };
 
+function isProviderPath(path: string) {
+  return path.startsWith('/faithhub/provider');
+}
+
 export function ProtectedRoute({ routePath, requiredPermissions, children }: ProtectedRouteProps) {
-  const { isAuthenticated, loading, permissions, canAccessPath } = useAuth();
+  const { isAuthenticated, loading, permissions, canAccessPath, isOnboardingComplete } = useAuth();
   const location = useLocation();
 
   if (loading) {
@@ -28,6 +32,20 @@ export function ProtectedRoute({ routePath, requiredPermissions, children }: Pro
   }
 
   const targetPath = routePath ?? location.pathname;
+
+  if (isProviderPath(targetPath)) {
+    const onboardingPath = '/faithhub/provider/onboarding';
+    const isOnboardingRoute = targetPath === onboardingPath;
+
+    if (!isOnboardingComplete && !isOnboardingRoute) {
+      return <Navigate to={onboardingPath} replace />;
+    }
+
+    if (isOnboardingComplete && isOnboardingRoute) {
+      return <Navigate to="/faithhub/provider/dashboard" replace />;
+    }
+  }
+
   if (!canAccessPath(targetPath)) {
     return <Navigate to="/faithhub/provider/dashboard" replace />;
   }

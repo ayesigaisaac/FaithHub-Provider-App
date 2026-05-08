@@ -1,8 +1,22 @@
 import { createContext, useCallback, useEffect, useMemo, useState, type ReactNode } from 'react';
 import { loginRequest, logoutRequest, meRequest } from './authApi';
-import { clearStoredToken, clearStoredWorkspace, getStoredToken, getStoredWorkspace, setStoredToken, setStoredWorkspace } from './storage';
+import {
+  clearStoredOnboardingDraft,
+  clearStoredOnboardingStatus,
+  clearStoredToken,
+  clearStoredWorkspace,
+  DEFAULT_ONBOARDING_DRAFT,
+  getStoredOnboardingDraft,
+  getStoredOnboardingStatus,
+  getStoredToken,
+  getStoredWorkspace,
+  setStoredOnboardingDraft,
+  setStoredOnboardingStatus,
+  setStoredToken,
+  setStoredWorkspace,
+} from './storage';
 import { hasAllPermissions } from './permissions';
-import type { AuthUser, UserRole, WorkspaceContext } from './types';
+import type { AuthUser, ProviderOnboardingDraft, ProviderOnboardingStatus, UserRole, WorkspaceContext } from './types';
 import type { Permission } from './types';
 
 type LoginInput = {
@@ -18,11 +32,16 @@ type AuthContextValue = {
   permissions: Permission[];
   routePermissions: Record<string, Permission[]>;
   actionPermissions: Record<string, Permission[]>;
+  onboardingStatus: ProviderOnboardingStatus;
+  onboardingDraft: ProviderOnboardingDraft;
+  isOnboardingComplete: boolean;
   isAuthenticated: boolean;
   loading: boolean;
   login: (input: LoginInput) => Promise<void>;
   logout: () => Promise<void>;
   setWorkspace: (workspace: WorkspaceContext) => void;
+  setOnboardingDraft: (draft: ProviderOnboardingDraft) => void;
+  setOnboardingStatus: (status: ProviderOnboardingStatus) => void;
   canAccessPath: (path: string) => boolean;
   canPerform: (action: string) => boolean;
 };
@@ -37,11 +56,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [permissions, setPermissions] = useState<Permission[]>([]);
   const [routePermissions, setRoutePermissions] = useState<Record<string, Permission[]>>({});
   const [actionPermissions, setActionPermissions] = useState<Record<string, Permission[]>>({});
+  const [onboardingStatus, setOnboardingStatusState] = useState<ProviderOnboardingStatus>('not_started');
+  const [onboardingDraft, setOnboardingDraftState] = useState<ProviderOnboardingDraft>(DEFAULT_ONBOARDING_DRAFT);
   const [loading, setLoading] = useState(true);
 
   const hardClear = useCallback(() => {
     clearStoredToken();
     clearStoredWorkspace();
+    clearStoredOnboardingStatus();
+    clearStoredOnboardingDraft();
     setToken(null);
     setUser(null);
     setRole(null);
@@ -49,6 +72,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setPermissions([]);
     setRoutePermissions({});
     setActionPermissions({});
+    setOnboardingStatusState('not_started');
+    setOnboardingDraftState(DEFAULT_ONBOARDING_DRAFT);
   }, []);
 
   useEffect(() => {
@@ -71,6 +96,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         const nextWorkspace = storedWorkspace ?? profile.workspace;
         setWorkspaceState(nextWorkspace);
         setStoredWorkspace(nextWorkspace);
+        setOnboardingStatusState(getStoredOnboardingStatus());
+        setOnboardingDraftState(getStoredOnboardingDraft());
       } catch {
         if (active) hardClear();
       } finally {
@@ -98,6 +125,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setPermissions(session.permissions);
       setRoutePermissions(session.routePermissions);
       setActionPermissions(session.actionPermissions);
+      setOnboardingStatusState(getStoredOnboardingStatus());
+      setOnboardingDraftState(getStoredOnboardingDraft());
     } finally {
       setLoading(false);
     }
@@ -117,6 +146,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setStoredWorkspace(nextWorkspace);
   }, []);
 
+  const setOnboardingDraft = useCallback((draft: ProviderOnboardingDraft) => {
+    setOnboardingDraftState(draft);
+    setStoredOnboardingDraft(draft);
+  }, []);
+
+  const setOnboardingStatus = useCallback((status: ProviderOnboardingStatus) => {
+    setOnboardingStatusState(status);
+    setStoredOnboardingStatus(status);
+  }, []);
+
   const value = useMemo<AuthContextValue>(
     () => ({
       user,
@@ -125,11 +164,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       permissions,
       routePermissions,
       actionPermissions,
+      onboardingStatus,
+      onboardingDraft,
+      isOnboardingComplete: onboardingStatus === 'approved',
       isAuthenticated: Boolean(user && token),
       loading,
       login,
       logout,
       setWorkspace,
+      setOnboardingDraft,
+      setOnboardingStatus,
       canAccessPath: (path: string) => {
         const required = routePermissions[path] ?? [];
         return hasAllPermissions(permissions, required);
@@ -139,7 +183,23 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         return hasAllPermissions(permissions, required);
       },
     }),
-    [actionPermissions, loading, login, logout, permissions, role, routePermissions, setWorkspace, token, user, workspace],
+    [
+      actionPermissions,
+      loading,
+      login,
+      logout,
+      onboardingDraft,
+      onboardingStatus,
+      permissions,
+      role,
+      routePermissions,
+      setOnboardingDraft,
+      setOnboardingStatus,
+      setWorkspace,
+      token,
+      user,
+      workspace,
+    ],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

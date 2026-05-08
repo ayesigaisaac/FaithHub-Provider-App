@@ -22,6 +22,22 @@ export type AuthUser = {
   email: string;
 };
 
+export type ProviderOnboardingStatus = 'not_started' | 'in_progress' | 'submitted' | 'approved';
+
+export type ProviderOnboardingDraft = {
+  organizationName: string;
+  contactName: string;
+  contactEmail: string;
+  contactPhone: string;
+  organizationType: 'church' | 'ministry' | 'events' | 'digital';
+  country: string;
+  city: string;
+  mission: string;
+  website: string;
+  primaryLanguage: string;
+  agreedToTerms: boolean;
+};
+
 export type AuthSession = {
   token: string;
   user: AuthUser;
