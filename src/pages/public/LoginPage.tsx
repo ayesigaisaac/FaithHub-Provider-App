@@ -43,7 +43,7 @@ function resolveSafeRedirect(input?: string) {
 }
 
 export default function LoginPage() {
-  const { login, loading, setWorkspace, isAuthenticated } = useAuth();
+  const { login, loading, setWorkspace, isAuthenticated, isOnboardingComplete } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -67,9 +67,9 @@ export default function LoginPage() {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate('/faithhub/provider/dashboard', { replace: true });
+      navigate(isOnboardingComplete ? '/faithhub/provider/dashboard' : '/faithhub/provider/onboarding', { replace: true });
     }
-  }, [isAuthenticated, navigate]);
+  }, [isAuthenticated, isOnboardingComplete, navigate]);
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();

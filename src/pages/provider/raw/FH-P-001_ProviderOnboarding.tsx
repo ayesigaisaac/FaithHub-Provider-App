@@ -25,6 +25,7 @@ import { useNavigate } from 'react-router-dom';
 import { ProviderPageTitle } from '@/components/provider/ProviderPageTitle';
 import { useAuth } from '@/auth/useAuth';
 import type { ProviderOnboardingDraft } from '@/auth/types';
+import { DEFAULT_ONBOARDING_DRAFT } from '@/auth/storage';
 
 const STEPS = ['Organization', 'Contact', 'Profile', 'Review'] as const;
 
@@ -65,6 +66,7 @@ export default function ProviderOnboardingPage() {
 
   const [step, setStep] = useState<StepIndex>(0);
   const [notice, setNotice] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const validation = useMemo(() => validateDraft(onboardingDraft), [onboardingDraft]);
   const completion = useMemo(() => {
@@ -81,6 +83,13 @@ export default function ProviderOnboardingPage() {
   }, [step, validation]);
 
   const canSubmit = useMemo(() => Object.values(validation).every(Boolean), [validation]);
+  const resumeStep = useMemo<StepIndex>(() => {
+    if (!validation.organizationName) return 0;
+    if (!validation.contactName || !validation.contactEmail || !validation.contactPhone) return 1;
+    if (!validation.city || !validation.mission || !validation.website) return 2;
+    if (!validation.agreedToTerms) return 3;
+    return 3;
+  }, [validation]);
 
   const updateDraft = <K extends keyof ProviderOnboardingDraft>(key: K, value: ProviderOnboardingDraft[K]) => {
     const next = { ...onboardingDraft, [key]: value };
@@ -96,13 +105,27 @@ export default function ProviderOnboardingPage() {
     setNotice('Draft saved. You can safely continue later.');
   };
 
-  const submit = () => {
+  const resetDraft = () => {
+    setOnboardingDraft(DEFAULT_ONBOARDING_DRAFT);
+    setOnboardingStatus('not_started');
+    setStep(0);
+    setNotice('Draft reset. You can start onboarding again.');
+  };
+
+  const submit = async () => {
     if (!canSubmit) {
       setNotice('Complete all required fields before submission.');
       return;
     }
+    if (onboardingStatus === 'submitted') {
+      setNotice('Onboarding has already been submitted and is awaiting review.');
+      return;
+    }
 
+    setIsSubmitting(true);
+    await new Promise((resolve) => setTimeout(resolve, 500));
     setOnboardingStatus('submitted');
+    setIsSubmitting(false);
     setNotice('Onboarding submitted. Awaiting verification approval.');
   };
 
@@ -128,6 +151,7 @@ export default function ProviderOnboardingPage() {
             <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1} mt={2}>
               <Chip label={`Status: ${onboardingStatus.replace('_', ' ')}`} color={onboardingStatus === 'submitted' ? 'warning' : 'default'} />
               <Chip label={`Completion: ${completion}%`} color={completion === 100 ? 'success' : 'primary'} />
+              <Chip label={`Resume step: ${STEPS[resumeStep]}`} />
             </Stack>
           </CardContent>
         </Card>
@@ -302,7 +326,9 @@ export default function ProviderOnboardingPage() {
               ) : null}
 
               <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1.2} mt={3}>
+                <Button variant="text" color="warning" onClick={resetDraft}>Reset draft</Button>
                 <Button variant="outlined" onClick={saveDraft}>Save draft</Button>
+                <Button variant="outlined" onClick={() => setStep(resumeStep)}>Jump to resume step</Button>
                 <Box sx={{ flex: 1 }} />
                 <Button variant="outlined" disabled={step === 0} onClick={() => setStep((prev) => Math.max(0, prev - 1) as StepIndex)}>
                   Back
@@ -312,8 +338,8 @@ export default function ProviderOnboardingPage() {
                     Continue
                   </Button>
                 ) : (
-                  <Button variant="contained" color="success" disabled={!canSubmit} onClick={submit}>
-                    Submit onboarding
+                  <Button variant="contained" color="success" disabled={!canSubmit || isSubmitting} onClick={submit}>
+                    {isSubmitting ? 'Submitting...' : 'Submit onboarding'}
                   </Button>
                 )}
               </Stack>
