@@ -14,6 +14,7 @@ import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import AddRoundedIcon from '@mui/icons-material/AddRounded';
 import EditNoteRoundedIcon from '@mui/icons-material/EditNoteRounded';
 import AutoAwesomeRoundedIcon from '@mui/icons-material/AutoAwesomeRounded';
+import AutoStoriesRoundedIcon from '@mui/icons-material/AutoStoriesRounded';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { ReactNode } from 'react';
 import { navigateWithRouter } from '@/navigation/routerNavigate';
@@ -32,6 +33,21 @@ type PaletteItem = {
   keywords?: string;
   onSelect: () => void;
 };
+
+function getIconContainerSx(group: PaletteItem['group']) {
+  if (group === 'Action') {
+    return {
+      color: 'var(--fh-brand-dark)',
+      bgcolor: 'color-mix(in srgb, var(--fh-brand-soft) 48%, var(--fh-surface-bg) 52%)',
+      borderColor: 'color-mix(in srgb, var(--fh-brand) 38%, var(--fh-line) 62%)',
+    };
+  }
+  return {
+    color: 'var(--fh-slate)',
+    bgcolor: 'color-mix(in srgb, var(--fh-surface) 86%, var(--fh-surface-bg) 14%)',
+    borderColor: 'var(--fh-line)',
+  };
+}
 
 export function SearchCommandDialog({
   open,
@@ -80,7 +96,7 @@ export function SearchCommandDialog({
         id: 'search-teachings',
         title: 'Search teachings by title',
         subtitle: normalizedQuery ? `Find matches for "${query.trim()}"` : 'Type a title to filter teachings',
-        icon: <SearchRoundedIcon fontSize="small" />,
+        icon: <AutoStoriesRoundedIcon fontSize="small" />,
         group: 'Action',
         section: 'Actions',
         description: 'Search teachings by title',
@@ -106,7 +122,7 @@ export function SearchCommandDialog({
         id: `page-${page.key}`,
         title: page.shortTitle || page.title,
         subtitle: `${page.section} - ${page.description}`,
-        icon: <SearchRoundedIcon fontSize="small" />,
+        icon: <page.icon size={16} strokeWidth={2.2} />,
         group: 'Page',
         section: page.section,
         description: page.description,
@@ -336,10 +352,8 @@ export function SearchCommandDialog({
                               borderRadius: 1.5,
                               display: 'grid',
                               placeItems: 'center',
-                              color: 'var(--fh-slate)',
-                              bgcolor: 'var(--fh-surface)',
+                              ...getIconContainerSx(command.group),
                               border: '1px solid',
-                              borderColor: 'var(--fh-line)',
                             }}
                           >
                             {command.icon}
@@ -393,10 +407,8 @@ export function SearchCommandDialog({
                         borderRadius: 1.5,
                         display: 'grid',
                         placeItems: 'center',
-                        color: 'var(--fh-slate)',
-                        bgcolor: 'var(--fh-surface)',
+                        ...getIconContainerSx(command.group),
                         border: '1px solid',
-                        borderColor: 'var(--fh-line)',
                       }}
                     >
                       {command.icon}
@@ -448,10 +460,8 @@ export function SearchCommandDialog({
                           borderRadius: 1.5,
                           display: 'grid',
                           placeItems: 'center',
-                          color: 'var(--fh-slate)',
-                          bgcolor: 'var(--fh-surface)',
+                          ...getIconContainerSx(command.group),
                           border: '1px solid',
-                          borderColor: 'var(--fh-line)',
                         }}
                       >
                         {command.icon}
