@@ -41,6 +41,7 @@ import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { ProviderSectionCard } from "@/components/provider/ProviderSectionCard";
 import { ProviderStatusPill } from "@/components/provider/ProviderStatusPill";
+import { TeachingsQuickActionsBar } from "@/components/provider/TeachingsQuickActionsBar";
 import { useAuth } from "@/auth/useAuth";
 
 /**
@@ -522,7 +523,7 @@ const EXECUTIVE_METRICS: Record<RoleKey, MetricCard[]> = {
     {
       id: "spend",
       label: "Beacon spend",
-      value: "£3.9k",
+      value: "ï¿½3.9k",
       hint: "Current spend against plan and placement pacing",
       delta: "64% pace",
       accent: "orange",
@@ -705,20 +706,20 @@ const LIVE_SESSIONS: LiveSessionRow[] = [
   {
     id: "ls-1",
     title: "Evening Prayer Revival",
-    time: "18:30 — 19:45",
+    time: "18:30 ï¿½ 19:45",
     campus: "Kampala Central",
-    audience: "Prayer community · Public",
+    audience: "Prayer community ï¿½ Public",
     readiness: "At risk",
     health: "Watching",
-    backstage: "Host joined · Captioner pending",
+    backstage: "Host joined ï¿½ Captioner pending",
     warning: "Caption operator check still open",
   },
   {
     id: "ls-2",
     title: "Faith & Work Midweek Class",
-    time: "20:00 — 21:00",
+    time: "20:00 ï¿½ 21:00",
     campus: "Online Studio",
-    audience: "Series audience · Members first",
+    audience: "Series audience ï¿½ Members first",
     readiness: "Ready",
     health: "Healthy",
     backstage: "All roles confirmed",
@@ -728,10 +729,10 @@ const LIVE_SESSIONS: LiveSessionRow[] = [
     title: "Youth Outreach Q&A",
     time: "Sat 15:00",
     campus: "Youth Hall",
-    audience: "Youth ministry · RSVP",
+    audience: "Youth ministry ï¿½ RSVP",
     readiness: "Blocked",
     health: "Watching",
-    backstage: "Moderator gap · venue AV unresolved",
+    backstage: "Moderator gap ï¿½ venue AV unresolved",
     warning: "Venue mic routing conflict detected",
   },
 ];
@@ -739,7 +740,7 @@ const LIVE_SESSIONS: LiveSessionRow[] = [
 const PIPELINE_ITEMS: PipelineItem[] = [
   {
     id: "p-1",
-    title: "Hope in the Wilderness — Episode 02",
+    title: "Hope in the Wilderness ï¿½ Episode 02",
     type: "Episode draft",
     status: "Missing assets",
     owner: "Content editor",
@@ -747,7 +748,7 @@ const PIPELINE_ITEMS: PipelineItem[] = [
   },
   {
     id: "p-2",
-    title: "Stand Firm — Standalone Teaching",
+    title: "Stand Firm ï¿½ Standalone Teaching",
     type: "Standalone teaching",
     status: "Awaiting review",
     owner: "Pastoral review",
@@ -833,7 +834,7 @@ const BEACON_ITEMS: BeaconItem[] = [
     id: "b-1",
     title: "Sunday Encounter replay boost",
     mode: "Linked",
-    spend: "£1.2k",
+    spend: "ï¿½1.2k",
     outcome: "784 watch starts",
     status: "Healthy",
   },
@@ -841,7 +842,7 @@ const BEACON_ITEMS: BeaconItem[] = [
     id: "b-2",
     title: "Youth Camp registration push",
     mode: "Linked",
-    spend: "£820",
+    spend: "ï¿½820",
     outcome: "41 registrations",
     status: "Learning",
   },
@@ -849,7 +850,7 @@ const BEACON_ITEMS: BeaconItem[] = [
     id: "b-3",
     title: "Care & Missions awareness",
     mode: "Standalone",
-    spend: "£460",
+    spend: "ï¿½460",
     outcome: "183 giving clicks",
     status: "Needs approval",
   },
@@ -857,7 +858,7 @@ const BEACON_ITEMS: BeaconItem[] = [
     id: "b-4",
     title: "Prayer Night announcement",
     mode: "Standalone",
-    spend: "£210",
+    spend: "ï¿½210",
     outcome: "CTR softening",
     status: "Fatigue risk",
   },
@@ -867,21 +868,21 @@ const TRUST_CASES: TrustCase[] = [
   {
     id: "t-1",
     title: "Audio complaint cluster on Prayer Night replay",
-    source: "Reviews · Replay",
+    source: "Reviews ï¿½ Replay",
     priority: "High",
     owner: "Production team",
   },
   {
     id: "t-2",
     title: "Reported chat messages during Youth Outreach live",
-    source: "Moderation · Live chat",
+    source: "Moderation ï¿½ Live chat",
     priority: "Critical",
     owner: "Moderator lead",
   },
   {
     id: "t-3",
     title: "Flagged clip comment thread",
-    source: "Clips · Public comments",
+    source: "Clips ï¿½ Public comments",
     priority: "Medium",
     owner: "Community manager",
   },
@@ -909,7 +910,7 @@ const RECOMMENDATIONS_BY_ROLE: Record<
     {
       id: "r-2",
       title: "Convert Flood Relief into a live fundraiser moment",
-      detail: "Tonight’s prayer stream is the strongest fit for donor urgency and public momentum.",
+      detail: "Tonightï¿½s prayer stream is the strongest fit for donor urgency and public momentum.",
       cta: "Open Live Builder",
       tone: "good",
     },
@@ -984,7 +985,7 @@ const RECOMMENDATIONS_BY_ROLE: Record<
     },
     {
       id: "r-3",
-      title: "Insert a giving moment into tonight’s live",
+      title: "Insert a giving moment into tonightï¿½s live",
       detail: "Prayer Night already has strong attendance forecasts and could support a clear donor CTA.",
       cta: "Open Live Builder",
       tone: "good",
@@ -1231,6 +1232,8 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
   const [isRecentCollapsed, setIsRecentCollapsed] = useState(false);
   const [isPendingCollapsed, setIsPendingCollapsed] = useState(false);
   const [actionToast, setActionToast] = useState<string | null>(null);
+  const [activeQuickAction, setActiveQuickAction] = useState<"continue-editing" | "create-teaching" | "review" | "publish" | null>(null);
+  const [loadingQuickAction, setLoadingQuickAction] = useState<"continue-editing" | "create-teaching" | "review" | "publish" | null>(null);
   const [optimisticStatusById, setOptimisticStatusById] = useState<Record<string, TeachingWorkflowStatus>>({});
   const [actionPendingById, setActionPendingById] = useState<Record<string, DashboardActionKind | undefined>>({});
   const [auditTrail, setAuditTrail] = useState<DashboardAuditEntry[]>([]);
@@ -1391,6 +1394,18 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
     trackDashboardEvent("start_new_task");
     safeNav(ROUTES.teachingsDashboard);
   };
+  const runQuickWorkflowAction = (
+    action: "continue-editing" | "create-teaching" | "review" | "publish",
+    callback: () => void,
+  ) => {
+    setActiveQuickAction(action);
+    setLoadingQuickAction(action);
+    window.setTimeout(() => {
+      callback();
+      setLoadingQuickAction(null);
+    }, 220);
+  };
+
   const formatLastEdited = (due: string) => {
     const dueLower = due.toLowerCase();
     if (dueLower === "now") return "just now";
@@ -1584,6 +1599,36 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                     </button>
                   ) : null}
                 </div>
+              </div>
+              <div className="mt-4">
+                <TeachingsQuickActionsBar
+                  continueLabel={workflowPrimaryLabel}
+                  activeAction={activeQuickAction}
+                  loadingAction={loadingQuickAction}
+                  onContinueEditing={() =>
+                    runQuickWorkflowAction("continue-editing", () => {
+                      handlePrimaryCta();
+                    })
+                  }
+                  onCreateTeaching={() =>
+                    runQuickWorkflowAction("create-teaching", () => {
+                      trackDashboardEvent("start_new_task", { source: "quick_actions_bar" });
+                      safeNav(ROUTES.teachingsDashboard);
+                    })
+                  }
+                  onReview={() =>
+                    runQuickWorkflowAction("review", () => {
+                      trackDashboardEvent("quick_action_completed", { action: "review" });
+                      safeNav(ROUTES.reviewsModeration);
+                    })
+                  }
+                  onPublish={() =>
+                    runQuickWorkflowAction("publish", () => {
+                      trackDashboardEvent("quick_action_completed", { action: "publish" });
+                      safeNav(ROUTES.liveBuilder);
+                    })
+                  }
+                />
               </div>
               <div className="-mx-1 mt-4 flex gap-2 overflow-x-auto px-1 pb-1 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 sm:pb-0">
                 <div className="shrink-0">
@@ -1915,7 +1960,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                       <div className="min-w-0">
                         <h3 className="text-[14px] font-bold text-faith-ink">{item.title}</h3>
                         <p className="mt-1 text-[12px] text-slate-700">
-                          {item.type} · Updated {formatLastEdited(item.updatedAt)}
+                          {item.type} ï¿½ Updated {formatLastEdited(item.updatedAt)}
                         </p>
                       </div>
                       <Pill text={item.status === "Draft" ? "Draft" : "Needs review"} tone="warn" />
@@ -1975,7 +2020,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                         />
                       </div>
                       <div className="mt-1 text-[12px] text-slate-700">
-                        {entry.action} · {formatLastEdited(entry.atISO)}
+                        {entry.action} ï¿½ {formatLastEdited(entry.atISO)}
                       </div>
                     </div>
                   ))}

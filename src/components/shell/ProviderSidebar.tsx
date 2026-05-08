@@ -1,7 +1,6 @@
 import {
   Avatar,
   Box,
-  Chip,
   Collapse,
   Divider,
   Drawer,
@@ -19,11 +18,6 @@ import KeyboardArrowRightRoundedIcon from '@mui/icons-material/KeyboardArrowRigh
 import KeyboardDoubleArrowLeftRoundedIcon from '@mui/icons-material/KeyboardDoubleArrowLeftRounded';
 import GridViewRoundedIcon from '@mui/icons-material/GridViewRounded';
 import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded';
-import PlayArrowRoundedIcon from '@mui/icons-material/PlayArrowRounded';
-import EditRoundedIcon from '@mui/icons-material/EditRounded';
-import RateReviewRoundedIcon from '@mui/icons-material/RateReviewRounded';
-import SendRoundedIcon from '@mui/icons-material/SendRounded';
-import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 import MenuBookRoundedIcon from '@mui/icons-material/MenuBookRounded';
 import LiveTvRoundedIcon from '@mui/icons-material/LiveTvRounded';
 import CampaignRoundedIcon from '@mui/icons-material/CampaignRounded';
@@ -36,7 +30,6 @@ import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 import { useEffect, useMemo, useState } from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { getProviderSidebarGroupsBySection, providerPages, providerSections } from '@/navigation/providerPages';
-import { getTeachingFlowState, subscribeToTeachingFlow } from '@/features/teachings/teachingFlowStore';
 
 const drawerWidth = 318;
 const topbarOffsetMobile = 110;
@@ -46,68 +39,31 @@ const sectionLabelMap: Partial<Record<(typeof providerSections)[number], string>
 
 const expandedDrawerWidth = 318;
 const collapsedDrawerWidth = 88;
-type WorkflowSummarySnapshot = {
-  draftCount: number;
-  needsReviewCount: number;
-  publishedCount: number;
-  totalCount: number;
-  updatedAt: string;
-};
-
-function formatWorkflowUpdatedAt(updatedAt: string): string {
-  if (!updatedAt) return 'updated just now';
-  const timestamp = Date.parse(updatedAt);
-  if (Number.isNaN(timestamp)) return 'updated just now';
-  const diffMs = Date.now() - timestamp;
-  if (diffMs < 60_000) return 'updated just now';
-  const minutes = Math.floor(diffMs / 60_000);
-  if (minutes < 60) return `updated ${minutes}m ago`;
-  const hours = Math.floor(minutes / 60);
-  if (hours < 24) return `updated ${hours}h ago`;
-  const days = Math.floor(hours / 24);
-  return `updated ${days}d ago`;
-}
-type WorkflowTone = 'warning' | 'success' | 'neutral';
-type WorkflowItem = {
-  key: string;
-  label: string;
-  path: string;
-  aliases?: string[];
-  icon: typeof PlayArrowRoundedIcon;
-  status: string;
-  shortcut: string;
-  tone: WorkflowTone;
-};
-
-const workflowBadgeSx: Record<WorkflowTone, object> = {
-  warning: { bgcolor: '#fff2e8', color: '#b45309', borderColor: '#fed7aa' },
-  success: { bgcolor: '#ecfdf3', color: '#047857', borderColor: '#a7f3d0' },
-  neutral: { bgcolor: '#f1f5f9', color: '#475569', borderColor: '#dbe5ef' },
-};
 
 const sectionIconMap: Record<string, typeof GridViewRoundedIcon> = {
-  Continue: GridViewRoundedIcon,
-  Create: MenuBookRoundedIcon,
-  Publish: LiveTvRoundedIcon,
-  Published: CampaignRoundedIcon,
-  Review: MovieFilterRoundedIcon,
-  Analytics: VolunteerActivismRoundedIcon,
+  'Foundation & Mission Control': GridViewRoundedIcon,
+  'Content Structure & Teaching Creation': MenuBookRoundedIcon,
+  'Live Sessions Operations': LiveTvRoundedIcon,
+  'Audience & Outreach': CampaignRoundedIcon,
+  'Post-live & Trust': MovieFilterRoundedIcon,
+  'Events & Giving': VolunteerActivismRoundedIcon,
   Reach: BoltRoundedIcon,
-  Community: GroupsRoundedIcon,
-  Team: SupervisorAccountRoundedIcon,
-  Settings: SettingsRoundedIcon,
+  Beacon: BoltRoundedIcon,
+  'Community & Care': GroupsRoundedIcon,
+  'Leadership & Team': SupervisorAccountRoundedIcon,
+  'Workspace Settings': SettingsRoundedIcon,
 };
 const sectionToneMap: Record<string, { icon: string; bg: string; border: string }> = {
-  Continue: { icon: 'var(--fh-brand-dark)', bg: '#e9f8f2', border: '#bfe9d9' },
-  Create: { icon: 'var(--fh-accent)', bg: '#fff2e4', border: '#ffd7ad' },
-  Publish: { icon: '#64748b', bg: '#edf1f5', border: '#d5dde6' },
-  Published: { icon: 'var(--fh-brand-dark)', bg: '#e9f8f2', border: '#bfe9d9' },
-  Review: { icon: 'var(--fh-accent)', bg: '#fff2e4', border: '#ffd7ad' },
-  Analytics: { icon: '#64748b', bg: '#edf1f5', border: '#d5dde6' },
-  Reach: { icon: 'var(--fh-brand-dark)', bg: '#e9f8f2', border: '#bfe9d9' },
-  Community: { icon: 'var(--fh-accent)', bg: '#fff2e4', border: '#ffd7ad' },
-  Team: { icon: '#64748b', bg: '#edf1f5', border: '#d5dde6' },
-  Settings: { icon: '#64748b', bg: '#edf1f5', border: '#d5dde6' },
+  'Foundation & Mission Control': { icon: 'var(--fh-brand-dark)', bg: '#e9f8f2', border: '#bfe9d9' },
+  'Content Structure & Teaching Creation': { icon: 'var(--fh-accent)', bg: '#fff2e4', border: '#ffd7ad' },
+  'Live Sessions Operations': { icon: '#64748b', bg: '#edf1f5', border: '#d5dde6' },
+  'Audience & Outreach': { icon: 'var(--fh-brand-dark)', bg: '#e9f8f2', border: '#bfe9d9' },
+  'Post-live & Trust': { icon: 'var(--fh-accent)', bg: '#fff2e4', border: '#ffd7ad' },
+  'Events & Giving': { icon: '#64748b', bg: '#edf1f5', border: '#d5dde6' },
+  Beacon: { icon: 'var(--fh-brand-dark)', bg: '#e9f8f2', border: '#bfe9d9' },
+  'Community & Care': { icon: 'var(--fh-accent)', bg: '#fff2e4', border: '#ffd7ad' },
+  'Leadership & Team': { icon: '#64748b', bg: '#edf1f5', border: '#d5dde6' },
+  'Workspace Settings': { icon: '#64748b', bg: '#edf1f5', border: '#d5dde6' },
 };
 
 function getSidebarPageLabel(input: { key: string; title: string; shortTitle?: string }) {
@@ -138,46 +94,6 @@ function trackSidebarClick(payload: { section: string; label: string; route: str
   if (Array.isArray(dataLayer)) dataLayer.push(detail);
 }
 
-function trackWorkflowClick(workflowKey: string, label: string, route: string) {
-  if (typeof window === 'undefined') return;
-  const eventNameMap: Record<string, string> = {
-    'continue-editing': 'continue_editing_clicked',
-    review: 'review_clicked',
-    publish: 'publish_clicked',
-    'create-teaching': 'create_teaching_clicked',
-    published: 'published_clicked',
-  };
-  const detail = {
-    event: eventNameMap[workflowKey] ?? 'workflow_item_clicked',
-    workflow_key: workflowKey,
-    label,
-    route,
-  };
-  window.dispatchEvent(new CustomEvent('fh:analytics', { detail }));
-  const dataLayer = (window as unknown as { dataLayer?: Array<Record<string, string>> }).dataLayer;
-  if (Array.isArray(dataLayer)) dataLayer.push(detail);
-}
-
-function buildWorkflowSummaryFromTeachingFlow(): WorkflowSummarySnapshot {
-  const flow = getTeachingFlowState();
-  const all = [...flow.series, ...flow.episodes];
-  const draftCount = all.filter((item) => item.publishingState === 'Draft').length;
-  const needsReviewCount = all.filter((item) => item.publishingState === 'Scheduled').length;
-  const publishedCount = all.filter((item) => item.publishingState === 'Published').length;
-  const updatedAt = all
-    .map((item) => item.updatedAtISO)
-    .filter(Boolean)
-    .sort((a, b) => b.localeCompare(a))[0] ?? '';
-
-  return {
-    draftCount,
-    needsReviewCount,
-    publishedCount,
-    totalCount: all.length,
-    updatedAt,
-  };
-}
-
 export function ProviderSidebar({
   open,
   onClose,
@@ -193,79 +109,6 @@ export function ProviderSidebar({
   const isDark = theme.palette.mode === 'dark';
   const location = useLocation();
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({});
-  const [workflowSummary, setWorkflowSummary] = useState<WorkflowSummarySnapshot>(() =>
-    buildWorkflowSummaryFromTeachingFlow(),
-  );
-
-  useEffect(() => {
-    setWorkflowSummary(buildWorkflowSummaryFromTeachingFlow());
-    return subscribeToTeachingFlow(() => {
-      setWorkflowSummary(buildWorkflowSummaryFromTeachingFlow());
-    });
-  }, []);
-
-  const pageByKey = new Map(providerPages.map((page) => [page.key, page]));
-  const workflowItems: WorkflowItem[] = [
-    {
-      key: 'continue-editing',
-      label: 'Continue editing',
-      path: pageByKey.get('provider-dashboard')?.path ?? '/faithhub/provider/dashboard',
-      aliases: pageByKey.get('provider-dashboard')?.aliases,
-      icon: PlayArrowRoundedIcon,
-      status:
-        workflowSummary.draftCount > 0
-          ? `${workflowSummary.draftCount} active draft${workflowSummary.draftCount === 1 ? '' : 's'}`
-          : 'No active drafts',
-      shortcut: 'G D',
-      tone: workflowSummary.draftCount > 0 ? 'warning' : 'neutral',
-    },
-    {
-      key: 'create-teaching',
-      label: 'Create teaching',
-      path: pageByKey.get('teachings-dashboard')?.path ?? '/faithhub/provider/teachings-dashboard',
-      aliases: pageByKey.get('teachings-dashboard')?.aliases,
-      icon: EditRoundedIcon,
-      status: 'New draft',
-      shortcut: 'C T',
-      tone: 'neutral',
-    },
-    {
-      key: 'review',
-      label: 'Review',
-      path: pageByKey.get('reviews-and-moderation')?.path ?? '/faithhub/provider/reviews-and-moderation',
-      aliases: pageByKey.get('reviews-and-moderation')?.aliases,
-      icon: RateReviewRoundedIcon,
-      status:
-        workflowSummary.needsReviewCount > 0
-          ? `${workflowSummary.needsReviewCount} waiting review`
-          : 'Clear',
-      shortcut: 'G R',
-      tone: workflowSummary.needsReviewCount > 0 ? 'warning' : 'success',
-    },
-    {
-      key: 'publish',
-      label: 'Ready to publish',
-      path: pageByKey.get('live-builder')?.path ?? '/faithhub/provider/live-builder',
-      aliases: pageByKey.get('live-builder')?.aliases,
-      icon: SendRoundedIcon,
-      status: `${workflowSummary.draftCount + workflowSummary.needsReviewCount} in flow`,
-      shortcut: 'G P',
-      tone: 'neutral',
-    },
-    {
-      key: 'published',
-      label: 'Published',
-      path: pageByKey.get('live-dashboard')?.path ?? '/faithhub/provider/live-dashboard',
-      aliases: pageByKey.get('live-dashboard')?.aliases,
-      icon: CheckCircleRoundedIcon,
-      status: `${workflowSummary.publishedCount} item${workflowSummary.publishedCount === 1 ? '' : 's'}`,
-      shortcut: 'G U',
-      tone: workflowSummary.publishedCount > 0 ? 'success' : 'neutral',
-    },
-  ];
-  const activeWorkflowIndex = workflowItems.findIndex(
-    (item) => item.path === location.pathname || Boolean(item.aliases?.includes(location.pathname)),
-  );
 
   const sections = providerSections
     .map((section) => ({
@@ -367,168 +210,13 @@ export function ProviderSidebar({
               '&::-webkit-scrollbar-track': { backgroundColor: 'transparent' },
             }}
           >
-            <Box sx={{ mb: 1.25 }}>
-              {!collapsed ? (
-                <Stack direction="row" alignItems="baseline" justifyContent="space-between" sx={{ px: 0.9 }}>
-                  <Typography
-                    variant="overline"
-                    sx={{
-                      letterSpacing: '0.08em',
-                      fontWeight: 800,
-                      color: 'var(--fh-slate)',
-                    }}
-                  >
-                    Workflow
-                  </Typography>
-                  <Typography
-                    variant="caption"
-                    sx={{
-                      fontSize: 11,
-                      fontWeight: 600,
-                      color: 'var(--fh-slate)',
-                    }}
-                  >
-                    {formatWorkflowUpdatedAt(workflowSummary.updatedAt)}
-                  </Typography>
-                </Stack>
-              ) : null}
-              <Box sx={{ mt: 0.6 }}>
-                {workflowItems.map((item) => {
-                  const Icon = item.icon;
-                  const active = item.path === location.pathname || Boolean(item.aliases?.includes(location.pathname));
-                  const workflowIndex = workflowItems.findIndex((workflowItem) => workflowItem.key === item.key);
-                  const completed = activeWorkflowIndex > -1 && workflowIndex < activeWorkflowIndex;
-                  const pending = activeWorkflowIndex > -1 && workflowIndex > activeWorkflowIndex;
-                  const badge = (
-                    <Chip
-                      size="small"
-                      label={completed ? 'Completed' : item.status}
-                      sx={{
-                        height: 22,
-                        borderRadius: '999px',
-                        border: '1px solid',
-                        fontSize: 11,
-                        fontWeight: 700,
-                        ...(completed ? workflowBadgeSx.success : workflowBadgeSx[item.tone]),
-                      }}
-                    />
-                  );
-                  return (
-                    <Tooltip
-                      key={item.key}
-                      placement="right"
-                      title={collapsed ? `${item.label} - ${item.status} (${item.shortcut})` : ''}
-                      disableHoverListener={!collapsed}
-                    >
-                      <ListItemButton
-                        component={RouterLink}
-                        to={item.path}
-                        aria-current={active ? 'page' : undefined}
-                        onClick={() => {
-                          trackSidebarClick({
-                            section: 'Workflow',
-                            label: item.label,
-                            route: item.path,
-                            level: 'primary',
-                          });
-                          trackWorkflowClick(item.key, item.label, item.path);
-                          onClose();
-                        }}
-                        sx={{
-                          mb: 0.65,
-                          minHeight: 52,
-                          px: collapsed ? 1 : 1.2,
-                          py: 0.7,
-                          borderRadius: '14px',
-                          border: '1px solid',
-                          borderColor: active
-                            ? 'color-mix(in srgb, var(--fh-brand) 75%, #0f172a 25%)'
-                            : 'color-mix(in srgb, var(--fh-line) 82%, var(--fh-surface-bg) 18%)',
-                          bgcolor: active
-                            ? 'color-mix(in srgb, var(--fh-brand-soft) 45%, var(--fh-surface-bg) 55%)'
-                            : pending
-                              ? 'color-mix(in srgb, var(--fh-surface) 88%, #ffffff 12%)'
-                              : 'var(--fh-surface-bg)',
-                          position: 'relative',
-                          opacity: pending ? 0.78 : 1,
-                          transition: 'all 140ms ease',
-                          '&::before': active
-                            ? {
-                                content: '""',
-                                position: 'absolute',
-                                left: 0,
-                                top: 7,
-                                bottom: 7,
-                                width: 4,
-                                borderRadius: 99,
-                                bgcolor: 'var(--fh-brand)',
-                              }
-                            : {},
-                          '&:hover': {
-                            bgcolor: active
-                              ? 'color-mix(in srgb, var(--fh-brand-soft) 56%, var(--fh-surface-bg) 44%)'
-                              : 'color-mix(in srgb, var(--fh-surface) 92%, var(--fh-surface-bg) 8%)',
-                          },
-                          '&:focus-visible': {
-                            outline: '2px solid color-mix(in srgb, var(--fh-brand) 70%, #ffffff 30%)',
-                            outlineOffset: 2,
-                          },
-                        }}
-                      >
-                        <ListItemIcon sx={{ minWidth: collapsed ? 0 : 38, mr: collapsed ? 0 : 0.4 }}>
-                          <Avatar
-                            sx={{
-                              width: 30,
-                              height: 30,
-                              bgcolor: active ? 'var(--fh-brand-soft)' : 'var(--fh-surface)',
-                              color: active ? 'var(--fh-brand-dark)' : 'var(--fh-slate)',
-                              border: '1px solid',
-                              borderColor: 'var(--fh-line)',
-                            }}
-                          >
-                            <Icon sx={{ fontSize: 18 }} />
-                          </Avatar>
-                        </ListItemIcon>
-                        {!collapsed ? (
-                          <>
-                            <ListItemText
-                              primary={
-                                <Typography
-                                  sx={{
-                                    fontWeight: active ? 800 : 650,
-                                    fontSize: 14,
-                              color: active ? 'var(--fh-ink)' : 'var(--fh-slate)',
-                              lineHeight: 1.2,
-                            }}
-                          >
-                                    {completed ? <CheckCircleRoundedIcon sx={{ fontSize: 14, mr: 0.6, color: '#047857', verticalAlign: 'text-bottom' }} /> : null}
-                                  {item.label}
-                                </Typography>
-                              }
-                              secondary={
-                                <Typography sx={{ fontSize: 11, color: 'var(--fh-slate)', mt: 0.2 }}>
-                                  Shortcut: {item.shortcut}
-                                </Typography>
-                              }
-                            />
-                            {badge}
-                          </>
-                        ) : null}
-                      </ListItemButton>
-                    </Tooltip>
-                  );
-                })}
-              </Box>
-              <Divider sx={{ mt: 0.95, mb: 1.1 }} />
-            </Box>
-
             {sections.map((group) => (
               <Box key={group.section} sx={{ mb: collapsed ? 0.55 : 1 }}>
                 {!collapsed ? (
                   <Box sx={{ mb: 0.58 }}>
                     {(() => {
                       const SectionIcon = sectionIconMap[group.label] ?? GridViewRoundedIcon;
-                      const tone = sectionToneMap[group.label] ?? sectionToneMap.Settings;
+                      const tone = sectionToneMap[group.label] ?? sectionToneMap['Workspace Settings'];
                       return (
                     <ListItemButton
                       onClick={() => toggleSection(group.section)}
