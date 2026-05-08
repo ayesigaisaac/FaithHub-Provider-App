@@ -1,12 +1,11 @@
 import { Box, Button, Chip, Stack, Tooltip, Typography } from '@mui/material';
 import { ArrowRight, BookOpen, Flag, Send } from 'lucide-react';
-
-type ActionKey = 'continue-editing' | 'create-teaching' | 'review' | 'publish';
+import { teachingsQuickActions, type TeachingsQuickActionKey } from '@/navigation/teachingsQuickActions';
 
 type TeachingsQuickActionsBarProps = {
   continueLabel: string;
-  activeAction?: ActionKey | null;
-  loadingAction?: ActionKey | null;
+  activeAction?: TeachingsQuickActionKey | null;
+  loadingAction?: TeachingsQuickActionKey | null;
   onContinueEditing: () => void;
   onCreateTeaching: () => void;
   onReview: () => void;
@@ -14,37 +13,16 @@ type TeachingsQuickActionsBarProps = {
 };
 
 function actionMeta(continueLabel: string) {
-  return [
-    {
-      key: 'continue-editing' as const,
-      label: continueLabel,
-      hint: 'Open your current in-progress teaching',
-      shortcut: 'G D',
-      icon: <ArrowRight size={16} />,
-      primary: true,
-    },
-    {
-      key: 'create-teaching' as const,
-      label: 'Create Teaching',
-      hint: 'Start a new teaching draft',
-      shortcut: 'C T',
-      icon: <BookOpen size={16} />,
-    },
-    {
-      key: 'review' as const,
-      label: 'Review',
-      hint: 'Open moderation and pending reviews',
-      shortcut: 'G R',
-      icon: <Flag size={16} />,
-    },
-    {
-      key: 'publish' as const,
-      label: 'Publish',
-      hint: 'Go to publish-ready workflow',
-      shortcut: 'G P',
-      icon: <Send size={16} />,
-    },
-  ];
+  return teachingsQuickActions.map((item) => ({
+    ...item,
+    label: item.key === 'continue-editing' ? continueLabel : item.label,
+    icon:
+      item.key === 'continue-editing' ? <ArrowRight size={16} /> :
+      item.key === 'create-teaching' ? <BookOpen size={16} /> :
+      item.key === 'review' ? <Flag size={16} /> :
+      <Send size={16} />,
+    primary: item.key === 'continue-editing',
+  }));
 }
 
 export function TeachingsQuickActionsBar({
@@ -58,7 +36,7 @@ export function TeachingsQuickActionsBar({
 }: TeachingsQuickActionsBarProps) {
   const actions = actionMeta(continueLabel);
 
-  const onClickByKey: Record<ActionKey, () => void> = {
+  const onClickByKey: Record<TeachingsQuickActionKey, () => void> = {
     'continue-editing': onContinueEditing,
     'create-teaching': onCreateTeaching,
     review: onReview,

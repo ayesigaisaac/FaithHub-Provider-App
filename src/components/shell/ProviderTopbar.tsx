@@ -21,6 +21,7 @@ import NotificationsRoundedIcon from '@mui/icons-material/NotificationsRounded';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import TuneRoundedIcon from '@mui/icons-material/TuneRounded';
+import Tooltip from '@mui/material/Tooltip';
 import { useMemo, useState, type MouseEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/auth/useAuth';
@@ -29,6 +30,7 @@ import { topbarTabs } from '@/navigation/topbarTabs';
 import type { ProviderPageMeta } from '@/navigation/providerPages';
 import { resolveKnownProviderPath } from '@/navigation/providerPages';
 import { ThemeModeToggle } from '@/components/theme/ThemeModeToggle';
+import { teachingsQuickActions } from '@/navigation/teachingsQuickActions';
 
 type ProviderTopbarProps = {
   current?: ProviderPageMeta;
@@ -207,7 +209,12 @@ export function ProviderTopbar({
                           color: 'var(--fh-slate)',
                         }}
                       >
-                        <TuneRoundedIcon sx={{ fontSize: 16 }} />
+                        <Tooltip
+                          title={`Shortcuts: ${teachingsQuickActions.map((item) => item.shortcut).join(' · ')}`}
+                          arrow
+                        >
+                          <TuneRoundedIcon sx={{ fontSize: 16 }} />
+                        </Tooltip>
                       </IconButton>
                     </Stack>
                   </InputAdornment>

@@ -19,6 +19,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import type { ReactNode } from 'react';
 import { navigateWithRouter } from '@/navigation/routerNavigate';
 import { providerPages } from '@/navigation/providerPages';
+import { teachingsQuickActions } from '@/navigation/teachingsQuickActions';
 
 const RECENT_COMMANDS_KEY = 'fh.provider.search.recents.v1';
 
@@ -72,8 +73,8 @@ export function SearchCommandDialog({
     const actionItems: PaletteItem[] = [
       {
         id: 'create-teaching',
-        title: 'Create teaching',
-        subtitle: 'Start a new teaching workflow',
+        title: teachingsQuickActions.find((item) => item.key === 'create-teaching')?.label ?? 'Create teaching',
+        subtitle: `Start a new teaching workflow (${teachingsQuickActions.find((item) => item.key === 'create-teaching')?.shortcut ?? 'C T'})`,
         icon: <AddRoundedIcon fontSize="small" />,
         group: 'Action',
         section: 'Actions',
@@ -83,8 +84,8 @@ export function SearchCommandDialog({
       },
       {
         id: 'open-last-draft',
-        title: 'Open last draft',
-        subtitle: 'Jump back to your most recent draft',
+        title: teachingsQuickActions.find((item) => item.key === 'continue-editing')?.label ?? 'Open last draft',
+        subtitle: `Jump back to your most recent draft (${teachingsQuickActions.find((item) => item.key === 'continue-editing')?.shortcut ?? 'G D'})`,
         icon: <EditNoteRoundedIcon fontSize="small" />,
         group: 'Action',
         section: 'Actions',
@@ -106,7 +107,7 @@ export function SearchCommandDialog({
       {
         id: 'open-workflow',
         title: 'Open workflow dashboard',
-        subtitle: 'Continue editing, drafts, and publishing',
+        subtitle: `Continue editing, drafts, and publishing (${teachingsQuickActions.find((item) => item.key === 'publish')?.shortcut ?? 'G P'})`,
         icon: <AutoAwesomeRoundedIcon fontSize="small" />,
         group: 'Action',
         section: 'Actions',
@@ -290,7 +291,7 @@ export function SearchCommandDialog({
                     onClose();
                   }
                 }}
-                placeholder="Search commands and teachings"
+                placeholder="Search commands, teachings, and shortcuts"
                 fullWidth
                 size="small"
                 inputProps={{ 'aria-label': 'Search commands and teachings' }}

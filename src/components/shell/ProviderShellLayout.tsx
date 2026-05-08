@@ -1,5 +1,5 @@
 import { Alert, Box, Button } from '@mui/material';
-import { Suspense, useEffect, useMemo, useState } from 'react';
+import { Suspense, useEffect, useMemo, useRef, useState } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { findProviderPageByPath } from '@/navigation/providerPages';
 import { ProviderSidebar } from './ProviderSidebar';
@@ -12,6 +12,7 @@ import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { MediaFallbackContainer } from '@/components/MediaFallbackContainer';
 import { runRawPlaceholderActionForElement } from '@/pages/provider/raw/placeholderActions';
 import { useAuth } from '@/auth/useAuth';
+import { teachingsShortcutRouteMap } from '@/navigation/teachingsQuickActions';
 
 const ONBOARDING_BANNER_DISMISS_KEY = 'faithhub.onboarding.banner.dismissed';
 
@@ -42,6 +43,7 @@ export function ProviderShellLayout() {
   });
 
   const current = useMemo(() => findProviderPageByPath(location.pathname), [location.pathname]);
+  const shortcutBufferRef = useRef<{ key: string; at: number }>({ key: '', at: 0 });
   const showOnboardingReminder =
     !onboardingBannerDismissed &&
     onboardingStatus !== 'approved' &&
@@ -52,12 +54,34 @@ export function ProviderShellLayout() {
       if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
         event.preventDefault();
         setSearchOpen(true);
+        return;
+      }
+
+      if (event.ctrlKey || event.metaKey || event.altKey) return;
+      const target = event.target as HTMLElement | null;
+      const inInput = target?.closest('input, textarea, [contenteditable="true"]');
+      if (inInput) return;
+
+      const key = event.key.toLowerCase();
+      const now = Date.now();
+      const last = shortcutBufferRef.current;
+      if (now - last.at > 900) {
+        shortcutBufferRef.current = { key, at: now };
+        return;
+      }
+
+      const combo = `${last.key} ${key}`;
+      const route = teachingsShortcutRouteMap[combo];
+      shortcutBufferRef.current = { key: '', at: 0 };
+      if (route) {
+        event.preventDefault();
+        navigate(route);
       }
     };
 
     window.addEventListener('keydown', handleKeydown);
     return () => window.removeEventListener('keydown', handleKeydown);
-  }, []);
+  }, [navigate]);
 
   useEffect(() => {
     window.localStorage.setItem('faithhub.sidebar.collapsed', String(sidebarCollapsed));
