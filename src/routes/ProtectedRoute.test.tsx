@@ -46,6 +46,9 @@ function renderWithAuth(initialPath: string, auth: AuthValue) {
         setWorkspace: () => {},
         setOnboardingDraft: () => {},
         setOnboardingStatus: () => {},
+        refreshOnboarding: async () => {},
+        saveOnboardingDraft: async () => {},
+        submitOnboarding: async () => {},
         canAccessPath: () => true,
         canPerform: () => true,
       }}
@@ -58,6 +61,14 @@ function renderWithAuth(initialPath: string, auth: AuthValue) {
             element={
               <ProtectedRoute>
                 <div>Dashboard</div>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/faithhub/provider/donations-and-funds"
+            element={
+              <ProtectedRoute>
+                <div>Donations</div>
               </ProtectedRoute>
             }
           />
@@ -75,7 +86,7 @@ function renderWithAuth(initialPath: string, auth: AuthValue) {
   );
 }
 
-describe('ProtectedRoute onboarding gating', () => {
+describe('ProtectedRoute authentication and access', () => {
   it('redirects unauthenticated users to login', () => {
     renderWithAuth('/faithhub/provider/dashboard', {
       isAuthenticated: false,
@@ -87,8 +98,19 @@ describe('ProtectedRoute onboarding gating', () => {
     expect(screen.getByText('Login')).toBeInTheDocument();
   });
 
-  it('redirects authenticated users to onboarding until approved', () => {
+  it('allows non-sensitive pages when onboarding is in progress', () => {
     renderWithAuth('/faithhub/provider/dashboard', {
+      isAuthenticated: true,
+      loading: false,
+      permissions: [],
+      onboardingStatus: 'in_progress',
+    });
+
+    expect(screen.getByText('Dashboard')).toBeInTheDocument();
+  });
+
+  it('redirects sensitive pages to onboarding when onboarding is in progress', () => {
+    renderWithAuth('/faithhub/provider/donations-and-funds', {
       isAuthenticated: true,
       loading: false,
       permissions: [],
@@ -104,6 +126,17 @@ describe('ProtectedRoute onboarding gating', () => {
       loading: false,
       permissions: [],
       onboardingStatus: 'approved',
+    });
+
+    expect(screen.getByText('Dashboard')).toBeInTheDocument();
+  });
+
+  it('allows dashboard when onboarding is submitted', () => {
+    renderWithAuth('/faithhub/provider/dashboard', {
+      isAuthenticated: true,
+      loading: false,
+      permissions: [],
+      onboardingStatus: 'submitted',
     });
 
     expect(screen.getByText('Dashboard')).toBeInTheDocument();

@@ -10,12 +10,22 @@ type ProtectedRouteProps = {
   children?: React.ReactNode;
 };
 
-function isProviderPath(path: string) {
-  return path.startsWith('/faithhub/provider');
+const ONBOARDING_REQUIRED_PREFIXES = [
+  '/faithhub/provider/donations-and-funds',
+  '/faithhub/provider/donations-funds',
+  '/faithhub/provider/wallet-payouts',
+  '/faithhub/provider/subscriptions',
+  '/faithhub/provider/workspace-settings',
+  '/faithhub/provider/roles-permissions',
+  '/faithhub/provider/audit-log',
+] as const;
+
+function requiresOnboarding(path: string) {
+  return ONBOARDING_REQUIRED_PREFIXES.some((prefix) => path === prefix || path.startsWith(`${prefix}/`));
 }
 
 export function ProtectedRoute({ routePath, requiredPermissions, children }: ProtectedRouteProps) {
-  const { isAuthenticated, loading, permissions, canAccessPath, isOnboardingComplete } = useAuth();
+  const { isAuthenticated, loading, permissions, canAccessPath, onboardingStatus } = useAuth();
   const location = useLocation();
 
   if (loading) {
@@ -32,18 +42,10 @@ export function ProtectedRoute({ routePath, requiredPermissions, children }: Pro
   }
 
   const targetPath = routePath ?? location.pathname;
+  const onboardingBlocked = onboardingStatus === 'not_started' || onboardingStatus === 'in_progress';
 
-  if (isProviderPath(targetPath)) {
-    const onboardingPath = '/faithhub/provider/onboarding';
-    const isOnboardingRoute = targetPath === onboardingPath;
-
-    if (!isOnboardingComplete && !isOnboardingRoute) {
-      return <Navigate to={onboardingPath} replace />;
-    }
-
-    if (isOnboardingComplete && isOnboardingRoute) {
-      return <Navigate to="/faithhub/provider/dashboard" replace />;
-    }
+  if (onboardingBlocked && requiresOnboarding(targetPath)) {
+    return <Navigate to="/faithhub/provider/onboarding" replace />;
   }
 
   if (!canAccessPath(targetPath)) {
