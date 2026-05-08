@@ -340,6 +340,19 @@ export function SearchCommandDialog({
               {teachingsQuickActions.map((action) => (
                 <Box
                   key={action.key}
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => {
+                    navigateWithRouter(action.route);
+                    onClose();
+                  }}
+                  onKeyDown={(event) => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                      event.preventDefault();
+                      navigateWithRouter(action.route);
+                      onClose();
+                    }
+                  }}
                   sx={{
                     px: 1,
                     py: 0.35,
@@ -351,6 +364,17 @@ export function SearchCommandDialog({
                     alignItems: 'center',
                     gap: 0.65,
                     whiteSpace: 'nowrap',
+                    cursor: 'pointer',
+                    transition: 'transform 140ms ease, box-shadow 160ms ease, border-color 160ms ease',
+                    '&:hover': {
+                      borderColor: 'var(--fh-brand)',
+                      boxShadow: '0 8px 16px -14px rgba(15, 23, 42, 0.55)',
+                      transform: 'translateY(-1px)',
+                    },
+                    '&:focus-visible': {
+                      outline: '2px solid var(--fh-brand)',
+                      outlineOffset: 2,
+                    },
                   }}
                 >
                   <Typography sx={{ fontSize: 11.5, fontWeight: 700, color: 'var(--fh-text)' }}>{action.label}</Typography>
