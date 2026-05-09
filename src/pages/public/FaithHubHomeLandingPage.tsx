@@ -200,6 +200,42 @@ function SectionHeading({ eyebrow, title, body }: { eyebrow: string; title: stri
 
 export default function FaithHubHomeLandingPageV3Fixed() {
   const navigate = useNavigate();
+  const trackedScrollMilestones = React.useRef<Set<number>>(new Set());
+
+  const trackHomeEvent = React.useCallback((eventName: string, payload?: Record<string, unknown>) => {
+    if (typeof window === "undefined") return;
+    window.dispatchEvent(
+      new CustomEvent("fh:analytics", {
+        detail: {
+          feature: "homepage_hero",
+          event: eventName,
+          timestamp: new Date().toISOString(),
+          ...payload,
+        },
+      }),
+    );
+  }, []);
+
+  React.useEffect(() => {
+    trackHomeEvent("hero_view");
+  }, [trackHomeEvent]);
+
+  React.useEffect(() => {
+    const onScroll = () => {
+      const doc = document.documentElement;
+      const total = Math.max(1, doc.scrollHeight - window.innerHeight);
+      const pct = Math.round((window.scrollY / total) * 100);
+      [25, 50, 75].forEach((milestone) => {
+        if (pct >= milestone && !trackedScrollMilestones.current.has(milestone)) {
+          trackedScrollMilestones.current.add(milestone);
+          trackHomeEvent("scroll_depth", { milestone });
+        }
+      });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [trackHomeEvent]);
+
   const navigateProvider = (path: string) => {
     const token = getStoredToken();
     const isOnboardingRoute = path.startsWith("/faithhub/provider/onboarding");
@@ -273,13 +309,19 @@ export default function FaithHubHomeLandingPageV3Fixed() {
             <ThemeModeToggle />
             <button
               className="hidden rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-black shadow-sm transition hover:bg-slate-50 lg:inline-flex"
-              onClick={() => navigate("/faithhub/provider")}
+              onClick={() => {
+                trackHomeEvent("header_cta_click", { cta: "sign_in" });
+                navigate("/faithhub/provider");
+              }}
             >
               Sign in
             </button>
             <button
               className="rounded-2xl bg-[var(--fh-brand)] px-5 py-3 text-sm font-black text-white shadow-[0_16px_40px_rgba(3,205,140,0.28)] transition hover:-translate-y-0.5 hover:shadow-[0_20px_50px_rgba(3,205,140,0.34)]"
-              onClick={() => navigateProvider("/faithhub/provider/onboarding")}
+              onClick={() => {
+                trackHomeEvent("header_cta_click", { cta: "join_faithhub" });
+                navigateProvider("/faithhub/provider/onboarding");
+              }}
             >
               Join FaithHub
             </button>
@@ -299,21 +341,30 @@ export default function FaithHubHomeLandingPageV3Fixed() {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <button
                 className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[var(--fh-brand)] px-6 py-4 text-base font-black text-white shadow-[0_16px_40px_rgba(3,205,140,0.28)] transition hover:-translate-y-0.5 hover:shadow-[0_20px_50px_rgba(3,205,140,0.34)]"
-                onClick={() => navigateProvider("/faithhub/provider/onboarding")}
+                onClick={() => {
+                  trackHomeEvent("hero_cta_click", { cta: "start_with_faithhub", placement: "hero_primary" });
+                  navigateProvider("/faithhub/provider/onboarding");
+                }}
               >
                 Start with FaithHub
                 <ArrowRight className="h-5 w-5" />
               </button>
               <button
                 className="inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-6 py-4 text-base font-black shadow-sm transition hover:bg-slate-50"
-                onClick={() => navigateProvider("/faithhub/provider/live-dashboard")}
+                onClick={() => {
+                  trackHomeEvent("hero_cta_click", { cta: "watch_experience", placement: "hero_secondary" });
+                  navigateProvider("/faithhub/provider/live-dashboard");
+                }}
               >
                 <Play className="h-5 w-5" />
                 Watch the experience
               </button>
               <button
                 className="inline-flex items-center justify-center gap-2 rounded-2xl border border-[var(--fh-brand)]/30 bg-white px-6 py-4 text-base font-black text-[var(--fh-brand)] shadow-sm transition hover:bg-[var(--fh-brand-soft)]"
-                onClick={() => navigateProvider("/faithhub/provider/dashboard")}
+                onClick={() => {
+                  trackHomeEvent("hero_cta_click", { cta: "open_provider_dashboard", placement: "hero_tertiary" });
+                  navigateProvider("/faithhub/provider/dashboard");
+                }}
               >
                 Open FaithHub Provider Dashboard
               </button>
@@ -602,13 +653,19 @@ export default function FaithHubHomeLandingPageV3Fixed() {
               <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
                 <button
                   className="rounded-2xl bg-[var(--fh-brand)] px-6 py-4 text-base font-black text-white shadow-[0_16px_35px_rgba(3,205,140,0.28)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_40px_rgba(3,205,140,0.34)]"
-                  onClick={() => navigateProvider("/faithhub/provider/onboarding")}
+                  onClick={() => {
+                    trackHomeEvent("hero_cta_click", { cta: "get_started", placement: "bottom_cta" });
+                    navigateProvider("/faithhub/provider/onboarding");
+                  }}
                 >
                   Get started
                 </button>
                 <button
                   className="rounded-2xl border border-white/15 bg-white/5 px-6 py-4 text-base font-black text-white backdrop-blur transition hover:bg-white/10"
-                  onClick={() => navigateProvider("/faithhub/provider/dashboard")}
+                  onClick={() => {
+                    trackHomeEvent("hero_cta_click", { cta: "book_demo", placement: "bottom_cta" });
+                    navigateProvider("/faithhub/provider/dashboard");
+                  }}
                 >
                   Book a demo
                 </button>
@@ -679,6 +736,31 @@ export default function FaithHubHomeLandingPageV3Fixed() {
           </div>
         </div>
       </footer>
+
+      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-slate-200 bg-white/95 p-3 shadow-[0_-12px_28px_rgba(15,23,42,0.12)] backdrop-blur md:hidden">
+        <div className="mx-auto flex w-full max-w-7xl items-center gap-2">
+          <button
+            type="button"
+            className="flex-1 rounded-xl bg-[var(--fh-brand)] px-4 py-3 text-sm font-black text-white shadow-[0_10px_26px_rgba(3,205,140,0.32)]"
+            onClick={() => {
+              trackHomeEvent("hero_cta_click", { cta: "mobile_get_started", placement: "sticky_mobile_bar" });
+              navigateProvider("/faithhub/provider/onboarding");
+            }}
+          >
+            Get started
+          </button>
+          <button
+            type="button"
+            className="flex-1 rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm font-black text-slate-800"
+            onClick={() => {
+              trackHomeEvent("hero_cta_click", { cta: "mobile_open_dashboard", placement: "sticky_mobile_bar" });
+              navigateProvider("/faithhub/provider/dashboard");
+            }}
+          >
+            Open dashboard
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
