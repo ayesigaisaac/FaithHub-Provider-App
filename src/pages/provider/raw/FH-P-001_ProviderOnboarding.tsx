@@ -1,5 +1,5 @@
 import { BadgeCheck } from 'lucide-react';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import {
   Alert,
   Box,
@@ -25,7 +25,6 @@ import { useNavigate } from 'react-router-dom';
 import { ProviderPageTitle } from '@/components/provider/ProviderPageTitle';
 import { useAuth } from '@/auth/useAuth';
 import type { ProviderOnboardingDraft } from '@/auth/types';
-import { DEFAULT_ONBOARDING_DRAFT } from '@/auth/storage';
 
 const STEPS = ['Organization', 'Contact', 'Profile', 'Review'] as const;
 
@@ -63,6 +62,8 @@ export default function ProviderOnboardingPage() {
     setOnboardingStatus,
     saveOnboardingDraft,
     submitOnboarding,
+    resetOnboarding,
+    refreshOnboarding,
     isOnboardingComplete,
   } = useAuth();
 
@@ -111,11 +112,14 @@ export default function ProviderOnboardingPage() {
     }
   };
 
-  const resetDraft = () => {
-    setOnboardingDraft(DEFAULT_ONBOARDING_DRAFT);
-    setOnboardingStatus('not_started');
-    setStep(0);
-    setNotice('Draft reset. You can start onboarding again.');
+  const resetDraft = async () => {
+    try {
+      await resetOnboarding();
+      setStep(0);
+      setNotice('Draft reset. You can start onboarding again.');
+    } catch (error) {
+      setNotice(error instanceof Error ? error.message : 'Unable to reset onboarding right now.');
+    }
   };
 
   const submit = async () => {
@@ -139,10 +143,11 @@ export default function ProviderOnboardingPage() {
     }
   };
 
-  const approve = () => {
-    setOnboardingStatus('approved');
-    navigate('/faithhub/provider/dashboard', { replace: true });
-  };
+  useEffect(() => {
+    if (isOnboardingComplete) {
+      navigate('/faithhub/provider/dashboard', { replace: true });
+    }
+  }, [isOnboardingComplete, navigate]);
 
   if (isOnboardingComplete) {
     return null;
@@ -174,11 +179,15 @@ export default function ProviderOnboardingPage() {
               <Stack spacing={1.5}>
                 <Typography variant="h6" fontWeight={800}>Submission Received</Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Your onboarding is submitted and pending verification. In production, this would await back-office review.
+                  Your onboarding is submitted and pending verification. You can refresh status while back-office review is in progress.
                 </Typography>
                 <Stack direction="row" spacing={1.2}>
-                  <Button variant="outlined" onClick={() => setOnboardingStatus('in_progress')}>Edit and resubmit</Button>
-                  <Button variant="contained" onClick={approve}>Approve and enter dashboard</Button>
+                  <Button
+                    variant="outlined"
+                    onClick={() => void refreshOnboarding()}
+                  >
+                    Refresh status
+                  </Button>
                 </Stack>
               </Stack>
             </CardContent>
@@ -336,7 +345,7 @@ export default function ProviderOnboardingPage() {
               ) : null}
 
               <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1.2} mt={3}>
-                <Button variant="text" color="warning" onClick={resetDraft}>Reset draft</Button>
+                <Button variant="text" color="warning" onClick={() => void resetDraft()}>Reset draft</Button>
                 <Button variant="outlined" onClick={() => void saveDraft()}>Save draft</Button>
                 <Button variant="outlined" onClick={() => setStep(resumeStep)}>Jump to resume step</Button>
                 <Box sx={{ flex: 1 }} />

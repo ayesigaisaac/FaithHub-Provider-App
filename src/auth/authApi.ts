@@ -376,3 +376,27 @@ export async function submitProviderOnboardingRequest(token: string): Promise<Pr
     draft: { ...DEFAULT_ONBOARDING_STATE.draft, ...(data.draft ?? {}) },
   };
 }
+
+export async function resetProviderOnboardingRequest(token: string): Promise<ProviderOnboardingState> {
+  if (!API_BASE_URL) {
+    const next: ProviderOnboardingState = {
+      status: 'not_started',
+      draft: DEFAULT_ONBOARDING_STATE.draft,
+    };
+    setMockOnboardingState(token, next);
+    return next;
+  }
+
+  const res = await fetch(`${API_BASE_URL}/provider/onboarding/reset`, {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (!res.ok) {
+    throw new Error('Unable to reset onboarding.');
+  }
+  const data = (await res.json()) as Partial<ProviderOnboardingState>;
+  return {
+    status: data.status ?? 'not_started',
+    draft: { ...DEFAULT_ONBOARDING_STATE.draft, ...(data.draft ?? DEFAULT_ONBOARDING_STATE.draft) },
+  };
+}

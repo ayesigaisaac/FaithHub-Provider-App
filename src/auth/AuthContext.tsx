@@ -5,6 +5,7 @@ import {
   logoutRequest,
   meRequest,
   saveProviderOnboardingDraftRequest,
+  resetProviderOnboardingRequest,
   submitProviderOnboardingRequest,
 } from './authApi';
 import {
@@ -52,6 +53,7 @@ type AuthContextValue = {
   refreshOnboarding: () => Promise<void>;
   saveOnboardingDraft: (draft: ProviderOnboardingDraft) => Promise<void>;
   submitOnboarding: () => Promise<void>;
+  resetOnboarding: () => Promise<void>;
   canAccessPath: (path: string) => boolean;
   canPerform: (action: string) => boolean;
 };
@@ -222,6 +224,20 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setStoredOnboardingStatus(onboarding.status);
   }, [setOnboardingStatus, token]);
 
+  const resetOnboarding = useCallback(async () => {
+    const currentToken = token ?? getStoredToken();
+    if (!currentToken) {
+      setOnboardingDraft(DEFAULT_ONBOARDING_DRAFT);
+      setOnboardingStatus('not_started');
+      return;
+    }
+    const onboarding = await resetProviderOnboardingRequest(currentToken);
+    setOnboardingDraftState(onboarding.draft);
+    setOnboardingStatusState(onboarding.status);
+    setStoredOnboardingDraft(onboarding.draft);
+    setStoredOnboardingStatus(onboarding.status);
+  }, [setOnboardingDraft, setOnboardingStatus, token]);
+
   const value = useMemo<AuthContextValue>(
     () => ({
       user,
@@ -243,6 +259,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       refreshOnboarding,
       saveOnboardingDraft,
       submitOnboarding,
+      resetOnboarding,
       canAccessPath: (path: string) => {
         const required = routePermissions[path] ?? [];
         return hasAllPermissions(permissions, required);
@@ -268,6 +285,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setOnboardingStatus,
       setWorkspace,
       submitOnboarding,
+      resetOnboarding,
       token,
       user,
       workspace,

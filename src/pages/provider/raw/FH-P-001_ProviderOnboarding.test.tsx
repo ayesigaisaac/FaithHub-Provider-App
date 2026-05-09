@@ -27,6 +27,7 @@ describe('Provider onboarding page', () => {
     const setOnboardingStatus = vi.fn();
     const saveOnboardingDraft = vi.fn(async () => {});
     const submitOnboarding = vi.fn(async () => {});
+    const resetOnboarding = vi.fn(async () => {});
 
     render(
       <AuthContext.Provider
@@ -50,6 +51,7 @@ describe('Provider onboarding page', () => {
           refreshOnboarding: async () => {},
           saveOnboardingDraft,
           submitOnboarding,
+          resetOnboarding,
           canAccessPath: () => true,
           canPerform: () => true,
         }}
@@ -66,7 +68,6 @@ describe('Provider onboarding page', () => {
     expect(screen.getByLabelText(/Primary contact name/i)).toBeInTheDocument();
 
     await user.click(screen.getByRole('button', { name: /Reset draft/i }));
-    expect(setOnboardingDraft).toHaveBeenCalled();
-    expect(setOnboardingStatus).toHaveBeenCalledWith('not_started');
+    expect(resetOnboarding).toHaveBeenCalled();
   });
 });
