@@ -42,7 +42,7 @@ describe('App smoke routing', () => {
 
   it('renders the app successfully', async () => {
     renderApp(['/faithhub/home-landing']);
-    expect(await screen.findByText(/A premium digital home for faith, teaching, community, and giving/i)).toBeInTheDocument();
+    expect(await screen.findByText(/One platform for live ministry, teachings, community, and giving/i)).toBeInTheDocument();
   });
 
   it('shows NotFound for unknown routes', async () => {
