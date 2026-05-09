@@ -13,6 +13,13 @@ function knownProviderPaths() {
 }
 
 describe('provider navigation integrity', () => {
+  it('includes Content Planner in provider navigation metadata', () => {
+    const contentPlannerPage = providerPages.find((page) => page.key === 'content-planner');
+    expect(contentPlannerPage).toBeTruthy();
+    expect(contentPlannerPage?.path).toBe('/faithhub/provider/content-planner');
+    expect(contentPlannerPage?.hidden).not.toBe(true);
+  });
+
   it('ensures topbar tabs point to registered provider routes', () => {
     const knownPaths = knownProviderPaths();
     topbarTabs.forEach((tab) => {

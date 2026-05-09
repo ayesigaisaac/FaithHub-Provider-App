@@ -9,6 +9,12 @@ import { AnimatePresence, motion } from "framer-motion";
 import { getLiveFlowSessionById } from "@/features/live/liveFlowStore";
 import { recordStudioOp } from "@/features/live/liveStudioOpsStore";
 import { recordLiveActivity } from "@/features/live/liveActivityStore";
+import {
+  getLiveRuntimeBySessionId,
+  setLiveRuntimeRecording,
+  setLiveRuntimeStatus,
+  subscribeToLiveRuntime,
+} from "@/features/live/liveRuntimeStore";
 import { LiveFlowProgressRibbon } from "@/features/live/LiveFlowProgressRibbon";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 import {
@@ -755,7 +761,8 @@ export default function FaithHubLiveStudioPage() {
     sessionId ? `${route}?sessionId=${encodeURIComponent(sessionId)}` : route;
   const sessionTitle = routedSession?.title || SESSION.title;
 
-  const [mode, setMode] = useState<Mode>("standby");
+  const runtime = sessionId ? getLiveRuntimeBySessionId(sessionId) : null;
+  const [mode, setMode] = useState<Mode>(runtime?.status === "Live" ? "live" : "standby");
   const [elapsedSec, setElapsedSec] = useState(0);
   const [activeSceneId, setActiveSceneId] = useState("welcome");
   const [previewSceneId, setPreviewSceneId] = useState("sermon");
@@ -767,7 +774,7 @@ export default function FaithHubLiveStudioPage() {
   const [translationsEnabled, setTranslationsEnabled] = useState(true);
   const [primaryTrack, setPrimaryTrack] = useState<(typeof LANGUAGE_TRACKS)[number]>("English");
   const [secondaryTrack, setSecondaryTrack] = useState<(typeof LANGUAGE_TRACKS)[number]>("Swahili");
-  const [recordingOn, setRecordingOn] = useState(true);
+  const [recordingOn, setRecordingOn] = useState(runtime?.recordingOn ?? true);
   const [isoTracksOn, setIsoTracksOn] = useState(true);
   const [muteAll, setMuteAll] = useState(false);
   const [emergencySlate, setEmergencySlate] = useState(false);
@@ -786,6 +793,16 @@ export default function FaithHubLiveStudioPage() {
     }, 1000);
     return () => window.clearInterval(interval);
   }, [mode]);
+
+  useEffect(() => {
+    if (!sessionId) return;
+    return subscribeToLiveRuntime(() => {
+      const next = getLiveRuntimeBySessionId(sessionId);
+      if (!next) return;
+      setMode(next.status === "Live" ? "live" : "standby");
+      setRecordingOn(next.recordingOn);
+    });
+  }, [sessionId]);
 
   useEffect(() => {
     if (!toast) return;
@@ -856,6 +873,7 @@ export default function FaithHubLiveStudioPage() {
       setElapsedSec(0);
       setEmergencySlate(false);
       if (sessionId) {
+        setLiveRuntimeStatus(sessionId, "Live");
         recordLiveActivity({
           sessionId,
           flow: "studio",
@@ -869,6 +887,7 @@ export default function FaithHubLiveStudioPage() {
     }
     setMode("standby");
     if (sessionId) {
+      setLiveRuntimeStatus(sessionId, "Ended");
       recordLiveActivity({
         sessionId,
         flow: "studio",
@@ -949,6 +968,11 @@ export default function FaithHubLiveStudioPage() {
     setMuteAll((current) => !current);
     showToast(!muteAll ? "All presenter mics muted" : "Presenter audio restored");
   };
+
+  useEffect(() => {
+    if (!sessionId) return;
+    setLiveRuntimeRecording(sessionId, recordingOn);
+  }, [recordingOn, sessionId]);
 
   const headerBadge = (
     <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 xl:flex xl:w-auto xl:flex-wrap xl:justify-end">

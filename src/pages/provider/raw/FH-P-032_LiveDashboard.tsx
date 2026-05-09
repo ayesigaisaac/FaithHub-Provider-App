@@ -43,6 +43,7 @@ import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 import { getLiveFlowState, subscribeToLiveFlow } from "@/features/live/liveFlowStore";
 import { LiveFlowProgressRibbon } from "@/features/live/LiveFlowProgressRibbon";
 import { exportLiveActivityCsv, getLiveActivityRecords, subscribeToLiveActivity } from "@/features/live/liveActivityStore";
+import { getLiveRuntimeState, subscribeToLiveRuntime } from "@/features/live/liveRuntimeStore";
 
 /**
  * Provider ï¿½ Live Dashboard
@@ -1169,6 +1170,7 @@ function PostLiveLaunchPad({ session }: { session: SessionData }) {
 export default function FaithHubLiveDashboardPage() {
   const [nowMs, setNowMs] = useState(Date.now());
   const [liveFlow, setLiveFlow] = useState(() => getLiveFlowState());
+  const [liveRuntime, setLiveRuntime] = useState(() => getLiveRuntimeState());
   const [activeSessionId, setActiveSessionId] = useState(() => {
     if (typeof window !== "undefined") {
       const routedId = new URLSearchParams(window.location.search).get("sessionId");
@@ -1211,6 +1213,12 @@ export default function FaithHubLiveDashboardPage() {
     });
   }, []);
 
+  useEffect(() => {
+    return subscribeToLiveRuntime(() => {
+      setLiveRuntime(getLiveRuntimeState());
+    });
+  }, []);
+
   const allSessions = useMemo(
     () => [...liveFlow.sessions.map(mapLiveFlowRecordToDashboardSession), ...SESSIONS],
     [liveFlow.sessions],
@@ -1222,10 +1230,27 @@ export default function FaithHubLiveDashboardPage() {
     }
   }, [activeSessionId, allSessions]);
 
-  const session = useMemo(
-    () => allSessions.find((item) => item.id === activeSessionId) || allSessions[0] || SESSIONS[0],
-    [activeSessionId, allSessions],
-  );
+  const session = useMemo(() => {
+    const base = allSessions.find((item) => item.id === activeSessionId) || allSessions[0] || SESSIONS[0];
+    const runtime = liveRuntime.sessions[base.id];
+    if (!runtime) return base;
+
+    const mappedState: SessionState =
+      runtime.status === "Live" ? "Live" : runtime.status === "Ended" ? "Ended" : "Upcoming";
+
+    return {
+      ...base,
+      state: mappedState,
+      health: {
+        ...base.health,
+        recording: runtime.recordingOn,
+      },
+      destinations: base.destinations.map((destination) => ({
+        ...destination,
+        status: (runtime.destinations[destination.name] as typeof destination.status) ?? destination.status,
+      })),
+    };
+  }, [activeSessionId, allSessions, liveRuntime.sessions]);
 
   useEffect(() => {
     setSlowMode(session.moderationDefaults.slowMode);

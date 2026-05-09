@@ -6,6 +6,12 @@ import { useNotification } from '@/contexts/NotificationContext';
 import { useAsyncAction } from '@/hooks/useAsyncAction';
 import { getLiveFlowSessionById } from '@/features/live/liveFlowStore';
 import { LiveFlowProgressRibbon } from '@/features/live/LiveFlowProgressRibbon';
+import {
+  getLiveRuntimeBySessionId,
+  setLiveRuntimeDestination,
+  setLiveRuntimeRecording,
+  setLiveRuntimeStatus,
+} from '@/features/live/liveRuntimeStore';
 import { CircularProgress } from '@mui/material';
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 import {
@@ -750,7 +756,8 @@ export default function StreamToPlatformsPage() {
   const routeWithSession = (route: string) =>
     sessionId ? `${route}?sessionId=${encodeURIComponent(sessionId)}` : route;
 
-  const [sessionStatus, setSessionStatus] = useState<SessionStatus>('Scheduled');
+  const runtime = sessionId ? getLiveRuntimeBySessionId(sessionId) : null;
+  const [sessionStatus, setSessionStatus] = useState<SessionStatus>((runtime?.status as SessionStatus) || 'Scheduled');
   const [selectedDestId, setSelectedDestId] = useState<string | null>(null);
   const [advancedOpen, setAdvancedOpen] = useState(false);
   const [presetOpen, setPresetOpen] = useState(false);
@@ -760,7 +767,7 @@ export default function StreamToPlatformsPage() {
   const [estimatedUploadMbps, setEstimatedUploadMbps] = useState(22.4);
   const [crossPostRule, setCrossPostRule] = useState<CrossPostRule>('Replay + clips');
   const [fallbackRule, setFallbackRule] = useState<FallbackRule>('Keep Provider primary');
-  const [recordMaster, setRecordMaster] = useState(true);
+  const [recordMaster, setRecordMaster] = useState(runtime?.recordingOn ?? true);
   const [protectIso, setProtectIso] = useState(true);
   const [beaconBridge, setBeaconBridge] = useState(true);
   const [destinations, setDestinations] = useState<Destination[]>(INITIAL_DESTINATIONS);
@@ -914,6 +921,31 @@ export default function StreamToPlatformsPage() {
     );
     showSuccess('Destination reconnected');
   }
+
+  useEffect(() => {
+    if (!sessionId) return;
+    setLiveRuntimeStatus(sessionId, sessionStatus);
+  }, [sessionId, sessionStatus]);
+
+  useEffect(() => {
+    if (!sessionId) return;
+    setLiveRuntimeRecording(sessionId, recordMaster);
+  }, [recordMaster, sessionId]);
+
+  useEffect(() => {
+    if (!sessionId) return;
+    destinations.forEach((destination) => {
+      const mapped =
+        destination.status === 'Connected'
+          ? 'Healthy'
+          : destination.status === 'Needs re-auth'
+            ? 'Delayed'
+            : destination.status === 'Missing credentials' || destination.status === 'Blocked'
+              ? 'Failed'
+              : destination.status;
+      setLiveRuntimeDestination(sessionId, destination.name, mapped);
+    });
+  }, [destinations, sessionId]);
 
   function runBandwidthTest() {
     const jitter = Math.random() * 6 - 2;

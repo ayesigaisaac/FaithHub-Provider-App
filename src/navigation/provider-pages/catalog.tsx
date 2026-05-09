@@ -8,6 +8,7 @@ import {
   Briefcase,
   Building2,
   CalendarClock,
+  CalendarDays,
   ClipboardCheck,
   DollarSign,
   FilePenLine,
@@ -74,6 +75,7 @@ const StandaloneTeachingBuilder = lazyPage(() => import('@/pages/provider/raw/FH
 const BooksManager = lazyPage(() => import('@/pages/provider/raw/FH-P-023_BooksManager'));
 const BookBuilder = lazyPage(() => import('@/pages/provider/raw/FH-P-024_BookBuilder'));
 const ResourcesManager = lazyPage(() => import('@/pages/provider/raw/FH-P-025_ResourcesManager'));
+const ContentPlanner = lazyPage(() => import('@/pages/provider/raw/FH-P-130_ContentPlanner'));
 const MerchandiseManager = lazyPage(() => import('@/pages/provider/raw/FH-P-026_MerchandiseManager'));
 const MerchandiseBuilder = lazyPage(() => import('@/pages/provider/raw/FH-P-027_MerchandiseBuilder'));
 const LiveBuilder = lazyPage(() => import('@/pages/provider/raw/FH-P-030_LiveBuilder'));
@@ -226,6 +228,17 @@ export const providerPageCatalog: ProviderPageMeta[] = [
     section: 'Content Structure & Teaching Creation',
     icon: FolderKanban,
     component: ResourcesManager,
+  },
+  {
+    key: 'content-planner',
+    id: 'FH-P-130',
+    title: 'Content Planner',
+    description: 'Plan cycles, assign owners, and track readiness across teaching and publishing workflows.',
+    path: '/faithhub/provider/content-planner',
+    section: 'Content Structure & Teaching Creation',
+    icon: CalendarDays,
+    quickAction: true,
+    component: ContentPlanner,
   },
   {
     key: 'merchandise-manager',
