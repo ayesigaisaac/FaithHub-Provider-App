@@ -43,11 +43,9 @@ import {
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 import {
-  getLiveFlowSessionById,
-  saveLiveFlowDraft,
-  scheduleLiveFlowSession,
   validateLiveFlowDraft,
 } from "@/features/live/liveFlowStore";
+import { liveSessionsApi } from "@/api/live";
 import { LiveFlowProgressRibbon } from "@/features/live/LiveFlowProgressRibbon";
 import { recordLiveActivity } from "@/features/live/liveActivityStore";
 import { AuthContext } from "@/auth/AuthContext";
@@ -2450,7 +2448,7 @@ export default function FaithHubLiveBuilderPage({ embedded = false, onRequestClo
     const sessionId = new URLSearchParams(window.location.search).get("sessionId");
     if (!sessionId) return;
 
-    const session = getLiveFlowSessionById(sessionId);
+    const session = liveSessionsApi.getById(sessionId);
     if (!session) return;
 
     const startDate = new Date(session.startISO);
@@ -2529,7 +2527,7 @@ export default function FaithHubLiveBuilderPage({ embedded = false, onRequestClo
       return;
     }
 
-    const saved = saveLiveFlowDraft({
+    const saved = liveSessionsApi.saveDraft({
       id: draft.id,
       title: draft.title,
       subtitle: draft.subtitle,
@@ -2583,7 +2581,7 @@ export default function FaithHubLiveBuilderPage({ embedded = false, onRequestClo
       return;
     }
 
-    const scheduled = scheduleLiveFlowSession({
+    const scheduled = liveSessionsApi.schedule({
       id: draft.id,
       title: draft.title,
       subtitle: draft.subtitle,
