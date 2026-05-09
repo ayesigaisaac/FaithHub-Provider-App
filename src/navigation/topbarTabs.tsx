@@ -5,6 +5,7 @@ import GroupsRoundedIcon from '@mui/icons-material/GroupsRounded';
 import VolunteerActivismRoundedIcon from '@mui/icons-material/VolunteerActivismRounded';
 import type { ReactNode } from 'react';
 import type { ProviderPageSection } from './providerPages';
+import { providerCategoryMeta } from './providerCategories';
 
 export type TopbarTab = {
   label: string;
@@ -13,35 +14,48 @@ export type TopbarTab = {
   icon: ReactNode;
 };
 
+const sectionByNavLabel = providerCategoryMeta.reduce<Record<string, ProviderPageSection>>((acc, item) => {
+  acc[item.navLabel] = item.section;
+  return acc;
+}, {});
+
+function category(navLabel: string): ProviderPageSection {
+  const section = sectionByNavLabel[navLabel];
+  if (!section) {
+    throw new Error(`Unknown provider category label: ${navLabel}`);
+  }
+  return section;
+}
+
 export const topbarTabs: TopbarTab[] = [
   {
     label: 'Dashboard',
     to: '/faithhub/provider/dashboard',
-    sections: ['Foundation & Mission Control', 'Content Structure & Teaching Creation'],
+    sections: [category('Foundation'), category('Content')],
     icon: <DashboardRoundedIcon fontSize="small" />,
   },
   {
     label: 'Streams',
     to: '/faithhub/provider/live-dashboard',
-    sections: ['Live Sessions Operations'],
+    sections: [category('Live Ops')],
     icon: <PlayCircleOutlineRoundedIcon fontSize="small" />,
   },
   {
     label: 'Community',
     to: '/faithhub/provider/community-groups',
-    sections: ['Audience & Outreach', 'Community & Care'],
+    sections: [category('Audience'), category('Community')],
     icon: <GroupsRoundedIcon fontSize="small" />,
   },
   {
     label: 'Giving',
     to: '/faithhub/provider/donations-and-funds',
-    sections: ['Events & Giving'],
+    sections: [category('Giving')],
     icon: <VolunteerActivismRoundedIcon fontSize="small" />,
   },
   {
     label: 'Reports',
     to: '/faithhub/provider/reviews-and-moderation',
-    sections: ['Post-live & Trust', 'Leadership & Team', 'Workspace Settings', 'Beacon', 'Previews'],
+    sections: [category('Post-live'), category('Leadership'), category('Settings'), category('Beacon'), category('Previews')],
     icon: <EventNoteRoundedIcon fontSize="small" />,
   },
 ];
