@@ -3,7 +3,10 @@ import FaithHubLiveBuilderPage from "@/pages/provider/raw/FH-P-030_LiveBuilder";
 import FaithHubLiveSchedulePage from "@/pages/provider/raw/FH-P-031_LiveSchedule";
 import FaithHubLiveDashboardPage from "@/pages/provider/raw/FH-P-032_LiveDashboard";
 import FaithHubLiveStudioPage from "@/pages/provider/raw/FH-P-033_LiveStudio";
+import StreamToPlatformsPage from "@/pages/provider/raw/FH-P-034_StreamToPlatforms";
 import { getLiveFlowState } from "./liveFlowStore";
+import { getLiveRuntimeBySessionId } from "./liveRuntimeStore";
+import { NotificationProvider } from "@/contexts/NotificationContext";
 
 describe("Live flow integration", () => {
   beforeEach(() => {
@@ -83,6 +86,39 @@ describe("Live flow integration", () => {
       expect(window.location.pathname).toBe("/faithhub/provider/stream-to-platforms");
       expect(new URLSearchParams(window.location.search).get("sessionId")).toBe(saved.id);
       studio.unmount();
+    },
+    20000,
+  );
+
+  it(
+    "syncs stream destination runtime state for the routed session",
+    async () => {
+      const builder = render(<FaithHubLiveBuilderPage />);
+      fireEvent.click(await screen.findByRole("button", { name: /save live session/i }));
+
+      await waitFor(() => {
+        expect(getLiveFlowState().sessions.length).toBeGreaterThan(0);
+      });
+      const saved = getLiveFlowState().sessions[0];
+      builder.unmount();
+
+      window.history.pushState(
+        {},
+        "",
+        `/faithhub/provider/stream-to-platforms?sessionId=${encodeURIComponent(saved.id)}`,
+      );
+      render(
+        <NotificationProvider>
+          <StreamToPlatformsPage />
+        </NotificationProvider>,
+      );
+
+      await waitFor(() => {
+        const runtime = getLiveRuntimeBySessionId(saved.id);
+        expect(runtime).toBeTruthy();
+        expect(runtime?.destinations["Live Hub"]).toBe("Healthy");
+        expect(runtime?.destinations["Custom RTMP Backup"]).toBe("Standby");
+      });
     },
     20000,
   );

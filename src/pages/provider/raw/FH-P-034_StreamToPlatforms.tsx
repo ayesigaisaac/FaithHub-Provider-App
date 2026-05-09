@@ -6,6 +6,7 @@ import { useNotification } from '@/contexts/NotificationContext';
 import { useAsyncAction } from '@/hooks/useAsyncAction';
 import { getLiveFlowSessionById } from '@/features/live/liveFlowStore';
 import { LiveFlowProgressRibbon } from '@/features/live/LiveFlowProgressRibbon';
+import { recordLiveActivity } from '@/features/live/liveActivityStore';
 import {
   getLiveRuntimeBySessionId,
   setLiveRuntimeDestination,
@@ -868,6 +869,7 @@ export default function StreamToPlatformsPage() {
   }
 
   function toggleDestination(id: string, next: boolean) {
+    const selected = destinations.find((item) => item.id === id);
     setDestinations((prev) => {
       const draft = prev.map((d) => {
         if (d.id !== id) return d;
@@ -876,6 +878,15 @@ export default function StreamToPlatformsPage() {
       });
       return normalizeRouteOrders(draft);
     });
+    if (sessionId && selected) {
+      recordLiveActivity({
+        sessionId,
+        flow: 'stream',
+        action: next ? 'Enabled destination' : 'Disabled destination',
+        actorName: 'Provider operator',
+        detail: selected.name,
+      });
+    }
   }
 
   function moveRoute(id: string, dir: -1 | 1) {
@@ -904,6 +915,7 @@ export default function StreamToPlatformsPage() {
   }
 
   function handleReconnect(id: string) {
+    const selected = destinations.find((item) => item.id === id);
     setDestinations((prev) =>
       normalizeRouteOrders(
         prev.map((d) =>
@@ -919,6 +931,15 @@ export default function StreamToPlatformsPage() {
         )
       )
     );
+    if (sessionId && selected) {
+      recordLiveActivity({
+        sessionId,
+        flow: 'stream',
+        action: 'Reconnected destination credentials',
+        actorName: 'Provider operator',
+        detail: selected.name,
+      });
+    }
     showSuccess('Destination reconnected');
   }
 
@@ -935,6 +956,10 @@ export default function StreamToPlatformsPage() {
   useEffect(() => {
     if (!sessionId) return;
     destinations.forEach((destination) => {
+      if (!destination.enabled) {
+        setLiveRuntimeDestination(sessionId, destination.name, 'Standby');
+        return;
+      }
       const mapped =
         destination.status === 'Connected'
           ? 'Healthy'
@@ -981,6 +1006,15 @@ export default function StreamToPlatformsPage() {
         })
       )
     );
+    if (sessionId) {
+      recordLiveActivity({
+        sessionId,
+        flow: 'stream',
+        action: 'Applied distribution preset',
+        actorName: 'Provider operator',
+        detail: preset.label,
+      });
+    }
     showSuccess(`${preset.label} applied`);
   }
 
@@ -992,6 +1026,15 @@ export default function StreamToPlatformsPage() {
 
     run(async () => {
       if (sessionStatus === 'Draft') setSessionStatus('Scheduled');
+      if (sessionId) {
+        recordLiveActivity({
+          sessionId,
+          flow: 'stream',
+          action: 'Published stream distribution plan',
+          actorName: 'Provider operator',
+          detail: `${activeDestinations.length} destinations`,
+        });
+      }
       safeNav(routeWithSession(ROUTES.postLivePublishing));
     }, {
       loadingMessage: 'Publishing distribution plan…',

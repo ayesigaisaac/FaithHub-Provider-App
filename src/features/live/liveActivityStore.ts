@@ -1,4 +1,4 @@
-export type LiveActivityFlow = "builder" | "schedule" | "studio" | "publish";
+export type LiveActivityFlow = "builder" | "schedule" | "studio" | "stream" | "publish";
 
 export type LiveActivityRecord = {
   id: string;

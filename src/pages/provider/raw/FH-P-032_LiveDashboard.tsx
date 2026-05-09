@@ -1186,7 +1186,7 @@ export default function FaithHubLiveDashboardPage() {
   const [audienceMute, setAudienceMute] = useState(false);
   const [prayerTriage, setPrayerTriage] = useState(true);
   const [reminderSent, setReminderSent] = useState(false);
-  const [activityFlowFilter, setActivityFlowFilter] = useState<"all" | "builder" | "schedule" | "studio" | "publish">("all");
+  const [activityFlowFilter, setActivityFlowFilter] = useState<"all" | "builder" | "schedule" | "studio" | "stream" | "publish">("all");
   const [activitySearch, setActivitySearch] = useState("");
   const [activityRecords, setActivityRecords] = useState(() => getLiveActivityRecords());
 
@@ -1677,13 +1677,14 @@ export default function FaithHubLiveDashboardPage() {
               <div className="grid gap-2 sm:grid-cols-3">
                 <select
                   value={activityFlowFilter}
-                  onChange={(e) => setActivityFlowFilter(e.target.value as "all" | "builder" | "schedule" | "studio" | "publish")}
+                  onChange={(e) => setActivityFlowFilter(e.target.value as "all" | "builder" | "schedule" | "studio" | "stream" | "publish")}
                   className="rounded-xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] font-semibold text-faith-ink dark:text-slate-100"
                 >
                   <option value="all">All flows</option>
                   <option value="builder">Live Builder</option>
                   <option value="schedule">Live Schedule</option>
                   <option value="studio">Live Studio</option>
+                  <option value="stream">Stream-to-Platforms</option>
                   <option value="publish">Post-live Publish</option>
                 </select>
                 <input
