@@ -31,6 +31,7 @@ import type { ProviderPageMeta } from '@/navigation/providerPages';
 import { resolveKnownProviderPath } from '@/navigation/providerPages';
 import { ThemeModeToggle } from '@/components/theme/ThemeModeToggle';
 import { teachingsQuickActions } from '@/navigation/teachingsQuickActions';
+import { ProviderVerificationBadge } from '@/components/provider/ProviderVerificationBadge';
 
 type ProviderTopbarProps = {
   current?: ProviderPageMeta;
@@ -55,7 +56,7 @@ export function ProviderTopbar({
   const isDark = theme.palette.mode === 'dark';
   const isMobileActions = useMediaQuery(theme.breakpoints.down('md'));
   const navigate = useNavigate();
-  const { user, role, workspace, logout, setWorkspace } = useAuth();
+  const { user, role, workspace, logout, setWorkspace, onboardingStatus } = useAuth();
   const [userAnchor, setUserAnchor] = useState<null | HTMLElement>(null);
   const [sectionAnchor, setSectionAnchor] = useState<null | HTMLElement>(null);
   const isTinyScreen = useMediaQuery('(max-width:399.95px)');
@@ -443,9 +444,12 @@ export function ProviderTopbar({
         </Box>
         <Divider />
         <MenuItem disabled>
-          <Typography variant="body2">
-            {roleLabel} - {workspace?.campus || 'Kampala Central'}
-          </Typography>
+          <Stack spacing={0.5}>
+            <Typography variant="body2">
+              {roleLabel} - {workspace?.campus || 'Kampala Central'}
+            </Typography>
+            <ProviderVerificationBadge status={onboardingStatus} />
+          </Stack>
         </MenuItem>
         <MenuItem
           onClick={() => {

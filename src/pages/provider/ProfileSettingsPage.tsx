@@ -20,6 +20,7 @@ import { Mail, Shield, UserCircle2 } from 'lucide-react';
 import { useAuth } from '@/auth/useAuth';
 import { ProviderPageTitle } from '@/components/provider/ProviderPageTitle';
 import type { WorkspaceContext } from '@/auth/types';
+import { ProviderVerificationBadge } from '@/components/provider/ProviderVerificationBadge';
 
 const PROFILE_PREFS_KEY = 'faithhub.provider.profile.prefs.v1';
 
@@ -57,7 +58,7 @@ function toDisplayName(name?: string, email?: string) {
 }
 
 export default function ProfileSettingsPage() {
-  const { user, role, workspace, setWorkspace } = useAuth();
+  const { user, role, workspace, setWorkspace, onboardingStatus } = useAuth();
   const fallbackName = toDisplayName(user?.name, user?.email);
 
   const [prefs, setPrefs] = useState<ProviderProfilePrefs>(() => {
@@ -183,6 +184,9 @@ export default function ProfileSettingsPage() {
               <Typography sx={{ mt: 0.75, fontSize: 14, color: 'var(--fh-slate)' }}>
                 Signed in as {user?.email || 'unknown@faithhub.dev'}
               </Typography>
+              <Box sx={{ mt: 1 }}>
+                <ProviderVerificationBadge status={onboardingStatus} />
+              </Box>
             </Box>
           </Stack>
           <Divider sx={{ my: 2.5 }} />
