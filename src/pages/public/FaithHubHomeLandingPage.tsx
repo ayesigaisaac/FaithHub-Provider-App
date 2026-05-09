@@ -22,6 +22,7 @@ import {
 } from "lucide-react";
 import { ThemeModeToggle } from "@/components/theme/ThemeModeToggle";
 import { BrandLogo } from "@/components/branding/BrandLogo";
+import { getStoredToken } from "@/auth/storage";
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -199,6 +200,16 @@ function SectionHeading({ eyebrow, title, body }: { eyebrow: string; title: stri
 
 export default function FaithHubHomeLandingPageV3Fixed() {
   const navigate = useNavigate();
+  const navigateProvider = (path: string) => {
+    const token = getStoredToken();
+    const isOnboardingRoute = path.startsWith("/faithhub/provider/onboarding");
+    if (token || isOnboardingRoute) {
+      navigate(path);
+      return;
+    }
+    navigate("/faithhub/provider", { state: { from: path } });
+  };
+
   const footerRouteMap: Record<string, string> = {
     "Live Sessions": "/faithhub/provider/live-dashboard",
     Teachings: "/faithhub/provider/teachings-dashboard",
@@ -227,7 +238,12 @@ export default function FaithHubHomeLandingPageV3Fixed() {
   };
 
   const navigateFooterLink = (label: string) => {
-    navigate(footerRouteMap[label] ?? "/faithhub/provider/dashboard");
+    const target = footerRouteMap[label] ?? "/faithhub/provider/dashboard";
+    if (target.startsWith("/faithhub/provider")) {
+      navigateProvider(target);
+      return;
+    }
+    navigate(target);
   };
 
   return (
@@ -263,7 +279,7 @@ export default function FaithHubHomeLandingPageV3Fixed() {
             </button>
             <button
               className="rounded-2xl bg-[var(--fh-brand)] px-5 py-3 text-sm font-black text-white shadow-[0_16px_40px_rgba(3,205,140,0.28)] transition hover:-translate-y-0.5 hover:shadow-[0_20px_50px_rgba(3,205,140,0.34)]"
-              onClick={() => navigate("/faithhub/provider/onboarding")}
+              onClick={() => navigateProvider("/faithhub/provider/onboarding")}
             >
               Join FaithHub
             </button>
@@ -283,21 +299,21 @@ export default function FaithHubHomeLandingPageV3Fixed() {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <button
                 className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[var(--fh-brand)] px-6 py-4 text-base font-black text-white shadow-[0_16px_40px_rgba(3,205,140,0.28)] transition hover:-translate-y-0.5 hover:shadow-[0_20px_50px_rgba(3,205,140,0.34)]"
-                onClick={() => navigate("/faithhub/provider/onboarding")}
+                onClick={() => navigateProvider("/faithhub/provider/onboarding")}
               >
                 Start with FaithHub
                 <ArrowRight className="h-5 w-5" />
               </button>
               <button
                 className="inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-6 py-4 text-base font-black shadow-sm transition hover:bg-slate-50"
-                onClick={() => navigate("/faithhub/provider/live-dashboard")}
+                onClick={() => navigateProvider("/faithhub/provider/live-dashboard")}
               >
                 <Play className="h-5 w-5" />
                 Watch the experience
               </button>
               <button
                 className="inline-flex items-center justify-center gap-2 rounded-2xl border border-[var(--fh-brand)]/30 bg-white px-6 py-4 text-base font-black text-[var(--fh-brand)] shadow-sm transition hover:bg-[var(--fh-brand-soft)]"
-                onClick={() => navigate("/faithhub/provider/dashboard")}
+                onClick={() => navigateProvider("/faithhub/provider/dashboard")}
               >
                 Open FaithHub Provider Dashboard
               </button>
@@ -586,13 +602,13 @@ export default function FaithHubHomeLandingPageV3Fixed() {
               <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
                 <button
                   className="rounded-2xl bg-[var(--fh-brand)] px-6 py-4 text-base font-black text-white shadow-[0_16px_35px_rgba(3,205,140,0.28)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_40px_rgba(3,205,140,0.34)]"
-                  onClick={() => navigate("/faithhub/provider/onboarding")}
+                  onClick={() => navigateProvider("/faithhub/provider/onboarding")}
                 >
                   Get started
                 </button>
                 <button
                   className="rounded-2xl border border-white/15 bg-white/5 px-6 py-4 text-base font-black text-white backdrop-blur transition hover:bg-white/10"
-                  onClick={() => navigate("/faithhub/provider/dashboard")}
+                  onClick={() => navigateProvider("/faithhub/provider/dashboard")}
                 >
                   Book a demo
                 </button>
