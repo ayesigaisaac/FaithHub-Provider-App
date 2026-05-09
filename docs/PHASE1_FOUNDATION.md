@@ -41,7 +41,12 @@ This phase introduces baseline architecture to support future delivery in stable
 
 ## Next Phase 1 follow-ups
 
-1. Move `Live Schedule` and `Live Dashboard` reads/writes to the same `liveSessionsApi` abstraction.
-2. Add remote adapter (`supabaseLiveSessionsApi`) behind `VITE_USE_SUPABASE`.
-3. Introduce shared query/action hooks to standardize loading/error UX usage across pages.
+1. Add remote adapter (`supabaseLiveSessionsApi`) behind `VITE_USE_SUPABASE`.
+2. Introduce shared query/action hooks to standardize loading/error UX usage across pages.
+3. Apply the same API-boundary pattern to additional domains (auth, notifications, media, community).
 
+## Phase 1 completion update
+
+Completed after initial rollout:
+- `src/pages/provider/raw/FH-P-031_LiveSchedule.tsx` migrated to `liveSessionsApi`
+- `src/pages/provider/raw/FH-P-032_LiveDashboard.tsx` migrated to `liveSessionsApi`

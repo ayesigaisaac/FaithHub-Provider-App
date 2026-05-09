@@ -8,7 +8,8 @@ import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderDrawer } from "@/components/provider/ProviderDrawer";
 import { ProviderStatusPill } from "@/components/provider/ProviderStatusPill";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
-import { getLiveFlowState, subscribeToLiveFlow } from "@/features/live/liveFlowStore";
+import { liveSessionsApi } from "@/api/live";
+import type { LiveFlowRecord } from "@/features/live/liveFlowStore";
 import { LiveFlowProgressRibbon } from "@/features/live/LiveFlowProgressRibbon";
 import { recordLiveActivity } from "@/features/live/liveActivityStore";
 import { AuthContext } from "@/auth/AuthContext";
@@ -541,7 +542,7 @@ function safeNav(path: string) {
   navigateWithRouter(path);
 }
 
-function mapLiveFlowRecordToScheduleSession(record: ReturnType<typeof getLiveFlowState>["sessions"][number]): LiveSession {
+function mapLiveFlowRecordToScheduleSession(record: LiveFlowRecord): LiveSession {
   const normalizeCampus = (value: string): LiveSession["campus"] => {
     if (value === "Central Campus" || value === "East Campus" || value === "City Hub") return value;
     return "Online Campus";
@@ -2480,7 +2481,7 @@ export default function FaithHubLiveSchedulePage() {
   const auth = React.useContext(AuthContext);
   const actorName = auth?.user?.name || "Provider operator";
   const [sessions, setSessions] = useState<LiveSession[]>(() => {
-    const synced = getLiveFlowState().sessions.map(mapLiveFlowRecordToScheduleSession);
+    const synced = liveSessionsApi.getState().sessions.map(mapLiveFlowRecordToScheduleSession);
     return mergeLiveFlowSessions(SESSION_SEED, synced);
   });
   const [viewMode, setViewMode] = useState<ViewMode>("week");
@@ -2505,8 +2506,8 @@ export default function FaithHubLiveSchedulePage() {
   const [draggingSessionId, setDraggingSessionId] = useState<string | null>(null);
 
   useEffect(() => {
-    return subscribeToLiveFlow(() => {
-      const synced = getLiveFlowState().sessions.map(mapLiveFlowRecordToScheduleSession);
+    return liveSessionsApi.subscribe(() => {
+      const synced = liveSessionsApi.getState().sessions.map(mapLiveFlowRecordToScheduleSession);
       setSessions((current) => mergeLiveFlowSessions(current, synced));
     });
   }, []);

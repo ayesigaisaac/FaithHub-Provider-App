@@ -40,7 +40,8 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
-import { getLiveFlowState, subscribeToLiveFlow } from "@/features/live/liveFlowStore";
+import { liveSessionsApi } from "@/api/live";
+import type { LiveFlowRecord } from "@/features/live/liveFlowStore";
 import { LiveFlowProgressRibbon } from "@/features/live/LiveFlowProgressRibbon";
 import { exportLiveActivityCsv, getLiveActivityRecords, subscribeToLiveActivity } from "@/features/live/liveActivityStore";
 import { getLiveRuntimeState, subscribeToLiveRuntime } from "@/features/live/liveRuntimeStore";
@@ -521,7 +522,7 @@ const SESSIONS: SessionData[] = [
 ];
 
 function mapLiveFlowRecordToDashboardSession(
-  record: ReturnType<typeof getLiveFlowState>["sessions"][number],
+  record: LiveFlowRecord,
 ): SessionData {
   const state: SessionState =
     record.status === "Scheduled" ? "Upcoming" : record.status === "Ready" ? "Live" : "Upcoming";
@@ -1169,7 +1170,7 @@ function PostLiveLaunchPad({ session }: { session: SessionData }) {
 
 export default function FaithHubLiveDashboardPage() {
   const [nowMs, setNowMs] = useState(Date.now());
-  const [liveFlow, setLiveFlow] = useState(() => getLiveFlowState());
+  const [liveFlow, setLiveFlow] = useState(() => liveSessionsApi.getState());
   const [liveRuntime, setLiveRuntime] = useState(() => getLiveRuntimeState());
   const [activeSessionId, setActiveSessionId] = useState(() => {
     if (typeof window !== "undefined") {
@@ -1196,8 +1197,8 @@ export default function FaithHubLiveDashboardPage() {
   }, []);
 
   useEffect(() => {
-    return subscribeToLiveFlow(() => {
-      setLiveFlow(getLiveFlowState());
+    return liveSessionsApi.subscribe(() => {
+      setLiveFlow(liveSessionsApi.getState());
     });
   }, []);
 
