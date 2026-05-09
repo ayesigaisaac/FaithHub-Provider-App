@@ -32,6 +32,7 @@ import { resolveKnownProviderPath } from '@/navigation/providerPages';
 import { ThemeModeToggle } from '@/components/theme/ThemeModeToggle';
 import { teachingsQuickActions } from '@/navigation/teachingsQuickActions';
 import { ProviderVerificationBadge } from '@/components/provider/ProviderVerificationBadge';
+import { providerCategoryBySection } from '@/navigation/providerCategories';
 
 type ProviderTopbarProps = {
   current?: ProviderPageMeta;
@@ -74,9 +75,10 @@ export function ProviderTopbar({
     },
   };
   const activeTopTab = useMemo(
-    () => topbarTabs.find((tab) => tab.sections.includes(current?.section ?? '')),
+    () => (current?.section ? topbarTabs.find((tab) => tab.sections.includes(current.section)) : undefined),
     [current?.section]
   );
+  const activeCategoryLabel = current?.section ? providerCategoryBySection[current.section].navLabel : topbarTabs[0].label;
   const displayName = useMemo(() => {
     if (user?.name?.trim()) return user.name;
     const local = (user?.email?.split('@')[0] || 'user').trim();
@@ -314,7 +316,7 @@ export function ProviderTopbar({
                   color: 'var(--fh-ink)',
                 }}
               >
-                {activeTopTab?.label ?? topbarTabs[0].label}
+                {activeCategoryLabel}
               </Button>
             </Stack>
           ) : (

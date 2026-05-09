@@ -4,11 +4,12 @@ import EventNoteRoundedIcon from '@mui/icons-material/EventNoteRounded';
 import GroupsRoundedIcon from '@mui/icons-material/GroupsRounded';
 import VolunteerActivismRoundedIcon from '@mui/icons-material/VolunteerActivismRounded';
 import type { ReactNode } from 'react';
+import type { ProviderPageSection } from './providerPages';
 
 export type TopbarTab = {
   label: string;
   to: string;
-  sections: string[];
+  sections: ProviderPageSection[];
   icon: ReactNode;
 };
 
