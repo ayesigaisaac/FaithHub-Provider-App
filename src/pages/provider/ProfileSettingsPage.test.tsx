@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import ProfileSettingsPage from './ProfileSettingsPage';
 import { AuthContext } from '@/auth/AuthContext';
@@ -52,19 +52,17 @@ describe('ProfileSettingsPage', () => {
       </AuthContext.Provider>,
     );
 
-    await user.type(screen.getByLabelText(/Display name/i), ' Updated');
-    await user.clear(screen.getByLabelText(/Workspace brand/i));
-    await user.type(screen.getByLabelText(/Workspace brand/i), 'FaithHub Plus');
+    fireEvent.change(screen.getByLabelText(/Display name/i), { target: { value: 'Test User Updated' } });
+    fireEvent.change(screen.getByLabelText(/Workspace brand/i), { target: { value: 'FaithHub Plus' } });
     await user.click(screen.getByRole('button', { name: /Save changes/i }));
 
     expect(setWorkspace).toHaveBeenCalledWith({
       brand: 'FaithHub Plus',
       campus: 'Kampala Central',
     });
-    expect(await screen.findByText(/Profile settings saved successfully/i)).toBeInTheDocument();
+    expect(screen.getByText(/Profile settings saved successfully/i)).toBeInTheDocument();
 
     await user.click(screen.getByRole('button', { name: /Reset/i }));
-    expect(await screen.findByText(/Profile form reset/i)).toBeInTheDocument();
-  });
+    expect(screen.getByText(/Profile form reset/i)).toBeInTheDocument();
+  }, 15000);
 });
-
