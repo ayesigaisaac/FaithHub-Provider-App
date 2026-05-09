@@ -7,22 +7,11 @@ import { getFoundationAndContentPages } from './provider-pages/sections/foundati
 import { getLiveAndAudiencePages } from './provider-pages/sections/liveAndAudience';
 import { getGrowthAndCommunityPages } from './provider-pages/sections/growthAndCommunity';
 import { getSettingsAndPreviewPages } from './provider-pages/sections/settingsAndPreviews';
+import { providerSections as orderedProviderSections } from './providerCategories';
 
 export type { ProviderPageMeta, ProviderPageSection };
 
-export const providerSections: ProviderPageSection[] = [
-  'Foundation & Mission Control',
-  'Content Structure & Teaching Creation',
-  'Live Sessions Operations',
-  'Audience & Outreach',
-  'Post-live & Trust',
-  'Events & Giving',
-  'Beacon',
-  'Community & Care',
-  'Leadership & Team',
-  'Workspace Settings',
-  'Previews',
-];
+export const providerSections: ProviderPageSection[] = orderedProviderSections;
 
 export const providerPages: ProviderPageMeta[] = [
   ...getFoundationAndContentPages(providerPageCatalog),

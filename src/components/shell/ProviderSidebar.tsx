@@ -30,12 +30,11 @@ import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 import { useEffect, useMemo, useState } from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { getProviderSidebarGroupsBySection, providerPages, providerSections } from '@/navigation/providerPages';
+import { providerCategoryBySection } from '@/navigation/providerCategories';
 
 const drawerWidth = 318;
 const topbarOffsetMobile = 110;
 const topbarOffsetDesktop = 128;
-
-const sectionLabelMap: Partial<Record<(typeof providerSections)[number], string>> = {};
 
 const expandedDrawerWidth = 318;
 const collapsedDrawerWidth = 88;
@@ -47,7 +46,6 @@ const sectionIconMap: Record<string, typeof GridViewRoundedIcon> = {
   'Audience & Outreach': CampaignRoundedIcon,
   'Post-live & Trust': MovieFilterRoundedIcon,
   'Events & Giving': VolunteerActivismRoundedIcon,
-  Reach: BoltRoundedIcon,
   Beacon: BoltRoundedIcon,
   'Community & Care': GroupsRoundedIcon,
   'Leadership & Team': SupervisorAccountRoundedIcon,
@@ -113,7 +111,7 @@ export function ProviderSidebar({
   const sections = providerSections
     .map((section) => ({
       section,
-      label: sectionLabelMap[section] ?? section,
+      label: providerCategoryBySection[section].navLabel,
       groups: getProviderSidebarGroupsBySection(section),
     }))
     .filter((group) => group.groups.length > 0);
@@ -215,8 +213,8 @@ export function ProviderSidebar({
                 {!collapsed ? (
                   <Box sx={{ mb: 0.58 }}>
                     {(() => {
-                      const SectionIcon = sectionIconMap[group.label] ?? GridViewRoundedIcon;
-                      const tone = sectionToneMap[group.label] ?? sectionToneMap['Workspace Settings'];
+                      const SectionIcon = sectionIconMap[group.section] ?? GridViewRoundedIcon;
+                      const tone = sectionToneMap[group.section] ?? sectionToneMap['Workspace Settings'];
                       return (
                     <ListItemButton
                       onClick={() => toggleSection(group.section)}

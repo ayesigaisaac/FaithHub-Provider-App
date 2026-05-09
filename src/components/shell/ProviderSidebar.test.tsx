@@ -49,9 +49,9 @@ describe('ProviderSidebar compact navigation', () => {
     );
 
     expect(screen.queryByText('Workflow')).not.toBeInTheDocument();
-    expect(screen.getAllByText('Foundation & Mission Control').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('Foundation').length).toBeGreaterThan(0);
 
-    fireEvent.click(screen.getAllByRole('button', { name: /Foundation & Mission Control/i })[0]);
+    fireEvent.click(screen.getAllByRole('button', { name: /Foundation/i })[0]);
     expect(screen.getAllByRole('link', { name: /Dashboard/i }).length).toBeGreaterThan(0);
   });
 
@@ -62,7 +62,7 @@ describe('ProviderSidebar compact navigation', () => {
       </MemoryRouter>,
     );
 
-    fireEvent.click(screen.getAllByRole('button', { name: /Foundation & Mission Control/i })[0]);
+    fireEvent.click(screen.getAllByRole('button', { name: /Foundation/i })[0]);
     fireEvent.click(screen.getAllByRole('link', { name: /Teachings Dashboard/i })[0]);
 
     const dataLayer = (window as unknown as { dataLayer?: Array<Record<string, string>> }).dataLayer ?? [];
