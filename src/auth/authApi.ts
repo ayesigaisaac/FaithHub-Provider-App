@@ -14,6 +14,10 @@ type LoginPayload = {
   password: string;
 };
 
+type GoogleLoginPayload = {
+  googleEmail?: string;
+};
+
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL as string | undefined;
 const MOCK_ONBOARDING_KEY = 'faithhub.mock.onboarding.byToken';
 
@@ -54,6 +58,12 @@ const MOCK_USERS: Array<{
   workspace: WorkspaceContext;
 }> = [
   {
+    user: { id: 'u-admin-001', name: 'FaithHub Admin', email: 'admin@faithhub.dev' },
+    password: 'password123',
+    role: 'admin',
+    workspace: { campus: 'HQ Operations', brand: 'FaithHub' },
+  },
+  {
     user: { id: 'u-lead-001', name: 'Ayesiga Leadership', email: 'leadership@faithhub.dev' },
     password: 'password123',
     role: 'leadership',
@@ -80,7 +90,7 @@ const MOCK_USERS: Array<{
 ];
 
 function normalizeRole(raw?: string): UserRole {
-  if (raw === 'production' || raw === 'outreach' || raw === 'finance') return raw;
+  if (raw === 'admin' || raw === 'production' || raw === 'outreach' || raw === 'finance') return raw;
   return 'leadership';
 }
 
@@ -269,6 +279,65 @@ export async function loginRequest(payload: LoginPayload): Promise<AuthSession> 
     if (API_BASE_URL) throw error;
     return mockLogin(payload);
   }
+}
+
+export async function googleLoginRequest(payload: GoogleLoginPayload = {}): Promise<AuthSession> {
+  const preferred = (payload.googleEmail || 'admin@faithhub.dev').trim().toLowerCase();
+
+  if (!API_BASE_URL) {
+    const mock = MOCK_USERS.find((item) => item.user.email.toLowerCase() === preferred) ?? MOCK_USERS[0];
+    return {
+      token: `mock-token-${mock.user.email.toLowerCase()}`,
+      user: {
+        ...mock.user,
+        email: mock.user.email.toLowerCase(),
+        name: toDisplayNameFromEmail(mock.user.email.toLowerCase()),
+      },
+      role: mock.role,
+      workspace: mock.workspace,
+      permissions: permissionsForRole(mock.role),
+      routePermissions: buildDefaultRoutePermissions(mock.role),
+      actionPermissions: {},
+    };
+  }
+
+  const res = await fetch(`${API_BASE_URL}/auth/google`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ emailHint: preferred }),
+  });
+  if (!res.ok) {
+    throw new Error('Google sign-in is unavailable right now.');
+  }
+
+  const data = (await res.json()) as Partial<AuthSession> & {
+    token?: string;
+    user?: Partial<AuthUser>;
+    role?: string;
+    workspace?: Partial<WorkspaceContext>;
+    permissions?: unknown;
+    routePermissions?: unknown;
+    actionPermissions?: unknown;
+  };
+
+  const token = data.token;
+  if (!token) throw new Error('Google sign-in did not return a token.');
+
+  const role = normalizeRole(data.role);
+  const authorization = resolveAuthorization(data, role);
+  return {
+    token,
+    user: {
+      id: data.user?.id || `u-google-${Math.random().toString(36).slice(2, 9)}`,
+      name: data.user?.name || toDisplayNameFromEmail(data.user?.email || preferred),
+      email: data.user?.email || preferred,
+    },
+    role,
+    workspace: normalizeWorkspace(data.workspace),
+    permissions: authorization.permissions,
+    routePermissions: authorization.routePermissions,
+    actionPermissions: authorization.actionPermissions,
+  };
 }
 
 export async function meRequest(token: string): Promise<Omit<AuthSession, 'token'>> {

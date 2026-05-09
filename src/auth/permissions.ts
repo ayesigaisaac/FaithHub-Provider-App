@@ -1,6 +1,17 @@
 import type { Permission, UserRole } from './types';
 
 const rolePermissions: Record<UserRole, Permission[]> = {
+  admin: [
+    'finance:read',
+    'finance:manage',
+    'content:manage',
+    'live:operate',
+    'audience:manage',
+    'beacon:manage',
+    'community:manage',
+    'teams:manage',
+    'workspace:admin',
+  ],
   leadership: [
     'finance:read',
     'finance:manage',

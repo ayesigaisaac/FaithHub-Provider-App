@@ -1,4 +1,4 @@
-export type UserRole = 'leadership' | 'production' | 'outreach' | 'finance';
+export type UserRole = 'admin' | 'leadership' | 'production' | 'outreach' | 'finance';
 export type Permission =
   | 'finance:read'
   | 'finance:manage'

@@ -43,7 +43,7 @@ function resolveSafeRedirect(input?: string) {
 }
 
 export default function LoginPage() {
-  const { login, loading, setWorkspace, isAuthenticated } = useAuth();
+  const { login, loginWithGoogle, loading, setWorkspace, isAuthenticated } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -302,7 +302,16 @@ export default function LoginPage() {
                   size="medium"
                   data-no-auto-action="true"
                   sx={{ textTransform: 'none', fontWeight: 700 }}
-                  onClick={() => setError('Google SSO is not enabled for this workspace yet.')}
+                  onClick={async () => {
+                    setError(null);
+                    try {
+                      await loginWithGoogle();
+                      navigate(from, { replace: true });
+                    } catch (err) {
+                      const message = err instanceof Error ? err.message : 'Google sign-in failed.';
+                      setError(message);
+                    }
+                  }}
                 >
                   Continue with Google
                 </Button>

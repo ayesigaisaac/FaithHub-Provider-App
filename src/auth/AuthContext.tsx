@@ -1,6 +1,7 @@
 import { createContext, useCallback, useEffect, useMemo, useState, type ReactNode } from 'react';
 import {
   getProviderOnboardingRequest,
+  googleLoginRequest,
   loginRequest,
   logoutRequest,
   meRequest,
@@ -46,6 +47,7 @@ type AuthContextValue = {
   isAuthenticated: boolean;
   loading: boolean;
   login: (input: LoginInput) => Promise<void>;
+  loginWithGoogle: (googleEmail?: string) => Promise<void>;
   logout: () => Promise<void>;
   setWorkspace: (workspace: WorkspaceContext) => void;
   setOnboardingDraft: (draft: ProviderOnboardingDraft) => void;
@@ -136,6 +138,35 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     try {
       const session = await loginRequest(input);
       const rememberMe = input.rememberMe ?? true;
+      setStoredToken(session.token, rememberMe);
+      setStoredWorkspace(session.workspace, rememberMe);
+      setToken(session.token);
+      setUser(session.user);
+      setRole(session.role);
+      setWorkspaceState(session.workspace);
+      setPermissions(session.permissions);
+      setRoutePermissions(session.routePermissions);
+      setActionPermissions(session.actionPermissions);
+      try {
+        const onboarding = await getProviderOnboardingRequest(session.token);
+        setOnboardingStatusState(onboarding.status);
+        setOnboardingDraftState(onboarding.draft);
+        setStoredOnboardingStatus(onboarding.status, rememberMe);
+        setStoredOnboardingDraft(onboarding.draft, rememberMe);
+      } catch {
+        setOnboardingStatusState(getStoredOnboardingStatus());
+        setOnboardingDraftState(getStoredOnboardingDraft());
+      }
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  const loginWithGoogle = useCallback(async (googleEmail?: string) => {
+    setLoading(true);
+    try {
+      const session = await googleLoginRequest({ googleEmail });
+      const rememberMe = true;
       setStoredToken(session.token, rememberMe);
       setStoredWorkspace(session.workspace, rememberMe);
       setToken(session.token);
@@ -252,6 +283,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       isAuthenticated: Boolean(user && token),
       loading,
       login,
+      loginWithGoogle,
       logout,
       setWorkspace,
       setOnboardingDraft,
@@ -273,6 +305,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       actionPermissions,
       loading,
       login,
+      loginWithGoogle,
       logout,
       onboardingDraft,
       onboardingStatus,
