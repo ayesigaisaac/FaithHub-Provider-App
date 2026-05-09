@@ -31,6 +31,24 @@ const fadeUp = {
   viewport: { once: true, amount: 0.2 },
 };
 
+const brandMessaging = {
+  productName: "FaithHub",
+  poweredBy: "Powered by EVzone",
+  heroLabel: "Unified faith platform",
+  heroTitle: "One platform for live ministry, teachings, community, and giving.",
+  heroBody:
+    "FaithHub helps churches, ministries, and faith creators run their full digital mission in one place: broadcast live, publish teachings, grow community, host events, and manage giving with clarity and trust.",
+  platformSectionBody:
+    "FaithHub combines human warmth with operational clarity so teams can move from message to action without jumping between disconnected tools.",
+  audienceSectionBody:
+    "From local congregations to global mission teams and digital-first creators, FaithHub provides a trusted foundation for connection, growth, and follow-through.",
+  finalCtaTitle: "Launch your ministry presence on FaithHub.",
+  finalCtaBody:
+    "Bring live sessions, teachings, resources, community, events, and giving into one clear, high-trust experience your team can manage confidently.",
+  footerBody:
+    "FaithHub is the all-in-one operating platform for faith communities to stream, teach, engage, and grow with confidence.",
+};
+
 const stats = [
   { value: "2,400+", label: "Live communities" },
   { value: "40+", label: "Languages supported" },
@@ -293,8 +311,8 @@ export default function FaithHubHomeLandingPageV3Fixed() {
           <div className="flex items-center gap-3">
             <BrandLogo variant="symbol" alt="FaithHub icon" className="h-12 w-12 rounded-2xl" />
             <div>
-              <div className="text-lg font-black tracking-tight">FaithHub</div>
-              <div className="text-[11px] font-black uppercase tracking-[0.24em] text-slate-500">Powered by EVzone</div>
+              <div className="text-lg font-black tracking-tight">{brandMessaging.productName}</div>
+              <div className="text-[11px] font-black uppercase tracking-[0.24em] text-slate-500">{brandMessaging.poweredBy}</div>
             </div>
           </div>
 
@@ -330,12 +348,12 @@ export default function FaithHubHomeLandingPageV3Fixed() {
 
         <section className="relative z-10 mx-auto grid max-w-7xl gap-12 px-6 pb-16 pt-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-10 lg:pb-24 lg:pt-10">
           <motion.div {...fadeUp} className="max-w-3xl">
-            <Chip>Global faith platform</Chip>
+            <Chip>{brandMessaging.heroLabel}</Chip>
             <h1 className="mt-6 text-5xl font-black leading-[0.95] tracking-tight text-slate-950 sm:text-6xl lg:text-7xl">
-              A premium digital home for faith, teaching, community, and giving.
+              {brandMessaging.heroTitle}
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600 sm:text-xl">
-              FaithHub helps ministries, institutions, and faith creators stream live moments, publish teachings, grow communities, manage events, raise support, promote what matters, and serve people beautifully across languages, traditions, and nations.
+              {brandMessaging.heroBody}
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -504,7 +522,7 @@ export default function FaithHubHomeLandingPageV3Fixed() {
         <SectionHeading
           eyebrow="Everything in one place"
           title="Beautiful product experiences for every important ministry moment."
-          body="FaithHub combines the warmth of community with the precision of a premium digital platform. Every surface is designed to be attractive, persuasive, and useful."
+          body={brandMessaging.platformSectionBody}
         />
 
         <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
@@ -537,7 +555,7 @@ export default function FaithHubHomeLandingPageV3Fixed() {
             <SectionHeading
               eyebrow="Who FaithHub serves"
               title="Made for institutions, ministries, and digital faith leaders."
-              body="From local congregations to global mission movements and digital-first creators, FaithHub provides a polished foundation for connection, trust, and growth."
+              body={brandMessaging.audienceSectionBody}
             />
 
             <div className="grid gap-5 md:grid-cols-3">
@@ -644,10 +662,10 @@ export default function FaithHubHomeLandingPageV3Fixed() {
               <div>
                 <div className="text-xs font-black uppercase tracking-[0.22em] text-[var(--fh-brand)]">Ready to begin</div>
                 <h2 className="mt-4 text-4xl font-black tracking-tight text-white sm:text-5xl">
-                  Launch your institution, ministry, or creator presence on FaithHub.
+                  {brandMessaging.finalCtaTitle}
                 </h2>
                 <p className="mt-5 max-w-3xl text-lg leading-8 text-white/75">
-                  Build a persuasive digital presence for live ministry, teachings, books, resources, community, events, giving, and Beacon promotion - all in one premium destination.
+                  {brandMessaging.finalCtaBody}
                 </p>
               </div>
               <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
@@ -682,12 +700,12 @@ export default function FaithHubHomeLandingPageV3Fixed() {
               <div className="flex items-center gap-3">
                 <BrandLogo variant="symbol" alt="FaithHub icon" className="h-12 w-12 rounded-2xl" />
                 <div>
-                  <div className="text-lg font-black tracking-tight">FaithHub</div>
-                  <div className="text-[11px] font-black uppercase tracking-[0.24em] text-slate-500">Powered by EVzone</div>
+                  <div className="text-lg font-black tracking-tight">{brandMessaging.productName}</div>
+                  <div className="text-[11px] font-black uppercase tracking-[0.24em] text-slate-500">{brandMessaging.poweredBy}</div>
                 </div>
               </div>
               <p className="mt-5 max-w-md text-sm leading-7 text-slate-600">
-                A premium digital home for faith communities, ministries, and creators to stream live moments, publish teachings, grow communities, manage giving, and promote what matters beautifully.
+                {brandMessaging.footerBody}
               </p>
 
               <div className="mt-6 flex flex-wrap gap-3">
