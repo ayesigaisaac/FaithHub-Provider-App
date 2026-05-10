@@ -57,6 +57,7 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [workspaceExpanded, setWorkspaceExpanded] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [googleLoading, setGoogleLoading] = useState(false);
   const [fieldErrors, setFieldErrors] = useState<{ email?: string; password?: string }>({});
   const isDev = import.meta.env.DEV;
 
@@ -67,9 +68,9 @@ export default function LoginPage() {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate('/faithhub/provider/dashboard', { replace: true });
+      navigate(from, { replace: true });
     }
-  }, [isAuthenticated, navigate]);
+  }, [from, isAuthenticated, navigate]);
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -118,6 +119,7 @@ export default function LoginPage() {
   const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue);
   const passwordValid = password.length >= 8;
   const canSubmit = emailValid && passwordValid && !loading;
+  const googleBusy = loading || googleLoading;
 
   return (
     <Box
@@ -302,18 +304,28 @@ export default function LoginPage() {
                   size="medium"
                   data-no-auto-action="true"
                   sx={{ textTransform: 'none', fontWeight: 700 }}
+                  disabled={googleBusy}
                   onClick={async () => {
                     setError(null);
+                    setGoogleLoading(true);
                     try {
                       await loginWithGoogle();
                       navigate(from, { replace: true });
                     } catch (err) {
                       const message = err instanceof Error ? err.message : 'Google sign-in failed.';
-                      setError(message);
+                      const normalized = message.toLowerCase();
+                      const readableMessage = normalized.includes('network') || normalized.includes('fetch')
+                        ? 'Google sign-in failed due to network issues. Try again.'
+                        : normalized.includes('unavailable')
+                          ? 'Google sign-in is temporarily unavailable for this workspace.'
+                          : message;
+                      setError(readableMessage);
+                    } finally {
+                      setGoogleLoading(false);
                     }
                   }}
                 >
-                  Continue with Google
+                  {googleBusy ? 'Connecting to Google...' : 'Continue with Google'}
                 </Button>
                 <Button
                   fullWidth
