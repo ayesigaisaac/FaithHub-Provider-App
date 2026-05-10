@@ -138,7 +138,7 @@ function normalizePermissionList(value: unknown): Permission[] {
 }
 
 function buildDefaultRoutePermissions(role: UserRole): Record<string, Permission[]> {
-  if (role === 'finance' || role === 'leadership') {
+  if (role === 'admin' || role === 'finance' || role === 'leadership') {
     return {};
   }
   return {
