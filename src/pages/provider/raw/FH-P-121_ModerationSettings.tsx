@@ -230,7 +230,7 @@ function StatCard({
   dot: string;
 }) {
   return (
-    <div className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 py-3 transition-colors">
+    <div className="rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 py-3 transition-colors">
       <div className="flex items-start justify-between gap-2">
         <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">
           {label}
@@ -266,7 +266,7 @@ function SectionNavItem({
       )}
     >
       <div className="flex items-center gap-3 min-w-0">
-        <span className="h-8 w-8 rounded-full border border-faith-line dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-800 grid place-items-center shrink-0">
+        <span className="h-8 w-8 rounded-full border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-800 grid place-items-center shrink-0">
           {icon}
         </span>
         <span className="truncate text-[13px] font-extrabold text-faith-ink dark:text-slate-100">{label}</span>
@@ -278,7 +278,7 @@ function SectionNavItem({
 
 function MiniPolicyPack({ pack }: { pack: PolicyPack }) {
   return (
-    <div className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-3 transition-colors flex items-center justify-between gap-3">
+    <div className="rounded-[22px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-3 transition-colors flex items-center justify-between gap-3">
       <div className="min-w-0">
         <div className="truncate text-[13px] font-extrabold text-faith-ink dark:text-slate-100">{pack.title}</div>
         <div className="mt-0.5 truncate text-[11px] text-faith-slate">{pack.detail}</div>
@@ -296,7 +296,7 @@ function SafeguardTile({
   onToggle: (id: string) => void;
 }) {
   return (
-    <div className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-3 transition-colors">
+    <div className="rounded-[22px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-3 transition-colors">
       <div className="flex items-start justify-between gap-3">
         <div>
           <div className="text-[13px] font-extrabold leading-tight text-faith-ink dark:text-slate-100">{safeguard.title}</div>
@@ -323,7 +323,7 @@ function QueueTile({ item }: { item: QueueItem }) {
 
 function AutomationTile({ item }: { item: AutomationRule }) {
   return (
-    <div className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-3 transition-colors flex items-center justify-between gap-3">
+    <div className="rounded-[22px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-3 transition-colors flex items-center justify-between gap-3">
       <div className="min-w-0">
         <div className="truncate text-[13px] font-extrabold text-faith-ink dark:text-slate-100">{item.title}</div>
         <div className="mt-0.5 truncate text-[11px] text-faith-slate">{item.detail}</div>
@@ -336,7 +336,7 @@ function AutomationTile({ item }: { item: AutomationRule }) {
 function PreviewOutcome({ item }: { item: PreviewExample }) {
   const tone = item.outcome === "Block" ? "danger" : item.outcome === "Hold" ? "warn" : "good";
   return (
-    <div className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-3 transition-colors flex items-center justify-between gap-3">
+    <div className="rounded-[22px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-3 transition-colors flex items-center justify-between gap-3">
       <div className="min-w-0">
         <div className="truncate text-[13px] font-extrabold text-faith-ink dark:text-slate-100">{item.title}</div>
         <div className="mt-0.5 truncate text-[11px] text-faith-slate">{item.surface}</div>
@@ -348,7 +348,7 @@ function PreviewOutcome({ item }: { item: PreviewExample }) {
 
 function FeedTile({ item }: { item: FeedPage }) {
   return (
-    <div className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-3 transition-colors flex items-center justify-between gap-3">
+    <div className="rounded-[22px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-3 transition-colors flex items-center justify-between gap-3">
       <div className="min-w-0">
         <div className="truncate text-[13px] font-extrabold text-faith-ink dark:text-slate-100">{item.title}</div>
         <div className="mt-0.5 truncate text-[11px] text-faith-slate">{item.detail}</div>
@@ -526,7 +526,7 @@ export default function FH_P_121_ModerationSettings() {
   return (
     <div className="min-h-screen w-full overflow-x-hidden bg-[var(--fh-page-bg)] dark:bg-slate-950 text-faith-ink dark:text-slate-100 p-4 md:p-6">
       <div className="mx-auto max-w-[1460px] space-y-4">
-        <div className="rounded-[30px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-6 py-5 transition-colors">
+        <div className="rounded-[30px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-6 py-5 transition-colors">
           <div className="flex flex-col gap-5 xl:flex-row xl:items-start xl:justify-between">
             <div className="flex items-start gap-4 min-w-0">
               <div className="min-w-0">
@@ -558,7 +558,7 @@ export default function FH_P_121_ModerationSettings() {
           </div>
         </div>
 
-        <div className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 py-3 transition-colors flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+        <div className="rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 py-3 transition-colors flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
           <div className="flex flex-wrap items-center gap-2 min-w-0">
             <Pill tone="brand">Premium moderation defaults</Pill>
             <div className="text-[12px] font-extrabold text-faith-slate truncate">
@@ -725,7 +725,7 @@ export default function FH_P_121_ModerationSettings() {
                 </button>
               </div>
 
-              <div className="mt-4 rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 transition-colors">
+              <div className="mt-4 rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 transition-colors">
                 <div className="flex items-start justify-between gap-3">
                   <div>
                     <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">

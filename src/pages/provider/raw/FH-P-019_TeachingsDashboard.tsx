@@ -466,7 +466,7 @@ function SoftButton({
       onClick={onClick}
       disabled={disabled}
       className={cx(
-        "inline-flex items-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-2 text-[12px] font-semibold text-slate-700 transition-colors hover:bg-[var(--fh-surface)] disabled:cursor-not-allowed disabled:opacity-50",
+        "inline-flex items-center gap-2 rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 py-2 text-[12px] font-semibold text-slate-700 transition-colors hover:bg-[var(--fh-surface)] disabled:cursor-not-allowed disabled:opacity-50",
         className,
       )}
     >
@@ -559,7 +559,7 @@ function StatCard({
 
   return (
     <div
-      className="rounded-[24px] border border-faith-line p-4"
+      className="rounded-[24px] border border-faith-line/70 p-4"
       style={{ background: accentBg }}
     >
       <div className="flex items-start justify-between gap-2">
@@ -675,7 +675,7 @@ function TeachingRow({
             {teaching.tags.map((tag) => (
               <span
                 key={tag}
-                className="rounded-full border border-faith-line bg-[var(--fh-surface)] px-2.5 py-1 text-[11px] font-semibold text-faith-slate"
+                className="rounded-full border border-faith-line/70 bg-[var(--fh-surface)] px-2.5 py-1 text-[11px] font-semibold text-faith-slate"
               >
                 {tag}
               </span>
@@ -683,13 +683,13 @@ function TeachingRow({
           </div>
 
           <div className="mt-3 grid gap-2 sm:grid-cols-4">
-            <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2">
+            <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-2">
               <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">
                 Live
               </div>
               <div className="mt-1 text-[13px] font-bold text-faith-ink">{teaching.liveCount}</div>
             </div>
-            <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2">
+            <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-2">
               <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">
                 Replay / Clips
               </div>
@@ -697,7 +697,7 @@ function TeachingRow({
                 {teaching.replayCount} / {teaching.clipCount}
               </div>
             </div>
-            <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2">
+            <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-2">
               <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">
                 Watch starts
               </div>
@@ -705,7 +705,7 @@ function TeachingRow({
                 {fmtInt(teaching.watchStarts)}
               </div>
             </div>
-            <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2">
+            <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-2">
               <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">
                 Resources
               </div>
@@ -768,7 +768,7 @@ function TeachingPreview({
     teaching.type === "Series" ? "Get reminders" : teaching.resourceCount > 0 ? "View notes" : "Follow";
 
   const frame = (
-    <div className="overflow-hidden rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] shadow-soft">
+    <div className="overflow-hidden rounded-[28px] border border-faith-line/70 bg-[var(--fh-surface-bg)] shadow-soft">
       <div className="relative h-52 overflow-hidden bg-slate-100">
         <img src={teaching.coverUrl} alt={teaching.title} className="h-full w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#08122c] via-[#08122c]/10 to-transparent" />
@@ -830,14 +830,14 @@ function TeachingPreview({
             {teaching.tags.map((tag) => (
               <span
                 key={tag}
-                className="rounded-full border border-faith-line bg-[var(--fh-surface)] px-3 py-1 text-[11px] font-semibold text-faith-slate"
+                className="rounded-full border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-1 text-[11px] font-semibold text-faith-slate"
               >
                 {tag}
               </span>
             ))}
           </div>
         </div>
-        <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface)] p-4">
+        <div className="rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface)] p-4">
           <div className="text-[15px] font-bold text-faith-ink">Teaching signals</div>
           <div className="mt-3 space-y-2 text-[12px] text-faith-slate">
             <div className="flex items-center justify-between gap-3">
@@ -865,7 +865,7 @@ function TeachingPreview({
   if (mode === "desktop") return frame;
 
   return (
-    <div className="mx-auto max-w-[320px] rounded-[36px] bg-slate-900 p-3 shadow-2xl">
+    <div className="mx-auto max-w-[320px] rounded-[36px] bg-slate-900 p-3 shadow-medium">
       <div className="overflow-hidden rounded-[28px] bg-[var(--fh-surface-bg)]">{frame}</div>
     </div>
   );
@@ -895,7 +895,7 @@ function TemplateTile({
     <button
       type="button"
       onClick={onClick}
-      className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 text-left transition-colors hover:bg-[var(--fh-surface)]"
+      className="rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 text-left transition-colors hover:bg-[var(--fh-surface)]"
     >
       <div className="flex items-start justify-between gap-3">
         <div>
@@ -1174,7 +1174,7 @@ export default function TeachingsDashboardPage() {
   return (
     <div className="min-h-screen bg-[var(--fh-page-bg)] text-faith-ink">
       <div className="mx-auto max-w-[1600px] px-4 py-4 sm:px-5 sm:py-5 md:px-6 lg:px-8">
-        <section className="rounded-[34px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft md:p-5">
+        <section className="rounded-[34px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 shadow-soft md:p-5">
           <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
             <div className="flex min-w-0 gap-4">
               <div className="min-w-0">
@@ -1209,7 +1209,7 @@ export default function TeachingsDashboardPage() {
           </div>
         </section>
 
-        <section className="mt-4 rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-3 shadow-soft">
+        <section className="mt-4 rounded-[28px] border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 py-3 shadow-soft">
           <div className="flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
             <div className="flex flex-wrap items-center gap-3 text-[12px] text-faith-slate">
               <Pill tone="orange">TEACHING PIPELINE PULSE</Pill>
@@ -1270,7 +1270,7 @@ export default function TeachingsDashboardPage() {
               right={<Pill tone="neutral">{filteredTeachings.length} teachings</Pill>}
             >
               <div className="grid gap-3 xl:grid-cols-[1.1fr,0.35fr,0.35fr]">
-                <div className="rounded-[22px] border border-faith-line bg-[var(--fh-surface)] px-4 py-3">
+                <div className="rounded-[22px] border border-faith-line/70 bg-[var(--fh-surface)] px-4 py-3">
                   <div className="flex items-center gap-3">
                     <Search className="h-4 w-4 text-faith-slate" />
                     <input
@@ -1281,10 +1281,10 @@ export default function TeachingsDashboardPage() {
                     />
                   </div>
                 </div>
-                <div className="rounded-[22px] border border-faith-line bg-[var(--fh-surface)] px-4 py-3 text-[13px] font-semibold text-slate-700">
+                <div className="rounded-[22px] border border-faith-line/70 bg-[var(--fh-surface)] px-4 py-3 text-[13px] font-semibold text-slate-700">
                   All campuses
                 </div>
-                <div className="rounded-[22px] border border-faith-line bg-[var(--fh-surface)] px-4 py-3 text-[13px] font-semibold text-slate-700">
+                <div className="rounded-[22px] border border-faith-line/70 bg-[var(--fh-surface)] px-4 py-3 text-[13px] font-semibold text-slate-700">
                   All access models
                 </div>
               </div>
@@ -1350,7 +1350,7 @@ export default function TeachingsDashboardPage() {
                   {pipelineItems.map((item) => (
                     <div
                       key={item.id}
-                      className="rounded-[22px] border border-faith-line bg-[var(--fh-surface)] px-4 py-3"
+                      className="rounded-[22px] border border-faith-line/70 bg-[var(--fh-surface)] px-4 py-3"
                     >
                       <div className="flex flex-wrap items-center justify-between gap-3">
                         <div className="min-w-0">
@@ -1374,7 +1374,7 @@ export default function TeachingsDashboardPage() {
                   {liveLinkedTeachings.map((teaching) => (
                     <div
                       key={teaching.id}
-                      className="rounded-[22px] border border-faith-line bg-[var(--fh-surface)] px-4 py-3"
+                      className="rounded-[22px] border border-faith-line/70 bg-[var(--fh-surface)] px-4 py-3"
                     >
                       <div className="flex flex-wrap items-center justify-between gap-3">
                         <div className="min-w-0">
@@ -1407,7 +1407,7 @@ export default function TeachingsDashboardPage() {
                   {topPerformers.map((teaching) => (
                     <div
                       key={teaching.id}
-                      className="rounded-[22px] border border-faith-line bg-[var(--fh-surface)] px-4 py-3"
+                      className="rounded-[22px] border border-faith-line/70 bg-[var(--fh-surface)] px-4 py-3"
                     >
                       <div className="flex items-center justify-between gap-3">
                         <div className="min-w-0">
@@ -1424,17 +1424,17 @@ export default function TeachingsDashboardPage() {
                         </div>
                       </div>
                       <div className="mt-3 grid gap-2 sm:grid-cols-3">
-                        <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2">
+                        <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2">
                           <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">Followers</div>
                           <div className="mt-1 text-[13px] font-bold text-faith-ink">{fmtInt(teaching.followers)}</div>
                         </div>
-                        <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2">
+                        <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2">
                           <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">Replay / Clips</div>
                           <div className="mt-1 text-[13px] font-bold text-faith-ink">
                             {teaching.replayCount} / {teaching.clipCount}
                           </div>
                         </div>
-                        <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2">
+                        <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2">
                           <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">Giving influenced</div>
                           <div className="mt-1 text-[13px] font-bold text-faith-ink">
                             {money(teaching.donationsInfluenced)}
@@ -1452,7 +1452,7 @@ export default function TeachingsDashboardPage() {
               >
                 {selectedTeaching ? (
                   <div className="space-y-3">
-                    <div className="rounded-[22px] border border-faith-line bg-[var(--fh-surface)] px-4 py-3">
+                    <div className="rounded-[22px] border border-faith-line/70 bg-[var(--fh-surface)] px-4 py-3">
                       <div className="flex items-center justify-between gap-3">
                         <div>
                           <div className="text-[13px] font-bold text-faith-ink">{selectedTeaching.title}</div>
@@ -1464,32 +1464,32 @@ export default function TeachingsDashboardPage() {
                       </div>
                     </div>
                     <div className="grid gap-2 sm:grid-cols-2">
-                      <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-3">
+                      <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-3">
                         <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">Notes & resources</div>
                         <div className="mt-1 text-[13px] font-bold text-faith-ink">
                           {selectedTeaching.notesReady ? "Ready" : "Missing notes"}
                         </div>
                       </div>
-                      <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-3">
+                      <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-3">
                         <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">Artwork & cover</div>
                         <div className="mt-1 text-[13px] font-bold text-faith-ink">
                           {selectedTeaching.artworkReady ? "Ready" : "Needs artwork"}
                         </div>
                       </div>
-                      <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-3">
+                      <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-3">
                         <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">Translation due</div>
                         <div className="mt-1 text-[13px] font-bold text-faith-ink">
                           {selectedTeaching.translationDue}
                         </div>
                       </div>
-                      <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-3">
+                      <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-3">
                         <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">Trust queue</div>
                         <div className="mt-1 text-[13px] font-bold text-faith-ink">
                           {selectedTeaching.moderationBacklog}
                         </div>
                       </div>
                     </div>
-                    <div className="rounded-[22px] border border-faith-line bg-[var(--fh-surface)] px-4 py-3">
+                    <div className="rounded-[22px] border border-faith-line/70 bg-[var(--fh-surface)] px-4 py-3">
                       <div className="text-[12px] font-bold text-faith-ink">Best next action</div>
                       <div className="mt-1 text-[12px] text-faith-slate">{selectedTeaching.topAction}</div>
                       <div className="mt-0.5 text-[11px] text-faith-slate">{selectedTeaching.topActionHint}</div>
@@ -1505,7 +1505,7 @@ export default function TeachingsDashboardPage() {
               title="Teaching preview rail"
               subtitle="Persistent preview so the Provider can see how the selected teaching will read across desktop and mobile."
               right={
-                <div className="inline-flex rounded-full border border-faith-line bg-[var(--fh-surface-bg)] p-1">
+                <div className="inline-flex rounded-full border border-faith-line/70 bg-[var(--fh-surface-bg)] p-1">
                   <button
                     type="button"
                     onClick={() => setPreviewMode("desktop")}
@@ -1570,7 +1570,7 @@ export default function TeachingsDashboardPage() {
                 {recommendations.map((item) => (
                   <div
                     key={item}
-                    className="rounded-[22px] border border-faith-line bg-[var(--fh-surface)] px-4 py-3"
+                    className="rounded-[22px] border border-faith-line/70 bg-[var(--fh-surface)] px-4 py-3"
                   >
                     <div className="flex items-start gap-3">
                       <div
@@ -1677,19 +1677,19 @@ export default function TeachingsDashboardPage() {
                 subtitle="What the team should fix or keep moving now."
               >
                 <div className="space-y-2 text-[12px] text-faith-slate">
-                  <div className="flex items-center justify-between gap-3 rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2">
+                  <div className="flex items-center justify-between gap-3 rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-2">
                     <span>Cover art</span>
                     <span className="font-bold text-faith-ink">{selectedTeaching.artworkReady ? "Ready" : "Missing"}</span>
                   </div>
-                  <div className="flex items-center justify-between gap-3 rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2">
+                  <div className="flex items-center justify-between gap-3 rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-2">
                     <span>Notes</span>
                     <span className="font-bold text-faith-ink">{selectedTeaching.notesReady ? "Ready" : "Missing"}</span>
                   </div>
-                  <div className="flex items-center justify-between gap-3 rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2">
+                  <div className="flex items-center justify-between gap-3 rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-2">
                     <span>Translations due</span>
                     <span className="font-bold text-faith-ink">{selectedTeaching.translationDue}</span>
                   </div>
-                  <div className="flex items-center justify-between gap-3 rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2">
+                  <div className="flex items-center justify-between gap-3 rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-2">
                     <span>Moderation items</span>
                     <span className="font-bold text-faith-ink">{selectedTeaching.moderationBacklog}</span>
                   </div>

@@ -774,7 +774,7 @@ function Drawer({
         className="absolute inset-0 bg-black/40 dark:bg-black/60 backdrop-blur-sm transition-opacity"
         onClick={onClose}
       />
-      <div className="relative flex w-full max-w-6xl flex-col bg-[var(--fh-surface-bg)] dark:bg-slate-900 shadow-2xl transition-all h-[95vh] sm:h-auto sm:max-h-[92vh] rounded-t-3xl sm:rounded-3xl overflow-hidden ring-1 ring-slate-200 dark:ring-slate-800">
+      <div className="relative flex w-full max-w-6xl flex-col bg-[var(--fh-surface-bg)] dark:bg-slate-900 shadow-medium transition-all h-[95vh] sm:h-auto sm:max-h-[92vh] rounded-t-3xl sm:rounded-3xl overflow-hidden ring-1 ring-slate-200 dark:ring-slate-800">
         <div className="flex items-center justify-between gap-2 border-b border-faith-line dark:border-slate-800 px-4 py-3">
           <div className="text-base font-semibold text-faith-ink dark:text-slate-50">
             {title}
@@ -891,7 +891,7 @@ function Input({
       value={value}
       onChange={(e) => onChange(e.target.value)}
       placeholder={placeholder}
-      className="mt-1 h-11 w-full rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 text-sm text-faith-ink dark:text-slate-100 shadow-soft transition focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-700"
+      className="mt-1 h-11 w-full rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 text-sm text-faith-ink dark:text-slate-100 shadow-soft transition focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-700"
     />
   );
 }
@@ -910,7 +910,7 @@ function TextArea({
       rows={rows}
       value={value}
       onChange={(e) => onChange(e.target.value)}
-      className="mt-1 w-full rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-sm text-faith-ink dark:text-slate-100 shadow-soft transition focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-700"
+      className="mt-1 w-full rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-sm text-faith-ink dark:text-slate-100 shadow-soft transition focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-700"
     />
   );
 }
@@ -928,7 +928,7 @@ function SelectField({
     <select
       value={value}
       onChange={(e) => onChange(e.target.value)}
-      className="mt-1 h-11 w-full rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 text-sm text-faith-ink dark:text-slate-100 shadow-soft transition focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-700"
+      className="mt-1 h-11 w-full rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 text-sm text-faith-ink dark:text-slate-100 shadow-soft transition focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-700"
     >
       {options.map((option) => (
         <option key={option} value={option}>
@@ -1030,7 +1030,7 @@ function EventListItem({
         </button>
         <button
           type="button"
-          className="inline-flex items-center gap-1 rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[11px] font-bold text-faith-ink dark:text-slate-100"
+          className="inline-flex items-center gap-1 rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[11px] font-bold text-faith-ink dark:text-slate-100"
           onClick={(e) => {
             e.stopPropagation();
             onBeacon();
@@ -1054,7 +1054,7 @@ function EventPreviewSurface({
 }) {
   const fillPct = pct(event.registrations, event.capacity);
   const baseCard = (
-    <div className="rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 overflow-hidden shadow-soft transition-colors">
+    <div className="rounded-[28px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 overflow-hidden shadow-soft transition-colors">
       <div className={cx("relative overflow-hidden", compact ? "aspect-[16/10]" : "aspect-[16/9]")}>
         <img src={event.heroUrl} alt={event.title} className="absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/20 to-transparent" />
@@ -1170,7 +1170,7 @@ function EventPreviewSurface({
 
 function CheckInConsolePreview({ event }: { event: EventRecord }) {
   return (
-    <div className="rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 overflow-hidden shadow-soft transition-colors">
+    <div className="rounded-[28px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 overflow-hidden shadow-soft transition-colors">
       <div className="border-b border-faith-line dark:border-slate-800 px-4 py-3 flex items-center justify-between gap-2">
         <div>
           <div className="text-sm font-extrabold text-faith-ink dark:text-slate-50">
@@ -1666,7 +1666,7 @@ export default function FaithHubEventsManagerPage() {
                 <div className="grid grid-cols-1 gap-3 2xl:grid-cols-[minmax(0,1.3fr)_repeat(4,minmax(0,0.7fr))]">
                   <label className="block">
                     <FieldLabel>Search events</FieldLabel>
-                    <div className="mt-1 h-11 rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 flex items-center gap-2 shadow-soft">
+                    <div className="mt-1 h-11 rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 flex items-center gap-2 shadow-soft">
                       <Search className="h-4 w-4 text-faith-slate" />
                       <input
                         value={search}
@@ -1880,14 +1880,14 @@ export default function FaithHubEventsManagerPage() {
                       <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
                         <div>
                           <FieldLabel>Start time</FieldLabel>
-                          <div className="mt-1 h-11 rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 flex items-center gap-2 shadow-soft text-sm text-faith-ink dark:text-slate-100">
+                          <div className="mt-1 h-11 rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 flex items-center gap-2 shadow-soft text-sm text-faith-ink dark:text-slate-100">
                             <CalendarClock className="h-4 w-4 text-faith-slate" />
                             {fmtLocal(selectedEvent.startISO)}
                           </div>
                         </div>
                         <div>
                           <FieldLabel>End time</FieldLabel>
-                          <div className="mt-1 h-11 rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 flex items-center gap-2 shadow-soft text-sm text-faith-ink dark:text-slate-100">
+                          <div className="mt-1 h-11 rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 flex items-center gap-2 shadow-soft text-sm text-faith-ink dark:text-slate-100">
                             <Clock3 className="h-4 w-4 text-faith-slate" />
                             {fmtLocal(selectedEvent.endISO)}
                           </div>
@@ -2471,7 +2471,7 @@ export default function FaithHubEventsManagerPage() {
                     Premium public event card preview plus check-in and planning handoff.
                   </div>
                 </div>
-                <div className="inline-flex rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-1">
+                <div className="inline-flex rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-1">
                   <button
                     type="button"
                     onClick={() => setPreviewMode("desktop")}
@@ -2601,7 +2601,7 @@ export default function FaithHubEventsManagerPage() {
         onClose={() => setPreviewOpen(false)}
         title="Event preview suite"
         right={
-          <div className="inline-flex rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-1">
+          <div className="inline-flex rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-1">
             <button
               type="button"
               onClick={() => setPreviewMode("desktop")}

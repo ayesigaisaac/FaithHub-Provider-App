@@ -480,7 +480,7 @@ function SoftButton({
       onClick={onClick}
       disabled={disabled}
       className={cx(
-        "inline-flex items-center justify-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-2 text-[12px] font-semibold text-slate-800 transition-colors hover:bg-[var(--fh-surface)] disabled:cursor-not-allowed disabled:opacity-50",
+        "inline-flex items-center justify-center gap-2 rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 py-2 text-[12px] font-semibold text-slate-800 transition-colors hover:bg-[var(--fh-surface)] disabled:cursor-not-allowed disabled:opacity-50",
         className,
       )}
     >
@@ -560,7 +560,7 @@ function TextInput({
       value={value}
       onChange={(e) => onChange(e.target.value)}
       placeholder={placeholder}
-      className="mt-1 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] text-faith-ink outline-none transition-colors focus:ring-2 focus:ring-[rgba(3,205,140,0.18)]"
+      className="mt-1 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] text-faith-ink outline-none transition-colors focus:ring-2 focus:ring-[rgba(3,205,140,0.18)]"
     />
   );
 }
@@ -582,7 +582,7 @@ function TextArea({
       onChange={(e) => onChange(e.target.value)}
       placeholder={placeholder}
       rows={rows}
-      className="mt-1 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] text-faith-ink outline-none transition-colors focus:ring-2 focus:ring-[rgba(3,205,140,0.18)]"
+      className="mt-1 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] text-faith-ink outline-none transition-colors focus:ring-2 focus:ring-[rgba(3,205,140,0.18)]"
     />
   );
 }
@@ -648,7 +648,7 @@ function StepRail({
   readinessScore: number;
 }) {
   return (
-    <div className="rounded-[30px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft 2xl:sticky 2xl:top-6">
+    <div className="rounded-[30px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 shadow-soft 2xl:sticky 2xl:top-6">
       <div className="rounded-[24px] border border-emerald-200 bg-emerald-50 p-4">
         <div className="text-[10px] font-black uppercase tracking-[0.18em] text-emerald-700">Series Builder</div>
         <div className="mt-2 text-[28px] font-black leading-none text-faith-ink">{readinessScore}%</div>
@@ -747,7 +747,7 @@ function SeriesLandingPreview({
               <img src={cover.url} alt={cover.name} className="h-full w-full object-cover opacity-90" />
             </div>
             <div className="relative -mt-14 px-4 pb-4">
-              <div className="rounded-[26px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft">
+              <div className="rounded-[26px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 shadow-soft">
                 <div className="flex items-center justify-between gap-2">
                   <Pill tone="brand">Series live</Pill>
                   <button className="text-[11px] font-semibold text-emerald-600" onClick={() => navigator.clipboard?.writeText(window.location.href)}>Share</button>
@@ -759,14 +759,14 @@ function SeriesLandingPreview({
                   <Pill tone="neutral">{draft.locales.length} locales</Pill>
                   <Pill tone="warn">{readyEpisodes}/{draft.episodeTarget} ready</Pill>
                 </div>
-                <div className="mt-4 rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
+                <div className="mt-4 rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3">
                   <div className="text-[11px] font-black uppercase tracking-[0.16em] text-faith-slate">Next episode</div>
                   <div className="mt-2 text-[14px] font-bold text-faith-ink">{nextEpisode?.title || "Episode coming soon"}</div>
                   <div className="mt-1 text-[11px] text-faith-slate">{nextEpisode?.summary || "Prepare linked live session and notes."}</div>
                 </div>
                 <div className="mt-4 space-y-2">
                   {draft.resources.slice(0, 3).map((resource) => (
-                    <div key={resource.id} className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2">
+                    <div key={resource.id} className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2">
                       <div className="text-[11px] font-semibold text-faith-slate">{resource.type}</div>
                       <div className="text-[12px] font-bold text-faith-ink">{resource.title}</div>
                     </div>
@@ -794,7 +794,7 @@ function SeriesLandingPreview({
   }
 
   return (
-    <div className="overflow-hidden rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] shadow-soft">
+    <div className="overflow-hidden rounded-[28px] border border-faith-line/70 bg-[var(--fh-surface-bg)] shadow-soft">
       <div className="grid lg:grid-cols-[1.2fr_0.8fr]">
         <div className="relative min-h-[420px] overflow-hidden bg-slate-900">
           <img src={cover.url} alt={cover.name} className="h-full w-full object-cover opacity-90" />
@@ -827,7 +827,7 @@ function SeriesLandingPreview({
           </div>
         </div>
         <div className="bg-[#fafafa] p-4">
-          <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] p-4">
+          <div className="rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
             <div className="flex items-center justify-between gap-2">
               <div>
                 <div className="text-[10px] font-black uppercase tracking-[0.16em] text-faith-slate">Episode sequence</div>
@@ -837,7 +837,7 @@ function SeriesLandingPreview({
             </div>
             <div className="mt-3 space-y-2">
               {draft.episodes.slice(0, 4).map((episode, idx) => (
-                <div key={episode.id} className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-3">
+                <div key={episode.id} className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-3">
                   <div className="flex items-center justify-between gap-2">
                     <div className="text-[11px] font-black text-faith-slate">{String(idx + 1).padStart(2, "0")}</div>
                     <Pill tone={episode.status === "Ready" || episode.status === "Scheduled" ? "good" : "warn"}>{episode.status}</Pill>
@@ -847,11 +847,11 @@ function SeriesLandingPreview({
                 </div>
               ))}
             </div>
-            <div className="mt-4 rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
+            <div className="mt-4 rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3">
               <div className="text-[10px] font-black uppercase tracking-[0.16em] text-faith-slate">Resources & CTAs</div>
               <div className="mt-2 flex flex-wrap gap-2">
                 {draft.resources.slice(0, 4).map((resource) => (
-                  <span key={resource.id} className="rounded-full border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-1 text-[11px] font-semibold text-slate-700">
+                  <span key={resource.id} className="rounded-full border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-1 text-[11px] font-semibold text-slate-700">
                     {resource.type}
                   </span>
                 ))}
@@ -1192,7 +1192,7 @@ export default function SeriesBuilderPage() {
                           speakers: current.speakers.filter((item) => item !== speaker),
                         }))
                       }
-                      className="inline-flex items-center gap-2 rounded-full border border-faith-line bg-[var(--fh-surface)] px-3 py-1 text-[11px] font-semibold text-slate-700"
+                      className="inline-flex items-center gap-2 rounded-full border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-1 text-[11px] font-semibold text-slate-700"
                     >
                       {speaker}
                       <X className="h-3 w-3" />
@@ -1208,7 +1208,7 @@ export default function SeriesBuilderPage() {
                     value={seriesSearch}
                     onChange={(e) => setSeriesSearch(e.target.value)}
                     placeholder="Search speakers"
-                    className="w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] py-2 pl-9 pr-3 text-[12px] text-faith-ink outline-none"
+                    className="w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] py-2 pl-9 pr-3 text-[12px] text-faith-ink outline-none"
                   />
                 </div>
                 <div className="mt-2 flex max-h-[180px] flex-col gap-2 overflow-y-auto pr-1">
@@ -1328,14 +1328,14 @@ export default function SeriesBuilderPage() {
                   checked={draft.abCreativeEnabled}
                   onChange={(abCreativeEnabled) => setDraft((current) => ({ ...current, abCreativeEnabled }))}
                 />
-                <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
+                <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3">
                   <div className="text-[11px] font-black uppercase tracking-[0.16em] text-faith-slate">Variant set</div>
                   <div className="mt-2 grid gap-2 md:grid-cols-2">
-                    <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-3">
+                    <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3">
                       <div className="text-[12px] font-bold text-faith-ink">Cover A · Sanctuary Light</div>
                       <div className="mt-1 text-[11px] text-faith-slate">For followers and returning viewers.</div>
                     </div>
-                    <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-3">
+                    <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3">
                       <div className="text-[12px] font-bold text-faith-ink">Cover B · Scripture Close-up</div>
                       <div className="mt-1 text-[11px] text-faith-slate">For new guests and broad discovery shelves.</div>
                     </div>
@@ -1349,19 +1349,19 @@ export default function SeriesBuilderPage() {
               subtitle="See how the series brand package will travel into live overlays, replays, and Beacon prelaunch promotion."
             >
               <div className="space-y-3">
-                <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
+                <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3">
                   <div className="flex items-center gap-2 text-[12px] font-bold text-faith-ink">
                     <ImageIcon className="h-4 w-4" /> Cover + banner system
                   </div>
                   <div className="mt-1 text-[11px] text-faith-slate">Reusable across series landing page, replay shelves, and episode previews.</div>
                 </div>
-                <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
+                <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3">
                   <div className="flex items-center gap-2 text-[12px] font-bold text-faith-ink">
                     <PlayCircle className="h-4 w-4" /> Trailer / teaser support
                   </div>
                   <div className="mt-1 text-[11px] text-faith-slate">Perfect for prelaunch announcements and Beacon awareness campaigns.</div>
                 </div>
-                <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
+                <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3">
                   <div className="flex items-center gap-2 text-[12px] font-bold text-faith-ink">
                     <Layers className="h-4 w-4" /> Graphic rule inheritance
                   </div>
@@ -1391,7 +1391,7 @@ export default function SeriesBuilderPage() {
             <div className="mt-4 grid gap-4 xl:grid-cols-[1.2fr_0.8fr]">
               <div className="space-y-3">
                 {draft.episodes.map((episode, index) => (
-                  <div key={episode.id} className="rounded-[26px] border border-faith-line bg-[var(--fh-surface-bg)] p-3">
+                  <div key={episode.id} className="rounded-[26px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3">
                     <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
                       <div className="flex min-w-0 gap-3">
                         <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-slate-900 text-sm font-black text-white">
@@ -1411,7 +1411,7 @@ export default function SeriesBuilderPage() {
                             value={episode.summary}
                             onChange={(e) => updateEpisode(episode.id, { summary: e.target.value })}
                             rows={2}
-                            className="mt-2 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2 text-[12px] text-slate-700 outline-none focus:ring-2 focus:ring-[rgba(247,127,0,0.18)]"
+                            className="mt-2 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-2 text-[12px] text-slate-700 outline-none focus:ring-2 focus:ring-[rgba(247,127,0,0.18)]"
                           />
                           <div className="mt-3 grid gap-2 md:grid-cols-3">
                             <div>
@@ -1446,10 +1446,10 @@ export default function SeriesBuilderPage() {
               </div>
 
               <div className="space-y-3">
-                <div className="rounded-[26px] border border-faith-line bg-[var(--fh-surface)] p-4">
+                <div className="rounded-[26px] border border-faith-line/70 bg-[var(--fh-surface)] p-4">
                   <div className="mt-3 space-y-2">
                     {draft.episodes.map((episode, index) => (
-                      <div key={episode.id} className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-3">
+                      <div key={episode.id} className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-3">
                         <div className="flex items-center justify-between gap-2">
                           <div className="text-[12px] font-bold text-faith-ink">{String(index + 1).padStart(2, "0")} · {episode.theme}</div>
                           <span className="text-[11px] font-semibold text-faith-slate">{episode.durationLabel}</span>
@@ -1459,13 +1459,13 @@ export default function SeriesBuilderPage() {
                     ))}
                   </div>
                 </div>
-                <div className="rounded-[26px] border border-faith-line bg-[var(--fh-surface)] p-4">
+                <div className="rounded-[26px] border border-faith-line/70 bg-[var(--fh-surface)] p-4">
                   <div className="mt-3 space-y-2">
-                    <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-3">
+                    <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-3">
                       <div className="text-[12px] font-bold text-faith-ink">Episode target</div>
                       <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-faith-ink dark:text-slate-100 sm:text-[34px] lg:text-[40px]">{draft.episodes.length}/{draft.episodeTarget}</div>
                     </div>
-                    <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-3">
+                    <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-3">
                       <div className="text-[12px] font-bold text-faith-ink">Ready or scheduled</div>
                       <div className="mt-1 text-[24px] font-black text-faith-ink">
                         {draft.episodes.filter((episode) => episode.status === "Ready" || episode.status === "Scheduled").length}
@@ -1589,7 +1589,7 @@ export default function SeriesBuilderPage() {
               {draft.locales.map((variant) => {
                 const localeMeta = LOCALE_OPTIONS.find((locale) => locale.code === variant.code);
                 return (
-                  <div key={variant.code} className="rounded-[26px] border border-faith-line bg-[var(--fh-surface-bg)] p-4">
+                  <div key={variant.code} className="rounded-[26px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
                     <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
                       <div className="min-w-0 flex-1">
                         <div className="flex flex-wrap items-center gap-2">
@@ -1651,7 +1651,7 @@ export default function SeriesBuilderPage() {
                               locales: current.locales.filter((item) => item.code !== variant.code),
                             }))
                           }
-                          className="rounded-2xl border border-faith-line px-3 py-2 text-[12px] font-semibold text-faith-slate transition-colors hover:bg-[var(--fh-surface)]"
+                          className="rounded-2xl border border-faith-line/70 px-3 py-2 text-[12px] font-semibold text-faith-slate transition-colors hover:bg-[var(--fh-surface)]"
                           disabled={draft.locales.length <= 1}
                         >
                           Remove
@@ -1678,7 +1678,7 @@ export default function SeriesBuilderPage() {
             <div className="grid gap-4 xl:grid-cols-[1.15fr_0.85fr]">
               <div className="space-y-3">
                 {draft.resources.map((resource) => (
-                  <div key={resource.id} className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] p-4">
+                  <div key={resource.id} className="rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0 flex-1">
                         <div className="flex flex-wrap items-center gap-2">
@@ -1708,7 +1708,7 @@ export default function SeriesBuilderPage() {
                             resources: current.resources.filter((item) => item.id !== resource.id),
                           }))
                         }
-                        className="rounded-2xl border border-faith-line px-3 py-2 text-[12px] font-semibold text-faith-slate hover:bg-[var(--fh-surface)]"
+                        className="rounded-2xl border border-faith-line/70 px-3 py-2 text-[12px] font-semibold text-faith-slate hover:bg-[var(--fh-surface)]"
                       >
                         Remove
                       </button>
@@ -1717,7 +1717,7 @@ export default function SeriesBuilderPage() {
                 ))}
               </div>
               <div className="space-y-3">
-                <div className="rounded-[26px] border border-faith-line bg-[var(--fh-surface)] p-4">
+                <div className="rounded-[26px] border border-faith-line/70 bg-[var(--fh-surface)] p-4">
                   <div className="text-[11px] font-black uppercase tracking-[0.16em] text-faith-slate">Conversion hooks</div>
                   <div className="mt-3 space-y-3">
                     <ToggleTile
@@ -1734,7 +1734,7 @@ export default function SeriesBuilderPage() {
                     />
                   </div>
                 </div>
-                <div className="rounded-[26px] border border-faith-line bg-[var(--fh-surface)] p-4">
+                <div className="rounded-[26px] border border-faith-line/70 bg-[var(--fh-surface)] p-4">
                   <div className="text-[11px] font-black uppercase tracking-[0.16em] text-faith-slate">Beacon promotion hook</div>
                   <div className="mt-2 text-[12px] font-bold text-faith-ink">Linked prelaunch campaign</div>
                   <TextArea
@@ -1789,7 +1789,7 @@ export default function SeriesBuilderPage() {
                 <select
                   value={draft.embargoRule}
                   onChange={(e) => setDraft((current) => ({ ...current, embargoRule: e.target.value }))}
-                  className="mt-1 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] font-medium text-faith-ink outline-none"
+                  className="mt-1 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] font-medium text-faith-ink outline-none"
                 >
                   {EMBARGO_RULES.map((rule) => (
                     <option key={rule} value={rule}>{rule}</option>
@@ -1801,7 +1801,7 @@ export default function SeriesBuilderPage() {
                 <select
                   value={draft.approvalFlow}
                   onChange={(e) => setDraft((current) => ({ ...current, approvalFlow: e.target.value }))}
-                  className="mt-1 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] font-medium text-faith-ink outline-none"
+                  className="mt-1 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] font-medium text-faith-ink outline-none"
                 >
                   {APPROVAL_FLOWS.map((flow) => (
                     <option key={flow} value={flow}>{flow}</option>
@@ -1827,12 +1827,12 @@ export default function SeriesBuilderPage() {
         >
           <div className="grid gap-4 lg:grid-cols-[0.9fr_1.1fr]">
             <div className="space-y-3">
-              <div className="rounded-[26px] border border-faith-line bg-[var(--fh-surface)] p-4">
+              <div className="rounded-[26px] border border-faith-line/70 bg-[var(--fh-surface)] p-4">
                 <div className="text-[11px] font-black uppercase tracking-[0.16em] text-faith-slate">Series completeness</div>
                 <div className="mt-2 text-[34px] font-black text-faith-ink">{readiness.score}%</div>
                 <div className="mt-3"><ProgressBar value={readiness.score} /></div>
               </div>
-              <div className="rounded-[26px] border border-faith-line bg-[var(--fh-surface)] p-4">
+              <div className="rounded-[26px] border border-faith-line/70 bg-[var(--fh-surface)] p-4">
                 <div className="text-[11px] font-black uppercase tracking-[0.16em] text-faith-slate">Asset gaps</div>
                 <div className="mt-3 space-y-2">
                   {readiness.assetGaps.length ? readiness.assetGaps.map((gap) => (
@@ -1844,39 +1844,39 @@ export default function SeriesBuilderPage() {
               </div>
             </div>
             <div className="space-y-3">
-              <div className="rounded-[26px] border border-faith-line bg-[var(--fh-surface-bg)] p-4">
+              <div className="rounded-[26px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
                 <div className="text-[14px] font-bold text-faith-ink">Launch confidence board</div>
                 <div className="mt-3 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
-                  <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-3">
+                  <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-3">
                     <div className="text-[11px] text-faith-slate">Episode count health</div>
                     <div className="mt-1 text-[22px] font-black text-faith-ink">{draft.episodes.length}/{draft.episodeTarget}</div>
                   </div>
-                  <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-3">
+                  <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-3">
                     <div className="text-[11px] text-faith-slate">Locale variants</div>
                     <div className="mt-1 text-[22px] font-black text-faith-ink">{draft.locales.length}</div>
                   </div>
-                  <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-3">
+                  <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-3">
                     <div className="text-[11px] text-faith-slate">Resource blocks</div>
                     <div className="mt-1 text-[22px] font-black text-faith-ink">{draft.resources.length}</div>
                   </div>
                 </div>
               </div>
-              <div className="rounded-[26px] border border-faith-line bg-[var(--fh-surface)] p-4">
+              <div className="rounded-[26px] border border-faith-line/70 bg-[var(--fh-surface)] p-4">
                 <div className="text-[14px] font-bold text-faith-ink">Native cross-links</div>
                 <div className="mt-3 grid gap-3 md:grid-cols-2">
-                  <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-3">
+                  <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3">
                     <div className="text-[12px] font-bold text-faith-ink">Episode Builder</div>
                     <div className="mt-1 text-[11px] text-faith-slate">Shape each episode with resources, live sessions, and replay expectations.</div>
                   </div>
-                  <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-3">
+                  <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3">
                     <div className="text-[12px] font-bold text-faith-ink">Live Builder</div>
                     <div className="mt-1 text-[11px] text-faith-slate">Create linked Live Sessions under this series and preserve the parent relationship.</div>
                   </div>
-                  <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-3">
+                  <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3">
                     <div className="text-[12px] font-bold text-faith-ink">Audience Notifications</div>
                     <div className="mt-1 text-[11px] text-faith-slate">Launch reminder journeys directly from the series identity and launch plan.</div>
                   </div>
-                  <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-3">
+                  <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3">
                     <div className="text-[12px] font-bold text-faith-ink">Beacon Builder</div>
                     <div className="mt-1 text-[11px] text-faith-slate">Promote the series before the first replay is published using teaser creative and metadata.</div>
                   </div>
@@ -1900,7 +1900,7 @@ export default function SeriesBuilderPage() {
   return (
     <div className="min-h-screen bg-[var(--fh-page-bg)] text-faith-ink">
       <div className="mx-auto max-w-[1600px] px-4 py-6 sm:px-6 lg:px-10">
-        <div className="rounded-[34px] border border-faith-line bg-[var(--fh-surface-bg)] px-5 py-5 shadow-soft">
+        <div className="rounded-[34px] border border-faith-line/70 bg-[var(--fh-surface-bg)] px-5 py-5 shadow-soft">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
             <div className="min-w-0">
               <div className="flex flex-wrap items-center gap-2 text-[11px] text-faith-slate">
@@ -1953,13 +1953,13 @@ export default function SeriesBuilderPage() {
           <div className="space-y-4">{centerContent}</div>
 
           <div className="hidden 2xl:block 2xl:sticky 2xl:top-6 2xl:self-start">
-            <div className="rounded-[30px] border border-faith-line bg-[var(--fh-surface-bg)] p-3 sm:p-4 shadow-soft">
+            <div className="rounded-[30px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3 sm:p-4 shadow-soft">
               <div className="flex items-center justify-between gap-3">
                 <div>
                   <div className="text-[14px] font-bold text-faith-ink">Series preview</div>
                   <div className="mt-1 text-[11px] text-faith-slate">Embedded landing-page preview updates as the series is configured.</div>
                 </div>
-                <div className="inline-flex rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-1">
+                <div className="inline-flex rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-1">
                   <button
                     type="button"
                     onClick={() => setPreviewMode("desktop")}
@@ -1993,13 +1993,13 @@ export default function SeriesBuilderPage() {
         </div>
 
         <div className="mt-5 2xl:hidden">
-          <div className="rounded-[30px] border border-faith-line bg-[var(--fh-surface-bg)] p-3 sm:p-4 shadow-soft">
+          <div className="rounded-[30px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3 sm:p-4 shadow-soft">
             <div className="flex items-center justify-between gap-3">
               <div>
                 <div className="text-[14px] font-bold text-faith-ink">Series preview</div>
                 <div className="mt-1 text-[11px] text-faith-slate">Preview the series landing experience on desktop or mobile.</div>
               </div>
-              <div className="inline-flex rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-1">
+              <div className="inline-flex rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-1">
                 <button
                   type="button"
                   onClick={() => setPreviewMode("desktop")}

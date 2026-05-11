@@ -445,7 +445,7 @@ function SoftButton({
       type="button"
       onClick={onClick}
       className={cx(
-        "inline-flex items-center justify-center gap-2 rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 px-4 py-2 text-[12px] font-bold text-slate-800 dark:text-slate-100 transition-colors hover:bg-[var(--fh-surface)] dark:hover:bg-slate-700",
+        "inline-flex items-center justify-center gap-2 rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 px-4 py-2 text-[12px] font-bold text-slate-800 dark:text-slate-100 transition-colors hover:bg-[var(--fh-surface)] dark:hover:bg-slate-700",
         className,
       )}
     >
@@ -497,7 +497,7 @@ function SectionCard({
   return (
     <div
       className={cx(
-        "rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-5 shadow-soft transition-colors",
+        "rounded-[28px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-5 shadow-soft transition-colors",
         className,
       )}
     >
@@ -659,7 +659,7 @@ function PlacementDrawer({
   return (
     <div className="fixed inset-0 z-[120]">
       <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose} />
-      <div className="absolute right-0 top-0 h-full w-full max-w-[760px] overflow-hidden border-l border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 shadow-2xl transition-colors">
+      <div className="absolute right-0 top-0 h-full w-full max-w-[760px] overflow-hidden border-l border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 shadow-medium transition-colors">
         <div className="flex items-start justify-between gap-3 border-b border-faith-line dark:border-slate-800 px-5 py-4">
           <div className="min-w-0">
             <div className="text-[15px] font-extrabold text-faith-ink dark:text-slate-100">
@@ -680,19 +680,19 @@ function PlacementDrawer({
             >
               <PreviewShell placement={placement} audiencePackage={audiencePackage} />
               <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-3">
+                <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-3">
                   <div className="text-[11px] uppercase tracking-wide text-faith-slate">Historical win</div>
                   <div className="mt-2 text-[13px] font-bold text-faith-ink dark:text-slate-100">
                     {placement.historicalWin}
                   </div>
                 </div>
-                <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-3">
+                <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-3">
                   <div className="text-[11px] uppercase tracking-wide text-faith-slate">Pricing logic</div>
                   <div className="mt-2 text-[13px] font-bold text-faith-ink dark:text-slate-100">
                     {placement.pricingLogic}
                   </div>
                 </div>
-                <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-3 sm:col-span-2">
+                <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-3 sm:col-span-2">
                   <div className="text-[11px] uppercase tracking-wide text-faith-slate">Policy note</div>
                   <div className="mt-2 text-[13px] leading-relaxed text-slate-700 dark:text-slate-300">
                     {placement.policyNote}
@@ -896,7 +896,7 @@ export default function BeaconMarketplacePage() {
                 right={<Pill>{filteredInventory.length} results</Pill>}
               >
                 <div className="space-y-3">
-                  <div className="flex items-center gap-2 rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)]/80 dark:bg-slate-900 px-4 py-3 transition-colors">
+                  <div className="flex items-center gap-2 rounded-[22px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)]/80 dark:bg-slate-900 px-4 py-3 transition-colors">
                     <Search className="h-4 w-4 text-faith-slate" />
                     <input
                       value={search}
@@ -1080,7 +1080,7 @@ export default function BeaconMarketplacePage() {
                 subtitle="Preview selected inventory like a premium merchandising experience before handing it into Beacon Builder."
                 right={
                   <div className="flex items-center gap-2">
-                    <div className="inline-flex rounded-full border border-faith-line dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-900 p-1">
+                    <div className="inline-flex rounded-full border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-900 p-1">
                       <button
                         type="button"
                         onClick={() => setPreviewMode("desktop")}
@@ -1131,7 +1131,7 @@ export default function BeaconMarketplacePage() {
                     ].map((row) => (
                       <div
                         key={row.label}
-                        className="rounded-[20px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 px-4 py-3"
+                        className="rounded-[20px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 px-4 py-3"
                       >
                         <div className="text-[10px] uppercase tracking-wide text-faith-slate">
                           {row.label}
@@ -1151,7 +1151,7 @@ export default function BeaconMarketplacePage() {
                   subtitle="Combine placements, compare expected outcomes, save plan combinations, and hand them into Beacon Builder."
                 >
                   <div className="space-y-3">
-                    <div className="rounded-[20px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 px-4 py-3">
+                    <div className="rounded-[20px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 px-4 py-3">
                       <div className="text-[11px] uppercase tracking-wide text-faith-slate">Plan name</div>
                       <input
                         value={mediaPlanName}
@@ -1164,7 +1164,7 @@ export default function BeaconMarketplacePage() {
                       {mediaPlanRows.map(({ placement, audiencePackage }) => (
                         <div
                           key={`${placement.id}_${audiencePackage.id}`}
-                          className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4"
+                          className="rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4"
                         >
                           <div className="flex items-start justify-between gap-3">
                             <div>
@@ -1180,7 +1180,7 @@ export default function BeaconMarketplacePage() {
                               <button
                                 type="button"
                                 onClick={() => removePlanRow(placement.id, audiencePackage.id)}
-                                className="rounded-full border border-faith-line px-3 py-1 text-[11px] font-bold text-faith-slate transition-colors hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:hover:bg-slate-800"
+                                className="rounded-full border border-faith-line/70 px-3 py-1 text-[11px] font-bold text-faith-slate transition-colors hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:hover:bg-slate-800"
                               >
                                 Remove
                               </button>
@@ -1199,7 +1199,7 @@ export default function BeaconMarketplacePage() {
                       ].map((metric) => (
                         <div
                           key={metric.label}
-                          className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-4"
+                          className="rounded-[22px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-4"
                         >
                           <div className="text-[10px] uppercase tracking-wide text-faith-slate">
                             {metric.label}
@@ -1252,7 +1252,7 @@ export default function BeaconMarketplacePage() {
                       </div>
                     </div>
 
-                    <div className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-4 text-[12px] leading-relaxed text-faith-slate">
+                    <div className="rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-4 text-[12px] leading-relaxed text-faith-slate">
                       Policy notes and performance examples are available in the placement detail drawer.
                     </div>
                   </div>
@@ -1339,7 +1339,7 @@ export default function BeaconMarketplacePage() {
             ].map((tile) => (
               <div
                 key={tile.title}
-                className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 shadow-soft"
+                className="rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 shadow-soft"
               >
                 <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-[rgba(3,205,140,0.12)] text-[var(--fh-brand)]">
                   <tile.icon className="h-5 w-5" />

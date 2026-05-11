@@ -398,7 +398,7 @@ function Drawer({
   return (
     <div className="fixed inset-0 z-[110]">
       <div className="absolute inset-0 bg-slate-900/50 backdrop-blur-sm transition-opacity" onClick={onClose} />
-      <div className={cn("absolute right-0 top-0 h-full w-full bg-[var(--fh-surface-bg)] dark:bg-slate-900 shadow-2xl transition-transform duration-300 ease-out sm:ring-1 sm:ring-slate-200 dark:sm:ring-slate-800", widthClass)}>
+      <div className={cn("absolute right-0 top-0 h-full w-full bg-[var(--fh-surface-bg)] dark:bg-slate-900 shadow-medium transition-transform duration-300 ease-out sm:ring-1 sm:ring-slate-200 dark:sm:ring-slate-800", widthClass)}>
         <div className="flex h-full flex-col">
           <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 px-6 py-4">
             <div className="min-w-0">
@@ -508,7 +508,7 @@ function PhoneMock({
 }) {
   return (
     <div className="mx-auto w-full max-w-[420px]">
-      <div className="relative overflow-hidden rounded-[40px] bg-slate-900 dark:bg-black p-3 shadow-2xl transition ring-1 ring-slate-800">
+      <div className="relative overflow-hidden rounded-[40px] bg-slate-900 dark:bg-black p-3 shadow-medium transition ring-1 ring-slate-800">
         <div className="flex flex-col rounded-[32px] bg-[var(--fh-surface-bg)] dark:bg-slate-900 overflow-hidden">
           <div className="border-b border-slate-100 dark:border-slate-800 px-6 py-4">
             <div className="text-[10px] font-black text-faith-slate uppercase tracking-widest">
@@ -1979,7 +1979,7 @@ export default function ChannelsContactManagerPage() {
 
       {toast ? (
         <div className="fixed bottom-5 left-1/2 -translate-x-1/2 z-[120]">
-          <div className="rounded-full bg-slate-900 text-white px-4 py-2 text-sm font-bold shadow-2xl">
+          <div className="rounded-full bg-slate-900 text-white px-4 py-2 text-sm font-bold shadow-medium">
             {toast}
           </div>
         </div>

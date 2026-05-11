@@ -1183,7 +1183,7 @@ function TextInput({
       type={type}
       onChange={(e) => onChange(e.target.value)}
       placeholder={placeholder}
-      className="mt-1 w-full rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] text-faith-ink dark:text-slate-100 outline-none transition-colors focus:ring-2 focus:ring-[rgba(3,205,140,0.22)]"
+      className="mt-1 w-full rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] text-faith-ink dark:text-slate-100 outline-none transition-colors focus:ring-2 focus:ring-[rgba(3,205,140,0.22)]"
     />
   );
 }
@@ -1202,7 +1202,7 @@ function SelectField({
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full appearance-none rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 pr-9 text-[12px] font-semibold text-faith-ink dark:text-slate-100 outline-none transition-colors focus:ring-2 focus:ring-[rgba(3,205,140,0.22)]"
+        className="w-full appearance-none rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 pr-9 text-[12px] font-semibold text-faith-ink dark:text-slate-100 outline-none transition-colors focus:ring-2 focus:ring-[rgba(3,205,140,0.22)]"
       >
         {options.map((option) => (
           <option key={option}>{option}</option>
@@ -1222,7 +1222,7 @@ function BreakdownList({ rows }: { rows: BreakdownRow[] }) {
         return (
           <div
             key={row.label}
-            className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors"
+            className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors"
           >
             <div className="flex items-start justify-between gap-3">
               <div className="min-w-0">
@@ -1249,7 +1249,7 @@ function BreakdownList({ rows }: { rows: BreakdownRow[] }) {
 
 function AuditItem({ event }: { event: AuditEvent }) {
   return (
-    <div className="relative rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
+    <div className="relative rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
       <div
         className="absolute left-0 top-0 h-full w-1 rounded-l-2xl"
         style={{ background: accentColor(event.accent) }}
@@ -1305,7 +1305,7 @@ function Drawer({
   return (
     <div className="fixed inset-0 z-[120]">
       <div className="absolute inset-0 bg-black/55 backdrop-blur-sm" onClick={onClose} />
-      <div className="absolute right-0 top-0 h-full w-full max-w-[1080px] border-l border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 shadow-2xl transition-colors">
+      <div className="absolute right-0 top-0 h-full w-full max-w-[1080px] border-l border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 shadow-medium transition-colors">
         <div className="flex h-full flex-col">
           <div className="sticky top-0 z-10 border-b border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 py-3 transition-colors">
             <div className="flex items-start justify-between gap-3">
@@ -1322,7 +1322,7 @@ function Drawer({
               <button
                 type="button"
                 onClick={onClose}
-                className="grid h-9 w-9 place-items-center rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 text-faith-slate dark:text-slate-300 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-700 transition-colors"
+                className="grid h-9 w-9 place-items-center rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 text-faith-slate dark:text-slate-300 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-700 transition-colors"
               >
                 <span className="text-lg leading-none">�</span>
               </button>
@@ -1393,13 +1393,13 @@ function PreviewSurface({
           </div>
 
           <div className="mt-3 grid grid-cols-2 gap-2">
-            <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 p-2">
+            <div className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 p-2">
               <div className="text-[10px] uppercase tracking-[0.14em] text-faith-slate">Outcome</div>
               <div className="mt-1 text-[13px] font-extrabold text-faith-ink dark:text-slate-100">
                 {campaign.primaryOutcome}
               </div>
             </div>
-            <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 p-2">
+            <div className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 p-2">
               <div className="text-[10px] uppercase tracking-[0.14em] text-faith-slate">Placement</div>
               <div className="mt-1 text-[13px] font-extrabold text-faith-ink dark:text-slate-100">
                 {campaign.placement}
@@ -1423,19 +1423,19 @@ function PreviewSurface({
           </div>
 
           <div className="mt-3 grid grid-cols-3 gap-2 text-[10px]">
-            <div className="rounded-xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2">
+            <div className="rounded-xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2">
               <div className="text-faith-slate uppercase tracking-[0.14em]">Spend</div>
               <div className="mt-1 text-[12px] font-black text-faith-ink dark:text-slate-100">
                 {fmtCurrency(campaign.spend)}
               </div>
             </div>
-            <div className="rounded-xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2">
+            <div className="rounded-xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2">
               <div className="text-faith-slate uppercase tracking-[0.14em]">CTR</div>
               <div className="mt-1 text-[12px] font-black text-faith-ink dark:text-slate-100">
                 {fmtPct(campaign.ctr)}
               </div>
             </div>
-            <div className="rounded-xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2">
+            <div className="rounded-xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2">
               <div className="text-faith-slate uppercase tracking-[0.14em]">Health</div>
               <div className="mt-1 text-[12px] font-black text-faith-ink dark:text-slate-100">
                 {fmtPct(campaign.creativeHealth, 0)}
@@ -1460,7 +1460,7 @@ function CreativeVersionRow({
   onDuplicate: () => void;
 }) {
   return (
-    <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
+    <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-2">
@@ -1476,19 +1476,19 @@ function CreativeVersionRow({
             {version.language} � {version.format} � {version.subtitleMode}
           </div>
           <div className="mt-2 grid grid-cols-3 gap-2 text-[11px]">
-            <div className="rounded-xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2">
+            <div className="rounded-xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2">
               <div className="text-faith-slate">Health</div>
               <div className="mt-0.5 font-extrabold text-faith-ink dark:text-slate-100">
                 {fmtPct(version.health, 0)}
               </div>
             </div>
-            <div className="rounded-xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2">
+            <div className="rounded-xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2">
               <div className="text-faith-slate">CTR</div>
               <div className="mt-0.5 font-extrabold text-faith-ink dark:text-slate-100">
                 {fmtPct(version.ctr)}
               </div>
             </div>
-            <div className="rounded-xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2">
+            <div className="rounded-xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2">
               <div className="text-faith-slate">Fatigue</div>
               <div className="mt-0.5 font-extrabold text-faith-ink dark:text-slate-100">
                 {fmtPct(version.fatigue, 0)}
@@ -1498,7 +1498,7 @@ function CreativeVersionRow({
         </div>
 
         <div
-          className="h-14 w-14 shrink-0 rounded-2xl border border-faith-line dark:border-slate-700"
+          className="h-14 w-14 shrink-0 rounded-2xl border border-faith-line/70 dark:border-slate-700"
           style={{
             background: `linear-gradient(135deg, ${accentSoft(accent)} 0%, ${accentColor(accent)} 160%)`,
           }}
@@ -1575,25 +1575,25 @@ function CampaignRow({
           </div>
 
           <div className="mt-2 grid grid-cols-2 gap-2 xl:grid-cols-4">
-            <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2">
+            <div className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2">
               <div className="text-[10px] uppercase tracking-[0.14em] text-faith-slate">Source</div>
               <div className="mt-1 text-[12px] font-extrabold text-faith-ink dark:text-slate-100">
                 {campaign.linkedName || campaign.sourceType}
               </div>
             </div>
-            <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2">
+            <div className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2">
               <div className="text-[10px] uppercase tracking-[0.14em] text-faith-slate">Owner</div>
               <div className="mt-1 text-[12px] font-extrabold text-faith-ink dark:text-slate-100">
                 {campaign.owner}
               </div>
             </div>
-            <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2">
+            <div className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2">
               <div className="text-[10px] uppercase tracking-[0.14em] text-faith-slate">Spend</div>
               <div className="mt-1 text-[12px] font-extrabold text-faith-ink dark:text-slate-100">
                 {fmtCurrency(campaign.spend)}
               </div>
             </div>
-            <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2">
+            <div className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2">
               <div className="text-[10px] uppercase tracking-[0.14em] text-faith-slate">{campaign.primaryOutcome}</div>
               <div className="mt-1 text-[12px] font-extrabold text-faith-ink dark:text-slate-100">
                 {fmtInt(outcomeValue)}
@@ -1651,13 +1651,13 @@ function CampaignDetailDrawer({
             </div>
 
             <div className="mt-4 grid gap-3 sm:grid-cols-2">
-              <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3">
+              <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3">
                 <div className="text-[11px] font-semibold text-faith-slate">Spend history</div>
                 <div className="mt-2">
                   <MiniLine values={campaign.spendSeries} tone={campaign.accent} />
                 </div>
               </div>
-              <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3">
+              <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3">
                 <div className="text-[11px] font-semibold text-faith-slate">Conversion trend</div>
                 <div className="mt-2">
                   <MiniLine values={campaign.conversionSeries} tone="orange" />
@@ -1684,7 +1684,7 @@ function CampaignDetailDrawer({
               {campaign.creativeVersions.map((version) => (
                 <div
                   key={version.id}
-                  className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors"
+                  className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors"
                 >
                   <div className="flex items-center justify-between gap-2">
                     <div className="min-w-0">
@@ -1698,15 +1698,15 @@ function CampaignDetailDrawer({
                     <Pill text={version.state} tone={creativeTone(version.state)} />
                   </div>
                   <div className="mt-2 grid grid-cols-3 gap-2 text-[11px]">
-                    <div className="rounded-xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2">
+                    <div className="rounded-xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2">
                       <div className="text-faith-slate">Health</div>
                       <div className="mt-0.5 font-extrabold text-faith-ink dark:text-slate-100">{fmtPct(version.health, 0)}</div>
                     </div>
-                    <div className="rounded-xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2">
+                    <div className="rounded-xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2">
                       <div className="text-faith-slate">CTR</div>
                       <div className="mt-0.5 font-extrabold text-faith-ink dark:text-slate-100">{fmtPct(version.ctr)}</div>
                     </div>
-                    <div className="rounded-xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2">
+                    <div className="rounded-xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2">
                       <div className="text-faith-slate">Fatigue</div>
                       <div className="mt-0.5 font-extrabold text-faith-ink dark:text-slate-100">{fmtPct(version.fatigue, 0)}</div>
                     </div>
@@ -1728,7 +1728,7 @@ function CampaignDetailDrawer({
                 <MetricCard label="Audience health" value={`${Math.round(campaign.audienceHealth)}%`} tone="navy" />
               </div>
 
-              <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3">
+              <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3">
                 <div className="text-[11px] font-semibold text-faith-slate">Launch blockers</div>
                 <div className="mt-2 space-y-2">
                   {campaign.launchBlockers.length ? (
@@ -1748,7 +1748,7 @@ function CampaignDetailDrawer({
                 </div>
               </div>
 
-              <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3">
+              <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3">
                 <div className="text-[11px] font-semibold text-faith-slate">Policy notes</div>
                 <div className="mt-2 space-y-2">
                   {campaign.policyNotes.map((note) => (
@@ -2222,7 +2222,7 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
                     {qualityRows.map((campaign) => (
                       <div
                         key={campaign.id}
-                        className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors"
+                        className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors"
                       >
                         <div className="flex items-start justify-between gap-2">
                           <div className="min-w-0">
@@ -2268,7 +2268,7 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
               />
 
               <div className="mt-4 grid gap-3 2xl:grid-cols-[1.3fr_1fr_1fr]">
-                <div className="flex items-center gap-2 rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-2 transition-colors">
+                <div className="flex items-center gap-2 rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-2 transition-colors">
                   <Search className="h-4 w-4 text-faith-slate" />
                   <input
                     value={query}
@@ -2278,12 +2278,12 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
                   />
                 </div>
 
-                <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] font-extrabold flex items-center gap-2 transition-colors">
+                <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] font-extrabold flex items-center gap-2 transition-colors">
                   <Filter className="h-4 w-4 text-slate-700 dark:text-slate-300" />
                   <span className="text-slate-700 dark:text-slate-300">Portfolio filters</span>
                 </div>
 
-                <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] font-extrabold flex items-center gap-2 transition-colors">
+                <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] font-extrabold flex items-center gap-2 transition-colors">
                   <SlidersHorizontal className="h-4 w-4 text-slate-700 dark:text-slate-300" />
                   <span className="text-slate-700 dark:text-slate-300">Rule-based stewardship</span>
                 </div>
@@ -2637,14 +2637,14 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
                     {approvalChecklist.map((item) => (
                       <div
                         key={item.label}
-                        className="flex items-center justify-between rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-2"
+                        className="flex items-center justify-between rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-2"
                       >
                         <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">{item.label}</div>
                         <Pill text={item.state === "good" ? "Ready" : item.state === "warn" ? "Review" : "Blocked"} tone={item.state} />
                       </div>
                     ))}
 
-                    <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3">
+                    <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3">
                       <div className="text-[11px] font-semibold text-faith-slate">Launch blockers</div>
                       <div className="mt-2 space-y-2">
                         {selectedCampaign.launchBlockers.length ? (
@@ -2677,7 +2677,7 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
                     {selectedCampaign.optimizationRules.map((rule) => (
                       <div
                         key={rule.id}
-                        className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors"
+                        className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors"
                       >
                         <div className="flex items-start justify-between gap-3">
                           <div className="min-w-0">

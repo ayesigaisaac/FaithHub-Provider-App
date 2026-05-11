@@ -543,7 +543,7 @@ function StatCard({
   const dot =
     accent === "green" ? EV_GREEN : accent === "orange" ? EV_ORANGE : EV_NAVY;
   return (
-    <div className="rounded-3xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors">
+    <div className="rounded-3xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors">
       <div className="flex items-start justify-between gap-3">
         <div>
           <div className="text-[11px] font-semibold uppercase tracking-[0.12em] text-faith-slate">
@@ -582,7 +582,7 @@ function Drawer({
         className="absolute inset-0 bg-black/50 backdrop-blur-sm"
         onClick={onClose}
       />
-      <div className="absolute inset-0 bg-[var(--fh-surface)] dark:bg-slate-950 shadow-2xl transition-colors flex flex-col">
+      <div className="absolute inset-0 bg-[var(--fh-surface)] dark:bg-slate-950 shadow-medium transition-colors flex flex-col">
         <div className="shrink-0 border-b border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 py-3">
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0">
@@ -598,7 +598,7 @@ function Drawer({
             <button
               type="button"
               onClick={onClose}
-              className="h-9 w-9 rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 grid place-items-center hover:bg-[var(--fh-surface)] dark:hover:bg-slate-700 transition-colors"
+              className="h-9 w-9 rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 grid place-items-center hover:bg-[var(--fh-surface)] dark:hover:bg-slate-700 transition-colors"
             >
               <X className="h-4 w-4 text-slate-700 dark:text-slate-300" />
             </button>
@@ -626,7 +626,7 @@ function CounselingDestinationPreview({
   return (
     <div
       className={cx(
-        "overflow-hidden rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 transition-colors",
+        "overflow-hidden rounded-[28px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 transition-colors",
         previewMode === "mobile" ? "max-w-[340px] md:max-w-[380px]" : "w-full",
       )}
     >
@@ -679,7 +679,7 @@ function CounselingDestinationPreview({
           <Pill text={record.priority} tone={priorityTone(record.priority)} />
         </div>
 
-        <div className="mt-4 rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
+        <div className="mt-4 rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
           <div className="text-[10px] font-black uppercase tracking-[0.16em] text-faith-slate">
             Care summary
           </div>
@@ -698,7 +698,7 @@ function CounselingDestinationPreview({
             onClick={() => safeNav("/faithhub/provider/counseling")}>
             {record.nextSessionISO ? "Join session" : "Request slot"}
           </button>
-          <button className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] font-bold text-slate-700 dark:text-slate-200 transition-colors" onClick={() => safeNav("/faithhub/provider/counseling")}>
+          <button className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] font-bold text-slate-700 dark:text-slate-200 transition-colors" onClick={() => safeNav("/faithhub/provider/counseling")}>
             Send secure note
           </button>
         </div>
@@ -707,7 +707,7 @@ function CounselingDestinationPreview({
           {checkpointSubset(record).map((step) => (
             <div
               key={step.id}
-              className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2 transition-colors"
+              className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2 transition-colors"
             >
               <div className="text-[10px] font-black uppercase tracking-[0.14em] text-faith-slate">
                 {step.state}
@@ -722,7 +722,7 @@ function CounselingDestinationPreview({
           ))}
         </div>
 
-        <div className="mt-4 rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
+        <div className="mt-4 rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
           <div className="text-[10px] font-black uppercase tracking-[0.16em] text-faith-slate">
             Assigned counselor
           </div>
@@ -750,7 +750,7 @@ function CounselingDestinationPreviewInner({
   previewMode: PreviewMode;
 }) {
   return (
-    <div className="rounded-[34px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors">
+    <div className="rounded-[34px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors">
       <div className="mb-3 flex items-center justify-between gap-2">
         <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
           Counseling destination preview
@@ -971,7 +971,7 @@ export default function CounselingPage() {
   return (
     <div className="min-h-screen bg-[var(--fh-page-bg)] p-5 text-faith-ink dark:bg-slate-950 dark:text-slate-50">
       <div className="mx-auto max-w-[1600px] space-y-4">
-        <section className="rounded-[30px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-6 shadow-soft transition-colors">
+        <section className="rounded-[30px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-6 shadow-soft transition-colors">
           <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
             <div className="min-w-0">
               <ProviderPageTitle
@@ -1018,7 +1018,7 @@ export default function CounselingPage() {
           </div>
         </section>
 
-        <section className="rounded-full border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 py-3 shadow-soft transition-colors">
+        <section className="rounded-full border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 py-3 shadow-soft transition-colors">
           <div className="flex flex-col gap-2 xl:flex-row xl:items-center xl:justify-between">
             <div className="flex flex-wrap items-center gap-3 text-[12px] text-faith-slate">
               <span className="rounded-full border border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-900/20 px-3 py-1 font-black uppercase tracking-[0.14em] text-amber-700 dark:text-amber-300">
@@ -1073,7 +1073,7 @@ export default function CounselingPage() {
 
         <section className="grid gap-4 2xl:grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)_360px]">
           <div className="space-y-4">
-            <div className="rounded-[30px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 shadow-soft transition-colors">
+            <div className="rounded-[30px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 shadow-soft transition-colors">
               <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
                 <div className="min-w-0">
                   <h2 className="text-[20px] font-black tracking-[-0.02em] text-faith-ink dark:text-slate-100">
@@ -1090,7 +1090,7 @@ export default function CounselingPage() {
               </div>
 
               <div className="mt-4 grid gap-3 xl:grid-cols-[minmax(0,1.3fr)_repeat(4,minmax(140px,1fr))]">
-                <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-2.5 transition-colors">
+                <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-2.5 transition-colors">
                   <div className="flex items-center gap-2">
                     <Search className="h-4 w-4 text-faith-slate" />
                     <input
@@ -1105,7 +1105,7 @@ export default function CounselingPage() {
                 <select
                   value={statusFilter}
                   onChange={(e) => setStatusFilter(e.target.value)}
-                  className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2.5 text-[12px] font-semibold text-slate-700 dark:text-slate-300 transition-colors"
+                  className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2.5 text-[12px] font-semibold text-slate-700 dark:text-slate-300 transition-colors"
                 >
                   {[
                     "All statuses",
@@ -1124,7 +1124,7 @@ export default function CounselingPage() {
                 <select
                   value={sourceFilter}
                   onChange={(e) => setSourceFilter(e.target.value)}
-                  className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2.5 text-[12px] font-semibold text-slate-700 dark:text-slate-300 transition-colors"
+                  className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2.5 text-[12px] font-semibold text-slate-700 dark:text-slate-300 transition-colors"
                 >
                   {[
                     "All sources",
@@ -1141,7 +1141,7 @@ export default function CounselingPage() {
                 <select
                   value={privacyFilter}
                   onChange={(e) => setPrivacyFilter(e.target.value)}
-                  className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2.5 text-[12px] font-semibold text-slate-700 dark:text-slate-300 transition-colors"
+                  className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2.5 text-[12px] font-semibold text-slate-700 dark:text-slate-300 transition-colors"
                 >
                   {["All privacy", "Private", "Restricted", "Pastoral team"].map(
                     (label) => (
@@ -1153,7 +1153,7 @@ export default function CounselingPage() {
                 <select
                   value={counselorFilter}
                   onChange={(e) => setCounselorFilter(e.target.value)}
-                  className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2.5 text-[12px] font-semibold text-slate-700 dark:text-slate-300 transition-colors"
+                  className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2.5 text-[12px] font-semibold text-slate-700 dark:text-slate-300 transition-colors"
                 >
                   {["All counselors", "Unassigned", ...counselorsSeed.map((c) => c.name)].map(
                     (label) => (
@@ -1231,7 +1231,7 @@ export default function CounselingPage() {
                         {record.tags.map((tag) => (
                           <span
                             key={tag}
-                            className="rounded-full border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 px-2.5 py-1 text-[10px] font-semibold text-faith-slate"
+                            className="rounded-full border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 px-2.5 py-1 text-[10px] font-semibold text-faith-slate"
                           >
                             {tag}
                           </span>
@@ -1243,7 +1243,7 @@ export default function CounselingPage() {
               </div>
             </div>
 
-            <div className="rounded-[30px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 shadow-soft transition-colors">
+            <div className="rounded-[30px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 shadow-soft transition-colors">
               <div className="flex items-start justify-between gap-3">
                 <div>
                   <h3 className="text-[18px] font-black tracking-[-0.02em] text-faith-ink dark:text-slate-100">
@@ -1260,7 +1260,7 @@ export default function CounselingPage() {
                 {pathwayTemplatesSeed.map((template) => (
                   <div
                     key={template.id}
-                    className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 transition-colors"
+                    className="rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 transition-colors"
                   >
                     <div
                       className="h-2 w-16 rounded-full"
@@ -1289,7 +1289,7 @@ export default function CounselingPage() {
           </div>
 
           <div className="space-y-4">
-            <div className="rounded-[30px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 shadow-soft transition-colors">
+            <div className="rounded-[30px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 shadow-soft transition-colors">
               <div className="flex items-start justify-between gap-3">
                 <div className="min-w-0">
                   <h2 className="text-[20px] font-black tracking-[-0.02em] text-faith-ink dark:text-slate-100">
@@ -1335,7 +1335,7 @@ export default function CounselingPage() {
                   </div>
 
                   <div className="grid gap-3 md:grid-cols-2">
-                    <div className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 transition-colors">
+                    <div className="rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 transition-colors">
                       <div className="text-[11px] font-black uppercase tracking-[0.14em] text-faith-slate">
                         Intake notes
                       </div>
@@ -1344,7 +1344,7 @@ export default function CounselingPage() {
                       </div>
                     </div>
 
-                    <div className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 transition-colors">
+                    <div className="rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 transition-colors">
                       <div className="text-[11px] font-black uppercase tracking-[0.14em] text-faith-slate">
                         Counselor assignment
                       </div>
@@ -1352,7 +1352,7 @@ export default function CounselingPage() {
                         <select
                           value={selectedCounselorId}
                           onChange={(e) => setSelectedCounselorId(e.target.value)}
-                          className="w-full rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2.5 text-[12px] font-semibold text-slate-700 dark:text-slate-300 transition-colors"
+                          className="w-full rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2.5 text-[12px] font-semibold text-slate-700 dark:text-slate-300 transition-colors"
                         >
                           {counselorsSeed.map((counselor) => (
                             <option key={counselor.id} value={counselor.id}>
@@ -1361,7 +1361,7 @@ export default function CounselingPage() {
                           ))}
                         </select>
 
-                        <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
+                        <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
                           <div className="text-[12px] font-bold text-faith-ink dark:text-slate-100">
                             {selectedCounselor.name}
                           </div>
@@ -1384,7 +1384,7 @@ export default function CounselingPage() {
                   </div>
 
                   <div className="grid gap-3 xl:grid-cols-2">
-                    <div className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors">
+                    <div className="rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors">
                       <div className="flex items-center justify-between gap-2">
                         <div className="text-[11px] font-black uppercase tracking-[0.14em] text-faith-slate">
                           Session planning
@@ -1394,7 +1394,7 @@ export default function CounselingPage() {
                           tone={selectedCase.nextSessionISO ? "good" : "warn"}
                         />
                       </div>
-                      <div className="mt-3 rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
+                      <div className="mt-3 rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
                         <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                           {selectedCase.nextSessionISO
                             ? fmtLocal(selectedCase.nextSessionISO)
@@ -1408,7 +1408,7 @@ export default function CounselingPage() {
                         {selectedCase.checkpoints.map((checkpoint) => (
                           <div
                             key={checkpoint.id}
-                            className="rounded-full border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 px-3 py-1 text-[11px] font-semibold text-faith-slate dark:text-slate-300"
+                            className="rounded-full border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 px-3 py-1 text-[11px] font-semibold text-faith-slate dark:text-slate-300"
                           >
                             {checkpoint.label} · {checkpoint.state}
                           </div>
@@ -1416,7 +1416,7 @@ export default function CounselingPage() {
                       </div>
                     </div>
 
-                    <div className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors">
+                    <div className="rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors">
                       <div className="text-[11px] font-black uppercase tracking-[0.14em] text-faith-slate">
                         Cross-object hooks
                       </div>
@@ -1424,7 +1424,7 @@ export default function CounselingPage() {
                         {linkedHooks.map((hook) => (
                           <div
                             key={hook.label}
-                            className="flex items-center justify-between gap-3 rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-2.5 transition-colors"
+                            className="flex items-center justify-between gap-3 rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-2.5 transition-colors"
                           >
                             <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                               {hook.label}
@@ -1439,7 +1439,7 @@ export default function CounselingPage() {
                     </div>
                   </div>
 
-                  <div className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors">
+                  <div className="rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors">
                     <div className="text-[11px] font-black uppercase tracking-[0.14em] text-faith-slate">
                       Progress lane
                     </div>
@@ -1447,7 +1447,7 @@ export default function CounselingPage() {
                       {selectedCase.checkpoints.map((checkpoint) => (
                         <div
                           key={checkpoint.id}
-                          className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors"
+                          className="rounded-[22px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors"
                         >
                           <div className="text-[10px] font-black uppercase tracking-[0.14em] text-faith-slate">
                             {checkpoint.state}
@@ -1466,7 +1466,7 @@ export default function CounselingPage() {
               ) : null}
             </div>
 
-            <div className="rounded-[30px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 shadow-soft transition-colors">
+            <div className="rounded-[30px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 shadow-soft transition-colors">
               <div className="flex items-start justify-between gap-3">
                 <div>
                   <h3 className="text-[18px] font-black tracking-[-0.02em] text-faith-ink dark:text-slate-100">
@@ -1501,7 +1501,7 @@ export default function CounselingPage() {
                 ].map((row) => (
                   <div
                     key={row.title}
-                    className="flex flex-col gap-2 rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-3 transition-colors md:flex-row md:items-center md:justify-between"
+                    className="flex flex-col gap-2 rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-3 transition-colors md:flex-row md:items-center md:justify-between"
                   >
                     <div className="min-w-0">
                       <div className="text-[13px] font-semibold text-faith-ink dark:text-slate-100">
@@ -1519,7 +1519,7 @@ export default function CounselingPage() {
           </div>
 
           <div className="space-y-4">
-            <div className="rounded-[30px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 shadow-soft transition-colors">
+            <div className="rounded-[30px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 shadow-soft transition-colors">
               <div className="flex items-start justify-between gap-3">
                 <div>
                   <h2 className="text-[18px] font-black tracking-[-0.02em] text-faith-ink dark:text-slate-100">
@@ -1577,7 +1577,7 @@ export default function CounselingPage() {
               ) : null}
             </div>
 
-            <div className="rounded-[30px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 shadow-soft transition-colors">
+            <div className="rounded-[30px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 shadow-soft transition-colors">
               <div className="flex items-start justify-between gap-3">
                 <div>
                   <h3 className="text-[18px] font-black tracking-[-0.02em] text-faith-ink dark:text-slate-100">
@@ -1614,7 +1614,7 @@ export default function CounselingPage() {
               </div>
             </div>
 
-            <div className="rounded-[30px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 shadow-soft transition-colors">
+            <div className="rounded-[30px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 shadow-soft transition-colors">
               <div className="flex items-start justify-between gap-3">
                 <div>
                   <h3 className="text-[18px] font-black tracking-[-0.02em] text-faith-ink dark:text-slate-100">
@@ -1631,7 +1631,7 @@ export default function CounselingPage() {
                 {counselorsSeed.map((counselor) => (
                   <div
                     key={counselor.id}
-                    className="flex flex-col gap-2 rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-3 transition-colors"
+                    className="flex flex-col gap-2 rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-3 transition-colors"
                   >
                     <div className="flex items-center justify-between gap-3">
                       <div className="min-w-0">

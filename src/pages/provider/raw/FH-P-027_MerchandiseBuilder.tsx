@@ -529,7 +529,7 @@ function StepNav({
   setStep: (step: StepKey) => void;
 }) {
   return (
-    <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-3 transition-colors">
+    <div className="rounded-3xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3 transition-colors">
       <div className="text-[12px] font-semibold text-faith-ink">Builder flow</div>
       <div className="mt-2 space-y-1">
         {STEP_LIBRARY.map((item) => (
@@ -686,7 +686,7 @@ function Input({
       type={type}
       onChange={(e) => onChange(e.target.value)}
       placeholder={placeholder}
-      className="mt-1 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] text-faith-ink outline-none transition-colors focus:ring-2 focus:ring-amber-200"
+      className="mt-1 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] text-faith-ink outline-none transition-colors focus:ring-2 focus:ring-amber-200"
     />
   );
 }
@@ -708,7 +708,7 @@ function TextArea({
       rows={rows}
       onChange={(e) => onChange(e.target.value)}
       placeholder={placeholder}
-      className="mt-1 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] text-faith-ink outline-none transition-colors focus:ring-2 focus:ring-amber-200"
+      className="mt-1 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] text-faith-ink outline-none transition-colors focus:ring-2 focus:ring-amber-200"
     />
   );
 }
@@ -765,7 +765,7 @@ function SegmentedToggle({
   onChange: (value: string) => void;
 }) {
   return (
-    <div className="inline-flex rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-1 transition-colors">
+    <div className="inline-flex rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-1 transition-colors">
       {values.map((value) => (
         <button
           key={value}
@@ -843,7 +843,7 @@ function VariantRow({
   onRemove: () => void;
 }) {
   return (
-    <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3 transition-colors">
+    <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3 transition-colors">
       <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
         <div>
           <Label>Variant label</Label>
@@ -888,7 +888,7 @@ function LocaleRow({
   onChange: (next: LocaleItem) => void;
 }) {
   return (
-    <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3 transition-colors">
+    <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3 transition-colors">
       <div className="grid gap-3 md:grid-cols-4">
         <div>
           <Label>Language</Label>
@@ -942,7 +942,7 @@ function ReadinessCard({ checks }: { checks: Array<{ label: string; ok: boolean;
         {checks.map((item) => (
           <div
             key={item.label}
-            className="flex items-start justify-between gap-3 rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-3"
+            className="flex items-start justify-between gap-3 rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-3"
           >
             <div>
               <div className="text-[12px] font-semibold text-faith-ink">{item.label}</div>
@@ -990,9 +990,9 @@ function PreviewRail({
           />
         }
       >
-        <div className="rounded-[28px] border border-faith-line bg-[var(--fh-page-bg)] p-3">
+        <div className="rounded-[28px] border border-faith-line/70 bg-[var(--fh-page-bg)] p-3">
           {previewMode === "desktop" ? (
-            <div className="overflow-hidden rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] shadow-soft">
+            <div className="overflow-hidden rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface-bg)] shadow-soft">
               <div className="relative aspect-[16/10] overflow-hidden">
                 <img src={draft.coverUrl} alt={draft.title} className="h-full w-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
@@ -1019,18 +1019,18 @@ function PreviewRail({
                 </div>
                 <div className="mt-3 flex flex-wrap gap-2">
                   {activeVariants.slice(0, 4).map((variant) => (
-                    <span key={variant.id} className="inline-flex rounded-full border border-faith-line bg-[var(--fh-surface)] px-3 py-1 text-[11px] font-semibold text-slate-700">
+                    <span key={variant.id} className="inline-flex rounded-full border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-1 text-[11px] font-semibold text-slate-700">
                       {variant.label}
                     </span>
                   ))}
                 </div>
                 <div className="mt-4 grid gap-2 sm:grid-cols-2">
-                  <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
+                  <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3">
                     <div className="text-[10px] uppercase tracking-[0.18em] text-faith-slate">Live pin</div>
                     <div className="mt-1 text-[12px] font-semibold text-faith-ink">{draft.ctaText}</div>
                     <div className="mt-1 text-[11px] text-faith-slate">{draft.linkedLive || "Attach this merch item to a live session pin."}</div>
                   </div>
-                  <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
+                  <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3">
                     <div className="text-[10px] uppercase tracking-[0.18em] text-faith-slate">Beacon card</div>
                     <div className="mt-1 text-[12px] font-semibold text-faith-ink">{draft.linkedBeacon || "Seasonal awareness campaign"}</div>
                     <div className="mt-1 text-[11px] text-faith-slate">{draft.merchAngle}</div>
@@ -1039,7 +1039,7 @@ function PreviewRail({
               </div>
             </div>
           ) : (
-            <div className="mx-auto w-[320px] md:w-[360px] overflow-hidden rounded-[34px] border border-faith-line bg-slate-950 p-2 shadow-soft">
+            <div className="mx-auto w-[320px] md:w-[360px] overflow-hidden rounded-[34px] border border-faith-line/70 bg-slate-950 p-2 shadow-soft">
               <div className="overflow-hidden rounded-[28px] bg-[var(--fh-surface-bg)]">
                 <div className="relative aspect-[9/12] overflow-hidden">
                   <img src={draft.coverUrl} alt={draft.title} className="h-full w-full object-cover" />
@@ -1051,14 +1051,14 @@ function PreviewRail({
                   </div>
                 </div>
                 <div className="p-3">
-                  <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
+                  <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3">
                     <div className="text-[10px] uppercase tracking-[0.18em] text-faith-slate">Storefront CTA</div>
                     <div className="mt-1 text-[12px] font-semibold text-faith-ink">{draft.ctaText}</div>
                     <div className="mt-1 text-[11px] text-faith-slate">{draft.themeLine}</div>
                   </div>
                   <div className="mt-3 grid gap-2">
                     {activeVariants.slice(0, 2).map((variant) => (
-                      <div key={variant.id} className="rounded-2xl border border-faith-line p-3">
+                      <div key={variant.id} className="rounded-2xl border border-faith-line/70 p-3">
                         <div className="flex items-center justify-between gap-3">
                           <div>
                             <div className="text-[12px] font-semibold text-faith-ink">{variant.label}</div>
@@ -1081,17 +1081,17 @@ function PreviewRail({
 
       <Card title="Surface summary" subtitle="Premium readiness across connected provider surfaces.">
         <div className="grid gap-2">
-          <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
+          <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3">
             <div className="text-[10px] uppercase tracking-[0.18em] text-faith-slate">Inventory</div>
             <div className="mt-1 text-[18px] font-black text-faith-ink">{inventoryTotal}</div>
             <div className="text-[11px] text-faith-slate">Across {draft.variantItems.length} variants</div>
           </div>
-          <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
+          <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3">
             <div className="text-[10px] uppercase tracking-[0.18em] text-faith-slate">Activation hooks</div>
             <div className="mt-1 text-[18px] font-black text-faith-ink">{liveHooksCount}</div>
             <div className="text-[11px] text-faith-slate">Live, events, Beacon, giving, and notification journeys</div>
           </div>
-          <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
+          <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3">
             <div className="text-[10px] uppercase tracking-[0.18em] text-faith-slate">Release</div>
             <div className="mt-1 text-[14px] font-black text-faith-ink">{draft.releaseMode}</div>
             <div className="text-[11px] text-faith-slate">
@@ -1267,7 +1267,7 @@ export default function MerchandiseBuilderPage() {
   return (
     <div className="min-h-screen bg-[var(--fh-page-bg)] text-faith-ink">
       <div className="mx-auto w-full max-w-[1640px] px-4 py-6 sm:px-6 lg:px-8">
-        <div className="rounded-[32px] border border-faith-line bg-[var(--fh-surface-bg)] shadow-soft transition-colors">
+        <div className="rounded-[32px] border border-faith-line/70 bg-[var(--fh-surface-bg)] shadow-soft transition-colors">
           <div className="border-b border-faith-line p-6">
             <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
               <div className="min-w-0">
@@ -1284,12 +1284,12 @@ export default function MerchandiseBuilderPage() {
               </div>
 
               <div className="grid w-full max-w-[560px] gap-3 sm:grid-cols-2 xl:w-[520px]">
-                <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface)] p-4">
+                <div className="rounded-3xl border border-faith-line/70 bg-[var(--fh-surface)] p-4">
                   <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">Readiness</div>
                   <div className="mt-2 text-3xl font-black text-faith-ink">{commandStats.readiness}%</div>
                   <div className="mt-1 text-[11px] text-faith-slate">Launch confidence across merchandising, fulfillment, and activation.</div>
                 </div>
-                <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface)] p-4">
+                <div className="rounded-3xl border border-faith-line/70 bg-[var(--fh-surface)] p-4">
                   <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">Connected surfaces</div>
                   <div className="mt-2 text-3xl font-black text-faith-ink">{commandStats.hooks}</div>
                   <div className="mt-1 text-[11px] text-faith-slate">Live, event, giving, notification, and Beacon hooks enabled.</div>
@@ -1474,11 +1474,11 @@ export default function MerchandiseBuilderPage() {
                     subtitle="Make the merchandise asset useful across FaithMart, provider campaigns, and premium surface previews."
                   >
                     <div className="grid gap-3 md:grid-cols-2">
-                      <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
+                      <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3">
                         <div className="text-[12px] font-semibold text-faith-ink">Storefront hero</div>
                         <div className="mt-1 text-[11px] text-faith-slate">Use the primary cover image as the FaithMart hero and category thumbnail source.</div>
                       </div>
-                      <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
+                      <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3">
                         <div className="text-[12px] font-semibold text-faith-ink">Beacon creative handoff</div>
                         <div className="mt-1 text-[11px] text-faith-slate">Generate promotion variants without rebuilding the merch object from scratch.</div>
                       </div>
@@ -1761,19 +1761,19 @@ export default function MerchandiseBuilderPage() {
                     </div>
 
                     <div className="mt-4 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
-                      <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
+                      <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3">
                         <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">Slug</div>
                         <div className="mt-1 text-[13px] font-semibold text-faith-ink">/{slug}</div>
                       </div>
-                      <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
+                      <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3">
                         <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">Storefront price</div>
                         <div className="mt-1 text-[13px] font-semibold text-faith-ink">{money(draft.basePrice, draft.currency)}</div>
                       </div>
-                      <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
+                      <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3">
                         <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">Inventory</div>
                         <div className="mt-1 text-[13px] font-semibold text-faith-ink">{inventoryTotal} units</div>
                       </div>
-                      <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
+                      <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3">
                         <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">Release</div>
                         <div className="mt-1 text-[13px] font-semibold text-faith-ink">{draft.releaseMode}</div>
                       </div>

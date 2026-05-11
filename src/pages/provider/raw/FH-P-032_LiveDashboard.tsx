@@ -1,4 +1,4 @@
-﻿// @ts-nocheck
+// @ts-nocheck
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -47,7 +47,7 @@ import { exportLiveActivityCsv, getLiveActivityRecords, subscribeToLiveActivity 
 import { getLiveRuntimeState, subscribeToLiveRuntime } from "@/features/live/liveRuntimeStore";
 
 /**
- * Provider ï¿½ Live Dashboard
+ * Provider � Live Dashboard
  * ----------------------------------
  * Premium control-room page for a specific Live Session.
  *
@@ -200,10 +200,10 @@ const SESSIONS: SessionData[] = [
     id: "fh-live-032-a",
     title: "Sunday Encounter Live",
     state: "Upcoming",
-    parentLabel: "The Way of Grace ï¿½ Episode 4",
+    parentLabel: "The Way of Grace � Episode 4",
     parentType: "Series Episode",
-    audienceLabel: "All Church ï¿½ Families ï¿½ Swahili track enabled",
-    locationLabel: "Main Sanctuary ï¿½ Central Campus",
+    audienceLabel: "All Church � Families � Swahili track enabled",
+    locationLabel: "Main Sanctuary � Central Campus",
     timezone: "Africa/Kampala",
     startISO: shiftMinutes(18),
     endISO: shiftMinutes(108),
@@ -237,7 +237,7 @@ const SESSIONS: SessionData[] = [
       { role: "Moderator", name: "Moderator Tobi E.", readiness: "Ready", checked: true, critical: true },
       { role: "Captioner", name: "Caption Lead Mercy J.", readiness: "Joining", checked: false, critical: true },
       { role: "Interpreter", name: "Grace L.", readiness: "Ready", checked: true },
-      { role: "Support", name: "Support Team ï¿½ Central", readiness: "Ready", checked: true },
+      { role: "Support", name: "Support Team � Central", readiness: "Ready", checked: true },
     ],
     audience: {
       registrants: 1428,
@@ -258,7 +258,7 @@ const SESSIONS: SessionData[] = [
       eventSignups: 46,
       merchClicks: 28,
       beaconHandoffs: 3,
-      responseLabel: "Waiting-room arrival is tracking 76% of forecast ï¿½ a last-minute reminder could push the room above baseline before start.",
+      responseLabel: "Waiting-room arrival is tracking 76% of forecast � a last-minute reminder could push the room above baseline before start.",
     },
     alerts: [
       {
@@ -307,8 +307,8 @@ const SESSIONS: SessionData[] = [
     state: "Live",
     parentLabel: "Youth Revival Night 2026",
     parentType: "Event",
-    audienceLabel: "Youth ï¿½ English + French captions",
-    locationLabel: "Community Arena ï¿½ East Campus",
+    audienceLabel: "Youth � English + French captions",
+    locationLabel: "Community Arena � East Campus",
     timezone: "Africa/Kampala",
     startISO: shiftMinutes(-37),
     endISO: shiftMinutes(53),
@@ -342,7 +342,7 @@ const SESSIONS: SessionData[] = [
       { role: "Moderator", name: "Moderator Sarah A.", readiness: "Ready", checked: true, critical: true },
       { role: "Captioner", name: "Caption Lead Mercy J.", readiness: "Ready", checked: true, critical: true },
       { role: "Interpreter", name: "Interpreter Caleb O.", readiness: "Ready", checked: true },
-      { role: "Support", name: "Support Team ï¿½ East", readiness: "Ready", checked: true },
+      { role: "Support", name: "Support Team � East", readiness: "Ready", checked: true },
     ],
     audience: {
       registrants: 2140,
@@ -403,7 +403,7 @@ const SESSIONS: SessionData[] = [
       ],
     },
     cover: {
-      eyebrow: "Live now ï¿½ Control room",
+      eyebrow: "Live now � Control room",
       promise: "High-energy youth gathering with testimony, worship, live prayer, and a strong response moment.",
       gradient: "linear-gradient(135deg, #10253d 0%, #165a5f 46%, var(--fh-brand) 100%)",
     },
@@ -420,8 +420,8 @@ const SESSIONS: SessionData[] = [
     state: "Ended",
     parentLabel: "Community Borehole Appeal",
     parentType: "Giving Moment",
-    audienceLabel: "Community ï¿½ Supporters ï¿½ Donation responders",
-    locationLabel: "Online Campus ï¿½ Outreach Broadcast Room",
+    audienceLabel: "Community � Supporters � Donation responders",
+    locationLabel: "Online Campus � Outreach Broadcast Room",
     timezone: "Africa/Kampala",
     startISO: shiftMinutes(-88),
     endISO: shiftMinutes(-12),
@@ -455,7 +455,7 @@ const SESSIONS: SessionData[] = [
       { role: "Moderator", name: "Moderator Tobi E.", readiness: "Ready", checked: true, critical: true },
       { role: "Captioner", name: "Caption Lead Mercy J.", readiness: "Ready", checked: true },
       { role: "Interpreter", name: "Interpreter Grace L.", readiness: "Ready", checked: true },
-      { role: "Support", name: "Support Team ï¿½ Outreach", readiness: "Ready", checked: true },
+      { role: "Support", name: "Support Team � Outreach", readiness: "Ready", checked: true },
     ],
     audience: {
       registrants: 986,
@@ -476,7 +476,7 @@ const SESSIONS: SessionData[] = [
       eventSignups: 18,
       merchClicks: 0,
       beaconHandoffs: 8,
-      responseLabel: "Crowdfund movement remained strong after the final prayer appeal ï¿½ this session is ideal for replay plus campaign-update follow-up.",
+      responseLabel: "Crowdfund movement remained strong after the final prayer appeal � this session is ideal for replay plus campaign-update follow-up.",
     },
     alerts: [
       {
@@ -539,7 +539,7 @@ function mapLiveFlowRecordToDashboardSession(
       record.parentType === "Giving Moment"
         ? record.parentType
         : "Standalone Live",
-    audienceLabel: `${record.audience} Â· ${record.language}`,
+    audienceLabel: `${record.audience} · ${record.language}`,
     locationLabel: record.campus || "Online Campus",
     timezone: record.timezone || "Africa/Kampala",
     startISO: record.startISO,
@@ -856,7 +856,7 @@ function Drawer({
                 <button
                   type="button"
                   onClick={onClose}
-                  className="grid h-9 w-9 place-items-center rounded-xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 text-slate-700 dark:text-slate-300 transition-colors hover:bg-[var(--fh-surface)] dark:hover:bg-slate-700"
+                  className="grid h-9 w-9 place-items-center rounded-xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 text-slate-700 dark:text-slate-300 transition-colors hover:bg-[var(--fh-surface)] dark:hover:bg-slate-700"
                 >
                   <X className="h-4 w-4" />
                 </button>
@@ -958,7 +958,7 @@ function TimeBadge({
 }) {
   const pad = (value: number) => String(Math.max(0, value)).padStart(2, "0");
   return (
-    <div className="rounded-lg border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 transition-colors">
+    <div className="rounded-lg border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 transition-colors">
       <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-faith-slate">{label}</div>
       <div className="mt-1 font-mono text-[20px] font-black text-faith-ink dark:text-slate-100">
         {pad(values.hours)}:{pad(values.minutes)}:{pad(values.seconds)}
@@ -1045,7 +1045,7 @@ function RouteButton({
     <button
       type="button"
       onClick={onClick}
-      className="w-full rounded-lg border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-3 text-left transition-colors hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800"
+      className="w-full rounded-lg border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-3 text-left transition-colors hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800"
     >
       <div className="flex items-center justify-between gap-2">
         <div className="flex items-center gap-2 min-w-0">
@@ -1098,7 +1098,7 @@ function ControlRoomPreview({
         <MetricTile label="Giving" value={formatMoney(session.conversion.donationTotal)} hint="Live-response total" tone="orange" />
       </div>
 
-      <div className="mt-4 rounded-lg border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-3 transition-colors">
+      <div className="mt-4 rounded-lg border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-3 transition-colors">
         <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-faith-slate">Active tools</div>
         <div className="mt-3 flex flex-wrap gap-2">
           {slowMode ? <Pill text="Slow mode" tone="warn" /> : null}
@@ -1111,7 +1111,7 @@ function ControlRoomPreview({
 
       <div className="mt-4 grid grid-cols-3 gap-2">
         {session.destinations.map((dest) => (
-          <div key={dest.name} className="rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2 text-center transition-colors">
+          <div key={dest.name} className="rounded-xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2 text-center transition-colors">
             <div className="text-[11px] font-semibold text-faith-ink dark:text-slate-100 truncate">{dest.name}</div>
             <div className="mt-1 flex justify-center">
               <Pill text={dest.status} tone={destinationTone(dest.status)} />
@@ -1147,7 +1147,7 @@ function PostLiveLaunchPad({ session }: { session: SessionData }) {
 
       <div className="mt-4 space-y-2">
         {session.postLive.nextActions.map((action) => (
-          <div key={action} className="rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-3 text-[12px] text-slate-700 dark:text-slate-300 transition-colors">
+          <div key={action} className="rounded-xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-3 text-[12px] text-slate-700 dark:text-slate-300 transition-colors">
             {action}
           </div>
         ))}
@@ -1402,11 +1402,11 @@ export default function FaithHubLiveDashboardPage() {
                 <select
                   value={activeSessionId}
                   onChange={(e) => setActiveSessionId(e.target.value)}
-                  className="mt-2 w-full rounded-xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[13px] font-semibold text-faith-ink dark:text-slate-100 transition-colors"
+                  className="mt-2 w-full rounded-xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[13px] font-semibold text-faith-ink dark:text-slate-100 transition-colors"
                 >
                   {allSessions.map((item) => (
                     <option key={item.id} value={item.id}>
-                      {item.title} ï¿½ {item.state}
+                      {item.title} � {item.state}
                     </option>
                   ))}
                 </select>
@@ -1422,21 +1422,21 @@ export default function FaithHubLiveDashboardPage() {
                 <TimeBadge label={session.state === "Ended" ? "Replay window" : "Ends in"} values={session.state === "Ended" ? sinceEnd : untilEnd} />
               </div>
 
-              <div className="mt-4 rounded-lg border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-3 transition-colors">
+              <div className="mt-4 rounded-lg border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-3 transition-colors">
                 <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-faith-slate">Session context</div>
                 <div className="mt-2 text-[12px] font-semibold text-faith-ink dark:text-slate-100">{session.title}</div>
                 <div className="mt-1 text-[11px] text-faith-slate">{session.audienceLabel}</div>
                 <div className="mt-1 text-[11px] text-faith-slate">{session.locationLabel}</div>
-                <div className="mt-1 text-[11px] text-faith-slate">{formatDateTime(session.startISO)} ï¿½ {session.timezone}</div>
+                <div className="mt-1 text-[11px] text-faith-slate">{formatDateTime(session.startISO)} � {session.timezone}</div>
               </div>
 
               <div className="mt-4 grid grid-cols-2 gap-2">
-                <div className="rounded-lg border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
+                <div className="rounded-lg border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
                   <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-faith-slate">Host</div>
                   <div className="mt-1 text-[13px] font-semibold text-faith-ink dark:text-slate-100">{session.hosts.host}</div>
                   <div className="mt-1 text-[11px] text-faith-slate">On stage and checked</div>
                 </div>
-                <div className="rounded-lg border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
+                <div className="rounded-lg border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
                   <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-faith-slate">Producer</div>
                   <div className="mt-1 text-[13px] font-semibold text-faith-ink dark:text-slate-100">{session.hosts.producer}</div>
                   <div className="mt-1 text-[11px] text-faith-slate">Backstage operations</div>
@@ -1445,7 +1445,7 @@ export default function FaithHubLiveDashboardPage() {
 
               <div className="mt-4 flex flex-wrap gap-2">
                 {session.destinations.map((dest) => (
-                  <Pill key={dest.name} text={`${dest.name} ï¿½ ${dest.status}`} tone={destinationTone(dest.status)} />
+                  <Pill key={dest.name} text={`${dest.name} � ${dest.status}`} tone={destinationTone(dest.status)} />
                 ))}
               </div>
             </Card>
@@ -1454,7 +1454,7 @@ export default function FaithHubLiveDashboardPage() {
               <div className="space-y-3">
                 {firstPlaybooks.length ? (
                   firstPlaybooks.map((alert) => (
-                    <div key={alert.id} className="rounded-lg border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-3 transition-colors">
+                    <div key={alert.id} className="rounded-lg border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-3 transition-colors">
                       <div className="flex items-start justify-between gap-2">
                         <div>
                           <div className="flex items-center gap-2">
@@ -1514,7 +1514,7 @@ export default function FaithHubLiveDashboardPage() {
                 <MetricTile label="Latency" value={`${session.health.latencySec.toFixed(1)}s`} hint="Observed delivery delay" tone={session.health.latencySec <= 3 ? "green" : session.health.latencySec <= 5 ? "orange" : "red"} />
               </div>
 
-              <div className="mt-4 rounded-lg border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-3 transition-colors">
+              <div className="mt-4 rounded-lg border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-3 transition-colors">
                 <div className="flex items-center justify-between gap-2">
                   <div>
                     <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">Health telemetry trend</div>
@@ -1548,7 +1548,7 @@ export default function FaithHubLiveDashboardPage() {
 
               <div className="mt-4 grid md:grid-cols-2 xl:grid-cols-3 gap-3">
                 {session.team.map((member) => (
-                  <div key={`${member.role}-${member.name}`} className="rounded-lg border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-3 transition-colors">
+                  <div key={`${member.role}-${member.name}`} className="rounded-lg border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-3 transition-colors">
                     <div className="flex items-start justify-between gap-2">
                       <div>
                         <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">{member.role}</div>
@@ -1574,7 +1574,7 @@ export default function FaithHubLiveDashboardPage() {
                 <MetricTile label="Chat velocity" value={`${session.audience.chatVelocity}/min`} hint="Current message rate" tone={session.audience.chatVelocity > 120 ? "orange" : "green"} />
               </div>
 
-              <div className="mt-4 rounded-lg border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-3 transition-colors">
+              <div className="mt-4 rounded-lg border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-3 transition-colors">
                 <div className="flex items-center justify-between gap-2">
                   <div>
                     <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">Arrival and audience trend</div>
@@ -1588,17 +1588,17 @@ export default function FaithHubLiveDashboardPage() {
               </div>
 
               <div className="mt-4 grid sm:grid-cols-3 gap-3">
-                <div className="rounded-lg border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
+                <div className="rounded-lg border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
                   <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-faith-slate">Q&A load</div>
                   <div className="mt-1 text-[18px] font-black text-faith-ink dark:text-slate-100">{session.audience.qnaLoad}</div>
                   <div className="mt-1 text-[11px] text-faith-slate">Open questions needing review.</div>
                 </div>
-                <div className="rounded-lg border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
+                <div className="rounded-lg border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
                   <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-faith-slate">Prayer requests</div>
                   <div className="mt-1 text-[18px] font-black text-faith-ink dark:text-slate-100">{session.audience.prayerRequests}</div>
                   <div className="mt-1 text-[11px] text-faith-slate">Requests flowing into triage.</div>
                 </div>
-                <div className="rounded-lg border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
+                <div className="rounded-lg border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
                   <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-faith-slate">Drop-off risk</div>
                   <div className="mt-1 flex items-center gap-2">
                     <Pill text={session.audience.dropOffRisk} tone={session.audience.dropOffRisk === "Low" ? "good" : session.audience.dropOffRisk === "Watch" ? "warn" : "danger"} />
@@ -1634,13 +1634,13 @@ export default function FaithHubLiveDashboardPage() {
               <div className="space-y-3">
                 {activeAlerts.length ? (
                   activeAlerts.map((alert) => (
-                    <div key={alert.id} className="rounded-lg border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-3 transition-colors">
+                    <div key={alert.id} className="rounded-lg border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-3 transition-colors">
                       <div className="flex items-start justify-between gap-3">
                         <div className="min-w-0">
                           <div className="flex flex-wrap items-center gap-2">
                             <Pill text={alert.severity.toUpperCase()} tone={severityTone(alert.severity)} />
                             <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">{alert.title}</div>
-                            <div className="text-[11px] text-faith-slate">ï¿½ {alert.owner}</div>
+                            <div className="text-[11px] text-faith-slate">� {alert.owner}</div>
                           </div>
                           <div className="mt-2 text-[12px] text-faith-slate">{alert.description}</div>
                           <div className="mt-2 text-[11px] text-faith-slate">Playbook: {alert.playbook}</div>
@@ -1679,7 +1679,7 @@ export default function FaithHubLiveDashboardPage() {
                 <select
                   value={activityFlowFilter}
                   onChange={(e) => setActivityFlowFilter(e.target.value as "all" | "builder" | "schedule" | "studio" | "stream" | "publish")}
-                  className="rounded-xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] font-semibold text-faith-ink dark:text-slate-100"
+                  className="rounded-xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] font-semibold text-faith-ink dark:text-slate-100"
                 >
                   <option value="all">All flows</option>
                   <option value="builder">Live Builder</option>
@@ -1692,23 +1692,23 @@ export default function FaithHubLiveDashboardPage() {
                   value={activitySearch}
                   onChange={(e) => setActivitySearch(e.target.value)}
                   placeholder="Search actor/action"
-                  className="sm:col-span-2 rounded-xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] font-semibold text-faith-ink dark:text-slate-100"
+                  className="sm:col-span-2 rounded-xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] font-semibold text-faith-ink dark:text-slate-100"
                 />
               </div>
               <div className="mt-3 space-y-2">
                 {filteredActivity.length ? (
                   filteredActivity.map((item) => (
-                    <div key={item.id} className="rounded-lg border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-3">
+                    <div key={item.id} className="rounded-lg border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-3">
                       <div className="flex items-center justify-between gap-2">
                         <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">{item.action}</div>
                         <Pill text={item.flow.toUpperCase()} />
                       </div>
-                      <div className="mt-1 text-[11px] text-faith-slate">{item.actorName} Â· {formatDateTime(item.atISO)}</div>
+                      <div className="mt-1 text-[11px] text-faith-slate">{item.actorName} · {formatDateTime(item.atISO)}</div>
                       {item.detail ? <div className="mt-1 text-[11px] text-faith-slate">{item.detail}</div> : null}
                     </div>
                   ))
                 ) : (
-                  <div className="rounded-lg border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-3 text-[12px] text-faith-slate">
+                  <div className="rounded-lg border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-3 text-[12px] text-faith-slate">
                     No activity has been recorded yet for this session.
                   </div>
                 )}

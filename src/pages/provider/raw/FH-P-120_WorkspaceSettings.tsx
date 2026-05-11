@@ -298,7 +298,7 @@ function Modal({
   return (
     <div className="fixed inset-0 z-[120] flex items-end justify-center p-0 md:items-center md:p-4">
       <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={onClose} />
-      <div className="relative w-full max-w-3xl rounded-t-[28px] md:rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 shadow-2xl transition-colors overflow-hidden">
+      <div className="relative w-full max-w-3xl rounded-t-[28px] md:rounded-[28px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 shadow-medium transition-colors overflow-hidden">
         <div className="flex items-start justify-between gap-3 border-b border-faith-line dark:border-slate-800 px-4 py-3">
           <div>
             <div className="text-[13px] font-extrabold text-faith-ink dark:text-slate-100">{title}</div>
@@ -307,7 +307,7 @@ function Modal({
           <button
             type="button"
             onClick={onClose}
-            className="h-9 w-9 rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 grid place-items-center hover:bg-[var(--fh-surface)] dark:hover:bg-slate-700 transition-colors"
+            className="h-9 w-9 rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 grid place-items-center hover:bg-[var(--fh-surface)] dark:hover:bg-slate-700 transition-colors"
           >
             <X className="h-4 w-4 text-slate-700 dark:text-slate-300" />
           </button>
@@ -636,7 +636,7 @@ export default function WorkspaceSettingsPage() {
                     setWorkspaceName(e.target.value);
                     setChangesQueued((value) => Math.max(1, value));
                   }}
-                  className="mt-1 w-full rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-950 px-3 py-2 text-[12px] font-semibold text-faith-ink dark:text-slate-100 outline-none"
+                  className="mt-1 w-full rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-950 px-3 py-2 text-[12px] font-semibold text-faith-ink dark:text-slate-100 outline-none"
                 />
               </div>
               <div>
@@ -647,7 +647,7 @@ export default function WorkspaceSettingsPage() {
                     setWorkspaceHandle(e.target.value);
                     setChangesQueued((value) => Math.max(1, value));
                   }}
-                  className="mt-1 w-full rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-950 px-3 py-2 text-[12px] font-semibold text-faith-ink dark:text-slate-100 outline-none"
+                  className="mt-1 w-full rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-950 px-3 py-2 text-[12px] font-semibold text-faith-ink dark:text-slate-100 outline-none"
                 />
               </div>
               <div className="lg:col-span-2">
@@ -659,7 +659,7 @@ export default function WorkspaceSettingsPage() {
                     setMissionLine(e.target.value);
                     setChangesQueued((value) => Math.max(1, value));
                   }}
-                  className="mt-1 w-full rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-950 px-3 py-2 text-[12px] text-faith-ink dark:text-slate-100 outline-none"
+                  className="mt-1 w-full rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-950 px-3 py-2 text-[12px] text-faith-ink dark:text-slate-100 outline-none"
                 />
               </div>
               <div className="lg:col-span-2">
@@ -671,7 +671,7 @@ export default function WorkspaceSettingsPage() {
                     setPublicBio(e.target.value);
                     setChangesQueued((value) => Math.max(1, value));
                   }}
-                  className="mt-1 w-full rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-950 px-3 py-2 text-[12px] text-faith-ink dark:text-slate-100 outline-none"
+                  className="mt-1 w-full rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-950 px-3 py-2 text-[12px] text-faith-ink dark:text-slate-100 outline-none"
                 />
               </div>
             </div>
@@ -683,7 +683,7 @@ export default function WorkspaceSettingsPage() {
             right={<Pill tone="brand"><Sparkles className="h-3.5 w-3.5" /> Premium branding</Pill>}
           >
             <div className="grid gap-4 xl:grid-cols-[1.2fr_0.8fr]">
-              <div className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
+              <div className="rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
                 <div className="flex flex-wrap items-start justify-between gap-3">
                   <div>
                     <div className="text-[12px] font-extrabold text-faith-ink dark:text-slate-100">Brand voice notes</div>
@@ -702,20 +702,20 @@ export default function WorkspaceSettingsPage() {
                     setBrandVoice(e.target.value);
                     setChangesQueued((value) => Math.max(1, value));
                   }}
-                  className="mt-4 w-full rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] text-faith-ink dark:text-slate-100 outline-none"
+                  className="mt-4 w-full rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] text-faith-ink dark:text-slate-100 outline-none"
                 />
               </div>
 
               <div className="space-y-3">
-                <div className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
+                <div className="rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
                   <div className="text-[11px] font-extrabold uppercase tracking-[0.08em] text-faith-slate">Brand assets</div>
                   <div className="mt-3 grid grid-cols-2 gap-3">
-                    <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3">
+                    <div className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3">
                       <div className="h-16 rounded-xl" style={{ background: "linear-gradient(135deg, #0f172a, #1e293b)" }} />
                       <div className="mt-2 text-[12px] font-extrabold text-faith-ink dark:text-slate-100">Primary logo</div>
                       <div className="text-[11px] text-faith-slate">Approved for light and dark modes</div>
                     </div>
-                    <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3">
+                    <div className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3">
                       <div className="h-16 rounded-xl" style={{ background: "linear-gradient(135deg, var(--fh-brand), var(--fh-accent))" }} />
                       <div className="mt-2 text-[12px] font-extrabold text-faith-ink dark:text-slate-100">Cover gradient</div>
                       <div className="text-[11px] text-faith-slate">Used on dashboard, campus cards, and public entry</div>
@@ -723,17 +723,17 @@ export default function WorkspaceSettingsPage() {
                   </div>
                 </div>
 
-                <div className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
+                <div className="rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
                   <div className="text-[12px] font-extrabold text-faith-ink dark:text-slate-100">Brand enforcement</div>
                   <div className="mt-2 space-y-2">
-                    <div className="flex items-center justify-between gap-3 rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2">
+                    <div className="flex items-center justify-between gap-3 rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2">
                       <div>
                         <div className="text-[12px] font-extrabold text-faith-ink dark:text-slate-100">Lock provider colour defaults</div>
                         <div className="text-[11px] text-faith-slate">Applies to noticeboard, live overlays, and Beacon shells.</div>
                       </div>
                       <Toggle checked={true} onChange={() => undefined} />
                     </div>
-                    <div className="flex items-center justify-between gap-3 rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2">
+                    <div className="flex items-center justify-between gap-3 rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2">
                       <div>
                         <div className="text-[12px] font-extrabold text-faith-ink dark:text-slate-100">Require watermark on clips</div>
                         <div className="text-[11px] text-faith-slate">Protected replay and short-form identity by default.</div>
@@ -759,7 +759,7 @@ export default function WorkspaceSettingsPage() {
           >
             <div className="space-y-3">
               {campuses.map((campus) => (
-                <div key={campus.id} className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
+                <div key={campus.id} className="rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
                   <div className="flex flex-wrap items-start justify-between gap-3">
                     <div>
                       <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-faith-ink dark:text-slate-100 sm:text-[34px] lg:text-[40px]">{campus.name}</div>
@@ -772,15 +772,15 @@ export default function WorkspaceSettingsPage() {
                     </div>
                   </div>
                   <div className="mt-3 grid gap-3 lg:grid-cols-3">
-                    <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3">
+                    <div className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3">
                       <div className="text-[10px] uppercase tracking-[0.08em] text-faith-slate">Accessibility</div>
                       <div className="mt-1 text-[12px] font-semibold text-faith-ink dark:text-slate-100">{campus.accessibility}</div>
                     </div>
-                    <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3">
+                    <div className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3">
                       <div className="text-[10px] uppercase tracking-[0.08em] text-faith-slate">Live default</div>
                       <div className="mt-1 text-[12px] font-semibold text-faith-ink dark:text-slate-100">{campus.liveDefault}</div>
                     </div>
-                    <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3">
+                    <div className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3">
                       <div className="text-[10px] uppercase tracking-[0.08em] text-faith-slate">Campus controls</div>
                       <div className="mt-1 flex flex-wrap gap-2">
                         <Pill tone="good">Publishable</Pill>
@@ -798,15 +798,15 @@ export default function WorkspaceSettingsPage() {
             subtitle="Public switchers, regional blackout periods, campus-first notifications, and default service routing."
           >
             <div className="grid gap-3 xl:grid-cols-2">
-              <div className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 space-y-3">
-                <div className="flex items-center justify-between gap-3 rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-3">
+              <div className="rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 space-y-3">
+                <div className="flex items-center justify-between gap-3 rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-3">
                   <div>
                     <div className="text-[12px] font-extrabold text-faith-ink dark:text-slate-100">Public campus switcher</div>
                     <div className="text-[11px] text-faith-slate">Lets visitors switch between physical campuses and online-first hubs.</div>
                   </div>
                   <Toggle checked={campusSwitcherPublic} onChange={setCampusSwitcherPublic} />
                 </div>
-                <div className="flex items-center justify-between gap-3 rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-3">
+                <div className="flex items-center justify-between gap-3 rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-3">
                   <div>
                     <div className="text-[12px] font-extrabold text-faith-ink dark:text-slate-100">Multi-campus live routing</div>
                     <div className="text-[11px] text-faith-slate">Shares operational defaults across every linked campus and watch location.</div>
@@ -815,14 +815,14 @@ export default function WorkspaceSettingsPage() {
                 </div>
               </div>
 
-              <div className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
+              <div className="rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
                 <div className="text-[12px] font-extrabold text-faith-ink dark:text-slate-100">Regional readiness notes</div>
                 <div className="mt-3 space-y-2">
-                  <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2">
+                  <div className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2">
                     <div className="text-[12px] font-extrabold text-faith-ink dark:text-slate-100">East Africa window</div>
                     <div className="text-[11px] text-faith-slate">Default reminder window: 06:00|21:30 local time across Kampala and Nairobi.</div>
                   </div>
-                  <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2">
+                  <div className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2">
                     <div className="text-[12px] font-extrabold text-faith-ink dark:text-slate-100">London regional override</div>
                     <div className="text-[11px] text-faith-slate">Caption-first defaults remain active for translated replays and prayer re-broadcasts.</div>
                   </div>
@@ -843,7 +843,7 @@ export default function WorkspaceSettingsPage() {
             right={<Pill tone="good"><Languages className="h-3.5 w-3.5" /> {localePacks.length} locale packs</Pill>}
           >
             <div className="grid gap-4 xl:grid-cols-[1fr_1fr]">
-              <div className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
+              <div className="rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
                 <div className="grid gap-3 md:grid-cols-2">
                   <div>
                     <div className="text-[11px] font-extrabold uppercase tracking-[0.08em] text-faith-slate">Default language</div>
@@ -853,7 +853,7 @@ export default function WorkspaceSettingsPage() {
                         setDefaultLanguage(e.target.value);
                         setChangesQueued((value) => Math.max(1, value));
                       }}
-                      className="mt-1 w-full rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] font-semibold text-faith-ink dark:text-slate-100 outline-none"
+                      className="mt-1 w-full rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] font-semibold text-faith-ink dark:text-slate-100 outline-none"
                     />
                   </div>
                   <div>
@@ -864,7 +864,7 @@ export default function WorkspaceSettingsPage() {
                         setSecondaryLanguage(e.target.value);
                         setChangesQueued((value) => Math.max(1, value));
                       }}
-                      className="mt-1 w-full rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] font-semibold text-faith-ink dark:text-slate-100 outline-none"
+                      className="mt-1 w-full rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] font-semibold text-faith-ink dark:text-slate-100 outline-none"
                     />
                   </div>
                   <div>
@@ -875,7 +875,7 @@ export default function WorkspaceSettingsPage() {
                         setTimezoneLabel(e.target.value);
                         setChangesQueued((value) => Math.max(1, value));
                       }}
-                      className="mt-1 w-full rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] font-semibold text-faith-ink dark:text-slate-100 outline-none"
+                      className="mt-1 w-full rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] font-semibold text-faith-ink dark:text-slate-100 outline-none"
                     />
                   </div>
                   <div>
@@ -886,20 +886,20 @@ export default function WorkspaceSettingsPage() {
                         setCurrencyLabel(e.target.value);
                         setChangesQueued((value) => Math.max(1, value));
                       }}
-                      className="mt-1 w-full rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] font-semibold text-faith-ink dark:text-slate-100 outline-none"
+                      className="mt-1 w-full rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] font-semibold text-faith-ink dark:text-slate-100 outline-none"
                     />
                   </div>
                 </div>
 
                 <div className="mt-4 space-y-3">
-                  <div className="flex items-center justify-between gap-3 rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-3">
+                  <div className="flex items-center justify-between gap-3 rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-3">
                     <div>
                       <div className="text-[12px] font-extrabold text-faith-ink dark:text-slate-100">Localization fallback</div>
                       <div className="text-[11px] text-faith-slate">If a translation is missing, fall back to the default language with notice.</div>
                     </div>
                     <Toggle checked={localizationFallback} onChange={setLocalizationFallback} />
                   </div>
-                  <div className="flex items-center justify-between gap-3 rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-3">
+                  <div className="flex items-center justify-between gap-3 rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-3">
                     <div>
                       <div className="text-[12px] font-extrabold text-faith-ink dark:text-slate-100">Default live reminders</div>
                       <div className="text-[11px] text-faith-slate">Carry localized reminder templates into every new live session by default.</div>
@@ -909,11 +909,11 @@ export default function WorkspaceSettingsPage() {
                 </div>
               </div>
 
-              <div className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
+              <div className="rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
                 <div className="text-[12px] font-extrabold text-faith-ink dark:text-slate-100">Locale pack status</div>
                 <div className="mt-3 space-y-2">
                   {localePacks.map((locale) => (
-                    <div key={locale.code} className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-3">
+                    <div key={locale.code} className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-3">
                       <div className="flex flex-wrap items-start justify-between gap-3">
                         <div>
                           <div className="text-[12px] font-extrabold text-faith-ink dark:text-slate-100">{locale.label}</div>
@@ -943,7 +943,7 @@ export default function WorkspaceSettingsPage() {
           >
             <div className="grid gap-3 xl:grid-cols-2">
               {integrations.map((integration) => (
-                <div key={integration.id} className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
+                <div key={integration.id} className="rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
                   <div className="flex flex-wrap items-start justify-between gap-3">
                     <div>
                       <div className="text-[14px] font-black text-faith-ink dark:text-slate-100">{integration.name}</div>
@@ -953,7 +953,7 @@ export default function WorkspaceSettingsPage() {
                       {integration.status}
                     </Pill>
                   </div>
-                  <div className="mt-3 rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-3">
+                  <div className="mt-3 rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-3">
                     <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">{integration.detail}</div>
                     <div className="mt-1 text-[11px] text-faith-slate">{integration.health}</div>
                   </div>
@@ -985,21 +985,21 @@ export default function WorkspaceSettingsPage() {
         >
           <div className="grid gap-3 xl:grid-cols-2">
             <div className="space-y-3">
-              <div className="flex items-center justify-between gap-3 rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-4">
+              <div className="flex items-center justify-between gap-3 rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-4">
                 <div>
                   <div className="text-[12px] font-extrabold text-faith-ink dark:text-slate-100">Child-safe defaults</div>
                   <div className="text-[11px] text-faith-slate">Stricter communication, moderation, and public discovery rules for child-facing ministry spaces.</div>
                 </div>
                 <Toggle checked={childSafeDefaults} onChange={setChildSafeDefaults} />
               </div>
-              <div className="flex items-center justify-between gap-3 rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-4">
+              <div className="flex items-center justify-between gap-3 rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-4">
                 <div>
                   <div className="text-[12px] font-extrabold text-faith-ink dark:text-slate-100">Quiet hours</div>
                   <div className="text-[11px] text-faith-slate">Quiet hours flow into notifications, follow-up journeys, and care outreach.</div>
                 </div>
                 <Toggle checked={quietHours} onChange={setQuietHours} />
               </div>
-              <div className="flex items-center justify-between gap-3 rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-4">
+              <div className="flex items-center justify-between gap-3 rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-4">
                 <div>
                   <div className="text-[12px] font-extrabold text-faith-ink dark:text-slate-100">Approval routing defaults</div>
                   <div className="text-[11px] text-faith-slate">Use approval paths for sensitive publishes, finance updates, and moderation escalations.</div>
@@ -1009,28 +1009,28 @@ export default function WorkspaceSettingsPage() {
             </div>
 
             <div className="space-y-3">
-              <div className="flex items-center justify-between gap-3 rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-4">
+              <div className="flex items-center justify-between gap-3 rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-4">
                 <div>
                   <div className="text-[12px] font-extrabold text-faith-ink dark:text-slate-100">Noticeboard visible by default</div>
                   <div className="text-[11px] text-faith-slate">Keep announcements and ministry updates visible on public and companion surfaces.</div>
                 </div>
                 <Toggle checked={defaultNoticeboardVisible} onChange={setDefaultNoticeboardVisible} />
               </div>
-              <div className="flex items-center justify-between gap-3 rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-4">
+              <div className="flex items-center justify-between gap-3 rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-4">
                 <div>
                   <div className="text-[12px] font-extrabold text-faith-ink dark:text-slate-100">Streaming priority</div>
                   <div className="text-[11px] text-faith-slate">Keep the primary session as source of truth before external destination routing.</div>
                 </div>
                 <Toggle checked={connectedStreamingPriority} onChange={setConnectedStreamingPriority} />
               </div>
-              <div className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
+              <div className="rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
                 <div className="text-[12px] font-extrabold text-faith-ink dark:text-slate-100">Governance summary</div>
                 <div className="mt-3 grid gap-2 md:grid-cols-2">
-                  <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2">
+                  <div className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2">
                     <div className="text-[10px] uppercase tracking-[0.08em] text-faith-slate">Finance guardrails</div>
                     <div className="mt-1 text-[12px] font-semibold text-faith-ink dark:text-slate-100">Dual review required for payout and donor setting changes.</div>
                   </div>
-                  <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2">
+                  <div className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2">
                     <div className="text-[10px] uppercase tracking-[0.08em] text-faith-slate">Community safety</div>
                     <div className="mt-1 text-[12px] font-semibold text-faith-ink dark:text-slate-100">Forum, prayer, and testimony defaults remain moderation-aware.</div>
                   </div>
@@ -1046,7 +1046,7 @@ export default function WorkspaceSettingsPage() {
   return (
     <div className="min-h-screen w-full bg-[var(--fh-page-bg)] dark:bg-slate-950 text-faith-ink dark:text-slate-50 transition-colors overflow-x-hidden">
       <main className="w-full p-5 md:p-6 lg:p-8 space-y-4">
-        <section className="rounded-[32px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-6 transition-colors">
+        <section className="rounded-[32px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-6 transition-colors">
           <div className="flex flex-col gap-5 xl:flex-row xl:items-start xl:justify-between">
             <div className="flex min-w-0 items-start gap-4">
               <div className="min-w-0">
@@ -1081,7 +1081,7 @@ export default function WorkspaceSettingsPage() {
           </div>
         </section>
 
-        <section className="rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 py-3 transition-colors">
+        <section className="rounded-[28px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 py-3 transition-colors">
           <div className="flex flex-col gap-2 xl:flex-row xl:items-center xl:justify-between">
             <div className="flex flex-wrap items-center gap-2">
               <Pill tone="brand">PREMIUM WORKSPACE DEFAULTS</Pill>
@@ -1118,15 +1118,15 @@ export default function WorkspaceSettingsPage() {
 
             <Card title="Workspace health" subtitle="High-signal checks that shape the readiness of the whole FaithHub Provider workspace.">
               <div className="space-y-2">
-                <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-emerald-50 dark:bg-emerald-900/15 px-3 py-2">
+                <div className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-emerald-50 dark:bg-emerald-900/15 px-3 py-2">
                   <div className="text-[12px] font-extrabold text-faith-ink dark:text-slate-100">Brand system is stable</div>
                   <div className="mt-1 text-[11px] text-faith-slate">Approved logo, cover, and EVzone-aligned defaults are active.</div>
                 </div>
-                <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-amber-50 dark:bg-amber-900/15 px-3 py-2">
+                <div className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-amber-50 dark:bg-amber-900/15 px-3 py-2">
                   <div className="text-[12px] font-extrabold text-faith-ink dark:text-slate-100">Messaging line needs review</div>
                   <div className="mt-1 text-[11px] text-faith-slate">Reconnect the SMS line before peak reminder journeys.</div>
                 </div>
-                <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2">
+                <div className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2">
                   <div className="text-[12px] font-extrabold text-faith-ink dark:text-slate-100">Last saved</div>
                   <div className="mt-1 text-[11px] text-faith-slate">{lastSavedLabel}</div>
                 </div>
@@ -1141,7 +1141,7 @@ export default function WorkspaceSettingsPage() {
               title="Workspace preview rail"
               subtitle="See how branding, campuses, locale defaults, and integrations shape the FaithHub Provider workspace."
               right={
-                <div className="inline-flex rounded-full border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-1">
+                <div className="inline-flex rounded-full border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-1">
                   <button
                     type="button"
                     onClick={() => setPreviewMode("desktop")}
@@ -1172,8 +1172,8 @@ export default function WorkspaceSettingsPage() {
               }
             >
               {previewMode === "desktop" ? (
-                <div className="rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 space-y-4">
-                  <div className="rounded-[22px] border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4">
+                <div className="rounded-[28px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 space-y-4">
+                  <div className="rounded-[22px] border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4">
                     <div className="flex items-start justify-between gap-3">
                       <div>
                         <div className="text-[11px] font-extrabold uppercase tracking-[0.08em] text-faith-slate">PUBLIC WORKSPACE HEADER</div>
@@ -1191,25 +1191,25 @@ export default function WorkspaceSettingsPage() {
                   </div>
 
                   <div className="grid gap-3">
-                    <div className="rounded-[22px] border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4">
+                    <div className="rounded-[22px] border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4">
                       <div className="text-[11px] font-extrabold uppercase tracking-[0.08em] text-faith-slate">CONNECTED SURFACES</div>
                       <div className="mt-3 space-y-2">
-                        <div className="flex items-center justify-between gap-2 rounded-2xl border border-faith-line dark:border-slate-700 px-3 py-2">
+                        <div className="flex items-center justify-between gap-2 rounded-2xl border border-faith-line/70 dark:border-slate-700 px-3 py-2">
                           <span className="text-[12px] font-extrabold text-faith-ink dark:text-slate-100">Live Sessions</span>
                           <Pill tone="good">Allow</Pill>
                         </div>
-                        <div className="flex items-center justify-between gap-2 rounded-2xl border border-faith-line dark:border-slate-700 px-3 py-2">
+                        <div className="flex items-center justify-between gap-2 rounded-2xl border border-faith-line/70 dark:border-slate-700 px-3 py-2">
                           <span className="text-[12px] font-extrabold text-faith-ink dark:text-slate-100">Audience & Outreach</span>
                           <Pill tone={quietHours ? "good" : "warn"}>{quietHours ? "Quiet hours" : "Open send"}</Pill>
                         </div>
-                        <div className="flex items-center justify-between gap-2 rounded-2xl border border-faith-line dark:border-slate-700 px-3 py-2">
+                        <div className="flex items-center justify-between gap-2 rounded-2xl border border-faith-line/70 dark:border-slate-700 px-3 py-2">
                           <span className="text-[12px] font-extrabold text-faith-ink dark:text-slate-100">Community surfaces</span>
                           <Pill tone={childSafeDefaults ? "good" : "warn"}>{childSafeDefaults ? "Child-safe" : "Manual"}</Pill>
                         </div>
                       </div>
                     </div>
 
-                    <div className="rounded-[22px] border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4">
+                    <div className="rounded-[22px] border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4">
                       <div className="text-[11px] font-extrabold uppercase tracking-[0.08em] text-faith-slate">INTEGRATION SNAPSHOT</div>
                       <div className="mt-3 flex flex-wrap gap-2">
                         {connectedBadges.map((integration) => (
@@ -1222,7 +1222,7 @@ export default function WorkspaceSettingsPage() {
                   </div>
                 </div>
               ) : (
-                <div className="mx-auto w-full max-w-[290px] md:max-w-[340px] rounded-[34px] border border-faith-line dark:border-slate-800 bg-slate-900 p-3 shadow-2xl">
+                <div className="mx-auto w-full max-w-[290px] md:max-w-[340px] rounded-[34px] border border-faith-line/70 dark:border-slate-800 bg-slate-900 p-3 shadow-medium">
                   <div className="overflow-hidden rounded-[28px] bg-[var(--fh-surface-bg)] dark:bg-slate-950">
                     <div className="px-4 py-4 border-b border-faith-line dark:border-slate-800">
                       <div className="text-[10px] font-extrabold uppercase tracking-[0.08em] text-faith-slate">MOBILE COMPANION VIEW</div>
@@ -1230,14 +1230,14 @@ export default function WorkspaceSettingsPage() {
                       <div className="mt-1 text-[11px] text-faith-slate">{workspaceHandle}</div>
                     </div>
                     <div className="p-4 space-y-3">
-                      <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 px-3 py-3">
+                      <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 px-3 py-3">
                         <div className="text-[11px] font-extrabold text-faith-ink dark:text-slate-100">Campus & locale</div>
                         <div className="mt-2 flex flex-wrap gap-2">
                           <Pill tone="good">{workspaceCampus.split(" ")[0] || "Campus"}</Pill>
                           <Pill>{defaultLanguage}</Pill>
                         </div>
                       </div>
-                      <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 px-3 py-3">
+                      <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 px-3 py-3">
                         <div className="text-[11px] font-extrabold text-faith-ink dark:text-slate-100">Live + Giving defaults</div>
                         <div className="mt-2 space-y-2">
                           <div className="flex items-center justify-between gap-2">
@@ -1250,7 +1250,7 @@ export default function WorkspaceSettingsPage() {
                           </div>
                         </div>
                       </div>
-                      <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 px-3 py-3">
+                      <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 px-3 py-3">
                         <div className="text-[11px] font-extrabold text-faith-ink dark:text-slate-100">Connections</div>
                         <div className="mt-2 text-[11px] text-faith-slate">{stats.connectedIntegrations} integrations connected | {stats.integrationsNeedingAttention} need attention</div>
                       </div>
@@ -1281,7 +1281,7 @@ export default function WorkspaceSettingsPage() {
         </section>
 
         {toast ? (
-          <div className="fixed bottom-6 left-1/2 z-[140] -translate-x-1/2 rounded-full bg-slate-900 px-4 py-2 text-[12px] font-bold text-white shadow-2xl dark:bg-slate-100 dark:text-faith-ink">
+          <div className="fixed bottom-6 left-1/2 z-[140] -translate-x-1/2 rounded-full bg-slate-900 px-4 py-2 text-[12px] font-bold text-white shadow-medium dark:bg-slate-100 dark:text-faith-ink">
             {toast}
           </div>
         ) : null}
@@ -1299,7 +1299,7 @@ export default function WorkspaceSettingsPage() {
             <input
               value={newCampusName}
               onChange={(e) => setNewCampusName(e.target.value)}
-              className="mt-1 w-full rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-950 px-3 py-2 text-[12px] font-semibold text-faith-ink dark:text-slate-100 outline-none"
+              className="mt-1 w-full rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-950 px-3 py-2 text-[12px] font-semibold text-faith-ink dark:text-slate-100 outline-none"
             />
           </div>
           <div>
@@ -1307,7 +1307,7 @@ export default function WorkspaceSettingsPage() {
             <input
               value={newCampusRegion}
               onChange={(e) => setNewCampusRegion(e.target.value)}
-              className="mt-1 w-full rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-950 px-3 py-2 text-[12px] font-semibold text-faith-ink dark:text-slate-100 outline-none"
+              className="mt-1 w-full rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-950 px-3 py-2 text-[12px] font-semibold text-faith-ink dark:text-slate-100 outline-none"
             />
           </div>
           <div>
@@ -1315,7 +1315,7 @@ export default function WorkspaceSettingsPage() {
             <input
               value={newCampusTimezone}
               onChange={(e) => setNewCampusTimezone(e.target.value)}
-              className="mt-1 w-full rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-950 px-3 py-2 text-[12px] font-semibold text-faith-ink dark:text-slate-100 outline-none"
+              className="mt-1 w-full rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-950 px-3 py-2 text-[12px] font-semibold text-faith-ink dark:text-slate-100 outline-none"
             />
           </div>
           <div>
@@ -1345,14 +1345,14 @@ export default function WorkspaceSettingsPage() {
               rows={3}
               value={newCampusAccess}
               onChange={(e) => setNewCampusAccess(e.target.value)}
-              className="mt-1 w-full rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-950 px-3 py-2 text-[12px] text-faith-ink dark:text-slate-100 outline-none"
+              className="mt-1 w-full rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-950 px-3 py-2 text-[12px] text-faith-ink dark:text-slate-100 outline-none"
             />
           </div>
         </div>
 
-        <div className="mt-5 rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
+        <div className="mt-5 rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
           <div className="text-[12px] font-extrabold text-faith-ink dark:text-slate-100">Campus summary preview</div>
-          <div className="mt-3 rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-3">
+          <div className="mt-3 rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-3">
             <div className="text-[15px] font-black text-faith-ink dark:text-slate-100">{newCampusName || "New Campus"}</div>
             <div className="mt-1 text-[11px] text-faith-slate">{newCampusRegion || "New region"} | {newCampusTimezone || "UTC"}</div>
             <div className="mt-2 flex flex-wrap gap-2">
@@ -1379,7 +1379,7 @@ export default function WorkspaceSettingsPage() {
         subtitle="Add or refresh the systems that power scheduling, messaging, streaming, maps, analytics, and finance."
       >
         <div className="grid gap-4 xl:grid-cols-[320px_1fr]">
-          <div className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
+          <div className="rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
             <div className="text-[12px] font-extrabold text-faith-ink dark:text-slate-100">Available connections</div>
             <div className="mt-3 space-y-2">
               {connectableIntegrations.map((integration) => (
@@ -1401,7 +1401,7 @@ export default function WorkspaceSettingsPage() {
             </div>
           </div>
 
-          <div className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4">
+          <div className="rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4">
             {(() => {
               const selected = connectableIntegrations.find((item) => item.id === selectedConnectId);
               if (!selected) return null;
@@ -1416,24 +1416,24 @@ export default function WorkspaceSettingsPage() {
                   </div>
 
                   <div className="mt-4 grid gap-3 md:grid-cols-2">
-                    <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-3">
+                    <div className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-3">
                       <div className="text-[10px] uppercase tracking-[0.08em] text-faith-slate">Connection flow</div>
                       <div className="mt-1 text-[12px] font-semibold text-faith-ink dark:text-slate-100">Secure workspace-to-provider handoff with consent-aware defaults.</div>
                     </div>
-                    <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-3">
+                    <div className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-3">
                       <div className="text-[10px] uppercase tracking-[0.08em] text-faith-slate">Governance</div>
                       <div className="mt-1 text-[12px] font-semibold text-faith-ink dark:text-slate-100">Audit-ready connection history and role-aware refresh rights.</div>
                     </div>
                   </div>
 
-                  <div className="mt-4 rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
+                  <div className="mt-4 rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
                     <div className="text-[12px] font-extrabold text-faith-ink dark:text-slate-100">What will happen after connect</div>
                     <div className="mt-3 space-y-2">
-                      <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-3">
+                      <div className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-3">
                         <div className="text-[12px] font-extrabold text-faith-ink dark:text-slate-100">Connection becomes visible in workspace settings</div>
                         <div className="mt-1 text-[11px] text-faith-slate">The integration will appear in the control hub with status, owner, and health signals.</div>
                       </div>
-                      <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-3">
+                      <div className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-3">
                         <div className="text-[12px] font-extrabold text-faith-ink dark:text-slate-100">Defaults propagate to FaithHub Provider workflows</div>
                         <div className="mt-1 text-[11px] text-faith-slate">Live Sessions, events, audience journeys, and giving surfaces can use this integration immediately.</div>
                       </div>

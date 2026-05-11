@@ -700,7 +700,7 @@ function StatCard({
 }) {
   const dot = accent === "green" ? EV_GREEN : accent === "orange" ? EV_ORANGE : EV_NAVY;
   return (
-    <div className="rounded-3xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors">
+    <div className="rounded-3xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors">
       <div className="flex items-start justify-between gap-3">
         <div>
           <div className="text-[11px] font-semibold uppercase tracking-[0.12em] text-faith-slate">
@@ -739,7 +739,7 @@ function Drawer({
         className="absolute inset-0 bg-black/50 backdrop-blur-sm"
         onClick={onClose}
       />
-      <div className="absolute inset-0 bg-[var(--fh-surface)] dark:bg-slate-950 shadow-2xl transition-colors flex flex-col">
+      <div className="absolute inset-0 bg-[var(--fh-surface)] dark:bg-slate-950 shadow-medium transition-colors flex flex-col">
         <div className="shrink-0 border-b border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 py-3">
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0">
@@ -755,7 +755,7 @@ function Drawer({
             <button
               type="button"
               onClick={onClose}
-              className="h-9 w-9 rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 grid place-items-center hover:bg-[var(--fh-surface)] dark:hover:bg-slate-700 transition-colors"
+              className="h-9 w-9 rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 grid place-items-center hover:bg-[var(--fh-surface)] dark:hover:bg-slate-700 transition-colors"
             >
               <X className="h-4 w-4 text-slate-700 dark:text-slate-300" />
             </button>
@@ -769,7 +769,7 @@ function Drawer({
 
 function FeaturePlacementCard({ hook }: { hook: PlacementHook }) {
   return (
-    <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 p-3 transition-colors">
+    <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 p-3 transition-colors">
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <div className="text-[12px] font-bold text-faith-ink dark:text-slate-100">
@@ -796,7 +796,7 @@ function TestimonyPreview({
   return (
     <div
       className={cx(
-        "overflow-hidden rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 transition-colors",
+        "overflow-hidden rounded-[28px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 transition-colors",
         previewMode === "mobile" ? "max-w-[340px] md:max-w-[380px]" : "w-full",
       )}
     >
@@ -849,7 +849,7 @@ function TestimonyPreview({
           <Pill text={story.status} tone={statusTone(story.status)} />
         </div>
 
-        <div className="mt-4 rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
+        <div className="mt-4 rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
           <div className="text-[10px] font-black uppercase tracking-[0.16em] text-faith-slate">
             Story highlight
           </div>
@@ -868,7 +868,7 @@ function TestimonyPreview({
             onClick={() => safeNav("/faithhub/provider/testimonies")}>
             Read full story
           </button>
-          <button className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] font-bold text-slate-700 dark:text-slate-200 transition-colors" onClick={() => navigator.clipboard?.writeText(window.location.href)}>
+          <button className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] font-bold text-slate-700 dark:text-slate-200 transition-colors" onClick={() => navigator.clipboard?.writeText(window.location.href)}>
             Share testimony
           </button>
         </div>
@@ -882,7 +882,7 @@ function TestimonyPreview({
           ].map((metric) => (
             <div
               key={metric.label}
-              className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2 transition-colors"
+              className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2 transition-colors"
             >
               <div className="text-[10px] font-black uppercase tracking-[0.14em] text-faith-slate">
                 {metric.label}
@@ -906,7 +906,7 @@ function TestimonyPreviewInner({
   previewMode: PreviewMode;
 }) {
   return (
-    <div className="rounded-[34px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors">
+    <div className="rounded-[34px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors">
       <div className="mb-3 flex items-center justify-between gap-2">
         <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
           Testimony destination preview
@@ -1060,7 +1060,7 @@ export default function TestimoniesPage() {
   return (
     <div className="min-h-screen w-full bg-[var(--fh-page-bg)] dark:bg-slate-950 p-5 text-faith-ink dark:text-slate-50 transition-colors">
       <div className="mx-auto max-w-[1600px] space-y-5">
-        <section className="rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-6 shadow-soft transition-colors">
+        <section className="rounded-[28px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-6 shadow-soft transition-colors">
           <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
             <div className="min-w-0">
               <ProviderPageTitle
@@ -1096,7 +1096,7 @@ export default function TestimoniesPage() {
           </div>
         </section>
 
-        <section className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 py-3 shadow-soft transition-colors">
+        <section className="rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 py-3 shadow-soft transition-colors">
           <div className="flex flex-col gap-2 xl:flex-row xl:items-center xl:justify-between">
             <div className="min-w-0 flex flex-wrap items-center gap-2 text-[13px] text-faith-slate">
               <Pill text="STORY OPS ALERTS" tone="warn" icon={<AlertTriangle className="h-3 w-3" />} />
@@ -1152,7 +1152,7 @@ export default function TestimoniesPage() {
         </section>
 
         <section className="grid gap-4 xl:grid-cols-[1.28fr_0.9fr_0.72fr]">
-          <div className="rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 shadow-soft transition-colors">
+          <div className="rounded-[28px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 shadow-soft transition-colors">
             <div className="flex flex-col gap-3">
               <div className="flex items-start justify-between gap-3">
                 <div>
@@ -1170,7 +1170,7 @@ export default function TestimoniesPage() {
               </div>
 
               <div className="grid gap-3 xl:grid-cols-[1.25fr_0.85fr_0.85fr_0.85fr]">
-                <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-2 transition-colors">
+                <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-2 transition-colors">
                   <div className="flex items-center gap-2 text-faith-slate">
                     <Search className="h-4 w-4" />
                     <input
@@ -1184,7 +1184,7 @@ export default function TestimoniesPage() {
                 <select
                   value={statusFilter}
                   onChange={(e) => setStatusFilter(e.target.value)}
-                  className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] font-semibold text-slate-700 dark:text-slate-200 transition-colors"
+                  className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] font-semibold text-slate-700 dark:text-slate-200 transition-colors"
                 >
                   <option>All statuses</option>
                   <option>Needs review</option>
@@ -1197,7 +1197,7 @@ export default function TestimoniesPage() {
                 <select
                   value={sourceFilter}
                   onChange={(e) => setSourceFilter(e.target.value)}
-                  className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] font-semibold text-slate-700 dark:text-slate-200 transition-colors"
+                  className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] font-semibold text-slate-700 dark:text-slate-200 transition-colors"
                 >
                   <option>All sources</option>
                   <option>Prayer follow-up</option>
@@ -1211,7 +1211,7 @@ export default function TestimoniesPage() {
                   <select
                     value={publishFilter}
                     onChange={(e) => setPublishFilter(e.target.value)}
-                    className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] font-semibold text-slate-700 dark:text-slate-200 transition-colors"
+                    className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] font-semibold text-slate-700 dark:text-slate-200 transition-colors"
                   >
                     <option>All visibility</option>
                     <option>Private draft</option>
@@ -1222,7 +1222,7 @@ export default function TestimoniesPage() {
                   <select
                     value={featureFilter}
                     onChange={(e) => setFeatureFilter(e.target.value)}
-                    className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] font-semibold text-slate-700 dark:text-slate-200 transition-colors"
+                    className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] font-semibold text-slate-700 dark:text-slate-200 transition-colors"
                   >
                     <option>All feature states</option>
                     <option>Pending</option>
@@ -1342,7 +1342,7 @@ export default function TestimoniesPage() {
           </div>
 
           <div className="space-y-4">
-            <div className="rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 shadow-soft transition-colors">
+            <div className="rounded-[28px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 shadow-soft transition-colors">
               <div className="flex items-start justify-between gap-3">
                 <div>
                   <div className="text-[16px] font-black tracking-[-0.02em] text-faith-ink dark:text-slate-100">
@@ -1357,7 +1357,7 @@ export default function TestimoniesPage() {
 
               {selectedStory ? (
                 <div className="mt-4 space-y-4">
-                  <div className="overflow-hidden rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 transition-colors">
+                  <div className="overflow-hidden rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 transition-colors">
                     <div className="relative aspect-[16/10] overflow-hidden">
                       <img
                         src={selectedStory.heroUrl}
@@ -1387,7 +1387,7 @@ export default function TestimoniesPage() {
                   </div>
 
                   <div className="grid gap-3 sm:grid-cols-2">
-                    <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
+                    <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
                       <div className="text-[10px] font-black uppercase tracking-[0.16em] text-faith-slate">
                         Story frame
                       </div>
@@ -1398,7 +1398,7 @@ export default function TestimoniesPage() {
                         {selectedStory.storyText}
                       </div>
                     </div>
-                    <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
+                    <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
                       <div className="text-[10px] font-black uppercase tracking-[0.16em] text-faith-slate">
                         Trust + consent
                       </div>
@@ -1424,7 +1424,7 @@ export default function TestimoniesPage() {
                   </div>
 
                   <div className="grid gap-3 sm:grid-cols-2">
-                    <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
+                    <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
                       <div className="text-[12px] font-bold text-faith-ink dark:text-slate-100">
                         Linked destinations
                       </div>
@@ -1438,7 +1438,7 @@ export default function TestimoniesPage() {
                         Tags • {selectedStory.tags.join(" • ")}
                       </div>
                     </div>
-                    <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
+                    <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
                       <div className="text-[12px] font-bold text-faith-ink dark:text-slate-100">
                         Quick actions
                       </div>
@@ -1456,7 +1456,7 @@ export default function TestimoniesPage() {
                     </div>
                   </div>
 
-                  <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
+                  <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
                     <div className="flex items-start justify-between gap-3">
                       <div>
                         <div className="text-[12px] font-bold text-faith-ink dark:text-slate-100">
@@ -1472,7 +1472,7 @@ export default function TestimoniesPage() {
                       {selectedApprovalSteps(selectedStory).map((step) => (
                         <div
                           key={step.id}
-                          className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-2 transition-colors"
+                          className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-2 transition-colors"
                         >
                           <div className="flex items-center justify-between gap-2">
                             <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
@@ -1493,7 +1493,7 @@ export default function TestimoniesPage() {
           </div>
 
           <div className="space-y-4">
-            <div className="rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 shadow-soft transition-colors">
+            <div className="rounded-[28px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 shadow-soft transition-colors">
               <div className="flex items-start justify-between gap-3">
                 <div>
                   <div className="text-[16px] font-black tracking-[-0.02em] text-faith-ink dark:text-slate-100">
@@ -1512,7 +1512,7 @@ export default function TestimoniesPage() {
                     <FeaturePlacementCard key={hook.id} hook={hook} />
                   ))}
 
-                  <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
+                  <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
                     <div className="text-[12px] font-bold text-faith-ink dark:text-slate-100">
                       Safeguard signals
                     </div>
@@ -1520,7 +1520,7 @@ export default function TestimoniesPage() {
                       {selectedStory.safeguards.map((signal) => (
                         <div
                           key={signal.id}
-                          className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 transition-colors"
+                          className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 transition-colors"
                         >
                           <div className="flex items-start justify-between gap-2">
                             <div className="min-w-0">
@@ -1539,7 +1539,7 @@ export default function TestimoniesPage() {
                   </div>
 
                   <div className="grid grid-cols-2 gap-3">
-                    <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
+                    <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
                       <div className="text-[10px] font-black uppercase tracking-[0.16em] text-faith-slate">
                         Read momentum
                       </div>
@@ -1550,7 +1550,7 @@ export default function TestimoniesPage() {
                         Total story reads across visible surfaces.
                       </div>
                     </div>
-                    <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
+                    <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
                       <div className="text-[10px] font-black uppercase tracking-[0.16em] text-faith-slate">
                         Share health
                       </div>
@@ -1569,7 +1569,7 @@ export default function TestimoniesPage() {
         </section>
 
         <section className="grid gap-4 xl:grid-cols-[1fr_0.9fr]">
-          <div className="rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 shadow-soft transition-colors">
+          <div className="rounded-[28px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 shadow-soft transition-colors">
             <div className="flex items-start justify-between gap-3">
               <div>
                 <div className="text-[16px] font-black tracking-[-0.02em] text-faith-ink dark:text-slate-100">
@@ -1608,7 +1608,7 @@ export default function TestimoniesPage() {
               ].map((card) => (
                 <div
                   key={card.id}
-                  className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors"
+                  className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors"
                 >
                   <div className="flex items-center gap-2 text-faith-ink dark:text-slate-100">
                     {card.icon}
@@ -1634,7 +1634,7 @@ export default function TestimoniesPage() {
             </div>
           </div>
 
-          <div className="rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 shadow-soft transition-colors">
+          <div className="rounded-[28px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 shadow-soft transition-colors">
             <div className="flex items-start justify-between gap-3">
               <div>
                 <div className="text-[16px] font-black tracking-[-0.02em] text-faith-ink dark:text-slate-100">
@@ -1676,7 +1676,7 @@ export default function TestimoniesPage() {
               <div className="mt-4 space-y-4">
                 <TestimonyPreview story={selectedStory} previewMode={previewMode} />
 
-                <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
+                <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
                   <div className="text-[12px] font-bold text-faith-ink dark:text-slate-100">
                     Preview actions
                   </div>

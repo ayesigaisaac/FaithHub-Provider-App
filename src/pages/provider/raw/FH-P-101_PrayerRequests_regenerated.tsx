@@ -398,7 +398,7 @@ function SoftButton({
       type="button"
       onClick={onClick}
       className={cx(
-        "inline-flex items-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-2 text-[12px] font-semibold text-slate-700 transition-colors hover:bg-[var(--fh-surface)]",
+        "inline-flex items-center gap-2 rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 py-2 text-[12px] font-semibold text-slate-700 transition-colors hover:bg-[var(--fh-surface)]",
         className,
       )}
     >
@@ -471,7 +471,7 @@ function StatCard({
 }) {
   const dotBg = tone === "green" ? "#d7f7ea" : tone === "orange" ? "#fdebd6" : "#e6ebfb";
   return (
-    <div className="rounded-[26px] border border-faith-line bg-[var(--fh-surface-bg)] p-4">
+    <div className="rounded-[26px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
       <div className="flex items-start justify-between gap-2">
         <div>
           <div className="text-[12px] uppercase tracking-wide text-faith-slate font-semibold">{label}</div>
@@ -557,7 +557,7 @@ function PreviewCard({
   onCopy: () => void;
 }) {
   return (
-    <div className="rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] p-4">
+    <div className="rounded-[28px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
       <div className="flex items-center justify-between gap-2">
         <div>
           <div className="text-[12px] font-semibold uppercase tracking-wide text-faith-slate">Prayer destination preview</div>
@@ -565,25 +565,25 @@ function PreviewCard({
             Persistent preview rail for the selected request, care response, and member-facing actions.
           </div>
         </div>
-        <div className="inline-flex rounded-full border border-faith-line bg-[var(--fh-surface)] p-1">
+        <div className="inline-flex rounded-full border border-faith-line/70 bg-[var(--fh-surface)] p-1">
           <button className={cx("rounded-full px-3 py-1 text-[11px] font-semibold", mode === "desktop" ? "bg-[#1d2b64] text-white" : "text-faith-slate")} onClick={() => onModeChange("desktop")}>Desktop</button>
           <button className={cx("rounded-full px-3 py-1 text-[11px] font-semibold", mode === "mobile" ? "bg-[#1d2b64] text-white" : "text-faith-slate")} onClick={() => onModeChange("mobile")}>Mobile</button>
         </div>
       </div>
 
-      <div className={cx("mt-4 rounded-[24px] border border-faith-line bg-[var(--fh-surface)] p-3", mode === "mobile" ? "max-w-[320px]" : "") }>
+      <div className={cx("mt-4 rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface)] p-3", mode === "mobile" ? "max-w-[320px]" : "") }>
         <div className="rounded-[20px] bg-[#1d2b64] px-4 py-4 text-white">
           <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/70">Prayer Care</div>
           <div className="mt-2 text-[18px] font-black">A new prayer care moment is ready</div>
         </div>
-        <div className="mt-4 rounded-[20px] border border-faith-line bg-[var(--fh-surface-bg)] p-4">
+        <div className="mt-4 rounded-[20px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
           <div className="text-[14px] font-bold text-faith-ink">{request.title}</div>
           <div className="mt-1 text-[12px] text-faith-slate">{request.group} � {request.submittedLabel} � {request.location}</div>
           <div className="mt-4 flex flex-wrap gap-2">
             <button className="rounded-full px-4 py-2 text-[12px] font-semibold text-white" style={{ background: EV_GREEN }} onClick={() => safeNav("/faithhub/provider/prayer-requests")}>
               Pray now
             </button>
-            <button className="rounded-full border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-2 text-[12px] font-semibold text-slate-700" onClick={() => safeNav("/faithhub/provider/counseling")}>
+            <button className="rounded-full border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 py-2 text-[12px] font-semibold text-slate-700" onClick={() => safeNav("/faithhub/provider/counseling")}>
               Send encouragement
             </button>
           </div>
@@ -604,7 +604,7 @@ function PreviewCard({
 
 function TemplateTile({ template }: { template: TemplateCard }) {
   return (
-    <div className="rounded-[22px] border border-faith-line bg-[var(--fh-surface-bg)] p-3">
+    <div className="rounded-[22px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3">
       <div className="h-1.5 w-16 rounded-full" style={{ background: template.accent }} />
       <div className="mt-3 text-[13px] font-bold text-faith-ink">{template.title}</div>
       <div className="mt-1 text-[12px] text-faith-slate leading-5">{template.subtitle}</div>
@@ -621,7 +621,7 @@ function TemplateTile({ template }: { template: TemplateCard }) {
 
 function CareLeadRow({ lead }: { lead: CareLead }) {
   return (
-    <div className="rounded-[22px] border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-3">
+    <div className="rounded-[22px] border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-3">
       <div className="flex items-center justify-between gap-2">
         <div>
           <div className="text-[13px] font-bold text-faith-ink">{lead.name}</div>
@@ -749,7 +749,7 @@ function PrayerRequestsPage() {
   return (
     <div className="min-h-screen w-full bg-[var(--fh-page-bg)] text-faith-ink">
       <div className="mx-auto w-full max-w-[1600px] px-5 py-5">
-        <div className="rounded-[30px] border border-faith-line bg-[var(--fh-surface-bg)] p-5 shadow-soft">
+        <div className="rounded-[30px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-5 shadow-soft">
           <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
             <div className="min-w-0 flex-1">
               <ProviderPageTitle
@@ -783,7 +783,7 @@ function PrayerRequestsPage() {
           </div>
         </div>
 
-        <div className="mt-4 flex items-center justify-between rounded-full border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-2 text-[13px] text-faith-slate">
+        <div className="mt-4 flex items-center justify-between rounded-full border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 py-2 text-[13px] text-faith-slate">
           <div className="flex flex-wrap items-center gap-3">
             <Pill text="Prayer care pulse" tone="orange" />
             <span>4 follow-ups are due today</span>
@@ -809,7 +809,7 @@ function PrayerRequestsPage() {
             <Card
               title="Prayer requests inbox"
               subtitle="Premium intake catalog for private requests, live-session prayer moments, event follow-up, and answered-prayer updates."
-              right={<div className="flex items-center gap-2 text-[12px] text-faith-slate"><span className="rounded-full border border-faith-line px-3 py-1">{filteredRequests.length} requests</span><span className="rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-amber-700">3 due today</span></div>}
+              right={<div className="flex items-center gap-2 text-[12px] text-faith-slate"><span className="rounded-full border border-faith-line/70 px-3 py-1">{filteredRequests.length} requests</span><span className="rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-amber-700">3 due today</span></div>}
             >
               <div className="flex flex-wrap items-center gap-3">
                 <div className="relative min-w-[280px] flex-1">
@@ -818,7 +818,7 @@ function PrayerRequestsPage() {
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     placeholder="Search requests, groups, tags, or sources"
-                    className="w-full rounded-[20px] border border-faith-line bg-[var(--fh-surface)] px-11 py-3 text-[13px] outline-none focus:border-emerald-300 focus:bg-[var(--fh-surface-bg)]"
+                    className="w-full rounded-[20px] border border-faith-line/70 bg-[var(--fh-surface)] px-11 py-3 text-[13px] outline-none focus:border-emerald-300 focus:bg-[var(--fh-surface-bg)]"
                   />
                 </div>
                 <div className="flex flex-wrap items-center gap-2">
@@ -926,12 +926,12 @@ function PrayerRequestsPage() {
               <div className="mt-3 text-[14px] leading-7 text-faith-slate">{selectedRequest.summary}</div>
 
               <div className="mt-4 grid gap-3 md:grid-cols-2">
-                <div className="rounded-[20px] border border-faith-line bg-[var(--fh-surface)] px-3 py-3">
+                <div className="rounded-[20px] border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-3">
                   <div className="text-[11px] uppercase tracking-wide text-faith-slate">Routing</div>
                   <div className="mt-1 text-[13px] font-semibold text-faith-ink">Care lead: {selectedRequest.owner}</div>
                   <div className="mt-1 text-[12px] text-faith-slate">Source: {selectedRequest.source}</div>
                 </div>
-                <div className="rounded-[20px] border border-faith-line bg-[var(--fh-surface)] px-3 py-3">
+                <div className="rounded-[20px] border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-3">
                   <div className="text-[11px] uppercase tracking-wide text-faith-slate">Follow-up</div>
                   <div className="mt-1 text-[13px] font-semibold text-faith-ink">Received: {selectedRequest.submittedLabel}</div>
                   <div className="mt-1 text-[12px] text-faith-slate">{selectedRequest.followUpLabel}</div>
@@ -940,7 +940,7 @@ function PrayerRequestsPage() {
 
               <div className="mt-4 space-y-2">
                 {selectedRequest.notes.map((note) => (
-                  <div key={note} className="rounded-[18px] border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2.5 text-[12px] text-faith-slate">
+                  <div key={note} className="rounded-[18px] border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2.5 text-[12px] text-faith-slate">
                     {note}
                   </div>
                 ))}
@@ -999,7 +999,7 @@ function PrayerRequestsPage() {
       {previewOpen ? (
         <div className="fixed inset-0 z-[90]">
           <div className="absolute inset-0 bg-black/45 backdrop-blur-sm" onClick={() => setPreviewOpen(false)} />
-          <div className="absolute inset-y-0 right-0 flex w-full max-w-[760px] flex-col border-l border-faith-line bg-[var(--fh-surface-bg)] shadow-2xl">
+          <div className="absolute inset-y-0 right-0 flex w-full max-w-[760px] flex-col border-l border-faith-line bg-[var(--fh-surface-bg)] shadow-medium">
             <div className="flex items-center justify-between border-b border-faith-line px-5 py-4">
               <div>
                 <div className="text-[15px] font-bold text-faith-ink">Prayer request preview</div>
@@ -1008,7 +1008,7 @@ function PrayerRequestsPage() {
               <button
                 type="button"
                 onClick={() => setPreviewOpen(false)}
-                className="grid h-10 w-10 place-items-center rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] text-faith-slate hover:bg-[var(--fh-surface)]"
+                className="grid h-10 w-10 place-items-center rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] text-faith-slate hover:bg-[var(--fh-surface)]"
               >
                 <X className="h-4 w-4" />
               </button>
@@ -1038,7 +1038,7 @@ function PrayerRequestsPage() {
             </div>
 
             <div className="flex-1 overflow-auto p-5">
-              <div className={cx("mx-auto rounded-[34px] border border-faith-line bg-[var(--fh-surface)] p-4", previewMode === "mobile" ? "max-w-[360px]" : "max-w-[680px]") }>
+              <div className={cx("mx-auto rounded-[34px] border border-faith-line/70 bg-[var(--fh-surface)] p-4", previewMode === "mobile" ? "max-w-[360px]" : "max-w-[680px]") }>
                 <div className="rounded-[26px] bg-[#1d2b64] px-5 py-5 text-white">
                   <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-[var(--fh-surface-bg)]/10 px-3 py-1 text-[11px] font-semibold">
                     <HeartHandshake className="h-3.5 w-3.5" /> Prayer care
@@ -1049,7 +1049,7 @@ function PrayerRequestsPage() {
                   </div>
                 </div>
 
-                <div className="mt-4 rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] p-5">
+                <div className="mt-4 rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-5">
                   <div className="text-[24px] leading-tight font-black text-faith-ink">{selectedRequest.title}</div>
                   <div className="mt-2 text-[13px] text-faith-slate">
                     {selectedRequest.group} � {selectedRequest.submittedLabel} � {selectedRequest.location}
@@ -1060,22 +1060,22 @@ function PrayerRequestsPage() {
                     <button className="rounded-full px-5 py-2.5 text-[13px] font-semibold text-white" style={{ background: EV_GREEN }} onClick={() => safeNav("/faithhub/provider/prayer-requests")}>
                       Pray now
                     </button>
-                    <button className="rounded-full border border-faith-line bg-[var(--fh-surface-bg)] px-5 py-2.5 text-[13px] font-semibold text-slate-700" onClick={() => safeNav("/faithhub/provider/counseling")}>
+                    <button className="rounded-full border border-faith-line/70 bg-[var(--fh-surface-bg)] px-5 py-2.5 text-[13px] font-semibold text-slate-700" onClick={() => safeNav("/faithhub/provider/counseling")}>
                       Send encouragement
                     </button>
-                    <button className="rounded-full border border-faith-line bg-[var(--fh-surface-bg)] px-5 py-2.5 text-[13px] font-semibold text-slate-700" onClick={() => safeNav("/faithhub/provider/counseling")}>
+                    <button className="rounded-full border border-faith-line/70 bg-[var(--fh-surface-bg)] px-5 py-2.5 text-[13px] font-semibold text-slate-700" onClick={() => safeNav("/faithhub/provider/counseling")}>
                       Request follow-up
                     </button>
                   </div>
                 </div>
 
                 <div className="mt-4 grid gap-3 md:grid-cols-2">
-                  <div className="rounded-[22px] border border-faith-line bg-[var(--fh-surface-bg)] p-4">
+                  <div className="rounded-[22px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
                     <div className="text-[12px] font-semibold uppercase tracking-wide text-faith-slate">Care ownership</div>
                     <div className="mt-2 text-[16px] font-bold text-faith-ink">{selectedRequest.owner}</div>
                     <div className="mt-1 text-[13px] text-faith-slate">{selectedRequest.group} � {selectedRequest.source}</div>
                   </div>
-                  <div className="rounded-[22px] border border-faith-line bg-[var(--fh-surface-bg)] p-4">
+                  <div className="rounded-[22px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
                     <div className="text-[12px] font-semibold uppercase tracking-wide text-faith-slate">Prayer activity</div>
                     <div className="mt-2 text-[16px] font-bold text-faith-ink">{selectedRequest.prayerCount} prayers</div>
                     <div className="mt-1 text-[13px] text-faith-slate">{selectedRequest.followUpLabel}</div>

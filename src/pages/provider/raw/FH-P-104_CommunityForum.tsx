@@ -719,7 +719,7 @@ function ModerationDrawer({
   return (
     <div className="fixed inset-0 z-[90]">
       <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={onClose} />
-      <aside className="absolute right-0 top-0 h-full w-full max-w-2xl overflow-hidden bg-[var(--fh-surface-bg)] shadow-2xl ring-1 ring-slate-200">
+      <aside className="absolute right-0 top-0 h-full w-full max-w-2xl overflow-hidden bg-[var(--fh-surface-bg)] shadow-medium ring-1 ring-slate-200">
         <div className="flex items-center justify-between border-b border-faith-line px-4 py-4">
           <div>
             <div className="text-[14px] font-black text-faith-ink">Moderation command lane</div>
@@ -738,7 +738,7 @@ function ModerationDrawer({
               return (
                 <div
                   key={item.id}
-                  className="rounded-[26px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft"
+                  className="rounded-[26px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 shadow-soft"
                 >
                   <div className="flex items-start justify-between gap-3">
                     <div className="min-w-0">
@@ -789,7 +789,7 @@ function PreviewDrawer({
     <div className="fixed inset-0 z-[85]">
       <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={onClose} />
       <div className="absolute inset-0 overflow-auto bg-[#f5f7fa] p-4 md:p-6">
-        <div className="mx-auto max-w-5xl overflow-hidden rounded-[34px] border border-faith-line bg-[var(--fh-surface-bg)] shadow-2xl">
+        <div className="mx-auto max-w-5xl overflow-hidden rounded-[34px] border border-faith-line/70 bg-[var(--fh-surface-bg)] shadow-medium">
           <div className="flex items-center justify-between border-b border-faith-line px-5 py-4">
             <div>
               <div className="text-[15px] font-black text-faith-ink">Community Forum preview</div>
@@ -803,7 +803,7 @@ function PreviewDrawer({
           </div>
 
           <div className="grid gap-5 p-5 lg:grid-cols-[1.6fr_0.9fr]">
-            <div className="overflow-hidden rounded-[30px] border border-faith-line bg-[var(--fh-surface-bg)]">
+            <div className="overflow-hidden rounded-[30px] border border-faith-line/70 bg-[var(--fh-surface-bg)]">
               <div className="relative h-56 overflow-hidden bg-[#172554]">
                 <img src={thread.heroUrl} alt={thread.title} className="h-full w-full object-cover opacity-70" />
                 <div className="absolute inset-0 bg-gradient-to-r from-[#172554] via-[#172554]/80 to-transparent" />
@@ -833,21 +833,21 @@ function PreviewDrawer({
                 </div>
 
                 <div className="mt-4 grid gap-3 md:grid-cols-3">
-                  <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-4 py-3">
+                  <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-4 py-3">
                     <div className="text-[11px] uppercase tracking-[0.08em] text-faith-slate">Participants</div>
                     <div className="mt-1 text-[22px] font-black text-faith-ink">{fmtInt(thread.participants)}</div>
                   </div>
-                  <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-4 py-3">
+                  <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-4 py-3">
                     <div className="text-[11px] uppercase tracking-[0.08em] text-faith-slate">Replies</div>
                     <div className="mt-1 text-[22px] font-black text-faith-ink">{fmtInt(thread.replies)}</div>
                   </div>
-                  <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-4 py-3">
+                  <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-4 py-3">
                     <div className="text-[11px] uppercase tracking-[0.08em] text-faith-slate">Unanswered</div>
                     <div className="mt-1 text-[22px] font-black text-faith-ink">{fmtInt(thread.unanswered)}</div>
                   </div>
                 </div>
 
-                <div className="mt-5 rounded-[26px] border border-faith-line bg-[var(--fh-surface-bg)] p-4">
+                <div className="mt-5 rounded-[26px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
                   <div className="text-[12px] font-black uppercase tracking-[0.08em] text-faith-slate">
                     Opening post
                   </div>
@@ -857,7 +857,7 @@ function PreviewDrawer({
             </div>
 
             <div className="grid gap-4">
-              <div className="rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] p-4">
+              <div className="rounded-[28px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
                 <div className="text-[12px] font-black uppercase tracking-[0.08em] text-faith-slate">
                   Member actions
                 </div>
@@ -870,24 +870,24 @@ function PreviewDrawer({
                 </div>
               </div>
 
-              <div className="rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] p-4">
+              <div className="rounded-[28px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
                 <div className="text-[12px] font-black uppercase tracking-[0.08em] text-faith-slate">
                   Forum context
                 </div>
                 <div className="mt-3 grid gap-2 text-[13px] text-slate-700">
-                  <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2">
+                  <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-2">
                     Linked object • <span className="font-bold">{thread.linkedObject}</span>
                   </div>
-                  <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2">
+                  <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-2">
                     Last active • <span className="font-bold">{fmtLocal(thread.lastActiveISO)}</span>
                   </div>
-                  <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2">
+                  <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-2">
                     Owner • <span className="font-bold">{thread.owner}</span>
                   </div>
                 </div>
               </div>
 
-              <div className="rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] p-4">
+              <div className="rounded-[28px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
                 <div className="text-[12px] font-black uppercase tracking-[0.08em] text-faith-slate">
                   Signals
                 </div>
@@ -1049,7 +1049,7 @@ export default function CommunityForumPage() {
   return (
     <div className="min-h-screen bg-[var(--fh-page-bg)] text-faith-ink">
       <div className="mx-auto max-w-[1600px] px-5 py-5">
-        <div className="rounded-[34px] border border-faith-line bg-[var(--fh-surface-bg)] p-5 shadow-soft">
+        <div className="rounded-[34px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-5 shadow-soft">
           <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
             <div className="min-w-0">
               <ProviderPageTitle
@@ -1084,7 +1084,7 @@ export default function CommunityForumPage() {
           </div>
         </div>
 
-        <div className="mt-4 rounded-[30px] border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-3 text-[14px] text-faith-slate shadow-soft">
+        <div className="mt-4 rounded-[30px] border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 py-3 text-[14px] text-faith-slate shadow-soft">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div className="flex min-w-0 flex-wrap items-center gap-3">
               <Pill tone="brand">FORUM TRUST PULSE</Pill>
@@ -1139,7 +1139,7 @@ export default function CommunityForumPage() {
           />
         </div>
 
-        <div className="mt-4 rounded-[32px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft">
+        <div className="mt-4 rounded-[32px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 shadow-soft">
           <div className="text-[18px] font-black tracking-[-0.02em] text-faith-ink">
             Search and filter the forum
           </div>
@@ -1153,7 +1153,7 @@ export default function CommunityForumPage() {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search threads, categories, owners, linked objects, or keywords"
-                className="h-12 w-full rounded-[22px] border border-faith-line bg-[var(--fh-surface)] pl-11 pr-4 text-[14px] outline-none ring-0 placeholder:text-faith-slate focus:border-slate-300"
+                className="h-12 w-full rounded-[22px] border border-faith-line/70 bg-[var(--fh-surface)] pl-11 pr-4 text-[14px] outline-none ring-0 placeholder:text-faith-slate focus:border-slate-300"
               />
             </div>
             <div className="flex flex-wrap items-center gap-2">
@@ -1200,7 +1200,7 @@ export default function CommunityForumPage() {
 
         <div className="mt-4 grid gap-4 xl:grid-cols-[1.55fr_1fr_0.78fr]">
           <div className="grid gap-4">
-            <div className="rounded-[32px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft">
+            <div className="rounded-[32px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 shadow-soft">
               <div className="flex flex-wrap items-start justify-between gap-3">
                 <div>
                   <div className="text-[18px] font-black tracking-[-0.02em] text-faith-ink">
@@ -1232,7 +1232,7 @@ export default function CommunityForumPage() {
               </div>
             </div>
 
-            <div className="rounded-[32px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft">
+            <div className="rounded-[32px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 shadow-soft">
               <div className="flex items-start justify-between gap-3">
                 <div>
                   <div className="text-[18px] font-black tracking-[-0.02em] text-faith-ink">
@@ -1248,7 +1248,7 @@ export default function CommunityForumPage() {
                 {TEMPLATE_CARDS.map((template) => (
                   <div
                     key={template.id}
-                    className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] p-4"
+                    className="rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4"
                   >
                     <div
                       className="mb-3 h-1.5 w-16 rounded-full"
@@ -1284,7 +1284,7 @@ export default function CommunityForumPage() {
           </div>
 
           <div className="grid gap-4">
-            <div className="rounded-[32px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft">
+            <div className="rounded-[32px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 shadow-soft">
               <div className="flex items-start justify-between gap-3">
                 <div>
                   <div className="text-[18px] font-black tracking-[-0.02em] text-faith-ink">
@@ -1305,9 +1305,9 @@ export default function CommunityForumPage() {
                   <span>Live-linked threads</span>
                   <span className="rounded-full border border-emerald-200 px-2 py-0.5 text-[12px] font-black">{moderationCounts.liveLinked}</span>
                 </div>
-                <div className="rounded-full border border-faith-line bg-[var(--fh-surface)] px-4 py-3 text-[13px] text-slate-700 flex items-center justify-between">
+                <div className="rounded-full border border-faith-line/70 bg-[var(--fh-surface)] px-4 py-3 text-[13px] text-slate-700 flex items-center justify-between">
                   <span>Leader replies needed</span>
-                  <span className="rounded-full border border-faith-line px-2 py-0.5 text-[12px] font-black">{moderationCounts.leaderReplies}</span>
+                  <span className="rounded-full border border-faith-line/70 px-2 py-0.5 text-[12px] font-black">{moderationCounts.leaderReplies}</span>
                 </div>
                 <div className="rounded-full border border-[#172554]/20 bg-[rgba(23,37,84,0.06)] px-4 py-3 text-[13px] text-[#172554] flex items-center justify-between">
                   <span>Child-safe review</span>
@@ -1316,7 +1316,7 @@ export default function CommunityForumPage() {
               </div>
             </div>
 
-            <div className="rounded-[32px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft">
+            <div className="rounded-[32px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 shadow-soft">
               <div className="flex items-start justify-between gap-3">
                 <div>
                   <div className="text-[18px] font-black tracking-[-0.02em] text-faith-ink">
@@ -1348,12 +1348,12 @@ export default function CommunityForumPage() {
                   </div>
 
                   <div className="mt-4 grid gap-2 md:grid-cols-2">
-                    <div className="rounded-[22px] border border-faith-line bg-[var(--fh-surface)] px-4 py-3">
+                    <div className="rounded-[22px] border border-faith-line/70 bg-[var(--fh-surface)] px-4 py-3">
                       <div className="text-[11px] uppercase tracking-[0.08em] text-faith-slate">Owner</div>
                       <div className="mt-1 text-[15px] font-black text-faith-ink">{selectedThread.owner}</div>
                       <div className="text-[12px] text-faith-slate">{selectedThread.campus}</div>
                     </div>
-                    <div className="rounded-[22px] border border-faith-line bg-[var(--fh-surface)] px-4 py-3">
+                    <div className="rounded-[22px] border border-faith-line/70 bg-[var(--fh-surface)] px-4 py-3">
                       <div className="text-[11px] uppercase tracking-[0.08em] text-faith-slate">Linked object</div>
                       <div className="mt-1 text-[15px] font-black text-faith-ink">{selectedThread.linkedObject}</div>
                       <div className="text-[12px] text-faith-slate">Last active {fmtLocal(selectedThread.lastActiveISO)}</div>
@@ -1395,7 +1395,7 @@ export default function CommunityForumPage() {
           </div>
 
           <div className="grid gap-4">
-            <div className="rounded-[32px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft">
+            <div className="rounded-[32px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 shadow-soft">
               <div className="flex items-start justify-between gap-3">
                 <div>
                   <div className="text-[18px] font-black tracking-[-0.02em] text-faith-ink">
@@ -1435,7 +1435,7 @@ export default function CommunityForumPage() {
 
               {selectedThread ? (
                 <div className="mt-4">
-                  <div className="overflow-hidden rounded-[26px] border border-faith-line bg-[var(--fh-surface-bg)]">
+                  <div className="overflow-hidden rounded-[26px] border border-faith-line/70 bg-[var(--fh-surface-bg)]">
                     <div className="relative h-24 bg-[#172554]">
                       <div className="absolute inset-0 bg-gradient-to-r from-[#172554] to-[#1e3a8a]" />
                       <div className="absolute left-4 top-4 text-[11px] font-black uppercase tracking-[0.08em] text-white/65">
@@ -1475,7 +1475,7 @@ export default function CommunityForumPage() {
               ) : null}
             </div>
 
-            <div className="rounded-[32px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft">
+            <div className="rounded-[32px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 shadow-soft">
               <div className="text-[18px] font-black tracking-[-0.02em] text-faith-ink">
                 Leader post composer
               </div>
@@ -1488,7 +1488,7 @@ export default function CommunityForumPage() {
                   <input
                     value={composerTitle}
                     onChange={(e) => setComposerTitle(e.target.value)}
-                    className="mt-1 h-11 w-full rounded-[18px] border border-faith-line bg-[var(--fh-surface)] px-4 text-[13px] outline-none focus:border-slate-300"
+                    className="mt-1 h-11 w-full rounded-[18px] border border-faith-line/70 bg-[var(--fh-surface)] px-4 text-[13px] outline-none focus:border-slate-300"
                   />
                 </div>
                 <div>
@@ -1497,7 +1497,7 @@ export default function CommunityForumPage() {
                     value={composerExcerpt}
                     onChange={(e) => setComposerExcerpt(e.target.value)}
                     rows={4}
-                    className="mt-1 w-full rounded-[18px] border border-faith-line bg-[var(--fh-surface)] px-4 py-3 text-[13px] outline-none focus:border-slate-300"
+                    className="mt-1 w-full rounded-[18px] border border-faith-line/70 bg-[var(--fh-surface)] px-4 py-3 text-[13px] outline-none focus:border-slate-300"
                   />
                 </div>
                 <div className="flex flex-wrap items-center gap-2">
@@ -1518,7 +1518,7 @@ export default function CommunityForumPage() {
         </div>
 
         <div className="mt-4 grid gap-4 xl:grid-cols-[1.2fr_0.8fr]">
-          <div className="rounded-[32px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft">
+          <div className="rounded-[32px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 shadow-soft">
             <div className="text-[18px] font-black tracking-[-0.02em] text-faith-ink">
               Forum collections & trust signals
             </div>
@@ -1526,7 +1526,7 @@ export default function CommunityForumPage() {
               What this community space is doing well, where trust needs protection, and which cross-object bridges are ready now.
             </div>
             <div className="mt-4 grid gap-3 md:grid-cols-2">
-              <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] p-4">
+              <div className="rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
                 <div className="flex items-center justify-between gap-3">
                   <div className="text-[16px] font-black tracking-[-0.02em] text-faith-ink">Forum health</div>
                   <Pill tone="good">81%</Pill>
@@ -1535,7 +1535,7 @@ export default function CommunityForumPage() {
                   Leader-post coverage is strong and community sentiment is stable across the top discussion lanes.
                 </div>
               </div>
-              <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] p-4">
+              <div className="rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
                 <div className="flex items-center justify-between gap-3">
                   <div className="text-[16px] font-black tracking-[-0.02em] text-faith-ink">Noticeboard bridge</div>
                   <Pill tone="brand">Ready</Pill>
@@ -1544,7 +1544,7 @@ export default function CommunityForumPage() {
                   2 pinned threads can be routed into Noticeboard or linked into live-session waiting rooms.
                 </div>
               </div>
-              <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] p-4">
+              <div className="rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
                 <div className="flex items-center justify-between gap-3">
                   <div className="text-[16px] font-black tracking-[-0.02em] text-faith-ink">Prayer & care risk</div>
                   <Pill tone="warn">Watch</Pill>
@@ -1553,7 +1553,7 @@ export default function CommunityForumPage() {
                   Prayer lanes need quicker response ownership and stronger privacy triage when health details appear.
                 </div>
               </div>
-              <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] p-4">
+              <div className="rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
                 <div className="flex items-center justify-between gap-3">
                   <div className="text-[16px] font-black tracking-[-0.02em] text-faith-ink">Live-session hooks</div>
                   <Pill tone="good">Linked</Pill>
@@ -1565,7 +1565,7 @@ export default function CommunityForumPage() {
             </div>
           </div>
 
-          <div className="rounded-[32px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft">
+          <div className="rounded-[32px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 shadow-soft">
             <div className="text-[18px] font-black tracking-[-0.02em] text-faith-ink">
               Leader posts & governance
             </div>
@@ -1576,7 +1576,7 @@ export default function CommunityForumPage() {
               {LEADER_POSTS.map((post) => (
                 <div
                   key={post.id}
-                  className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-3"
+                  className="rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 py-3"
                 >
                   <div className="flex items-center justify-between gap-3">
                     <div className="min-w-0">

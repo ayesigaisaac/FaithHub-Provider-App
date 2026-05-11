@@ -384,7 +384,7 @@ function Modal({
       <div className="absolute inset-0 bg-black/40 dark:bg-black/60 backdrop-blur-sm transition-opacity" onClick={onClose} />
       <div
         className={cx(
-          'relative flex w-full flex-col bg-[var(--fh-surface-bg)] dark:bg-slate-900 shadow-2xl transition-all h-[95vh] sm:h-auto sm:max-h-[90vh] rounded-t-3xl sm:rounded-[14px] overflow-hidden ring-1 ring-slate-200 dark:ring-slate-800',
+          'relative flex w-full flex-col bg-[var(--fh-surface-bg)] dark:bg-slate-900 shadow-medium transition-all h-[95vh] sm:h-auto sm:max-h-[90vh] rounded-t-3xl sm:rounded-[14px] overflow-hidden ring-1 ring-slate-200 dark:ring-slate-800',
           wide ? 'max-w-6xl' : 'max-w-2xl'
         )}
       >
@@ -1093,7 +1093,7 @@ export default function StreamToPlatformsPage() {
                 <select
                   value={sessionStatus}
                   onChange={(e) => setSessionStatus(e.target.value as SessionStatus)}
-                  className="h-10 rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 pr-8 text-sm font-semibold text-slate-800 dark:text-slate-200 shadow-soft transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-slate-600 appearance-none"
+                  className="h-10 rounded-xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 pr-8 text-sm font-semibold text-slate-800 dark:text-slate-200 shadow-soft transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-slate-600 appearance-none"
                 >
                   <option>Draft</option>
                   <option>Scheduled</option>
@@ -1399,7 +1399,7 @@ export default function StreamToPlatformsPage() {
                   </div>
                   <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2">
                     {activeDestinations.slice(0, 4).map((d) => (
-                      <div key={d.id} className="rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition">
+                      <div key={d.id} className="rounded-xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition">
                         <div className="text-xs font-bold text-faith-ink dark:text-slate-100 truncate">{d.name}</div>
                         <div className="mt-1 text-[10px] sm:text-xs text-faith-slate line-clamp-2">{d.settings.complianceNote}</div>
                       </div>
@@ -1567,7 +1567,7 @@ export default function StreamToPlatformsPage() {
                   </div>
 
                   <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                    <div className="rounded-[14px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition">
+                    <div className="rounded-[14px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition">
                       <div className="flex items-start justify-between gap-3">
                         <div>
                           <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Protect master recording</div>
@@ -1576,7 +1576,7 @@ export default function StreamToPlatformsPage() {
                         <Toggle checked={recordMaster} onChange={setRecordMaster} />
                       </div>
                     </div>
-                    <div className="rounded-[14px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition">
+                    <div className="rounded-[14px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition">
                       <div className="flex items-start justify-between gap-3">
                         <div>
                           <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Protect ISO / backup paths</div>
@@ -1585,7 +1585,7 @@ export default function StreamToPlatformsPage() {
                         <Toggle checked={protectIso} onChange={setProtectIso} />
                       </div>
                     </div>
-                    <div className="rounded-[14px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition">
+                    <div className="rounded-[14px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition">
                       <div className="flex items-start justify-between gap-3">
                         <div>
                           <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Direct Beacon bridge</div>
@@ -1594,7 +1594,7 @@ export default function StreamToPlatformsPage() {
                         <Toggle checked={beaconBridge} onChange={setBeaconBridge} />
                       </div>
                     </div>
-                    <div className="rounded-[14px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition">
+                    <div className="rounded-[14px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition">
                       <div className="flex items-start justify-between gap-3">
                         <div>
                           <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Internal feed remains primary</div>
@@ -1626,19 +1626,19 @@ export default function StreamToPlatformsPage() {
 
                     <div className="bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4">
                       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                        <div className="rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition">
+                        <div className="rounded-xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition">
                           <div className="text-[10px] uppercase tracking-wider text-faith-slate">Creative variant</div>
                           <div className="mt-1 text-sm font-bold text-faith-ink dark:text-slate-100">{selectedPreset.creativeVariant}</div>
                         </div>
-                        <div className="rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition">
+                        <div className="rounded-xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition">
                           <div className="text-[10px] uppercase tracking-wider text-faith-slate">Language tracks</div>
                           <div className="mt-1 text-sm font-bold text-faith-ink dark:text-slate-100">{selectedPreset.languageTrack}</div>
                         </div>
-                        <div className="rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition">
+                        <div className="rounded-xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition">
                           <div className="text-[10px] uppercase tracking-wider text-faith-slate">Fallback rule</div>
                           <div className="mt-1 text-sm font-bold text-faith-ink dark:text-slate-100">{fallbackRule}</div>
                         </div>
-                        <div className="rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition">
+                        <div className="rounded-xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition">
                           <div className="text-[10px] uppercase tracking-wider text-faith-slate">Beacon bridge</div>
                           <div className="mt-1 text-sm font-bold text-faith-ink dark:text-slate-100">{beaconBridge ? 'Replay and clip boost ready' : 'Disabled for this session'}</div>
                         </div>
@@ -1646,7 +1646,7 @@ export default function StreamToPlatformsPage() {
 
                       <div className="mt-4 space-y-2">
                         {approvalItems.map((item) => (
-                          <div key={item.id} className="rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-3 transition">
+                          <div key={item.id} className="rounded-xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-3 transition">
                             <div className="flex items-start justify-between gap-3">
                               <div className="min-w-0">
                                 <div className="text-xs font-bold text-faith-ink dark:text-slate-100">{item.label}</div>
@@ -1720,7 +1720,7 @@ export default function StreamToPlatformsPage() {
 
                 <div className="mt-4 space-y-3">
                   {destinations.map((d) => (
-                    <div key={d.id} className="rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition">
+                    <div key={d.id} className="rounded-xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition">
                       <div className="flex items-start justify-between gap-2">
                         <div className="min-w-0">
                           <div className="text-sm font-bold text-faith-ink dark:text-slate-100 truncate">{d.name}</div>
@@ -1763,15 +1763,15 @@ export default function StreamToPlatformsPage() {
                   <div className="bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 py-4">
                     <div className="flex items-start gap-4">
                       <div className="flex-1">
-                        <div className="rounded-xl border border-faith-line dark:border-slate-800 p-3 bg-[var(--fh-surface)] dark:bg-slate-950 transition">
+                        <div className="rounded-xl border border-faith-line/70 dark:border-slate-800 p-3 bg-[var(--fh-surface)] dark:bg-slate-950 transition">
                           <div className="text-sm font-bold text-faith-ink dark:text-slate-100">Desktop surface</div>
-                          <div className="mt-2 rounded-xl border border-faith-line dark:border-slate-800 p-3 bg-[var(--fh-surface-bg)] dark:bg-slate-900">
+                          <div className="mt-2 rounded-xl border border-faith-line/70 dark:border-slate-800 p-3 bg-[var(--fh-surface-bg)] dark:bg-slate-900">
                             <div className="h-3 w-28 rounded-full" style={{ background: EV_GREEN }} />
                             <div className="mt-3 h-3 w-40 rounded-full bg-slate-800 dark:bg-slate-100" />
                             <div className="mt-2 h-3 w-32 rounded-full bg-slate-300 dark:bg-slate-700" />
                             <div className="mt-4 grid grid-cols-2 gap-2">
                               {activeDestinations.slice(0, 4).map((d) => (
-                                <div key={d.id} className="rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-2">
+                                <div key={d.id} className="rounded-xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-2">
                                   <div className="text-[11px] font-bold text-faith-ink dark:text-slate-100 truncate">{d.name}</div>
                                   <div className="text-[10px] text-faith-slate truncate">{d.settings.safeAreaMode}</div>
                                 </div>
@@ -1782,7 +1782,7 @@ export default function StreamToPlatformsPage() {
                       </div>
 
                       <div className="shrink-0">
-                        <div className="w-[138px] rounded-[34px] bg-slate-950 p-3 shadow-2xl">
+                        <div className="w-[138px] rounded-[34px] bg-slate-950 p-3 shadow-medium">
                           <div className="relative overflow-hidden rounded-[16px] bg-[var(--fh-surface-bg)] dark:bg-slate-900 h-[300px] transition-colors">
                             <div className="absolute top-0 left-1/2 -translate-x-1/2 z-30 w-20 h-5 bg-black rounded-b-2xl" />
                             <div className="p-3">
@@ -1798,9 +1798,9 @@ export default function StreamToPlatformsPage() {
                                 </div>
                               </div>
                               <div className="mt-3 space-y-2">
-                                <div className="rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-2 text-[10px] font-semibold text-slate-700 dark:text-slate-300">YouTube + Instagram + Primary</div>
-                                <div className="rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-2 text-[10px] font-semibold text-slate-700 dark:text-slate-300">Language tracks ready</div>
-                                <div className="rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-2 text-[10px] font-semibold text-slate-700 dark:text-slate-300">Fallback · Provider primary</div>
+                                <div className="rounded-xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-2 text-[10px] font-semibold text-slate-700 dark:text-slate-300">YouTube + Instagram + Primary</div>
+                                <div className="rounded-xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-2 text-[10px] font-semibold text-slate-700 dark:text-slate-300">Language tracks ready</div>
+                                <div className="rounded-xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-2 text-[10px] font-semibold text-slate-700 dark:text-slate-300">Fallback · Provider primary</div>
                               </div>
                             </div>
                             <div className="absolute bottom-3 left-3 right-3 flex flex-col gap-2">
@@ -1859,7 +1859,7 @@ export default function StreamToPlatformsPage() {
                     </div>
                   </div>
 
-                  <div className="rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition">
+                  <div className="rounded-xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition">
                     <div className="text-[10px] uppercase tracking-wider text-faith-slate">Translation tracks</div>
                     <div className="mt-2 flex flex-wrap gap-2">
                       {['English', 'Swahili', 'French'].map((track) => {
@@ -1889,7 +1889,7 @@ export default function StreamToPlatformsPage() {
                     </div>
                   </div>
 
-                  <div className="rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition">
+                  <div className="rounded-xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition">
                     <div className="flex items-start justify-between gap-3">
                       <div>
                         <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Captions and confidence</div>
@@ -1931,7 +1931,7 @@ export default function StreamToPlatformsPage() {
                       <input
                         value={selectedDest.settings.title}
                         onChange={(e) => updateDestinationSettings(selectedDest.id, { title: e.target.value })}
-                        className="mt-1.5 h-11 w-full rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 text-sm font-bold text-faith-ink dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-slate-600 transition shadow-soft"
+                        className="mt-1.5 h-11 w-full rounded-xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 text-sm font-bold text-faith-ink dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-slate-600 transition shadow-soft"
                         placeholder="Custom title"
                       />
                     </div>
@@ -1941,7 +1941,7 @@ export default function StreamToPlatformsPage() {
                       <textarea
                         value={selectedDest.settings.description}
                         onChange={(e) => updateDestinationSettings(selectedDest.id, { description: e.target.value })}
-                        className="mt-1.5 min-h-[120px] w-full rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 py-3 text-sm font-semibold text-faith-ink dark:text-slate-100 placeholder:text-faith-slate dark:placeholder:text-faith-slate focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-slate-600 transition shadow-soft resize-none"
+                        className="mt-1.5 min-h-[120px] w-full rounded-xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 py-3 text-sm font-semibold text-faith-ink dark:text-slate-100 placeholder:text-faith-slate dark:placeholder:text-faith-slate focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-slate-600 transition shadow-soft resize-none"
                         placeholder="What should this audience see on this platform?"
                       />
                     </div>
@@ -1951,7 +1951,7 @@ export default function StreamToPlatformsPage() {
                       <input
                         value={selectedDest.creativeVariant}
                         onChange={(e) => updateDestination(selectedDest.id, { creativeVariant: e.target.value })}
-                        className="mt-1.5 h-11 w-full rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 text-sm font-bold text-faith-ink dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-slate-600 transition shadow-soft"
+                        className="mt-1.5 h-11 w-full rounded-xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 text-sm font-bold text-faith-ink dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-slate-600 transition shadow-soft"
                         placeholder="Creative variant"
                       />
                     </div>
@@ -1987,7 +1987,7 @@ export default function StreamToPlatformsPage() {
                       <input
                         value={selectedDest.settings.languageTrack || ''}
                         onChange={(e) => updateDestinationSettings(selectedDest.id, { languageTrack: e.target.value })}
-                        className="mt-1.5 h-11 w-full rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 text-sm font-bold text-faith-ink dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-slate-600 transition shadow-soft"
+                        className="mt-1.5 h-11 w-full rounded-xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 text-sm font-bold text-faith-ink dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-slate-600 transition shadow-soft"
                         placeholder="English main track"
                         disabled={!selectedDest.supportsLanguageTracks}
                       />
@@ -2039,7 +2039,7 @@ export default function StreamToPlatformsPage() {
                 <textarea
                   value={selectedDest.settings.complianceNote}
                   onChange={(e) => updateDestinationSettings(selectedDest.id, { complianceNote: e.target.value })}
-                  className="mt-4 min-h-[120px] w-full rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-3 text-sm font-semibold text-faith-ink dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-slate-600 transition shadow-soft resize-none"
+                  className="mt-4 min-h-[120px] w-full rounded-xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-3 text-sm font-semibold text-faith-ink dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-slate-600 transition shadow-soft resize-none"
                 />
                 <div className="mt-3 flex flex-wrap items-center gap-2">
                   <button
@@ -2087,11 +2087,11 @@ export default function StreamToPlatformsPage() {
                 </div>
 
                 <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
-                  <div className="rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition">
+                  <div className="rounded-xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition">
                     <div className="text-[10px] uppercase tracking-wider text-faith-slate">Connection state</div>
                     <div className="mt-1 text-sm font-bold text-faith-ink dark:text-slate-100">{statusLabel(selectedDest.status)}</div>
                   </div>
-                  <div className="rounded-xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition">
+                  <div className="rounded-xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition">
                     <div className="text-[10px] uppercase tracking-wider text-faith-slate">Health history</div>
                     <div className="mt-1 text-sm font-bold text-faith-ink dark:text-slate-100">{selectedDest.health.errors} error{selectedDest.health.errors === 1 ? '' : 's'} · ACK {selectedDest.health.lastAckSec}s</div>
                   </div>
@@ -2162,7 +2162,7 @@ export default function StreamToPlatformsPage() {
       >
         <div className="grid gap-3">
           {availableToConnect.map((dest) => (
-            <div key={dest.id} className="rounded-[14px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition">
+            <div key={dest.id} className="rounded-[14px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition">
               <div className="flex items-start justify-between gap-3">
                 <div>
                   <div className="text-sm font-bold text-faith-ink dark:text-slate-100">{dest.name}</div>

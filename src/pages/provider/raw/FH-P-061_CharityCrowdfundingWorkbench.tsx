@@ -1141,7 +1141,7 @@ function Modal({
   return (
     <div className="fixed inset-0 z-[90] flex items-end justify-center sm:items-center p-0 sm:p-4">
       <div className="absolute inset-0 bg-black/40 dark:bg-black/60 backdrop-blur-sm transition-opacity" onClick={onClose} />
-      <div className="relative flex w-full max-w-5xl flex-col bg-[var(--fh-surface-bg)] dark:bg-slate-900 shadow-2xl transition-all h-[94vh] sm:h-auto sm:max-h-[92vh] rounded-t-3xl sm:rounded-3xl overflow-hidden ring-1 ring-slate-200 dark:ring-slate-800">
+      <div className="relative flex w-full max-w-5xl flex-col bg-[var(--fh-surface-bg)] dark:bg-slate-900 shadow-medium transition-all h-[94vh] sm:h-auto sm:max-h-[92vh] rounded-t-3xl sm:rounded-3xl overflow-hidden ring-1 ring-slate-200 dark:ring-slate-800">
         <div className="flex items-center justify-between gap-2 border-b border-faith-line dark:border-slate-800 px-4 py-3">
           <div>
             <div className="text-base font-semibold text-faith-ink dark:text-slate-50">{title}</div>
@@ -1305,7 +1305,7 @@ function BrowserPreview({ record }: { record: CrowdfundRecord }) {
   const stretch = pct(record.raised, record.stretchGoal);
   const latest = record.updates[0];
   return (
-    <div className="overflow-hidden rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 shadow-xl">
+    <div className="overflow-hidden rounded-[28px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 shadow-xl">
       <div className="flex items-center gap-2 border-b border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 px-4 py-3">
         <span className="h-3 w-3 rounded-full bg-rose-400" />
         <span className="h-3 w-3 rounded-full bg-amber-400" />
@@ -1409,7 +1409,7 @@ function PhonePreview({ record }: { record: CrowdfundRecord }) {
   const progress = pct(record.raised, record.goal);
   return (
     <div className="mx-auto w-full max-w-[380px] md:max-w-[420px]">
-      <div className="relative overflow-hidden rounded-[38px] bg-slate-950 p-3 shadow-2xl ring-1 ring-slate-800">
+      <div className="relative overflow-hidden rounded-[38px] bg-slate-950 p-3 shadow-medium ring-1 ring-slate-800">
         <div className="absolute left-1/2 top-0 z-20 h-6 w-28 -translate-x-1/2 rounded-b-2xl bg-black" />
         <div className="overflow-hidden rounded-[30px] bg-[var(--fh-surface-bg)] dark:bg-slate-950">
           <div className="sticky top-0 z-10 flex items-center justify-between border-b border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)]/95 dark:bg-slate-950/95 px-4 py-3 backdrop-blur">
@@ -2470,7 +2470,7 @@ export default function CharityCrowdfundingWorkbenchPage() {
       </Modal>
 
       {toast ? (
-        <div className="fixed bottom-6 left-1/2 z-[120] -translate-x-1/2 rounded-full bg-slate-900 px-4 py-2 text-xs font-semibold text-white shadow-2xl">
+        <div className="fixed bottom-6 left-1/2 z-[120] -translate-x-1/2 rounded-full bg-slate-900 px-4 py-2 text-xs font-semibold text-white shadow-medium">
           {toast}
         </div>
       ) : null}

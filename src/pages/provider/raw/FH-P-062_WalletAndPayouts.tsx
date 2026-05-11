@@ -1,4 +1,4 @@
-﻿// @ts-nocheck
+// @ts-nocheck
 "use client";
 
 import React, { useMemo, useState } from "react";
@@ -37,7 +37,7 @@ import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 import { useAuth } from "@/auth/useAuth";
 
 /**
- * Provider â€” Wallet & Payouts
+ * Provider — Wallet & Payouts
  * ------------------------------------
  * Premium Provider-side treasury surface for wallet visibility, payout methods,
  * transfer controls, settlement sources, compliance health, and reconciliation.
@@ -70,7 +70,7 @@ function safeNav(url: string) {
   navigateWithRouter(url);
 }
 
-function fmtMoney(n: number, currency = "Â£") {
+function fmtMoney(n: number, currency = "£") {
   return `${currency}${Intl.NumberFormat(undefined, {
     maximumFractionDigits: 0,
   }).format(n)}`;
@@ -560,7 +560,7 @@ function SoftButton({
       title={title}
       onClick={onClick}
       className={cx(
-        "inline-flex items-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-2 text-[12px] font-semibold text-slate-700 transition-colors hover:bg-[var(--fh-surface)]",
+        "inline-flex items-center gap-2 rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 py-2 text-[12px] font-semibold text-slate-700 transition-colors hover:bg-[var(--fh-surface)]",
         className,
       )}
     >
@@ -643,7 +643,7 @@ function Drawer({
   return (
     <div className="fixed inset-0 z-[120]">
       <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={onClose} />
-      <div className="absolute right-0 top-0 h-full w-full max-w-[760px] border-l border-faith-line bg-[var(--fh-surface-bg)] shadow-2xl">
+      <div className="absolute right-0 top-0 h-full w-full max-w-[760px] border-l border-faith-line bg-[var(--fh-surface-bg)] shadow-medium">
         <div className="flex h-full flex-col">
           <div className="border-b border-faith-line px-5 py-4">
             <div className="flex items-start justify-between gap-3">
@@ -654,9 +654,9 @@ function Drawer({
               <button
                 type="button"
                 onClick={onClose}
-                className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 hover:bg-[var(--fh-surface)]"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] text-slate-700 hover:bg-[var(--fh-surface)]"
               >
-                Ã—
+                ×
               </button>
             </div>
           </div>
@@ -717,7 +717,7 @@ function PreviewRail({ mode, onModeChange }: { mode: PreviewMode; onModeChange: 
       title="Preview + payout experience"
       subtitle="Desktop and mobile treasury previews so providers can see how cash movement feels before finance actions are committed."
       right={
-        <div className="inline-flex rounded-full border border-faith-line bg-[var(--fh-surface-bg)] p-1">
+        <div className="inline-flex rounded-full border border-faith-line/70 bg-[var(--fh-surface-bg)] p-1">
           <button
             type="button"
             onClick={() => onModeChange("desktop")}
@@ -750,7 +750,7 @@ function PreviewRail({ mode, onModeChange }: { mode: PreviewMode; onModeChange: 
               <Wallet className="h-3.5 w-3.5" /> Treasury desk
             </div>
             <div className="mt-4 text-[28px] font-black">{fmtMoney(18420)}</div>
-            <div className="mt-1 text-[12px] text-slate-300">Available to transfer â€¢ Trust-ready 96%</div>
+            <div className="mt-1 text-[12px] text-slate-300">Available to transfer • Trust-ready 96%</div>
             <div className="mt-4 h-3 rounded-full bg-[var(--fh-surface-bg)]/10 overflow-hidden">
               <div className="h-full rounded-full" style={{ width: "74%", background: EV_GREEN }} />
             </div>
@@ -766,12 +766,12 @@ function PreviewRail({ mode, onModeChange }: { mode: PreviewMode; onModeChange: 
             </div>
           </div>
           <div className="grid grid-cols-2 gap-3">
-            <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-4">
+            <div className="rounded-3xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
               <div className="text-[11px] uppercase tracking-[0.14em] text-faith-slate">Statement view</div>
               <div className="mt-2 text-[18px] font-black text-faith-ink">April settlement bundle</div>
               <div className="mt-1 text-[11px] text-faith-slate">CSV, PDF, and audit notes packaged for finance review.</div>
             </div>
-            <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-4">
+            <div className="rounded-3xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
               <div className="text-[11px] uppercase tracking-[0.14em] text-faith-slate">Treasury actions</div>
               <div className="mt-2 flex gap-2">
                 <span className="rounded-full px-3 py-1 text-[11px] font-semibold text-white" style={{ background: EV_GREEN }}>
@@ -786,7 +786,7 @@ function PreviewRail({ mode, onModeChange }: { mode: PreviewMode; onModeChange: 
         </div>
       ) : (
         <div className="flex items-end justify-center gap-6">
-          <div className="w-[230px] rounded-[44px] bg-slate-950 p-4 shadow-2xl">
+          <div className="w-[230px] rounded-[44px] bg-slate-950 p-4 shadow-medium">
             <div className="rounded-[34px] bg-[var(--fh-surface-bg)] px-4 py-5">
               <div className="mx-auto h-2 w-20 rounded-full bg-slate-300" />
               <div className="mt-5 rounded-[26px] bg-slate-950 px-4 py-4 text-white">
@@ -796,7 +796,7 @@ function PreviewRail({ mode, onModeChange }: { mode: PreviewMode; onModeChange: 
                   <div className="h-full rounded-full" style={{ width: "72%", background: EV_GREEN }} />
                 </div>
               </div>
-              <div className="mt-4 rounded-3xl border border-faith-line bg-[var(--fh-surface)] px-4 py-3">
+              <div className="mt-4 rounded-3xl border border-faith-line/70 bg-[var(--fh-surface)] px-4 py-3">
                 <div className="text-[11px] uppercase tracking-[0.14em] text-faith-slate">Next payout</div>
                 <div className="mt-1 text-[15px] font-black text-faith-ink">Thu 14:00</div>
                 <div className="mt-1 text-[11px] text-faith-slate">Main ministry current account</div>
@@ -818,11 +818,11 @@ function PreviewRail({ mode, onModeChange }: { mode: PreviewMode; onModeChange: 
             </div>
           </div>
           <div className="flex-1 max-w-[240px] space-y-2">
-            <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-3">
+            <div className="rounded-3xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3">
               <div className="text-[11px] uppercase tracking-[0.14em] text-faith-slate">Mobile finance cues</div>
               <div className="mt-2 text-[13px] font-semibold text-faith-ink">Low-friction treasury actions for finance leads and campus admins.</div>
             </div>
-            <div className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-3">
+            <div className="rounded-3xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3">
               <div className="text-[12px] font-semibold text-faith-ink">Trust signals</div>
               <div className="mt-1 text-[11px] text-faith-slate">Verification, reserves, and payout health surfaced before money moves.</div>
             </div>
@@ -928,7 +928,7 @@ export default function WalletAndPayoutsPage() {
   return (
     <div className="min-h-screen bg-[var(--fh-page-bg)] text-faith-ink">
       <div className="mx-auto max-w-[1600px] p-4 md:p-6 space-y-4">
-        <div className="rounded-[32px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 md:p-5 shadow-soft">
+        <div className="rounded-[32px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 md:p-5 shadow-soft">
           <div className="grid gap-4 xl:grid-cols-[1.45fr_0.75fr]">
             <div>
               <ProviderPageTitle
@@ -938,7 +938,7 @@ export default function WalletAndPayoutsPage() {
               />
               <p className="mt-3 max-w-[900px] text-[15px] leading-7 text-faith-slate">
                 A dedicated wallet and payouts command surface for donations, charity crowdfunding, event registrations,
-                supporter memberships, and FaithMart-linked revenue â€” with finance trust, payout readiness, and reconciliation all in one place.
+                supporter memberships, and FaithMart-linked revenue — with finance trust, payout readiness, and reconciliation all in one place.
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
                 <Pill text="Treasury-ready" tone="good" icon={<BadgeCheck className="h-3.5 w-3.5" />} />
@@ -947,7 +947,7 @@ export default function WalletAndPayoutsPage() {
               </div>
             </div>
 
-            <div className="rounded-[28px] border border-faith-line bg-[var(--fh-surface)] p-4">
+            <div className="rounded-[28px] border border-faith-line/70 bg-[var(--fh-surface)] p-4">
               <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-faith-slate">
                 Command actions
               </div>
@@ -972,18 +972,18 @@ export default function WalletAndPayoutsPage() {
                 </SoftButton>
               </div>
               <div className="mt-4 grid grid-cols-2 gap-2">
-                <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-3">
+                <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3">
                   <div className="text-[11px] uppercase tracking-[0.14em] text-faith-slate">Linked finance pages</div>
                   <div className="mt-2 flex flex-wrap gap-2">
-                    <button onClick={() => safeNav(ROUTES.donationsFunds)} className="rounded-full border border-faith-line px-3 py-1 text-[11px] font-semibold text-slate-700 hover:bg-[var(--fh-surface)]">
+                    <button onClick={() => safeNav(ROUTES.donationsFunds)} className="rounded-full border border-faith-line/70 px-3 py-1 text-[11px] font-semibold text-slate-700 hover:bg-[var(--fh-surface)]">
                       Donations & Funds
                     </button>
-                    <button onClick={() => safeNav(ROUTES.crowdfundingWorkbench)} className="rounded-full border border-faith-line px-3 py-1 text-[11px] font-semibold text-slate-700 hover:bg-[var(--fh-surface)]">
+                    <button onClick={() => safeNav(ROUTES.crowdfundingWorkbench)} className="rounded-full border border-faith-line/70 px-3 py-1 text-[11px] font-semibold text-slate-700 hover:bg-[var(--fh-surface)]">
                       Charity Crowdfund
                     </button>
                   </div>
                 </div>
-                <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-3">
+                <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3">
                   <div className="text-[11px] uppercase tracking-[0.14em] text-faith-slate">Next review</div>
                   <div className="mt-2 text-[14px] font-black text-faith-ink">International missions payout</div>
                   <div className="mt-1 text-[11px] text-faith-slate">KYC blocker before the next cross-border release.</div>
@@ -999,7 +999,7 @@ export default function WalletAndPayoutsPage() {
           ))}
         </div>
 
-        <div className="rounded-[30px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft">
+        <div className="rounded-[30px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 shadow-soft">
           <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
             <div>
               <div className="text-[16px] font-black text-faith-ink">Search and filter wallet activity</div>
@@ -1023,7 +1023,7 @@ export default function WalletAndPayoutsPage() {
             </div>
           </div>
           <div className="mt-4 grid gap-3 lg:grid-cols-[1fr_180px]">
-            <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-3 flex items-center gap-3">
+            <div className="rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 py-3 flex items-center gap-3">
               <Search className="h-4 w-4 text-faith-slate" />
               <input
                 value={query}
@@ -1032,7 +1032,7 @@ export default function WalletAndPayoutsPage() {
                 className="w-full bg-transparent text-[13px] text-slate-800 outline-none placeholder:text-faith-slate"
               />
             </div>
-            <button className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-3 text-[12px] font-semibold text-slate-700 inline-flex items-center justify-center gap-2 hover:bg-[var(--fh-surface)]" onClick={() => safeNav("/faithhub/provider/wallet-payouts")}>
+            <button className="rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 py-3 text-[12px] font-semibold text-slate-700 inline-flex items-center justify-center gap-2 hover:bg-[var(--fh-surface)]" onClick={() => safeNav("/faithhub/provider/wallet-payouts")}>
               <Filter className="h-4 w-4" /> More filters
             </button>
           </div>
@@ -1071,7 +1071,7 @@ export default function WalletAndPayoutsPage() {
 
               <div className="grid gap-3 sm:grid-cols-2">
                 {BALANCE_POCKETS.map((pocket) => (
-                  <div key={pocket.id} className="rounded-[24px] border border-faith-line bg-[var(--fh-surface)] p-4">
+                  <div key={pocket.id} className="rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface)] p-4">
                     <div className="flex items-start justify-between gap-3">
                       <div>
                         <div className="text-[12px] font-semibold text-faith-ink">{pocket.label}</div>
@@ -1093,7 +1093,7 @@ export default function WalletAndPayoutsPage() {
           >
             <div className="space-y-3">
               {PAYOUT_METHODS.map((method) => (
-                <div key={method.id} className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 hover:bg-[var(--fh-surface)] transition-colors">
+                <div key={method.id} className="rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 hover:bg-[var(--fh-surface)] transition-colors">
                   <div className="flex items-start justify-between gap-3">
                     <div>
                       <div className="flex items-center gap-2">
@@ -1102,7 +1102,7 @@ export default function WalletAndPayoutsPage() {
                         </div>
                         <div>
                           <div className="text-[13px] font-semibold text-faith-ink">{method.label}</div>
-                          <div className="text-[11px] text-faith-slate">{method.kind} Â· {method.owner}</div>
+                          <div className="text-[11px] text-faith-slate">{method.kind} · {method.owner}</div>
                         </div>
                       </div>
                     </div>
@@ -1112,11 +1112,11 @@ export default function WalletAndPayoutsPage() {
                     />
                   </div>
                   <div className="mt-3 grid gap-2 sm:grid-cols-2">
-                    <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2">
+                    <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-2">
                       <div className="text-[10px] uppercase tracking-[0.14em] text-faith-slate">Cadence</div>
                       <div className="mt-1 text-[12px] font-semibold text-faith-ink">{method.cadence}</div>
                     </div>
-                    <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2">
+                    <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-2">
                       <div className="text-[10px] uppercase tracking-[0.14em] text-faith-slate">Currency</div>
                       <div className="mt-1 text-[12px] font-semibold text-faith-ink">{method.currency}</div>
                     </div>
@@ -1138,11 +1138,11 @@ export default function WalletAndPayoutsPage() {
             subtitle="Payout timing, minimums, reserves, and failure-handling rules that keep the ministry treasury calm and explainable."
           >
             <div className="space-y-3">
-              <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface)] p-4">
+              <div className="rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface)] p-4">
                 <div className="flex items-start justify-between gap-3">
                   <div>
                     <div className="text-[12px] font-semibold text-faith-ink">Primary auto payout</div>
-                    <div className="mt-1 text-[22px] font-black text-faith-ink">Thursday Â· 14:00</div>
+                    <div className="mt-1 text-[22px] font-black text-faith-ink">Thursday · 14:00</div>
                     <div className="mt-1 text-[11px] text-faith-slate">Weekly treasury sweep into the main ministry current account.</div>
                   </div>
                   <Pill text="Auto" tone="good" icon={<RefreshCcw className="h-3.5 w-3.5" />} />
@@ -1155,7 +1155,7 @@ export default function WalletAndPayoutsPage() {
                   { label: "Crowdfund release policy", value: "Milestone-based", hint: "Charity campaigns can be locked until beneficiary proof or approval milestones are satisfied." },
                   { label: "Failure fallback", value: "Hold + notify", hint: "If a payout fails, the amount returns to a protected pending state until resolved." },
                 ].map((row) => (
-                  <div key={row.label} className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-3">
+                  <div key={row.label} className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-3">
                     <div className="flex items-start justify-between gap-3">
                       <div>
                         <div className="text-[12px] font-semibold text-faith-ink">{row.label}</div>
@@ -1175,7 +1175,7 @@ export default function WalletAndPayoutsPage() {
           >
             <div className="space-y-3">
               {SETTLEMENT_SOURCES.map((source) => (
-                <div key={source.id} className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] p-4">
+                <div key={source.id} className="rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
                   <div className="flex items-start justify-between gap-3">
                     <div>
                       <div className="text-[13px] font-semibold text-faith-ink">{source.label}</div>
@@ -1200,7 +1200,7 @@ export default function WalletAndPayoutsPage() {
           >
             <div className="space-y-3">
               {HEALTH_SIGNALS.map((signal) => (
-                <div key={signal.id} className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] p-4">
+                <div key={signal.id} className="rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
                   <div className="flex items-start justify-between gap-3">
                     <div>
                       <div className="text-[12px] font-semibold text-faith-ink">{signal.label}</div>
@@ -1241,7 +1241,7 @@ export default function WalletAndPayoutsPage() {
                   key={tx.id}
                   type="button"
                   onClick={() => setSelectedTx(tx)}
-                  className="w-full rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-3 text-left hover:bg-[var(--fh-surface)] transition-colors"
+                  className="w-full rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 py-3 text-left hover:bg-[var(--fh-surface)] transition-colors"
                 >
                   <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
                     <div className="min-w-0 flex-1">
@@ -1251,7 +1251,7 @@ export default function WalletAndPayoutsPage() {
                         </div>
                         <div className="min-w-0">
                           <div className="text-[13px] font-semibold text-faith-ink truncate">{tx.title}</div>
-                          <div className="text-[11px] text-faith-slate truncate">{tx.source} Â· {tx.reference} Â· {tx.campus}</div>
+                          <div className="text-[11px] text-faith-slate truncate">{tx.source} · {tx.reference} · {tx.campus}</div>
                         </div>
                       </div>
                       <div className="mt-2 text-[11px] leading-5 text-faith-slate line-clamp-2">{tx.note}</div>
@@ -1287,15 +1287,15 @@ export default function WalletAndPayoutsPage() {
           >
             <div className="space-y-3">
               {RECON_BLOCKS.map((block) => (
-                <div key={block.id} className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] p-4">
+                <div key={block.id} className="rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
                   <div className="text-[13px] font-semibold text-faith-ink">{block.label}</div>
                   <div className="mt-1 text-[11px] leading-5 text-faith-slate">{block.hint}</div>
-                  <button className="mt-3 rounded-full border border-faith-line px-3 py-1.5 text-[11px] font-semibold text-slate-700 hover:bg-[var(--fh-surface)]" onClick={() => safeNav("/faithhub/provider/wallet-payouts")}>
+                  <button className="mt-3 rounded-full border border-faith-line/70 px-3 py-1.5 text-[11px] font-semibold text-slate-700 hover:bg-[var(--fh-surface)]" onClick={() => safeNav("/faithhub/provider/wallet-payouts")}>
                     {block.cta}
                   </button>
                 </div>
               ))}
-              <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface)] p-4">
+              <div className="rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface)] p-4">
                 <div className="text-[12px] font-semibold text-faith-ink">Finance note</div>
                 <div className="mt-1 text-[11px] leading-5 text-faith-slate">
                   Wallet and payouts should stay closely linked to Donations & Funds, Charity Crowdfunding, Events Manager,
@@ -1332,7 +1332,7 @@ export default function WalletAndPayoutsPage() {
                     <div className="flex items-start justify-between gap-3">
                       <div>
                         <div className="text-[13px] font-semibold text-faith-ink">{method.label}</div>
-                        <div className="mt-1 text-[11px] text-faith-slate">{method.kind} Â· {method.currency}</div>
+                        <div className="mt-1 text-[11px] text-faith-slate">{method.kind} · {method.currency}</div>
                       </div>
                       <Pill
                         text={method.status}
@@ -1355,7 +1355,7 @@ export default function WalletAndPayoutsPage() {
                   <input
                     value={transferAmount}
                     onChange={(e) => setTransferAmount(e.target.value.replace(/[^0-9]/g, ""))}
-                    className="mt-1 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[13px] font-semibold text-faith-ink outline-none focus:ring-2 focus:ring-emerald-100"
+                    className="mt-1 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[13px] font-semibold text-faith-ink outline-none focus:ring-2 focus:ring-emerald-100"
                   />
                 </div>
                 <div>
@@ -1364,10 +1364,10 @@ export default function WalletAndPayoutsPage() {
                     rows={4}
                     value={transferNote}
                     onChange={(e) => setTransferNote(e.target.value)}
-                    className="mt-1 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] text-faith-ink outline-none focus:ring-2 focus:ring-emerald-100"
+                    className="mt-1 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] text-faith-ink outline-none focus:ring-2 focus:ring-emerald-100"
                   />
                 </div>
-                <div className="rounded-[22px] border border-faith-line bg-[var(--fh-surface)] p-4">
+                <div className="rounded-[22px] border border-faith-line/70 bg-[var(--fh-surface)] p-4">
                   <div className="text-[12px] font-semibold text-faith-ink">Review summary</div>
                   <div className="mt-2 text-[11px] text-faith-slate leading-5">
                     {fmtMoney(Number(transferAmount || 0))} will be routed to <span className="font-semibold text-faith-ink">{selectedMethod.label}</span>.
@@ -1430,7 +1430,7 @@ export default function WalletAndPayoutsPage() {
               tone: EV_GREY,
             },
           ].map((card) => (
-            <div key={card.title} className="rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] p-5">
+            <div key={card.title} className="rounded-[28px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-5">
               <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl text-white" style={{ background: card.tone }}>
                 {card.icon}
               </div>
@@ -1442,7 +1442,7 @@ export default function WalletAndPayoutsPage() {
                   setMethodOpen(false);
                   showToast(`${card.title} flow opened.`);
                 }}
-                className="mt-4 rounded-full border border-faith-line px-4 py-2 text-[12px] font-semibold text-slate-700 hover:bg-[var(--fh-surface)]"
+                className="mt-4 rounded-full border border-faith-line/70 px-4 py-2 text-[12px] font-semibold text-slate-700 hover:bg-[var(--fh-surface)]"
               >
                 Start setup
               </button>
@@ -1455,7 +1455,7 @@ export default function WalletAndPayoutsPage() {
         open={!!selectedTx}
         onClose={() => setSelectedTx(null)}
         title={selectedTx?.title || "Transaction details"}
-        subtitle={selectedTx ? `${selectedTx.reference} Â· ${selectedTx.source}` : undefined}
+        subtitle={selectedTx ? `${selectedTx.reference} · ${selectedTx.source}` : undefined}
       >
         {selectedTx ? (
           <div className="space-y-4">
@@ -1491,26 +1491,26 @@ export default function WalletAndPayoutsPage() {
               </Card>
               <Card title="Reference + next action" subtitle="Useful links for operations and finance follow-up.">
                 <div className="space-y-3">
-                  <div className="rounded-[22px] border border-faith-line bg-[var(--fh-surface)] px-4 py-3">
+                  <div className="rounded-[22px] border border-faith-line/70 bg-[var(--fh-surface)] px-4 py-3">
                     <div className="text-[10px] uppercase tracking-[0.14em] text-faith-slate">Reference</div>
                     <div className="mt-1 flex items-center justify-between gap-3">
                       <div className="text-[13px] font-semibold text-faith-ink">{selectedTx.reference}</div>
                       <button
                         type="button"
                         onClick={() => copyReference(selectedTx.reference)}
-                        className="rounded-full border border-faith-line px-3 py-1 text-[11px] font-semibold text-slate-700 hover:bg-[var(--fh-surface-bg)]"
+                        className="rounded-full border border-faith-line/70 px-3 py-1 text-[11px] font-semibold text-slate-700 hover:bg-[var(--fh-surface-bg)]"
                       >
                         <Copy className="mr-1 inline h-3.5 w-3.5" /> Copy
                       </button>
                     </div>
                   </div>
                   {selectedTx.destination ? (
-                    <div className="rounded-[22px] border border-faith-line bg-[var(--fh-surface)] px-4 py-3">
+                    <div className="rounded-[22px] border border-faith-line/70 bg-[var(--fh-surface)] px-4 py-3">
                       <div className="text-[10px] uppercase tracking-[0.14em] text-faith-slate">Destination</div>
                       <div className="mt-1 text-[13px] font-semibold text-faith-ink">{selectedTx.destination}</div>
                     </div>
                   ) : null}
-                  <div className="rounded-[22px] border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-3">
+                  <div className="rounded-[22px] border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 py-3">
                     <div className="text-[12px] font-semibold text-faith-ink">Operational note</div>
                     <div className="mt-1 text-[12px] leading-6 text-faith-slate">{selectedTx.note}</div>
                   </div>
@@ -1528,7 +1528,7 @@ export default function WalletAndPayoutsPage() {
       </Drawer>
 
       {toast ? (
-        <div className="fixed bottom-6 left-1/2 z-[140] -translate-x-1/2 rounded-full bg-slate-950 px-4 py-2 text-[12px] font-semibold text-white shadow-2xl">
+        <div className="fixed bottom-6 left-1/2 z-[140] -translate-x-1/2 rounded-full bg-slate-950 px-4 py-2 text-[12px] font-semibold text-white shadow-medium">
           {toast}
         </div>
       ) : null}

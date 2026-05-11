@@ -690,7 +690,7 @@ function TemplateTile({
   const accentColor =
     accent === "green" ? EV_GREEN : accent === "orange" ? EV_ORANGE : EV_NAVY;
   return (
-    <div className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors">
+    <div className="rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors">
       <div
         className="inline-flex items-center rounded-full px-2.5 py-1 text-[10px] font-bold text-white"
         style={{ background: accentColor }}
@@ -723,7 +723,7 @@ function MerchandiseCard({
   onPreview: () => void;
 }) {
   return (
-    <div className="rounded-[26px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 overflow-hidden transition-colors">
+    <div className="rounded-[26px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 overflow-hidden transition-colors">
       <div className="relative h-52">
         <img
           src={item.imageUrl}
@@ -799,7 +799,7 @@ function MerchandiseCard({
         </div>
 
         <div className="mt-4 grid grid-cols-2 gap-3">
-          <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-950 border border-faith-line dark:border-slate-800 px-3 py-2 transition-colors">
+          <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-950 border border-faith-line/70 dark:border-slate-800 px-3 py-2 transition-colors">
             <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">
               Price
             </div>
@@ -807,7 +807,7 @@ function MerchandiseCard({
               {item.priceLabel}
             </div>
           </div>
-          <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-950 border border-faith-line dark:border-slate-800 px-3 py-2 transition-colors">
+          <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-950 border border-faith-line/70 dark:border-slate-800 px-3 py-2 transition-colors">
             <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">
               Revenue
             </div>
@@ -821,7 +821,7 @@ function MerchandiseCard({
           {item.tags.map((tag) => (
             <span
               key={`${item.id}_${tag}`}
-              className="inline-flex items-center rounded-full border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 px-2.5 py-1 text-[11px] font-semibold text-faith-slate dark:text-slate-300 transition-colors"
+              className="inline-flex items-center rounded-full border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 px-2.5 py-1 text-[11px] font-semibold text-faith-slate dark:text-slate-300 transition-colors"
             >
               {tag}
             </span>
@@ -849,7 +849,7 @@ function MerchandiseCard({
           ].map((stat) => (
             <div
               key={`${item.id}_${stat.label}`}
-              className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-950 border border-faith-line dark:border-slate-800 px-2 py-2 transition-colors"
+              className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-950 border border-faith-line/70 dark:border-slate-800 px-2 py-2 transition-colors"
             >
               <div className="text-[10px] uppercase tracking-[0.15em] text-faith-slate">
                 {stat.label}
@@ -892,7 +892,7 @@ function CollectionTile({
   liveLinked: number;
 }) {
   return (
-    <div className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors">
+    <div className="rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors">
       <div className="flex items-start justify-between gap-3">
         <div>
           <div className="text-[14px] font-bold text-faith-ink dark:text-slate-100">
@@ -936,7 +936,7 @@ function InventoryAlertRow({
     );
 
   return (
-    <div className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-3 transition-colors">
+    <div className="rounded-[22px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-3 transition-colors">
       <div className="flex items-start gap-3">
         <div className="mt-0.5">{icon}</div>
         <div className="min-w-0">
@@ -954,7 +954,7 @@ function InventoryAlertRow({
 
 function MonitorBadge() {
   return (
-    <span className="inline-flex items-center gap-1 rounded-full border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 px-2 py-1 text-[10px] font-bold text-slate-700 dark:text-slate-300 transition-colors">
+    <span className="inline-flex items-center gap-1 rounded-full border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 px-2 py-1 text-[10px] font-bold text-slate-700 dark:text-slate-300 transition-colors">
       <Package className="h-3.5 w-3.5" />
       FaithMart
     </span>
@@ -982,7 +982,7 @@ function Drawer({
         className="absolute inset-0 bg-slate-950/50 backdrop-blur-sm"
         onClick={onClose}
       />
-      <aside className="absolute right-0 top-0 h-full w-full max-w-4xl bg-[var(--fh-surface-bg)] dark:bg-slate-950 shadow-2xl border-l border-faith-line dark:border-slate-800 flex flex-col transition-colors">
+      <aside className="absolute right-0 top-0 h-full w-full max-w-4xl bg-[var(--fh-surface-bg)] dark:bg-slate-950 shadow-medium border-l border-faith-line dark:border-slate-800 flex flex-col transition-colors">
         <div className="px-4 py-4 border-b border-faith-line dark:border-slate-800 flex items-start justify-between gap-3">
           <div className="min-w-0">
             <div className="text-[15px] font-bold text-faith-ink dark:text-slate-100">
@@ -996,7 +996,7 @@ function Drawer({
           </div>
           <button
             type="button"
-            className="h-10 w-10 rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-slate-700 dark:text-slate-200 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800 transition-colors grid place-items-center"
+            className="h-10 w-10 rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-slate-700 dark:text-slate-200 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800 transition-colors grid place-items-center"
             onClick={onClose}
             aria-label="Close"
           >
@@ -1023,7 +1023,7 @@ function MerchandiseStorefrontPreview({
   if (mode === "mobile") {
     return (
       <div className={cx("mx-auto", compact ? "w-[320px]" : "w-[360px]")}>
-        <div className="rounded-[36px] bg-slate-900 p-3 shadow-2xl">
+        <div className="rounded-[36px] bg-slate-900 p-3 shadow-medium">
           <div className="rounded-[30px] overflow-hidden bg-[var(--fh-surface-bg)] dark:bg-slate-900 transition-colors">
             <div className="relative h-48">
               <img src={item.imageUrl} alt={item.title} className="h-full w-full object-cover" />
@@ -1043,7 +1043,7 @@ function MerchandiseStorefrontPreview({
             </div>
 
             <div className="p-4">
-              <div className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
+              <div className="rounded-[22px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
                 <div className="text-[11px] uppercase tracking-[0.16em] text-faith-slate">
                   Featured item
                 </div>
@@ -1060,7 +1060,7 @@ function MerchandiseStorefrontPreview({
                    onClick={() => safeNav("/faithhub/provider/merchandise-builder")}>
                     View item
                   </button>
-                  <button className="flex-1 rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] font-bold text-slate-700 dark:text-slate-200 transition-colors" onClick={() => navigator.clipboard?.writeText(window.location.href)}>
+                  <button className="flex-1 rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] font-bold text-slate-700 dark:text-slate-200 transition-colors" onClick={() => navigator.clipboard?.writeText(window.location.href)}>
                     Save
                   </button>
                 </div>
@@ -1074,7 +1074,7 @@ function MerchandiseStorefrontPreview({
                   {allItems.slice(0, 3).map((other) => (
                     <div
                       key={`mobile_prev_${other.id}`}
-                      className="min-w-[120px] rounded-[20px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 p-2 transition-colors"
+                      className="min-w-[120px] rounded-[20px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 p-2 transition-colors"
                     >
                       <img
                         src={other.imageUrl}
@@ -1089,28 +1089,28 @@ function MerchandiseStorefrontPreview({
                 </div>
               </div>
 
-              <div className="mt-4 rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
+              <div className="mt-4 rounded-[22px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
                 <div className="text-[11px] font-bold text-slate-700 dark:text-slate-300">
                   Linked surfaces
                 </div>
                 <div className="mt-2 flex flex-wrap gap-2">
                   {item.linkedLive ? (
-                    <span className="rounded-full border border-faith-line dark:border-slate-700 px-2.5 py-1 text-[10px] font-bold text-slate-700 dark:text-slate-300">
+                    <span className="rounded-full border border-faith-line/70 dark:border-slate-700 px-2.5 py-1 text-[10px] font-bold text-slate-700 dark:text-slate-300">
                       Live Sessions
                     </span>
                   ) : null}
                   {item.linkedEvents > 0 ? (
-                    <span className="rounded-full border border-faith-line dark:border-slate-700 px-2.5 py-1 text-[10px] font-bold text-slate-700 dark:text-slate-300">
+                    <span className="rounded-full border border-faith-line/70 dark:border-slate-700 px-2.5 py-1 text-[10px] font-bold text-slate-700 dark:text-slate-300">
                       Events
                     </span>
                   ) : null}
                   {item.linkedBeacon ? (
-                    <span className="rounded-full border border-faith-line dark:border-slate-700 px-2.5 py-1 text-[10px] font-bold text-slate-700 dark:text-slate-300">
+                    <span className="rounded-full border border-faith-line/70 dark:border-slate-700 px-2.5 py-1 text-[10px] font-bold text-slate-700 dark:text-slate-300">
                       Beacon
                     </span>
                   ) : null}
                   {item.linkedGiving ? (
-                    <span className="rounded-full border border-faith-line dark:border-slate-700 px-2.5 py-1 text-[10px] font-bold text-slate-700 dark:text-slate-300">
+                    <span className="rounded-full border border-faith-line/70 dark:border-slate-700 px-2.5 py-1 text-[10px] font-bold text-slate-700 dark:text-slate-300">
                       Giving
                     </span>
                   ) : null}
@@ -1124,7 +1124,7 @@ function MerchandiseStorefrontPreview({
   }
 
   return (
-    <div className="rounded-[30px] overflow-hidden border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 transition-colors shadow-soft">
+    <div className="rounded-[30px] overflow-hidden border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 transition-colors shadow-soft">
       <div className="relative h-56">
         <img src={item.imageUrl} alt={item.title} className="h-full w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-r from-slate-950/80 via-slate-950/35 to-transparent" />
@@ -1160,7 +1160,7 @@ function MerchandiseStorefrontPreview({
 
       <div className="grid lg:grid-cols-[minmax(0,1.25fr)_340px] gap-4 p-4">
         <div className="space-y-4">
-          <div className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 transition-colors">
+          <div className="rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 transition-colors">
             <div className="flex items-start justify-between gap-3">
               <div>
                 <div className="text-[11px] uppercase tracking-[0.16em] text-faith-slate">
@@ -1180,14 +1180,14 @@ function MerchandiseStorefrontPreview({
                     ? "bg-rose-500 text-white"
                     : item.inventory <= 10
                     ? "bg-amber-400 text-faith-ink"
-                    : "bg-[var(--fh-surface-bg)] text-faith-ink border border-faith-line dark:border-slate-700",
+                    : "bg-[var(--fh-surface-bg)] text-faith-ink border border-faith-line/70 dark:border-slate-700",
                 )}
               >
                 {item.inventory <= 0 ? "Sold out" : `${item.inventory} left`}
               </span>
             </div>
             <div className="mt-4 grid md:grid-cols-3 gap-3">
-              <div className="rounded-[20px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
+              <div className="rounded-[20px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
                 <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">
                   Orders
                 </div>
@@ -1195,7 +1195,7 @@ function MerchandiseStorefrontPreview({
                   {fmtInt(item.orders)}
                 </div>
               </div>
-              <div className="rounded-[20px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
+              <div className="rounded-[20px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
                 <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">
                   Revenue
                 </div>
@@ -1203,7 +1203,7 @@ function MerchandiseStorefrontPreview({
                   {money(item.revenue)}
                 </div>
               </div>
-              <div className="rounded-[20px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
+              <div className="rounded-[20px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
                 <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">
                   Conversion
                 </div>
@@ -1222,7 +1222,7 @@ function MerchandiseStorefrontPreview({
               {allItems.slice(0, 3).map((other) => (
                 <div
                   key={`desktop_prev_${other.id}`}
-                  className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 p-3 transition-colors"
+                  className="rounded-[22px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 p-3 transition-colors"
                 >
                   <img
                     src={other.imageUrl}
@@ -1241,7 +1241,7 @@ function MerchandiseStorefrontPreview({
           </div>
         </div>
 
-        <div className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 p-4 transition-colors">
+        <div className="rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 p-4 transition-colors">
           <div className="text-[11px] uppercase tracking-[0.16em] text-faith-slate">
             Commerce links
           </div>
@@ -1266,7 +1266,7 @@ function MerchandiseStorefrontPreview({
             ].map((link) => (
               <div
                 key={`${item.id}_${link.label}`}
-                className="rounded-[18px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 px-3 py-3 transition-colors"
+                className="rounded-[18px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 px-3 py-3 transition-colors"
               >
                 <div className="flex items-center justify-between gap-3">
                   <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
@@ -1287,7 +1287,7 @@ function MerchandiseStorefrontPreview({
             ))}
           </div>
 
-          <div className="mt-4 rounded-[20px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-3 transition-colors">
+          <div className="mt-4 rounded-[20px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-3 transition-colors">
             <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
               Premium note
             </div>
@@ -1313,7 +1313,7 @@ function DetailSection({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors">
+    <div className="rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors">
       <div className="text-[13px] font-semibold text-faith-ink dark:text-slate-100">
         {title}
       </div>
@@ -1461,7 +1461,7 @@ export default function MerchandiseManagerPage() {
       style={{ backgroundColor: EV_LIGHT }}
     >
       <main className="px-4 py-4 md:px-6 lg:px-8 lg:py-6">
-        <section className="rounded-[32px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-6 transition-colors">
+        <section className="rounded-[32px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-6 transition-colors">
           <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
             <div className="max-w-3xl">
               <ProviderPageTitle
@@ -1477,7 +1477,7 @@ export default function MerchandiseManagerPage() {
               </div>
             </div>
 
-            <div className="w-full max-w-[440px] rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 transition-colors">
+            <div className="w-full max-w-[440px] rounded-[28px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 transition-colors">
               <div className="flex items-start justify-between gap-3">
                 <div>
                   <div className="text-[11px] uppercase tracking-[0.18em] text-faith-slate">
@@ -1509,7 +1509,7 @@ export default function MerchandiseManagerPage() {
                 </SoftButton>
               </div>
 
-              <div className="mt-4 rounded-[20px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
+              <div className="mt-4 rounded-[20px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
                 <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                   Continue where you left off
                 </div>
@@ -1530,7 +1530,7 @@ export default function MerchandiseManagerPage() {
                   ].map((item) => (
                     <div
                       key={item.label}
-                      className="rounded-[18px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-3 transition-colors"
+                      className="rounded-[18px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-3 transition-colors"
                     >
                       <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                         {item.label}
@@ -1558,7 +1558,7 @@ export default function MerchandiseManagerPage() {
           ))}
         </section>
 
-        <section className="mt-4 rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors">
+        <section className="mt-4 rounded-[28px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors">
           <div className="flex flex-col gap-4 xl:flex-row xl:items-end xl:justify-between">
             <div className="flex-1">
               <div className="text-[13px] font-semibold text-faith-ink dark:text-slate-100">
@@ -1567,7 +1567,7 @@ export default function MerchandiseManagerPage() {
               <div className="mt-1 text-[11px] text-faith-slate">
                 Find apparel, gifts, event kits, or worship essentials fast � then jump straight into details or preview.
               </div>
-              <div className="mt-4 flex items-center gap-3 rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-3 transition-colors">
+              <div className="mt-4 flex items-center gap-3 rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-3 transition-colors">
                 <Search className="h-4 w-4 text-faith-slate" />
                 <input
                   value={query}
@@ -1632,7 +1632,7 @@ export default function MerchandiseManagerPage() {
                 {featured.map((item) => (
                   <div
                     key={item.id}
-                    className="overflow-hidden rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 transition-colors"
+                    className="overflow-hidden rounded-[28px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 transition-colors"
                   >
                     <div className="relative h-56">
                       <img
@@ -1714,7 +1714,7 @@ export default function MerchandiseManagerPage() {
                 </div>
               ) : (
                 <div className="rounded-[26px] border border-dashed border-slate-300 dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 p-10 text-center transition-colors">
-                  <div className="mx-auto h-12 w-12 rounded-full bg-[var(--fh-surface-bg)] dark:bg-slate-900 border border-faith-line dark:border-slate-800 grid place-items-center">
+                  <div className="mx-auto h-12 w-12 rounded-full bg-[var(--fh-surface-bg)] dark:bg-slate-900 border border-faith-line/70 dark:border-slate-800 grid place-items-center">
                     <Search className="h-5 w-5 text-faith-slate" />
                   </div>
                   <div className="mt-4 text-[16px] font-bold text-faith-ink dark:text-slate-100">
@@ -1739,7 +1739,7 @@ export default function MerchandiseManagerPage() {
               title="Storefront preview"
               subtitle="A premium FaithMart preview rail so providers can see how merchandise reads before publishing or promoting it."
               right={
-                <div className="inline-flex rounded-full border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 p-1 transition-colors">
+                <div className="inline-flex rounded-full border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 p-1 transition-colors">
                   <button
                     type="button"
                     onClick={() => setPreviewMode("desktop")}
@@ -1894,7 +1894,7 @@ export default function MerchandiseManagerPage() {
               subtitle="A premium readiness surface that shows whether this item is truly shelf-ready and promotion-ready."
             >
               <div className="grid gap-3 sm:grid-cols-2">
-                <div className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-4 transition-colors">
+                <div className="rounded-[22px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-4 transition-colors">
                   <div className="text-[11px] uppercase tracking-[0.16em] text-faith-slate">
                     Completeness
                   </div>
@@ -1912,7 +1912,7 @@ export default function MerchandiseManagerPage() {
                   </div>
                 </div>
 
-                <div className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-4 transition-colors">
+                <div className="rounded-[22px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-4 transition-colors">
                   <div className="text-[11px] uppercase tracking-[0.16em] text-faith-slate">
                     Visibility
                   </div>
@@ -1931,7 +1931,7 @@ export default function MerchandiseManagerPage() {
                 {readinessIssues(selected).map((issue) => (
                   <div
                     key={issue}
-                    className="rounded-[20px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-3 text-[12px] text-faith-slate transition-colors"
+                    className="rounded-[20px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-3 text-[12px] text-faith-slate transition-colors"
                   >
                     {issue}
                   </div>
@@ -1954,7 +1954,7 @@ export default function MerchandiseManagerPage() {
                 ].map((stat) => (
                   <div
                     key={`${selected.id}_${stat.label}`}
-                    className="rounded-[20px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-3 transition-colors"
+                    className="rounded-[20px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-3 transition-colors"
                   >
                     <div className="text-[10px] uppercase tracking-[0.15em] text-faith-slate">
                       {stat.label}
@@ -2006,7 +2006,7 @@ export default function MerchandiseManagerPage() {
                 ].map((link) => (
                   <div
                     key={`${selected.id}_${link.label}`}
-                    className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 transition-colors"
+                    className="rounded-[22px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 transition-colors"
                   >
                     <div className="flex items-center justify-between gap-3">
                       <div className="text-[13px] font-semibold text-faith-ink dark:text-slate-100">
@@ -2039,7 +2039,7 @@ export default function MerchandiseManagerPage() {
                 {selected.hooks.map((hook) => (
                   <div
                     key={hook.id}
-                    className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-3 transition-colors"
+                    className="rounded-[22px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-3 transition-colors"
                   >
                     <div className="flex items-center justify-between gap-3">
                       <div className="text-[13px] font-semibold text-faith-ink dark:text-slate-100">

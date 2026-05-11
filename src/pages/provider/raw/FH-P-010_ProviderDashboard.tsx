@@ -1198,7 +1198,7 @@ function SelectPill({
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="h-11 w-full rounded-xl border border-faith-line bg-[var(--fh-surface-bg)] px-3.5 pr-9 text-[12px] font-semibold text-slate-700 shadow-soft outline-none focus:border-slate-300"
+        className="h-11 w-full rounded-xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3.5 pr-9 text-[12px] font-semibold text-slate-700 shadow-soft outline-none focus:border-slate-300"
       >
         {options.map((option) => (
           <option key={option}>{option}</option>
@@ -1529,7 +1529,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
       <div className="min-h-screen w-full bg-[var(--fh-page-bg)] text-faith-ink transition-colors dark:bg-slate-950 dark:text-slate-100">
         <div className="w-full max-w-none px-0 py-0">
           <div className="space-y-4 sm:space-y-5">
-            <section className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-5 sm:p-10 shadow-soft">
+            <section className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-5 sm:p-10 shadow-soft">
               <div className="mx-auto flex max-w-2xl flex-col items-center text-center">
                 <div
                   className="grid h-16 w-16 place-items-center rounded-2xl text-white shadow-md"
@@ -1567,7 +1567,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
       <div className="min-h-screen w-full bg-[var(--fh-page-bg)] text-faith-ink transition-colors dark:bg-slate-950 dark:text-slate-100">
         <div className="w-full max-w-none px-0 py-0">
           <div className="space-y-8 sm:space-y-10">
-            <section className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-5 sm:p-5">
+            <section className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-5 sm:p-5">
               <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
                 <ProviderPageTitle
                   icon={<BookOpen className="h-6 w-6" />}
@@ -1575,7 +1575,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                   subtitle="Pick up the next teaching action, clear blockers, and publish with confidence."
                   className="mt-2"
                 />
-                <div className="w-full rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3 shadow-soft lg:max-w-[360px] lg:min-w-[320px]">
+                <div className="w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3 shadow-soft lg:max-w-[360px] lg:min-w-[320px]">
                   <div className="mb-2 text-[10px] font-black uppercase tracking-[0.18em] text-faith-ink">
                     Priority Action
                   </div>
@@ -1602,7 +1602,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                         trackDashboardEvent("start_new_task", { source: "hero_secondary" });
                         safeNav(ROUTES.teachingsDashboard);
                       }}
-                      className={`mt-3 inline-flex h-10 w-full items-center justify-center gap-2 rounded-xl border border-faith-line bg-[var(--fh-surface-bg)] px-4 text-[12px] font-bold text-faith-ink transition hover:bg-[var(--fh-surface)] ${cardFocusRingClass}`}
+                      className={`mt-3 inline-flex h-10 w-full items-center justify-center gap-2 rounded-xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 text-[12px] font-bold text-faith-ink transition hover:bg-[var(--fh-surface)] ${cardFocusRingClass}`}
                     >
                       <Plus className="h-4 w-4" />
                       Create new teaching
@@ -1610,7 +1610,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                   ) : null}
                 </div>
               </div>
-              <div className="mt-6 rounded-2xl border border-faith-line/60 bg-[var(--fh-surface)] p-5 sm:p-5">
+              <div className="mt-6 rounded-2xl border border-faith-line/70/60 bg-[var(--fh-surface)] p-5 sm:p-5">
                 <div className="mb-2 text-[10px] font-black uppercase tracking-[0.18em] text-slate-500">Next Actions</div>
                 <TeachingsQuickActionsBar
                   activeAction={activeQuickAction}
@@ -1653,7 +1653,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                 </div>
               </div>
               <div className="mt-7 grid gap-5 sm:mt-6 sm:gap-5 md:grid-cols-[minmax(0,1.35fr)_minmax(240px,0.95fr)]">
-                <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-5">
+                <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-5">
                   <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-slate-500">
                     {continueItem ? "Resume now" : "Start here"}
                   </div>
@@ -1666,7 +1666,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                       : "Open a new teaching flow and start building your next sermon, episode, or series update."}
                   </p>
                 </div>
-                <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-5">
+                <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-5">
                   <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-slate-500">Focus today</div>
                   <div className="mt-2 text-[16px] font-black tracking-tight text-faith-ink">{smartNextStep}</div>
                   <p className="mt-2 text-[13px] leading-6 text-slate-700">
@@ -1716,7 +1716,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
             >
               <div className="space-y-3">
                 {LIVE_SESSIONS.filter((session) => session.isLiveNow).map((session) => (
-                  <div key={session.id} className="rounded-xl border border-faith-line bg-[var(--fh-surface-bg)] p-3.5">
+                  <div key={session.id} className="rounded-xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3.5">
                     <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                       <div className="min-w-0">
                         <div className="flex items-center gap-2">
@@ -1740,7 +1740,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                           type="button"
                           aria-label={`Open live dashboard for ${session.title}`}
                           onClick={() => safeNav(ROUTES.liveDashboard)}
-                          className={`inline-flex h-9 items-center gap-2 rounded-lg border border-faith-line bg-[var(--fh-surface)] px-3 text-[11px] font-bold text-faith-ink transition hover:bg-[var(--fh-surface-bg)] ${cardFocusRingClass}`}
+                          className={`inline-flex h-9 items-center gap-2 rounded-lg border border-faith-line/70 bg-[var(--fh-surface)] px-3 text-[11px] font-bold text-faith-ink transition hover:bg-[var(--fh-surface-bg)] ${cardFocusRingClass}`}
                         >
                           <MonitorPlay className="h-3.5 w-3.5" />
                           Open dashboard
@@ -1771,7 +1771,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                       key={`recently-edited-${item.id}`}
                       type="button"
                       onClick={() => openTeachingItem(item.id)}
-                      className={`w-full rounded-xl border border-faith-line bg-[var(--fh-surface-bg)] p-3.5 text-left transition hover:bg-[var(--fh-surface)] ${cardFocusRingClass}`}
+                      className={`w-full rounded-xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3.5 text-left transition hover:bg-[var(--fh-surface)] ${cardFocusRingClass}`}
                       aria-label={`Open recently edited ${item.title}`}
                     >
                       <div className="flex items-start justify-between gap-2">
@@ -1799,7 +1799,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                       key={`quick-access-${item.id}`}
                       type="button"
                       onClick={() => openTeachingItem(item.id)}
-                      className={`w-full rounded-xl border border-faith-line bg-[var(--fh-surface-bg)] p-3.5 text-left transition hover:bg-[var(--fh-surface)] ${cardFocusRingClass}`}
+                      className={`w-full rounded-xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3.5 text-left transition hover:bg-[var(--fh-surface)] ${cardFocusRingClass}`}
                       aria-label={`Open quick access ${item.title}`}
                     >
                       <div className="text-[14px] font-bold text-faith-ink">{item.title}</div>
@@ -1825,7 +1825,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                       setIsRecentCollapsed(next);
                       trackDashboardEvent("toggle_recent_section", { collapsed: next });
                     }}
-                    className={`inline-flex h-9 w-9 items-center justify-center rounded-full border border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 transition hover:bg-[var(--fh-surface)] ${cardFocusRingClass}`}
+                    className={`inline-flex h-9 w-9 items-center justify-center rounded-full border border-faith-line/70 bg-[var(--fh-surface-bg)] text-slate-700 transition hover:bg-[var(--fh-surface)] ${cardFocusRingClass}`}
                   >
                     {isRecentCollapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
                   </button>
@@ -1863,7 +1863,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                   ? Array.from({ length: 4 }).map((_, idx) => (
                       <div
                         key={`recent-skeleton-${idx}`}
-                        className="w-full animate-pulse rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4"
+                        className="w-full animate-pulse rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-4"
                       >
                         <div className="h-4 w-2/3 rounded bg-slate-200/70" />
                         <div className="mt-2 h-3 w-1/3 rounded bg-slate-200/60" />
@@ -1891,7 +1891,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                         openTeachingItem(item.id);
                       }
                     }}
-                    className={`w-full cursor-pointer rounded-xl border border-faith-line bg-[var(--fh-surface-bg)] p-3.5 text-left transition hover:bg-[var(--fh-surface)] ${cardFocusRingClass}`}
+                    className={`w-full cursor-pointer rounded-xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3.5 text-left transition hover:bg-[var(--fh-surface)] ${cardFocusRingClass}`}
                   >
                     <div className="flex items-start justify-between gap-2">
                       <div className="min-w-0">
@@ -1909,7 +1909,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                           handleTeachingAction(item.id, "publish");
                         }}
                         disabled={Boolean(actionPendingById[item.id])}
-                        className={`w-full rounded-lg border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[11px] font-bold text-faith-ink transition hover:bg-[var(--fh-brand-soft)] sm:w-auto sm:py-1.5 ${cardFocusRingClass}`}
+                        className={`w-full rounded-lg border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[11px] font-bold text-faith-ink transition hover:bg-[var(--fh-brand-soft)] sm:w-auto sm:py-1.5 ${cardFocusRingClass}`}
                       >
                         {actionPendingById[item.id] === "publish" ? "Publishing..." : "Publish"}
                       </button>
@@ -1921,7 +1921,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                           handleTeachingAction(item.id, "request_review");
                         }}
                         disabled={Boolean(actionPendingById[item.id])}
-                        className={`w-full rounded-lg border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[11px] font-bold text-faith-ink transition hover:bg-amber-50 sm:w-auto sm:py-1.5 ${cardFocusRingClass}`}
+                        className={`w-full rounded-lg border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[11px] font-bold text-faith-ink transition hover:bg-amber-50 sm:w-auto sm:py-1.5 ${cardFocusRingClass}`}
                       >
                         {actionPendingById[item.id] === "request_review" ? "Requesting..." : "Request review"}
                       </button>
@@ -1933,7 +1933,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                           handleTeachingAction(item.id, "open");
                         }}
                         disabled={Boolean(actionPendingById[item.id])}
-                        className={`w-full rounded-lg border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[11px] font-bold text-faith-ink transition hover:bg-slate-100 sm:w-auto sm:py-1.5 ${cardFocusRingClass}`}
+                        className={`w-full rounded-lg border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[11px] font-bold text-faith-ink transition hover:bg-slate-100 sm:w-auto sm:py-1.5 ${cardFocusRingClass}`}
                       >
                         {actionPendingById[item.id] === "open" ? "Opening..." : "Open"}
                       </button>
@@ -1962,7 +1962,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                       setIsPendingCollapsed(next);
                       trackDashboardEvent("toggle_pending_section", { collapsed: next });
                     }}
-                    className={`inline-flex h-9 w-9 items-center justify-center rounded-full border border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 transition hover:bg-[var(--fh-surface)] ${cardFocusRingClass}`}
+                    className={`inline-flex h-9 w-9 items-center justify-center rounded-full border border-faith-line/70 bg-[var(--fh-surface-bg)] text-slate-700 transition hover:bg-[var(--fh-surface)] ${cardFocusRingClass}`}
                   >
                     {isPendingCollapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
                   </button>
@@ -1999,7 +1999,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                   ? Array.from({ length: 3 }).map((_, idx) => (
                       <div
                         key={`pending-skeleton-${idx}`}
-                        className="animate-pulse rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4"
+                        className="animate-pulse rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-4"
                       >
                         <div className="h-4 w-1/2 rounded bg-slate-200/70" />
                         <div className="mt-2 h-3 w-2/3 rounded bg-slate-200/60" />
@@ -2012,7 +2012,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                     ))
                   : null}
                 {!isWorkflowLoading && filteredPendingWork.length === 0 ? (
-                  <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-4 py-6 text-center">
+                  <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-4 py-6 text-center">
                     <div className="text-[14px] font-bold text-faith-ink">
                       No drafts pending, you're all caught up.
                     </div>
@@ -2022,7 +2022,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                   </div>
                 ) : null}
                 {!isWorkflowLoading && filteredPendingWork.map((item) => (
-                  <div key={item.id} className="rounded-xl border border-faith-line bg-[var(--fh-surface-bg)] p-3.5">
+                  <div key={item.id} className="rounded-xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3.5">
                     <div className="flex items-start justify-between gap-2">
                       <div className="min-w-0">
                         <h3 className="text-[14px] font-bold text-faith-ink">{item.title}</h3>
@@ -2038,7 +2038,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                         aria-label={`Publish ${item.title}`}
                         onClick={() => handleTeachingAction(item.id, "publish")}
                         disabled={Boolean(actionPendingById[item.id])}
-                        className={`w-full rounded-lg border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[11px] font-bold text-faith-ink transition hover:bg-[var(--fh-brand-soft)] sm:w-auto sm:py-1.5 ${cardFocusRingClass}`}
+                        className={`w-full rounded-lg border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[11px] font-bold text-faith-ink transition hover:bg-[var(--fh-brand-soft)] sm:w-auto sm:py-1.5 ${cardFocusRingClass}`}
                       >
                         {actionPendingById[item.id] === "publish" ? "Publishing..." : "Publish"}
                       </button>
@@ -2047,7 +2047,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                         aria-label={`Request review for ${item.title}`}
                         onClick={() => handleTeachingAction(item.id, "request_review")}
                         disabled={Boolean(actionPendingById[item.id])}
-                        className={`w-full rounded-lg border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[11px] font-bold text-faith-ink transition hover:bg-amber-50 sm:w-auto sm:py-1.5 ${cardFocusRingClass}`}
+                        className={`w-full rounded-lg border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[11px] font-bold text-faith-ink transition hover:bg-amber-50 sm:w-auto sm:py-1.5 ${cardFocusRingClass}`}
                       >
                         {actionPendingById[item.id] === "request_review" ? "Requesting..." : "Request review"}
                       </button>
@@ -2056,7 +2056,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                         aria-label={`Open ${item.title}`}
                         onClick={() => handleTeachingAction(item.id, "open")}
                         disabled={Boolean(actionPendingById[item.id])}
-                        className={`w-full rounded-lg border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[11px] font-bold text-faith-ink transition hover:bg-slate-100 sm:w-auto sm:py-1.5 ${cardFocusRingClass}`}
+                        className={`w-full rounded-lg border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[11px] font-bold text-faith-ink transition hover:bg-slate-100 sm:w-auto sm:py-1.5 ${cardFocusRingClass}`}
                       >
                         {actionPendingById[item.id] === "open" ? "Opening..." : "Open"}
                       </button>
@@ -2078,7 +2078,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
               >
                 <div className="space-y-2">
                   {auditTrail.slice(0, 5).map((entry) => (
-                    <div key={entry.id} className="rounded-xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2">
+                    <div key={entry.id} className="rounded-xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2">
                       <div className="flex items-center justify-between gap-2">
                         <div className="text-[12px] font-semibold text-faith-ink">{entry.message}</div>
                         <Pill
@@ -2098,7 +2098,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
               <div
                 role="status"
                 aria-live="polite"
-                className="fixed bottom-4 right-4 z-50 rounded-xl border border-faith-line bg-[var(--fh-surface)] px-4 py-2 text-[12px] font-semibold text-faith-ink shadow-soft"
+                className="fixed bottom-4 right-4 z-50 rounded-xl border border-faith-line/70 bg-[var(--fh-surface)] px-4 py-2 text-[12px] font-semibold text-faith-ink shadow-soft"
               >
                 {actionToast}
               </div>

@@ -30,16 +30,16 @@ export default function FHP130ContentPlanner() {
   return (
     <div className="min-h-screen bg-[var(--fh-page-bg)] text-faith-ink">
       <main className="mx-auto max-w-[1280px] px-4 py-5 md:px-6 md:py-6">
-        <div className="rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] p-5 md:p-6">
+        <div className="rounded-[28px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-5 md:p-6">
           <ProviderPageTitle
             icon={<CalendarCheck2 className="h-6 w-6" />}
             title="Content Planner"
             subtitle="Plan teaching themes, assign owners, and track readiness for each publishing cycle."
           />
           <div className="mt-4 flex flex-wrap gap-2 text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">
-            <span className="rounded-full border border-faith-line bg-[var(--fh-surface)] px-3 py-1">Planning</span>
-            <span className="rounded-full border border-faith-line bg-[var(--fh-surface)] px-3 py-1">Execution</span>
-            <span className="rounded-full border border-faith-line bg-[var(--fh-surface)] px-3 py-1">Review</span>
+            <span className="rounded-full border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-1">Planning</span>
+            <span className="rounded-full border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-1">Execution</span>
+            <span className="rounded-full border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-1">Review</span>
           </div>
         </div>
 
@@ -61,7 +61,7 @@ export default function FHP130ContentPlanner() {
         <ProviderSurfaceCard className="mt-4" title="Execution Checklist" subtitle="Core flow to move from planning to publish.">
           <div className="space-y-3">
             {planningSteps.map((step, index) => (
-              <div key={step.title} className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4">
+              <div key={step.title} className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-4">
                 <div className="flex items-start justify-between gap-3">
                   <div>
                     <div className="text-sm font-black text-faith-ink">{index + 1}. {step.title}</div>
@@ -82,15 +82,15 @@ export default function FHP130ContentPlanner() {
           subtitle="Simple, high-signal indicators for weekly planning conversations."
         >
           <div className="grid gap-3 md:grid-cols-3">
-            <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4 text-sm">
+            <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-4 text-sm">
               <div className="inline-flex items-center gap-2 font-bold"><Clock3 className="h-4 w-4" /> Next milestone</div>
               <div className="mt-2 text-faith-slate">Outline lock due Tuesday, 10:00 AM.</div>
             </div>
-            <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4 text-sm">
+            <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-4 text-sm">
               <div className="inline-flex items-center gap-2 font-bold"><CheckCircle2 className="h-4 w-4" /> Latest checkpoint</div>
               <div className="mt-2 text-faith-slate">Asset list approved for Series Week 3.</div>
             </div>
-            <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4 text-sm">
+            <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-4 text-sm">
               <div className="inline-flex items-center gap-2 font-bold"><Sparkles className="h-4 w-4" /> Recommended next step</div>
               <div className="mt-2 text-faith-slate">Publish owner handoff notes for media + moderation.</div>
             </div>

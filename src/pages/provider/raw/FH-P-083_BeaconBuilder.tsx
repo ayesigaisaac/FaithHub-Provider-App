@@ -799,7 +799,7 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-3xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors">
+    <div className="rounded-3xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div className="min-w-0">
           <div className="text-[13px] font-semibold text-faith-ink dark:text-slate-100">{title}</div>
@@ -885,7 +885,7 @@ function TextArea({
       onChange={(e) => onChange(e.target.value)}
       placeholder={placeholder}
       rows={rows}
-      className="mt-1 w-full rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-sm text-faith-ink dark:text-slate-100 outline-none transition-colors focus:ring-2 focus:ring-emerald-200 dark:focus:ring-emerald-800"
+      className="mt-1 w-full rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-sm text-faith-ink dark:text-slate-100 outline-none transition-colors focus:ring-2 focus:ring-emerald-200 dark:focus:ring-emerald-800"
     />
   );
 }
@@ -963,7 +963,7 @@ function Modal({
   return (
     <div className="fixed inset-0 z-[99]">
       <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
-      <div className="absolute inset-0 bg-[var(--fh-surface-bg)] dark:bg-slate-950 shadow-2xl flex flex-col transition-colors">
+      <div className="absolute inset-0 bg-[var(--fh-surface-bg)] dark:bg-slate-950 shadow-medium flex flex-col transition-colors">
         <div className="flex items-center justify-between border-b border-faith-line dark:border-slate-800 px-4 py-3">
           <div className="truncate text-sm font-extrabold text-faith-ink dark:text-slate-100">{title}</div>
           <Btn tone="ghost" onClick={onClose} left={<X className="h-4 w-4" />}>
@@ -1009,7 +1009,7 @@ function DrawerShell({
   return (
     <div className="fixed inset-0 z-[96]">
       <div className="absolute inset-0 bg-black/55 backdrop-blur-sm" onClick={onClose} />
-      <div className="absolute top-0 right-0 bottom-0 w-full max-w-[1120px] bg-[var(--fh-surface-bg)] dark:bg-slate-950 shadow-2xl flex flex-col transition-colors">
+      <div className="absolute top-0 right-0 bottom-0 w-full max-w-[1120px] bg-[var(--fh-surface-bg)] dark:bg-slate-950 shadow-medium flex flex-col transition-colors">
         <div className="flex items-start justify-between gap-2 border-b border-faith-line dark:border-slate-800 px-4 py-3 shrink-0">
           <div className="min-w-0">
             <div className="truncate text-base font-extrabold text-faith-ink dark:text-slate-100">{title}</div>
@@ -1662,7 +1662,7 @@ export default function BeaconBuilderPage({
       <Section title="Launch gate" subtitle="Every critical signal in one place.">
         <div className="space-y-2">
           {preflight.map((item) => (
-            <div key={item.label} className="flex items-center justify-between gap-3 rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-2.5">
+            <div key={item.label} className="flex items-center justify-between gap-3 rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-2.5">
               <div className="min-w-0">
                 <div className="text-sm font-bold text-faith-ink dark:text-slate-100">{item.label}</div>
                 <div className="text-xs text-faith-slate truncate">{item.detail}</div>
@@ -1762,7 +1762,7 @@ export default function BeaconBuilderPage({
           title="Source mode chooser"
           subtitle="Choose between a linked Provider object and a completely standalone Beacon campaign."
           right={
-            <div className="inline-flex rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-1 transition-colors">
+            <div className="inline-flex rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-1 transition-colors">
               <button
                 type="button"
                 onClick={() => setField("sourceMode", "Linked")}
@@ -1835,7 +1835,7 @@ export default function BeaconBuilderPage({
                       value={builder.linkedSearch}
                       onChange={(e) => setField("linkedSearch", e.target.value)}
                       placeholder="Search by title, owner, language, or subtitle"
-                      className="w-full rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 pl-10 pr-3 py-2 text-sm text-faith-ink dark:text-slate-100 outline-none focus:ring-2 focus:ring-emerald-200 dark:focus:ring-emerald-800"
+                      className="w-full rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 pl-10 pr-3 py-2 text-sm text-faith-ink dark:text-slate-100 outline-none focus:ring-2 focus:ring-emerald-200 dark:focus:ring-emerald-800"
                     />
                   </div>
                   <div className="mt-3 grid gap-3 max-h-[520px] overflow-y-auto pr-1">
@@ -2093,7 +2093,7 @@ export default function BeaconBuilderPage({
                     type="datetime-local"
                     value={builder.countdownEndISO ? new Date(builder.countdownEndISO).toISOString().slice(0, 16) : ""}
                     onChange={(e) => setField("countdownEndISO", new Date(e.target.value).toISOString())}
-                    className="mt-1 w-full rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-sm text-faith-ink dark:text-slate-100"
+                    className="mt-1 w-full rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-sm text-faith-ink dark:text-slate-100"
                   />
                 </Card>
               </div>
@@ -2448,14 +2448,14 @@ export default function BeaconBuilderPage({
               <div>
                 <FieldLabel label="Start" hint="Campaign start window" />
                 <div className="mt-1 grid grid-cols-[1fr_128px] gap-2">
-                  <input type="date" value={builder.startDate} onChange={(e) => setField("startDate", e.target.value)} className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-sm text-faith-ink dark:text-slate-100" />
+                  <input type="date" value={builder.startDate} onChange={(e) => setField("startDate", e.target.value)} className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-sm text-faith-ink dark:text-slate-100" />
                   <ScrollTimePicker value={builder.startTime} onChange={(v) => setField("startTime", v)} />
                 </div>
               </div>
               <div>
                 <FieldLabel label="End" hint="Campaign end window" />
                 <div className="mt-1 grid grid-cols-[1fr_128px] gap-2">
-                  <input type="date" value={builder.endDate} onChange={(e) => setField("endDate", e.target.value)} className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-sm text-faith-ink dark:text-slate-100" />
+                  <input type="date" value={builder.endDate} onChange={(e) => setField("endDate", e.target.value)} className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-sm text-faith-ink dark:text-slate-100" />
                   <ScrollTimePicker value={builder.endTime} onChange={(v) => setField("endTime", v)} />
                 </div>
               </div>
@@ -2520,7 +2520,7 @@ export default function BeaconBuilderPage({
             <div className="space-y-4">
               <div className="grid gap-3">
                 {preflight.map((item) => (
-                  <div key={item.label} className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 px-3 py-3 flex items-center justify-between gap-3">
+                  <div key={item.label} className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 px-3 py-3 flex items-center justify-between gap-3">
                     <div className="min-w-0">
                       <div className="text-sm font-black text-faith-ink dark:text-slate-100">{item.label}</div>
                       <div className="text-xs text-faith-slate">{item.detail}</div>
@@ -2695,7 +2695,7 @@ export default function BeaconBuilderPage({
 
           <div className="space-y-4">
             {renderStepContent()}
-            <div className="flex flex-wrap items-center justify-between gap-2 rounded-3xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
+            <div className="flex flex-wrap items-center justify-between gap-2 rounded-3xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
               <Btn tone="ghost" left={<ChevronRight className="h-4 w-4 rotate-180" />} onClick={goToPrev} disabled={step === STEPS[0].id}>
                 Previous step
               </Btn>

@@ -503,7 +503,7 @@ function SectionCard({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-[30px] border border-faith-line bg-[var(--fh-surface-bg)] p-5 shadow-soft dark:border-slate-800 dark:bg-slate-900">
+    <div className="rounded-[30px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-5 shadow-soft dark:border-slate-800 dark:bg-slate-900">
       <div className="flex items-start justify-between gap-3">
         <div>
           <div className="text-[15px] font-black text-faith-ink dark:text-slate-100">{title}</div>
@@ -605,7 +605,7 @@ function TemplateTile({ card }: { card: TemplateCard }) {
     <button
       type="button"
       onClick={() => safeNav(ROUTES.newTeam)}
-      className="group rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 text-left shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
+      className="group rounded-[28px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 text-left shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
     >
       <div
         className="inline-flex items-center rounded-full px-3 py-1 text-[10px] font-black uppercase tracking-[0.16em] text-white"
@@ -632,7 +632,7 @@ function TeamPreview({
   return (
     <div
       className={cx(
-        "overflow-hidden rounded-[30px] border border-faith-line bg-[var(--fh-surface-bg)] shadow-soft dark:border-slate-800 dark:bg-slate-900",
+        "overflow-hidden rounded-[30px] border border-faith-line/70 bg-[var(--fh-surface-bg)] shadow-soft dark:border-slate-800 dark:bg-slate-900",
         mode === "desktop" ? "w-full" : "mx-auto w-[320px] md:w-[360px]",
       )}
     >
@@ -672,15 +672,15 @@ function TeamPreview({
         <div className="mt-4 text-[13px] leading-6 text-faith-slate dark:text-slate-300">{team.description}</div>
 
         <div className="mt-4 grid grid-cols-3 gap-3">
-          <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2 dark:border-slate-700 dark:bg-slate-950">
+          <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-2 dark:border-slate-700 dark:bg-slate-950">
             <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-faith-slate">Members</div>
             <div className="mt-1 text-[13px] font-black text-faith-ink dark:text-slate-100">{team.members}</div>
           </div>
-          <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2 dark:border-slate-700 dark:bg-slate-950">
+          <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-2 dark:border-slate-700 dark:bg-slate-950">
             <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-faith-slate">Coverage</div>
             <div className="mt-1 text-[13px] font-black text-faith-ink dark:text-slate-100">{team.coverageFill}%</div>
           </div>
-          <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2 dark:border-slate-700 dark:bg-slate-950">
+          <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-2 dark:border-slate-700 dark:bg-slate-950">
             <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-faith-slate">Open shifts</div>
             <div className="mt-1 text-[13px] font-black text-faith-ink dark:text-slate-100">{team.openShifts}</div>
           </div>
@@ -690,7 +690,7 @@ function TeamPreview({
           {team.assignments.slice(0, 3).map((assignment) => (
             <div
               key={assignment.id}
-              className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2 dark:border-slate-700 dark:bg-slate-950"
+              className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-2 dark:border-slate-700 dark:bg-slate-950"
             >
               <div className="flex items-center justify-between gap-3">
                 <div>
@@ -727,7 +727,7 @@ function TeamPreview({
           <button
             type="button"
             onClick={() => safeNav(ROUTES.createRota)}
-            className="inline-flex flex-1 items-center justify-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] font-bold text-slate-700 hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+            className="inline-flex flex-1 items-center justify-center gap-2 rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] font-bold text-slate-700 hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
           >
             <CalendarClock className="h-4 w-4" /> View rota
           </button>
@@ -752,8 +752,8 @@ function PreviewDrawer({
   return (
     <div className="fixed inset-0 z-[70]">
       <div className="absolute inset-0 bg-slate-950/55 backdrop-blur-sm" onClick={onClose} />
-      <div className="absolute right-0 top-0 h-full w-full max-w-4xl overflow-y-auto border-l border-faith-line bg-[var(--fh-surface)] p-4 shadow-2xl dark:border-slate-800 dark:bg-slate-950">
-        <div className="flex items-start justify-between gap-3 rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft dark:border-slate-800 dark:bg-slate-900">
+      <div className="absolute right-0 top-0 h-full w-full max-w-4xl overflow-y-auto border-l border-faith-line bg-[var(--fh-surface)] p-4 shadow-medium dark:border-slate-800 dark:bg-slate-950">
+        <div className="flex items-start justify-between gap-3 rounded-[28px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 shadow-soft dark:border-slate-800 dark:bg-slate-900">
           <div>
             <div className="text-[10px] font-black uppercase tracking-[0.16em] text-faith-slate">
               Large preview
@@ -768,7 +768,7 @@ function PreviewDrawer({
           <button
             type="button"
             onClick={onClose}
-            className="grid h-10 w-10 place-items-center rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] text-faith-slate hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800"
+            className="grid h-10 w-10 place-items-center rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] text-faith-slate hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800"
           >
             <X className="h-4 w-4" />
           </button>
@@ -888,7 +888,7 @@ export default function FH_P_111_ServingTeamsPage() {
   return (
     <div className="min-h-screen bg-[var(--fh-page-bg)] text-faith-ink dark:bg-slate-950 dark:text-slate-100">
       <div className="mx-auto max-w-[1600px] px-5 py-5 md:px-6 lg:px-8 lg:py-6">
-        <div className="rounded-[32px] border border-faith-line bg-[var(--fh-surface-bg)] p-5 shadow-soft dark:border-slate-800 dark:bg-slate-900">
+        <div className="rounded-[32px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-5 shadow-soft dark:border-slate-800 dark:bg-slate-900">
           <div className="flex flex-col gap-5 xl:flex-row xl:items-start xl:justify-between">
             <div className="min-w-0 flex-1">
               <ProviderPageTitle
@@ -923,7 +923,7 @@ export default function FH_P_111_ServingTeamsPage() {
                 <button
                   type="button"
                   onClick={() => safeNav(ROUTES.createRota)}
-                  className="inline-flex items-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-2 text-[12px] font-bold text-slate-700 hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+                  className="inline-flex items-center gap-2 rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 py-2 text-[12px] font-bold text-slate-700 hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
                 >
                   <CalendarClock className="h-4 w-4" /> Create Rota
                 </button>
@@ -940,7 +940,7 @@ export default function FH_P_111_ServingTeamsPage() {
           </div>
         </div>
 
-        <div className="mt-5 rounded-[26px] border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-3 text-[13px] text-faith-slate shadow-soft dark:border-slate-800 dark:bg-slate-900">
+        <div className="mt-5 rounded-[26px] border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 py-3 text-[13px] text-faith-slate shadow-soft dark:border-slate-800 dark:bg-slate-900">
           <div className="flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
             <div className="min-w-0">
               <span className="inline-flex items-center rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-[10px] font-black uppercase tracking-[0.16em] text-amber-700 dark:border-amber-900/40 dark:bg-amber-900/20 dark:text-amber-300">
@@ -995,7 +995,7 @@ export default function FH_P_111_ServingTeamsPage() {
           />
         </div>
 
-        <div className="mt-4 rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] p-5 shadow-soft dark:border-slate-800 dark:bg-slate-900">
+        <div className="mt-4 rounded-[28px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-5 shadow-soft dark:border-slate-800 dark:bg-slate-900">
           <div className="text-[14px] font-bold text-faith-ink dark:text-slate-100">Search and filter</div>
           <div className="mt-1 text-[13px] text-faith-slate">
             Find teams, campuses, leads, visibility rules, and staffing gaps faster.
@@ -1007,13 +1007,13 @@ export default function FH_P_111_ServingTeamsPage() {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search team name, lead, tags, or campus"
-                className="h-12 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface)] pl-11 pr-4 text-[13px] outline-none transition focus:border-transparent focus:ring-2 focus:ring-emerald-200 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:ring-emerald-900/40"
+                className="h-12 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] pl-11 pr-4 text-[13px] outline-none transition focus:border-transparent focus:ring-2 focus:ring-emerald-200 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:ring-emerald-900/40"
               />
             </div>
             <select
               value={campusFilter}
               onChange={(e) => setCampusFilter(e.target.value)}
-              className="h-12 rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-4 text-[13px] font-semibold text-slate-700 outline-none transition focus:border-transparent focus:ring-2 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200 dark:focus:ring-slate-800"
+              className="h-12 rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-4 text-[13px] font-semibold text-slate-700 outline-none transition focus:border-transparent focus:ring-2 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200 dark:focus:ring-slate-800"
             >
               {campuses.map((value) => (
                 <option key={value} value={value}>{value}</option>
@@ -1022,7 +1022,7 @@ export default function FH_P_111_ServingTeamsPage() {
             <select
               value={categoryFilter}
               onChange={(e) => setCategoryFilter(e.target.value)}
-              className="h-12 rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-4 text-[13px] font-semibold text-slate-700 outline-none transition focus:border-transparent focus:ring-2 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200 dark:focus:ring-slate-800"
+              className="h-12 rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-4 text-[13px] font-semibold text-slate-700 outline-none transition focus:border-transparent focus:ring-2 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200 dark:focus:ring-slate-800"
             >
               {categories.map((value) => (
                 <option key={value} value={value}>{value}</option>
@@ -1031,7 +1031,7 @@ export default function FH_P_111_ServingTeamsPage() {
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="h-12 rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-4 text-[13px] font-semibold text-slate-700 outline-none transition focus:border-transparent focus:ring-2 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200 dark:focus:ring-slate-800"
+              className="h-12 rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-4 text-[13px] font-semibold text-slate-700 outline-none transition focus:border-transparent focus:ring-2 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200 dark:focus:ring-slate-800"
             >
               {statuses.map((value) => (
                 <option key={value} value={value}>{value}</option>
@@ -1067,7 +1067,7 @@ export default function FH_P_111_ServingTeamsPage() {
                   ))
                 ) : (
                   <div className="rounded-[28px] border border-dashed border-slate-300 bg-[var(--fh-surface)] p-8 text-center dark:border-slate-700 dark:bg-slate-950">
-                    <div className="mx-auto grid h-14 w-14 place-items-center rounded-full border border-faith-line bg-[var(--fh-surface-bg)] text-faith-slate dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300">
+                    <div className="mx-auto grid h-14 w-14 place-items-center rounded-full border border-faith-line/70 bg-[var(--fh-surface-bg)] text-faith-slate dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300">
                       <Search className="h-6 w-6" />
                     </div>
                     <div className="mt-4 text-[15px] font-bold text-faith-ink dark:text-slate-100">
@@ -1136,7 +1136,7 @@ export default function FH_P_111_ServingTeamsPage() {
                     </div>
                   </div>
 
-                  <div className="mt-5 rounded-[24px] border border-faith-line bg-[var(--fh-surface)] p-4 dark:border-slate-800 dark:bg-slate-950">
+                  <div className="mt-5 rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface)] p-4 dark:border-slate-800 dark:bg-slate-950">
                     <div className="text-[11px] font-black uppercase tracking-[0.16em] text-faith-slate">
                       Team description
                     </div>
@@ -1146,19 +1146,19 @@ export default function FH_P_111_ServingTeamsPage() {
                   </div>
 
                   <div className="mt-4 grid grid-cols-3 gap-3">
-                    <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] p-3 dark:border-slate-800 dark:bg-slate-900">
+                    <div className="rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3 dark:border-slate-800 dark:bg-slate-900">
                       <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-faith-slate">
                         Members
                       </div>
                       <div className="mt-2 text-xl font-black text-faith-ink dark:text-slate-100">{selectedTeam.members}</div>
                     </div>
-                    <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] p-3 dark:border-slate-800 dark:bg-slate-900">
+                    <div className="rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3 dark:border-slate-800 dark:bg-slate-900">
                       <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-faith-slate">
                         Coverage fill
                       </div>
                       <div className="mt-2 text-xl font-black text-faith-ink dark:text-slate-100">{selectedTeam.coverageFill}%</div>
                     </div>
-                    <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] p-3 dark:border-slate-800 dark:bg-slate-900">
+                    <div className="rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3 dark:border-slate-800 dark:bg-slate-900">
                       <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-faith-slate">
                         Response rate
                       </div>
@@ -1167,7 +1167,7 @@ export default function FH_P_111_ServingTeamsPage() {
                   </div>
 
                   <div className="mt-4 grid gap-3 md:grid-cols-2">
-                    <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 dark:border-slate-800 dark:bg-slate-900">
+                    <div className="rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 dark:border-slate-800 dark:bg-slate-900">
                       <div className="text-[10px] font-black uppercase tracking-[0.16em] text-faith-slate">
                         Responsibilities & skills
                       </div>
@@ -1175,14 +1175,14 @@ export default function FH_P_111_ServingTeamsPage() {
                         {selectedTeam.skills.map((skill) => (
                           <span
                             key={skill}
-                            className="rounded-full border border-faith-line bg-[var(--fh-surface)] px-2.5 py-1 text-[11px] font-semibold text-faith-slate dark:border-slate-700 dark:bg-slate-950 dark:text-slate-300"
+                            className="rounded-full border border-faith-line/70 bg-[var(--fh-surface)] px-2.5 py-1 text-[11px] font-semibold text-faith-slate dark:border-slate-700 dark:bg-slate-950 dark:text-slate-300"
                           >
                             {skill}
                           </span>
                         ))}
                       </div>
                     </div>
-                    <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 dark:border-slate-800 dark:bg-slate-900">
+                    <div className="rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 dark:border-slate-800 dark:bg-slate-900">
                       <div className="text-[10px] font-black uppercase tracking-[0.16em] text-faith-slate">
                         Leadership notes
                       </div>
@@ -1196,7 +1196,7 @@ export default function FH_P_111_ServingTeamsPage() {
                     <button
                       type="button"
                       onClick={() => safeNav(ROUTES.createRota)}
-                      className="inline-flex items-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-2 text-[12px] font-bold text-slate-700 hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+                      className="inline-flex items-center gap-2 rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 py-2 text-[12px] font-bold text-slate-700 hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
                     >
                       <CalendarClock className="h-4 w-4" /> Create Rota
                     </button>
@@ -1211,7 +1211,7 @@ export default function FH_P_111_ServingTeamsPage() {
                     <button
                       type="button"
                       onClick={() => safeNav(ROUTES.rolesPermissions)}
-                      className="inline-flex items-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-2 text-[12px] font-bold text-slate-700 hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+                      className="inline-flex items-center gap-2 rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 py-2 text-[12px] font-bold text-slate-700 hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
                     >
                       <Lock className="h-4 w-4" /> Roles & Permissions
                     </button>
@@ -1229,7 +1229,7 @@ export default function FH_P_111_ServingTeamsPage() {
                 {selectedTeam?.assignments.map((assignment) => (
                   <div
                     key={assignment.id}
-                    className="rounded-[24px] border border-faith-line bg-[var(--fh-surface)] p-4 dark:border-slate-800 dark:bg-slate-950"
+                    className="rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface)] p-4 dark:border-slate-800 dark:bg-slate-950"
                   >
                     <div className="flex items-start justify-between gap-3">
                       <div>
@@ -1283,7 +1283,7 @@ export default function FH_P_111_ServingTeamsPage() {
                 {selectedTeam?.certifications.map((cert) => (
                   <div
                     key={cert.id}
-                    className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 dark:border-slate-800 dark:bg-slate-900"
+                    className="rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 dark:border-slate-800 dark:bg-slate-900"
                   >
                     <div className="flex items-center justify-between gap-3">
                       <div className="text-[13px] font-bold text-faith-ink dark:text-slate-100">{cert.label}</div>
@@ -1310,7 +1310,7 @@ export default function FH_P_111_ServingTeamsPage() {
               title="Volunteer portal preview rail"
               subtitle="Persistent desktop/mobile preview of the volunteer-facing destination and join experience."
               right={
-                <div className="inline-flex rounded-full border border-faith-line bg-[var(--fh-surface)] p-1 dark:border-slate-700 dark:bg-slate-950">
+                <div className="inline-flex rounded-full border border-faith-line/70 bg-[var(--fh-surface)] p-1 dark:border-slate-700 dark:bg-slate-950">
                   <button
                     type="button"
                     onClick={() => setPreviewMode("desktop")}
@@ -1342,14 +1342,14 @@ export default function FH_P_111_ServingTeamsPage() {
                 <button
                   type="button"
                   onClick={() => setPreviewOpen(true)}
-                  className="inline-flex flex-1 items-center justify-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] font-bold text-slate-700 hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+                  className="inline-flex flex-1 items-center justify-center gap-2 rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] font-bold text-slate-700 hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
                 >
                   <Eye className="h-4 w-4" /> Open large preview
                 </button>
                 <button
                   type="button"
                   onClick={() => safeNav(ROUTES.inviteVolunteers)}
-                  className="inline-flex items-center justify-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] font-bold text-slate-700 hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+                  className="inline-flex items-center justify-center gap-2 rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] font-bold text-slate-700 hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
                 >
                   <Globe2 className="h-4 w-4" /> Copy join route
                 </button>
@@ -1361,7 +1361,7 @@ export default function FH_P_111_ServingTeamsPage() {
               subtitle="Keep volunteer lanes organized by campus, responsibility, and operational readiness while retaining a premium team-management surface."
             >
               <div className="space-y-3">
-                <div className="rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft dark:border-slate-800 dark:bg-slate-900">
+                <div className="rounded-[28px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 shadow-soft dark:border-slate-800 dark:bg-slate-900">
                   <div className="flex items-start justify-between gap-3">
                     <div>
                       <div className="text-[14px] font-bold text-faith-ink dark:text-slate-100">Production & worship lane</div>
@@ -1373,7 +1373,7 @@ export default function FH_P_111_ServingTeamsPage() {
                   </div>
                   <div className="mt-4 text-2xl font-black text-faith-ink dark:text-slate-100">4</div>
                 </div>
-                <div className="rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft dark:border-slate-800 dark:bg-slate-900">
+                <div className="rounded-[28px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 shadow-soft dark:border-slate-800 dark:bg-slate-900">
                   <div className="flex items-start justify-between gap-3">
                     <div>
                       <div className="text-[14px] font-bold text-faith-ink dark:text-slate-100">Care & response lane</div>
@@ -1385,7 +1385,7 @@ export default function FH_P_111_ServingTeamsPage() {
                   </div>
                   <div className="mt-4 text-2xl font-black text-faith-ink dark:text-slate-100">5</div>
                 </div>
-                <div className="rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft dark:border-slate-800 dark:bg-slate-900">
+                <div className="rounded-[28px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 shadow-soft dark:border-slate-800 dark:bg-slate-900">
                   <div className="flex items-start justify-between gap-3">
                     <div>
                       <div className="text-[14px] font-bold text-faith-ink dark:text-slate-100">Outreach & event lane</div>

@@ -400,7 +400,7 @@ function SoftButton({
       type="button"
       onClick={onClick}
       className={cx(
-        "inline-flex items-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-2 text-[12px] font-semibold text-slate-700 transition-colors hover:bg-[var(--fh-surface)]",
+        "inline-flex items-center gap-2 rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 py-2 text-[12px] font-semibold text-slate-700 transition-colors hover:bg-[var(--fh-surface)]",
         className,
       )}
     >
@@ -483,7 +483,7 @@ function Input({
       value={value}
       onChange={(event) => onChange(event.target.value)}
       placeholder={placeholder}
-      className="mt-1 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] text-faith-ink outline-none transition-colors focus:ring-2 focus:ring-emerald-200"
+      className="mt-1 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] text-faith-ink outline-none transition-colors focus:ring-2 focus:ring-emerald-200"
     />
   );
 }
@@ -505,7 +505,7 @@ function TextArea({
       onChange={(event) => onChange(event.target.value)}
       rows={rows}
       placeholder={placeholder}
-      className="mt-1 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] text-faith-ink outline-none transition-colors focus:ring-2 focus:ring-emerald-200"
+      className="mt-1 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] text-faith-ink outline-none transition-colors focus:ring-2 focus:ring-emerald-200"
     />
   );
 }
@@ -520,7 +520,7 @@ function StepNav({
   readinessScore: number;
 }) {
   return (
-    <div className="rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 2xl:sticky 2xl:top-6">
+    <div className="rounded-[28px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 2xl:sticky 2xl:top-6">
       <div className="rounded-[24px] border border-emerald-200 bg-emerald-50 px-4 py-4">
         <div className="text-[16px] font-black text-faith-ink">Episode Builder</div>
         <div className="mt-2 h-3 rounded-full bg-emerald-100">
@@ -604,7 +604,7 @@ function EpisodePreview({
               <img src={HERO_IMAGE} alt="Episode cover" className="h-full w-full object-cover opacity-90" />
             </div>
             <div className="relative -mt-14 px-4 pb-4">
-              <div className="rounded-[26px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft">
+              <div className="rounded-[26px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 shadow-soft">
                 <div className="flex items-center justify-between gap-2">
                   <Pill tone="brand" icon={<Sparkles className="h-3 w-3" />}>
                     Episode live
@@ -622,7 +622,7 @@ function EpisodePreview({
                   <Pill tone="warn">{draft.liveAttachments.length} lives linked</Pill>
                 </div>
 
-                <div className="mt-4 rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
+                <div className="mt-4 rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3">
                   <div className="text-[11px] font-black uppercase tracking-[0.16em] text-faith-slate">Next live</div>
                   <div className="mt-2 text-[14px] font-bold text-faith-ink">{nextLive?.label || "Live attachment pending"}</div>
                   <div className="mt-1 text-[11px] text-faith-slate">
@@ -632,7 +632,7 @@ function EpisodePreview({
 
                 <div className="mt-4 space-y-2">
                   {highlightedResources.map((resource) => (
-                    <div key={resource.id} className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2">
+                    <div key={resource.id} className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2">
                       <div className="text-[11px] font-semibold text-faith-slate">{resource.kind}</div>
                       <div className="text-[12px] font-bold text-faith-ink">{resource.title}</div>
                     </div>
@@ -659,7 +659,7 @@ function EpisodePreview({
   }
 
   return (
-    <div className="overflow-hidden rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] shadow-soft">
+    <div className="overflow-hidden rounded-[28px] border border-faith-line/70 bg-[var(--fh-surface-bg)] shadow-soft">
       <div className="grid grid-cols-[1.18fr_0.82fr]">
         <div className="relative min-h-[430px] overflow-hidden bg-slate-900">
           <img src={HERO_IMAGE} alt="Episode cover" className="h-full w-full object-cover opacity-90" />
@@ -696,7 +696,7 @@ function EpisodePreview({
         </div>
 
         <div className="bg-[#fafafa] p-4">
-          <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] p-4">
+          <div className="rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
             <div className="flex items-center justify-between gap-2">
               <div>
                 <div className="text-[10px] font-black uppercase tracking-[0.16em] text-faith-slate">Episode journey</div>
@@ -705,7 +705,7 @@ function EpisodePreview({
               <Pill tone="neutral">{highlightedBeats.length} chapters shown</Pill>
             </div>
 
-            <div className="mt-3 rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
+            <div className="mt-3 rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3">
               <div className="text-[10px] font-black uppercase tracking-[0.16em] text-faith-slate">Primary live</div>
               <div className="mt-2 text-[13px] font-bold text-faith-ink">{nextLive?.label || "Main live pending"}</div>
               <div className="mt-1 text-[11px] text-faith-slate">
@@ -715,7 +715,7 @@ function EpisodePreview({
 
             <div className="mt-3 space-y-2">
               {highlightedBeats.map((beat) => (
-                <div key={beat.id} className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-3">
+                <div key={beat.id} className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-3">
                   <div className="flex items-center justify-between gap-2">
                     <div className="text-[11px] font-black text-faith-slate">{beat.chapterLabel}</div>
                     <div className="text-[11px] font-semibold text-faith-slate">{beat.durationLabel}</div>
@@ -726,18 +726,18 @@ function EpisodePreview({
               ))}
             </div>
 
-            <div className="mt-4 rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3">
+            <div className="mt-4 rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3">
               <div className="text-[10px] font-black uppercase tracking-[0.16em] text-faith-slate">Resources & discovery</div>
               <div className="mt-2 flex flex-wrap gap-2">
                 {highlightedResources.map((resource) => (
-                  <span key={resource.id} className="rounded-full border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-1 text-[11px] font-semibold text-slate-700">
+                  <span key={resource.id} className="rounded-full border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-1 text-[11px] font-semibold text-slate-700">
                     {resource.kind}
                   </span>
                 ))}
               </div>
               <div className="mt-3 flex flex-wrap gap-2">
                 {draft.tags.slice(0, 3).map((tag) => (
-                  <span key={tag} className="rounded-full border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-1 text-[11px] font-semibold text-slate-700">
+                  <span key={tag} className="rounded-full border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-1 text-[11px] font-semibold text-slate-700">
                     #{tag}
                   </span>
                 ))}
@@ -1122,7 +1122,7 @@ export default function EpisodeBuilderPage() {
   return (
     <div className="min-h-screen bg-[var(--fh-page-bg)] p-4 text-faith-ink sm:p-6 xl:p-10">
       <div className="mx-auto max-w-[1520px]">
-        <div className="rounded-[32px] border border-faith-line bg-[var(--fh-surface-bg)] px-7 py-6 shadow-[0_20px_60px_rgba(15,23,42,0.08)]">
+        <div className="rounded-[32px] border border-faith-line/70 bg-[var(--fh-surface-bg)] px-7 py-6 shadow-[0_20px_60px_rgba(15,23,42,0.08)]">
           <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
             <div className="min-w-0">
               <ProviderPageTitle
@@ -1189,7 +1189,7 @@ export default function EpisodeBuilderPage() {
                               parentSeriesTitle: event.target.value,
                             }))
                           }
-                          className="mt-2 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] font-semibold text-faith-ink outline-none"
+                          className="mt-2 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] font-semibold text-faith-ink outline-none"
                         >
                           {seriesOptions.map((series) => (
                             <option key={series.id} value={series.title}>
@@ -1245,7 +1245,7 @@ export default function EpisodeBuilderPage() {
                   </div>
                 </div>
 
-                <div className="rounded-[28px] border border-faith-line bg-[var(--fh-surface)] p-4">
+                <div className="rounded-[28px] border border-faith-line/70 bg-[var(--fh-surface)] p-4">
                   <div className="flex items-center gap-2">
                     <BadgeCheck className="h-4 w-4 text-emerald-600" />
                     <div className="text-[16px] font-black text-faith-ink">Episode blueprint</div>
@@ -1272,7 +1272,7 @@ export default function EpisodeBuilderPage() {
                     ))}
                   </div>
 
-                  <div className="mt-4 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-3">
+                  <div className="mt-4 rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3">
                     <div className="text-[10px] font-black uppercase tracking-[0.16em] text-faith-slate">Series inheritance</div>
                     <div className="mt-2 text-[12px] font-bold text-faith-ink">{draft.parentSeriesTitle}</div>
                     <div className="mt-1 text-[11px] text-faith-slate">{draft.seriesArc}</div>
@@ -1285,7 +1285,7 @@ export default function EpisodeBuilderPage() {
                 </div>
               </div>
 
-              <div className="mt-4 rounded-[28px] border border-faith-line bg-[var(--fh-surface)] p-4">
+              <div className="mt-4 rounded-[28px] border border-faith-line/70 bg-[var(--fh-surface)] p-4">
                 <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
                   <div>
                     <div className="text-[16px] font-black text-faith-ink">Teaching outcomes</div>
@@ -1299,7 +1299,7 @@ export default function EpisodeBuilderPage() {
                       value={newOutcome}
                       onChange={(event) => setNewOutcome(event.target.value)}
                       placeholder="Add outcome"
-                      className="w-[220px] rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] text-faith-ink outline-none focus:ring-2 focus:ring-emerald-200"
+                      className="w-[220px] rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] text-faith-ink outline-none focus:ring-2 focus:ring-emerald-200"
                     />
                     <PrimaryButton tone="orange" onClick={addTeachingOutcome}>
                       <Plus className="h-4 w-4" /> Add
@@ -1313,7 +1313,7 @@ export default function EpisodeBuilderPage() {
                       key={outcome}
                       type="button"
                       onClick={() => removeTeachingOutcome(outcome)}
-                      className="inline-flex items-center gap-2 rounded-full border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] font-semibold text-slate-700 hover:bg-[var(--fh-surface)]"
+                      className="inline-flex items-center gap-2 rounded-full border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] font-semibold text-slate-700 hover:bg-[var(--fh-surface)]"
                     >
                       <Check className="h-3.5 w-3.5 text-emerald-600" />
                       {outcome}
@@ -1337,7 +1337,7 @@ export default function EpisodeBuilderPage() {
               >
                 <div className="space-y-3">
                   {draft.structure.map((beat) => (
-                    <div key={beat.id} className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-3">
+                    <div key={beat.id} className="rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 py-3">
                       <div className="flex flex-col gap-2 xl:flex-row xl:items-center xl:justify-between">
                         <div>
                           <div className="flex items-center gap-2">
@@ -1360,7 +1360,7 @@ export default function EpisodeBuilderPage() {
                   ))}
                 </div>
 
-                <div className="mt-4 flex items-center justify-between gap-3 rounded-[24px] border border-faith-line bg-[var(--fh-surface)] p-4">
+                <div className="mt-4 flex items-center justify-between gap-3 rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface)] p-4">
                   <div>
                     <div className="text-[14px] font-black text-faith-ink">Replay package expectation</div>
                     <div className="mt-1 text-[12px] text-faith-slate">
@@ -1383,7 +1383,7 @@ export default function EpisodeBuilderPage() {
                   </SoftButton>
                 }
               >
-                <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface)] p-4">
+                <div className="rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface)] p-4">
                   <div className="flex items-center gap-2">
                     <Sparkles className="h-4 w-4 text-emerald-600" />
                     <div className="text-[14px] font-black text-faith-ink">Suggested editorial notes</div>
@@ -1391,7 +1391,7 @@ export default function EpisodeBuilderPage() {
 
                   <div className="mt-3 space-y-2">
                     {draft.aiSummary.map((note) => (
-                      <div key={note} className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-3 text-[12px] text-slate-700">
+                      <div key={note} className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-3 text-[12px] text-slate-700">
                         {note}
                       </div>
                     ))}
@@ -1419,7 +1419,7 @@ export default function EpisodeBuilderPage() {
             >
               <div className="grid gap-3 lg:grid-cols-3">
                 {draft.liveAttachments.map((session) => (
-                  <div key={session.id} className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] p-4">
+                  <div key={session.id} className="rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
                     <div className="flex items-center justify-between gap-2">
                       <Pill tone={session.status === "Ready" ? "good" : session.status === "Scheduled" ? "warn" : "neutral"}>
                         {session.status}
@@ -1428,14 +1428,14 @@ export default function EpisodeBuilderPage() {
                     </div>
                     <div className="mt-3 text-[14px] font-black text-faith-ink">{session.label}</div>
                     <div className="mt-1 text-[12px] text-faith-slate">{session.variant}</div>
-                    <div className="mt-3 rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3 text-[12px] text-slate-700">
+                    <div className="mt-3 rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3 text-[12px] text-slate-700">
                       {session.startLabel} � {session.destination}
                     </div>
                   </div>
                 ))}
               </div>
 
-              <div className="mt-4 rounded-[24px] border border-faith-line bg-[var(--fh-surface)] p-4">
+              <div className="mt-4 rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface)] p-4">
                 <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
                   <div>
                     <div className="text-[14px] font-black text-faith-ink">One-click transition options</div>
@@ -1468,7 +1468,7 @@ export default function EpisodeBuilderPage() {
               >
                 <div className="space-y-3">
                   {draft.resources.map((resource) => (
-                    <div key={resource.id} className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-3">
+                    <div key={resource.id} className="rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 py-3">
                       <div className="flex items-center justify-between gap-2">
                         <div>
                           <div className="text-[13px] font-black text-faith-ink">{resource.title}</div>
@@ -1497,7 +1497,7 @@ export default function EpisodeBuilderPage() {
                       <select
                         value={draft.releaseWindow}
                         onChange={(event) => setDraft((current) => ({ ...current, releaseWindow: event.target.value }))}
-                        className="mt-1 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] font-semibold text-faith-ink"
+                        className="mt-1 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] font-semibold text-faith-ink"
                       >
                         {RELEASE_WINDOWS.map((option) => (
                           <option key={option}>{option}</option>
@@ -1509,7 +1509,7 @@ export default function EpisodeBuilderPage() {
                       <select
                         value={draft.accessModel}
                         onChange={(event) => setDraft((current) => ({ ...current, accessModel: event.target.value }))}
-                        className="mt-1 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] font-semibold text-faith-ink"
+                        className="mt-1 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] font-semibold text-faith-ink"
                       >
                         {ACCESS_MODELS.map((option) => (
                           <option key={option}>{option}</option>
@@ -1617,7 +1617,7 @@ export default function EpisodeBuilderPage() {
               >
                 <div className="space-y-3">
                   {draft.collaborators.map((collaborator) => (
-                    <div key={collaborator.id} className="rounded-[24px] border border-faith-line bg-[var(--fh-surface-bg)] p-4">
+                    <div key={collaborator.id} className="rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
                       <div className="flex items-start justify-between gap-3">
                         <div>
                           <div className="text-[13px] font-black text-faith-ink">{collaborator.name}</div>
@@ -1635,14 +1635,14 @@ export default function EpisodeBuilderPage() {
                           {collaborator.state}
                         </Pill>
                       </div>
-                      <div className="mt-3 rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3 text-[12px] text-slate-700">
+                      <div className="mt-3 rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3 text-[12px] text-slate-700">
                         {collaborator.note}
                       </div>
                     </div>
                   ))}
                 </div>
 
-                <div className="mt-4 rounded-[24px] border border-faith-line bg-[var(--fh-surface)] p-4">
+                <div className="mt-4 rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface)] p-4">
                   <div className="flex items-center gap-2">
                     <MessageSquare className="h-4 w-4 text-slate-700" />
                     <div className="text-[13px] font-black text-faith-ink">Approval routing</div>
@@ -1658,7 +1658,7 @@ export default function EpisodeBuilderPage() {
                 subtitle="Tune tags, topics, search hints, recommendations, and external promotion snippets."
                 highlight={activeCard("discovery")}
                 right={
-                  <div className="flex items-center gap-2 rounded-full border border-faith-line bg-[var(--fh-surface)] px-3 py-1 text-[11px] font-semibold text-faith-slate">
+                  <div className="flex items-center gap-2 rounded-full border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-1 text-[11px] font-semibold text-faith-slate">
                     <Search className="h-3.5 w-3.5" /> Discoverability
                   </div>
                 }
@@ -1666,7 +1666,7 @@ export default function EpisodeBuilderPage() {
                 <div className="grid gap-4">
                   <div>
                     <Label>Topic search</Label>
-                    <div className="mt-1 flex items-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2">
+                    <div className="mt-1 flex items-center gap-2 rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2">
                       <Search className="h-4 w-4 text-faith-slate" />
                       <input
                         value={searchValue}
@@ -1688,7 +1688,7 @@ export default function EpisodeBuilderPage() {
                             }));
                             setToast(`Added #${topic.toLowerCase()}`);
                           }}
-                          className="rounded-full border border-faith-line bg-[var(--fh-surface)] px-3 py-1.5 text-[11px] font-semibold text-slate-700 hover:bg-[var(--fh-surface-bg)]"
+                          className="rounded-full border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-1.5 text-[11px] font-semibold text-slate-700 hover:bg-[var(--fh-surface-bg)]"
                         >
                           {topic}
                         </button>
@@ -1703,7 +1703,7 @@ export default function EpisodeBuilderPage() {
                         value={newTag}
                         onChange={(event) => setNewTag(event.target.value)}
                         placeholder="Add tag"
-                        className="w-[220px] rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] text-faith-ink outline-none focus:ring-2 focus:ring-emerald-200"
+                        className="w-[220px] rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] text-faith-ink outline-none focus:ring-2 focus:ring-emerald-200"
                       />
                       <PrimaryButton tone="orange" onClick={addTag}>
                         <Plus className="h-4 w-4" /> Add tag
@@ -1720,7 +1720,7 @@ export default function EpisodeBuilderPage() {
                               tags: current.tags.filter((value) => value !== tag),
                             }))
                           }
-                          className="inline-flex items-center gap-2 rounded-full border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] font-semibold text-slate-700 hover:bg-[var(--fh-surface)]"
+                          className="inline-flex items-center gap-2 rounded-full border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] font-semibold text-slate-700 hover:bg-[var(--fh-surface)]"
                         >
                           #{tag}
                           <X className="h-3.5 w-3.5 text-faith-slate" />
@@ -1748,11 +1748,11 @@ export default function EpisodeBuilderPage() {
                     </div>
                   </div>
 
-                  <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface)] p-4">
+                  <div className="rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface)] p-4">
                     <div className="text-[13px] font-black text-faith-ink">Search hints</div>
                     <div className="mt-2 flex flex-wrap gap-2">
                       {draft.searchHints.map((hint) => (
-                        <span key={hint} className="rounded-full border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-1.5 text-[11px] font-semibold text-slate-700">
+                        <span key={hint} className="rounded-full border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-1.5 text-[11px] font-semibold text-slate-700">
                           {hint}
                         </span>
                       ))}
@@ -1773,21 +1773,21 @@ export default function EpisodeBuilderPage() {
               }
             >
               <div className="grid gap-4 lg:grid-cols-[0.9fr_1.1fr]">
-                <div className="rounded-[24px] border border-faith-line bg-[var(--fh-surface)] p-4">
+                <div className="rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface)] p-4">
                   <div className="text-[13px] font-black text-faith-ink">Readiness summary</div>
                   <div className="mt-3 h-3 rounded-full bg-slate-200">
                     <div className="h-full rounded-full" style={{ width: `${readinessScore}%`, background: readinessScore >= 85 ? EV_GREEN : EV_ORANGE }} />
                   </div>
                   <div className="mt-3 space-y-2">
-                    <div className="flex items-center justify-between rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2">
+                    <div className="flex items-center justify-between rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2">
                       <span className="text-[12px] font-semibold text-slate-700">Blueprint</span>
                       <span className="text-[12px] font-black text-faith-ink">{selectedBlueprint.title}</span>
                     </div>
-                    <div className="flex items-center justify-between rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2">
+                    <div className="flex items-center justify-between rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2">
                       <span className="text-[12px] font-semibold text-slate-700">Linked live sessions</span>
                       <span className="text-[12px] font-black text-faith-ink">{draft.liveAttachments.length}</span>
                     </div>
-                    <div className="flex items-center justify-between rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2">
+                    <div className="flex items-center justify-between rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2">
                       <span className="text-[12px] font-semibold text-slate-700">Resource items</span>
                       <span className="text-[12px] font-black text-faith-ink">{draft.resources.length}</span>
                     </div>
@@ -1856,13 +1856,13 @@ export default function EpisodeBuilderPage() {
 
           <aside className="min-h-0">
             <div className="space-y-4 2xl:sticky 2xl:top-6">
-              <div className="rounded-[30px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-[0_12px_30px_rgba(15,23,42,0.06)]">
+              <div className="rounded-[30px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 shadow-[0_12px_30px_rgba(15,23,42,0.06)]">
                 <div className="flex items-center justify-between gap-3">
                   <div>
                     <div className="text-[10px] font-black uppercase tracking-[0.18em] text-faith-slate">Preview</div>
                     <div className="mt-1 text-[18px] font-black text-faith-ink">Episode landing page</div>
                   </div>
-                  <div className="inline-flex rounded-full border border-faith-line bg-[var(--fh-surface)] p-1">
+                  <div className="inline-flex rounded-full border border-faith-line/70 bg-[var(--fh-surface)] p-1">
                     <button
                       type="button"
                       onClick={() => setPreviewMode("desktop")}
@@ -1893,19 +1893,19 @@ export default function EpisodeBuilderPage() {
                 </div>
               </div>
 
-              <div className="rounded-[30px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-[0_12px_30px_rgba(15,23,42,0.06)]">
+              <div className="rounded-[30px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 shadow-[0_12px_30px_rgba(15,23,42,0.06)]">
                 <div className="flex items-center gap-2">
                   <BookOpen className="h-4 w-4 text-emerald-600" />
                   <div className="text-[14px] font-black text-faith-ink">Premium notes</div>
                 </div>
                 <div className="mt-3 space-y-2">
-                  <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-3 text-[12px] text-slate-700">
+                  <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-3 text-[12px] text-slate-700">
                     Keep the episode inheritance clean: series artwork and access defaults carry over, but chaptering, resources, and live attachments remain episode-specific.
                   </div>
-                  <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-3 text-[12px] text-slate-700">
+                  <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-3 text-[12px] text-slate-700">
                     Multiple Live Sessions let the ministry run a preview stream, the main broadcast, and a translated or Q&A follow-up under one episode destination.
                   </div>
-                  <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-3 text-[12px] text-slate-700">
+                  <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-3 text-[12px] text-slate-700">
                     Post-live publishing should inherit chapter markers, resource visibility, and discovery metadata to speed replay and clip packaging.
                   </div>
                 </div>

@@ -311,7 +311,7 @@ function Drawer({
       />
       <div
         className={cn(
-          "absolute right-0 top-0 h-full w-full bg-[var(--fh-surface-bg)] dark:bg-slate-900 shadow-2xl transition-transform duration-300 ease-out sm:ring-1 sm:ring-slate-200 dark:sm:ring-slate-800",
+          "absolute right-0 top-0 h-full w-full bg-[var(--fh-surface-bg)] dark:bg-slate-900 shadow-medium transition-transform duration-300 ease-out sm:ring-1 sm:ring-slate-200 dark:sm:ring-slate-800",
           widthClass,
         )}
       >
@@ -591,7 +591,7 @@ function PhoneMock({
 }) {
   return (
     <div className="mx-auto w-full max-w-[420px]">
-      <div className="relative overflow-hidden rounded-[40px] bg-slate-900 dark:bg-black p-3 shadow-2xl transition ring-1 ring-slate-800">
+      <div className="relative overflow-hidden rounded-[40px] bg-slate-900 dark:bg-black p-3 shadow-medium transition ring-1 ring-slate-800">
         <div className="flex flex-col rounded-[32px] bg-[var(--fh-surface-bg)] dark:bg-slate-900 overflow-hidden">
           <div className="border-b border-slate-100 dark:border-slate-800 px-6 py-4">
             <div className="text-[10px] font-black text-faith-slate uppercase tracking-widest">
@@ -627,7 +627,7 @@ function EmailPreview({
   cta: string;
 }) {
   return (
-    <div className="rounded-[28px] bg-slate-900 p-3 shadow-2xl ring-1 ring-slate-800">
+    <div className="rounded-[28px] bg-slate-900 p-3 shadow-medium ring-1 ring-slate-800">
       <div className="overflow-hidden rounded-[24px] bg-[var(--fh-surface-bg)] dark:bg-slate-900">
         <div className="border-b border-slate-100 dark:border-slate-800 px-6 py-4">
           <div className="text-[10px] font-black uppercase tracking-widest text-faith-slate">
@@ -1478,7 +1478,7 @@ export default function FaithHubAudienceNotificationsPage() {
                   </div>
                 </div>
 
-                <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
+                <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
                   <div className="flex items-start justify-between gap-3">
                     <div>
                       <div className="text-[10px] font-black uppercase tracking-widest text-faith-slate">
@@ -1685,7 +1685,7 @@ export default function FaithHubAudienceNotificationsPage() {
                     </div>
                   </div>
 
-                  <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
+                  <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
                     <div className="text-[10px] font-black uppercase tracking-widest text-faith-slate">
                       Creative controls
                     </div>
@@ -1765,7 +1765,7 @@ export default function FaithHubAudienceNotificationsPage() {
                   </div>
                 </div>
 
-                <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
+                <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
                   <div className="text-[10px] font-black uppercase tracking-widest text-faith-slate">
                     Active timeline
                   </div>
@@ -1805,7 +1805,7 @@ export default function FaithHubAudienceNotificationsPage() {
                 </div>
 
                 <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-                  <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4">
+                  <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4">
                     <div className="text-[12px] font-black text-faith-ink dark:text-slate-100">
                       Smart send-time recommendations
                     </div>
@@ -1820,7 +1820,7 @@ export default function FaithHubAudienceNotificationsPage() {
                     </div>
                   </div>
 
-                  <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4">
+                  <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4">
                     <div className="text-[12px] font-black text-faith-ink dark:text-slate-100">
                       Fatigue-aware suppression
                     </div>
@@ -1835,7 +1835,7 @@ export default function FaithHubAudienceNotificationsPage() {
                     </div>
                   </div>
 
-                  <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4">
+                  <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4">
                     <div className="text-[12px] font-black text-faith-ink dark:text-slate-100">
                       Quiet hours & consent windows
                     </div>
@@ -1850,7 +1850,7 @@ export default function FaithHubAudienceNotificationsPage() {
                     </div>
                   </div>
 
-                  <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4">
+                  <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4">
                     <div className="text-[12px] font-black text-faith-ink dark:text-slate-100">
                       Approval & recovery
                     </div>
@@ -2032,7 +2032,7 @@ export default function FaithHubAudienceNotificationsPage() {
                   { label: "Sender identity", value: "Verified", tone: "good" as const, hint: "Push app identity, email sender, and SMS line are all trusted." },
                   { label: "Approval chain", value: approvalRequired ? "Required" : "Bypassed", tone: approvalRequired ? "accent" as const : "warn" as const, hint: "Pastoral and outreach sign-off can be enforced before activation." },
                 ].map((row) => (
-                  <div key={row.label} className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3">
+                  <div key={row.label} className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3">
                     <div className="flex items-center justify-between gap-2">
                       <div className="text-[12px] font-black text-faith-ink dark:text-slate-100">
                         {row.label}
@@ -2059,7 +2059,7 @@ export default function FaithHubAudienceNotificationsPage() {
             >
               <div className="space-y-3">
                 {attributionCards.map((card) => (
-                  <div key={card.label} className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3">
+                  <div key={card.label} className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3">
                     <div className="flex items-center justify-between gap-3">
                       <div>
                         <div className="text-[12px] font-black text-faith-ink dark:text-slate-100">
@@ -2253,7 +2253,7 @@ export default function FaithHubAudienceNotificationsPage() {
                       type="button"
                       key={entry.label}
                       onClick={() => setToast(`${entry.label} opened`)}
-                      className="w-full rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 py-3 text-left transition hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800"
+                      className="w-full rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 py-3 text-left transition hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800"
                     >
                       <div className="flex items-center justify-between gap-3">
                         <div>

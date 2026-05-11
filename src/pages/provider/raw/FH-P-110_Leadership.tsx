@@ -376,7 +376,7 @@ function TemplateCard({
     <button
       type="button"
       onClick={() => safeNav(ROUTES.leadershipBuilder)}
-      className="group rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 text-left shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
+      className="group rounded-[28px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 text-left shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
     >
       <div
         className="inline-flex items-center rounded-full px-3 py-1 text-[10px] font-black uppercase tracking-[0.16em] text-white"
@@ -397,7 +397,7 @@ function OfficeCardView({ office }: { office: OfficeCard }) {
   const tone = office.state === "Stable" ? "good" : office.state === "Watch" ? "warn" : "danger";
 
   return (
-    <div className="rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft dark:border-slate-800 dark:bg-slate-900">
+    <div className="rounded-[28px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 shadow-soft dark:border-slate-800 dark:bg-slate-900">
       <div className="flex items-start justify-between gap-3">
         <div>
           <div className="text-[14px] font-bold text-faith-ink dark:text-slate-100">{office.title}</div>
@@ -415,7 +415,7 @@ function OfficeCardView({ office }: { office: OfficeCard }) {
         <button
           type="button"
           onClick={() => safeNav(ROUTES.officeAssignment)}
-          className="inline-flex items-center gap-2 rounded-2xl border border-faith-line px-3 py-2 text-[12px] font-bold text-slate-700 transition hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
+          className="inline-flex items-center gap-2 rounded-2xl border border-faith-line/70 px-3 py-2 text-[12px] font-bold text-slate-700 transition hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
         >
           Assign office <ChevronRight className="h-4 w-4" />
         </button>
@@ -434,7 +434,7 @@ function LeadershipPreviewCard({
   return (
     <div
       className={cx(
-        "overflow-hidden rounded-[30px] border border-faith-line bg-[var(--fh-surface-bg)] shadow-soft dark:border-slate-800 dark:bg-slate-900",
+        "overflow-hidden rounded-[30px] border border-faith-line/70 bg-[var(--fh-surface-bg)] shadow-soft dark:border-slate-800 dark:bg-slate-900",
         previewMode === "desktop" ? "w-full" : "mx-auto w-[320px] md:w-[360px]",
       )}
     >
@@ -475,11 +475,11 @@ function LeadershipPreviewCard({
         </div>
 
         <div className="mt-4 grid grid-cols-2 gap-3">
-          <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2 dark:border-slate-700 dark:bg-slate-950">
+          <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-2 dark:border-slate-700 dark:bg-slate-950">
             <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-faith-slate">Campus</div>
             <div className="mt-1 text-[13px] font-bold text-faith-ink dark:text-slate-100">{leader.campus}</div>
           </div>
-          <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2 dark:border-slate-700 dark:bg-slate-950">
+          <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-2 dark:border-slate-700 dark:bg-slate-950">
             <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-faith-slate">Languages</div>
             <div className="mt-1 text-[13px] font-bold text-faith-ink dark:text-slate-100">{leader.language.join(", ")}</div>
           </div>
@@ -491,7 +491,7 @@ function LeadershipPreviewCard({
           {leader.tags.map((tag) => (
             <span
               key={tag}
-              className="rounded-full border border-faith-line bg-[var(--fh-surface)] px-2.5 py-1 text-[11px] font-semibold text-faith-slate dark:border-slate-700 dark:bg-slate-950 dark:text-slate-300"
+              className="rounded-full border border-faith-line/70 bg-[var(--fh-surface)] px-2.5 py-1 text-[11px] font-semibold text-faith-slate dark:border-slate-700 dark:bg-slate-950 dark:text-slate-300"
             >
               {tag}
             </span>
@@ -516,8 +516,8 @@ function PreviewDrawer({
   return (
     <div className="fixed inset-0 z-[70]">
       <div className="absolute inset-0 bg-slate-950/55 backdrop-blur-sm" onClick={onClose} />
-      <div className="absolute right-0 top-0 h-full w-full max-w-4xl overflow-y-auto border-l border-faith-line bg-[var(--fh-surface)] p-4 shadow-2xl dark:border-slate-800 dark:bg-slate-950">
-        <div className="flex items-start justify-between gap-3 rounded-[28px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft dark:border-slate-800 dark:bg-slate-900">
+      <div className="absolute right-0 top-0 h-full w-full max-w-4xl overflow-y-auto border-l border-faith-line bg-[var(--fh-surface)] p-4 shadow-medium dark:border-slate-800 dark:bg-slate-950">
+        <div className="flex items-start justify-between gap-3 rounded-[28px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 shadow-soft dark:border-slate-800 dark:bg-slate-900">
           <div>
             <div className="text-[10px] font-black uppercase tracking-[0.16em] text-faith-slate">
               Public leadership preview
@@ -528,7 +528,7 @@ function PreviewDrawer({
           <button
             type="button"
             onClick={onClose}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 transition hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] text-slate-700 transition hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800"
           >
             <X className="h-4 w-4" />
           </button>
@@ -594,10 +594,10 @@ export default function FaithHubLeadershipPage() {
       <PreviewDrawer open={previewOpen} onClose={() => setPreviewOpen(false)} leader={selectedLeader} />
 
       <div className="mx-auto flex w-full max-w-[1600px] flex-col gap-6 px-4 py-6 md:px-6 xl:px-8">
-        <section className="overflow-hidden rounded-[36px] border border-faith-line bg-[var(--fh-surface-bg)] shadow-soft dark:border-slate-800 dark:bg-slate-900">
+        <section className="overflow-hidden rounded-[36px] border border-faith-line/70 bg-[var(--fh-surface-bg)] shadow-soft dark:border-slate-800 dark:bg-slate-900">
           <div className="grid gap-6 px-6 py-6 2xl:grid-cols-[minmax(0,1.15fr)_420px] lg:px-8 lg:py-8">
             <div>
-              <div className="inline-flex items-center gap-2 rounded-full border border-faith-line bg-[var(--fh-surface)] px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-faith-slate dark:border-slate-700 dark:bg-slate-950">
+              <div className="inline-flex items-center gap-2 rounded-full border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-faith-slate dark:border-slate-700 dark:bg-slate-950">
                 Team command
               </div>
               <div className="mt-4">
@@ -628,21 +628,21 @@ export default function FaithHubLeadershipPage() {
                 <button
                   type="button"
                   onClick={() => safeNav(ROUTES.officeAssignment)}
-                  className="inline-flex items-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-3 text-[13px] font-bold text-slate-700 transition hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+                  className="inline-flex items-center gap-2 rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 py-3 text-[13px] font-bold text-slate-700 transition hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
                 >
                   <Briefcase className="h-4 w-4" /> Assign Office
                 </button>
                 <button
                   type="button"
                   onClick={() => safeNav(ROUTES.publishLeadership)}
-                  className="inline-flex items-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-3 text-[13px] font-bold text-slate-700 transition hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+                  className="inline-flex items-center gap-2 rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 py-3 text-[13px] font-bold text-slate-700 transition hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
                 >
                   <CheckCircle2 className="h-4 w-4" /> Publish Leadership
                 </button>
               </div>
             </div>
 
-            <div className="rounded-[30px] border border-faith-line bg-[var(--fh-surface)] p-4 shadow-inner dark:border-slate-800 dark:bg-slate-950">
+            <div className="rounded-[30px] border border-faith-line/70 bg-[var(--fh-surface)] p-4 shadow-inner dark:border-slate-800 dark:bg-slate-950">
               <div className="mt-4 grid gap-3 sm:grid-cols-2">
                 <MiniStat label="Total leaders" value={fmtInt(totals.totalLeaders)} hint="Profiles being managed across public and internal surfaces." />
                 <MiniStat label="Published" value={fmtInt(totals.published)} hint="Public leadership profiles already visible on Provider." />
@@ -681,7 +681,7 @@ export default function FaithHubLeadershipPage() {
               ))}
             </section>
 
-            <section className="rounded-[32px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft dark:border-slate-800 dark:bg-slate-900 md:p-5">
+            <section className="rounded-[32px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 shadow-soft dark:border-slate-800 dark:bg-slate-900 md:p-5">
               <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
                 <div>
                   <div className="text-[10px] font-black uppercase tracking-[0.18em] text-faith-slate">
@@ -702,14 +702,14 @@ export default function FaithHubLeadershipPage() {
                       value={query}
                       onChange={(event) => setQuery(event.target.value)}
                       placeholder="Search by leader, office, campus, or tag"
-                      className="h-12 w-full rounded-2xl border border-faith-line bg-[var(--fh-surface)] pl-10 pr-4 text-[13px] font-medium text-faith-ink outline-none transition focus:border-transparent focus:ring-2 focus:ring-[rgba(3,205,140,0.35)] dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
+                      className="h-12 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] pl-10 pr-4 text-[13px] font-medium text-faith-ink outline-none transition focus:border-transparent focus:ring-2 focus:ring-[rgba(3,205,140,0.35)] dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
                     />
                   </label>
 
                   <button
                     type="button"
                     onClick={() => setPreviewOpen(true)}
-                    className="inline-flex h-12 items-center justify-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-4 text-[13px] font-bold text-slate-700 transition hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+                    className="inline-flex h-12 items-center justify-center gap-2 rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 text-[13px] font-bold text-slate-700 transition hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
                   >
                     <Eye className="h-4 w-4" /> Open preview
                   </button>
@@ -769,19 +769,19 @@ export default function FaithHubLeadershipPage() {
                             </div>
 
                             <div className="mt-3 grid gap-2 sm:grid-cols-4">
-                              <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2 dark:border-slate-700 dark:bg-slate-900">
+                              <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-2 dark:border-slate-700 dark:bg-slate-900">
                                 <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-faith-slate">Reports</div>
                                 <div className="mt-1 text-[14px] font-black text-faith-ink dark:text-slate-100">{leader.reports}</div>
                               </div>
-                              <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2 dark:border-slate-700 dark:bg-slate-900">
+                              <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-2 dark:border-slate-700 dark:bg-slate-900">
                                 <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-faith-slate">Active teams</div>
                                 <div className="mt-1 text-[14px] font-black text-faith-ink dark:text-slate-100">{leader.activeTeams}</div>
                               </div>
-                              <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2 dark:border-slate-700 dark:bg-slate-900">
+                              <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-2 dark:border-slate-700 dark:bg-slate-900">
                                 <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-faith-slate">Upcoming events</div>
                                 <div className="mt-1 text-[14px] font-black text-faith-ink dark:text-slate-100">{leader.upcomingEvents}</div>
                               </div>
-                              <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] px-3 py-2 dark:border-slate-700 dark:bg-slate-900">
+                              <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-2 dark:border-slate-700 dark:bg-slate-900">
                                 <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-faith-slate">Live linked</div>
                                 <div className="mt-1 text-[14px] font-black text-faith-ink dark:text-slate-100">{leader.liveSessions}</div>
                               </div>
@@ -809,7 +809,7 @@ export default function FaithHubLeadershipPage() {
                   ) : null}
                 </div>
 
-                <div className="space-y-4 rounded-[30px] border border-faith-line bg-[var(--fh-surface)] p-4 shadow-inner dark:border-slate-800 dark:bg-slate-950">
+                <div className="space-y-4 rounded-[30px] border border-faith-line/70 bg-[var(--fh-surface)] p-4 shadow-inner dark:border-slate-800 dark:bg-slate-950">
                   <div className="flex items-start justify-between gap-3">
                     <div>
                       <div className="text-[10px] font-black uppercase tracking-[0.18em] text-faith-slate">Selected leader</div>
@@ -819,13 +819,13 @@ export default function FaithHubLeadershipPage() {
                     <button
                       type="button"
                       onClick={() => setPreviewOpen(true)}
-                      className="inline-flex items-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] font-bold text-slate-700 transition hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+                      className="inline-flex items-center gap-2 rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] font-bold text-slate-700 transition hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
                     >
                       <Eye className="h-4 w-4" /> Preview
                     </button>
                   </div>
 
-                  <div className="rounded-[26px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft dark:border-slate-800 dark:bg-slate-900">
+                  <div className="rounded-[26px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 shadow-soft dark:border-slate-800 dark:bg-slate-900">
                     <div className="aspect-[16/9] overflow-hidden rounded-[22px] bg-slate-200 dark:bg-slate-800">
                       <img src={selectedLeader.heroUrl} alt={selectedLeader.name} className="h-full w-full object-cover" />
                     </div>
@@ -843,11 +843,11 @@ export default function FaithHubLeadershipPage() {
                     <div className="mt-4 text-[13px] leading-6 text-faith-slate dark:text-slate-300">{selectedLeader.bio}</div>
 
                     <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                      <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3 dark:border-slate-700 dark:bg-slate-950">
+                      <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3 dark:border-slate-700 dark:bg-slate-950">
                         <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-faith-slate">Deputy / backup</div>
                         <div className="mt-1 text-[14px] font-black text-faith-ink dark:text-slate-100">{selectedLeader.deputy || "Not assigned"}</div>
                       </div>
-                      <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3 dark:border-slate-700 dark:bg-slate-950">
+                      <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3 dark:border-slate-700 dark:bg-slate-950">
                         <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-faith-slate">Next review</div>
                         <div className="mt-1 text-[14px] font-black text-faith-ink dark:text-slate-100">{new Date(selectedLeader.nextReviewISO).toLocaleDateString()}</div>
                       </div>
@@ -870,7 +870,7 @@ export default function FaithHubLeadershipPage() {
             </section>
 
             <section className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-              <div className="rounded-[32px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft dark:border-slate-800 dark:bg-slate-900">
+              <div className="rounded-[32px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 shadow-soft dark:border-slate-800 dark:bg-slate-900">
                 <div className="flex items-start justify-between gap-3">
                   <div>
                     <div className="text-[10px] font-black uppercase tracking-[0.18em] text-faith-slate">Succession & coverage</div>
@@ -907,7 +907,7 @@ export default function FaithHubLeadershipPage() {
                 </div>
               </div>
 
-              <div className="rounded-[32px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft dark:border-slate-800 dark:bg-slate-900">
+              <div className="rounded-[32px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 shadow-soft dark:border-slate-800 dark:bg-slate-900">
                 <div className="flex items-start justify-between gap-3">
                   <div>
                     <div className="text-[10px] font-black uppercase tracking-[0.18em] text-faith-slate">Quick-create templates</div>
@@ -930,13 +930,13 @@ export default function FaithHubLeadershipPage() {
           </div>
 
           <aside className="space-y-6">
-            <section className="rounded-[32px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft dark:border-slate-800 dark:bg-slate-900">
+            <section className="rounded-[32px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 shadow-soft dark:border-slate-800 dark:bg-slate-900">
               <div className="flex items-center justify-between gap-3">
                 <div>
                   <div className="text-[10px] font-black uppercase tracking-[0.18em] text-faith-slate">Public preview rail</div>
                   <div className="mt-1 text-[18px] font-black tracking-[-0.02em] text-slate-950 dark:text-white">Leadership profile destination preview</div>
                 </div>
-                <div className="inline-flex rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-1 dark:border-slate-700 dark:bg-slate-950">
+                <div className="inline-flex rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-1 dark:border-slate-700 dark:bg-slate-950">
                   <button
                     type="button"
                     onClick={() => setPreviewMode("desktop")}
@@ -982,21 +982,21 @@ export default function FaithHubLeadershipPage() {
                 <button
                   type="button"
                   onClick={() => safeNav(ROUTES.publishLeadership)}
-                  className="inline-flex items-center justify-center gap-2 rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] px-4 py-3 text-[13px] font-bold text-slate-700 transition hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+                  className="inline-flex items-center justify-center gap-2 rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 py-3 text-[13px] font-bold text-slate-700 transition hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
                 >
                   <ArrowRight className="h-4 w-4" /> Publish
                 </button>
               </div>
             </section>
 
-            <section className="rounded-[32px] border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft dark:border-slate-800 dark:bg-slate-900">
+            <section className="rounded-[32px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 shadow-soft dark:border-slate-800 dark:bg-slate-900">
               <div className="text-[10px] font-black uppercase tracking-[0.18em] text-faith-slate">Linked controls</div>
               <div className="mt-1 text-[18px] font-black tracking-[-0.02em] text-slate-950 dark:text-white">Related workspace pages</div>
               <div className="mt-4 space-y-3">
                 <button
                   type="button"
                   onClick={() => safeNav(ROUTES.providerDashboard)}
-                  className="flex w-full items-start gap-3 rounded-[24px] border border-faith-line bg-[var(--fh-surface)] p-4 text-left transition hover:bg-[var(--fh-surface-bg)] dark:border-slate-700 dark:bg-slate-950 dark:hover:bg-slate-900"
+                  className="flex w-full items-start gap-3 rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface)] p-4 text-left transition hover:bg-[var(--fh-surface-bg)] dark:border-slate-700 dark:bg-slate-950 dark:hover:bg-slate-900"
                 >
                   <Star className="mt-0.5 h-5 w-5" style={{ color: EV_GREEN }} />
                   <div>
@@ -1007,7 +1007,7 @@ export default function FaithHubLeadershipPage() {
                 <button
                   type="button"
                   onClick={() => safeNav(ROUTES.rolesPermissions)}
-                  className="flex w-full items-start gap-3 rounded-[24px] border border-faith-line bg-[var(--fh-surface)] p-4 text-left transition hover:bg-[var(--fh-surface-bg)] dark:border-slate-700 dark:bg-slate-950 dark:hover:bg-slate-900"
+                  className="flex w-full items-start gap-3 rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface)] p-4 text-left transition hover:bg-[var(--fh-surface-bg)] dark:border-slate-700 dark:bg-slate-950 dark:hover:bg-slate-900"
                 >
                   <ShieldCheck className="mt-0.5 h-5 w-5" style={{ color: EV_ORANGE }} />
                   <div>

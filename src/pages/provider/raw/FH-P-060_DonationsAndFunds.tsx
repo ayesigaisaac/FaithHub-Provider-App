@@ -578,7 +578,7 @@ function Modal({
   return (
     <div className="fixed inset-0 z-[90] flex items-end justify-center p-0 sm:items-center sm:p-4">
       <div className="absolute inset-0 bg-black/45 backdrop-blur-sm" onClick={onClose} />
-      <div className="relative flex h-[92vh] w-full max-w-6xl flex-col overflow-hidden rounded-t-3xl bg-[var(--fh-surface-bg)] shadow-2xl ring-1 ring-slate-200 transition dark:bg-slate-900 dark:ring-slate-800 sm:h-auto sm:max-h-[90vh] sm:rounded-[14px]">
+      <div className="relative flex h-[92vh] w-full max-w-6xl flex-col overflow-hidden rounded-t-3xl bg-[var(--fh-surface-bg)] shadow-medium ring-1 ring-slate-200 transition dark:bg-slate-900 dark:ring-slate-800 sm:h-auto sm:max-h-[90vh] sm:rounded-[14px]">
         <div className="flex items-start justify-between gap-3 border-b border-faith-line px-5 py-4 dark:border-slate-800">
           <div className="min-w-0">
             <div className="truncate text-base font-semibold text-faith-ink dark:text-slate-50">{title}</div>
@@ -709,7 +709,7 @@ function BrowserPreview({
   donorCopy: string;
 }) {
   return (
-    <div className="overflow-hidden rounded-[16px] bg-[var(--fh-surface-bg)] shadow-2xl ring-1 ring-slate-200 dark:ring-slate-800">
+    <div className="overflow-hidden rounded-[16px] bg-[var(--fh-surface-bg)] shadow-medium ring-1 ring-slate-200 dark:ring-slate-800">
       <div className="flex items-center gap-2 border-b border-faith-line bg-[var(--fh-surface)] px-4 py-3 dark:border-slate-800 dark:bg-slate-950">
         <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
         <span className="h-2.5 w-2.5 rounded-full bg-amber-400" />
@@ -746,7 +746,7 @@ function BrowserPreview({
               <button
                 type="button"
                 key={amount}
-                className="rounded-xl border border-faith-line bg-[var(--fh-surface)] px-3 py-3 text-center text-sm font-extrabold text-faith-ink transition hover:bg-[var(--fh-surface-bg)] dark:border-slate-700 dark:bg-slate-800 dark:text-slate-50 dark:hover:bg-slate-700"
+                className="rounded-xl border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-3 text-center text-sm font-extrabold text-faith-ink transition hover:bg-[var(--fh-surface-bg)] dark:border-slate-700 dark:bg-slate-800 dark:text-slate-50 dark:hover:bg-slate-700"
                 onClick={() => safeNav("/faithhub/provider/donations-and-funds")}>
                 {fmtCurrency(amount)}
               </button>
@@ -785,7 +785,7 @@ function PhonePreview({
 }) {
   return (
     <div className="mx-auto w-full max-w-[360px] md:max-w-[400px]">
-      <div className="rounded-[34px] bg-slate-900 p-3 shadow-2xl">
+      <div className="rounded-[34px] bg-slate-900 p-3 shadow-medium">
         <div className="overflow-hidden rounded-[14px] bg-[var(--fh-surface-bg)] dark:bg-slate-900">
           <div className="relative aspect-[9/12] overflow-y-auto bg-[var(--fh-surface)] dark:bg-slate-950">
             <div className="sticky top-0 z-10 flex items-center justify-between bg-[var(--fh-surface-bg)]/95 px-4 py-3 shadow-soft backdrop-blur dark:bg-slate-900/95">
@@ -811,7 +811,7 @@ function PhonePreview({
                   <button
                     key={amount}
                     type="button"
-                    className="rounded-xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-3 text-sm font-extrabold text-faith-ink shadow-soft dark:border-slate-700 dark:bg-slate-900 dark:text-slate-50"
+                    className="rounded-xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-3 text-sm font-extrabold text-faith-ink shadow-soft dark:border-slate-700 dark:bg-slate-900 dark:text-slate-50"
                     onClick={() => safeNav("/faithhub/provider/donations-and-funds")}>
                     {fmtCurrency(amount)}
                   </button>
@@ -866,7 +866,7 @@ function CampaignComposer({
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder={mode === "Fund" ? "e.g. General Missions Fund" : mode === "Campaign" ? "e.g. Easter Appeal" : mode === "Recurring support" ? "e.g. Partner Circle" : "e.g. Clean Water Charity Drive"}
-            className="mt-1 w-full rounded-xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-3 text-sm text-faith-ink outline-none transition focus:ring-2 focus:ring-slate-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-50 dark:focus:ring-slate-700"
+            className="mt-1 w-full rounded-xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-3 text-sm text-faith-ink outline-none transition focus:ring-2 focus:ring-slate-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-50 dark:focus:ring-slate-700"
           />
         </div>
         <div>
@@ -874,7 +874,7 @@ function CampaignComposer({
           <input
             value={owner}
             onChange={(e) => setOwner(e.target.value)}
-            className="mt-1 w-full rounded-xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-3 text-sm text-faith-ink outline-none transition focus:ring-2 focus:ring-slate-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-50 dark:focus:ring-slate-700"
+            className="mt-1 w-full rounded-xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-3 text-sm text-faith-ink outline-none transition focus:ring-2 focus:ring-slate-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-50 dark:focus:ring-slate-700"
           />
         </div>
         <div>
@@ -882,7 +882,7 @@ function CampaignComposer({
           <input
             value={goal}
             onChange={(e) => setGoal(e.target.value.replace(/[^\d]/g, ""))}
-            className="mt-1 w-full rounded-xl border border-faith-line bg-[var(--fh-surface-bg)] px-3 py-3 text-sm text-faith-ink outline-none transition focus:ring-2 focus:ring-slate-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-50 dark:focus:ring-slate-700"
+            className="mt-1 w-full rounded-xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-3 text-sm text-faith-ink outline-none transition focus:ring-2 focus:ring-slate-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-50 dark:focus:ring-slate-700"
           />
         </div>
         <div>
@@ -1212,7 +1212,7 @@ export default function DonationsAndFundsPage() {
                           ? safeNav(ROUTES.charityCrowdfund)
                           : openComposer(preset.mode)
                       }
-                      className="rounded-[14px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 text-left hover:bg-[var(--fh-surface-bg)] dark:hover:bg-slate-800 transition-colors"
+                      className="rounded-[14px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 text-left hover:bg-[var(--fh-surface-bg)] dark:hover:bg-slate-800 transition-colors"
                     >
                       <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl text-white shadow-soft" style={{ background: accent }}>
                         {preset.mode === "Recurring support" ? <HeartHandshake className="h-5 w-5" /> : preset.mode === "Crowdfund" ? <Zap className="h-5 w-5" /> : <Gift className="h-5 w-5" />}
@@ -1243,7 +1243,7 @@ export default function DonationsAndFundsPage() {
                       <button
                         type="button"
                         key={amount}
-                        className="rounded-xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-2 py-2 text-sm font-extrabold text-faith-ink dark:text-slate-50"
+                        className="rounded-xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-2 py-2 text-sm font-extrabold text-faith-ink dark:text-slate-50"
                         onClick={() => safeNav("/faithhub/provider/donations-and-funds")}>
                         {fmtCurrency(amount)}
                       </button>
@@ -1283,7 +1283,7 @@ export default function DonationsAndFundsPage() {
                       <select
                         value={receiptLanguage}
                         onChange={(e) => setReceiptLanguage(e.target.value)}
-                        className="mt-1 w-full rounded-xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-sm text-faith-ink dark:text-slate-50"
+                        className="mt-1 w-full rounded-xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-sm text-faith-ink dark:text-slate-50"
                       >
                         <option>Standard ministry receipt</option>
                         <option>Missions campaign receipt</option>
@@ -1297,7 +1297,7 @@ export default function DonationsAndFundsPage() {
                       <input
                         value={confirmationJourney}
                         onChange={(e) => setConfirmationJourney(e.target.value)}
-                        className="mt-1 w-full rounded-xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-sm text-faith-ink dark:text-slate-50"
+                        className="mt-1 w-full rounded-xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-sm text-faith-ink dark:text-slate-50"
                       />
                     </label>
                   </div>
@@ -1309,7 +1309,7 @@ export default function DonationsAndFundsPage() {
                     value={donorCopy}
                     onChange={(e) => setDonorCopy(e.target.value)}
                     rows={4}
-                    className="mt-3 w-full rounded-xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-3 text-sm text-faith-ink dark:text-slate-50"
+                    className="mt-3 w-full rounded-xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-3 text-sm text-faith-ink dark:text-slate-50"
                   />
                 </div>
               </div>
@@ -1704,7 +1704,7 @@ export default function DonationsAndFundsPage() {
       </Modal>
 
       {toast ? (
-        <div className="fixed bottom-6 left-1/2 z-[120] -translate-x-1/2 rounded-full bg-slate-900 px-4 py-2 text-xs font-semibold text-white shadow-2xl">
+        <div className="fixed bottom-6 left-1/2 z-[120] -translate-x-1/2 rounded-full bg-slate-900 px-4 py-2 text-xs font-semibold text-white shadow-medium">
           {toast}
         </div>
       ) : null}

@@ -318,7 +318,7 @@ function Modal({
   return (
     <div className="fixed inset-0 z-[120] flex items-end justify-center p-0 md:items-center md:p-4">
       <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={onClose} />
-      <div className="relative w-full max-w-3xl rounded-t-[28px] md:rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 shadow-2xl transition-colors overflow-hidden">
+      <div className="relative w-full max-w-3xl rounded-t-[28px] md:rounded-[28px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 shadow-medium transition-colors overflow-hidden">
         <div className="flex items-start justify-between gap-3 border-b border-faith-line dark:border-slate-800 px-4 py-3">
           <div>
             <div className="text-[13px] font-extrabold text-faith-ink dark:text-slate-100">{title}</div>
@@ -327,7 +327,7 @@ function Modal({
           <button
             type="button"
             onClick={onClose}
-            className="h-9 w-9 rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 grid place-items-center hover:bg-[var(--fh-surface)] dark:hover:bg-slate-700 transition-colors"
+            className="h-9 w-9 rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 grid place-items-center hover:bg-[var(--fh-surface)] dark:hover:bg-slate-700 transition-colors"
           >
             <X className="h-4 w-4 text-slate-700 dark:text-slate-300" />
           </button>
@@ -397,7 +397,7 @@ function AuditEventRow({
                 e.stopPropagation();
                 onInvestigate();
               }}
-              className="inline-flex items-center justify-center gap-1 rounded-full border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-950 px-3 py-1 text-[11px] font-extrabold text-faith-ink dark:text-slate-100 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800 transition-colors"
+              className="inline-flex items-center justify-center gap-1 rounded-full border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-950 px-3 py-1 text-[11px] font-extrabold text-faith-ink dark:text-slate-100 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800 transition-colors"
             >
               <Eye className="h-3.5 w-3.5" />
               Investigate
@@ -453,8 +453,8 @@ function PreviewRail({
       </div>
 
       {mode === "desktop" ? (
-        <div className="mt-4 rounded-[26px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 transition-colors">
-          <div className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 overflow-hidden transition-colors">
+        <div className="mt-4 rounded-[26px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 transition-colors">
+          <div className="rounded-[22px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 overflow-hidden transition-colors">
             <div className="border-b border-faith-line dark:border-slate-800 px-4 py-3">
               <div className="text-[11px] font-black uppercase tracking-[0.08em] text-faith-slate">
                 Investigation surface
@@ -468,7 +468,7 @@ function PreviewRail({
             </div>
 
             <div className="p-4 space-y-4">
-              <div className="rounded-[20px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
+              <div className="rounded-[20px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
                 <div className="text-[10px] uppercase tracking-[0.08em] text-faith-slate">Actor + context</div>
                 <div className="mt-2 text-[13px] font-extrabold text-faith-ink dark:text-slate-100">
                   {event.actor} | {event.actorRole}
@@ -478,14 +478,14 @@ function PreviewRail({
                 </div>
               </div>
 
-              <div className="rounded-[20px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
+              <div className="rounded-[20px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
                 <div className="text-[10px] uppercase tracking-[0.08em] text-faith-slate">Before / after</div>
                 <div className="mt-3 space-y-2">
                   {event.diff.slice(0, 2).map((row) => (
-                    <div key={row.field} className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
+                    <div key={row.field} className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
                       <div className="text-[11px] font-extrabold text-slate-700 dark:text-slate-300">{row.field}</div>
                       <div className="mt-2 grid grid-cols-2 gap-2 text-[11px]">
-                        <div className="rounded-xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 p-2 text-faith-slate">
+                        <div className="rounded-xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 p-2 text-faith-slate">
                           {row.before}
                         </div>
                         <div className="rounded-xl border border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-900/20 p-2 text-emerald-800 dark:text-emerald-300">
@@ -497,7 +497,7 @@ function PreviewRail({
                 </div>
               </div>
 
-              <div className="rounded-[20px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
+              <div className="rounded-[20px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
                 <div className="flex items-center justify-between gap-2">
                   <div>
                     <div className="text-[10px] uppercase tracking-[0.08em] text-faith-slate">Evidence integrity</div>
@@ -514,14 +514,14 @@ function PreviewRail({
         </div>
       ) : (
         <div className="mt-4 flex justify-center">
-          <div className="w-[270px] rounded-[34px] bg-slate-950 p-3 shadow-2xl ring-1 ring-slate-800">
+          <div className="w-[270px] rounded-[34px] bg-slate-950 p-3 shadow-medium ring-1 ring-slate-800">
             <div className="rounded-[28px] bg-[var(--fh-surface-bg)] dark:bg-slate-900 overflow-hidden">
               <div className="border-b border-faith-line dark:border-slate-800 px-4 py-3">
                 <div className="text-[10px] font-black uppercase tracking-[0.08em] text-faith-slate">Mobile review</div>
                 <div className="mt-1 text-[14px] font-black text-faith-ink dark:text-slate-100">{event.id}</div>
               </div>
               <div className="p-4 space-y-3">
-                <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3">
+                <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3">
                   <div className="text-[12px] font-extrabold text-faith-ink dark:text-slate-100">{event.action}</div>
                   <div className="mt-1 text-[11px] text-faith-slate">{event.objectLabel}</div>
                   <div className="mt-2 flex flex-wrap gap-2">
@@ -530,13 +530,13 @@ function PreviewRail({
                   </div>
                 </div>
 
-                <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3">
+                <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3">
                   <div className="text-[10px] uppercase tracking-[0.08em] text-faith-slate">Actor</div>
                   <div className="mt-1 text-[12px] font-extrabold text-faith-ink dark:text-slate-100">{event.actor}</div>
                   <div className="text-[11px] text-faith-slate">{event.actorRole}</div>
                 </div>
 
-                <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3">
+                <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3">
                   <div className="text-[10px] uppercase tracking-[0.08em] text-faith-slate">Chain state</div>
                   <div className="mt-1 text-[12px] font-extrabold text-faith-ink dark:text-slate-100">
                     {event.integrity} | {event.sessionLabel}
@@ -549,14 +549,14 @@ function PreviewRail({
       )}
 
       <div className="mt-4 space-y-3">
-        <div className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
+        <div className="rounded-[22px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
           <div className="text-[10px] uppercase tracking-[0.08em] text-faith-slate">What this page protects</div>
           <div className="mt-2 space-y-2">
-            <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
+            <div className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
               <div className="text-[12px] font-extrabold text-faith-ink dark:text-slate-100">Roles & sensitive actions</div>
               <div className="mt-1 text-[11px] text-faith-slate">Who changed what, why, and under which approval path.</div>
             </div>
-            <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
+            <div className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
               <div className="text-[12px] font-extrabold text-faith-ink dark:text-slate-100">Publishing and finance trust</div>
               <div className="mt-1 text-[11px] text-faith-slate">Replay publishing, donation settings, payout rails, and receipt edits.</div>
             </div>
@@ -1064,7 +1064,7 @@ export default function AuditLogPage() {
   return (
     <div className="min-h-screen w-full overflow-x-hidden bg-[var(--fh-page-bg)] dark:bg-slate-950 text-faith-ink dark:text-slate-100 transition-colors">
       <div className="mx-auto max-w-[1600px] px-4 py-5 lg:px-5 lg:py-6">
-        <div className="rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-5 transition-colors">
+        <div className="rounded-[28px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-5 transition-colors">
           <div className="flex flex-col gap-5 xl:flex-row xl:items-start xl:justify-between">
             <div className="min-w-0 flex-1">
               <ProviderPageTitle
@@ -1101,7 +1101,7 @@ export default function AuditLogPage() {
           </div>
         </div>
 
-        <div className="mt-4 rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-3 transition-colors">
+        <div className="mt-4 rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-3 transition-colors">
           <div className="flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
             <div className="inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-[12px] font-black text-white" style={{ background: ORANGE }}>
               PREMIUM AUDIT SURFACE
@@ -1161,7 +1161,7 @@ export default function AuditLogPage() {
                   </div>
                 </div>
 
-                <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
+                <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
                   <div className="text-[10px] uppercase tracking-[0.08em] text-faith-slate">
                     Last export
                   </div>
@@ -1184,7 +1184,7 @@ export default function AuditLogPage() {
                         setSelectedId(event.id);
                         setInvestigationOpen(true);
                       }}
-                      className="w-full rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 text-left transition-colors hover:bg-[var(--fh-surface-bg)] dark:hover:bg-slate-900"
+                      className="w-full rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 text-left transition-colors hover:bg-[var(--fh-surface-bg)] dark:hover:bg-slate-900"
                     >
                       <div className="flex items-center justify-between gap-2">
                         <div className="min-w-0">
@@ -1200,7 +1200,7 @@ export default function AuditLogPage() {
                     </button>
                   ))
                 ) : (
-                  <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 text-[11px] text-faith-slate">
+                  <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 text-[11px] text-faith-slate">
                     No open investigations in the current filter view.
                   </div>
                 )}
@@ -1221,7 +1221,7 @@ export default function AuditLogPage() {
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                     placeholder="Search actor, action, object, page, tag, or event ID"
-                    className="w-full rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 pl-10 pr-4 py-2.5 text-[12px] font-semibold text-faith-ink dark:text-slate-100 outline-none focus:ring-2 focus:ring-amber-200 dark:focus:ring-amber-800 transition-colors"
+                    className="w-full rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 pl-10 pr-4 py-2.5 text-[12px] font-semibold text-faith-ink dark:text-slate-100 outline-none focus:ring-2 focus:ring-amber-200 dark:focus:ring-amber-800 transition-colors"
                   />
                 </div>
                 <Btn tone="neutral" left={<SlidersHorizontal className="h-4 w-4" />} onClick={() => setFilterModalOpen(true)}>
@@ -1292,7 +1292,7 @@ export default function AuditLogPage() {
               {selectedEvent ? (
                 <div className="grid gap-4 xl:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
                   <div className="space-y-3">
-                    <div className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
+                    <div className="rounded-[22px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
                       <div className="flex flex-wrap items-center gap-2">
                         <div className="text-[13px] font-black text-faith-ink dark:text-slate-100">{selectedEvent.action}</div>
                         <Pill tone={severityTone(selectedEvent.severity)}>{selectedEvent.severity}</Pill>
@@ -1306,14 +1306,14 @@ export default function AuditLogPage() {
                       </div>
                     </div>
 
-                    <div className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
+                    <div className="rounded-[22px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
                       <div className="text-[10px] uppercase tracking-[0.08em] text-faith-slate">Before / after</div>
                       <div className="mt-3 space-y-2">
                         {selectedEvent.diff.map((row) => (
-                          <div key={row.field} className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
+                          <div key={row.field} className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
                             <div className="text-[12px] font-extrabold text-faith-ink dark:text-slate-100">{row.field}</div>
                             <div className="mt-2 grid gap-2 sm:grid-cols-2">
-                              <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 p-3">
+                              <div className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 p-3">
                                 <div className="text-[10px] uppercase tracking-[0.08em] text-faith-slate">Before</div>
                                 <div className="mt-1 text-[12px] text-faith-slate">{row.before}</div>
                               </div>
@@ -1329,7 +1329,7 @@ export default function AuditLogPage() {
                   </div>
 
                   <div className="space-y-3">
-                    <div className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
+                    <div className="rounded-[22px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
                       <div className="text-[10px] uppercase tracking-[0.08em] text-faith-slate">Actor & surface</div>
                       <div className="mt-2 text-[13px] font-black text-faith-ink dark:text-slate-100">{selectedEvent.actor}</div>
                       <div className="mt-1 text-[11px] text-faith-slate">{selectedEvent.actorRole}</div>
@@ -1341,14 +1341,14 @@ export default function AuditLogPage() {
                       </div>
                     </div>
 
-                    <div className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
+                    <div className="rounded-[22px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
                       <div className="text-[10px] uppercase tracking-[0.08em] text-faith-slate">Device & integrity</div>
                       <div className="mt-2 space-y-2 text-[11px] text-faith-slate">
                         <div>{selectedEvent.deviceLabel}</div>
                         <div>{selectedEvent.ipLabel}</div>
                         <div>{selectedEvent.sessionLabel}</div>
                       </div>
-                      <div className="mt-3 rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
+                      <div className="mt-3 rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
                         <div className="text-[12px] font-extrabold text-faith-ink dark:text-slate-100">{selectedEvent.exportBundle}</div>
                         <div className="mt-1 text-[11px] text-faith-slate">
                           Ready to export with chain state, before/after proof, actor metadata, and linked related events.
@@ -1356,11 +1356,11 @@ export default function AuditLogPage() {
                       </div>
                     </div>
 
-                    <div className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
+                    <div className="rounded-[22px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
                       <div className="text-[10px] uppercase tracking-[0.08em] text-faith-slate">Related events</div>
                       <div className="mt-2 space-y-2">
                         {selectedEvent.related.map((item) => (
-                          <div key={item} className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 text-[11px] text-faith-slate transition-colors">
+                          <div key={item} className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 text-[11px] text-faith-slate transition-colors">
                             {item}
                           </div>
                         ))}
@@ -1492,7 +1492,7 @@ export default function AuditLogPage() {
           </Card>
 
           <Card title="Filter results" subtitle="The ledger updates immediately as filters change.">
-            <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 transition-colors">
+            <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 transition-colors">
               <div className="text-[28px] font-black tracking-[-0.03em] text-faith-ink dark:text-slate-100">
                 {filteredEvents.length}
               </div>
@@ -1546,22 +1546,22 @@ export default function AuditLogPage() {
                   {selectedEvent.summary}
                 </div>
                 <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                  <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3">
+                  <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3">
                     <div className="text-[10px] uppercase tracking-[0.08em] text-faith-slate">Actor</div>
                     <div className="mt-1 text-[12px] font-extrabold text-faith-ink dark:text-slate-100">{selectedEvent.actor}</div>
                     <div className="mt-1 text-[11px] text-faith-slate">{selectedEvent.actorRole}</div>
                   </div>
-                  <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3">
+                  <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3">
                     <div className="text-[10px] uppercase tracking-[0.08em] text-faith-slate">Approval path</div>
                     <div className="mt-1 text-[12px] font-extrabold text-faith-ink dark:text-slate-100">{selectedEvent.approvalPath}</div>
                     <div className="mt-1 text-[11px] text-faith-slate">{selectedEvent.linkedPage}</div>
                   </div>
-                  <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3">
+                  <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3">
                     <div className="text-[10px] uppercase tracking-[0.08em] text-faith-slate">Device + location</div>
                     <div className="mt-1 text-[12px] font-extrabold text-faith-ink dark:text-slate-100">{selectedEvent.deviceLabel}</div>
                     <div className="mt-1 text-[11px] text-faith-slate">{selectedEvent.ipLabel}</div>
                   </div>
-                  <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3">
+                  <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3">
                     <div className="text-[10px] uppercase tracking-[0.08em] text-faith-slate">Chain label</div>
                     <div className="mt-1 text-[12px] font-extrabold text-faith-ink dark:text-slate-100">{selectedEvent.sessionLabel}</div>
                     <div className="mt-1 text-[11px] text-faith-slate">Timestamp | {formatDateTime(selectedEvent.timestampISO)}</div>
@@ -1597,7 +1597,7 @@ export default function AuditLogPage() {
                   </Btn>
                 </div>
 
-                <div className="mt-4 rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3">
+                <div className="mt-4 rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3">
                   <div className="text-[10px] uppercase tracking-[0.08em] text-faith-slate">Analyst note</div>
                   <div className="mt-2 text-[12px] leading-5 text-faith-slate">
                     {selectedEvent.note}
@@ -1609,10 +1609,10 @@ export default function AuditLogPage() {
             <Card title="Field diff" subtitle="The exact state transitions captured by this audit entry.">
               <div className="space-y-3">
                 {selectedEvent.diff.map((row) => (
-                  <div key={row.field} className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
+                  <div key={row.field} className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
                     <div className="text-[12px] font-extrabold text-faith-ink dark:text-slate-100">{row.field}</div>
                     <div className="mt-2 grid gap-2 md:grid-cols-2">
-                      <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3">
+                      <div className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3">
                         <div className="text-[10px] uppercase tracking-[0.08em] text-faith-slate">Before</div>
                         <div className="mt-1 text-[12px] text-faith-slate">{row.before}</div>
                       </div>
@@ -1629,7 +1629,7 @@ export default function AuditLogPage() {
             <Card title="Related chain events" subtitle="Neighbouring activity that explains how the change moved through the workspace.">
               <div className="grid gap-3 md:grid-cols-3">
                 {selectedEvent.related.map((item) => (
-                  <div key={item} className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 text-[11px] text-faith-slate transition-colors">
+                  <div key={item} className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 text-[11px] text-faith-slate transition-colors">
                     {item}
                   </div>
                 ))}

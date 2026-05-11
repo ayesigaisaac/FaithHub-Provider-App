@@ -1257,7 +1257,7 @@ function Input({
       value={value}
       onChange={(event) => onChange(event.target.value)}
       placeholder={placeholder}
-      className="mt-1 w-full rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] text-faith-ink dark:text-slate-100 outline-none transition-colors focus:ring-2 focus:ring-orange-100 dark:focus:ring-orange-900/30"
+      className="mt-1 w-full rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] text-faith-ink dark:text-slate-100 outline-none transition-colors focus:ring-2 focus:ring-orange-100 dark:focus:ring-orange-900/30"
     />
   );
 }
@@ -1275,7 +1275,7 @@ function SelectField({
     <select
       value={value}
       onChange={(event) => onChange(event.target.value)}
-      className="mt-1 h-10 w-full rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 text-[12px] text-faith-ink dark:text-slate-100 outline-none transition-colors focus:ring-2 focus:ring-orange-100 dark:focus:ring-orange-900/30"
+      className="mt-1 h-10 w-full rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 text-[12px] text-faith-ink dark:text-slate-100 outline-none transition-colors focus:ring-2 focus:ring-orange-100 dark:focus:ring-orange-900/30"
     >
       {options.map((option) => (
         <option key={option} value={option}>
@@ -1293,7 +1293,7 @@ function Toast({ message, onClose }: { message: string; onClose: () => void }) {
   }, [message, onClose]);
 
   return (
-    <div className="fixed bottom-5 left-1/2 z-[120] -translate-x-1/2 rounded-full bg-slate-950 px-4 py-2 text-[12px] font-semibold text-white shadow-2xl dark:bg-[var(--fh-surface-bg)] dark:text-faith-ink">
+    <div className="fixed bottom-5 left-1/2 z-[120] -translate-x-1/2 rounded-full bg-slate-950 px-4 py-2 text-[12px] font-semibold text-white shadow-medium dark:bg-[var(--fh-surface-bg)] dark:text-faith-ink">
       {message}
     </div>
   );
@@ -1360,7 +1360,7 @@ function ViewToggle({
   ];
 
   return (
-    <div className="inline-flex flex-wrap items-center gap-1 rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-800 p-1">
+    <div className="inline-flex flex-wrap items-center gap-1 rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-800 p-1">
       {views.map((option) => (
         <button
           key={option.id}
@@ -1486,7 +1486,7 @@ function AgendaRow({
   const issueCount = issuesForSession(session.id, conflicts).length;
 
   return (
-    <div className="rounded-[22px] border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
+    <div className="rounded-[22px] border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
       <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-2">
@@ -1604,7 +1604,7 @@ function WeekView({
                 if (sessionId) onMoveSession(sessionId, column.date);
                 setDraggingSessionId(null);
               }}
-              className="min-h-[320px] rounded-[24px] border border-faith-line dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors"
+              className="min-h-[320px] rounded-[24px] border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors"
             >
               <div className="flex items-center justify-between gap-2 border-b border-faith-line dark:border-slate-800 pb-2">
                 <div>
@@ -1694,7 +1694,7 @@ function TimelineView({
                 className="grid gap-3"
                 style={{ gridTemplateColumns: "160px minmax(0,1fr)" }}
               >
-                <div className="rounded-[22px] border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
+                <div className="rounded-[22px] border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
                   <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                     {formatDayHeader(day)}
                   </div>
@@ -1703,7 +1703,7 @@ function TimelineView({
                   </div>
                 </div>
 
-                <div className="relative h-24 rounded-[22px] border border-faith-line dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 transition-colors">
+                <div className="relative h-24 rounded-[22px] border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 transition-colors">
                   <div className="absolute inset-0 grid grid-cols-16">
                     {hours.map((hour) => (
                       <div
@@ -1923,7 +1923,7 @@ function OperationsPreview({
         </div>
 
         <div className="mt-4 grid gap-3 sm:grid-cols-2">
-          <div className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3">
+          <div className="rounded-[22px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3">
             <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-faith-slate">
               Session intelligence
             </div>
@@ -1947,7 +1947,7 @@ function OperationsPreview({
             </div>
           </div>
 
-          <div className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3">
+          <div className="rounded-[22px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3">
             <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-faith-slate">
               Conflict & impact
             </div>
@@ -1975,7 +1975,7 @@ function OperationsPreview({
           </div>
         </div>
 
-        <div className="mt-4 rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3">
+        <div className="mt-4 rounded-[22px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3">
           <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-faith-slate">
             Role coverage
           </div>
@@ -2004,7 +2004,7 @@ function OperationsPreview({
           </div>
         </div>
 
-        <div className="mt-4 rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3">
+        <div className="mt-4 rounded-[22px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3">
           <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-faith-slate">
             Time-zone safety
           </div>
@@ -2012,7 +2012,7 @@ function OperationsPreview({
             {timezones.map((item) => (
               <div
                 key={item.zone}
-                className="flex items-center justify-between gap-2 rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px]"
+                className="flex items-center justify-between gap-2 rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px]"
               >
                 <span className="font-semibold text-faith-ink dark:text-slate-100">
                   {item.zone}
@@ -2074,7 +2074,7 @@ function StaffingLane({
               key={session.id}
               type="button"
               onClick={() => onSelectSession(session.id)}
-              className="w-full rounded-[22px] border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 text-left transition-colors hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800"
+              className="w-full rounded-[22px] border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 text-left transition-colors hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800"
             >
               <div className="flex items-start justify-between gap-2">
                 <div className="min-w-0">
@@ -2419,7 +2419,7 @@ function RescheduleDrawer({
       subtitle="Auto-reschedule suggestions account for staffing, venue pressure, and audience overlap."
     >
       <div className="space-y-4">
-        <div className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4">
+        <div className="rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4">
           <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
             {session.title}
           </div>
@@ -2437,7 +2437,7 @@ function RescheduleDrawer({
           {suggestions.map((suggestion) => (
             <div
               key={suggestion.id}
-              className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4"
+              className="rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4"
             >
               <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
                 <div>
@@ -2935,7 +2935,7 @@ export default function FaithHubLiveSchedulePage() {
                 ].map((label) => (
                   <div
                     key={label}
-                    className="rounded-[20px] border border-faith-line dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-2 text-[12px] text-slate-700 dark:text-slate-300"
+                    className="rounded-[20px] border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-2 text-[12px] text-slate-700 dark:text-slate-300"
                   >
                     {label}
                   </div>
@@ -2973,7 +2973,7 @@ export default function FaithHubLiveSchedulePage() {
                   {HOLIDAY_NOTES.map((item) => (
                     <div
                       key={item.id}
-                      className="rounded-[20px] border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 text-[11px] text-faith-slate"
+                      className="rounded-[20px] border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 text-[11px] text-faith-slate"
                     >
                       <div className="font-semibold text-faith-ink dark:text-slate-100">
                         {item.label}
@@ -3020,7 +3020,7 @@ export default function FaithHubLiveSchedulePage() {
                   suggestionCards.map((suggestion) => (
                     <div
                       key={suggestion.id}
-                      className="rounded-[24px] border border-faith-line dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 transition-colors"
+                      className="rounded-[24px] border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 transition-colors"
                     >
                       <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                         {suggestion.label}
@@ -3061,7 +3061,7 @@ export default function FaithHubLiveSchedulePage() {
                     <SoftButton onClick={() => shiftAnchor("prev")}>
                       <ChevronLeft className="h-4 w-4" /> Previous
                     </SoftButton>
-                    <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-800 px-3 py-2 text-[12px] font-semibold text-slate-700 dark:text-slate-200">
+                    <div className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-800 px-3 py-2 text-[12px] font-semibold text-slate-700 dark:text-slate-200">
                       {viewMode === "month"
                         ? formatMonthHeader(anchorDate)
                         : viewMode === "day"
@@ -3085,7 +3085,7 @@ export default function FaithHubLiveSchedulePage() {
                           setFilters((current) => ({ ...current, search: event.target.value }))
                         }
                         placeholder="Search title, speaker, venue…"
-                        className="w-full rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 py-2 pl-9 pr-3 text-[12px] text-faith-ink dark:text-slate-100 outline-none transition-colors focus:ring-2 focus:ring-orange-100 dark:focus:ring-orange-900/30"
+                        className="w-full rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 py-2 pl-9 pr-3 text-[12px] text-faith-ink dark:text-slate-100 outline-none transition-colors focus:ring-2 focus:ring-orange-100 dark:focus:ring-orange-900/30"
                       />
                     </div>
                   </div>

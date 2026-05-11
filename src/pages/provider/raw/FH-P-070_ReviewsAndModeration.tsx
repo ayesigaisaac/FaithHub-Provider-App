@@ -659,7 +659,7 @@ function Modal({
   return (
     <div className="fixed inset-0 z-[100] flex items-end justify-center bg-black/40 backdrop-blur-sm p-0 sm:items-center sm:p-4">
       <div className="absolute inset-0" onClick={onClose} />
-      <div className="relative w-full max-w-6xl rounded-t-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 shadow-2xl ring-1 ring-slate-200 dark:ring-slate-800 sm:rounded-3xl max-h-[92vh] overflow-hidden">
+      <div className="relative w-full max-w-6xl rounded-t-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 shadow-medium ring-1 ring-slate-200 dark:ring-slate-800 sm:rounded-3xl max-h-[92vh] overflow-hidden">
         <div className="flex items-start justify-between gap-3 border-b border-faith-line dark:border-slate-800 px-5 py-4">
           <div className="min-w-0">
             <div className="text-base font-bold text-faith-ink dark:text-slate-50">{title}</div>
@@ -759,7 +759,7 @@ function SurfaceBarList({
       {items.map((item) => {
         const width = Math.max(10, Math.round((item.value / max) * 100));
         return (
-          <div key={item.label} className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition">
+          <div key={item.label} className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition">
             <div className="flex items-start justify-between gap-3">
               <div className="min-w-0">
                 <div className="text-[13px] font-bold text-faith-ink dark:text-slate-100">{item.label}</div>
@@ -832,7 +832,7 @@ function ReviewRow({
         </div>
 
         <div className="flex flex-row md:flex-col items-stretch gap-2 md:min-w-[180px]">
-          <div className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2">
+          <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2">
             <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">Status</div>
             <div className="mt-1 text-[12px] font-bold text-faith-ink dark:text-slate-100">{review.status}</div>
           </div>
@@ -924,7 +924,7 @@ function PreviewCanvas({
   );
 
   const publicCard = (
-    <div className="rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 p-4 shadow-soft transition-colors">
+    <div className="rounded-[28px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 p-4 shadow-soft transition-colors">
       <div className="flex items-center justify-between gap-2">
         <div>
           <div className="text-xs font-extrabold text-faith-ink dark:text-slate-100">Public trust surface</div>
@@ -953,7 +953,7 @@ function PreviewCanvas({
           ï¿½{review.excerpt}ï¿½
         </div>
 
-        <div className="mt-4 rounded-3xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-950 p-4">
+        <div className="mt-4 rounded-3xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-950 p-4">
           <div className="flex items-center gap-2 text-[12px] font-extrabold text-faith-ink dark:text-slate-100">
             <ShieldCheck className="h-4 w-4" style={{ color: EV_GREEN }} />
             Provider response
@@ -1298,7 +1298,7 @@ export default function FaithHubReviewsAndModerationPage() {
 
               <div className="mt-4 grid grid-cols-1 gap-3 xl:grid-cols-[1.1fr_0.9fr]">
                 <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
-                  <div className="rounded-3xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
+                  <div className="rounded-3xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
                     <div className="flex items-start justify-between gap-2">
                       <div>
                         <div className="text-[11px] uppercase tracking-[0.16em] text-faith-slate">Rating trend</div>
@@ -1311,7 +1311,7 @@ export default function FaithHubReviewsAndModerationPage() {
                     </div>
                   </div>
 
-                  <div className="rounded-3xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
+                  <div className="rounded-3xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
                     <div className="flex items-start justify-between gap-2">
                       <div>
                         <div className="text-[11px] uppercase tracking-[0.16em] text-faith-slate">Open issues</div>
@@ -1324,7 +1324,7 @@ export default function FaithHubReviewsAndModerationPage() {
                     </div>
                   </div>
 
-                  <div className="rounded-3xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
+                  <div className="rounded-3xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
                     <div className="flex items-start justify-between gap-2">
                       <div>
                         <div className="text-[11px] uppercase tracking-[0.16em] text-faith-slate">Recovery confidence</div>
@@ -1338,7 +1338,7 @@ export default function FaithHubReviewsAndModerationPage() {
                   </div>
                 </div>
 
-                <div className="rounded-3xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
+                <div className="rounded-3xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
                   <div className="text-[11px] uppercase tracking-[0.16em] text-faith-slate">Sentiment distribution</div>
                   <div className="mt-3 grid grid-cols-3 gap-2">
                     <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
@@ -1397,7 +1397,7 @@ export default function FaithHubReviewsAndModerationPage() {
                     value={search}
                     onChange={(event) => setSearch(event.target.value)}
                     placeholder="Search source, topic, owner, or complaint"
-                    className="h-11 w-full rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 pl-10 pr-4 text-sm text-faith-ink dark:text-slate-100 shadow-soft transition focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-700"
+                    className="h-11 w-full rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 pl-10 pr-4 text-sm text-faith-ink dark:text-slate-100 shadow-soft transition focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-700"
                   />
                 </div>
 
@@ -1546,7 +1546,7 @@ export default function FaithHubReviewsAndModerationPage() {
                       value={responseBody}
                       onChange={(event) => setResponseBody(event.target.value)}
                       rows={8}
-                      className="mt-2 w-full rounded-3xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 p-4 text-sm text-faith-ink dark:text-slate-100 shadow-soft transition focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-700"
+                      className="mt-2 w-full rounded-3xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 p-4 text-sm text-faith-ink dark:text-slate-100 shadow-soft transition focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-700"
                     />
 
                     <div className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2">
@@ -1556,7 +1556,7 @@ export default function FaithHubReviewsAndModerationPage() {
                           value={collabNotes}
                           onChange={(event) => setCollabNotes(event.target.value)}
                           rows={4}
-                          className="mt-2 w-full rounded-3xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 text-sm text-faith-ink dark:text-slate-100 shadow-soft transition focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-700"
+                          className="mt-2 w-full rounded-3xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 text-sm text-faith-ink dark:text-slate-100 shadow-soft transition focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-700"
                         />
                       </div>
 
@@ -1566,7 +1566,7 @@ export default function FaithHubReviewsAndModerationPage() {
                           <select
                             value={approvalRoute}
                             onChange={(event) => setApprovalRoute(event.target.value)}
-                            className="mt-2 h-12 w-full rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 px-4 text-sm text-faith-ink dark:text-slate-100 shadow-soft transition focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-700"
+                            className="mt-2 h-12 w-full rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 px-4 text-sm text-faith-ink dark:text-slate-100 shadow-soft transition focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-700"
                           >
                             <option>Communications lead ? Pastoral lead</option>
                             <option>Communications lead only</option>
@@ -1774,7 +1774,7 @@ export default function FaithHubReviewsAndModerationPage() {
             >
               <div className="space-y-3">
                 {policySeed.map((policy) => (
-                  <div key={policy.title} className="rounded-3xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
+                  <div key={policy.title} className="rounded-3xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
                     <div className="flex items-start justify-between gap-3">
                       <div>
                         <div className="text-[13px] font-extrabold text-faith-ink dark:text-slate-100">{policy.title}</div>
@@ -1841,7 +1841,7 @@ export default function FaithHubReviewsAndModerationPage() {
             >
               <div className="space-y-3">
                 {recoveryInsightsSeed.map((insight) => (
-                  <div key={insight.title} className="rounded-3xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
+                  <div key={insight.title} className="rounded-3xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0">
                         <div className="text-[13px] font-extrabold text-faith-ink dark:text-slate-100">{insight.title}</div>
@@ -2017,7 +2017,7 @@ export default function FaithHubReviewsAndModerationPage() {
 
       {toast ? (
         <div className="fixed bottom-6 left-1/2 z-[120] -translate-x-1/2">
-          <div className="rounded-full bg-slate-900 text-white px-4 py-2 text-xs font-bold shadow-2xl">
+          <div className="rounded-full bg-slate-900 text-white px-4 py-2 text-xs font-bold shadow-medium">
             {toast}
           </div>
         </div>

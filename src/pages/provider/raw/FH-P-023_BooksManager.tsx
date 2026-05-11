@@ -658,7 +658,7 @@ function Drawer({
               ) : null}
             </div>
             <button
-              className="h-9 w-9 rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-700 grid place-items-center transition-colors"
+              className="h-9 w-9 rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-700 grid place-items-center transition-colors"
               onClick={onClose}
               aria-label="Close preview"
             >
@@ -684,7 +684,7 @@ function SegmentedToggle({
   onChange: (v: "left" | "right") => void;
 }) {
   return (
-    <div className="inline-flex rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-1 transition-colors">
+    <div className="inline-flex rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-1 transition-colors">
       <button
         type="button"
         onClick={() => onChange("left")}
@@ -737,7 +737,7 @@ function MetricCard({
 
 function TagChip({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-flex items-center rounded-full border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 px-3 py-1 text-[11px] font-semibold text-slate-700 dark:text-slate-300 mr-2 mb-2 transition-colors">
+    <span className="inline-flex items-center rounded-full border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 px-3 py-1 text-[11px] font-semibold text-slate-700 dark:text-slate-300 mr-2 mb-2 transition-colors">
       {children}
     </span>
   );
@@ -810,25 +810,25 @@ function BookRow({
           </div>
 
           <div className="mt-3 grid grid-cols-2 sm:grid-cols-4 gap-2 text-[11px]">
-            <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-2">
+            <div className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-2">
               <div className="text-faith-slate">Reading starts</div>
               <div className="mt-1 font-black text-faith-ink dark:text-slate-100">
                 {fmtInt(book.readingStarts)}
               </div>
             </div>
-            <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-2">
+            <div className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-2">
               <div className="text-faith-slate">Downloads</div>
               <div className="mt-1 font-black text-faith-ink dark:text-slate-100">
                 {fmtInt(book.downloads)}
               </div>
             </div>
-            <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-2">
+            <div className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-2">
               <div className="text-faith-slate">Reviews</div>
               <div className="mt-1 font-black text-faith-ink dark:text-slate-100">
                 {fmtInt(book.reviews)}
               </div>
             </div>
-            <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-2">
+            <div className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-2">
               <div className="text-faith-slate">Revenue</div>
               <div className="mt-1 font-black text-faith-ink dark:text-slate-100">
                 {book.revenue ? money(book.revenue) : "—"}
@@ -873,7 +873,7 @@ function BookStorefrontPreview({
 }) {
   const wrapperClass =
     mode === "desktop"
-      ? "rounded-[32px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 overflow-hidden shadow-soft transition-colors"
+      ? "rounded-[32px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 overflow-hidden shadow-soft transition-colors"
       : "mx-auto w-full max-w-[420px] rounded-[38px] bg-slate-900 dark:bg-black p-3 shadow-[0_24px_60px_rgba(15,23,42,0.35)]";
 
   return (
@@ -939,7 +939,7 @@ function BookStorefrontPreviewInner({
         </div>
 
         <div className="mt-4 grid grid-cols-3 gap-2">
-          <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-2">
+          <div className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-2">
             <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">
               Starts
             </div>
@@ -947,7 +947,7 @@ function BookStorefrontPreviewInner({
               {fmtInt(book.readingStarts)}
             </div>
           </div>
-          <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-2">
+          <div className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-2">
             <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">
               Downloads
             </div>
@@ -955,7 +955,7 @@ function BookStorefrontPreviewInner({
               {fmtInt(book.downloads)}
             </div>
           </div>
-          <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-2">
+          <div className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-2">
             <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">
               Reviews
             </div>
@@ -969,7 +969,7 @@ function BookStorefrontPreviewInner({
           {book.description}
         </div>
 
-        <div className="mt-4 rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 transition-colors">
+        <div className="mt-4 rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 transition-colors">
           <div className="text-[11px] uppercase tracking-[0.16em] text-faith-slate">
             Chapter preview
           </div>
@@ -977,7 +977,7 @@ function BookStorefrontPreviewInner({
             {book.chapters.slice(0, 3).map((chapter) => (
               <div
                 key={chapter.id}
-                className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] transition-colors"
+                className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] transition-colors"
               >
                 <div className="font-semibold text-faith-ink dark:text-slate-100">
                   {chapter.title}
@@ -996,7 +996,7 @@ function BookStorefrontPreviewInner({
           ))}
         </div>
 
-        <div className="mt-4 rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors">
+        <div className="mt-4 rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors">
           <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
             Why this book matters
           </div>
@@ -1077,7 +1077,7 @@ export default function BooksManagerPage() {
   return (
     <div className="min-h-screen w-full bg-[var(--fh-page-bg)] dark:bg-slate-950 text-faith-ink dark:text-slate-50 transition-colors">
       <div className="mx-auto max-w-[1600px] px-4 md:px-6 lg:px-8 py-6">
-        <section className="rounded-[34px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-5 md:p-6 transition-colors overflow-hidden relative">
+        <section className="rounded-[34px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-5 md:p-6 transition-colors overflow-hidden relative">
           <div
             className="absolute inset-x-0 top-0 h-24 opacity-60"
             style={{
@@ -1131,7 +1131,7 @@ export default function BooksManagerPage() {
           </div>
         </section>
 
-        <section className="mt-4 rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-5 py-3 transition-colors">
+        <section className="mt-4 rounded-[28px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-5 py-3 transition-colors">
           <div className="flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
             <div className="text-[13px] text-faith-slate">
               <span className="font-semibold text-faith-ink dark:text-slate-100">Books library pulse:</span>{" "}
@@ -1204,14 +1204,14 @@ export default function BooksManagerPage() {
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                     placeholder="Search books, authors, formats, or themes"
-                    className="w-full rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 pl-10 pr-4 py-3 text-[13px] outline-none focus:ring-2 focus:ring-emerald-200 dark:focus:ring-emerald-800 text-faith-ink dark:text-slate-100 transition-colors"
+                    className="w-full rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 pl-10 pr-4 py-3 text-[13px] outline-none focus:ring-2 focus:ring-emerald-200 dark:focus:ring-emerald-800 text-faith-ink dark:text-slate-100 transition-colors"
                   />
                 </div>
 
                 <select
                   value={statusFilter}
                   onChange={(e) => setStatusFilter(e.target.value as "All" | BookStatus)}
-                  className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 px-4 py-3 text-[13px] font-semibold text-faith-ink dark:text-slate-100 transition-colors"
+                  className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 px-4 py-3 text-[13px] font-semibold text-faith-ink dark:text-slate-100 transition-colors"
                 >
                   {["All", "Draft", "Scheduled", "Published", "Archived"].map((status) => (
                     <option key={status} value={status}>
@@ -1223,7 +1223,7 @@ export default function BooksManagerPage() {
                 <select
                   value={typeFilter}
                   onChange={(e) => setTypeFilter(e.target.value as "All" | BookKind)}
-                  className="rounded-2xl border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 px-4 py-3 text-[13px] font-semibold text-faith-ink dark:text-slate-100 transition-colors"
+                  className="rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 px-4 py-3 text-[13px] font-semibold text-faith-ink dark:text-slate-100 transition-colors"
                 >
                   {["All", "Devotional", "Study Guide", "Manual", "eBook", "Prayer Journal", "Course Reader"].map((kind) => (
                     <option key={kind} value={kind}>
@@ -1262,7 +1262,7 @@ export default function BooksManagerPage() {
               subtitle="Readiness, approvals, translations, and premium metadata health."
               right={<Pill text={`${score}% ready`} tone={score >= 85 ? "good" : score >= 60 ? "warn" : "danger"} icon={<ShieldCheck className="h-3.5 w-3.5" />} />}
             >
-              <div className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 transition-colors">
+              <div className="rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 transition-colors">
                 <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                   Selected book
                 </div>
@@ -1277,7 +1277,7 @@ export default function BooksManagerPage() {
                   {issues.map((issue) => (
                     <div
                       key={issue}
-                      className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] text-slate-700 dark:text-slate-300 transition-colors"
+                      className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] text-slate-700 dark:text-slate-300 transition-colors"
                     >
                       {issue}
                     </div>
@@ -1286,7 +1286,7 @@ export default function BooksManagerPage() {
               </div>
 
               <div className="mt-4 grid grid-cols-2 gap-3">
-                <div className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 p-3 transition-colors">
+                <div className="rounded-[22px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 p-3 transition-colors">
                   <div className="text-[10px] uppercase tracking-[0.14em] text-faith-slate">
                     Cover + media
                   </div>
@@ -1297,7 +1297,7 @@ export default function BooksManagerPage() {
                     </div>
                   </div>
                 </div>
-                <div className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 p-3 transition-colors">
+                <div className="rounded-[22px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 p-3 transition-colors">
                   <div className="text-[10px] uppercase tracking-[0.14em] text-faith-slate">
                     Localization
                   </div>
@@ -1320,7 +1320,7 @@ export default function BooksManagerPage() {
                 {selectedBook.versions.map((version) => (
                   <div
                     key={version.id}
-                    className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 p-3 transition-colors"
+                    className="rounded-[22px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 p-3 transition-colors"
                   >
                     <div className="flex items-start justify-between gap-2">
                       <div className="min-w-0">
@@ -1356,7 +1356,7 @@ export default function BooksManagerPage() {
                 {selectedBook.hooks.map((hook) => (
                   <div
                     key={hook.id}
-                    className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 p-3 transition-colors"
+                    className="rounded-[22px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 p-3 transition-colors"
                   >
                     <div className="flex items-start justify-between gap-2">
                       <div className="min-w-0">
@@ -1420,7 +1420,7 @@ export default function BooksManagerPage() {
               right={<Pill text="premium insight" tone="good" icon={<BadgeCheck className="h-3.5 w-3.5" />} />}
             >
               <div className="grid grid-cols-2 gap-3">
-                <div className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
+                <div className="rounded-[22px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
                   <div className="text-[10px] uppercase tracking-[0.14em] text-faith-slate">
                     Completion rate
                   </div>
@@ -1431,7 +1431,7 @@ export default function BooksManagerPage() {
                     Readers reaching the last third of the book.
                   </div>
                 </div>
-                <div className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
+                <div className="rounded-[22px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
                   <div className="text-[10px] uppercase tracking-[0.14em] text-faith-slate">
                     Review strength
                   </div>
@@ -1442,7 +1442,7 @@ export default function BooksManagerPage() {
                     Public trust and reader sentiment signals.
                   </div>
                 </div>
-                <div className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
+                <div className="rounded-[22px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
                   <div className="text-[10px] uppercase tracking-[0.14em] text-faith-slate">
                     Connected objects
                   </div>
@@ -1453,7 +1453,7 @@ export default function BooksManagerPage() {
                     Live Sessions, events, Beacon, or funding hooks.
                   </div>
                 </div>
-                <div className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
+                <div className="rounded-[22px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
                   <div className="text-[10px] uppercase tracking-[0.14em] text-faith-slate">
                     Premium access
                   </div>
@@ -1479,7 +1479,7 @@ export default function BooksManagerPage() {
               {TEMPLATE_CARDS.map((template) => (
                 <div
                   key={template.id}
-                  className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 p-4 transition-colors"
+                  className="rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 p-4 transition-colors"
                 >
                   <div
                     className="h-2 w-16 rounded-full"
@@ -1525,7 +1525,7 @@ export default function BooksManagerPage() {
               {COLLECTIONS.map((collection) => (
                 <div
                   key={collection.id}
-                  className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 p-4 transition-colors"
+                  className="rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 p-4 transition-colors"
                 >
                   <div className="text-[16px] font-bold text-faith-ink dark:text-slate-100">
                     {collection.title}
@@ -1545,20 +1545,20 @@ export default function BooksManagerPage() {
             </div>
 
             <div className="mt-4 grid gap-3">
-              <div className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 transition-colors">
+              <div className="rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 transition-colors">
                 <div className="flex flex-wrap items-center gap-2">
                   <Pill text="Approval lane" tone="neutral" icon={<CheckCircle2 className="h-3.5 w-3.5" />} />
                   <Pill text="Translation review" tone="warn" icon={<Languages className="h-3.5 w-3.5" />} />
                   <Pill text="Trust & quality" tone="good" icon={<ShieldCheck className="h-3.5 w-3.5" />} />
                 </div>
                 <div className="mt-3 space-y-2">
-                  <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] text-slate-700 dark:text-slate-300 transition-colors">
+                  <div className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] text-slate-700 dark:text-slate-300 transition-colors">
                     Leadership Foundations Manual is waiting on French appendix review before the scheduled launch window opens.
                   </div>
-                  <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] text-slate-700 dark:text-slate-300 transition-colors">
+                  <div className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] text-slate-700 dark:text-slate-300 transition-colors">
                     Kingdom Stewardship Workbook needs cover alt text and a Beacon creative variant before promotion is unlocked.
                   </div>
-                  <div className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] text-slate-700 dark:text-slate-300 transition-colors">
+                  <div className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] text-slate-700 dark:text-slate-300 transition-colors">
                     Prayer at Dawn Reader is fully clean and can be duplicated into a companion journal or new reading plan.
                   </div>
                 </div>
@@ -1567,7 +1567,7 @@ export default function BooksManagerPage() {
           </Card>
         </section>
 
-        <section className="mt-4 rounded-[28px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-5 transition-colors">
+        <section className="mt-4 rounded-[28px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-5 transition-colors">
           <div className="grid gap-4 xl:grid-cols-[1.1fr_0.9fr_0.9fr]">
             <div>
               <div className="text-[13px] font-semibold text-faith-ink dark:text-slate-100">
@@ -1578,7 +1578,7 @@ export default function BooksManagerPage() {
               </div>
             </div>
 
-            <div className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 transition-colors">
+            <div className="rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 transition-colors">
               <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                 Key linked pages
               </div>
@@ -1590,7 +1590,7 @@ export default function BooksManagerPage() {
               </div>
             </div>
 
-            <div className="rounded-[24px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 transition-colors">
+            <div className="rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4 transition-colors">
               <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                 Primary actions
               </div>
@@ -1627,7 +1627,7 @@ export default function BooksManagerPage() {
             subtitle="Live preview notes for what will appear on the book destination page."
           >
             <div className="space-y-3">
-              <div className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 p-3 transition-colors">
+              <div className="rounded-[22px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 p-3 transition-colors">
                 <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                   Formats visible at launch
                 </div>
@@ -1638,7 +1638,7 @@ export default function BooksManagerPage() {
                 </div>
               </div>
 
-              <div className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 p-3 transition-colors">
+              <div className="rounded-[22px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 p-3 transition-colors">
                 <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                   Connected promotion hooks
                 </div>
@@ -1646,7 +1646,7 @@ export default function BooksManagerPage() {
                   {selectedBook.connectedTo.map((item) => (
                     <div
                       key={item}
-                      className="rounded-2xl border border-faith-line dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-900 px-3 py-2 text-[12px] text-slate-700 dark:text-slate-300 transition-colors"
+                      className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-900 px-3 py-2 text-[12px] text-slate-700 dark:text-slate-300 transition-colors"
                     >
                       {item}
                     </div>
@@ -1654,7 +1654,7 @@ export default function BooksManagerPage() {
                 </div>
               </div>
 
-              <div className="rounded-[22px] border border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 p-3 transition-colors">
+              <div className="rounded-[22px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-950 p-3 transition-colors">
                 <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                   Launch actions
                 </div>
