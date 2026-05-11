@@ -1,5 +1,4 @@
 import {
-  Avatar,
   Box,
   Collapse,
   Divider,
@@ -50,18 +49,6 @@ const sectionIconMap: Record<string, typeof GridViewRoundedIcon> = {
   'Community & Care': GroupsRoundedIcon,
   'Leadership & Team': SupervisorAccountRoundedIcon,
   'Workspace Settings': SettingsRoundedIcon,
-};
-const sectionToneMap: Record<string, { icon: string; bg: string; border: string }> = {
-  'Foundation & Mission Control': { icon: 'var(--fh-brand-dark)', bg: '#e9f8f2', border: '#bfe9d9' },
-  'Content Structure & Teaching Creation': { icon: 'var(--fh-accent)', bg: '#fff2e4', border: '#ffd7ad' },
-  'Live Sessions Operations': { icon: '#64748b', bg: '#edf1f5', border: '#d5dde6' },
-  'Audience & Outreach': { icon: 'var(--fh-brand-dark)', bg: '#e9f8f2', border: '#bfe9d9' },
-  'Post-live & Trust': { icon: 'var(--fh-accent)', bg: '#fff2e4', border: '#ffd7ad' },
-  'Events & Giving': { icon: '#64748b', bg: '#edf1f5', border: '#d5dde6' },
-  Beacon: { icon: 'var(--fh-brand-dark)', bg: '#e9f8f2', border: '#bfe9d9' },
-  'Community & Care': { icon: 'var(--fh-accent)', bg: '#fff2e4', border: '#ffd7ad' },
-  'Leadership & Team': { icon: '#64748b', bg: '#edf1f5', border: '#d5dde6' },
-  'Workspace Settings': { icon: '#64748b', bg: '#edf1f5', border: '#d5dde6' },
 };
 
 function getSidebarPageLabel(input: { key: string; title: string; shortTitle?: string }) {
@@ -214,48 +201,24 @@ export function ProviderSidebar({
                   <Box sx={{ mb: 0.58 }}>
                     {(() => {
                       const SectionIcon = sectionIconMap[group.section] ?? GridViewRoundedIcon;
-                      const tone = sectionToneMap[group.section] ?? sectionToneMap['Workspace Settings'];
                       return (
                     <ListItemButton
                       onClick={() => toggleSection(group.section)}
                       sx={{
-                        px: 1.25,
-                        py: 0.75,
-                        minHeight: 70,
-                        borderRadius: '18px',
-                        border: '1px solid',
-                        borderColor: openSections[group.section] ? (isDark ? '#10b981' : '#15171f') : isDark ? '#334155' : '#d7dfdc',
-                        bgcolor: openSections[group.section]
-                          ? isDark
-                            ? '#0b1220'
-                            : '#f1f6f4'
-                          : isDark
-                            ? '#111827'
-                            : '#fafbfb',
-                        boxShadow: openSections[group.section]
-                          ? '0 10px 28px -24px rgba(0,0,0,0.35)'
-                          : '0 6px 18px -24px rgba(0,0,0,0.3)',
-                        transition: 'all 180ms ease',
+                        px: 1,
+                        py: 0.5,
+                        minHeight: 42,
+                        borderRadius: '10px',
+                        border: '1px solid transparent',
+                        bgcolor: openSections[group.section] ? (isDark ? '#111827' : '#eef2f1') : 'transparent',
+                        transition: 'all 140ms ease',
                         '&:hover': {
-                          bgcolor: 'color-mix(in srgb, var(--fh-brand-soft) 22%, #eef2f4 78%)',
-                          borderColor: 'color-mix(in srgb, var(--fh-brand) 35%, var(--fh-line) 65%)',
+                          bgcolor: isDark ? '#111827' : '#f1f5f4',
                         },
                       }}
                     >
-                      <ListItemIcon sx={{ minWidth: 54 }}>
-                        <Avatar
-                          sx={{
-                            width: 44,
-                            height: 44,
-                            borderRadius: 2.8,
-                            bgcolor: isDark ? '#111827' : tone.bg,
-                            color: tone.icon,
-                            border: '1px solid',
-                            borderColor: isDark ? '#334155' : tone.border,
-                          }}
-                        >
-                          <SectionIcon sx={{ fontSize: 25 }} />
-                        </Avatar>
+                      <ListItemIcon sx={{ minWidth: 28, color: 'var(--fh-slate)' }}>
+                        <SectionIcon sx={{ fontSize: 18 }} />
                       </ListItemIcon>
                       <ListItemText
                         primary={
@@ -263,11 +226,11 @@ export function ProviderSidebar({
                             <Typography
                               sx={{
                                 fontWeight: 700,
-                                fontSize: 15,
-                                letterSpacing: '0.15em',
+                                fontSize: 11,
+                                letterSpacing: '0.12em',
                                 color: 'var(--fh-slate)',
                                 textTransform: 'uppercase',
-                                lineHeight: 1,
+                                lineHeight: 1.2,
                               }}
                             >
                               {group.label}
@@ -278,14 +241,14 @@ export function ProviderSidebar({
                       {openSections[group.section] ? (
                         <KeyboardArrowDownRoundedIcon
                           sx={{
-                            fontSize: 28,
+                            fontSize: 20,
                             color: 'var(--fh-slate)',
                           }}
                         />
                       ) : (
                         <KeyboardArrowRightRoundedIcon
                           sx={{
-                            fontSize: 28,
+                            fontSize: 20,
                             color: 'var(--fh-slate)',
                           }}
                         />
@@ -319,10 +282,10 @@ export function ProviderSidebar({
                                 }}
                                 sx={{
                                   mb: 0.34,
-                                  px: 1.05,
-                                  py: 0.66,
-                                  minHeight: 44,
-                                  borderRadius: '12px',
+                                  px: 0.9,
+                                  py: 0.5,
+                                  minHeight: 36,
+                                  borderRadius: '8px',
                                   border: '1px solid',
                                   borderColor: active
                                     ? 'color-mix(in srgb, var(--fh-brand-dark) 70%, var(--fh-brand) 30%)'
@@ -339,7 +302,7 @@ export function ProviderSidebar({
                                     <Typography
                                       sx={{
                                         fontWeight: active ? 800 : 650,
-                                        fontSize: 13,
+                                        fontSize: 12,
                                         lineHeight: 1.2,
                                         color: active ? 'var(--fh-ink)' : 'var(--fh-slate)',
                                       }}
@@ -370,10 +333,10 @@ export function ProviderSidebar({
                                         }}
                                         sx={{
                                           mb: 0.3,
-                                          px: 0.95,
-                                          py: 0.52,
-                                          minHeight: 38,
-                                          borderRadius: '10px',
+                                          px: 0.8,
+                                          py: 0.4,
+                                          minHeight: 34,
+                                          borderRadius: '8px',
                                           border: '1px solid',
                                           borderColor: childActive ? 'var(--fh-brand-dark)' : 'transparent',
                                           bgcolor: childActive
@@ -388,7 +351,7 @@ export function ProviderSidebar({
                                             <Typography
                                               sx={{
                                                 fontWeight: childActive ? 700 : 500,
-                                                fontSize: 12,
+                                                fontSize: 11,
                                                 lineHeight: 1.2,
                                                 color: childActive ? 'var(--fh-ink)' : 'var(--fh-slate)',
                                               }}
@@ -436,12 +399,12 @@ export function ProviderSidebar({
                         }}
                         title={collapsed ? getSidebarPageLabel(page) : undefined}
                         sx={{
-                          px: collapsed ? 1 : 1.25,
-                          py: 1,
-                          minHeight: 56,
-                          borderRadius: 'var(--fh-radius-2xl)',
+                          px: collapsed ? 0.8 : 1,
+                          py: 0.7,
+                          minHeight: 42,
+                          borderRadius: '10px',
                           border: '1px solid',
-                          borderWidth: active ? 1.5 : 1,
+                          borderWidth: 1,
                           borderColor: active ? 'var(--fh-brand-dark)' : 'var(--fh-line)',
                           bgcolor: active ? 'color-mix(in srgb, var(--fh-brand-soft) 40%, var(--fh-surface-bg) 60%)' : 'var(--fh-surface-bg)',
                           transition: 'all 150ms ease',
@@ -455,19 +418,14 @@ export function ProviderSidebar({
                           },
                         }}
                       >
-                        <ListItemIcon sx={{ minWidth: collapsed ? 0 : 44, mr: collapsed ? 0 : 0 }}>
-                          <Avatar
-                            sx={{
-                              width: 32,
-                              height: 32,
-                              bgcolor: active
-                                ? 'color-mix(in srgb, var(--fh-brand-soft) 72%, var(--fh-surface-bg) 28%)'
-                                : 'color-mix(in srgb, var(--fh-line) 26%, var(--fh-surface-bg) 74%)',
-                              color: active ? 'var(--fh-brand-dark)' : 'var(--fh-slate)',
-                            }}
-                          >
-                            <Icon size={16} />
-                          </Avatar>
+                        <ListItemIcon
+                          sx={{
+                            minWidth: collapsed ? 0 : 30,
+                            mr: collapsed ? 0 : 0.5,
+                            color: active ? 'var(--fh-brand-dark)' : 'var(--fh-slate)',
+                          }}
+                        >
+                          <Icon size={16} />
                         </ListItemIcon>
                         {!collapsed ? (
                           <>
@@ -475,8 +433,8 @@ export function ProviderSidebar({
                               primary={
                                 <Typography
                                   sx={{
-                                    fontWeight: active ? 800 : 700,
-                                    fontSize: 14,
+                                    fontWeight: active ? 800 : 650,
+                                    fontSize: 12,
                                     lineHeight: 1.2,
                                     color: 'var(--fh-ink)',
                                   }}
@@ -512,9 +470,9 @@ export function ProviderSidebar({
                                 sx={{
                                   mb: 0.55,
                                   px: 1,
-                                  py: 0.75,
-                                  minHeight: 44,
-                                  borderRadius: 'var(--fh-radius-xl)',
+                                  py: 0.55,
+                                  minHeight: 36,
+                                  borderRadius: '8px',
                                   border: '1px solid',
                                   borderColor: childActive ? 'var(--fh-brand-dark)' : 'transparent',
                                   bgcolor: childActive
@@ -525,24 +483,20 @@ export function ProviderSidebar({
                                   },
                                 }}
                               >
-                                <ListItemIcon sx={{ minWidth: 34 }}>
-                                  <Avatar
-                                    sx={{
-                                      width: 24,
-                                      height: 24,
-                                      bgcolor: 'transparent',
-                                      color: childActive ? 'var(--fh-brand-dark)' : 'var(--fh-slate)',
-                                    }}
-                                  >
-                                    <ChildIcon size={14} />
-                                  </Avatar>
+                                <ListItemIcon
+                                  sx={{
+                                    minWidth: 24,
+                                    color: childActive ? 'var(--fh-brand-dark)' : 'var(--fh-slate)',
+                                  }}
+                                >
+                                  <ChildIcon size={14} />
                                 </ListItemIcon>
                                 <ListItemText
                                   primary={
                                     <Typography
                                       sx={{
                                         fontWeight: childActive ? 800 : 600,
-                                        fontSize: 13,
+                                        fontSize: 11,
                                         lineHeight: 1.2,
                                         color: childActive ? 'var(--fh-ink)' : 'var(--fh-slate)',
                                       }}
