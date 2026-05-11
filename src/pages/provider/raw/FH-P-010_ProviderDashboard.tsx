@@ -1576,7 +1576,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                   className="mt-2"
                 />
                 <div className="w-full rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3 shadow-soft lg:max-w-[360px] lg:min-w-[320px]">
-                  <div className="mb-2 text-[10px] font-black uppercase tracking-[0.18em] text-[var(--fh-brand-dark)]">
+                  <div className="mb-2 text-[10px] font-black uppercase tracking-[0.18em] text-faith-ink">
                     Priority Action
                   </div>
                   <button
@@ -1584,7 +1584,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                     aria-label={workflowPrimaryLabel}
                     onClick={handlePrimaryCta}
                     className={`inline-flex h-14 w-full items-center justify-center gap-2 rounded-2xl px-6 text-[15px] font-black text-white transition hover:-translate-y-[1px] hover:shadow-lg active:translate-y-0 ${cardFocusRingClass}`}
-                    style={{ background: "linear-gradient(90deg, #03cd8c 0%, #0ea56f 100%)", boxShadow: "0 16px 28px -14px rgba(3,205,140,0.95)" }}
+                    style={{ background: "linear-gradient(90deg, #16244c 0%, #1f2f63 100%)", boxShadow: "0 16px 28px -14px rgba(22,36,76,0.9)" }}
                   >
                     {hasDraftToContinue && continueItem ? <ArrowRight className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
                     {workflowPrimaryLabel}

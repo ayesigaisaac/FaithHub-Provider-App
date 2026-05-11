@@ -118,25 +118,25 @@ export function TeachingsQuickActionsBar({
                   borderColor: action.primary
                     ? 'transparent'
                     : isActive
-                      ? 'var(--fh-brand)'
+                      ? 'var(--fh-ink)'
                       : 'var(--fh-line)',
                   color: action.primary ? '#ffffff' : isActive ? '#ffffff' : 'var(--fh-ink)',
                   background: action.primary
-                    ? 'linear-gradient(90deg, #03cd8c 0%, #0ea56f 100%)'
+                    ? 'linear-gradient(90deg, #16244c 0%, #1f2f63 100%)'
                     : isActive
-                      ? 'color-mix(in srgb, var(--fh-brand) 88%, #0f172a 12%)'
+                      ? 'color-mix(in srgb, var(--fh-ink) 86%, #ffffff 14%)'
                       : 'var(--fh-surface-bg)',
                   boxShadow: action.primary
-                    ? '0 12px 24px -14px rgba(3,205,140,0.9)'
+                    ? '0 12px 24px -14px rgba(22,36,76,0.85)'
                     : isActive
-                      ? '0 10px 20px -16px rgba(3,205,140,0.75)'
+                      ? '0 10px 20px -16px rgba(15,23,42,0.65)'
                       : 'none',
                   '&:hover': {
-                    borderColor: action.primary ? 'transparent' : 'color-mix(in srgb, var(--fh-brand) 35%, var(--fh-line) 65%)',
+                    borderColor: action.primary ? 'transparent' : 'color-mix(in srgb, var(--fh-ink) 35%, var(--fh-line) 65%)',
                     background: action.primary
-                      ? 'linear-gradient(90deg, #02b97f 0%, #0d915f 100%)'
+                      ? 'linear-gradient(90deg, #111c3b 0%, #1b2854 100%)'
                       : isActive
-                        ? 'color-mix(in srgb, var(--fh-brand) 90%, #0f172a 10%)'
+                        ? 'color-mix(in srgb, var(--fh-ink) 90%, #ffffff 10%)'
                         : 'var(--fh-surface)',
                     transform: 'translateY(-1px)',
                   },
