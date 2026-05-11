@@ -2564,6 +2564,24 @@ export default function FaithHubLiveSchedulePage() {
   const agendaSessions = [...filteredSessions].sort(
     (a, b) => toDate(a.startISO).getTime() - toDate(b.startISO).getTime(),
   );
+  const liveNowSessions = useMemo(() => {
+    const now = Date.now();
+    return sessions
+      .filter((session) => {
+        const start = toDate(session.startISO).getTime();
+        const end = toDate(session.endISO).getTime();
+        return now >= start && now <= end;
+      })
+      .sort((a, b) => toDate(a.startISO).getTime() - toDate(b.startISO).getTime());
+  }, [sessions]);
+  const next24hSessionsCount = useMemo(() => {
+    const now = Date.now();
+    const nextDay = now + 24 * 60 * 60 * 1000;
+    return sessions.filter((session) => {
+      const start = toDate(session.startISO).getTime();
+      return start > now && start <= nextDay;
+    }).length;
+  }, [sessions]);
 
   const scheduleHealth = useMemo(() => {
     return sessions.reduce(
@@ -2712,6 +2730,18 @@ export default function FaithHubLiveSchedulePage() {
     safeNav(`${ROUTES.liveDashboard}?sessionId=${target.id}`);
   }
 
+  function focusLiveNow() {
+    if (!liveNowSessions.length) {
+      showToast("No sessions are live at the moment.");
+      return;
+    }
+    const target = liveNowSessions[0];
+    setSelectedSessionId(target.id);
+    setAnchorDate(toDate(target.startISO));
+    setViewMode("agenda");
+    showToast(`Focused on ${target.title}.`);
+  }
+
   function copySelectedCard() {
     const target = selectedSession || firstConflictSession;
     if (!target) return;
@@ -2773,6 +2803,8 @@ export default function FaithHubLiveSchedulePage() {
               <span>{formatMonthHeader(anchorDate)}</span>
               <span>•</span>
               <span>{scheduleHealth.green} green / {scheduleHealth.warn} at risk / {scheduleHealth.blocked} blocked</span>
+              <span>•</span>
+              <span>{liveNowSessions.length} live now / {next24hSessionsCount} in next 24h</span>
             </div>
           </div>
 
@@ -2783,6 +2815,9 @@ export default function FaithHubLiveSchedulePage() {
             <PrimaryButton className="h-10 w-full justify-center px-4" onClick={() => setQuickAddOpen(true)}>
               <Plus className="h-4 w-4" /> Add to schedule
             </PrimaryButton>
+            <SoftButton className="h-10 w-full justify-center px-4" onClick={focusLiveNow}>
+              <Radio className="h-4 w-4" /> Live now ({liveNowSessions.length})
+            </SoftButton>
             <SoftButton
               className="h-10 w-full justify-center px-4"
               onClick={() => {

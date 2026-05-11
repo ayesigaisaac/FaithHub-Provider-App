@@ -102,6 +102,8 @@ type LiveSessionRow = {
   health: HealthStatus;
   backstage: string;
   warning?: string;
+  isLiveNow?: boolean;
+  viewers?: number;
 };
 
 type PipelineItem = {
@@ -713,6 +715,8 @@ const LIVE_SESSIONS: LiveSessionRow[] = [
     health: "Watching",
     backstage: "Host joined � Captioner pending",
     warning: "Caption operator check still open",
+    isLiveNow: true,
+    viewers: 412,
   },
   {
     id: "ls-2",
@@ -723,6 +727,8 @@ const LIVE_SESSIONS: LiveSessionRow[] = [
     readiness: "Ready",
     health: "Healthy",
     backstage: "All roles confirmed",
+    isLiveNow: true,
+    viewers: 255,
   },
   {
     id: "ls-3",
@@ -734,6 +740,7 @@ const LIVE_SESSIONS: LiveSessionRow[] = [
     health: "Watching",
     backstage: "Moderator gap � venue AV unresolved",
     warning: "Venue mic routing conflict detected",
+    viewers: 0,
   },
 ];
 
@@ -1689,6 +1696,62 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                 </div>
               </SectionCard>
             ) : null}
+
+            <SectionCard
+              title="Live Now discovery"
+              subtitle="Sessions currently live, with quick handoff into session controls."
+              titleTag="h2"
+              right={
+                <Pill
+                  text={`${LIVE_SESSIONS.filter((session) => session.isLiveNow).length} live`}
+                  tone="good"
+                  left={<Radio className="h-3.5 w-3.5" />}
+                />
+              }
+              className="bg-[var(--fh-surface)] p-4 sm:p-4 shadow-none"
+            >
+              <div className="space-y-3">
+                {LIVE_SESSIONS.filter((session) => session.isLiveNow).map((session) => (
+                  <div key={session.id} className="rounded-xl border border-faith-line bg-[var(--fh-surface-bg)] p-3.5">
+                    <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                      <div className="min-w-0">
+                        <div className="flex items-center gap-2">
+                          <div className="h-2 w-2 rounded-full bg-emerald-500" />
+                          <h3 className="text-[14px] font-bold text-faith-ink">{session.title}</h3>
+                        </div>
+                        <div className="mt-1 text-[12px] text-slate-700">
+                          {session.time} - {session.campus}
+                        </div>
+                        <div className="mt-1 text-[12px] text-slate-700">{session.audience}</div>
+                        <div className="mt-1 text-[12px] text-slate-700">{session.backstage}</div>
+                        {session.warning ? (
+                          <div className="mt-2 inline-flex rounded-full bg-amber-100 px-2 py-0.5 text-[11px] font-semibold text-amber-900">
+                            {session.warning}
+                          </div>
+                        ) : null}
+                      </div>
+                      <div className="flex flex-col items-start gap-2 sm:items-end">
+                        <Pill text={`${session.viewers ?? 0} watching`} tone="navy" />
+                        <button
+                          type="button"
+                          aria-label={`Open live dashboard for ${session.title}`}
+                          onClick={() => safeNav(ROUTES.liveDashboard)}
+                          className={`inline-flex h-9 items-center gap-2 rounded-lg border border-faith-line bg-[var(--fh-surface)] px-3 text-[11px] font-bold text-faith-ink transition hover:bg-[var(--fh-surface-bg)] ${cardFocusRingClass}`}
+                        >
+                          <MonitorPlay className="h-3.5 w-3.5" />
+                          Open dashboard
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+                {LIVE_SESSIONS.filter((session) => session.isLiveNow).length === 0 ? (
+                  <div className="rounded-xl border border-dashed border-faith-line bg-[var(--fh-surface-bg)] px-4 py-6 text-center text-[12px] text-slate-700">
+                    No sessions are live right now. Upcoming sessions will appear here automatically.
+                  </div>
+                ) : null}
+              </div>
+            </SectionCard>
 
             {recentlyEditedTeachings.length > 0 ? (
               <SectionCard
