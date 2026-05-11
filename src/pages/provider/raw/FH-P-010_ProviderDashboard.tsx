@@ -1575,18 +1575,21 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                   subtitle="Pick up the next teaching action, clear blockers, and publish with confidence."
                   className="mt-2"
                 />
-                <div className="w-full rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3 shadow-soft lg:max-w-[320px] lg:min-w-[280px]">
+                <div className="w-full rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-3 shadow-soft lg:max-w-[360px] lg:min-w-[320px]">
+                  <div className="mb-2 text-[10px] font-black uppercase tracking-[0.18em] text-[var(--fh-brand-dark)]">
+                    Priority Action
+                  </div>
                   <button
                     type="button"
                     aria-label={workflowPrimaryLabel}
                     onClick={handlePrimaryCta}
-                    className={`inline-flex h-12 w-full items-center justify-center gap-2 rounded-2xl px-6 text-[14px] font-extrabold text-white transition hover:-translate-y-[1px] hover:shadow-lg active:translate-y-0 ${cardFocusRingClass}`}
-                    style={{ background: EV_GREEN, boxShadow: "0 12px 24px -14px rgba(3,205,140,0.9)" }}
+                    className={`inline-flex h-14 w-full items-center justify-center gap-2 rounded-2xl px-6 text-[15px] font-black text-white transition hover:-translate-y-[1px] hover:shadow-lg active:translate-y-0 ${cardFocusRingClass}`}
+                    style={{ background: "linear-gradient(90deg, #03cd8c 0%, #0ea56f 100%)", boxShadow: "0 16px 28px -14px rgba(3,205,140,0.95)" }}
                   >
                     {hasDraftToContinue && continueItem ? <ArrowRight className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
                     {workflowPrimaryLabel}
                   </button>
-                  <p className="mt-2 text-center text-[12px] font-medium text-slate-700">
+                  <p className="mt-2 text-center text-[12px] font-semibold text-slate-700">
                     {hasDraftToContinue && continueItem
                       ? "Resume your latest draft and finish faster."
                       : "Get started by creating your first teaching."}
@@ -1607,7 +1610,8 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                   ) : null}
                 </div>
               </div>
-              <div className="mt-4">
+              <div className="mt-5 rounded-2xl border border-faith-line/60 bg-[var(--fh-surface)] p-3">
+                <div className="mb-2 text-[10px] font-black uppercase tracking-[0.18em] text-slate-500">Next Actions</div>
                 <TeachingsQuickActionsBar
                   activeAction={activeQuickAction}
                   loadingAction={loadingQuickAction}
