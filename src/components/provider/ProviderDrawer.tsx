@@ -36,7 +36,7 @@ export function ProviderDrawer({
     <div className="fixed inset-0" style={{ zIndex }}>
       <div className="absolute inset-0 bg-slate-900/40 backdrop-blur-sm" onClick={onClose} />
       <div
-        className={`absolute right-0 top-0 h-full w-full bg-[var(--fh-surface-bg)] shadow-2xl ${maxWidthClassName}`}
+        className={`absolute right-0 top-0 h-full w-full bg-[var(--fh-surface-bg)] shadow-medium ${maxWidthClassName}`}
       >
         <div className="flex h-full flex-col">
           <div className="border-b border-faith-line px-4 py-3 sm:px-6 sm:py-4">
@@ -48,7 +48,7 @@ export function ProviderDrawer({
               <button
                 type="button"
                 onClick={onClose}
-                className="grid h-9 w-9 place-items-center rounded-2xl border border-faith-line text-faith-slate transition hover:bg-[var(--fh-surface)]"
+                className="grid h-9 w-9 place-items-center rounded-2xl border border-faith-line/70 text-faith-slate transition hover:bg-[var(--fh-surface)]"
                 aria-label="Close"
               >
                 <X className="h-4 w-4" />
