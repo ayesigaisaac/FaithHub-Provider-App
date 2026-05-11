@@ -1566,7 +1566,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
     return (
       <div className="min-h-screen w-full bg-[var(--fh-page-bg)] text-faith-ink transition-colors dark:bg-slate-950 dark:text-slate-100">
         <div className="w-full max-w-none px-0 py-0">
-          <div className="space-y-6 sm:space-y-7">
+          <div className="space-y-8 sm:space-y-10">
             <section className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 sm:p-5">
               <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
                 <ProviderPageTitle
@@ -1610,7 +1610,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                   ) : null}
                 </div>
               </div>
-              <div className="mt-5 rounded-2xl border border-faith-line/60 bg-[var(--fh-surface)] p-3">
+              <div className="mt-6 rounded-2xl border border-faith-line/60 bg-[var(--fh-surface)] p-4 sm:p-5">
                 <div className="mb-2 text-[10px] font-black uppercase tracking-[0.18em] text-slate-500">Next Actions</div>
                 <TeachingsQuickActionsBar
                   activeAction={activeQuickAction}
@@ -1641,7 +1641,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                   }
                 />
               </div>
-              <div className="-mx-1 mt-4 flex gap-2 overflow-x-auto px-1 pb-1 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 sm:pb-0">
+              <div className="-mx-1 mt-6 flex gap-2 overflow-x-auto px-1 pb-1 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 sm:pb-0">
                 <div className="shrink-0">
                   <Pill text={`${filteredRecentTeachings.length} Published`} tone="navy" />
                 </div>
@@ -1652,8 +1652,8 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                   <Pill text={`${needsReviewCount} Needs review`} tone="brand" />
                 </div>
               </div>
-              <div className="mt-4 grid gap-3 md:grid-cols-[minmax(0,1.35fr)_minmax(240px,0.95fr)]">
-                <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4">
+              <div className="mt-6 grid gap-4 sm:gap-5 md:grid-cols-[minmax(0,1.35fr)_minmax(240px,0.95fr)]">
+                <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-5">
                   <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-slate-500">
                     {continueItem ? "Resume now" : "Start here"}
                   </div>
@@ -1666,7 +1666,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                       : "Open a new teaching flow and start building your next sermon, episode, or series update."}
                   </p>
                 </div>
-                <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-4">
+                <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-5">
                   <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-slate-500">Focus today</div>
                   <div className="mt-2 text-[16px] font-black tracking-tight text-faith-ink">{smartNextStep}</div>
                   <p className="mt-2 text-[13px] leading-6 text-slate-700">
