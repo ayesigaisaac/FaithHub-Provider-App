@@ -27,20 +27,26 @@
   --fh-shadow-lg: 0 20px 45px rgba(2, 15, 23, 0.1);
   --fh-shadow-glow: 0 18px 40px rgba(3, 205, 140, 0.18);
 
-  --fh-brand: #03cd8c;
-  --fh-brand-dark: #03cd8c;
-  --fh-brand-soft: #03cd8c1a;
+  /* Primary SaaS tone (modern deep ink-blue) */
+  --fh-brand: #1f2f63;
+  --fh-brand-dark: #16244c;
+  --fh-brand-soft: #1f2f631a;
+  /* Accent highlight (EV Zone orange) */
   --fh-accent: #f77f00;
-  --fh-accent-soft: #f77f001a;
+  --fh-accent-soft: #f77f001f;
+  /* Success / live semantics (EV Zone green, intentionally constrained) */
+  --fh-success: #03cd8c;
+  --fh-success-dark: #02a873;
+  --fh-success-soft: #03cd8c1f;
   --fh-ev-medium-grey: #a6a6a6;
   --fh-ev-light-grey: #f2f2f2;
-  --fh-ink: #0f172a;
-  --fh-slate: #64748b;
-  --fh-muted: #475569;
-  --fh-muted-strong: #334155;
-  --fh-line: #a6a6a6;
-  --fh-surface: #f2f2f2;
-  --fh-page-bg: #f2f2f2;
+  --fh-ink: #0f1b3d;
+  --fh-slate: #5a6785;
+  --fh-muted: #4b5876;
+  --fh-muted-strong: #33415f;
+  --fh-line: #c8d1e3;
+  --fh-surface: #f5f7fb;
+  --fh-page-bg: #eef2f8;
   --fh-surface-bg: #ffffff;
 }
 
