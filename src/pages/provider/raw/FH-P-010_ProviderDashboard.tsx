@@ -1567,7 +1567,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
       <div className="min-h-screen w-full bg-[var(--fh-page-bg)] text-faith-ink transition-colors dark:bg-slate-950 dark:text-slate-100">
         <div className="w-full max-w-none px-0 py-0">
           <div className="space-y-8 sm:space-y-10">
-            <section className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 sm:p-5">
+            <section className="rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-5 sm:p-5">
               <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
                 <ProviderPageTitle
                   icon={<BookOpen className="h-6 w-6" />}
@@ -1610,7 +1610,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                   ) : null}
                 </div>
               </div>
-              <div className="mt-6 rounded-2xl border border-faith-line/60 bg-[var(--fh-surface)] p-4 sm:p-5">
+              <div className="mt-6 rounded-2xl border border-faith-line/60 bg-[var(--fh-surface)] p-5 sm:p-5">
                 <div className="mb-2 text-[10px] font-black uppercase tracking-[0.18em] text-slate-500">Next Actions</div>
                 <TeachingsQuickActionsBar
                   activeAction={activeQuickAction}
@@ -1641,7 +1641,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                   }
                 />
               </div>
-              <div className="-mx-1 mt-6 flex gap-2 overflow-x-auto px-1 pb-1 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 sm:pb-0">
+              <div className="-mx-1 mt-7 flex gap-2.5 overflow-x-auto px-1 pb-1 sm:mx-0 sm:mt-6 sm:flex-wrap sm:overflow-visible sm:px-0 sm:pb-0">
                 <div className="shrink-0">
                   <Pill text={`${filteredRecentTeachings.length} Published`} tone="navy" />
                 </div>
@@ -1652,7 +1652,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                   <Pill text={`${needsReviewCount} Needs review`} tone="brand" />
                 </div>
               </div>
-              <div className="mt-6 grid gap-4 sm:gap-5 md:grid-cols-[minmax(0,1.35fr)_minmax(240px,0.95fr)]">
+              <div className="mt-7 grid gap-5 sm:mt-6 sm:gap-5 md:grid-cols-[minmax(0,1.35fr)_minmax(240px,0.95fr)]">
                 <div className="rounded-2xl border border-faith-line bg-[var(--fh-surface)] p-5">
                   <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-slate-500">
                     {continueItem ? "Resume now" : "Start here"}
