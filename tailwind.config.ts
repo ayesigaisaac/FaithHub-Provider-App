@@ -39,7 +39,8 @@ export default {
         '4xl': 'calc(var(--fh-radius-3xl) + 2px)',
       },
       fontFamily: {
-        sans: ['var(--fh-font-family)', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+        sans: ['var(--fh-font-family-body)', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+        display: ['var(--fh-font-family-heading)', 'var(--fh-font-family-body)', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
       },
       fontSize: {
         xs: 'var(--fh-font-size-xs)',
