@@ -16,7 +16,6 @@ try {
     throw error;
   }
   // Surface config issues during development without crashing local iteration.
-  // eslint-disable-next-line no-console
   console.warn(error);
 }
 

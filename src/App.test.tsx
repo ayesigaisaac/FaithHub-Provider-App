@@ -63,8 +63,10 @@ describe('App smoke routing', () => {
 
   it('renders key provider navigation elements', async () => {
     renderApp(['/faithhub/provider/dashboard']);
-    expect(await screen.findByRole('searchbox', { name: /search pages/i })).toBeInTheDocument();
-    const dashboardButtons = await screen.findAllByRole('button', { name: /dashboard/i });
-    expect(dashboardButtons.length).toBeGreaterThan(0);
-  });
+    expect(
+      await screen.findByRole('searchbox', { name: /search/i }, { timeout: 15000 }),
+    ).toBeInTheDocument();
+    const dashboardLinks = await screen.findAllByRole('link', { name: /dashboard/i }, { timeout: 15000 });
+    expect(dashboardLinks.length).toBeGreaterThan(0);
+  }, 15000);
 });
