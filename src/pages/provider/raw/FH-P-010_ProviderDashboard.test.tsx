@@ -53,6 +53,10 @@ describe("FH-P-010 FaithHub Provider dashboard workflow UX", () => {
 
     const { rerender } = render(<ProviderDashboardPage workflowItemsOverride={withTeaching} />);
     expect(screen.getByRole("button", { name: "Continue editing" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /Start a new teaching draft/i })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /Open moderation and pending reviews/i })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /Go to publish-ready workflow/i })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /Open your current in-progress teaching/i })).toBeInTheDocument();
 
     rerender(<ProviderDashboardPage workflowItemsOverride={withoutTeaching} />);
     expect(screen.queryByRole("button", { name: "Continue editing" })).not.toBeInTheDocument();

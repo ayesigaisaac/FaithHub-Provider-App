@@ -1609,9 +1609,9 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
               </div>
               <div className="mt-4">
                 <TeachingsQuickActionsBar
-                  continueLabel={workflowPrimaryLabel}
                   activeAction={activeQuickAction}
                   loadingAction={loadingQuickAction}
+                  canContinueEditing={Boolean(hasDraftToContinue && continueItem)}
                   onContinueEditing={() =>
                     runQuickWorkflowAction("continue-editing", () => {
                       handlePrimaryCta();

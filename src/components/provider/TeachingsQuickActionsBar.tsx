@@ -3,38 +3,54 @@ import { ArrowRight, BookOpen, Flag, Send } from 'lucide-react';
 import { teachingsQuickActions, type TeachingsQuickActionKey } from '@/navigation/teachingsQuickActions';
 
 type TeachingsQuickActionsBarProps = {
-  continueLabel: string;
   activeAction?: TeachingsQuickActionKey | null;
   loadingAction?: TeachingsQuickActionKey | null;
+  canContinueEditing?: boolean;
   onContinueEditing: () => void;
   onCreateTeaching: () => void;
   onReview: () => void;
   onPublish: () => void;
 };
 
-function actionMeta(continueLabel: string) {
-  return teachingsQuickActions.map((item) => ({
+function actionMeta() {
+  const byKey = new Map(
+    teachingsQuickActions.map((item) => [
+      item.key,
+      {
+        ...item,
+        label:
+          item.key === 'create-teaching' ? 'Create' :
+          item.key === 'continue-editing' ? 'Continue Editing' :
+          item.label,
+      },
+    ]),
+  );
+
+  const orderedKeys: TeachingsQuickActionKey[] = ['create-teaching', 'review', 'publish', 'continue-editing'];
+  return orderedKeys.map((key) => {
+    const item = byKey.get(key)!;
+    return {
     ...item,
-    label: item.key === 'continue-editing' ? continueLabel : item.label,
     icon:
       item.key === 'continue-editing' ? <ArrowRight size={16} /> :
       item.key === 'create-teaching' ? <BookOpen size={16} /> :
       item.key === 'review' ? <Flag size={16} /> :
       <Send size={16} />,
-    primary: item.key === 'continue-editing',
-  }));
+    primary: item.key === 'create-teaching',
+    };
+  });
 }
 
 export function TeachingsQuickActionsBar({
-  continueLabel,
   activeAction,
   loadingAction,
+  canContinueEditing = true,
   onContinueEditing,
   onCreateTeaching,
   onReview,
   onPublish,
 }: TeachingsQuickActionsBarProps) {
-  const actions = actionMeta(continueLabel);
+  const actions = actionMeta();
 
   const onClickByKey: Record<TeachingsQuickActionKey, () => void> = {
     'continue-editing': onContinueEditing,
@@ -79,13 +95,15 @@ export function TeachingsQuickActionsBar({
         {actions.map((action) => {
           const isActive = activeAction === action.key;
           const isLoading = loadingAction === action.key;
+          const isDisabled =
+            Boolean(loadingAction) || (action.key === 'continue-editing' && !canContinueEditing);
 
           return (
             <Tooltip key={action.key} title={`${action.hint} (${action.shortcut})`} arrow>
               <Button
                 type="button"
                 onClick={onClickByKey[action.key]}
-                disabled={Boolean(loadingAction)}
+                disabled={isDisabled}
                 startIcon={action.icon}
                 variant={action.primary ? 'contained' : isActive ? 'contained' : 'outlined'}
                 sx={{
