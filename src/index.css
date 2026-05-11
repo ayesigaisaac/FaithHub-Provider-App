@@ -22,9 +22,9 @@
   --fh-radius-2xl: 28px;
   --fh-radius-3xl: 34px;
 
-  --fh-shadow-sm: 0 8px 20px rgba(2, 15, 23, 0.06);
-  --fh-shadow-md: 0 14px 28px rgba(2, 15, 23, 0.08);
-  --fh-shadow-lg: 0 20px 45px rgba(2, 15, 23, 0.1);
+  --fh-shadow-sm: 0 4px 14px rgba(15, 23, 42, 0.06);
+  --fh-shadow-md: 0 8px 20px rgba(15, 23, 42, 0.08);
+  --fh-shadow-lg: 0 14px 30px rgba(15, 23, 42, 0.1);
   --fh-shadow-glow: 0 18px 40px rgba(3, 205, 140, 0.18);
 
   /* Primary SaaS tone (modern deep ink-blue) */
@@ -137,9 +137,9 @@ video {
 
 .page-surface {
   border-radius: var(--fh-radius-2xl);
-  border: 1px solid color-mix(in srgb, var(--fh-line) 82%, transparent);
+  border: 1px solid color-mix(in srgb, var(--fh-line) 62%, transparent);
   background: color-mix(in srgb, var(--fh-surface-bg) 90%, transparent);
-  box-shadow: var(--fh-shadow-lg);
+  box-shadow: var(--fh-shadow-md);
   backdrop-filter: blur(8px);
 }
 
@@ -153,7 +153,7 @@ video {
 
 .command-panel {
   border-radius: var(--fh-radius-xl);
-  border: 1px solid var(--fh-line);
+  border: 1px solid color-mix(in srgb, var(--fh-line) 60%, transparent);
   background: color-mix(in srgb, var(--fh-surface-bg) 92%, transparent);
   box-shadow: var(--fh-shadow-sm);
   backdrop-filter: blur(8px);
@@ -197,7 +197,7 @@ video {
 
 .ds-card {
   border-radius: var(--fh-radius-2xl);
-  border: 1px solid var(--fh-line);
+  border: 1px solid color-mix(in srgb, var(--fh-line) 60%, transparent);
   background: var(--fh-surface-bg);
   box-shadow: var(--fh-shadow-sm);
 }

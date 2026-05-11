@@ -90,7 +90,7 @@ export function KpiTile({
   return (
     <div
       className={cx(
-        "rounded-2xl border border-faith-line bg-[var(--fh-surface-bg)] p-4 shadow-soft transition-colors",
+        "rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 shadow-soft transition-colors",
         minHeightClass,
         borderTone,
         className,
