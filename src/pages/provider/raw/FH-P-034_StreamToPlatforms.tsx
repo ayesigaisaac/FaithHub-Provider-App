@@ -1302,7 +1302,7 @@ export default function StreamToPlatformsPage() {
                 right={<Badge tone="orange">{selectedPreset.chip}</Badge>}
               />
 
-              <div className="mt-4 overflow-hidden rounded-[14px] ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft">
+              <div className="mt-4 hidden overflow-hidden rounded-[14px] ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft md:block">
                 <div className="grid grid-cols-12 gap-2 bg-[var(--fh-surface)] dark:bg-slate-900/50 px-4 py-3 text-[10px] font-bold text-faith-slate uppercase tracking-wider">
                   <div className="col-span-1">Order</div>
                   <div className="col-span-3">Destination</div>
@@ -1364,6 +1364,66 @@ export default function StreamToPlatformsPage() {
                     <div className="px-4 py-8 text-sm text-faith-slate">No active destinations yet. Connect or enable at least one surface to build the routing plan.</div>
                   ) : null}
                 </div>
+              </div>
+
+              <div className="mt-4 space-y-3 md:hidden">
+                {activeDestinations.map((d, index) => (
+                  <div key={`mobile-route-${d.id}`} className="rounded-[14px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3 shadow-soft">
+                    <div className="flex items-start justify-between gap-2">
+                      <div className="min-w-0">
+                        <div className="text-sm font-bold text-faith-ink">{d.name}</div>
+                        <div className="mt-0.5 text-[11px] text-faith-slate">{d.family}</div>
+                      </div>
+                      <div className="inline-flex h-7 min-w-7 items-center justify-center rounded-full px-2 text-[11px] font-black text-white" style={{ background: index === 0 ? EV_GREEN : EV_ORANGE }}>
+                        {d.routeOrder}
+                      </div>
+                    </div>
+                    <div className="mt-2 grid grid-cols-2 gap-2 text-[11px]">
+                      <div className="rounded-lg bg-[var(--fh-surface)] px-2.5 py-2">
+                        <div className="text-[10px] uppercase tracking-[0.12em] text-faith-slate">Variant</div>
+                        <div className="mt-0.5 font-semibold text-faith-ink">{d.creativeVariant}</div>
+                      </div>
+                      <div className="rounded-lg bg-[var(--fh-surface)] px-2.5 py-2">
+                        <div className="text-[10px] uppercase tracking-[0.12em] text-faith-slate">Language</div>
+                        <div className="mt-0.5 font-semibold text-faith-ink">{d.settings.languageTrack || 'Default'}</div>
+                      </div>
+                    </div>
+                    <div className="mt-2 rounded-lg bg-[var(--fh-surface)] px-2.5 py-2 text-[11px]">
+                      <div className="text-[10px] uppercase tracking-[0.12em] text-faith-slate">Fallback</div>
+                      <div className="mt-0.5 font-semibold text-faith-ink">{d.fallbackRule}</div>
+                    </div>
+                    <div className="mt-3 flex items-center justify-end gap-2">
+                      <button
+                        onClick={() => moveRoute(d.id, -1)}
+                        disabled={index === 0}
+                        className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-[var(--fh-surface-bg)] ring-1 ring-slate-200 text-slate-800 disabled:opacity-40 disabled:cursor-not-allowed"
+                        title="Move up"
+                      >
+                        <ChevronLeft className="h-4 w-4" />
+                      </button>
+                      <button
+                        onClick={() => moveRoute(d.id, 1)}
+                        disabled={index === activeDestinations.length - 1}
+                        className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-[var(--fh-surface-bg)] ring-1 ring-slate-200 text-slate-800 disabled:opacity-40 disabled:cursor-not-allowed"
+                        title="Move down"
+                      >
+                        <ChevronRight className="h-4 w-4" />
+                      </button>
+                      <button
+                        onClick={() => openAdvanced(d.id)}
+                        className="inline-flex h-8 items-center gap-1 rounded-xl bg-slate-900 px-3 text-[11px] font-semibold text-white"
+                      >
+                        <Settings2 className="h-3.5 w-3.5" />
+                        Edit
+                      </button>
+                    </div>
+                  </div>
+                ))}
+                {!activeDestinations.length ? (
+                  <div className="rounded-[14px] border border-faith-line/70 bg-[var(--fh-surface)] px-4 py-6 text-center text-sm text-faith-slate">
+                    No active destinations yet. Connect or enable at least one surface to build the routing plan.
+                  </div>
+                ) : null}
               </div>
 
               <div className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-2">

@@ -1417,7 +1417,7 @@ export default function FaithHubLiveDashboardPage() {
                 <Pill text={session.parentLabel} />
               </div>
 
-              <div className="mt-4 grid grid-cols-2 gap-2">
+              <div className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2">
                 <TimeBadge label={countdownLabel} values={session.state === "Upcoming" ? untilStart : session.state === "Live" ? sinceStart : sinceEnd} />
                 <TimeBadge label={session.state === "Ended" ? "Replay window" : "Ends in"} values={session.state === "Ended" ? sinceEnd : untilEnd} />
               </div>
@@ -1430,7 +1430,7 @@ export default function FaithHubLiveDashboardPage() {
                 <div className="mt-1 text-[11px] text-faith-slate">{formatDateTime(session.startISO)} � {session.timezone}</div>
               </div>
 
-              <div className="mt-4 grid grid-cols-2 gap-2">
+              <div className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2">
                 <div className="rounded-lg border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
                   <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-faith-slate">Host</div>
                   <div className="mt-1 text-[13px] font-semibold text-faith-ink dark:text-slate-100">{session.hosts.host}</div>
@@ -1587,7 +1587,7 @@ export default function FaithHubLiveDashboardPage() {
                 </div>
               </div>
 
-              <div className="mt-4 grid sm:grid-cols-3 gap-3">
+              <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div className="rounded-lg border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 transition-colors">
                   <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-faith-slate">Q&A load</div>
                   <div className="mt-1 text-[18px] font-black text-faith-ink dark:text-slate-100">{session.audience.qnaLoad}</div>

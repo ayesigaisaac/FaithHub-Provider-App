@@ -2098,7 +2098,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
               <div
                 role="status"
                 aria-live="polite"
-                className="fixed bottom-4 right-4 z-50 rounded-xl border border-faith-line/70 bg-[var(--fh-surface)] px-4 py-2 text-[12px] font-semibold text-faith-ink shadow-soft"
+                className="fixed bottom-20 left-1/2 z-50 w-[calc(100%-1.5rem)] max-w-md -translate-x-1/2 rounded-xl border border-faith-line/70 bg-[var(--fh-surface)] px-4 py-2 text-center text-[12px] font-semibold text-faith-ink shadow-soft sm:bottom-4 sm:left-auto sm:right-4 sm:w-auto sm:max-w-none sm:translate-x-0 sm:text-left"
               >
                 {actionToast}
               </div>
