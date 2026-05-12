@@ -129,6 +129,9 @@ type HomeEngagementState = {
   followedProviderIds: string[];
   streamReactionCounts: Record<string, number>;
   streamInteractionCounts: Record<string, number>;
+  streamRaisedHands: Record<string, number>;
+  streamPrayerRequestCounts: Record<string, number>;
+  streamLiveComments: Record<string, string[]>;
   unreadNotifications: number;
 };
 
@@ -136,6 +139,9 @@ const defaultEngagementState: HomeEngagementState = {
   followedProviderIds: [],
   streamReactionCounts: {},
   streamInteractionCounts: {},
+  streamRaisedHands: {},
+  streamPrayerRequestCounts: {},
+  streamLiveComments: {},
   unreadNotifications: 4,
 };
 
@@ -498,6 +504,7 @@ export default function FaithHubHomeLandingPageV3Fixed() {
   const [liveState, setLiveState] = React.useState(() => localLiveSessionsApi.getState());
   const [profileCards, setProfileCards] = React.useState<ProviderProfileCard[]>(() => buildProfileCardsFromStorage());
   const [engagementState, setEngagementState] = React.useState<HomeEngagementState>(defaultEngagementState);
+  const [liveCommentDrafts, setLiveCommentDrafts] = React.useState<Record<string, string>>({});
 
   const trackHomeEvent = React.useCallback((eventName: string, payload?: Record<string, unknown>) => {
     if (typeof window === "undefined") return;
@@ -544,6 +551,9 @@ export default function FaithHubHomeLandingPageV3Fixed() {
         followedProviderIds: Array.isArray(parsed.followedProviderIds) ? parsed.followedProviderIds : prev.followedProviderIds,
         streamReactionCounts: parsed.streamReactionCounts && typeof parsed.streamReactionCounts === "object" ? parsed.streamReactionCounts : prev.streamReactionCounts,
         streamInteractionCounts: parsed.streamInteractionCounts && typeof parsed.streamInteractionCounts === "object" ? parsed.streamInteractionCounts : prev.streamInteractionCounts,
+        streamRaisedHands: parsed.streamRaisedHands && typeof parsed.streamRaisedHands === "object" ? parsed.streamRaisedHands : prev.streamRaisedHands,
+        streamPrayerRequestCounts: parsed.streamPrayerRequestCounts && typeof parsed.streamPrayerRequestCounts === "object" ? parsed.streamPrayerRequestCounts : prev.streamPrayerRequestCounts,
+        streamLiveComments: parsed.streamLiveComments && typeof parsed.streamLiveComments === "object" ? parsed.streamLiveComments : prev.streamLiveComments,
       }));
     } catch {
       // no-op
@@ -669,6 +679,46 @@ export default function FaithHubHomeLandingPageV3Fixed() {
   const markNotificationsRead = () => {
     setEngagementState((prev) => ({ ...prev, unreadNotifications: 0 }));
     trackHomeEvent("notifications_mark_read");
+  };
+
+  const raiseHandForPrayer = (streamId: string) => {
+    setEngagementState((prev) => ({
+      ...prev,
+      streamRaisedHands: {
+        ...prev.streamRaisedHands,
+        [streamId]: (prev.streamRaisedHands[streamId] ?? 0) + 1,
+      },
+    }));
+    trackHomeEvent("raise_hand_for_prayer", { streamId });
+  };
+
+  const sendPrayerRequest = (streamId: string) => {
+    setEngagementState((prev) => ({
+      ...prev,
+      streamPrayerRequestCounts: {
+        ...prev.streamPrayerRequestCounts,
+        [streamId]: (prev.streamPrayerRequestCounts[streamId] ?? 0) + 1,
+      },
+    }));
+    trackHomeEvent("stream_prayer_request", { streamId });
+  };
+
+  const submitLiveComment = (streamId: string) => {
+    const comment = (liveCommentDrafts[streamId] ?? "").trim();
+    if (!comment) return;
+    setEngagementState((prev) => ({
+      ...prev,
+      streamLiveComments: {
+        ...prev.streamLiveComments,
+        [streamId]: [...(prev.streamLiveComments[streamId] ?? []), comment].slice(-5),
+      },
+      streamInteractionCounts: {
+        ...prev.streamInteractionCounts,
+        [streamId]: (prev.streamInteractionCounts[streamId] ?? 0) + 1,
+      },
+    }));
+    setLiveCommentDrafts((prev) => ({ ...prev, [streamId]: "" }));
+    trackHomeEvent("stream_live_comment", { streamId });
   };
 
   return (
@@ -1075,6 +1125,54 @@ export default function FaithHubHomeLandingPageV3Fixed() {
                       {stream.prayerResponses.toLocaleString()}
                     </div>
                   </div>
+                </div>
+                <div className="mt-3 grid grid-cols-2 gap-2">
+                  <button
+                    type="button"
+                    aria-label={`Raise hand for prayer in ${stream.title}`}
+                    className="ds-btn ds-btn--outline rounded-xl px-3 py-2 text-xs font-bold"
+                    onClick={() => raiseHandForPrayer(stream.id)}
+                  >
+                    Raise hand · {(engagementState.streamRaisedHands[stream.id] ?? 0).toLocaleString()}
+                  </button>
+                  <button
+                    type="button"
+                    aria-label={`Send prayer request in ${stream.title}`}
+                    className="ds-btn ds-btn--secondary rounded-xl px-3 py-2 text-xs font-bold"
+                    onClick={() => sendPrayerRequest(stream.id)}
+                  >
+                    Prayer request · {(engagementState.streamPrayerRequestCounts[stream.id] ?? 0).toLocaleString()}
+                  </button>
+                </div>
+                <div className="mt-3 rounded-2xl border border-slate-200 bg-slate-50 p-3">
+                  <label className="text-[10px] font-black uppercase tracking-[0.14em] text-slate-500" htmlFor={`live-comment-${stream.id}`}>
+                    Live comments
+                  </label>
+                  <div className="mt-2 flex gap-2">
+                    <input
+                      id={`live-comment-${stream.id}`}
+                      aria-label={`Add live comment for ${stream.title}`}
+                      className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs text-slate-800 outline-none ring-0 placeholder:text-slate-400 focus:border-[var(--fh-brand)]"
+                      placeholder="Share encouragement..."
+                      value={liveCommentDrafts[stream.id] ?? ""}
+                      onChange={(event) =>
+                        setLiveCommentDrafts((prev) => ({ ...prev, [stream.id]: event.target.value }))
+                      }
+                    />
+                    <button
+                      type="button"
+                      aria-label={`Send live comment for ${stream.title}`}
+                      className="ds-btn ds-btn--primary rounded-xl px-3 py-2 text-xs font-bold text-white"
+                      onClick={() => submitLiveComment(stream.id)}
+                    >
+                      Send
+                    </button>
+                  </div>
+                  {(engagementState.streamLiveComments[stream.id] ?? []).length > 0 ? (
+                    <div className="mt-2 text-xs text-slate-700">
+                      Latest: {(engagementState.streamLiveComments[stream.id] ?? [])[((engagementState.streamLiveComments[stream.id] ?? []).length - 1)]}
+                    </div>
+                  ) : null}
                 </div>
                 <button
                   type="button"

@@ -94,5 +94,18 @@ describe("FaithHubHomeLandingPage Provider Profiles", () => {
     expect(followButton).toHaveTextContent("Follow");
     fireEvent.click(followButton);
     expect(followButton).toHaveTextContent("Following");
+
+    const raiseHandButton = screen.getByRole("button", { name: /raise hand for prayer in morning worship & prayer/i });
+    fireEvent.click(raiseHandButton);
+    expect(raiseHandButton).toHaveTextContent("Raise hand · 1");
+
+    const prayerRequestButton = screen.getByRole("button", { name: /send prayer request in morning worship & prayer/i });
+    fireEvent.click(prayerRequestButton);
+    expect(prayerRequestButton).toHaveTextContent("Prayer request · 1");
+
+    const commentInput = screen.getByRole("textbox", { name: /add live comment for morning worship & prayer/i });
+    fireEvent.change(commentInput, { target: { value: "Praying with you all tonight." } });
+    fireEvent.click(screen.getByRole("button", { name: /send live comment for morning worship & prayer/i }));
+    expect(screen.getByText(/latest: praying with you all tonight\./i)).toBeInTheDocument();
   });
 });
