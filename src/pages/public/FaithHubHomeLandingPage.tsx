@@ -1092,7 +1092,7 @@ export default function FaithHubHomeLandingPageV3Fixed() {
           body="Browse by category, follow trending moments, discover featured providers, and pick up recommendations tailored to community engagement."
         />
 
-        <motion.div {...fadeUp} className="mt-8 rounded-[1.8rem] border border-slate-200 bg-white p-5 shadow-sm">
+        <motion.div {...fadeUp} className="fh-uplift-surface mt-8 rounded-[1.8rem] p-5">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
               <div className="text-xs font-black uppercase tracking-[0.18em] text-slate-500">Notifications</div>
@@ -1115,7 +1115,7 @@ export default function FaithHubHomeLandingPageV3Fixed() {
         </motion.div>
 
         <div className="mt-8 grid gap-5 lg:grid-cols-2">
-          <motion.div {...fadeUp} className="rounded-[1.8rem] border border-slate-200 bg-white p-5 shadow-sm">
+          <motion.div {...fadeUp} className="fh-uplift-surface rounded-[1.8rem] p-5">
             <div className="text-xs font-black uppercase tracking-[0.18em] text-slate-500">Categories</div>
             <div className="mt-4 grid gap-3 sm:grid-cols-2">
               {streamDiscoveryCategories.map((category) => (
@@ -1132,7 +1132,7 @@ export default function FaithHubHomeLandingPageV3Fixed() {
             </div>
           </motion.div>
 
-          <motion.div {...fadeUp} className="rounded-[1.8rem] border border-slate-200 bg-white p-5 shadow-sm">
+          <motion.div {...fadeUp} className="fh-uplift-surface rounded-[1.8rem] p-5">
             <div className="text-xs font-black uppercase tracking-[0.18em] text-slate-500">Trending Streams</div>
             <div className="mt-4 space-y-3">
               {trendingStreams.map((stream) => (

@@ -22,32 +22,34 @@
   --fh-radius-2xl: 28px;
   --fh-radius-3xl: 34px;
 
-  --fh-shadow-sm: 0 4px 14px rgba(15, 23, 42, 0.06);
-  --fh-shadow-md: 0 8px 20px rgba(15, 23, 42, 0.08);
-  --fh-shadow-lg: 0 14px 30px rgba(15, 23, 42, 0.1);
-  --fh-shadow-glow: 0 18px 40px rgba(3, 205, 140, 0.18);
+  --fh-shadow-sm: 0 6px 18px rgba(15, 23, 42, 0.05);
+  --fh-shadow-md: 0 12px 28px rgba(15, 23, 42, 0.07);
+  --fh-shadow-lg: 0 20px 44px rgba(15, 23, 42, 0.1);
+  --fh-shadow-glow: 0 24px 50px rgba(3, 205, 140, 0.14);
 
   /* Primary SaaS tone (modern deep ink-blue) */
   --fh-brand: #1f2f63;
   --fh-brand-dark: #16244c;
-  --fh-brand-soft: #1f2f631a;
+  --fh-brand-soft: #1f2f6314;
   /* Accent highlight (EV Zone orange) */
   --fh-accent: #f77f00;
   --fh-accent-soft: #f77f001f;
   /* Success / live semantics (EV Zone green, intentionally constrained) */
   --fh-success: #03cd8c;
   --fh-success-dark: #02a873;
-  --fh-success-soft: #03cd8c1f;
+  --fh-success-soft: #03cd8c1a;
   --fh-ev-medium-grey: #a6a6a6;
   --fh-ev-light-grey: #f2f2f2;
   --fh-ink: #0f1b3d;
   --fh-slate: #5a6785;
   --fh-muted: #4b5876;
   --fh-muted-strong: #33415f;
-  --fh-line: #c8d1e3;
-  --fh-surface: #f5f7fb;
-  --fh-page-bg: #eef2f8;
+  --fh-line: #d3dae8;
+  --fh-surface: #f7f9fc;
+  --fh-page-bg: #f2f5fb;
   --fh-surface-bg: #ffffff;
+  --fh-warm-glow: #fff3df;
+  --fh-spirit-glow: #eaf6f1;
 }
 
 html {
@@ -62,6 +64,10 @@ body {
   font-family: var(--fh-font-family-body);
   color: var(--fh-ink);
   background-color: var(--fh-page-bg, #f4f8f6);
+  background-image:
+    radial-gradient(circle at 8% 10%, color-mix(in srgb, var(--fh-spirit-glow) 82%, transparent) 0%, transparent 40%),
+    radial-gradient(circle at 90% 8%, color-mix(in srgb, var(--fh-warm-glow) 70%, transparent) 0%, transparent 35%),
+    linear-gradient(180deg, #ffffff 0%, var(--fh-page-bg) 100%);
   transition: background-color 200ms ease, color 200ms ease;
 }
 
@@ -117,8 +123,13 @@ html.dark body {
 }
 
 :focus-visible {
-  outline: 3px solid color-mix(in srgb, var(--fh-brand) 72%, white 28%);
+  outline: 3px solid color-mix(in srgb, var(--fh-brand) 62%, white 38%);
   outline-offset: 2px;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--fh-brand) 16%, white 84%);
+  color: var(--fh-ink);
 }
 
 a {
@@ -200,6 +211,13 @@ video {
   border: 1px solid color-mix(in srgb, var(--fh-line) 60%, transparent);
   background: var(--fh-surface-bg);
   box-shadow: var(--fh-shadow-sm);
+  transition: box-shadow 220ms ease, transform 220ms ease, border-color 180ms ease;
+}
+
+.ds-card:hover {
+  border-color: color-mix(in srgb, var(--fh-brand) 22%, var(--fh-line) 78%);
+  box-shadow: var(--fh-shadow-md);
+  transform: translateY(-1px);
 }
 
 .ds-title {
@@ -216,6 +234,17 @@ video {
   font-size: var(--fh-font-size-sm);
   line-height: 1.6;
   color: var(--fh-muted);
+}
+
+.fh-uplift-surface {
+  border: 1px solid color-mix(in srgb, var(--fh-line) 65%, transparent);
+  background:
+    linear-gradient(
+      145deg,
+      color-mix(in srgb, var(--fh-spirit-glow) 44%, white 56%) 0%,
+      color-mix(in srgb, var(--fh-warm-glow) 26%, white 74%) 100%
+    );
+  box-shadow: var(--fh-shadow-sm);
 }
 
 /* Global readability defaults for secondary text tokens/classes. */
