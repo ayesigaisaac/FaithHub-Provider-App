@@ -1557,7 +1557,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                   type="button"
                   aria-label={primaryCtaLabel}
                   onClick={handlePrimaryCta}
-                  className={`mt-6 inline-flex h-12 w-full justify-center items-center gap-2 rounded-2xl px-7 text-[14px] font-extrabold text-white shadow-md transition hover:-translate-y-[1px] hover:shadow-lg sm:w-auto ${cardFocusRingClass}`}
+                  className={`ds-btn ds-btn--primary mt-6 inline-flex h-12 w-full items-center justify-center gap-2 rounded-2xl px-7 text-[14px] font-extrabold text-white sm:w-auto ${cardFocusRingClass}`}
                   style={{ background: EV_GREEN, boxShadow: "0 10px 24px -14px rgba(3,205,140,0.85)" }}
                 >
                   <Plus className="h-4 w-4" />
@@ -1593,7 +1593,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                     type="button"
                     aria-label={workflowPrimaryLabel}
                     onClick={handlePrimaryCta}
-                    className={`inline-flex h-14 w-full items-center justify-center gap-2 rounded-2xl px-6 text-[15px] font-black text-white transition hover:-translate-y-[1px] hover:shadow-lg active:translate-y-0 ${cardFocusRingClass}`}
+                    className={`ds-btn ds-btn--primary inline-flex h-14 w-full items-center justify-center gap-2 rounded-2xl px-6 text-[15px] font-black text-white ${cardFocusRingClass}`}
                     style={{ background: "linear-gradient(90deg, #16244c 0%, #1f2f63 100%)", boxShadow: "0 16px 28px -14px rgba(22,36,76,0.9)" }}
                   >
                     {hasDraftToContinue && continueItem ? <ArrowRight className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
@@ -1612,7 +1612,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                         trackDashboardEvent("start_new_task", { source: "hero_secondary" });
                         safeNav(ROUTES.teachingsDashboard);
                       }}
-                      className={`mt-3 inline-flex h-10 w-full items-center justify-center gap-2 rounded-xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 text-[12px] font-bold text-faith-ink transition hover:bg-[var(--fh-surface)] ${cardFocusRingClass}`}
+                      className={`ds-btn ds-btn--outline mt-3 inline-flex h-10 w-full items-center justify-center gap-2 rounded-xl px-4 text-[12px] font-bold ${cardFocusRingClass}`}
                     >
                       <Plus className="h-4 w-4" />
                       Create new teaching
@@ -1704,7 +1704,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                     type="button"
                     aria-label="Review now"
                     onClick={() => safeNav(ROUTES.reviewsModeration)}
-                    className={`inline-flex h-10 items-center gap-2 rounded-xl border border-amber-300 bg-amber-100 px-4 text-[12px] font-bold text-amber-900 transition hover:bg-amber-200 ${cardFocusRingClass}`}
+                    className={`ds-btn ds-btn--secondary inline-flex h-10 items-center gap-2 rounded-xl px-4 text-[12px] font-bold ${cardFocusRingClass}`}
                   >
                     <Flag className="h-4 w-4" />
                     Review now
@@ -1752,7 +1752,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                           type="button"
                           aria-label={`Open live dashboard for ${session.title}`}
                           onClick={() => safeNav(ROUTES.liveDashboard)}
-                          className={`inline-flex h-9 items-center gap-2 rounded-lg border border-faith-line/70 bg-[var(--fh-surface)] px-3 text-[11px] font-bold text-faith-ink transition hover:bg-[var(--fh-surface-bg)] ${cardFocusRingClass}`}
+                          className={`ds-btn ds-btn--outline inline-flex h-9 items-center gap-2 rounded-lg px-3 text-[11px] font-bold ${cardFocusRingClass}`}
                         >
                           <MonitorPlay className="h-3.5 w-3.5" />
                           Open dashboard
@@ -1868,7 +1868,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                           handleTeachingAction(item.id, "open");
                         }}
                         disabled={Boolean(actionPendingById[item.id])}
-                        className={`w-full rounded-lg border border-faith-line/70 bg-[var(--fh-brand-soft)] px-3 py-2 text-[11px] font-bold text-faith-ink transition hover:bg-[var(--fh-brand-soft)]/80 sm:w-auto sm:py-1.5 ${cardFocusRingClass}`}
+                        className={`ds-btn ds-btn--secondary w-full rounded-lg px-3 py-2 text-[11px] font-bold sm:w-auto sm:py-1.5 ${cardFocusRingClass}`}
                       >
                         {actionPendingById[item.id] === "open" ? "Opening..." : "Open teaching"}
                       </button>
@@ -1973,7 +1973,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                         aria-label={`Request review for ${item.title}`}
                         onClick={() => handleTeachingAction(item.id, "request_review")}
                         disabled={Boolean(actionPendingById[item.id])}
-                        className={`w-full rounded-lg border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[11px] font-bold text-faith-ink transition hover:bg-amber-50 sm:w-auto sm:py-1.5 ${cardFocusRingClass}`}
+                        className={`ds-btn ds-btn--outline w-full rounded-lg px-3 py-2 text-[11px] font-bold sm:w-auto sm:py-1.5 ${cardFocusRingClass}`}
                       >
                         {actionPendingById[item.id] === "request_review" ? "Requesting..." : "Request review"}
                       </button>
@@ -1982,7 +1982,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                         aria-label={`Continue editing ${item.title}`}
                         onClick={() => handleTeachingAction(item.id, "open")}
                         disabled={Boolean(actionPendingById[item.id])}
-                        className={`w-full rounded-lg border border-faith-line/70 bg-[var(--fh-brand-soft)] px-3 py-2 text-[11px] font-bold text-faith-ink transition hover:bg-[var(--fh-brand-soft)]/80 sm:w-auto sm:py-1.5 ${cardFocusRingClass}`}
+                        className={`ds-btn ds-btn--secondary w-full rounded-lg px-3 py-2 text-[11px] font-bold sm:w-auto sm:py-1.5 ${cardFocusRingClass}`}
                       >
                         {actionPendingById[item.id] === "open" ? "Opening..." : "Continue editing"}
                       </button>

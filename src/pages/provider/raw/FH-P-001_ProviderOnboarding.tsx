@@ -70,6 +70,7 @@ export default function ProviderOnboardingPage() {
   const [step, setStep] = useState<StepIndex>(0);
   const [notice, setNotice] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [hasAutoResumed, setHasAutoResumed] = useState(false);
 
   const validation = useMemo(() => validateDraft(onboardingDraft), [onboardingDraft]);
   const completion = useMemo(() => {
@@ -102,6 +103,14 @@ export default function ProviderOnboardingPage() {
     }
     setNotice(null);
   };
+
+  const stepGuidance = useMemo(() => {
+    if (step === 0) return 'Start with your organization basics to unlock the rest of setup.';
+    if (step === 1) return 'Add a reachable contact so verification and support can reach your team.';
+    if (step === 2) return 'Complete profile context so your ministry appears clearly across FaithHub.';
+    if (canSubmit) return 'Everything is valid. Submit onboarding to begin verification.';
+    return 'Review and complete missing fields, then submit onboarding.';
+  }, [canSubmit, step]);
 
   const saveDraft = async () => {
     try {
@@ -149,6 +158,14 @@ export default function ProviderOnboardingPage() {
     }
   }, [isOnboardingComplete, navigate]);
 
+  useEffect(() => {
+    if (hasAutoResumed) return;
+    if (onboardingStatus === 'in_progress' || onboardingStatus === 'not_started') {
+      setStep(resumeStep);
+      setHasAutoResumed(true);
+    }
+  }, [hasAutoResumed, onboardingStatus, resumeStep]);
+
   if (isOnboardingComplete) {
     return null;
   }
@@ -161,13 +178,16 @@ export default function ProviderOnboardingPage() {
             <ProviderPageTitle
               icon={<BadgeCheck className="h-6 w-6" />}
               title="Provider Onboarding"
-              subtitle="Set up your provider workspace with validated details, saved progress, and launch readiness checks."
+              subtitle="Complete a short setup flow, save progress anytime, and finish profile readiness in one pass."
             />
             <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1} mt={2}>
               <Chip label={`Status: ${onboardingStatus.replace('_', ' ')}`} color={onboardingStatus === 'submitted' ? 'warning' : 'default'} />
               <Chip label={`Completion: ${completion}%`} color={completion === 100 ? 'success' : 'primary'} />
               <Chip label={`Resume step: ${STEPS[resumeStep]}`} />
             </Stack>
+            <Alert severity="info" sx={{ mt: 2 }}>
+              {stepGuidance}
+            </Alert>
           </CardContent>
         </Card>
 
@@ -187,6 +207,12 @@ export default function ProviderOnboardingPage() {
                     onClick={() => void refreshOnboarding()}
                   >
                     Refresh status
+                  </Button>
+                  <Button
+                    variant="contained"
+                    onClick={() => navigate('/faithhub/provider/profile-settings')}
+                  >
+                    Complete profile settings
                   </Button>
                 </Stack>
               </Stack>
@@ -345,10 +371,10 @@ export default function ProviderOnboardingPage() {
               ) : null}
 
               <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1.2} mt={3}>
-                <Button variant="text" color="warning" onClick={() => void resetDraft()}>Reset draft</Button>
                 <Button variant="outlined" onClick={() => void saveDraft()}>Save draft</Button>
                 <Button variant="outlined" onClick={() => setStep(resumeStep)}>Jump to resume step</Button>
                 <Box sx={{ flex: 1 }} />
+                <Button variant="text" color="warning" onClick={() => void resetDraft()}>Reset draft</Button>
                 <Button variant="outlined" disabled={step === 0} onClick={() => setStep((prev) => Math.max(0, prev - 1) as StepIndex)}>
                   Back
                 </Button>
