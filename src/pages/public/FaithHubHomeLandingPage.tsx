@@ -124,6 +124,27 @@ const experiencePillars = [
   },
 ];
 
+const communityProof = [
+  {
+    quote:
+      "Our livestream worship attendance grew, but the biggest win was prayer follow-up. People felt seen within hours, not days.",
+    name: "Pastor Miriam K.",
+    role: "Lead Pastor, New Dawn Worship Centre",
+  },
+  {
+    quote:
+      "FaithHub helped our team connect worship, prayer requests, and small-group care into one weekly flow that actually sticks.",
+    name: "Joel T.",
+    role: "Worship Director, Riverlight Fellowship",
+  },
+  {
+    quote:
+      "We moved from scattered tools to one trusted rhythm: live service, replay devotion, prayer response, and group follow-up.",
+    name: "Grace A.",
+    role: "Community Lead, Hope Online Church",
+  },
+];
+
 const footerCols = [
   {
     title: "Platform",
@@ -368,6 +389,16 @@ export default function FaithHubHomeLandingPageV3Fixed() {
                 <ArrowRight className="h-5 w-5" />
               </button>
               <button
+                className="inline-flex items-center justify-center gap-2 rounded-2xl border border-[var(--fh-accent)]/35 bg-[var(--fh-accent)]/10 px-6 py-4 text-base font-black text-[var(--fh-accent)] shadow-sm transition hover:bg-[var(--fh-accent)]/15"
+                onClick={() => {
+                  trackHomeEvent("hero_cta_click", { cta: "open_prayer_flow", placement: "hero_secondary" });
+                  navigateProvider("/faithhub/provider/prayer-requests");
+                }}
+              >
+                <MessageSquareHeart className="h-5 w-5" />
+                Open prayer flow
+              </button>
+              <button
                 className="inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-6 py-4 text-base font-black shadow-sm transition hover:bg-slate-50"
                 onClick={() => {
                   trackHomeEvent("hero_cta_click", { cta: "watch_experience", placement: "hero_secondary" });
@@ -376,15 +407,6 @@ export default function FaithHubHomeLandingPageV3Fixed() {
               >
                 <Play className="h-5 w-5" />
                 Watch live flow
-              </button>
-              <button
-                className="inline-flex items-center justify-center gap-2 rounded-2xl border border-[var(--fh-brand)]/30 bg-white px-6 py-4 text-base font-black text-[var(--fh-brand)] shadow-sm transition hover:bg-[var(--fh-brand-soft)]"
-                onClick={() => {
-                  trackHomeEvent("hero_cta_click", { cta: "open_provider_dashboard", placement: "hero_tertiary" });
-                  navigateProvider("/faithhub/provider/dashboard");
-                }}
-              >
-                Open FaithHub Provider Dashboard
               </button>
             </div>
 
@@ -651,6 +673,25 @@ export default function FaithHubHomeLandingPageV3Fixed() {
             <p className="mt-4 text-sm leading-7 text-slate-600">FaithHub is designed for quality, moderation, role control, approvals, audit visibility, and thoughtful experiences across sensitive faith and community contexts.</p>
           </div>
         </motion.div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 py-10 lg:px-10 lg:py-14">
+        <SectionHeading
+          eyebrow="Community Proof"
+          title="Trusted by worship teams and prayer communities."
+          body="Real teams use FaithHub to move people from livestream moments into prayer, care, and belonging."
+        />
+        <div className="mt-8 grid gap-5 md:grid-cols-3">
+          {communityProof.map((item) => (
+            <motion.div key={item.name} {...fadeUp} className="rounded-[1.8rem] border border-slate-200 bg-white p-6 shadow-sm">
+              <p className="text-sm leading-7 text-slate-700">"{item.quote}"</p>
+              <div className="mt-5 border-t border-slate-100 pt-4">
+                <div className="text-sm font-black text-slate-900">{item.name}</div>
+                <div className="text-xs font-semibold text-slate-500">{item.role}</div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </section>
 
       <section className="pb-20 pt-10 lg:pb-28">
