@@ -26,6 +26,8 @@ import {
 import { ThemeModeToggle } from "@/components/theme/ThemeModeToggle";
 import { BrandLogo } from "@/components/branding/BrandLogo";
 import { getStoredToken } from "@/auth/storage";
+import { localLiveSessionsApi } from "@/api/live/localLiveSessionsApi";
+import type { LiveFlowRecord } from "@/features/live/liveFlowStore";
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -59,7 +61,7 @@ const stats = [
   { value: "120K+", label: "Livestream moments delivered" },
 ];
 
-const liveNowStreams = [
+const defaultLiveNowStreams = [
   {
     id: "live-1",
     title: "Morning Worship & Prayer",
@@ -91,6 +93,41 @@ const liveNowStreams = [
       "https://images.unsplash.com/photo-1464375117522-1311dd7d0b44?auto=format&fit=crop&w=1400&q=80",
   },
 ];
+
+const liveFallbackImages = [
+  "https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1400&q=80",
+  "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&w=1400&q=80",
+  "https://images.unsplash.com/photo-1464375117522-1311dd7d0b44?auto=format&fit=crop&w=1400&q=80",
+] as const;
+
+function metricSeed(input: string): number {
+  let hash = 0;
+  for (let i = 0; i < input.length; i += 1) {
+    hash = (hash * 31 + input.charCodeAt(i)) >>> 0;
+  }
+  return hash;
+}
+
+function deriveLiveMetrics(session: LiveFlowRecord) {
+  const seed = metricSeed(`${session.id}|${session.title}|${session.startISO}`);
+  const viewers = 500 + (seed % 24000);
+  const reactions = Math.max(120, Math.floor(viewers * (0.18 + ((seed % 17) / 100))));
+  const prayerResponses = Math.max(32, Math.floor(reactions * (0.14 + ((seed % 11) / 100))));
+  return { viewers, reactions, prayerResponses };
+}
+
+function mapSessionToPreview(session: LiveFlowRecord, index: number) {
+  const { viewers, reactions, prayerResponses } = deriveLiveMetrics(session);
+  return {
+    id: session.id,
+    title: session.title || "Live Worship Session",
+    campus: session.campus || "Online Campus",
+    viewers,
+    reactions,
+    prayerResponses,
+    image: liveFallbackImages[index % liveFallbackImages.length],
+  };
+}
 
 const featureCards = [
   {
@@ -276,6 +313,7 @@ function SectionHeading({ eyebrow, title, body }: { eyebrow: string; title: stri
 export default function FaithHubHomeLandingPageV3Fixed() {
   const navigate = useNavigate();
   const trackedScrollMilestones = React.useRef<Set<number>>(new Set());
+  const [liveState, setLiveState] = React.useState(() => localLiveSessionsApi.getState());
 
   const trackHomeEvent = React.useCallback((eventName: string, payload?: Record<string, unknown>) => {
     if (typeof window === "undefined") return;
@@ -294,6 +332,28 @@ export default function FaithHubHomeLandingPageV3Fixed() {
   React.useEffect(() => {
     trackHomeEvent("hero_view");
   }, [trackHomeEvent]);
+
+  React.useEffect(() => {
+    const unsubscribe = localLiveSessionsApi.subscribe(() => {
+      setLiveState(localLiveSessionsApi.getState());
+    });
+    return unsubscribe;
+  }, []);
+
+  const liveNowStreams = React.useMemo(() => {
+    const now = Date.now();
+    const liveSessions = liveState.sessions
+      .filter((session) => {
+        const start = Date.parse(session.startISO);
+        const end = Date.parse(session.endISO);
+        if (Number.isNaN(start) || Number.isNaN(end)) return false;
+        return now >= start && now <= end;
+      })
+      .slice(0, 3)
+      .map(mapSessionToPreview);
+
+    return liveSessions.length > 0 ? liveSessions : defaultLiveNowStreams;
+  }, [liveState.sessions]);
 
   React.useEffect(() => {
     const onScroll = () => {
