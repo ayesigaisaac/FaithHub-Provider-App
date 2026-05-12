@@ -43,6 +43,11 @@ import { ProviderSectionCard } from "@/components/provider/ProviderSectionCard";
 import { ProviderStatusPill } from "@/components/provider/ProviderStatusPill";
 import { TeachingsQuickActionsBar } from "@/components/provider/TeachingsQuickActionsBar";
 import { useAuth } from "@/auth/useAuth";
+import {
+  buildProviderAnalyticsSnapshot,
+  readProviderAnalyticsSnapshot,
+  saveProviderAnalyticsSnapshot,
+} from "@/features/analytics/providerAnalyticsStore";
 
 /**
  * FaithHub Provider - FaithHub Provider dashboard
@@ -1245,6 +1250,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
   const [actionPendingById, setActionPendingById] = useState<Record<string, DashboardActionKind | undefined>>({});
   const [, setAuditTrail] = useState<DashboardAuditEntry[]>([]);
   const [, setUsageMap] = useState<Record<string, number>>({});
+  const [analyticsSnapshot, setAnalyticsSnapshot] = useState(() => readProviderAnalyticsSnapshot());
   const metrics = useMemo(() => EXECUTIVE_METRICS[role], [role]);
   const recommendations = useMemo(() => RECOMMENDATIONS_BY_ROLE[role], [role]);
   const primaryCtaLabel = "Create Teaching";
@@ -1364,42 +1370,51 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
     const engagementSignals =
       LIVE_SESSIONS.filter((session) => session.isLiveNow).reduce((sum, session) => sum + session.audience.length, 0) +
       needsReviewCount * 12;
+    const snapshot =
+      analyticsSnapshot ??
+      buildProviderAnalyticsSnapshot({
+        streamsLiveNow: liveNowCount,
+        streamViewers: totalLiveViewers,
+        followersTotal: followersCount,
+        donationsTotal: donationCount,
+        engagementSignals,
+      });
 
     return [
       {
         key: "streams",
         label: "Streams",
-        value: `${liveNowCount} live now`,
-        detail: `${totalLiveViewers.toLocaleString()} active viewers across live sessions`,
-        trend: "+8% vs last week",
+        value: `${snapshot.streamsLiveNow} live now`,
+        detail: `${snapshot.streamViewers.toLocaleString()} active viewers across live sessions`,
+        trend: `+${snapshot.streamDeltaPct}% vs last week`,
         tone: "good" as const,
       },
       {
         key: "followers",
         label: "Followers",
-        value: followersCount.toLocaleString(),
+        value: snapshot.followersTotal.toLocaleString(),
         detail: "Cross-campus audience growth and retention",
-        trend: "+6.8% this month",
+        trend: `+${snapshot.followerDeltaPct}% this month`,
         tone: "navy" as const,
       },
       {
         key: "donations",
         label: "Donations",
-        value: `$${donationCount.toLocaleString()}`,
+        value: `$${snapshot.donationsTotal.toLocaleString()}`,
         detail: "Live-response giving and fund movement",
-        trend: "+4.2% period-over-period",
+        trend: `+${snapshot.donationDeltaPct}% period-over-period`,
         tone: "brand" as const,
       },
       {
         key: "engagement",
         label: "Engagement",
-        value: `${engagementSignals.toLocaleString()} signals`,
+        value: `${snapshot.engagementSignals.toLocaleString()} signals`,
         detail: "Comments, prayer flow, and review interactions",
-        trend: "Healthy and rising",
+        trend: snapshot.engagementDeltaLabel,
         tone: "good" as const,
       },
     ];
-  }, [metrics, needsReviewCount]);
+  }, [analyticsSnapshot, metrics, needsReviewCount]);
   const hasDraftToContinue = pendingWork.some((item) => item.status === "Draft");
   const workflowPrimaryLabel = hasDraftToContinue && continueItem ? "Continue editing" : "Create Teaching";
   const prioritizedQuickActions = useMemo(() => {
@@ -1579,6 +1594,28 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
     window.localStorage.setItem(WORKFLOW_SUMMARY_STORAGE_KEY, JSON.stringify(workflowSummary));
     window.dispatchEvent(new CustomEvent(WORKFLOW_SUMMARY_EVENT, { detail: workflowSummary }));
   }, [workflowSummary]);
+
+  useEffect(() => {
+    const liveNowCount = LIVE_SESSIONS.filter((session) => session.isLiveNow).length;
+    const totalLiveViewers = LIVE_SESSIONS.filter((session) => session.isLiveNow).reduce((sum, session) => sum + (session.viewers ?? 0), 0);
+    const followersRaw = (metrics.find((metric) => metric.id === "followers")?.value ?? "0").toString();
+    const followersTotal = Number(followersRaw.replace(/[^\d.]/g, "")) * (followersRaw.toLowerCase().includes("k") ? 1000 : 1);
+    const donationRaw = (metrics.find((metric) => metric.id === "giving")?.value ?? "$0").toString();
+    const donationsTotal = Number(donationRaw.replace(/[^\d.]/g, ""));
+    const engagementSignals =
+      LIVE_SESSIONS.filter((session) => session.isLiveNow).reduce((sum, session) => sum + session.audience.length, 0) +
+      needsReviewCount * 12;
+
+    const next = buildProviderAnalyticsSnapshot({
+      streamsLiveNow: liveNowCount,
+      streamViewers: totalLiveViewers,
+      followersTotal,
+      donationsTotal,
+      engagementSignals,
+    });
+    setAnalyticsSnapshot(next);
+    saveProviderAnalyticsSnapshot(next);
+  }, [metrics, needsReviewCount]);
 
   if (!hasDashboardData) {
     return (
