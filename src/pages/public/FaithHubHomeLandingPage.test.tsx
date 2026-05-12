@@ -82,4 +82,17 @@ describe("FaithHubHomeLandingPage Provider Profiles", () => {
 
     expect(mockNavigate).toHaveBeenCalledWith("/faithhub/provider/devotionals");
   });
+
+  it("supports engagement interactions for notifications and follows", async () => {
+    renderHomePage();
+
+    expect(await screen.findByText(/unread engagement alerts/i)).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: /mark all notifications as read/i }));
+    expect(screen.getByText("All caught up")).toBeInTheDocument();
+
+    const followButton = screen.getByRole("button", { name: /follow restoration house global/i });
+    expect(followButton).toHaveTextContent("Follow");
+    fireEvent.click(followButton);
+    expect(followButton).toHaveTextContent("Following");
+  });
 });

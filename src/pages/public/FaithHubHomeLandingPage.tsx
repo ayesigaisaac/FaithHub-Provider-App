@@ -123,6 +123,22 @@ const streamRecommendations = [
   { id: "rec-3", title: "Suggested: Youth Worship Night", reason: "High response among your followed communities", route: "/faithhub/provider/live-schedule" },
 ];
 
+const ENGAGEMENT_STATE_KEY = "faithhub.home.engagement.v1";
+
+type HomeEngagementState = {
+  followedProviderIds: string[];
+  streamReactionCounts: Record<string, number>;
+  streamInteractionCounts: Record<string, number>;
+  unreadNotifications: number;
+};
+
+const defaultEngagementState: HomeEngagementState = {
+  followedProviderIds: [],
+  streamReactionCounts: {},
+  streamInteractionCounts: {},
+  unreadNotifications: 4,
+};
+
 const liveFallbackImages = [
   "https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1400&q=80",
   "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&w=1400&q=80",
@@ -481,6 +497,7 @@ export default function FaithHubHomeLandingPageV3Fixed() {
   const trackedScrollMilestones = React.useRef<Set<number>>(new Set());
   const [liveState, setLiveState] = React.useState(() => localLiveSessionsApi.getState());
   const [profileCards, setProfileCards] = React.useState<ProviderProfileCard[]>(() => buildProfileCardsFromStorage());
+  const [engagementState, setEngagementState] = React.useState<HomeEngagementState>(defaultEngagementState);
 
   const trackHomeEvent = React.useCallback((eventName: string, payload?: Record<string, unknown>) => {
     if (typeof window === "undefined") return;
@@ -514,6 +531,29 @@ export default function FaithHubHomeLandingPageV3Fixed() {
     window.addEventListener("storage", syncProfiles);
     return () => window.removeEventListener("storage", syncProfiles);
   }, []);
+
+  React.useEffect(() => {
+    if (typeof window === "undefined") return;
+    try {
+      const raw = window.localStorage.getItem(ENGAGEMENT_STATE_KEY);
+      if (!raw) return;
+      const parsed = JSON.parse(raw) as Partial<HomeEngagementState>;
+      setEngagementState((prev) => ({
+        ...prev,
+        ...parsed,
+        followedProviderIds: Array.isArray(parsed.followedProviderIds) ? parsed.followedProviderIds : prev.followedProviderIds,
+        streamReactionCounts: parsed.streamReactionCounts && typeof parsed.streamReactionCounts === "object" ? parsed.streamReactionCounts : prev.streamReactionCounts,
+        streamInteractionCounts: parsed.streamInteractionCounts && typeof parsed.streamInteractionCounts === "object" ? parsed.streamInteractionCounts : prev.streamInteractionCounts,
+      }));
+    } catch {
+      // no-op
+    }
+  }, []);
+
+  React.useEffect(() => {
+    if (typeof window === "undefined") return;
+    window.localStorage.setItem(ENGAGEMENT_STATE_KEY, JSON.stringify(engagementState));
+  }, [engagementState]);
 
   const liveNowStreams = React.useMemo(() => {
     const now = Date.now();
@@ -591,6 +631,44 @@ export default function FaithHubHomeLandingPageV3Fixed() {
       return;
     }
     navigate(target);
+  };
+
+  const toggleProviderFollow = (providerId: string) => {
+    setEngagementState((prev) => {
+      const isFollowed = prev.followedProviderIds.includes(providerId);
+      const followedProviderIds = isFollowed
+        ? prev.followedProviderIds.filter((id) => id !== providerId)
+        : [...prev.followedProviderIds, providerId];
+      return { ...prev, followedProviderIds };
+    });
+    trackHomeEvent("provider_follow_toggle", { providerId });
+  };
+
+  const reactToStream = (streamId: string) => {
+    setEngagementState((prev) => ({
+      ...prev,
+      streamReactionCounts: {
+        ...prev.streamReactionCounts,
+        [streamId]: (prev.streamReactionCounts[streamId] ?? 0) + 1,
+      },
+    }));
+    trackHomeEvent("stream_reaction", { streamId });
+  };
+
+  const interactWithStream = (streamId: string) => {
+    setEngagementState((prev) => ({
+      ...prev,
+      streamInteractionCounts: {
+        ...prev.streamInteractionCounts,
+        [streamId]: (prev.streamInteractionCounts[streamId] ?? 0) + 1,
+      },
+    }));
+    trackHomeEvent("stream_interaction", { streamId });
+  };
+
+  const markNotificationsRead = () => {
+    setEngagementState((prev) => ({ ...prev, unreadNotifications: 0 }));
+    trackHomeEvent("notifications_mark_read");
   };
 
   return (
@@ -1014,6 +1092,28 @@ export default function FaithHubHomeLandingPageV3Fixed() {
           body="Browse by category, follow trending moments, discover featured providers, and pick up recommendations tailored to community engagement."
         />
 
+        <motion.div {...fadeUp} className="mt-8 rounded-[1.8rem] border border-slate-200 bg-white p-5 shadow-sm">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <div className="text-xs font-black uppercase tracking-[0.18em] text-slate-500">Notifications</div>
+              <div className="mt-1 text-sm font-bold text-slate-900">
+                {engagementState.unreadNotifications > 0
+                  ? `${engagementState.unreadNotifications} unread engagement alerts`
+                  : "All caught up"}
+              </div>
+            </div>
+            <button
+              type="button"
+              aria-label="Mark all notifications as read"
+              className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs font-black uppercase tracking-[0.12em] text-slate-700 transition hover:bg-white"
+              onClick={markNotificationsRead}
+            >
+              <BellRing className="h-4 w-4" />
+              Mark all read
+            </button>
+          </div>
+        </motion.div>
+
         <div className="mt-8 grid gap-5 lg:grid-cols-2">
           <motion.div {...fadeUp} className="rounded-[1.8rem] border border-slate-200 bg-white p-5 shadow-sm">
             <div className="text-xs font-black uppercase tracking-[0.18em] text-slate-500">Categories</div>
@@ -1036,16 +1136,35 @@ export default function FaithHubHomeLandingPageV3Fixed() {
             <div className="text-xs font-black uppercase tracking-[0.18em] text-slate-500">Trending Streams</div>
             <div className="mt-4 space-y-3">
               {trendingStreams.map((stream) => (
-                <button
-                  key={stream.id}
-                  type="button"
-                  className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-left transition hover:bg-white"
-                  onClick={() => navigateProvider(stream.route)}
-                >
-                  <div className="text-sm font-black text-slate-900">{stream.title}</div>
-                  <div className="mt-1 text-xs text-slate-600">{stream.provider}</div>
-                  <div className="mt-2 text-[11px] font-black uppercase tracking-[0.14em] text-[var(--fh-accent)]">{stream.viewers}</div>
-                </button>
+                <div key={stream.id} className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3">
+                  <button
+                    type="button"
+                    className="w-full text-left"
+                    onClick={() => navigateProvider(stream.route)}
+                  >
+                    <div className="text-sm font-black text-slate-900">{stream.title}</div>
+                    <div className="mt-1 text-xs text-slate-600">{stream.provider}</div>
+                    <div className="mt-2 text-[11px] font-black uppercase tracking-[0.14em] text-[var(--fh-accent)]">{stream.viewers}</div>
+                  </button>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    <button
+                      type="button"
+                      aria-label={`React to ${stream.title}`}
+                      className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold text-slate-700 transition hover:bg-slate-100"
+                      onClick={() => reactToStream(stream.id)}
+                    >
+                      React · {(engagementState.streamReactionCounts[stream.id] ?? 0).toLocaleString()}
+                    </button>
+                    <button
+                      type="button"
+                      aria-label={`Interact with ${stream.title}`}
+                      className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold text-slate-700 transition hover:bg-slate-100"
+                      onClick={() => interactWithStream(stream.id)}
+                    >
+                      Interact · {(engagementState.streamInteractionCounts[stream.id] ?? 0).toLocaleString()}
+                    </button>
+                  </div>
+                </div>
               ))}
             </div>
           </motion.div>
@@ -1056,20 +1175,29 @@ export default function FaithHubHomeLandingPageV3Fixed() {
             <div className="text-xs font-black uppercase tracking-[0.18em] text-slate-500">Featured Providers</div>
             <div className="mt-4 space-y-3">
               {featuredProviders.map((provider) => (
-                <button
-                  key={provider.id}
-                  type="button"
-                  className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-left transition hover:bg-white"
-                  onClick={() => navigateProvider(provider.route)}
-                >
-                  <div className="flex items-center justify-between gap-2">
-                    <div className="text-sm font-black text-slate-900">{provider.name}</div>
-                    <span className="rounded-full border border-emerald-200 bg-emerald-50 px-2 py-0.5 text-[10px] font-black uppercase tracking-[0.12em] text-emerald-700">
-                      {provider.badge}
-                    </span>
-                  </div>
-                  <div className="mt-1 text-xs text-slate-600">{provider.specialty}</div>
-                </button>
+                <div key={provider.id} className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3">
+                  <button
+                    type="button"
+                    className="w-full text-left"
+                    onClick={() => navigateProvider(provider.route)}
+                  >
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="text-sm font-black text-slate-900">{provider.name}</div>
+                      <span className="rounded-full border border-emerald-200 bg-emerald-50 px-2 py-0.5 text-[10px] font-black uppercase tracking-[0.12em] text-emerald-700">
+                        {provider.badge}
+                      </span>
+                    </div>
+                    <div className="mt-1 text-xs text-slate-600">{provider.specialty}</div>
+                  </button>
+                  <button
+                    type="button"
+                    aria-label={`Follow ${provider.name}`}
+                    className="mt-3 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold text-slate-700 transition hover:bg-slate-100"
+                    onClick={() => toggleProviderFollow(provider.id)}
+                  >
+                    {engagementState.followedProviderIds.includes(provider.id) ? "Following" : "Follow"}
+                  </button>
+                </div>
               ))}
             </div>
           </motion.div>
