@@ -96,6 +96,33 @@ const defaultLiveNowStreams = [
   },
 ];
 
+const streamDiscoveryCategories = [
+  { key: "worship", label: "Worship", hint: "Live worship nights and praise sessions", route: "/faithhub/provider/live-dashboard" },
+  { key: "prayer", label: "Prayer", hint: "Intercession, prayer rooms, and care moments", route: "/faithhub/provider/prayer-requests" },
+  { key: "teaching", label: "Teaching", hint: "Bible teaching, series episodes, and doctrine", route: "/faithhub/provider/teachings-dashboard" },
+  { key: "youth", label: "Youth", hint: "Youth-focused worship and discipleship streams", route: "/faithhub/provider/live-schedule" },
+  { key: "events", label: "Events", hint: "Conferences, outreach, and special gatherings", route: "/faithhub/provider/events-manager" },
+  { key: "testimonies", label: "Testimonies", hint: "Faith stories and transformed-life moments", route: "/faithhub/provider/testimonies" },
+];
+
+const trendingStreams = [
+  { id: "trend-1", title: "Friday Night Worship Experience", provider: "Riverlight Worship Collective", viewers: "24.8K watching", route: "/faithhub/provider/live-dashboard" },
+  { id: "trend-2", title: "Global Prayer Revival Room", provider: "Hope City Prayer Network", viewers: "18.1K watching", route: "/faithhub/provider/prayer-requests" },
+  { id: "trend-3", title: "Faith & Work Live Teaching", provider: "Restoration House Global", viewers: "13.4K watching", route: "/faithhub/provider/teachings-dashboard" },
+];
+
+const featuredProviders = [
+  { id: "fp-1", name: "Restoration House Global", specialty: "Worship + family discipleship", badge: "Featured Provider", route: "/faithhub/provider/profile-settings" },
+  { id: "fp-2", name: "Riverlight Worship Collective", specialty: "Live worship and creative arts", badge: "Top Streaming Ministry", route: "/faithhub/provider/profile-settings" },
+  { id: "fp-3", name: "Hope City Prayer Network", specialty: "Prayer response and care follow-up", badge: "Trusted Prayer Network", route: "/faithhub/provider/profile-settings" },
+];
+
+const streamRecommendations = [
+  { id: "rec-1", title: "Continue: Morning Prayer Journey", reason: "Because you engaged with prayer streams this week", route: "/faithhub/provider/devotionals" },
+  { id: "rec-2", title: "Watch Next: Sunday Encounter Replay", reason: "Trending in your worship and teaching circles", route: "/faithhub/provider/replays-and-clips" },
+  { id: "rec-3", title: "Suggested: Youth Worship Night", reason: "High response among your followed communities", route: "/faithhub/provider/live-schedule" },
+];
+
 const liveFallbackImages = [
   "https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1400&q=80",
   "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&w=1400&q=80",
@@ -977,6 +1004,92 @@ export default function FaithHubHomeLandingPageV3Fixed() {
               </div>
             </motion.div>
           ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 py-10 lg:px-10 lg:py-14">
+        <SectionHeading
+          eyebrow="Stream Discovery"
+          title="Find the right streams faster with curated discovery."
+          body="Browse by category, follow trending moments, discover featured providers, and pick up recommendations tailored to community engagement."
+        />
+
+        <div className="mt-8 grid gap-5 lg:grid-cols-2">
+          <motion.div {...fadeUp} className="rounded-[1.8rem] border border-slate-200 bg-white p-5 shadow-sm">
+            <div className="text-xs font-black uppercase tracking-[0.18em] text-slate-500">Categories</div>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2">
+              {streamDiscoveryCategories.map((category) => (
+                <button
+                  key={category.key}
+                  type="button"
+                  className="rounded-xl border border-slate-200 bg-slate-50 px-3 py-3 text-left transition hover:bg-white"
+                  onClick={() => navigateProvider(category.route)}
+                >
+                  <div className="text-sm font-black text-slate-900">{category.label}</div>
+                  <div className="mt-1 text-xs text-slate-600">{category.hint}</div>
+                </button>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.div {...fadeUp} className="rounded-[1.8rem] border border-slate-200 bg-white p-5 shadow-sm">
+            <div className="text-xs font-black uppercase tracking-[0.18em] text-slate-500">Trending Streams</div>
+            <div className="mt-4 space-y-3">
+              {trendingStreams.map((stream) => (
+                <button
+                  key={stream.id}
+                  type="button"
+                  className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-left transition hover:bg-white"
+                  onClick={() => navigateProvider(stream.route)}
+                >
+                  <div className="text-sm font-black text-slate-900">{stream.title}</div>
+                  <div className="mt-1 text-xs text-slate-600">{stream.provider}</div>
+                  <div className="mt-2 text-[11px] font-black uppercase tracking-[0.14em] text-[var(--fh-accent)]">{stream.viewers}</div>
+                </button>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+
+        <div className="mt-5 grid gap-5 lg:grid-cols-2">
+          <motion.div {...fadeUp} className="rounded-[1.8rem] border border-slate-200 bg-white p-5 shadow-sm">
+            <div className="text-xs font-black uppercase tracking-[0.18em] text-slate-500">Featured Providers</div>
+            <div className="mt-4 space-y-3">
+              {featuredProviders.map((provider) => (
+                <button
+                  key={provider.id}
+                  type="button"
+                  className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-left transition hover:bg-white"
+                  onClick={() => navigateProvider(provider.route)}
+                >
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="text-sm font-black text-slate-900">{provider.name}</div>
+                    <span className="rounded-full border border-emerald-200 bg-emerald-50 px-2 py-0.5 text-[10px] font-black uppercase tracking-[0.12em] text-emerald-700">
+                      {provider.badge}
+                    </span>
+                  </div>
+                  <div className="mt-1 text-xs text-slate-600">{provider.specialty}</div>
+                </button>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.div {...fadeUp} className="rounded-[1.8rem] border border-slate-200 bg-white p-5 shadow-sm">
+            <div className="text-xs font-black uppercase tracking-[0.18em] text-slate-500">Recommendations For You</div>
+            <div className="mt-4 space-y-3">
+              {streamRecommendations.map((recommendation) => (
+                <button
+                  key={recommendation.id}
+                  type="button"
+                  className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-left transition hover:bg-white"
+                  onClick={() => navigateProvider(recommendation.route)}
+                >
+                  <div className="text-sm font-black text-slate-900">{recommendation.title}</div>
+                  <div className="mt-1 text-xs text-slate-600">{recommendation.reason}</div>
+                </button>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </section>
 

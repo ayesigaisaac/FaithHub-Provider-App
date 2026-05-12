@@ -69,7 +69,8 @@ describe("FaithHubHomeLandingPage Provider Profiles", () => {
   it("falls back to curated provider profiles when saved data is unavailable", async () => {
     renderHomePage();
 
-    expect(await screen.findByText("Restoration House Global")).toBeInTheDocument();
+    const providerMatches = await screen.findAllByText("Restoration House Global");
+    expect(providerMatches.length).toBeGreaterThan(0);
     expect(screen.getByText("Welcome from Lead Pastor")).toBeInTheDocument();
   });
 
