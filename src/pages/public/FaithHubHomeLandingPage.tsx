@@ -696,24 +696,26 @@ export default function FaithHubHomeLandingPageV3Fixed() {
 
           <div className="flex items-center gap-3">
             <ThemeModeToggle />
-            <button
-              className="hidden rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-black shadow-sm transition hover:bg-slate-50 lg:inline-flex"
+            <CtaButton
+              variant="outline"
+              className="hidden rounded-2xl text-sm font-black lg:inline-flex"
               onClick={() => {
                 trackHomeEvent("header_cta_click", { cta: "sign_in" });
                 navigate("/faithhub/provider");
               }}
             >
               Sign in
-            </button>
-            <button
-              className="rounded-2xl bg-[var(--fh-brand)] px-5 py-3 text-sm font-black text-white shadow-[0_16px_40px_rgba(3,205,140,0.28)] transition hover:-translate-y-0.5 hover:shadow-[0_20px_50px_rgba(3,205,140,0.34)]"
+            </CtaButton>
+            <CtaButton
+              variant="primary"
+              className="rounded-2xl px-5 py-3 text-sm font-black"
               onClick={() => {
                 trackHomeEvent("header_cta_click", { cta: "join_faithhub" });
                 navigateProvider("/faithhub/provider/onboarding");
               }}
             >
               Join FaithHub
-            </button>
+            </CtaButton>
           </div>
         </header>
 
@@ -728,8 +730,9 @@ export default function FaithHubHomeLandingPageV3Fixed() {
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <button
-                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[var(--fh-brand)] px-6 py-4 text-base font-black text-white shadow-[0_16px_40px_rgba(3,205,140,0.28)] transition hover:-translate-y-0.5 hover:shadow-[0_20px_50px_rgba(3,205,140,0.34)]"
+              <CtaButton
+                variant="primary"
+                className="rounded-2xl px-6 py-4 text-base font-black"
                 onClick={() => {
                   trackHomeEvent("hero_cta_click", { cta: "start_with_faithhub", placement: "hero_primary" });
                   navigateProvider("/faithhub/provider/onboarding");
@@ -737,9 +740,10 @@ export default function FaithHubHomeLandingPageV3Fixed() {
               >
                 Start with FaithHub
                 <ArrowRight className="h-5 w-5" />
-              </button>
-              <button
-                className="inline-flex items-center justify-center gap-2 rounded-2xl border border-[var(--fh-accent)]/35 bg-[var(--fh-accent)]/10 px-6 py-4 text-base font-black text-[var(--fh-accent)] shadow-sm transition hover:bg-[var(--fh-accent)]/15"
+              </CtaButton>
+              <CtaButton
+                variant="secondary"
+                className="rounded-2xl border-[var(--fh-accent)]/35 px-6 py-4 text-base font-black text-[var(--fh-accent)]"
                 onClick={() => {
                   trackHomeEvent("hero_cta_click", { cta: "open_prayer_flow", placement: "hero_secondary" });
                   navigateProvider("/faithhub/provider/prayer-requests");
@@ -747,9 +751,10 @@ export default function FaithHubHomeLandingPageV3Fixed() {
               >
                 <MessageSquareHeart className="h-5 w-5" />
                 Open prayer flow
-              </button>
-              <button
-                className="inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-6 py-4 text-base font-black shadow-sm transition hover:bg-slate-50"
+              </CtaButton>
+              <CtaButton
+                variant="outline"
+                className="rounded-2xl px-6 py-4 text-base font-black"
                 onClick={() => {
                   trackHomeEvent("hero_cta_click", { cta: "watch_experience", placement: "hero_secondary" });
                   navigateProvider("/faithhub/provider/live-dashboard");
@@ -757,7 +762,7 @@ export default function FaithHubHomeLandingPageV3Fixed() {
               >
                 <Play className="h-5 w-5" />
                 Watch live flow
-              </button>
+              </CtaButton>
             </div>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -1364,24 +1369,26 @@ export default function FaithHubHomeLandingPageV3Fixed() {
                 </p>
               </div>
               <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
-                <button
-                  className="rounded-2xl bg-[var(--fh-brand)] px-6 py-4 text-base font-black text-white shadow-[0_16px_35px_rgba(3,205,140,0.28)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_40px_rgba(3,205,140,0.34)]"
+                <CtaButton
+                  variant="primary"
+                  className="rounded-2xl px-6 py-4 text-base font-black"
                   onClick={() => {
                     trackHomeEvent("hero_cta_click", { cta: "get_started", placement: "bottom_cta" });
                     navigateProvider("/faithhub/provider/onboarding");
                   }}
                 >
                   Get started
-                </button>
-                <button
-                  className="rounded-2xl border border-white/15 bg-white/5 px-6 py-4 text-base font-black text-white backdrop-blur transition hover:bg-white/10"
+                </CtaButton>
+                <CtaButton
+                  variant="outline"
+                  className="rounded-2xl border-white/15 bg-white/5 px-6 py-4 text-base font-black text-white hover:bg-white/10"
                   onClick={() => {
                     trackHomeEvent("hero_cta_click", { cta: "book_demo", placement: "bottom_cta" });
                     navigateProvider("/faithhub/provider/dashboard");
                   }}
                 >
                   Book a demo
-                </button>
+                </CtaButton>
               </div>
             </div>
           </motion.div>
@@ -1452,29 +1459,54 @@ export default function FaithHubHomeLandingPageV3Fixed() {
 
       <div className="fixed inset-x-0 bottom-0 z-40 border-t border-slate-200 bg-white/95 p-3 shadow-[0_-12px_28px_rgba(15,23,42,0.12)] backdrop-blur md:hidden">
         <div className="mx-auto flex w-full max-w-7xl items-center gap-2">
-          <button
-            type="button"
-            className="flex-1 rounded-xl bg-[var(--fh-brand)] px-4 py-3 text-sm font-black text-white shadow-[0_10px_26px_rgba(3,205,140,0.32)]"
+          <CtaButton
+            className="flex-1 rounded-xl px-4 py-3 text-sm font-black"
             onClick={() => {
               trackHomeEvent("hero_cta_click", { cta: "mobile_get_started", placement: "sticky_mobile_bar" });
               navigateProvider("/faithhub/provider/onboarding");
             }}
           >
             Get started
-          </button>
-          <button
-            type="button"
-            className="flex-1 rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm font-black text-slate-800"
+          </CtaButton>
+          <CtaButton
+            variant="outline"
+            className="flex-1 rounded-xl border-slate-300 px-4 py-3 text-sm font-black text-slate-800"
             onClick={() => {
               trackHomeEvent("hero_cta_click", { cta: "mobile_open_dashboard", placement: "sticky_mobile_bar" });
               navigateProvider("/faithhub/provider/dashboard");
             }}
           >
             Open dashboard
-          </button>
+          </CtaButton>
         </div>
       </div>
     </div>
+  );
+}
+
+function CtaButton({
+  children,
+  variant = "primary",
+  className = "",
+  onClick,
+  type = "button",
+}: {
+  children: React.ReactNode;
+  variant?: "primary" | "outline" | "secondary";
+  className?: string;
+  onClick?: () => void;
+  type?: "button" | "submit" | "reset";
+}) {
+  const variantClass =
+    variant === "primary"
+      ? "ds-btn--primary text-white"
+      : variant === "secondary"
+        ? "ds-btn--secondary"
+        : "ds-btn--outline";
+  return (
+    <button type={type} onClick={onClick} className={`ds-btn ${variantClass} ${className}`.trim()}>
+      {children}
+    </button>
   );
 }
 

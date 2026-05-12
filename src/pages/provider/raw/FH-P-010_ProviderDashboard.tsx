@@ -1070,16 +1070,16 @@ function GhostButton({
 }) {
   const activeColor =
     accent === "green"
-      ? "text-[var(--fh-brand)] border-[color-mix(in_srgb,var(--fh-brand)_28%,white)] hover:bg-[var(--fh-brand-soft)]"
+      ? "text-[var(--fh-brand)] border-[color-mix(in_srgb,var(--fh-brand)_28%,white)]"
       : accent === "orange"
-        ? "text-orange-700 border-orange-200 hover:bg-orange-50"
-        : "text-slate-700 border-faith-line hover:bg-[var(--fh-surface)]";
+        ? "text-orange-700 border-orange-200"
+        : "text-slate-700 border-faith-line";
   return (
     <button
       type="button"
       onClick={onClick}
       className={cx(
-        "inline-flex h-11 items-center justify-center gap-2 rounded-xl border bg-[var(--fh-surface-bg)] px-4 text-[12px] font-semibold transition-colors",
+        "ds-btn ds-btn--outline h-11 text-[12px] font-semibold",
         activeColor,
         className,
       )}
@@ -1107,7 +1107,7 @@ function SolidButton({
     <button
       type="button"
       onClick={onClick}
-      className={cx("inline-flex h-11 items-center justify-center gap-2 rounded-xl px-4 text-[12px] font-semibold text-white transition hover:brightness-95", className)}
+      className={cx("ds-btn ds-btn--primary h-11 text-[12px] font-semibold text-white", className)}
       style={{ background: accentBg(accent) }}
     >
       {icon}
