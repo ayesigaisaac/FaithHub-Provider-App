@@ -1354,6 +1354,52 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
     if (draftCount > 0) return `${draftCount} draft${draftCount > 1 ? "s are" : " is"} ready to finish.`;
     return "You're caught up. Start a new teaching task.";
   }, [needsReviewCount, pendingWork]);
+  const analyticsInsights = useMemo(() => {
+    const liveNowCount = LIVE_SESSIONS.filter((session) => session.isLiveNow).length;
+    const totalLiveViewers = LIVE_SESSIONS.filter((session) => session.isLiveNow).reduce((sum, session) => sum + (session.viewers ?? 0), 0);
+    const followersRaw = (metrics.find((metric) => metric.id === "followers")?.value ?? "0").toString();
+    const followersCount = Number(followersRaw.replace(/[^\d.]/g, "")) * (followersRaw.toLowerCase().includes("k") ? 1000 : 1);
+    const donationRaw = (metrics.find((metric) => metric.id === "giving")?.value ?? "$0").toString();
+    const donationCount = Number(donationRaw.replace(/[^\d.]/g, ""));
+    const engagementSignals =
+      LIVE_SESSIONS.filter((session) => session.isLiveNow).reduce((sum, session) => sum + session.audience.length, 0) +
+      needsReviewCount * 12;
+
+    return [
+      {
+        key: "streams",
+        label: "Streams",
+        value: `${liveNowCount} live now`,
+        detail: `${totalLiveViewers.toLocaleString()} active viewers across live sessions`,
+        trend: "+8% vs last week",
+        tone: "good" as const,
+      },
+      {
+        key: "followers",
+        label: "Followers",
+        value: followersCount.toLocaleString(),
+        detail: "Cross-campus audience growth and retention",
+        trend: "+6.8% this month",
+        tone: "navy" as const,
+      },
+      {
+        key: "donations",
+        label: "Donations",
+        value: `$${donationCount.toLocaleString()}`,
+        detail: "Live-response giving and fund movement",
+        trend: "+4.2% period-over-period",
+        tone: "brand" as const,
+      },
+      {
+        key: "engagement",
+        label: "Engagement",
+        value: `${engagementSignals.toLocaleString()} signals`,
+        detail: "Comments, prayer flow, and review interactions",
+        trend: "Healthy and rising",
+        tone: "good" as const,
+      },
+    ];
+  }, [metrics, needsReviewCount]);
   const hasDraftToContinue = pendingWork.some((item) => item.status === "Draft");
   const workflowPrimaryLabel = hasDraftToContinue && continueItem ? "Continue editing" : "Create Teaching";
   const prioritizedQuickActions = useMemo(() => {
@@ -1687,6 +1733,27 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                 </div>
               </div>
             </section>
+
+            <SectionCard
+              title="Dashboard Analytics"
+              subtitle="Cleaner insights for streams, followers, donations, and engagement."
+              titleTag="h2"
+              right={<Pill text="Updated now" tone="navy" left={<TrendingUp className="h-3.5 w-3.5" />} />}
+              className="bg-[var(--fh-surface)] p-4 sm:p-4 shadow-none"
+            >
+              <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+                {analyticsInsights.map((insight) => (
+                  <div key={insight.key} className="rounded-xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3.5">
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-500">{insight.label}</div>
+                      <Pill text={insight.trend} tone={insight.tone} />
+                    </div>
+                    <div className="mt-2 text-[20px] font-black tracking-tight text-faith-ink">{insight.value}</div>
+                    <p className="mt-1 text-[12px] leading-5 text-slate-700">{insight.detail}</p>
+                  </div>
+                ))}
+              </div>
+            </SectionCard>
 
             {needsReviewCount > 0 ? (
               <SectionCard

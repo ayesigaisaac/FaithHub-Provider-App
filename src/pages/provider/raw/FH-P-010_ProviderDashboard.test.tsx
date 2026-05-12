@@ -79,6 +79,26 @@ describe("FH-P-010 FaithHub Provider dashboard workflow UX", () => {
     expect(screen.getByRole("button", { name: /Go to publish-ready workflow/i })).toBeInTheDocument();
   });
 
+  it("renders cleaner analytics insights for core growth metrics", () => {
+    const withTeaching = [
+      {
+        id: "item-1",
+        title: "Sunday Teaching",
+        type: "Teaching",
+        status: "Draft" as const,
+        owner: "A",
+        due: "Today",
+      },
+    ];
+
+    render(<ProviderDashboardPage workflowItemsOverride={withTeaching} />);
+    expect(screen.getByText("Dashboard Analytics")).toBeInTheDocument();
+    expect(screen.getByText("Streams")).toBeInTheDocument();
+    expect(screen.getByText("Followers")).toBeInTheDocument();
+    expect(screen.getByText("Donations")).toBeInTheDocument();
+    expect(screen.getByText("Engagement")).toBeInTheDocument();
+  });
+
   it("derives pending work from draft and needs review statuses", () => {
     const data = deriveTeachingWorkflowData([
       {
