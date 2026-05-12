@@ -27,7 +27,7 @@ import {
 } from "lucide-react";
 import { ThemeModeToggle } from "@/components/theme/ThemeModeToggle";
 import { BrandLogo } from "@/components/branding/BrandLogo";
-import { getStoredToken } from "@/auth/storage";
+import { getStoredToken, getStoredWorkspace } from "@/auth/storage";
 import { localLiveSessionsApi } from "@/api/live/localLiveSessionsApi";
 import type { LiveFlowRecord } from "@/features/live/liveFlowStore";
 
@@ -199,7 +199,28 @@ const experiencePillars = [
   },
 ];
 
-const providerProfiles = [
+const PROFILE_PREFS_KEY = "faithhub.provider.profile.prefs.v1";
+
+type ProviderProfileCard = {
+  id: string;
+  ministry: string;
+  region: string;
+  introVideoLabel: string;
+  schedule: string;
+  specialties: string[];
+  badges: string[];
+  brandAccent: string;
+};
+
+type StoredProviderProfilePrefs = {
+  displayName?: string;
+  title?: string;
+  bio?: string;
+  language?: string;
+  timezone?: string;
+};
+
+const providerProfiles: ProviderProfileCard[] = [
   {
     id: "profile-1",
     ministry: "Restoration House Global",
@@ -231,6 +252,54 @@ const providerProfiles = [
     brandAccent: "from-amber-400/25 to-orange-400/25",
   },
 ];
+
+function readStoredProviderProfilePrefs(): StoredProviderProfilePrefs | null {
+  if (typeof window === "undefined") return null;
+  try {
+    const raw = window.localStorage.getItem(PROFILE_PREFS_KEY);
+    if (!raw) return null;
+    return JSON.parse(raw) as StoredProviderProfilePrefs;
+  } catch {
+    return null;
+  }
+}
+
+function buildProfileCardsFromStorage(): ProviderProfileCard[] {
+  const workspace = getStoredWorkspace();
+  const prefs = readStoredProviderProfilePrefs();
+  const hasWorkspace = Boolean(workspace?.brand?.trim() || workspace?.campus?.trim());
+  const hasPrefs = Boolean(prefs?.displayName?.trim() || prefs?.title?.trim() || prefs?.bio?.trim());
+  if (!hasWorkspace && !hasPrefs) return providerProfiles;
+
+  const ministry = workspace?.brand?.trim() || "FaithHub Ministry";
+  const campus = workspace?.campus?.trim() || "Online Campus";
+  const title = prefs?.title?.trim();
+  const hostName = prefs?.displayName?.trim() || "Provider Host";
+  const language = prefs?.language?.trim() || "English";
+  const timezone = prefs?.timezone?.trim() || "Africa/Kampala";
+  const bio = prefs?.bio?.trim();
+
+  const baseProfile: ProviderProfileCard = {
+    id: "profile-real",
+    ministry,
+    region: `${campus} • Online`,
+    introVideoLabel: title ? `${title} Intro` : `Welcome from ${hostName}`,
+    schedule: `Weekly • ${timezone}`,
+    specialties: [
+      "Livestream Worship",
+      "Prayer & Care",
+      language === "English" ? "Teaching & Discipleship" : `${language} Ministry`,
+    ],
+    badges: ["Verified Ministry", "Provider Profile Active", "Community-ready"],
+    brandAccent: "from-[var(--fh-brand)]/30 to-[var(--fh-accent)]/28",
+  };
+
+  if (bio) {
+    baseProfile.specialties = [baseProfile.specialties[0], baseProfile.specialties[1], bio.slice(0, 44)];
+  }
+
+  return [baseProfile, ...providerProfiles.slice(0, 2)];
+}
 
 const communityProof = [
   {
@@ -349,6 +418,7 @@ export default function FaithHubHomeLandingPageV3Fixed() {
   const navigate = useNavigate();
   const trackedScrollMilestones = React.useRef<Set<number>>(new Set());
   const [liveState, setLiveState] = React.useState(() => localLiveSessionsApi.getState());
+  const [profileCards, setProfileCards] = React.useState<ProviderProfileCard[]>(() => buildProfileCardsFromStorage());
 
   const trackHomeEvent = React.useCallback((eventName: string, payload?: Record<string, unknown>) => {
     if (typeof window === "undefined") return;
@@ -373,6 +443,14 @@ export default function FaithHubHomeLandingPageV3Fixed() {
       setLiveState(localLiveSessionsApi.getState());
     });
     return unsubscribe;
+  }, []);
+
+  React.useEffect(() => {
+    const syncProfiles = () => {
+      setProfileCards(buildProfileCardsFromStorage());
+    };
+    window.addEventListener("storage", syncProfiles);
+    return () => window.removeEventListener("storage", syncProfiles);
   }, []);
 
   const liveNowStreams = React.useMemo(() => {
@@ -873,7 +951,7 @@ export default function FaithHubHomeLandingPageV3Fixed() {
           body="Each provider profile combines ministry branding, trust badges, intro video context, worship schedules, and specialties so people immediately understand who you are and how to connect."
         />
         <div className="mt-8 grid gap-5 lg:grid-cols-3">
-          {providerProfiles.map((profile) => (
+          {profileCards.map((profile) => (
             <motion.div
               key={profile.id}
               {...fadeUp}
