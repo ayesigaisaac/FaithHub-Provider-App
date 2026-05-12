@@ -1,7 +1,18 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
+import { vi } from "vitest";
 import FaithHubHomeLandingPage from "./FaithHubHomeLandingPage";
 import { ThemeModeProvider } from "@/contexts/ThemeModeContext";
+
+const mockNavigate = vi.fn();
+
+vi.mock("react-router-dom", async () => {
+  const actual = await vi.importActual<typeof import("react-router-dom")>("react-router-dom");
+  return {
+    ...actual,
+    useNavigate: () => mockNavigate,
+  };
+});
 
 const AUTH_TOKEN_KEY = "faithhub.auth.token";
 const AUTH_WORKSPACE_KEY = "faithhub.auth.workspace";
@@ -25,6 +36,7 @@ describe("FaithHubHomeLandingPage Provider Profiles", () => {
   beforeEach(() => {
     localStorage.clear();
     sessionStorage.clear();
+    mockNavigate.mockReset();
     seedAuth();
   });
 
@@ -59,5 +71,14 @@ describe("FaithHubHomeLandingPage Provider Profiles", () => {
 
     expect(await screen.findByText("Restoration House Global")).toBeInTheDocument();
     expect(screen.getByText("Welcome from Lead Pastor")).toBeInTheDocument();
+  });
+
+  it("routes to devotionals from the community hub CTA", async () => {
+    renderHomePage();
+
+    const openDevotionals = await screen.findByRole("button", { name: /open devotionals/i });
+    fireEvent.click(openDevotionals);
+
+    expect(mockNavigate).toHaveBeenCalledWith("/faithhub/provider/devotionals");
   });
 });
