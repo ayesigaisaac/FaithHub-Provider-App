@@ -322,6 +322,41 @@ const communityProof = [
   },
 ];
 
+const communityHubCards = [
+  {
+    key: "prayer-wall",
+    title: "Prayer Wall",
+    body: "Receive prayer requests in one trusted lane, assign follow-up owners, and keep care response fast and pastoral.",
+    route: "/faithhub/provider/prayer-requests",
+    icon: HeartHandshake,
+    stat: "320K+ monthly prayer interactions",
+  },
+  {
+    key: "testimonies",
+    title: "Testimonies",
+    body: "Collect life-change stories, run approval checks, and publish safe testimonies that strengthen faith.",
+    route: "/faithhub/provider/testimonies",
+    icon: Sparkles,
+    stat: "Moderated story pipeline",
+  },
+  {
+    key: "groups",
+    title: "Groups",
+    body: "Build belonging through discipleship circles, prayer groups, and shared community rhythms.",
+    route: "/faithhub/provider/community-groups",
+    icon: Users,
+    stat: "Cross-campus engagement",
+  },
+  {
+    key: "devotionals",
+    title: "Devotionals",
+    body: "Launch daily and weekly devotional journeys that bridge livestream worship, prayer, and follow-up.",
+    route: "/faithhub/provider/devotionals",
+    icon: BookOpen,
+    stat: "Daily journey cadence",
+  },
+];
+
 const footerCols = [
   {
     title: "Ecosystem",
@@ -333,7 +368,7 @@ const footerCols = [
   },
   {
     title: "Explore",
-    links: ["Faith communities", "Series & replays", "Prayer", "Testimonies", "Crowdfunding", "Noticeboard"],
+    links: ["Faith communities", "Series & replays", "Prayer", "Testimonies", "Devotionals", "Noticeboard"],
   },
   {
     title: "Company",
@@ -511,6 +546,7 @@ export default function FaithHubHomeLandingPageV3Fixed() {
     "Series & replays": "/faithhub/provider/replays-and-clips",
     Prayer: "/faithhub/provider/prayer-requests",
     Testimonies: "/faithhub/provider/testimonies",
+    Devotionals: "/faithhub/provider/devotionals",
     Crowdfunding: "/faithhub/provider/charity-crowdfunding-workbench",
     Noticeboard: "/faithhub/provider/noticeboard",
     "About FaithHub": "/faithhub/home",
@@ -1017,6 +1053,36 @@ export default function FaithHubHomeLandingPageV3Fixed() {
                   <ChevronRight className="h-4 w-4" />
                 </button>
               </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 py-10 lg:px-10 lg:py-14">
+        <SectionHeading
+          eyebrow="Community Features"
+          title="Prayer wall, testimonies, groups, and devotionals in one connected hub."
+          body="Help people move from livestream moments into meaningful faith steps with connected community experiences your team can steward confidently."
+        />
+        <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          {communityHubCards.map((item) => (
+            <motion.div key={item.key} {...fadeUp} className="rounded-[1.8rem] border border-slate-200 bg-white p-5 shadow-sm">
+              <div className="inline-flex rounded-2xl bg-[var(--fh-brand)]/10 p-3 text-[var(--fh-brand)]">
+                <item.icon className="h-5 w-5" />
+              </div>
+              <h3 className="mt-4 text-xl font-black tracking-tight text-slate-900">{item.title}</h3>
+              <p className="mt-3 text-sm leading-7 text-slate-600">{item.body}</p>
+              <div className="mt-4 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-[11px] font-black uppercase tracking-[0.12em] text-slate-500">
+                {item.stat}
+              </div>
+              <button
+                type="button"
+                className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-black text-slate-800 transition hover:bg-slate-50"
+                onClick={() => navigateProvider(item.route)}
+              >
+                Open {item.title}
+                <ChevronRight className="h-4 w-4" />
+              </button>
             </motion.div>
           ))}
         </div>

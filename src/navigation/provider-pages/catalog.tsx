@@ -104,6 +104,7 @@ const PrayerJournal = lazyPage(() => import('@/pages/provider/raw/FH-P-103_Praye
 const CommunityForum = lazyPage(() => import('@/pages/provider/raw/FH-P-104_CommunityForum'));
 const Counseling = lazyPage(() => import('@/pages/provider/raw/FH-P-105_Counseling'));
 const Projects = lazyPage(() => import('@/pages/provider/raw/FH-P-106_Projects'));
+const Devotionals = lazyPage(() => import('@/pages/provider/raw/FH-P-107_Devotionals'));
 const Leadership = lazyPage(() => import('@/pages/provider/raw/FH-P-110_Leadership'));
 const ServingTeams = lazyPage(() => import('@/pages/provider/raw/FH-P-111_ServingTeams'));
 const RolesPermissions = lazyPage(() => import('@/pages/provider/raw/FH-P-112_RolesPermissions'));
@@ -543,6 +544,17 @@ export const providerPageCatalog: ProviderPageMeta[] = [
     section: 'Community & Care',
     icon: FolderKanban,
     component: Projects,
+  },
+  {
+    key: 'devotionals',
+    id: 'FH-P-107',
+    title: 'Devotionals',
+    description: 'Create devotional journeys that connect prayer, testimonies, and community groups.',
+    path: '/faithhub/provider/devotionals',
+    aliases: ['/faithhub/provider/devotionals/new'],
+    section: 'Community & Care',
+    icon: BookOpen,
+    component: Devotionals,
   },
   {
     key: 'leadership',

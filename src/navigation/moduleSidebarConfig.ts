@@ -191,6 +191,24 @@ export const moduleSidebarConfig: SidebarModule[] = [
         icon: Users,
       },
       {
+        label: 'Prayer Wall',
+        description: 'Receive and triage prayer requests with trusted pastoral follow-up.',
+        route: '/faithhub/provider/prayer-requests',
+        icon: HeartHandshake,
+      },
+      {
+        label: 'Testimonies',
+        description: 'Review and publish approved testimony stories safely and consistently.',
+        route: '/faithhub/provider/testimonies',
+        icon: Sparkles,
+      },
+      {
+        label: 'Devotionals',
+        description: 'Run devotional rhythms that connect livestream, prayer, and community.',
+        route: '/faithhub/provider/devotionals',
+        icon: BookOpen,
+      },
+      {
         label: 'Counseling',
         description: 'Support care journeys with guided follow-up and case visibility.',
         route: '/faithhub/provider/counseling',
