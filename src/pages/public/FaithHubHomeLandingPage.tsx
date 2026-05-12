@@ -3,12 +3,15 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import {
   ArrowRight,
+  Eye,
   BookOpen,
   CalendarDays,
   ChevronRight,
   CircleDollarSign,
   Globe,
+  Heart,
   HeartHandshake,
+  MessageCircle,
   Play,
   Radio,
   ShieldCheck,
@@ -54,6 +57,39 @@ const stats = [
   { value: "320K+", label: "Prayer interactions monthly" },
   { value: "90+", label: "Nations connected" },
   { value: "120K+", label: "Livestream moments delivered" },
+];
+
+const liveNowStreams = [
+  {
+    id: "live-1",
+    title: "Morning Worship & Prayer",
+    campus: "Kampala Central",
+    viewers: 18420,
+    reactions: 3921,
+    prayerResponses: 614,
+    image:
+      "https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1400&q=80",
+  },
+  {
+    id: "live-2",
+    title: "Midweek Bible Teaching",
+    campus: "Online Studio",
+    viewers: 7290,
+    reactions: 1184,
+    prayerResponses: 242,
+    image:
+      "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&w=1400&q=80",
+  },
+  {
+    id: "live-3",
+    title: "Youth Worship Night",
+    campus: "East Campus",
+    viewers: 4310,
+    reactions: 967,
+    prayerResponses: 188,
+    image:
+      "https://images.unsplash.com/photo-1464375117522-1311dd7d0b44?auto=format&fit=crop&w=1400&q=80",
+  },
 ];
 
 const featureCards = [
@@ -673,6 +709,66 @@ export default function FaithHubHomeLandingPageV3Fixed() {
             <p className="mt-4 text-sm leading-7 text-slate-600">FaithHub is designed for quality, moderation, role control, approvals, audit visibility, and thoughtful experiences across sensitive faith and community contexts.</p>
           </div>
         </motion.div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 py-10 lg:px-10 lg:py-14">
+        <SectionHeading
+          eyebrow="Live Streaming Experience"
+          title="Live now, with real-time community response."
+          body="See active streams, viewer momentum, and live reactions while your team routes prayer responses and keeps worship engagement high."
+        />
+        <div className="mt-8 grid gap-5 lg:grid-cols-3">
+          {liveNowStreams.map((stream) => (
+            <motion.div
+              key={stream.id}
+              {...fadeUp}
+              className="overflow-hidden rounded-[1.8rem] border border-slate-200 bg-white shadow-sm"
+            >
+              <div className="relative aspect-[16/10] overflow-hidden">
+                <img src={stream.image} alt={stream.title} className="h-full w-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent" />
+                <div className="absolute left-3 top-3 inline-flex items-center gap-2 rounded-full border border-emerald-300/50 bg-emerald-500/15 px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.16em] text-emerald-100">
+                  <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-300" />
+                  Live now
+                </div>
+                <div className="absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-white/90 px-2.5 py-1 text-[11px] font-black text-slate-800">
+                  <Eye className="h-3.5 w-3.5" />
+                  {stream.viewers.toLocaleString()}
+                </div>
+                <div className="absolute bottom-3 left-3 right-3">
+                  <div className="text-[11px] font-black uppercase tracking-[0.16em] text-white/70">{stream.campus}</div>
+                  <div className="mt-1 text-lg font-black text-white">{stream.title}</div>
+                </div>
+              </div>
+              <div className="p-4">
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="rounded-2xl bg-slate-50 p-3">
+                    <div className="text-[10px] font-black uppercase tracking-[0.14em] text-slate-500">Reactions</div>
+                    <div className="mt-1 flex items-center gap-1.5 text-base font-black text-slate-900">
+                      <Heart className="h-4 w-4 text-rose-500" />
+                      {stream.reactions.toLocaleString()}
+                    </div>
+                  </div>
+                  <div className="rounded-2xl bg-slate-50 p-3">
+                    <div className="text-[10px] font-black uppercase tracking-[0.14em] text-slate-500">Prayer Responses</div>
+                    <div className="mt-1 flex items-center gap-1.5 text-base font-black text-slate-900">
+                      <MessageCircle className="h-4 w-4 text-[var(--fh-accent)]" />
+                      {stream.prayerResponses.toLocaleString()}
+                    </div>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-black text-slate-800 transition hover:bg-slate-50"
+                  onClick={() => navigateProvider("/faithhub/provider/live-dashboard")}
+                >
+                  <Play className="h-4 w-4" />
+                  Open stream preview
+                </button>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </section>
 
       <section className="mx-auto max-w-7xl px-6 py-10 lg:px-10 lg:py-14">
