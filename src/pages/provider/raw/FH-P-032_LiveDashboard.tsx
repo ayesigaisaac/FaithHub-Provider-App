@@ -1190,6 +1190,10 @@ export default function FaithHubLiveDashboardPage() {
   const [activityFlowFilter, setActivityFlowFilter] = useState<"all" | "builder" | "schedule" | "studio" | "stream" | "publish">("all");
   const [activitySearch, setActivitySearch] = useState("");
   const [activityRecords, setActivityRecords] = useState(() => getLiveActivityRecords());
+  const [raisedHandsBySession, setRaisedHandsBySession] = useState<Record<string, number>>({});
+  const [prayerRequestsBySession, setPrayerRequestsBySession] = useState<Record<string, number>>({});
+  const [liveCommentsBySession, setLiveCommentsBySession] = useState<Record<string, string[]>>({});
+  const [liveCommentDraftBySession, setLiveCommentDraftBySession] = useState<Record<string, string>>({});
 
   useEffect(() => {
     const timer = window.setInterval(() => setNowMs(Date.now()), 1000);
@@ -1323,6 +1327,33 @@ export default function FaithHubLiveDashboardPage() {
   const acknowledgeAlert = (id: string) => {
     setAcknowledgedAlerts((current) => Array.from(new Set([...current, id])));
     setToast("Incident acknowledged and added to the response timeline.");
+  };
+
+  const raiseHandForPrayer = () => {
+    setRaisedHandsBySession((prev) => ({
+      ...prev,
+      [session.id]: (prev[session.id] ?? 0) + 1,
+    }));
+    setToast("Prayer hand raise queued for follow-up.");
+  };
+
+  const addPrayerRequest = () => {
+    setPrayerRequestsBySession((prev) => ({
+      ...prev,
+      [session.id]: (prev[session.id] ?? 0) + 1,
+    }));
+    setToast("Prayer request captured and routed.");
+  };
+
+  const sendLiveComment = () => {
+    const draft = (liveCommentDraftBySession[session.id] ?? "").trim();
+    if (!draft) return;
+    setLiveCommentsBySession((prev) => ({
+      ...prev,
+      [session.id]: [...(prev[session.id] ?? []), draft].slice(-5),
+    }));
+    setLiveCommentDraftBySession((prev) => ({ ...prev, [session.id]: "" }));
+    setToast("Live comment posted.");
   };
 
   const mobilePreview = (
@@ -1605,6 +1636,52 @@ export default function FaithHubLiveDashboardPage() {
                   </div>
                   <div className="mt-1 text-[11px] text-faith-slate">Audience retention warning state.</div>
                 </div>
+              </div>
+
+              <div className="mt-4 rounded-lg border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-3">
+                <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-faith-slate">Live interaction</div>
+                <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2">
+                  <button
+                    type="button"
+                    aria-label="Raise hand for prayer"
+                    onClick={raiseHandForPrayer}
+                    className="ds-btn ds-btn--outline h-10 rounded-xl px-3 text-[12px] font-bold"
+                  >
+                    Raise hand for prayer · {(raisedHandsBySession[session.id] ?? 0).toLocaleString()}
+                  </button>
+                  <button
+                    type="button"
+                    aria-label="Add prayer request"
+                    onClick={addPrayerRequest}
+                    className="ds-btn ds-btn--secondary h-10 rounded-xl px-3 text-[12px] font-bold"
+                  >
+                    Prayer requests · {(prayerRequestsBySession[session.id] ?? 0).toLocaleString()}
+                  </button>
+                </div>
+                <div className="mt-3 flex gap-2">
+                  <input
+                    aria-label="Live comment input"
+                    value={liveCommentDraftBySession[session.id] ?? ""}
+                    onChange={(event) =>
+                      setLiveCommentDraftBySession((prev) => ({ ...prev, [session.id]: event.target.value }))
+                    }
+                    placeholder="Write a live comment..."
+                    className="w-full rounded-xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] text-faith-ink dark:text-slate-100"
+                  />
+                  <button
+                    type="button"
+                    aria-label="Send live comment"
+                    onClick={sendLiveComment}
+                    className="ds-btn ds-btn--primary h-10 rounded-xl px-3 text-[12px] font-bold text-white"
+                  >
+                    Send
+                  </button>
+                </div>
+                {(liveCommentsBySession[session.id] ?? []).length > 0 ? (
+                  <div className="mt-2 text-[12px] text-faith-slate">
+                    Latest: {(liveCommentsBySession[session.id] ?? [])[((liveCommentsBySession[session.id] ?? []).length - 1)]}
+                  </div>
+                ) : null}
               </div>
             </Card>
 
