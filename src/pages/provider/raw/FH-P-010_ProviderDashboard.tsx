@@ -1243,8 +1243,8 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
   const [loadingQuickAction, setLoadingQuickAction] = useState<"continue-editing" | "create-teaching" | "review" | "publish" | null>(null);
   const [optimisticStatusById, setOptimisticStatusById] = useState<Record<string, TeachingWorkflowStatus>>({});
   const [actionPendingById, setActionPendingById] = useState<Record<string, DashboardActionKind | undefined>>({});
-  const [auditTrail, setAuditTrail] = useState<DashboardAuditEntry[]>([]);
-  const [usageMap, setUsageMap] = useState<Record<string, number>>({});
+  const [, setAuditTrail] = useState<DashboardAuditEntry[]>([]);
+  const [, setUsageMap] = useState<Record<string, number>>({});
   const metrics = useMemo(() => EXECUTIVE_METRICS[role], [role]);
   const recommendations = useMemo(() => RECOMMENDATIONS_BY_ROLE[role], [role]);
   const primaryCtaLabel = "Create Teaching";
@@ -1354,17 +1354,6 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
     if (draftCount > 0) return `${draftCount} draft${draftCount > 1 ? "s are" : " is"} ready to finish.`;
     return "You're caught up. Start a new teaching task.";
   }, [needsReviewCount, pendingWork]);
-  const recentlyEditedTeachings = useMemo(() => teachingItems.slice(0, 5), [teachingItems]);
-  const quickAccessTeachings = useMemo(() => {
-    const withUsage = teachingItems
-      .map((item) => ({ item, score: usageMap[item.id] ?? 0 }))
-      .filter((entry) => entry.score > 0)
-      .sort((a, b) => b.score - a.score)
-      .slice(0, 4)
-      .map((entry) => entry.item);
-    return withUsage;
-  }, [teachingItems, usageMap]);
-
   const hasDraftToContinue = pendingWork.some((item) => item.status === "Draft");
   const workflowPrimaryLabel = hasDraftToContinue && continueItem ? "Continue editing" : "Create Teaching";
 
@@ -1757,59 +1746,6 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
               </div>
             </SectionCard>
 
-            {recentlyEditedTeachings.length > 0 ? (
-              <SectionCard
-                title="Recently edited"
-                subtitle="Your latest teaching updates across drafts and published items."
-                titleTag="h2"
-                right={<Pill text={`${recentlyEditedTeachings.length} recent`} tone="navy" />}
-                className="bg-[var(--fh-surface)] p-4 sm:p-4 shadow-none"
-              >
-                <div className="grid gap-3 sm:grid-cols-2">
-                  {recentlyEditedTeachings.slice(0, 4).map((item) => (
-                    <button
-                      key={`recently-edited-${item.id}`}
-                      type="button"
-                      onClick={() => openTeachingItem(item.id)}
-                      className={`w-full rounded-xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3.5 text-left transition hover:bg-[var(--fh-surface)] ${cardFocusRingClass}`}
-                      aria-label={`Open recently edited ${item.title}`}
-                    >
-                      <div className="flex items-start justify-between gap-2">
-                        <h3 className="text-[14px] font-bold text-faith-ink">{item.title}</h3>
-                        <Pill text={item.status} tone={item.status === "Published" ? "good" : "warn"} />
-                      </div>
-                      <p className="mt-1 text-[12px] text-slate-700">Updated {formatLastEdited(item.updatedAt)}</p>
-                    </button>
-                  ))}
-                </div>
-              </SectionCard>
-            ) : null}
-
-            {quickAccessTeachings.length > 0 ? (
-              <SectionCard
-                title="Quick access"
-                subtitle="Frequently used teachings based on your recent activity."
-                titleTag="h2"
-                right={<Pill text={`${quickAccessTeachings.length} frequent`} tone="good" />}
-                className="bg-[var(--fh-surface)] p-4 sm:p-4 shadow-none"
-              >
-                <div className="grid gap-3 sm:grid-cols-2">
-                  {quickAccessTeachings.map((item) => (
-                    <button
-                      key={`quick-access-${item.id}`}
-                      type="button"
-                      onClick={() => openTeachingItem(item.id)}
-                      className={`w-full rounded-xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3.5 text-left transition hover:bg-[var(--fh-surface)] ${cardFocusRingClass}`}
-                      aria-label={`Open quick access ${item.title}`}
-                    >
-                      <div className="text-[14px] font-bold text-faith-ink">{item.title}</div>
-                      <div className="mt-1 text-[12px] text-slate-700">Used {(usageMap[item.id] ?? 0)} times</div>
-                    </button>
-                  ))}
-                </div>
-              </SectionCard>
-            ) : null}
-
             <SectionCard
               title="Published teachings"
               subtitle="Published sermons ready to open, review, and share."
@@ -2069,32 +2005,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                 <div className="text-[12px] text-slate-700">Section collapsed.</div>
               )}
             </SectionCard>
-            {auditTrail.length > 0 ? (
-              <SectionCard
-                title="Action audit trail"
-                subtitle="Recent action outcomes with rollback visibility."
-                titleTag="h3"
-                className="bg-[var(--fh-surface)] p-4 sm:p-4 shadow-none"
-              >
-                <div className="space-y-2">
-                  {auditTrail.slice(0, 5).map((entry) => (
-                    <div key={entry.id} className="rounded-xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2">
-                      <div className="flex items-center justify-between gap-2">
-                        <div className="text-[12px] font-semibold text-faith-ink">{entry.message}</div>
-                        <Pill
-                          text={entry.status}
-                          tone={entry.status === "success" ? "good" : entry.status === "error" ? "danger" : "navy"}
-                        />
-                      </div>
-                      <div className="mt-1 text-[12px] text-slate-700">
-                        {entry.action} � {formatLastEdited(entry.atISO)}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </SectionCard>
-            ) : null}
-            {actionToast ? (
+                        {actionToast ? (
               <div
                 role="status"
                 aria-live="polite"
@@ -2110,6 +2021,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
   }
 
 }
+
 
 
 
