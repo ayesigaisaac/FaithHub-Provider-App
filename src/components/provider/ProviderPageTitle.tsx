@@ -20,7 +20,7 @@ export function ProviderPageTitle({
   return (
     <div className={cx('flex min-w-0 items-start gap-3.5 sm:gap-4', className)}>
       <div
-        className={cx('grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand text-white shadow-soft sm:h-12 sm:w-12', iconClassName)}
+        className={cx('ds-icon h-11 w-11 shrink-0 text-[var(--fh-brand-dark)] sm:h-12 sm:w-12', iconClassName)}
       >
         {icon}
       </div>

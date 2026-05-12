@@ -459,7 +459,7 @@ function SocialIconButton({ href = "#", label, children }: { href?: string; labe
     <a
       aria-label={label}
       title={label}
-      className="flex h-11 w-11 items-center justify-center rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:bg-slate-50"
+      className="ds-icon h-11 w-11 rounded-2xl transition hover:-translate-y-0.5"
       href={href}
     >
       <span className="text-slate-700">{children}</span>

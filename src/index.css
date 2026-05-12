@@ -21,6 +21,13 @@
   --fh-radius-xl: 20px;
   --fh-radius-2xl: 28px;
   --fh-radius-3xl: 34px;
+  --fh-space-1: 4px;
+  --fh-space-2: 8px;
+  --fh-space-3: 12px;
+  --fh-space-4: 16px;
+  --fh-space-5: 20px;
+  --fh-space-6: 24px;
+  --fh-space-8: 32px;
 
   --fh-shadow-sm: 0 6px 18px rgba(15, 23, 42, 0.05);
   --fh-shadow-md: 0 12px 28px rgba(15, 23, 42, 0.07);
@@ -234,6 +241,76 @@ video {
   font-size: var(--fh-font-size-sm);
   line-height: 1.6;
   color: var(--fh-muted);
+}
+
+.ds-stack-2 > * + * { margin-top: var(--fh-space-2); }
+.ds-stack-3 > * + * { margin-top: var(--fh-space-3); }
+.ds-stack-4 > * + * { margin-top: var(--fh-space-4); }
+.ds-stack-5 > * + * { margin-top: var(--fh-space-5); }
+.ds-stack-6 > * + * { margin-top: var(--fh-space-6); }
+
+.ds-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--fh-space-2);
+  min-height: 40px;
+  border-radius: var(--fh-radius-md);
+  padding: 0 var(--fh-space-4);
+  border: 1px solid transparent;
+  font-family: var(--fh-font-family-body);
+  font-size: var(--fh-font-size-sm);
+  font-weight: 700;
+  line-height: 1;
+  transition: background-color 170ms ease, color 170ms ease, border-color 170ms ease, box-shadow 170ms ease, transform 170ms ease;
+}
+
+.ds-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.ds-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--fh-brand) 28%, white 72%);
+}
+
+.ds-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.ds-btn--primary {
+  background: linear-gradient(90deg, var(--fh-brand-dark) 0%, var(--fh-brand) 100%);
+  color: #ffffff;
+  box-shadow: var(--fh-shadow-sm);
+}
+
+.ds-btn--primary:hover:not(:disabled) {
+  box-shadow: var(--fh-shadow-md);
+}
+
+.ds-btn--secondary {
+  background: color-mix(in srgb, var(--fh-brand-soft) 72%, white 28%);
+  color: var(--fh-brand-dark);
+  border-color: color-mix(in srgb, var(--fh-brand) 24%, var(--fh-line) 76%);
+}
+
+.ds-btn--outline {
+  background: var(--fh-surface-bg);
+  color: var(--fh-ink);
+  border-color: var(--fh-line);
+}
+
+.ds-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  border: 1px solid color-mix(in srgb, var(--fh-line) 75%, transparent);
+  background: color-mix(in srgb, var(--fh-surface) 84%, white 16%);
+  color: var(--fh-brand-dark);
 }
 
 .fh-uplift-surface {
