@@ -1093,7 +1093,7 @@ export default function StreamToPlatformsPage() {
                 <select
                   value={sessionStatus}
                   onChange={(e) => setSessionStatus(e.target.value as SessionStatus)}
-                  className="h-10 rounded-xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 pr-8 text-sm font-semibold text-slate-800 dark:text-slate-200 shadow-soft transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-slate-600 appearance-none"
+                  className="h-11 rounded-xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 pr-8 text-sm font-semibold text-slate-800 dark:text-slate-200 shadow-soft transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-slate-600 appearance-none sm:h-10"
                 >
                   <option>Draft</option>
                   <option>Scheduled</option>
@@ -1105,7 +1105,7 @@ export default function StreamToPlatformsPage() {
 
               <button
                 onClick={() => setConnectOpen(true)}
-                className="inline-flex h-10 items-center justify-center gap-2 rounded-xl px-4 text-sm font-semibold text-slate-800 dark:text-slate-100 shadow-soft ring-1 ring-slate-200 dark:ring-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800 transition active:scale-[0.98]"
+                className="inline-flex h-11 items-center justify-center gap-2 rounded-xl px-4 text-sm font-semibold text-slate-800 dark:text-slate-100 shadow-soft ring-1 ring-slate-200 dark:ring-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800 transition active:scale-[0.98] sm:h-10"
               >
                 <PlusCircle className="h-4 w-4" />
                 <span>Connect destination</span>
@@ -1113,7 +1113,7 @@ export default function StreamToPlatformsPage() {
 
               <button
                 onClick={() => setPresetOpen(true)}
-                className="inline-flex h-10 items-center justify-center gap-2 rounded-xl px-4 text-sm font-semibold text-white shadow-soft transition active:scale-[0.98]"
+                className="inline-flex h-11 items-center justify-center gap-2 rounded-xl px-4 text-sm font-semibold text-white shadow-soft transition active:scale-[0.98] sm:h-10"
                 style={{ background: EV_ORANGE }}
               >
                 <Wand2 className="h-4 w-4" />
@@ -1124,7 +1124,7 @@ export default function StreamToPlatformsPage() {
                 onClick={handlePublishPlan}
                 disabled={!planPublishReady || isPending}
                 className={cx(
-                  'inline-flex h-10 items-center gap-2 rounded-xl px-4 text-sm font-bold text-white shadow-soft transition active:scale-[0.98]',
+                  'inline-flex h-11 items-center gap-2 rounded-xl px-4 text-sm font-bold text-white shadow-soft transition active:scale-[0.98] sm:h-10',
                   !planPublishReady || isPending ? 'bg-slate-300 dark:bg-slate-800 text-faith-slate cursor-not-allowed' : 'hover:opacity-95'
                 )}
                 style={!planPublishReady || isPending ? undefined : { background: EV_GREEN }}

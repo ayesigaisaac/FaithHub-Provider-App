@@ -872,7 +872,7 @@ function Drawer({
 
 function Toast({ text }: { text: string }) {
   return (
-    <div className="fixed bottom-4 left-1/2 z-[140] -translate-x-1/2 rounded-xl bg-slate-900 px-4 py-3 text-[12px] font-semibold text-white shadow-lg dark:bg-slate-100 dark:text-faith-ink">
+    <div className="fixed bottom-20 left-1/2 z-[140] w-[calc(100%-1.5rem)] max-w-md -translate-x-1/2 rounded-xl bg-slate-900 px-4 py-3 text-center text-[12px] font-semibold text-white shadow-lg dark:bg-slate-100 dark:text-faith-ink sm:bottom-4 sm:w-auto sm:text-left">
       {text}
     </div>
   );
@@ -1366,19 +1366,19 @@ export default function FaithHubLiveDashboardPage() {
           </div>
 
           <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 xl:flex xl:w-auto xl:flex-wrap xl:justify-end">
-            <SoftButton className="h-10 w-full justify-center px-4" onClick={() => safeNav(ROUTES.liveSchedule)}>
+            <SoftButton className="h-11 w-full justify-center px-4 sm:h-10" onClick={() => safeNav(ROUTES.liveSchedule)}>
               <ChevronLeft className="h-4 w-4" /> Live Schedule
             </SoftButton>
-            <SoftButton onClick={() => setPreviewOpen(true)} className="h-10 w-full justify-center px-4 lg:hidden">
+            <SoftButton onClick={() => setPreviewOpen(true)} className="h-11 w-full justify-center px-4 sm:h-10 lg:hidden">
               <MonitorPlay className="h-4 w-4" /> Preview
             </SoftButton>
-            <PrimaryButton className="h-10 w-full justify-center px-4" tone="green" onClick={() => safeNav(`${ROUTES.liveStudio}?sessionId=${encodeURIComponent(session.id)}`)}>
+            <PrimaryButton className="h-11 w-full justify-center px-4 sm:h-10" tone="green" onClick={() => safeNav(`${ROUTES.liveStudio}?sessionId=${encodeURIComponent(session.id)}`)}>
               <Video className="h-4 w-4" /> Launch studio
             </PrimaryButton>
-            <PrimaryButton className="h-10 w-full justify-center px-4" tone="orange" onClick={sendReminder} disabled={!canSendReminder || reminderSent}>
+            <PrimaryButton className="h-11 w-full justify-center px-4 sm:h-10" tone="orange" onClick={sendReminder} disabled={!canSendReminder || reminderSent}>
               <Bell className="h-4 w-4" /> {reminderSent ? "Reminder sent" : "Send last-minute reminder"}
             </PrimaryButton>
-            <SoftButton className="h-10 w-full justify-center px-4" onClick={openModerationPanel}>
+            <SoftButton className="h-11 w-full justify-center px-4 sm:h-10" onClick={openModerationPanel}>
               <ShieldCheck className="h-4 w-4" /> Open moderation panel
             </SoftButton>
           </div>
