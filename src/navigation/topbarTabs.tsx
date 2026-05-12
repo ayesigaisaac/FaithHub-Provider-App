@@ -2,7 +2,6 @@ import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded';
 import PlayCircleOutlineRoundedIcon from '@mui/icons-material/PlayCircleOutlineRounded';
 import EventNoteRoundedIcon from '@mui/icons-material/EventNoteRounded';
 import GroupsRoundedIcon from '@mui/icons-material/GroupsRounded';
-import VolunteerActivismRoundedIcon from '@mui/icons-material/VolunteerActivismRounded';
 import type { ReactNode } from 'react';
 import type { ProviderPageSection } from './providerPages';
 import { providerCategoryMeta } from './providerCategories';
@@ -45,12 +44,6 @@ export const topbarTabs: TopbarTab[] = [
     to: '/faithhub/provider/community-groups',
     sections: [category('Audience'), category('Community')],
     icon: <GroupsRoundedIcon fontSize="small" />,
-  },
-  {
-    label: 'Giving',
-    to: '/faithhub/provider/donations-and-funds',
-    sections: [category('Giving')],
-    icon: <VolunteerActivismRoundedIcon fontSize="small" />,
   },
   {
     label: 'Reports',

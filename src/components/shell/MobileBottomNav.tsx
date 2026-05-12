@@ -5,7 +5,7 @@ import {
 } from '@mui/material';
 import { useMemo } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Bell, CalendarClock, LayoutDashboard, Megaphone, Radio } from 'lucide-react';
+import { Bell, CalendarClock, LayoutDashboard, Radio } from 'lucide-react';
 import { findProviderPageByPath } from '@/navigation/providerPages';
 
 const tabs = [
@@ -13,7 +13,6 @@ const tabs = [
   { label: 'Live', value: '/faithhub/provider/live-dashboard', icon: Radio },
   { label: 'Audience', value: '/faithhub/provider/audience-notifications', icon: Bell },
   { label: 'Events', value: '/faithhub/provider/events-manager', icon: CalendarClock },
-  { label: 'Beacon', value: '/faithhub/provider/beacon-dashboard', icon: Megaphone },
 ];
 
 export function MobileBottomNav() {
@@ -28,7 +27,6 @@ export function MobileBottomNav() {
     if (page.section === 'Live Sessions Operations') return '/faithhub/provider/live-dashboard';
     if (page.section === 'Audience & Outreach') return '/faithhub/provider/audience-notifications';
     if (page.section === 'Events & Giving') return '/faithhub/provider/events-manager';
-    if (page.section === 'Beacon') return '/faithhub/provider/beacon-dashboard';
     return '/faithhub/provider/dashboard';
   }, [location.pathname]);
 

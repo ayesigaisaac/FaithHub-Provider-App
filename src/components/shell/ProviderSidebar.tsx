@@ -51,6 +51,14 @@ const sectionIconMap: Record<string, typeof GridViewRoundedIcon> = {
   'Workspace Settings': SettingsRoundedIcon,
 };
 
+const PRIORITY_SECTIONS = new Set<string>([
+  'Foundation & Mission Control',
+  'Content Structure & Teaching Creation',
+  'Live Sessions Operations',
+  'Audience & Outreach',
+  'Events & Giving',
+]);
+
 function getSidebarPageLabel(input: { key: string; title: string; shortTitle?: string }) {
   if (input.shortTitle) return input.shortTitle;
 
@@ -94,6 +102,7 @@ export function ProviderSidebar({
   const isDark = theme.palette.mode === 'dark';
   const location = useLocation();
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({});
+  const [showAllSections, setShowAllSections] = useState(false);
 
   const sections = providerSections
     .map((section) => ({
@@ -102,6 +111,9 @@ export function ProviderSidebar({
       groups: getProviderSidebarGroupsBySection(section),
     }))
     .filter((group) => group.groups.length > 0);
+  const primarySections = sections.filter((group) => PRIORITY_SECTIONS.has(group.section));
+  const secondarySections = sections.filter((group) => !PRIORITY_SECTIONS.has(group.section));
+  const displayedSections = showAllSections ? [...primarySections, ...secondarySections] : primarySections;
   const activeSection = useMemo(() => {
     const activePage = providerPages.find(
       (page) => page.path === location.pathname || Boolean(page.aliases?.includes(location.pathname)),
@@ -195,7 +207,7 @@ export function ProviderSidebar({
               '&::-webkit-scrollbar-track': { backgroundColor: 'transparent' },
             }}
           >
-            {sections.map((group) => (
+            {displayedSections.map((group) => (
               <Box key={group.section} sx={{ mb: collapsed ? 0.55 : 1 }}>
                 {!collapsed ? (
                   <Box sx={{ mb: 0.58 }}>
@@ -515,6 +527,47 @@ export function ProviderSidebar({
                 })}
               </Box>
             ))}
+            {secondarySections.length > 0 ? (
+              <Box sx={{ pt: 0.6 }}>
+                <ListItemButton
+                  onClick={() => setShowAllSections((prev) => !prev)}
+                  sx={{
+                    px: 1,
+                    py: 0.65,
+                    minHeight: 38,
+                    borderRadius: '10px',
+                    border: '1px dashed',
+                    borderColor: 'var(--fh-line)',
+                    bgcolor: 'transparent',
+                    '&:hover': {
+                      bgcolor: isDark ? '#111827' : '#f1f5f4',
+                    },
+                  }}
+                >
+                  <ListItemText
+                    primary={
+                      <Typography
+                        sx={{
+                          fontWeight: 700,
+                          fontSize: 11,
+                          letterSpacing: '0.1em',
+                          color: 'var(--fh-slate)',
+                          textTransform: 'uppercase',
+                          lineHeight: 1.2,
+                        }}
+                      >
+                        {showAllSections ? 'Show Core Navigation' : `Show More Sections (${secondarySections.length})`}
+                      </Typography>
+                    }
+                  />
+                  {showAllSections ? (
+                    <KeyboardArrowDownRoundedIcon sx={{ fontSize: 20, color: 'var(--fh-slate)' }} />
+                  ) : (
+                    <KeyboardArrowRightRoundedIcon sx={{ fontSize: 20, color: 'var(--fh-slate)' }} />
+                  )}
+                </ListItemButton>
+              </Box>
+            ) : null}
           </List>
         </Box>
       </Box>
