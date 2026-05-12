@@ -1576,7 +1576,7 @@ function Toast({ message, onClose }: { message: string; onClose: () => void }) {
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 16 }}
-        className="fixed bottom-4 left-1/2 z-[120] -translate-x-1/2 rounded-2xl bg-slate-900 px-4 py-3 text-[12px] font-semibold text-white shadow-medium"
+        className="fixed bottom-24 left-1/2 z-[120] w-[calc(100%-1.5rem)] max-w-md -translate-x-1/2 rounded-2xl bg-slate-900 px-4 py-3 text-center text-[12px] font-semibold text-white shadow-medium sm:bottom-4 sm:w-auto"
       >
         {message}
       </motion.div>
@@ -2680,21 +2680,21 @@ export default function FaithHubLiveBuilderPage({ embedded = false, onRequestClo
           </div>
 
           <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 xl:flex xl:w-auto xl:flex-wrap xl:justify-end">
-            <SoftButton className="h-10 w-full justify-center px-4" onClick={() => (onRequestClose ? onRequestClose() : safeNav(ROUTES.providerDashboard))} title="Back to FaithHub Provider dashboard">
+            <SoftButton className="h-11 w-full justify-center px-4 sm:h-10" onClick={() => (onRequestClose ? onRequestClose() : safeNav(ROUTES.providerDashboard))} title="Back to FaithHub Provider dashboard">
               <ChevronLeft className="h-4 w-4" /> Dashboard
             </SoftButton>
             {isMobile ? (
-              <SoftButton className="h-10 w-full justify-center px-4" onClick={() => setPreviewOpen(true)} title="Open preview">
+              <SoftButton className="h-11 w-full justify-center px-4 sm:h-10" onClick={() => setPreviewOpen(true)} title="Open preview">
                 <Eye className="h-4 w-4" /> Preview
               </SoftButton>
             ) : null}
-            <SoftButton className="h-10 w-full justify-center px-4" onClick={saveLiveSession} title="Save live session">
+            <SoftButton className="h-11 w-full justify-center px-4 sm:h-10" onClick={saveLiveSession} title="Save live session">
               <CheckCircle2 className="h-4 w-4" /> Save live session
             </SoftButton>
-            <PrimaryButton className="h-10 w-full justify-center px-4" secondary onClick={scheduleAndNotify} title="Schedule and notify">
+            <PrimaryButton className="h-11 w-full justify-center px-4 sm:h-10" secondary onClick={scheduleAndNotify} title="Schedule and notify">
               <Bell className="h-4 w-4" /> Schedule and notify
             </PrimaryButton>
-            <PrimaryButton className="h-10 w-full justify-center px-4" onClick={openStudioSetup} title="Open studio setup">
+            <PrimaryButton className="h-11 w-full justify-center px-4 sm:h-10" onClick={openStudioSetup} title="Open studio setup">
               <MonitorPlay className="h-4 w-4" /> Open studio setup
             </PrimaryButton>
           </div>
@@ -2729,7 +2729,7 @@ export default function FaithHubLiveBuilderPage({ embedded = false, onRequestClo
         <div className="space-y-4 lg:col-span-5">
           {renderStep()}
           <div className="sticky bottom-4 z-30 rounded-3xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3 shadow-medium dark:border-slate-800 dark:bg-slate-950 lg:hidden">
-            <div className="flex items-center justify-between gap-2">
+            <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
               <SoftButton onClick={() => !isFirstStep && setStep(STEPS[currentIndex - 1].key)} disabled={isFirstStep}>
                 <ChevronLeft className="h-4 w-4" /> Back
               </SoftButton>
