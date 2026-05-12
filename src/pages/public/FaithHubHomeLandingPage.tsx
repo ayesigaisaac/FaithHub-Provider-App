@@ -34,93 +34,93 @@ const fadeUp = {
 const brandMessaging = {
   productName: "FaithHub",
   poweredBy: "Powered by EVzone",
-  heroLabel: "Unified faith platform",
-  heroTitle: "One platform for live ministry, teachings, community, and giving.",
+  heroLabel: "Livestream, Prayer, Worship, Community",
+  heroTitle: "One platform for livestreaming, prayer, worship, and community.",
   heroBody:
-    "FaithHub helps churches, ministries, and faith creators run their full digital mission in one place: broadcast live, publish teachings, grow community, host events, and manage giving with clarity and trust.",
+    "FaithHub helps churches, ministries, and worship teams bring people together in real time and beyond: stream services, host prayer rooms, publish worship and teachings, and nurture trusted community journeys in one place.",
   platformSectionBody:
-    "FaithHub combines human warmth with operational clarity so teams can move from message to action without jumping between disconnected tools.",
+    "FaithHub combines spiritual warmth with operational clarity so teams can move from livestream to prayer, from worship to follow-up, and from message to meaningful community action without switching tools.",
   audienceSectionBody:
-    "From local congregations to global mission teams and digital-first creators, FaithHub provides a trusted foundation for connection, growth, and follow-through.",
+    "From local congregations to global prayer networks and digital worship communities, FaithHub provides a trusted foundation for real connection, consistency, and follow-through.",
   finalCtaTitle: "Launch your ministry presence on FaithHub.",
   finalCtaBody:
-    "Bring live sessions, teachings, resources, community, events, and giving into one clear, high-trust experience your team can manage confidently.",
+    "Bring livestreams, prayer moments, worship experiences, and community care into one clear, high-trust digital home your team can steward confidently.",
   footerBody:
-    "FaithHub is the all-in-one operating platform for faith communities to stream, teach, engage, and grow with confidence.",
+    "FaithHub is the all-in-one operating platform for faith communities to livestream, pray, worship, and build connected community with confidence.",
 };
 
 const stats = [
-  { value: "2,400+", label: "Live communities" },
-  { value: "40+", label: "Languages supported" },
-  { value: "90+", label: "Nations reached" },
-  { value: "120K+", label: "Moments streamed" },
+  { value: "2,400+", label: "Live worship communities" },
+  { value: "320K+", label: "Prayer interactions monthly" },
+  { value: "90+", label: "Nations connected" },
+  { value: "120K+", label: "Livestream moments delivered" },
 ];
 
 const featureCards = [
   {
     icon: Radio,
-    title: "Live Sessions",
-    body: "Host sermons, classes, worship, prayer gatherings, conferences, Q&A moments, and community broadcasts with a polished live experience.",
+    title: "Livestreaming Control",
+    body: "Run services, worship nights, and prayer broadcasts with polished live production, moderation, and post-live continuity.",
   },
   {
-    icon: BookOpen,
-    title: "Teachings & series",
-    body: "Publish structured series, episodes, and standalone teachings with replays, clips, notes, resources, and elegant discovery pages.",
-  },
-  {
-    icon: CircleDollarSign,
-    title: "Giving & crowdfunds",
-    body: "Run everyday giving, special campaigns, and charity crowdfunding with trust signals, updates, goals, and impact visibility.",
+    icon: MessageSquareHeart,
+    title: "Prayer Rooms & Care",
+    body: "Collect prayer requests, route pastoral care, and sustain prayer follow-up with high-trust, community-first workflows.",
   },
   {
     icon: Sparkles,
-    title: "Beacon promotion",
-    body: "Promote live sessions, replays, events, campaigns, and announcements with premium creative, placements, and audience targeting.",
+    title: "Worship & Replay Experience",
+    body: "Carry worship moments beyond the livestream through replays, clips, reflections, and devotion-ready content journeys.",
+  },
+  {
+    icon: Users,
+    title: "Community Formation",
+    body: "Grow meaningful digital fellowship through groups, testimonies, events, and communication journeys that keep people connected.",
   },
 ];
 
 const journeyCards = [
   {
-    title: "For churches & congregations",
+    title: "For worship ministries",
     points: [
-      "Stream services and worship experiences",
-      "Publish sermons, studies, and devotionals",
-      "Coordinate giving, events, and community life",
+      "Livestream services and worship gatherings",
+      "Publish worship moments and replay highlights",
+      "Guide members into prayer and next steps",
     ],
   },
   {
-    title: "For ministries & missions",
+    title: "For prayer networks",
     points: [
-      "Reach multilingual audiences globally",
-      "Promote events, campaigns, and field updates",
-      "Manage charity, outreach, and storytelling",
+      "Host prayer chains and regional prayer rooms",
+      "Route prayer needs to trusted care teams",
+      "Track follow-through without losing warmth",
     ],
   },
   {
-    title: "For digital faith creators",
+    title: "For digital faith communities",
     points: [
-      "Create premium live and replay content",
-      "Build audiences, resources, and subscriptions",
-      "Grow responsibly with giving and merchandise",
+      "Create consistent live-and-replay rhythms",
+      "Build belonging through groups and testimonies",
+      "Activate outreach, events, and support journeys",
     ],
   },
 ];
 
 const experiencePillars = [
   {
-    eyebrow: "Engagement",
-    title: "Move visitors into participation",
-    body: "Turn a landing-page visit into live attendance, replay viewing, giving, resource discovery, prayer requests, testimonies, or long-term community belonging.",
+    eyebrow: "Live Participation",
+    title: "Move viewers into real-time worship engagement",
+    body: "Turn passive viewing into active participation through chat, prayer prompts, response moments, and guided next steps during and after livestreams.",
   },
   {
-    eyebrow: "Trust",
-    title: "Built for high-trust ministry experiences",
-    body: "Support moderation, privacy-aware journeys, review management, safe communication, and polished provider presentation across every important touchpoint.",
+    eyebrow: "Pastoral Care",
+    title: "Prayer and care flows built for trust",
+    body: "Support moderation, privacy-aware prayer journeys, and safe communication so spiritual care remains credible, timely, and human.",
   },
   {
-    eyebrow: "Growth",
-    title: "Designed for discoverability and return visits",
-    body: "From Beacon promotion to replay clips and audience follow-up, FaithHub helps every important message travel further and last longer.",
+    eyebrow: "Community Formation",
+    title: "Designed for belonging beyond Sunday",
+    body: "From groups and testimonies to events and follow-up journeys, FaithHub helps people stay connected between services and keep growing together.",
   },
 ];
 
@@ -318,8 +318,8 @@ export default function FaithHubHomeLandingPageV3Fixed() {
 
           <nav className="hidden items-center gap-8 text-sm font-bold text-slate-600 lg:flex">
             <a href="#features" className="transition hover:text-[var(--fh-brand)]">Features</a>
-            <a href="#who" className="transition hover:text-[var(--fh-brand)]">Who it serves</a>
-            <a href="#experience" className="transition hover:text-[var(--fh-brand)]">Experience</a>
+            <a href="#who" className="transition hover:text-[var(--fh-brand)]">Communities</a>
+            <a href="#experience" className="transition hover:text-[var(--fh-brand)]">Worship Flow</a>
             <a href="#footer" className="transition hover:text-[var(--fh-brand)]">Contact</a>
           </nav>
 
@@ -375,7 +375,7 @@ export default function FaithHubHomeLandingPageV3Fixed() {
                 }}
               >
                 <Play className="h-5 w-5" />
-                Watch the experience
+                Watch live flow
               </button>
               <button
                 className="inline-flex items-center justify-center gap-2 rounded-2xl border border-[var(--fh-brand)]/30 bg-white px-6 py-4 text-base font-black text-[var(--fh-brand)] shadow-sm transition hover:bg-[var(--fh-brand-soft)]"
@@ -424,12 +424,12 @@ export default function FaithHubHomeLandingPageV3Fixed() {
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent" />
                     <div className="absolute left-4 top-4 flex flex-wrap gap-2">
                       <Chip tone="green"><span className="h-2.5 w-2.5 rounded-full bg-[var(--fh-brand)] animate-pulse" /> Live now</Chip>
-                      <Chip tone="orange"><BellRing className="h-3.5 w-3.5" /> 18.4K watching</Chip>
+                      <Chip tone="orange"><BellRing className="h-3.5 w-3.5" /> 18.4K in worship</Chip>
                     </div>
                     <div className="absolute bottom-4 left-4 right-4 grid gap-4 md:grid-cols-[1fr_auto] md:items-end">
                       <div>
                         <div className="text-[11px] font-black uppercase tracking-[0.22em] text-[var(--fh-brand)]">Featured experience</div>
-                        <div className="mt-2 max-w-xl text-2xl font-black text-white sm:text-3xl">Sunday Worship, Live Teaching, Prayer, and Giving</div>
+                        <div className="mt-2 max-w-xl text-2xl font-black text-white sm:text-3xl">Sunday Worship Live, Prayer Rooms, and Community Care</div>
                         <p className="mt-2 max-w-xl text-sm leading-7 text-white/75">
                           Beautiful livestreaming with chat, follow-up, translation, giving prompts, replay packaging, and premium engagement journeys.
                         </p>
@@ -450,8 +450,8 @@ export default function FaithHubHomeLandingPageV3Fixed() {
                   <div className="rounded-[1.6rem] border border-slate-200 bg-white p-5 shadow-sm">
                     <div className="flex items-start justify-between gap-3">
                       <div>
-                        <div className="text-xs font-black uppercase tracking-[0.18em] text-slate-400">Beacon</div>
-                        <div className="mt-2 text-xl font-black">Promotion engine built in</div>
+                        <div className="text-xs font-black uppercase tracking-[0.18em] text-slate-400">Livestream Momentum</div>
+                        <div className="mt-2 text-xl font-black">Real-time worship reach</div>
                       </div>
                       <div className="rounded-2xl bg-[var(--fh-accent)]/10 px-3 py-2 text-sm font-black text-[var(--fh-accent)]">Active</div>
                     </div>
@@ -459,14 +459,14 @@ export default function FaithHubHomeLandingPageV3Fixed() {
                       <div className="h-2 w-[76%] rounded-full bg-[var(--fh-accent)]" />
                     </div>
                     <div className="mt-3 flex items-center justify-between text-sm font-semibold text-slate-500">
-                      <span>Campaign momentum</span>
+                      <span>Livestream momentum</span>
                       <span>76%</span>
                     </div>
                   </div>
 
                   <div className="rounded-[1.6rem] border border-slate-200 bg-white p-5 shadow-sm">
-                    <div className="text-xs font-black uppercase tracking-[0.18em] text-slate-400">Community & giving</div>
-                    <div className="mt-2 text-xl font-black">Trust-rich support journeys</div>
+                    <div className="text-xs font-black uppercase tracking-[0.18em] text-slate-400">Prayer & community</div>
+                    <div className="mt-2 text-xl font-black">Trust-rich care journeys</div>
                     <div className="mt-4 grid grid-cols-2 gap-3">
                       <div className="rounded-2xl bg-slate-50 p-3">
                         <div className="text-[10px] font-black uppercase tracking-[0.16em] text-slate-400">Raised</div>
@@ -520,8 +520,8 @@ export default function FaithHubHomeLandingPageV3Fixed() {
 
       <section id="features" className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
         <SectionHeading
-          eyebrow="Everything in one place"
-          title="Beautiful product experiences for every important ministry moment."
+          eyebrow="Core Experiences"
+          title="Purpose-built flows for livestream, prayer, worship, and community."
           body={brandMessaging.platformSectionBody}
         />
 
@@ -553,8 +553,8 @@ export default function FaithHubHomeLandingPageV3Fixed() {
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <div className="grid gap-10 lg:grid-cols-[0.98fr_1.02fr] lg:items-start">
             <SectionHeading
-              eyebrow="Who FaithHub serves"
-              title="Made for institutions, ministries, and digital faith leaders."
+              eyebrow="Who It Serves"
+              title="Made for worship leaders, prayer teams, and community builders."
               body={brandMessaging.audienceSectionBody}
             />
 
@@ -610,15 +610,15 @@ export default function FaithHubHomeLandingPageV3Fixed() {
                   <div>
                     <div className="text-[11px] font-black uppercase tracking-[0.18em] text-[var(--fh-brand)]">What people can do</div>
                     <div className="mt-4 space-y-3 text-sm text-white/80">
-                      <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">Watch live and catch up later</div>
-                      <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">Explore teachings, books, and free resources</div>
-                      <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">Join groups, prayer, testimonies, and community conversations</div>
-                      <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">Support causes, campaigns, and missions with confidence</div>
+                      <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">Join livestream worship and prayer in real time</div>
+                      <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">Continue with replays, devotionals, and teaching clips</div>
+                      <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">Share prayer requests and receive trusted follow-up</div>
+                      <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">Belong through groups, testimonies, and community care</div>
                     </div>
                   </div>
                   <div className="rounded-[1.5rem] bg-[var(--fh-brand)] p-5 text-white shadow-[0_16px_35px_rgba(3,205,140,0.28)]">
                     <div className="text-[11px] font-black uppercase tracking-[0.18em] text-white/70">Why it persuades</div>
-                    <div className="mt-2 text-2xl font-black">Because every action feels immediate, credible, elegant, and emotionally clear.</div>
+                    <div className="mt-2 text-2xl font-black">Because every faith action feels immediate, pastoral, trustworthy, and connected.</div>
                   </div>
                 </div>
               </div>
