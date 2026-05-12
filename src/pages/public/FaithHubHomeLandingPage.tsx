@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import {
   ArrowRight,
+  BadgeCheck,
   Eye,
   BookOpen,
   CalendarDays,
@@ -22,6 +23,7 @@ import {
   BellRing,
   Languages,
   Mail,
+  Palette,
 } from "lucide-react";
 import { ThemeModeToggle } from "@/components/theme/ThemeModeToggle";
 import { BrandLogo } from "@/components/branding/BrandLogo";
@@ -194,6 +196,39 @@ const experiencePillars = [
     eyebrow: "Community Formation",
     title: "Designed for belonging beyond Sunday",
     body: "From groups and testimonies to events and follow-up journeys, FaithHub helps people stay connected between services and keep growing together.",
+  },
+];
+
+const providerProfiles = [
+  {
+    id: "profile-1",
+    ministry: "Restoration House Global",
+    region: "Kampala • Nairobi • Online",
+    introVideoLabel: "Welcome from Lead Pastor",
+    schedule: "Sun 9:00 AM + Wed 7:30 PM",
+    specialties: ["Prayer & Intercession", "Family Discipleship", "Youth Worship"],
+    badges: ["Verified Ministry", "Child-safe Streams", "Trusted Giving"],
+    brandAccent: "from-emerald-400/25 to-sky-400/25",
+  },
+  {
+    id: "profile-2",
+    ministry: "Riverlight Worship Collective",
+    region: "Lagos • London • Online",
+    introVideoLabel: "Worship Vision Reel",
+    schedule: "Fri 8:00 PM + Sun 10:30 AM",
+    specialties: ["Live Worship Nights", "Creative Arts", "Global Prayer Rooms"],
+    badges: ["Verified Worship Team", "Moderated Community", "Replay Certified"],
+    brandAccent: "from-fuchsia-400/25 to-indigo-400/25",
+  },
+  {
+    id: "profile-3",
+    ministry: "Hope City Prayer Network",
+    region: "Johannesburg • Cape Town • Online",
+    introVideoLabel: "Prayer Network Intro",
+    schedule: "Daily 6:00 AM + 9:00 PM",
+    specialties: ["24/7 Prayer Chains", "Counseling Triage", "Care Follow-up"],
+    badges: ["Verified Prayer Network", "Pastoral Care Team", "Response SLA Active"],
+    brandAccent: "from-amber-400/25 to-orange-400/25",
   },
 ];
 
@@ -824,6 +859,84 @@ export default function FaithHubHomeLandingPageV3Fixed() {
                 >
                   <Play className="h-4 w-4" />
                   Open stream preview
+                </button>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 py-10 lg:px-10 lg:py-14">
+        <SectionHeading
+          eyebrow="Provider Profiles"
+          title="Ministry profiles that feel trusted, branded, and alive."
+          body="Each provider profile combines ministry branding, trust badges, intro video context, worship schedules, and specialties so people immediately understand who you are and how to connect."
+        />
+        <div className="mt-8 grid gap-5 lg:grid-cols-3">
+          {providerProfiles.map((profile) => (
+            <motion.div
+              key={profile.id}
+              {...fadeUp}
+              className="overflow-hidden rounded-[1.9rem] border border-slate-200 bg-white shadow-sm"
+            >
+              <div className={`h-20 bg-gradient-to-r ${profile.brandAccent}`} />
+              <div className="p-5">
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <div className="text-lg font-black tracking-tight text-slate-900">{profile.ministry}</div>
+                    <div className="mt-1 text-xs font-semibold text-slate-500">{profile.region}</div>
+                  </div>
+                  <div className="rounded-xl bg-slate-100 p-2 text-slate-700">
+                    <Palette className="h-4 w-4" />
+                  </div>
+                </div>
+
+                <div className="mt-4 rounded-2xl border border-slate-200 bg-slate-50 p-3">
+                  <div className="text-[10px] font-black uppercase tracking-[0.16em] text-slate-500">Intro video</div>
+                  <div className="mt-1 flex items-center gap-2 text-sm font-bold text-slate-900">
+                    <Play className="h-4 w-4 text-[var(--fh-brand)]" />
+                    {profile.introVideoLabel}
+                  </div>
+                </div>
+
+                <div className="mt-3 rounded-2xl border border-slate-200 bg-slate-50 p-3">
+                  <div className="text-[10px] font-black uppercase tracking-[0.16em] text-slate-500">Schedule</div>
+                  <div className="mt-1 flex items-center gap-2 text-sm font-bold text-slate-900">
+                    <CalendarDays className="h-4 w-4 text-[var(--fh-accent)]" />
+                    {profile.schedule}
+                  </div>
+                </div>
+
+                <div className="mt-4">
+                  <div className="text-[10px] font-black uppercase tracking-[0.16em] text-slate-500">Specialties</div>
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    {profile.specialties.map((item) => (
+                      <span key={item} className="rounded-full border border-slate-200 bg-white px-2.5 py-1 text-[11px] font-bold text-slate-700">
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="mt-4">
+                  <div className="text-[10px] font-black uppercase tracking-[0.16em] text-slate-500">Badges</div>
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    {profile.badges.map((badge) => (
+                      <span key={badge} className="inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-2.5 py-1 text-[11px] font-bold text-emerald-800">
+                        <BadgeCheck className="h-3.5 w-3.5" />
+                        {badge}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-black text-slate-800 transition hover:bg-slate-50"
+                  onClick={() => navigateProvider("/faithhub/provider/profile-settings")}
+                >
+                  Open profile setup
+                  <ChevronRight className="h-4 w-4" />
                 </button>
               </div>
             </motion.div>
