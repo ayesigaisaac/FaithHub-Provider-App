@@ -1839,39 +1839,15 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                     <div className="mt-3 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
                       <button
                         type="button"
-                        aria-label={`Publish ${item.title}`}
-                        onClick={(event) => {
-                          event.stopPropagation();
-                          handleTeachingAction(item.id, "publish");
-                        }}
-                        disabled={Boolean(actionPendingById[item.id])}
-                        className={`w-full rounded-lg border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[11px] font-bold text-faith-ink transition hover:bg-[var(--fh-brand-soft)] sm:w-auto sm:py-1.5 ${cardFocusRingClass}`}
-                      >
-                        {actionPendingById[item.id] === "publish" ? "Publishing..." : "Publish"}
-                      </button>
-                      <button
-                        type="button"
-                        aria-label={`Request review for ${item.title}`}
-                        onClick={(event) => {
-                          event.stopPropagation();
-                          handleTeachingAction(item.id, "request_review");
-                        }}
-                        disabled={Boolean(actionPendingById[item.id])}
-                        className={`w-full rounded-lg border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[11px] font-bold text-faith-ink transition hover:bg-amber-50 sm:w-auto sm:py-1.5 ${cardFocusRingClass}`}
-                      >
-                        {actionPendingById[item.id] === "request_review" ? "Requesting..." : "Request review"}
-                      </button>
-                      <button
-                        type="button"
                         aria-label={`Open ${item.title}`}
                         onClick={(event) => {
                           event.stopPropagation();
                           handleTeachingAction(item.id, "open");
                         }}
                         disabled={Boolean(actionPendingById[item.id])}
-                        className={`w-full rounded-lg border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[11px] font-bold text-faith-ink transition hover:bg-slate-100 sm:w-auto sm:py-1.5 ${cardFocusRingClass}`}
+                        className={`w-full rounded-lg border border-faith-line/70 bg-[var(--fh-brand-soft)] px-3 py-2 text-[11px] font-bold text-faith-ink transition hover:bg-[var(--fh-brand-soft)]/80 sm:w-auto sm:py-1.5 ${cardFocusRingClass}`}
                       >
-                        {actionPendingById[item.id] === "open" ? "Opening..." : "Open"}
+                        {actionPendingById[item.id] === "open" ? "Opening..." : "Open teaching"}
                       </button>
                     </div>
                   </div>
@@ -1971,15 +1947,6 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                     <div className="mt-3 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
                       <button
                         type="button"
-                        aria-label={`Publish ${item.title}`}
-                        onClick={() => handleTeachingAction(item.id, "publish")}
-                        disabled={Boolean(actionPendingById[item.id])}
-                        className={`w-full rounded-lg border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[11px] font-bold text-faith-ink transition hover:bg-[var(--fh-brand-soft)] sm:w-auto sm:py-1.5 ${cardFocusRingClass}`}
-                      >
-                        {actionPendingById[item.id] === "publish" ? "Publishing..." : "Publish"}
-                      </button>
-                      <button
-                        type="button"
                         aria-label={`Request review for ${item.title}`}
                         onClick={() => handleTeachingAction(item.id, "request_review")}
                         disabled={Boolean(actionPendingById[item.id])}
@@ -1989,12 +1956,12 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                       </button>
                       <button
                         type="button"
-                        aria-label={`Open ${item.title}`}
+                        aria-label={`Continue editing ${item.title}`}
                         onClick={() => handleTeachingAction(item.id, "open")}
                         disabled={Boolean(actionPendingById[item.id])}
-                        className={`w-full rounded-lg border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[11px] font-bold text-faith-ink transition hover:bg-slate-100 sm:w-auto sm:py-1.5 ${cardFocusRingClass}`}
+                        className={`w-full rounded-lg border border-faith-line/70 bg-[var(--fh-brand-soft)] px-3 py-2 text-[11px] font-bold text-faith-ink transition hover:bg-[var(--fh-brand-soft)]/80 sm:w-auto sm:py-1.5 ${cardFocusRingClass}`}
                       >
-                        {actionPendingById[item.id] === "open" ? "Opening..." : "Open"}
+                        {actionPendingById[item.id] === "open" ? "Opening..." : "Continue editing"}
                       </button>
                     </div>
                   </div>
