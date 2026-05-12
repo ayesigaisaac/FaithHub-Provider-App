@@ -101,6 +101,20 @@ export default function ProfileSettingsPage() {
     [displayName, prefs.bio, prefs.phone, prefs.title, workspaceDraft.brand, workspaceDraft.campus],
   );
   const canSave = Object.values(validations).every(Boolean);
+  const completionChecks = useMemo(
+    () => [
+      { label: 'Display name', done: validations.displayName },
+      { label: 'Workspace brand', done: validations.brand },
+      { label: 'Workspace campus', done: validations.campus },
+      { label: 'Phone format', done: validations.phone },
+      { label: 'Role title', done: validations.title },
+      { label: 'Bio length', done: validations.bio },
+    ],
+    [validations],
+  );
+  const completionPercent = Math.round(
+    (completionChecks.filter((item) => item.done).length / completionChecks.length) * 100,
+  );
 
   const updatePrefs = <K extends keyof ProviderProfilePrefs>(key: K, value: ProviderProfilePrefs[K]) => {
     setPrefs((prev) => ({ ...prev, [key]: value }));
@@ -156,8 +170,21 @@ export default function ProfileSettingsPage() {
           <ProviderPageTitle
             icon={<UserCircle2 size={24} />}
             title="Profile Settings"
-            subtitle="Manage your account identity and verify the active workspace credentials."
+            subtitle="Complete your provider profile with a clear checklist and save when ready."
           />
+          <Stack
+            direction={{ xs: 'column', sm: 'row' }}
+            spacing={1}
+            mt={2}
+            alignItems={{ xs: 'flex-start', sm: 'center' }}
+          >
+            <Alert severity={completionPercent === 100 ? 'success' : 'info'} sx={{ py: 0.5 }}>
+              Profile completion: {completionPercent}%
+            </Alert>
+            <Typography sx={{ fontSize: 13, color: 'var(--fh-slate)' }}>
+              Finish the checklist below to complete your setup.
+            </Typography>
+          </Stack>
         </Paper>
 
         {notice ? <Alert severity="success">{notice}</Alert> : null}
@@ -209,6 +236,29 @@ export default function ProfileSettingsPage() {
                 Workspace: <strong>{workspace?.brand || 'FaithHub'}</strong> - {workspace?.campus || 'Kampala Central'}
               </Typography>
             </Stack>
+          </Stack>
+        </Paper>
+
+        <Paper className="rounded-3xl border border-faith-line bg-[var(--fh-surface-bg)] p-6 shadow-soft">
+          <Typography sx={{ fontSize: 18, fontWeight: 800, color: 'var(--fh-ink)' }}>Completion checklist</Typography>
+          <Stack spacing={1} mt={2}>
+            {completionChecks.map((item) => (
+              <Box
+                key={item.label}
+                className="flex items-center justify-between rounded-xl border border-faith-line/80 bg-[var(--fh-surface)] px-3 py-2"
+              >
+                <Typography sx={{ fontSize: 14, color: 'var(--fh-ink)', fontWeight: 600 }}>{item.label}</Typography>
+                <Typography
+                  sx={{
+                    fontSize: 12,
+                    fontWeight: 700,
+                    color: item.done ? 'var(--fh-brand)' : 'var(--fh-slate)',
+                  }}
+                >
+                  {item.done ? 'Complete' : 'Needs attention'}
+                </Typography>
+              </Box>
+            ))}
           </Stack>
         </Paper>
 
