@@ -112,6 +112,16 @@ export default function ProviderOnboardingPage() {
     return 'Review and complete missing fields, then submit onboarding.';
   }, [canSubmit, step]);
 
+  const setupChecklist = useMemo(
+    () => [
+      { label: 'Organization name', done: validation.organizationName, step: 0 as StepIndex },
+      { label: 'Primary contact', done: validation.contactName && validation.contactEmail && validation.contactPhone, step: 1 as StepIndex },
+      { label: 'Profile context', done: validation.city && validation.mission && validation.website, step: 2 as StepIndex },
+      { label: 'Terms agreement', done: validation.agreedToTerms, step: 3 as StepIndex },
+    ],
+    [validation],
+  );
+
   const saveDraft = async () => {
     try {
       await saveOnboardingDraft(onboardingDraft);
@@ -145,6 +155,27 @@ export default function ProviderOnboardingPage() {
     try {
       await submitOnboarding();
       setNotice('Onboarding submitted. Awaiting verification approval.');
+    } catch (error) {
+      setNotice(error instanceof Error ? error.message : 'Unable to submit onboarding.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const submitAndContinueToProfile = async () => {
+    if (!canSubmit) {
+      setNotice('Complete all required fields before submission.');
+      return;
+    }
+    if (onboardingStatus === 'submitted') {
+      navigate('/faithhub/provider/profile-settings');
+      return;
+    }
+    setIsSubmitting(true);
+    try {
+      await submitOnboarding();
+      setNotice('Onboarding submitted. Continue by completing profile settings.');
+      navigate('/faithhub/provider/profile-settings');
     } catch (error) {
       setNotice(error instanceof Error ? error.message : 'Unable to submit onboarding.');
     } finally {
@@ -221,6 +252,26 @@ export default function ProviderOnboardingPage() {
         ) : (
           <Card>
             <CardContent>
+              <Stack spacing={1.2} mb={2.5}>
+                <Typography variant="subtitle2" fontWeight={800}>
+                  Setup checklist
+                </Typography>
+                {setupChecklist.map((item) => (
+                  <Stack key={item.label} direction="row" spacing={1.2} alignItems="center" justifyContent="space-between">
+                    <Typography variant="body2" color="text.secondary">
+                      {item.label}
+                    </Typography>
+                    {item.done ? (
+                      <Chip size="small" color="success" label="Complete" />
+                    ) : (
+                      <Button size="small" variant="text" onClick={() => setStep(item.step)}>
+                        Go to step
+                      </Button>
+                    )}
+                  </Stack>
+                ))}
+              </Stack>
+
               <Stepper activeStep={step} alternativeLabel sx={{ mb: 3 }}>
                 {STEPS.map((label) => (
                   <Step key={label}>
@@ -383,9 +434,14 @@ export default function ProviderOnboardingPage() {
                     Continue
                   </Button>
                 ) : (
-                  <Button variant="contained" color="success" disabled={!canSubmit || isSubmitting} onClick={submit}>
-                    {isSubmitting ? 'Submitting...' : 'Submit onboarding'}
-                  </Button>
+                  <>
+                    <Button variant="outlined" disabled={!canSubmit || isSubmitting} onClick={submit}>
+                      {isSubmitting ? 'Submitting...' : 'Submit onboarding'}
+                    </Button>
+                    <Button variant="contained" color="success" disabled={!canSubmit || isSubmitting} onClick={submitAndContinueToProfile}>
+                      {isSubmitting ? 'Submitting...' : 'Submit & complete profile'}
+                    </Button>
+                  </>
                 )}
               </Stack>
             </CardContent>
