@@ -65,6 +65,7 @@ export function SearchCommandDialog({
 }) {
   const [highlightIndex, setHighlightIndex] = useState(0);
   const [recentIds, setRecentIds] = useState<string[]>([]);
+  const [showAllPages, setShowAllPages] = useState(false);
   const inputRef = useRef<HTMLInputElement | null>(null);
   const hasQuery = Boolean(query.trim());
   const normalizedQuery = query.trim().toLowerCase();
@@ -169,9 +170,24 @@ export function SearchCommandDialog({
 
   const actionCommands = useMemo(() => commands.filter((item) => item.group === 'Action'), [commands]);
   const pageCommands = useMemo(() => commands.filter((item) => item.group === 'Page'), [commands]);
+  const actionLimit = hasQuery ? 5 : 4;
+  const pageLimit = hasQuery ? 10 : 8;
+  const displayedActionCommands = useMemo(
+    () => actionCommands.slice(0, actionLimit),
+    [actionCommands, actionLimit],
+  );
+  const displayedPageCommands = useMemo(
+    () => (showAllPages ? pageCommands : pageCommands.slice(0, pageLimit)),
+    [pageCommands, pageLimit, showAllPages],
+  );
+  const displayedCommands = useMemo(
+    () => [...displayedActionCommands, ...displayedPageCommands],
+    [displayedActionCommands, displayedPageCommands],
+  );
 
   useEffect(() => {
     setHighlightIndex(0);
+    setShowAllPages(false);
   }, [normalizedQuery, open]);
 
   useEffect(() => {
@@ -268,19 +284,19 @@ export function SearchCommandDialog({
                 value={query}
                 onChange={(event) => onQueryChange(event.target.value)}
                 onKeyDown={(event) => {
-                  if (!commands.length) {
+                  if (!displayedCommands.length) {
                     if (event.key === 'Escape') onClose();
                     return;
                   }
                   if (event.key === 'ArrowDown') {
                     event.preventDefault();
-                    setHighlightIndex((prev) => (prev + 1) % commands.length);
+                    setHighlightIndex((prev) => (prev + 1) % displayedCommands.length);
                   } else if (event.key === 'ArrowUp') {
                     event.preventDefault();
-                    setHighlightIndex((prev) => (prev - 1 + commands.length) % commands.length);
+                    setHighlightIndex((prev) => (prev - 1 + displayedCommands.length) % displayedCommands.length);
                   } else if (event.key === 'Enter') {
                     event.preventDefault();
-                    const selected = commands[highlightIndex];
+                    const selected = displayedCommands[highlightIndex];
                     if (selected) {
                       rememberRecent(selected.id);
                       selected.onSelect();
@@ -412,7 +428,6 @@ export function SearchCommandDialog({
                   </Typography>
                   <List sx={{ py: 0, mt: 0.4 }}>
                     {recentCommands.map((command) => {
-                      const commandIndex = commands.findIndex((item) => item.id === command.id);
                       return (
                         <ListItemButton
                           key={`recent-${command.id}`}
@@ -421,16 +436,13 @@ export function SearchCommandDialog({
                             command.onSelect();
                             onClose();
                           }}
-                          selected={highlightIndex === commandIndex}
+                          selected={false}
                           sx={{
                             borderRadius: 2,
                             mb: 0.5,
                             border: '1px solid',
-                            borderColor: highlightIndex === commandIndex ? 'var(--fh-brand)' : 'var(--fh-line)',
-                            bgcolor:
-                              highlightIndex === commandIndex
-                                ? 'color-mix(in srgb, var(--fh-brand-soft) 34%, var(--fh-surface-bg) 66%)'
-                                : 'transparent',
+                            borderColor: 'var(--fh-line)',
+                            bgcolor: 'transparent',
                           }}
                         >
                           <Box
@@ -466,8 +478,8 @@ export function SearchCommandDialog({
                 </Typography>
               </Box>
               <List sx={{ py: 0 }}>
-                {actionCommands.map((command) => {
-                  const index = commands.findIndex((item) => item.id === command.id);
+                {displayedActionCommands.map((command) => {
+                  const index = displayedCommands.findIndex((item) => item.id === command.id);
                   return (
                   <ListItemButton
                     key={command.id}
@@ -519,8 +531,8 @@ export function SearchCommandDialog({
                 </Typography>
               </Box>
               <List sx={{ py: 0 }}>
-                {pageCommands.map((command) => {
-                  const index = commands.findIndex((item) => item.id === command.id);
+                {displayedPageCommands.map((command) => {
+                  const index = displayedCommands.findIndex((item) => item.id === command.id);
                   return (
                     <ListItemButton
                       key={command.id}
@@ -565,7 +577,31 @@ export function SearchCommandDialog({
                   );
                 })}
               </List>
-              {!commands.length ? (
+              {!showAllPages && pageCommands.length > displayedPageCommands.length ? (
+                <Box sx={{ px: 1.2, pt: 0.5 }}>
+                  <ListItemButton
+                    onClick={() => setShowAllPages(true)}
+                    sx={{
+                      borderRadius: 2,
+                      border: '1px dashed',
+                      borderColor: 'var(--fh-line)',
+                      minHeight: 40,
+                    }}
+                  >
+                    <ListItemText
+                      primary={`Show more pages (${pageCommands.length - displayedPageCommands.length})`}
+                      primaryTypographyProps={{
+                        fontSize: 12,
+                        fontWeight: 700,
+                        color: 'var(--fh-slate)',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.06em',
+                      }}
+                    />
+                  </ListItemButton>
+                </Box>
+              ) : null}
+              {!displayedCommands.length ? (
                 <Box sx={{ px: 2, py: 2, textAlign: 'center' }}>
                   <SearchRoundedIcon sx={{ fontSize: 30, color: 'var(--fh-slate)' }} />
                   <Typography sx={{ mt: 0.8, fontWeight: 700 }}>No matching commands</Typography>
