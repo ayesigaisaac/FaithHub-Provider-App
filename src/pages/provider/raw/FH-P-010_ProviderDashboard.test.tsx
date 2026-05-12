@@ -55,12 +55,28 @@ describe("FH-P-010 FaithHub Provider dashboard workflow UX", () => {
     expect(screen.getByRole("button", { name: "Continue editing" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /Start a new teaching draft/i })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /Open moderation and pending reviews/i })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: /Go to publish-ready workflow/i })).toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: /Go to publish-ready workflow/i })).not.toBeInTheDocument();
     expect(screen.getByRole("button", { name: /Open your current in-progress teaching/i })).toBeInTheDocument();
 
     rerender(<ProviderDashboardPage workflowItemsOverride={withoutTeaching} />);
     expect(screen.queryByRole("button", { name: "Continue editing" })).not.toBeInTheDocument();
     expect(screen.getByText("Start your first teaching")).toBeInTheDocument();
+  });
+
+  it("shows publish quick action when there is published-ready momentum", () => {
+    const withPublishedMomentum = [
+      {
+        id: "item-1",
+        title: "Sunday Teaching",
+        type: "Teaching",
+        status: "Ready to publish" as const,
+        owner: "A",
+        due: "Today",
+      },
+    ];
+
+    render(<ProviderDashboardPage workflowItemsOverride={withPublishedMomentum} />);
+    expect(screen.getByRole("button", { name: /Go to publish-ready workflow/i })).toBeInTheDocument();
   });
 
   it("derives pending work from draft and needs review statuses", () => {

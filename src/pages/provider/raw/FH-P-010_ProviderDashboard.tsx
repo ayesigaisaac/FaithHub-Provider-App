@@ -1356,6 +1356,27 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
   }, [needsReviewCount, pendingWork]);
   const hasDraftToContinue = pendingWork.some((item) => item.status === "Draft");
   const workflowPrimaryLabel = hasDraftToContinue && continueItem ? "Continue editing" : "Create Teaching";
+  const prioritizedQuickActions = useMemo(() => {
+    const actions: Array<"continue-editing" | "create-teaching" | "review" | "publish"> = [];
+    if (needsReviewCount > 0) {
+      actions.push("review");
+      if (hasDraftToContinue && continueItem) actions.push("continue-editing");
+      else actions.push("create-teaching");
+    } else if (hasDraftToContinue && continueItem) {
+      actions.push("continue-editing", "review");
+    } else {
+      actions.push("create-teaching", "review");
+    }
+
+    if (workflowSummary.publishedCount > 0) actions.push("publish");
+    if (!actions.includes("create-teaching")) actions.push("create-teaching");
+
+    const unique = actions.filter((action, index) => actions.indexOf(action) === index);
+    const finalActions = unique.slice(0, 3);
+    const primaryActionKey = finalActions[0] ?? "create-teaching";
+
+    return { finalActions, primaryActionKey };
+  }, [continueItem, hasDraftToContinue, needsReviewCount, workflowSummary.publishedCount]);
 
   const appendAudit = (
     itemId: string,
@@ -1605,6 +1626,8 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                   activeAction={activeQuickAction}
                   loadingAction={loadingQuickAction}
                   canContinueEditing={Boolean(hasDraftToContinue && continueItem)}
+                  visibleActions={prioritizedQuickActions.finalActions}
+                  primaryActionKey={prioritizedQuickActions.primaryActionKey}
                   onContinueEditing={() =>
                     runQuickWorkflowAction("continue-editing", () => {
                       handlePrimaryCta();

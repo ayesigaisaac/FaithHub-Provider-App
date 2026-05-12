@@ -6,6 +6,8 @@ type TeachingsQuickActionsBarProps = {
   activeAction?: TeachingsQuickActionKey | null;
   loadingAction?: TeachingsQuickActionKey | null;
   canContinueEditing?: boolean;
+  visibleActions?: TeachingsQuickActionKey[];
+  primaryActionKey?: TeachingsQuickActionKey;
   onContinueEditing: () => void;
   onCreateTeaching: () => void;
   onReview: () => void;
@@ -45,12 +47,19 @@ export function TeachingsQuickActionsBar({
   activeAction,
   loadingAction,
   canContinueEditing = true,
+  visibleActions,
+  primaryActionKey,
   onContinueEditing,
   onCreateTeaching,
   onReview,
   onPublish,
 }: TeachingsQuickActionsBarProps) {
-  const actions = actionMeta();
+  const actions = actionMeta()
+    .filter((action) => !visibleActions || visibleActions.includes(action.key))
+    .map((action) => ({
+      ...action,
+      primary: primaryActionKey ? action.key === primaryActionKey : action.primary,
+    }));
 
   const onClickByKey: Record<TeachingsQuickActionKey, () => void> = {
     'continue-editing': onContinueEditing,
