@@ -34,19 +34,19 @@ const fadeUp = {
 const brandMessaging = {
   productName: "FaithHub",
   poweredBy: "Powered by EVzone",
-  heroLabel: "Livestream, Prayer, Worship, Community",
+  heroLabel: "Faith Streaming Ecosystem",
   heroTitle: "One platform for livestreaming, prayer, worship, and community.",
   heroBody:
     "FaithHub helps churches, ministries, and worship teams bring people together in real time and beyond: stream services, host prayer rooms, publish worship and teachings, and nurture trusted community journeys in one place.",
   platformSectionBody:
-    "FaithHub combines spiritual warmth with operational clarity so teams can move from livestream to prayer, from worship to follow-up, and from message to meaningful community action without switching tools.",
+    "FaithHub is a faith streaming ecosystem that combines spiritual warmth with operational clarity, so teams can move from livestream to prayer, from worship to follow-up, and from message to meaningful community action without switching tools.",
   audienceSectionBody:
     "From local congregations to global prayer networks and digital worship communities, FaithHub provides a trusted foundation for real connection, consistency, and follow-through.",
   finalCtaTitle: "Launch your ministry presence on FaithHub.",
   finalCtaBody:
     "Bring livestreams, prayer moments, worship experiences, and community care into one clear, high-trust digital home your team can steward confidently.",
   footerBody:
-    "FaithHub is the all-in-one operating platform for faith communities to livestream, pray, worship, and build connected community with confidence.",
+    "FaithHub is the faith streaming ecosystem for communities that want to livestream, pray, worship, and build connected community with confidence.",
 };
 
 const stats = [
@@ -147,8 +147,8 @@ const communityProof = [
 
 const footerCols = [
   {
-    title: "Platform",
-    links: ["Live Sessions", "Teachings", "Giving", "Events", "Beacon", "Community"],
+    title: "Ecosystem",
+    links: ["Live Sessions", "Prayer Flows", "Worship Replays", "Events", "Beacon", "Community"],
   },
   {
     title: "For providers",

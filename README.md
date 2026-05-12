@@ -2,6 +2,8 @@
 
 Plug-and-play FaithHub Provider workspace built with **Vite + React + TypeScript + MUI + Tailwind CSS**.
 
+FaithHub is positioned as a **faith streaming ecosystem** for livestreaming, prayer, worship, and community journeys.
+
 This project wraps the attached FaithHub Provider page files into a real runnable application with:
 
 - a responsive MUI app shell for desktop, tablet, and mobile
@@ -12,6 +14,7 @@ This project wraps the attached FaithHub Provider page files into a real runnabl
 - global toast notifications and async action helpers for pages that depended on Creator-style shared utilities
 - SPA rewrite helpers for common hosting targets
 - task-driven sidebar and dashboard language focused on actions (create, continue, publish, review)
+- ecosystem-first messaging across public and provider experiences
 
 ## Stack
 
