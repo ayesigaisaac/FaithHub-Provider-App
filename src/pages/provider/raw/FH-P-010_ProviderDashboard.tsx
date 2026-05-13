@@ -1790,6 +1790,11 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                   </div>
                 ))}
               </div>
+              {analyticsSnapshot?.updatedAtISO ? (
+                <div className="mt-3 text-[11px] font-semibold text-slate-500">
+                  Last updated: {new Date(analyticsSnapshot.updatedAtISO).toLocaleString()}
+                </div>
+              ) : null}
             </SectionCard>
 
             {needsReviewCount > 0 ? (

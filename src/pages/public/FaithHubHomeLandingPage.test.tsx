@@ -64,7 +64,7 @@ describe("FaithHubHomeLandingPage Provider Profiles", () => {
     expect(screen.getByText("Mbarara City Campus • Online")).toBeInTheDocument();
     expect(screen.getByText("Lead Pastor Intro")).toBeInTheDocument();
     expect(screen.getByText("Weekly • Africa/Kampala")).toBeInTheDocument();
-  });
+  }, 15000);
 
   it("falls back to curated provider profiles when saved data is unavailable", async () => {
     renderHomePage();

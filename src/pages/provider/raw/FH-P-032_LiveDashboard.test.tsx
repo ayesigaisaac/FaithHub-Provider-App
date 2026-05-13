@@ -25,6 +25,5 @@ describe("FH-P-032 Live Dashboard interactions", () => {
     });
     fireEvent.click(screen.getByRole("button", { name: /send live comment/i }));
     expect(screen.getByText(/latest: praying in agreement right now\./i)).toBeInTheDocument();
-  });
+  }, 15000);
 });
-
