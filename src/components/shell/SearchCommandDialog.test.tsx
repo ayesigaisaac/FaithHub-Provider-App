@@ -88,6 +88,12 @@ describe('SearchCommandDialog', () => {
     expect(screen.getByRole('button', { name: /filter pages/i, hidden: true })).toBeInTheDocument();
 
     fireEvent.click(screen.getByRole('button', { name: /filter actions/i, hidden: true }));
-    expect(screen.getByText(/open workflow dashboard/i)).toBeInTheDocument();
+    expect(await screen.findByText(/open workflow dashboard/i)).toBeInTheDocument();
+  });
+
+  it('shows meaningful empty state for recent filter when no recents exist', async () => {
+    renderDialog();
+    fireEvent.click(screen.getByRole('button', { name: /filter recent/i, hidden: true }));
+    expect(await screen.findByText(/no recent searches yet/i)).toBeInTheDocument();
   });
 });

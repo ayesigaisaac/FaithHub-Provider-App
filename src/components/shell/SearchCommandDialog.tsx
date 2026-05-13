@@ -6,6 +6,7 @@ import {
   List,
   ListItemButton,
   ListItemText,
+  Skeleton,
   Stack,
   TextField,
   Typography,
@@ -68,6 +69,7 @@ export function SearchCommandDialog({
   const [recentIds, setRecentIds] = useState<string[]>([]);
   const [showAllPages, setShowAllPages] = useState(false);
   const [activeFilter, setActiveFilter] = useState<SearchFilter>('all');
+  const [isLoadingResults, setIsLoadingResults] = useState(false);
   const inputRef = useRef<HTMLInputElement | null>(null);
   const hasQuery = Boolean(query.trim());
   const normalizedQuery = query.trim().toLowerCase();
@@ -246,6 +248,13 @@ export function SearchCommandDialog({
   }, [normalizedQuery, open]);
 
   useEffect(() => {
+    if (!open) return;
+    setIsLoadingResults(true);
+    const timer = window.setTimeout(() => setIsLoadingResults(false), 180);
+    return () => window.clearTimeout(timer);
+  }, [activeFilter, normalizedQuery, open]);
+
+  useEffect(() => {
     if (typeof window === 'undefined') return;
     try {
       const raw = window.localStorage.getItem(RECENT_COMMANDS_KEY);
@@ -288,6 +297,15 @@ export function SearchCommandDialog({
       return next;
     });
   };
+
+  const visibleActionCommands = useMemo(
+    () => displayedActionCommands.filter(() => activeFilter === 'all' || activeFilter === 'actions'),
+    [activeFilter, displayedActionCommands],
+  );
+  const visiblePageCommands = useMemo(
+    () => displayedPageCommands.filter(() => activeFilter === 'all' || activeFilter === 'pages'),
+    [activeFilter, displayedPageCommands],
+  );
 
   return (
     <Backdrop
@@ -665,10 +683,15 @@ export function SearchCommandDialog({
                   ACTIONS
                 </Typography>
               </Box>
+              {isLoadingResults ? (
+                <Box sx={{ px: 1.2, pb: 0.8 }} aria-label="Search loading state">
+                  {Array.from({ length: 3 }).map((_, index) => (
+                    <Skeleton key={`action-skeleton-${index}`} variant="rounded" height={44} sx={{ mb: 0.6 }} />
+                  ))}
+                </Box>
+              ) : (
               <List sx={{ py: 0 }}>
-                {displayedActionCommands
-                  .filter((item) => activeFilter === 'all' || activeFilter === 'actions')
-                  .map((command) => {
+                {visibleActionCommands.map((command) => {
                   const index = filteredCommands.findIndex((item) => item.id === command.id);
                   return (
                   <ListItemButton
@@ -713,17 +736,30 @@ export function SearchCommandDialog({
                   </ListItemButton>
                   );
                 })}
+                {(activeFilter === 'actions' || activeFilter === 'all') && visibleActionCommands.length === 0 ? (
+                  <Box sx={{ px: 1.2, py: 1.2 }}>
+                    <Typography sx={{ fontSize: 12, fontWeight: 700, color: 'var(--fh-slate)' }}>
+                      No actions matched. Try terms like "create", "review", or "publish".
+                    </Typography>
+                  </Box>
+                ) : null}
               </List>
+              )}
 
               <Box sx={{ px: 1.2, pt: 0.8, pb: 0.5 }}>
                 <Typography sx={{ fontSize: 11, fontWeight: 800, color: 'var(--fh-slate)', letterSpacing: '0.08em' }}>
                   PAGES
                 </Typography>
               </Box>
+              {isLoadingResults ? (
+                <Box sx={{ px: 1.2, pb: 0.8 }} aria-label="Search loading state">
+                  {Array.from({ length: 4 }).map((_, index) => (
+                    <Skeleton key={`page-skeleton-${index}`} variant="rounded" height={44} sx={{ mb: 0.6 }} />
+                  ))}
+                </Box>
+              ) : (
               <List sx={{ py: 0 }}>
-                {displayedPageCommands
-                  .filter((item) => activeFilter === 'all' || activeFilter === 'pages')
-                  .map((command) => {
+                {visiblePageCommands.map((command) => {
                   const index = filteredCommands.findIndex((item) => item.id === command.id);
                   return (
                     <ListItemButton
@@ -768,7 +804,15 @@ export function SearchCommandDialog({
                     </ListItemButton>
                   );
                 })}
+                {(activeFilter === 'pages' || activeFilter === 'all') && visiblePageCommands.length === 0 ? (
+                  <Box sx={{ px: 1.2, py: 1.2 }}>
+                    <Typography sx={{ fontSize: 12, fontWeight: 700, color: 'var(--fh-slate)' }}>
+                      No pages found for this filter. Try a broader keyword or switch to All.
+                    </Typography>
+                  </Box>
+                ) : null}
               </List>
+              )}
               {!showAllPages && pageCommands.length > displayedPageCommands.length ? (
                 <Box sx={{ px: 1.2, pt: 0.5 }}>
                   <ListItemButton
@@ -796,9 +840,13 @@ export function SearchCommandDialog({
               {!filteredCommands.length ? (
                 <Box sx={{ px: 2, py: 2, textAlign: 'center' }}>
                   <SearchRoundedIcon sx={{ fontSize: 30, color: 'var(--fh-slate)' }} />
-                  <Typography sx={{ mt: 0.8, fontWeight: 700 }}>No matching commands</Typography>
+                  <Typography sx={{ mt: 0.8, fontWeight: 700 }}>
+                    {activeFilter === 'recent' ? 'No recent searches yet' : 'No matching commands'}
+                  </Typography>
                   <Typography variant="body2" color="text.secondary" sx={{ mt: 0.4 }}>
-                    Try "create", "draft", or a teaching title keyword.
+                    {activeFilter === 'recent'
+                      ? 'Open a command to populate your quick recent list.'
+                      : 'Try "create", "draft", or a teaching title keyword.'}
                   </Typography>
                 </Box>
               ) : null}
