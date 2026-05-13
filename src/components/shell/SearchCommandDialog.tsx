@@ -34,6 +34,7 @@ type PaletteItem = {
   keywords?: string;
   onSelect: () => void;
 };
+type SearchFilter = 'all' | 'actions' | 'pages' | 'recent';
 
 function getIconContainerSx(group: PaletteItem['group']) {
   if (group === 'Action') {
@@ -66,6 +67,7 @@ export function SearchCommandDialog({
   const [highlightIndex, setHighlightIndex] = useState(0);
   const [recentIds, setRecentIds] = useState<string[]>([]);
   const [showAllPages, setShowAllPages] = useState(false);
+  const [activeFilter, setActiveFilter] = useState<SearchFilter>('all');
   const inputRef = useRef<HTMLInputElement | null>(null);
   const hasQuery = Boolean(query.trim());
   const normalizedQuery = query.trim().toLowerCase();
@@ -170,6 +172,52 @@ export function SearchCommandDialog({
 
   const actionCommands = useMemo(() => commands.filter((item) => item.group === 'Action'), [commands]);
   const pageCommands = useMemo(() => commands.filter((item) => item.group === 'Page'), [commands]);
+  const discoverCommands = useMemo(() => {
+    const bySection = new Map<string, PaletteItem>();
+    for (const item of pageCommands) {
+      const section = item.section ?? 'General';
+      if (!bySection.has(section)) bySection.set(section, item);
+      if (bySection.size >= 4) break;
+    }
+    return Array.from(bySection.values());
+  }, [pageCommands]);
+  const quickAccessItems = useMemo<PaletteItem[]>(
+    () => [
+      {
+        id: 'quick-dashboard',
+        title: 'Dashboard',
+        subtitle: 'Open provider mission control',
+        icon: <AutoAwesomeRoundedIcon fontSize="small" />,
+        group: 'Action',
+        onSelect: () => navigateWithRouter('/faithhub/provider/dashboard'),
+      },
+      {
+        id: 'quick-live',
+        title: 'Live Dashboard',
+        subtitle: 'Open active stream operations',
+        icon: <SearchRoundedIcon fontSize="small" />,
+        group: 'Action',
+        onSelect: () => navigateWithRouter('/faithhub/provider/live-dashboard'),
+      },
+      {
+        id: 'quick-teachings',
+        title: 'Teachings',
+        subtitle: 'Open teachings workflow board',
+        icon: <AutoStoriesRoundedIcon fontSize="small" />,
+        group: 'Action',
+        onSelect: () => navigateWithRouter('/faithhub/provider/teachings-dashboard'),
+      },
+      {
+        id: 'quick-profile',
+        title: 'Profile Settings',
+        subtitle: 'Open workspace and profile setup',
+        icon: <EditNoteRoundedIcon fontSize="small" />,
+        group: 'Action',
+        onSelect: () => navigateWithRouter('/faithhub/provider/profile-settings'),
+      },
+    ],
+    [],
+  );
   const actionLimit = hasQuery ? 5 : 4;
   const pageLimit = hasQuery ? 10 : 8;
   const displayedActionCommands = useMemo(
@@ -184,10 +232,17 @@ export function SearchCommandDialog({
     () => [...displayedActionCommands, ...displayedPageCommands],
     [displayedActionCommands, displayedPageCommands],
   );
+  const filteredCommands = useMemo(() => {
+    if (activeFilter === 'actions') return displayedCommands.filter((item) => item.group === 'Action');
+    if (activeFilter === 'pages') return displayedCommands.filter((item) => item.group === 'Page');
+    if (activeFilter === 'recent') return recentCommands;
+    return displayedCommands;
+  }, [activeFilter, displayedCommands, recentCommands]);
 
   useEffect(() => {
     setHighlightIndex(0);
     setShowAllPages(false);
+    setActiveFilter('all');
   }, [normalizedQuery, open]);
 
   useEffect(() => {
@@ -284,19 +339,19 @@ export function SearchCommandDialog({
                 value={query}
                 onChange={(event) => onQueryChange(event.target.value)}
                 onKeyDown={(event) => {
-                  if (!displayedCommands.length) {
+                  if (!filteredCommands.length) {
                     if (event.key === 'Escape') onClose();
                     return;
                   }
                   if (event.key === 'ArrowDown') {
                     event.preventDefault();
-                    setHighlightIndex((prev) => (prev + 1) % displayedCommands.length);
+                    setHighlightIndex((prev) => (prev + 1) % filteredCommands.length);
                   } else if (event.key === 'ArrowUp') {
                     event.preventDefault();
-                    setHighlightIndex((prev) => (prev - 1 + displayedCommands.length) % displayedCommands.length);
+                    setHighlightIndex((prev) => (prev - 1 + filteredCommands.length) % filteredCommands.length);
                   } else if (event.key === 'Enter') {
                     event.preventDefault();
-                    const selected = displayedCommands[highlightIndex];
+                    const selected = filteredCommands[highlightIndex];
                     if (selected) {
                       rememberRecent(selected.id);
                       selected.onSelect();
@@ -417,9 +472,93 @@ export function SearchCommandDialog({
             </Stack>
 
             <Box sx={{ px: { xs: 1, md: 1.5 }, py: { xs: 1.2, md: 1.5 }, overflowY: 'auto' }}>
+              <Stack direction="row" spacing={0.7} sx={{ px: 1.2, pb: 1.1, flexWrap: 'wrap' }}>
+                {[
+                  { key: 'all', label: 'All' },
+                  { key: 'actions', label: 'Actions' },
+                  { key: 'pages', label: 'Pages' },
+                  { key: 'recent', label: 'Recent' },
+                ].map((item) => (
+                  <Box
+                    key={item.key}
+                    role="button"
+                    tabIndex={0}
+                    aria-label={`Filter ${item.label}`}
+                    onClick={() => {
+                      setActiveFilter(item.key as SearchFilter);
+                      setHighlightIndex(0);
+                    }}
+                    onKeyDown={(event) => {
+                      if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        setActiveFilter(item.key as SearchFilter);
+                        setHighlightIndex(0);
+                      }
+                    }}
+                    sx={{
+                      px: 1,
+                      py: 0.45,
+                      borderRadius: 999,
+                      border: '1px solid',
+                      borderColor: activeFilter === item.key ? 'var(--fh-brand)' : 'var(--fh-line)',
+                      bgcolor:
+                        activeFilter === item.key
+                          ? 'color-mix(in srgb, var(--fh-brand-soft) 38%, var(--fh-surface-bg) 62%)'
+                          : 'transparent',
+                      fontSize: 11,
+                      fontWeight: 800,
+                      cursor: 'pointer',
+                    }}
+                  >
+                    {item.label}
+                  </Box>
+                ))}
+              </Stack>
               <Typography variant="body2" color="text.secondary" sx={{ px: 1.2, pb: 0.8, fontWeight: 700 }}>
                 {hasQuery ? 'Searching commands...' : 'Quick commands'}
               </Typography>
+
+              {!hasQuery ? (
+                <Box sx={{ px: 1.2, pb: 1.2 }}>
+                  <Typography sx={{ fontSize: 11, fontWeight: 800, color: 'var(--fh-slate)', letterSpacing: '0.08em', pb: 0.6 }}>
+                    QUICK ACCESS
+                  </Typography>
+                  <Stack direction="row" spacing={0.7} sx={{ flexWrap: 'wrap' }}>
+                    {quickAccessItems.map((item) => (
+                      <Box
+                        key={item.id}
+                        role="button"
+                        tabIndex={0}
+                        aria-label={`Quick access ${item.title}`}
+                        onClick={() => {
+                          item.onSelect();
+                          onClose();
+                        }}
+                        onKeyDown={(event) => {
+                          if (event.key === 'Enter' || event.key === ' ') {
+                            event.preventDefault();
+                            item.onSelect();
+                            onClose();
+                          }
+                        }}
+                        sx={{
+                          px: 1.1,
+                          py: 0.55,
+                          borderRadius: 1.6,
+                          border: '1px solid',
+                          borderColor: 'var(--fh-line)',
+                          bgcolor: 'var(--fh-surface)',
+                          fontSize: 11.5,
+                          fontWeight: 700,
+                          cursor: 'pointer',
+                        }}
+                      >
+                        {item.title}
+                      </Box>
+                    ))}
+                  </Stack>
+                </Box>
+              ) : null}
 
               {!hasQuery && recentCommands.length > 0 ? (
                 <Box sx={{ px: 1.2, pb: 1 }}>
@@ -472,14 +611,65 @@ export function SearchCommandDialog({
                 </Box>
               ) : null}
 
+              {!hasQuery && discoverCommands.length > 0 ? (
+                <>
+                  <Box sx={{ px: 1.2, pb: 0.5 }}>
+                    <Typography sx={{ fontSize: 11, fontWeight: 800, color: 'var(--fh-slate)', letterSpacing: '0.08em' }}>
+                      SMART DISCOVERY
+                    </Typography>
+                  </Box>
+                  <List sx={{ py: 0, pb: 1 }}>
+                    {discoverCommands.map((command) => (
+                      <ListItemButton
+                        key={`discover-${command.id}`}
+                        onClick={() => {
+                          rememberRecent(command.id);
+                          command.onSelect();
+                          onClose();
+                        }}
+                        sx={{
+                          borderRadius: 2,
+                          mb: 0.5,
+                          border: '1px solid',
+                          borderColor: 'var(--fh-line)',
+                        }}
+                      >
+                        <Box
+                          sx={{
+                            width: 28,
+                            height: 28,
+                            mr: 1.2,
+                            borderRadius: 1.5,
+                            display: 'grid',
+                            placeItems: 'center',
+                            ...getIconContainerSx(command.group),
+                            border: '1px solid',
+                          }}
+                        >
+                          {command.icon}
+                        </Box>
+                        <ListItemText
+                          primary={command.title}
+                          secondary={`Discover - ${command.subtitle}`}
+                          primaryTypographyProps={{ fontSize: 14, fontWeight: 700 }}
+                          secondaryTypographyProps={{ fontSize: 12 }}
+                        />
+                      </ListItemButton>
+                    ))}
+                  </List>
+                </>
+              ) : null}
+
               <Box sx={{ px: 1.2, pb: 0.5 }}>
                 <Typography sx={{ fontSize: 11, fontWeight: 800, color: 'var(--fh-slate)', letterSpacing: '0.08em' }}>
                   ACTIONS
                 </Typography>
               </Box>
               <List sx={{ py: 0 }}>
-                {displayedActionCommands.map((command) => {
-                  const index = displayedCommands.findIndex((item) => item.id === command.id);
+                {displayedActionCommands
+                  .filter((item) => activeFilter === 'all' || activeFilter === 'actions')
+                  .map((command) => {
+                  const index = filteredCommands.findIndex((item) => item.id === command.id);
                   return (
                   <ListItemButton
                     key={command.id}
@@ -531,8 +721,10 @@ export function SearchCommandDialog({
                 </Typography>
               </Box>
               <List sx={{ py: 0 }}>
-                {displayedPageCommands.map((command) => {
-                  const index = displayedCommands.findIndex((item) => item.id === command.id);
+                {displayedPageCommands
+                  .filter((item) => activeFilter === 'all' || activeFilter === 'pages')
+                  .map((command) => {
+                  const index = filteredCommands.findIndex((item) => item.id === command.id);
                   return (
                     <ListItemButton
                       key={command.id}
@@ -601,7 +793,7 @@ export function SearchCommandDialog({
                   </ListItemButton>
                 </Box>
               ) : null}
-              {!displayedCommands.length ? (
+              {!filteredCommands.length ? (
                 <Box sx={{ px: 2, py: 2, textAlign: 'center' }}>
                   <SearchRoundedIcon sx={{ fontSize: 30, color: 'var(--fh-slate)' }} />
                   <Typography sx={{ mt: 0.8, fontWeight: 700 }}>No matching commands</Typography>

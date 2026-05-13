@@ -79,4 +79,15 @@ describe('SearchCommandDialog', () => {
 
     expect(screen.queryByText(/show more pages/i)).not.toBeInTheDocument();
   });
+
+  it('supports search filters and quick access rendering', async () => {
+    renderDialog();
+
+    expect(await screen.findByText(/quick access/i)).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /filter actions/i, hidden: true })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /filter pages/i, hidden: true })).toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole('button', { name: /filter actions/i, hidden: true }));
+    expect(screen.getByText(/open workflow dashboard/i)).toBeInTheDocument();
+  });
 });
