@@ -431,7 +431,7 @@ export default function ProviderOnboardingPage() {
                 </Button>
                 {step < 3 ? (
                   <Button variant="contained" disabled={!canContinue} onClick={() => setStep((prev) => Math.min(3, prev + 1) as StepIndex)}>
-                    Continue
+                    Continue setup
                   </Button>
                 ) : (
                   <>
@@ -439,7 +439,7 @@ export default function ProviderOnboardingPage() {
                       {isSubmitting ? 'Submitting...' : 'Submit onboarding'}
                     </Button>
                     <Button variant="contained" color="success" disabled={!canSubmit || isSubmitting} onClick={submitAndContinueToProfile}>
-                      {isSubmitting ? 'Submitting...' : 'Submit & complete profile'}
+                      {isSubmitting ? 'Submitting...' : 'Submit and continue to profile'}
                     </Button>
                   </>
                 )}

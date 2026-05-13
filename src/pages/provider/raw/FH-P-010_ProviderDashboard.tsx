@@ -1641,12 +1641,12 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                   aria-label={primaryCtaLabel}
                   onClick={handlePrimaryCta}
                   className={`ds-btn ds-btn--primary mt-6 inline-flex h-12 w-full items-center justify-center gap-2 rounded-2xl px-7 text-[14px] font-extrabold text-white sm:w-auto ${cardFocusRingClass}`}
-                  style={{ background: EV_GREEN, boxShadow: "0 10px 24px -14px rgba(3,205,140,0.85)" }}
+                  style={{ background: "linear-gradient(90deg, #03cd8c 0%, #02b97f 100%)", boxShadow: "0 14px 28px -16px rgba(3,205,140,0.95)" }}
                 >
                   <Plus className="h-4 w-4" />
-                  Create Teaching
+                  Create your first teaching
                 </button>
-                <p className="mt-3 text-[12px] font-medium text-slate-700">Create Teaching</p>
+                <p className="mt-3 text-[12px] font-medium text-slate-700">Start now, then refine content in the workflow board.</p>
               </div>
             </section>
           </div>
@@ -1680,7 +1680,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                     style={{ background: "linear-gradient(90deg, #16244c 0%, #1f2f63 100%)", boxShadow: "0 16px 28px -14px rgba(22,36,76,0.9)" }}
                   >
                     {hasDraftToContinue && continueItem ? <ArrowRight className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
-                    {workflowPrimaryLabel}
+                    {hasDraftToContinue && continueItem ? "Continue editing now" : "Create Teaching"}
                   </button>
                   <p className="mt-2 text-center text-[12px] font-semibold text-slate-700">
                     {hasDraftToContinue && continueItem
