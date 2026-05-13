@@ -97,6 +97,8 @@ describe("FH-P-010 FaithHub Provider dashboard workflow UX", () => {
     expect(screen.getByText("Followers")).toBeInTheDocument();
     expect(screen.getByText("Donations")).toBeInTheDocument();
     expect(screen.getByText("Engagement")).toBeInTheDocument();
+    expect(screen.getByText("Content Organization")).toBeInTheDocument();
+    expect(screen.getAllByText("Archives").length).toBeGreaterThan(0);
   });
 
   it("derives pending work from draft and needs review statuses", () => {

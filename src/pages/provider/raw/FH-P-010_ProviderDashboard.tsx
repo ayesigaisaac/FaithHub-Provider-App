@@ -1296,6 +1296,18 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
     if (workflowFilter === "needs_review") return pendingWork.filter((item) => item.status === "Needs review");
     return pendingWork.filter((item) => item.status === "Published");
   }, [pendingWork, workflowFilter]);
+  const publishedTeachings = useMemo(
+    () => teachingItems.filter((item) => item.status === "Published"),
+    [teachingItems],
+  );
+  const draftTeachings = useMemo(
+    () => teachingItems.filter((item) => item.status === "Draft"),
+    [teachingItems],
+  );
+  const archivedTeachings = useMemo(
+    () => publishedTeachings.slice(4, 16),
+    [publishedTeachings],
+  );
   const anomalyCount = useMemo(() => {
     const liveAnomalies = LIVE_SESSIONS.filter(
       (item) => item.readiness !== "Ready" || item.health !== "Healthy",
@@ -1797,6 +1809,36 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
               ) : null}
             </SectionCard>
 
+            <SectionCard
+              title="Content Organization"
+              subtitle="Structured lanes for teachings, drafts, published content, and archives."
+              titleTag="h2"
+              className="bg-[var(--fh-surface)] p-4 sm:p-4 shadow-none"
+            >
+              <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+                <div className="rounded-xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3.5">
+                  <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-500">Teachings</div>
+                  <div className="mt-2 text-[20px] font-black tracking-tight text-faith-ink">{teachingItems.length}</div>
+                  <p className="mt-1 text-[12px] leading-5 text-slate-700">All tracked teaching records in your workflow.</p>
+                </div>
+                <div className="rounded-xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3.5">
+                  <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-500">Drafts</div>
+                  <div className="mt-2 text-[20px] font-black tracking-tight text-faith-ink">{draftTeachings.length}</div>
+                  <p className="mt-1 text-[12px] leading-5 text-slate-700">Work-in-progress teachings that still need completion.</p>
+                </div>
+                <div className="rounded-xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3.5">
+                  <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-500">Published</div>
+                  <div className="mt-2 text-[20px] font-black tracking-tight text-faith-ink">{publishedTeachings.length}</div>
+                  <p className="mt-1 text-[12px] leading-5 text-slate-700">Ready-to-share content currently in active circulation.</p>
+                </div>
+                <div className="rounded-xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3.5">
+                  <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-500">Archives</div>
+                  <div className="mt-2 text-[20px] font-black tracking-tight text-faith-ink">{archivedTeachings.length}</div>
+                  <p className="mt-1 text-[12px] leading-5 text-slate-700">Older published teachings preserved for historical access.</p>
+                </div>
+              </div>
+            </SectionCard>
+
             {needsReviewCount > 0 ? (
               <SectionCard
                 title="Needs your attention"
@@ -2102,6 +2144,46 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                 </>
               ) : (
                 <div className="text-[12px] text-slate-700">Section collapsed.</div>
+              )}
+            </SectionCard>
+            <SectionCard
+              title="Archives"
+              subtitle="Older published teachings organized for quick retrieval."
+              titleTag="h2"
+              right={<Pill text={`${archivedTeachings.length} archived`} tone="navy" />}
+              className="bg-[var(--fh-surface)] p-4 sm:p-4 shadow-none"
+            >
+              {archivedTeachings.length === 0 ? (
+                <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-4 py-6 text-center">
+                  <div className="text-[14px] font-bold text-faith-ink">No archived teachings yet.</div>
+                  <div className="mt-1 text-[12px] text-slate-700">
+                    Published teachings beyond your active list will appear here automatically.
+                  </div>
+                </div>
+              ) : (
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {archivedTeachings.map((item) => (
+                    <div key={item.id} className="rounded-xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3.5">
+                      <div className="flex items-start justify-between gap-2">
+                        <div className="min-w-0">
+                          <h3 className="text-[14px] font-bold text-faith-ink">{item.title}</h3>
+                          <p className="mt-1 text-[12px] text-slate-700">Archived from published lane</p>
+                        </div>
+                        <Pill text="Archived" tone="navy" />
+                      </div>
+                      <div className="mt-3">
+                        <button
+                          type="button"
+                          aria-label={`Open archived teaching ${item.title}`}
+                          onClick={() => handleTeachingAction(item.id, "open")}
+                          className={`ds-btn ds-btn--outline w-full rounded-lg px-3 py-2 text-[11px] font-bold sm:w-auto ${cardFocusRingClass}`}
+                        >
+                          Open archive
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               )}
             </SectionCard>
                         {actionToast ? (
