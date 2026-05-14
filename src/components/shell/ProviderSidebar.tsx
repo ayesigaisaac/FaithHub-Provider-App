@@ -176,7 +176,8 @@ export function ProviderSidebar({
                   width: 44,
                   height: 44,
                   borderRadius: 999,
-                  '&:hover': { bgcolor: 'var(--fh-surface)' },
+                  transition: 'transform var(--fh-duration-base) var(--fh-ease-premium), background-color var(--fh-duration-fast) ease, border-color var(--fh-duration-fast) ease',
+                  '&:hover': { bgcolor: 'var(--fh-surface)', transform: 'translateY(-1px)' },
                 }}
               >
                 <KeyboardDoubleArrowLeftRoundedIcon
@@ -223,9 +224,10 @@ export function ProviderSidebar({
                         borderRadius: '10px',
                         border: '1px solid transparent',
                         bgcolor: openSections[group.section] ? (isDark ? '#111827' : '#eef2f1') : 'transparent',
-                        transition: 'all 140ms ease',
+                        transition: 'transform var(--fh-duration-base) var(--fh-ease-premium), background-color var(--fh-duration-fast) ease, border-color var(--fh-duration-fast) ease',
                         '&:hover': {
                           bgcolor: isDark ? '#111827' : '#f1f5f4',
+                          transform: 'translateY(-1px)',
                         },
                       }}
                     >
@@ -305,8 +307,8 @@ export function ProviderSidebar({
                                   bgcolor: active
                                     ? 'color-mix(in srgb, var(--fh-brand-soft) 55%, #effdf7 45%)'
                                     : 'transparent',
-                                  transition: 'all 140ms ease',
-                                  '&:hover': { bgcolor: 'color-mix(in srgb, var(--fh-surface) 85%, #ffffff 15%)' },
+                                  transition: 'transform var(--fh-duration-base) var(--fh-ease-premium), background-color var(--fh-duration-fast) ease, border-color var(--fh-duration-fast) ease',
+                                  '&:hover': { bgcolor: 'color-mix(in srgb, var(--fh-surface) 85%, #ffffff 15%)', transform: 'translateY(-1px)' },
                                 }}
                               >
                                 <ListItemText
@@ -354,8 +356,8 @@ export function ProviderSidebar({
                                           bgcolor: childActive
                                             ? 'color-mix(in srgb, var(--fh-brand-soft) 32%, var(--fh-surface-bg) 68%)'
                                             : 'transparent',
-                                          transition: 'all 140ms ease',
-                                          '&:hover': { bgcolor: 'color-mix(in srgb, var(--fh-surface) 85%, #ffffff 15%)' },
+                                          transition: 'transform var(--fh-duration-base) var(--fh-ease-premium), background-color var(--fh-duration-fast) ease, border-color var(--fh-duration-fast) ease',
+                                          '&:hover': { bgcolor: 'color-mix(in srgb, var(--fh-surface) 85%, #ffffff 15%)', transform: 'translateY(-1px)' },
                                         }}
                                       >
                                         <ListItemText
@@ -419,7 +421,7 @@ export function ProviderSidebar({
                           borderWidth: 1,
                           borderColor: active ? 'var(--fh-brand-dark)' : 'var(--fh-line)',
                           bgcolor: active ? 'color-mix(in srgb, var(--fh-brand-soft) 40%, var(--fh-surface-bg) 60%)' : 'var(--fh-surface-bg)',
-                          transition: 'all 150ms ease',
+                          transition: 'transform var(--fh-duration-base) var(--fh-ease-premium), background-color var(--fh-duration-fast) ease, border-color var(--fh-duration-fast) ease',
                           '&:hover': {
                             bgcolor: active
                               ? 'color-mix(in srgb, var(--fh-brand-soft) 54%, var(--fh-surface-bg) 46%)'
@@ -427,6 +429,7 @@ export function ProviderSidebar({
                             borderColor: active
                               ? 'var(--fh-brand-dark)'
                               : 'color-mix(in srgb, var(--fh-line) 72%, var(--fh-ink) 28%)',
+                            transform: 'translateY(-1px)',
                           },
                         }}
                       >
@@ -490,8 +493,10 @@ export function ProviderSidebar({
                                   bgcolor: childActive
                                     ? 'color-mix(in srgb, var(--fh-brand-soft) 35%, var(--fh-surface-bg) 65%)'
                                     : 'transparent',
+                                  transition: 'transform var(--fh-duration-base) var(--fh-ease-premium), background-color var(--fh-duration-fast) ease',
                                   '&:hover': {
                                     bgcolor: 'var(--fh-surface)',
+                                    transform: 'translateY(-1px)',
                                   },
                                 }}
                               >
@@ -539,8 +544,10 @@ export function ProviderSidebar({
                     border: '1px dashed',
                     borderColor: 'var(--fh-line)',
                     bgcolor: 'transparent',
+                    transition: 'transform var(--fh-duration-base) var(--fh-ease-premium), background-color var(--fh-duration-fast) ease',
                     '&:hover': {
                       bgcolor: isDark ? '#111827' : '#f1f5f4',
+                      transform: 'translateY(-1px)',
                     },
                   }}
                 >

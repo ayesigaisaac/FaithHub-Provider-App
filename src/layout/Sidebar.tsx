@@ -148,7 +148,7 @@ export function Sidebar({ onClose }: SidebarProps) {
   const isActivePath = (path: string) => location.pathname === path || location.pathname.startsWith(`${path}/`);
 
   return (
-    <aside className="flex h-full w-full flex-col border-r border-slate-200 bg-[#f4f6f6]">
+    <aside className="fh-brand-shell flex h-full w-full flex-col border-r border-slate-200 bg-[#f4f6f6]">
       <div className="flex items-center justify-between border-b border-slate-200 px-5 py-5">
         <div className="min-w-0">
           <BrandLogo variant="landscape" alt="FaithHub Provider" className="h-12 w-auto max-w-full" />
@@ -157,7 +157,7 @@ export function Sidebar({ onClose }: SidebarProps) {
         <button
           type="button"
           onClick={onClose}
-          className="inline-flex rounded-2xl border border-slate-300 bg-white p-2.5 text-slate-500 hover:bg-slate-100 lg:hidden"
+          className="fh-interactive inline-flex rounded-2xl border border-slate-300 bg-white p-2.5 text-slate-500 hover:bg-slate-100 lg:hidden"
           aria-label="Close navigation"
         >
           <X className="h-5 w-5" />
@@ -170,7 +170,7 @@ export function Sidebar({ onClose }: SidebarProps) {
           aria-expanded={modulesOpen}
           aria-controls={dropdownId}
           onClick={() => setModulesOpen((prev) => !prev)}
-          className="flex w-full items-center justify-between rounded-[22px] border border-slate-300 bg-[#f8f9fa] px-4 py-3.5 text-left transition hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2"
+          className="fh-interactive flex w-full items-center justify-between rounded-[22px] border border-slate-300 bg-[#f8f9fa] px-4 py-3.5 text-left transition hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--fh-brand)] focus-visible:ring-offset-2"
         >
           <span className="flex items-center gap-3">
             <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-100 text-emerald-700">
@@ -197,7 +197,7 @@ export function Sidebar({ onClose }: SidebarProps) {
                         type="button"
                         aria-current={active ? 'page' : undefined}
                         onClick={() => handleNavigate(item.path)}
-                        className={`group flex w-full items-center justify-between rounded-[22px] border px-4 py-3.5 text-left transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 ${
+                            className={`fh-interactive group flex w-full items-center justify-between rounded-[22px] border px-4 py-3.5 text-left transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--fh-brand)] focus-visible:ring-offset-2 ${
                           active
                             ? 'border-2 border-slate-900 bg-white shadow-[0_10px_20px_rgba(15,23,42,0.07)]'
                             : 'border-slate-300 bg-[#f8f9fa] hover:bg-white'
@@ -206,7 +206,7 @@ export function Sidebar({ onClose }: SidebarProps) {
                         <span className="flex min-w-0 items-center gap-3.5">
                           <span
                             className={`inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl ${
-                              active ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-100 text-slate-500'
+                              active ? 'bg-[var(--fh-brand-soft)] text-[var(--fh-brand-dark)]' : 'bg-slate-100 text-slate-500'
                             }`}
                           >
                             {item.icon}
