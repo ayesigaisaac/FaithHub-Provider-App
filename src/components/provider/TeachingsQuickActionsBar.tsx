@@ -123,6 +123,7 @@ export function TeachingsQuickActionsBar({
                   textTransform: 'none',
                   fontSize: action.primary ? 13 : 12,
                   fontWeight: action.primary ? 800 : 700,
+                  transition: 'transform var(--fh-duration-base) var(--fh-ease-premium), box-shadow var(--fh-duration-base) var(--fh-ease-premium), background-color var(--fh-duration-fast) ease, border-color var(--fh-duration-fast) ease',
                   borderWidth: 1,
                   borderColor: action.primary
                     ? 'transparent'
@@ -148,6 +149,9 @@ export function TeachingsQuickActionsBar({
                         ? 'color-mix(in srgb, var(--fh-ink) 90%, #ffffff 10%)'
                         : 'var(--fh-surface)',
                     transform: 'translateY(-1px)',
+                  },
+                  '&:active': {
+                    transform: 'translateY(0)',
                   },
                 }}
               >

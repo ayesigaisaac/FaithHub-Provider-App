@@ -1631,7 +1631,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
 
   if (!hasDashboardData) {
     return (
-      <div className="min-h-screen w-full bg-[var(--fh-page-bg)] text-faith-ink transition-colors dark:bg-slate-950 dark:text-slate-100">
+      <div className="fh-brand-shell min-h-screen w-full bg-[var(--fh-page-bg)] text-faith-ink transition-colors dark:bg-slate-950 dark:text-slate-100">
         <div className="w-full max-w-none px-0 py-0">
           <div className="space-y-4 sm:space-y-5">
             <section className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-5 sm:p-10 shadow-soft">
@@ -1669,10 +1669,10 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
 
   if (hasDashboardData) {
     return (
-      <div className="min-h-screen w-full bg-[var(--fh-page-bg)] text-faith-ink transition-colors dark:bg-slate-950 dark:text-slate-100">
+      <div className="fh-brand-shell min-h-screen w-full bg-[var(--fh-page-bg)] text-faith-ink transition-colors dark:bg-slate-950 dark:text-slate-100">
         <div className="w-full max-w-none px-0 py-0">
           <div className="space-y-8 sm:space-y-10">
-            <section className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-5 sm:p-5">
+            <section className="fh-brand-hero rounded-2xl p-5 sm:p-5">
               <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
                 <ProviderPageTitle
                   icon={<BookOpen className="h-6 w-6" />}

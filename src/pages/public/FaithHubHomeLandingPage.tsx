@@ -722,7 +722,7 @@ export default function FaithHubHomeLandingPageV3Fixed() {
   };
 
   return (
-    <div className="min-h-screen overflow-hidden bg-[var(--fh-ev-light-grey)] text-slate-900">
+    <div className="fh-brand-shell min-h-screen overflow-hidden bg-[var(--fh-ev-light-grey)] text-slate-900">
       <div className="relative">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(3,205,140,0.18),transparent_30%),radial-gradient(circle_at_top_right,rgba(247,127,0,0.16),transparent_26%),linear-gradient(to_bottom,#ffffff,rgba(242,242,242,0.9))]" />
         <div className="absolute -top-10 left-[-8rem] h-80 w-80 rounded-full bg-[var(--fh-brand)]/20 blur-3xl" />
@@ -770,7 +770,7 @@ export default function FaithHubHomeLandingPageV3Fixed() {
         </header>
 
         <section className="relative z-10 mx-auto grid max-w-7xl gap-12 px-6 pb-16 pt-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-10 lg:pb-24 lg:pt-10">
-          <motion.div {...fadeUp} className="max-w-3xl">
+          <motion.div {...fadeUp} className="fh-brand-hero fh-animate-fade-up max-w-3xl p-6 sm:p-8">
             <Chip>{brandMessaging.heroLabel}</Chip>
             <h1 className="mt-6 text-5xl font-black leading-[0.95] tracking-tight text-slate-950 sm:text-6xl lg:text-7xl">
               {brandMessaging.heroTitle}
@@ -826,7 +826,7 @@ export default function FaithHubHomeLandingPageV3Fixed() {
                 <motion.div
                   key={item.label}
                   whileHover={{ y: -4 }}
-                  className="rounded-[1.75rem] border border-white/80 bg-white/90 p-5 shadow-[0_16px_35px_rgba(15,23,42,0.06)] backdrop-blur"
+                  className="fh-brand-panel rounded-[1.75rem] p-5"
                 >
                   <div className="text-3xl font-black text-slate-950">{item.value}</div>
                   <div className="mt-2 text-sm font-semibold text-slate-500">{item.label}</div>
@@ -839,7 +839,7 @@ export default function FaithHubHomeLandingPageV3Fixed() {
             <div className="absolute left-4 top-6 hidden h-24 w-24 rounded-[2rem] bg-[var(--fh-brand)]/15 blur-2xl lg:block" />
             <div className="absolute bottom-10 right-2 hidden h-28 w-28 rounded-[2rem] bg-[var(--fh-accent)]/15 blur-2xl lg:block" />
 
-            <div className="relative rounded-[2.2rem] border border-white/70 bg-white/90 p-4 shadow-[0_30px_70px_rgba(15,23,42,0.10)] backdrop-blur lg:p-5">
+            <div className="fh-brand-panel fh-shimmer-surface relative rounded-[2.2rem] p-4 lg:p-5">
               <div className="grid gap-4">
                 <div className="overflow-hidden rounded-[1.8rem] border border-slate-200 bg-slate-950 shadow-xl">
                   <div className="relative aspect-[16/10] overflow-hidden">
@@ -913,7 +913,7 @@ export default function FaithHubHomeLandingPageV3Fixed() {
       </div>
 
       <section className="mx-auto max-w-7xl px-6 py-6 lg:px-10">
-        <motion.div {...fadeUp} className="grid gap-4 rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm md:grid-cols-4">
+        <motion.div {...fadeUp} className="fh-brand-panel grid gap-4 rounded-[2rem] p-5 md:grid-cols-4">
           <div className="flex items-center gap-3 rounded-2xl bg-slate-50 p-4">
             <Radio className="h-5 w-5 text-[var(--fh-brand)]" />
             <div>
@@ -1602,7 +1602,7 @@ function CtaButton({
         ? "ds-btn--secondary"
         : "ds-btn--outline";
   return (
-    <button type={type} onClick={onClick} className={`ds-btn ${variantClass} ${className}`.trim()}>
+    <button type={type} onClick={onClick} className={`ds-btn fh-interactive ${variantClass} ${className}`.trim()}>
       {children}
     </button>
   );
