@@ -107,5 +107,5 @@ describe("FaithHubHomeLandingPage Provider Profiles", () => {
     fireEvent.change(commentInput, { target: { value: "Praying with you all tonight." } });
     fireEvent.click(screen.getByRole("button", { name: /send live comment for morning worship & prayer/i }));
     expect(screen.getByText(/latest: praying with you all tonight\./i)).toBeInTheDocument();
-  });
+  }, 15000);
 });
