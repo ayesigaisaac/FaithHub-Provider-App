@@ -446,6 +446,41 @@ html.dark .fh-uplift-surface {
   color: var(--fh-muted) !important;
 }
 
+.text-slate-300,
+.text-slate-600,
+.text-slate-700,
+.text-slate-800,
+.text-slate-900 {
+  color: var(--fh-ink) !important;
+}
+
+.bg-slate-50,
+.bg-slate-100,
+.bg-slate-200 {
+  background-color: var(--fh-ev-light-grey) !important;
+}
+
+.bg-slate-300,
+.bg-slate-400,
+.bg-slate-500 {
+  background-color: var(--fh-ev-medium-grey) !important;
+}
+
+.border-slate-100,
+.border-slate-200,
+.border-slate-300,
+.ring-slate-100,
+.ring-slate-200,
+.ring-slate-300 {
+  border-color: var(--fh-ev-medium-grey) !important;
+}
+
+.hover\:bg-slate-50:hover,
+.hover\:bg-slate-100:hover,
+.hover\:bg-slate-200:hover {
+  background-color: color-mix(in srgb, var(--fh-ev-light-grey) 84%, white 16%) !important;
+}
+
 .placeholder\:text-faith-slate::placeholder,
 .placeholder\:text-slate-500::placeholder,
 .placeholder\:text-slate-400::placeholder {
