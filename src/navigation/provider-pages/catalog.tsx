@@ -115,8 +115,20 @@ const AuditLog = lazyPage(() => import('@/pages/provider/raw/FH-P-122_AuditLog')
 const QACenter = lazyPage(() => import('@/pages/provider/raw/FH-P-123_QACenter'));
 const ProfileSettings = lazyPage(() => import('@/pages/provider/ProfileSettingsPage'));
 const ProviderShellPreview = lazyPage(() => import('@/pages/provider/previews/FaithHubProviderShellLightV3'));
+const DesignSystemShowcase = lazyPage(() => import('@/pages/provider/previews/DesignSystemShowcase'));
 
 export const providerPageCatalog: ProviderPageMeta[] = [
+  {
+    key: 'design-system-showcase',
+    id: 'FH-P-900',
+    title: 'Design System Showcase',
+    description: 'Reference page for buttons, cards, spacing, typography, and interaction states.',
+    path: '/faithhub/provider/design-system-showcase',
+    section: 'Previews',
+    icon: Sparkles,
+    hidden: true,
+    component: DesignSystemShowcase,
+  },
   {
     key: 'provider-onboarding',
     id: 'FH-P-001',
