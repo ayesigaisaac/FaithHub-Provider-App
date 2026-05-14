@@ -12,6 +12,8 @@
     "lint:fix": "eslint . --ext .ts,.tsx --fix",
     "format": "prettier --write .",
     "test": "vitest run",
+    "test:visual": "playwright test",
+    "test:visual:update": "playwright test --update-snapshots",
     "quality": "npm run lint && npm run check && npm run test",
     "prepare": "node scripts/setup-git-hooks.cjs"
   },
@@ -27,6 +29,7 @@
     "react-router-dom": "^7.12.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.54.2",
     "@testing-library/jest-dom": "^6.8.0",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",

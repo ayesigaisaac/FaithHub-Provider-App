@@ -116,8 +116,20 @@ const QACenter = lazyPage(() => import('@/pages/provider/raw/FH-P-123_QACenter')
 const ProfileSettings = lazyPage(() => import('@/pages/provider/ProfileSettingsPage'));
 const ProviderShellPreview = lazyPage(() => import('@/pages/provider/previews/FaithHubProviderShellLightV3'));
 const DesignSystemShowcase = lazyPage(() => import('@/pages/provider/previews/DesignSystemShowcase'));
+const AnalyticsEventHealthPreview = lazyPage(() => import('@/pages/provider/previews/AnalyticsEventHealthPreview'));
 
 export const providerPageCatalog: ProviderPageMeta[] = [
+  {
+    key: 'analytics-event-health',
+    id: 'FH-P-901',
+    title: 'Analytics Event Health',
+    description: 'Quick visibility into local analytics events and action logs for UX instrumentation QA.',
+    path: '/faithhub/provider/analytics-event-health',
+    section: 'Previews',
+    icon: Sparkles,
+    hidden: true,
+    component: AnalyticsEventHealthPreview,
+  },
   {
     key: 'design-system-showcase',
     id: 'FH-P-900',

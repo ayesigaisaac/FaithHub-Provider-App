@@ -8,6 +8,7 @@ Use this before merging or releasing UX-heavy changes.
 - `npm run check`
 - `npm test`
 - `npm run build`
+- `npm run test:visual` (after Playwright install and baseline generation)
 
 ## 2) Visual Identity Regression
 
@@ -46,3 +47,14 @@ Use this before merging or releasing UX-heavy changes.
 - Ensure no excessive visual jitter from transitions.
 - Confirm reduced motion preference still renders usable UI.
 
+## 6) Visual Regression Baselines
+
+- First-time setup:
+  - `npx playwright install`
+  - `npm run test:visual:update`
+- Day-to-day verification:
+  - `npm run test:visual`
+- Baselines covered:
+  - home landing
+  - login page
+  - not found page
