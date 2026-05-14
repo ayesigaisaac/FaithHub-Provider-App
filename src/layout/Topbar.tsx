@@ -21,7 +21,7 @@ export function Topbar({ onOpenSidebar }: TopbarProps) {
         <button
           type="button"
           onClick={onOpenSidebar}
-          className="absolute left-4 inline-flex rounded-lg p-2 text-slate-500 hover:bg-slate-100 lg:hidden"
+          className="fh-interactive absolute left-4 inline-flex rounded-lg p-2 text-slate-500 hover:bg-slate-100 lg:hidden"
           aria-label="Open navigation"
         >
           <Menu className="h-5 w-5" />
@@ -38,7 +38,7 @@ export function Topbar({ onOpenSidebar }: TopbarProps) {
               value={workspace}
               onChange={handleWorkspaceSwitch}
               aria-label="Switch workspace"
-              className="h-9 appearance-none rounded-lg border border-slate-200 bg-slate-50 pl-3 pr-8 text-xs font-medium text-slate-700 outline-none ring-emerald-500 transition focus:bg-white focus:ring-2"
+              className="fh-interactive h-9 appearance-none rounded-lg border border-slate-200 bg-slate-50 pl-3 pr-8 text-xs font-medium text-slate-700 outline-none ring-[var(--fh-brand)] transition focus:bg-white focus:ring-2"
             >
               <option value="Kampala Central">Kampala Central</option>
               <option value="Online Studio">Online Studio</option>
@@ -53,14 +53,14 @@ export function Topbar({ onOpenSidebar }: TopbarProps) {
           <input
             type="search"
             placeholder="Search content, campaigns, or members"
-            className="h-10 w-full rounded-xl border border-slate-200 bg-white pl-9 pr-3 text-sm text-slate-700 outline-none ring-emerald-500 transition placeholder:text-slate-400 focus:ring-2"
+            className="fh-interactive h-10 w-full rounded-xl border border-slate-200 bg-white pl-9 pr-3 text-sm text-slate-700 outline-none ring-[var(--fh-brand)] transition placeholder:text-slate-400 focus:ring-2"
           />
         </div>
 
         <div className="ml-auto flex items-center gap-2.5">
           <button
             type="button"
-            className="relative inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-600 transition hover:bg-slate-50"
+            className="fh-interactive relative inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-600 transition hover:bg-slate-50"
             aria-label="Notifications"
             onClick={() => navigate('/faithhub/provider/audience-notifications')}
           >
@@ -70,11 +70,11 @@ export function Topbar({ onOpenSidebar }: TopbarProps) {
 
           <button
             type="button"
-            className="inline-flex items-center gap-3 rounded-xl border border-slate-200 px-2 py-1.5 transition hover:bg-slate-50"
+            className="fh-interactive inline-flex items-center gap-3 rounded-xl border border-slate-200 px-2 py-1.5 transition hover:bg-slate-50"
             aria-label="Profile menu"
             onClick={() => navigate('/faithhub/provider/workspace-settings')}
           >
-            <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-100 text-sm font-semibold text-emerald-700">
+            <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-[var(--fh-brand-soft)] text-sm font-semibold text-[var(--fh-brand-dark)]">
               IA
             </span>
             <span className="hidden text-left xl:block">

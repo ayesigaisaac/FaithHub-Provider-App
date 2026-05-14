@@ -69,9 +69,11 @@ export function ProviderTopbar({
     height: { xs: 42, md: 46 },
     bgcolor: isDark ? '#0f172a' : '#ffffff',
     color: 'var(--fh-slate)',
+    transition: 'transform var(--fh-duration-base) var(--fh-ease-premium), background-color var(--fh-duration-fast) ease, border-color var(--fh-duration-fast) ease',
     '&:hover': {
       borderColor: 'color-mix(in srgb, var(--fh-line) 72%, var(--fh-ink) 28%)',
       bgcolor: 'var(--fh-surface)',
+      transform: 'translateY(-1px)',
     },
   };
   const activeTopTab = useMemo(
@@ -315,6 +317,8 @@ export function ProviderTopbar({
                   borderColor: 'var(--fh-line)',
                   bgcolor: 'var(--fh-surface-bg)',
                   color: 'var(--fh-ink)',
+                  transition: 'transform var(--fh-duration-base) var(--fh-ease-premium), background-color var(--fh-duration-fast) ease',
+                  '&:hover': { bgcolor: 'var(--fh-surface)', transform: 'translateY(-1px)' },
                 }}
               >
                 {activeCategoryLabel}

@@ -97,7 +97,7 @@ export function SidebarTrigger({ className = '', ...props }: ButtonHTMLAttribute
       aria-label="Open navigation"
       aria-expanded={isExpanded}
       onClick={toggleSidebar}
-      className={`inline-flex items-center justify-center rounded-lg border border-slate-200 bg-white p-2 text-slate-600 shadow-sm hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 ${className}`.trim()}
+      className={`fh-interactive inline-flex items-center justify-center rounded-lg border border-slate-200 bg-white p-2 text-slate-600 shadow-sm hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--fh-brand)] focus-visible:ring-offset-2 ${className}`.trim()}
       {...props}
     >
       <Menu className="h-5 w-5" />
@@ -136,7 +136,7 @@ export function Sidebar({ children, className = '', ...props }: HTMLAttributes<H
             <button
               type="button"
               onClick={() => setOpenMobile(false)}
-              className="absolute right-3 top-3 inline-flex rounded-xl border border-slate-300 bg-white p-2 text-slate-600"
+              className="fh-interactive absolute right-3 top-3 inline-flex rounded-xl border border-slate-300 bg-white p-2 text-slate-600"
               aria-label="Close navigation"
             >
               <X className="h-4 w-4" />
