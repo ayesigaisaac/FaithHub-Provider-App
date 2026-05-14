@@ -58,3 +58,6 @@ Use this before merging or releasing UX-heavy changes.
   - home landing
   - login page
   - not found page
+  - provider dashboard (mock-auth seeded)
+  - design system showcase (mock-auth seeded)
+  - analytics event health preview (mock-auth seeded)

@@ -9,4 +9,3 @@ tailwind.config.js
 tailwind.config.d.ts
 playwright-report
 test-results
-tests/visual/__screenshots__
