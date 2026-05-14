@@ -173,21 +173,21 @@ export function Sidebar({ onClose }: SidebarProps) {
           className="fh-interactive flex w-full items-center justify-between rounded-[22px] border border-slate-300 bg-[#f8f9fa] px-4 py-3.5 text-left transition hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--fh-brand)] focus-visible:ring-offset-2"
         >
           <span className="flex items-center gap-3">
-            <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-100 text-emerald-700">
+            <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-[var(--fh-brand-soft)] text-[var(--fh-brand)]">
               <LayoutGrid className="h-6 w-6" />
             </span>
             <span>
-              <span className="block text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">FaithHub Provider</span>
-              <span className="block text-[22px] font-bold leading-none tracking-[-0.01em] text-slate-900">Provider Modules</span>
+              <span className="block text-xs font-semibold uppercase tracking-[0.16em] text-[var(--fh-slate)]">FaithHub Provider</span>
+              <span className="block text-[22px] font-bold leading-none tracking-[-0.01em] text-[var(--fh-ink)]">Provider Modules</span>
             </span>
           </span>
-          <ChevronDown className={`h-6 w-6 text-slate-500 transition-transform ${modulesOpen ? 'rotate-180' : ''}`} />
+          <ChevronDown className={`h-6 w-6 text-[var(--fh-slate)] transition-transform ${modulesOpen ? 'rotate-180' : ''}`} />
         </button>
 
         <div id={dropdownId} className={`mt-5 space-y-5 ${modulesOpen ? 'block' : 'hidden'}`}>
           {moduleGroups.map((group) => (
             <section key={group.id}>
-              <h3 className="px-2 pb-2 text-[12px] font-semibold uppercase tracking-[0.18em] text-slate-400">{group.label}</h3>
+              <h3 className="px-2 pb-2 text-[12px] font-semibold uppercase tracking-[0.18em] text-[var(--fh-slate)]">{group.label}</h3>
               <ul className="space-y-2.5" role="list">
                 {group.items.map((item) => {
                   const active = isActivePath(item.path);
@@ -199,26 +199,26 @@ export function Sidebar({ onClose }: SidebarProps) {
                         onClick={() => handleNavigate(item.path)}
                             className={`fh-interactive group flex w-full items-center justify-between rounded-[22px] border px-4 py-3.5 text-left transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--fh-brand)] focus-visible:ring-offset-2 ${
                           active
-                            ? 'border-2 border-slate-900 bg-white shadow-[0_10px_20px_rgba(15,23,42,0.07)]'
+                            ? 'border-2 border-[var(--fh-brand)] bg-white shadow-[0_10px_20px_rgba(3,205,140,0.16)]'
                             : 'border-slate-300 bg-[#f8f9fa] hover:bg-white'
                         }`}
                       >
                         <span className="flex min-w-0 items-center gap-3.5">
                           <span
                             className={`inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl ${
-                              active ? 'bg-[var(--fh-brand-soft)] text-[var(--fh-brand-dark)]' : 'bg-slate-100 text-slate-500'
+                              active ? 'bg-[var(--fh-brand-soft)] text-[var(--fh-brand)]' : 'bg-[var(--fh-ev-light-grey)] text-[var(--fh-ev-medium-grey)]'
                             }`}
                           >
                             {item.icon}
                           </span>
                           <span className="min-w-0">
-                            <span className="block truncate text-[15px] font-bold leading-none tracking-[-0.01em] text-slate-800">
+                            <span className="block truncate text-[15px] font-bold leading-none tracking-[-0.01em] text-[var(--fh-ink)]">
                               {item.label}
                             </span>
-                            {item.hint ? <span className="mt-0.5 block truncate text-[12px] leading-tight text-slate-500">{item.hint}</span> : null}
+                            {item.hint ? <span className="mt-0.5 block truncate text-[12px] leading-tight text-[var(--fh-slate)]">{item.hint}</span> : null}
                           </span>
                         </span>
-                        <ChevronRight className={`h-6 w-6 shrink-0 ${active ? 'text-slate-900' : 'text-slate-400'}`} />
+                        <ChevronRight className={`h-6 w-6 shrink-0 ${active ? 'text-[var(--fh-accent)]' : 'text-[var(--fh-slate)]'}`} />
                       </button>
                     </li>
                   );

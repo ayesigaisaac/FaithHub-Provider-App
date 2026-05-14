@@ -231,7 +231,7 @@ export function ProviderSidebar({
                         },
                       }}
                     >
-                      <ListItemIcon sx={{ minWidth: 28, color: 'var(--fh-slate)' }}>
+                      <ListItemIcon sx={{ minWidth: 28, color: openSections[group.section] ? 'var(--fh-accent)' : 'var(--fh-slate)' }}>
                         <SectionIcon sx={{ fontSize: 18 }} />
                       </ListItemIcon>
                       <ListItemText
@@ -256,7 +256,7 @@ export function ProviderSidebar({
                         <KeyboardArrowDownRoundedIcon
                           sx={{
                             fontSize: 20,
-                            color: 'var(--fh-slate)',
+                            color: 'var(--fh-accent)',
                           }}
                         />
                       ) : (
@@ -437,7 +437,7 @@ export function ProviderSidebar({
                           sx={{
                             minWidth: collapsed ? 0 : 30,
                             mr: collapsed ? 0 : 0.5,
-                            color: active ? 'var(--fh-brand-dark)' : 'var(--fh-slate)',
+                            color: active ? 'var(--fh-brand)' : 'var(--fh-slate)',
                           }}
                         >
                           <Icon size={16} />
@@ -503,7 +503,7 @@ export function ProviderSidebar({
                                 <ListItemIcon
                                   sx={{
                                     minWidth: 24,
-                                    color: childActive ? 'var(--fh-brand-dark)' : 'var(--fh-slate)',
+                                    color: childActive ? 'var(--fh-accent)' : 'var(--fh-slate)',
                                   }}
                                 >
                                   <ChildIcon size={14} />
