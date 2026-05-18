@@ -90,7 +90,6 @@ export function ProviderTopbar({
       .replace(/\b\w/g, (char) => char.toUpperCase());
   }, [user?.email, user?.name]);
   const roleLabel = role ? role[0].toUpperCase() + role.slice(1) : 'Leadership';
-  const canOpenAdminDashboard = role === 'admin' || role === 'leadership';
   const initials = displayName
     .split(' ')
     .map((part) => part[0])
@@ -477,16 +476,30 @@ export function ProviderTopbar({
         >
           Profile settings
         </MenuItem>
-        {canOpenAdminDashboard ? (
-          <MenuItem
-            onClick={() => {
-              closeUserMenu();
-              navigate('/faithhub/admin/dashboard');
-            }}
-          >
-            Admin dashboard
-          </MenuItem>
-        ) : null}
+        <MenuItem
+          onClick={() => {
+            closeUserMenu();
+            navigate('/faithhub/provider/dashboard');
+          }}
+        >
+          Provider dashboard
+        </MenuItem>
+        <MenuItem
+          onClick={() => {
+            closeUserMenu();
+            navigate('/faithhub/provider/teachings-dashboard');
+          }}
+        >
+          Teachings workspace
+        </MenuItem>
+        <MenuItem
+          onClick={() => {
+            closeUserMenu();
+            navigate('/faithhub/provider/live-dashboard');
+          }}
+        >
+          Live operations
+        </MenuItem>
         <MenuItem
           onClick={() => {
             closeUserMenu();

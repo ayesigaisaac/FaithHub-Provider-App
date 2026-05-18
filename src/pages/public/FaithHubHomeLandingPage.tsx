@@ -41,9 +41,9 @@ const brandMessaging = {
   productName: "FaithHub",
   poweredBy: "Powered by EVzone",
   heroLabel: "Faith Streaming Ecosystem",
-  heroTitle: "One platform for livestreaming, prayer, worship, and community.",
+  heroTitle: "One provider workspace for livestreaming, prayer, worship, and community care.",
   heroBody:
-    "FaithHub helps churches, ministries, and worship teams bring people together in real time and beyond: stream services, host prayer rooms, publish worship and teachings, and nurture trusted community journeys in one place.",
+    "FaithHub helps provider teams run daily ministry operations in one place: stream services, host prayer rooms, publish teachings, coordinate community follow-up, and keep trusted workflows moving without tool-switching.",
   platformSectionBody:
     "FaithHub is a faith streaming ecosystem that combines spiritual warmth with operational clarity, so teams can move from livestream to prayer, from worship to follow-up, and from message to meaningful community action without switching tools.",
   audienceSectionBody:
@@ -787,7 +787,7 @@ export default function FaithHubHomeLandingPageV3Fixed() {
                   navigateProvider("/faithhub/provider/onboarding");
                 }}
               >
-                Start with FaithHub
+                Start provider workspace
                 <ArrowRight className="h-5 w-5" />
               </CtaButton>
               <CtaButton
@@ -799,7 +799,7 @@ export default function FaithHubHomeLandingPageV3Fixed() {
                 }}
               >
                 <MessageSquareHeart className="h-5 w-5" />
-                Open prayer flow
+                Open provider prayer flow
               </CtaButton>
               <CtaButton
                 variant="outline"

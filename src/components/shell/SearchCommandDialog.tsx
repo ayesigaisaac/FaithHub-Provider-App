@@ -466,7 +466,7 @@ export function SearchCommandDialog({
                     },
                   }}
                 >
-                  <Typography sx={{ fontSize: 11.5, fontWeight: 700, color: 'var(--fh-text)' }}>{action.label}</Typography>
+                  <Typography sx={{ fontSize: 11.5, fontWeight: 700, color: 'var(--fh-ink)' }}>{action.label}</Typography>
                   <Box
                     component="kbd"
                     sx={{
