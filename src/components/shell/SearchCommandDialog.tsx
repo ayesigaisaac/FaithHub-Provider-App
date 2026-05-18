@@ -242,6 +242,16 @@ export function SearchCommandDialog({
   }, [activeFilter, displayedCommands, recentCommands]);
 
   useEffect(() => {
+    if (!filteredCommands.length) {
+      if (highlightIndex !== 0) setHighlightIndex(0);
+      return;
+    }
+    if (highlightIndex >= filteredCommands.length) {
+      setHighlightIndex(0);
+    }
+  }, [filteredCommands, highlightIndex]);
+
+  useEffect(() => {
     setHighlightIndex(0);
     setShowAllPages(false);
     setActiveFilter('all');
@@ -534,6 +544,14 @@ export function SearchCommandDialog({
               </Stack>
               <Typography variant="body2" color="text.secondary" sx={{ px: 1.2, pb: 0.8, fontWeight: 700 }}>
                 {hasQuery ? 'Searching commands...' : 'Quick commands'}
+              </Typography>
+              <Typography
+                aria-live="polite"
+                sx={{ px: 1.2, pb: 0.8, fontSize: 11, color: 'var(--fh-slate)' }}
+              >
+                {filteredCommands.length === 0
+                  ? 'No results for the current filter.'
+                  : `${filteredCommands.length} result${filteredCommands.length === 1 ? '' : 's'} available.`}
               </Typography>
 
               {!hasQuery ? (

@@ -158,9 +158,9 @@ export function ProviderTopbar({
                   onCloseSearch();
                 }
               }}
-              placeholder="Search pages..."
+              placeholder="Search provider pages..."
               size="small"
-              inputProps={{ 'aria-label': 'Search pages' }}
+              inputProps={{ 'aria-label': 'Search provider pages' }}
               autoComplete="off"
               InputProps={{
                 startAdornment: (
