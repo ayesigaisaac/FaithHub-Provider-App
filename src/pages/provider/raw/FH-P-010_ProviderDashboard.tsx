@@ -1940,7 +1940,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                         ) : null}
                       </div>
                       <div className="flex flex-col items-start gap-2 sm:items-end">
-                        <Pill text={`${session.viewers ?? 0} watching`} tone="navy" />
+                        <Pill text={`${(session.viewers ?? 0).toLocaleString()} watching`} tone="navy" />
                         <button
                           type="button"
                           aria-label={`Open live dashboard for ${session.title}`}
@@ -2149,6 +2149,15 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                     <div className="mt-1 text-[12px] text-slate-700">
                       Great work. New drafts and review requests will appear here.
                     </div>
+                    <button
+                      type="button"
+                      aria-label="Create a new teaching from empty drafts state"
+                      onClick={() => safeNav(ROUTES.teachingsDashboard)}
+                      className={`ds-btn ds-btn--secondary mt-3 inline-flex h-10 items-center gap-2 rounded-xl px-4 text-[12px] font-bold ${cardFocusRingClass}`}
+                    >
+                      <Plus className="h-4 w-4" />
+                      Create teaching
+                    </button>
                   </div>
                 ) : null}
                 {!isWorkflowLoading && filteredPendingWork.map((item) => (
@@ -2157,7 +2166,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                       <div className="min-w-0">
                         <h3 className="text-[14px] font-bold text-faith-ink">{item.title}</h3>
                         <p className="mt-1 text-[12px] text-slate-700">
-                          {item.type} � Updated {formatLastEdited(item.updatedAt)}
+                          {item.type} - Updated {formatLastEdited(item.updatedAt)}
                         </p>
                       </div>
                       <Pill text={item.status === "Draft" ? "Draft" : "Needs review"} tone="warn" />
@@ -2247,6 +2256,8 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
   }
 
 }
+
+
 
 
 
