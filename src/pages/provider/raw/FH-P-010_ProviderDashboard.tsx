@@ -268,6 +268,13 @@ function safeNav(path: string) {
   navigateWithRouter(path);
 }
 
+function scrollToDashboardSection(sectionId: string) {
+  if (typeof window === "undefined") return;
+  const target = window.document.getElementById(sectionId);
+  if (!target) return;
+  target.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
 function trackDashboardEvent(
   eventName:
     | "start_new_task"
@@ -329,7 +336,7 @@ const EXECUTIVE_METRICS: Record<RoleKey, MetricCard[]> = {
     },
     {
       id: "live",
-      label: "Upcoming live sessionz",
+      label: "Upcoming live sessions",
       value: "7",
       hint: "Including today, this weekend, and two translated streams",
       delta: "2 at risk",
@@ -1759,6 +1766,38 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                   <Pill text={`${needsReviewCount} Needs review`} tone="brand" />
                 </div>
               </div>
+              <div className="mt-3 grid gap-2 sm:grid-cols-3">
+                <button
+                  type="button"
+                  aria-label="Jump to review queue"
+                  onClick={() => {
+                    setWorkflowFilter("needs_review");
+                    scrollToDashboardSection("provider-review-queue");
+                  }}
+                  className={`ds-btn ds-btn--outline h-10 w-full rounded-xl px-3 text-[12px] font-bold ${cardFocusRingClass}`}
+                >
+                  Jump to review queue
+                </button>
+                <button
+                  type="button"
+                  aria-label="Jump to published teachings"
+                  onClick={() => {
+                    setWorkflowFilter("published");
+                    scrollToDashboardSection("provider-published-teachings");
+                  }}
+                  className={`ds-btn ds-btn--outline h-10 w-full rounded-xl px-3 text-[12px] font-bold ${cardFocusRingClass}`}
+                >
+                  Jump to published
+                </button>
+                <button
+                  type="button"
+                  aria-label="Jump to live now"
+                  onClick={() => scrollToDashboardSection("provider-live-now")}
+                  className={`ds-btn ds-btn--outline h-10 w-full rounded-xl px-3 text-[12px] font-bold ${cardFocusRingClass}`}
+                >
+                  Jump to live now
+                </button>
+              </div>
               <div className="mt-7 grid gap-5 sm:mt-6 sm:gap-5 md:grid-cols-[minmax(0,1.35fr)_minmax(240px,0.95fr)]">
                 <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-5">
                   <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-slate-500">
@@ -1840,8 +1879,9 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
             </SectionCard>
 
             {needsReviewCount > 0 ? (
-              <SectionCard
-                title="Needs your attention"
+            <div id="provider-review-queue">
+            <SectionCard
+              title="Needs your attention"
                 subtitle={`${needsReviewCount} teaching item${needsReviewCount > 1 ? "s need" : " needs"} review before publishing.`}
                 titleTag="h2"
                 right={<Pill text="Needs review" tone="warn" left={<AlertTriangle className="h-3.5 w-3.5" />} />}
@@ -1861,9 +1901,11 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                     Review now
                   </button>
                 </div>
-              </SectionCard>
+            </SectionCard>
+            </div>
             ) : null}
 
+            <div id="provider-live-now">
             <SectionCard
               title="Live Now discovery"
               subtitle="Sessions currently live, with quick handoff into session controls."
@@ -1919,7 +1961,9 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                 ) : null}
               </div>
             </SectionCard>
+            </div>
 
+            <div id="provider-published-teachings">
             <SectionCard
               title="Published teachings"
               subtitle="Published sermons ready to open, review, and share."
@@ -2146,6 +2190,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                 <div className="text-[12px] text-slate-700">Section collapsed.</div>
               )}
             </SectionCard>
+            </div>
             <SectionCard
               title="Archives"
               subtitle="Older published teachings organized for quick retrieval."
