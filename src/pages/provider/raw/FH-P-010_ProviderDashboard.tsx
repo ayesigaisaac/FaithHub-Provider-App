@@ -1373,6 +1373,9 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
   const hasDashboardData = teachingItems.length > 0;
   const cardFocusRingClass =
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--fh-brand)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--fh-surface-bg)]";
+  const elevatedPanelClass = "rounded-xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3.5";
+  const actionButtonBaseClass = `w-full rounded-lg px-3 py-2 text-[11px] font-bold sm:w-auto sm:py-1.5 ${cardFocusRingClass}`;
+  const iconToggleButtonClass = `inline-flex h-9 w-9 items-center justify-center rounded-full border border-faith-line/70 bg-[var(--fh-surface-bg)] text-slate-700 transition hover:bg-[var(--fh-surface)] ${cardFocusRingClass}`;
   const smartNextStep = useMemo(() => {
     if (needsReviewCount > 0) return `${needsReviewCount} item${needsReviewCount > 1 ? "s" : ""} need review first.`;
     const draftCount = pendingWork.filter((item) => item.status === "Draft").length;
@@ -1921,7 +1924,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
             >
               <div className="space-y-3">
                 {LIVE_SESSIONS.filter((session) => session.isLiveNow).map((session) => (
-                  <div key={session.id} className="rounded-xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3.5">
+                  <div key={session.id} className={elevatedPanelClass}>
                     <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                       <div className="min-w-0">
                         <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-500">Live session</div>
@@ -1980,7 +1983,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                       setIsRecentCollapsed(next);
                       trackDashboardEvent("toggle_recent_section", { collapsed: next });
                     }}
-                    className={`inline-flex h-9 w-9 items-center justify-center rounded-full border border-faith-line/70 bg-[var(--fh-surface-bg)] text-slate-700 transition hover:bg-[var(--fh-surface)] ${cardFocusRingClass}`}
+                    className={iconToggleButtonClass}
                   >
                     {isRecentCollapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
                   </button>
@@ -2104,7 +2107,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                       setIsPendingCollapsed(next);
                       trackDashboardEvent("toggle_pending_section", { collapsed: next });
                     }}
-                    className={`inline-flex h-9 w-9 items-center justify-center rounded-full border border-faith-line/70 bg-[var(--fh-surface-bg)] text-slate-700 transition hover:bg-[var(--fh-surface)] ${cardFocusRingClass}`}
+                    className={iconToggleButtonClass}
                   >
                     {isPendingCollapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
                   </button>
@@ -2173,7 +2176,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                   </div>
                 ) : null}
                 {!isWorkflowLoading && filteredPendingWork.map((item) => (
-                  <div key={item.id} className="rounded-xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3.5">
+                  <div key={item.id} className={elevatedPanelClass}>
                     <div className="flex items-start justify-between gap-2">
                       <div className="min-w-0">
                         <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-500">Draft item</div>
@@ -2190,7 +2193,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                         aria-label={`Request review for ${item.title}`}
                         onClick={() => handleTeachingAction(item.id, "request_review")}
                         disabled={Boolean(actionPendingById[item.id])}
-                        className={`ds-btn ds-btn--outline w-full rounded-lg px-3 py-2 text-[11px] font-bold sm:w-auto sm:py-1.5 ${cardFocusRingClass}`}
+                        className={`ds-btn ds-btn--outline ${actionButtonBaseClass}`}
                       >
                         {actionPendingById[item.id] === "request_review" ? "Requesting..." : "Request review"}
                       </button>
@@ -2199,7 +2202,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                         aria-label={`Continue editing ${item.title}`}
                         onClick={() => handleTeachingAction(item.id, "open")}
                         disabled={Boolean(actionPendingById[item.id])}
-                        className={`ds-btn ds-btn--secondary w-full rounded-lg px-3 py-2 text-[11px] font-bold sm:w-auto sm:py-1.5 ${cardFocusRingClass}`}
+                        className={`ds-btn ds-btn--secondary ${actionButtonBaseClass}`}
                       >
                         {actionPendingById[item.id] === "open" ? "Opening..." : "Continue editing"}
                       </button>
@@ -2230,7 +2233,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
               ) : (
                 <div className="grid gap-3 sm:grid-cols-2">
                   {archivedTeachings.map((item) => (
-                    <div key={item.id} className="rounded-xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3.5">
+                    <div key={item.id} className={elevatedPanelClass}>
                       <div className="flex items-start justify-between gap-2">
                         <div className="min-w-0">
                           <h3 className="text-[14px] font-bold text-faith-ink">{item.title}</h3>
