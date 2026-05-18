@@ -24,13 +24,13 @@ export function ProviderSectionCard({
 
   return (
     <ProviderSurfaceCard
-      title={<TitleTag className="text-[15px] font-bold tracking-tight text-faith-ink">{title}</TitleTag>}
-      subtitle={subtitle ? <p className="text-[12px] leading-5 text-faith-slate">{subtitle}</p> : undefined}
+      title={<TitleTag className="text-[15px] font-bold tracking-tight text-faith-ink sm:text-base">{title}</TitleTag>}
+      subtitle={subtitle ? <p className="text-[12px] leading-5 text-faith-slate sm:text-[13px]">{subtitle}</p> : undefined}
       right={right}
-      className={className ?? "rounded-2xl p-4 shadow-soft sm:p-5"}
+      className={className ?? "rounded-2xl p-4 shadow-soft sm:p-5 lg:p-6"}
       headerClassName="flex items-start justify-between gap-3"
       rightClassName="w-full sm:w-auto sm:shrink-0"
-      bodyClassName={bodyClassName ?? "mt-4"}
+      bodyClassName={bodyClassName ?? "mt-4 sm:mt-5"}
     >
       {children}
     </ProviderSurfaceCard>

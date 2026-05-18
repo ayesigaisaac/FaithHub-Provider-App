@@ -8,7 +8,6 @@ import {
   BookOpen,
   CalendarDays,
   ChevronRight,
-  CircleDollarSign,
   Globe,
   Heart,
   HeartHandshake,

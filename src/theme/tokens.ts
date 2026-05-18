@@ -4,6 +4,10 @@ export const designTokens = {
   typography: {
     fontFamily:
       "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+    fontFamilyBody:
+      "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+    fontFamilyHeading:
+      "Sora, Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
     size: {
       xs: '12px',
       sm: '14px',
@@ -28,7 +32,9 @@ export const designTokens = {
     4: '16px',
     5: '20px',
     6: '24px',
+    7: '28px',
     8: '32px',
+    9: '36px',
     10: '40px',
     12: '48px',
   },
@@ -104,6 +110,8 @@ export function getCssThemeVariables(mode: TokenMode): Record<string, string> {
   const isDark = mode === 'dark';
   return {
     '--fh-font-family': designTokens.typography.fontFamily,
+    '--fh-font-family-body': designTokens.typography.fontFamilyBody,
+    '--fh-font-family-heading': designTokens.typography.fontFamilyHeading,
     '--fh-font-size-xs': designTokens.typography.size.xs,
     '--fh-font-size-sm': designTokens.typography.size.sm,
     '--fh-font-size-md': designTokens.typography.size.md,
@@ -117,6 +125,17 @@ export function getCssThemeVariables(mode: TokenMode): Record<string, string> {
     '--fh-radius-xl': designTokens.radius.xl,
     '--fh-radius-2xl': designTokens.radius['2xl'],
     '--fh-radius-3xl': designTokens.radius['3xl'],
+    '--fh-space-1': designTokens.spacing[1],
+    '--fh-space-2': designTokens.spacing[2],
+    '--fh-space-3': designTokens.spacing[3],
+    '--fh-space-4': designTokens.spacing[4],
+    '--fh-space-5': designTokens.spacing[5],
+    '--fh-space-6': designTokens.spacing[6],
+    '--fh-space-7': designTokens.spacing[7],
+    '--fh-space-8': designTokens.spacing[8],
+    '--fh-space-9': designTokens.spacing[9],
+    '--fh-space-10': designTokens.spacing[10],
+    '--fh-space-12': designTokens.spacing[12],
     '--fh-shadow-sm': designTokens.shadow.sm,
     '--fh-shadow-md': designTokens.shadow.md,
     '--fh-shadow-lg': designTokens.shadow.lg,

@@ -27,7 +27,11 @@
   --fh-space-4: 16px;
   --fh-space-5: 20px;
   --fh-space-6: 24px;
+  --fh-space-7: 28px;
   --fh-space-8: 32px;
+  --fh-space-9: 36px;
+  --fh-space-10: 40px;
+  --fh-space-12: 48px;
 
   --fh-shadow-sm: 0 6px 18px rgba(15, 23, 42, 0.05);
   --fh-shadow-md: 0 12px 28px rgba(15, 23, 42, 0.07);
@@ -265,6 +269,7 @@ video {
 .ds-stack-4 > * + * { margin-top: var(--fh-space-4); }
 .ds-stack-5 > * + * { margin-top: var(--fh-space-5); }
 .ds-stack-6 > * + * { margin-top: var(--fh-space-6); }
+.ds-stack-8 > * + * { margin-top: var(--fh-space-8); }
 
 .ds-btn {
   display: inline-flex;

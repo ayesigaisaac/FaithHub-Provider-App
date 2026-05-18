@@ -8,8 +8,6 @@ import { usePageTitle } from '@/hooks/usePageTitle';
 import Dashboard from '@/pages/Dashboard';
 import LoginPage from '@/pages/public/LoginPage';
 import { ProtectedRoute } from '@/routes/ProtectedRoute';
-import { RoleRoute } from '@/routes/RoleRoute';
-import AdminDashboardPage from '@/pages/admin/AdminDashboardPage';
 
 function ScrollToTop(): null {
   const location = useLocation();
@@ -44,17 +42,6 @@ export default function App() {
         <Route path="/faithhub/home-landing" element={<LandingMount />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/dashboard-ui" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
-        <Route
-          path="/faithhub/admin/dashboard"
-          element={
-            <ProtectedRoute requiredPermissions={['workspace:admin']}>
-              <RoleRoute allowedRoles={['admin', 'leadership']}>
-                <AdminDashboardPage />
-              </RoleRoute>
-            </ProtectedRoute>
-          }
-        />
-
         <Route path="/faithhub/provider" element={<ProtectedRoute><ProviderShellLayout /></ProtectedRoute>}>
           <Route index element={<Navigate to="/faithhub/provider/dashboard" replace />} />
         </Route>

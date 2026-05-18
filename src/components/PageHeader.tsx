@@ -82,11 +82,12 @@ export function PageHeader({
           <Typography
             noWrap
             sx={{
+              fontFamily: 'var(--fh-font-family-heading)',
               fontWeight: 900,
               letterSpacing: '-0.03em',
               lineHeight: 1.04,
               color: 'var(--fh-ink)',
-              fontSize: { xs: '28px', sm: '34px', lg: '40px' },
+              fontSize: { xs: '24px', sm: '30px', md: '34px', lg: '40px' },
             }}
           >
             {pageTitle}
