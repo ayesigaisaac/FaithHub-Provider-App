@@ -42,7 +42,7 @@ import {
 } from "@/features/teachings/teachingFlowStore";
 
 /**
- * Provider � Teachings Dashboard
+ * Provider - Teachings Dashboard
  * ---------------------------------------
  * Premium control surface for everything in the Teachings section.
  *
@@ -257,13 +257,13 @@ const TEACHINGS: TeachingRecord[] = [
   },
   {
     id: "teach-episode-week5",
-    title: "Week 5 � Return with Humility",
+    title: "Week 5 - Return with Humility",
     subtitle: "Episode inside 40 Days of Renewal with live prayer response and follow-up notes.",
     type: "Episode",
     status: "Scheduled",
     speaker: "Pastor Anna",
     summary:
-      "The next episode in the Renewal series, set to anchor the week�s live prayer encounter and replay handoff.",
+      "The next episode in the Renewal series, set to anchor the week's live prayer encounter and replay handoff.",
     coverUrl: HERO_2,
     campus: "Online-first",
     access: "Follower-first",
@@ -666,9 +666,9 @@ function TeachingRow({
           <div className="mt-0.5 text-[12px] text-faith-slate">{teaching.subtitle}</div>
           <div className="mt-1 text-[11px] text-faith-slate">
             {teaching.speaker}
-            {teaching.seriesLabel ? ` � ${teaching.seriesLabel}` : ""}
-            {teaching.episodeLabel ? ` � ${teaching.episodeLabel}` : ""}
-            {teaching.upcomingISO ? ` � ${fmtDateTime(teaching.upcomingISO)}` : ""}
+            {teaching.seriesLabel ? ` - ${teaching.seriesLabel}` : ""}
+            {teaching.episodeLabel ? ` - ${teaching.episodeLabel}` : ""}
+            {teaching.upcomingISO ? ` - ${fmtDateTime(teaching.upcomingISO)}` : ""}
           </div>
 
           <div className="mt-3 flex flex-wrap gap-2">
@@ -719,7 +719,7 @@ function TeachingRow({
             <div className="flex flex-wrap items-center gap-2">
               <Pill tone={readinessTone}>{readinessText}</Pill>
               <span className="text-[11px] text-faith-slate">
-                Updated {fmtDate(teaching.updatedISO)} � Owner {teaching.owner}
+                Updated {fmtDate(teaching.updatedISO)} - Owner {teaching.owner}
               </span>
             </div>
             <div className="flex flex-wrap gap-2">
@@ -1181,7 +1181,7 @@ export default function TeachingsDashboardPage() {
                 <ProviderPageTitle
                   icon={<BookOpen className="h-6 w-6" />}
                   title="Teachings Dashboard"
-                  subtitle="Premium operating surface for Series, Episodes, and Standalone teachings � built to keep structured journeys and one-off sermons in one calm, world-class control center."
+                  subtitle="Premium operating surface for Series, Episodes, and Standalone teachings - built to keep structured journeys and one-off sermons in one calm, world-class control center."
                 />
                 <div className="mt-3 flex flex-wrap gap-2">
                   <Pill tone="good">Standalone-first</Pill>
@@ -1380,7 +1380,7 @@ export default function TeachingsDashboardPage() {
                         <div className="min-w-0">
                           <div className="truncate text-[13px] font-bold text-faith-ink">{teaching.title}</div>
                           <div className="mt-0.5 text-[11px] text-faith-slate">
-                            {teaching.upcomingISO ? fmtDateTime(teaching.upcomingISO) : "TBD"} � {teaching.campus}
+                            {teaching.upcomingISO ? fmtDateTime(teaching.upcomingISO) : "TBD"} - {teaching.campus}
                           </div>
                         </div>
                         <div className="flex flex-wrap gap-2">
@@ -1413,7 +1413,7 @@ export default function TeachingsDashboardPage() {
                         <div className="min-w-0">
                           <div className="truncate text-[13px] font-bold text-faith-ink">{teaching.title}</div>
                           <div className="mt-0.5 text-[11px] text-faith-slate">
-                            {teaching.type} � {teaching.speaker}
+                            {teaching.type} - {teaching.speaker}
                           </div>
                         </div>
                         <div className="text-right">
@@ -1457,7 +1457,7 @@ export default function TeachingsDashboardPage() {
                         <div>
                           <div className="text-[13px] font-bold text-faith-ink">{selectedTeaching.title}</div>
                           <div className="mt-0.5 text-[11px] text-faith-slate">
-                            {selectedTeaching.languages.join(", ")} � {selectedTeaching.access}
+                            {selectedTeaching.languages.join(", ")} - {selectedTeaching.access}
                           </div>
                         </div>
                         <Pill tone={accessTone(selectedTeaching.access)}>{selectedTeaching.access}</Pill>
@@ -1607,7 +1607,7 @@ export default function TeachingsDashboardPage() {
       <Drawer
         open={previewOpen}
         onClose={() => setPreviewOpen(false)}
-        title={selectedTeaching ? `${selectedTeaching.title} � Teaching preview` : "Teaching preview"}
+        title={selectedTeaching ? `${selectedTeaching.title} - Teaching preview` : "Teaching preview"}
         subtitle="Full preview view plus linked workflow signals."
       >
         {selectedTeaching ? (
@@ -1702,6 +1702,7 @@ export default function TeachingsDashboardPage() {
     </div>
   );
 }
+
 
 
 
