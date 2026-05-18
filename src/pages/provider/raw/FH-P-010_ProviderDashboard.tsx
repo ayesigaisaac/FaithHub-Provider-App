@@ -1924,6 +1924,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                   <div key={session.id} className="rounded-xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3.5">
                     <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                       <div className="min-w-0">
+                        <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-500">Live session</div>
                         <div className="flex items-center gap-2">
                           <div className="h-2 w-2 rounded-full bg-emerald-500" />
                           <h3 className="text-[14px] font-bold text-faith-ink">{session.title}</h3>
@@ -2054,7 +2055,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                       </div>
                       <Pill text={item.status} tone={item.status === "Published" ? "good" : "warn"} />
                     </div>
-                    <div className="mt-3 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
+                    <div className="mt-3 flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center">
                       <button
                         type="button"
                         aria-label={`Open ${item.title}`}
@@ -2066,6 +2067,17 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                         className={`ds-btn ds-btn--secondary w-full rounded-lg px-3 py-2 text-[11px] font-bold sm:w-auto sm:py-1.5 ${cardFocusRingClass}`}
                       >
                         {actionPendingById[item.id] === "open" ? "Opening..." : "Open teaching"}
+                      </button>
+                      <button
+                        type="button"
+                        aria-label={`Open published teaching in dashboard lane ${item.title}`}
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          openTeachingItem(item.id);
+                        }}
+                        className={`ds-btn ds-btn--outline w-full rounded-lg px-3 py-2 text-[11px] font-bold sm:w-auto sm:py-1.5 ${cardFocusRingClass}`}
+                      >
+                        Open in lane
                       </button>
                     </div>
                   </div>
@@ -2164,6 +2176,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                   <div key={item.id} className="rounded-xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3.5">
                     <div className="flex items-start justify-between gap-2">
                       <div className="min-w-0">
+                        <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-500">Draft item</div>
                         <h3 className="text-[14px] font-bold text-faith-ink">{item.title}</h3>
                         <p className="mt-1 text-[12px] text-slate-700">
                           {item.type} - Updated {formatLastEdited(item.updatedAt)}
@@ -2171,7 +2184,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                       </div>
                       <Pill text={item.status === "Draft" ? "Draft" : "Needs review"} tone="warn" />
                     </div>
-                    <div className="mt-3 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
+                    <div className="mt-3 grid grid-cols-1 gap-2 sm:flex sm:flex-row sm:flex-wrap sm:items-center">
                       <button
                         type="button"
                         aria-label={`Request review for ${item.title}`}
