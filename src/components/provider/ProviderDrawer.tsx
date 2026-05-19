@@ -1,4 +1,4 @@
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useId, type ReactNode } from "react";
 import { X } from "lucide-react";
 
 type ProviderDrawerProps = {
@@ -20,6 +20,10 @@ export function ProviderDrawer({
   maxWidthClassName = "max-w-5xl",
   zIndex = 100,
 }: ProviderDrawerProps) {
+  const id = useId();
+  const headingId = `provider-drawer-title-${id}`;
+  const descriptionId = subtitle ? `provider-drawer-subtitle-${id}` : undefined;
+
   useEffect(() => {
     if (!open) return;
     const onKey = (event: KeyboardEvent) => {
@@ -33,23 +37,27 @@ export function ProviderDrawer({
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0" style={{ zIndex }}>
+    <div className="fixed inset-0" style={{ zIndex }} role="presentation">
       <div className="absolute inset-0 bg-slate-900/40 backdrop-blur-sm" onClick={onClose} />
       <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={headingId}
+        aria-describedby={descriptionId}
         className={`absolute right-0 top-0 h-full w-full bg-[var(--fh-surface-bg)] shadow-medium ${maxWidthClassName}`}
       >
         <div className="flex h-full flex-col">
           <div className="border-b border-faith-line px-4 py-3 sm:px-6 sm:py-4">
             <div className="flex items-start justify-between gap-3">
               <div>
-                <div className="text-[14px] font-bold text-faith-ink">{title}</div>
-                {subtitle ? <div className="mt-0.5 text-[11px] text-faith-slate">{subtitle}</div> : null}
+                <div id={headingId} className="text-[14px] font-bold text-faith-ink">{title}</div>
+                {subtitle ? <div id={descriptionId} className="mt-0.5 text-[11px] text-faith-slate">{subtitle}</div> : null}
               </div>
               <button
                 type="button"
                 onClick={onClose}
                 className="grid h-9 w-9 place-items-center rounded-2xl border border-faith-line/70 text-faith-slate transition hover:bg-[var(--fh-surface)]"
-                aria-label="Close"
+                aria-label="Close drawer"
               >
                 <X className="h-4 w-4" />
               </button>

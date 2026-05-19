@@ -11,6 +11,7 @@ type ProviderSurfaceCardProps = {
   subtitleClassName?: string;
   bodyClassName?: string;
   rightClassName?: string;
+  titleId?: string;
 };
 
 const cx = (...parts: Array<string | false | null | undefined>) => parts.filter(Boolean).join(" ");
@@ -26,6 +27,7 @@ export function ProviderSurfaceCard({
   subtitleClassName,
   bodyClassName,
   rightClassName,
+  titleId,
 }: ProviderSurfaceCardProps) {
   return (
     <div
@@ -39,8 +41,9 @@ export function ProviderSurfaceCard({
           <div className="min-w-0">
             {title ? (
               <div
+                id={titleId}
                 className={cx(
-                  "break-words text-[15px] font-semibold leading-6 text-faith-ink dark:text-slate-100",
+                  "break-words text-[15px] font-semibold leading-6 text-faith-ink dark:text-slate-100 sm:text-base",
                   titleClassName,
                 )}
               >
