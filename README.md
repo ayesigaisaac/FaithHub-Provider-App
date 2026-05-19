@@ -46,10 +46,9 @@ They are defined in:
 
 ```bash
 npm install
-
-21 bn76
+npm run dev
 ```
-flor
+
 Open the local Vite URL shown in the terminal.
 
 ## Production build

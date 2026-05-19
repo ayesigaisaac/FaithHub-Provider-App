@@ -1,4 +1,4 @@
-// @ts-nocheck
+﻿// @ts-nocheck
 'use client';
 
 import React, { useEffect, useMemo, useState } from 'react';
@@ -49,7 +49,7 @@ import {
 } from 'lucide-react';
 
 /**
- * Provider Ã¢â‚¬â€ Post-live Publishing
+ * Provider - Post-live Publishing
  * ----------------------------------------
  * Premium replay packaging workspace for Live Sessions.
  *
@@ -467,7 +467,7 @@ function PhonePreview({
             </div>
             <div className="mt-3 space-y-2 text-[11px]">
               <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 px-3 py-2 text-slate-700 dark:text-slate-300">{watchSurface}</div>
-              <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 px-3 py-2 text-slate-700 dark:text-slate-300">Notes attached Ã‚Â· {notesAttached}</div>
+              <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 px-3 py-2 text-slate-700 dark:text-slate-300">Notes attached · {notesAttached}</div>
               {givePromptEnabled ? <div className="rounded-2xl border border-faith-line/70 dark:border-slate-800 px-3 py-2 text-slate-700 dark:text-slate-300">Giving prompt included</div> : null}
               <div className="rounded-2xl px-3 py-3 text-center text-white font-black" style={{ background: EV_ORANGE }}>View follow-up actions</div>
             </div>
@@ -497,7 +497,7 @@ export default function PostLivePublishingPage() {
   () => ({
     id: routedSession?.id || 'LS-24051',
     title: routedSession?.title || 'Sunday Encounter Live',
-    source: `Session � ${routedSession?.parentLabel || 'Grace in Motion / Episode 03'}`,
+    source: `Session · ${routedSession?.parentLabel || 'Grace in Motion / Episode 03'}`,
     presenter: routedSession?.speaker || 'Pastor Miriam K.',
     endedISO: routedSession?.endISO || new Date(Date.now() - 42 * 60 * 1000).toISOString(),
     replayUrl: `https://faithhub.evzone.app/replay/${routedSession?.id || 'LS-24051'}`,
@@ -559,7 +559,7 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
       timecode: '06:12',
       title: 'Grace restores identity',
       speaker: 'Pastor Miriam K.',
-      scripture: 'Ephesians 2:8Ã¢â‚¬â€œ10',
+      scripture: 'Ephesians 2:8-10',
     },
     {
       id: 'ch_3',
@@ -659,7 +659,7 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
       id: 'beacon',
       label: 'Beacon promo asset',
       hint: 'Prepare the replay for a Beacon follow-up campaign.',
-      value: 'Grace Replay Booster Ã¢â‚¬â€ Beacon asset pack',
+      value: 'Grace Replay Booster - Beacon asset pack',
       enabled: true,
     },
   ]);
@@ -691,12 +691,12 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
       {
         label: 'Editorial cleanup',
         status: removeDeadAir && removeWaitingRoom ? 'Pass' : 'Warn',
-        detail: `Head trim ${trimHeadSec}s Ã‚Â· tail trim ${trimTailSec}s Ã‚Â· cover ${coverFrame}`,
+        detail: `Head trim ${trimHeadSec}s · tail trim ${trimTailSec}s · cover ${coverFrame}`,
       },
       {
         label: 'Chapter + transcript structure',
         status: chapterCoverage && transcriptCoverage ? 'Pass' : 'Warn',
-        detail: `${chapters.length} chapters Ã‚Â· speaker labels ${speakerLabelsEnabled ? 'on' : 'off'} Ã‚Â· scripture index ${searchableScripture ? 'on' : 'off'}`,
+        detail: `${chapters.length} chapters · speaker labels ${speakerLabelsEnabled ? 'on' : 'off'} · scripture index ${searchableScripture ? 'on' : 'off'}`,
       },
       {
         label: 'Notes and resources',
@@ -706,12 +706,12 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
       {
         label: 'Replay access and discoverability',
         status: accessCoverage ? 'Pass' : 'Warn',
-        detail: `${visibleSurfaceCount} surfaces enabled${featuredPlacement ? ' � featured shelf requested' : ''}.`,
+        detail: `${visibleSurfaceCount} surfaces enabled${featuredPlacement ? ' · featured shelf requested' : ''}.`,
       },
       {
         label: 'Accessibility and subtitle confidence',
         status: subtitleTone,
-        detail: `Transcript ${transcriptReady ? 'ready' : 'pending'} Ã‚Â· subtitle confidence ${subtitleConfidence}%`,
+        detail: `Transcript ${transcriptReady ? 'ready' : 'pending'} · subtitle confidence ${subtitleConfidence}%`,
       },
       {
         label: 'Moderation and unresolved issues',
@@ -721,7 +721,7 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
       {
         label: 'Follow-up actions',
         status: sendReplayJourney || beaconReady || donationAsk ? 'Pass' : 'Warn',
-        detail: `${sendReplayJourney ? 'Replay journey ready' : 'Journey off'} Ã‚Â· ${beaconReady ? 'Beacon handoff ready' : 'Beacon off'} Ã‚Â· ${donationAsk ? 'Giving prompt on' : 'Giving prompt off'}`,
+        detail: `${sendReplayJourney ? 'Replay journey ready' : 'Journey off'} · ${beaconReady ? 'Beacon handoff ready' : 'Beacon off'} · ${donationAsk ? 'Giving prompt on' : 'Giving prompt off'}`,
       },
     ];
   }, [
@@ -792,7 +792,7 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
   }, [sessionId]);
 
   const watchSurface = useMemo(() => {
-    if (featuredPlacement) return 'Featured replay shelf Ã‚Â· ON';
+    if (featuredPlacement) return 'Featured replay shelf · ON';
     if (visibleSurfaceCount >= 4) return 'Replay discovery surfaces configured';
     return 'Standard replay visibility';
   }, [featuredPlacement, visibleSurfaceCount]);
@@ -858,9 +858,9 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
 
               <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs font-semibold text-faith-slate">
                 <span>{session.title}</span>
-                <span className="text-slate-300 dark:text-slate-700">Ã¢â‚¬Â¢</span>
+                <span className="text-slate-300 dark:text-slate-700">•</span>
                 <span>{session.source}</span>
-                <span className="text-slate-300 dark:text-slate-700">Ã¢â‚¬Â¢</span>
+                <span className="text-slate-300 dark:text-slate-700">•</span>
                 <span>Ended {fmtLocal(session.endedISO)}</span>
               </div>
             </div>
@@ -949,9 +949,9 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
               </div>
               <div className="flex flex-wrap items-center gap-2 text-[10px] font-black uppercase tracking-[0.14em] text-faith-slate">
                 <span style={{ color: EV_GREEN }}>Readiness {readinessScore}%</span>
-                <span className="text-slate-300 dark:text-slate-700">Ã¢â‚¬Â¢</span>
+                <span className="text-slate-300 dark:text-slate-700">•</span>
                 <span>{clipSuggestions.length} clip suggestions</span>
-                <span className="text-slate-300 dark:text-slate-700">Ã¢â‚¬Â¢</span>
+                <span className="text-slate-300 dark:text-slate-700">•</span>
                 <span>{visibleSurfaceCount} discovery surfaces</span>
               </div>
             </div>
@@ -1004,7 +1004,7 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
                       <div>
                         <div className="text-xs font-black uppercase tracking-[0.14em] text-faith-slate">Replay source</div>
                         <div className="mt-1 text-sm font-bold text-faith-ink dark:text-slate-50">{session.title}</div>
-                        <div className="mt-1 text-xs text-faith-slate">{session.source} Ã‚Â· {session.presenter}</div>
+                        <div className="mt-1 text-xs text-faith-slate">{session.source} · {session.presenter}</div>
                       </div>
                       <button
                         type="button"
@@ -1059,10 +1059,10 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
                       <FieldLabel>Replay readiness meter</FieldLabel>
                       <Meter value={readinessScore} tone={readinessScore >= 92 ? 'brand' : 'warn'} />
                       <div className="mt-2 flex flex-wrap gap-2 text-[11px] text-faith-slate">
-                        <span>Projected replay reach Ã‚Â· 12.4k</span>
-                        <span>Ã¢â‚¬Â¢</span>
+                        <span>Projected replay reach · 12.4k</span>
+                        <span>•</span>
                         <span>Promotion surfaces armed</span>
-                        <span>Ã¢â‚¬Â¢</span>
+                        <span>•</span>
                         <span>{processingState}</span>
                       </div>
                     </div>
@@ -1472,7 +1472,7 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
                       <Toggle checked={sendReplayJourney} onChange={setSendReplayJourney} />
                     </div>
                     <div className="mt-3 flex items-center gap-2 text-[11px] text-faith-slate">
-                      <Bell className="h-3.5 w-3.5" /> Journey name Ã‚Â· Grace Replay Ready
+                      <Bell className="h-3.5 w-3.5" /> Journey name · Grace Replay Ready
                     </div>
                   </div>
                   <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
@@ -1512,7 +1512,7 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
                     </div>
                     <div className="mt-3 flex flex-wrap gap-2 text-[11px] text-faith-slate">
                       <span>Event tie-in {eventTieIn ? 'on' : 'off'}</span>
-                      <span>Ã¢â‚¬Â¢</span>
+                      <span>•</span>
                       <span>Campaign tie-in {campaignTieIn ? 'on' : 'off'}</span>
                     </div>
                   </div>
@@ -1603,7 +1603,7 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
                     resourcesEnabled={resources.filter((item) => item.enabled).length}
                     downloadsEnabled={downloadsEnabled}
                     beaconReady={beaconReady}
-                    scheduledLabel={scheduleRelease ? `Scheduled Ã‚Â· ${releaseAt.replace('T', ' ')}` : 'Publishes immediately'}
+                    scheduledLabel={scheduleRelease ? `Scheduled · ${releaseAt.replace('T', ' ')}` : 'Publishes immediately'}
                   />
                 ) : (
                   <PhonePreview
@@ -1721,7 +1721,7 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
               resourcesEnabled={resources.filter((item) => item.enabled).length}
               downloadsEnabled={downloadsEnabled}
               beaconReady={beaconReady}
-              scheduledLabel={scheduleRelease ? `Scheduled Ã‚Â· ${releaseAt.replace('T', ' ')}` : 'Publishes immediately'}
+              scheduledLabel={scheduleRelease ? `Scheduled · ${releaseAt.replace('T', ' ')}` : 'Publishes immediately'}
             />
             <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
               <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Preview notes</div>
