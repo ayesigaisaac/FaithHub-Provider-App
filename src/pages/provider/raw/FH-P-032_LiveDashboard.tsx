@@ -539,7 +539,7 @@ function mapLiveFlowRecordToDashboardSession(
       record.parentType === "Giving Moment"
         ? record.parentType
         : "Standalone Live",
-    audienceLabel: `${record.audience} Â· ${record.language}`,
+    audienceLabel: `${record.audience} · ${record.language}`,
     locationLabel: record.campus || "Online Campus",
     timezone: record.timezone || "Africa/Kampala",
     startISO: record.startISO,
@@ -1647,7 +1647,7 @@ export default function FaithHubLiveDashboardPage() {
                     onClick={raiseHandForPrayer}
                     className="ds-btn ds-btn--outline h-10 rounded-xl px-3 text-[12px] font-bold"
                   >
-                    Raise hand for prayer Â· {(raisedHandsBySession[session.id] ?? 0).toLocaleString()}
+                    Raise hand for prayer · {(raisedHandsBySession[session.id] ?? 0).toLocaleString()}
                   </button>
                   <button
                     type="button"
@@ -1655,7 +1655,7 @@ export default function FaithHubLiveDashboardPage() {
                     onClick={addPrayerRequest}
                     className="ds-btn ds-btn--secondary h-10 rounded-xl px-3 text-[12px] font-bold"
                   >
-                    Prayer requests Â· {(prayerRequestsBySession[session.id] ?? 0).toLocaleString()}
+                    Prayer requests · {(prayerRequestsBySession[session.id] ?? 0).toLocaleString()}
                   </button>
                 </div>
                 <div className="mt-3 flex gap-2">
@@ -1780,7 +1780,7 @@ export default function FaithHubLiveDashboardPage() {
                         <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">{item.action}</div>
                         <Pill text={item.flow.toUpperCase()} />
                       </div>
-                      <div className="mt-1 text-[11px] text-faith-slate">{item.actorName} Â· {formatDateTime(item.atISO)}</div>
+                      <div className="mt-1 text-[11px] text-faith-slate">{item.actorName} · {formatDateTime(item.atISO)}</div>
                       {item.detail ? <div className="mt-1 text-[11px] text-faith-slate">{item.detail}</div> : null}
                     </div>
                   ))
