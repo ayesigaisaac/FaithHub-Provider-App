@@ -1,4 +1,4 @@
-// @ts-nocheck
+﻿// @ts-nocheck
 
 "use client";
 
@@ -35,7 +35,7 @@ import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 
 /**
- * Provider � Merchandise Manager
+ * Provider - Merchandise Manager
  * ---------------------------------------
  * Premium Provider-side control surface for FaithMart merchandise:
  * apparel, gifts, journals, worship essentials, event kits, and community bundles.
@@ -1397,7 +1397,7 @@ export default function MerchandiseManagerPage() {
         ? `${low.length} merchandise item${low.length > 1 ? "s" : ""} running low`
         : "Inventory is healthy",
       hint: low.length
-        ? `${low.map((item) => item.title).slice(0, 2).join(" � ")}${low.length > 2 ? "�" : ""}`
+        ? `${low.map((item) => item.title).slice(0, 2).join(" - ")}${low.length > 2 ? "-" : ""}`
         : "No urgent low-stock merch issues right now.",
       tone: low.length ? "warn" : "good",
     });
@@ -1521,7 +1521,7 @@ export default function MerchandiseManagerPage() {
                     },
                     {
                       label: "Conference Welcome Pack",
-                      hint: "Strong event performance � consider a new Beacon push.",
+                      hint: "Strong event performance - consider a new Beacon push.",
                     },
                     {
                       label: "Prayer Journal Gift Set",
@@ -1565,7 +1565,7 @@ export default function MerchandiseManagerPage() {
                 Search and filter merchandise
               </div>
               <div className="mt-1 text-[11px] text-faith-slate">
-                Find apparel, gifts, event kits, or worship essentials fast � then jump straight into details or preview.
+                Find apparel, gifts, event kits, or worship essentials fast - then jump straight into details or preview.
               </div>
               <div className="mt-4 flex items-center gap-3 rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-3 transition-colors">
                 <Search className="h-4 w-4 text-faith-slate" />
@@ -1854,7 +1854,7 @@ export default function MerchandiseManagerPage() {
         open={drawerOpen}
         onClose={() => setDrawerOpen(false)}
         title={selected.title}
-        subtitle={`${selected.kind} � ${selected.collection} � Updated ${fmtDate(selected.updatedISO)}`}
+        subtitle={`${selected.kind} - ${selected.collection} - Updated ${fmtDate(selected.updatedISO)}`}
       >
         <div className="space-y-4">
           <div className="flex flex-wrap gap-2">
@@ -2069,6 +2069,7 @@ export default function MerchandiseManagerPage() {
     </div>
   );
 }
+
 
 
 

@@ -1,4 +1,4 @@
-// @ts-nocheck
+﻿// @ts-nocheck
 
 "use client";
 
@@ -586,7 +586,7 @@ const initialEvents: AuditEvent[] = [
     sessionLabel: "Session 9F2C | Signed",
     ipLabel: "102.89.14.55 | Kampala",
     deviceLabel: "Chrome on Windows | Trusted device",
-    approvalPath: "Owner ? Finance Lead",
+    approvalPath: "Owner - Finance Lead",
     linkedPage: "Roles & Permissions",
     exportBundle: "Role change evidence pack",
     tags: ["Payout approvals", "Sensitive action", "Approved"],
@@ -621,7 +621,7 @@ const initialEvents: AuditEvent[] = [
     sessionLabel: "Publish batch 31A",
     ipLabel: "102.91.44.14 | Remote editor",
     deviceLabel: "Safari on macOS | Trusted device",
-    approvalPath: "Producer ? Communications lead",
+    approvalPath: "Producer - Communications lead",
     linkedPage: "Post-live Publishing",
     exportBundle: "Publishing proof bundle",
     tags: ["Replay", "Notes attached", "Search enabled"],
@@ -656,7 +656,7 @@ const initialEvents: AuditEvent[] = [
     sessionLabel: "Policy draft 4C1",
     ipLabel: "197.248.33.24 | Nairobi",
     deviceLabel: "Edge on Windows | Managed device",
-    approvalPath: "Moderation lead ? Compliance review",
+    approvalPath: "Moderation lead - Compliance review",
     linkedPage: "Moderation Settings",
     exportBundle: "Safeguard configuration pack",
     tags: ["Youth safety", "Pending review", "Threshold update"],
@@ -691,7 +691,7 @@ const initialEvents: AuditEvent[] = [
     sessionLabel: "Payout review C81",
     ipLabel: "197.220.87.11 | Kampala",
     deviceLabel: "Chrome on Android | New device",
-    approvalPath: "Finance manager ? Security review",
+    approvalPath: "Finance manager - Security review",
     linkedPage: "Wallet & Payouts",
     exportBundle: "Finance change evidence pack",
     tags: ["Flagged", "New device", "Country mismatch"],
@@ -759,7 +759,7 @@ const initialEvents: AuditEvent[] = [
     sessionLabel: "Security change 2A8",
     ipLabel: "102.88.11.90 | London",
     deviceLabel: "Firefox on macOS | Trusted device",
-    approvalPath: "Owner ? Security lead",
+    approvalPath: "Owner - Security lead",
     linkedPage: "FaithHub Provider admin controls",
     exportBundle: "Authentication governance pack",
     tags: ["SSO", "Leadership", "Sensitive"],
@@ -792,7 +792,7 @@ const initialEvents: AuditEvent[] = [
     sessionLabel: "Receipt template rev 7",
     ipLabel: "51.148.24.11 | London",
     deviceLabel: "Chrome on macOS | Trusted device",
-    approvalPath: "Finance lead ? Communications",
+    approvalPath: "Finance lead - Communications",
     linkedPage: "Donations & Funds",
     exportBundle: "Donor template evidence pack",
     tags: ["Receipts", "Recurring support", "Compliance note"],
@@ -825,7 +825,7 @@ const initialEvents: AuditEvent[] = [
     sessionLabel: "Series pack 5H1",
     ipLabel: "102.89.90.31 | Remote designer",
     deviceLabel: "Safari on macOS | Trusted device",
-    approvalPath: "Designer ? Pastor approval",
+    approvalPath: "Designer - Pastor approval",
     linkedPage: "Series Builder",
     exportBundle: "Creative revision bundle",
     tags: ["Series", "Artwork", "Beacon-ready"],
@@ -858,7 +858,7 @@ const initialEvents: AuditEvent[] = [
     sessionLabel: "Case 44-PRJ",
     ipLabel: "102.89.31.17 | Kampala",
     deviceLabel: "Chrome on Windows | Trusted device",
-    approvalPath: "Moderator ? Trust lead",
+    approvalPath: "Moderator - Trust lead",
     linkedPage: "Reviews & Moderation",
     exportBundle: "Case history bundle",
     tags: ["Prayer Journal", "Resolved", "Safeguard note"],
@@ -1647,6 +1647,7 @@ export default function AuditLogPage() {
     </div>
   );
 }
+
 
 
 

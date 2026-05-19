@@ -1,4 +1,4 @@
-// @ts-nocheck
+﻿// @ts-nocheck
 "use client";
 
 import React, { useMemo, useState } from "react";
@@ -38,7 +38,7 @@ import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 import { useAuth } from "@/auth/useAuth";
 
 /**
- * Provider — Noticeboard
+ * Provider â€” Noticeboard
  * --------------------------------
  * Premium Provider-side noticeboard / announcements operating surface.
  *
@@ -228,8 +228,8 @@ const INITIAL_NOTICES: NoticeItem[] = [
     surfaces: ["Noticeboard", "Live Sessions", "Events", "Notification"],
     pinned: true,
     approvalRequired: false,
-    scheduledAt: "Today ? 2:30 PM",
-    expiresAt: "Today ? 8:00 PM",
+    scheduledAt: "Today - 2:30 PM",
+    expiresAt: "Today - 8:00 PM",
     reads: 2480,
     taps: 641,
     conversions: 318,
@@ -252,8 +252,8 @@ const INITIAL_NOTICES: NoticeItem[] = [
     surfaces: ["Noticeboard", "Giving", "Notification", "Beacon"],
     pinned: true,
     approvalRequired: true,
-    scheduledAt: "Today ? 9:00 AM",
-    expiresAt: "Tomorrow ? 9:00 AM",
+    scheduledAt: "Today - 9:00 AM",
+    expiresAt: "Tomorrow - 9:00 AM",
     reads: 1682,
     taps: 430,
     conversions: 216,
@@ -276,8 +276,8 @@ const INITIAL_NOTICES: NoticeItem[] = [
     surfaces: ["Noticeboard", "Notification"],
     pinned: false,
     approvalRequired: true,
-    scheduledAt: "Today ? 3:15 PM",
-    expiresAt: "Today ? 6:00 PM",
+    scheduledAt: "Today - 3:15 PM",
+    expiresAt: "Today - 6:00 PM",
     reads: 690,
     taps: 180,
     conversions: 72,
@@ -300,8 +300,8 @@ const INITIAL_NOTICES: NoticeItem[] = [
     surfaces: ["Noticeboard", "Notification"],
     pinned: false,
     approvalRequired: true,
-    scheduledAt: "Tomorrow ? 6:00 AM",
-    expiresAt: "Tomorrow ? 11:15 AM",
+    scheduledAt: "Tomorrow - 6:00 AM",
+    expiresAt: "Tomorrow - 11:15 AM",
     reads: 0,
     taps: 0,
     conversions: 0,
@@ -327,8 +327,8 @@ function makeBlankComposer(): ComposerState {
     commentsEnabled: false,
     sendToJourney: true,
     boostWithBeacon: false,
-    scheduledAt: "Today ? 4:45 PM",
-    expiresAt: "Tomorrow ? 11:30 PM",
+    scheduledAt: "Today - 4:45 PM",
+    expiresAt: "Tomorrow - 11:30 PM",
   };
 }
 
@@ -832,7 +832,7 @@ function BoardPreviewDesktop({ draft }: { draft: ComposerState }) {
               label: "Board sections",
               items: [
                 "Pinned notice lane",
-                "Today’s notices",
+                "Todayâ€™s notices",
                 "Campus-only updates",
               ],
             },
@@ -1053,7 +1053,7 @@ export default function FaithHubNoticeboardPage() {
       },
       {
         label: "Top conversion path",
-        value: "Notice ??? ? Event",
+        value: "Notice ??? - Event",
         hint: "Event-linked notices are producing the strongest taps this week",
       },
     ],
@@ -1170,7 +1170,7 @@ export default function FaithHubNoticeboardPage() {
               <ProviderPageTitle
                 icon={<Megaphone className="h-6 w-6" />}
                 title="Noticeboard"
-                subtitle="Run institution-wide announcements, campus updates, prayer alerts, volunteer calls, event reminders, and giving notices from one premium board — then route them into Live Sessions, notifications, events, giving, and Beacon without losing control."
+                subtitle="Run institution-wide announcements, campus updates, prayer alerts, volunteer calls, event reminders, and giving notices from one premium board â€” then route them into Live Sessions, notifications, events, giving, and Beacon without losing control."
               />
 
               <div className="mt-5 flex flex-wrap items-center gap-2">
@@ -1198,7 +1198,7 @@ export default function FaithHubNoticeboardPage() {
                   {profileName}
                 </div>
                 <div className="mt-2 text-[12px] leading-relaxed text-faith-slate">
-                  {profileWorkspace} · {profileRole} notice publishing with campus, audience,
+                  {profileWorkspace} Â· {profileRole} notice publishing with campus, audience,
                   language, and safety routing.
                 </div>
                 <div className="mt-3">
@@ -1579,7 +1579,7 @@ export default function FaithHubNoticeboardPage() {
                       onChange={(value) =>
                         setComposer((prev) => ({ ...prev, scheduledAt: value }))
                       }
-                      placeholder="Today ? 4:45 PM"
+                      placeholder="Today - 4:45 PM"
                     />
                   </div>
                   <div>
@@ -1589,7 +1589,7 @@ export default function FaithHubNoticeboardPage() {
                       onChange={(value) =>
                         setComposer((prev) => ({ ...prev, expiresAt: value }))
                       }
-                      placeholder="Tomorrow ? 11:30 PM"
+                      placeholder="Tomorrow - 11:30 PM"
                     />
                   </div>
                 </div>
@@ -1772,7 +1772,7 @@ export default function FaithHubNoticeboardPage() {
                     tone: "good" as Tone,
                   },
                   {
-                    time: "Today ? 6:15 PM",
+                    time: "Today - 6:15 PM",
                     label: "Live Session overlay sync",
                     detail: composer.surfaces.includes("Live Sessions")
                       ? "Armed for waiting room and live viewer surface"
@@ -1782,7 +1782,7 @@ export default function FaithHubNoticeboardPage() {
                       : ("neutral" as Tone),
                   },
                   {
-                    time: "Today ? 7:00 PM",
+                    time: "Today - 7:00 PM",
                     label: "Notification handoff",
                     detail: composer.sendToJourney
                       ? "Journey builder can inherit this notice"
@@ -1885,6 +1885,7 @@ export default function FaithHubNoticeboardPage() {
     </div>
   );
 }
+
 
 
 

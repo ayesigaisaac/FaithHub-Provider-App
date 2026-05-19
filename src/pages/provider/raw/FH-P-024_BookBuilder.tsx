@@ -1,4 +1,4 @@
-// @ts-nocheck
+﻿// @ts-nocheck
 
 "use client";
 
@@ -41,7 +41,7 @@ import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 
 /**
- * Provider � Book Builder
+ * Provider - Book Builder
  * --------------------------------
  * Premium Provider-side book creation page.
  *
@@ -152,7 +152,7 @@ type BookDraft = {
   resources: ResourceItem[];
   accessModel: AccessModel;
   price: number;
-  currency: "$" | "�" | "?";
+  currency: "$" | "-" | "?";
   sampleEnabled: boolean;
   downloadsEnabled: boolean;
   discoverable: boolean;
@@ -201,7 +201,7 @@ const TEMPLATE_LIBRARY: Record<TemplateKey, TemplatePreset> = {
     accentTone: "Green",
     audienceFit: "Daily readers, prayer groups, new believers, and digital-first followers",
     tone: "Warm, reflective, scripture-first",
-    themeScripture: "Psalm 51 � Renewal and spiritual reset",
+    themeScripture: "Psalm 51 - Renewal and spiritual reset",
     promise:
       "Help readers return to prayer, repentance, and steady spiritual rhythm through short guided reading moments.",
     description:
@@ -210,21 +210,21 @@ const TEMPLATE_LIBRARY: Record<TemplateKey, TemplatePreset> = {
     chapterSeed: [
       {
         id: "chap-dev-1",
-        title: "Day 1 � Return with humility",
+        title: "Day 1 - Return with humility",
         summary: "Open the journey with repentance, stillness, and a clear spiritual reset.",
         pagesLabel: "6 pages",
         tags: ["Prayer", "Reset"],
       },
       {
         id: "chap-dev-2",
-        title: "Day 2 � Prayer in hidden places",
+        title: "Day 2 - Prayer in hidden places",
         summary: "Guide readers into quiet prayer habits that sustain private devotion.",
         pagesLabel: "5 pages",
         tags: ["Prayer", "Discipline"],
       },
       {
         id: "chap-dev-3",
-        title: "Day 3 � Grace for weak days",
+        title: "Day 3 - Grace for weak days",
         summary: "Create a compassionate devotional rhythm for inconsistent readers.",
         pagesLabel: "6 pages",
         tags: ["Grace", "Encouragement"],
@@ -254,7 +254,7 @@ const TEMPLATE_LIBRARY: Record<TemplateKey, TemplatePreset> = {
     accentTone: "Orange",
     audienceFit: "Small groups, classes, leaders, and follow-up communities",
     tone: "Structured, discussion-ready, teaching companion",
-    themeScripture: "James 1 � Hearing, doing, and living the word",
+    themeScripture: "James 1 - Hearing, doing, and living the word",
     promise:
       "Turn teaching into richer follow-up by giving readers guided questions, takeaways, and discussion prompts.",
     description:
@@ -263,21 +263,21 @@ const TEMPLATE_LIBRARY: Record<TemplateKey, TemplatePreset> = {
     chapterSeed: [
       {
         id: "chap-guide-1",
-        title: "Session 1 � Big idea and key scripture",
+        title: "Session 1 - Big idea and key scripture",
         summary: "Frame the teaching, its emotional promise, and the discussion journey.",
         pagesLabel: "8 pages",
         tags: ["Big idea", "Scripture"],
       },
       {
         id: "chap-guide-2",
-        title: "Session 2 � Group prompts",
+        title: "Session 2 - Group prompts",
         summary: "Turn the message into conversation with reflection and practice questions.",
         pagesLabel: "7 pages",
         tags: ["Discussion", "Application"],
       },
       {
         id: "chap-guide-3",
-        title: "Session 3 � Next-step resources",
+        title: "Session 3 - Next-step resources",
         summary: "Close the episode with readings, prayer prompts, and companion links.",
         pagesLabel: "5 pages",
         tags: ["Resources", "Practice"],
@@ -313,7 +313,7 @@ const TEMPLATE_LIBRARY: Record<TemplateKey, TemplatePreset> = {
     accentTone: "Navy",
     audienceFit: "Staff, volunteers, ministry leaders, production teams",
     tone: "Practical, operational, accountable",
-    themeScripture: "1 Corinthians 14 � Decency and order",
+    themeScripture: "1 Corinthians 14 - Decency and order",
     promise:
       "Give teams a trustworthy manual that feels warm and ministry-aware while still keeping version discipline and operational clarity.",
     description:
@@ -366,7 +366,7 @@ const TEMPLATE_LIBRARY: Record<TemplateKey, TemplatePreset> = {
     accentTone: "Green",
     audienceFit: "Discipleship classes, training cohorts, learning journeys",
     tone: "Structured, formative, curriculum-like",
-    themeScripture: "Colossians 1 � Growing in wisdom and understanding",
+    themeScripture: "Colossians 1 - Growing in wisdom and understanding",
     promise:
       "Organize structured faith learning into a polished reader with weekly rhythm, resources, and companion actions.",
     description:
@@ -375,21 +375,21 @@ const TEMPLATE_LIBRARY: Record<TemplateKey, TemplatePreset> = {
     chapterSeed: [
       {
         id: "chap-reader-1",
-        title: "Week 1 � Orientation and expectations",
+        title: "Week 1 - Orientation and expectations",
         summary: "Frame the learning path, outcomes, and the first reading milestone.",
         pagesLabel: "9 pages",
         tags: ["Orientation", "Outcomes"],
       },
       {
         id: "chap-reader-2",
-        title: "Week 2 � Core reading and reflection",
+        title: "Week 2 - Core reading and reflection",
         summary: "Set the central teaching with notes and guided response prompts.",
         pagesLabel: "11 pages",
         tags: ["Reading", "Reflection"],
       },
       {
         id: "chap-reader-3",
-        title: "Week 3 � Practice and discussion",
+        title: "Week 3 - Practice and discussion",
         summary: "Move from content into action, questions, and follow-up discipline.",
         pagesLabel: "8 pages",
         tags: ["Practice", "Discussion"],
@@ -501,7 +501,7 @@ function buildDraft(templateId: TemplateKey): BookDraft {
     downloadsEnabled: true,
     discoverable: true,
     publishMode: "Draft",
-    scheduledAt: "Next Thursday � 7:30 PM",
+    scheduledAt: "Next Thursday - 7:30 PM",
     locales: [
       {
         id: nextId("loc"),
@@ -1057,7 +1057,7 @@ function StorefrontPreview({
               Cover quote
             </div>
             <div className="mt-2 text-sm font-semibold leading-relaxed text-slate-800 dark:text-slate-200">
-              �{draft.heroQuote}�
+              -{draft.heroQuote}-
             </div>
           </div>
         </div>
@@ -1080,7 +1080,7 @@ function StorefrontPreview({
           </div>
           <div className="mt-3 flex flex-wrap items-center gap-3 text-sm text-faith-slate dark:text-slate-300">
             <span className="font-semibold">By {draft.author}</span>
-            <span>�</span>
+            <span>-</span>
             <span>{draft.audienceFit}</span>
           </div>
 
@@ -1779,7 +1779,7 @@ export default function FaithHubBookBuilderPage() {
               <div>
                 <Label>Currency</Label>
                 <Segmented
-                  items={["$", "�", "?"]}
+                  items={["$", "-", "?"]}
                   value={draft.currency}
                   onChange={(value) => update("currency", value as BookDraft["currency"])}
                 />
@@ -1797,7 +1797,7 @@ export default function FaithHubBookBuilderPage() {
                 <Input
                   value={draft.scheduledAt}
                   onChange={(value) => update("scheduledAt", value)}
-                  placeholder="Next Thursday � 7:30 PM"
+                  placeholder="Next Thursday - 7:30 PM"
                 />
               </div>
               <div>
@@ -2365,6 +2365,7 @@ export default function FaithHubBookBuilderPage() {
     </div>
   );
 }
+
 
 
 

@@ -1,4 +1,4 @@
-// @ts-nocheck
+﻿// @ts-nocheck
 
 "use client";
 
@@ -37,7 +37,7 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * Provider — Events Manager
+ * Provider â€” Events Manager
  * ----------------------------------
  * Premium event operating system for FaithHub Provider workspace.
  *
@@ -253,7 +253,7 @@ const EVENTS_SEED: EventRecord[] = [
     status: "Upcoming",
     campus: "City Campus",
     owner: "Miriam Okello",
-    language: "English ? Swahili",
+    language: "English - Swahili",
     locationLabel: "Provider Arena, Kampala",
     venueType: "Hybrid",
     startISO: "2026-07-18T08:30:00Z",
@@ -470,7 +470,7 @@ const EVENTS_SEED: EventRecord[] = [
     status: "Live now",
     campus: "Lakeside Campus",
     owner: "Grace N.",
-    language: "English ? Luganda",
+    language: "English - Luganda",
     locationLabel: "Lakeside Prayer Gardens",
     venueType: "Hybrid",
     startISO: "2026-06-28T11:00:00Z",
@@ -1508,7 +1508,7 @@ export default function FaithHubEventsManagerPage() {
       "",
       "LOGISTICS",
       ...selectedEvent.logistics.map(
-        (item) => `${item.label} — ${item.status} — ${item.note}`,
+        (item) => `${item.label} â€” ${item.status} â€” ${item.note}`,
       ),
       "",
       "VOLUNTEER COVERAGE",
@@ -1658,7 +1658,7 @@ export default function FaithHubEventsManagerPage() {
                       className="px-3 py-2 text-[12px]"
                       disabled={workingAction === "duplicate"}
                     >
-                      {workingAction === "duplicate" ? "Duplicating…" : "Duplicate"}
+                      {workingAction === "duplicate" ? "Duplicatingâ€¦" : "Duplicate"}
                     </Btn>
                   </div>
                 </div>
@@ -2441,7 +2441,7 @@ export default function FaithHubEventsManagerPage() {
                       onClick={publishEventPlan}
                       disabled={workingAction === "publish"}
                     >
-                      {workingAction === "publish" ? "Publishing…" : "Mark operationally ready"}
+                      {workingAction === "publish" ? "Publishingâ€¦" : "Mark operationally ready"}
                     </Btn>
                     <Btn
                       tone="accent"
@@ -2678,6 +2678,7 @@ export default function FaithHubEventsManagerPage() {
     </div>
   );
 }
+
 
 
 

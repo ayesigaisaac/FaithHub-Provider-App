@@ -1,4 +1,4 @@
-// @ts-nocheck
+﻿// @ts-nocheck
 
 "use client";
 
@@ -42,7 +42,7 @@ import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 
 /**
- * Provider � Beacon Builder
+ * Provider - Beacon Builder
  * ----------------------------------
  * Premium dual-path campaign builder for linked and standalone Beacon campaigns.
  *
@@ -123,7 +123,7 @@ function fmtInt(n: number) {
   return Intl.NumberFormat(undefined, { maximumFractionDigits: 0 }).format(n);
 }
 
-function fmtCurrency(n: number, currency = "�") {
+function fmtCurrency(n: number, currency = "-") {
   return `${currency}${Intl.NumberFormat(undefined, {
     maximumFractionDigits: 0,
   }).format(n)}`;
@@ -1260,7 +1260,7 @@ function BeaconPreviewCard({
               {showQuote ? (
                 <div className="absolute inset-x-0 bottom-0 p-4 text-white">
                   <div className="max-w-[85%] text-lg font-black leading-tight drop-shadow">
-                    �{builder.quoteText || "The next faithful move may be the one you almost postponed."}�
+                    -{builder.quoteText || "The next faithful move may be the one you almost postponed."}-
                   </div>
                 </div>
               ) : null}
@@ -1279,7 +1279,7 @@ function BeaconPreviewCard({
 
               {builder.creativeLayout === "Story card" ? (
                 <div className="mt-3 rounded-2xl p-3 text-sm font-semibold" style={{ background: `${EV_GREEN}16`, color: isDark ? "#d1fae5" : EV_NAVY }}>
-                  {builder.storyCardLabel || "Story card narrative ? Why this message matters now"}
+                  {builder.storyCardLabel || "Story card narrative - Why this message matters now"}
                 </div>
               ) : null}
 
@@ -1304,8 +1304,8 @@ function BeaconPreviewCard({
               </div>
 
               <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-faith-slate">
-                <Pill>{builder.languages.join(" ? ") || "English"}</Pill>
-                <Pill>{builder.regions.slice(0, 2).join(" ? ") || "Uganda"}</Pill>
+                <Pill>{builder.languages.join(" - ") || "English"}</Pill>
+                <Pill>{builder.regions.slice(0, 2).join(" - ") || "Uganda"}</Pill>
                 <Pill tone={builder.ageRule === "Child-safe" ? "good" : builder.ageRule === "Youth-safe" ? "warn" : "neutral"}>{builder.ageRule}</Pill>
               </div>
             </div>
@@ -1363,12 +1363,12 @@ export default function BeaconBuilderPage({
     heroVideoId: "asset_replay_video",
     headline: "Catch the message that moved the room.",
     body: "Replay the full teaching, share it with someone who needs it, and step into the next response moment while the message is still fresh.",
-    quoteText: "Grace doesn�t wait for strength before it shows up.",
+    quoteText: "Grace doesn-t wait for strength before it shows up.",
     storyCardLabel: "Why this replay matters now",
     countdownEnabled: false,
     countdownEndISO: countdownDefault.toISOString(),
     carouselCards: ["Key teaching moment", "Community response", "Watch the full replay"],
-    subtitleMode: "Auto subtitles ? English + Luganda",
+    subtitleMode: "Auto subtitles - English + Luganda",
     variantTesting: true,
     duplicateWinningCreative: true,
 
@@ -1578,7 +1578,7 @@ export default function BeaconBuilderPage({
 
   function handleLaunch() {
     if (!launchReady) {
-      setToast("Launch blocked ? finish the launch gate checks first.");
+      setToast("Launch blocked - finish the launch gate checks first.");
       setStep("review");
       return;
     }
@@ -1851,7 +1851,7 @@ export default function BeaconBuilderPage({
                             setField(
                               "headline",
                               src.recommendedObjective === "Live attendance"
-                                ? `Don�t miss ${src.title}.`
+                                ? `Don-t miss ${src.title}.`
                                 : src.recommendedObjective === "Giving" || src.recommendedObjective === "Charity momentum"
                                   ? `Support ${src.title}.`
                                   : `Explore ${src.title}.`,
@@ -2052,7 +2052,7 @@ export default function BeaconBuilderPage({
                 </div>
                 <div>
                   <FieldLabel label="Subtitle mode" hint="How subtitles or localization notes appear in the creative package" />
-                  <TextInput value={builder.subtitleMode} onChange={(v) => setField("subtitleMode", v)} placeholder="Auto subtitles ? English + Luganda" />
+                  <TextInput value={builder.subtitleMode} onChange={(v) => setField("subtitleMode", v)} placeholder="Auto subtitles - English + Luganda" />
                 </div>
                 <div className="md:col-span-2">
                   <FieldLabel label="Body copy" hint="Supportive message, context, or conversion framing" />
@@ -2636,7 +2636,7 @@ export default function BeaconBuilderPage({
               <ProviderPageTitle
                 icon={<Zap className="h-6 w-6" />}
                 title="Beacon Builder"
-                subtitle="Create a premium Beacon campaign from scratch � linked to platform content or fully standalone � with rich creative, audience logic, placement planning, and a launch-ready review flow."
+                subtitle="Create a premium Beacon campaign from scratch - linked to platform content or fully standalone - with rich creative, audience logic, placement planning, and a launch-ready review flow."
               />
               <div className="mt-3 flex flex-wrap items-center gap-2">
                 <Pill tone="brand"><Zap className="h-3.5 w-3.5" /> Beacon</Pill>
@@ -2767,7 +2767,7 @@ export default function BeaconBuilderPage({
       <DrawerShell
         open={assetDrawerTarget !== null}
         onClose={() => setAssetDrawerTarget(null)}
-        title={assetDrawerTarget === "heroImage" ? "Asset bank ? Hero image" : "Asset bank ? Hero video"}
+        title={assetDrawerTarget === "heroImage" ? "Asset bank - Hero image" : "Asset bank - Hero video"}
         subtitle="Pick approved Beacon assets without breaking the current build context."
       >
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -2808,6 +2808,7 @@ export default function BeaconBuilderPage({
 
   return content;
 }
+
 
 
 

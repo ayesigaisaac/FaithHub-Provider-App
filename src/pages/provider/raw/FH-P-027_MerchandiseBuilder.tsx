@@ -1,4 +1,4 @@
-// @ts-nocheck
+﻿// @ts-nocheck
 "use client";
 
 import React, { useMemo, useState } from "react";
@@ -38,7 +38,7 @@ import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 
 /**
- * Provider � Merchandise Builder
+ * Provider - Merchandise Builder
  * ---------------------------------------
  * Premium Provider-side create/edit page launched from Merchandise Manager via
  * the "+ New Merchandise" command.
@@ -479,7 +479,7 @@ function createDraftFromTemplate(templateId: TemplateKey): MerchandiseDraft {
     donorThankYouEligible: false,
     fulfillmentMode: "Mixed",
     shippingClass: "Standard parcel",
-    prepLabel: "Dispatch in 2�4 working days",
+    prepLabel: "Dispatch in 2-4 working days",
     shipRegions: preset.shipRegions,
     pickupLocations: preset.pickupLocations,
     linkHooks: {
@@ -1047,7 +1047,7 @@ function PreviewRail({
                   <div className="absolute left-3 right-3 bottom-3 text-white">
                     <div className="text-[10px] font-black uppercase tracking-[0.2em] opacity-80">FaithMart</div>
                     <div className="mt-1 text-base font-black leading-tight">{draft.title}</div>
-                    <div className="mt-1 text-xs opacity-90">{heroPrice}{supporterPrice ? ` � Supporter ${supporterPrice}` : ""}</div>
+                    <div className="mt-1 text-xs opacity-90">{heroPrice}{supporterPrice ? ` - Supporter ${supporterPrice}` : ""}</div>
                   </div>
                 </div>
                 <div className="p-3">
@@ -1611,7 +1611,7 @@ export default function MerchandiseBuilderPage() {
                       </div>
                       <div>
                         <Label>Preparation SLA</Label>
-                        <Input value={draft.prepLabel} onChange={(value) => patchDraft("prepLabel", value)} placeholder="Dispatch in 2�4 working days" />
+                        <Input value={draft.prepLabel} onChange={(value) => patchDraft("prepLabel", value)} placeholder="Dispatch in 2-4 working days" />
                       </div>
                       <div>
                         <Label>Ship regions (comma separated)</Label>
@@ -1832,6 +1832,7 @@ export default function MerchandiseBuilderPage() {
     </div>
   );
 }
+
 
 
 

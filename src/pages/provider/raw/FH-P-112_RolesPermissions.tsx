@@ -1,4 +1,4 @@
-// @ts-nocheck
+ï»¿// @ts-nocheck
 
 "use client";
 
@@ -625,7 +625,7 @@ function RoleListCard({
               {role.name}
             </div>
             <div className={cx("mt-1 truncate text-[12px]", active ? "text-white/75" : "text-faith-slate")}>
-              {role.templateFamily} · {role.scope} · {role.owner}
+              {role.templateFamily} Â· {role.scope} Â· {role.owner}
             </div>
             <div className="mt-3 flex flex-wrap gap-2">
               <TonePill tone={tone}>{role.status}</TonePill>
@@ -830,7 +830,7 @@ function AssignmentCard({ item }: { item: AssignmentRecord }) {
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <div className="text-[14px] font-black text-faith-ink dark:text-slate-100">{item.name}</div>
-          <div className="mt-1 text-[12px] text-faith-slate">{item.title} · {item.campus}</div>
+          <div className="mt-1 text-[12px] text-faith-slate">{item.title} Â· {item.campus}</div>
         </div>
         <TonePill tone={tone}>{item.state}</TonePill>
       </div>
@@ -903,7 +903,7 @@ function PreviewSurface({
                 <div key={action.id} className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 dark:border-slate-700 dark:bg-slate-900">
                   <div className="text-[11px] font-bold text-faith-ink dark:text-slate-100">{action.label}</div>
                   <div className="mt-1 text-[10px] text-faith-slate">
-                    {action.permission} · {action.approval}
+                    {action.permission} Â· {action.approval}
                   </div>
                 </div>
               ))}
@@ -913,7 +913,7 @@ function PreviewSurface({
           <div className="mt-4 rounded-[22px] border border-faith-line/70 bg-[var(--fh-surface)] p-3 dark:border-slate-800 dark:bg-slate-950">
             <div className="text-[11px] font-black text-faith-ink dark:text-slate-100">Scope summary</div>
             <div className="mt-2 text-[11px] leading-5 text-faith-slate">
-              {role.scope} · {role.campusScopes.join(" · ")}
+              {role.scope} Â· {role.campusScopes.join(" Â· ")}
             </div>
           </div>
         </div>
@@ -970,7 +970,7 @@ function PreviewSurface({
                   <div key={lane.id} className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-2 dark:border-slate-800 dark:bg-slate-950">
                     <div className="text-[12px] font-bold text-faith-ink dark:text-slate-100">{lane.label}</div>
                     <div className="mt-1 text-[11px] text-faith-slate">
-                      {lane.steps.join(" ? ")} · {lane.sla}
+                      {lane.steps.join(" - ")} Â· {lane.sla}
                     </div>
                   </div>
                 ))}
@@ -992,7 +992,7 @@ function PreviewSurface({
                 </div>
               </div>
               <div className="mt-3 text-[11px] leading-5 text-faith-slate">
-                Scope: {role.scope} · {role.campusScopes.join(" · ")}
+                Scope: {role.scope} Â· {role.campusScopes.join(" Â· ")}
               </div>
             </div>
           </div>
@@ -1025,7 +1025,7 @@ function PreviewDrawer({
           <div className="flex items-center justify-between gap-3">
             <div className="min-w-0">
               <div className="text-[14px] font-black text-faith-ink dark:text-slate-100">
-                Access preview · {role.name}
+                Access preview Â· {role.name}
               </div>
               <div className="mt-1 text-[12px] text-faith-slate">
                 Role visibility, approval flow, and mobile/desktop companion surfaces.
@@ -1346,7 +1346,7 @@ export default function FH_P_112_RolesPermissionsPage() {
                 Premium RBAC
               </span>
               <span className="ml-3 align-middle">
-                Finance changes still require dual approval · Two teammate assignments are waiting for scope review · Child-safe overrides remain locked behind safeguarding leadership.
+                Finance changes still require dual approval Â· Two teammate assignments are waiting for scope review Â· Child-safe overrides remain locked behind safeguarding leadership.
               </span>
             </div>
             <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-faith-slate">
@@ -1520,7 +1520,7 @@ export default function FH_P_112_RolesPermissionsPage() {
                         {selectedRole.name}
                       </div>
                       <div className="mt-1 text-[13px] text-faith-slate">
-                        {selectedRole.templateFamily} · {selectedRole.scope} · Owner: {selectedRole.owner}
+                        {selectedRole.templateFamily} Â· {selectedRole.scope} Â· Owner: {selectedRole.owner}
                       </div>
                       <div className="mt-3 flex flex-wrap gap-2">
                         <TonePill tone={selectedRole.status === "Healthy" ? "good" : selectedRole.status === "Limited" ? "danger" : "warn"}>
@@ -1588,7 +1588,7 @@ export default function FH_P_112_RolesPermissionsPage() {
 
             <SectionCard
               title="Feature access matrix"
-              subtitle={editMode ? "Edit mode is active — click any tile to cycle Allow ? Review ? Block." : "Permission states across premium Provider surfaces and operational clusters."}
+              subtitle={editMode ? "Edit mode is active â€” click any tile to cycle Allow - Review - Block." : "Permission states across premium Provider surfaces and operational clusters."}
               right={
                 <TonePill tone={editMode ? "accent" : "neutral"}>
                   {editMode ? "Editing" : "View mode"}
@@ -1805,6 +1805,7 @@ export default function FH_P_112_RolesPermissionsPage() {
     </div>
   );
 }
+
 
 
 

@@ -51,7 +51,7 @@ import { recordLiveActivity } from "@/features/live/liveActivityStore";
 import { AuthContext } from "@/auth/AuthContext";
 
 /**
- * Provider ï¿½ Live Builder (Provider)
+ * Provider - Live Builder (Provider)
  * ----------------------------------
  * Design intent:
  * - Keep the same premium page grammar as the Creator base file:
@@ -1623,7 +1623,7 @@ function SetupStep({
           <ParentTypeCard title="Event" description="Attach the session to a retreat, conference, prayer night, or special gathering." selected={draft.parentType === "event"} onClick={() => setDraft((d) => ({ ...d, parentType: "event" }))} />
           <ParentTypeCard title="Giving Campaign" description="Create a giving-focused live moment that is anchored to a standard fund or appeal." selected={draft.parentType === "givingCampaign"} onClick={() => setDraft((d) => ({ ...d, parentType: "givingCampaign" }))} />
           <ParentTypeCard title="Charity Crowdfund" description="Drive a story-based crowdfund with progress, milestones, and urgency inside the live experience." selected={draft.parentType === "charityCrowdfund"} onClick={() => setDraft((d) => ({ ...d, parentType: "charityCrowdfund" }))} />
-          <ParentTypeCard title="Pure Standalone Live" description="Launch a live session with no content parent at all ï¿½ ideal for announcements, prayer, or spontaneous moments." selected={draft.parentType === "standalone"} onClick={() => setDraft((d) => ({ ...d, parentType: "standalone" }))} />
+          <ParentTypeCard title="Pure Standalone Live" description="Launch a live session with no content parent at all - ideal for announcements, prayer, or spontaneous moments." selected={draft.parentType === "standalone"} onClick={() => setDraft((d) => ({ ...d, parentType: "standalone" }))} />
         </div>
 
         <div className="mt-4 grid gap-3 md:grid-cols-2">
@@ -1756,7 +1756,7 @@ function IdentityStep({ draft, setDraft }: { draft: LiveBuilderDraft; setDraft: 
         </div>
       </Card>
 
-      <Card title="Presenters" subtitle="Add the visible faces of the session ï¿½ sermon lead, host, worship lead, or guests.">
+      <Card title="Presenters" subtitle="Add the visible faces of the session - sermon lead, host, worship lead, or guests.">
         <div className="flex flex-wrap gap-2">
           {PEOPLE.map((person) => {
             const selected = draft.presenters.includes(person);
@@ -2760,6 +2760,7 @@ export default function FaithHubLiveBuilderPage({ embedded = false, onRequestClo
     </div>
   );
 }
+
 
 
 
