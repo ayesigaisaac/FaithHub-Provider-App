@@ -473,18 +473,35 @@ function Input({
   value,
   onChange,
   placeholder,
+  onBlur,
+  error = false,
+  helperText,
+  type = "text",
 }: {
   value: string;
   onChange: (value: string) => void;
   placeholder?: string;
+  onBlur?: () => void;
+  error?: boolean;
+  helperText?: string;
+  type?: "text" | "number";
 }) {
   return (
-    <input
-      value={value}
-      onChange={(event) => onChange(event.target.value)}
-      placeholder={placeholder}
-      className="mt-1 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] text-faith-ink outline-none transition-colors focus:ring-2 focus:ring-emerald-200"
-    />
+    <div>
+      <input
+        value={value}
+        type={type}
+        onBlur={onBlur}
+        onChange={(event) => onChange(event.target.value)}
+        placeholder={placeholder}
+        aria-invalid={error || undefined}
+        className={cx(
+          "mt-1 w-full rounded-2xl border bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] text-faith-ink outline-none transition-colors",
+          error ? "border-rose-300 focus:ring-2 focus:ring-rose-200" : "border-faith-line/70 focus:ring-2 focus:ring-emerald-200",
+        )}
+      />
+      {helperText ? <div className={cx("mt-1 text-[11px]", error ? "text-rose-700" : "text-faith-slate")}>{helperText}</div> : null}
+    </div>
   );
 }
 
@@ -493,20 +510,34 @@ function TextArea({
   onChange,
   rows = 4,
   placeholder,
+  onBlur,
+  error = false,
+  helperText,
 }: {
   value: string;
   onChange: (value: string) => void;
   rows?: number;
   placeholder?: string;
+  onBlur?: () => void;
+  error?: boolean;
+  helperText?: string;
 }) {
   return (
-    <textarea
-      value={value}
-      onChange={(event) => onChange(event.target.value)}
-      rows={rows}
-      placeholder={placeholder}
-      className="mt-1 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] text-faith-ink outline-none transition-colors focus:ring-2 focus:ring-emerald-200"
-    />
+    <div>
+      <textarea
+        value={value}
+        onBlur={onBlur}
+        onChange={(event) => onChange(event.target.value)}
+        rows={rows}
+        placeholder={placeholder}
+        aria-invalid={error || undefined}
+        className={cx(
+          "mt-1 w-full rounded-2xl border bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] text-faith-ink outline-none transition-colors",
+          error ? "border-rose-300 focus:ring-2 focus:ring-rose-200" : "border-faith-line/70 focus:ring-2 focus:ring-emerald-200",
+        )}
+      />
+      {helperText ? <div className={cx("mt-1 text-[11px]", error ? "text-rose-700" : "text-faith-slate")}>{helperText}</div> : null}
+    </div>
   );
 }
 
@@ -834,6 +865,14 @@ export default function EpisodeBuilderPage() {
   const [toast, setToast] = useState<string | null>(null);
   const [episodeRecordId, setEpisodeRecordId] = useState<string | undefined>(undefined);
   const [formErrors, setFormErrors] = useState<string[]>([]);
+  const [summaryTouched, setSummaryTouched] = useState<
+    Record<"parentSeriesTitle" | "title" | "focusStatement" | "scripture", boolean>
+  >({
+    parentSeriesTitle: false,
+    title: false,
+    focusStatement: false,
+    scripture: false,
+  });
   const [teachingFlow, setTeachingFlow] = useState(() => getTeachingFlowState());
 
   const [draft, setDraft] = useState<EpisodeDraft>({
@@ -933,6 +972,20 @@ export default function EpisodeBuilderPage() {
   }, [toast]);
 
   const readinessScore = useMemo(() => scoreReadiness(draft), [draft]);
+  const summaryValidationErrors = useMemo(
+    () =>
+      validateEpisodeDraft({
+        title: draft.title,
+        parentSeriesTitle: draft.parentSeriesTitle,
+        focusStatement: draft.focusStatement,
+        scripture: draft.scripture,
+      }),
+    [draft.focusStatement, draft.parentSeriesTitle, draft.scripture, draft.title],
+  );
+  const parentSeriesInvalid = summaryValidationErrors.includes("Episode must be linked to a valid series title.");
+  const titleInvalid = summaryValidationErrors.includes("Episode title must be at least 4 characters.");
+  const focusInvalid = summaryValidationErrors.includes("Episode focus statement must be at least 12 characters.");
+  const scriptureInvalid = summaryValidationErrors.includes("Scripture or core idea is required.");
 
   const selectedBlueprint = useMemo(
     () => PRESET_BLUEPRINTS.find((item) => item.id === draft.blueprintId) || PRESET_BLUEPRINTS[0],
@@ -1178,7 +1231,14 @@ export default function EpisodeBuilderPage() {
                       <Label>Parent Series</Label>
                       <Input
                         value={draft.parentSeriesTitle}
+                        onBlur={() => setSummaryTouched((current) => ({ ...current, parentSeriesTitle: true }))}
                         onChange={(value) => setDraft((current) => ({ ...current, parentSeriesTitle: value }))}
+                        error={summaryTouched.parentSeriesTitle && parentSeriesInvalid}
+                        helperText={
+                          summaryTouched.parentSeriesTitle && parentSeriesInvalid
+                            ? "Episode must be linked to a valid series title."
+                            : " "
+                        }
                       />
                       {seriesOptions.length > 0 ? (
                         <select
@@ -1201,7 +1261,13 @@ export default function EpisodeBuilderPage() {
                     </div>
                     <div>
                       <Label>Episode title</Label>
-                      <Input value={draft.title} onChange={(value) => setDraft((current) => ({ ...current, title: value }))} />
+                      <Input
+                        value={draft.title}
+                        onBlur={() => setSummaryTouched((current) => ({ ...current, title: true }))}
+                        onChange={(value) => setDraft((current) => ({ ...current, title: value }))}
+                        error={summaryTouched.title && titleInvalid}
+                        helperText={summaryTouched.title && titleInvalid ? "Episode title must be at least 4 characters." : " "}
+                      />
                     </div>
                   </div>
 
@@ -1222,7 +1288,14 @@ export default function EpisodeBuilderPage() {
                       <Label>Focus statement</Label>
                       <Input
                         value={draft.focusStatement}
+                        onBlur={() => setSummaryTouched((current) => ({ ...current, focusStatement: true }))}
                         onChange={(value) => setDraft((current) => ({ ...current, focusStatement: value }))}
+                        error={summaryTouched.focusStatement && focusInvalid}
+                        helperText={
+                          summaryTouched.focusStatement && focusInvalid
+                            ? "Episode focus statement must be at least 12 characters."
+                            : " "
+                        }
                       />
                     </div>
                   </div>
@@ -1231,7 +1304,10 @@ export default function EpisodeBuilderPage() {
                     <Label>Scripture / core idea</Label>
                     <Input
                       value={draft.scripture}
+                      onBlur={() => setSummaryTouched((current) => ({ ...current, scripture: true }))}
                       onChange={(value) => setDraft((current) => ({ ...current, scripture: value }))}
+                      error={summaryTouched.scripture && scriptureInvalid}
+                      helperText={summaryTouched.scripture && scriptureInvalid ? "Scripture or core idea is required." : " "}
                     />
                   </div>
 
