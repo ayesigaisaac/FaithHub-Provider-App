@@ -1249,6 +1249,7 @@ export default function EpisodeBuilderPage() {
                               parentSeriesTitle: event.target.value,
                             }))
                           }
+                          aria-label="Parent series"
                           className="mt-2 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] font-semibold text-faith-ink outline-none"
                         >
                           {seriesOptions.map((series) => (
@@ -1573,6 +1574,7 @@ export default function EpisodeBuilderPage() {
                       <select
                         value={draft.releaseWindow}
                         onChange={(event) => setDraft((current) => ({ ...current, releaseWindow: event.target.value }))}
+                        aria-label="Release timing"
                         className="mt-1 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] font-semibold text-faith-ink"
                       >
                         {RELEASE_WINDOWS.map((option) => (
@@ -1585,6 +1587,7 @@ export default function EpisodeBuilderPage() {
                       <select
                         value={draft.accessModel}
                         onChange={(event) => setDraft((current) => ({ ...current, accessModel: event.target.value }))}
+                        aria-label="Access model"
                         className="mt-1 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] font-semibold text-faith-ink"
                       >
                         {ACCESS_MODELS.map((option) => (

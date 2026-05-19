@@ -1865,6 +1865,7 @@ export default function SeriesBuilderPage() {
                 <select
                   value={draft.embargoRule}
                   onChange={(e) => setDraft((current) => ({ ...current, embargoRule: e.target.value }))}
+                  aria-label="Embargo rule"
                   className="mt-1 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] font-medium text-faith-ink outline-none"
                 >
                   {EMBARGO_RULES.map((rule) => (
@@ -1877,6 +1878,7 @@ export default function SeriesBuilderPage() {
                 <select
                   value={draft.approvalFlow}
                   onChange={(e) => setDraft((current) => ({ ...current, approvalFlow: e.target.value }))}
+                  aria-label="Approval flow"
                   className="mt-1 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] font-medium text-faith-ink outline-none"
                 >
                   {APPROVAL_FLOWS.map((flow) => (
