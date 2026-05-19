@@ -550,18 +550,39 @@ function TextInput({
   value,
   onChange,
   placeholder,
+  onBlur,
+  error = false,
+  helperText,
+  type = "text",
 }: {
   value: string;
   onChange: (next: string) => void;
   placeholder?: string;
+  onBlur?: () => void;
+  error?: boolean;
+  helperText?: string;
+  type?: "text" | "number" | "email" | "url";
 }) {
   return (
-    <input
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-      placeholder={placeholder}
-      className="mt-1 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] text-faith-ink outline-none transition-colors focus:ring-2 focus:ring-[rgba(3,205,140,0.18)]"
-    />
+    <div>
+      <input
+        value={value}
+        type={type}
+        onBlur={onBlur}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder}
+        aria-invalid={error || undefined}
+        className={cx(
+          "mt-1 w-full rounded-2xl border bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] text-faith-ink outline-none transition-colors",
+          error
+            ? "border-rose-300 focus:ring-2 focus:ring-rose-200"
+            : "border-faith-line/70 focus:ring-2 focus:ring-[rgba(3,205,140,0.18)]",
+        )}
+      />
+      {helperText ? (
+        <div className={cx("mt-1 text-[11px]", error ? "text-rose-700" : "text-faith-slate")}>{helperText}</div>
+      ) : null}
+    </div>
   );
 }
 
@@ -570,20 +591,38 @@ function TextArea({
   onChange,
   placeholder,
   rows = 4,
+  onBlur,
+  error = false,
+  helperText,
 }: {
   value: string;
   onChange: (next: string) => void;
   placeholder?: string;
   rows?: number;
+  onBlur?: () => void;
+  error?: boolean;
+  helperText?: string;
 }) {
   return (
-    <textarea
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-      placeholder={placeholder}
-      rows={rows}
-      className="mt-1 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] text-faith-ink outline-none transition-colors focus:ring-2 focus:ring-[rgba(3,205,140,0.18)]"
-    />
+    <div>
+      <textarea
+        value={value}
+        onBlur={onBlur}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder}
+        rows={rows}
+        aria-invalid={error || undefined}
+        className={cx(
+          "mt-1 w-full rounded-2xl border bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] text-faith-ink outline-none transition-colors",
+          error
+            ? "border-rose-300 focus:ring-2 focus:ring-rose-200"
+            : "border-faith-line/70 focus:ring-2 focus:ring-[rgba(3,205,140,0.18)]",
+        )}
+      />
+      {helperText ? (
+        <div className={cx("mt-1 text-[11px]", error ? "text-rose-700" : "text-faith-slate")}>{helperText}</div>
+      ) : null}
+    </div>
   );
 }
 
@@ -871,6 +910,11 @@ export default function SeriesBuilderPage() {
   const [toast, setToast] = useState<string | null>(null);
   const [seriesRecordId, setSeriesRecordId] = useState<string | undefined>(undefined);
   const [formErrors, setFormErrors] = useState<string[]>([]);
+  const [identityTouched, setIdentityTouched] = useState<Record<"title" | "subtitle" | "description", boolean>>({
+    title: false,
+    subtitle: false,
+    description: false,
+  });
   const [draft, setDraft] = useState<SeriesDraft>({
     templateId: "tpl-sermon",
     title: "Practicing the Way of Hope",
@@ -938,6 +982,19 @@ export default function SeriesBuilderPage() {
   }, []);
 
   const readiness = useMemo(() => scoreReadiness(draft), [draft]);
+  const identityValidationErrors = useMemo(
+    () =>
+      validateSeriesDraft({
+        title: draft.title,
+        subtitle: draft.subtitle,
+        description: draft.description,
+        speaker: draft.speakers[0] || "",
+      }),
+    [draft.description, draft.speakers, draft.subtitle, draft.title],
+  );
+  const titleInvalid = identityValidationErrors.includes("Series title must be at least 4 characters.");
+  const subtitleInvalid = identityValidationErrors.includes("Series subtitle must be at least 8 characters.");
+  const descriptionInvalid = identityValidationErrors.includes("Series description must be at least 20 characters.");
   const availableLocaleOptions = useMemo(
     () => LOCALE_OPTIONS.filter((locale) => !draft.locales.some((variant) => variant.code === locale.code)),
     [draft.locales],
@@ -1136,15 +1193,34 @@ export default function SeriesBuilderPage() {
             <div className="mt-5 grid gap-4 lg:grid-cols-2">
               <div>
                 <FieldLabel>Series title</FieldLabel>
-                <TextInput value={draft.title} onChange={(title) => setDraft((current) => ({ ...current, title }))} />
+                <TextInput
+                  value={draft.title}
+                  onBlur={() => setIdentityTouched((current) => ({ ...current, title: true }))}
+                  onChange={(title) => setDraft((current) => ({ ...current, title }))}
+                  error={identityTouched.title && titleInvalid}
+                  helperText={identityTouched.title && titleInvalid ? "Series title must be at least 4 characters." : " "}
+                />
               </div>
               <div>
                 <FieldLabel>Subtitle</FieldLabel>
-                <TextInput value={draft.subtitle} onChange={(subtitle) => setDraft((current) => ({ ...current, subtitle }))} />
+                <TextInput
+                  value={draft.subtitle}
+                  onBlur={() => setIdentityTouched((current) => ({ ...current, subtitle: true }))}
+                  onChange={(subtitle) => setDraft((current) => ({ ...current, subtitle }))}
+                  error={identityTouched.subtitle && subtitleInvalid}
+                  helperText={identityTouched.subtitle && subtitleInvalid ? "Series subtitle must be at least 8 characters." : " "}
+                />
               </div>
               <div className="lg:col-span-2">
                 <FieldLabel>Description</FieldLabel>
-                <TextArea value={draft.description} onChange={(description) => setDraft((current) => ({ ...current, description }))} rows={4} />
+                <TextArea
+                  value={draft.description}
+                  onBlur={() => setIdentityTouched((current) => ({ ...current, description: true }))}
+                  onChange={(description) => setDraft((current) => ({ ...current, description }))}
+                  rows={4}
+                  error={identityTouched.description && descriptionInvalid}
+                  helperText={identityTouched.description && descriptionInvalid ? "Series description must be at least 20 characters." : " "}
+                />
               </div>
               <div>
                 <FieldLabel>Key scripture or theme</FieldLabel>
