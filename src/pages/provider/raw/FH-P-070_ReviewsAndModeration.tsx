@@ -980,7 +980,7 @@ function PreviewCanvas({
             <div className="rounded-[24px] bg-[var(--fh-surface)] dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
               <div className="flex items-center justify-between gap-2">
                 <div className="text-[12px] font-extrabold text-faith-ink dark:text-slate-100">Review card</div>
-                <Pill tone={review.sentiment === 'Negative' ? 'accent' : 'good'}>{review.rating}.0?</Pill>
+                <Pill tone={review.sentiment === 'Negative' ? 'accent' : 'good'}>{review.rating}.0</Pill>
               </div>
               <div className="mt-3 text-[13px] font-bold text-faith-ink dark:text-slate-100">{review.title}</div>
               <div className="mt-2 text-[12px] leading-relaxed text-slate-700 dark:text-slate-300">"{review.excerpt}"</div>
