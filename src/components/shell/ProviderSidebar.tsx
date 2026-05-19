@@ -111,15 +111,26 @@ export function ProviderSidebar({
       groups: getProviderSidebarGroupsBySection(section),
     }))
     .filter((group) => group.groups.length > 0);
-  const primarySections = sections.filter((group) => PRIORITY_SECTIONS.has(group.section));
-  const secondarySections = sections.filter((group) => !PRIORITY_SECTIONS.has(group.section));
-  const displayedSections = showAllSections ? [...primarySections, ...secondarySections] : primarySections;
+  const primarySections = useMemo(
+    () => sections.filter((group) => PRIORITY_SECTIONS.has(group.section)),
+    [sections]
+  );
+  const secondarySections = useMemo(
+    () => sections.filter((group) => !PRIORITY_SECTIONS.has(group.section)),
+    [sections]
+  );
   const activeSection = useMemo(() => {
     const activePage = providerPages.find(
       (page) => page.path === location.pathname || Boolean(page.aliases?.includes(location.pathname)),
     );
     return activePage?.section;
   }, [location.pathname]);
+  const displayedSections = useMemo(() => {
+    if (showAllSections) return [...primarySections, ...secondarySections];
+    if (!activeSection || PRIORITY_SECTIONS.has(activeSection)) return primarySections;
+    const activeSecondary = secondarySections.find((group) => group.section === activeSection);
+    return activeSecondary ? [...primarySections, activeSecondary] : primarySections;
+  }, [activeSection, primarySections, secondarySections, showAllSections]);
 
   useEffect(() => {
     if (!activeSection) return;
@@ -285,6 +296,7 @@ export function ProviderSidebar({
                               <ListItemButton
                                 component={RouterLink}
                                 to={page.path}
+                                aria-current={active ? 'page' : undefined}
                                 onClick={() => {
                                   trackSidebarClick({
                                     section: group.label,
@@ -336,6 +348,7 @@ export function ProviderSidebar({
                                         key={`${group.section}-${child.key}`}
                                         component={RouterLink}
                                         to={child.path}
+                                        aria-current={childActive ? 'page' : undefined}
                                         onClick={() => {
                                           trackSidebarClick({
                                             section: group.label,
@@ -402,6 +415,7 @@ export function ProviderSidebar({
                       <ListItemButton
                         component={RouterLink}
                         to={page.path}
+                        aria-current={active ? 'page' : undefined}
                         onClick={() => {
                           trackSidebarClick({
                             section: group.label,
@@ -473,6 +487,7 @@ export function ProviderSidebar({
                                 key={child.key}
                                 component={RouterLink}
                                 to={child.path}
+                                aria-current={childActive ? 'page' : undefined}
                                 onClick={() => {
                                   trackSidebarClick({
                                     section: group.label,
