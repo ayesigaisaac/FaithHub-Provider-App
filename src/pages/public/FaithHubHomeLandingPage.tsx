@@ -40,8 +40,8 @@ const fadeUp = {
 const brandMessaging = {
   productName: "FaithHub",
   poweredBy: "Powered by EVzone",
-  heroLabel: "Faith Streaming Ecosystem",
-  heroTitle: "One provider workspace for livestreaming, prayer, worship, and community care.",
+  heroLabel: "Provider Ministry Platform",
+  heroTitle: "Run livestream, prayer, teachings, and care from one provider workspace.",
   heroBody:
     "FaithHub helps provider teams run daily ministry operations in one place: stream services, host prayer rooms, publish teachings, coordinate community follow-up, and keep trusted workflows moving without tool-switching.",
   platformSectionBody:
@@ -272,7 +272,7 @@ const providerProfiles: ProviderProfileCard[] = [
   {
     id: "profile-1",
     ministry: "Restoration House Global",
-    region: "Kampala • Nairobi • Online",
+    region: "Kampala | Nairobi | Online",
     introVideoLabel: "Welcome from Lead Pastor",
     schedule: "Sun 9:00 AM + Wed 7:30 PM",
     specialties: ["Prayer & Intercession", "Family Discipleship", "Youth Worship"],
@@ -282,7 +282,7 @@ const providerProfiles: ProviderProfileCard[] = [
   {
     id: "profile-2",
     ministry: "Riverlight Worship Collective",
-    region: "Lagos • London • Online",
+    region: "Lagos | London | Online",
     introVideoLabel: "Worship Vision Reel",
     schedule: "Fri 8:00 PM + Sun 10:30 AM",
     specialties: ["Live Worship Nights", "Creative Arts", "Global Prayer Rooms"],
@@ -292,7 +292,7 @@ const providerProfiles: ProviderProfileCard[] = [
   {
     id: "profile-3",
     ministry: "Hope City Prayer Network",
-    region: "Johannesburg • Cape Town • Online",
+    region: "Johannesburg | Cape Town | Online",
     introVideoLabel: "Prayer Network Intro",
     schedule: "Daily 6:00 AM + 9:00 PM",
     specialties: ["24/7 Prayer Chains", "Counseling Triage", "Care Follow-up"],
@@ -787,7 +787,7 @@ export default function FaithHubHomeLandingPageV3Fixed() {
                   navigateProvider("/faithhub/provider/onboarding");
                 }}
               >
-                Start provider workspace
+                Start provider onboarding
                 <ArrowRight className="h-5 w-5" />
               </CtaButton>
               <CtaButton
@@ -812,6 +812,12 @@ export default function FaithHubHomeLandingPageV3Fixed() {
                 <Play className="h-5 w-5" />
                 Watch live flow
               </CtaButton>
+            </div>
+
+            <div className="mt-5 grid gap-2 text-sm font-semibold text-slate-600 sm:grid-cols-3">
+              <div className="rounded-2xl border border-slate-200/80 bg-white/70 px-3 py-2">1. Set up ministry profile</div>
+              <div className="rounded-2xl border border-slate-200/80 bg-white/70 px-3 py-2">2. Launch first live moment</div>
+              <div className="rounded-2xl border border-slate-200/80 bg-white/70 px-3 py-2">3. Route prayer follow-up</div>
             </div>
 
             <div className="mt-8 flex flex-wrap gap-3">
