@@ -869,7 +869,7 @@ function buildInitialVariants(sourceType: SourceType): Record<LocaleKey, LocaleV
     },
     fr: {
       headline: `${subjectRoot} • Rejoignez maintenant`,
-      body: "Ce message est localisÃ© pour le bon moment, le bon public, et le bon rÃ©sultat ministÃ©riel - participation, replay, don, inscription ou promotion.",
+      body: "Ce message est localise pour le bon moment, le bon public, et le bon resultat ministeriel - participation, replay, don, inscription ou promotion.",
       cta: "Ouvrir dans FaithHub Provider",
       deepLink: "faithhub://live/sunday-encounter?locale=fr",
     },

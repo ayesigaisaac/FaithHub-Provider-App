@@ -336,8 +336,8 @@ const DEFAULT_LOCALES: LocaleVariant[] = [
   },
   {
     code: "fr-FR",
-    title: "Vivre le chemin de l'espÃ©rance",
-    description: "Une sÃ©rie de six semaines sur l'espÃ©rance, la guÃ©rison et le tÃ©moignage.",
+    title: "Vivre le chemin de l'esperance",
+    description: "Une serie de six semaines sur l'esperance, la guerison et le temoignage.",
     artworkVariant: "Hero C · French",
     notesState: "Draft",
   },

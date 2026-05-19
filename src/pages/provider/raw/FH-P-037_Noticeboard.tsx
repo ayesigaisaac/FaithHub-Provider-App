@@ -1198,7 +1198,7 @@ export default function FaithHubNoticeboardPage() {
                   {profileName}
                 </div>
                 <div className="mt-2 text-[12px] leading-relaxed text-faith-slate">
-                  {profileWorkspace} Â· {profileRole} notice publishing with campus, audience,
+                  {profileWorkspace} | {profileRole} notice publishing with campus, audience,
                   language, and safety routing.
                 </div>
                 <div className="mt-3">
