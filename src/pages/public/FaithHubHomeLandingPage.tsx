@@ -1080,7 +1080,7 @@ export default function FaithHubHomeLandingPageV3Fixed() {
               <div className="rounded-2xl bg-[var(--fh-brand)]/10 p-3 text-[var(--fh-brand)]"><ShieldCheck className="h-5 w-5" /></div>
               <div className="text-xl font-black">High trust by design</div>
             </div>
-            <p className="mt-4 text-sm leading-7 text-slate-600">FaithHub is designed for quality, moderation, role control, approvals, audit visibility, and thoughtful experiences across sensitive faith and community contexts.</p>
+            <p className="mt-4 text-sm leading-7 text-slate-600">FaithHub is designed for quality moderation, provider workflow controls, approvals, audit visibility, and thoughtful experiences across sensitive faith and community contexts.</p>
           </div>
         </motion.div>
       </section>
@@ -1138,7 +1138,7 @@ export default function FaithHubHomeLandingPageV3Fixed() {
                     className="ds-btn ds-btn--outline rounded-xl px-3 py-2 text-xs font-bold"
                     onClick={() => raiseHandForPrayer(stream.id)}
                   >
-                    Raise hand · {(engagementState.streamRaisedHands[stream.id] ?? 0).toLocaleString()}
+                    Raise hand | {(engagementState.streamRaisedHands[stream.id] ?? 0).toLocaleString()}
                   </button>
                   <button
                     type="button"
@@ -1146,7 +1146,7 @@ export default function FaithHubHomeLandingPageV3Fixed() {
                     className="ds-btn ds-btn--secondary rounded-xl px-3 py-2 text-xs font-bold"
                     onClick={() => sendPrayerRequest(stream.id)}
                   >
-                    Prayer request · {(engagementState.streamPrayerRequestCounts[stream.id] ?? 0).toLocaleString()}
+                    Prayer request | {(engagementState.streamPrayerRequestCounts[stream.id] ?? 0).toLocaleString()}
                   </button>
                 </div>
                 <div className="mt-3 rounded-2xl border border-slate-200 bg-slate-50 p-3">
@@ -1261,7 +1261,7 @@ export default function FaithHubHomeLandingPageV3Fixed() {
                       className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold text-slate-700 transition hover:bg-slate-100"
                       onClick={() => reactToStream(stream.id)}
                     >
-                      React · {(engagementState.streamReactionCounts[stream.id] ?? 0).toLocaleString()}
+                      React | {(engagementState.streamReactionCounts[stream.id] ?? 0).toLocaleString()}
                     </button>
                     <button
                       type="button"
@@ -1269,7 +1269,7 @@ export default function FaithHubHomeLandingPageV3Fixed() {
                       className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold text-slate-700 transition hover:bg-slate-100"
                       onClick={() => interactWithStream(stream.id)}
                     >
-                      Interact · {(engagementState.streamInteractionCounts[stream.id] ?? 0).toLocaleString()}
+                      Interact | {(engagementState.streamInteractionCounts[stream.id] ?? 0).toLocaleString()}
                     </button>
                   </div>
                 </div>
@@ -1480,7 +1480,7 @@ export default function FaithHubHomeLandingPageV3Fixed() {
                     navigateProvider("/faithhub/provider/onboarding");
                   }}
                 >
-                  Get started
+                  Start provider onboarding
                 </CtaButton>
                 <CtaButton
                   variant="outline"
@@ -1490,7 +1490,7 @@ export default function FaithHubHomeLandingPageV3Fixed() {
                     navigateProvider("/faithhub/provider/dashboard");
                   }}
                 >
-                  Book a demo
+                  Open provider dashboard
                 </CtaButton>
               </div>
             </div>
