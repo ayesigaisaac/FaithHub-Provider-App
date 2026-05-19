@@ -1370,12 +1370,12 @@ export default function EpisodeBuilderPage() {
                     </div>
                   </div>
 
-                  <div className="flex gap-2">
+                  <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row">
                     <input
                       value={newOutcome}
                       onChange={(event) => setNewOutcome(event.target.value)}
                       placeholder="Add outcome"
-                      className="w-[220px] rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] text-faith-ink outline-none focus:ring-2 focus:ring-emerald-200"
+                      className="w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] text-faith-ink outline-none focus:ring-2 focus:ring-emerald-200 sm:w-[220px]"
                     />
                     <PrimaryButton tone="orange" onClick={addTeachingOutcome}>
                       <Plus className="h-4 w-4" /> Add
