@@ -1,4 +1,4 @@
-// @ts-nocheck
+﻿// @ts-nocheck
 
 "use client";
 
@@ -37,7 +37,7 @@ import {
 } from "@/features/teachings/teachingFlowStore";
 
 /**
- * Provider � Episode Builder
+ * Provider - Episode Builder
  * -----------------------------------
  * Premium provider page for shaping an episode inside a Series while still
  * giving it its own live, replay, resource, and audience journey.
@@ -69,7 +69,7 @@ const PRESET_BLUEPRINTS = [
   {
     id: "blueprint-sermon",
     title: "Standard sermon blueprint",
-    subtitle: "Hook ? scripture ? teaching core ? response ? close.",
+    subtitle: "Hook - scripture - teaching core - response - close.",
     accent: "green" as const,
   },
   {
@@ -253,7 +253,7 @@ const DEFAULT_LIVE_ATTACHMENTS: LiveAttachment[] = [
     id: "live-1",
     label: "Episode preview room",
     variant: "Preview session",
-    startLabel: "Thu � 18:30",
+    startLabel: "Thu - 18:30",
     language: "English",
     destination: "Primary + YouTube",
     status: "Ready",
@@ -262,7 +262,7 @@ const DEFAULT_LIVE_ATTACHMENTS: LiveAttachment[] = [
     id: "live-2",
     label: "Main Sunday broadcast",
     variant: "Main live",
-    startLabel: "Sun � 09:00",
+    startLabel: "Sun - 09:00",
     language: "English",
     destination: "Primary + Instagram",
     status: "Scheduled",
@@ -271,7 +271,7 @@ const DEFAULT_LIVE_ATTACHMENTS: LiveAttachment[] = [
     id: "live-3",
     label: "Swahili translated follow-up",
     variant: "Translated session",
-    startLabel: "Sun � 13:00",
+    startLabel: "Sun - 13:00",
     language: "Swahili",
     destination: "Primary only",
     status: "Draft",
@@ -657,7 +657,7 @@ function EpisodePreview({
                   <div className="text-[11px] font-black uppercase tracking-[0.16em] text-faith-slate">Next live</div>
                   <div className="mt-2 text-[14px] font-bold text-faith-ink">{nextLive?.label || "Live attachment pending"}</div>
                   <div className="mt-1 text-[11px] text-faith-slate">
-                    {nextLive ? `${nextLive.variant} � ${nextLive.startLabel} � ${nextLive.language}` : "Attach preview and main live sessions."}
+                    {nextLive ? `${nextLive.variant} - ${nextLive.startLabel} - ${nextLive.language}` : "Attach preview and main live sessions."}
                   </div>
                 </div>
 
@@ -681,7 +681,7 @@ function EpisodePreview({
               </div>
             </div>
             <div className="absolute bottom-4 left-4 right-4 rounded-2xl border border-emerald-200 bg-emerald-50 px-3 py-2 text-[11px] font-semibold text-emerald-700">
-              Episode readiness � {readinessScore}% complete
+              Episode readiness - {readinessScore}% complete
             </div>
           </div>
         </div>
@@ -704,7 +704,7 @@ function EpisodePreview({
           </div>
           <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
             <div className="text-[10px] font-black uppercase tracking-[0.18em] text-white/70">
-              {draft.parentSeriesTitle} � Week {draft.episodeNumber}
+              {draft.parentSeriesTitle} - Week {draft.episodeNumber}
             </div>
             <div className="mt-2 text-[34px] font-black leading-[1.04]">{draft.title}</div>
             <div className="mt-2 max-w-[85%] text-[14px] text-white/85">{draft.focusStatement}</div>
@@ -740,7 +740,7 @@ function EpisodePreview({
               <div className="text-[10px] font-black uppercase tracking-[0.16em] text-faith-slate">Primary live</div>
               <div className="mt-2 text-[13px] font-bold text-faith-ink">{nextLive?.label || "Main live pending"}</div>
               <div className="mt-1 text-[11px] text-faith-slate">
-                {nextLive ? `${nextLive.startLabel} � ${nextLive.destination} � ${nextLive.status}` : "Attach live session details."}
+                {nextLive ? `${nextLive.startLabel} - ${nextLive.destination} - ${nextLive.status}` : "Attach live session details."}
               </div>
             </div>
 
@@ -877,12 +877,12 @@ export default function EpisodeBuilderPage() {
 
   const [draft, setDraft] = useState<EpisodeDraft>({
     parentSeriesTitle: "Practicing the Way of Hope",
-    seriesArc: "Renewal ? Endurance ? Healing ? Community ? Witness",
+    seriesArc: "Renewal - Endurance - Healing - Community - Witness",
     episodeNumber: 2,
-    title: "Week 2 � Hope in the Wilderness",
+    title: "Week 2 - Hope in the Wilderness",
     focusStatement:
       "Help the audience understand how God forms endurance, trust, and practical hope in seasons of pressure.",
-    scripture: "Exodus 16 � Romans 5 � James 1",
+    scripture: "Exodus 16 - Romans 5 - James 1",
     teachingOutcomes: [
       "Name the spiritual purpose of wilderness seasons.",
       "Recognize two practical responses to pressure and delay.",
@@ -1053,7 +1053,7 @@ export default function EpisodeBuilderPage() {
           id: `live-${Math.random().toString(16).slice(2, 8)}`,
           label: "Follow-up Q&A room",
           variant: "Follow-up Q&A",
-          startLabel: "Mon � 19:00",
+          startLabel: "Mon - 19:00",
           language: "English",
           destination: "Primary only",
           status: "Draft",
@@ -1505,7 +1505,7 @@ export default function EpisodeBuilderPage() {
                     <div className="mt-3 text-[14px] font-black text-faith-ink">{session.label}</div>
                     <div className="mt-1 text-[12px] text-faith-slate">{session.variant}</div>
                     <div className="mt-3 rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3 text-[12px] text-slate-700">
-                      {session.startLabel} � {session.destination}
+                      {session.startLabel} - {session.destination}
                     </div>
                   </div>
                 ))}
@@ -1549,7 +1549,7 @@ export default function EpisodeBuilderPage() {
                         <div>
                           <div className="text-[13px] font-black text-faith-ink">{resource.title}</div>
                           <div className="mt-1 text-[12px] text-faith-slate">
-                            {resource.kind} � {resource.visibility}
+                            {resource.kind} - {resource.visibility}
                           </div>
                         </div>
                         <Pill tone={resource.status === "Ready" ? "good" : resource.status === "Needs review" ? "warn" : "neutral"}>
@@ -1999,6 +1999,8 @@ export default function EpisodeBuilderPage() {
     </div>
   );
 }
+
+
 
 
 
