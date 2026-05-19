@@ -70,7 +70,9 @@ export default function ProviderOnboardingPage() {
   const [step, setStep] = useState<StepIndex>(0);
   const [notice, setNotice] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitIntent, setSubmitIntent] = useState<'submit' | 'submit-and-continue' | null>(null);
   const [hasAutoResumed, setHasAutoResumed] = useState(false);
+  const [touched, setTouched] = useState<Record<string, boolean>>({});
 
   const validation = useMemo(() => validateDraft(onboardingDraft), [onboardingDraft]);
   const completion = useMemo(() => {
@@ -102,6 +104,10 @@ export default function ProviderOnboardingPage() {
       setOnboardingStatus('in_progress');
     }
     setNotice(null);
+  };
+
+  const markTouched = (key: keyof ProviderOnboardingDraft) => {
+    setTouched((prev) => (prev[key] ? prev : { ...prev, [key]: true }));
   };
 
   const stepGuidance = useMemo(() => {
@@ -151,6 +157,7 @@ export default function ProviderOnboardingPage() {
       return;
     }
 
+    setSubmitIntent('submit');
     setIsSubmitting(true);
     try {
       await submitOnboarding();
@@ -159,6 +166,7 @@ export default function ProviderOnboardingPage() {
       setNotice(error instanceof Error ? error.message : 'Unable to submit onboarding.');
     } finally {
       setIsSubmitting(false);
+      setSubmitIntent(null);
     }
   };
 
@@ -171,6 +179,7 @@ export default function ProviderOnboardingPage() {
       navigate('/faithhub/provider/profile-settings');
       return;
     }
+    setSubmitIntent('submit-and-continue');
     setIsSubmitting(true);
     try {
       await submitOnboarding();
@@ -180,6 +189,7 @@ export default function ProviderOnboardingPage() {
       setNotice(error instanceof Error ? error.message : 'Unable to submit onboarding.');
     } finally {
       setIsSubmitting(false);
+      setSubmitIntent(null);
     }
   };
 
@@ -289,7 +299,9 @@ export default function ProviderOnboardingPage() {
                       label="Organization name"
                       value={onboardingDraft.organizationName}
                       onChange={(event) => updateDraft('organizationName', event.target.value)}
-                      error={!validation.organizationName && onboardingDraft.organizationName.length > 0}
+                      onBlur={() => markTouched('organizationName')}
+                      error={!validation.organizationName && Boolean(touched.organizationName)}
+                      helperText={!validation.organizationName && Boolean(touched.organizationName) ? 'Organization name must be at least 2 characters.' : ' '}
                     />
                   </Grid>
                   <Grid item xs={12} md={6}>
@@ -320,7 +332,9 @@ export default function ProviderOnboardingPage() {
                       label="Primary contact name"
                       value={onboardingDraft.contactName}
                       onChange={(event) => updateDraft('contactName', event.target.value)}
-                      error={!validation.contactName && onboardingDraft.contactName.length > 0}
+                      onBlur={() => markTouched('contactName')}
+                      error={!validation.contactName && Boolean(touched.contactName)}
+                      helperText={!validation.contactName && Boolean(touched.contactName) ? 'Contact name must be at least 2 characters.' : ' '}
                     />
                   </Grid>
                   <Grid item xs={12} md={4}>
@@ -331,7 +345,9 @@ export default function ProviderOnboardingPage() {
                       label="Contact email"
                       value={onboardingDraft.contactEmail}
                       onChange={(event) => updateDraft('contactEmail', event.target.value)}
-                      error={!validation.contactEmail && onboardingDraft.contactEmail.length > 0}
+                      onBlur={() => markTouched('contactEmail')}
+                      error={!validation.contactEmail && Boolean(touched.contactEmail)}
+                      helperText={!validation.contactEmail && Boolean(touched.contactEmail) ? 'Enter a valid email address.' : ' '}
                     />
                   </Grid>
                   <Grid item xs={12} md={4}>
@@ -341,7 +357,9 @@ export default function ProviderOnboardingPage() {
                       label="Contact phone"
                       value={onboardingDraft.contactPhone}
                       onChange={(event) => updateDraft('contactPhone', event.target.value)}
-                      error={!validation.contactPhone && onboardingDraft.contactPhone.length > 0}
+                      onBlur={() => markTouched('contactPhone')}
+                      error={!validation.contactPhone && Boolean(touched.contactPhone)}
+                      helperText={!validation.contactPhone && Boolean(touched.contactPhone) ? 'Phone number must be at least 7 characters.' : ' '}
                     />
                   </Grid>
                 </Grid>
@@ -365,7 +383,9 @@ export default function ProviderOnboardingPage() {
                       label="City"
                       value={onboardingDraft.city}
                       onChange={(event) => updateDraft('city', event.target.value)}
-                      error={!validation.city && onboardingDraft.city.length > 0}
+                      onBlur={() => markTouched('city')}
+                      error={!validation.city && Boolean(touched.city)}
+                      helperText={!validation.city && Boolean(touched.city) ? 'City must be at least 2 characters.' : ' '}
                     />
                   </Grid>
                   <Grid item xs={12} md={4}>
@@ -384,8 +404,9 @@ export default function ProviderOnboardingPage() {
                       placeholder="https://example.org"
                       value={onboardingDraft.website}
                       onChange={(event) => updateDraft('website', event.target.value)}
-                      error={!validation.website}
-                      helperText={!validation.website ? 'Use a valid website URL.' : 'Optional'}
+                      onBlur={() => markTouched('website')}
+                      error={!validation.website && Boolean(touched.website)}
+                      helperText={!validation.website && Boolean(touched.website) ? 'Use a valid website URL.' : 'Optional'}
                     />
                   </Grid>
                   <Grid item xs={12}>
@@ -397,8 +418,9 @@ export default function ProviderOnboardingPage() {
                       label="Mission summary"
                       value={onboardingDraft.mission}
                       onChange={(event) => updateDraft('mission', event.target.value)}
-                      error={!validation.mission && onboardingDraft.mission.length > 0}
-                      helperText="At least 20 characters"
+                      onBlur={() => markTouched('mission')}
+                      error={!validation.mission && Boolean(touched.mission)}
+                      helperText={!validation.mission && Boolean(touched.mission) ? 'At least 20 characters required.' : 'At least 20 characters'}
                     />
                   </Grid>
                 </Grid>
@@ -436,10 +458,10 @@ export default function ProviderOnboardingPage() {
                 ) : (
                   <>
                     <Button variant="outlined" disabled={!canSubmit || isSubmitting} onClick={submit}>
-                      {isSubmitting ? 'Submitting...' : 'Submit onboarding'}
+                      {isSubmitting && submitIntent === 'submit' ? 'Submitting...' : 'Submit onboarding'}
                     </Button>
                     <Button variant="contained" color="success" disabled={!canSubmit || isSubmitting} onClick={submitAndContinueToProfile}>
-                      {isSubmitting ? 'Submitting...' : 'Submit and continue to profile'}
+                      {isSubmitting && submitIntent === 'submit-and-continue' ? 'Submitting...' : 'Submit and continue to profile'}
                     </Button>
                   </>
                 )}
