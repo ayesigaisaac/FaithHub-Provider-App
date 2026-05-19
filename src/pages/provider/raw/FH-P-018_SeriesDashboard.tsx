@@ -752,9 +752,20 @@ function SeriesLandingPreview({
           <div className="absolute left-4 right-4 bottom-4">
             <div className="text-[15px] font-black tracking-tight">{series.title}</div>
             <div className="mt-2 max-w-[90%] text-[12px] leading-relaxed text-white/90">{series.subtitle}</div>
-            <div className="mt-4 flex flex-wrap items-center gap-2">
-              <button className="rounded-full bg-[var(--fh-brand)] px-4 py-2 text-[12px] font-black text-white" onClick={() => safeNav("/faithhub/provider/series-dashboard")}>Follow series</button>
-              <button className="rounded-full bg-[var(--fh-accent)] px-4 py-2 text-[12px] font-black text-white" onClick={() => safeNav("/faithhub/provider/live-dashboard")}>Watch trailer</button>
+            <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center">
+              <PrimaryButton
+                tone="green"
+                className="w-full justify-center sm:w-auto"
+                onClick={() => safeNav(ROUTES.seriesBuilder)}
+              >
+                Open series
+              </PrimaryButton>
+              <PrimaryButton
+                className="w-full justify-center sm:w-auto"
+                onClick={() => safeNav(ROUTES.liveDashboard)}
+              >
+                Open live dashboard
+              </PrimaryButton>
             </div>
           </div>
         </div>
@@ -1146,11 +1157,11 @@ export default function SeriesDashboardPage() {
                           </div>
                         </div>
 
-                        <div className="flex items-center gap-2 xl:flex-col xl:items-stretch xl:justify-start shrink-0">
-                          <SoftButton onClick={() => safeNav(`${ROUTES.seriesBuilder}?seriesId=${series.id}`)}>
+                        <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:items-center xl:w-auto xl:flex-col xl:items-stretch xl:justify-start shrink-0">
+                          <SoftButton className="w-full justify-center sm:w-auto" onClick={() => safeNav(`${ROUTES.seriesBuilder}?seriesId=${series.id}`)}>
                             Open series
                           </SoftButton>
-                          <PrimaryButton tone="green" onClick={() => safeNav(`${ROUTES.episodeBuilder}?seriesId=${series.id}`)}>
+                          <PrimaryButton className="w-full justify-center sm:w-auto" tone="green" onClick={() => safeNav(`${ROUTES.episodeBuilder}?seriesId=${series.id}`)}>
                             <Plus className="h-4 w-4" /> New Episode
                           </PrimaryButton>
                         </div>

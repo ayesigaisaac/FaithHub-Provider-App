@@ -228,6 +228,8 @@ export function ProviderSidebar({
                       return (
                     <ListItemButton
                       onClick={() => toggleSection(group.section)}
+                      aria-label={`${openSections[group.section] ? 'Collapse' : 'Expand'} ${group.label} section`}
+                      aria-expanded={Boolean(openSections[group.section])}
                       sx={{
                         px: 1,
                         py: 0.5,
@@ -551,6 +553,8 @@ export function ProviderSidebar({
               <Box sx={{ pt: 0.6 }}>
                 <ListItemButton
                   onClick={() => setShowAllSections((prev) => !prev)}
+                  aria-label={showAllSections ? 'Show core navigation sections only' : `Show additional navigation sections (${secondarySections.length})`}
+                  aria-expanded={showAllSections}
                   sx={{
                     px: 1,
                     py: 0.65,
