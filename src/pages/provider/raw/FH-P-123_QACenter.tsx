@@ -805,10 +805,10 @@ export default function FHP123QACenter() {
             <Card title="QA preview rail" subtitle="See how the selected surface would appear in desktop and mobile launch checks." right={<Pill tone="good">{selectedResult?.confidence ?? 0}% confidence</Pill>}>
               <div className="flex flex-wrap gap-2">
                 <Btn onClick={() => setPreviewMode("desktop")} left={<MonitorPlay className="h-4 w-4" />}>
-                  {previewMode === "desktop" ? "Desktop preview ?" : "Desktop preview"}
+                  {previewMode === "desktop" ? "Desktop preview active" : "Desktop preview"}
                 </Btn>
                 <Btn onClick={() => setPreviewMode("mobile")} left={<Smartphone className="h-4 w-4" />}>
-                  {previewMode === "mobile" ? "Mobile preview ?" : "Mobile preview"}
+                  {previewMode === "mobile" ? "Mobile preview active" : "Mobile preview"}
                 </Btn>
               </div>
 

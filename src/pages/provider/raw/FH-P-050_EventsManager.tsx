@@ -992,11 +992,11 @@ function EventListItem({
           </div>
           <div className="mt-2 flex flex-wrap items-center gap-2 text-[11px] text-faith-slate">
             <span>{fmtShortDate(event.startISO)}</span>
-            <span>?</span>
+            <span>-</span>
             <span>{event.campus}</span>
-            <span>?</span>
+            <span>-</span>
             <span>{event.ticketingState}</span>
-            <span>?</span>
+            <span>-</span>
             <span>
               {fmtInt(event.registrations)} / {fmtInt(event.capacity)} registered
             </span>
@@ -1075,7 +1075,7 @@ function EventPreviewSurface({
           </div>
           <div className="mt-2 flex flex-wrap items-center gap-2 text-[11px] text-white/85">
             <span>{fmtShortDate(event.startISO)}</span>
-            <span>?</span>
+            <span>-</span>
             <span>{event.locationLabel}</span>
           </div>
         </div>
@@ -1418,7 +1418,7 @@ export default function FaithHubEventsManagerPage() {
     const clone: EventRecord = {
       ...selectedEvent,
       id: `EV-${Math.random().toString(16).slice(2, 6).toUpperCase()}`,
-      title: `${selectedEvent.title} ? Copy`,
+      title: `${selectedEvent.title} - Copy`,
       status: "Draft",
       registrations: 0,
       waitlist: 0,
@@ -1483,7 +1483,7 @@ export default function FaithHubEventsManagerPage() {
 
   const copyPlanningCard = async () => {
     if (!selectedEvent) return;
-    const summary = `${selectedEvent.title}\n${fmtLocal(selectedEvent.startISO)}\n${selectedEvent.locationLabel}\n${selectedEvent.ticketingState} ? ${selectedEvent.registrations}/${selectedEvent.capacity} registered`;
+    const summary = `${selectedEvent.title}\n${fmtLocal(selectedEvent.startISO)}\n${selectedEvent.locationLabel}\n${selectedEvent.ticketingState} - ${selectedEvent.registrations}/${selectedEvent.capacity} registered`;
     try {
       await navigator.clipboard.writeText(summary);
       setToast("Planning card copied.");
@@ -1498,13 +1498,13 @@ export default function FaithHubEventsManagerPage() {
       "FAITHHUB EVENT RUN SHEET",
       "------------------------",
       `Event: ${selectedEvent.title}`,
-      `Window: ${fmtLocal(selectedEvent.startISO)} ??? ? ${fmtLocal(selectedEvent.endISO)}`,
+      `Window: ${fmtLocal(selectedEvent.startISO)} - ${fmtLocal(selectedEvent.endISO)}`,
       `Venue: ${selectedEvent.locationLabel}`,
       `Owner: ${selectedEvent.owner}`,
       `Ticketing: ${selectedEvent.ticketingState}`,
       "",
       "AGENDA",
-      ...selectedEvent.agenda.map((item) => `${item.time} ? ${item.title} (${item.owner})`),
+      ...selectedEvent.agenda.map((item) => `${item.time} - ${item.title} (${item.owner})`),
       "",
       "LOGISTICS",
       ...selectedEvent.logistics.map(
@@ -1658,7 +1658,7 @@ export default function FaithHubEventsManagerPage() {
                       className="px-3 py-2 text-[12px]"
                       disabled={workingAction === "duplicate"}
                     >
-                      {workingAction === "duplicate" ? "Duplicatingâ€¦" : "Duplicate"}
+                      {workingAction === "duplicate" ? "Duplicating..." : "Duplicate"}
                     </Btn>
                   </div>
                 </div>
@@ -1923,7 +1923,7 @@ export default function FaithHubEventsManagerPage() {
                                 {item.title}
                               </div>
                               <div className="text-[11px] text-faith-slate truncate">
-                                {item.owner} ? {item.kind}
+                                {item.owner} - {item.kind}
                               </div>
                             </div>
                             <div className="shrink-0 rounded-full bg-slate-100 dark:bg-slate-800 px-2 py-1 text-[11px] font-bold text-faith-ink dark:text-slate-100">
@@ -1935,7 +1935,7 @@ export default function FaithHubEventsManagerPage() {
                       <div className="mt-3 flex flex-wrap items-center gap-2">
                         {selectedEvent.speakers.map((speaker) => (
                           <Pill key={speaker.id} tone={speaker.confirmed ? "good" : "warn"}>
-                            {speaker.name} ? {speaker.role}
+                            {speaker.name} - {speaker.role}
                           </Pill>
                         ))}
                       </div>
@@ -2212,7 +2212,7 @@ export default function FaithHubEventsManagerPage() {
                   </div>
                   <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] text-faith-slate">
                     <span>Check-in mode: <span className="font-semibold text-faith-ink dark:text-slate-100">{selectedEvent.checkInMode}</span></span>
-                    <span>?</span>
+                    <span>-</span>
                     <span>Waiver: <span className="font-semibold text-faith-ink dark:text-slate-100">{selectedEvent.waiverRequired ? "Required" : "Not required"}</span></span>
                   </div>
                 </div>
@@ -2274,7 +2274,7 @@ export default function FaithHubEventsManagerPage() {
                             {channel.label}
                           </div>
                           <div className="text-[11px] text-faith-slate truncate">
-                            {channel.hint} ? {channel.health}
+                            {channel.hint} - {channel.health}
                           </div>
                         </div>
                         <Toggle
@@ -2348,7 +2348,7 @@ export default function FaithHubEventsManagerPage() {
                                 {line.label}
                               </div>
                               <div className="text-[11px] text-faith-slate">
-                                {line.type} ? {line.status}
+                                {line.type} - {line.status}
                               </div>
                             </div>
                           </div>
@@ -2441,7 +2441,7 @@ export default function FaithHubEventsManagerPage() {
                       onClick={publishEventPlan}
                       disabled={workingAction === "publish"}
                     >
-                      {workingAction === "publish" ? "Publishingâ€¦" : "Mark operationally ready"}
+                    {workingAction === "publish" ? "Publishing..." : "Mark operationally ready"}
                     </Btn>
                     <Btn
                       tone="accent"
