@@ -1,4 +1,4 @@
-// @ts-nocheck
+﻿// @ts-nocheck
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -1139,7 +1139,7 @@ export default function TeachingsDashboardPage() {
     if (!selectedTeaching) return [] as string[];
     const items: string[] = [];
     if (selectedTeaching.type !== "Series") items.push("Open the Standalone Teaching Builder and finish the viewer-facing package.");
-    if (selectedTeaching.liveCount === 0) items.push("Create a linked Live Session so this teaching can enter the full live ? replay ? clips workflow.");
+    if (selectedTeaching.liveCount === 0) items.push("Create a linked Live Session so this teaching can enter the full live -> replay -> clips workflow.");
     if (selectedTeaching.replayCount > 0) items.push("Open Replays & Clips to generate short discovery moments and push them into Beacon.");
     if (selectedTeaching.beaconReady) items.push("Launch a Beacon campaign while the teaching is still fresh and conversion-ready.");
     if (selectedTeaching.translationDue > 0) items.push("Complete translation variants before the next outreach or replay reminder journey.");
@@ -1702,6 +1702,7 @@ export default function TeachingsDashboardPage() {
     </div>
   );
 }
+
 
 
 

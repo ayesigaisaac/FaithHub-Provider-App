@@ -1,4 +1,4 @@
-// @ts-nocheck
+﻿// @ts-nocheck
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -47,7 +47,7 @@ import { ProviderStatusPill } from "@/components/provider/ProviderStatusPill";
  * Design goals
  * - EVzone Green primary, Orange secondary.
  * - Premium creator-style hierarchy: hero, KPI strip, command center, preview rail, and workflow boards.
- * - Strong emphasis on the Series ??? ? Episodes relationship.
+ * - Strong emphasis on the Series -> Episodes relationship.
  */
 
 const EV_GREEN = "var(--fh-brand)";
@@ -102,7 +102,7 @@ function fmtDate(iso: string) {
 }
 
 function fmtDateTime(iso?: string) {
-  if (!iso) return "�";
+  if (!iso) return "—";
   const d = new Date(iso);
   return d.toLocaleString(undefined, {
     month: "short",
@@ -786,7 +786,7 @@ function SeriesLandingPreview({
                 <div key={episode.id} className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-2 transition-colors">
                   <div className="flex items-center justify-between gap-2">
                     <div className="min-w-0">
-                      <div className="truncate text-[12px] font-bold text-faith-ink dark:text-slate-100">Episode {episode.number} ? {episode.title}</div>
+                      <div className="truncate text-[12px] font-bold text-faith-ink dark:text-slate-100">Episode {episode.number} - {episode.title}</div>
                       <div className="mt-0.5 truncate text-[11px] text-faith-slate">{episode.focus}</div>
                     </div>
                     <Pill text={episode.status} tone={statusTone(episode.status)} />
@@ -915,8 +915,8 @@ export default function SeriesDashboardPage() {
 
       return {
         id: episode.id,
-        title: `Episode ${episode.number} ? ${episode.title}`,
-        detail: detailParts.join(" ? "),
+        title: `Episode ${episode.number} - ${episode.title}`,
+        detail: detailParts.join(" - "),
         status: episode.status,
         tone,
       };
@@ -1298,7 +1298,7 @@ export default function SeriesDashboardPage() {
                         <Workflow className="h-5 w-5" />
                       </div>
                       <div>
-                        <div className="text-[14px] font-bold text-faith-ink dark:text-slate-100">Series ??? ? Episodes rule</div>
+                        <div className="text-[14px] font-bold text-faith-ink dark:text-slate-100">Series {"->"} Episodes rule</div>
                         <div className="mt-1 text-[12px] text-faith-slate">
                           <span className="font-semibold text-faith-ink dark:text-slate-100">{selectedSeries.title}</span> currently holds <span className="font-semibold text-faith-ink dark:text-slate-100">{selectedSeries.episodeCount} episodes</span>. New episodes should be created from this Series context so they inherit the right identity, audience, and workflow connections.
                         </div>
@@ -1417,6 +1417,8 @@ export default function SeriesDashboardPage() {
     </div>
   );
 }
+
+
 
 
 
