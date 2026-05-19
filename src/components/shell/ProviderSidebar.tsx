@@ -136,12 +136,12 @@ export function ProviderSidebar({
     if (!activeSection) return;
     setOpenSections((prev) => {
       if (prev[activeSection]) return prev;
-      return { [activeSection]: true };
+      return { ...prev, [activeSection]: true };
     });
   }, [activeSection]);
 
   const toggleSection = (section: string) => {
-    setOpenSections((prev) => (prev[section] ? {} : { [section]: true }));
+    setOpenSections((prev) => ({ ...prev, [section]: !prev[section] }));
   };
 
   const content = (

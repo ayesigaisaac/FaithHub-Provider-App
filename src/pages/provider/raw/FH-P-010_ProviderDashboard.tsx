@@ -1753,7 +1753,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                   onPublish={() =>
                     runQuickWorkflowAction("publish", () => {
                       trackDashboardEvent("quick_action_completed", { action: "publish" });
-                      safeNav(ROUTES.liveBuilder);
+                      safeNav(ROUTES.teachingsDashboard);
                     })
                   }
                 />
@@ -2086,6 +2086,25 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                   </div>
                 ))}
               </div>
+              {!isWorkflowLoading && filteredRecentTeachings.length === 0 ? (
+                <div className="mt-3 rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-4 py-6 text-center">
+                  <div className="text-[14px] font-bold text-faith-ink">
+                    No published teachings match this filter yet.
+                  </div>
+                  <div className="mt-1 text-[12px] text-slate-700">
+                    Switch filters or open the teachings board to move drafts toward publish-ready status.
+                  </div>
+                  <button
+                    type="button"
+                    aria-label="Open teachings workflow from published empty state"
+                    onClick={() => safeNav(ROUTES.teachingsDashboard)}
+                    className={`ds-btn ds-btn--secondary mt-3 inline-flex h-10 items-center gap-2 rounded-xl px-4 text-[12px] font-bold ${cardFocusRingClass}`}
+                  >
+                    <ArrowRight className="h-4 w-4" />
+                    Open teachings workflow
+                  </button>
+                </div>
+              ) : null}
                 </>
               ) : (
                 <div className="text-[12px] text-slate-700">Section collapsed.</div>
