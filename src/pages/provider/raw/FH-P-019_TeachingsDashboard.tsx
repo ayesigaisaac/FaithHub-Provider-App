@@ -1053,6 +1053,12 @@ export default function TeachingsDashboardPage() {
     filteredTeachings.find((teaching) => teaching.id === selectedId) ||
     filteredTeachings[0] ||
     allTeachings[0];
+  const hasActiveQuery = query.trim().length > 0;
+  const hasActiveFilter = filter !== "all";
+  const emptyStateTitle = hasActiveQuery || hasActiveFilter ? "No teachings match this view" : "No teachings yet";
+  const emptyStateDetail = hasActiveQuery || hasActiveFilter
+    ? "Try a different search phrase or switch filters to broaden results."
+    : "Create your first teaching to start building your provider content workflow.";
 
   useEffect(() => {
     if (!selectedTeaching) return;
@@ -1277,6 +1283,7 @@ export default function TeachingsDashboardPage() {
                       value={query}
                       onChange={(e) => setQuery(e.target.value)}
                       placeholder="Search teachings, speakers, tags, or series"
+                      aria-label="Search teachings"
                       className="w-full bg-transparent text-[13px] text-slate-700 outline-none placeholder:text-faith-slate"
                     />
                   </div>
@@ -1303,6 +1310,8 @@ export default function TeachingsDashboardPage() {
                     key={key}
                     type="button"
                     onClick={() => setFilter(key as FilterKey)}
+                    aria-label={`Filter teachings by ${label}`}
+                    aria-pressed={filter === key}
                     className={cx(
                       "rounded-full border px-3 py-1.5 text-[11px] font-semibold transition-colors",
                       filter === key
@@ -1327,10 +1336,8 @@ export default function TeachingsDashboardPage() {
                 ))}
                 {!filteredTeachings.length ? (
                   <div className="rounded-[24px] border border-dashed border-slate-300 bg-[var(--fh-surface)] px-4 py-10 text-center">
-                    <div className="text-[14px] font-bold text-faith-ink">No teachings match this view</div>
-                    <div className="mt-1 text-[12px] text-faith-slate">
-                      Clear the search or jump straight into a new standalone teaching.
-                    </div>
+                    <div className="text-[14px] font-bold text-faith-ink">{emptyStateTitle}</div>
+                    <div className="mt-1 text-[12px] text-faith-slate">{emptyStateDetail}</div>
                     <div className="mt-4 flex justify-center">
                       <PrimaryButton onClick={() => safeNav(ROUTES.standaloneTeachingBuilder)}>
                         <Plus className="h-4 w-4" /> New Teaching
