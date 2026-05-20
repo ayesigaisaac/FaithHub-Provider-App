@@ -30,7 +30,7 @@ import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * Provider — Donations & Funds
+ * Provider â€” Donations & Funds
  * -------------------------------------
  * Premium giving workspace for FaithHub Provider workspace.
  *
@@ -80,7 +80,7 @@ function fmtInt(n: number) {
   return Intl.NumberFormat(undefined, { maximumFractionDigits: 0 }).format(n);
 }
 
-function fmtCurrency(n: number, currency = "£") {
+function fmtCurrency(n: number, currency = "Â£") {
   return `${currency}${Intl.NumberFormat(undefined, {
     maximumFractionDigits: 0,
   }).format(n)}`;
@@ -357,7 +357,7 @@ const BRIDGE_SEED: BridgeSurface[] = [
     label: "Sunday Morning Live donation moment",
     surface: "Live Session",
     state: "Ready",
-    value: "£12.8k influenced",
+    value: "Â£12.8k influenced",
     hint: "Pinned donor CTA and progress strip inside the sermon run-of-show.",
     ready: true,
   },
@@ -636,7 +636,7 @@ function MetricCard({
   hint?: string;
   tone?: "green" | "orange" | "navy";
 }) {
-  return <KpiTile label={label} value={value} hint={hint} tone={tone} size="compact" />;
+  return <KpiTile label={label} value={value} hint={hint} tone={tone} indicator="none" size="compact" />;
 }
 
 function RegistryRow({
@@ -1327,7 +1327,7 @@ export default function DonationsAndFundsPage() {
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0">
                         <div className="text-sm font-bold text-faith-ink dark:text-slate-50">{item.label}</div>
-                        <div className="mt-1 text-xs text-faith-slate">{item.surface} · {item.hint}</div>
+                        <div className="mt-1 text-xs text-faith-slate">{item.surface} Â· {item.hint}</div>
                       </div>
                       <Pill tone={item.ready ? "good" : "warn"}>{item.state}</Pill>
                     </div>
@@ -1481,7 +1481,7 @@ export default function DonationsAndFundsPage() {
                   <div className="flex items-center justify-between gap-2">
                     <div>
                       <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Finance ownership</div>
-                      <div className="mt-1 text-xs text-faith-slate">{selectedRecord.owner} · {selectedRecord.financeHealth} state</div>
+                      <div className="mt-1 text-xs text-faith-slate">{selectedRecord.owner} Â· {selectedRecord.financeHealth} state</div>
                     </div>
                     <Pill tone={badgeToneForFinance(selectedRecord.financeHealth)}>{selectedRecord.financeHealth}</Pill>
                   </div>

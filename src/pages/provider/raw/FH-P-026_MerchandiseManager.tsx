@@ -1,4 +1,4 @@
-﻿// @ts-nocheck
+// @ts-nocheck
 
 "use client";
 
@@ -647,7 +647,7 @@ function MetricCard({
       value={value}
       hint={hint}
       tone={tone === "light" ? "gray" : tone}
-      size="compact"
+      indicator="none" size="compact"
     />
   );
 }

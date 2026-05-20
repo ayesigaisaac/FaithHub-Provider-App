@@ -1,4 +1,4 @@
-﻿// @ts-nocheck
+// @ts-nocheck
 "use client";
 
 import React, { useMemo, useState } from "react";
@@ -881,7 +881,7 @@ function Card({
 }
 
 function MetricTile({ item }: { item: ProjectMetricCard }) {
-  return <KpiTile label={item.label} value={item.value} hint={item.hint} tone={item.accent} size="compact" />;
+  return <KpiTile label={item.label} value={item.value} hint={item.hint} tone={item.accent} indicator="none" size="compact" />;
 }
 
 function SearchInput({

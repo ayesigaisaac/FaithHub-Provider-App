@@ -1,4 +1,4 @@
-﻿// @ts-nocheck
+// @ts-nocheck
 
 "use client";
 
@@ -826,7 +826,7 @@ function MetricTile({
   value: string;
   hint?: string;
 }) {
-  return <KpiTile label={label} value={value} hint={hint} tone="gray" size="compact" />;
+  return <KpiTile label={label} value={value} hint={hint} tone="gray" indicator="none" size="compact" />;
 }
 
 function TinySparkline({

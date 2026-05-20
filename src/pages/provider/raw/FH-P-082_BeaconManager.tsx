@@ -1,4 +1,4 @@
-﻿// @ts-nocheck
+// @ts-nocheck
 
 "use client";
 
@@ -1051,7 +1051,7 @@ function MetricCard({
   hint?: string;
   tone?: Accent;
 }) {
-  return <KpiTile label={label} value={value} hint={hint} tone={tone} size="compact" />;
+  return <KpiTile label={label} value={value} hint={hint} tone={tone} indicator="none" size="compact" />;
 }
 
 function Card({

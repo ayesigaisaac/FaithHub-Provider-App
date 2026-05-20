@@ -40,7 +40,7 @@ import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 
 /**
- * Provider — Books Manager
+ * Provider â€” Books Manager
  * ---------------------------------
  * Premium Provider-side control surface for books, devotionals, manuals,
  * study guides, and downloadable teaching resources.
@@ -255,9 +255,9 @@ const BOOKS: BookRecord[] = [
     languages: ["English", "Swahili"],
     formats: ["PDF", "ePub", "Audio", "Web Reader"],
     chapters: [
-      { id: "c1", title: "Day 1 · Return with humility", pages: "6 pages" },
-      { id: "c2", title: "Day 2 · Prayer in hidden places", pages: "5 pages" },
-      { id: "c3", title: "Day 3 · Grace for weak days", pages: "6 pages" },
+      { id: "c1", title: "Day 1 Â· Return with humility", pages: "6 pages" },
+      { id: "c2", title: "Day 2 Â· Prayer in hidden places", pages: "5 pages" },
+      { id: "c3", title: "Day 3 Â· Grace for weak days", pages: "6 pages" },
     ],
     versions: [
       { id: "v1", label: "Reader v2.1", type: "Web Reader", status: "Live", sizeLabel: "Responsive" },
@@ -305,7 +305,7 @@ const BOOKS: BookRecord[] = [
       { id: "c3", title: "Budgeting as discipleship", pages: "8 pages" },
     ],
     versions: [
-      { id: "v1", label: "Workbook draft", type: "PDF", status: "Needs export", sizeLabel: "—" },
+      { id: "v1", label: "Workbook draft", type: "PDF", status: "Needs export", sizeLabel: "â€”" },
       { id: "v2", label: "Reader layout", type: "Web Reader", status: "Queued", sizeLabel: "Responsive" },
     ],
     hooks: [
@@ -730,7 +730,7 @@ function MetricCard({
       value={value}
       hint={hint}
       tone={tone === "light" ? "gray" : tone}
-      size="compact"
+      indicator="none" size="compact"
     />
   );
 }
@@ -804,7 +804,7 @@ function BookRow({
           </div>
           <div className="mt-2 flex flex-wrap gap-1.5">
             <TagChip>{book.kind}</TagChip>
-            <TagChip>{book.languages.join(" · ")}</TagChip>
+            <TagChip>{book.languages.join(" Â· ")}</TagChip>
             <TagChip>{book.formats.length} formats</TagChip>
             <TagChip>{book.chapters.length} chapters</TagChip>
           </div>
@@ -831,7 +831,7 @@ function BookRow({
             <div className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-2">
               <div className="text-faith-slate">Revenue</div>
               <div className="mt-1 font-black text-faith-ink dark:text-slate-100">
-                {book.revenue ? money(book.revenue) : "—"}
+                {book.revenue ? money(book.revenue) : "â€”"}
               </div>
             </div>
           </div>
@@ -1001,7 +1001,7 @@ function BookStorefrontPreviewInner({
             Why this book matters
           </div>
           <div className="mt-2 text-[13px] text-faith-slate italic leading-relaxed">
-            “{book.quote}”
+            â€œ{book.quote}â€
           </div>
         </div>
 
@@ -1135,7 +1135,7 @@ export default function BooksManagerPage() {
           <div className="flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
             <div className="text-[13px] text-faith-slate">
               <span className="font-semibold text-faith-ink dark:text-slate-100">Books library pulse:</span>{" "}
-              2 books need translation review • 1 draft still needs cover alt text • 3 published books are ready for Audience Notifications and Beacon handoff.
+              2 books need translation review â€¢ 1 draft still needs cover alt text â€¢ 3 published books are ready for Audience Notifications and Beacon handoff.
             </div>
             <div className="text-[11px] uppercase tracking-[0.16em] text-faith-slate">
               Premium reading operations
@@ -1176,7 +1176,7 @@ export default function BooksManagerPage() {
           />
           <MetricCard
             label="Revenue"
-            value={metrics.revenue ? money(metrics.revenue) : "—"}
+            value={metrics.revenue ? money(metrics.revenue) : "â€”"}
             hint="Paid books, supporter access, and premium unlock signals."
             tone={metricCardTone(5)}
           />
@@ -1270,7 +1270,7 @@ export default function BooksManagerPage() {
                   {selectedBook.title}
                 </div>
                 <div className="mt-1 text-[12px] text-faith-slate">
-                  Owned by {selectedBook.owner} • {selectedBook.campus}
+                  Owned by {selectedBook.owner} â€¢ {selectedBook.campus}
                 </div>
 
                 <div className="mt-4 space-y-2">
@@ -1328,7 +1328,7 @@ export default function BooksManagerPage() {
                           {version.label}
                         </div>
                         <div className="mt-1 text-[11px] text-faith-slate">
-                          {version.type} • {version.sizeLabel}
+                          {version.type} â€¢ {version.sizeLabel}
                         </div>
                       </div>
                       <Pill
@@ -1425,7 +1425,7 @@ export default function BooksManagerPage() {
                     Completion rate
                   </div>
                   <div className="mt-2 text-[20px] font-black text-faith-ink dark:text-slate-100">
-                    {selectedBook.readingStarts ? `${pct(selectedBook.completions, selectedBook.readingStarts)}%` : "—"}
+                    {selectedBook.readingStarts ? `${pct(selectedBook.completions, selectedBook.readingStarts)}%` : "â€”"}
                   </div>
                   <div className="mt-1 text-[11px] text-faith-slate">
                     Readers reaching the last third of the book.
@@ -1574,7 +1574,7 @@ export default function BooksManagerPage() {
                 Connected workflow value
               </div>
               <div className="mt-2 text-[13px] text-faith-slate leading-relaxed">
-                Books Manager is the premium command surface for every ministry book object. It keeps catalog health, access models, formats, versions, translations, promotion hooks, and storefront previews in one place — while pushing actual creation into the dedicated Book Builder through the <span className="font-semibold text-faith-ink dark:text-slate-100">+ New Book</span> path.
+                Books Manager is the premium command surface for every ministry book object. It keeps catalog health, access models, formats, versions, translations, promotion hooks, and storefront previews in one place â€” while pushing actual creation into the dedicated Book Builder through the <span className="font-semibold text-faith-ink dark:text-slate-100">+ New Book</span> path.
               </div>
             </div>
 
@@ -1617,7 +1617,7 @@ export default function BooksManagerPage() {
         open={previewDrawerOpen}
         onClose={() => setPreviewDrawerOpen(false)}
         title="Book storefront preview"
-        subtitle={`${selectedBook.title} • expanded reader-facing preview`}
+        subtitle={`${selectedBook.title} â€¢ expanded reader-facing preview`}
       >
         <div className="grid gap-4 xl:grid-cols-[1.1fr_0.9fr]">
           <BookStorefrontPreview book={selectedBook} mode={previewMode} expanded />

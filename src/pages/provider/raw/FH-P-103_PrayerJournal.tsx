@@ -183,7 +183,7 @@ const TEMPLATE_PROMPTS = [
     type: "Prayer list" as const,
     accent: "navy" as const,
     prompt:
-      "Pray through today’s community list. Write the names or groups on your heart, then finish with one practical action you can take in love this week.",
+      "Pray through todayâ€™s community list. Write the names or groups on your heart, then finish with one practical action you can take in love this week.",
   },
   {
     id: "tpl-family",
@@ -225,7 +225,7 @@ const journalsSeed: PrayerJournalRecord[] = [
     prompts: [
       {
         id: "pp-1",
-        title: "Day 12 · Surrender the hidden worries",
+        title: "Day 12 Â· Surrender the hidden worries",
         prompt:
           "Read Matthew 6 slowly. Write one hidden burden you have been carrying in silence, one truth from the passage that confronts it, and one prayer of release.",
         type: "Scripture",
@@ -234,16 +234,16 @@ const journalsSeed: PrayerJournalRecord[] = [
       },
       {
         id: "pp-2",
-        title: "Day 13 · Gratitude in the ordinary",
+        title: "Day 13 Â· Gratitude in the ordinary",
         prompt:
-          "List three ordinary places where you experienced God’s kindness this week. Finish by writing a prayer that names His faithfulness out loud.",
+          "List three ordinary places where you experienced Godâ€™s kindness this week. Finish by writing a prayer that names His faithfulness out loud.",
         type: "Reflection",
         scheduledISO: new Date(Date.now() + 26 * 60 * 60 * 1000).toISOString(),
         state: "Ready",
       },
       {
         id: "pp-3",
-        title: "Day 14 · Pray for your city",
+        title: "Day 14 Â· Pray for your city",
         prompt:
           "Pray for leaders, families, schools, and broken places in the city. Write one sentence for each area and one practical act of compassion you can take.",
         type: "Prayer list",
@@ -264,7 +264,7 @@ const journalsSeed: PrayerJournalRecord[] = [
   },
   {
     id: "PJ-104",
-    title: "Leaders’ War Room Journal",
+    title: "Leadersâ€™ War Room Journal",
     subtitle: "Private intercession flow for pastors, ministry heads, and care leads.",
     summary:
       "A protected prayer journal for leadership rhythms, confidential burdens, pastoral strategy reflections, and intercession notes.",
@@ -386,7 +386,7 @@ const journalsSeed: PrayerJournalRecord[] = [
         id: "pp-7",
         title: "Healing prayer declaration",
         prompt:
-          "Read Psalm 103 and write the places where you need healing in body, heart, or memory. Finish with a declaration of trust in God’s mercy and kindness.",
+          "Read Psalm 103 and write the places where you need healing in body, heart, or memory. Finish with a declaration of trust in Godâ€™s mercy and kindness.",
         type: "Scripture",
         scheduledISO: new Date(Date.now() + 30 * 60 * 1000).toISOString(),
         state: "Ready",
@@ -415,10 +415,10 @@ const journalsSeed: PrayerJournalRecord[] = [
 ];
 
 const reflectionsSeed: ReflectionRecord[] = [
-  { id: "RF-201", journalId: "PJ-103", author: "Mercy K.", excerpt: "Today’s surrender prompt helped me write the fear I had been hiding. I felt peace after naming it in prayer.", submittedISO: new Date(Date.now() - 1.2 * 60 * 60 * 1000).toISOString(), status: "Needs review", anonymous: false, tags: ["Surrender", "Peace"] },
+  { id: "RF-201", journalId: "PJ-103", author: "Mercy K.", excerpt: "Todayâ€™s surrender prompt helped me write the fear I had been hiding. I felt peace after naming it in prayer.", submittedISO: new Date(Date.now() - 1.2 * 60 * 60 * 1000).toISOString(), status: "Needs review", anonymous: false, tags: ["Surrender", "Peace"] },
   { id: "RF-202", journalId: "PJ-103", author: "Anonymous", excerpt: "I never thought I could share a reflection publicly, but the anonymous option helped me tell the truth and still feel safe.", submittedISO: new Date(Date.now() - 3.5 * 60 * 60 * 1000).toISOString(), status: "Shared", anonymous: true, tags: ["Anonymous", "Grace"] },
   { id: "RF-203", journalId: "PJ-105", author: "Parents Prayer Circle", excerpt: "Our children now wait for the bedtime gratitude prompt. It has changed the tone of the house.", submittedISO: new Date(Date.now() - 8 * 60 * 60 * 1000).toISOString(), status: "Featured", anonymous: false, tags: ["Family", "Gratitude"] },
-  { id: "RF-204", journalId: "PJ-106", author: "Anonymous", excerpt: "I’m not ready to share all the details, but today’s healing reflection helped me admit I still need care.", submittedISO: new Date(Date.now() - 36 * 60 * 1000).toISOString(), status: "Needs review", anonymous: true, tags: ["Healing", "Care"] },
+  { id: "RF-204", journalId: "PJ-106", author: "Anonymous", excerpt: "Iâ€™m not ready to share all the details, but todayâ€™s healing reflection helped me admit I still need care.", submittedISO: new Date(Date.now() - 36 * 60 * 1000).toISOString(), status: "Needs review", anonymous: true, tags: ["Healing", "Care"] },
   { id: "RF-205", journalId: "PJ-104", author: "Leadership Team", excerpt: "We wrote a united prayer for wisdom around staffing, protection, and courage this week.", submittedISO: new Date(Date.now() - 20 * 60 * 60 * 1000).toISOString(), status: "Private", anonymous: false, tags: ["Leadership", "Wisdom"] },
 ];
 
@@ -433,7 +433,7 @@ function ActionButton({ tone = "neutral", children, onClick, left, title }: { to
 }
 
 function MetricCard({ label, value, hint, accent }: { label: string; value: string; hint: string; accent: "green" | "orange" | "navy"; }) {
-  return <KpiTile label={label} value={value} hint={hint} tone={accent} size="compact" />;
+  return <KpiTile label={label} value={value} hint={hint} tone={accent} indicator="none" size="compact" />;
 }
 
 function SectionCard({ title, subtitle, right, children }: { title: string; subtitle?: string; right?: React.ReactNode; children: React.ReactNode; }) {
@@ -461,7 +461,7 @@ function PreviewShell({ mode, journal, reflection }: { mode: PreviewMode; journa
         </div>
         <div className={cx("mt-4 grid gap-3", isMobile ? "grid-cols-1" : "grid-cols-[1.2fr_0.8fr]") }>
           <div className="rounded-3xl border border-faith-line/70 bg-[var(--fh-surface)] p-4"><div className="flex items-center justify-between gap-2"><div><div className="text-[11px] font-semibold uppercase tracking-[0.1em] text-faith-slate">Next prompt</div><div className="mt-1 text-[16px] font-bold text-faith-ink">{prompt?.title || "Awaiting prompt"}</div></div><Pill tone="warn"><CalendarClock className="h-3.5 w-3.5" />{fmtLocal(prompt?.scheduledISO || journal.nextPromptISO)}</Pill></div><div className="mt-3 rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3 text-[13px] leading-relaxed text-slate-700">{prompt?.prompt || "Prompt copy will appear here once created."}</div><div className="mt-3 flex items-center gap-2"><ActionButton tone="primary" left={<BookOpen className="h-4 w-4" />}>Write reflection</ActionButton><ActionButton left={<Share2 className="h-4 w-4" />}>Share safely</ActionButton></div></div>
-          <div className="rounded-3xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4"><div className="text-[11px] font-semibold uppercase tracking-[0.1em] text-faith-slate">Journal flow</div><div className="mt-3 space-y-2">{journal.prompts.slice(0, 3).map((item, idx) => (<div key={item.id} className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-2"><div className="flex items-center justify-between gap-2"><div className="min-w-0"><div className="truncate text-[13px] font-semibold text-faith-ink">{idx + 1}. {item.title}</div><div className="truncate text-[11px] text-faith-slate">{item.type} • {item.state}</div></div><BadgeCheck className="h-4 w-4 text-emerald-500" /></div></div>))}</div><div className="mt-4 rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3"><div className="text-[11px] font-semibold uppercase tracking-[0.1em] text-faith-slate">Recent reflection</div><div className="mt-2 text-[13px] font-semibold text-faith-ink">{reflection?.author || "Anonymous"}</div><div className="mt-1 text-[12px] leading-relaxed text-faith-slate line-clamp-4">{reflection?.excerpt || "Approved reflections will surface here for journal readers."}</div></div></div>
+          <div className="rounded-3xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4"><div className="text-[11px] font-semibold uppercase tracking-[0.1em] text-faith-slate">Journal flow</div><div className="mt-3 space-y-2">{journal.prompts.slice(0, 3).map((item, idx) => (<div key={item.id} className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-2"><div className="flex items-center justify-between gap-2"><div className="min-w-0"><div className="truncate text-[13px] font-semibold text-faith-ink">{idx + 1}. {item.title}</div><div className="truncate text-[11px] text-faith-slate">{item.type} â€¢ {item.state}</div></div><BadgeCheck className="h-4 w-4 text-emerald-500" /></div></div>))}</div><div className="mt-4 rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3"><div className="text-[11px] font-semibold uppercase tracking-[0.1em] text-faith-slate">Recent reflection</div><div className="mt-2 text-[13px] font-semibold text-faith-ink">{reflection?.author || "Anonymous"}</div><div className="mt-1 text-[12px] leading-relaxed text-faith-slate line-clamp-4">{reflection?.excerpt || "Approved reflections will surface here for journal readers."}</div></div></div>
         </div>
       </div>
     </div>
@@ -542,7 +542,7 @@ export default function PrayerJournalPage() {
     if (!selectedJournal) return;
     const nextPrompt: PromptBlock = {
       id: `pp-${Date.now()}`,
-      title: forcedPrompt?.title || `Prompt ${selectedJournal.prompts.length + 1} · Guided reflection`,
+      title: forcedPrompt?.title || `Prompt ${selectedJournal.prompts.length + 1} Â· Guided reflection`,
       prompt: forcedPrompt?.prompt || composer.trim() || "Write what the Spirit is placing on your heart today, then end with one scripture and one concrete prayer response.",
       type: forcedPrompt?.type || "Guided",
       scheduledISO: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
@@ -597,7 +597,7 @@ export default function PrayerJournalPage() {
           </div>
         </div>
 
-        <div className="mt-4 rounded-full border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 py-3 shadow-soft"><div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between"><div className="flex flex-wrap items-center gap-3 text-[12px] text-faith-slate"><Pill tone="warn"><Sparkles className="h-3.5 w-3.5" /> Journal formation pulse</Pill><span>{metrics.pending} reflections need review • {metrics.publicGuides} public guided journals are live • {metrics.prompts} total prompt blocks are active across the institution</span></div><div className="text-[11px] font-semibold uppercase tracking-[0.1em] text-faith-slate">Premium prayer ops</div></div></div>
+        <div className="mt-4 rounded-full border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 py-3 shadow-soft"><div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between"><div className="flex flex-wrap items-center gap-3 text-[12px] text-faith-slate"><Pill tone="warn"><Sparkles className="h-3.5 w-3.5" /> Journal formation pulse</Pill><span>{metrics.pending} reflections need review â€¢ {metrics.publicGuides} public guided journals are live â€¢ {metrics.prompts} total prompt blocks are active across the institution</span></div><div className="text-[11px] font-semibold uppercase tracking-[0.1em] text-faith-slate">Premium prayer ops</div></div></div>
 
         <div className="mt-4 grid gap-4 md:grid-cols-3 xl:grid-cols-6">
           <MetricCard label="Active journals" value={String(metrics.active)} hint="Live prayer journeys currently shaping formation rhythms." accent="green" />
@@ -611,7 +611,7 @@ export default function PrayerJournalPage() {
         <div className="mt-4 grid gap-4 xl:grid-cols-[1.2fr_0.95fr_0.85fr]">
           <SectionCard title="Prayer journal library" subtitle="Search guided journals, formation tracks, private prayer flows, and public journal experiences." right={<Pill>{fmtInt(filteredJournals.length)} journals</Pill>}>
             <div className="grid gap-3 md:grid-cols-[1.2fr_auto] xl:grid-cols-[1.2fr_auto]"><div className="relative"><Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-faith-slate" /><input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search journals, owners, tags, or cadence" className="w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] py-3 pl-10 pr-4 text-[13px] text-slate-800 outline-none focus:border-emerald-300" /></div><div className="flex flex-wrap items-center gap-2">{(["All", "Active", "Draft", "Paused", "Needs review"] as const).map((item) => (<button key={item} type="button" onClick={() => setStatusFilter(item)} className={cx("rounded-full border px-3 py-2 text-[12px] font-semibold transition-colors", statusFilter === item ? "border-transparent text-white" : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 hover:bg-[var(--fh-surface)]")} style={statusFilter === item ? { background: EV_GREEN } : undefined}>{item}</button>))}</div></div>
-            <div className="mt-4 space-y-3">{filteredJournals.map((journal) => (<button key={journal.id} type="button" onClick={() => setSelectedId(journal.id)} className={cx("w-full rounded-[24px] border px-4 py-4 text-left transition-colors", selectedJournal?.id === journal.id ? "border-emerald-200 bg-emerald-50" : "border-faith-line bg-[var(--fh-surface-bg)] hover:bg-[var(--fh-surface)]")}><div className="flex items-start gap-3"><div className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl text-[12px] font-black text-white" style={{ background: journal.visibility === "Public guided" ? EV_GREEN : journal.visibility === "Community" ? EV_ORANGE : EV_NAVY }}>{journal.title.split(" ").slice(0, 2).map((item) => item[0]).join("")}</div><div className="min-w-0 flex-1"><div className="flex flex-wrap items-center gap-2"><div className="truncate text-[16px] font-bold text-faith-ink">{journal.title}</div><Pill tone={statusTone(journal.status)}>{journal.status}</Pill><Pill tone={visibilityTone(journal.visibility)}>{journal.visibility}</Pill></div><div className="mt-1 truncate text-[12px] text-faith-slate">{journal.subtitle}</div><div className="mt-2 flex flex-wrap items-center gap-2 text-[11px] text-faith-slate"><span>{journal.owner}</span><span>•</span><span>{journal.language.join(" + ")}</span><span>•</span><span>{journal.cadence}</span></div></div></div><div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] text-faith-slate"><span className="rounded-full border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-1 font-semibold text-slate-700">{fmtInt(journal.participants)} participants</span><span className="rounded-full border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-1 font-semibold text-slate-700">{journal.prompts.length} prompts</span><span className="rounded-full border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-1 font-semibold text-slate-700">Next: {fmtLocal(journal.nextPromptISO)}</span></div></button>))}</div>
+            <div className="mt-4 space-y-3">{filteredJournals.map((journal) => (<button key={journal.id} type="button" onClick={() => setSelectedId(journal.id)} className={cx("w-full rounded-[24px] border px-4 py-4 text-left transition-colors", selectedJournal?.id === journal.id ? "border-emerald-200 bg-emerald-50" : "border-faith-line bg-[var(--fh-surface-bg)] hover:bg-[var(--fh-surface)]")}><div className="flex items-start gap-3"><div className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl text-[12px] font-black text-white" style={{ background: journal.visibility === "Public guided" ? EV_GREEN : journal.visibility === "Community" ? EV_ORANGE : EV_NAVY }}>{journal.title.split(" ").slice(0, 2).map((item) => item[0]).join("")}</div><div className="min-w-0 flex-1"><div className="flex flex-wrap items-center gap-2"><div className="truncate text-[16px] font-bold text-faith-ink">{journal.title}</div><Pill tone={statusTone(journal.status)}>{journal.status}</Pill><Pill tone={visibilityTone(journal.visibility)}>{journal.visibility}</Pill></div><div className="mt-1 truncate text-[12px] text-faith-slate">{journal.subtitle}</div><div className="mt-2 flex flex-wrap items-center gap-2 text-[11px] text-faith-slate"><span>{journal.owner}</span><span>â€¢</span><span>{journal.language.join(" + ")}</span><span>â€¢</span><span>{journal.cadence}</span></div></div></div><div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] text-faith-slate"><span className="rounded-full border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-1 font-semibold text-slate-700">{fmtInt(journal.participants)} participants</span><span className="rounded-full border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-1 font-semibold text-slate-700">{journal.prompts.length} prompts</span><span className="rounded-full border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-1 font-semibold text-slate-700">Next: {fmtLocal(journal.nextPromptISO)}</span></div></button>))}</div>
           </SectionCard>
 
           <SectionCard title="Selected journal workspace" subtitle="Shape cadence, prompts, privacy, and the audience-facing prayer journey." right={<Pill tone="brand">{selectedJournal?.status || "Draft"}</Pill>}>
@@ -631,7 +631,7 @@ export default function PrayerJournalPage() {
 
         {toast ? <div className="fixed bottom-5 left-1/2 z-[95] -translate-x-1/2 rounded-full bg-slate-900 px-4 py-2 text-[12px] font-semibold text-white shadow-lg">{toast}</div> : null}
 
-        <Drawer open={previewOpen} onClose={() => setPreviewOpen(false)} title="Prayer Journal Preview" subtitle="Large-format preview of the selected guided journal and reflection surface.">{selectedJournal ? (<div className="space-y-5"><div className="flex flex-wrap items-center gap-2"><ActionButton onClick={() => setPreviewMode("desktop")} tone={previewMode === "desktop" ? "primary" : "neutral"} left={<LayoutGrid className="h-4 w-4" />}>Desktop preview</ActionButton><ActionButton onClick={() => setPreviewMode("mobile")} tone={previewMode === "mobile" ? "primary" : "neutral"} left={<Eye className="h-4 w-4" />}>Mobile preview</ActionButton><ActionButton onClick={() => safeNav(ROUTES.journalBuilder)} left={<ExternalLink className="h-4 w-4" />}>Open builder route</ActionButton></div><PreviewShell mode={previewMode} journal={selectedJournal} reflection={selectedPreviewReflection} /><div className="grid gap-4 lg:grid-cols-3"><SectionCard title="Reflection sharing rules"><div className="space-y-2 text-[12px] text-faith-slate"><div className="flex items-center justify-between gap-2"><span>Anonymous sharing</span><Pill tone={selectedJournal.allowAnonymousShare ? "good" : "neutral"}>{selectedJournal.allowAnonymousShare ? "Allowed" : "Off"}</Pill></div><div className="flex items-center justify-between gap-2"><span>Pastoral review</span><Pill tone={selectedJournal.pastoralReview ? "good" : "neutral"}>{selectedJournal.pastoralReview ? "Required" : "Bypass"}</Pill></div><div className="flex items-center justify-between gap-2"><span>Community comments</span><Pill tone={selectedJournal.commentsEnabled ? "warn" : "neutral"}>{selectedJournal.commentsEnabled ? "Enabled" : "Closed"}</Pill></div></div></SectionCard><SectionCard title="Linked destinations"><div className="space-y-2 text-[12px] text-faith-slate"><div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-2">Prayer flow · {selectedJournal.linkedPrayerFlow || "Not linked"}</div><div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-2">Noticeboard · {selectedJournal.linkedNoticeboard || "Not linked"}</div><div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-2">Community group · {selectedJournal.linkedGroup || "Not linked"}</div></div></SectionCard><SectionCard title="Preview context"><div className="space-y-2 text-[12px] text-faith-slate"><div className="flex items-center gap-2"><Users className="h-4 w-4 text-faith-slate" /> {fmtInt(selectedJournal.participants)} participants</div><div className="flex items-center gap-2"><MessageSquare className="h-4 w-4 text-faith-slate" /> {fmtInt(selectedJournal.sharedReflections)} shared reflections</div><div className="flex items-center gap-2"><CalendarClock className="h-4 w-4 text-faith-slate" /> Next prompt {fmtLocal(selectedJournal.nextPromptISO)}</div></div></SectionCard></div></div>) : null}</Drawer>
+        <Drawer open={previewOpen} onClose={() => setPreviewOpen(false)} title="Prayer Journal Preview" subtitle="Large-format preview of the selected guided journal and reflection surface.">{selectedJournal ? (<div className="space-y-5"><div className="flex flex-wrap items-center gap-2"><ActionButton onClick={() => setPreviewMode("desktop")} tone={previewMode === "desktop" ? "primary" : "neutral"} left={<LayoutGrid className="h-4 w-4" />}>Desktop preview</ActionButton><ActionButton onClick={() => setPreviewMode("mobile")} tone={previewMode === "mobile" ? "primary" : "neutral"} left={<Eye className="h-4 w-4" />}>Mobile preview</ActionButton><ActionButton onClick={() => safeNav(ROUTES.journalBuilder)} left={<ExternalLink className="h-4 w-4" />}>Open builder route</ActionButton></div><PreviewShell mode={previewMode} journal={selectedJournal} reflection={selectedPreviewReflection} /><div className="grid gap-4 lg:grid-cols-3"><SectionCard title="Reflection sharing rules"><div className="space-y-2 text-[12px] text-faith-slate"><div className="flex items-center justify-between gap-2"><span>Anonymous sharing</span><Pill tone={selectedJournal.allowAnonymousShare ? "good" : "neutral"}>{selectedJournal.allowAnonymousShare ? "Allowed" : "Off"}</Pill></div><div className="flex items-center justify-between gap-2"><span>Pastoral review</span><Pill tone={selectedJournal.pastoralReview ? "good" : "neutral"}>{selectedJournal.pastoralReview ? "Required" : "Bypass"}</Pill></div><div className="flex items-center justify-between gap-2"><span>Community comments</span><Pill tone={selectedJournal.commentsEnabled ? "warn" : "neutral"}>{selectedJournal.commentsEnabled ? "Enabled" : "Closed"}</Pill></div></div></SectionCard><SectionCard title="Linked destinations"><div className="space-y-2 text-[12px] text-faith-slate"><div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-2">Prayer flow Â· {selectedJournal.linkedPrayerFlow || "Not linked"}</div><div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-2">Noticeboard Â· {selectedJournal.linkedNoticeboard || "Not linked"}</div><div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-2">Community group Â· {selectedJournal.linkedGroup || "Not linked"}</div></div></SectionCard><SectionCard title="Preview context"><div className="space-y-2 text-[12px] text-faith-slate"><div className="flex items-center gap-2"><Users className="h-4 w-4 text-faith-slate" /> {fmtInt(selectedJournal.participants)} participants</div><div className="flex items-center gap-2"><MessageSquare className="h-4 w-4 text-faith-slate" /> {fmtInt(selectedJournal.sharedReflections)} shared reflections</div><div className="flex items-center gap-2"><CalendarClock className="h-4 w-4 text-faith-slate" /> Next prompt {fmtLocal(selectedJournal.nextPromptISO)}</div></div></SectionCard></div></div>) : null}</Drawer>
       </div>
     </div>
   );

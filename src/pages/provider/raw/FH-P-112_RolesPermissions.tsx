@@ -1,4 +1,4 @@
-﻿// @ts-nocheck
+// @ts-nocheck
 
 "use client";
 
@@ -509,7 +509,7 @@ function MetricCard({
   hint: string;
   dot?: "green" | "orange" | "navy" | "grey";
 }) {
-  return <KpiTile label={label} value={value} hint={hint} tone={dot === "grey" ? "gray" : dot} size="compact" />;
+  return <KpiTile label={label} value={value} hint={hint} tone={dot === "grey" ? "gray" : dot} indicator="none" size="compact" />;
 }
 
 function TonePill({

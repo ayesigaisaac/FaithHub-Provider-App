@@ -1,4 +1,4 @@
-﻿// @ts-nocheck
+// @ts-nocheck
 
 "use client";
 
@@ -1086,7 +1086,7 @@ function ScrollTimePicker({
 }
 
 function MetricTile({ label, value, hint }: { label: string; value: string; hint?: string }) {
-  return <KpiTile label={label} value={value} hint={hint} tone="gray" size="compact" />;
+  return <KpiTile label={label} value={value} hint={hint} tone="gray" indicator="none" size="compact" />;
 }
 
 function StepButton({

@@ -208,22 +208,22 @@ const TEAM_RECORDS: TeamRecord[] = [
       {
         id: "asg-1",
         title: "Sunday early service",
-        surface: "Main auditorium · Live Studio linked",
-        when: "Sun · 7:30 AM",
+        surface: "Main auditorium Â· Live Studio linked",
+        when: "Sun Â· 7:30 AM",
         state: "Ready",
       },
       {
         id: "asg-2",
         title: "Saturday rehearsal",
         surface: "Central Campus stage",
-        when: "Sat · 5:00 PM",
+        when: "Sat Â· 5:00 PM",
         state: "Needs cover",
       },
       {
         id: "asg-3",
         title: "Night prayer live",
-        surface: "Live Schedule · Worship support",
-        when: "Tue · 8:00 PM",
+        surface: "Live Schedule Â· Worship support",
+        when: "Tue Â· 8:00 PM",
         state: "Watch",
       },
     ],
@@ -262,22 +262,22 @@ const TEAM_RECORDS: TeamRecord[] = [
       {
         id: "asg-4",
         title: "Wednesday discipleship class",
-        surface: "Live Schedule · Studio lane",
-        when: "Wed · 6:30 PM",
+        surface: "Live Schedule Â· Studio lane",
+        when: "Wed Â· 6:30 PM",
         state: "Needs cover",
       },
       {
         id: "asg-5",
         title: "Conference livestream",
-        surface: "Events Manager · Multi-camera",
-        when: "Fri · 4:00 PM",
+        surface: "Events Manager Â· Multi-camera",
+        when: "Fri Â· 4:00 PM",
         state: "Training due",
       },
       {
         id: "asg-6",
         title: "Sunday replay packaging prep",
         surface: "Post-live handoff",
-        when: "Sun · 12:15 PM",
+        when: "Sun Â· 12:15 PM",
         state: "Ready",
       },
     ],
@@ -317,21 +317,21 @@ const TEAM_RECORDS: TeamRecord[] = [
         id: "asg-7",
         title: "Sunday main service",
         surface: "East Campus foyer",
-        when: "Sun · 8:00 AM",
+        when: "Sun Â· 8:00 AM",
         state: "Ready",
       },
       {
         id: "asg-8",
         title: "Community outreach sign-in",
-        surface: "Events Manager · Outreach Day",
-        when: "Sat · 9:30 AM",
+        surface: "Events Manager Â· Outreach Day",
+        when: "Sat Â· 9:30 AM",
         state: "Watch",
       },
       {
         id: "asg-9",
         title: "Family lane support",
-        surface: "Children’s arrival zone",
-        when: "Sun · 10:30 AM",
+        surface: "Childrenâ€™s arrival zone",
+        when: "Sun Â· 10:30 AM",
         state: "Needs cover",
       },
     ],
@@ -371,21 +371,21 @@ const TEAM_RECORDS: TeamRecord[] = [
         id: "asg-10",
         title: "Night prayer response lane",
         surface: "Live Sessions prayer intake",
-        when: "Tue · 8:00 PM",
+        when: "Tue Â· 8:00 PM",
         state: "Training due",
       },
       {
         id: "asg-11",
         title: "Post-service care desk",
         surface: "Central Campus lobby",
-        when: "Sun · 11:15 AM",
+        when: "Sun Â· 11:15 AM",
         state: "Ready",
       },
       {
         id: "asg-12",
         title: "Prayer Journal prompt follow-up",
         surface: "Community care flow",
-        when: "Thu · 6:00 PM",
+        when: "Thu Â· 6:00 PM",
         state: "Watch",
       },
     ],
@@ -424,22 +424,22 @@ const TEAM_RECORDS: TeamRecord[] = [
       {
         id: "asg-13",
         title: "Outreach registration team",
-        surface: "Projects · Community mission",
-        when: "Sat · 8:30 AM",
+        surface: "Projects Â· Community mission",
+        when: "Sat Â· 8:30 AM",
         state: "Needs cover",
       },
       {
         id: "asg-14",
         title: "Transport coordination",
         surface: "Event trip roster",
-        when: "Fri · 4:00 PM",
+        when: "Fri Â· 4:00 PM",
         state: "Needs cover",
       },
       {
         id: "asg-15",
         title: "Beacon follow-up ambassador lane",
         surface: "Audience + Projects bridge",
-        when: "Mon · 6:30 PM",
+        when: "Mon Â· 6:30 PM",
         state: "Watch",
       },
     ],
@@ -457,7 +457,7 @@ function MetricCard({
   hint: string;
   dot?: "green" | "orange" | "navy" | "grey";
 }) {
-  return <KpiTile label={label} value={value} hint={hint} tone={dot === "grey" ? "gray" : dot} size="compact" />;
+  return <KpiTile label={label} value={value} hint={hint} tone={dot === "grey" ? "gray" : dot} indicator="none" size="compact" />;
 }
 
 function TonePill({
@@ -563,7 +563,7 @@ function TeamListCard({
               {team.name}
             </div>
             <div className={cx("mt-1 truncate text-[12px]", active ? "text-white/75" : "text-faith-slate")}>
-              {team.category} · {team.campus} · {team.lead}
+              {team.category} Â· {team.campus} Â· {team.lead}
             </div>
             <div className="mt-3 flex flex-wrap gap-2">
               <TonePill tone={tone}>{team.status}</TonePill>
@@ -656,7 +656,7 @@ function TeamPreview({
             </span>
           </div>
           <div className="mt-3 text-xl font-black leading-tight">{team.name}</div>
-          <div className="mt-1 text-[12px] text-white/80">{team.lead} · {team.campus}</div>
+          <div className="mt-1 text-[12px] text-white/80">{team.lead} Â· {team.campus}</div>
         </div>
       </div>
 
@@ -696,7 +696,7 @@ function TeamPreview({
                 <div>
                   <div className="text-[12px] font-bold text-faith-ink dark:text-slate-100">{assignment.title}</div>
                   <div className="mt-1 text-[11px] text-faith-slate">
-                    {assignment.when} · {assignment.surface}
+                    {assignment.when} Â· {assignment.surface}
                   </div>
                 </div>
                 <TonePill
@@ -947,7 +947,7 @@ export default function FH_P_111_ServingTeamsPage() {
                 Premium team ops
               </span>
               <span className="ml-3 align-middle">
-                Media crew needs one backup producer · Hospitality has one family-lane opening · Worship rehearsal coverage is 93% ready for the week.
+                Media crew needs one backup producer Â· Hospitality has one family-lane opening Â· Worship rehearsal coverage is 93% ready for the week.
               </span>
             </div>
             <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-faith-slate">
@@ -1121,7 +1121,7 @@ export default function FH_P_111_ServingTeamsPage() {
                         {selectedTeam.name}
                       </div>
                       <div className="mt-1 text-[13px] text-faith-slate">
-                        {selectedTeam.lead} · {selectedTeam.leadRole} · {selectedTeam.campus}
+                        {selectedTeam.lead} Â· {selectedTeam.leadRole} Â· {selectedTeam.campus}
                       </div>
                       <div className="mt-3 flex flex-wrap gap-2">
                         <TonePill tone={selectedTeam.status === "Healthy" ? "good" : selectedTeam.status === "Review" ? "danger" : "warn"}>
