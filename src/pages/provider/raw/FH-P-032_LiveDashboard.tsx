@@ -919,6 +919,7 @@ function MetricTile({
       hint={hint}
       tone={tone === "neutral" ? "gray" : tone}
       size="compact"
+      indicator="none"
     />
   );
 }
@@ -960,7 +961,7 @@ function TimeBadge({
   return (
     <div className="rounded-lg border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 transition-colors">
       <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-faith-slate">{label}</div>
-      <div className="mt-1 font-mono text-[20px] font-black text-faith-ink dark:text-slate-100">
+      <div className="mt-1 whitespace-nowrap font-mono text-[clamp(1.02rem,2.2vw,1.45rem)] font-black leading-none tracking-tight tabular-nums text-faith-ink dark:text-slate-100">
         {pad(values.hours)}:{pad(values.minutes)}:{pad(values.seconds)}
       </div>
     </div>
