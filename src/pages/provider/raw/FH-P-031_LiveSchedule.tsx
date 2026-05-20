@@ -2855,12 +2855,12 @@ export default function FaithHubLiveSchedulePage() {
               title="Schedule health"
               subtitle="Readiness ribbon totals across all upcoming live activity."
             >
-              <div className="grid grid-cols-3 gap-2">
+              <div className="grid grid-cols-1 gap-2 sm:grid-cols-3 lg:grid-cols-1 2xl:grid-cols-3">
                 <div className="rounded-[22px] border border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-900/15 p-3 text-center">
                   <div className="text-2xl font-extrabold text-emerald-700 dark:text-emerald-300">
                     {scheduleHealth.green}
                   </div>
-                  <div className="mt-1 text-[11px] font-semibold text-emerald-800 dark:text-emerald-300">
+                  <div className="mt-1 text-[11px] font-semibold leading-tight text-emerald-800 dark:text-emerald-300">
                     Green
                   </div>
                 </div>
@@ -2868,7 +2868,7 @@ export default function FaithHubLiveSchedulePage() {
                   <div className="text-2xl font-extrabold text-amber-700 dark:text-amber-300">
                     {scheduleHealth.warn}
                   </div>
-                  <div className="mt-1 text-[11px] font-semibold text-amber-800 dark:text-amber-300">
+                  <div className="mt-1 text-[11px] font-semibold leading-tight text-amber-800 dark:text-amber-300">
                     At risk
                   </div>
                 </div>
@@ -2876,7 +2876,7 @@ export default function FaithHubLiveSchedulePage() {
                   <div className="text-2xl font-extrabold text-rose-700 dark:text-rose-300">
                     {scheduleHealth.blocked}
                   </div>
-                  <div className="mt-1 text-[11px] font-semibold text-rose-800 dark:text-rose-300">
+                  <div className="mt-1 text-[11px] font-semibold leading-tight text-rose-800 dark:text-rose-300">
                     Blocked
                   </div>
                 </div>
