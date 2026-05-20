@@ -543,7 +543,7 @@ function SoftButton({
       onClick={onClick}
       disabled={disabled}
       className={cx(
-        "px-4 py-2 rounded-2xl text-[12px] font-semibold inline-flex items-center gap-2 border transition-colors",
+        "px-4 py-2 rounded-2xl text-[12px] font-semibold inline-flex items-center gap-2 border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--fh-brand)]/35",
         disabled
           ? "bg-[var(--fh-surface)] dark:bg-slate-900 border-faith-line dark:border-slate-800 text-faith-slate cursor-not-allowed"
           : "bg-[var(--fh-surface-bg)] dark:bg-slate-800 border-faith-line dark:border-slate-700 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200",
@@ -577,7 +577,7 @@ function PrimaryButton({
       onClick={onClick}
       disabled={disabled}
       className={cx(
-        "px-4 py-2 rounded-2xl text-[12px] font-semibold inline-flex items-center gap-2 border border-transparent text-white",
+        "px-4 py-2 rounded-2xl text-[12px] font-semibold inline-flex items-center gap-2 border border-transparent text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--fh-brand)]/35",
         disabled ? "opacity-60 cursor-not-allowed" : "hover:opacity-95",
         className,
       )}
