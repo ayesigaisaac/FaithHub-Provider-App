@@ -855,7 +855,7 @@ export default function FaithHubHomeLandingPageV3Fixed() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent" />
                     <div className="absolute left-4 top-4 flex flex-wrap gap-2">
-                      <Chip tone="green"><span className="h-2.5 w-2.5 rounded-full bg-[var(--fh-brand)] animate-pulse" /> Live now</Chip>
+                      <Chip tone="green"><span className="h-2.5 w-2.5 rounded-full bg-[var(--fh-brand)] motion-safe:animate-pulse" /> Live now</Chip>
                       <Chip tone="orange"><BellRing className="h-3.5 w-3.5" /> 18.4K in worship</Chip>
                     </div>
                     <div className="absolute bottom-4 left-4 right-4 grid gap-4 md:grid-cols-[1fr_auto] md:items-end">
@@ -1030,6 +1030,8 @@ export default function FaithHubHomeLandingPageV3Fixed() {
                   <img
                     src="https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&w=1600&q=80"
                     alt="Faith community in a service"
+                    loading="lazy"
+                    decoding="async"
                     className="h-full w-full object-cover opacity-80"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
@@ -1099,10 +1101,10 @@ export default function FaithHubHomeLandingPageV3Fixed() {
               className="overflow-hidden rounded-[1.8rem] border border-slate-200 bg-white shadow-sm"
             >
               <div className="relative aspect-[16/10] overflow-hidden">
-                <img src={stream.image} alt={stream.title} className="h-full w-full object-cover" />
+                <img src={stream.image} alt={stream.title} loading="lazy" decoding="async" className="h-full w-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent" />
                 <div className="absolute left-3 top-3 inline-flex items-center gap-2 rounded-full border border-emerald-300/50 bg-emerald-500/15 px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.16em] text-emerald-100">
-                  <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-300" />
+                  <span className="h-2 w-2 motion-safe:animate-pulse rounded-full bg-emerald-300" />
                   Live now
                 </div>
                 <div className="absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-white/90 px-2.5 py-1 text-[11px] font-black text-slate-800">
