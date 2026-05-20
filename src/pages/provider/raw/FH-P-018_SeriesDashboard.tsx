@@ -624,10 +624,12 @@ function SearchInput({
   value,
   onChange,
   placeholder,
+  ariaLabel,
 }: {
   value: string;
   onChange: (value: string) => void;
   placeholder: string;
+  ariaLabel?: string;
 }) {
   return (
     <div className="relative">
@@ -636,6 +638,7 @@ function SearchInput({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
+        aria-label={ariaLabel ?? placeholder}
         className="w-full rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 pl-10 pr-4 py-3 text-[13px] text-faith-ink dark:text-slate-100 outline-none transition-colors focus:ring-2 focus:ring-[rgba(3,205,140,0.18)]"
       />
     </div>
@@ -646,15 +649,18 @@ function SelectPill({
   value,
   options,
   onChange,
+  ariaLabel,
 }: {
   value: string;
   options: string[];
   onChange: (value: string) => void;
+  ariaLabel: string;
 }) {
   return (
     <select
       value={value}
       onChange={(e) => onChange(e.target.value)}
+      aria-label={ariaLabel}
       className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 px-4 py-3 text-[13px] font-semibold text-slate-700 dark:text-slate-200 outline-none transition-colors"
     >
       {options.map((option) => (
@@ -1055,9 +1061,10 @@ export default function SeriesDashboardPage() {
                 value={query}
                 onChange={setQuery}
                 placeholder="Search series, speakers, episode titles, or tags"
+                ariaLabel="Search series"
               />
-              <SelectPill value={campusFilter} options={campuses} onChange={setCampusFilter} />
-              <SelectPill value={accessFilter} options={accessModels} onChange={setAccessFilter} />
+              <SelectPill value={campusFilter} options={campuses} onChange={setCampusFilter} ariaLabel="Filter series by campus" />
+              <SelectPill value={accessFilter} options={accessModels} onChange={setAccessFilter} ariaLabel="Filter series by access model" />
             </div>
 
             <div className="mt-3 flex flex-wrap items-center gap-2">
@@ -1074,6 +1081,8 @@ export default function SeriesDashboardPage() {
                   key={key}
                   type="button"
                   onClick={() => setFilterKey(key as FilterKey)}
+                  aria-label={`Filter series by ${label}`}
+                  aria-pressed={filterKey === key}
                   className={cx(
                     "rounded-full border px-3 py-1.5 text-[12px] font-semibold transition-colors",
                     filterKey === key
@@ -1231,6 +1240,8 @@ export default function SeriesDashboardPage() {
                 <div className="inline-flex rounded-full border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 p-1 transition-colors">
                   <button
                     type="button"
+                    aria-label="Show desktop preview"
+                    aria-pressed={previewMode === "desktop"}
                     className={cx(
                       "rounded-full px-3 py-1 text-[12px] font-semibold transition-colors",
                       previewMode === "desktop"
@@ -1243,6 +1254,8 @@ export default function SeriesDashboardPage() {
                   </button>
                   <button
                     type="button"
+                    aria-label="Show mobile preview"
+                    aria-pressed={previewMode === "mobile"}
                     className={cx(
                       "rounded-full px-3 py-1 text-[12px] font-semibold transition-colors",
                       previewMode === "mobile"

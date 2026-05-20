@@ -1516,6 +1516,8 @@ export default function TeachingsDashboardPage() {
                   <button
                     type="button"
                     onClick={() => setPreviewMode("desktop")}
+                    aria-label="Show desktop preview"
+                    aria-pressed={previewMode === "desktop"}
                     className={cx(
                       "rounded-full px-3 py-1 text-[11px] font-semibold transition-colors",
                       previewMode === "desktop" ? "bg-slate-900 text-white" : "text-faith-slate hover:bg-[var(--fh-surface)]",
@@ -1526,6 +1528,8 @@ export default function TeachingsDashboardPage() {
                   <button
                     type="button"
                     onClick={() => setPreviewMode("mobile")}
+                    aria-label="Show mobile preview"
+                    aria-pressed={previewMode === "mobile"}
                     className={cx(
                       "rounded-full px-3 py-1 text-[11px] font-semibold transition-colors",
                       previewMode === "mobile" ? "bg-slate-900 text-white" : "text-faith-slate hover:bg-[var(--fh-surface)]",
