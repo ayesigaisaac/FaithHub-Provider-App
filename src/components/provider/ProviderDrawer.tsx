@@ -1,4 +1,4 @@
-import { useEffect, useId, type ReactNode } from "react";
+import { useEffect, useId, useRef, type ReactNode } from "react";
 import { X } from "lucide-react";
 
 type ProviderDrawerProps = {
@@ -23,6 +23,7 @@ export function ProviderDrawer({
   const id = useId();
   const headingId = `provider-drawer-title-${id}`;
   const descriptionId = subtitle ? `provider-drawer-subtitle-${id}` : undefined;
+  const closeButtonRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
     if (!open) return;
@@ -33,6 +34,14 @@ export function ProviderDrawer({
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [open, onClose]);
+
+  useEffect(() => {
+    if (!open) return;
+    const rafId = window.requestAnimationFrame(() => {
+      closeButtonRef.current?.focus();
+    });
+    return () => window.cancelAnimationFrame(rafId);
+  }, [open]);
 
   if (!open) return null;
 
@@ -54,9 +63,10 @@ export function ProviderDrawer({
                 {subtitle ? <div id={descriptionId} className="mt-0.5 text-[11px] text-faith-slate">{subtitle}</div> : null}
               </div>
               <button
+                ref={closeButtonRef}
                 type="button"
                 onClick={onClose}
-                className="grid h-9 w-9 place-items-center rounded-2xl border border-faith-line/70 text-faith-slate transition hover:bg-[var(--fh-surface)]"
+                className="grid h-9 w-9 place-items-center rounded-2xl border border-faith-line/70 text-faith-slate transition hover:bg-[var(--fh-surface)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--fh-brand)]/35"
                 aria-label="Close drawer"
               >
                 <X className="h-4 w-4" />
