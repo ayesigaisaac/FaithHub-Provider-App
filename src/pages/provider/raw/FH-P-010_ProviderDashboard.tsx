@@ -70,7 +70,7 @@ const EV_GREEN = "var(--fh-brand)";
 const EV_ORANGE = "var(--fh-accent)";
 const EV_GREY = "var(--fh-ev-medium-grey)";
 const EV_LIGHT = "var(--fh-ev-light-grey)";
-const EV_NAVY = "#16244c";
+const EV_NAVY = "var(--fh-brand-dark)";
 
 const cx = (...xs: Array<string | false | null | undefined>) =>
   xs.filter(Boolean).join(" ");
@@ -1085,7 +1085,7 @@ function GhostButton({
       ? "text-[var(--fh-brand)] border-[color-mix(in_srgb,var(--fh-brand)_28%,white)]"
       : accent === "orange"
         ? "text-orange-700 border-orange-200"
-        : "text-slate-700 border-faith-line";
+        : "text-[var(--fh-slate)] border-faith-line";
   return (
     <button
       type="button"
@@ -1138,7 +1138,7 @@ function MetricTile({ metric }: { metric: MetricCard }) {
       size="tall"
       footer={
         metric.delta ? (
-          <div className="inline-flex items-center gap-1 rounded-full bg-[var(--fh-surface)] px-2.5 py-1 text-[11px] font-semibold text-emerald-700 dark:bg-slate-800 dark:text-emerald-300">
+          <div className="inline-flex items-center gap-1 rounded-full bg-[var(--fh-surface)] px-2.5 py-1 text-[11px] font-semibold text-[var(--fh-brand-dark)] ">
             <TrendingUp className="h-3.5 w-3.5" />
             {metric.delta}
           </div>
@@ -1157,7 +1157,7 @@ function ProgressBar({
 }) {
   const width = `${Math.max(0, Math.min(100, value))}%`;
   return (
-    <div className="h-2 overflow-hidden rounded-full bg-slate-100">
+    <div className="h-2 overflow-hidden rounded-full bg-[color-mix(in_srgb,var(--fh-line)_25%,var(--fh-surface-bg)_75%)]">
       <div
         className="h-full rounded-full"
         style={{
@@ -1186,7 +1186,7 @@ function RoleChip({
         "inline-flex h-10 items-center gap-2 rounded-full border px-3.5 text-[12px] font-semibold transition-colors",
         active
           ? "border-transparent text-white"
-          : "border-faith-line bg-[var(--fh-surface-bg)] text-slate-700 hover:bg-[var(--fh-surface)]",
+          : "border-faith-line bg-[var(--fh-surface-bg)] text-[var(--fh-slate)] hover:bg-[var(--fh-surface)]",
       )}
       style={active ? { background: EV_NAVY } : undefined}
     >
@@ -1210,7 +1210,7 @@ function SelectPill({
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="h-11 w-full rounded-xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3.5 pr-9 text-[12px] font-semibold text-slate-700 shadow-soft outline-none focus:border-slate-300"
+        className="h-11 w-full rounded-xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3.5 pr-9 text-[12px] font-semibold text-[var(--fh-slate)] shadow-soft outline-none focus:border-slate-300"
       >
         {options.map((option) => (
           <option key={option}>{option}</option>
@@ -1375,7 +1375,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--fh-brand)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--fh-surface-bg)]";
   const elevatedPanelClass = "rounded-xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3.5";
   const actionButtonBaseClass = `w-full rounded-lg px-3 py-2 text-[11px] font-bold sm:w-auto sm:py-1.5 ${cardFocusRingClass}`;
-  const iconToggleButtonClass = `inline-flex h-9 w-9 items-center justify-center rounded-full border border-faith-line/70 bg-[var(--fh-surface-bg)] text-slate-700 transition hover:bg-[var(--fh-surface)] ${cardFocusRingClass}`;
+  const iconToggleButtonClass = `inline-flex h-9 w-9 items-center justify-center rounded-full border border-faith-line/70 bg-[var(--fh-surface-bg)] text-[var(--fh-slate)] transition hover:bg-[var(--fh-surface)] ${cardFocusRingClass}`;
   const smartNextStep = useMemo(() => {
     if (needsReviewCount > 0) return `${needsReviewCount} item${needsReviewCount > 1 ? "s" : ""} need review first.`;
     const draftCount = pendingWork.filter((item) => item.status === "Draft").length;
@@ -1641,7 +1641,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
 
   if (!hasDashboardData) {
     return (
-      <div className="fh-brand-shell min-h-screen w-full bg-[var(--fh-page-bg)] text-faith-ink transition-colors dark:bg-slate-950 dark:text-slate-100">
+      <div className="fh-brand-shell min-h-screen w-full bg-[var(--fh-page-bg)] text-faith-ink transition-colors ">
         <div className="w-full max-w-none px-0 py-0">
           <div className="space-y-4 sm:space-y-5">
             <section className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-5 sm:p-10 shadow-soft">
@@ -1655,7 +1655,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                 <h2 className="mt-5 text-[26px] font-black tracking-tight text-faith-ink">
                   Start your first teaching
                 </h2>
-                <p className="mt-2 max-w-xl text-[14px] leading-6 text-slate-700">
+                <p className="mt-2 max-w-xl text-[14px] leading-6 text-[var(--fh-slate)]">
                   Create and manage your teachings from here.
                 </p>
                 <button
@@ -1663,12 +1663,12 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                   aria-label={primaryCtaLabel}
                   onClick={handlePrimaryCta}
                   className={`ds-btn ds-btn--primary mt-6 inline-flex h-12 w-full items-center justify-center gap-2 rounded-2xl px-7 text-[14px] font-extrabold text-white sm:w-auto ${cardFocusRingClass}`}
-                  style={{ background: "linear-gradient(90deg, #03cd8c 0%, #02b97f 100%)", boxShadow: "0 14px 28px -16px rgba(3,205,140,0.95)" }}
+                  style={{ background: "linear-gradient(90deg, var(--fh-brand) 0%, var(--fh-brand-dark) 100%)", boxShadow: "0 14px 28px -16px color-mix(in srgb, var(--fh-brand) 72%, transparent)" }}
                 >
                   <Plus className="h-4 w-4" />
                   Create your first teaching
                 </button>
-                <p className="mt-3 text-[12px] font-medium text-slate-700">Start now, then refine content in the workflow board.</p>
+                <p className="mt-3 text-[12px] font-medium text-[var(--fh-slate)]">Start now, then refine content in the workflow board.</p>
               </div>
             </section>
           </div>
@@ -1679,7 +1679,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
 
   if (hasDashboardData) {
     return (
-      <div className="fh-brand-shell min-h-screen w-full bg-[var(--fh-page-bg)] text-faith-ink transition-colors dark:bg-slate-950 dark:text-slate-100">
+      <div className="fh-brand-shell min-h-screen w-full bg-[var(--fh-page-bg)] text-faith-ink transition-colors ">
         <div className="w-full max-w-none px-0 py-0">
           <div className="space-y-8 sm:space-y-10">
             <section className="fh-brand-hero rounded-2xl p-5 sm:p-5">
@@ -1699,12 +1699,12 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                     aria-label={workflowPrimaryLabel}
                     onClick={handlePrimaryCta}
                     className={`ds-btn ds-btn--primary inline-flex h-14 w-full items-center justify-center gap-2 rounded-2xl px-6 text-[15px] font-black text-white ${cardFocusRingClass}`}
-                    style={{ background: "linear-gradient(90deg, #16244c 0%, #1f2f63 100%)", boxShadow: "0 16px 28px -14px rgba(22,36,76,0.9)" }}
+                    style={{ background: "linear-gradient(90deg, var(--fh-brand-dark) 0%, color-mix(in srgb, var(--fh-brand-dark) 82%, black 18%) 100%)", boxShadow: "0 16px 28px -14px rgba(22,36,76,0.9)" }}
                   >
                     {hasDraftToContinue && continueItem ? <ArrowRight className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
                     {hasDraftToContinue && continueItem ? "Continue editing now" : "Create Teaching"}
                   </button>
-                  <p className="mt-2 text-center text-[12px] font-semibold text-slate-700">
+                  <p className="mt-2 text-center text-[12px] font-semibold text-[var(--fh-slate)]">
                     {hasDraftToContinue && continueItem
                       ? "Resume your latest draft and finish faster."
                       : "Get started by creating your first teaching."}
@@ -1726,7 +1726,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                 </div>
               </div>
               <div className="mt-6 rounded-2xl border border-faith-line/70/60 bg-[var(--fh-surface)] p-5 sm:p-5">
-                <div className="mb-2 text-[10px] font-black uppercase tracking-[0.18em] text-slate-500">Next Actions</div>
+                <div className="mb-2 text-[10px] font-black uppercase tracking-[0.18em] text-[color-mix(in_srgb,var(--fh-slate)_78%,transparent)]">Next Actions</div>
                 <TeachingsQuickActionsBar
                   activeAction={activeQuickAction}
                   loadingAction={loadingQuickAction}
@@ -1803,22 +1803,22 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
               </div>
               <div className="mt-7 grid gap-5 sm:mt-6 sm:gap-5 md:grid-cols-[minmax(0,1.35fr)_minmax(240px,0.95fr)]">
                 <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-5">
-                  <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-slate-500">
+                  <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--fh-slate)_78%,transparent)]">
                     {continueItem ? "Resume now" : "Start here"}
                   </div>
                   <div className="mt-2 text-[20px] font-black tracking-tight text-faith-ink">
                     {continueItem ? continueItem.title : "Create your next teaching"}
                   </div>
-                  <p className="mt-2 text-[13px] leading-6 text-slate-700">
+                  <p className="mt-2 text-[13px] leading-6 text-[var(--fh-slate)]">
                     {continueItem
                       ? `Last edited ${formatLastEdited(continueItem.updatedAt)}. Jump back in without scanning multiple cards.`
                       : "Open a new teaching flow and start building your next sermon, episode, or series update."}
                   </p>
                 </div>
                 <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-5">
-                  <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-slate-500">Focus today</div>
+                  <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--fh-slate)_78%,transparent)]">Focus today</div>
                   <div className="mt-2 text-[16px] font-black tracking-tight text-faith-ink">{smartNextStep}</div>
-                  <p className="mt-2 text-[13px] leading-6 text-slate-700">
+                  <p className="mt-2 text-[13px] leading-6 text-[var(--fh-slate)]">
                     Review tasks, drafts, and published momentum are summarized here so the next move is obvious.
                   </p>
                 </div>
@@ -1836,16 +1836,16 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                 {analyticsInsights.map((insight) => (
                   <div key={insight.key} className="rounded-xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3.5">
                     <div className="flex items-center justify-between gap-2">
-                      <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-500">{insight.label}</div>
+                      <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-[color-mix(in_srgb,var(--fh-slate)_78%,transparent)]">{insight.label}</div>
                       <Pill text={insight.trend} tone={insight.tone} />
                     </div>
                     <div className="mt-2 text-[20px] font-black tracking-tight text-faith-ink">{insight.value}</div>
-                    <p className="mt-1 text-[12px] leading-5 text-slate-700">{insight.detail}</p>
+                    <p className="mt-1 text-[12px] leading-5 text-[var(--fh-slate)]">{insight.detail}</p>
                   </div>
                 ))}
               </div>
               {analyticsSnapshot?.updatedAtISO ? (
-                <div className="mt-3 text-[11px] font-semibold text-slate-500">
+                <div className="mt-3 text-[11px] font-semibold text-[color-mix(in_srgb,var(--fh-slate)_78%,transparent)]">
                   Last updated: {new Date(analyticsSnapshot.updatedAtISO).toLocaleString()}
                 </div>
               ) : null}
@@ -1859,24 +1859,24 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
             >
               <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
                 <div className="rounded-xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3.5">
-                  <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-500">Teachings</div>
+                  <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-[color-mix(in_srgb,var(--fh-slate)_78%,transparent)]">Teachings</div>
                   <div className="mt-2 text-[20px] font-black tracking-tight text-faith-ink">{teachingItems.length}</div>
-                  <p className="mt-1 text-[12px] leading-5 text-slate-700">All tracked teaching records in your workflow.</p>
+                  <p className="mt-1 text-[12px] leading-5 text-[var(--fh-slate)]">All tracked teaching records in your workflow.</p>
                 </div>
                 <div className="rounded-xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3.5">
-                  <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-500">Drafts</div>
+                  <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-[color-mix(in_srgb,var(--fh-slate)_78%,transparent)]">Drafts</div>
                   <div className="mt-2 text-[20px] font-black tracking-tight text-faith-ink">{draftTeachings.length}</div>
-                  <p className="mt-1 text-[12px] leading-5 text-slate-700">Work-in-progress teachings that still need completion.</p>
+                  <p className="mt-1 text-[12px] leading-5 text-[var(--fh-slate)]">Work-in-progress teachings that still need completion.</p>
                 </div>
                 <div className="rounded-xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3.5">
-                  <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-500">Published</div>
+                  <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-[color-mix(in_srgb,var(--fh-slate)_78%,transparent)]">Published</div>
                   <div className="mt-2 text-[20px] font-black tracking-tight text-faith-ink">{publishedTeachings.length}</div>
-                  <p className="mt-1 text-[12px] leading-5 text-slate-700">Ready-to-share content currently in active circulation.</p>
+                  <p className="mt-1 text-[12px] leading-5 text-[var(--fh-slate)]">Ready-to-share content currently in active circulation.</p>
                 </div>
                 <div className="rounded-xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3.5">
-                  <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-500">Archives</div>
+                  <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-[color-mix(in_srgb,var(--fh-slate)_78%,transparent)]">Archives</div>
                   <div className="mt-2 text-[20px] font-black tracking-tight text-faith-ink">{archivedTeachings.length}</div>
-                  <p className="mt-1 text-[12px] leading-5 text-slate-700">Older published teachings preserved for historical access.</p>
+                  <p className="mt-1 text-[12px] leading-5 text-[var(--fh-slate)]">Older published teachings preserved for historical access.</p>
                 </div>
               </div>
             </SectionCard>
@@ -1888,9 +1888,9 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                 subtitle={`${needsReviewCount} teaching item${needsReviewCount > 1 ? "s need" : " needs"} review before publishing.`}
                 titleTag="h2"
                 right={<Pill text="Needs review" tone="warn" left={<AlertTriangle className="h-3.5 w-3.5" />} />}
-                className="border-amber-200 bg-amber-50/40"
+                className="border-faith-line bg-[var(--fh-surface-bg)]"
               >
-                <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-amber-200 bg-[var(--fh-surface-bg)] p-3.5">
+                <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-faith-line bg-[var(--fh-surface-bg)] p-3.5">
                   <div className="text-[13px] font-semibold text-faith-ink">
                     Next step: review pending teachings and resolve blockers.
                   </div>
@@ -1927,16 +1927,16 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                   <div key={session.id} className={elevatedPanelClass}>
                     <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                       <div className="min-w-0">
-                        <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-500">Live session</div>
+                        <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-[color-mix(in_srgb,var(--fh-slate)_78%,transparent)]">Live session</div>
                         <div className="flex items-center gap-2">
                           <div className="h-2 w-2 rounded-full bg-emerald-500" />
                           <h3 className="text-[14px] font-bold text-faith-ink">{session.title}</h3>
                         </div>
-                        <div className="mt-1 text-[12px] text-slate-700">
+                        <div className="mt-1 text-[12px] text-[var(--fh-slate)]">
                           {session.time} - {session.campus}
                         </div>
-                        <div className="mt-1 text-[12px] text-slate-700">{session.audience}</div>
-                        <div className="mt-1 text-[12px] text-slate-700">{session.backstage}</div>
+                        <div className="mt-1 text-[12px] text-[var(--fh-slate)]">{session.audience}</div>
+                        <div className="mt-1 text-[12px] text-[var(--fh-slate)]">{session.backstage}</div>
                         {session.warning ? (
                           <div className="mt-2 inline-flex rounded-full bg-amber-100 px-2 py-0.5 text-[11px] font-semibold text-amber-900">
                             {session.warning}
@@ -1959,7 +1959,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                   </div>
                 ))}
                 {LIVE_SESSIONS.filter((session) => session.isLiveNow).length === 0 ? (
-                  <div className="rounded-xl border border-dashed border-faith-line bg-[var(--fh-surface-bg)] px-4 py-6 text-center text-[12px] text-slate-700">
+                  <div className="rounded-xl border border-dashed border-faith-line bg-[var(--fh-surface-bg)] px-4 py-6 text-center text-[12px] text-[var(--fh-slate)]">
                     No sessions are live right now. Upcoming sessions will appear here automatically.
                   </div>
                 ) : null}
@@ -2023,12 +2023,12 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                         key={`recent-skeleton-${idx}`}
                         className="w-full animate-pulse rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-4"
                       >
-                        <div className="h-4 w-2/3 rounded bg-slate-200/70" />
-                        <div className="mt-2 h-3 w-1/3 rounded bg-slate-200/60" />
+                        <div className="h-4 w-2/3 rounded bg-[color-mix(in_srgb,var(--fh-line)_38%,var(--fh-surface-bg)_62%)]" />
+                        <div className="mt-2 h-3 w-1/3 rounded bg-[color-mix(in_srgb,var(--fh-line)_30%,var(--fh-surface-bg)_70%)]" />
                         <div className="mt-3 flex gap-2">
-                          <div className="h-8 w-20 rounded-lg bg-slate-200/70" />
-                          <div className="h-8 w-24 rounded-lg bg-slate-200/70" />
-                          <div className="h-8 w-16 rounded-lg bg-slate-200/70" />
+                          <div className="h-8 w-20 rounded-lg bg-[color-mix(in_srgb,var(--fh-line)_38%,var(--fh-surface-bg)_62%)]" />
+                          <div className="h-8 w-24 rounded-lg bg-[color-mix(in_srgb,var(--fh-line)_38%,var(--fh-surface-bg)_62%)]" />
+                          <div className="h-8 w-16 rounded-lg bg-[color-mix(in_srgb,var(--fh-line)_38%,var(--fh-surface-bg)_62%)]" />
                         </div>
                       </div>
                     ))
@@ -2054,7 +2054,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                     <div className="flex items-start justify-between gap-2">
                       <div className="min-w-0">
                         <h3 className="text-[14px] font-bold text-faith-ink">{item.title}</h3>
-                        <p className="mt-1 text-[12px] text-slate-700">Updated {formatLastEdited(item.updatedAt)}</p>
+                        <p className="mt-1 text-[12px] text-[var(--fh-slate)]">Updated {formatLastEdited(item.updatedAt)}</p>
                       </div>
                       <Pill text={item.status} tone={item.status === "Published" ? "good" : "warn"} />
                     </div>
@@ -2091,7 +2091,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                   <div className="text-[14px] font-bold text-faith-ink">
                     No published teachings match this filter yet.
                   </div>
-                  <div className="mt-1 text-[12px] text-slate-700">
+                  <div className="mt-1 text-[12px] text-[var(--fh-slate)]">
                     Switch filters or open the teachings board to move drafts toward publish-ready status.
                   </div>
                   <button
@@ -2107,7 +2107,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
               ) : null}
                 </>
               ) : (
-                <div className="text-[12px] text-slate-700">Section collapsed.</div>
+                <div className="text-[12px] text-[var(--fh-slate)]">Section collapsed.</div>
               )}
             </SectionCard>
 
@@ -2165,12 +2165,12 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                         key={`pending-skeleton-${idx}`}
                         className="animate-pulse rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-4"
                       >
-                        <div className="h-4 w-1/2 rounded bg-slate-200/70" />
-                        <div className="mt-2 h-3 w-2/3 rounded bg-slate-200/60" />
+                        <div className="h-4 w-1/2 rounded bg-[color-mix(in_srgb,var(--fh-line)_38%,var(--fh-surface-bg)_62%)]" />
+                        <div className="mt-2 h-3 w-2/3 rounded bg-[color-mix(in_srgb,var(--fh-line)_30%,var(--fh-surface-bg)_70%)]" />
                         <div className="mt-3 flex gap-2">
-                          <div className="h-8 w-20 rounded-lg bg-slate-200/70" />
-                          <div className="h-8 w-24 rounded-lg bg-slate-200/70" />
-                          <div className="h-8 w-16 rounded-lg bg-slate-200/70" />
+                          <div className="h-8 w-20 rounded-lg bg-[color-mix(in_srgb,var(--fh-line)_38%,var(--fh-surface-bg)_62%)]" />
+                          <div className="h-8 w-24 rounded-lg bg-[color-mix(in_srgb,var(--fh-line)_38%,var(--fh-surface-bg)_62%)]" />
+                          <div className="h-8 w-16 rounded-lg bg-[color-mix(in_srgb,var(--fh-line)_38%,var(--fh-surface-bg)_62%)]" />
                         </div>
                       </div>
                     ))
@@ -2180,7 +2180,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                     <div className="text-[14px] font-bold text-faith-ink">
                       No drafts pending, you're all caught up.
                     </div>
-                    <div className="mt-1 text-[12px] text-slate-700">
+                    <div className="mt-1 text-[12px] text-[var(--fh-slate)]">
                       Great work. New drafts and review requests will appear here.
                     </div>
                     <button
@@ -2198,9 +2198,9 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                   <div key={item.id} className={elevatedPanelClass}>
                     <div className="flex items-start justify-between gap-2">
                       <div className="min-w-0">
-                        <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-500">Draft item</div>
+                        <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-[color-mix(in_srgb,var(--fh-slate)_78%,transparent)]">Draft item</div>
                         <h3 className="text-[14px] font-bold text-faith-ink">{item.title}</h3>
-                        <p className="mt-1 text-[12px] text-slate-700">
+                        <p className="mt-1 text-[12px] text-[var(--fh-slate)]">
                           {item.type} - Updated {formatLastEdited(item.updatedAt)}
                         </p>
                       </div>
@@ -2231,7 +2231,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
               </div>
                 </>
               ) : (
-                <div className="text-[12px] text-slate-700">Section collapsed.</div>
+                <div className="text-[12px] text-[var(--fh-slate)]">Section collapsed.</div>
               )}
             </SectionCard>
             </div>
@@ -2245,7 +2245,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
               {archivedTeachings.length === 0 ? (
                 <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-4 py-6 text-center">
                   <div className="text-[14px] font-bold text-faith-ink">No archived teachings yet.</div>
-                  <div className="mt-1 text-[12px] text-slate-700">
+                  <div className="mt-1 text-[12px] text-[var(--fh-slate)]">
                     Published teachings beyond your active list will appear here automatically.
                   </div>
                 </div>
@@ -2256,7 +2256,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                       <div className="flex items-start justify-between gap-2">
                         <div className="min-w-0">
                           <h3 className="text-[14px] font-bold text-faith-ink">{item.title}</h3>
-                          <p className="mt-1 text-[12px] text-slate-700">Archived from published lane</p>
+                          <p className="mt-1 text-[12px] text-[var(--fh-slate)]">Archived from published lane</p>
                         </div>
                         <Pill text="Archived" tone="navy" />
                       </div>
@@ -2291,6 +2291,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
   }
 
 }
+
 
 
 
