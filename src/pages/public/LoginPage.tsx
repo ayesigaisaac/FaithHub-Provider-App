@@ -1,4 +1,4 @@
-import {
+ï»¿import {
   Collapse,
   Alert,
   Box,
@@ -20,6 +20,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/auth/useAuth';
 import { BrandLogo } from '@/components/branding/BrandLogo';
+import { ThemeModeToggle } from '@/components/theme/ThemeModeToggle';
 import { isKnownProviderPath } from '@/navigation/providerPages';
 import type { WorkspaceContext } from '@/auth/types';
 
@@ -127,7 +128,11 @@ export default function LoginPage() {
         minHeight: '100vh',
         display: 'grid',
         placeItems: 'center',
-        bgcolor: '#eff1f5',
+        bgcolor: 'background.default',
+        backgroundImage: (theme) =>
+          theme.palette.mode === 'dark'
+            ? 'radial-gradient(circle at 14% 8%, rgba(59,130,246,0.2), transparent 28%), radial-gradient(circle at 90% 4%, rgba(16,185,129,0.16), transparent 24%)'
+            : 'radial-gradient(circle at 14% 8%, rgba(59,130,246,0.12), transparent 28%), radial-gradient(circle at 90% 4%, rgba(16,185,129,0.1), transparent 24%)',
         px: 2,
         py: 3,
       }}
@@ -138,13 +143,18 @@ export default function LoginPage() {
           maxWidth: 440,
           borderRadius: 2,
           border: '1px solid',
-          borderColor: 'divider',
+          borderColor: (theme) => (theme.palette.mode === 'dark' ? 'rgba(148,163,184,0.28)' : 'divider'),
           bgcolor: 'background.paper',
-          boxShadow: '0 10px 35px rgba(15, 23, 42, 0.1)',
+          boxShadow: (theme) =>
+            theme.palette.mode === 'dark' ? '0 22px 50px rgba(2, 6, 23, 0.65)' : '0 10px 35px rgba(15, 23, 42, 0.1)',
           p: { xs: 2.25, sm: 3.5 },
         }}
       >
         <Stack spacing={1.6} component="form" onSubmit={onSubmit}>
+          <Stack direction="row" justifyContent="flex-end">
+            <ThemeModeToggle size="small" />
+          </Stack>
+
           <Stack spacing={1} alignItems="center" textAlign="center">
             <Box sx={{ mb: 0.8 }}>
               <BrandLogo variant="landscape" alt="FaithHub Provider" style={{ height: 56, width: 'auto', maxWidth: '100%' }} />
@@ -155,12 +165,12 @@ export default function LoginPage() {
                   width: 36,
                   height: 36,
                   borderRadius: 1.5,
-                  bgcolor: '#e7e8ec',
+                  bgcolor: (theme) => (theme.palette.mode === 'dark' ? 'rgba(148,163,184,0.24)' : '#e7e8ec'),
                   display: 'grid',
                   placeItems: 'center',
                 }}
               >
-                <HomeRoundedIcon sx={{ color: '#131722', fontSize: 24 }} />
+                <HomeRoundedIcon sx={{ color: 'text.primary', fontSize: 24 }} />
               </Box>
               <Typography variant="h4" fontWeight={700} color="text.primary">
                 FaithHub
@@ -329,7 +339,7 @@ export default function LoginPage() {
 
           <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ mt: -0.2 }}>
             <Typography variant="caption" color="text.secondary">
-              Campus: {workspace.campus} • Brand: {workspace.brand}
+              Campus: {workspace.campus} â€¢ Brand: {workspace.brand}
             </Typography>
             <Button
               variant="text"
@@ -343,7 +353,7 @@ export default function LoginPage() {
           </Stack>
 
           <Typography variant="caption" color="text.secondary" textAlign="center">
-            FaithHub Provider • Secure sign-in
+            FaithHub Provider â€¢ Secure sign-in
           </Typography>
         </Stack>
       </Box>
