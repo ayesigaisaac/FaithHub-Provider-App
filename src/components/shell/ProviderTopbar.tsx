@@ -63,11 +63,11 @@ export function ProviderTopbar({
   const isTinyScreen = useMediaQuery('(max-width:399.95px)');
   const utilityIconSx = {
     border: '1px solid',
-    borderColor: isDark ? '#334155' : '#d4ddd9',
+    borderColor: 'var(--fh-line)',
     borderRadius: '16px',
     width: { xs: 42, md: 46 },
     height: { xs: 42, md: 46 },
-    bgcolor: isDark ? '#0f172a' : '#ffffff',
+    bgcolor: 'var(--fh-surface-bg)',
     color: 'var(--fh-slate)',
     transition: 'transform var(--fh-duration-base) var(--fh-ease-premium), background-color var(--fh-duration-fast) ease, border-color var(--fh-duration-fast) ease',
     '&:hover': {
@@ -111,8 +111,8 @@ export function ProviderTopbar({
         top: 0,
         zIndex: 1100,
         borderBottom: '1px solid',
-        borderColor: (theme) => (theme.palette.mode === 'dark' ? '#1f2937' : '#d1d9d6'),
-        bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#0f172a' : '#f2f5f4'),
+        borderColor: 'var(--fh-line)',
+        bgcolor: 'var(--fh-surface-bg)',
         boxShadow: 'var(--fh-shadow-sm)',
       }}
     >
@@ -123,7 +123,7 @@ export function ProviderTopbar({
           py: { xs: 0.25, md: 0.7 },
           gap: { xs: 0.6, md: 1.1 },
           borderBottom: '1px solid',
-          borderColor: (theme) => (theme.palette.mode === 'dark' ? '#1f2937' : '#dce4e1'),
+          borderColor: 'var(--fh-line)',
         }}
       >
         <Stack direction="row" alignItems="center" spacing={1.25} sx={{ flex: 1, minWidth: 0 }}>
@@ -292,9 +292,9 @@ export function ProviderTopbar({
           px: { xs: 1.25, md: 3 },
           py: { xs: 0.2, md: 0.35 },
           mt: 0,
-          bgcolor: isDark ? '#0b1220' : '#eef2f1',
+          bgcolor: 'var(--fh-page-bg)',
           borderTop: '1px solid',
-          borderColor: isDark ? '#1f2937' : '#dbe3e0',
+          borderColor: 'var(--fh-line)',
         }}
       >
         <Stack direction="row" alignItems="center" justifyContent="flex-start" sx={{ width: '100%' }}>
@@ -334,9 +334,9 @@ export function ProviderTopbar({
                   py: 0.2,
                   pl: 0.4,
                   pr: 0.4,
-                  border: `1px solid ${isDark ? '#334155' : '#d7dfdc'}`,
+                  border: '1px solid var(--fh-line)',
                   borderRadius: '999px',
-                  bgcolor: isDark ? '#0f172a' : '#f7f9f8',
+                  bgcolor: 'var(--fh-surface-bg)',
                   '&::-webkit-scrollbar': { height: 7 },
                   '&::-webkit-scrollbar-thumb': { backgroundColor: 'var(--fh-line)', borderRadius: 10 },
                   '&::-webkit-scrollbar-track': { backgroundColor: 'transparent' },
@@ -344,15 +344,15 @@ export function ProviderTopbar({
               >
                 <Box
                 sx={{
-                  bgcolor: '#13c98b',
-                  color: '#ffffff',
+                  bgcolor: 'var(--fh-brand)',
+                  color: 'var(--fh-surface-bg)',
                   borderRadius: '999px',
                   px: { xs: 1.35, md: 1.9 },
                   py: { xs: 0.55, md: 0.75 },
                     fontSize: { xs: 14, md: 17 },
                     fontWeight: 800,
                     lineHeight: 1,
-                    border: '1px solid #0fae78',
+                    border: '1px solid var(--fh-brand-dark)',
                     whiteSpace: 'nowrap',
                   }}
                 >
@@ -373,9 +373,9 @@ export function ProviderTopbar({
                       px: { xs: 1.2, md: 1.8 },
                       fontSize: { xs: 13, md: 15 },
                       borderWidth: 1,
-                      borderColor: activeTopTab?.label === tab.label ? '#13c98b' : isDark ? '#334155' : '#d2dad7',
-                      bgcolor: activeTopTab?.label === tab.label ? '#13c98b' : isDark ? '#0f172a' : '#ffffff',
-                      color: activeTopTab?.label === tab.label ? '#ffffff' : 'var(--fh-ink)',
+                      borderColor: activeTopTab?.label === tab.label ? 'var(--fh-brand)' : 'var(--fh-line)',
+                      bgcolor: activeTopTab?.label === tab.label ? 'var(--fh-brand)' : 'var(--fh-surface-bg)',
+                      color: activeTopTab?.label === tab.label ? 'var(--fh-surface-bg)' : 'var(--fh-ink)',
                       whiteSpace: 'nowrap',
                       '& .MuiButton-startIcon': {
                         color: activeTopTab?.label === tab.label ? 'var(--fh-surface-bg)' : 'var(--fh-slate)',

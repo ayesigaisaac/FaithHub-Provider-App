@@ -145,6 +145,8 @@ export function getCssThemeVariables(mode: TokenMode): Record<string, string> {
     '--fh-brand-soft': designTokens.color.brand.primarySoft,
     '--fh-accent': designTokens.color.accent.primary,
     '--fh-accent-soft': designTokens.color.accent.soft,
+    '--fh-ev-medium-grey': designTokens.color.ev.mediumGrey,
+    '--fh-ev-light-grey': designTokens.color.ev.lightGrey,
     '--fh-ink': isDark ? designTokens.color.dark.ink : designTokens.color.neutral.ink,
     '--fh-slate': isDark ? designTokens.color.dark.slate : designTokens.color.neutral.slate,
     '--fh-line': isDark ? designTokens.color.dark.line : designTokens.color.neutral.line,

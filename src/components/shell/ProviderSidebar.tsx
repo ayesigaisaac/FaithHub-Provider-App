@@ -158,8 +158,8 @@ export function ProviderSidebar({
           sx={{
             borderRadius: 'var(--fh-radius-3xl)',
             border: '1px solid',
-            borderColor: isDark ? '#334155' : '#d2dad7',
-            bgcolor: isDark ? '#0f172a' : '#f5f7f6',
+            borderColor: 'var(--fh-line)',
+            bgcolor: 'var(--fh-surface-bg)',
             overflow: 'hidden',
             boxShadow: 'var(--fh-shadow-md)',
             display: 'flex',
@@ -236,10 +236,10 @@ export function ProviderSidebar({
                         minHeight: 42,
                         borderRadius: '10px',
                         border: '1px solid transparent',
-                        bgcolor: openSections[group.section] ? (isDark ? '#111827' : '#eef2f1') : 'transparent',
+                        bgcolor: openSections[group.section] ? 'var(--fh-surface)' : 'transparent',
                         transition: 'transform var(--fh-duration-base) var(--fh-ease-premium), background-color var(--fh-duration-fast) ease, border-color var(--fh-duration-fast) ease',
                         '&:hover': {
-                          bgcolor: isDark ? '#111827' : '#f1f5f4',
+                          bgcolor: 'var(--fh-surface)',
                           transform: 'translateY(-1px)',
                         },
                       }}
@@ -565,7 +565,7 @@ export function ProviderSidebar({
                     bgcolor: 'transparent',
                     transition: 'transform var(--fh-duration-base) var(--fh-ease-premium), background-color var(--fh-duration-fast) ease',
                     '&:hover': {
-                      bgcolor: isDark ? '#111827' : '#f1f5f4',
+                      bgcolor: 'var(--fh-surface)',
                       transform: 'translateY(-1px)',
                     },
                   }}

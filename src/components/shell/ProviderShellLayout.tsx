@@ -116,11 +116,11 @@ export function ProviderShellLayout() {
         minHeight: '100vh',
         maxHeight: '100vh',
         overflow: 'hidden',
-        bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#0b1220' : '#e8eeec'),
+        bgcolor: 'var(--fh-page-bg)',
         backgroundImage: (theme) =>
           theme.palette.mode === 'dark'
-            ? 'linear-gradient(180deg, #0f172a 0%, #0b1220 45%, #0a1020 100%)'
-            : 'linear-gradient(180deg, #eff4f2 0%, #e8eeec 45%, #e3ebe9 100%)',
+            ? 'linear-gradient(180deg, color-mix(in srgb, var(--fh-surface-bg) 95%, black 5%) 0%, var(--fh-page-bg) 45%, color-mix(in srgb, var(--fh-page-bg) 90%, black 10%) 100%)'
+            : 'linear-gradient(180deg, color-mix(in srgb, var(--fh-surface) 70%, white 30%) 0%, var(--fh-page-bg) 45%, color-mix(in srgb, var(--fh-page-bg) 92%, #dfe8e5 8%) 100%)',
       }}
     >
       <a href="#provider-main-content" className="fh-skip-link">
@@ -204,8 +204,8 @@ export function ProviderShellLayout() {
             sx={{
               borderRadius: { xs: 0, md: 3 },
               border: '1px solid',
-              borderColor: (theme) => (theme.palette.mode === 'dark' ? '#1f2937' : '#d2ddd8'),
-              bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#0f172a' : '#f4f7f6'),
+              borderColor: 'var(--fh-line)',
+              bgcolor: 'var(--fh-surface-bg)',
               p: { xs: 0.5, md: 0.8 },
               minHeight: '100%',
               boxShadow: (theme) =>
