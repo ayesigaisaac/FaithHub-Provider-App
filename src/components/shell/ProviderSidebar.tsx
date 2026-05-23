@@ -79,6 +79,25 @@ function getSidebarPageLabel(input: { key: string; title: string; shortTitle?: s
     .trim();
 }
 
+function getSidebarPageHint(input: { key: string; title: string }) {
+  const explicit: Record<string, string> = {
+    'provider-dashboard': 'Overview, insights, and command actions',
+    'provider-onboarding': 'Setup, verification, and launch readiness',
+    'series-dashboard': 'Track series progress and publishing lanes',
+    'teachings-dashboard': 'Teachings workflow, drafts, and review',
+    'live-dashboard': 'Live sessions, stream health, and controls',
+    'audience-notifications': 'Targeted updates and audience outreach',
+    'reviews-and-moderation': 'Trust queue, reviews, and moderation tasks',
+    'events-manager': 'Event planning, schedule, and attendance',
+    'donations-and-funds': 'Giving health, campaigns, and fund tracking',
+    'profile-settings': 'Profile, workspace, and access preferences',
+  };
+  if (explicit[input.key]) return explicit[input.key];
+
+  const cleaned = input.title.replace(/^FaithHub Provider\s+/i, '').trim();
+  return `${cleaned} workspace tools`;
+}
+
 function trackSidebarClick(payload: { section: string; label: string; route: string; level: 'primary' | 'secondary' }) {
   if (typeof window === 'undefined') return;
   const detail = { event: 'sidebar_task_click', ...payload };
@@ -309,39 +328,76 @@ export function ProviderSidebar({
                                   onClose();
                                 }}
                                 sx={{
-                                  mb: 0.34,
-                                  px: 0.9,
-                                  py: 0.5,
-                                  minHeight: 36,
-                                  borderRadius: '8px',
+                                  mb: 0.5,
+                                  px: 1,
+                                  py: 0.9,
+                                  minHeight: 74,
+                                  borderRadius: '14px',
                                   border: '1px solid',
                                   borderColor: active
-                                    ? 'color-mix(in srgb, var(--fh-brand-dark) 70%, var(--fh-brand) 30%)'
-                                    : 'transparent',
+                                    ? 'color-mix(in srgb, var(--fh-brand-dark) 86%, var(--fh-brand) 14%)'
+                                    : 'color-mix(in srgb, var(--fh-line) 58%, transparent)',
                                   bgcolor: active
-                                    ? 'color-mix(in srgb, var(--fh-brand-soft) 55%, #effdf7 45%)'
-                                    : 'transparent',
+                                    ? 'var(--fh-brand)'
+                                    : 'color-mix(in srgb, var(--fh-surface) 88%, var(--fh-surface-bg) 12%)',
                                   transition: 'transform var(--fh-duration-base) var(--fh-ease-premium), background-color var(--fh-duration-fast) ease, border-color var(--fh-duration-fast) ease',
-                                  '&:hover': { bgcolor: 'color-mix(in srgb, var(--fh-surface) 85%, #ffffff 15%)', transform: 'translateY(-1px)' },
+                                  '&:hover': {
+                                    bgcolor: active
+                                      ? 'color-mix(in srgb, var(--fh-brand-dark) 80%, var(--fh-brand) 20%)'
+                                      : 'color-mix(in srgb, var(--fh-surface) 96%, var(--fh-surface-bg) 4%)',
+                                    transform: 'translateY(-1px)',
+                                  },
                                 }}
                               >
+                                <ListItemIcon
+                                  sx={{
+                                    minWidth: 0,
+                                    mr: 1.15,
+                                    width: 34,
+                                    height: 34,
+                                    borderRadius: '10px',
+                                    display: 'grid',
+                                    placeItems: 'center',
+                                    color: active ? 'var(--fh-surface-bg)' : 'var(--fh-brand)',
+                                    bgcolor: active
+                                      ? 'color-mix(in srgb, var(--fh-brand-dark) 70%, black 30%)'
+                                      : 'color-mix(in srgb, var(--fh-brand-soft) 56%, var(--fh-surface-bg) 44%)',
+                                  }}
+                                >
+                                  <page.icon size={16} />
+                                </ListItemIcon>
                                 <ListItemText
                                   primary={
-                                    <Typography
-                                      sx={{
-                                        fontWeight: active ? 800 : 650,
-                                        fontSize: 12,
-                                        lineHeight: 1.2,
-                                        color: active ? 'var(--fh-ink)' : 'var(--fh-slate)',
-                                      }}
-                                    >
-                                      {getSidebarPageLabel(page)}
-                                    </Typography>
+                                    <Box>
+                                      <Typography
+                                        sx={{
+                                          fontWeight: active ? 800 : 700,
+                                          fontSize: 13,
+                                          lineHeight: 1.15,
+                                          color: active ? 'var(--fh-surface-bg)' : 'var(--fh-ink)',
+                                          mb: 0.2,
+                                        }}
+                                      >
+                                        {getSidebarPageLabel(page)}
+                                      </Typography>
+                                      <Typography
+                                        sx={{
+                                          fontWeight: 500,
+                                          fontSize: 11.5,
+                                          lineHeight: 1.25,
+                                          color: active
+                                            ? 'color-mix(in srgb, var(--fh-surface-bg) 86%, transparent)'
+                                            : 'var(--fh-slate)',
+                                        }}
+                                      >
+                                        {getSidebarPageHint(page)}
+                                      </Typography>
+                                    </Box>
                                   }
                                 />
                               </ListItemButton>
                               {visibleChildren.length ? (
-                                <Box sx={{ pl: 1.85 }}>
+                                <Box sx={{ pl: 1.2 }}>
                                   {visibleChildren.map((child) => {
                                     const childActive =
                                       child.path === location.pathname || Boolean(child.aliases?.includes(location.pathname));
@@ -361,32 +417,69 @@ export function ProviderSidebar({
                                           onClose();
                                         }}
                                         sx={{
-                                          mb: 0.3,
-                                          px: 0.8,
-                                          py: 0.4,
-                                          minHeight: 34,
-                                          borderRadius: '8px',
+                                          mb: 0.4,
+                                          px: 0.9,
+                                          py: 0.7,
+                                          minHeight: 62,
+                                          borderRadius: '12px',
                                           border: '1px solid',
-                                          borderColor: childActive ? 'var(--fh-brand-dark)' : 'transparent',
+                                          borderColor: childActive
+                                            ? 'color-mix(in srgb, var(--fh-brand-dark) 74%, var(--fh-brand) 26%)'
+                                            : 'color-mix(in srgb, var(--fh-line) 52%, transparent)',
                                           bgcolor: childActive
-                                            ? 'color-mix(in srgb, var(--fh-brand-soft) 32%, var(--fh-surface-bg) 68%)'
-                                            : 'transparent',
+                                            ? 'color-mix(in srgb, var(--fh-brand-soft) 62%, var(--fh-surface-bg) 38%)'
+                                            : 'color-mix(in srgb, var(--fh-surface) 76%, var(--fh-surface-bg) 24%)',
                                           transition: 'transform var(--fh-duration-base) var(--fh-ease-premium), background-color var(--fh-duration-fast) ease, border-color var(--fh-duration-fast) ease',
-                                          '&:hover': { bgcolor: 'color-mix(in srgb, var(--fh-surface) 85%, #ffffff 15%)', transform: 'translateY(-1px)' },
+                                          '&:hover': {
+                                            bgcolor: childActive
+                                              ? 'color-mix(in srgb, var(--fh-brand-soft) 68%, var(--fh-surface-bg) 32%)'
+                                              : 'color-mix(in srgb, var(--fh-surface) 92%, var(--fh-surface-bg) 8%)',
+                                            transform: 'translateY(-1px)',
+                                          },
                                         }}
                                       >
+                                        <ListItemIcon
+                                          sx={{
+                                            minWidth: 0,
+                                            mr: 1,
+                                            width: 28,
+                                            height: 28,
+                                            borderRadius: '9px',
+                                            display: 'grid',
+                                            placeItems: 'center',
+                                            color: childActive ? 'var(--fh-brand-dark)' : 'var(--fh-slate)',
+                                            bgcolor: childActive
+                                              ? 'color-mix(in srgb, var(--fh-brand-soft) 68%, var(--fh-surface-bg) 32%)'
+                                              : 'color-mix(in srgb, var(--fh-line) 12%, transparent)',
+                                          }}
+                                        >
+                                          <child.icon size={14} />
+                                        </ListItemIcon>
                                         <ListItemText
                                           primary={
-                                            <Typography
-                                              sx={{
-                                                fontWeight: childActive ? 700 : 500,
-                                                fontSize: 11,
-                                                lineHeight: 1.2,
-                                                color: childActive ? 'var(--fh-ink)' : 'var(--fh-slate)',
-                                              }}
-                                            >
-                                              {getSidebarPageLabel(child)}
-                                            </Typography>
+                                            <Box>
+                                              <Typography
+                                                sx={{
+                                                  fontWeight: childActive ? 750 : 650,
+                                                  fontSize: 12,
+                                                  lineHeight: 1.15,
+                                                  color: childActive ? 'var(--fh-ink)' : 'var(--fh-ink)',
+                                                  mb: 0.15,
+                                                }}
+                                              >
+                                                {getSidebarPageLabel(child)}
+                                              </Typography>
+                                              <Typography
+                                                sx={{
+                                                  fontWeight: 500,
+                                                  fontSize: 11,
+                                                  lineHeight: 1.2,
+                                                  color: 'var(--fh-slate)',
+                                                }}
+                                              >
+                                                {getSidebarPageHint(child)}
+                                              </Typography>
+                                            </Box>
                                           }
                                         />
                                       </ListItemButton>
