@@ -144,6 +144,31 @@ h6 {
 
 html.dark body {
   color: #e2e8f0;
+  background-color: #0b1220;
+  background-image:
+    radial-gradient(circle at 8% 10%, rgba(3, 205, 140, 0.14) 0%, transparent 40%),
+    radial-gradient(circle at 90% 8%, rgba(247, 127, 0, 0.1) 0%, transparent 35%),
+    linear-gradient(180deg, #0f172a 0%, #0b1220 100%);
+}
+
+html.dark {
+  --fh-ink: #e2e8f0;
+  --fh-slate: #94a3b8;
+  --fh-muted: #94a3b8;
+  --fh-muted-strong: #cbd5e1;
+  --fh-line: #334155;
+  --fh-surface: #111b2f;
+  --fh-page-bg: #0b1220;
+  --fh-surface-bg: #0f172a;
+  --fh-aura-gradient: radial-gradient(circle at 12% 10%, rgba(3, 205, 140, 0.18), transparent 44%),
+    radial-gradient(circle at 88% 14%, rgba(247, 127, 0, 0.12), transparent 40%),
+    linear-gradient(180deg, #0f172a 0%, #0b1220 100%);
+  --fh-brand-gradient-soft: linear-gradient(
+    150deg,
+    rgba(3, 205, 140, 0.1) 0%,
+    rgba(15, 23, 42, 0.92) 46%,
+    rgba(17, 27, 47, 0.96) 100%
+  );
 }
 
 * {
