@@ -64,15 +64,15 @@ export function ProviderTopbar({
   const utilityIconSx = {
     border: '1px solid',
     borderColor: 'var(--fh-line)',
-    borderRadius: '16px',
+    borderRadius: '14px',
     width: { xs: 42, md: 46 },
     height: { xs: 42, md: 46 },
-    bgcolor: 'var(--fh-surface-bg)',
+    bgcolor: 'color-mix(in srgb, var(--fh-surface) 58%, var(--fh-surface-bg) 42%)',
     color: 'var(--fh-slate)',
     transition: 'transform var(--fh-duration-base) var(--fh-ease-premium), background-color var(--fh-duration-fast) ease, border-color var(--fh-duration-fast) ease',
     '&:hover': {
       borderColor: 'color-mix(in srgb, var(--fh-line) 72%, var(--fh-ink) 28%)',
-      bgcolor: 'var(--fh-surface)',
+      bgcolor: 'var(--fh-surface-bg)',
       transform: 'translateY(-1px)',
     },
   };
@@ -229,14 +229,14 @@ export function ProviderTopbar({
                 width: { md: 250, lg: 320, xl: 400 },
                 maxWidth: '42vw',
                 '& .MuiOutlinedInput-root': {
-                  borderRadius: '18px',
+                  borderRadius: '14px',
                   minHeight: { md: 42, lg: 46 },
                   px: 1.05,
                   border: '1px solid',
                   borderColor: searchOpen
                     ? 'color-mix(in srgb, var(--fh-brand) 72%, var(--fh-line) 28%)'
                     : 'color-mix(in srgb, var(--fh-line) 84%, white 16%)',
-                  bgcolor: isDark ? '#0f172a' : '#f8fcfa',
+                  bgcolor: 'color-mix(in srgb, var(--fh-surface) 52%, var(--fh-surface-bg) 48%)',
                   color: 'var(--fh-slate)',
                   fontWeight: 650,
                   boxShadow: searchOpen
@@ -248,12 +248,12 @@ export function ProviderTopbar({
                   },
                   '&:hover': {
                     borderColor: 'color-mix(in srgb, var(--fh-brand) 35%, var(--fh-line) 65%)',
-                    bgcolor: isDark ? '#111c30' : '#ffffff',
+                    bgcolor: 'var(--fh-surface-bg)',
                     transform: 'translateY(-1px)',
                   },
                   '&.Mui-focused': {
                     borderColor: 'var(--fh-brand)',
-                    bgcolor: isDark ? '#111c30' : '#ffffff',
+                    bgcolor: 'var(--fh-surface-bg)',
                   },
                 },
                 '& .MuiInputBase-input': {
@@ -335,8 +335,8 @@ export function ProviderTopbar({
                   pl: 0.4,
                   pr: 0.4,
                   border: '1px solid var(--fh-line)',
-                  borderRadius: '999px',
-                  bgcolor: 'var(--fh-surface-bg)',
+                  borderRadius: '16px',
+                  bgcolor: 'color-mix(in srgb, var(--fh-surface) 42%, var(--fh-surface-bg) 58%)',
                   '&::-webkit-scrollbar': { height: 7 },
                   '&::-webkit-scrollbar-thumb': { backgroundColor: 'var(--fh-line)', borderRadius: 10 },
                   '&::-webkit-scrollbar-track': { backgroundColor: 'transparent' },
@@ -346,7 +346,7 @@ export function ProviderTopbar({
                 sx={{
                   bgcolor: 'var(--fh-brand)',
                   color: 'var(--fh-surface-bg)',
-                  borderRadius: '999px',
+                  borderRadius: '12px',
                   px: { xs: 1.35, md: 1.9 },
                   py: { xs: 0.55, md: 0.75 },
                     fontSize: { xs: 14, md: 17 },
@@ -366,20 +366,27 @@ export function ProviderTopbar({
                     onClick={() => navigate(resolveKnownProviderPath(tab.to))}
                     aria-current={activeTopTab?.label === tab.label ? 'page' : undefined}
                     sx={{
-                      borderRadius: '999px',
+                      borderRadius: '12px',
                       textTransform: 'none',
                       fontWeight: 800,
                       minHeight: { xs: 38, md: 42 },
-                      px: { xs: 1.2, md: 1.8 },
+                      px: { xs: 1.2, md: 1.55 },
                       fontSize: { xs: 13, md: 15 },
                       borderWidth: 1,
                       borderColor: activeTopTab?.label === tab.label ? 'var(--fh-brand)' : 'var(--fh-line)',
-                      bgcolor: activeTopTab?.label === tab.label ? 'var(--fh-brand)' : 'var(--fh-surface-bg)',
+                      bgcolor: activeTopTab?.label === tab.label ? 'var(--fh-brand)' : 'color-mix(in srgb, var(--fh-surface) 45%, var(--fh-surface-bg) 55%)',
                       color: activeTopTab?.label === tab.label ? 'var(--fh-surface-bg)' : 'var(--fh-ink)',
                       whiteSpace: 'nowrap',
                       '& .MuiButton-startIcon': {
-                        color: activeTopTab?.label === tab.label ? 'var(--fh-surface-bg)' : 'var(--fh-slate)',
-                        mr: 0.9,
+                        color: activeTopTab?.label === tab.label ? 'var(--fh-surface-bg)' : 'var(--fh-brand-dark)',
+                        mr: 0.8,
+                        '& > *': {
+                          p: '4px',
+                          borderRadius: '8px',
+                          backgroundColor: activeTopTab?.label === tab.label
+                            ? 'color-mix(in srgb, var(--fh-brand-dark) 72%, black 28%)'
+                            : 'color-mix(in srgb, var(--fh-brand-soft) 56%, var(--fh-surface-bg) 44%)',
+                        },
                       },
                       '&:hover': {
                         borderColor:
@@ -389,7 +396,7 @@ export function ProviderTopbar({
                         bgcolor:
                           activeTopTab?.label === tab.label
                             ? 'var(--fh-brand-dark)'
-                            : 'color-mix(in srgb, var(--fh-surface) 90%, var(--fh-surface-bg) 10%)',
+                            : 'var(--fh-surface-bg)',
                       },
                     }}
                   >
