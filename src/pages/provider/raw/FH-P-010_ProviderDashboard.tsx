@@ -1210,7 +1210,7 @@ function SelectPill({
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="h-11 w-full rounded-xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3.5 pr-9 text-[12px] font-semibold text-[var(--fh-slate)] shadow-soft outline-none focus:border-slate-300"
+        className="h-11 w-full rounded-xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3.5 pr-9 text-[12px] font-semibold text-[var(--fh-slate)] shadow-soft outline-none focus:border-[var(--fh-brand)]"
       >
         {options.map((option) => (
           <option key={option}>{option}</option>
@@ -1726,7 +1726,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                 </div>
               </div>
               <div className="mt-6 rounded-2xl border border-faith-line/70/60 bg-[var(--fh-surface)] p-5 sm:p-5">
-                <div className="mb-2 text-[10px] font-black uppercase tracking-[0.18em] text-[color-mix(in_srgb,var(--fh-slate)_78%,transparent)]">Next Actions</div>
+                <div className="mb-2 text-[10px] font-black uppercase tracking-[0.18em] text-[var(--fh-slate)]">Next Actions</div>
                 <TeachingsQuickActionsBar
                   activeAction={activeQuickAction}
                   loadingAction={loadingQuickAction}
@@ -1803,7 +1803,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
               </div>
               <div className="mt-7 grid gap-5 sm:mt-6 sm:gap-5 md:grid-cols-[minmax(0,1.35fr)_minmax(240px,0.95fr)]">
                 <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-5">
-                  <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--fh-slate)_78%,transparent)]">
+                  <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-[var(--fh-slate)]">
                     {continueItem ? "Resume now" : "Start here"}
                   </div>
                   <div className="mt-2 text-[20px] font-black tracking-tight text-faith-ink">
@@ -1816,7 +1816,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                   </p>
                 </div>
                 <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-5">
-                  <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--fh-slate)_78%,transparent)]">Focus today</div>
+                  <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-[var(--fh-slate)]">Focus today</div>
                   <div className="mt-2 text-[16px] font-black tracking-tight text-faith-ink">{smartNextStep}</div>
                   <p className="mt-2 text-[13px] leading-6 text-[var(--fh-slate)]">
                     Review tasks, drafts, and published momentum are summarized here so the next move is obvious.
@@ -1836,7 +1836,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                 {analyticsInsights.map((insight) => (
                   <div key={insight.key} className="rounded-xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3.5">
                     <div className="flex items-center justify-between gap-2">
-                      <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-[color-mix(in_srgb,var(--fh-slate)_78%,transparent)]">{insight.label}</div>
+                      <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--fh-slate)]">{insight.label}</div>
                       <Pill text={insight.trend} tone={insight.tone} />
                     </div>
                     <div className="mt-2 text-[20px] font-black tracking-tight text-faith-ink">{insight.value}</div>
@@ -1845,7 +1845,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                 ))}
               </div>
               {analyticsSnapshot?.updatedAtISO ? (
-                <div className="mt-3 text-[11px] font-semibold text-[color-mix(in_srgb,var(--fh-slate)_78%,transparent)]">
+                <div className="mt-3 text-[11px] font-semibold text-[var(--fh-slate)]">
                   Last updated: {new Date(analyticsSnapshot.updatedAtISO).toLocaleString()}
                 </div>
               ) : null}
@@ -1859,22 +1859,22 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
             >
               <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
                 <div className="rounded-xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3.5">
-                  <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-[color-mix(in_srgb,var(--fh-slate)_78%,transparent)]">Teachings</div>
+                  <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--fh-slate)]">Teachings</div>
                   <div className="mt-2 text-[20px] font-black tracking-tight text-faith-ink">{teachingItems.length}</div>
                   <p className="mt-1 text-[12px] leading-5 text-[var(--fh-slate)]">All tracked teaching records in your workflow.</p>
                 </div>
                 <div className="rounded-xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3.5">
-                  <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-[color-mix(in_srgb,var(--fh-slate)_78%,transparent)]">Drafts</div>
+                  <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--fh-slate)]">Drafts</div>
                   <div className="mt-2 text-[20px] font-black tracking-tight text-faith-ink">{draftTeachings.length}</div>
                   <p className="mt-1 text-[12px] leading-5 text-[var(--fh-slate)]">Work-in-progress teachings that still need completion.</p>
                 </div>
                 <div className="rounded-xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3.5">
-                  <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-[color-mix(in_srgb,var(--fh-slate)_78%,transparent)]">Published</div>
+                  <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--fh-slate)]">Published</div>
                   <div className="mt-2 text-[20px] font-black tracking-tight text-faith-ink">{publishedTeachings.length}</div>
                   <p className="mt-1 text-[12px] leading-5 text-[var(--fh-slate)]">Ready-to-share content currently in active circulation.</p>
                 </div>
                 <div className="rounded-xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3.5">
-                  <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-[color-mix(in_srgb,var(--fh-slate)_78%,transparent)]">Archives</div>
+                  <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--fh-slate)]">Archives</div>
                   <div className="mt-2 text-[20px] font-black tracking-tight text-faith-ink">{archivedTeachings.length}</div>
                   <p className="mt-1 text-[12px] leading-5 text-[var(--fh-slate)]">Older published teachings preserved for historical access.</p>
                 </div>
@@ -1927,7 +1927,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                   <div key={session.id} className={elevatedPanelClass}>
                     <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                       <div className="min-w-0">
-                        <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-[color-mix(in_srgb,var(--fh-slate)_78%,transparent)]">Live session</div>
+                        <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-[var(--fh-slate)]">Live session</div>
                         <div className="flex items-center gap-2">
                           <div className="h-2 w-2 rounded-full bg-emerald-500" />
                           <h3 className="text-[14px] font-bold text-faith-ink">{session.title}</h3>
@@ -1938,7 +1938,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                         <div className="mt-1 text-[12px] text-[var(--fh-slate)]">{session.audience}</div>
                         <div className="mt-1 text-[12px] text-[var(--fh-slate)]">{session.backstage}</div>
                         {session.warning ? (
-                          <div className="mt-2 inline-flex rounded-full bg-amber-100 px-2 py-0.5 text-[11px] font-semibold text-amber-900">
+                          <div className="mt-2 inline-flex rounded-full bg-[var(--fh-accent-soft)] px-2 py-0.5 text-[11px] font-semibold text-[var(--fh-accent)]">
                             {session.warning}
                           </div>
                         ) : null}
@@ -2198,7 +2198,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                   <div key={item.id} className={elevatedPanelClass}>
                     <div className="flex items-start justify-between gap-2">
                       <div className="min-w-0">
-                        <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-[color-mix(in_srgb,var(--fh-slate)_78%,transparent)]">Draft item</div>
+                        <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-[var(--fh-slate)]">Draft item</div>
                         <h3 className="text-[14px] font-bold text-faith-ink">{item.title}</h3>
                         <p className="mt-1 text-[12px] text-[var(--fh-slate)]">
                           {item.type} - Updated {formatLastEdited(item.updatedAt)}
@@ -2291,6 +2291,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
   }
 
 }
+
 
 
 
