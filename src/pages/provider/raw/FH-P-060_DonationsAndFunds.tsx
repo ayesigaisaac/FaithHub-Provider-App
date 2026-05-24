@@ -831,7 +831,7 @@ function PhonePreview({
                 <div className="mt-1 text-xs text-faith-slate">{privacyWall ? "Recognition requires donor opt-in." : record.donorPrivacy}</div>
               </div>
             </div>
-            <div className="sticky bottom-0 bg-[var(--fh-surface-bg)]/95 px-4 pb-4 pt-2 backdrop-blur dark:bg-slate-900/95">
+            <div className="sticky bottom-0 z-10 border-t border-faith-line/70 bg-[var(--fh-surface-bg)]/95 px-4 pb-4 pt-2 backdrop-blur dark:border-slate-800 dark:bg-slate-900/95">
               <button type="button" className="inline-flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-extrabold text-white shadow-lg" style={{ background: EV_GREEN }} onClick={() => safeNav("/faithhub/provider/donations-and-funds")}>
                 <HeartHandshake className="h-4 w-4" /> Give now
               </button>

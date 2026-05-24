@@ -1540,7 +1540,7 @@ function PreviewPhone({ draft, readiness }: { draft: LiveBuilderDraft; readiness
               </div>
             </div>
 
-            <div className="sticky bottom-0 border-t border-faith-line bg-[var(--fh-surface-bg)]/95 px-3 py-3 backdrop-blur dark:border-slate-800 dark:bg-slate-950/95">
+            <div className="sticky bottom-0 z-10 border-t border-faith-line bg-[var(--fh-surface-bg)]/95 px-3 py-3 backdrop-blur dark:border-slate-800 dark:bg-slate-950/95">
               <div className="flex gap-2">
                 <button className="flex-1 rounded-2xl px-3 py-3 text-[12px] font-extrabold text-white" style={{ background: EV_GREEN }} onClick={() => safeNav("/faithhub/provider/live-dashboard")}>
                   Join live

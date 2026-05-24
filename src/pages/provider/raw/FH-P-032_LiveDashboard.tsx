@@ -845,7 +845,7 @@ function Drawer({
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 80, opacity: 0 }}
             transition={{ type: "spring", damping: 28, stiffness: 280 }}
-            className="absolute inset-0 bg-[var(--fh-surface-bg)] dark:bg-slate-950 transition-colors"
+            className="absolute inset-0 flex flex-col bg-[var(--fh-surface-bg)] dark:bg-slate-950 transition-colors"
           >
             <div className="sticky top-0 z-10 border-b border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 py-3 transition-colors">
               <div className="flex items-start justify-between gap-3">
@@ -862,7 +862,7 @@ function Drawer({
                 </button>
               </div>
             </div>
-            <div className="h-[calc(100vh-72px)] overflow-y-auto p-4">{children}</div>
+            <div className="min-h-0 flex-1 overflow-y-auto p-4">{children}</div>
           </motion.div>
         </div>
       ) : null}
