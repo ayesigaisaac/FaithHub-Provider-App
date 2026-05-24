@@ -80,17 +80,17 @@ export function KpiTile({
               ? "bg-sky-100 dark:bg-sky-900/40"
               : "bg-slate-100 dark:bg-slate-800";
 
-  const minHeightClass = size === "compact" ? "min-h-[132px]" : size === "tall" ? "min-h-[176px]" : "min-h-[160px]";
+  const minHeightClass = size === "compact" ? "min-h-[108px]" : size === "tall" ? "min-h-[176px]" : "min-h-[160px]";
   const labelClass = size === "compact" ? "text-[11px]" : "text-xs";
-  const valueClass = size === "compact" ? "text-2xl" : size === "tall" ? "text-[34px]" : "text-[30px]";
-  const hintClass = size === "compact" ? "text-xs leading-5" : "text-sm leading-6";
+  const valueClass = size === "compact" ? "text-[1.55rem]" : size === "tall" ? "text-[34px]" : "text-[30px]";
+  const hintClass = size === "compact" ? "text-[11px] leading-4" : "text-sm leading-6";
   const panelClass = size === "compact" ? "h-10 w-10 rounded-lg" : "h-12 w-12 rounded-xl";
   const dotClass = size === "compact" ? "h-5 w-5" : "h-6 w-6";
 
   return (
     <div
       className={cx(
-        "fh-interactive rounded-2xl border border-faith-line/70/70 bg-[var(--fh-surface-bg)] p-4 shadow-soft transition-colors",
+        "fh-interactive rounded-2xl border border-faith-line/70/70 bg-[var(--fh-surface-bg)] p-3.5 shadow-soft transition-colors",
         minHeightClass,
         borderTone,
         className,

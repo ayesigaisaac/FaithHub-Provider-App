@@ -36,7 +36,7 @@ import {
   X,
   Zap,
 } from "lucide-react";
-import { KpiTile } from "../../../components/ui/KpiTile";
+import { CompactStatsGroup } from "@/components/ui/CompactStatsGroup";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
@@ -1561,13 +1561,21 @@ export default function FaithHubReplaysAndClipsPage() {
                   </Btn>
                 </div>
                 <div className="mt-3"><MiniLine values={selectedReplay.performanceSeries} /></div>
-                <div className="mt-3 grid grid-cols-2 gap-3">
-                  <MetricCard label="Watch time" value={`${fmtInt(selectedReplay.watchHours)}h`} hint={`${fmtInt(selectedReplay.views)} replay starts`} />
-                  <MetricCard label="Follows" value={fmtInt(selectedReplay.follows)} hint="Post-replay follow actions" />
-                  <MetricCard label="Donations" value={fmtInt(selectedReplay.donations)} hint="Replay-driven giving" />
-                  <MetricCard label="Beacon conv." value={fmtInt(selectedReplay.beaconConversions)} hint="Promotion handoff wins" />
-                  <MetricCard label="Event regs" value={fmtInt(selectedReplay.eventRegs)} hint="Registrations attributed" />
-                  <MetricCard label="Crowdfund" value={`+${fmtInt(selectedReplay.crowdfundMomentum)}`} hint="Momentum score lift" />
+                <div className="mt-3">
+                  <CompactStatsGroup
+                    primaryLabel="Watch time"
+                    primaryValue={`${fmtInt(selectedReplay.watchHours)}h`}
+                    primaryMeta={`${fmtInt(selectedReplay.views)} starts`}
+                    secondary={[
+                      { label: "Follows", value: fmtInt(selectedReplay.follows) },
+                      { label: "Donations", value: fmtInt(selectedReplay.donations) },
+                      { label: "Event regs", value: fmtInt(selectedReplay.eventRegs) },
+                      { label: "Beacon conv.", value: fmtInt(selectedReplay.beaconConversions) },
+                      { label: "Crowdfund", value: `+${fmtInt(selectedReplay.crowdfundMomentum)}` },
+                    ]}
+                    progressLabel="Replay traction"
+                    progressValue={Math.min(100, Math.round((selectedReplay.watchHours / 1800) * 100))}
+                  />
                 </div>
               </div>
 
@@ -1786,10 +1794,6 @@ export default function FaithHubReplaysAndClipsPage() {
       ) : null}
     </div>
   );
-}
-
-function MetricCard({ label, value, hint }: { label: string; value: string; hint: string }) {
-  return <KpiTile label={label} value={value} hint={hint} tone="gray" indicator="none" size="compact" />;
 }
 
 function LifecycleAction({ label, hint, onClick }: { label: string; hint: string; onClick: () => void }) {

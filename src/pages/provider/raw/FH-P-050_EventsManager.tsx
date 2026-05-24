@@ -34,6 +34,7 @@ import {
   Zap,
 } from "lucide-react";
 import { KpiTile } from "../../../components/ui/KpiTile";
+import { CompactStatsGroup } from "@/components/ui/CompactStatsGroup";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
@@ -1987,20 +1988,18 @@ export default function FaithHubEventsManagerPage() {
                   </label>
                 </div>
 
-                <div className="mt-3 grid grid-cols-3 gap-3">
-                  <MetricTile label="Registered" value={fmtInt(selectedEvent.registrations)} hint="Confirmed attendees" />
-                  <MetricTile label="Waitlist" value={fmtInt(selectedEvent.waitlist)} hint="Overflow interest" />
-                  <MetricTile label="Forecast" value={fmtInt(selectedEvent.forecastAttendance)} hint="Projected arrivals" />
-                </div>
-
                 <div className="mt-4">
-                  <div className="flex items-center justify-between text-[11px] text-faith-slate">
-                    <span>Capacity and attendance forecast</span>
-                    <span>{capacityFill}% full</span>
-                  </div>
-                  <div className="mt-1">
-                    <ProgressBar value={capacityFill} tone={capacityFill > 85 ? "accent" : "brand"} />
-                  </div>
+                  <CompactStatsGroup
+                    primaryLabel="Registered"
+                    primaryValue={`${fmtInt(selectedEvent.registrations)} / ${fmtInt(selectedEvent.capacity)}`}
+                    primaryMeta={`${capacityFill}% full`}
+                    secondary={[
+                      { label: "Waitlist", value: fmtInt(selectedEvent.waitlist) },
+                      { label: "Expected", value: fmtInt(selectedEvent.forecastAttendance) },
+                    ]}
+                    progressLabel="Capacity usage"
+                    progressValue={capacityFill}
+                  />
                 </div>
 
                 <div className="mt-4 rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition-colors">
@@ -2662,9 +2661,18 @@ export default function FaithHubEventsManagerPage() {
       >
         <div className="space-y-4">
           <CheckInConsolePreview event={selectedEvent} />
-          <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
-            <MetricTile label="Expected arrivals" value={fmtInt(selectedEvent.forecastAttendance)} hint="Operational forecast" />
-            <MetricTile label="Waitlist pressure" value={fmtInt(selectedEvent.waitlist)} hint="Potential overflow" />
+          <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+            <CompactStatsGroup
+              primaryLabel="Registered"
+              primaryValue={`${fmtInt(selectedEvent.registrations)} / ${fmtInt(selectedEvent.capacity)}`}
+              primaryMeta={`${capacityFill}% full`}
+              secondary={[
+                { label: "Waitlist", value: fmtInt(selectedEvent.waitlist) },
+                { label: "Expected", value: fmtInt(selectedEvent.forecastAttendance) },
+              ]}
+              progressLabel="Check-in capacity"
+              progressValue={capacityFill}
+            />
             <MetricTile label="Waiver policy" value={selectedEvent.waiverRequired ? "Required" : "Off"} hint="Entry control" />
           </div>
         </div>
