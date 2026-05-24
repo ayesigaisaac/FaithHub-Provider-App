@@ -54,7 +54,6 @@ export function ProviderTopbar({
   onSearchQueryChange,
 }: ProviderTopbarProps) {
   const theme = useTheme();
-  const isDark = theme.palette.mode === 'dark';
   const isMobileActions = useMediaQuery(theme.breakpoints.down('md'));
   const navigate = useNavigate();
   const { user, role, workspace, logout, setWorkspace, onboardingStatus } = useAuth();
