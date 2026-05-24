@@ -11,6 +11,7 @@ import {
   Stack,
   Tooltip,
   Typography,
+  useMediaQuery,
 } from '@mui/material';
 import KeyboardArrowRightRoundedIcon from '@mui/icons-material/KeyboardArrowRightRounded';
 import KeyboardDoubleArrowLeftRoundedIcon from '@mui/icons-material/KeyboardDoubleArrowLeftRounded';
@@ -117,6 +118,7 @@ export function ProviderSidebar({
   onToggleCollapse?: () => void;
 }) {
   const location = useLocation();
+  const isWideSidebar = useMediaQuery('(min-width:1200px)');
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({});
   const [showAllSections, setShowAllSections] = useState(false);
 
@@ -155,6 +157,12 @@ export function ProviderSidebar({
       return { ...prev, [activeSection]: true };
     });
   }, [activeSection]);
+
+  useEffect(() => {
+    if (isWideSidebar) {
+      setShowAllSections(true);
+    }
+  }, [isWideSidebar]);
 
   const toggleSection = (section: string) => {
     setOpenSections((prev) => ({ ...prev, [section]: !prev[section] }));
@@ -639,7 +647,7 @@ export function ProviderSidebar({
                 })}
               </Box>
             ))}
-            {secondarySections.length > 0 ? (
+            {secondarySections.length > 0 && !isWideSidebar ? (
               <Box sx={{ pt: 1 }}>
                 <Box
                   sx={{
