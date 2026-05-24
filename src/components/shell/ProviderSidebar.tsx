@@ -640,22 +640,33 @@ export function ProviderSidebar({
               </Box>
             ))}
             {secondarySections.length > 0 ? (
-              <Box sx={{ pt: 0.6 }}>
+              <Box sx={{ pt: 1 }}>
+                <Box
+                  sx={{
+                    mb: 0.9,
+                    height: 16,
+                    borderRadius: 999,
+                    background:
+                      'linear-gradient(180deg, color-mix(in srgb, var(--fh-surface-bg) 40%, transparent 60%) 0%, transparent 100%)',
+                    pointerEvents: 'none',
+                  }}
+                />
                 <ListItemButton
                   onClick={() => setShowAllSections((prev) => !prev)}
-                  aria-label={showAllSections ? 'Show core navigation sections only' : `Show additional navigation sections (${secondarySections.length})`}
+                  aria-label={showAllSections ? 'Hide extended navigation sections' : `Explore additional navigation sections (${secondarySections.length})`}
                   aria-expanded={showAllSections}
                   sx={{
-                    px: 1,
-                    py: 0.65,
-                    minHeight: 38,
-                    borderRadius: '10px',
-                    border: '1px dashed',
-                    borderColor: 'var(--fh-line)',
-                    bgcolor: 'transparent',
-                    transition: 'transform var(--fh-duration-base) var(--fh-ease-premium), background-color var(--fh-duration-fast) ease',
+                    px: 1.15,
+                    py: 0.8,
+                    minHeight: 44,
+                    borderRadius: '14px',
+                    border: '1px solid',
+                    borderColor: 'color-mix(in srgb, var(--fh-line) 74%, var(--fh-brand-soft) 26%)',
+                    bgcolor: 'color-mix(in srgb, var(--fh-surface) 72%, var(--fh-surface-bg) 28%)',
+                    transition: 'transform var(--fh-duration-base) var(--fh-ease-premium), background-color var(--fh-duration-fast) ease, border-color var(--fh-duration-fast) ease',
                     '&:hover': {
-                      bgcolor: 'var(--fh-surface)',
+                      borderColor: 'color-mix(in srgb, var(--fh-brand-soft) 55%, var(--fh-line) 45%)',
+                      bgcolor: 'color-mix(in srgb, var(--fh-surface-bg) 82%, var(--fh-surface) 18%)',
                       transform: 'translateY(-1px)',
                     },
                   }}
@@ -664,22 +675,34 @@ export function ProviderSidebar({
                     primary={
                       <Typography
                         sx={{
-                          fontWeight: 700,
-                          fontSize: 11,
-                          letterSpacing: '0.1em',
+                          fontWeight: 800,
+                          fontSize: 12,
+                          color: 'var(--fh-ink)',
+                          lineHeight: 1.15,
+                        }}
+                      >
+                        {showAllSections ? 'Core navigation' : 'Explore sections'}
+                      </Typography>
+                    }
+                    secondary={
+                      <Typography
+                        sx={{
+                          mt: 0.3,
+                          fontWeight: 600,
+                          fontSize: 10.5,
                           color: 'var(--fh-slate)',
-                          textTransform: 'uppercase',
+                          letterSpacing: '0.02em',
                           lineHeight: 1.2,
                         }}
                       >
-                        {showAllSections ? 'Show Core Navigation' : `Show More Sections (${secondarySections.length})`}
+                        {showAllSections ? 'Showing all sections' : `${secondarySections.length} more sections`}
                       </Typography>
                     }
                   />
                   {showAllSections ? (
-                    <KeyboardArrowDownRoundedIcon sx={{ fontSize: 20, color: 'var(--fh-slate)' }} />
+                    <KeyboardArrowDownRoundedIcon sx={{ fontSize: 20, color: 'var(--fh-brand)' }} />
                   ) : (
-                    <KeyboardArrowRightRoundedIcon sx={{ fontSize: 20, color: 'var(--fh-slate)' }} />
+                    <KeyboardArrowRightRoundedIcon sx={{ fontSize: 20, color: 'var(--fh-brand)' }} />
                   )}
                 </ListItemButton>
               </Box>
