@@ -644,7 +644,7 @@ function CardShell({
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="min-w-0">
           <h3 className="break-words text-[14px] font-semibold text-faith-ink dark:text-slate-100">{title}</h3>
-          {subtitle ? <p className="mt-0.5 break-words text-[11px] text-faith-slate">{subtitle}</p> : null}
+          {subtitle ? <p className="mt-1 break-words text-[12px] leading-relaxed text-faith-slate">{subtitle}</p> : null}
         </div>
         {right ? <div className="w-full sm:w-auto sm:shrink-0">{right}</div> : null}
       </div>
@@ -1047,7 +1047,7 @@ export default function FaithHubLiveStudioPage() {
               subtitle="Queue the next scene and keep reusable templates close."
               right={<Pill text={`${SCENES.length} scenes`} icon={<LayoutTemplate className="h-3.5 w-3.5" />} />}
             >
-              <div className="space-y-2">
+              <div className="space-y-3">
                 {SCENES.map((scene) => {
                   const tones = toneClasses(scene.tone);
                   const queued = scene.id === previewSceneId;
@@ -1077,10 +1077,10 @@ export default function FaithHubLiveStudioPage() {
                               <div className="truncate text-[12px] font-semibold text-faith-ink dark:text-slate-100">
                                 {scene.label}
                               </div>
-                              <div className="mt-0.5 text-[11px] text-faith-slate">{scene.template}</div>
+                              <div className="mt-1 text-[11px] text-faith-slate">{scene.template}</div>
                             </div>
                           </div>
-                          <div className="mt-2 line-clamp-2 text-[11px] leading-relaxed text-faith-slate">
+                          <div className="mt-2 line-clamp-2 text-[12px] leading-relaxed text-faith-slate">
                             {scene.desc}
                           </div>
                         </div>
@@ -1119,7 +1119,7 @@ export default function FaithHubLiveStudioPage() {
               subtitle="Cameras, screen share, loops and emergency-safe fallback paths."
               right={<Pill text="7 sources" icon={<Video className="h-3.5 w-3.5" />} />}
             >
-              <div className="space-y-2">
+              <div className="space-y-3">
                 {SOURCES.map((source) => (
                   <button
                     key={source.id}
@@ -1135,7 +1135,7 @@ export default function FaithHubLiveStudioPage() {
                     <div className="flex items-center justify-between gap-3">
                       <div className="min-w-0">
                         <div className="truncate text-[12px] font-semibold text-faith-ink dark:text-slate-100">{source.label}</div>
-                        <div className="mt-1 text-[11px] text-faith-slate">{source.detail}</div>
+                        <div className="mt-1.5 text-[12px] leading-relaxed text-faith-slate">{source.detail}</div>
                       </div>
                       <span className={cx("rounded-full border px-2.5 py-1 text-[10px] font-semibold", healthPillClasses(source.health))}>
                         {source.health === "healthy" ? "Healthy" : source.health === "watch" ? "Watch" : "Risk"}
@@ -1168,7 +1168,7 @@ export default function FaithHubLiveStudioPage() {
               subtitle="Bring people on or off stage with role-aware control notes."
               right={<Pill text={`${stageReadyCount}/${stageMembers.length} ready`} tone="good" icon={<Users className="h-3.5 w-3.5" />} />}
             >
-              <div className="space-y-2">
+              <div className="space-y-3">
                 {stageMembers.map((member) => (
                   <div
                     key={member.id}
@@ -1192,7 +1192,7 @@ export default function FaithHubLiveStudioPage() {
                             <div className="mt-0.5 text-[11px] text-faith-slate">{member.role}</div>
                           </div>
                         </div>
-                        <div className="mt-2 text-[11px] text-faith-slate">{member.controlNote}</div>
+                        <div className="mt-2 text-[12px] leading-relaxed text-faith-slate">{member.controlNote}</div>
                       </div>
                       <div className="shrink-0 text-right">
                         <Pill text={member.status} tone={member.status === "On stage" ? "good" : member.status === "Backstage" ? "warn" : "neutral"} />
@@ -1709,7 +1709,7 @@ export default function FaithHubLiveStudioPage() {
                 ))}
               </div>
 
-              <div className="mt-4 space-y-2">
+              <div className="mt-4 space-y-3">
                 {interactionTab === "chat" &&
                   CHAT_MESSAGES.map((message) => (
                     <div
@@ -1729,7 +1729,7 @@ export default function FaithHubLiveStudioPage() {
                         </div>
                         <span className="text-[10px] text-faith-slate">{message.time}</span>
                       </div>
-                      <div className="mt-2 text-[12px] leading-relaxed text-faith-slate">{message.body}</div>
+                      <div className="mt-2.5 text-[12px] leading-relaxed text-faith-slate">{message.body}</div>
                     </div>
                   ))}
 
@@ -1740,7 +1740,7 @@ export default function FaithHubLiveStudioPage() {
                         <span className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">{item.from}</span>
                         <Pill text={item.status} tone={item.status === "Picked" ? "good" : item.status === "Queued" ? "warn" : "neutral"} />
                       </div>
-                      <div className="mt-2 text-[12px] leading-relaxed text-faith-slate">{item.question}</div>
+                      <div className="mt-2.5 text-[12px] leading-relaxed text-faith-slate">{item.question}</div>
                     </div>
                   ))}
 
@@ -1751,7 +1751,7 @@ export default function FaithHubLiveStudioPage() {
                         <span className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">{item.from}</span>
                         <Pill text={item.urgency} tone={item.urgency === "High" ? "danger" : item.urgency === "Watch" ? "warn" : "neutral"} />
                       </div>
-                      <div className="mt-2 text-[12px] leading-relaxed text-faith-slate">{item.body}</div>
+                      <div className="mt-2.5 text-[12px] leading-relaxed text-faith-slate">{item.body}</div>
                     </div>
                   ))}
 
@@ -1922,7 +1922,7 @@ export default function FaithHubLiveStudioPage() {
               subtitle="Keep distribution and publishing one click away once the session ends."
               right={<Pill text="Ready" tone="good" icon={<CheckCircle2 className="h-3.5 w-3.5" />} />}
             >
-              <div className="space-y-2">
+              <div className="space-y-3">
                 <button
                   type="button"
                   onClick={() => navigate(routeWithSession(ROUTES.streamToPlatforms))}
@@ -1930,7 +1930,7 @@ export default function FaithHubLiveStudioPage() {
                 >
                   <div>
                     <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">Open Stream-to-Platforms</div>
-                    <div className="mt-1 text-[11px] text-faith-slate">Adjust destinations, health and output variants.</div>
+                    <div className="mt-1.5 text-[12px] leading-relaxed text-faith-slate">Adjust destinations, health and output variants.</div>
                   </div>
                   <ExternalLink className="h-4 w-4 text-faith-slate" />
                 </button>
@@ -1941,7 +1941,7 @@ export default function FaithHubLiveStudioPage() {
                 >
                   <div>
                     <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">Open Post-live Publishing</div>
-                    <div className="mt-1 text-[11px] text-faith-slate">Replay package, notes, chapters and clip workflows.</div>
+                    <div className="mt-1.5 text-[12px] leading-relaxed text-faith-slate">Replay package, notes, chapters and clip workflows.</div>
                   </div>
                   <ExternalLink className="h-4 w-4 text-faith-slate" />
                 </button>
@@ -1952,7 +1952,7 @@ export default function FaithHubLiveStudioPage() {
                 >
                   <div>
                     <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">Prepare Beacon replay teaser</div>
-                    <div className="mt-1 text-[11px] text-faith-slate">Use live-response signals to power promotion fast.</div>
+                    <div className="mt-1.5 text-[12px] leading-relaxed text-faith-slate">Use live-response signals to power promotion fast.</div>
                   </div>
                   <Zap className="h-4 w-4 text-faith-slate" />
                 </button>
