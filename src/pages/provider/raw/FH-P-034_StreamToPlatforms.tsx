@@ -384,7 +384,7 @@ function Modal({
       <div className="absolute inset-0 bg-black/40 dark:bg-black/60 backdrop-blur-sm transition-opacity" onClick={onClose} />
       <div
         className={cx(
-          'relative flex w-full flex-col bg-[var(--fh-surface-bg)] dark:bg-slate-900 shadow-medium transition-all h-[95vh] sm:h-auto sm:max-h-[90vh] rounded-t-3xl sm:rounded-[14px] overflow-hidden ring-1 ring-slate-200 dark:ring-slate-800',
+          'relative flex w-full flex-col bg-[var(--fh-surface-bg)] dark:bg-slate-900 shadow-medium transition-all h-[95dvh] sm:h-auto sm:max-h-[90dvh] rounded-t-3xl sm:rounded-[14px] overflow-hidden ring-1 ring-slate-200 dark:ring-slate-800',
           wide ? 'max-w-6xl' : 'max-w-2xl'
         )}
       >
