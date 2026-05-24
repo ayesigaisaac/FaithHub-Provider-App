@@ -37,6 +37,7 @@ import {
   Zap,
 } from "lucide-react";
 import { KpiTile } from "../../../components/ui/KpiTile";
+import { CompactStatsGroup } from "@/components/ui/CompactStatsGroup";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
@@ -1599,12 +1600,17 @@ export default function FaithHubLiveDashboardPage() {
             </Card>
 
             <Card title="Audience pulse panel" subtitle="Registrants, waiting room, viewers, chat load, Q&A pressure, prayer requests, and drop-off signals.">
-              <div className="grid sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-3">
-                <MetricTile label="Registrants" value={session.audience.registrants.toLocaleString()} hint="Total audience signups" tone="neutral" />
-                <MetricTile label="Waiting room" value={session.audience.waitingRoom.toLocaleString()} hint="Pre-live audience holding" tone="orange" />
-                <MetricTile label={session.state === "Ended" ? "Peak viewers" : "Current viewers"} value={(session.state === "Ended" ? session.audience.peakViewers : session.audience.viewers).toLocaleString()} hint="Audience in session" tone="green" />
-                <MetricTile label="Chat velocity" value={`${session.audience.chatVelocity}/min`} hint="Current message rate" tone={session.audience.chatVelocity > 120 ? "orange" : "green"} />
-              </div>
+              <CompactStatsGroup
+                primaryLabel="Current viewers"
+                primaryValue={(session.state === "Ended" ? session.audience.peakViewers : session.audience.viewers).toLocaleString()}
+                primaryMeta={`${session.audience.chatVelocity}/min`}
+                secondary={[
+                  { label: "Registrants", value: session.audience.registrants.toLocaleString() },
+                  { label: "Waiting room", value: session.audience.waitingRoom.toLocaleString() },
+                ]}
+                progressLabel="Arrival vs forecast"
+                progressValue={arrivalPct}
+              />
 
               <div className="mt-4 rounded-lg border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 p-3 transition-colors">
                 <div className="flex items-center justify-between gap-2">

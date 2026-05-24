@@ -14,6 +14,7 @@ import {
   setLiveRuntimeStatus,
 } from '@/features/live/liveRuntimeStore';
 import { CircularProgress } from '@mui/material';
+import { CompactStatsGroup } from "@/components/ui/CompactStatsGroup";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 import {
   Activity,
@@ -1498,6 +1499,20 @@ export default function StreamToPlatformsPage() {
 
                     <div className={cx('mt-3', sessionStatus === 'Ended' && 'opacity-60')}>
                       <MiniLine values={masterTrend} tone={sessionStatus === 'Live' ? 'orange' : 'green'} />
+                    </div>
+
+                    <div className="mt-3">
+                      <CompactStatsGroup
+                        primaryLabel="Target bitrate"
+                        primaryValue={prettyKbps(profile.bitrateKbps)}
+                        primaryMeta={`${activeDestinations.length} active`}
+                        secondary={[
+                          { label: "Upload", value: `${estimatedUploadMbps.toFixed(1)} Mbps` },
+                          { label: "Required", value: `${requiredUploadMbps.toFixed(1)} Mbps` },
+                        ]}
+                        progressLabel="Bandwidth headroom"
+                        progressValue={Math.max(0, Math.min(100, Math.round((estimatedUploadMbps / Math.max(0.1, requiredUploadMbps)) * 100)))}
+                      />
                     </div>
 
                     <div className="mt-3 flex flex-wrap items-center gap-2">

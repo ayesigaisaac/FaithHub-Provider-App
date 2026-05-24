@@ -27,6 +27,7 @@ import {
   Zap,
 } from "lucide-react";
 import { KpiTile } from "../../../components/ui/KpiTile";
+import { CompactStatsGroup } from "@/components/ui/CompactStatsGroup";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
@@ -1420,11 +1421,18 @@ export default function DonationsAndFundsPage() {
                 title="Donor intelligence dashboard"
                 subtitle="Donor growth, repeat donors, recurring retention, top campaigns, and content influence."
               />
-              <div className="mt-4 grid grid-cols-2 gap-3">
-                <MetricCard label="Total donors" value={fmtInt(3462)} hint="Active donors across all funds" tone="green" />
-                <MetricCard label="Repeat donor rate" value={`${selectedRecord?.repeatRate || 0}%`} hint="Healthy repeat behavior this quarter" tone="orange" />
-                <MetricCard label="Recurring retention" value="78%" hint="Month-over-month retention strength" tone="green" />
-                <MetricCard label="Content-influenced" value={`${selectedRecord?.attribution.live || 0}%`} hint="Share influenced by live giving moments" tone="navy" />
+              <div className="mt-4">
+                <CompactStatsGroup
+                  primaryLabel="Total donors"
+                  primaryValue={fmtInt(3462)}
+                  primaryMeta={`${selectedRecord?.repeatRate || 0}% repeat`}
+                  secondary={[
+                    { label: "Recurring retention", value: "78%" },
+                    { label: "Content influenced", value: `${selectedRecord?.attribution.live || 0}%` },
+                  ]}
+                  progressLabel="Donor health"
+                  progressValue={Math.round((((selectedRecord?.repeatRate || 0) + 78) / 2))}
+                />
               </div>
 
               <div className="mt-4 grid gap-3 md:grid-cols-3">
