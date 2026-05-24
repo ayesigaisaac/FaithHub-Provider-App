@@ -1601,7 +1601,7 @@ export default function FaithHubLiveDashboardPage() {
 
             <Card title="Audience pulse panel" subtitle="Registrants, waiting room, viewers, chat load, Q&A pressure, prayer requests, and drop-off signals.">
               <CompactStatsGroup
-                primaryLabel="Current viewers"
+                primaryLabel={session.state === "Ended" ? "Peak viewers" : "Current viewers"}
                 primaryValue={(session.state === "Ended" ? session.audience.peakViewers : session.audience.viewers).toLocaleString()}
                 primaryMeta={`${session.audience.chatVelocity}/min`}
                 secondary={[
