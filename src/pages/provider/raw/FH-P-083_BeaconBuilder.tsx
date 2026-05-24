@@ -2644,19 +2644,21 @@ export default function BeaconBuilderPage({
                 <Pill tone="pro">Preview-first workflow</Pill>
               </div>
             </div>
-            <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 xl:flex xl:w-auto xl:flex-wrap xl:justify-end">
-              <Btn className="h-10 w-full justify-center px-4 xl:w-auto" tone="neutral" left={<ExternalLink className="h-4 w-4" />} onClick={() => safeNav(ROUTES.beaconMarketplace)}>
+            <div className="w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-2 dark:border-slate-800 dark:bg-slate-950/70 xl:w-auto">
+              <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 xl:grid-cols-1 2xl:grid-cols-2">
+                <Btn className="h-10 w-full justify-center px-4" tone="neutral" left={<ExternalLink className="h-4 w-4" />} onClick={() => safeNav(ROUTES.beaconMarketplace)}>
                 Open Marketplace
-              </Btn>
-              <Btn className="h-10 w-full justify-center px-4 xl:w-auto" tone="secondary" left={<CheckCircle2 className="h-4 w-4" />} onClick={handleSaveDraft}>
+                </Btn>
+                <Btn className="h-10 w-full justify-center px-4" tone="secondary" left={<CheckCircle2 className="h-4 w-4" />} onClick={handleSaveDraft}>
                 Save campaign draft
-              </Btn>
-              <Btn className="h-10 w-full justify-center px-4 xl:w-auto" tone="neutral" left={<Eye className="h-4 w-4" />} onClick={() => setPreviewOpen(true)}>
+                </Btn>
+                <Btn className="h-10 w-full justify-center px-4" tone="neutral" left={<Eye className="h-4 w-4" />} onClick={() => setPreviewOpen(true)}>
                 Preview campaign
-              </Btn>
-              <Btn className="h-10 w-full justify-center px-4 xl:w-auto" tone="primary" left={<Zap className="h-4 w-4" />} onClick={handleLaunch}>
+                </Btn>
+                <Btn className="h-10 w-full justify-center px-4" tone="primary" left={<Zap className="h-4 w-4" />} onClick={handleLaunch}>
                 Launch Beacon
-              </Btn>
+                </Btn>
+              </div>
             </div>
           </div>
         </div>
@@ -2664,7 +2666,7 @@ export default function BeaconBuilderPage({
 
       <div className="mx-auto max-w-[1680px] px-4 md:px-6 lg:px-8 py-4 lg:py-6">
         <div className="grid gap-4 2xl:grid-cols-[280px_minmax(0,1fr)_420px]">
-          <div className="space-y-4 2xl:sticky 2xl:top-[106px] self-start">
+          <div className="space-y-4 2xl:sticky 2xl:top-[118px] self-start">
             <Section title="Builder steps" subtitle="Preview-driven creation from objective to launch gate.">
               <div className="space-y-2">
                 {STEPS.map((entry, idx) => (
@@ -2708,7 +2710,7 @@ export default function BeaconBuilderPage({
             </div>
           </div>
 
-          <div className="space-y-4 2xl:sticky 2xl:top-[106px] self-start">
+          <div className="space-y-4 2xl:sticky 2xl:top-[118px] self-start">
             {rightRail}
           </div>
         </div>
