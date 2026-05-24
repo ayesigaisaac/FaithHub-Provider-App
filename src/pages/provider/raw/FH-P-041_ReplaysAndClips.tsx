@@ -588,7 +588,7 @@ function Modal({
   return (
     <div className="fixed inset-0 z-[90] flex items-end justify-center sm:items-center p-0 sm:p-4">
       <div className="absolute inset-0 bg-black/45 backdrop-blur-sm" onClick={onClose} />
-      <div className="relative flex w-full max-w-6xl flex-col bg-[var(--fh-surface-bg)] dark:bg-slate-900 shadow-medium h-[94vh] sm:h-auto sm:max-h-[92vh] rounded-t-3xl sm:rounded-3xl overflow-hidden ring-1 ring-slate-200 dark:ring-slate-800 transition">
+      <div className="relative flex w-full max-w-6xl flex-col bg-[var(--fh-surface-bg)] dark:bg-slate-900 shadow-medium h-[94dvh] sm:h-auto sm:max-h-[92dvh] rounded-t-3xl sm:rounded-3xl overflow-hidden ring-1 ring-slate-200 dark:ring-slate-800 transition">
         <div className="flex items-start justify-between gap-3 border-b border-faith-line dark:border-slate-800 px-5 py-4">
           <div className="min-w-0">
             <div className="text-base font-bold text-faith-ink dark:text-slate-50">{title}</div>

@@ -774,7 +774,7 @@ function Drawer({
         className="absolute inset-0 bg-black/40 dark:bg-black/60 backdrop-blur-sm transition-opacity"
         onClick={onClose}
       />
-      <div className="relative flex w-full max-w-6xl flex-col bg-[var(--fh-surface-bg)] dark:bg-slate-900 shadow-medium transition-all h-[95vh] sm:h-auto sm:max-h-[92vh] rounded-t-3xl sm:rounded-3xl overflow-hidden ring-1 ring-slate-200 dark:ring-slate-800">
+      <div className="relative flex w-full max-w-6xl flex-col bg-[var(--fh-surface-bg)] dark:bg-slate-900 shadow-medium transition-all h-[95dvh] sm:h-auto sm:max-h-[92dvh] rounded-t-3xl sm:rounded-3xl overflow-hidden ring-1 ring-slate-200 dark:ring-slate-800">
         <div className="flex items-center justify-between gap-2 border-b border-faith-line dark:border-slate-800 px-4 py-3">
           <div className="text-base font-semibold text-faith-ink dark:text-slate-50">
             {title}
