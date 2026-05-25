@@ -148,16 +148,16 @@ export function Sidebar({ onClose }: SidebarProps) {
   const isActivePath = (path: string) => location.pathname === path || location.pathname.startsWith(`${path}/`);
 
   return (
-    <aside className="fh-brand-shell flex h-full w-full flex-col border-r border-slate-200 bg-[#f4f6f6]">
-      <div className="flex items-center justify-between border-b border-slate-200 px-5 py-5">
+    <aside className="fh-brand-shell flex h-full w-full flex-col border-r border-slate-200 bg-[#f4f6f6] dark:border-slate-800 dark:bg-slate-950">
+      <div className="flex items-center justify-between border-b border-slate-200 px-5 py-5 dark:border-slate-800">
         <div className="min-w-0">
           <BrandLogo variant="landscape" alt="FaithHub Provider" className="h-12 w-auto max-w-full" />
-          <p className="mt-1 text-base font-semibold text-slate-500">Modules</p>
+          <p className="mt-1 text-base font-semibold text-slate-500 dark:text-slate-400">Modules</p>
         </div>
         <button
           type="button"
           onClick={onClose}
-          className="fh-interactive inline-flex rounded-2xl border border-slate-300 bg-white p-2.5 text-slate-500 hover:bg-slate-100 lg:hidden"
+          className="fh-interactive inline-flex rounded-2xl border border-slate-300 bg-white p-2.5 text-slate-500 hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 lg:hidden"
           aria-label="Close navigation"
         >
           <X className="h-5 w-5" />
@@ -170,7 +170,7 @@ export function Sidebar({ onClose }: SidebarProps) {
           aria-expanded={modulesOpen}
           aria-controls={dropdownId}
           onClick={() => setModulesOpen((prev) => !prev)}
-          className="fh-interactive flex w-full items-center justify-between rounded-[22px] border border-slate-300 bg-[#f8f9fa] px-4 py-3.5 text-left transition hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--fh-brand)] focus-visible:ring-offset-2"
+          className="fh-interactive flex w-full items-center justify-between rounded-[22px] border border-slate-300 bg-[#f8f9fa] px-4 py-3.5 text-left transition hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--fh-brand)] focus-visible:ring-offset-2 dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800"
         >
           <span className="flex items-center gap-3">
             <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-[var(--fh-brand-soft)] text-[var(--fh-brand)]">
@@ -200,7 +200,7 @@ export function Sidebar({ onClose }: SidebarProps) {
                             className={`fh-interactive group flex w-full items-center justify-between rounded-[22px] border px-4 py-3.5 text-left transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--fh-brand)] focus-visible:ring-offset-2 ${
                           active
                             ? 'border-2 border-[var(--fh-brand)] bg-white shadow-[0_10px_20px_rgba(3,205,140,0.16)]'
-                            : 'border-slate-300 bg-[#f8f9fa] hover:bg-white'
+                            : 'border-slate-300 bg-[#f8f9fa] hover:bg-white dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800'
                         }`}
                       >
                         <span className="flex min-w-0 items-center gap-3.5">

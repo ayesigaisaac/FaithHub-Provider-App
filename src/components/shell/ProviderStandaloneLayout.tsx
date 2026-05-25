@@ -2,6 +2,7 @@ import { Box, IconButton } from '@mui/material';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import { useMemo, useState, type ReactNode } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useTheme } from '@mui/material/styles';
 import { findProviderPageByPath } from '@/navigation/providerPages';
 import { ProviderSidebar } from './ProviderSidebar';
 import { QuickCreateDial } from './QuickCreateDial';
@@ -17,6 +18,8 @@ type ProviderStandaloneLayoutProps = {
 
 export function ProviderStandaloneLayout({ children, pagePath, pageTitle }: ProviderStandaloneLayoutProps) {
   const location = useLocation();
+  const theme = useTheme();
+  const isDark = theme.palette.mode === 'dark';
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const current = useMemo(() => {
@@ -38,10 +41,11 @@ export function ProviderStandaloneLayout({ children, pagePath, pageTitle }: Prov
             top: 12,
             left: 12,
             zIndex: 1200,
-            bgcolor: '#ffffff',
-            border: '1px solid #dbe2ea',
-            boxShadow: '0 8px 16px -12px rgba(15, 23, 42, 0.45)',
-            '&:hover': { bgcolor: '#f8fafc' },
+            bgcolor: isDark ? '#0f172a' : '#ffffff',
+            border: `1px solid ${isDark ? '#334155' : '#dbe2ea'}`,
+            color: isDark ? '#e2e8f0' : 'inherit',
+            boxShadow: isDark ? '0 8px 16px -12px rgba(2, 6, 23, 0.9)' : '0 8px 16px -12px rgba(15, 23, 42, 0.45)',
+            '&:hover': { bgcolor: isDark ? '#1e293b' : '#f8fafc' },
           }}
         >
           <MenuRoundedIcon />

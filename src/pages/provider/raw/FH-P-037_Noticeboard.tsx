@@ -731,7 +731,7 @@ function BoardPreviewDesktop({ draft }: { draft: ComposerState }) {
         </div>
       </div>
 
-      <div className="mt-4 rounded-[24px] border border-faith-line/70 bg-[#F8FAFC] p-4">
+      <div className="mt-4 rounded-[24px] border border-faith-line/70 bg-[#F8FAFC] p-4 dark:bg-slate-900">
         <div
           className="rounded-[22px] border p-4"
           style={{

@@ -628,7 +628,7 @@ function EpisodePreview({
   if (previewMode === "mobile") {
     return (
       <div className="mx-auto w-full max-w-[320px] md:max-w-[360px] rounded-[34px] bg-slate-950 p-3 shadow-[0_20px_50px_rgba(15,23,42,0.24)]">
-        <div className="overflow-hidden rounded-[28px] bg-[#fcfcfc]">
+        <div className="overflow-hidden rounded-[28px] bg-[#fcfcfc] dark:bg-slate-900">
           <div className="relative h-[640px] overflow-hidden">
             <div className="absolute left-1/2 top-3 h-2 w-24 -translate-x-1/2 rounded-full bg-slate-900" />
             <div className="h-[205px] overflow-hidden bg-slate-900">
@@ -726,7 +726,7 @@ function EpisodePreview({
           </div>
         </div>
 
-        <div className="bg-[#fafafa] p-4">
+        <div className="bg-[#fafafa] p-4 dark:bg-slate-900">
           <div className="rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
             <div className="flex items-center justify-between gap-2">
               <div>

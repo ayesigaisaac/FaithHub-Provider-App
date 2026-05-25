@@ -762,3 +762,24 @@ html.dark .provider-page-density--compact :is(
   ) {
   box-shadow: 0 16px 36px -26px rgba(2, 6, 23, 0.86) !important;
 }
+
+/* Dark-mode rescue for inline pastel surfaces used by imported provider pages. */
+html.dark .provider-page-density--compact :is(
+    [style*='#d9f7ee'],
+    [style*='#fff0df'],
+    [style*='#e8eefc'],
+    [style*='#f8fafc'],
+    [style*='#fcfcfc'],
+    [style*='#fafafa'],
+    [style*='#fbfbfd'],
+    [style*='#f5f7fa'],
+    [style*='#d7f7ea'],
+    [style*='#fdebd6'],
+    [style*='#e6ebfb'],
+    [style*='rgb(217, 247, 238)'],
+    [style*='rgb(255, 240, 223)'],
+    [style*='rgb(232, 238, 252)']
+  ) {
+  background-color: #111b2f !important;
+  color: #e2e8f0 !important;
+}

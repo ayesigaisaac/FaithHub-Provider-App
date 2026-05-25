@@ -788,7 +788,7 @@ function PreviewDrawer({
   return (
     <div className="fixed inset-0 z-[85]">
       <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={onClose} />
-      <div className="absolute inset-0 overflow-auto bg-[#f5f7fa] p-4 md:p-6">
+      <div className="absolute inset-0 overflow-auto bg-[#f5f7fa] p-4 dark:bg-slate-950 md:p-6">
         <div className="mx-auto max-w-5xl overflow-hidden rounded-[34px] border border-faith-line/70 bg-[var(--fh-surface-bg)] shadow-medium">
           <div className="flex items-center justify-between border-b border-faith-line px-5 py-4">
             <div>

@@ -13,8 +13,8 @@ export function ModuleSidebar({ onClose }: ModuleSidebarProps) {
   const [openModule, setOpenModule] = useState<string | null>('CONTINUE');
 
   return (
-    <aside className="flex h-full w-full flex-col border-r border-slate-200 bg-[#f8faf9]">
-      <div className="border-b border-slate-200 px-5 py-5">
+    <aside className="flex h-full w-full flex-col border-r border-slate-200 bg-[#f8faf9] dark:border-slate-800 dark:bg-slate-950">
+      <div className="border-b border-slate-200 px-5 py-5 dark:border-slate-800">
         <BrandLogo variant="landscape" alt="FaithHub Provider" className="h-10 w-auto" />
       </div>
 

@@ -97,7 +97,7 @@ export function SidebarTrigger({ className = '', ...props }: ButtonHTMLAttribute
       aria-label="Open navigation"
       aria-expanded={isExpanded}
       onClick={toggleSidebar}
-      className={`fh-interactive inline-flex items-center justify-center rounded-lg border border-slate-200 bg-white p-2 text-slate-600 shadow-sm hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--fh-brand)] focus-visible:ring-offset-2 ${className}`.trim()}
+      className={`fh-interactive inline-flex items-center justify-center rounded-lg border border-slate-200 bg-white p-2 text-slate-600 shadow-sm hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--fh-brand)] focus-visible:ring-offset-2 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800 ${className}`.trim()}
       {...props}
     >
       <Menu className="h-5 w-5" />
@@ -112,7 +112,7 @@ export function Sidebar({ children, className = '', ...props }: HTMLAttributes<H
   return (
     <>
       <aside
-        className={`fixed inset-y-0 left-0 z-40 hidden border-r border-slate-200 bg-[#f4f6f6] transition-[width] lg:block ${
+        className={`fixed inset-y-0 left-0 z-40 hidden border-r border-slate-200 bg-[#f4f6f6] transition-[width] dark:border-slate-800 dark:bg-slate-950 lg:block ${
           open ? 'w-72' : 'w-20'
         } ${className}`.trim()}
         data-state={open ? 'expanded' : 'collapsed'}
@@ -129,14 +129,14 @@ export function Sidebar({ children, className = '', ...props }: HTMLAttributes<H
             className="absolute inset-0 bg-slate-900/35"
             aria-label="Close navigation overlay"
           />
-          <div className="relative h-full w-72 border-r border-slate-200 bg-[#f4f6f6] shadow-xl">
+          <div className="relative h-full w-72 border-r border-slate-200 bg-[#f4f6f6] shadow-xl dark:border-slate-800 dark:bg-slate-950">
             <h2 id={dialogTitleId} className="sr-only">
               Mobile navigation
             </h2>
             <button
               type="button"
               onClick={() => setOpenMobile(false)}
-              className="fh-interactive absolute right-3 top-3 inline-flex rounded-xl border border-slate-300 bg-white p-2 text-slate-600"
+              className="fh-interactive absolute right-3 top-3 inline-flex rounded-xl border border-slate-300 bg-white p-2 text-slate-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
               aria-label="Close navigation"
             >
               <X className="h-4 w-4" />
@@ -150,7 +150,7 @@ export function Sidebar({ children, className = '', ...props }: HTMLAttributes<H
 }
 
 export function SidebarHeader({ className = '', ...props }: HTMLAttributes<HTMLDivElement>) {
-  return <div className={`border-b border-slate-200 px-5 py-5 ${className}`.trim()} {...props} />;
+  return <div className={`border-b border-slate-200 px-5 py-5 dark:border-slate-800 ${className}`.trim()} {...props} />;
 }
 
 export function SidebarContent({ className = '', ...props }: HTMLAttributes<HTMLDivElement>) {
@@ -162,11 +162,11 @@ export function SidebarGroup({ className = '', ...props }: HTMLAttributes<HTMLDi
 }
 
 export function SidebarFooter({ className = '', ...props }: HTMLAttributes<HTMLDivElement>) {
-  return <div className={`border-t border-slate-200 px-5 py-4 ${className}`.trim()} {...props} />;
+  return <div className={`border-t border-slate-200 px-5 py-4 dark:border-slate-800 ${className}`.trim()} {...props} />;
 }
 
 export function SidebarGroupLabel({ className = '', ...props }: HTMLAttributes<HTMLHeadingElement>) {
-  return <h3 className={`px-2 pb-2 text-[12px] font-semibold uppercase tracking-[0.18em] text-slate-400 ${className}`.trim()} {...props} />;
+  return <h3 className={`px-2 pb-2 text-[12px] font-semibold uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500 ${className}`.trim()} {...props} />;
 }
 
 export function SidebarGroupContent({ className = '', ...props }: HTMLAttributes<HTMLDivElement>) {

@@ -1123,14 +1123,14 @@ export default function CommunityGroupsPage() {
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                     placeholder="Search groups, leaders, tags, or keywords"
-                    className="w-full rounded-2xl border border-faith-line/70 bg-[#fbfbfd] px-11 py-3 text-[13px] outline-none placeholder:text-faith-slate focus:border-slate-300"
+                    className="w-full rounded-2xl border border-faith-line/70 bg-[#fbfbfd] px-11 py-3 text-[13px] outline-none placeholder:text-faith-slate focus:border-slate-300 dark:bg-slate-900 dark:text-slate-100 dark:placeholder:text-slate-400"
                   />
                 </div>
 
                 <select
                   value={statusFilter}
                   onChange={(e) => setStatusFilter(e.target.value as "All" | GroupStatus)}
-                  className="rounded-2xl border border-faith-line/70 bg-[#fbfbfd] px-4 py-3 text-[13px] font-semibold outline-none"
+                  className="rounded-2xl border border-faith-line/70 bg-[#fbfbfd] px-4 py-3 text-[13px] font-semibold outline-none dark:bg-slate-900 dark:text-slate-100"
                 >
                   <option value="All">All statuses</option>
                   <option value="Healthy">Healthy</option>
@@ -1142,7 +1142,7 @@ export default function CommunityGroupsPage() {
                 <select
                   value={typeFilter}
                   onChange={(e) => setTypeFilter(e.target.value as "All" | GroupType)}
-                  className="rounded-2xl border border-faith-line/70 bg-[#fbfbfd] px-4 py-3 text-[13px] font-semibold outline-none"
+                  className="rounded-2xl border border-faith-line/70 bg-[#fbfbfd] px-4 py-3 text-[13px] font-semibold outline-none dark:bg-slate-900 dark:text-slate-100"
                 >
                   <option value="All">All group types</option>
                   <option value="Discipleship">Discipleship</option>
