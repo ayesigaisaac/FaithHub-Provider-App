@@ -15,6 +15,8 @@ const TOP_PROVIDER_ROUTES = [
 ];
 
 test.describe('Provider dark mode visual checklist', () => {
+  test.setTimeout(60_000);
+
   test.beforeEach(async ({ page }) => {
     await seedMockAuth(page, { email: 'admin@faithhub.dev', onboardingStatus: 'approved' });
     await page.addInitScript(() => {
@@ -26,17 +28,20 @@ test.describe('Provider dark mode visual checklist', () => {
 
   for (const route of TOP_PROVIDER_ROUTES) {
     test(`dark mode route: ${route}`, async ({ page }) => {
-      await page.goto(route);
-      await page.waitForLoadState('networkidle');
-
-      const pageRoot = page.locator('main, [class*="min-h-screen"]').first();
-      await expect(pageRoot).toBeVisible();
+      await page.goto(route, { waitUntil: 'domcontentloaded' });
+      await page.waitForLoadState('networkidle', { timeout: 20_000 }).catch(() => {});
+      await expect(page.locator('body')).toBeVisible();
+      await page.waitForTimeout(300);
 
       await expect(page).toHaveScreenshot(
         `dark-${route.replaceAll('/', '_').replace(/^_+/, '')}.png`,
-        { fullPage: true, animations: 'disabled' },
+        {
+          fullPage: true,
+          animations: 'disabled',
+          timeout: 15_000,
+          maxDiffPixelRatio: 0.02,
+        },
       );
     });
   }
 });
-

@@ -20,12 +20,22 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium-desktop',
-      use: { ...devices['Desktop Chrome'], viewport: { width: 1440, height: 1024 } },
+      use: {
+        ...devices['Desktop Chrome'],
+        viewport: { width: 1440, height: 1024 },
+        launchOptions: {
+          executablePath: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
+        },
+      },
     },
     {
       name: 'mobile-chrome',
-      use: { ...devices['Pixel 7'] },
+      use: {
+        ...devices['Pixel 7'],
+        launchOptions: {
+          executablePath: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
+        },
+      },
     },
   ],
 });
-
