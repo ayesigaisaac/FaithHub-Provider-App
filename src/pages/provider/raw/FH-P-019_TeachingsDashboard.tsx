@@ -2,6 +2,7 @@
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
+import { useTheme } from "@mui/material/styles";
 import {
   AlertTriangle,
   BadgeCheck,
@@ -540,13 +541,23 @@ function StatCard({
   hint: string;
   accent: "green" | "orange" | "neutral" | "navy";
 }) {
+  const theme = useTheme();
+  const isDark = theme.palette.mode === "dark";
   const accentBg =
     accent === "green"
-      ? "#d9f7ee"
+      ? isDark
+        ? "rgba(16, 185, 129, 0.14)"
+        : "#d9f7ee"
       : accent === "orange"
-      ? "#fff0df"
+      ? isDark
+        ? "rgba(251, 146, 60, 0.14)"
+        : "#fff0df"
       : accent === "navy"
-      ? "#e8eefc"
+      ? isDark
+        ? "rgba(59, 130, 246, 0.15)"
+        : "#e8eefc"
+      : isDark
+      ? "rgba(30, 41, 59, 0.75)"
       : "#f8fafc";
   const dot =
     accent === "green"
@@ -556,6 +567,9 @@ function StatCard({
       : accent === "navy"
       ? EV_NAVY
       : "#cbd5e1";
+  const labelColor = isDark ? "#cbd5e1" : "var(--fh-slate)";
+  const valueColor = isDark ? "#f8fafc" : "var(--fh-ink)";
+  const hintColor = isDark ? "#cbd5e1" : "var(--fh-slate)";
 
   return (
     <div
@@ -563,18 +577,22 @@ function StatCard({
       style={{ background: accentBg }}
     >
       <div className="flex items-start justify-between gap-2">
-        <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-faith-slate">
+        <div className="text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: labelColor }}>
           {label}
         </div>
         <div
-          className="h-9 w-9 rounded-2xl border border-white/80 shadow-soft"
-          style={{ background: dot, opacity: 0.95 }}
+          className="h-9 w-9 rounded-2xl shadow-soft"
+          style={{
+            background: dot,
+            opacity: 0.95,
+            border: isDark ? "1px solid rgba(148, 163, 184, 0.45)" : "1px solid rgba(255, 255, 255, 0.8)",
+          }}
         />
       </div>
-      <div className="mt-3 text-[20px] font-black tracking-tight text-faith-ink">
+      <div className="mt-3 text-[20px] font-black tracking-tight" style={{ color: valueColor }}>
         {value}
       </div>
-      <div className="mt-1 text-[12px] leading-5 text-faith-slate">{hint}</div>
+      <div className="mt-1 text-[12px] leading-5" style={{ color: hintColor }}>{hint}</div>
     </div>
   );
 }
