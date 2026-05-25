@@ -751,7 +751,7 @@ function SeriesLandingPreview({
             <span className="rounded-full bg-[#10223a] px-3 py-1 text-[10px] font-black">SERIES</span>
             <span className="rounded-full bg-[var(--fh-surface-bg)]/90 px-3 py-1 text-[10px] font-black text-[#106f65]">{series.access}</span>
             {series.beaconReady ? (
-              <span className="rounded-full bg-[#fff3e6] px-3 py-1 text-[10px] font-black text-[var(--fh-accent)]">Beacon-ready</span>
+              <span className="rounded-full bg-[#fff3e6] dark:bg-amber-900/20 px-3 py-1 text-[10px] font-black text-[var(--fh-accent)] dark:text-amber-300">Beacon-ready</span>
             ) : null}
           </div>
 
@@ -997,7 +997,7 @@ export default function SeriesDashboardPage() {
 
         <div className="rounded-[22px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 py-3 transition-colors">
           <div className="flex flex-wrap items-center gap-3 text-[12px] text-faith-slate">
-            <span className="inline-flex items-center rounded-full border border-[var(--fh-accent)]/25 bg-[#fff3e6] px-3 py-1 font-black uppercase tracking-[0.08em] text-[var(--fh-accent)]">
+            <span className="inline-flex items-center rounded-full border border-[var(--fh-accent)]/25 dark:border-amber-700 bg-[#fff3e6] dark:bg-amber-900/20 px-3 py-1 font-black uppercase tracking-[0.08em] text-[var(--fh-accent)] dark:text-amber-300">
               Series pipeline pulse
             </span>
             <span>1 series needs artwork</span>
@@ -1087,7 +1087,7 @@ export default function SeriesDashboardPage() {
                     "rounded-full border px-3 py-1.5 text-[12px] font-semibold transition-colors",
                     filterKey === key
                       ? key === "beacon-ready"
-                        ? "border-[var(--fh-accent)] bg-[#fff3e6] text-[var(--fh-accent)]"
+                        ? "border-[var(--fh-accent)] bg-[#fff3e6] dark:bg-amber-900/20 text-[var(--fh-accent)] dark:text-amber-300"
                         : "border-transparent text-white"
                       : "border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 text-faith-slate dark:text-slate-300 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-700",
                   )}
@@ -1434,7 +1434,7 @@ export default function SeriesDashboardPage() {
           </SectionCard>
         </div>
 
-        <div className="rounded-[18px] border border-[var(--fh-brand)]/30 bg-[#e8f8f3] px-4 py-3 text-center text-[13px] text-faith-slate">
+        <div className="rounded-[18px] border border-[var(--fh-brand)]/30 dark:border-emerald-700 bg-[#e8f8f3] dark:bg-emerald-900/20 px-4 py-3 text-center text-[13px] text-faith-slate dark:text-slate-300">
           Preview
         </div>
       </div>

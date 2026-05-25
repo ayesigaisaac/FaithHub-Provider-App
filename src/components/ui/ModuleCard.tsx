@@ -14,18 +14,18 @@ export function ModuleCard({ title, icon: Icon, isOpen, onToggle }: ModuleCardPr
       type="button"
       onClick={onToggle}
       aria-expanded={isOpen}
-      className={`flex w-full items-center justify-between rounded-xl border bg-[#ffffff] p-[14px] text-left transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--fh-brand)] focus-visible:ring-offset-2 ${
-        isOpen ? 'border-2 border-black shadow-sm' : 'border-slate-200 hover:shadow-md'
+      className={`flex w-full items-center justify-between rounded-xl border bg-[#ffffff] p-[14px] text-left transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--fh-brand)] focus-visible:ring-offset-2 dark:bg-slate-900 ${
+        isOpen ? 'border-2 border-black shadow-sm dark:border-slate-300' : 'border-slate-200 hover:shadow-md dark:border-slate-700'
       }`}
     >
       <span className="flex items-center gap-3">
-        <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-slate-100 text-slate-700">
+        <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-200">
           <Icon className="h-5 w-5" />
         </span>
-        <span className="text-sm font-semibold tracking-wide text-slate-900">{title}</span>
+        <span className="text-sm font-semibold tracking-wide text-slate-900 dark:text-slate-100">{title}</span>
       </span>
       <ChevronRight
-        className={`h-5 w-5 text-slate-500 transition-transform duration-200 ${isOpen ? 'rotate-90 text-[var(--fh-brand)]' : ''}`}
+        className={`h-5 w-5 text-slate-500 dark:text-slate-400 transition-transform duration-200 ${isOpen ? 'rotate-90 text-[var(--fh-brand)]' : ''}`}
       />
     </button>
   );
