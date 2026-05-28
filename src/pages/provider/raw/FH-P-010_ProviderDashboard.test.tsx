@@ -19,7 +19,6 @@ vi.mock("@/auth/useAuth", () => ({
 describe("FH-P-010 FaithHub Provider dashboard workflow UX", () => {
   beforeEach(() => {
     navigateWithRouterMock.mockReset();
-    vi.useFakeTimers();
   });
 
   it("renders empty state when no teachings exist", () => {
@@ -145,20 +144,25 @@ describe("FH-P-010 FaithHub Provider dashboard workflow UX", () => {
       },
     ];
 
-    render(<ProviderDashboardPage workflowItemsOverride={teachingItems} />);
-    act(() => {
-      vi.advanceTimersByTime(500);
-    });
+    vi.useFakeTimers();
+    try {
+      render(<ProviderDashboardPage workflowItemsOverride={teachingItems} />);
+      act(() => {
+        vi.advanceTimersByTime(500);
+      });
 
-    fireEvent.click(screen.getByRole("button", { name: "Continue editing" }));
-    expect(navigateWithRouterMock).toHaveBeenCalledWith(
-      "/faithhub/provider/teachings-dashboard?teachingId=open-me-123",
-    );
+      fireEvent.click(screen.getByRole("button", { name: "Continue editing" }));
+      expect(navigateWithRouterMock).toHaveBeenCalledWith(
+        "/faithhub/provider/teachings-dashboard?teachingId=open-me-123",
+      );
 
-    fireEvent.click(screen.getAllByRole("button", { name: /Open Teaching To Open/i })[0]);
-    expect(navigateWithRouterMock).toHaveBeenLastCalledWith(
-      "/faithhub/provider/teachings-dashboard?teachingId=open-me-123",
-    );
+      fireEvent.click(screen.getAllByRole("button", { name: /Open Teaching To Open/i })[0]);
+      expect(navigateWithRouterMock).toHaveBeenLastCalledWith(
+        "/faithhub/provider/teachings-dashboard?teachingId=open-me-123",
+      );
+    } finally {
+      vi.useRealTimers();
+    }
   });
 });
 
