@@ -2849,7 +2849,7 @@ export default function FaithHubLiveSchedulePage() {
           className="mt-3"
         />
 
-        <div className="mt-5 grid grid-cols-1 gap-4 lg:grid-cols-12">
+        <div className="mt-5 grid grid-cols-1 gap-4 lg:grid-cols-12 lg:items-start">
           <div className="space-y-4 lg:col-span-2">
             <Card
               title="Schedule health"
@@ -3003,7 +3003,7 @@ export default function FaithHubLiveSchedulePage() {
             </Card>
           </div>
 
-          <div className="space-y-4 lg:col-span-7">
+          <div className="space-y-4 min-w-0 lg:col-span-7">
             <Card
               title="Auto-reschedule suggestions"
               subtitle="Recommendations account for staffing, audience overlap, venue clashes, and recurring rhythm safety."

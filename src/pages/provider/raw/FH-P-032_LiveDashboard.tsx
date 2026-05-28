@@ -1423,7 +1423,7 @@ export default function FaithHubLiveDashboardPage() {
           className="mt-3 sm:mt-4"
         />
 
-        <div className="mt-3 sm:mt-4 grid grid-cols-1 gap-4 sm:gap-5 lg:grid-cols-12">
+        <div className="mt-3 sm:mt-4 grid grid-cols-1 gap-4 sm:gap-5 lg:grid-cols-12 lg:items-start">
           <div className="lg:col-span-3 space-y-4 sm:space-y-5">
             <Card
               title="Session status header"
@@ -1534,7 +1534,7 @@ export default function FaithHubLiveDashboardPage() {
             </Card>
           </div>
 
-          <div className="lg:col-span-6 space-y-4 sm:space-y-5">
+          <div className="min-w-0 lg:col-span-6 space-y-4 sm:space-y-5">
             <Card
               title="Technical health telemetry"
               subtitle="Ingest health, bitrate, frame rate, audio confidence, latency, recording state, destination sync, and backup readiness."

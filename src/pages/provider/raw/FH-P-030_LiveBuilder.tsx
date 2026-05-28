@@ -2719,14 +2719,14 @@ export default function FaithHubLiveBuilderPage({ embedded = false, onRequestClo
         </div>
       ) : null}
 
-      <div className="grid grid-cols-1 gap-4 lg:grid-cols-12">
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-12 lg:items-start">
         <div className="space-y-4 lg:col-span-2">
           <StepNav active={step} onChange={setStep} readiness={readiness} />
           <ReadinessCard checklist={checklist} />
           <QuickStatsCard draft={draft} />
         </div>
 
-        <div className="space-y-4 lg:col-span-5">
+        <div className="space-y-4 min-w-0 lg:col-span-5">
           {renderStep()}
           <div className="sticky bottom-4 z-30 rounded-3xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3 shadow-medium dark:border-slate-800 dark:bg-slate-950 lg:hidden">
             <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
@@ -2746,7 +2746,7 @@ export default function FaithHubLiveBuilderPage({ embedded = false, onRequestClo
           </div>
         </div>
 
-        <div className="hidden lg:col-span-5 lg:block">
+        <div className="hidden min-w-0 lg:col-span-5 lg:block">
           <div className="sticky top-4">
             <PreviewPhone draft={draft} readiness={readiness} />
             <HandoffPanel onQuickLink={onQuickLink} />

@@ -1257,8 +1257,8 @@ export default function FaithHubReviewsAndModerationPage() {
       </div>
 
       <div className="w-full px-3 sm:px-4 md:px-6 lg:px-8 py-6">
-        <div className="grid grid-cols-1 gap-4 lg:grid-cols-12">
-          <div className="lg:col-span-8 space-y-4">
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-12 lg:items-start">
+          <div className="min-w-0 lg:col-span-8 space-y-4">
             <Card
               title="Reputation overview"
               subtitle="Ratings, review sentiment, unresolved issues, recurring complaints, and the areas attracting the strongest public response."
@@ -1688,7 +1688,7 @@ export default function FaithHubReviewsAndModerationPage() {
             </Card>
           </div>
 
-          <div className="lg:col-span-4 space-y-4">
+          <div className="min-w-0 lg:col-span-4 space-y-4">
             {selectedReview ? (
               <Card
                 title="Preview lab"

@@ -979,9 +979,9 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
 
       {/* Body */}
       <div className="flex-1 w-full px-3 sm:px-4 md:px-6 lg:px-8 py-6">
-        <div className="grid grid-cols-1 gap-4 lg:grid-cols-12">
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-12 lg:items-start">
           {/* Left column */}
-          <div className="lg:col-span-8 space-y-4">
+          <div className="min-w-0 lg:col-span-8 space-y-4">
             {/* Replay packaging header */}
             <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <SectionHead
@@ -1559,7 +1559,7 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
           </div>
 
           {/* Right rail */}
-          <div className="lg:col-span-4 space-y-4">
+          <div className="min-w-0 lg:col-span-4 space-y-4">
             {/* Replay preview */}
             <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <SectionHead

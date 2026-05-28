@@ -1135,8 +1135,8 @@ export default function DonationsAndFundsPage() {
       </div>
 
       <div className="flex-1 w-full px-3 sm:px-4 md:px-6 lg:px-8 py-6">
-        <div className="grid grid-cols-1 gap-4 lg:grid-cols-12">
-          <div className="lg:col-span-4 space-y-4">
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-12 lg:items-start">
+          <div className="min-w-0 lg:col-span-4 space-y-4">
             <div className="rounded-[14px] bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <SectionTitle
                 icon={<Layers className="h-5 w-5" />}
@@ -1194,7 +1194,7 @@ export default function DonationsAndFundsPage() {
             </div>
           </div>
 
-          <div className="lg:col-span-4 space-y-4">
+          <div className="min-w-0 lg:col-span-4 space-y-4">
             <div className="rounded-[14px] bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <SectionTitle
                 icon={<Plus className="h-5 w-5" />}
@@ -1352,7 +1352,7 @@ export default function DonationsAndFundsPage() {
             </div>
           </div>
 
-          <div className="lg:col-span-4 space-y-4">
+          <div className="min-w-0 lg:col-span-4 space-y-4">
             <div className="rounded-[14px] bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <SectionTitle
                 icon={<Eye className="h-5 w-5" />}
