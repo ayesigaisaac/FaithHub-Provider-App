@@ -777,7 +777,7 @@ export default function SubscriptionsPage() {
           </div>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-6">
+        <div className="grid items-start gap-4 md:grid-cols-2 xl:grid-cols-6">
           {KPI_STRIP.map((item) => (
             <KPIBox key={item.id} item={item} />
           ))}
@@ -824,7 +824,7 @@ export default function SubscriptionsPage() {
           </div>
         </div>
 
-        <div className="grid gap-4 xl:grid-cols-[1.1fr_0.95fr_0.8fr]">
+        <div className="grid items-start gap-4 xl:grid-cols-[1.1fr_0.95fr_0.8fr]">
           <div className="space-y-4">
             <SectionCard
               title="Plan control center"
@@ -1215,7 +1215,7 @@ export default function SubscriptionsPage() {
           </div>
         </div>
 
-        <div className="grid gap-4 xl:grid-cols-[1.1fr_0.9fr]">
+        <div className="grid items-start gap-4 xl:grid-cols-[1.1fr_0.9fr]">
           <SectionCard
             title="Invoices + renewal ledger"
             subtitle="Review the billing trail, open invoices, due dates, and line-by-line workspace charges."

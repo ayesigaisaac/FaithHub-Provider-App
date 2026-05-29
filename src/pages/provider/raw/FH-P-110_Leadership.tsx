@@ -198,7 +198,7 @@ const LEADERS: LeaderRecord[] = [
     language: ["English", "Luganda"],
     tenureLabel: "6 years",
     heroUrl: HERO_1,
-    bio: "Leads the institution’s teaching direction, leadership rhythms, and high-visibility ministry moments across campuses.",
+    bio: "Leads the institutionï¿½s teaching direction, leadership rhythms, and high-visibility ministry moments across campuses.",
     reports: 7,
     activeTeams: 4,
     upcomingEvents: 3,
@@ -534,7 +534,7 @@ function PreviewDrawer({
           </button>
         </div>
 
-        <div className="mt-4 grid gap-4 xl:grid-cols-[minmax(0,1.25fr)_340px]">
+        <div className="mt-4 grid items-start gap-4 xl:grid-cols-[minmax(0,1.25fr)_340px]">
           <LeadershipPreviewCard leader={leader} previewMode="desktop" />
           <LeadershipPreviewCard leader={leader} previewMode="mobile" />
         </div>
@@ -595,7 +595,7 @@ export default function FaithHubLeadershipPage() {
 
       <div className="mx-auto flex w-full max-w-[1600px] flex-col gap-6 px-4 py-6 md:px-6 xl:px-8">
         <section className="overflow-hidden rounded-[36px] border border-faith-line/70 bg-[var(--fh-surface-bg)] shadow-soft dark:border-slate-800 dark:bg-slate-900">
-          <div className="grid gap-6 px-6 py-6 2xl:grid-cols-[minmax(0,1.15fr)_420px] lg:px-8 lg:py-8">
+          <div className="grid items-start gap-6 px-6 py-6 2xl:grid-cols-[minmax(0,1.15fr)_420px] lg:px-8 lg:py-8">
             <div>
               <div className="inline-flex items-center gap-2 rounded-full border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-faith-slate dark:border-slate-700 dark:bg-slate-950">
                 Team command
@@ -673,7 +673,7 @@ export default function FaithHubLeadershipPage() {
           </div>
         </section>
 
-        <section className="grid gap-6 2xl:grid-cols-[minmax(0,1fr)_360px]">
+        <section className="grid items-start gap-6 2xl:grid-cols-[minmax(0,1fr)_360px]">
           <div className="space-y-6">
             <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
               {OFFICE_CARDS.map((office) => (
@@ -716,7 +716,7 @@ export default function FaithHubLeadershipPage() {
                 </div>
               </div>
 
-              <div className="mt-5 grid gap-4 xl:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
+              <div className="mt-5 grid items-start gap-4 xl:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
                 <div className="space-y-3">
                   {filteredLeaders.map((leader) => {
                     const statusTone =
@@ -759,7 +759,7 @@ export default function FaithHubLeadershipPage() {
                                   {leader.name}
                                 </div>
                                 <div className="mt-0.5 text-[12px] text-faith-slate">
-                                  {leader.officeTitle} · {leader.campus}
+                                  {leader.officeTitle} ï¿½ {leader.campus}
                                 </div>
                               </div>
                               <div className="flex flex-wrap items-center gap-2">
@@ -814,7 +814,7 @@ export default function FaithHubLeadershipPage() {
                     <div>
                       <div className="text-[10px] font-black uppercase tracking-[0.18em] text-faith-slate">Selected leader</div>
                       <div className="mt-1 text-[22px] font-black tracking-[-0.02em] text-slate-950 dark:text-white">{selectedLeader.name}</div>
-                      <div className="mt-1 text-[13px] text-faith-slate">{selectedLeader.officeTitle} · {selectedLeader.ministryArea}</div>
+                      <div className="mt-1 text-[13px] text-faith-slate">{selectedLeader.officeTitle} ï¿½ {selectedLeader.ministryArea}</div>
                     </div>
                     <button
                       type="button"

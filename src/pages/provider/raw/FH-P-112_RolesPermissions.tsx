@@ -1355,7 +1355,7 @@ export default function FH_P_112_RolesPermissionsPage() {
           </div>
         </div>
 
-        <div className="mt-4 grid gap-4 xl:grid-cols-6">
+        <div className="mt-4 grid items-start gap-4 xl:grid-cols-6">
           <MetricCard
             label="Active roles"
             value={fmtInt(stats.activeRoles)}
@@ -1399,7 +1399,7 @@ export default function FH_P_112_RolesPermissionsPage() {
           <div className="mt-1 text-[13px] text-faith-slate">
             Find roles, templates, campus scope, approval posture, and high-risk permissions faster.
           </div>
-          <div className="mt-4 grid gap-3 xl:grid-cols-[1.4fr_0.55fr_0.55fr_0.55fr]">
+          <div className="mt-4 grid items-start gap-3 xl:grid-cols-[1.4fr_0.55fr_0.55fr_0.55fr]">
             <div className="relative">
               <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-faith-slate" />
               <input
