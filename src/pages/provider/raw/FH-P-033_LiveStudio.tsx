@@ -1017,7 +1017,7 @@ export default function FaithHubLiveStudioPage() {
   );
 
   return (
-    <div className="min-h-screen w-full overflow-hidden bg-[radial-gradient(circle_at_top_left,rgba(3,205,140,0.08),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(247,127,0,0.08),transparent_32%)] bg-[var(--fh-surface)] text-faith-ink transition-colors dark:bg-slate-950 dark:text-slate-50">
+    <div className="min-h-full w-full overflow-hidden bg-[radial-gradient(circle_at_top_left,rgba(3,205,140,0.08),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(247,127,0,0.08),transparent_32%)] bg-[var(--fh-surface)] text-faith-ink transition-colors dark:bg-slate-950 dark:text-slate-50">
       <PageHeader
         pageTitle="Live Studio"
         badge={headerBadge}
@@ -2388,6 +2388,7 @@ function MobileLiveStudio({
 }
 
 export { FaithHubLiveStudioPage };
+
 
 
 

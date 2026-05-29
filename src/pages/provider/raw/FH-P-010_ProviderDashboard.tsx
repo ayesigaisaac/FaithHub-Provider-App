@@ -1,4 +1,4 @@
-﻿// @ts-nocheck
+// @ts-nocheck
 
 "use client";
 
@@ -1641,7 +1641,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
 
   if (!hasDashboardData) {
     return (
-      <div className="fh-brand-shell min-h-screen w-full bg-[var(--fh-page-bg)] text-faith-ink transition-colors ">
+      <div className="fh-brand-shell min-h-full w-full bg-[var(--fh-page-bg)] text-faith-ink transition-colors ">
         <div className="w-full max-w-none px-0 py-0">
           <div className="space-y-4 sm:space-y-5">
             <section className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-5 sm:p-10 shadow-soft">
@@ -1679,7 +1679,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
 
   if (hasDashboardData) {
     return (
-      <div className="fh-brand-shell min-h-screen w-full bg-[var(--fh-page-bg)] text-faith-ink transition-colors ">
+      <div className="fh-brand-shell min-h-full w-full bg-[var(--fh-page-bg)] text-faith-ink transition-colors ">
         <div className="w-full max-w-none px-0 py-0">
           <div className="space-y-8 sm:space-y-10">
             <section className="fh-brand-hero rounded-2xl p-5 sm:p-5">
@@ -2291,6 +2291,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
   }
 
 }
+
 
 
 

@@ -1,4 +1,4 @@
-﻿// @ts-nocheck
+// @ts-nocheck
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -2662,7 +2662,7 @@ export default function FaithHubLiveBuilderPage({ embedded = false, onRequestClo
   };
 
   return (
-    <div className={cx("space-y-4 pb-28 sm:pb-20", embedded ? "min-h-0" : "min-h-screen bg-[var(--fh-surface)] px-4 py-4 dark:bg-slate-950 sm:px-6" )}>
+    <div className={cx("space-y-4 pb-28 sm:pb-20", embedded ? "min-h-0" : "min-h-full bg-[var(--fh-surface)] px-4 py-4 dark:bg-slate-950 sm:px-6" )}>
       {!embedded ? (
         <div className="flex items-start justify-between gap-3 flex-wrap">
           <div className="min-w-0">
@@ -2760,6 +2760,7 @@ export default function FaithHubLiveBuilderPage({ embedded = false, onRequestClo
     </div>
   );
 }
+
 
 
 

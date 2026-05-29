@@ -3,7 +3,7 @@ import { KpiTile } from '@/components/ui/KpiTile';
 
 export default function DesignSystemShowcase() {
   return (
-    <div className="fh-brand-shell min-h-screen bg-[var(--fh-page-bg)] px-4 py-6 sm:px-6 sm:py-8">
+    <div className="fh-brand-shell min-h-full bg-[var(--fh-page-bg)] px-4 py-6 sm:px-6 sm:py-8">
       <div className="mx-auto max-w-6xl space-y-6">
         <section className="fh-brand-hero rounded-3xl p-6 sm:p-8">
           <div className="fh-brand-badge px-3 py-1 text-[11px] font-bold uppercase tracking-[0.14em]">
@@ -77,4 +77,5 @@ export default function DesignSystemShowcase() {
     </div>
   );
 }
+
 

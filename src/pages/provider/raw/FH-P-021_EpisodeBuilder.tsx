@@ -1,4 +1,4 @@
-﻿// @ts-nocheck
+// @ts-nocheck
 
 "use client";
 
@@ -1173,7 +1173,7 @@ export default function EpisodeBuilderPage() {
   const activeCard = (key: StepKey) => step === key;
 
   return (
-    <div className="min-h-screen bg-[var(--fh-page-bg)] p-4 text-faith-ink sm:p-6 xl:p-10">
+    <div className="min-h-full bg-[var(--fh-page-bg)] p-4 text-faith-ink sm:p-6 xl:p-10">
       <div className="mx-auto max-w-[1520px]">
         <div className="rounded-[32px] border border-faith-line/70 bg-[var(--fh-surface-bg)] px-7 py-6 shadow-[0_20px_60px_rgba(15,23,42,0.08)]">
           <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
@@ -2002,6 +2002,7 @@ export default function EpisodeBuilderPage() {
     </div>
   );
 }
+
 
 
 

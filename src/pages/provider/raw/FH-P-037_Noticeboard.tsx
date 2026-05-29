@@ -1,4 +1,4 @@
-﻿// @ts-nocheck
+// @ts-nocheck
 "use client";
 
 import React, { useMemo, useState } from "react";
@@ -38,7 +38,7 @@ import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 import { useAuth } from "@/auth/useAuth";
 
 /**
- * Provider â€” Noticeboard
+ * Provider — Noticeboard
  * --------------------------------
  * Premium Provider-side noticeboard / announcements operating surface.
  *
@@ -832,7 +832,7 @@ function BoardPreviewDesktop({ draft }: { draft: ComposerState }) {
               label: "Board sections",
               items: [
                 "Pinned notice lane",
-                "Todayâ€™s notices",
+                "Today’s notices",
                 "Campus-only updates",
               ],
             },
@@ -1160,7 +1160,7 @@ export default function FaithHubNoticeboardPage() {
 
   return (
     <div
-      className="min-h-screen w-full bg-[var(--fh-page-bg)] px-5 py-6 text-faith-ink transition-colors dark:bg-slate-950 dark:text-slate-100"
+      className="min-h-full w-full bg-[var(--fh-page-bg)] px-5 py-6 text-faith-ink transition-colors dark:bg-slate-950 dark:text-slate-100"
     >
       <div className="mx-auto max-w-[1500px] space-y-5">
         <div className="rounded-[34px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-6 shadow-soft">
@@ -1170,7 +1170,7 @@ export default function FaithHubNoticeboardPage() {
               <ProviderPageTitle
                 icon={<Megaphone className="h-6 w-6" />}
                 title="Noticeboard"
-                subtitle="Run institution-wide announcements, campus updates, prayer alerts, volunteer calls, event reminders, and giving notices from one premium board â€” then route them into Live Sessions, notifications, events, giving, and Beacon without losing control."
+                subtitle="Run institution-wide announcements, campus updates, prayer alerts, volunteer calls, event reminders, and giving notices from one premium board — then route them into Live Sessions, notifications, events, giving, and Beacon without losing control."
               />
 
               <div className="mt-5 flex flex-wrap items-center gap-2">
@@ -1885,6 +1885,7 @@ export default function FaithHubNoticeboardPage() {
     </div>
   );
 }
+
 
 
 

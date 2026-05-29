@@ -853,7 +853,7 @@ export default function BeaconMarketplacePage() {
 
   return (
     <div
-      className="min-h-screen w-full px-4 py-6 md:px-6 lg:px-8"
+      className="min-h-full w-full px-4 py-6 md:px-6 lg:px-8"
       style={{ background: EV_LIGHT }}
     >
       <div className="mx-auto w-full max-w-[1520px]">
@@ -1369,6 +1369,7 @@ export default function BeaconMarketplacePage() {
     </div>
   );
 }
+
 
 
 

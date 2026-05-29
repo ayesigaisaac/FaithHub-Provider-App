@@ -522,7 +522,7 @@ html.dark .fh-uplift-surface {
   width: 100%;
 }
 
-.provider-page-density--compact > div[class*='min-h-screen'] {
+.provider-page-density--compact > div:is([class*='min-h-screen'], [class*='min-h-full']) {
   min-height: auto !important;
   padding-top: 0 !important;
   padding-bottom: 0 !important;
@@ -530,7 +530,7 @@ html.dark .fh-uplift-surface {
   padding-right: 0 !important;
 }
 
-.provider-page-density--compact > div[class*='min-h-screen'] > :is(div, main)[class*='mx-auto'] {
+.provider-page-density--compact > div:is([class*='min-h-screen'], [class*='min-h-full']) > :is(div, main)[class*='mx-auto'] {
   width: 100% !important;
   max-width: none !important;
   margin-left: 0 !important;
@@ -542,7 +542,7 @@ html.dark .fh-uplift-surface {
 }
 
 @media (min-width: 768px) {
-  .provider-page-density--compact > div[class*='min-h-screen'] > :is(div, main)[class*='mx-auto'] {
+  .provider-page-density--compact > div:is([class*='min-h-screen'], [class*='min-h-full']) > :is(div, main)[class*='mx-auto'] {
     padding-top: 0.75rem !important;
     padding-bottom: 1rem !important;
     padding-left: 0.75rem !important;
@@ -551,14 +551,14 @@ html.dark .fh-uplift-surface {
 }
 
 @media (min-width: 1280px) {
-  .provider-page-density--compact > div[class*='min-h-screen'] > :is(div, main)[class*='mx-auto'] {
+  .provider-page-density--compact > div:is([class*='min-h-screen'], [class*='min-h-full']) > :is(div, main)[class*='mx-auto'] {
     padding-left: 1rem !important;
     padding-right: 1rem !important;
   }
 }
 
 /* Light mode normalization for raw provider pages so legacy one-off classes inherit tokens. */
-.provider-page-density--compact > :is(div, main)[class*='min-h-screen'] {
+.provider-page-density--compact > :is(div, main):is([class*='min-h-screen'], [class*='min-h-full']) {
   background-color: var(--fh-page-bg) !important;
   color: var(--fh-ink) !important;
 }
@@ -626,7 +626,7 @@ html.dark .fh-uplift-surface {
 }
 
 /* Uniform dark skin for imported provider pages that still carry light-only styles. */
-html.dark .provider-page-density--compact > :is(div, main)[class*='min-h-screen'] {
+html.dark .provider-page-density--compact > :is(div, main):is([class*='min-h-screen'], [class*='min-h-full']) {
   background-color: #020617 !important;
   color: #e2e8f0 !important;
 }

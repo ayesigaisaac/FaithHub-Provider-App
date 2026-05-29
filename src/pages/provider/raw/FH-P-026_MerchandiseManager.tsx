@@ -1457,7 +1457,7 @@ export default function MerchandiseManagerPage() {
 
   return (
     <div
-      className="min-h-screen bg-[var(--fh-surface)] dark:bg-slate-950 text-faith-ink dark:text-slate-50 transition-colors"
+      className="min-h-full bg-[var(--fh-surface)] dark:bg-slate-950 text-faith-ink dark:text-slate-50 transition-colors"
       style={{ backgroundColor: EV_LIGHT }}
     >
       <main className="px-4 py-4 md:px-6 lg:px-8 lg:py-6">
@@ -2069,6 +2069,7 @@ export default function MerchandiseManagerPage() {
     </div>
   );
 }
+
 
 
 

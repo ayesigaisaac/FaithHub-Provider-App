@@ -581,7 +581,7 @@ export default function PrayerJournalPage() {
   const selectedPreviewReflection = journalReflections.find((item) => item.status === "Featured" || item.status === "Shared") || journalReflections[0];
 
   return (
-    <div className="min-h-screen bg-[var(--fh-page-bg)] text-faith-ink">
+    <div className="min-h-full bg-[var(--fh-page-bg)] text-faith-ink">
       <div className="mx-auto max-w-[1600px] p-5 lg:p-6">
         <div className="rounded-[28px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-5 shadow-soft">
           <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
@@ -636,6 +636,7 @@ export default function PrayerJournalPage() {
     </div>
   );
 }
+
 
 
 

@@ -207,7 +207,7 @@ export function ProviderShellLayout() {
               borderColor: 'var(--fh-line)',
               bgcolor: 'var(--fh-surface-bg)',
               p: { xs: 0.5, md: 0.8 },
-              minHeight: '100%',
+              minHeight: 'auto',
               boxShadow: (theme) =>
                 theme.palette.mode === 'dark'
                   ? '0 20px 40px -34px rgba(2, 6, 23, 0.92)'

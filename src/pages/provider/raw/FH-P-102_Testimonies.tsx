@@ -1058,7 +1058,7 @@ export default function TestimoniesPage() {
     (selectedStory.mediaType === "Text only" || !!selectedStory.mediaRelease);
 
   return (
-    <div className="min-h-screen w-full bg-[var(--fh-page-bg)] dark:bg-slate-950 p-5 text-faith-ink dark:text-slate-50 transition-colors">
+    <div className="min-h-full w-full bg-[var(--fh-page-bg)] dark:bg-slate-950 p-5 text-faith-ink dark:text-slate-50 transition-colors">
       <div className="mx-auto max-w-[1600px] space-y-5">
         <section className="rounded-[28px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-6 shadow-soft transition-colors">
           <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
@@ -1715,6 +1715,7 @@ export default function TestimoniesPage() {
     </div>
   );
 }
+
 
 
 

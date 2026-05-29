@@ -28,7 +28,7 @@ function statusTone(status: (typeof planningSteps)[number]['status']) {
 
 export default function FHP130ContentPlanner() {
   return (
-    <div className="min-h-screen bg-[var(--fh-page-bg)] text-faith-ink">
+    <div className="min-h-full bg-[var(--fh-page-bg)] text-faith-ink">
       <main className="mx-auto max-w-[1280px] px-4 py-5 md:px-6 md:py-6">
         <div className="rounded-[28px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-5 md:p-6">
           <ProviderPageTitle
@@ -100,4 +100,5 @@ export default function FHP130ContentPlanner() {
     </div>
   );
 }
+
 

@@ -1,4 +1,4 @@
-﻿// @ts-nocheck
+// @ts-nocheck
 "use client";
 
 import React, { useMemo, useState } from "react";
@@ -747,7 +747,7 @@ function PrayerRequestsPage() {
   };
 
   return (
-    <div className="min-h-screen w-full bg-[var(--fh-page-bg)] text-faith-ink">
+    <div className="min-h-full w-full bg-[var(--fh-page-bg)] text-faith-ink">
       <div className="mx-auto w-full max-w-[1600px] px-5 py-5">
         <div className="rounded-[30px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-5 shadow-soft">
           <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
@@ -1097,6 +1097,7 @@ function PrayerRequestsPage() {
 }
 
 export default PrayerRequestsPage;
+
 
 
 

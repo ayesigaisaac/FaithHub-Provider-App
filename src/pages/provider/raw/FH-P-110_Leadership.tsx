@@ -590,7 +590,7 @@ export default function FaithHubLeadershipPage() {
   const publishHealth = pct(totals.published, totals.totalLeaders);
 
   return (
-    <div className="min-h-screen bg-[#f7f7f5] text-faith-ink dark:bg-slate-950 dark:text-slate-100">
+    <div className="min-h-full bg-[#f7f7f5] text-faith-ink dark:bg-slate-950 dark:text-slate-100">
       <PreviewDrawer open={previewOpen} onClose={() => setPreviewOpen(false)} leader={selectedLeader} />
 
       <div className="mx-auto flex w-full max-w-[1600px] flex-col gap-6 px-4 py-6 md:px-6 xl:px-8">
@@ -1029,6 +1029,7 @@ export default function FaithHubLeadershipPage() {
     </div>
   );
 }
+
 
 
 

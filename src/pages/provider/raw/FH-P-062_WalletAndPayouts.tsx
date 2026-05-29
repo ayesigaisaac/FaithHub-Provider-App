@@ -926,7 +926,7 @@ export default function WalletAndPayoutsPage() {
   const selectedMethod = PAYOUT_METHODS.find((m) => m.id === transferMethod) || PAYOUT_METHODS[0];
 
   return (
-    <div className="min-h-screen bg-[var(--fh-page-bg)] text-faith-ink">
+    <div className="min-h-full bg-[var(--fh-page-bg)] text-faith-ink">
       <div className="mx-auto max-w-[1600px] p-4 md:p-6 space-y-4">
         <div className="rounded-[32px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 md:p-5 shadow-soft">
           <div className="grid gap-4 xl:grid-cols-[1.45fr_0.75fr]">
@@ -1535,6 +1535,7 @@ export default function WalletAndPayoutsPage() {
     </div>
   );
 }
+
 
 
 

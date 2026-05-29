@@ -1245,7 +1245,7 @@ export default function ResourcesManagerPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[var(--fh-page-bg)] text-faith-ink">
+    <div className="min-h-full bg-[var(--fh-page-bg)] text-faith-ink">
       <main className="mx-auto max-w-[1720px] p-4 md:p-6 lg:p-8">
         <div className="grid gap-5 2xl:grid-cols-[minmax(0,1fr)_380px]">
           <div className="space-y-5">
@@ -1595,6 +1595,7 @@ export default function ResourcesManagerPage() {
     </div>
   );
 }
+
 
 
 

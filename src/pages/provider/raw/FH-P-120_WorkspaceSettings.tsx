@@ -1044,7 +1044,7 @@ export default function WorkspaceSettingsPage() {
   };
 
   return (
-    <div className="min-h-screen w-full bg-[var(--fh-page-bg)] dark:bg-slate-950 text-faith-ink dark:text-slate-50 transition-colors overflow-x-hidden">
+    <div className="min-h-full w-full bg-[var(--fh-page-bg)] dark:bg-slate-950 text-faith-ink dark:text-slate-50 transition-colors overflow-x-hidden">
       <main className="w-full p-5 md:p-6 lg:p-8 space-y-4">
         <section className="rounded-[32px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-6 transition-colors">
           <div className="flex flex-col gap-5 xl:flex-row xl:items-start xl:justify-between">
@@ -1457,6 +1457,7 @@ export default function WorkspaceSettingsPage() {
     </div>
   );
 }
+
 
 
 

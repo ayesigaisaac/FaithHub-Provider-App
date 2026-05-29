@@ -1,4 +1,4 @@
-﻿// @ts-nocheck
+// @ts-nocheck
 "use client";
 
 import React, { useMemo, useState } from "react";
@@ -1265,7 +1265,7 @@ export default function MerchandiseBuilderPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[var(--fh-page-bg)] text-faith-ink">
+    <div className="min-h-full bg-[var(--fh-page-bg)] text-faith-ink">
       <div className="mx-auto w-full max-w-[1640px] px-4 py-6 sm:px-6 lg:px-8">
         <div className="rounded-[32px] border border-faith-line/70 bg-[var(--fh-surface-bg)] shadow-soft transition-colors">
           <div className="border-b border-faith-line p-6">
@@ -1832,6 +1832,7 @@ export default function MerchandiseBuilderPage() {
     </div>
   );
 }
+
 
 
 

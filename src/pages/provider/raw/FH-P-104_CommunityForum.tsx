@@ -1047,7 +1047,7 @@ export default function CommunityForumPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[var(--fh-page-bg)] text-faith-ink">
+    <div className="min-h-full bg-[var(--fh-page-bg)] text-faith-ink">
       <div className="mx-auto max-w-[1600px] px-5 py-5">
         <div className="rounded-[34px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-5 shadow-soft">
           <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
@@ -1630,6 +1630,7 @@ export default function CommunityForumPage() {
     </div>
   );
 }
+
 
 
 

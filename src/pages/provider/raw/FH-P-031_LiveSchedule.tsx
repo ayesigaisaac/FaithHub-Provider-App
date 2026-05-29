@@ -2783,7 +2783,7 @@ export default function FaithHubLiveSchedulePage() {
   );
 
   return (
-    <div className="min-h-screen bg-[var(--fh-page-bg)] text-faith-ink dark:bg-slate-950 dark:text-slate-50">
+    <div className="min-h-full bg-[var(--fh-page-bg)] text-faith-ink dark:bg-slate-950 dark:text-slate-50">
       <div className="mx-auto max-w-[1800px] px-4 pb-24 pt-5 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
           <div className="min-w-0">
@@ -3305,6 +3305,7 @@ export default function FaithHubLiveSchedulePage() {
     </div>
   );
 }
+
 
 
 

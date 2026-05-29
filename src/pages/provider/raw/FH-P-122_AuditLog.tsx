@@ -1,4 +1,4 @@
-﻿// @ts-nocheck
+// @ts-nocheck
 
 "use client";
 
@@ -1062,7 +1062,7 @@ export default function AuditLogPage() {
   ];
 
   return (
-    <div className="min-h-screen w-full overflow-x-hidden bg-[var(--fh-page-bg)] dark:bg-slate-950 text-faith-ink dark:text-slate-100 transition-colors">
+    <div className="min-h-full w-full overflow-x-hidden bg-[var(--fh-page-bg)] dark:bg-slate-950 text-faith-ink dark:text-slate-100 transition-colors">
       <div className="mx-auto max-w-[1600px] px-4 py-5 lg:px-5 lg:py-6">
         <div className="rounded-[28px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-5 transition-colors">
           <div className="flex flex-col gap-5 xl:flex-row xl:items-start xl:justify-between">
@@ -1647,6 +1647,7 @@ export default function AuditLogPage() {
     </div>
   );
 }
+
 
 
 

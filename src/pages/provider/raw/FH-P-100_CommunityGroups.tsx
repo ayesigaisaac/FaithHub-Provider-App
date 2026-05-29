@@ -1,4 +1,4 @@
-ï»¿// @ts-nocheck
+// @ts-nocheck
 "use client";
 
 import React, { useMemo, useState } from "react";
@@ -1007,7 +1007,7 @@ export default function CommunityGroupsPage() {
 
   return (
     <div
-      className="min-h-screen w-full bg-[var(--fh-page-bg)] px-3 py-3 text-faith-ink transition-colors dark:bg-slate-950 dark:text-slate-100 sm:px-5 sm:py-5 lg:px-6 lg:py-6"
+      className="min-h-full w-full bg-[var(--fh-page-bg)] px-3 py-3 text-faith-ink transition-colors dark:bg-slate-950 dark:text-slate-100 sm:px-5 sm:py-5 lg:px-6 lg:py-6"
       style={{ fontFamily: 'Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif' }}
     >
       <div className="mx-auto max-w-[1600px]">
@@ -1052,9 +1052,9 @@ export default function CommunityGroupsPage() {
             <div className="flex flex-wrap items-center gap-3 text-[12px] text-faith-slate">
               <Pill tone="brand">COMMUNITY NETWORK PULSE</Pill>
               <span>{coverageGaps} groups need co-leader coverage</span>
-              <span>â€¢</span>
+              <span>•</span>
               <span>{careBacklog} care escalations need review</span>
-              <span>â€¢</span>
+              <span>•</span>
               <span>3 groups are ready for noticeboard and live-linked follow-up</span>
                 <span className="ml-auto text-[11px] font-black uppercase tracking-[0.12em] text-faith-slate">
                 Community ops
@@ -1216,17 +1216,17 @@ export default function CommunityGroupsPage() {
                               <Users className="h-3.5 w-3.5" />
                               {fmtInt(group.members)} members
                             </span>
-                            <span>â€¢</span>
+                            <span>•</span>
                             <span className="inline-flex items-center gap-1">
                               <CalendarClock className="h-3.5 w-3.5" />
                               {fmtLocal(group.upcomingISO)}
                             </span>
-                            <span>â€¢</span>
+                            <span>•</span>
                             <span className="inline-flex items-center gap-1">
                               <MapPin className="h-3.5 w-3.5" />
                               {group.campus}
                             </span>
-                            <span>â€¢</span>
+                            <span>•</span>
                             <span>{group.meetingMode}</span>
                           </div>
 
@@ -1593,6 +1593,7 @@ export default function CommunityGroupsPage() {
     </div>
   );
 }
+
 
 
 

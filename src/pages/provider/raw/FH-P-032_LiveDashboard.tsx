@@ -1,4 +1,4 @@
-﻿// @ts-nocheck
+// @ts-nocheck
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -1381,7 +1381,7 @@ export default function FaithHubLiveDashboardPage() {
   );
 
   return (
-    <div className="min-h-screen bg-[var(--fh-page-bg)] dark:bg-slate-950 text-faith-ink dark:text-slate-100 transition-colors">
+    <div className="min-h-full bg-[var(--fh-page-bg)] dark:bg-slate-950 text-faith-ink dark:text-slate-100 transition-colors">
       <div className="mx-auto max-w-[1600px] px-3 py-3 sm:px-6 sm:py-5 lg:px-8 lg:py-6">
         <div className="flex items-start justify-between gap-3 flex-wrap">
           <div className="min-w-0">
@@ -1840,6 +1840,7 @@ export default function FaithHubLiveDashboardPage() {
     </div>
   );
 }
+
 
 
 

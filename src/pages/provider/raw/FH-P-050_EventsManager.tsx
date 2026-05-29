@@ -1533,7 +1533,7 @@ export default function FaithHubEventsManagerPage() {
   if (!selectedEvent) return null;
 
   return (
-    <div className="min-h-screen w-full flex flex-col bg-[var(--fh-page-bg)] dark:bg-slate-950 text-faith-ink dark:text-slate-50 overflow-x-hidden transition-colors">
+    <div className="min-h-full w-full flex flex-col bg-[var(--fh-page-bg)] dark:bg-slate-950 text-faith-ink dark:text-slate-50 overflow-x-hidden transition-colors">
       <div className="sticky top-0 z-40 border-b border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)]/95 dark:bg-slate-900/95 backdrop-blur-md">
         <div className="w-full px-4 md:px-6 lg:px-8 py-4">
           <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
@@ -2686,6 +2686,7 @@ export default function FaithHubEventsManagerPage() {
     </div>
   );
 }
+
 
 
 

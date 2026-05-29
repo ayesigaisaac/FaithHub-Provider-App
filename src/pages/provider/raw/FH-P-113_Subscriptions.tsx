@@ -702,7 +702,7 @@ export default function SubscriptionsPage() {
 
   return (
     <div
-      className="min-h-screen w-full p-5 md:p-6"
+      className="min-h-full w-full p-5 md:p-6"
       style={{ background: EV_LIGHT, color: EV_NAVY }}
     >
       <div className="mx-auto max-w-[1550px] space-y-5">
@@ -1532,6 +1532,7 @@ export default function SubscriptionsPage() {
     </div>
   );
 }
+
 
 
 

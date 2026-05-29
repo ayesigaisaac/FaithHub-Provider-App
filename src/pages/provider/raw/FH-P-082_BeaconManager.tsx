@@ -2107,7 +2107,7 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
   }, [selectedCampaign]);
 
   return (
-    <div className="min-h-screen w-full flex flex-col bg-[var(--fh-page-bg)] dark:bg-slate-950 text-faith-ink dark:text-slate-50 transition-colors overflow-x-hidden">
+    <div className="min-h-full w-full flex flex-col bg-[var(--fh-page-bg)] dark:bg-slate-950 text-faith-ink dark:text-slate-50 transition-colors overflow-x-hidden">
       <div className="sticky top-0 z-40 border-b border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)]/95 dark:bg-slate-900/95 backdrop-blur-md transition-colors">
         <div className="w-full px-4 md:px-6 lg:px-8 py-4">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
@@ -2729,6 +2729,7 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
     </div>
   );
 }
+
 
 
 

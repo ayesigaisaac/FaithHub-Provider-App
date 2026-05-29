@@ -886,7 +886,7 @@ export default function FH_P_111_ServingTeamsPage() {
   }, [selectedTeam]);
 
   return (
-    <div className="min-h-screen bg-[var(--fh-page-bg)] text-faith-ink dark:bg-slate-950 dark:text-slate-100">
+    <div className="min-h-full bg-[var(--fh-page-bg)] text-faith-ink dark:bg-slate-950 dark:text-slate-100">
       <div className="mx-auto max-w-[1600px] px-5 py-5 md:px-6 lg:px-8 lg:py-6">
         <div className="rounded-[32px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-5 shadow-soft dark:border-slate-800 dark:bg-slate-900">
           <div className="flex flex-col gap-5 xl:flex-row xl:items-start xl:justify-between">
@@ -1412,6 +1412,7 @@ export default function FH_P_111_ServingTeamsPage() {
     </div>
   );
 }
+
 
 
 

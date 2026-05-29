@@ -650,7 +650,7 @@ export default function FHP123QACenter() {
   };
 
   return (
-    <div className="min-h-screen w-full overflow-x-hidden bg-slate-100 dark:bg-slate-950 px-4 py-5 md:px-5 lg:px-6 text-faith-ink dark:text-slate-100 transition-colors">
+    <div className="min-h-full w-full overflow-x-hidden bg-slate-100 dark:bg-slate-950 px-4 py-5 md:px-5 lg:px-6 text-faith-ink dark:text-slate-100 transition-colors">
       <div className="mx-auto max-w-[1600px]">
         <div className="rounded-[32px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 py-4 md:px-6 md:py-5 transition-colors">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
@@ -935,6 +935,7 @@ export default function FHP123QACenter() {
     </div>
   );
 }
+
 
 
 

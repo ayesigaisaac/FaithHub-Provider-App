@@ -1431,7 +1431,7 @@ function ProjectsPage() {
   if (!selectedProject) return null;
 
   return (
-    <div className="min-h-screen bg-[var(--fh-page-bg)] text-faith-ink">
+    <div className="min-h-full bg-[var(--fh-page-bg)] text-faith-ink">
       <div className="mx-auto max-w-[1600px] px-5 py-5">
         <div className="space-y-4">
           {/* Hero */}
@@ -2272,6 +2272,7 @@ function ProjectsPage() {
 }
 
 export default ProjectsPage;
+
 
 
 

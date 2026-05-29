@@ -524,7 +524,7 @@ export default function FH_P_121_ModerationSettings() {
   };
 
   return (
-    <div className="min-h-screen w-full overflow-x-hidden bg-[var(--fh-page-bg)] dark:bg-slate-950 text-faith-ink dark:text-slate-100 p-4 md:p-6">
+    <div className="min-h-full w-full overflow-x-hidden bg-[var(--fh-page-bg)] dark:bg-slate-950 text-faith-ink dark:text-slate-100 p-4 md:p-6">
       <div className="mx-auto max-w-[1460px] space-y-4">
         <div className="rounded-[30px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-6 py-5 transition-colors">
           <div className="flex flex-col gap-5 xl:flex-row xl:items-start xl:justify-between">
@@ -765,6 +765,7 @@ export default function FH_P_121_ModerationSettings() {
     </div>
   );
 }
+
 
 
 

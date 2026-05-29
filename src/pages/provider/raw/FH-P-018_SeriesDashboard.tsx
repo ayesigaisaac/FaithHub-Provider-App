@@ -1,4 +1,4 @@
-﻿// @ts-nocheck
+// @ts-nocheck
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -102,7 +102,7 @@ function fmtDate(iso: string) {
 }
 
 function fmtDateTime(iso?: string) {
-  if (!iso) return "—";
+  if (!iso) return "�";
   const d = new Date(iso);
   return d.toLocaleString(undefined, {
     month: "short",
@@ -951,7 +951,7 @@ export default function SeriesDashboardPage() {
   }, [selectedSeries]);
 
   return (
-    <div className="min-h-screen bg-[#f7f7f7] text-faith-ink dark:bg-slate-950 dark:text-slate-100 px-4 py-5 md:px-6 lg:px-8">
+    <div className="min-h-full bg-[#f7f7f7] text-faith-ink dark:bg-slate-950 dark:text-slate-100 px-4 py-5 md:px-6 lg:px-8">
       <div className="mx-auto max-w-[1600px] space-y-4">
         <section className="rounded-[30px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-5 shadow-soft transition-colors">
           <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
@@ -1441,6 +1441,7 @@ export default function SeriesDashboardPage() {
     </div>
   );
 }
+
 
 
 
