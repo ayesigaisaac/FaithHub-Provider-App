@@ -25,6 +25,7 @@ import {
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
+import { ProviderPageFrame } from "@/components/provider/ProviderPageFrame";
 
 /**
  * FaithHub Provider - Serving Teams
@@ -513,7 +514,7 @@ function SectionCard({
         </div>
         {right ? <div className="shrink-0">{right}</div> : null}
       </div>
-      <div className="mt-4">{children}</div>
+      <div className="mt-4">{children}</ProviderPageFrame>
     </div>
   );
 }
@@ -732,7 +733,7 @@ function TeamPreview({
             <CalendarClock className="h-4 w-4" /> View rota
           </button>
         </div>
-      </div>
+      </ProviderPageFrame>
     </div>
   );
 }
@@ -776,7 +777,7 @@ function PreviewDrawer({
         <div className="mt-4">
           <TeamPreview team={team} mode={mode} />
         </div>
-      </div>
+      </ProviderPageFrame>
     </div>
   );
 }
@@ -887,7 +888,7 @@ export default function FH_P_111_ServingTeamsPage() {
 
   return (
     <div className="min-h-full bg-[var(--fh-page-bg)] text-faith-ink dark:bg-slate-950 dark:text-slate-100">
-      <div className="mx-auto max-w-[1600px] px-5 py-5 md:px-6 lg:px-8 lg:py-6">
+      <ProviderPageFrame>
         <div className="rounded-[32px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-5 shadow-soft dark:border-slate-800 dark:bg-slate-900">
           <div className="flex flex-col gap-5 xl:flex-row xl:items-start xl:justify-between">
             <div className="min-w-0 flex-1">
@@ -956,7 +957,7 @@ export default function FH_P_111_ServingTeamsPage() {
           </div>
         </div>
 
-        <div className="mt-4 grid items-start gap-4 xl:grid-cols-6">
+        <div className="mt-4 fh-grid-kpi-6">
           <MetricCard
             label="Active teams"
             value={fmtInt(stats.activeTeams)}
@@ -1000,7 +1001,7 @@ export default function FH_P_111_ServingTeamsPage() {
           <div className="mt-1 text-[13px] text-faith-slate">
             Find teams, campuses, leads, visibility rules, and staffing gaps faster.
           </div>
-          <div className="mt-4 grid items-start gap-3 xl:grid-cols-[1.4fr_0.55fr_0.55fr_0.55fr]">
+          <div className="mt-4 fh-grid-filter-4">
             <div className="relative">
               <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-faith-slate" />
               <input
@@ -1401,7 +1402,7 @@ export default function FH_P_111_ServingTeamsPage() {
             </SectionCard>
           </div>
         </div>
-      </div>
+      </ProviderPageFrame>
 
       <PreviewDrawer
         open={previewOpen}

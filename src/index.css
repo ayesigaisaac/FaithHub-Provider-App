@@ -522,6 +522,53 @@ html.dark .fh-uplift-surface {
   width: 100%;
 }
 
+.fh-page-frame {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 1600px;
+  padding: 1.25rem;
+}
+
+.fh-page-frame--wide {
+  max-width: 1550px;
+}
+
+.fh-grid-start {
+  align-items: start;
+}
+
+.fh-grid-kpi-6 {
+  display: grid;
+  gap: 1rem;
+  align-items: start;
+}
+
+.fh-grid-filter-4 {
+  display: grid;
+  gap: 0.75rem;
+  align-items: start;
+}
+
+@media (min-width: 768px) {
+  .fh-page-frame {
+    padding: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .fh-page-frame {
+    padding: 1.5rem 2rem;
+  }
+
+  .fh-grid-kpi-6 {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .fh-grid-filter-4 {
+    grid-template-columns: 1.4fr 0.55fr 0.55fr 0.55fr;
+  }
+}
+
 .provider-page-density--compact > div:is([class*='min-h-screen'], [class*='min-h-full']) {
   min-height: auto !important;
   padding-top: 0 !important;

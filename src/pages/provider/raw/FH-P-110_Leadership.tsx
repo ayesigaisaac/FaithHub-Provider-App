@@ -4,6 +4,7 @@
 import React, { useMemo, useState } from "react";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
+import { ProviderPageFrame } from "@/components/provider/ProviderPageFrame";
 import {
   AlertTriangle,
   ArrowRight,
@@ -331,7 +332,7 @@ function MiniStat({ label, value, hint }: { label: string; value: string; hint: 
       <div className="mt-2 text-2xl font-black text-faith-ink dark:text-slate-100">
         {value}
       </div>
-      <div className="mt-1 text-[11px] text-faith-slate">{hint}</div>
+      <div className="mt-1 text-[11px] text-faith-slate">{hint}</ProviderPageFrame>
     </div>
   );
 }
@@ -419,7 +420,7 @@ function OfficeCardView({ office }: { office: OfficeCard }) {
         >
           Assign office <ChevronRight className="h-4 w-4" />
         </button>
-      </div>
+      </ProviderPageFrame>
     </div>
   );
 }
@@ -497,7 +498,7 @@ function LeadershipPreviewCard({
             </span>
           ))}
         </div>
-      </div>
+      </ProviderPageFrame>
     </div>
   );
 }
@@ -538,7 +539,7 @@ function PreviewDrawer({
           <LeadershipPreviewCard leader={leader} previewMode="desktop" />
           <LeadershipPreviewCard leader={leader} previewMode="mobile" />
         </div>
-      </div>
+      </ProviderPageFrame>
     </div>
   );
 }
@@ -591,9 +592,10 @@ export default function FaithHubLeadershipPage() {
 
   return (
     <div className="min-h-full bg-[#f7f7f5] text-faith-ink dark:bg-slate-950 dark:text-slate-100">
+      <ProviderPageFrame className="flex flex-col gap-6">
       <PreviewDrawer open={previewOpen} onClose={() => setPreviewOpen(false)} leader={selectedLeader} />
 
-      <div className="mx-auto flex w-full max-w-[1600px] flex-col gap-6 px-4 py-6 md:px-6 xl:px-8">
+      <div className="flex flex-col gap-6">
         <section className="overflow-hidden rounded-[36px] border border-faith-line/70 bg-[var(--fh-surface-bg)] shadow-soft dark:border-slate-800 dark:bg-slate-900">
           <div className="grid items-start gap-6 px-6 py-6 2xl:grid-cols-[minmax(0,1.15fr)_420px] lg:px-8 lg:py-8">
             <div>
@@ -1025,7 +1027,7 @@ export default function FaithHubLeadershipPage() {
             </section>
           </aside>
         </section>
-      </div>
+      </ProviderPageFrame>
     </div>
   );
 }

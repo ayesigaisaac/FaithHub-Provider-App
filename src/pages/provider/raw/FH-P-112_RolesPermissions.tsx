@@ -33,6 +33,7 @@ import {
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
+import { ProviderPageFrame } from "@/components/provider/ProviderPageFrame";
 import { useAuth } from "@/auth/useAuth";
 
 /**
@@ -565,7 +566,7 @@ function SectionCard({
         </div>
         {right ? <div className="shrink-0">{right}</div> : null}
       </div>
-      <div className="mt-4">{children}</div>
+      <div className="mt-4">{children}</ProviderPageFrame>
     </div>
   );
 }
@@ -690,7 +691,7 @@ function TemplateTile({ card }: { card: TemplateCard }) {
       <div className="mt-4 inline-flex items-center gap-2 text-[12px] font-black" style={{ color: accent }}>
         <Plus className="h-4 w-4" />
         Use template
-      </div>
+      </ProviderPageFrame>
     </div>
   );
 }
@@ -812,7 +813,7 @@ function ApprovalLaneCard({ lane }: { lane: ApprovalLane }) {
       </div>
       <div className="mt-3 text-[11px] font-semibold text-faith-slate">
         {lane.sla}
-      </div>
+      </ProviderPageFrame>
     </div>
   );
 }
@@ -833,7 +834,7 @@ function AssignmentCard({ item }: { item: AssignmentRecord }) {
           <div className="mt-1 text-[12px] text-faith-slate">{item.title} · {item.campus}</div>
         </div>
         <TonePill tone={tone}>{item.state}</TonePill>
-      </div>
+      </ProviderPageFrame>
     </div>
   );
 }
@@ -997,7 +998,7 @@ function PreviewSurface({
             </div>
           </div>
         </div>
-      </div>
+      </ProviderPageFrame>
     </div>
   );
 }
@@ -1073,7 +1074,7 @@ function PreviewDrawer({
         <div className="mt-4">
           <PreviewSurface role={role} previewMode={previewMode} />
         </div>
-      </div>
+      </ProviderPageFrame>
     </div>
   );
 }
@@ -1281,7 +1282,7 @@ export default function FH_P_112_RolesPermissionsPage() {
 
   return (
     <div className="min-h-full bg-[var(--fh-page-bg)] text-faith-ink dark:bg-slate-950 dark:text-slate-100">
-      <div className="mx-auto max-w-[1600px] px-5 py-5 md:px-6 lg:px-8 lg:py-6">
+      <ProviderPageFrame>
         <div className="rounded-[32px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-5 shadow-soft dark:border-slate-800 dark:bg-slate-900">
           <div className="flex flex-col gap-5 xl:flex-row xl:items-start xl:justify-between">
             <div className="min-w-0 flex-1">
@@ -1355,7 +1356,7 @@ export default function FH_P_112_RolesPermissionsPage() {
           </div>
         </div>
 
-        <div className="mt-4 grid items-start gap-4 xl:grid-cols-6">
+        <div className="mt-4 fh-grid-kpi-6">
           <MetricCard
             label="Active roles"
             value={fmtInt(stats.activeRoles)}
@@ -1399,7 +1400,7 @@ export default function FH_P_112_RolesPermissionsPage() {
           <div className="mt-1 text-[13px] text-faith-slate">
             Find roles, templates, campus scope, approval posture, and high-risk permissions faster.
           </div>
-          <div className="mt-4 grid items-start gap-3 xl:grid-cols-[1.4fr_0.55fr_0.55fr_0.55fr]">
+          <div className="mt-4 fh-grid-filter-4">
             <div className="relative">
               <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-faith-slate" />
               <input
@@ -1793,7 +1794,7 @@ export default function FH_P_112_RolesPermissionsPage() {
             </SectionCard>
           </div>
         </div>
-      </div>
+      </ProviderPageFrame>
 
       <PreviewDrawer
         open={previewOpen}
