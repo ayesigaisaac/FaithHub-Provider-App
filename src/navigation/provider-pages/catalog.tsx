@@ -21,6 +21,7 @@ import {
   NotebookPen,
   Package,
   Radio,
+  Share2,
   ShieldCheck,
   ShoppingBag,
   Sparkles,
@@ -28,6 +29,7 @@ import {
   Wallet,
   Wrench,
   UserCircle2,
+  Clapperboard,
 } from 'lucide-react';
 
 export type ProviderPageSection =
@@ -338,7 +340,7 @@ export const providerPageCatalog: ProviderPageMeta[] = [
     description: 'Manage multi-destination routing, credentials, health, and fallback behavior.',
     path: '/faithhub/provider/stream-to-platforms',
     section: 'Live Sessions Operations',
-    icon: Sparkles,
+    icon: Share2,
     component: StreamToPlatforms,
   },
   {
@@ -378,7 +380,7 @@ export const providerPageCatalog: ProviderPageMeta[] = [
     description: 'Package replays with clean metadata, chapters, resources, and follow-up actions.',
     path: '/faithhub/provider/post-live-publishing',
     section: 'Post-live & Trust',
-    icon: MonitorPlay,
+    icon: ClipboardCheck,
     component: PostLivePublishing,
   },
   {
@@ -389,7 +391,7 @@ export const providerPageCatalog: ProviderPageMeta[] = [
     path: '/faithhub/provider/replays-and-clips',
     aliases: ['/faithhub/provider/replays-clips', '/faithhub/replays/sunday-encounter'],
     section: 'Post-live & Trust',
-    icon: MonitorPlay,
+    icon: Clapperboard,
     component: ReplaysAndClips,
   },
   {
@@ -484,7 +486,7 @@ export const providerPageCatalog: ProviderPageMeta[] = [
     description: 'Create linked or standalone Beacon campaigns with previews, budget, and placements.',
     path: '/faithhub/provider/beacon-builder',
     section: 'Beacon',
-    icon: Sparkles,
+    icon: FilePenLine,
     navPlacement: 'builder',
     parentKey: 'beacon-manager',
     quickAction: true,
@@ -519,7 +521,7 @@ export const providerPageCatalog: ProviderPageMeta[] = [
     path: '/faithhub/provider/testimonies',
     aliases: ['/faithhub/provider/testimonies/new'],
     section: 'Community & Care',
-    icon: Sparkles,
+    icon: ClipboardCheck,
     component: Testimonies,
   },
   {
