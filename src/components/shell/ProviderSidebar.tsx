@@ -8,6 +8,8 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  Menu,
+  MenuItem,
   Stack,
   Tooltip,
   Typography,
@@ -28,7 +30,7 @@ import SupervisorAccountRoundedIcon from '@mui/icons-material/SupervisorAccountR
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 import FolderRoundedIcon from '@mui/icons-material/FolderRounded';
 import { useEffect, useMemo, useState } from 'react';
-import { Link as RouterLink, useLocation } from 'react-router-dom';
+import { Link as RouterLink, useLocation, useNavigate } from 'react-router-dom';
 import { getProviderSidebarGroupsBySection, providerPages, providerSections } from '@/navigation/providerPages';
 import { providerCategoryBySection } from '@/navigation/providerCategories';
 
@@ -121,12 +123,15 @@ export function ProviderSidebar({
   onOpenSearch?: () => void;
 }) {
   const location = useLocation();
+  const navigate = useNavigate();
   const isWideSidebar = useMediaQuery('(min-width:1200px)');
   const isNarrowPhone = useMediaQuery('(max-width:390px)');
   const isDesktopSidebar = useMediaQuery('(min-width:900px)');
   const effectiveCollapsed = isDesktopSidebar ? collapsed : false;
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({});
   const [showAllSections, setShowAllSections] = useState(false);
+  const [reportAnchorEl, setReportAnchorEl] = useState<HTMLElement | null>(null);
+  const reportMenuOpen = Boolean(reportAnchorEl);
 
   const sections = providerSections
     .map((section) => ({
@@ -811,9 +816,7 @@ export function ProviderSidebar({
                   Search
                 </ListItemButton>
                 <ListItemButton
-                  component={RouterLink}
-                  to="/faithhub/provider/qa-center"
-                  onClick={onClose}
+                  onClick={(event) => setReportAnchorEl(event.currentTarget)}
                   sx={{
                     flex: 1,
                     minHeight: 50,
@@ -832,6 +835,44 @@ export function ProviderSidebar({
               </Stack>
             </Box>
           ) : null}
+
+          <Menu
+            anchorEl={reportAnchorEl}
+            open={reportMenuOpen}
+            onClose={() => setReportAnchorEl(null)}
+            anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+            transformOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+            PaperProps={{
+              sx: {
+                bgcolor: '#1b2a43',
+                color: '#d7e3f7',
+                border: '1px solid rgba(120,146,186,0.3)',
+                borderRadius: '14px',
+                minWidth: 220,
+              },
+            }}
+          >
+            <MenuItem
+              onClick={() => {
+                setReportAnchorEl(null);
+                navigate('/faithhub/provider/qa-center?type=bug');
+                onClose();
+              }}
+              sx={{ fontSize: 13, fontWeight: 700 }}
+            >
+              Report a bug
+            </MenuItem>
+            <MenuItem
+              onClick={() => {
+                setReportAnchorEl(null);
+                navigate('/faithhub/provider/qa-center?type=feature');
+                onClose();
+              }}
+              sx={{ fontSize: 13, fontWeight: 700 }}
+            >
+              Request a feature
+            </MenuItem>
+          </Menu>
         </Box>
       </Box>
     </Box>
