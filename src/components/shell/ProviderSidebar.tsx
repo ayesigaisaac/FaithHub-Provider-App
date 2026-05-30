@@ -290,7 +290,16 @@ export function ProviderSidebar({
             }}
           >
             {displayedSections.map((group) => (
-              <Box key={group.section} sx={{ mb: effectiveCollapsed ? 0.55 : 1 }}>
+              <Box
+                key={group.section}
+                sx={{
+                  mb: effectiveCollapsed ? 0.55 : 1,
+                  p: effectiveCollapsed ? 0 : 0.7,
+                  borderRadius: effectiveCollapsed ? 0 : '20px',
+                  border: effectiveCollapsed ? 'none' : '1px solid rgba(120,146,186,0.22)',
+                  bgcolor: effectiveCollapsed ? 'transparent' : 'rgba(24,42,69,0.62)',
+                }}
+              >
                 {!effectiveCollapsed ? (
                   <Box sx={{ mb: 0.58 }}>
                     {(() => {
@@ -336,7 +345,7 @@ export function ProviderSidebar({
                             <Typography
                               sx={{
                                 fontWeight: 800,
-                                fontSize: 13,
+                                fontSize: isNarrowPhone ? 14 : 13,
                                 letterSpacing: '0.14em',
                                 color: '#ced8ea',
                                 textTransform: 'uppercase',
@@ -436,7 +445,7 @@ export function ProviderSidebar({
                                       <Typography
                                         sx={{
                                           fontWeight: active ? 800 : 700,
-                                          fontSize: 13,
+                                          fontSize: isNarrowPhone ? 14 : 13,
                                           lineHeight: 1.15,
                                           color: active ? '#f5fbff' : '#e3eaf6',
                                           mb: 0.2,
@@ -447,7 +456,7 @@ export function ProviderSidebar({
                                       <Typography
                                         sx={{
                                           fontWeight: 500,
-                                          fontSize: 11.5,
+                                          fontSize: isNarrowPhone ? 12 : 11.5,
                                           lineHeight: 1.25,
                                           color: active
                                             ? 'rgba(240,249,255,0.9)'
@@ -525,7 +534,7 @@ export function ProviderSidebar({
                                               <Typography
                                                 sx={{
                                                   fontWeight: childActive ? 750 : 650,
-                                                  fontSize: 12,
+                                                  fontSize: isNarrowPhone ? 12.5 : 12,
                                                   lineHeight: 1.15,
                                                   color: childActive ? '#eafaf3' : '#d2ddec',
                                                   mb: 0.15,
@@ -536,7 +545,7 @@ export function ProviderSidebar({
                                               <Typography
                                                 sx={{
                                                   fontWeight: 500,
-                                                  fontSize: 11,
+                                                  fontSize: isNarrowPhone ? 11.5 : 11,
                                                   lineHeight: 1.2,
                                                   color: '#9fb0cc',
                                                 }}
@@ -775,6 +784,45 @@ export function ProviderSidebar({
               </Box>
             ) : null}
           </List>
+
+          {!effectiveCollapsed ? (
+            <Box sx={{ p: 1.2, pt: 0.8 }}>
+              <Stack direction="row" spacing={1.1}>
+                <ListItemButton
+                  sx={{
+                    flex: 1,
+                    minHeight: 50,
+                    borderRadius: '16px',
+                    border: '1px solid rgba(120,146,186,0.3)',
+                    bgcolor: 'rgba(17,33,57,0.78)',
+                    color: '#d7e3f7',
+                    justifyContent: 'center',
+                    fontWeight: 800,
+                    fontSize: 15,
+                    '&:hover': { bgcolor: 'rgba(20,37,63,0.95)' },
+                  }}
+                >
+                  Search
+                </ListItemButton>
+                <ListItemButton
+                  sx={{
+                    flex: 1,
+                    minHeight: 50,
+                    borderRadius: '16px',
+                    border: '1px solid rgba(120,146,186,0.3)',
+                    bgcolor: 'rgba(17,33,57,0.78)',
+                    color: '#d7e3f7',
+                    justifyContent: 'center',
+                    fontWeight: 800,
+                    fontSize: 15,
+                    '&:hover': { bgcolor: 'rgba(20,37,63,0.95)' },
+                  }}
+                >
+                  Report
+                </ListItemButton>
+              </Stack>
+            </Box>
+          ) : null}
         </Box>
       </Box>
     </Box>
