@@ -2,6 +2,7 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
+import { useLocation } from "react-router-dom";
 import {
   AlertTriangle,
   CheckCircle2,
@@ -532,6 +533,7 @@ function CoverageBadge({ value }: { value: boolean }) {
 }
 
 export default function FHP123QACenter() {
+  const location = useLocation();
   const [scope, setScope] = useState<QAScope>("all");
   const [query, setQuery] = useState("");
   const [previewMode, setPreviewMode] = useState<PreviewMode>("desktop");
@@ -542,6 +544,22 @@ export default function FHP123QACenter() {
   const [lastScanLabel, setLastScanLabel] = useState("Today | 10:42 AM");
   const [isScanning, setIsScanning] = useState(false);
   const [savedChecklistCount, setSavedChecklistCount] = useState(7);
+
+  React.useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const type = params.get("type");
+    if (type === "bug") {
+      setScope("forms");
+      setQuery("mobile form");
+      setSelectedResultId("qa_3");
+      return;
+    }
+    if (type === "feature") {
+      setScope("preflight");
+      setQuery("checklist");
+      setSelectedResultId("qa_5");
+    }
+  }, [location.search]);
 
   const filteredResults = useMemo(() => {
     return results.filter((result) => {
@@ -682,6 +700,16 @@ export default function FHP123QACenter() {
             <span className="inline-flex items-center rounded-full px-3 py-1 text-[11px] font-extrabold text-white" style={{ background: ORANGE }}>
               PREMIUM QA SURFACE
             </span>
+            {new URLSearchParams(location.search).get("type") === "bug" ? (
+              <span className="inline-flex items-center rounded-full px-3 py-1 text-[11px] font-extrabold text-white" style={{ background: NAVY }}>
+                REPORT MODE: BUG
+              </span>
+            ) : null}
+            {new URLSearchParams(location.search).get("type") === "feature" ? (
+              <span className="inline-flex items-center rounded-full px-3 py-1 text-[11px] font-extrabold text-white" style={{ background: GREEN }}>
+                REPORT MODE: FEATURE
+              </span>
+            ) : null}
             <div className="text-[12px] text-faith-slate min-w-0 truncate">
               Stream tests, content packages, forms/pages, and preflight launch review all resolve from one provider control surface.
             </div>
