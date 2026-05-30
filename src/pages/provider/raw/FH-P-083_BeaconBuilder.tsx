@@ -2623,15 +2623,11 @@ export default function BeaconBuilderPage({
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <div className="min-w-0">
               <div className="flex flex-wrap items-center gap-2 text-[10px] sm:text-xs text-faith-slate">
-                <button className="hover:text-slate-700 dark:hover:text-slate-200" onClick={() => safeNav(ROUTES.providerDashboard)}>
-                  FaithHub Provider workspace
-                </button>
-                <span className="text-slate-300 dark:text-slate-700">/</span>
                 <button className="hover:text-slate-700 dark:hover:text-slate-200" onClick={() => safeNav(ROUTES.beaconDashboard)}>
                   Beacon
                 </button>
                 <span className="text-slate-300 dark:text-slate-700">/</span>
-                <span className="font-medium text-slate-700 dark:text-slate-300">Beacon Builder</span>
+                <span className="font-medium text-slate-700 dark:text-slate-300">Builder</span>
               </div>
               <ProviderPageTitle
                 icon={<Zap className="h-6 w-6" />}
@@ -2644,19 +2640,20 @@ export default function BeaconBuilderPage({
                 <Pill tone="pro">Preview-first workflow</Pill>
               </div>
             </div>
-            <div className="w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-2 dark:border-slate-800 dark:bg-slate-950/70 xl:w-auto">
-              <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 xl:grid-cols-1 2xl:grid-cols-2">
-                <Btn className="h-10 w-full justify-center px-4" tone="neutral" left={<ExternalLink className="h-4 w-4" />} onClick={() => safeNav(ROUTES.beaconMarketplace)}>
-                Open Marketplace
+            <div className="w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3 dark:border-slate-800 dark:bg-slate-950/70 xl:w-[260px] xl:shrink-0">
+              <div className="mb-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-faith-slate">Quick actions</div>
+              <div className="grid w-full grid-cols-1 gap-2">
+                <Btn className="h-10 w-full justify-center px-4 whitespace-nowrap" tone="neutral" left={<ExternalLink className="h-4 w-4" />} onClick={() => safeNav(ROUTES.beaconMarketplace)}>
+                  Open Marketplace
                 </Btn>
-                <Btn className="h-10 w-full justify-center px-4" tone="secondary" left={<CheckCircle2 className="h-4 w-4" />} onClick={handleSaveDraft}>
-                Save campaign draft
+                <Btn className="h-10 w-full justify-center px-4 whitespace-nowrap" tone="secondary" left={<CheckCircle2 className="h-4 w-4" />} onClick={handleSaveDraft}>
+                  Save Campaign Draft
                 </Btn>
-                <Btn className="h-10 w-full justify-center px-4" tone="neutral" left={<Eye className="h-4 w-4" />} onClick={() => setPreviewOpen(true)}>
-                Preview campaign
+                <Btn className="h-10 w-full justify-center px-4 whitespace-nowrap" tone="neutral" left={<Eye className="h-4 w-4" />} onClick={() => setPreviewOpen(true)}>
+                  Preview Campaign
                 </Btn>
-                <Btn className="h-10 w-full justify-center px-4" tone="primary" left={<Zap className="h-4 w-4" />} onClick={handleLaunch}>
-                Launch Beacon
+                <Btn className="h-10 w-full justify-center px-4 whitespace-nowrap" tone="primary" left={<Zap className="h-4 w-4" />} onClick={handleLaunch}>
+                  Launch Beacon
                 </Btn>
               </div>
             </div>
