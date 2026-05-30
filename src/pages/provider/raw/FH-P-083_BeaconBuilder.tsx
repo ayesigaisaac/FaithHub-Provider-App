@@ -2632,20 +2632,6 @@ export default function BeaconBuilderPage({
                 <Pill tone="good">{builder.sourceMode}</Pill>
                 <Pill tone="pro">Preview-first workflow</Pill>
               </div>
-              <div className="flex flex-wrap items-center gap-2">
-                <Btn className="h-10 px-4" tone="neutral" left={<ExternalLink className="h-4 w-4" />} onClick={() => safeNav(ROUTES.beaconMarketplace)}>
-                  Open Marketplace
-                </Btn>
-                <Btn className="h-10 px-4" tone="secondary" left={<CheckCircle2 className="h-4 w-4" />} onClick={handleSaveDraft}>
-                  Save Campaign Draft
-                </Btn>
-                <Btn className="h-10 px-4" tone="neutral" left={<Eye className="h-4 w-4" />} onClick={() => setPreviewOpen(true)}>
-                  Preview Campaign
-                </Btn>
-                <Btn className="h-10 px-4" tone="primary" left={<Zap className="h-4 w-4" />} onClick={handleLaunch}>
-                  Launch Beacon
-                </Btn>
-              </div>
             </div>
           </div>
         </div>
