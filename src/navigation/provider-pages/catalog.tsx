@@ -1,7 +1,6 @@
 import { lazy, type LazyExoticComponent, type ComponentType } from 'react';
 import type { LucideIcon } from 'lucide-react';
 import {
-  BadgeCheck,
   Bell,
   BookOpen,
   BookText,
@@ -15,8 +14,6 @@ import {
   FolderKanban,
   HeartHandshake,
   Home,
-  LayoutDashboard,
-  LibraryBig,
   Megaphone,
   MessageSquare,
   Mic2,
@@ -148,7 +145,7 @@ export const providerPageCatalog: ProviderPageMeta[] = [
     description: 'Verification, brand setup, campus configuration, team roles, and launch readiness.',
     path: '/faithhub/provider/onboarding',
     section: 'Foundation & Mission Control',
-    icon: BadgeCheck,
+    icon: ClipboardCheck,
     quickAction: true,
     component: ProviderOnboarding,
   },
@@ -160,7 +157,7 @@ export const providerPageCatalog: ProviderPageMeta[] = [
     path: '/faithhub/provider/dashboard',
     aliases: ['/faithhub/provider'],
     section: 'Foundation & Mission Control',
-    icon: LayoutDashboard,
+    icon: Home,
     quickAction: true,
     component: ProviderDashboard,
   },
@@ -171,7 +168,7 @@ export const providerPageCatalog: ProviderPageMeta[] = [
     description: 'Structured overview of teaching campaigns, episodes, and launch readiness.',
     path: '/faithhub/provider/series-dashboard',
     section: 'Foundation & Mission Control',
-    icon: LibraryBig,
+    icon: FolderKanban,
     component: SeriesDashboard,
   },
   {
@@ -181,7 +178,7 @@ export const providerPageCatalog: ProviderPageMeta[] = [
     description: 'Unified view of series, episodes, and standalone teachings.',
     path: '/faithhub/provider/teachings-dashboard',
     section: 'Foundation & Mission Control',
-    icon: BookOpen,
+    icon: Mic2,
     component: TeachingsDashboard,
   },
   {

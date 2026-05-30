@@ -16,8 +16,8 @@ import {
 import KeyboardArrowRightRoundedIcon from '@mui/icons-material/KeyboardArrowRightRounded';
 import KeyboardDoubleArrowLeftRoundedIcon from '@mui/icons-material/KeyboardDoubleArrowLeftRounded';
 import GridViewRoundedIcon from '@mui/icons-material/GridViewRounded';
+import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded';
-import MenuBookRoundedIcon from '@mui/icons-material/MenuBookRounded';
 import LiveTvRoundedIcon from '@mui/icons-material/LiveTvRounded';
 import CampaignRoundedIcon from '@mui/icons-material/CampaignRounded';
 import MovieFilterRoundedIcon from '@mui/icons-material/MovieFilterRounded';
@@ -26,6 +26,7 @@ import BoltRoundedIcon from '@mui/icons-material/BoltRounded';
 import GroupsRoundedIcon from '@mui/icons-material/GroupsRounded';
 import SupervisorAccountRoundedIcon from '@mui/icons-material/SupervisorAccountRounded';
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
+import FolderRoundedIcon from '@mui/icons-material/FolderRounded';
 import { useEffect, useMemo, useState } from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { getProviderSidebarGroupsBySection, providerPages, providerSections } from '@/navigation/providerPages';
@@ -39,8 +40,8 @@ const expandedDrawerWidth = 318;
 const collapsedDrawerWidth = 88;
 
 const sectionIconMap: Record<string, typeof GridViewRoundedIcon> = {
-  'Foundation & Mission Control': GridViewRoundedIcon,
-  'Content Structure & Teaching Creation': MenuBookRoundedIcon,
+  'Foundation & Mission Control': HomeRoundedIcon,
+  'Content Structure & Teaching Creation': FolderRoundedIcon,
   'Live Sessions Operations': LiveTvRoundedIcon,
   'Audience & Outreach': CampaignRoundedIcon,
   'Post-live & Trust': MovieFilterRoundedIcon,
