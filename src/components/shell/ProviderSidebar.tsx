@@ -120,6 +120,7 @@ export function ProviderSidebar({
 }) {
   const location = useLocation();
   const isWideSidebar = useMediaQuery('(min-width:1200px)');
+  const isNarrowPhone = useMediaQuery('(max-width:390px)');
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({});
   const [showAllSections, setShowAllSections] = useState(false);
 
@@ -732,10 +733,10 @@ export function ProviderSidebar({
         sx={{
           display: { xs: 'block', md: 'none' },
           '& .MuiDrawer-paper': {
-            width: 'calc(100vw - 12px)',
+            width: isNarrowPhone ? 'calc(100vw - 8px)' : 'calc(100vw - 12px)',
             maxWidth: `${drawerWidth}px`,
-            top: `${topbarOffsetMobile}px`,
-            height: `calc(100% - ${topbarOffsetMobile}px)`,
+            top: `calc(${topbarOffsetMobile}px + env(safe-area-inset-top))`,
+            height: `calc(100% - ${topbarOffsetMobile}px - env(safe-area-inset-top))`,
             borderTopLeftRadius: 18,
             borderTopRightRadius: 18,
             overflow: 'hidden',
