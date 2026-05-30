@@ -229,8 +229,8 @@ export function ProviderSidebar({
                   color: '#dbe5f6',
                   border: '1px solid',
                   borderColor: 'rgba(120,146,186,0.28)',
-                  width: 42,
-                  height: 42,
+                  width: isNarrowPhone ? 48 : 44,
+                  height: isNarrowPhone ? 48 : 44,
                   borderRadius: 999,
                   transition: 'transform var(--fh-duration-base) var(--fh-ease-premium), background-color var(--fh-duration-fast) ease, border-color var(--fh-duration-fast) ease',
                   '&:hover': { bgcolor: 'rgba(9,16,31,0.7)', transform: 'translateY(-1px)' },
@@ -291,7 +291,7 @@ export function ProviderSidebar({
               minHeight: 0,
               overflowY: 'auto',
               overscrollBehavior: 'contain',
-              pb: 2,
+              pb: isNarrowPhone ? 'calc(env(safe-area-inset-bottom) + 12px)' : 2,
               '&::-webkit-scrollbar': { width: 8 },
               '&::-webkit-scrollbar-thumb': {
                 backgroundColor: 'rgba(120,146,186,0.45)',
@@ -757,7 +757,7 @@ export function ProviderSidebar({
                   sx={{
                     px: 1.15,
                     py: 0.8,
-                    minHeight: 44,
+                    minHeight: isNarrowPhone ? 50 : 44,
                     borderRadius: '14px',
                     border: '1px solid',
                     borderColor: 'color-mix(in srgb, var(--fh-line) 74%, var(--fh-brand-soft) 26%)',
