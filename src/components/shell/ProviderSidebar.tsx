@@ -121,6 +121,8 @@ export function ProviderSidebar({
   const location = useLocation();
   const isWideSidebar = useMediaQuery('(min-width:1200px)');
   const isNarrowPhone = useMediaQuery('(max-width:390px)');
+  const isDesktopSidebar = useMediaQuery('(min-width:900px)');
+  const effectiveCollapsed = isDesktopSidebar ? collapsed : false;
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({});
   const [showAllSections, setShowAllSections] = useState(false);
 
@@ -196,9 +198,13 @@ export function ProviderSidebar({
         >
           <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ px: 1.25, py: 1.35, gap: 1 }}>
             <Box sx={{ flex: 1 }} />
-            <Tooltip title={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}>
+            <Tooltip title={effectiveCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}>
               <IconButton
                 onClick={() => {
+                  if (!isDesktopSidebar) {
+                    onClose();
+                    return;
+                  }
                   if (onToggleCollapse) {
                     onToggleCollapse();
                     return;
@@ -219,7 +225,7 @@ export function ProviderSidebar({
               >
                 <KeyboardDoubleArrowLeftRoundedIcon
                   sx={{
-                    transform: collapsed ? 'rotate(180deg)' : 'none',
+                    transform: effectiveCollapsed ? 'rotate(180deg)' : 'none',
                     transition: 'transform 160ms ease',
                   }}
                 />
@@ -246,8 +252,8 @@ export function ProviderSidebar({
             }}
           >
             {displayedSections.map((group) => (
-              <Box key={group.section} sx={{ mb: collapsed ? 0.55 : 1 }}>
-                {!collapsed ? (
+              <Box key={group.section} sx={{ mb: effectiveCollapsed ? 0.55 : 1 }}>
+                {!effectiveCollapsed ? (
                   <Box sx={{ mb: 0.58 }}>
                     {(() => {
                       const SectionIcon = sectionIconMap[group.section] ?? GridViewRoundedIcon;
@@ -503,7 +509,7 @@ export function ProviderSidebar({
                 ) : null}
 
                 {group.groups.map(({ page, children }) => {
-                  if (!collapsed) return null;
+                  if (!effectiveCollapsed) return null;
                   const visibleChildren = children.filter((child) => child.key !== 'book-builder');
                   const Icon = page.icon;
                   const parentActive = page.path === location.pathname || Boolean(page.aliases?.includes(location.pathname));
@@ -527,9 +533,9 @@ export function ProviderSidebar({
                           });
                           onClose();
                         }}
-                        title={collapsed ? getSidebarPageLabel(page) : undefined}
+                        title={effectiveCollapsed ? getSidebarPageLabel(page) : undefined}
                         sx={{
-                          px: collapsed ? 0.8 : 1,
+                          px: effectiveCollapsed ? 0.8 : 1,
                           py: 0.7,
                           minHeight: 42,
                           borderRadius: '10px',
@@ -551,14 +557,14 @@ export function ProviderSidebar({
                       >
                         <ListItemIcon
                           sx={{
-                            minWidth: collapsed ? 0 : 30,
-                            mr: collapsed ? 0 : 0.5,
+                            minWidth: effectiveCollapsed ? 0 : 30,
+                            mr: effectiveCollapsed ? 0 : 0.5,
                             color: active ? 'var(--fh-brand)' : 'var(--fh-slate)',
                           }}
                         >
                           <Icon size={16} />
                         </ListItemIcon>
-                        {!collapsed ? (
+                        {!effectiveCollapsed ? (
                           <>
                             <ListItemText
                               primary={
@@ -578,7 +584,7 @@ export function ProviderSidebar({
                           </>
                         ) : null}
                       </ListItemButton>
-                      {!collapsed && visibleChildren.length ? (
+                      {!effectiveCollapsed && visibleChildren.length ? (
                         <Box sx={{ pl: 4.5, pr: 0.25, pt: 0.6 }}>
                           {visibleChildren.map((child) => {
                             const ChildIcon = child.icon;
@@ -752,10 +758,10 @@ export function ProviderSidebar({
         open
         sx={{
           display: { xs: 'none', md: 'block' },
-          width: collapsed ? collapsedDrawerWidth : expandedDrawerWidth,
+          width: effectiveCollapsed ? collapsedDrawerWidth : expandedDrawerWidth,
           flexShrink: 0,
           '& .MuiDrawer-paper': {
-            width: collapsed ? collapsedDrawerWidth : expandedDrawerWidth,
+            width: effectiveCollapsed ? collapsedDrawerWidth : expandedDrawerWidth,
             boxSizing: 'border-box',
             top: `${topbarOffsetDesktop}px`,
             height: `calc(100% - ${topbarOffsetDesktop}px)`,
