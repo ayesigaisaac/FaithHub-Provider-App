@@ -4,7 +4,6 @@ import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { findProviderPageByPath } from '@/navigation/providerPages';
 import { ProviderSidebar } from './ProviderSidebar';
 import { ProviderTopbar } from './ProviderTopbar';
-import { QuickCreateDial } from './QuickCreateDial';
 import { MobileBottomNav } from './MobileBottomNav';
 import { SearchCommandDialog } from './SearchCommandDialog';
 import { PageLoader } from '@/components/PageLoader';
@@ -225,7 +224,6 @@ export function ProviderShellLayout() {
         </Box>
       </Box>
 
-      <QuickCreateDial />
       <MobileBottomNav />
       <SearchCommandDialog
         open={searchOpen}
