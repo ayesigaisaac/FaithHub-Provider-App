@@ -2620,15 +2620,8 @@ export default function BeaconBuilderPage({
     <div className="min-h-full bg-[var(--fh-surface)] dark:bg-slate-950 text-faith-ink dark:text-slate-50 transition-colors">
       <div className="sticky top-0 z-40 border-b border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)]/95 dark:bg-slate-900/95 backdrop-blur transition-colors">
         <div className="mx-auto max-w-[1680px] px-4 md:px-6 lg:px-8 py-3">
-          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-            <div className="min-w-0">
-              <div className="flex flex-wrap items-center gap-2 text-[10px] sm:text-xs text-faith-slate">
-                <button className="hover:text-slate-700 dark:hover:text-slate-200" onClick={() => safeNav(ROUTES.beaconDashboard)}>
-                  Beacon
-                </button>
-                <span className="text-slate-300 dark:text-slate-700">/</span>
-                <span className="font-medium text-slate-700 dark:text-slate-300">Builder</span>
-              </div>
+          <div className="min-w-0">
+            <div className="flex flex-col gap-3">
               <ProviderPageTitle
                 icon={<Zap className="h-6 w-6" />}
                 title="Beacon Builder"
@@ -2639,20 +2632,17 @@ export default function BeaconBuilderPage({
                 <Pill tone="good">{builder.sourceMode}</Pill>
                 <Pill tone="pro">Preview-first workflow</Pill>
               </div>
-            </div>
-            <div className="w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3 dark:border-slate-800 dark:bg-slate-950/70 xl:w-[260px] xl:shrink-0">
-              <div className="mb-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-faith-slate">Quick actions</div>
-              <div className="grid w-full grid-cols-1 gap-2">
-                <Btn className="h-10 w-full justify-center px-4 whitespace-nowrap" tone="neutral" left={<ExternalLink className="h-4 w-4" />} onClick={() => safeNav(ROUTES.beaconMarketplace)}>
+              <div className="flex flex-wrap items-center gap-2">
+                <Btn className="h-10 px-4" tone="neutral" left={<ExternalLink className="h-4 w-4" />} onClick={() => safeNav(ROUTES.beaconMarketplace)}>
                   Open Marketplace
                 </Btn>
-                <Btn className="h-10 w-full justify-center px-4 whitespace-nowrap" tone="secondary" left={<CheckCircle2 className="h-4 w-4" />} onClick={handleSaveDraft}>
+                <Btn className="h-10 px-4" tone="secondary" left={<CheckCircle2 className="h-4 w-4" />} onClick={handleSaveDraft}>
                   Save Campaign Draft
                 </Btn>
-                <Btn className="h-10 w-full justify-center px-4 whitespace-nowrap" tone="neutral" left={<Eye className="h-4 w-4" />} onClick={() => setPreviewOpen(true)}>
+                <Btn className="h-10 px-4" tone="neutral" left={<Eye className="h-4 w-4" />} onClick={() => setPreviewOpen(true)}>
                   Preview Campaign
                 </Btn>
-                <Btn className="h-10 w-full justify-center px-4 whitespace-nowrap" tone="primary" left={<Zap className="h-4 w-4" />} onClick={handleLaunch}>
+                <Btn className="h-10 px-4" tone="primary" left={<Zap className="h-4 w-4" />} onClick={handleLaunch}>
                   Launch Beacon
                 </Btn>
               </div>
