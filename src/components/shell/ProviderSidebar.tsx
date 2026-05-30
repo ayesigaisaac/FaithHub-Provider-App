@@ -112,11 +112,13 @@ export function ProviderSidebar({
   onClose,
   collapsed = false,
   onToggleCollapse,
+  onOpenSearch,
 }: {
   open: boolean;
   onClose: () => void;
   collapsed?: boolean;
   onToggleCollapse?: () => void;
+  onOpenSearch?: () => void;
 }) {
   const location = useLocation();
   const isWideSidebar = useMediaQuery('(min-width:1200px)');
@@ -789,6 +791,10 @@ export function ProviderSidebar({
             <Box sx={{ p: 1.2, pt: 0.8 }}>
               <Stack direction="row" spacing={1.1}>
                 <ListItemButton
+                  onClick={() => {
+                    onOpenSearch?.();
+                    if (!isDesktopSidebar) onClose();
+                  }}
                   sx={{
                     flex: 1,
                     minHeight: 50,
@@ -805,6 +811,9 @@ export function ProviderSidebar({
                   Search
                 </ListItemButton>
                 <ListItemButton
+                  component={RouterLink}
+                  to="/faithhub/provider/qa-center"
+                  onClick={onClose}
                   sx={{
                     flex: 1,
                     minHeight: 50,

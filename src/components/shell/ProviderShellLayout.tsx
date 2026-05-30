@@ -179,6 +179,7 @@ export function ProviderShellLayout() {
           onClose={() => setMobileOpen(false)}
           collapsed={sidebarCollapsed}
           onToggleCollapse={() => setSidebarCollapsed((prev) => !prev)}
+          onOpenSearch={() => setSearchOpen(true)}
         />
 
         <Box
