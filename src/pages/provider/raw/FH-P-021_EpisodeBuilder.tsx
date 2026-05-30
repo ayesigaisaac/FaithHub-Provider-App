@@ -1197,8 +1197,8 @@ export default function EpisodeBuilderPage() {
     const invalid = invalidSteps.has(key);
     return {
       complete,
-      validation: invalid ? "Needs review" : "Valid",
-      status: complete ? "Configured" : "Not configured",
+      validation: invalid ? "Needs Attention" : "Valid",
+      status: complete ? "Configured" : "Not Configured",
     };
   };
 
@@ -1206,8 +1206,8 @@ export default function EpisodeBuilderPage() {
     const meta = sectionStatus(key);
     return (
       <div className="flex flex-wrap items-center justify-end gap-2">
-        <Pill tone={meta.complete ? "good" : "neutral"}>{meta.status}</Pill>
-        <Pill tone={meta.validation === "Valid" ? "good" : "warn"}>{meta.validation}</Pill>
+        <Pill tone={meta.complete ? "good" : "neutral"}>{`Status: ${meta.status}`}</Pill>
+        <Pill tone={meta.validation === "Valid" ? "good" : "warn"}>{`Validation: ${meta.validation}`}</Pill>
         {extra}
       </div>
     );
