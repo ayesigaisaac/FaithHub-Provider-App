@@ -514,7 +514,7 @@ function SectionCard({
         </div>
         {right ? <div className="shrink-0">{right}</div> : null}
       </div>
-      <div className="mt-4">{children}</ProviderPageFrame>
+      <div className="mt-4">{children}</div>
     </div>
   );
 }
@@ -733,7 +733,7 @@ function TeamPreview({
             <CalendarClock className="h-4 w-4" /> View rota
           </button>
         </div>
-      </ProviderPageFrame>
+      </div>
     </div>
   );
 }
@@ -777,7 +777,7 @@ function PreviewDrawer({
         <div className="mt-4">
           <TeamPreview team={team} mode={mode} />
         </div>
-      </ProviderPageFrame>
+      </div>
     </div>
   );
 }

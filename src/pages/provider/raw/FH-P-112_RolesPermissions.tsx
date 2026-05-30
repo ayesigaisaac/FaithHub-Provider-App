@@ -566,7 +566,7 @@ function SectionCard({
         </div>
         {right ? <div className="shrink-0">{right}</div> : null}
       </div>
-      <div className="mt-4">{children}</ProviderPageFrame>
+      <div className="mt-4">{children}</div>
     </div>
   );
 }
@@ -691,7 +691,7 @@ function TemplateTile({ card }: { card: TemplateCard }) {
       <div className="mt-4 inline-flex items-center gap-2 text-[12px] font-black" style={{ color: accent }}>
         <Plus className="h-4 w-4" />
         Use template
-      </ProviderPageFrame>
+      </div>
     </div>
   );
 }
@@ -813,7 +813,7 @@ function ApprovalLaneCard({ lane }: { lane: ApprovalLane }) {
       </div>
       <div className="mt-3 text-[11px] font-semibold text-faith-slate">
         {lane.sla}
-      </ProviderPageFrame>
+      </div>
     </div>
   );
 }
@@ -834,7 +834,7 @@ function AssignmentCard({ item }: { item: AssignmentRecord }) {
           <div className="mt-1 text-[12px] text-faith-slate">{item.title} · {item.campus}</div>
         </div>
         <TonePill tone={tone}>{item.state}</TonePill>
-      </ProviderPageFrame>
+      </div>
     </div>
   );
 }
@@ -998,7 +998,7 @@ function PreviewSurface({
             </div>
           </div>
         </div>
-      </ProviderPageFrame>
+      </div>
     </div>
   );
 }
@@ -1074,7 +1074,7 @@ function PreviewDrawer({
         <div className="mt-4">
           <PreviewSurface role={role} previewMode={previewMode} />
         </div>
-      </ProviderPageFrame>
+      </div>
     </div>
   );
 }

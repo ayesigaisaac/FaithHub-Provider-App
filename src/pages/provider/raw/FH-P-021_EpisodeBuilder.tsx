@@ -1192,13 +1192,34 @@ export default function EpisodeBuilderPage() {
   };
 
   const activeCard = (key: StepKey) => step === key;
+  const sectionStatus = (key: StepKey) => {
+    const complete = completedSteps.has(key);
+    const invalid = invalidSteps.has(key);
+    return {
+      complete,
+      validation: invalid ? "Needs review" : "Valid",
+      status: complete ? "Configured" : "Not configured",
+    };
+  };
+
+  const sectionHeaderMeta = (key: StepKey, extra?: React.ReactNode) => {
+    const meta = sectionStatus(key);
+    return (
+      <div className="flex flex-wrap items-center justify-end gap-2">
+        <Pill tone={meta.complete ? "good" : "neutral"}>{meta.status}</Pill>
+        <Pill tone={meta.validation === "Valid" ? "good" : "warn"}>{meta.validation}</Pill>
+        {extra}
+      </div>
+    );
+  };
+
   const completedSteps = useMemo(() => {
     const steps = new Set<StepKey>();
     if (!parentSeriesInvalid && !titleInvalid && !focusInvalid && !scriptureInvalid) steps.add("summary");
     if (draft.structure.length >= 3) steps.add("structure");
     if (draft.liveAttachments.length >= 1) steps.add("live");
     if (draft.resources.length >= 2) steps.add("resources");
-    if (Boolean(draft.accessModel && draft.releaseWindow)) steps.add("access");
+    if (draft.accessModel && draft.releaseWindow) steps.add("access");
     if (draft.collaborators.length >= 1) steps.add("collaboration");
     if (draft.tags.length >= 3 && Boolean(draft.beaconSnippet)) steps.add("discovery");
     if (readinessScore >= 85) steps.add("readiness");
@@ -1307,11 +1328,12 @@ export default function EpisodeBuilderPage() {
               title="Episode summary panel"
               subtitle="Set the episode title, focus statement, scripture, outcomes, and presenter notes while inheriting the Series identity."
               highlight={activeCard("summary")}
-              right={
+              right={sectionHeaderMeta(
+                "summary",
                 <Pill tone="brand" icon={<Layers3 className="h-3.5 w-3.5" />}>
                   Series-linked
-                </Pill>
-              }
+                </Pill>,
+              )}
             >
               <div className="grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
                 <div className="grid gap-4">
@@ -1495,11 +1517,12 @@ export default function EpisodeBuilderPage() {
                 title="Episode structure block"
                 subtitle="Define the flow, chapter markers, discussion beats, and what the finished replay package should contain."
                 highlight={activeCard("structure")}
-                right={
+                right={sectionHeaderMeta(
+                  "structure",
                   <div className="rounded-full bg-amber-50 px-3 py-1 text-[11px] font-semibold text-amber-800">
                     {highlightedStructureDuration} total
-                  </div>
-                }
+                  </div>,
+                )}
               >
                 <div className="space-y-3">
                   {draft.structure.map((beat) => (
@@ -1543,11 +1566,12 @@ export default function EpisodeBuilderPage() {
                 title="AI outline + chapter suggestions"
                 subtitle="Use structured suggestions to speed editorial prep without replacing ministry judgment."
                 highlight={activeCard("structure")}
-                right={
+                right={sectionHeaderMeta(
+                  "structure",
                   <SoftButton onClick={() => setToast("Outline suggestions refreshed.")}>
                     <Wand2 className="h-4 w-4" /> Refresh
-                  </SoftButton>
-                }
+                  </SoftButton>,
+                )}
               >
                 <div className="rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface)] p-4">
                   <div className="flex items-center gap-2">
@@ -1577,11 +1601,12 @@ export default function EpisodeBuilderPage() {
               title="Live Sessions attachment rail"
               subtitle="Attach one or many live sessions to the episode, including preview, main live, watch-party, or translated follow-up moments."
               highlight={activeCard("live")}
-              right={
+              right={sectionHeaderMeta(
+                "live",
                 <PrimaryButton tone="orange" onClick={addLiveAttachment}>
                   <Plus className="h-4 w-4" /> Attach live session
-                </PrimaryButton>
-              }
+                </PrimaryButton>,
+              )}
             >
               <div className="grid gap-3 lg:grid-cols-3">
                 {draft.liveAttachments.map((session) => (
@@ -1626,11 +1651,12 @@ export default function EpisodeBuilderPage() {
                 title="Resource pack builder"
                 subtitle="Add outlines, study notes, slides, reading guides, downloadable handouts, and related event or FaithMart resources."
                 highlight={activeCard("resources")}
-                right={
+                right={sectionHeaderMeta(
+                  "resources",
                   <PrimaryButton tone="orange" onClick={addResource}>
                     <Plus className="h-4 w-4" /> Add resource
-                  </PrimaryButton>
-                }
+                  </PrimaryButton>,
+                )}
               >
                 <div className="space-y-3">
                   {draft.resources.map((resource) => (
@@ -1655,6 +1681,7 @@ export default function EpisodeBuilderPage() {
                 title="Audience and access controls"
                 subtitle="Control release timing, viewing permissions, supporter-only resources, and how public or gated the episode should be."
                 highlight={activeCard("access")}
+                right={sectionHeaderMeta("access")}
               >
                 <div className="grid gap-4">
                   <div className="grid gap-4 md:grid-cols-2">
@@ -1777,11 +1804,12 @@ export default function EpisodeBuilderPage() {
                 title="Collaboration and review lane"
                 subtitle="Coordinate pastors, editors, translators, and producers before the episode is finalized."
                 highlight={activeCard("collaboration")}
-                right={
+                right={sectionHeaderMeta(
+                  "collaboration",
                   <Pill tone="neutral" icon={<Users className="h-3.5 w-3.5" />}>
                     {draft.collaborators.length} collaborators
-                  </Pill>
-                }
+                  </Pill>,
+                )}
               >
                 <div className="space-y-3">
                   {draft.collaborators.map((collaborator) => (
@@ -1825,11 +1853,12 @@ export default function EpisodeBuilderPage() {
                 title="Metadata and discovery setup"
                 subtitle="Tune tags, topics, search hints, recommendations, and external promotion snippets."
                 highlight={activeCard("discovery")}
-                right={
+                right={sectionHeaderMeta(
+                  "discovery",
                   <div className="flex items-center gap-2 rounded-full border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-1 text-[11px] font-semibold text-faith-slate">
                     <Search className="h-3.5 w-3.5" /> Discoverability
-                  </div>
-                }
+                  </div>,
+                )}
               >
                 <div className="grid gap-4">
                   <div>
@@ -1934,11 +1963,12 @@ export default function EpisodeBuilderPage() {
               title="Progress and readiness tracker"
               subtitle="See what is missing before the episode can publish or before a linked live session can safely run."
               highlight={activeCard("readiness")}
-              right={
+              right={sectionHeaderMeta(
+                "readiness",
                 <Pill tone={readinessScore >= 85 ? "good" : readinessScore >= 60 ? "warn" : "danger"} icon={<CheckCircle2 className="h-3.5 w-3.5" />}>
                   {readinessScore}% complete
-                </Pill>
-              }
+                </Pill>,
+              )}
             >
               <div className="grid gap-4 lg:grid-cols-[0.9fr_1.1fr]">
                 <div className="rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface)] p-4">

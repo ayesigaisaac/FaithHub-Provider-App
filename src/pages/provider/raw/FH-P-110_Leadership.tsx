@@ -332,7 +332,7 @@ function MiniStat({ label, value, hint }: { label: string; value: string; hint: 
       <div className="mt-2 text-2xl font-black text-faith-ink dark:text-slate-100">
         {value}
       </div>
-      <div className="mt-1 text-[11px] text-faith-slate">{hint}</ProviderPageFrame>
+      <div className="mt-1 text-[11px] text-faith-slate">{hint}</div>
     </div>
   );
 }
@@ -420,7 +420,7 @@ function OfficeCardView({ office }: { office: OfficeCard }) {
         >
           Assign office <ChevronRight className="h-4 w-4" />
         </button>
-      </ProviderPageFrame>
+      </div>
     </div>
   );
 }
@@ -498,7 +498,7 @@ function LeadershipPreviewCard({
             </span>
           ))}
         </div>
-      </ProviderPageFrame>
+      </div>
     </div>
   );
 }
@@ -539,7 +539,7 @@ function PreviewDrawer({
           <LeadershipPreviewCard leader={leader} previewMode="desktop" />
           <LeadershipPreviewCard leader={leader} previewMode="mobile" />
         </div>
-      </ProviderPageFrame>
+      </div>
     </div>
   );
 }
@@ -1027,6 +1027,7 @@ export default function FaithHubLeadershipPage() {
             </section>
           </aside>
         </section>
+      </div>
       </ProviderPageFrame>
     </div>
   );
