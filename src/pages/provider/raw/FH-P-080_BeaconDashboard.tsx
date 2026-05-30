@@ -840,9 +840,9 @@ function ProgressBar({ value, accent = "green" }: { value: number; accent?: Acce
 }
 
 function MiniLine({ values, tone = "green" }: { values: number[]; tone?: Accent }) {
-  const w = 140;
-  const h = 42;
-  const pad = 4;
+  const w = 240;
+  const h = 68;
+  const pad = 6;
   const safe = values.length ? values : [0, 0, 0];
   const min = Math.min(...safe);
   const max = Math.max(...safe);
@@ -860,7 +860,12 @@ function MiniLine({ values, tone = "green" }: { values: number[]; tone?: Accent 
   const stroke = accentColor(tone);
 
   return (
-    <svg width={w} height={h} className="overflow-visible">
+    <svg
+      viewBox={`0 0 ${w} ${h}`}
+      preserveAspectRatio="none"
+      className="h-14 w-full overflow-visible"
+      aria-hidden
+    >
       <polyline points={pts} fill="none" stroke={stroke} strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" />
       <circle cx={w - pad} cy={norm(safe[safe.length - 1])} r={3.5} fill={stroke} />
     </svg>
@@ -1356,16 +1361,16 @@ export default function BeaconDashboardPage() {
                     </div>
                     <Pill tone={portfolio.pacingPct > 75 ? "warn" : "good"}>Pace {portfolio.pacingPct}%</Pill>
                   </div>
-                  <div className="mt-3 text-xs font-semibold text-faith-slate">Portfolio pacing</div>
+                  <div className="mt-4 text-xs font-semibold text-faith-slate">Portfolio pacing</div>
                   <div className="mt-2"><ProgressBar value={portfolio.pacingPct} accent="green" /></div>
-                  <div className="mt-4 grid gap-3 md:grid-cols-2">
-                    <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                      <div className="text-[11px] uppercase tracking-wide text-faith-slate">Projected reach quality</div>
-                      <div className="mt-2"><MiniLine values={forecastSeries} tone="green" /></div>
+                  <div className="mt-6 border-t border-faith-line/70 dark:border-slate-700/70 pt-4 grid gap-3 md:grid-cols-2">
+                    <div className="rounded-2xl bg-[color-mix(in_srgb,var(--fh-surface-bg)_70%,var(--fh-surface)_30%)] dark:bg-slate-900/90 p-3.5 ring-1 ring-slate-200/80 dark:ring-slate-800">
+                      <div className="text-[10px] font-semibold uppercase tracking-[0.16em] text-faith-slate">Projected reach quality</div>
+                      <div className="mt-3"><MiniLine values={forecastSeries} tone="green" /></div>
                     </div>
-                    <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                      <div className="text-[11px] uppercase tracking-wide text-faith-slate">Cost efficiency trend</div>
-                      <div className="mt-2"><MiniLine values={efficiencySeries} tone="orange" /></div>
+                    <div className="rounded-2xl bg-[color-mix(in_srgb,var(--fh-surface-bg)_70%,var(--fh-surface)_30%)] dark:bg-slate-900/90 p-3.5 ring-1 ring-slate-200/80 dark:ring-slate-800">
+                      <div className="text-[10px] font-semibold uppercase tracking-[0.16em] text-faith-slate">Cost efficiency trend</div>
+                      <div className="mt-3"><MiniLine values={efficiencySeries} tone="orange" /></div>
                     </div>
                   </div>
                 </div>
