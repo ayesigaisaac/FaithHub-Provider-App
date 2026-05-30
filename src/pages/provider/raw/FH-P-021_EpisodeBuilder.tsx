@@ -6,14 +6,11 @@ import React, { useEffect, useMemo, useState } from "react";
 import {
   BadgeCheck,
   BookOpen,
-  CalendarClock,
   Check,
   CheckCircle2,
   ChevronRight,
-  ExternalLink,
   Film,
   Layers3,
-  Link2,
   Lock,
   MessageSquare,
   Plus,
@@ -26,7 +23,6 @@ import {
   Zap,
 } from "lucide-react";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
-import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 import {
   getTeachingFlowState,
@@ -130,6 +126,8 @@ type StepKey =
   | "collaboration"
   | "discovery"
   | "readiness";
+
+type SaveState = "saved" | "saving" | "unsaved";
 
 type PreviewMode = "desktop" | "mobile";
 type Accent = "green" | "orange" | "navy";
@@ -333,15 +331,15 @@ const DEFAULT_COLLABORATORS: Collaborator[] = [
   },
 ];
 
-const STEP_ITEMS: Array<{ key: StepKey; label: string }> = [
-  { key: "summary", label: "Episode Summary" },
-  { key: "structure", label: "Structure Block" },
-  { key: "live", label: "Live Sessions" },
-  { key: "resources", label: "Resource Pack" },
-  { key: "access", label: "Audience & Access" },
-  { key: "collaboration", label: "Collaboration" },
-  { key: "discovery", label: "Discovery Setup" },
-  { key: "readiness", label: "Readiness" },
+const STEP_ITEMS: Array<{ key: StepKey; label: string; description: string }> = [
+  { key: "summary", label: "Episode Summary", description: "Core title, focus, scripture, and teaching direction." },
+  { key: "structure", label: "Structure Block", description: "Episode beats, chapters, and timing expectations." },
+  { key: "live", label: "Live Sessions", description: "Attach preview, main broadcast, and follow-up sessions." },
+  { key: "resources", label: "Resource Pack", description: "Learning assets, slides, notes, and visibility rules." },
+  { key: "access", label: "Audience & Access", description: "Access model, release timing, and replay behavior." },
+  { key: "collaboration", label: "Collaboration", description: "Editorial and ministry review workflow." },
+  { key: "discovery", label: "Discovery Setup", description: "Tags, snippets, and search metadata." },
+  { key: "readiness", label: "Publishing", description: "Final quality and release readiness checks." },
 ];
 
 function cx(...values: Array<string | false | null | undefined>) {
@@ -454,8 +452,8 @@ function Card({
       subtitle={subtitle}
       right={right}
       className={cx(
-        "rounded-3xl shadow-none",
-        highlight ? "border-emerald-200 shadow-[0_0_0_1px_rgba(3,205,140,0.12)]" : "border-faith-line",
+        "rounded-3xl border-0 shadow-[0_10px_34px_rgba(15,23,42,0.05)]",
+        highlight ? "bg-white/95 ring-1 ring-emerald-200" : "bg-white/95",
       )}
       titleClassName="text-[18px] font-black"
       subtitleClassName="mt-1 text-[12px]"
@@ -545,56 +543,62 @@ function StepNav({
   step,
   setStep,
   readinessScore,
+  completedSteps,
+  invalidSteps,
 }: {
   step: StepKey;
   setStep: (step: StepKey) => void;
   readinessScore: number;
+  completedSteps: Set<StepKey>;
+  invalidSteps: Set<StepKey>;
 }) {
   return (
-    <div className="rounded-[28px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 2xl:sticky 2xl:top-6">
-      <div className="rounded-[24px] border border-emerald-200 bg-emerald-50 px-4 py-4">
-        <div className="text-[16px] font-black text-faith-ink">Episode Builder</div>
-        <div className="mt-2 h-3 rounded-full bg-emerald-100">
+    <div className="rounded-[24px] bg-[var(--fh-surface-bg)] p-5 shadow-[0_8px_30px_rgba(15,23,42,0.08)] 2xl:sticky 2xl:top-24">
+      <div className="px-1">
+        <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-faith-slate">Progress</div>
+        <div className="mt-1 text-[18px] font-black text-faith-ink">Episode workflow</div>
+        <div className="mt-3 h-2 rounded-full bg-emerald-100">
           <div className="h-full rounded-full" style={{ width: `${readinessScore}%`, background: EV_GREEN }} />
         </div>
-        <div className="mt-2 text-[11px] font-semibold text-emerald-700">{readinessScore}% ready</div>
+        <div className="mt-2 text-[11px] font-semibold text-emerald-700">{readinessScore}% complete</div>
       </div>
 
-      <div className="mt-5 space-y-2">
+      <div className="mt-5 space-y-1.5" role="tablist" aria-label="Episode builder steps">
         {STEP_ITEMS.map((item) => (
           <button
             key={item.key}
             type="button"
             onClick={() => setStep(item.key)}
+            role="tab"
+            aria-selected={step === item.key}
+            aria-controls={`section-${item.key}`}
             className={cx(
-              "flex w-full items-center justify-between rounded-2xl border px-4 py-3 text-left text-[12px] font-semibold transition-colors",
+              "flex w-full items-start gap-3 rounded-2xl px-3 py-3 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300",
               step === item.key
-                ? "border-emerald-200 bg-emerald-50 text-faith-ink"
-                : "border-faith-line bg-[var(--fh-surface-bg)] text-faith-slate hover:bg-[var(--fh-surface)]",
+                ? "bg-emerald-50 text-faith-ink"
+                : "text-faith-slate hover:bg-[var(--fh-surface)]",
             )}
           >
-            <span>{item.label}</span>
-            {step === item.key ? <ChevronRight className="h-4 w-4 text-emerald-700" /> : null}
+            <span
+              className={cx(
+                "mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-[11px] font-bold",
+                completedSteps.has(item.key)
+                  ? "border-emerald-200 bg-emerald-100 text-emerald-700"
+                  : invalidSteps.has(item.key)
+                    ? "border-rose-200 bg-rose-50 text-rose-700"
+                    : "border-faith-line bg-[var(--fh-surface-bg)] text-faith-slate",
+              )}
+              aria-hidden
+            >
+              {completedSteps.has(item.key) ? <Check className="h-3.5 w-3.5" /> : STEP_ITEMS.findIndex((s) => s.key === item.key) + 1}
+            </span>
+            <span className="min-w-0 flex-1">
+              <span className="block text-[13px] font-bold">{item.label}</span>
+              <span className="mt-0.5 block text-[11px] leading-4 text-faith-slate">{item.description}</span>
+            </span>
+            {step === item.key ? <ChevronRight className="mt-1 h-4 w-4 shrink-0 text-emerald-700" /> : null}
           </button>
         ))}
-      </div>
-
-      <div className="mt-6 rounded-[24px] border border-amber-200 bg-amber-50 px-4 py-4">
-        <div className="text-[12px] font-black text-faith-ink">Quick handoff</div>
-        <div className="mt-3 space-y-2">
-          <button type="button" onClick={() => safeNav(ROUTES.seriesBuilder)} className="flex w-full items-center justify-between rounded-full border border-amber-300 bg-[var(--fh-surface-bg)] px-3 py-1.5 text-[11px] font-semibold text-amber-700">
-            Series Builder <ExternalLink className="h-3.5 w-3.5" />
-          </button>
-          <button type="button" onClick={() => safeNav(ROUTES.liveBuilder)} className="flex w-full items-center justify-between rounded-full border border-amber-300 bg-[var(--fh-surface-bg)] px-3 py-1.5 text-[11px] font-semibold text-amber-700">
-            Live Builder <ExternalLink className="h-3.5 w-3.5" />
-          </button>
-          <button type="button" onClick={() => safeNav(ROUTES.postLivePublishing)} className="flex w-full items-center justify-between rounded-full border border-amber-300 bg-[var(--fh-surface-bg)] px-3 py-1.5 text-[11px] font-semibold text-amber-700">
-            Post-live Publishing <ExternalLink className="h-3.5 w-3.5" />
-          </button>
-          <button type="button" onClick={() => safeNav(ROUTES.replaysAndClips)} className="flex w-full items-center justify-between rounded-full border border-amber-300 bg-[var(--fh-surface-bg)] px-3 py-1.5 text-[11px] font-semibold text-amber-700">
-            Replays & Clips <ExternalLink className="h-3.5 w-3.5" />
-          </button>
-        </div>
       </div>
     </div>
   );
@@ -865,6 +869,8 @@ export default function EpisodeBuilderPage() {
   const [toast, setToast] = useState<string | null>(null);
   const [episodeRecordId, setEpisodeRecordId] = useState<string | undefined>(undefined);
   const [formErrors, setFormErrors] = useState<string[]>([]);
+  const [saveState, setSaveState] = useState<SaveState>("saved");
+  const [lastSavedAt, setLastSavedAt] = useState<Date>(new Date());
   const [summaryTouched, setSummaryTouched] = useState<
     Record<"parentSeriesTitle" | "title" | "focusStatement" | "scripture", boolean>
   >({
@@ -970,6 +976,21 @@ export default function EpisodeBuilderPage() {
     const timer = window.setTimeout(() => setToast(null), 2200);
     return () => window.clearTimeout(timer);
   }, [toast]);
+
+  const draftFingerprint = useMemo(() => JSON.stringify(draft), [draft]);
+
+  useEffect(() => {
+    setSaveState("unsaved");
+    const timer = window.setTimeout(() => {
+      setSaveState("saving");
+      const savingTimer = window.setTimeout(() => {
+        setSaveState("saved");
+        setLastSavedAt(new Date());
+      }, 450);
+      return () => window.clearTimeout(savingTimer);
+    }, 900);
+    return () => window.clearTimeout(timer);
+  }, [draftFingerprint]);
 
   const readinessScore = useMemo(() => scoreReadiness(draft), [draft]);
   const summaryValidationErrors = useMemo(
@@ -1171,27 +1192,89 @@ export default function EpisodeBuilderPage() {
   };
 
   const activeCard = (key: StepKey) => step === key;
+  const completedSteps = useMemo(() => {
+    const steps = new Set<StepKey>();
+    if (!parentSeriesInvalid && !titleInvalid && !focusInvalid && !scriptureInvalid) steps.add("summary");
+    if (draft.structure.length >= 3) steps.add("structure");
+    if (draft.liveAttachments.length >= 1) steps.add("live");
+    if (draft.resources.length >= 2) steps.add("resources");
+    if (Boolean(draft.accessModel && draft.releaseWindow)) steps.add("access");
+    if (draft.collaborators.length >= 1) steps.add("collaboration");
+    if (draft.tags.length >= 3 && Boolean(draft.beaconSnippet)) steps.add("discovery");
+    if (readinessScore >= 85) steps.add("readiness");
+    return steps;
+  }, [
+    parentSeriesInvalid,
+    titleInvalid,
+    focusInvalid,
+    scriptureInvalid,
+    draft.structure.length,
+    draft.liveAttachments.length,
+    draft.resources.length,
+    draft.accessModel,
+    draft.releaseWindow,
+    draft.collaborators.length,
+    draft.tags.length,
+    draft.beaconSnippet,
+    readinessScore,
+  ]);
+
+  const invalidSteps = useMemo(() => {
+    const steps = new Set<StepKey>();
+    if (parentSeriesInvalid || titleInvalid || focusInvalid || scriptureInvalid) steps.add("summary");
+    if (draft.structure.length < 3) steps.add("structure");
+    if (draft.liveAttachments.length < 1) steps.add("live");
+    if (draft.resources.length < 2) steps.add("resources");
+    if (!draft.accessModel || !draft.releaseWindow) steps.add("access");
+    if (draft.collaborators.length < 1) steps.add("collaboration");
+    if (!(draft.tags.length >= 3 && Boolean(draft.beaconSnippet))) steps.add("discovery");
+    if (readinessScore < 85) steps.add("readiness");
+    return steps;
+  }, [
+    parentSeriesInvalid,
+    titleInvalid,
+    focusInvalid,
+    scriptureInvalid,
+    draft.structure.length,
+    draft.liveAttachments.length,
+    draft.resources.length,
+    draft.accessModel,
+    draft.releaseWindow,
+    draft.collaborators.length,
+    draft.tags.length,
+    draft.beaconSnippet,
+    readinessScore,
+  ]);
 
   return (
-    <div className="min-h-full bg-[var(--fh-page-bg)] p-4 text-faith-ink sm:p-6 xl:p-10">
-      <div className="mx-auto max-w-[1520px]">
-        <div className="rounded-[32px] border border-faith-line/70 bg-[var(--fh-surface-bg)] px-7 py-6 shadow-[0_20px_60px_rgba(15,23,42,0.08)]">
-          <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
+    <div className="min-h-full bg-[var(--fh-page-bg)] p-4 text-faith-ink sm:p-6 xl:p-8">
+      <div className="mx-auto max-w-[1800px]">
+        <div className="sticky top-4 z-30 rounded-[24px] bg-[var(--fh-surface-bg)]/95 px-6 py-4 shadow-[0_12px_34px_rgba(15,23,42,0.1)] backdrop-blur">
+          <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
             <div className="min-w-0">
-              <ProviderPageTitle
-                icon={<Film className="h-6 w-6" />}
-                title="Episode Builder"
-                subtitle="Premium creator-style episode workflow with embedded landing-page preview."
-              />
+              <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-faith-slate">Episode Builder</div>
+              <div className="mt-1 text-[24px] font-black leading-tight text-faith-ink">{draft.title}</div>
+              <div className="mt-1 flex flex-wrap items-center gap-2 text-[12px] text-faith-slate">
+                <Pill tone={readinessScore >= 85 ? "good" : "warn"}>{readinessScore >= 85 ? "Ready to publish" : "In progress"}</Pill>
+                <span>{readinessScore}% complete</span>
+                <span aria-hidden>•</span>
+                <span>
+                  {saveState === "saving"
+                    ? "Saving..."
+                    : saveState === "unsaved"
+                      ? "Unsaved changes"
+                      : `Saved ${lastSavedAt.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`}
+                </span>
+              </div>
             </div>
 
             <div className="flex flex-wrap items-center gap-3">
-              <SoftButton onClick={saveCurrentEpisodeDraft}>Save episode</SoftButton>
-              <PrimaryButton tone="orange" onClick={addLiveAttachment}>
-                Attach live session
-              </PrimaryButton>
+              <SoftButton onClick={saveCurrentEpisodeDraft}>Save Draft</SoftButton>
+              <SoftButton onClick={() => document.getElementById("preview-panel")?.scrollIntoView({ behavior: "smooth", block: "start" })}>
+                Preview
+              </SoftButton>
               <PrimaryButton tone="green" onClick={publishCurrentEpisode}>
-                Publish episode
+                Publish
               </PrimaryButton>
             </div>
           </div>
@@ -1208,12 +1291,18 @@ export default function EpisodeBuilderPage() {
           </div>
         ) : null}
 
-        <div className="mt-6 grid gap-6 2xl:grid-cols-[242px_minmax(0,1fr)_500px]">
+        <div className="mt-6 grid gap-6 2xl:grid-cols-[320px_minmax(0,1fr)_420px]">
           <aside>
-            <StepNav step={step} setStep={setStep} readinessScore={readinessScore} />
+            <StepNav
+              step={step}
+              setStep={setStep}
+              readinessScore={readinessScore}
+              completedSteps={completedSteps}
+              invalidSteps={invalidSteps}
+            />
           </aside>
 
-          <main className="space-y-6">
+          <main className="space-y-8">
             <Card
               title="Episode summary panel"
               subtitle="Set the episode title, focus statement, scripture, outcomes, and presenter notes while inheriting the Series identity."
@@ -1933,9 +2022,9 @@ export default function EpisodeBuilderPage() {
             </Card>
           </main>
 
-          <aside className="min-h-0">
-            <div className="space-y-4 2xl:sticky 2xl:top-6">
-              <div className="rounded-[30px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 shadow-[0_12px_30px_rgba(15,23,42,0.06)]">
+          <aside className="min-h-0" id="preview-panel">
+            <div className="space-y-4 2xl:sticky 2xl:top-24">
+              <div className="rounded-[24px] border border-faith-line/40 bg-[var(--fh-surface-bg)] p-4 shadow-[0_14px_34px_rgba(15,23,42,0.1)]">
                 <div className="flex items-center justify-between gap-3">
                   <div>
                     <div className="text-[10px] font-black uppercase tracking-[0.18em] text-faith-slate">Preview</div>
@@ -1967,12 +2056,12 @@ export default function EpisodeBuilderPage() {
                   </div>
                 </div>
 
-                <div className="mt-4">
+                <div className="mt-4 max-h-[calc(100vh-16rem)] overflow-auto pr-1">
                   <EpisodePreview draft={draft} previewMode={previewMode} readinessScore={readinessScore} />
                 </div>
               </div>
 
-              <div className="rounded-[30px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 shadow-[0_12px_30px_rgba(15,23,42,0.06)]">
+              <div className="rounded-[24px] border border-faith-line/40 bg-[var(--fh-surface-bg)] p-4 shadow-[0_14px_34px_rgba(15,23,42,0.08)]">
                 <div className="flex items-center gap-2">
                   <BookOpen className="h-4 w-4 text-emerald-600" />
                   <div className="text-[14px] font-black text-faith-ink">Premium notes</div>
