@@ -178,26 +178,28 @@ export function ProviderSidebar({
         display: 'flex',
         height: '100%',
         flexDirection: 'column',
-        bgcolor: 'var(--fh-page-bg)',
+        bgcolor: '#1b2a43',
       }}
     >
-      <Box sx={{ p: 1.25, height: '100%', minHeight: 0 }}>
+      <Box sx={{ p: 1.1, height: '100%', minHeight: 0 }}>
         <Box
           sx={{
-            borderRadius: 'var(--fh-radius-3xl)',
+            borderRadius: '26px',
             border: '1px solid',
-            borderColor: 'var(--fh-line)',
-            bgcolor: 'var(--fh-surface-bg)',
+            borderColor: 'rgba(120,146,186,0.28)',
+            bgcolor: '#1f2f4a',
             overflow: 'hidden',
-            boxShadow: 'var(--fh-shadow-md)',
+            boxShadow: '0 18px 46px rgba(4,10,24,0.38)',
             display: 'flex',
             flexDirection: 'column',
             height: '100%',
             minHeight: 0,
           }}
         >
-          <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ px: 1.25, py: 1.35, gap: 1 }}>
-            <Box sx={{ flex: 1 }} />
+          <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ px: 1.5, py: 1.55, gap: 1 }}>
+            <Typography sx={{ color: '#d5deec', fontWeight: 700, fontSize: 13, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+              FaithHub Provider
+            </Typography>
             <Tooltip title={effectiveCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}>
               <IconButton
                 onClick={() => {
@@ -212,15 +214,15 @@ export function ProviderSidebar({
                   onClose();
                 }}
                 sx={{
-                  bgcolor: 'var(--fh-surface-bg)',
-                  color: 'var(--fh-ink)',
+                  bgcolor: 'rgba(9,16,31,0.45)',
+                  color: '#dbe5f6',
                   border: '1px solid',
-                  borderColor: 'var(--fh-line)',
-                  width: 44,
-                  height: 44,
+                  borderColor: 'rgba(120,146,186,0.28)',
+                  width: 42,
+                  height: 42,
                   borderRadius: 999,
                   transition: 'transform var(--fh-duration-base) var(--fh-ease-premium), background-color var(--fh-duration-fast) ease, border-color var(--fh-duration-fast) ease',
-                  '&:hover': { bgcolor: 'var(--fh-surface)', transform: 'translateY(-1px)' },
+                  '&:hover': { bgcolor: 'rgba(9,16,31,0.7)', transform: 'translateY(-1px)' },
                 }}
               >
                 <KeyboardDoubleArrowLeftRoundedIcon
@@ -233,11 +235,47 @@ export function ProviderSidebar({
             </Tooltip>
           </Stack>
 
-          <Divider />
+          <Divider sx={{ borderColor: 'rgba(120,146,186,0.25)' }} />
+
+          {!effectiveCollapsed ? (
+            <Box sx={{ px: 1.5, pt: 1.4, pb: 0.5 }}>
+              <Box
+                sx={{
+                  borderRadius: '20px',
+                  border: '1px solid rgba(120,146,186,0.28)',
+                  background: 'linear-gradient(180deg, rgba(65,83,112,0.56), rgba(61,79,108,0.36))',
+                  p: 1.4,
+                }}
+              >
+                <Typography sx={{ color: '#b4c3db', fontSize: 12, fontWeight: 700 }}>Active workspace</Typography>
+                <Stack direction="row" spacing={1.2} alignItems="center" sx={{ mt: 1 }}>
+                  <Box
+                    sx={{
+                      width: 44,
+                      height: 44,
+                      borderRadius: '14px',
+                      display: 'grid',
+                      placeItems: 'center',
+                      bgcolor: '#101c35',
+                      color: '#f0f5ff',
+                      fontWeight: 800,
+                      fontSize: 16,
+                    }}
+                  >
+                    FH
+                  </Box>
+                  <Box sx={{ minWidth: 0 }}>
+                    <Typography sx={{ color: '#e8eef9', fontWeight: 800, fontSize: 16, lineHeight: 1.1 }}>FaithHub Provider</Typography>
+                    <Typography sx={{ color: '#a7b8d4', fontSize: 12 }}>Navigation modules</Typography>
+                  </Box>
+                </Stack>
+              </Box>
+            </Box>
+          ) : null}
 
           <List
             sx={{
-              p: 1.35,
+              p: 1.2,
               flex: 1,
               minHeight: 0,
               overflowY: 'auto',
@@ -245,7 +283,7 @@ export function ProviderSidebar({
               pb: 2,
               '&::-webkit-scrollbar': { width: 8 },
               '&::-webkit-scrollbar-thumb': {
-                backgroundColor: 'var(--fh-line)',
+                backgroundColor: 'rgba(120,146,186,0.45)',
                 borderRadius: 10,
               },
               '&::-webkit-scrollbar-track': { backgroundColor: 'transparent' },
@@ -263,31 +301,44 @@ export function ProviderSidebar({
                       aria-label={`${openSections[group.section] ? 'Collapse' : 'Expand'} ${group.label} section`}
                       aria-expanded={Boolean(openSections[group.section])}
                       sx={{
-                        px: 1,
-                        py: 0.5,
-                        minHeight: 42,
-                        borderRadius: '10px',
-                        border: '1px solid transparent',
-                        bgcolor: openSections[group.section] ? 'var(--fh-surface)' : 'transparent',
+                        px: 1.1,
+                        py: 1,
+                        minHeight: 64,
+                        borderRadius: '16px',
+                        border: '1px solid',
+                        borderColor: 'rgba(120,146,186,0.3)',
+                        bgcolor: openSections[group.section] ? 'rgba(19,34,59,0.95)' : 'rgba(28,46,74,0.7)',
                         transition: 'transform var(--fh-duration-base) var(--fh-ease-premium), background-color var(--fh-duration-fast) ease, border-color var(--fh-duration-fast) ease',
                         '&:hover': {
-                          bgcolor: 'var(--fh-surface)',
+                          bgcolor: 'rgba(22,40,69,0.96)',
                           transform: 'translateY(-1px)',
                         },
                       }}
                     >
-                      <ListItemIcon sx={{ minWidth: 28, color: openSections[group.section] ? 'var(--fh-accent)' : 'var(--fh-slate)' }}>
-                        <SectionIcon sx={{ fontSize: 18 }} />
+                      <ListItemIcon
+                        sx={{
+                          minWidth: 0,
+                          mr: 1.1,
+                          width: 38,
+                          height: 38,
+                          borderRadius: '12px',
+                          display: 'grid',
+                          placeItems: 'center',
+                          color: openSections[group.section] ? 'var(--fh-brand)' : '#b9c6db',
+                          bgcolor: 'rgba(64,84,114,0.6)',
+                        }}
+                      >
+                        <SectionIcon sx={{ fontSize: 20 }} />
                       </ListItemIcon>
                       <ListItemText
                         primary={
                           <Box>
                             <Typography
                               sx={{
-                                fontWeight: 700,
-                                fontSize: 11,
-                                letterSpacing: '0.12em',
-                                color: 'var(--fh-slate)',
+                                fontWeight: 800,
+                                fontSize: 13,
+                                letterSpacing: '0.14em',
+                                color: '#ced8ea',
                                 textTransform: 'uppercase',
                                 lineHeight: 1.2,
                               }}
@@ -300,15 +351,15 @@ export function ProviderSidebar({
                       {openSections[group.section] ? (
                         <KeyboardArrowDownRoundedIcon
                           sx={{
-                            fontSize: 20,
-                            color: 'var(--fh-accent)',
+                            fontSize: 24,
+                            color: '#d9e3f3',
                           }}
                         />
                       ) : (
                         <KeyboardArrowRightRoundedIcon
                           sx={{
-                            fontSize: 20,
-                            color: 'var(--fh-slate)',
+                            fontSize: 24,
+                            color: '#9fb2cd',
                           }}
                         />
                       )}
@@ -343,21 +394,21 @@ export function ProviderSidebar({
                                 sx={{
                                   mb: 0.5,
                                   px: 1,
-                                  py: 0.9,
-                                  minHeight: 74,
-                                  borderRadius: '14px',
+                                  py: 1.05,
+                                  minHeight: 82,
+                                  borderRadius: '16px',
                                   border: '1px solid',
                                   borderColor: active
-                                    ? 'color-mix(in srgb, var(--fh-brand-dark) 86%, var(--fh-brand) 14%)'
-                                    : 'color-mix(in srgb, var(--fh-line) 58%, transparent)',
+                                    ? 'color-mix(in srgb, var(--fh-brand-dark) 76%, var(--fh-brand) 24%)'
+                                    : 'rgba(120,146,186,0.24)',
                                   bgcolor: active
-                                    ? 'var(--fh-brand)'
-                                    : 'color-mix(in srgb, var(--fh-surface) 88%, var(--fh-surface-bg) 12%)',
+                                    ? 'linear-gradient(135deg, rgba(3,205,140,0.94), rgba(3,180,126,0.94))'
+                                    : 'rgba(16,31,54,0.65)',
                                   transition: 'transform var(--fh-duration-base) var(--fh-ease-premium), background-color var(--fh-duration-fast) ease, border-color var(--fh-duration-fast) ease',
                                   '&:hover': {
                                     bgcolor: active
-                                      ? 'color-mix(in srgb, var(--fh-brand-dark) 80%, var(--fh-brand) 20%)'
-                                      : 'color-mix(in srgb, var(--fh-surface) 96%, var(--fh-surface-bg) 4%)',
+                                      ? 'linear-gradient(135deg, rgba(3,190,131,0.94), rgba(2,164,116,0.94))'
+                                      : 'rgba(20,37,63,0.92)',
                                     transform: 'translateY(-1px)',
                                   },
                                 }}
@@ -373,8 +424,8 @@ export function ProviderSidebar({
                                     placeItems: 'center',
                                     color: active ? 'var(--fh-surface-bg)' : 'var(--fh-brand)',
                                     bgcolor: active
-                                      ? 'color-mix(in srgb, var(--fh-brand-dark) 70%, black 30%)'
-                                      : 'color-mix(in srgb, var(--fh-brand-soft) 56%, var(--fh-surface-bg) 44%)',
+                                      ? 'rgba(7,36,35,0.34)'
+                                      : 'rgba(64,84,114,0.52)',
                                   }}
                                 >
                                   <page.icon size={16} />
@@ -387,7 +438,7 @@ export function ProviderSidebar({
                                           fontWeight: active ? 800 : 700,
                                           fontSize: 13,
                                           lineHeight: 1.15,
-                                          color: active ? 'var(--fh-surface-bg)' : 'var(--fh-ink)',
+                                          color: active ? '#f5fbff' : '#e3eaf6',
                                           mb: 0.2,
                                         }}
                                       >
@@ -399,8 +450,8 @@ export function ProviderSidebar({
                                           fontSize: 11.5,
                                           lineHeight: 1.25,
                                           color: active
-                                            ? 'color-mix(in srgb, var(--fh-surface-bg) 86%, transparent)'
-                                            : 'var(--fh-slate)',
+                                            ? 'rgba(240,249,255,0.9)'
+                                            : '#9fb0cc',
                                         }}
                                       >
                                         {getSidebarPageHint(page)}
@@ -437,11 +488,11 @@ export function ProviderSidebar({
                                           borderRadius: '12px',
                                           border: '1px solid',
                                           borderColor: childActive
-                                            ? 'color-mix(in srgb, var(--fh-brand-dark) 74%, var(--fh-brand) 26%)'
-                                            : 'color-mix(in srgb, var(--fh-line) 52%, transparent)',
+                                            ? 'color-mix(in srgb, var(--fh-brand-dark) 68%, var(--fh-brand) 32%)'
+                                            : 'rgba(120,146,186,0.22)',
                                           bgcolor: childActive
-                                            ? 'color-mix(in srgb, var(--fh-brand-soft) 62%, var(--fh-surface-bg) 38%)'
-                                            : 'color-mix(in srgb, var(--fh-surface) 76%, var(--fh-surface-bg) 24%)',
+                                            ? 'rgba(3,205,140,0.18)'
+                                            : 'rgba(18,34,57,0.55)',
                                           transition: 'transform var(--fh-duration-base) var(--fh-ease-premium), background-color var(--fh-duration-fast) ease, border-color var(--fh-duration-fast) ease',
                                           '&:hover': {
                                             bgcolor: childActive
@@ -462,8 +513,8 @@ export function ProviderSidebar({
                                             placeItems: 'center',
                                             color: childActive ? 'var(--fh-brand-dark)' : 'var(--fh-slate)',
                                             bgcolor: childActive
-                                              ? 'color-mix(in srgb, var(--fh-brand-soft) 68%, var(--fh-surface-bg) 32%)'
-                                              : 'color-mix(in srgb, var(--fh-line) 12%, transparent)',
+                                              ? 'rgba(3,205,140,0.22)'
+                                              : 'rgba(64,84,114,0.5)',
                                           }}
                                         >
                                           <child.icon size={14} />
@@ -476,7 +527,7 @@ export function ProviderSidebar({
                                                   fontWeight: childActive ? 750 : 650,
                                                   fontSize: 12,
                                                   lineHeight: 1.15,
-                                                  color: childActive ? 'var(--fh-ink)' : 'var(--fh-ink)',
+                                                  color: childActive ? '#eafaf3' : '#d2ddec',
                                                   mb: 0.15,
                                                 }}
                                               >
@@ -487,7 +538,7 @@ export function ProviderSidebar({
                                                   fontWeight: 500,
                                                   fontSize: 11,
                                                   lineHeight: 1.2,
-                                                  color: 'var(--fh-slate)',
+                                                  color: '#9fb0cc',
                                                 }}
                                               >
                                                 {getSidebarPageHint(child)}
