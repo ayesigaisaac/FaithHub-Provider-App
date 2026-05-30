@@ -128,6 +128,10 @@ export function ProviderSidebar({
   const isNarrowPhone = useMediaQuery('(max-width:390px)');
   const isDesktopSidebar = useMediaQuery('(min-width:900px)');
   const effectiveCollapsed = isDesktopSidebar ? collapsed : false;
+  const sidebarPad = isNarrowPhone ? 0.9 : 1.1;
+  const sectionTitleSize = isNarrowPhone ? 13.5 : 13;
+  const primaryTitleSize = isNarrowPhone ? 14 : 13;
+  const secondaryTitleSize = isNarrowPhone ? 12.5 : 12;
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({});
   const [showAllSections, setShowAllSections] = useState(false);
   const [reportAnchorEl, setReportAnchorEl] = useState<HTMLElement | null>(null);
@@ -188,7 +192,7 @@ export function ProviderSidebar({
         bgcolor: '#1b2a43',
       }}
     >
-      <Box sx={{ p: 1.1, height: '100%', minHeight: 0 }}>
+      <Box sx={{ p: sidebarPad, height: '100%', minHeight: 0 }}>
         <Box
           sx={{
             borderRadius: '26px',
@@ -282,7 +286,7 @@ export function ProviderSidebar({
 
           <List
             sx={{
-              p: 1.2,
+              p: isNarrowPhone ? 1 : 1.2,
               flex: 1,
               minHeight: 0,
               overflowY: 'auto',
@@ -301,10 +305,10 @@ export function ProviderSidebar({
                 key={group.section}
                 sx={{
                   mb: effectiveCollapsed ? 0.55 : 1,
-                  p: effectiveCollapsed ? 0 : 0.7,
+                  p: effectiveCollapsed ? 0 : isNarrowPhone ? 0.6 : 0.7,
                   borderRadius: effectiveCollapsed ? 0 : '20px',
                   border: effectiveCollapsed ? 'none' : '1px solid rgba(120,146,186,0.22)',
-                  bgcolor: effectiveCollapsed ? 'transparent' : 'rgba(24,42,69,0.62)',
+                  bgcolor: effectiveCollapsed ? 'transparent' : 'rgba(24,42,69,0.66)',
                 }}
               >
                 {!effectiveCollapsed ? (
@@ -318,8 +322,8 @@ export function ProviderSidebar({
                       aria-expanded={Boolean(openSections[group.section])}
                       sx={{
                         px: 1.1,
-                        py: 1,
-                        minHeight: 64,
+                        py: isNarrowPhone ? 0.9 : 1,
+                        minHeight: isNarrowPhone ? 60 : 64,
                         borderRadius: '16px',
                         border: '1px solid',
                         borderColor: 'rgba(120,146,186,0.3)',
@@ -328,6 +332,10 @@ export function ProviderSidebar({
                         '&:hover': {
                           bgcolor: 'rgba(22,40,69,0.96)',
                           transform: 'translateY(-1px)',
+                        },
+                        '&:focus-visible': {
+                          outline: '2px solid rgba(3,205,140,0.7)',
+                          outlineOffset: '2px',
                         },
                       }}
                     >
@@ -352,7 +360,7 @@ export function ProviderSidebar({
                             <Typography
                               sx={{
                                 fontWeight: 800,
-                                fontSize: isNarrowPhone ? 14 : 13,
+                                fontSize: sectionTitleSize,
                                 letterSpacing: '0.14em',
                                 color: '#ced8ea',
                                 textTransform: 'uppercase',
@@ -410,8 +418,8 @@ export function ProviderSidebar({
                                 sx={{
                                   mb: 0.5,
                                   px: 1,
-                                  py: 1.05,
-                                  minHeight: 82,
+                                  py: isNarrowPhone ? 0.95 : 1.05,
+                                  minHeight: isNarrowPhone ? 76 : 82,
                                   borderRadius: '16px',
                                   border: '1px solid',
                                   borderColor: active
@@ -426,6 +434,10 @@ export function ProviderSidebar({
                                       ? 'linear-gradient(135deg, rgba(3,190,131,0.94), rgba(2,164,116,0.94))'
                                       : 'rgba(20,37,63,0.92)',
                                     transform: 'translateY(-1px)',
+                                  },
+                                  '&:focus-visible': {
+                                    outline: '2px solid rgba(3,205,140,0.7)',
+                                    outlineOffset: '2px',
                                   },
                                 }}
                               >
@@ -452,7 +464,7 @@ export function ProviderSidebar({
                                       <Typography
                                         sx={{
                                           fontWeight: active ? 800 : 700,
-                                          fontSize: isNarrowPhone ? 14 : 13,
+                                          fontSize: primaryTitleSize,
                                           lineHeight: 1.15,
                                           color: active ? '#f5fbff' : '#e3eaf6',
                                           mb: 0.2,
@@ -463,7 +475,7 @@ export function ProviderSidebar({
                                       <Typography
                                         sx={{
                                           fontWeight: 500,
-                                          fontSize: isNarrowPhone ? 12 : 11.5,
+                                          fontSize: isNarrowPhone ? 12.25 : 11.5,
                                           lineHeight: 1.25,
                                           color: active
                                             ? 'rgba(240,249,255,0.9)'
@@ -516,6 +528,10 @@ export function ProviderSidebar({
                                               : 'color-mix(in srgb, var(--fh-surface) 92%, var(--fh-surface-bg) 8%)',
                                             transform: 'translateY(-1px)',
                                           },
+                                          '&:focus-visible': {
+                                            outline: '2px solid rgba(3,205,140,0.65)',
+                                            outlineOffset: '2px',
+                                          },
                                         }}
                                       >
                                         <ListItemIcon
@@ -541,7 +557,7 @@ export function ProviderSidebar({
                                               <Typography
                                                 sx={{
                                                   fontWeight: childActive ? 750 : 650,
-                                                  fontSize: isNarrowPhone ? 12.5 : 12,
+                                                  fontSize: secondaryTitleSize,
                                                   lineHeight: 1.15,
                                                   color: childActive ? '#eafaf3' : '#d2ddec',
                                                   mb: 0.15,
@@ -793,7 +809,7 @@ export function ProviderSidebar({
           </List>
 
           {!effectiveCollapsed ? (
-            <Box sx={{ p: 1.2, pt: 0.8 }}>
+            <Box sx={{ p: isNarrowPhone ? 1 : 1.2, pt: 0.8 }}>
               <Stack direction="row" spacing={1.1}>
                 <ListItemButton
                   onClick={() => {
@@ -811,6 +827,10 @@ export function ProviderSidebar({
                     fontWeight: 800,
                     fontSize: 15,
                     '&:hover': { bgcolor: 'rgba(20,37,63,0.95)' },
+                    '&:focus-visible': {
+                      outline: '2px solid rgba(3,205,140,0.7)',
+                      outlineOffset: '2px',
+                    },
                   }}
                 >
                   Search
@@ -828,6 +848,10 @@ export function ProviderSidebar({
                     fontWeight: 800,
                     fontSize: 15,
                     '&:hover': { bgcolor: 'rgba(20,37,63,0.95)' },
+                    '&:focus-visible': {
+                      outline: '2px solid rgba(3,205,140,0.7)',
+                      outlineOffset: '2px',
+                    },
                   }}
                 >
                   Report
