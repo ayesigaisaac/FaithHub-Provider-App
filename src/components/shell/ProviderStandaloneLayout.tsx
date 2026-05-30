@@ -5,8 +5,8 @@ import { useLocation } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles';
 import { findProviderPageByPath } from '@/navigation/providerPages';
 import { ProviderSidebar } from './ProviderSidebar';
-import { QuickCreateDial } from './QuickCreateDial';
 import { MobileBottomNav } from './MobileBottomNav';
+import { SearchCommandDialog } from './SearchCommandDialog';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { MediaFallbackContainer } from '@/components/MediaFallbackContainer';
 
@@ -21,6 +21,8 @@ export function ProviderStandaloneLayout({ children, pagePath, pageTitle }: Prov
   const theme = useTheme();
   const isDark = theme.palette.mode === 'dark';
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const current = useMemo(() => {
     if (pagePath) return findProviderPageByPath(pagePath);
@@ -29,7 +31,11 @@ export function ProviderStandaloneLayout({ children, pagePath, pageTitle }: Prov
 
   return (
     <Box sx={{ display: 'flex', minHeight: '100vh', bgcolor: 'background.default' }}>
-      <ProviderSidebar open={mobileOpen} onClose={() => setMobileOpen(false)} />
+      <ProviderSidebar
+        open={mobileOpen}
+        onClose={() => setMobileOpen(false)}
+        onOpenSearch={() => setSearchOpen(true)}
+      />
 
       <Box component="main" sx={{ flex: 1, minWidth: 0, width: '100%' }}>
         <IconButton
@@ -69,8 +75,13 @@ export function ProviderStandaloneLayout({ children, pagePath, pageTitle }: Prov
         </Box>
       </Box>
 
-      <QuickCreateDial />
       <MobileBottomNav />
+      <SearchCommandDialog
+        open={searchOpen}
+        onClose={() => setSearchOpen(false)}
+        query={searchQuery}
+        onQueryChange={setSearchQuery}
+      />
     </Box>
   );
 }
