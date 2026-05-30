@@ -1,6 +1,6 @@
 import { Box, IconButton } from '@mui/material';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
-import { useMemo, useState, type ReactNode } from 'react';
+import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles';
 import { findProviderPageByPath } from '@/navigation/providerPages';
@@ -23,18 +23,27 @@ export function ProviderStandaloneLayout({ children, pagePath, pageTitle }: Prov
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [sidebarCollapsed, setSidebarCollapsed] = useState<boolean>(() => {
+    if (typeof window === 'undefined') return false;
+    return window.localStorage.getItem('faithhub.sidebar.collapsed') === 'true';
+  });
 
   const current = useMemo(() => {
     if (pagePath) return findProviderPageByPath(pagePath);
     return findProviderPageByPath(location.pathname);
   }, [location.pathname, pagePath]);
 
+  useEffect(() => {
+    window.localStorage.setItem('faithhub.sidebar.collapsed', String(sidebarCollapsed));
+  }, [sidebarCollapsed]);
+
   return (
     <Box sx={{ display: 'flex', minHeight: '100vh', bgcolor: 'background.default' }}>
       <ProviderSidebar
         open={mobileOpen}
         onClose={() => setMobileOpen(false)}
-        onOpenSearch={() => setSearchOpen(true)}
+        collapsed={sidebarCollapsed}
+        onToggleCollapse={() => setSidebarCollapsed((prev) => !prev)}
       />
 
       <Box component="main" sx={{ flex: 1, minWidth: 0, width: '100%' }}>
