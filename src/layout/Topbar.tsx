@@ -21,7 +21,7 @@ export function Topbar({ onOpenSidebar }: TopbarProps) {
         <button
           type="button"
           onClick={onOpenSidebar}
-          className="fh-interactive absolute left-4 inline-flex rounded-lg p-2 text-slate-500 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800 lg:hidden"
+          className="fh-interactive absolute left-4 inline-flex rounded-lg p-2 text-slate-500 hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--fh-brand)] focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:text-slate-300 dark:hover:bg-slate-800 dark:focus-visible:ring-offset-slate-950 lg:hidden"
           aria-label="Open navigation"
         >
           <Menu className="h-5 w-5" />
@@ -38,7 +38,7 @@ export function Topbar({ onOpenSidebar }: TopbarProps) {
               value={workspace}
               onChange={handleWorkspaceSwitch}
               aria-label="Switch workspace"
-              className="fh-interactive h-9 appearance-none rounded-lg border border-slate-200 bg-slate-50 pl-3 pr-8 text-xs font-medium text-slate-700 outline-none ring-[var(--fh-brand)] transition focus:bg-white focus:ring-2 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:focus:bg-slate-900"
+              className="fh-interactive h-9 appearance-none rounded-lg border border-slate-200 bg-slate-50 pl-3 pr-8 text-xs font-medium text-slate-700 outline-none transition focus-visible:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--fh-brand)] focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:focus-visible:bg-slate-900 dark:focus-visible:ring-offset-slate-950"
             >
               <option value="Kampala Central">Kampala Central</option>
               <option value="Online Studio">Online Studio</option>
@@ -53,14 +53,14 @@ export function Topbar({ onOpenSidebar }: TopbarProps) {
           <input
             type="search"
             placeholder="Search content, campaigns, or members"
-            className="fh-interactive h-10 w-full rounded-xl border border-slate-200 bg-white pl-9 pr-3 text-sm text-slate-700 outline-none ring-[var(--fh-brand)] transition placeholder:text-slate-400 focus:ring-2 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:placeholder:text-slate-500"
+            className="fh-interactive h-10 w-full rounded-xl border border-slate-200 bg-white pl-9 pr-3 text-sm text-slate-700 outline-none transition placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--fh-brand)] focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:placeholder:text-slate-500 dark:focus-visible:ring-offset-slate-950"
           />
         </div>
 
         <div className="ml-auto flex items-center gap-2.5">
           <button
             type="button"
-            className="fh-interactive relative inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-600 transition hover:bg-slate-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
+            className="fh-interactive relative inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-600 transition hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--fh-brand)] focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:focus-visible:ring-offset-slate-950"
             aria-label="Notifications"
             onClick={() => navigate('/faithhub/provider/audience-notifications')}
           >
@@ -70,7 +70,7 @@ export function Topbar({ onOpenSidebar }: TopbarProps) {
 
           <button
             type="button"
-            className="fh-interactive inline-flex items-center gap-3 rounded-xl border border-slate-200 px-2 py-1.5 transition hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-800"
+            className="fh-interactive inline-flex items-center gap-3 rounded-xl border border-slate-200 px-2 py-1.5 transition hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--fh-brand)] focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:border-slate-700 dark:hover:bg-slate-800 dark:focus-visible:ring-offset-slate-950"
             aria-label="Profile menu"
             onClick={() => navigate('/faithhub/provider/workspace-settings')}
           >
