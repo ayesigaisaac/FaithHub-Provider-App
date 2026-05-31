@@ -32,6 +32,11 @@ function LandingMount() {
   return <FaithHubHomeLandingPage />;
 }
 
+function ProviderAliasRedirect({ to }: { to: string }) {
+  const location = useLocation();
+  return <Navigate to={`${to}${location.search}${location.hash}`} replace />;
+}
+
 export default function App() {
   return (
     <Fragment>
@@ -42,25 +47,36 @@ export default function App() {
         <Route path="/faithhub/home-landing" element={<LandingMount />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/dashboard-ui" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
-        <Route path="/faithhub/provider" element={<ProtectedRoute><ProviderShellLayout /></ProtectedRoute>}>
-          <Route index element={<Navigate to="/faithhub/provider/dashboard" replace />} />
-        </Route>
-
         <Route element={<ProtectedRoute><ProviderShellLayout /></ProtectedRoute>}>
-          {providerPages.flatMap((page) => {
-            const paths = [page.path, ...(page.aliases ?? [])];
-            return paths.map((path) => (
+          <Route path="/faithhub/provider" element={<Navigate to="/faithhub/provider/dashboard" replace />} />
+
+          {providerPages.map((page) => (
+            <Route
+              key={`${page.key}:${page.path}`}
+              path={page.path}
+              element={
+                <ProtectedRoute routePath={page.path}>
+                  <ProviderPageMount page={page} />
+                </ProtectedRoute>
+              }
+            />
+          ))}
+
+          {providerPages.flatMap((page) =>
+            (page.aliases ?? []).map((aliasPath) => (
               <Route
-                key={`${page.key}:${path}`}
-                path={path}
+                key={`${page.key}:alias:${aliasPath}`}
+                path={aliasPath}
                 element={
-                  <ProtectedRoute routePath={path}>
-                    <ProviderPageMount page={page} />
+                  <ProtectedRoute routePath={page.path}>
+                    <ProviderAliasRedirect to={page.path} />
                   </ProtectedRoute>
                 }
               />
-            ));
-          })}
+            )),
+          )}
+
+          <Route path="/faithhub/provider/*" element={<Navigate to="/faithhub/provider/dashboard" replace />} />
         </Route>
 
         <Route path="*" element={<NotFoundPage />} />
