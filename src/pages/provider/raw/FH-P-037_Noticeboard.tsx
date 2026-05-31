@@ -1176,7 +1176,7 @@ export default function FaithHubNoticeboardPage() {
               <div className="mt-5 flex flex-wrap items-center gap-2">
                 <Pill tone="good">
                   <Megaphone className="h-3.5 w-3.5" />
-                  FaithHub Provider workspace
+                  Provider operations
                 </Pill>
                 <Pill tone="navy">
                   <Layers3 className="h-3.5 w-3.5" />

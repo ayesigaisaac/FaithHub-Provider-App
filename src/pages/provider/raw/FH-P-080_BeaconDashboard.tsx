@@ -1297,13 +1297,6 @@ export default function BeaconDashboardPage() {
         <div className="w-full px-4 md:px-6 lg:px-8 py-4">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <div className="min-w-0">
-              <div className="flex flex-wrap items-center gap-2 text-[10px] sm:text-xs text-faith-slate">
-                <span>FaithHub Provider workspace</span>
-                <span className="text-slate-300 dark:text-slate-700">/</span>
-                <span>Beacon</span>
-                <span className="text-slate-300 dark:text-slate-700">/</span>
-                <span className="font-medium text-slate-700 dark:text-slate-300">Dashboard</span>
-              </div>
               <ProviderPageTitle
                 icon={<BarChart3 className="h-6 w-6" />}
                 title="Beacon Dashboard"

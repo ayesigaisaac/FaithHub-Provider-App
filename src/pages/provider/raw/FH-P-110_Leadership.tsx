@@ -615,7 +615,7 @@ export default function FaithHubLeadershipPage() {
                   <BadgeCheck className="h-3.5 w-3.5" /> Leadership published
                 </TonePill>
                 <TonePill tone="accent">Team cluster</TonePill>
-                <TonePill tone="neutral">FaithHub Provider workspace</TonePill>
+                <TonePill tone="neutral">Provider operations</TonePill>
               </div>
 
               <div className="mt-6 flex flex-wrap gap-3">
