@@ -142,10 +142,12 @@ function Pill({
   children,
   tone = "neutral",
   title,
+  wrap = false,
 }: {
   children: React.ReactNode;
   tone?: "neutral" | "good" | "warn" | "bad" | "brand" | "accent";
   title?: string;
+  wrap?: boolean;
 }) {
   const cls =
     tone === "good"
@@ -171,7 +173,8 @@ function Pill({
     <span
       title={title}
       className={cn(
-        "inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[10px] sm:text-xs font-bold ring-1 whitespace-nowrap transition",
+        "inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[10px] sm:text-xs font-bold ring-1 transition",
+        wrap ? "whitespace-normal break-words [word-break:break-word] [overflow-wrap:anywhere] text-left leading-4" : "whitespace-nowrap",
         cls,
       )}
       style={style}
@@ -693,7 +696,7 @@ const journeyBlueprint: JourneyNode[] = [
     label: "Pre-live warm-up",
     hint: "Build anticipation with a high-quality value reminder.",
     offset: "T-24h",
-    recommended: "Followers â€¢ warm audience â€¢ multilingual",
+    recommended: "Followers • warm audience • multilingual",
     outcome: "Drives registrations and calendar adds",
   },
   {
@@ -701,7 +704,7 @@ const journeyBlueprint: JourneyNode[] = [
     label: "Countdown reminder",
     hint: "Drive return traffic with a short, urgent touchpoint.",
     offset: "T-60m",
-    recommended: "Followers â€¢ high-intent â€¢ recent viewers",
+    recommended: "Followers • high-intent • recent viewers",
     outcome: "Lifts attendance at start of broadcast",
   },
   {
@@ -709,7 +712,7 @@ const journeyBlueprint: JourneyNode[] = [
     label: "Start-now blast",
     hint: "Push a live-now call-to-action as the session starts.",
     offset: "Live",
-    recommended: "Active app users â€¢ opted-in push â€¢ SMS",
+    recommended: "Active app users • opted-in push • SMS",
     outcome: "Captures late arrivals and in-the-moment interest",
   },
   {
@@ -717,7 +720,7 @@ const journeyBlueprint: JourneyNode[] = [
     label: "Replay-ready follow-up",
     hint: "Send a polished replay journey once publishing completes.",
     offset: "+20m",
-    recommended: "Missed viewers â€¢ time-zone catch-up",
+    recommended: "Missed viewers • time-zone catch-up",
     outcome: "Recovers missed attendance into replay starts",
   },
   {
@@ -725,7 +728,7 @@ const journeyBlueprint: JourneyNode[] = [
     label: "Clip follow-up",
     hint: "Drop a short-form clip with a strong deep link.",
     offset: "+6h",
-    recommended: "Socially active followers â€¢ new prospects",
+    recommended: "Socially active followers • new prospects",
     outcome: "Creates discovery and Beacon-ready promotion",
   },
   {
@@ -733,7 +736,7 @@ const journeyBlueprint: JourneyNode[] = [
     label: "Event reminder",
     hint: "Connect session attendance to the next physical or virtual event.",
     offset: "+1d",
-    recommended: "Registrants â€¢ volunteers â€¢ event audiences",
+    recommended: "Registrants • volunteers • event audiences",
     outcome: "Pushes registrations and check-ins",
   },
   {
@@ -741,7 +744,7 @@ const journeyBlueprint: JourneyNode[] = [
     label: "Giving reminder",
     hint: "Follow up with a meaningful giving or crowdfund appeal.",
     offset: "+1d",
-    recommended: "Donors â€¢ supporters â€¢ response-ready segments",
+    recommended: "Donors • supporters • response-ready segments",
     outcome: "Converts ministry impact into support",
   },
 ];
@@ -856,19 +859,19 @@ function buildInitialVariants(sourceType: SourceType): Record<LocaleKey, LocaleV
 
   return {
     en: {
-      headline: `${subjectRoot} â€¢ Join with purpose`,
+      headline: `${subjectRoot} • Join with purpose`,
       body: "You asked to stay connected. Here is the right message at the right moment, with a deep link that takes people straight into the most relevant Provider experience.",
       cta: "Open in FaithHub Provider",
       deepLink: "faithhub://live/sunday-encounter",
     },
     sw: {
-      headline: `${subjectRoot} â€¢ Jiunge sasa`,
+      headline: `${subjectRoot} • Jiunge sasa`,
       body: "Ujumbe huu umeboreshwa kwa wakati unaofaa, lugha sahihi, na kiungo kinachopeleka mtu moja kwa moja kwenye tukio au replay inayohitajika.",
       cta: "Fungua kwenye FaithHub Provider",
       deepLink: "faithhub://live/sunday-encounter?locale=sw",
     },
     fr: {
-      headline: `${subjectRoot} â€¢ Rejoignez maintenant`,
+      headline: `${subjectRoot} • Rejoignez maintenant`,
       body: "Ce message est localise pour le bon moment, le bon public, et le bon resultat ministeriel - participation, replay, don, inscription ou promotion.",
       cta: "Ouvrir dans FaithHub Provider",
       deepLink: "faithhub://live/sunday-encounter?locale=fr",
@@ -884,7 +887,7 @@ function stageTone(key: JourneyNodeKey) {
 
 function buildPreviewHeadline(node: JourneyNode, variant: LocaleVariant) {
   if (variant.headline.trim()) return variant.headline;
-    return `${node.label} â€¢ Provider`;
+    return `${node.label} • Provider`;
 }
 
 function buildPreviewBody(node: JourneyNode, variant: LocaleVariant) {
@@ -1091,12 +1094,12 @@ export default function FaithHubAudienceNotificationsPage() {
 
   const nextBestWindow =
     sourceType === "Live Session"
-      ? "Sun â€¢ 18:42 local time"
+      ? "Sun • 18:42 local time"
       : sourceType === "Replay"
-        ? "Mon â€¢ 07:15 local time"
+        ? "Mon • 07:15 local time"
         : sourceType === "Charity Crowdfund"
-          ? "Tue â€¢ 12:10 local time"
-          : "Today â€¢ 19:20 local time";
+          ? "Tue • 12:10 local time"
+          : "Today • 19:20 local time";
 
   return (
     <div className="min-h-full w-full flex flex-col bg-[var(--fh-page-bg)] dark:bg-slate-950 text-faith-ink dark:text-slate-50 transition-colors overflow-x-hidden">
@@ -1132,7 +1135,7 @@ export default function FaithHubAudienceNotificationsPage() {
               <span className="text-slate-200 dark:text-slate-800">|</span>
               <span className="flex items-center gap-1.5">
                 <Globe2 className="h-3.5 w-3.5 text-faith-slate" />
-                {languageTarget} â€¢ {regionTarget}
+                {languageTarget} • {regionTarget}
               </span>
               <span className="text-slate-200 dark:text-slate-800">|</span>
               <span className="flex items-center gap-1.5">
@@ -1273,16 +1276,16 @@ export default function FaithHubAudienceNotificationsPage() {
                                 {String(idx + 1).padStart(2, "0")}
                               </span>
                               <div className="min-w-0">
-                                <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-faith-ink dark:text-slate-100 sm:text-[34px] lg:text-[40px]">
+                                <div className="mt-2 text-[24px] font-black leading-[1.06] tracking-[-0.02em] text-faith-ink dark:text-slate-100 sm:text-[30px] lg:text-[34px] whitespace-normal break-words [word-break:break-word] [overflow-wrap:anywhere]">
                                   {node.label}
                                 </div>
-                                <div className="mt-1.5 text-[14px] leading-6 text-faith-slate">
-                                  {node.offset} â€¢ {node.hint}
+                                <div className="mt-1.5 text-[14px] leading-6 text-faith-slate whitespace-normal break-words [word-break:break-word] [overflow-wrap:anywhere]">
+                                  {node.offset} • {node.hint}
                                 </div>
                               </div>
                             </div>
                             <div className="mt-3 flex flex-wrap gap-2">
-                              <Pill tone={stageTone(node.key)}>{node.recommended}</Pill>
+                              <Pill tone={stageTone(node.key)} wrap>{node.recommended}</Pill>
                             </div>
                             <div className="mt-2 text-[11px] font-semibold text-faith-slate">
                               {node.outcome}
@@ -1387,7 +1390,7 @@ export default function FaithHubAudienceNotificationsPage() {
                               {segment.label}
                             </div>
                             <div className="text-[10px] font-semibold text-faith-slate">
-                              {segment.category} â€¢ {segment.size}
+                              {segment.category} • {segment.size}
                             </div>
                           </button>
                         );
@@ -1426,7 +1429,7 @@ export default function FaithHubAudienceNotificationsPage() {
                       value={regionTarget}
                       onChange={setRegionTarget}
                       options={[
-                        { value: "East Africa", label: "East Africa", hint: "Kenya â€¢ Uganda â€¢ Tanzania" },
+                        { value: "East Africa", label: "East Africa", hint: "Kenya • Uganda • Tanzania" },
                         { value: "Global", label: "Global", hint: "All opted-in viewers" },
                         { value: "Francophone regions", label: "Francophone regions", hint: "French-language audiences" },
                       ]}
@@ -1772,7 +1775,7 @@ export default function FaithHubAudienceNotificationsPage() {
                                 {node.label}
                               </div>
                               <div className="text-[11px] text-faith-slate">
-                                {node.offset} â€¢ {sendMode === "event_based" ? "event-triggered" : sendMode === "scheduled" ? "calendar-based" : "manual launch"}
+                                {node.offset} • {sendMode === "event_based" ? "event-triggered" : sendMode === "scheduled" ? "calendar-based" : "manual launch"}
                               </div>
                             </div>
                             <button
@@ -1902,7 +1905,7 @@ export default function FaithHubAudienceNotificationsPage() {
                 {previewTab === "push" ? (
                   <PhoneMock
                     title="Provider Push"
-                    subtitle={`${activeNode.label} â€¢ ${localeLabels[selectedLocale].label}`}
+                    subtitle={`${activeNode.label} • ${localeLabels[selectedLocale].label}`}
                     body={
                       <div className="space-y-2">
                         <div className="text-sm font-black text-faith-ink dark:text-slate-100">
@@ -1928,7 +1931,7 @@ export default function FaithHubAudienceNotificationsPage() {
                 {previewTab === "email" ? (
                   <EmailPreview
                     subject={previewHeadline}
-                    preheader={`${activeNode.label} â€¢ ${sourceType} â€¢ ${languageTarget}`}
+                    preheader={`${activeNode.label} • ${sourceType} • ${languageTarget}`}
                     body={previewBody}
                     cta={activeVariant.cta || "Open in FaithHub Provider"}
                   />
@@ -2162,7 +2165,7 @@ export default function FaithHubAudienceNotificationsPage() {
                 {previewTab === "push" ? (
                   <PhoneMock
                     title="Provider Push"
-                    subtitle={`${activeNode.label} â€¢ ${sourceType}`}
+                    subtitle={`${activeNode.label} • ${sourceType}`}
                     body={
                       <div className="space-y-2">
                         <div className="text-sm font-black">{previewHeadline}</div>
@@ -2183,7 +2186,7 @@ export default function FaithHubAudienceNotificationsPage() {
                 {previewTab === "email" ? (
                   <EmailPreview
                     subject={previewHeadline}
-                    preheader={`${activeNode.label} â€¢ ${languageTarget} â€¢ ${regionTarget}`}
+                    preheader={`${activeNode.label} • ${languageTarget} • ${regionTarget}`}
                     body={previewBody}
                     cta={activeVariant.cta || "Open in FaithHub Provider"}
                   />
