@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter, useLocation } from 'react-router-dom';
 import App from './App';
 import { NotificationProvider } from './contexts/NotificationContext';
 import { ThemeModeProvider } from './contexts/ThemeModeContext';
@@ -19,6 +19,17 @@ function seedAuthSession() {
   );
 }
 
+function LocationProbe() {
+  const location = useLocation();
+  return (
+    <div data-testid="location-probe">
+      {location.pathname}
+      {location.search}
+      {location.hash}
+    </div>
+  );
+}
+
 function renderApp(initialEntries: string[]) {
   seedAuthSession();
 
@@ -28,6 +39,7 @@ function renderApp(initialEntries: string[]) {
         <NotificationProvider>
           <MemoryRouter initialEntries={initialEntries}>
             <App />
+            <LocationProbe />
           </MemoryRouter>
         </NotificationProvider>
       </AuthProvider>
@@ -68,5 +80,15 @@ describe('App smoke routing', () => {
     ).toBeInTheDocument();
     const dashboardLinks = await screen.findAllByRole('link', { name: /dashboard/i }, { timeout: 15000 });
     expect(dashboardLinks.length).toBeGreaterThan(0);
+  }, 15000);
+
+  it('redirects alias routes to canonical provider paths while preserving query/hash', async () => {
+    renderApp(['/faithhub/provider/donations-funds?tab=overview#giving']);
+    expect(await screen.findByTestId('location-probe')).toHaveTextContent('/faithhub/provider/donations-and-funds?tab=overview#giving');
+  }, 15000);
+
+  it('redirects unknown provider routes to dashboard', async () => {
+    renderApp(['/faithhub/provider/not-a-real-page']);
+    expect(await screen.findByTestId('location-probe')).toHaveTextContent('/faithhub/provider/dashboard');
   }, 15000);
 });

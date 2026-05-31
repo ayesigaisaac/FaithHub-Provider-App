@@ -1,7 +1,7 @@
 import { Fragment, useEffect } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { ProviderShellLayout } from '@/components/shell/ProviderShellLayout';
-import { providerPages, type ProviderPageMeta } from '@/navigation/providerPages';
+import { findProviderPageByPath, providerPages, type ProviderPageMeta } from '@/navigation/providerPages';
 import NotFoundPage from '@/pages/public/NotFoundPage';
 import FaithHubHomeLandingPage from '@/pages/public/FaithHubHomeLandingPage';
 import { usePageTitle } from '@/hooks/usePageTitle';
@@ -38,6 +38,23 @@ function ProviderAliasRedirect({ to }: { to: string }) {
 }
 
 export default function App() {
+  const location = useLocation();
+  const { pathname, search, hash } = location;
+
+  if (pathname === '/faithhub/provider') {
+    return <Navigate to="/faithhub/provider/dashboard" replace />;
+  }
+
+  if (pathname.startsWith('/faithhub/provider/')) {
+    const matchedPage = findProviderPageByPath(pathname);
+    if (matchedPage && matchedPage.path !== pathname) {
+      return <Navigate to={`${matchedPage.path}${search}${hash}`} replace />;
+    }
+    if (!matchedPage) {
+      return <Navigate to="/faithhub/provider/dashboard" replace />;
+    }
+  }
+
   return (
     <Fragment>
       <ScrollToTop />
@@ -47,9 +64,39 @@ export default function App() {
         <Route path="/faithhub/home-landing" element={<LandingMount />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/dashboard-ui" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
-        <Route element={<ProtectedRoute><ProviderShellLayout /></ProtectedRoute>}>
-          <Route path="/faithhub/provider" element={<Navigate to="/faithhub/provider/dashboard" replace />} />
+        <Route
+          path="/faithhub/provider"
+          element={
+            <ProtectedRoute routePath="/faithhub/provider/dashboard">
+              <Navigate to="/faithhub/provider/dashboard" replace />
+            </ProtectedRoute>
+          }
+        />
 
+        {providerPages.flatMap((page) =>
+          (page.aliases ?? []).map((aliasPath) => (
+            <Route
+              key={`${page.key}:alias:${aliasPath}`}
+              path={aliasPath}
+              element={
+                <ProtectedRoute routePath={page.path}>
+                  <ProviderAliasRedirect to={page.path} />
+                </ProtectedRoute>
+              }
+            />
+          )),
+        )}
+
+        <Route
+          path="/faithhub/provider/*"
+          element={
+            <ProtectedRoute routePath="/faithhub/provider/dashboard">
+              <Navigate to="/faithhub/provider/dashboard" replace />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route element={<ProtectedRoute><ProviderShellLayout /></ProtectedRoute>}>
           {providerPages.map((page) => (
             <Route
               key={`${page.key}:${page.path}`}
@@ -61,22 +108,6 @@ export default function App() {
               }
             />
           ))}
-
-          {providerPages.flatMap((page) =>
-            (page.aliases ?? []).map((aliasPath) => (
-              <Route
-                key={`${page.key}:alias:${aliasPath}`}
-                path={aliasPath}
-                element={
-                  <ProtectedRoute routePath={page.path}>
-                    <ProviderAliasRedirect to={page.path} />
-                  </ProtectedRoute>
-                }
-              />
-            )),
-          )}
-
-          <Route path="/faithhub/provider/*" element={<Navigate to="/faithhub/provider/dashboard" replace />} />
         </Route>
 
         <Route path="*" element={<NotFoundPage />} />
