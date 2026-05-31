@@ -830,3 +830,24 @@ html.dark .provider-page-density--compact :is(
   background-color: #111b2f !important;
   color: #e2e8f0 !important;
 }
+
+/* Global mode fallbacks for legacy utility classes used outside compact provider pages. */
+html.dark :is(.bg-white, .bg-slate-50, .bg-slate-100, .bg-gray-50, .bg-gray-100, .bg-neutral-50, .bg-neutral-100) {
+  background-color: var(--fh-surface-bg) !important;
+}
+
+html.dark :is(.text-slate-900, .text-slate-800, .text-gray-900, .text-gray-800, .text-neutral-900, .text-neutral-800) {
+  color: var(--fh-ink) !important;
+}
+
+html.dark :is(.text-slate-700, .text-slate-600, .text-slate-500, .text-gray-700, .text-gray-600, .text-gray-500, .text-neutral-700, .text-neutral-600, .text-neutral-500) {
+  color: var(--fh-muted-strong) !important;
+}
+
+html.dark :is(.border-slate-200, .border-slate-300, .border-gray-200, .border-gray-300, .border-neutral-200, .border-neutral-300, .ring-slate-200, .ring-gray-200, .ring-neutral-200) {
+  border-color: var(--fh-line) !important;
+}
+
+html.dark :is(input, select, textarea) {
+  color: var(--fh-ink);
+}
