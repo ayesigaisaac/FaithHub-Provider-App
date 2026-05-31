@@ -199,7 +199,7 @@ export function Sidebar({ onClose }: SidebarProps) {
                         onClick={() => handleNavigate(item.path)}
                             className={`fh-interactive group flex w-full items-center justify-between rounded-[22px] border px-4 py-3.5 text-left transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--fh-brand)] focus-visible:ring-offset-2 ${
                           active
-                            ? 'border-2 border-[var(--fh-brand)] bg-white shadow-[0_10px_20px_rgba(3,205,140,0.16)]'
+                            ? 'border-2 border-[var(--fh-brand)] bg-white shadow-[0_10px_20px_rgba(3,205,140,0.16)] dark:bg-slate-900'
                             : 'border-slate-300 bg-[#f8f9fa] hover:bg-white dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800'
                         }`}
                       >

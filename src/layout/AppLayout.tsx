@@ -19,10 +19,10 @@ function AppLayoutShell({ children }: AppLayoutProps) {
   const isCollapsed = state === 'collapsed';
 
   return (
-    <div className="h-screen overflow-hidden bg-slate-100 text-slate-900">
+    <div className="h-screen overflow-hidden bg-slate-100 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
       <a
         href="#app-layout-main"
-        className="sr-only z-[70] rounded-lg bg-white px-3 py-2 text-xs font-semibold text-slate-900 shadow focus:not-sr-only focus:absolute focus:left-4 focus:top-4"
+        className="sr-only z-[70] rounded-lg bg-white px-3 py-2 text-xs font-semibold text-slate-900 shadow dark:bg-slate-900 dark:text-slate-100 focus:not-sr-only focus:absolute focus:left-4 focus:top-4"
       >
         Skip to main content
       </a>
