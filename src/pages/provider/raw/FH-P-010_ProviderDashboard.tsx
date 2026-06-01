@@ -41,6 +41,7 @@ import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { ProviderSectionCard } from "@/components/provider/ProviderSectionCard";
 import { ProviderStatusPill } from "@/components/provider/ProviderStatusPill";
+import { ProviderPageScaffold } from "@/components/provider/ProviderPageScaffold";
 import { TeachingsQuickActionsBar } from "@/components/provider/TeachingsQuickActionsBar";
 import { useAuth } from "@/auth/useAuth";
 import {
@@ -1647,39 +1648,46 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
 
   if (!hasDashboardData) {
     return (
-      <div className="fh-brand-shell min-h-full w-full bg-[var(--fh-page-bg)] text-faith-ink transition-colors ">
-        <div className="w-full max-w-none px-0 py-0">
-          <div className="space-y-4 sm:space-y-5">
-            <section className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-5 sm:p-10 shadow-soft">
-              <div className="mx-auto flex max-w-2xl flex-col items-center text-center">
-                <div
-                  className="grid h-16 w-16 place-items-center rounded-2xl text-white shadow-md"
-                  style={{ background: EV_GREEN }}
-                >
-                  <Plus className="h-8 w-8" />
-                </div>
-                <h2 className="mt-5 text-[26px] font-black tracking-tight text-faith-ink">
-                  Start your first teaching
-                </h2>
-                <p className="mt-2 max-w-xl text-[14px] leading-6 text-[var(--fh-slate)]">
-                  Create and manage your teachings from here.
-                </p>
-                <button
-                  type="button"
-                  aria-label={primaryCtaLabel}
-                  onClick={handlePrimaryCta}
-                  className={`ds-btn ds-btn--primary mt-6 inline-flex h-12 w-full items-center justify-center gap-2 rounded-2xl px-7 text-[14px] font-extrabold text-white sm:w-auto ${cardFocusRingClass}`}
-                  style={{ background: "linear-gradient(90deg, var(--fh-brand) 0%, var(--fh-brand-dark) 100%)", boxShadow: "0 14px 28px -16px color-mix(in srgb, var(--fh-brand) 72%, transparent)" }}
-                >
-                  <Plus className="h-4 w-4" />
-                  Create your first teaching
-                </button>
-                <p className="mt-3 text-[12px] font-medium text-[var(--fh-slate)]">Start now, then refine content in the workflow board.</p>
-              </div>
-            </section>
+      <ProviderPageScaffold
+        icon={<BookOpen className="h-6 w-6" />}
+        title="Teachings Workflow"
+        subtitle="Create your first teaching and start building your publishing flow."
+        tags={
+          <>
+            <Pill tone="good">Standalone-first</Pill>
+            <Pill tone="navy">Series-aware</Pill>
+            <Pill tone="orange">Live-linked</Pill>
+          </>
+        }
+      >
+        <section className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-5 sm:p-10 shadow-soft">
+          <div className="mx-auto flex max-w-2xl flex-col items-center text-center">
+            <div
+              className="grid h-16 w-16 place-items-center rounded-2xl text-white shadow-md"
+              style={{ background: EV_GREEN }}
+            >
+              <Plus className="h-8 w-8" />
+            </div>
+            <h2 className="mt-5 text-[26px] font-black tracking-tight text-faith-ink">
+              Start your first teaching
+            </h2>
+            <p className="mt-2 max-w-xl text-[14px] leading-6 text-[var(--fh-slate)]">
+              Create and manage your teachings from here.
+            </p>
+            <button
+              type="button"
+              aria-label={primaryCtaLabel}
+              onClick={handlePrimaryCta}
+              className={`ds-btn ds-btn--primary mt-6 inline-flex h-12 w-full items-center justify-center gap-2 rounded-2xl px-7 text-[14px] font-extrabold text-white sm:w-auto ${cardFocusRingClass}`}
+              style={{ background: "linear-gradient(90deg, var(--fh-brand) 0%, var(--fh-brand-dark) 100%)", boxShadow: "0 14px 28px -16px color-mix(in srgb, var(--fh-brand) 72%, transparent)" }}
+            >
+              <Plus className="h-4 w-4" />
+              Create your first teaching
+            </button>
+            <p className="mt-3 text-[12px] font-medium text-[var(--fh-slate)]">Start now, then refine content in the workflow board.</p>
           </div>
-        </div>
-      </div>
+        </section>
+      </ProviderPageScaffold>
     );
   }
 
