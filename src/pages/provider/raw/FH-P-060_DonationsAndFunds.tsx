@@ -582,7 +582,7 @@ function Modal({
       <div className="relative flex h-[92dvh] w-full max-w-6xl flex-col overflow-hidden rounded-t-3xl bg-[var(--fh-surface-bg)] shadow-medium ring-1 ring-slate-200 transition dark:bg-slate-900 dark:ring-slate-800 sm:h-auto sm:max-h-[90dvh] sm:rounded-[14px]">
         <div className="flex items-start justify-between gap-3 border-b border-faith-line px-5 py-4 dark:border-slate-800">
           <div className="min-w-0">
-            <div className="truncate text-base font-semibold text-faith-ink dark:text-slate-50">{title}</div>
+            <div className="text-base font-semibold text-faith-ink dark:text-slate-50 whitespace-normal break-words [overflow-wrap:anywhere]">{title}</div>
             {subtitle ? <div className="mt-1 text-xs text-faith-slate">{subtitle}</div> : null}
           </div>
           <button
@@ -665,7 +665,7 @@ function RegistryRow({
     >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
-          <div className="truncate text-sm font-bold text-faith-ink dark:text-slate-50">{record.title}</div>
+          <div className="text-sm font-bold text-faith-ink dark:text-slate-50 whitespace-normal break-words [overflow-wrap:anywhere]">{record.title}</div>
           <div className="mt-1 text-xs text-faith-slate line-clamp-2">{record.subtitle}</div>
         </div>
         <div className="shrink-0 rounded-full px-2 py-1 text-[10px] font-bold text-white" style={{ background: color }}>
@@ -719,7 +719,7 @@ function BrowserPreview({
           faithhub.app/give/{record.id}
         </div>
       </div>
-      <div className="grid gap-0 md:grid-cols-[1.15fr_0.85fr]">
+      <div className="grid gap-0 md:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
         <div className="relative min-h-[360px] overflow-hidden bg-slate-950 text-white">
           <img src={record.heroImageUrl} alt={record.title} className="absolute inset-0 h-full w-full object-cover opacity-60" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-slate-900/10" />

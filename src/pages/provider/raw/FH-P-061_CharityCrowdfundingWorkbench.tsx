@@ -1254,7 +1254,7 @@ function RegistryRow({
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-2">
-            <div className="truncate text-sm font-bold text-faith-ink dark:text-slate-50">{record.title}</div>
+            <div className="text-sm font-bold text-faith-ink dark:text-slate-50 whitespace-normal break-words [overflow-wrap:anywhere]">{record.title}</div>
             <Pill tone={toneForLifecycle(record.lifecycle)}>{record.lifecycle}</Pill>
           </div>
           <div className="mt-1 text-xs text-faith-slate line-clamp-2">{record.subtitle}</div>
@@ -1312,7 +1312,7 @@ function BrowserPreview({ record }: { record: CrowdfundRecord }) {
         <span className="h-3 w-3 rounded-full bg-emerald-400" />
         <div className="ml-2 text-xs font-semibold text-faith-slate">workspace.org/care/crowdfund/{record.id}</div>
       </div>
-      <div className="grid gap-0 lg:grid-cols-[1.25fr_0.75fr]">
+      <div className="grid gap-0 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)]">
         <div>
           <div className="relative aspect-[16/8.5] overflow-hidden">
             <img src={record.heroImageUrl} alt={record.title} className="h-full w-full object-cover" />
@@ -1414,7 +1414,7 @@ function PhonePreview({ record }: { record: CrowdfundRecord }) {
         <div className="overflow-hidden rounded-[30px] bg-[var(--fh-surface-bg)] dark:bg-slate-950">
           <div className="sticky top-0 z-10 flex items-center justify-between border-b border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)]/95 dark:bg-slate-950/95 px-4 py-3 backdrop-blur">
             <div className="min-w-0">
-              <div className="truncate text-sm font-bold text-faith-ink dark:text-slate-50">{record.title}</div>
+              <div className="text-sm font-bold text-faith-ink dark:text-slate-50 whitespace-normal break-words [overflow-wrap:anywhere]">{record.title}</div>
               <div className="text-[11px] text-faith-slate">Crowdfund</div>
             </div>
             <div className="rounded-2xl bg-slate-100 dark:bg-slate-800 px-2.5 py-1 text-[10px] font-bold text-slate-700 dark:text-slate-300">{record.category}</div>

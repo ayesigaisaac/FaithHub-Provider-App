@@ -929,7 +929,7 @@ export default function WalletAndPayoutsPage() {
     <div className="min-h-full bg-[var(--fh-page-bg)] text-faith-ink">
       <div className="mx-auto max-w-[1600px] p-4 md:p-6 space-y-4">
         <div className="rounded-[32px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 md:p-5 shadow-soft">
-          <div className="grid gap-4 xl:grid-cols-[1.45fr_0.75fr]">
+          <div className="grid gap-4 2xl:grid-cols-[minmax(0,1.45fr)_minmax(0,0.75fr)]">
             <div>
               <ProviderPageTitle
                 icon={<Wallet className="h-6 w-6" />}
@@ -1022,7 +1022,7 @@ export default function WalletAndPayoutsPage() {
               ))}
             </div>
           </div>
-          <div className="mt-4 grid gap-3 lg:grid-cols-[1fr_180px]">
+          <div className="mt-4 grid gap-3 lg:grid-cols-[minmax(0,1fr)_180px]">
             <div className="rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 py-3 flex items-center gap-3">
               <Search className="h-4 w-4 text-faith-slate" />
               <input
@@ -1038,7 +1038,7 @@ export default function WalletAndPayoutsPage() {
           </div>
         </div>
 
-        <div className="grid gap-4 xl:grid-cols-[1.25fr_1.05fr_0.95fr]">
+        <div className="grid gap-4 2xl:grid-cols-[minmax(0,1.25fr)_minmax(0,1.05fr)_minmax(0,0.95fr)]">
           <Card
             title="Wallet command center"
             subtitle="Premium visibility into cleared balances, protected campaign money, reserve logic, and immediate payout availability."
@@ -1250,8 +1250,8 @@ export default function WalletAndPayoutsPage() {
                           {tx.category === "Credit" ? <ArrowDownLeft className="h-4 w-4" /> : tx.category === "Payout" ? <ArrowUpRight className="h-4 w-4" /> : tx.category === "Refund" ? <RefreshCcw className="h-4 w-4" /> : tx.category === "Fee" ? <CreditCard className="h-4 w-4" /> : <AlertTriangle className="h-4 w-4" />}
                         </div>
                         <div className="min-w-0">
-                          <div className="text-[13px] font-semibold text-faith-ink truncate">{tx.title}</div>
-                          <div className="text-[11px] text-faith-slate truncate">{tx.source} · {tx.reference} · {tx.campus}</div>
+                          <div className="text-[13px] font-semibold text-faith-ink whitespace-normal break-words [overflow-wrap:anywhere]">{tx.title}</div>
+                          <div className="text-[11px] text-faith-slate whitespace-normal break-words [overflow-wrap:anywhere]">{tx.source} · {tx.reference} · {tx.campus}</div>
                         </div>
                       </div>
                       <div className="mt-2 text-[11px] leading-5 text-faith-slate line-clamp-2">{tx.note}</div>
