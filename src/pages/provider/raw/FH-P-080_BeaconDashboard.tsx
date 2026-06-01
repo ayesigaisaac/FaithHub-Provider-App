@@ -687,7 +687,7 @@ function Pill({
     <span
       title={title}
       className={cx(
-        "inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[10px] sm:text-xs font-semibold ring-1 whitespace-nowrap",
+        "inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[10px] sm:text-xs font-semibold ring-1 whitespace-normal break-words [overflow-wrap:anywhere]",
         cls,
       )}
     >
@@ -732,6 +732,7 @@ function Btn({
 
   return (
     <button
+      type="button"
       title={title}
       onClick={disabled ? undefined : onClick}
       disabled={disabled}
@@ -963,7 +964,7 @@ function PhonePreview({ campaign }: { campaign: BeaconCampaign }) {
   return (
     <div className="mx-auto w-full max-w-[310px] md:max-w-[360px] rounded-[34px] bg-slate-950 p-3 shadow-[0_18px_60px_rgba(0,0,0,0.35)] transition-colors">
       <div className="overflow-hidden rounded-[28px] bg-[var(--fh-surface-bg)] dark:bg-slate-950 transition-colors">
-        <div className="h-[560px] overflow-hidden">
+        <div className="min-h-[560px] overflow-hidden">
           <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 px-3 py-3">
             <div className="text-[13px] font-extrabold text-faith-ink dark:text-slate-100 whitespace-normal break-words [overflow-wrap:anywhere]">Beacon feed preview</div>
             <div className="rounded-full bg-slate-100 dark:bg-slate-800 px-2 py-1 text-[10px] font-extrabold text-slate-700 dark:text-slate-300">{campaign.mode}</div>
@@ -981,8 +982,8 @@ function PhonePreview({ campaign }: { campaign: BeaconCampaign }) {
                   <span className="rounded-full bg-black/40 px-2 py-1 text-[10px] font-black text-white backdrop-blur">{campaign.sourceType}</span>
                 </div>
                 <div className="absolute inset-x-0 bottom-0 p-3 text-white">
-                  <div className="line-clamp-2 text-[17px] font-black leading-tight">{campaign.title}</div>
-                  <div className="mt-1 line-clamp-2 text-[12px] text-white/80">{campaign.subtitle}</div>
+                  <div className="text-[17px] font-black leading-tight whitespace-normal break-words [overflow-wrap:anywhere]">{campaign.title}</div>
+                  <div className="mt-1 text-[12px] text-white/80 whitespace-normal break-words [overflow-wrap:anywhere]">{campaign.subtitle}</div>
                 </div>
               </div>
 
@@ -1088,10 +1089,10 @@ function CampaignRow({
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <div className="text-sm font-bold text-faith-ink dark:text-slate-50 whitespace-normal break-words [overflow-wrap:anywhere]">{campaign.title}</div>
-          <div className="mt-1 text-xs text-faith-slate line-clamp-2">{campaign.subtitle}</div>
+          <div className="mt-1 text-xs text-faith-slate whitespace-normal break-words [overflow-wrap:anywhere]">{campaign.subtitle}</div>
         </div>
         <div
-          className="shrink-0 rounded-full px-2 py-1 text-[10px] font-bold text-white"
+          className="max-w-[10rem] shrink rounded-full px-2 py-1 text-[10px] font-bold text-white whitespace-normal break-words [overflow-wrap:anywhere]"
           style={{ background: accentColor(campaign.accent) }}
         >
           {campaign.sourceType}
@@ -1130,7 +1131,7 @@ function CampaignRow({
         </div>
       </div>
       <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
-        <div className="text-[11px] text-faith-slate">{campaign.lastUpdatedLabel} · From {campaign.createdFrom}</div>
+        <div className="min-w-0 text-[11px] text-faith-slate whitespace-normal break-words [overflow-wrap:anywhere]">{campaign.lastUpdatedLabel} • From {campaign.createdFrom}</div>
         <div className="flex items-center gap-2">
           <Btn tone="ghost" onClick={onDuplicate} left={<Copy className="h-4 w-4" />}>
             Duplicate
@@ -1338,7 +1339,7 @@ export default function BeaconDashboardPage() {
                 right={<Pill tone="good">{portfolio.activeCount} active-like campaigns</Pill>}
               />
 
-              <div className="mt-4 grid grid-cols-2 gap-3 xl:grid-cols-4">
+              <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4">
                 <MetricCard label="Total spend" value={fmtCurrency(portfolio.spend)} hint={`Budget ${fmtCurrency(portfolio.budget)}`} tone="green" />
                 <MetricCard label="Reach" value={fmtInt(portfolio.reach)} hint={`Avg CTR ${fmtPct(portfolio.avgCtr)}`} tone="orange" />
                 <MetricCard label="Watch starts" value={fmtInt(portfolio.watchStarts)} hint="Replay and live attendance signals" tone="navy" />
@@ -1667,7 +1668,7 @@ export default function BeaconDashboardPage() {
 
                 <div className="mt-4">
                   {previewMode === "desktop" ? (
-                    <div className="scale-[0.72] origin-top-left w-[138%] -mb-24">
+                    <div className="w-full min-w-0">
                       <BrowserPreview campaign={selectedCampaign} />
                     </div>
                   ) : (
@@ -1722,8 +1723,8 @@ export default function BeaconDashboardPage() {
                       <Pill key={surface} tone="neutral">{surface}</Pill>
                     ))}
                   </div>
-                  <div className="mt-3 text-xs text-faith-slate">Top audiences: {selectedCampaign.audienceLeads.join(" · ")}</div>
-                  <div className="mt-2 text-xs text-faith-slate">Languages: {selectedCampaign.languageMix.join(" · ")}</div>
+                  <div className="mt-3 text-xs text-faith-slate whitespace-normal break-words [overflow-wrap:anywhere]">Top audiences: {selectedCampaign.audienceLeads.join(" • ")}</div>
+                  <div className="mt-2 text-xs text-faith-slate whitespace-normal break-words [overflow-wrap:anywhere]">Languages: {selectedCampaign.languageMix.join(" • ")}</div>
                   <div className="mt-3 flex items-center gap-2">
                     <Btn tone="neutral" onClick={copySummary} left={<Copy className="h-4 w-4" />}>
                       Copy summary
@@ -1742,8 +1743,8 @@ export default function BeaconDashboardPage() {
       <Modal
         open={previewOpen}
         onClose={() => setPreviewOpen(false)}
-        title={`${selectedCampaign.title} · Full preview`}
-        subtitle="Preview how the selected Beacon campaign appears across premium Promotiontion surfaces."
+        title={`${selectedCampaign.title} • Full preview`}
+        subtitle="Preview how the selected Beacon campaign appears across premium promotion surfaces."
       >
         <div className="grid grid-cols-1 gap-6 2xl:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
           <div className="space-y-4">
