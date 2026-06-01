@@ -37,17 +37,17 @@ export function CompactStatsGroup({
         className,
       )}
     >
-      <div className="flex items-start justify-between gap-3">
+      <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="min-w-0">
-          <p className="truncate text-[11px] font-semibold uppercase tracking-[0.12em] text-faith-slate">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-faith-slate whitespace-normal break-words [overflow-wrap:anywhere]">
             {primaryLabel}
           </p>
-          <p className="mt-1 whitespace-nowrap text-[clamp(1.35rem,2.5vw,1.9rem)] font-black leading-none tracking-[-0.02em] text-faith-ink dark:text-slate-100">
+          <p className="mt-1 text-[clamp(1.2rem,2.2vw,1.9rem)] font-black leading-tight tracking-[-0.02em] text-faith-ink dark:text-slate-100 whitespace-normal break-words [overflow-wrap:anywhere]">
             {primaryValue}
           </p>
         </div>
         {primaryMeta ? (
-          <p className="shrink-0 whitespace-nowrap rounded-full bg-slate-100 px-2.5 py-1 text-[11px] font-semibold text-slate-700 dark:bg-slate-800 dark:text-slate-300">
+          <p className="max-w-full rounded-full bg-slate-100 px-2.5 py-1 text-[11px] font-semibold text-slate-700 dark:bg-slate-800 dark:text-slate-300 whitespace-normal break-words [overflow-wrap:anywhere]">
             {primaryMeta}
           </p>
         ) : null}
@@ -56,8 +56,8 @@ export function CompactStatsGroup({
       <div className="mt-3 divide-y divide-faith-line/70 rounded-xl border border-faith-line/60 dark:divide-slate-800 dark:border-slate-800">
         {secondary.map((item) => (
           <div key={item.label} className="flex items-center justify-between gap-3 px-3 py-2.5">
-            <span className="min-w-0 truncate text-[12px] text-faith-slate">{item.label}</span>
-            <span className="shrink-0 whitespace-nowrap text-[15px] font-semibold tabular-nums text-faith-ink dark:text-slate-100">
+            <span className="min-w-0 text-[12px] text-faith-slate whitespace-normal break-words [overflow-wrap:anywhere]">{item.label}</span>
+            <span className="text-right text-[15px] font-semibold tabular-nums text-faith-ink dark:text-slate-100 whitespace-normal break-words [overflow-wrap:anywhere]">
               {item.value}
             </span>
           </div>

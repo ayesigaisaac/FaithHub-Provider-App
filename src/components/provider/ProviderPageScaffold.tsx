@@ -39,10 +39,9 @@ export function ProviderPageScaffold({
             {pulse}
           </section>
         ) : null}
-        {stats ? <section className="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-4">{stats}</section> : null}
-        <section className="mt-4 space-y-4">{children}</section>
+        {stats ? <section className="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-4 [&>*]:min-w-0">{stats}</section> : null}
+        <section className="mt-4 min-w-0 space-y-4">{children}</section>
       </div>
     </div>
   );
 }
-
