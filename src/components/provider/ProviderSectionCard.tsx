@@ -24,7 +24,7 @@ export function ProviderSectionCard({
 
   return (
     <ProviderSurfaceCard
-      title={<TitleTag className="text-[15px] font-bold tracking-tight text-faith-ink sm:text-base">{title}</TitleTag>}
+      title={<TitleTag className="text-[15px] font-extrabold tracking-tight text-faith-ink sm:text-base">{title}</TitleTag>}
       subtitle={subtitle ? <p className="text-[12px] leading-5 text-faith-slate sm:text-[13px]">{subtitle}</p> : undefined}
       right={right}
       className={className}

@@ -25,10 +25,10 @@ export function ProviderPageTitle({
         {icon}
       </div>
       <div className="min-w-0">
-        <h1 className="font-sans text-2xl font-extrabold leading-[1.04] tracking-[-0.03em] text-faith-ink sm:text-3xl lg:text-[var(--fh-font-size-3xl)]">
+        <h1 className="font-sans text-[clamp(2rem,1.7rem+1.1vw,3.35rem)] font-extrabold leading-[1.02] tracking-[-0.03em] text-faith-ink">
           {title}
         </h1>
-        <p className="mt-1 font-sans text-[13px] leading-6 text-faith-slate sm:mt-1.5 sm:text-sm">{subtitle}</p>
+        <p className="mt-1.5 max-w-[80ch] font-sans text-[13px] leading-7 text-faith-slate sm:text-[15px]">{subtitle}</p>
       </div>
     </div>
   );

@@ -32,7 +32,7 @@ export function ProviderSurfaceCard({
   return (
     <div
       className={cx(
-        "fh-uplift-surface rounded-[28px] p-4 shadow-soft transition-colors dark:border-slate-800 dark:bg-slate-900 sm:p-5 lg:p-6",
+        "fh-uplift-surface rounded-[28px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 shadow-soft transition-colors dark:border-slate-800 dark:bg-slate-900 sm:p-5 lg:p-6",
         className,
       )}
     >

@@ -259,6 +259,51 @@ video {
   background-clip: padding-box;
 }
 
+/* Global provider raw page layout normalization:
+   keeps page information intact while aligning shell rhythm across pages. */
+.provider-shell-surface > :is(div, main)[class*='min-h-full'],
+.provider-shell-surface > :is(div, main)[class*='min-h-screen'] {
+  min-height: 100%;
+  width: 100%;
+  background: var(--fh-page-bg) !important;
+  color: var(--fh-ink) !important;
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.75rem !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.provider-shell-surface > :is(div, main)[class*='min-h-full'] > :is(div, main):first-child,
+.provider-shell-surface > :is(div, main)[class*='min-h-screen'] > :is(div, main):first-child {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 1600px;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
+
+@media (min-width: 768px) {
+  .provider-shell-surface > :is(div, main)[class*='min-h-full'],
+  .provider-shell-surface > :is(div, main)[class*='min-h-screen'] {
+    padding-top: 0.75rem !important;
+    padding-bottom: 1rem !important;
+  }
+
+  .provider-shell-surface > :is(div, main)[class*='min-h-full'] > :is(div, main):first-child,
+  .provider-shell-surface > :is(div, main)[class*='min-h-screen'] > :is(div, main):first-child {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .provider-shell-surface > :is(div, main)[class*='min-h-full'] > :is(div, main):first-child,
+  .provider-shell-surface > :is(div, main)[class*='min-h-screen'] > :is(div, main):first-child {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+}
+
 .ds-card {
   border-radius: var(--fh-radius-2xl);
   border: 1px solid color-mix(in srgb, var(--fh-line) 60%, transparent);
