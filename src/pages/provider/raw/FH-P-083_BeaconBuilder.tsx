@@ -728,7 +728,7 @@ function Pill({
     <span
       title={title}
       className={cx(
-        "inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[10px] sm:text-[11px] font-bold ring-1 whitespace-nowrap transition",
+        "inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[10px] sm:text-[11px] font-bold ring-1 whitespace-normal break-words [overflow-wrap:anywhere] transition",
         cls,
       )}
     >
@@ -1259,7 +1259,7 @@ function BeaconPreviewCard({
 
               {showQuote ? (
                 <div className="absolute inset-x-0 bottom-0 p-4 text-white">
-                  <div className="max-w-[85%] text-lg font-black leading-tight drop-shadow">
+                  <div className="max-w-[85%] text-lg font-black leading-tight drop-shadow whitespace-normal break-words [overflow-wrap:anywhere]">
                     -{builder.quoteText || "The next faithful move may be the one you almost postponed."}-
                   </div>
                 </div>
@@ -1288,7 +1288,7 @@ function BeaconPreviewCard({
                   {(builder.carouselCards.length ? builder.carouselCards : ["Message hook", "Impact proof", "Final CTA"]).slice(0, 3).map((card, idx) => (
                     <div key={`${card}_${idx}`} className="rounded-2xl p-2 ring-1 ring-slate-200 dark:ring-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900">
                       <div className="aspect-square rounded-xl" style={{ background: `${idx % 2 === 0 ? EV_GREEN : EV_ORANGE}22` }} />
-                      <div className="mt-2 text-xs font-bold line-clamp-2">{card || `Card ${idx + 1}`}</div>
+                      <div className="mt-2 text-xs font-bold whitespace-normal break-words [overflow-wrap:anywhere]">{card || `Card ${idx + 1}`}</div>
                     </div>
                   ))}
                 </div>
@@ -1304,8 +1304,8 @@ function BeaconPreviewCard({
               </div>
 
               <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-faith-slate">
-                <Pill>{builder.languages.join(" - ") || "English"}</Pill>
-                <Pill>{builder.regions.slice(0, 2).join(" - ") || "Uganda"}</Pill>
+                <Pill>{builder.languages.join(" • ") || "English"}</Pill>
+                <Pill>{builder.regions.slice(0, 2).join(" • ") || "Uganda"}</Pill>
                 <Pill tone={builder.ageRule === "Child-safe" ? "good" : builder.ageRule === "Youth-safe" ? "warn" : "neutral"}>{builder.ageRule}</Pill>
               </div>
             </div>
@@ -1876,7 +1876,7 @@ export default function BeaconBuilderPage({
                                 <div className="text-sm font-black text-faith-ink dark:text-slate-100">{src.title}</div>
                                 <Pill>{src.kind}</Pill>
                               </div>
-                              <div className="mt-1 text-xs text-faith-slate line-clamp-2">{src.subtitle}</div>
+                              <div className="mt-1 text-xs text-faith-slate whitespace-normal break-words [overflow-wrap:anywhere]">{src.subtitle}</div>
                               <div className="mt-2 flex flex-wrap items-center gap-2 text-xs text-faith-slate">
                                 <Pill>{src.status}</Pill>
                                 <Pill>{src.owner}</Pill>

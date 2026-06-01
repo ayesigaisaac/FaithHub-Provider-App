@@ -1349,7 +1349,7 @@ function PreviewSurface({
       <div
         className={cx(
           "overflow-hidden rounded-[24px] bg-[var(--fh-surface-bg)] dark:bg-slate-900 ring-1 ring-white/10",
-          isMobile ? "h-[420px]" : "h-[282px]",
+          isMobile ? "min-h-[420px]" : "min-h-[282px]",
         )}
       >
         <div className="flex items-center justify-between bg-[var(--fh-surface-bg)]/95 dark:bg-slate-900/95 px-3 py-2 shadow-soft">
@@ -1368,7 +1368,7 @@ function PreviewSurface({
             <img
               src={campaign.heroImageUrl}
               alt={campaign.title}
-              className={cx("w-full object-cover", isMobile ? "h-[190px]" : "h-[150px]")}
+              className={cx("w-full object-cover", isMobile ? "min-h-[190px]" : "min-h-[150px]")}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
             <div className="absolute left-3 top-3 flex flex-wrap items-center gap-2">
@@ -1383,10 +1383,10 @@ function PreviewSurface({
               </span>
             </div>
             <div className="absolute left-3 bottom-3 right-3">
-              <div className="line-clamp-2 text-lg font-extrabold">
+              <div className="text-lg font-extrabold whitespace-normal break-words [overflow-wrap:anywhere]">
                 {campaign.title}
               </div>
-              <div className="mt-1 line-clamp-2 text-[12px] text-white/85">
+              <div className="mt-1 text-[12px] text-white/85 whitespace-normal break-words [overflow-wrap:anywhere]">
                 {campaign.subtitle}
               </div>
             </div>
@@ -1408,13 +1408,15 @@ function PreviewSurface({
           </div>
 
           <div className="mt-3 flex gap-2">
-            <button
-              className="inline-flex flex-1 items-center justify-center rounded-2xl px-3 py-2 text-[12px] font-extrabold text-white"
-              style={{ background: EV_GREEN }}
-              onClick={() => safeNav("/faithhub/provider/beacon-dashboard")}>
+              <button
+                type="button"
+                className="inline-flex flex-1 items-center justify-center rounded-2xl px-3 py-2 text-[12px] font-extrabold text-white"
+                style={{ background: EV_GREEN }}
+                onClick={() => safeNav("/faithhub/provider/beacon-dashboard")}>
               Open preview
             </button>
             <button
+              type="button"
               className="inline-flex flex-1 items-center justify-center rounded-2xl px-3 py-2 text-[12px] font-extrabold text-white"
               style={{ background: EV_ORANGE }}
               onClick={() => safeNav("/faithhub/provider/beacon-dashboard")}>
@@ -1562,7 +1564,7 @@ function CampaignRow({
             <button
               type="button"
               onClick={onSelect}
-              className="truncate text-left text-[14px] font-bold text-faith-ink dark:text-slate-50"
+              className="text-left text-[14px] font-bold text-faith-ink dark:text-slate-50 whitespace-normal break-words [overflow-wrap:anywhere]"
             >
               {campaign.title}
             </button>
@@ -1570,7 +1572,7 @@ function CampaignRow({
             <Pill text={campaign.mode} />
           </div>
 
-          <div className="mt-1 line-clamp-2 text-[12px] text-faith-slate">
+          <div className="mt-1 text-[12px] text-faith-slate whitespace-normal break-words [overflow-wrap:anywhere]">
             {campaign.subtitle}
           </div>
 
