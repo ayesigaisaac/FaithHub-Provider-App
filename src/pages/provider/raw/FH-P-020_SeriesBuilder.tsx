@@ -909,6 +909,8 @@ export default function SeriesBuilderPage() {
   const [seriesSearch, setSeriesSearch] = useState("");
   const [toast, setToast] = useState<string | null>(null);
   const [seriesRecordId, setSeriesRecordId] = useState<string | undefined>(undefined);
+  const [isSavingDraft, setIsSavingDraft] = useState(false);
+  const [isPublishingSeries, setIsPublishingSeries] = useState(false);
   const [formErrors, setFormErrors] = useState<string[]>([]);
   const [identityTouched, setIdentityTouched] = useState<Record<"title" | "subtitle" | "description", boolean>>({
     title: false,
@@ -1091,6 +1093,8 @@ export default function SeriesBuilderPage() {
   };
 
   const saveCurrentSeriesDraft = () => {
+    if (isSavingDraft) return;
+    setIsSavingDraft(true);
     const errors = validateSeriesDraft({
       title: draft.title,
       subtitle: draft.subtitle,
@@ -1101,6 +1105,7 @@ export default function SeriesBuilderPage() {
     if (errors.length > 0) {
       setFormErrors(errors);
       setToast("Series draft has validation issues.");
+      setIsSavingDraft(false);
       return;
     }
 
@@ -1117,9 +1122,12 @@ export default function SeriesBuilderPage() {
     setSeriesRecordId(saved.id);
     setFormErrors([]);
     setToast("Series draft saved and synced to Teachings Dashboard.");
+    setIsSavingDraft(false);
   };
 
   const publishCurrentSeries = () => {
+    if (isPublishingSeries) return;
+    setIsPublishingSeries(true);
     const errors = validateSeriesDraft({
       title: draft.title,
       subtitle: draft.subtitle,
@@ -1130,6 +1138,7 @@ export default function SeriesBuilderPage() {
     if (errors.length > 0) {
       setFormErrors(errors);
       setToast("Resolve validation issues before publishing.");
+      setIsPublishingSeries(false);
       return;
     }
 
@@ -1147,6 +1156,24 @@ export default function SeriesBuilderPage() {
     setFormErrors([]);
     setDraft((current) => ({ ...current, launchState: "Published" }));
     setToast("Series published and synced to Teachings Dashboard.");
+    setIsPublishingSeries(false);
+  };
+
+  const duplicateCurrentSeriesDraft = () => {
+    setDraft((current) => ({
+      ...current,
+      title: current.title.includes("(Copy)") ? current.title : `${current.title} (Copy)`,
+      launchState: "Draft",
+    }));
+    setSeriesRecordId(undefined);
+    setFormErrors([]);
+    setToast("Series draft duplicated.");
+  };
+
+  const openSeriesPreview = () => {
+    setStep("readiness");
+    document.getElementById("series-preview-panel")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    setToast("Series preview focused.");
   };
 
   const activeTemplate = SERIES_TEMPLATES.find((template) => template.id === draft.templateId) || SERIES_TEMPLATES[0];
@@ -2003,11 +2030,13 @@ export default function SeriesBuilderPage() {
             </div>
 
             <div className="flex flex-wrap items-center gap-2 lg:justify-end">
-              <SoftButton onClick={() => setToast("Series draft copied.")}> <Copy className="h-4 w-4" /> Duplicate draft</SoftButton>
-              <SoftButton onClick={() => setToast("Series preview opened.")}> <Eye className="h-4 w-4" /> Preview series</SoftButton>
-              <SoftButton onClick={saveCurrentSeriesDraft}>Save series draft</SoftButton>
+              <SoftButton onClick={duplicateCurrentSeriesDraft}> <Copy className="h-4 w-4" /> Duplicate draft</SoftButton>
+              <SoftButton onClick={openSeriesPreview}> <Eye className="h-4 w-4" /> Preview series</SoftButton>
+              <SoftButton onClick={saveCurrentSeriesDraft} disabled={isSavingDraft}>{isSavingDraft ? "Saving..." : "Save series draft"}</SoftButton>
               <PrimaryButton color="orange" onClick={addEpisode}><Plus className="h-4 w-4" /> Add episode</PrimaryButton>
-              <PrimaryButton onClick={publishCurrentSeries}><Zap className="h-4 w-4" /> Publish series</PrimaryButton>
+              <PrimaryButton onClick={publishCurrentSeries} disabled={isPublishingSeries || formErrors.length > 0} title={formErrors.length > 0 ? "Resolve validation issues first" : undefined}>
+                <Zap className="h-4 w-4" /> {isPublishingSeries ? "Publishing..." : "Publish series"}
+              </PrimaryButton>
             </div>
           </div>
         </div>
@@ -2030,7 +2059,7 @@ export default function SeriesBuilderPage() {
 
           <div className="space-y-4">{centerContent}</div>
 
-          <div className="hidden 2xl:block 2xl:sticky 2xl:top-6 2xl:self-start">
+          <div id="series-preview-panel" className="hidden 2xl:block 2xl:sticky 2xl:top-6 2xl:self-start">
             <div className="rounded-[30px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3 sm:p-4 shadow-soft">
               <div className="flex items-center justify-between gap-3">
                 <div>

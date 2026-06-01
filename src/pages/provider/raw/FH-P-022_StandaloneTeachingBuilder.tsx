@@ -906,6 +906,8 @@ export default function StandaloneTeachingBuilderPage() {
   const [speakerSearch, setSpeakerSearch] = useState("");
   const [toast, setToast] = useState<string | null>(null);
   const [draft, setDraft] = useState<TeachingDraft>(DEFAULT_DRAFT);
+  const [isSavingDraft, setIsSavingDraft] = useState(false);
+  const [isPublishing, setIsPublishing] = useState(false);
 
   useEffect(() => {
     if (!toast) return;
@@ -971,6 +973,40 @@ export default function StandaloneTeachingBuilderPage() {
       ],
     }));
     setToast("Content asset added.");
+  };
+
+  const openLiveSessionPath = () => {
+    setDraft((current) => ({
+      ...current,
+      liveEnabled: true,
+      linkedLiveState: current.linkedLiveState === "Not created" ? "Draft" : current.linkedLiveState,
+    }));
+    setStep("live");
+    safeNav(ROUTES.liveBuilder);
+  };
+
+  const saveTeachingDraft = () => {
+    if (isSavingDraft) return;
+    setIsSavingDraft(true);
+    setDraft((current) => ({
+      ...current,
+      linkedLiveState: current.liveEnabled && current.linkedLiveState === "Not created" ? "Draft" : current.linkedLiveState,
+    }));
+    setToast("Standalone teaching draft saved.");
+    setIsSavingDraft(false);
+  };
+
+  const publishTeaching = () => {
+    if (isPublishing) return;
+    if (readiness.score < 70) {
+      setToast("Complete the readiness checks before publishing.");
+      return;
+    }
+    setIsPublishing(true);
+    setDraft((current) => ({ ...current, linkedLiveState: current.liveEnabled ? "Scheduled" : current.linkedLiveState }));
+    setToast("Teaching published and handed off to post-live publishing.");
+    safeNav(ROUTES.postLivePublishing);
+    setIsPublishing(false);
   };
 
   const centerContent = useMemo(() => {
@@ -1193,7 +1229,7 @@ export default function StandaloneTeachingBuilderPage() {
                   />
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  <PrimaryButton color="orange" onClick={() => setToast("Linked Live Session prepared for handoff.")}> 
+                  <PrimaryButton color="orange" onClick={openLiveSessionPath}> 
                     <Video className="h-4 w-4" /> Create live session
                   </PrimaryButton>
                   <SoftButton onClick={() => safeNav(ROUTES.liveBuilder)}>
@@ -1339,7 +1375,7 @@ export default function StandaloneTeachingBuilderPage() {
               eyebrow="Live Sessions linkage"
               title="Launch a standalone teaching into the live workflow"
               subtitle="Schedule, operate, publish, clip, and review the message while keeping the teaching independent."
-              right={<PrimaryButton color="orange" onClick={() => setToast("Live session launcher opened.")}>Create live session</PrimaryButton>}
+              right={<PrimaryButton color="orange" onClick={openLiveSessionPath}>Create live session</PrimaryButton>}
             />
             <div className="mt-4 grid gap-4 lg:grid-cols-[1fr_0.95fr]">
               <div className="rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface)] p-4">
@@ -1757,15 +1793,15 @@ export default function StandaloneTeachingBuilderPage() {
               </div>
             </div>
             <div className="flex flex-wrap items-center gap-3 xl:justify-end">
-              <SoftButton onClick={() => setToast("Standalone teaching draft saved.")}>Save teaching draft</SoftButton>
+              <SoftButton onClick={saveTeachingDraft} disabled={isSavingDraft}>{isSavingDraft ? "Saving..." : "Save teaching draft"}</SoftButton>
               <PrimaryButton color="orange" onClick={() => {
-                setDraft((current) => ({ ...current, liveEnabled: true, linkedLiveState: current.linkedLiveState === "Not created" ? "Draft" : current.linkedLiveState }));
-                setStep("live");
-                setToast("Live session path opened for this standalone teaching.");
+                openLiveSessionPath();
               }}>
                 Create live session
               </PrimaryButton>
-              <PrimaryButton color="green" onClick={() => setToast("Teaching marked ready to publish.")}>Publish teaching</PrimaryButton>
+              <PrimaryButton color="green" onClick={publishTeaching} disabled={isPublishing || readiness.score < 70} title={readiness.score < 70 ? "Complete readiness checks before publishing" : undefined}>
+                {isPublishing ? "Publishing..." : "Publish teaching"}
+              </PrimaryButton>
             </div>
           </div>
         </div>
