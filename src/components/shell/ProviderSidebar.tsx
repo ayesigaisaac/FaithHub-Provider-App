@@ -27,7 +27,7 @@ import GroupsRoundedIcon from '@mui/icons-material/GroupsRounded';
 import SupervisorAccountRoundedIcon from '@mui/icons-material/SupervisorAccountRounded';
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 import FolderRoundedIcon from '@mui/icons-material/FolderRounded';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, type UIEvent } from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { getProviderSidebarGroupsBySection, providerPages, providerSections } from '@/navigation/providerPages';
 import { providerCategoryBySection } from '@/navigation/providerCategories';
@@ -194,6 +194,13 @@ export function ProviderSidebar({
   const toggleSection = (section: string) => {
     setOpenSections((prev) => ({ ...prev, [section]: !prev[section] }));
   };
+  const handleSidebarScroll = (event: UIEvent<HTMLElement>) => {
+    if (showAllSections) return;
+    const target = event.currentTarget;
+    if (target.scrollTop >= 72) {
+      setShowAllSections(true);
+    }
+  };
 
   const content = (
     <Box
@@ -328,6 +335,7 @@ export function ProviderSidebar({
           ) : null}
 
           <List
+            onScroll={handleSidebarScroll}
             sx={{
               p: 1.35,
               flex: 1,
@@ -747,74 +755,6 @@ export function ProviderSidebar({
                 })}
               </Box>
             ))}
-            {secondarySections.length > 0 ? (
-              <Box sx={{ pt: 1 }}>
-                <Box
-                  sx={{
-                    mb: 0.9,
-                    height: 16,
-                    borderRadius: 999,
-                    background:
-                      'linear-gradient(180deg, color-mix(in srgb, var(--fh-surface-bg) 40%, transparent 60%) 0%, transparent 100%)',
-                    pointerEvents: 'none',
-                  }}
-                />
-                <ListItemButton
-                  onClick={() => setShowAllSections((prev) => !prev)}
-                  aria-label={showAllSections ? 'Hide advanced sections' : `Show advanced sections (${secondarySections.length})`}
-                  aria-expanded={showAllSections}
-                  sx={{
-                    px: 1.15,
-                    py: 0.8,
-                    minHeight: 44,
-                    borderRadius: '14px',
-                    border: '1px solid',
-                    borderColor: 'color-mix(in srgb, var(--fh-line) 74%, var(--fh-brand-soft) 26%)',
-                    bgcolor: 'color-mix(in srgb, var(--fh-surface) 72%, var(--fh-surface-bg) 28%)',
-                    transition: 'transform var(--fh-duration-base) var(--fh-ease-premium), background-color var(--fh-duration-fast) ease, border-color var(--fh-duration-fast) ease',
-                    '&:hover': {
-                      borderColor: 'color-mix(in srgb, var(--fh-brand-soft) 55%, var(--fh-line) 45%)',
-                      bgcolor: 'color-mix(in srgb, var(--fh-surface-bg) 82%, var(--fh-surface) 18%)',
-                      transform: 'translateY(-1px)',
-                    },
-                  }}
-                >
-                  <ListItemText
-                    primary={
-                      <Typography
-                        sx={{
-                          fontWeight: 800,
-                          fontSize: 12,
-                          color: 'var(--fh-ink)',
-                          lineHeight: 1.15,
-                        }}
-                      >
-                        {showAllSections ? 'Show fewer sections' : 'Show more sections'}
-                      </Typography>
-                    }
-                    secondary={
-                      <Typography
-                        sx={{
-                          mt: 0.3,
-                          fontWeight: 600,
-                          fontSize: 10.5,
-                          color: 'var(--fh-slate)',
-                          letterSpacing: '0.02em',
-                          lineHeight: 1.2,
-                        }}
-                      >
-                        {showAllSections ? 'Core + advanced sections visible' : `${secondarySections.length} advanced sections hidden`}
-                      </Typography>
-                    }
-                  />
-                  {showAllSections ? (
-                    <KeyboardArrowDownRoundedIcon sx={{ fontSize: 20, color: 'var(--fh-brand)' }} />
-                  ) : (
-                    <KeyboardArrowRightRoundedIcon sx={{ fontSize: 20, color: 'var(--fh-brand)' }} />
-                  )}
-                </ListItemButton>
-              </Box>
-            ) : null}
           </List>
         </Box>
       </Box>

@@ -716,6 +716,12 @@ const QUICK_ACTIONS: QuickCreateAction[] = [
   },
 ];
 
+const DASHBOARD_START_STEPS = [
+  "1. Continue your current teaching or create a new one.",
+  "2. Review items waiting for approval or moderation.",
+  "3. Publish and share to audience channels.",
+] as const;
+
 const LIVE_SESSIONS: LiveSessionRow[] = [
   {
     id: "ls-1",
@@ -1687,7 +1693,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                 <ProviderPageTitle
                   icon={<BookOpen className="h-6 w-6" />}
                   title="Teachings Workflow"
-                  subtitle="Pick up the next teaching action, clear blockers, and publish with confidence."
+                  subtitle="Follow the 3 steps below to move from draft to published teaching."
                   className="mt-2"
                 />
                 <div className="w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3 shadow-soft lg:max-w-[360px] lg:min-w-[320px]">
@@ -1726,6 +1732,45 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                 </div>
               </div>
               <div className="mt-6 rounded-2xl border border-faith-line/70/60 bg-[var(--fh-surface)] p-5 sm:p-5">
+                <div className="mb-4 rounded-xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3.5">
+                  <div className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--fh-slate)]">How This Page Works</div>
+                  <div className="mt-2 grid gap-2 sm:grid-cols-3">
+                    {DASHBOARD_START_STEPS.map((step) => (
+                      <div
+                        key={step}
+                        className="rounded-lg border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-2 text-[12px] font-semibold text-faith-ink"
+                      >
+                        {step}
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-3 grid gap-2 sm:grid-cols-3">
+                    <button
+                      type="button"
+                      aria-label="Open teachings board"
+                      onClick={() => safeNav(ROUTES.teachingsDashboard)}
+                      className={`ds-btn ds-btn--secondary h-10 w-full rounded-xl px-3 text-[12px] font-bold ${cardFocusRingClass}`}
+                    >
+                      Open teachings board
+                    </button>
+                    <button
+                      type="button"
+                      aria-label="Open review queue"
+                      onClick={() => safeNav(ROUTES.reviewsModeration)}
+                      className={`ds-btn ds-btn--outline h-10 w-full rounded-xl px-3 text-[12px] font-bold ${cardFocusRingClass}`}
+                    >
+                      Open review queue
+                    </button>
+                    <button
+                      type="button"
+                      aria-label="Open audience notifications"
+                      onClick={() => safeNav(ROUTES.audienceNotifications)}
+                      className={`ds-btn ds-btn--outline h-10 w-full rounded-xl px-3 text-[12px] font-bold ${cardFocusRingClass}`}
+                    >
+                      Open audience notifications
+                    </button>
+                  </div>
+                </div>
                 <div className="mb-2 text-[10px] font-black uppercase tracking-[0.18em] text-[var(--fh-slate)]">Next Actions</div>
                 <TeachingsQuickActionsBar
                   activeAction={activeQuickAction}
