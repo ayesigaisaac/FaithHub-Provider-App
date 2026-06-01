@@ -1,4 +1,4 @@
-// @ts-nocheck
+ï»¿// @ts-nocheck
 
 'use client';
 
@@ -32,7 +32,7 @@ import {
 } from 'lucide-react';
 
 /**
- * Provider · Reviews & Moderation
+ * Provider Â· Reviews & Moderation
  * ---------------------------------------
  * Premium trust-and-safety centre for Provider-side review response,
  * moderation case handling, risk pattern detection, and reputation recovery.
@@ -169,7 +169,7 @@ const reviewsSeed: ReviewRecord[] = [
   {
     id: 'RV-102',
     sourceType: 'Live Session',
-    sourceLabel: 'Sunday Encounter · Live Session',
+    sourceLabel: 'Sunday Encounter Â· Live Session',
     title: 'Audio dropped during the message',
     rating: 2,
     sentiment: 'Negative',
@@ -187,7 +187,7 @@ const reviewsSeed: ReviewRecord[] = [
   {
     id: 'RV-087',
     sourceType: 'Replay',
-    sourceLabel: 'Grace in Motion · Replay',
+    sourceLabel: 'Grace in Motion Â· Replay',
     title: 'The replay notes were very helpful',
     rating: 5,
     sentiment: 'Positive',
@@ -207,7 +207,7 @@ const reviewsSeed: ReviewRecord[] = [
   {
     id: 'RV-091',
     sourceType: 'Clip',
-    sourceLabel: 'Healing in 60 Seconds · Clip',
+    sourceLabel: 'Healing in 60 Seconds Â· Clip',
     title: 'Comments felt unsafe and unmoderated',
     rating: 1,
     sentiment: 'Negative',
@@ -227,7 +227,7 @@ const reviewsSeed: ReviewRecord[] = [
   {
     id: 'RV-074',
     sourceType: 'Institution',
-    sourceLabel: 'Institution Page · Grace House Kampala',
+    sourceLabel: 'Institution Page Â· Grace House Kampala',
     title: 'Warm welcome and clear service times',
     rating: 5,
     sentiment: 'Positive',
@@ -316,7 +316,7 @@ const casesSeed: ModerationCase[] = [
   {
     id: 'MC-198',
     type: 'Chat report',
-    sourceLabel: 'Sunday Encounter · Live Session',
+    sourceLabel: 'Sunday Encounter Â· Live Session',
     title: 'Prayer request queue flooded by spam links',
     urgency: 'High',
     owner: 'Moderation captain',
@@ -342,7 +342,7 @@ const casesSeed: ModerationCase[] = [
   {
     id: 'MC-181',
     type: 'Flagged clip',
-    sourceLabel: 'Healing in 60 Seconds · Clip',
+    sourceLabel: 'Healing in 60 Seconds Â· Clip',
     title: 'Context dispute on clipped testimony moment',
     urgency: 'Medium',
     owner: 'Content lead',
@@ -367,7 +367,7 @@ const casesSeed: ModerationCase[] = [
   {
     id: 'MC-166',
     type: 'Review abuse',
-    sourceLabel: 'Institution Page · Grace House Kampala',
+    sourceLabel: 'Institution Page Â· Grace House Kampala',
     title: 'Possible coordinated 1-star review brigade',
     urgency: 'High',
     owner: 'Trust lead',
@@ -814,7 +814,7 @@ function ReviewRow({
             <Pill tone="neutral">{review.sourceType}</Pill>
           </div>
           <div className="mt-2 text-[12px] text-faith-slate">
-            {review.sourceLabel} · {review.topic} · Owner: {review.owner}
+            {review.sourceLabel} Â· {review.topic} Â· Owner: {review.owner}
           </div>
           <div className="mt-3 line-clamp-3 text-[13px] leading-relaxed text-slate-700 dark:text-slate-300">
             "{review.excerpt}"
@@ -827,7 +827,7 @@ function ReviewRow({
               </span>
             ))}
             <span className="ml-2 text-[11px] font-semibold text-faith-slate">{review.createdLabel}</span>
-            <span className="text-[11px] font-semibold text-faith-slate">· {review.dueLabel}</span>
+            <span className="text-[11px] font-semibold text-faith-slate">Â· {review.dueLabel}</span>
           </div>
         </div>
 
@@ -878,7 +878,7 @@ function CaseRow({
             {kase.childSafe ? <Pill tone="bad">Child-safe</Pill> : null}
           </div>
           <div className="mt-2 text-[12px] text-faith-slate">
-            {kase.sourceLabel} · Owner: {kase.owner} · {kase.lastActionLabel}
+            {kase.sourceLabel} Â· Owner: {kase.owner} Â· {kase.lastActionLabel}
           </div>
           <div className="mt-3 text-[13px] leading-relaxed text-slate-700 dark:text-slate-300">{kase.summary}</div>
           <div className="mt-3 flex flex-wrap gap-2">
@@ -1185,7 +1185,7 @@ export default function FaithHubReviewsAndModerationPage() {
   return (
     <div className="min-h-full w-full bg-[var(--fh-page-bg)] dark:bg-slate-950 text-faith-ink dark:text-slate-50 transition-colors overflow-x-hidden">
       <div className="sticky top-0 z-40 border-b border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)]/95 dark:bg-slate-900/95 backdrop-blur-md transition">
-        <div className="w-full px-4 md:px-6 lg:px-8 py-4">
+        <div className="w-full px-4 sm:px-5 md:px-6 lg:px-8 py-4">
           <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
             <div className="min-w-0">
 
@@ -1231,7 +1231,7 @@ export default function FaithHubReviewsAndModerationPage() {
         </div>
 
         <div className="border-t border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 transition">
-          <div className="w-full px-4 md:px-6 lg:px-8 py-2.5">
+          <div className="w-full px-4 sm:px-5 md:px-6 lg:px-8 py-2.5">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div className="flex flex-wrap items-center gap-2">
                 <Pill tone="warn">
@@ -1239,7 +1239,7 @@ export default function FaithHubReviewsAndModerationPage() {
                   Trust watch
                 </Pill>
                 <span className="text-[12px] font-semibold text-faith-slate">
-                  Audio complaints are leading negative sentiment this week · 1 suspected review brigade · safeguarding lane healthy across child-facing surfaces
+                  Audio complaints are leading negative sentiment this week Â· 1 suspected review brigade Â· safeguarding lane healthy across child-facing surfaces
                 </span>
               </div>
 
@@ -1499,10 +1499,10 @@ export default function FaithHubReviewsAndModerationPage() {
                     <div className="min-w-0">
                       <div className="text-[14px] font-extrabold text-faith-ink dark:text-slate-100">{selectedReview.title}</div>
                       <div className="mt-1 text-[12px] text-faith-slate">
-                        {selectedReview.sourceLabel} · {selectedReview.topic} · Owner: {selectedReview.owner}
+                        {selectedReview.sourceLabel} Â· {selectedReview.topic} Â· Owner: {selectedReview.owner}
                       </div>
                       <div className="mt-3 text-[13px] leading-relaxed text-slate-700 dark:text-slate-300">
-                        ·{selectedReview.excerpt}·
+                        Â·{selectedReview.excerpt}Â·
                       </div>
                     </div>
 
@@ -1913,7 +1913,7 @@ export default function FaithHubReviewsAndModerationPage() {
         <Modal
           open={evidenceOpen}
           onClose={() => setEvidenceOpen(false)}
-          title={`Evidence & action drawer · ${selectedCase.id}`}
+          title={`Evidence & action drawer Â· ${selectedCase.id}`}
           subtitle="Screenshots, linked messages, prior rulings, audit notes, and explainable action history for the selected moderation case."
           right={<Pill tone={selectedCase.childSafe ? 'bad' : 'accent'}>{selectedCase.status}</Pill>}
         >
@@ -1921,7 +1921,7 @@ export default function FaithHubReviewsAndModerationPage() {
             <div className="space-y-4">
               <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
                 <div className="text-sm font-extrabold text-faith-ink dark:text-slate-100">{selectedCase.title}</div>
-                <div className="mt-1 text-[12px] text-faith-slate">{selectedCase.sourceLabel} · Owner: {selectedCase.owner}</div>
+                <div className="mt-1 text-[12px] text-faith-slate">{selectedCase.sourceLabel} Â· Owner: {selectedCase.owner}</div>
                 <div className="mt-3 text-[13px] leading-relaxed text-slate-700 dark:text-slate-300">{selectedCase.summary}</div>
 
                 <div className="mt-4 flex flex-wrap gap-2">
