@@ -7,6 +7,7 @@ vi.mock("@/navigation/routerNavigate", () => ({
 }));
 vi.mock("@/auth/useAuth", () => ({
   useAuth: () => ({ role: "leadership" }),
+  useOptionalAuth: () => ({ role: "leadership" }),
 }));
 
 describe("FH-P-020 Series Builder button wiring", () => {

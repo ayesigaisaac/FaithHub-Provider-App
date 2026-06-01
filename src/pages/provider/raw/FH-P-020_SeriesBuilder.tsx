@@ -36,7 +36,7 @@ import {
   Zap,
 } from "lucide-react";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
-import { useAuth } from "@/auth/useAuth";
+import { useOptionalAuth } from "@/auth/useAuth";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 import {
@@ -905,7 +905,8 @@ function SeriesLandingPreview({
 }
 
 export default function SeriesBuilderPage() {
-  const { role } = useAuth();
+  const auth = useOptionalAuth();
+  const role = auth?.role ?? "leadership";
   const [step, setStep] = useState<StepKey>("identity");
   const [previewMode, setPreviewMode] = useState<PreviewMode>("desktop");
   const [seriesSearch, setSeriesSearch] = useState("");

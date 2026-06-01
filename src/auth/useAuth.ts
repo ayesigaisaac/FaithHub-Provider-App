@@ -8,3 +8,7 @@ export function useAuth() {
   }
   return value;
 }
+
+export function useOptionalAuth() {
+  return useContext(AuthContext);
+}

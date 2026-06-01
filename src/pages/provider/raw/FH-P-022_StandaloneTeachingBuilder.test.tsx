@@ -9,6 +9,7 @@ vi.mock("@/navigation/routerNavigate", () => ({
 }));
 vi.mock("@/auth/useAuth", () => ({
   useAuth: () => ({ role: "leadership" }),
+  useOptionalAuth: () => ({ role: "leadership" }),
 }));
 
 describe("FH-P-022 Standalone Teaching Builder button wiring", () => {
