@@ -802,7 +802,7 @@ function PreviewDrawer({
             </Button>
           </div>
 
-          <div className="grid gap-5 p-5 lg:grid-cols-[1.6fr_0.9fr]">
+          <div className="grid gap-5 p-5 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,0.9fr)]">
             <div className="overflow-hidden rounded-[30px] border border-faith-line/70 bg-[var(--fh-surface-bg)]">
               <div className="relative h-56 overflow-hidden bg-[#172554]">
                 <img src={thread.heroUrl} alt={thread.title} className="h-full w-full object-cover opacity-70" />
@@ -1198,7 +1198,7 @@ export default function CommunityForumPage() {
           </div>
         </div>
 
-        <div className="mt-4 grid gap-4 xl:grid-cols-[1.55fr_1fr_0.78fr]">
+        <div className="mt-4 grid gap-4 2xl:grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)_minmax(0,0.78fr)]">
           <div className="grid gap-4">
             <div className="rounded-[32px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 shadow-soft">
               <div className="flex flex-wrap items-start justify-between gap-3">
@@ -1517,7 +1517,7 @@ export default function CommunityForumPage() {
           </div>
         </div>
 
-        <div className="mt-4 grid gap-4 xl:grid-cols-[1.2fr_0.8fr]">
+        <div className="mt-4 grid gap-4 2xl:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
           <div className="rounded-[32px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 shadow-soft">
             <div className="text-[18px] font-black tracking-[-0.02em] text-faith-ink">
               Forum collections & trust signals
@@ -1580,7 +1580,7 @@ export default function CommunityForumPage() {
                 >
                   <div className="flex items-center justify-between gap-3">
                     <div className="min-w-0">
-                      <div className="truncate text-[15px] font-black tracking-[-0.02em] text-faith-ink">
+                      <div className="text-[15px] font-black tracking-[-0.02em] text-faith-ink whitespace-normal break-words [overflow-wrap:anywhere]">
                         {post.title}
                       </div>
                       <div className="mt-1 text-[12px] text-faith-slate">

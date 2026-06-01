@@ -682,7 +682,7 @@ export default function WorkspaceSettingsPage() {
             subtitle="Logos, cover assets, colour defaults, typography confidence, and workspace tone."
             right={<Pill tone="brand"><Sparkles className="h-3.5 w-3.5" /> Premium branding</Pill>}
           >
-            <div className="grid gap-4 xl:grid-cols-[1.2fr_0.8fr]">
+            <div className="grid gap-4 2xl:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
               <div className="rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
                 <div className="flex flex-wrap items-start justify-between gap-3">
                   <div>
@@ -842,7 +842,7 @@ export default function WorkspaceSettingsPage() {
             subtitle="Language defaults, launch coverage, translation health, and public-facing fallback behavior."
             right={<Pill tone="good"><Languages className="h-3.5 w-3.5" /> {localePacks.length} locale packs</Pill>}
           >
-            <div className="grid gap-4 xl:grid-cols-[1fr_1fr]">
+            <div className="grid gap-4 2xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
               <div className="rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
                 <div className="grid gap-3 md:grid-cols-2">
                   <div>
@@ -1378,7 +1378,7 @@ export default function WorkspaceSettingsPage() {
         title="Connect Integration"
         subtitle="Add or refresh the systems that power scheduling, messaging, streaming, maps, analytics, and finance."
       >
-        <div className="grid gap-4 xl:grid-cols-[320px_1fr]">
+        <div className="grid gap-4 2xl:grid-cols-[320px_minmax(0,1fr)]">
           <div className="rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
             <div className="text-[12px] font-extrabold text-faith-ink dark:text-slate-100">Available connections</div>
             <div className="mt-3 space-y-2">

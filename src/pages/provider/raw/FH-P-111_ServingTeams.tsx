@@ -1041,7 +1041,7 @@ export default function FH_P_111_ServingTeamsPage() {
           </div>
         </div>
 
-        <div className="mt-4 grid gap-4 xl:grid-cols-[1.2fr_0.95fr_0.78fr] xl:items-start">
+        <div className="mt-4 grid gap-4 2xl:grid-cols-[minmax(0,1.2fr)_minmax(0,0.95fr)_minmax(0,0.78fr)] 2xl:items-start">
           <div className="space-y-4">
             <SectionCard
               title="Serving teams catalog"

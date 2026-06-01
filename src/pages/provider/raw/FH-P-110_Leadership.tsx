@@ -535,7 +535,7 @@ function PreviewDrawer({
           </button>
         </div>
 
-        <div className="mt-4 grid items-start gap-4 xl:grid-cols-[minmax(0,1.25fr)_340px]">
+        <div className="mt-4 grid items-start gap-4 2xl:grid-cols-[minmax(0,1.25fr)_minmax(0,340px)]">
           <LeadershipPreviewCard leader={leader} previewMode="desktop" />
           <LeadershipPreviewCard leader={leader} previewMode="mobile" />
         </div>
@@ -718,7 +718,7 @@ export default function FaithHubLeadershipPage() {
                 </div>
               </div>
 
-              <div className="mt-5 grid items-start gap-4 xl:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
+              <div className="mt-5 grid items-start gap-4 2xl:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
                 <div className="space-y-3">
                   {filteredLeaders.map((leader) => {
                     const statusTone =

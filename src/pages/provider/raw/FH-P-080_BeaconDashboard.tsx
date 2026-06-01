@@ -772,7 +772,7 @@ function Modal({
       <div className="relative flex h-[92vh] w-full max-w-6xl flex-col overflow-hidden rounded-t-3xl bg-[var(--fh-surface-bg)] shadow-medium ring-1 ring-slate-200 transition dark:bg-slate-900 dark:ring-slate-800 sm:h-auto sm:max-h-[90vh] sm:rounded-3xl">
         <div className="flex items-start justify-between gap-3 border-b border-faith-line px-5 py-4 dark:border-slate-800">
           <div className="min-w-0">
-            <div className="truncate text-base font-semibold text-faith-ink dark:text-slate-50">{title}</div>
+            <div className="text-base font-semibold text-faith-ink dark:text-slate-50 whitespace-normal break-words [overflow-wrap:anywhere]">{title}</div>
             {subtitle ? <div className="mt-1 text-xs text-faith-slate">{subtitle}</div> : null}
           </div>
           <button
@@ -965,7 +965,7 @@ function PhonePreview({ campaign }: { campaign: BeaconCampaign }) {
       <div className="overflow-hidden rounded-[28px] bg-[var(--fh-surface-bg)] dark:bg-slate-950 transition-colors">
         <div className="h-[560px] overflow-hidden">
           <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 px-3 py-3">
-            <div className="truncate text-[13px] font-extrabold text-faith-ink dark:text-slate-100">Beacon feed preview</div>
+            <div className="text-[13px] font-extrabold text-faith-ink dark:text-slate-100 whitespace-normal break-words [overflow-wrap:anywhere]">Beacon feed preview</div>
             <div className="rounded-full bg-slate-100 dark:bg-slate-800 px-2 py-1 text-[10px] font-extrabold text-slate-700 dark:text-slate-300">{campaign.mode}</div>
           </div>
 
@@ -1043,8 +1043,8 @@ function InsightBars({ rows }: { rows: InsightRow[] }) {
         <div key={row.label}>
           <div className="flex items-center justify-between gap-2 text-[12px]">
             <div className="min-w-0">
-              <div className="font-bold text-faith-ink dark:text-slate-100 truncate">{row.label}</div>
-              <div className="text-faith-slate truncate">{row.note}</div>
+              <div className="font-bold text-faith-ink dark:text-slate-100 whitespace-normal break-words [overflow-wrap:anywhere]">{row.label}</div>
+              <div className="text-faith-slate whitespace-normal break-words [overflow-wrap:anywhere]">{row.note}</div>
             </div>
             <div className="shrink-0 font-black text-faith-ink dark:text-slate-100">{fmtInt(row.value)}</div>
           </div>
@@ -1087,7 +1087,7 @@ function CampaignRow({
     >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
-          <div className="truncate text-sm font-bold text-faith-ink dark:text-slate-50">{campaign.title}</div>
+          <div className="text-sm font-bold text-faith-ink dark:text-slate-50 whitespace-normal break-words [overflow-wrap:anywhere]">{campaign.title}</div>
           <div className="mt-1 text-xs text-faith-slate line-clamp-2">{campaign.subtitle}</div>
         </div>
         <div
@@ -1345,7 +1345,7 @@ export default function BeaconDashboardPage() {
                 <MetricCard label="Creative health" value={`${Math.round(portfolio.avgHealth)}%`} hint="Portfolio average across active flights" tone="green" />
               </div>
 
-              <div className="mt-4 grid grid-cols-1 gap-4 2xl:grid-cols-[1.2fr_0.8fr]">
+              <div className="mt-4 grid grid-cols-1 gap-4 2xl:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
                 <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
                   <div className="flex items-center justify-between gap-2">
                     <div>
@@ -1745,7 +1745,7 @@ export default function BeaconDashboardPage() {
         title={`${selectedCampaign.title} · Full preview`}
         subtitle="Preview how the selected Beacon campaign appears across premium Promotiontion surfaces."
       >
-        <div className="grid grid-cols-1 gap-6 2xl:grid-cols-[1.15fr_0.85fr]">
+        <div className="grid grid-cols-1 gap-6 2xl:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <button

@@ -848,7 +848,7 @@ function GroupExperiencePreviewInner({
   previewMode: PreviewMode;
 }) {
   return (
-    <div className="grid gap-4 xl:grid-cols-[minmax(0,1.15fr)_380px]">
+    <div className="grid gap-4 2xl:grid-cols-[minmax(0,1.15fr)_minmax(0,380px)]">
       <div className="rounded-3xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 shadow-soft">
         <div className="relative overflow-hidden rounded-2xl">
           <img src={group.heroUrl} alt={group.title} className="h-[280px] w-full object-cover" />
@@ -1198,7 +1198,7 @@ export default function CommunityGroupsPage() {
                         <div className="min-w-0 flex-1">
                           <div className="flex flex-wrap items-start justify-between gap-3">
                             <div className="min-w-0">
-                              <div className="truncate text-[15px] font-black text-faith-ink">
+                              <div className="text-[15px] font-black text-faith-ink whitespace-normal break-words [overflow-wrap:anywhere]">
                                 {group.title}
                               </div>
                               <div className="mt-0.5 line-clamp-2 text-[12px] leading-snug text-faith-slate">
@@ -1230,7 +1230,7 @@ export default function CommunityGroupsPage() {
                             <span>{group.meetingMode}</span>
                           </div>
 
-                          <div className="mt-3 grid gap-2 md:grid-cols-[1fr_128px_128px]">
+                          <div className="mt-3 grid gap-2 md:grid-cols-[minmax(0,1fr)_128px_128px]">
                             <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2">
                               <div className="flex items-center justify-between gap-2">
                                 <span className="text-[10px] font-black uppercase tracking-[0.12em] text-faith-slate">

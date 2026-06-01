@@ -940,7 +940,7 @@ function PreviewSurface({
           </div>
         </div>
 
-        <div className="mt-4 grid gap-3 lg:grid-cols-[0.9fr_1.1fr]">
+        <div className="mt-4 grid gap-3 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
           <div className="rounded-[24px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3 dark:border-slate-700 dark:bg-slate-900">
             <div className="text-[11px] font-black uppercase tracking-[0.16em] text-faith-slate">
               Sidebar visibility
@@ -1440,7 +1440,7 @@ export default function FH_P_112_RolesPermissionsPage() {
           </div>
         </div>
 
-        <div className="mt-4 grid gap-4 xl:grid-cols-[1.2fr_0.95fr_0.78fr] xl:items-start">
+        <div className="mt-4 grid gap-4 2xl:grid-cols-[minmax(0,1.2fr)_minmax(0,0.95fr)_minmax(0,0.78fr)] 2xl:items-start">
           <div className="space-y-4">
             <SectionCard
               title="Roles catalog"
