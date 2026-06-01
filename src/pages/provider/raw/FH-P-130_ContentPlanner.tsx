@@ -1,6 +1,7 @@
 import { CalendarCheck2, CheckCircle2, Clock3, Sparkles } from 'lucide-react';
-import { ProviderPageTitle } from '@/components/provider/ProviderPageTitle';
+import { ProviderPageScaffold } from '@/components/provider/ProviderPageScaffold';
 import { ProviderSurfaceCard } from '@/components/provider/ProviderSurfaceCard';
+import { ProviderStatusPill } from '@/components/provider/ProviderStatusPill';
 
 const planningSteps = [
   {
@@ -28,22 +29,27 @@ function statusTone(status: (typeof planningSteps)[number]['status']) {
 
 export default function FHP130ContentPlanner() {
   return (
-    <div className="min-h-full bg-[var(--fh-page-bg)] text-faith-ink">
-      <main className="mx-auto max-w-[1280px] px-4 py-5 md:px-6 md:py-6">
-        <div className="rounded-[28px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-5 md:p-6">
-          <ProviderPageTitle
-            icon={<CalendarCheck2 className="h-6 w-6" />}
-            title="Content Planner"
-            subtitle="Plan teaching themes, assign owners, and track readiness for each publishing cycle."
-          />
-          <div className="mt-4 flex flex-wrap gap-2 text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">
-            <span className="rounded-full border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-1">Planning</span>
-            <span className="rounded-full border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-1">Execution</span>
-            <span className="rounded-full border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-1">Review</span>
-          </div>
+    <ProviderPageScaffold
+      icon={<CalendarCheck2 className="h-6 w-6" />}
+      title="Content Planner"
+      subtitle="Plan teaching themes, assign owners, and track readiness for each publishing cycle."
+      tags={
+        <>
+          <ProviderStatusPill tone="navy">Planning</ProviderStatusPill>
+          <ProviderStatusPill tone="good">Execution</ProviderStatusPill>
+          <ProviderStatusPill tone="brand">Review</ProviderStatusPill>
+        </>
+      }
+      pulse={
+        <div className="flex flex-wrap items-center gap-3 text-[12px] text-faith-slate">
+          <ProviderStatusPill tone="orange">PLANNING PULSE</ProviderStatusPill>
+          <span>12 cycles planned this quarter</span>
+          <span>7 pending tasks</span>
+          <span>84% readiness confidence</span>
         </div>
-
-        <div className="mt-4 grid gap-4 md:grid-cols-3">
+      }
+      stats={
+        <>
           <ProviderSurfaceCard title="Cycles planned" bodyClassName="pt-3">
             <div className="text-2xl font-black">12</div>
             <div className="mt-1 text-sm text-faith-slate">Published + draft cycles this quarter.</div>
@@ -56,7 +62,9 @@ export default function FHP130ContentPlanner() {
             <div className="text-2xl font-black">84%</div>
             <div className="mt-1 text-sm text-faith-slate">Weighted confidence across active content plans.</div>
           </ProviderSurfaceCard>
-        </div>
+        </>
+      }
+    >
 
         <ProviderSurfaceCard className="mt-4" title="Execution Checklist" subtitle="Core flow to move from planning to publish.">
           <div className="space-y-3">
@@ -96,8 +104,7 @@ export default function FHP130ContentPlanner() {
             </div>
           </div>
         </ProviderSurfaceCard>
-      </main>
-    </div>
+    </ProviderPageScaffold>
   );
 }
 

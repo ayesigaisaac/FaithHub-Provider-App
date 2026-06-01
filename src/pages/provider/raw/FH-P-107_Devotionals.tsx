@@ -1,6 +1,6 @@
 import { BookOpen, ChevronRight, HeartHandshake, MessageSquareHeart, Users } from 'lucide-react';
 import { navigateWithRouter } from '@/navigation/routerNavigate';
-import { ProviderPageTitle } from '@/components/provider/ProviderPageTitle';
+import { ProviderPageScaffold } from '@/components/provider/ProviderPageScaffold';
 import { ProviderSectionCard } from '@/components/provider/ProviderSectionCard';
 import { ProviderStatusPill } from '@/components/provider/ProviderStatusPill';
 
@@ -26,12 +26,26 @@ const toneByStatus: Record<DevotionalPlan['status'], 'good' | 'navy' | 'warn'> =
 
 export default function FH_P_107_Devotionals() {
   return (
-    <div className="mx-auto w-full max-w-[1280px] space-y-6 px-4 py-4 sm:px-6 sm:py-6">
-      <ProviderPageTitle
-        icon={<BookOpen className="h-5 w-5" />}
-        title="Devotionals"
-        subtitle="Create and schedule daily or weekly devotional journeys connected to prayer, testimonies, and groups."
-      />
+    <ProviderPageScaffold
+      icon={<BookOpen className="h-5 w-5" />}
+      title="Devotionals"
+      subtitle="Create and schedule daily or weekly devotional journeys connected to prayer, testimonies, and groups."
+      tags={
+        <>
+          <ProviderStatusPill tone="good">Daily cadence</ProviderStatusPill>
+          <ProviderStatusPill tone="navy">Community-linked</ProviderStatusPill>
+          <ProviderStatusPill tone="brand">Prayer-aware</ProviderStatusPill>
+        </>
+      }
+      pulse={
+        <div className="flex flex-wrap items-center gap-3 text-[12px] text-faith-slate">
+          <ProviderStatusPill tone="orange">DEVOTIONAL PULSE</ProviderStatusPill>
+          <span>{devotionalPlans.filter((p) => p.status === 'Live').length} live plans running</span>
+          <span>{devotionalPlans.filter((p) => p.status === 'Scheduled').length} plans scheduled</span>
+          <span>{devotionalPlans.filter((p) => p.status === 'Draft').length} plans in draft</span>
+        </div>
+      }
+    >
 
       <ProviderSectionCard
         title="Community devotional lanes"
@@ -81,6 +95,6 @@ export default function FH_P_107_Devotionals() {
           ))}
         </div>
       </ProviderSectionCard>
-    </div>
+    </ProviderPageScaffold>
   );
 }
