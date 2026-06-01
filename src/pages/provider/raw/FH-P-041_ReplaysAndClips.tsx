@@ -1059,12 +1059,7 @@ export default function FaithHubReplaysAndClipsPage() {
         <div className="w-full px-4 sm:px-5 md:px-6 lg:px-8 py-4">
           <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
             <div className="min-w-0">
-              <div className="flex flex-wrap items-center gap-2 text-[10px] sm:text-xs text-faith-slate">
-                <button onClick={() => safeNav(ROUTES.postLivePublishing)} className="hover:text-slate-700 dark:hover:text-slate-200">Post-live & Trust</button>
-                <span>/</span>
-                <span className="font-semibold text-faith-ink dark:text-slate-100">Replays & Clips</span>
-              </div>
-              <div className="mt-2 flex flex-wrap items-center gap-3">
+              <div className="flex flex-wrap items-center gap-3">
                 <div className="text-2xl sm:text-3xl font-extrabold tracking-tight text-faith-ink dark:text-slate-50">Replays & Clips</div>
                 <Pill tone="brand">Premium replay growth surface</Pill>
                 <Pill tone="accent">EVzone Green primary · Orange secondary</Pill>
