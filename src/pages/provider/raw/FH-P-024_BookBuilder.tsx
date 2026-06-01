@@ -2148,7 +2148,7 @@ export default function FaithHubBookBuilderPage() {
   return (
     <div className="min-h-full bg-[var(--fh-page-bg)] text-faith-ink transition dark:bg-slate-950 dark:text-slate-50">
       <div className="sticky top-0 z-30 border-b border-faith-line bg-[var(--fh-surface-bg)]/95 backdrop-blur dark:border-slate-800 dark:bg-slate-950/95">
-        <div className="mx-auto max-w-[1600px] px-4 py-4 md:px-6 lg:px-8">
+        <div className="mx-auto max-w-[1600px] px-4 py-4 sm:px-5 sm:py-5 md:px-6 lg:px-8">
           <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
             <div className="min-w-0">
 

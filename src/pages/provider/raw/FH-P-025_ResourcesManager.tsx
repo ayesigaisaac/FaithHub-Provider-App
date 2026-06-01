@@ -1246,10 +1246,10 @@ export default function ResourcesManagerPage() {
 
   return (
     <div className="min-h-full bg-[var(--fh-page-bg)] text-faith-ink">
-      <main className="mx-auto max-w-[1720px] p-4 md:p-6 lg:p-8">
+      <main className="mx-auto max-w-[1600px] px-4 py-4 sm:px-5 sm:py-5 md:px-6 lg:px-8">
         <div className="grid gap-5 2xl:grid-cols-[minmax(0,1fr)_380px]">
           <div className="space-y-5">
-            <section className="rounded-[32px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-6 shadow-soft md:p-7">
+            <section className="rounded-[34px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-5 shadow-soft md:p-6">
               <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
                 <div className="max-w-4xl">
                   <Label>Books & resources</Label>
@@ -1330,7 +1330,7 @@ export default function ResourcesManagerPage() {
               </div>
             </section>
 
-            <section className="rounded-[32px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-5 shadow-soft md:p-6">
+            <section className="rounded-[34px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-5 shadow-soft md:p-6">
               <SectionTitle
                 icon={<Filter className="h-4 w-4" />}
                 title="Search and filter"

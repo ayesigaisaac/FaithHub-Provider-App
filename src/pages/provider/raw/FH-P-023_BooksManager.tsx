@@ -1076,7 +1076,7 @@ export default function BooksManagerPage() {
 
   return (
     <div className="min-h-full w-full bg-[var(--fh-page-bg)] dark:bg-slate-950 text-faith-ink dark:text-slate-50 transition-colors">
-      <div className="mx-auto max-w-[1600px] px-4 md:px-6 lg:px-8 py-6">
+      <div className="mx-auto max-w-[1600px] px-4 py-4 sm:px-5 sm:py-5 md:px-6 lg:px-8">
         <section className="rounded-[34px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-5 md:p-6 transition-colors overflow-hidden relative">
           <div
             className="absolute inset-x-0 top-0 h-24 opacity-60"

@@ -1266,8 +1266,8 @@ export default function MerchandiseBuilderPage() {
 
   return (
     <div className="min-h-full bg-[var(--fh-page-bg)] text-faith-ink">
-      <div className="mx-auto w-full max-w-[1640px] px-4 py-6 sm:px-6 lg:px-8">
-        <div className="rounded-[32px] border border-faith-line/70 bg-[var(--fh-surface-bg)] shadow-soft transition-colors">
+      <div className="mx-auto w-full max-w-[1600px] px-4 py-4 sm:px-5 sm:py-5 md:px-6 lg:px-8">
+        <div className="rounded-[34px] border border-faith-line/70 bg-[var(--fh-surface-bg)] shadow-soft transition-colors">
           <div className="border-b border-faith-line p-6">
             <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
               <div className="min-w-0">
