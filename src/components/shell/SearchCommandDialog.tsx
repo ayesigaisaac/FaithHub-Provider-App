@@ -278,7 +278,12 @@ export function SearchCommandDialog({
 
   useEffect(() => {
     if (!open) return;
-    requestAnimationFrame(() => inputRef.current?.focus());
+    const rafId = requestAnimationFrame(() => {
+      inputRef.current?.focus();
+      // iOS/Android keyboards can miss the first frame focus after overlays mount.
+      window.setTimeout(() => inputRef.current?.focus(), 60);
+    });
+    return () => window.cancelAnimationFrame(rafId);
   }, [open]);
 
   useEffect(() => {

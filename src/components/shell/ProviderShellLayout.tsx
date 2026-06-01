@@ -161,10 +161,17 @@ export function ProviderShellLayout() {
         current={current}
         onOpenSidebar={() => setMobileOpen(true)}
         onOpenSearch={(anchorEl) => {
-          if (anchorEl) setSearchAnchorEl(anchorEl);
+          const fallbackAnchor =
+            anchorEl ??
+            (typeof document !== 'undefined' && document.activeElement instanceof HTMLElement
+              ? document.activeElement
+              : null);
+          setSearchAnchorEl(fallbackAnchor);
           setSearchOpen(true);
         }}
-        onCloseSearch={() => setSearchOpen(false)}
+        onCloseSearch={() => {
+          setSearchOpen(false);
+        }}
         searchOpen={searchOpen}
         searchQuery={searchQuery}
         onSearchQueryChange={setSearchQuery}
@@ -303,7 +310,9 @@ export function ProviderShellLayout() {
       <MobileBottomNav />
       <SearchCommandDialog
         open={searchOpen}
-        onClose={() => setSearchOpen(false)}
+        onClose={() => {
+          setSearchOpen(false);
+        }}
         query={searchQuery}
         onQueryChange={setSearchQuery}
         returnFocusEl={searchAnchorEl}

@@ -139,7 +139,11 @@ export function ProviderTopbar({
 
         <Stack direction="row" spacing={{ xs: 0.5, md: 1.2 }} alignItems="center" sx={{ flexShrink: 0 }}>
           {isMobileActions ? (
-            <IconButton aria-label="Open search" sx={utilityIconSx} onClick={() => onOpenSearch()}>
+            <IconButton
+              aria-label="Open search"
+              sx={{ ...utilityIconSx, pointerEvents: 'auto' }}
+              onClick={(event) => onOpenSearch(event.currentTarget)}
+            >
               <SearchRoundedIcon />
             </IconButton>
           ) : (
