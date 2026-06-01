@@ -1498,12 +1498,7 @@ export default function BooksManagerPage() {
                   <div className="mt-2 text-[12px] text-faith-slate leading-relaxed">
                     {template.subtitle}
                   </div>
-                  <div className="mt-4 flex flex-wrap items-center justify-between gap-2">
-                    <Pill
-                      text="Template"
-                      tone={template.accent === "green" ? "good" : template.accent === "orange" ? "warn" : "neutral"}
-                      icon={<Sparkles className="h-3.5 w-3.5" />}
-                    />
+                  <div className="mt-4 flex flex-wrap items-center justify-end gap-2">
                     <SoftButton
                       onClick={() => safeNav(`${ROUTES.bookBuilder}?template=${template.id}`)}
                     >
