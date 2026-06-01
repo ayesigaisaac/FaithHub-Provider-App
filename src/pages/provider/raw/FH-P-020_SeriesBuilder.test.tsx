@@ -5,6 +5,9 @@ import SeriesBuilderPage from "./FH-P-020_SeriesBuilder";
 vi.mock("@/navigation/routerNavigate", () => ({
   navigateWithRouter: vi.fn(),
 }));
+vi.mock("@/auth/useAuth", () => ({
+  useAuth: () => ({ role: "leadership" }),
+}));
 
 describe("FH-P-020 Series Builder button wiring", () => {
   it("duplicates the active draft when duplicate is clicked", () => {
@@ -17,4 +20,3 @@ describe("FH-P-020 Series Builder button wiring", () => {
     expect(screen.getByText("Series draft duplicated.")).toBeInTheDocument();
   });
 });
-

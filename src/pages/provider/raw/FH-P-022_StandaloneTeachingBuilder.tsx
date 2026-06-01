@@ -35,6 +35,7 @@ import {
   Zap,
 } from "lucide-react";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { useAuth } from "@/auth/useAuth";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 
@@ -901,6 +902,7 @@ function MobileTeachingPreview({ draft }: { draft: TeachingDraft }) {
 }
 
 export default function StandaloneTeachingBuilderPage() {
+  const { role } = useAuth();
   const [step, setStep] = useState<StepKey>("identity");
   const [previewMode, setPreviewMode] = useState<PreviewMode>("desktop");
   const [speakerSearch, setSpeakerSearch] = useState("");
@@ -908,6 +910,7 @@ export default function StandaloneTeachingBuilderPage() {
   const [draft, setDraft] = useState<TeachingDraft>(DEFAULT_DRAFT);
   const [isSavingDraft, setIsSavingDraft] = useState(false);
   const [isPublishing, setIsPublishing] = useState(false);
+  const canEditTeaching = role === "admin" || role === "leadership" || role === "production";
 
   useEffect(() => {
     if (!toast) return;
@@ -976,6 +979,10 @@ export default function StandaloneTeachingBuilderPage() {
   };
 
   const openLiveSessionPath = () => {
+    if (!canEditTeaching) {
+      setToast("Your role cannot create live sessions from this page.");
+      return;
+    }
     setDraft((current) => ({
       ...current,
       liveEnabled: true,
@@ -986,6 +993,10 @@ export default function StandaloneTeachingBuilderPage() {
   };
 
   const saveTeachingDraft = () => {
+    if (!canEditTeaching) {
+      setToast("Your role cannot save teaching drafts.");
+      return;
+    }
     if (isSavingDraft) return;
     setIsSavingDraft(true);
     setDraft((current) => ({
@@ -997,6 +1008,10 @@ export default function StandaloneTeachingBuilderPage() {
   };
 
   const publishTeaching = () => {
+    if (!canEditTeaching) {
+      setToast("Your role cannot publish teachings.");
+      return;
+    }
     if (isPublishing) return;
     if (readiness.score < 70) {
       setToast("Complete the readiness checks before publishing.");
@@ -1793,13 +1808,13 @@ export default function StandaloneTeachingBuilderPage() {
               </div>
             </div>
             <div className="flex flex-wrap items-center gap-3 xl:justify-end">
-              <SoftButton onClick={saveTeachingDraft} disabled={isSavingDraft}>{isSavingDraft ? "Saving..." : "Save teaching draft"}</SoftButton>
+              <SoftButton onClick={saveTeachingDraft} disabled={!canEditTeaching || isSavingDraft} title={!canEditTeaching ? "Insufficient role permission" : undefined}>{isSavingDraft ? "Saving..." : "Save teaching draft"}</SoftButton>
               <PrimaryButton color="orange" onClick={() => {
                 openLiveSessionPath();
-              }}>
+              }} disabled={!canEditTeaching} title={!canEditTeaching ? "Insufficient role permission" : undefined}>
                 Create live session
               </PrimaryButton>
-              <PrimaryButton color="green" onClick={publishTeaching} disabled={isPublishing || readiness.score < 70} title={readiness.score < 70 ? "Complete readiness checks before publishing" : undefined}>
+              <PrimaryButton color="green" onClick={publishTeaching} disabled={!canEditTeaching || isPublishing || readiness.score < 70} title={!canEditTeaching ? "Insufficient role permission" : readiness.score < 70 ? "Complete readiness checks before publishing" : undefined}>
                 {isPublishing ? "Publishing..." : "Publish teaching"}
               </PrimaryButton>
             </div>

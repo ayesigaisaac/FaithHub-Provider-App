@@ -36,6 +36,7 @@ import {
   Zap,
 } from "lucide-react";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { useAuth } from "@/auth/useAuth";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 import {
@@ -904,6 +905,7 @@ function SeriesLandingPreview({
 }
 
 export default function SeriesBuilderPage() {
+  const { role } = useAuth();
   const [step, setStep] = useState<StepKey>("identity");
   const [previewMode, setPreviewMode] = useState<PreviewMode>("desktop");
   const [seriesSearch, setSeriesSearch] = useState("");
@@ -911,6 +913,7 @@ export default function SeriesBuilderPage() {
   const [seriesRecordId, setSeriesRecordId] = useState<string | undefined>(undefined);
   const [isSavingDraft, setIsSavingDraft] = useState(false);
   const [isPublishingSeries, setIsPublishingSeries] = useState(false);
+  const canEditSeries = role === "admin" || role === "leadership" || role === "production";
   const [formErrors, setFormErrors] = useState<string[]>([]);
   const [identityTouched, setIdentityTouched] = useState<Record<"title" | "subtitle" | "description", boolean>>({
     title: false,
@@ -1093,6 +1096,10 @@ export default function SeriesBuilderPage() {
   };
 
   const saveCurrentSeriesDraft = () => {
+    if (!canEditSeries) {
+      setToast("Your role cannot save series drafts.");
+      return;
+    }
     if (isSavingDraft) return;
     setIsSavingDraft(true);
     const errors = validateSeriesDraft({
@@ -1126,6 +1133,10 @@ export default function SeriesBuilderPage() {
   };
 
   const publishCurrentSeries = () => {
+    if (!canEditSeries) {
+      setToast("Your role cannot publish series.");
+      return;
+    }
     if (isPublishingSeries) return;
     setIsPublishingSeries(true);
     const errors = validateSeriesDraft({
@@ -2030,11 +2041,11 @@ export default function SeriesBuilderPage() {
             </div>
 
             <div className="flex flex-wrap items-center gap-2 lg:justify-end">
-              <SoftButton onClick={duplicateCurrentSeriesDraft}> <Copy className="h-4 w-4" /> Duplicate draft</SoftButton>
+              <SoftButton onClick={duplicateCurrentSeriesDraft} disabled={!canEditSeries} title={!canEditSeries ? "Insufficient role permission" : undefined}> <Copy className="h-4 w-4" /> Duplicate draft</SoftButton>
               <SoftButton onClick={openSeriesPreview}> <Eye className="h-4 w-4" /> Preview series</SoftButton>
-              <SoftButton onClick={saveCurrentSeriesDraft} disabled={isSavingDraft}>{isSavingDraft ? "Saving..." : "Save series draft"}</SoftButton>
-              <PrimaryButton color="orange" onClick={addEpisode}><Plus className="h-4 w-4" /> Add episode</PrimaryButton>
-              <PrimaryButton onClick={publishCurrentSeries} disabled={isPublishingSeries || formErrors.length > 0} title={formErrors.length > 0 ? "Resolve validation issues first" : undefined}>
+              <SoftButton onClick={saveCurrentSeriesDraft} disabled={!canEditSeries || isSavingDraft} title={!canEditSeries ? "Insufficient role permission" : undefined}>{isSavingDraft ? "Saving..." : "Save series draft"}</SoftButton>
+              <PrimaryButton color="orange" onClick={addEpisode} disabled={!canEditSeries} title={!canEditSeries ? "Insufficient role permission" : undefined}><Plus className="h-4 w-4" /> Add episode</PrimaryButton>
+              <PrimaryButton onClick={publishCurrentSeries} disabled={!canEditSeries || isPublishingSeries || formErrors.length > 0} title={!canEditSeries ? "Insufficient role permission" : formErrors.length > 0 ? "Resolve validation issues first" : undefined}>
                 <Zap className="h-4 w-4" /> {isPublishingSeries ? "Publishing..." : "Publish series"}
               </PrimaryButton>
             </div>

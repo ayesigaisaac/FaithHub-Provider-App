@@ -7,6 +7,9 @@ const navigateWithRouterMock = vi.fn();
 vi.mock("@/navigation/routerNavigate", () => ({
   navigateWithRouter: (target: string) => navigateWithRouterMock(target),
 }));
+vi.mock("@/auth/useAuth", () => ({
+  useAuth: () => ({ role: "leadership" }),
+}));
 
 describe("FH-P-022 Standalone Teaching Builder button wiring", () => {
   it("opens live builder when create live session is clicked", () => {
