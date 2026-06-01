@@ -1221,7 +1221,7 @@ export default function ChannelsContactManagerPage() {
   return (
     <div className="min-h-full w-full flex flex-col bg-[var(--fh-page-bg)] dark:bg-slate-950 text-faith-ink dark:text-slate-50 transition-colors overflow-x-hidden">
       <div className="sticky top-0 z-40 border-b border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)]/95 dark:bg-slate-900/95 backdrop-blur-md transition">
-        <div className="w-full flex flex-col gap-4 px-4 md:px-6 lg:px-8 py-4 lg:flex-row lg:items-center lg:justify-between">
+        <div className="w-full flex flex-col gap-4 px-4 sm:px-5 md:px-6 lg:px-8 py-4 lg:flex-row lg:items-center lg:justify-between">
           <div className="min-w-0">
             <div className="mt-2 flex flex-wrap items-center gap-3">
               <div className="text-xl sm:text-2xl font-extrabold text-faith-ink dark:text-slate-50 tracking-tight">
@@ -1300,7 +1300,7 @@ export default function ChannelsContactManagerPage() {
         </div>
 
         <div className="border-t border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 transition">
-          <div className="w-full px-4 md:px-6 lg:px-8 py-2.5">
+          <div className="w-full px-4 sm:px-5 md:px-6 lg:px-8 py-2.5">
             <div className="flex flex-wrap items-center justify-between gap-3 text-sm">
               <div className="flex flex-wrap items-center gap-3">
                 <Pill tone={systemIssues.length ? "warn" : "good"}>
@@ -1309,7 +1309,7 @@ export default function ChannelsContactManagerPage() {
                 </Pill>
                 <span className="text-[11px] font-bold text-faith-slate uppercase tracking-tight">
                   {systemIssues.length
-                    ? systemIssues.join(" â€¢ ")
+                    ? systemIssues.join(" • ")
                     : "Consent trails, deliverability, and contact hygiene are all operating within premium thresholds."}
                 </span>
               </div>
@@ -1322,7 +1322,7 @@ export default function ChannelsContactManagerPage() {
         </div>
       </div>
 
-      <div className="flex-1 w-full px-3 sm:px-4 md:px-6 lg:px-8 py-6">
+      <div className="flex-1 w-full px-4 sm:px-5 md:px-6 lg:px-8 py-6">
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-12 lg:items-start">
           <div className="min-w-0 lg:col-span-8 space-y-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
@@ -1480,7 +1480,7 @@ export default function ChannelsContactManagerPage() {
                           <div className="text-[12px] text-faith-slate dark:text-slate-300">
                             <div className="font-bold text-faith-ink dark:text-slate-50">{contact.segmentIds.length} segments</div>
                             <div className="mt-1 text-[11px] text-faith-slate line-clamp-1">
-                              {contact.segmentIds.map((id) => segmentLookup.get(id)?.label || id).join(" â€¢ ")}
+                              {contact.segmentIds.map((id) => segmentLookup.get(id)?.label || id).join(" • ")}
                             </div>
                           </div>
 

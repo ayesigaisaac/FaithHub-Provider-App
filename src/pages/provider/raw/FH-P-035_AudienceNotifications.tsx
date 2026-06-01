@@ -1105,7 +1105,7 @@ export default function FaithHubAudienceNotificationsPage() {
     <div className="min-h-full w-full flex flex-col bg-[var(--fh-page-bg)] dark:bg-slate-950 text-faith-ink dark:text-slate-50 transition-colors overflow-x-hidden">
       {/* Top bar */}
       <div className="sticky top-0 z-40 border-b border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)]/95 dark:bg-slate-900/95 backdrop-blur-md transition">
-        <div className="w-full flex flex-col gap-4 px-4 md:px-6 lg:px-8 py-4 lg:flex-row lg:items-center lg:justify-between">
+        <div className="w-full flex flex-col gap-4 px-4 sm:px-5 md:px-6 lg:px-8 py-4 lg:flex-row lg:items-center lg:justify-between">
           <div className="min-w-0">
             <div className="mt-2 flex flex-wrap items-center gap-3">
               <div className="text-xl sm:text-2xl font-extrabold text-faith-ink dark:text-slate-50 tracking-tight">
@@ -1178,7 +1178,7 @@ export default function FaithHubAudienceNotificationsPage() {
 
         {/* Preflight strip */}
         <div className="border-t border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 transition">
-          <div className="w-full px-4 md:px-6 lg:px-8 py-2.5">
+          <div className="w-full px-4 sm:px-5 md:px-6 lg:px-8 py-2.5">
             <div className="flex flex-wrap items-center justify-between gap-3 text-sm">
               <div className="flex flex-wrap items-center gap-3">
                 <Pill tone={systemReady ? "good" : "warn"}>
@@ -1208,7 +1208,7 @@ export default function FaithHubAudienceNotificationsPage() {
       </div>
 
       {/* Body */}
-      <div className="flex-1 w-full px-3 sm:px-4 md:px-6 lg:px-8 py-6">
+      <div className="flex-1 w-full px-4 sm:px-5 md:px-6 lg:px-8 py-6">
         <div className="grid grid-cols-1 gap-4 xl:grid-cols-12">
           {/* Left rail */}
           <div className="xl:col-span-3 space-y-4">

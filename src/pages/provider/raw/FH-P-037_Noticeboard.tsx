@@ -1160,9 +1160,9 @@ export default function FaithHubNoticeboardPage() {
 
   return (
     <div
-      className="min-h-full w-full bg-[var(--fh-page-bg)] px-5 py-6 text-faith-ink transition-colors dark:bg-slate-950 dark:text-slate-100"
+      className="min-h-full w-full bg-[var(--fh-page-bg)] px-4 py-4 text-faith-ink transition-colors sm:px-5 sm:py-5 md:px-6 lg:px-8 dark:bg-slate-950 dark:text-slate-100"
     >
-      <div className="mx-auto max-w-[1500px] space-y-5">
+      <div className="mx-auto max-w-[1600px] space-y-5">
         <div className="rounded-[34px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-6 shadow-soft">
           <div className="flex flex-col gap-5 xl:flex-row xl:items-start xl:justify-between">
             <div className="min-w-0 flex-1">
