@@ -1421,7 +1421,7 @@ export default function ChannelsContactManagerPage() {
               </div>
 
               <div className="mt-4 overflow-hidden rounded-3xl ring-1 ring-slate-200 dark:ring-slate-800">
-                <div className="hidden md:grid grid-cols-[1.6fr_1fr_.9fr_1fr_1fr_.7fr] gap-3 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-3 text-[10px] font-black uppercase tracking-widest text-faith-slate">
+                <div className="hidden md:grid grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)_minmax(0,.9fr)_minmax(0,1fr)_minmax(0,1fr)_minmax(0,.7fr)] gap-3 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-3 text-[10px] font-black uppercase tracking-widest text-faith-slate">
                   <div>Contact</div>
                   <div>Consent / safety</div>
                   <div>Channels</div>
@@ -1442,7 +1442,7 @@ export default function ChannelsContactManagerPage() {
                           selected ? "bg-emerald-50/70 dark:bg-emerald-500/10" : "hover:bg-[var(--fh-surface)] dark:hover:bg-slate-950",
                         )}
                       >
-                        <div className="grid grid-cols-1 md:grid-cols-[1.6fr_1fr_.9fr_1fr_1fr_.7fr] gap-3 items-start">
+                        <div className="grid grid-cols-1 gap-3 items-start md:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)_minmax(0,.9fr)_minmax(0,1fr)_minmax(0,1fr)_minmax(0,.7fr)]">
                           <div className="flex items-start gap-3 min-w-0">
                             <div className="h-11 w-11 rounded-2xl shrink-0 grid place-items-center text-white font-black" style={{ backgroundColor: selected ? GREEN : GREY }}>
                               {contact.name
@@ -1453,7 +1453,7 @@ export default function ChannelsContactManagerPage() {
                             </div>
                             <div className="min-w-0">
                               <div className="flex flex-wrap items-center gap-2">
-                                <div className="truncate text-[13px] font-bold text-faith-ink dark:text-slate-50">{contact.name}</div>
+                                <div className="text-[13px] font-bold text-faith-ink dark:text-slate-50 whitespace-normal break-words [overflow-wrap:anywhere]">{contact.name}</div>
                                 <Pill tone={roleTone(contact.title)}>{contact.title}</Pill>
                                 {contact.childSafe ? <Pill tone="warn"><ShieldCheck className="h-3 w-3" /> Protected</Pill> : null}
                               </div>
@@ -1472,24 +1472,24 @@ export default function ChannelsContactManagerPage() {
                             {contact.highRisk ? <Pill tone="bad"><AlertTriangle className="h-3 w-3" /> Hold</Pill> : null}
                           </div>
 
-                          <div className="text-[12px] text-faith-slate dark:text-slate-300">
+                          <div className="min-w-0 text-[12px] text-faith-slate dark:text-slate-300">
                             <div className="font-bold text-faith-ink dark:text-slate-50">{contact.primaryChannel}</div>
                             <div className="mt-1 text-[11px] text-faith-slate">{contact.channelsAllowed.length} allowed</div>
                           </div>
 
-                          <div className="text-[12px] text-faith-slate dark:text-slate-300">
+                          <div className="min-w-0 text-[12px] text-faith-slate dark:text-slate-300">
                             <div className="font-bold text-faith-ink dark:text-slate-50">{contact.segmentIds.length} segments</div>
-                            <div className="mt-1 text-[11px] text-faith-slate line-clamp-1">
+                            <div className="mt-1 text-[11px] text-faith-slate whitespace-normal break-words [overflow-wrap:anywhere]">
                               {contact.segmentIds.map((id) => segmentLookup.get(id)?.label || id).join(" • ")}
                             </div>
                           </div>
 
-                          <div className="text-[12px] text-faith-slate dark:text-slate-300">
+                          <div className="min-w-0 text-[12px] text-faith-slate dark:text-slate-300">
                             <div className="font-bold text-faith-ink dark:text-slate-50">{contact.lastActivity}</div>
                             <div className="mt-1 text-[11px] text-faith-slate">{contact.language}</div>
                           </div>
 
-                          <div className="text-[12px] text-faith-slate dark:text-slate-300">
+                          <div className="min-w-0 text-[12px] text-faith-slate dark:text-slate-300">
                             <div className="font-bold text-faith-ink dark:text-slate-50">{contact.engagementScore}/100</div>
                             <div className="mt-1 h-2 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
                               <div className={cn("h-full rounded-full", contact.engagementScore > 80 ? "bg-emerald-500" : contact.engagementScore > 50 ? "bg-amber-500" : "bg-rose-500")} style={{ width: `${contact.engagementScore}%` }} />
@@ -1537,7 +1537,7 @@ export default function ChannelsContactManagerPage() {
                 </div>
               </div>
 
-              <div className="mt-4 grid gap-4 xl:grid-cols-[1.2fr_.8fr]">
+              <div className="mt-4 grid gap-4 2xl:grid-cols-[minmax(0,1.2fr)_minmax(0,.8fr)]">
                 <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                   <div className="flex items-center justify-between gap-3">
                     <div>
@@ -1624,7 +1624,7 @@ export default function ChannelsContactManagerPage() {
                 </div>
               </div>
 
-              <div className="mt-4 grid gap-4 xl:grid-cols-[1fr_.9fr]">
+              <div className="mt-4 grid gap-4 2xl:grid-cols-[minmax(0,1fr)_minmax(0,.9fr)]">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {hygieneTasks.map((task) => (
                     <div key={task.id} className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-950 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
@@ -1825,7 +1825,7 @@ export default function ChannelsContactManagerPage() {
       </div>
 
       <Drawer open={previewOpen} onClose={() => setPreviewOpen(false)} title="Channels & Contact Manager Preview">
-        <div className="grid gap-6 xl:grid-cols-[1.15fr_.85fr]">
+        <div className="grid gap-6 2xl:grid-cols-[minmax(0,1.15fr)_minmax(0,.85fr)]">
           <div className="space-y-4">
             <div className="flex flex-wrap items-center gap-2">
               {[
