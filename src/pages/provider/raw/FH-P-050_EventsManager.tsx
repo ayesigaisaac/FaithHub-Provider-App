@@ -1,4 +1,4 @@
-// @ts-nocheck
+﻿// @ts-nocheck
 
 "use client";
 
@@ -38,7 +38,7 @@ import { CompactStatsGroup } from "@/components/ui/CompactStatsGroup";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
- * Provider â€” Events Manager
+ * Provider — Events Manager
  * ----------------------------------
  * Premium event operating system for FaithHub Provider workspace.
  *
@@ -1509,7 +1509,7 @@ export default function FaithHubEventsManagerPage() {
       "",
       "LOGISTICS",
       ...selectedEvent.logistics.map(
-        (item) => `${item.label} â€” ${item.status} â€” ${item.note}`,
+        (item) => `${item.label} — ${item.status} — ${item.note}`,
       ),
       "",
       "VOLUNTEER COVERAGE",

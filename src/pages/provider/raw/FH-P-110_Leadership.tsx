@@ -199,7 +199,7 @@ const LEADERS: LeaderRecord[] = [
     language: ["English", "Luganda"],
     tenureLabel: "6 years",
     heroUrl: HERO_1,
-    bio: "Leads the institution�s teaching direction, leadership rhythms, and high-visibility ministry moments across campuses.",
+    bio: "Leads the institution's teaching direction, leadership rhythms, and high-visibility ministry moments across campuses.",
     reports: 7,
     activeTeams: 4,
     upcomingEvents: 3,
@@ -761,7 +761,7 @@ export default function FaithHubLeadershipPage() {
                                   {leader.name}
                                 </div>
                                 <div className="mt-0.5 text-[12px] text-faith-slate">
-                                  {leader.officeTitle} � {leader.campus}
+                                  {leader.officeTitle} • {leader.campus}
                                 </div>
                               </div>
                               <div className="flex flex-wrap items-center gap-2">
@@ -816,7 +816,7 @@ export default function FaithHubLeadershipPage() {
                     <div>
                       <div className="text-[10px] font-black uppercase tracking-[0.18em] text-faith-slate">Selected leader</div>
                       <div className="mt-1 text-[22px] font-black tracking-[-0.02em] text-slate-950 dark:text-white">{selectedLeader.name}</div>
-                      <div className="mt-1 text-[13px] text-faith-slate">{selectedLeader.officeTitle} � {selectedLeader.ministryArea}</div>
+                      <div className="mt-1 text-[13px] text-faith-slate">{selectedLeader.officeTitle} • {selectedLeader.ministryArea}</div>
                     </div>
                     <button
                       type="button"

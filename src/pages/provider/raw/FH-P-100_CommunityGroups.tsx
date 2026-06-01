@@ -1,4 +1,4 @@
-// @ts-nocheck
+ï»¿// @ts-nocheck
 "use client";
 
 import React, { useMemo, useState } from "react";
@@ -1052,9 +1052,9 @@ export default function CommunityGroupsPage() {
             <div className="flex flex-wrap items-center gap-3 text-[12px] text-faith-slate">
               <Pill tone="brand">COMMUNITY NETWORK PULSE</Pill>
               <span>{coverageGaps} groups need co-leader coverage</span>
-              <span>•</span>
+              <span>â€¢</span>
               <span>{careBacklog} care escalations need review</span>
-              <span>•</span>
+              <span>â€¢</span>
               <span>3 groups are ready for noticeboard and live-linked follow-up</span>
                 <span className="ml-auto text-[11px] font-black uppercase tracking-[0.12em] text-faith-slate">
                 Community ops
@@ -1216,17 +1216,17 @@ export default function CommunityGroupsPage() {
                               <Users className="h-3.5 w-3.5" />
                               {fmtInt(group.members)} members
                             </span>
-                            <span>•</span>
+                            <span>â€¢</span>
                             <span className="inline-flex items-center gap-1">
                               <CalendarClock className="h-3.5 w-3.5" />
                               {fmtLocal(group.upcomingISO)}
                             </span>
-                            <span>•</span>
+                            <span>â€¢</span>
                             <span className="inline-flex items-center gap-1">
                               <MapPin className="h-3.5 w-3.5" />
                               {group.campus}
                             </span>
-                            <span>•</span>
+                            <span>â€¢</span>
                             <span>{group.meetingMode}</span>
                           </div>
 

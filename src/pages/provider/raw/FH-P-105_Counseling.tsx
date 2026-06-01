@@ -1,4 +1,4 @@
-// @ts-nocheck
+ï»¿// @ts-nocheck
 
 "use client";
 
@@ -247,9 +247,9 @@ const casesSeed: CounselingCaseRecord[] = [
       },
     ],
     checkpoints: [
-      { id: "cp-1", label: "Intake reviewed", when: "Today · 11:30 AM", state: "Done" },
-      { id: "cp-2", label: "Counselor assigned", when: "Today · 12:15 PM", state: "Done" },
-      { id: "cp-3", label: "Private session booked", when: "Tomorrow · 7:00 PM", state: "Ready" },
+      { id: "cp-1", label: "Intake reviewed", when: "Today Â· 11:30 AM", state: "Done" },
+      { id: "cp-2", label: "Counselor assigned", when: "Today Â· 12:15 PM", state: "Done" },
+      { id: "cp-3", label: "Private session booked", when: "Tomorrow Â· 7:00 PM", state: "Ready" },
       { id: "cp-4", label: "Follow-up summary", when: "After session", state: "Pending" },
     ],
   },
@@ -291,8 +291,8 @@ const casesSeed: CounselingCaseRecord[] = [
       },
     ],
     checkpoints: [
-      { id: "cp-5", label: "Leader intake captured", when: "Today · 8:40 AM", state: "Done" },
-      { id: "cp-6", label: "Safeguard review", when: "Today · 1:30 PM", state: "Ready" },
+      { id: "cp-5", label: "Leader intake captured", when: "Today Â· 8:40 AM", state: "Done" },
+      { id: "cp-6", label: "Safeguard review", when: "Today Â· 1:30 PM", state: "Ready" },
       { id: "cp-7", label: "Parent / guardian routing", when: "If required", state: "Pending" },
     ],
   },
@@ -327,7 +327,7 @@ const casesSeed: CounselingCaseRecord[] = [
       },
     ],
     checkpoints: [
-      { id: "cp-8", label: "Intake form submitted", when: "Today · 2:05 PM", state: "Done" },
+      { id: "cp-8", label: "Intake form submitted", when: "Today Â· 2:05 PM", state: "Done" },
       { id: "cp-9", label: "Assign counselor", when: "Today", state: "Ready" },
       { id: "cp-10", label: "Book first session", when: "Next step", state: "Pending" },
     ],
@@ -673,7 +673,7 @@ function CounselingDestinationPreview({
               {record.counselee}
             </div>
             <div className="mt-0.5 text-[11px] text-faith-slate">
-              {record.campus} • {record.category}
+              {record.campus} â€¢ {record.category}
             </div>
           </div>
           <Pill text={record.priority} tone={priorityTone(record.priority)} />
@@ -731,7 +731,7 @@ function CounselingDestinationPreview({
           </div>
           <div className="mt-1 text-[11px] text-faith-slate">
             {counselor
-              ? `${counselor.role} • ${counselor.focus}`
+              ? `${counselor.role} â€¢ ${counselor.focus}`
               : "Assign a counselor to activate scheduling and private communication tools."}
           </div>
         </div>
@@ -1024,7 +1024,7 @@ export default function CounselingPage() {
               <span className="rounded-full border border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-900/20 px-3 py-1 font-black uppercase tracking-[0.14em] text-amber-700 dark:text-amber-300">
                 Counseling ops pulse
               </span>
-              <span>{pulseBits.join(" • ")}</span>
+              <span>{pulseBits.join(" â€¢ ")}</span>
             </div>
             <div className="text-[11px] font-semibold uppercase tracking-[0.12em] text-faith-slate">
               Premium pastoral care
@@ -1207,11 +1207,11 @@ export default function CounselingPage() {
                             </div>
                             <div className="mt-1 flex flex-wrap items-center gap-2 text-[12px] text-faith-slate">
                               <span>{record.counselee}</span>
-                              <span>•</span>
+                              <span>â€¢</span>
                               <span>{counselor ? counselor.name : "Unassigned"}</span>
-                              <span>•</span>
+                              <span>â€¢</span>
                               <span>{record.campus}</span>
-                              <span>•</span>
+                              <span>â€¢</span>
                               <span>{record.nextSessionISO ? fmtLocal(record.nextSessionISO) : "No session booked"}</span>
                             </div>
                             <div className="mt-2 text-[12px] leading-6 text-faith-slate line-clamp-2">
@@ -1356,7 +1356,7 @@ export default function CounselingPage() {
                         >
                           {counselorsSeed.map((counselor) => (
                             <option key={counselor.id} value={counselor.id}>
-                              {counselor.name} · {counselor.campus}
+                              {counselor.name} Â· {counselor.campus}
                             </option>
                           ))}
                         </select>
@@ -1366,7 +1366,7 @@ export default function CounselingPage() {
                             {selectedCounselor.name}
                           </div>
                           <div className="mt-1 text-[11px] leading-5 text-faith-slate">
-                            {selectedCounselor.role} • {selectedCounselor.focus}
+                            {selectedCounselor.role} â€¢ {selectedCounselor.focus}
                           </div>
                           <div className="mt-2 flex flex-wrap items-center gap-2">
                             <Pill
@@ -1410,7 +1410,7 @@ export default function CounselingPage() {
                             key={checkpoint.id}
                             className="rounded-full border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 px-3 py-1 text-[11px] font-semibold text-faith-slate dark:text-slate-300"
                           >
-                            {checkpoint.label} · {checkpoint.state}
+                            {checkpoint.label} Â· {checkpoint.state}
                           </div>
                         ))}
                       </div>
@@ -1639,7 +1639,7 @@ export default function CounselingPage() {
                           {counselor.name}
                         </div>
                         <div className="mt-1 text-[12px] leading-6 text-faith-slate">
-                          {counselor.role} · {counselor.campus}
+                          {counselor.role} Â· {counselor.campus}
                         </div>
                       </div>
                       <Pill
@@ -1649,9 +1649,9 @@ export default function CounselingPage() {
                     </div>
                     <div className="flex flex-wrap items-center gap-2 text-[11px] text-faith-slate">
                       <span>{counselor.focus}</span>
-                      <span>•</span>
+                      <span>â€¢</span>
                       <span>{counselor.languages.join(" + ")}</span>
-                      <span>•</span>
+                      <span>â€¢</span>
                       <span>{counselor.activeCases} active cases</span>
                     </div>
                   </div>
@@ -1671,7 +1671,7 @@ export default function CounselingPage() {
           open={previewOpen}
           onClose={() => setPreviewOpen(false)}
           title="Provider Counseling destination preview"
-          subtitle={`${selectedCase.reference} • ${selectedCase.title}`}
+          subtitle={`${selectedCase.reference} â€¢ ${selectedCase.title}`}
         >
           <div className="space-y-4">
             <div className="flex flex-wrap items-center gap-2">

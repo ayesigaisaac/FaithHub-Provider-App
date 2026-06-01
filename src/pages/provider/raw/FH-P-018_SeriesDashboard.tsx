@@ -1,4 +1,4 @@
-// @ts-nocheck
+﻿// @ts-nocheck
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -102,7 +102,7 @@ function fmtDate(iso: string) {
 }
 
 function fmtDateTime(iso?: string) {
-  if (!iso) return "�";
+  if (!iso) return "—";
   const d = new Date(iso);
   return d.toLocaleString(undefined, {
     month: "short",
