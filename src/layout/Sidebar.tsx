@@ -1,4 +1,4 @@
-import {
+﻿import {
   BellDot,
   Bell,
   CalendarDays,
@@ -33,7 +33,7 @@ interface SidebarProps {
   onClose?: () => void;
 }
 
-type ModuleGroupId = 'core' | 'content' | 'streams' | 'audience' | 'giving' | 'beacon' | 'community' | 'leadership' | 'workspace';
+type ModuleGroupId = 'core' | 'content' | 'streams' | 'audience' | 'giving' | 'revelight' | 'community' | 'leadership' | 'workspace';
 
 type SidebarModuleItem = {
   label: string;
@@ -95,10 +95,10 @@ const moduleGroups: SidebarModuleGroup[] = [
     ],
   },
   {
-    id: 'beacon',
-    label: 'Beacon',
+    id: 'revelight',
+    label: 'Revelight',
     items: [
-      { label: 'Beacon dashboard', hint: 'Campaign performance', path: '/faithhub/provider/beacon-dashboard', icon: <Megaphone className="h-5 w-5" /> },
+      { label: 'Revelight dashboard', hint: 'Campaign performance', path: '/faithhub/provider/revelight-dashboard', icon: <Megaphone className="h-5 w-5" /> },
     ],
   },
   {

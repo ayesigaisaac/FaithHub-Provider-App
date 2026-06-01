@@ -1,4 +1,4 @@
-// @ts-nocheck
+﻿// @ts-nocheck
 
 "use client";
 
@@ -61,7 +61,7 @@ const EV_NAVY = "#0f172a";
 const ROUTES = {
   booksManager: "/faithhub/provider/books-manager",
   audienceNotifications: "/faithhub/provider/audience-notifications",
-  beaconBuilder: "/faithhub/provider/beacon-builder",
+  revelightBuilder: "/faithhub/provider/revelight-builder",
   liveBuilder: "/faithhub/provider/live-builder",
 };
 
@@ -161,7 +161,7 @@ type BookDraft = {
   locales: TranslationVariant[];
   ctaText: string;
   notificationsReady: boolean;
-  beaconReady: boolean;
+  revelightReady: boolean;
   liveCompanionReady: boolean;
   linkedEvent: string;
   linkedFund: string;
@@ -431,7 +431,7 @@ const STEP_LIST: Array<{ key: StepKey; label: string; hint: string }> = [
   { key: "cover", label: "Cover & media", hint: "Artwork, quote, brand treatment" },
   { key: "access", label: "Access & launch", hint: "Pricing, visibility, schedule" },
   { key: "localization", label: "Localization", hint: "Variants, titles, CTA copy" },
-  { key: "promotion", label: "Promotion", hint: "Live, Beacon, notifications, links" },
+  { key: "promotion", label: "Promotion", hint: "Live, Revelight, notifications, links" },
   { key: "review", label: "Review & publish", hint: "Checklist, approvals, outputs" },
 ];
 
@@ -520,7 +520,7 @@ function buildDraft(templateId: TemplateKey): BookDraft {
     ],
     ctaText: "Read now",
     notificationsReady: true,
-    beaconReady: false,
+    revelightReady: false,
     liveCompanionReady: true,
     linkedEvent: "",
     linkedFund: "",
@@ -1715,7 +1715,7 @@ export default function FaithHubBookBuilderPage() {
                 {
                   title: "Quote treatment",
                   image: draft.coverUrl,
-                  note: "Used in Beacon and notifications when quote-first creative performs better.",
+                  note: "Used in Revelight and notifications when quote-first creative performs better.",
                 },
               ].map((panel) => (
                 <div
@@ -1946,7 +1946,7 @@ export default function FaithHubBookBuilderPage() {
         <div className="space-y-4">
           <Card
             title="Cross-links and promotion hooks"
-            subtitle="Connect the book to live ministry, events, giving, and Beacon without turning creation into a fragmented workflow."
+            subtitle="Connect the book to live ministry, events, giving, and Revelight without turning creation into a fragmented workflow."
             right={<Pill text="Promotion-ready" icon={<Megaphone className="h-3.5 w-3.5" />} />}
           >
             <div className="grid gap-3 xl:grid-cols-3">
@@ -1966,11 +1966,11 @@ export default function FaithHubBookBuilderPage() {
                 tone="orange"
               />
               <ToggleCard
-                checked={draft.beaconReady}
-                onClick={() => update("beaconReady", !draft.beaconReady)}
+                checked={draft.revelightReady}
+                onClick={() => update("revelightReady", !draft.revelightReady)}
                 icon={<Megaphone className="h-4 w-4" />}
-                label="Beacon promotion"
-                hint="Push the book into Beacon as a linked or standalone promotion."
+                label="Revelight promotion"
+                hint="Push the book into Revelight as a linked or standalone promotion."
               />
             </div>
 
@@ -2024,12 +2024,12 @@ export default function FaithHubBookBuilderPage() {
 
               <button
                 type="button"
-                onClick={() => safeNav(ROUTES.beaconBuilder)}
+                onClick={() => safeNav(ROUTES.revelightBuilder)}
                 className="rounded-3xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 text-left transition hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800"
               >
                 <div className="flex items-center gap-2 text-sm font-extrabold text-faith-ink dark:text-slate-100">
                   <Megaphone className="h-4 w-4 text-orange-500" />
-                  Open Beacon Builder
+                  Open Revelight Builder
                 </div>
                 <div className="mt-2 text-xs text-faith-slate">
                   Promote the book with a linked campaign or a standalone awareness push.
@@ -2232,12 +2232,12 @@ export default function FaithHubBookBuilderPage() {
 
                 <button
                   type="button"
-                  onClick={() => safeNav(ROUTES.beaconBuilder)}
+                  onClick={() => safeNav(ROUTES.revelightBuilder)}
                   className="flex w-full items-center justify-between rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-3 text-left transition hover:bg-[var(--fh-surface)] dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800"
                 >
                   <div>
                     <div className="text-[13px] font-extrabold text-faith-ink dark:text-slate-100">
-                      Promote with Beacon
+                      Promote with Revelight
                     </div>
                     <div className="mt-1 text-[11px] text-faith-slate">
                       Turn this book into a linked promotion or launch a campaign around it.
@@ -2302,7 +2302,7 @@ export default function FaithHubBookBuilderPage() {
                     },
                     {
                       icon: <Megaphone className="h-4 w-4" />,
-                      label: "Notification and Beacon hooks",
+                      label: "Notification and Revelight hooks",
                     },
                     {
                       icon: <ShieldCheck className="h-4 w-4" />,

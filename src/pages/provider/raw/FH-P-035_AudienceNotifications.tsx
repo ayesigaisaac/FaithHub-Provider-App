@@ -60,7 +60,7 @@ type SourceType =
   | "Event"
   | "Giving Campaign"
   | "Charity Crowdfund"
-  | "Beacon Destination";
+  | "Revelight Destination";
 
 type JourneyNodeKey =
   | "pre_live"
@@ -729,7 +729,7 @@ const journeyBlueprint: JourneyNode[] = [
     hint: "Drop a short-form clip with a strong deep link.",
     offset: "+6h",
     recommended: "Socially active followers • new prospects",
-    outcome: "Creates discovery and Beacon-ready promotion",
+    outcome: "Creates discovery and Revelight-ready promotion",
   },
   {
     key: "event_reminder",
@@ -755,7 +755,7 @@ const audienceSegmentsSeed: Segment[] = [
   { id: "seg_donors", label: "Recurring donors", size: "1,284", category: "Donor status" },
   { id: "seg_replay", label: "Replay viewers", size: "8,120", category: "Content behaviour" },
   { id: "seg_event", label: "Event registrants", size: "2,110", category: "Event pipeline" },
-  { id: "seg_beacon", label: "Beacon engagers", size: "3,402", category: "Promotion response" },
+  { id: "seg_revelight", label: "Revelight engagers", size: "3,402", category: "Promotion response" },
 ];
 
 const channelSeed: ChannelConfig[] = [
@@ -838,7 +838,7 @@ const templatePresets = [
   "Replay revival",
   "Crowdfund recovery",
   "Event attendance push",
-  "Beacon promotion handoff",
+  "Revelight promotion handoff",
 ];
 
 function buildInitialVariants(sourceType: SourceType): Record<LocaleKey, LocaleVariant> {
@@ -855,7 +855,7 @@ function buildInitialVariants(sourceType: SourceType): Record<LocaleKey, LocaleV
               ? "Support this campaign"
               : sourceType === "Charity Crowdfund"
                 ? "Help us reach the goal"
-                : "New Beacon promotion";
+                : "New Revelight promotion";
 
   return {
     en: {
@@ -1047,7 +1047,7 @@ export default function FaithHubAudienceNotificationsPage() {
       { label: "Donations", value: "78", hint: "Support actions from journey traffic", tone: "accent" as const },
       { label: "Crowdfund backers", value: "23", hint: "Direct conversion into charity support", tone: "good" as const },
       { label: "Event registrations", value: "57", hint: "People moved into the next in-person moment", tone: "brand" as const },
-      { label: "Beacon conversions", value: "91", hint: "Promotion bridge from content into campaign action", tone: "accent" as const },
+      { label: "Revelight conversions", value: "91", hint: "Promotion bridge from content into campaign action", tone: "accent" as const },
     ],
     [],
   );
@@ -1083,7 +1083,7 @@ export default function FaithHubAudienceNotificationsPage() {
     { value: "Event", label: "Event", hint: "Attendance and registration" },
     { value: "Giving Campaign", label: "Giving Campaign", hint: "Support and generosity" },
     { value: "Charity Crowdfund", label: "Charity Crowdfund", hint: "Goal-based charitable support" },
-    { value: "Beacon Destination", label: "Beacon Destination", hint: "Promotion handoff and retargeting" },
+    { value: "Revelight Destination", label: "Revelight Destination", hint: "Promotion handoff and retargeting" },
   ] as const;
 
   const sendModeOptions = [
@@ -1573,7 +1573,7 @@ export default function FaithHubAudienceNotificationsPage() {
                   <div>
                     <div className="font-black uppercase tracking-wider mb-1">Premium lifecycle logic</div>
                     <div className="font-semibold leading-relaxed">
-                      Live, replay, giving, event, and Beacon destinations can all share one orchestration layer, while each channel still respects throttle rules, quiet hours, and fatigue suppression.
+                      Live, replay, giving, event, and Revelight destinations can all share one orchestration layer, while each channel still respects throttle rules, quiet hours, and fatigue suppression.
                     </div>
                   </div>
                 </div>
@@ -2036,7 +2036,7 @@ export default function FaithHubAudienceNotificationsPage() {
 
             <CardShell
               title="Attribution view"
-              subtitle="Connect notification activity back to watch starts, replays, donations, crowdfunding, event registration, and Beacon conversion."
+              subtitle="Connect notification activity back to watch starts, replays, donations, crowdfunding, event registration, and Revelight conversion."
               right={
                 <Pill tone="brand">
                   <ArrowRight className="h-3.5 w-3.5" />
@@ -2215,7 +2215,7 @@ export default function FaithHubAudienceNotificationsPage() {
                   </div>
                   <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
                     <div className="font-black text-faith-ink dark:text-slate-100">Deep-link quality</div>
-                    <div className="mt-1">Ensure the CTA opens the correct live, replay, event, giving, or Beacon destination without dead ends.</div>
+                    <div className="mt-1">Ensure the CTA opens the correct live, replay, event, giving, or Revelight destination without dead ends.</div>
                   </div>
                   <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
                     <div className="font-black text-faith-ink dark:text-slate-100">Consent + fatigue</div>
@@ -2234,7 +2234,7 @@ export default function FaithHubAudienceNotificationsPage() {
                     { label: "Channels & Contact Manager", hint: "Consent, segments, and audience health" },
                     { label: "Live Builder", hint: "Session-linked notification source" },
                     { label: "Replays & Clips", hint: "Replay-ready and clip follow-up journeys" },
-                    { label: "Beacon Builder", hint: "Promotion handoff and post-live amplification" },
+                    { label: "Revelight Builder", hint: "Promotion handoff and post-live amplification" },
                   ].map((entry) => (
                     <button
                       type="button"

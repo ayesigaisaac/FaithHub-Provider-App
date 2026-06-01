@@ -1,8 +1,8 @@
-import type { ProviderPageMeta, ProviderPageSection } from '../catalog';
+﻿import type { ProviderPageMeta, ProviderPageSection } from '../catalog';
 
 export const growthAndCommunitySections: readonly ProviderPageSection[] = [
   'Events & Giving',
-  'Beacon',
+  'Revelight',
   'Community & Care',
   'Leadership & Team',
 ];

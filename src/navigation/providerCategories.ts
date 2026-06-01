@@ -1,4 +1,4 @@
-import type { ProviderPageSection } from './provider-pages/catalog';
+﻿import type { ProviderPageSection } from './provider-pages/catalog';
 
 export type ProviderCategoryMeta = {
   section: ProviderPageSection;
@@ -12,7 +12,7 @@ export const providerCategoryMeta: ProviderCategoryMeta[] = [
   { section: 'Audience & Outreach', navLabel: 'Audience' },
   { section: 'Post-live & Trust', navLabel: 'Post-live' },
   { section: 'Events & Giving', navLabel: 'Giving' },
-  { section: 'Beacon', navLabel: 'Beacon' },
+  { section: 'Revelight', navLabel: 'Revelight' },
   { section: 'Community & Care', navLabel: 'Community' },
   { section: 'Leadership & Team', navLabel: 'Leadership' },
   { section: 'Workspace Settings', navLabel: 'Settings' },

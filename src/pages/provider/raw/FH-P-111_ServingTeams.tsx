@@ -438,7 +438,7 @@ const TEAM_RECORDS: TeamRecord[] = [
       },
       {
         id: "asg-15",
-        title: "Beacon follow-up ambassador lane",
+        title: "Revelight follow-up ambassador lane",
         surface: "Audience + Projects bridge",
         when: "Mon · 6:30 PM",
         state: "Watch",

@@ -42,7 +42,7 @@ import { ProviderStatusPill } from "@/components/provider/ProviderStatusPill";
  * - Teachings Dashboard gives a broad teaching overview, but Series needs its own command surface.
  * - Episodes are children of Series, so + New Episode must always be tied to a selected Series.
  * - The page lets Providers manage Series, monitor nested Episodes, and move quickly into
- *   Series Builder, Episode Builder, Live Builder, Audience Notifications, and Beacon.
+ *   Series Builder, Episode Builder, Live Builder, Audience Notifications, and Revelight.
  *
  * Design goals
  * - EVzone Green primary, Orange secondary.
@@ -63,7 +63,7 @@ const ROUTES = {
   episodeBuilder: "/faithhub/provider/episode-builder",
   liveBuilder: "/faithhub/provider/live-builder",
   audienceNotifications: "/faithhub/provider/audience-notifications",
-  beaconBuilder: "/faithhub/provider/beacon-builder",
+  revelightBuilder: "/faithhub/provider/revelight-builder",
 };
 
 const HERO_1 =
@@ -123,7 +123,7 @@ type FilterKey =
   | "scheduled"
   | "attention"
   | "live-linked"
-  | "beacon-ready";
+  | "revelight-ready";
 
 type EpisodeRecord = {
   id: string;
@@ -154,7 +154,7 @@ type SeriesRecord = {
   promise: string;
   languages: string[];
   tags: string[];
-  beaconReady: boolean;
+  revelightReady: boolean;
   artworkReady: boolean;
   notesReady: boolean;
   translationDue: number;
@@ -200,7 +200,7 @@ const TEMPLATE_CARDS: TemplateCard[] = [
     id: "tpl-seasonal",
     title: "Seasonal theme",
     subtitle:
-      "Create a premium Easter, Advent, conference, or revival series with Beacon-ready creative.",
+      "Create a premium Easter, Advent, conference, or revival series with Revelight-ready creative.",
     accent: "navy",
     cta: "+ New Series",
   },
@@ -230,7 +230,7 @@ const SERIES_DATA: SeriesRecord[] = [
       "Guide the church into daily renewal through prayer, scripture, and practical obedience.",
     languages: ["English", "Swahili"],
     tags: ["Prayer", "Renewal", "Series"],
-    beaconReady: true,
+    revelightReady: true,
     artworkReady: true,
     notesReady: true,
     translationDue: 1,
@@ -305,7 +305,7 @@ const SERIES_DATA: SeriesRecord[] = [
       "Help believers live faithfully and excellently in everyday work environments.",
     languages: ["English"],
     tags: ["Work", "Discipleship", "Series"],
-    beaconReady: true,
+    revelightReady: true,
     artworkReady: true,
     notesReady: false,
     translationDue: 0,
@@ -380,7 +380,7 @@ const SERIES_DATA: SeriesRecord[] = [
       "Equip homes to pray, read, sing, and reflect together with confidence.",
     languages: ["English", "French"],
     tags: ["Family", "Devotional", "Series"],
-    beaconReady: false,
+    revelightReady: false,
     artworkReady: false,
     notesReady: false,
     translationDue: 2,
@@ -434,12 +434,12 @@ const SERIES_DATA: SeriesRecord[] = [
     status: "Needs review",
     coverUrl: HERO_4,
     summary:
-      "A premium teaching campaign tied to seasonal giving, event follow-up, and Beacon promotion.",
+      "A premium teaching campaign tied to seasonal giving, event follow-up, and Revelight promotion.",
     promise:
       "Show how faithful stewardship shapes discipleship, generosity, and witness.",
     languages: ["English", "Portuguese"],
     tags: ["Stewardship", "Giving", "Series"],
-    beaconReady: true,
+    revelightReady: true,
     artworkReady: true,
     notesReady: true,
     translationDue: 1,
@@ -750,8 +750,8 @@ function SeriesLandingPreview({
           <div className="absolute left-4 top-4 flex flex-wrap items-center gap-2">
             <span className="rounded-full bg-[#10223a] px-3 py-1 text-[10px] font-black">SERIES</span>
             <span className="rounded-full bg-[var(--fh-surface-bg)]/90 px-3 py-1 text-[10px] font-black text-[#106f65]">{series.access}</span>
-            {series.beaconReady ? (
-              <span className="rounded-full bg-[#fff3e6] dark:bg-amber-900/20 px-3 py-1 text-[10px] font-black text-[var(--fh-accent)] dark:text-amber-300">Beacon-ready</span>
+            {series.revelightReady ? (
+              <span className="rounded-full bg-[#fff3e6] dark:bg-amber-900/20 px-3 py-1 text-[10px] font-black text-[var(--fh-accent)] dark:text-amber-300">Revelight-ready</span>
             ) : null}
           </div>
 
@@ -867,7 +867,7 @@ export default function SeriesDashboardPage() {
                   ? seriesNeedsAttention(series)
                   : filterKey === "live-linked"
                     ? seriesHasLiveLinked(series)
-                    : series.beaconReady;
+                    : series.revelightReady;
 
       return matchesQuery && matchesCampus && matchesAccess && matchesFilter;
     });
@@ -904,8 +904,8 @@ export default function SeriesDashboardPage() {
     () => SERIES_DATA.reduce((sum, series) => sum + series.watchStarts, 0),
     [],
   );
-  const beaconReadyCount = useMemo(
-    () => SERIES_DATA.filter((series) => series.beaconReady).length,
+  const revelightReadyCount = useMemo(
+    () => SERIES_DATA.filter((series) => series.revelightReady).length,
     [],
   );
   const translationReviewCount = useMemo(
@@ -967,7 +967,7 @@ export default function SeriesDashboardPage() {
                 <Pill text="Series-aware" tone="good" />
                 <Pill text="Episodes inside Series" tone="neutral" />
                 <Pill text="Live-linked" tone="warn" />
-                <Pill text="Beacon-ready" tone="warn" />
+                <Pill text="Revelight-ready" tone="warn" />
               </div>
             </div>
 
@@ -1006,7 +1006,7 @@ export default function SeriesDashboardPage() {
             <span>?</span>
             <span>{translationReviewCount} translation variants still due</span>
             <span>?</span>
-            <span>{beaconReadyCount} series already promotion-ready</span>
+            <span>{revelightReadyCount} series already promotion-ready</span>
             <span className="ml-auto text-[11px] font-semibold uppercase tracking-[0.12em] text-faith-slate">Premium series ops</span>
           </div>
         </div>
@@ -1037,8 +1037,8 @@ export default function SeriesDashboardPage() {
             accent="green"
           />
           <StatCard
-            label="Beacon-ready"
-            value={String(beaconReadyCount)}
+            label="Revelight-ready"
+            value={String(revelightReadyCount)}
             helper="Series already prepared for promotion and audience amplification."
             accent="orange"
           />
@@ -1075,7 +1075,7 @@ export default function SeriesDashboardPage() {
                 ["scheduled", "Scheduled"],
                 ["attention", "Needs attention"],
                 ["live-linked", "Live-linked"],
-                ["beacon-ready", "Beacon-ready"],
+                ["revelight-ready", "Revelight-ready"],
               ].map(([key, label]) => (
                 <button
                   key={key}
@@ -1086,12 +1086,12 @@ export default function SeriesDashboardPage() {
                   className={cx(
                     "rounded-full border px-3 py-1.5 text-[12px] font-semibold transition-colors",
                     filterKey === key
-                      ? key === "beacon-ready"
+                      ? key === "revelight-ready"
                         ? "border-[var(--fh-accent)] bg-[#fff3e6] dark:bg-amber-900/20 text-[var(--fh-accent)] dark:text-amber-300"
                         : "border-transparent text-white"
                       : "border-faith-line dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 text-faith-slate dark:text-slate-300 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-700",
                   )}
-                  style={filterKey === key && key !== "beacon-ready" ? { background: EV_GREEN } : undefined}
+                  style={filterKey === key && key !== "revelight-ready" ? { background: EV_GREEN } : undefined}
                 >
                   {label}
                 </button>
@@ -1127,7 +1127,7 @@ export default function SeriesDashboardPage() {
                                 <span className="rounded-xl bg-[#0e7d72] px-3 py-1 text-[11px] font-black text-white">SERIES</span>
                                 <Pill text={series.status} tone={statusTone(series.status)} />
                                 <Pill text={series.access} />
-                                {series.beaconReady ? <Pill text="Beacon-ready" tone="warn" /> : null}
+                                {series.revelightReady ? <Pill text="Revelight-ready" tone="warn" /> : null}
                               </div>
                               <div className="mt-2 text-[22px] font-black tracking-tight text-faith-ink dark:text-slate-100">{series.title}</div>
                               <div className="mt-1 text-[13px] font-medium text-faith-slate">{series.subtitle}</div>
@@ -1190,8 +1190,8 @@ export default function SeriesDashboardPage() {
                             <SoftButton onClick={() => safeNav(`${ROUTES.audienceNotifications}?seriesId=${series.id}`)}>
                               Send reminders
                             </SoftButton>
-                            <SoftButton onClick={() => safeNav(`${ROUTES.beaconBuilder}?seriesId=${series.id}`)}>
-                              Promote with Beacon
+                            <SoftButton onClick={() => safeNav(`${ROUTES.revelightBuilder}?seriesId=${series.id}`)}>
+                              Promote with Revelight
                             </SoftButton>
                           </div>
                         </div>
@@ -1286,8 +1286,8 @@ export default function SeriesDashboardPage() {
                     >
                       Copy link
                     </SoftButton>
-                    <SoftButton onClick={() => safeNav(`${ROUTES.beaconBuilder}?seriesId=${selectedSeries.id}`)}>
-                      Promote with Beacon
+                    <SoftButton onClick={() => safeNav(`${ROUTES.revelightBuilder}?seriesId=${selectedSeries.id}`)}>
+                      Promote with Revelight
                     </SoftButton>
                   </div>
 

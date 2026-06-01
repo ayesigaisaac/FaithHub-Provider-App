@@ -55,7 +55,7 @@ const EV_NAVY = "#0b1d49";
 
 const ROUTES = {
   charityCrowdfund: "/faithhub/provider/charity-crowdfunding-workbench",
-  beaconBuilder: "/faithhub/provider/beacon-builder",
+  revelightBuilder: "/faithhub/provider/revelight-builder",
   audienceNotifications: "/faithhub/provider/audience-notifications",
   liveBuilder: "/faithhub/provider/live-builder",
   eventsManager: "/faithhub/provider/events-manager",
@@ -134,7 +134,7 @@ type GivingRecord = {
     live: number;
     replay: number;
     events: number;
-    beacon: number;
+    revelight: number;
   };
   heroImageUrl: string;
   accent: "green" | "orange" | "navy";
@@ -151,7 +151,7 @@ type CreationPreset = {
 type BridgeSurface = {
   id: string;
   label: string;
-  surface: "Live Session" | "Replay" | "Event" | "Beacon";
+  surface: "Live Session" | "Replay" | "Event" | "Revelight";
   state: string;
   value: string;
   hint: string;
@@ -178,7 +178,7 @@ const RECORDS_SEED: GivingRecord[] = [
     receiptLanguage: "Standard ministry receipt",
     confirmationJourney: "Instant thank-you + 7-day stewardship follow-up",
     defaultAmounts: [15, 30, 60, 120, 300],
-    linkedObjects: ["Sunday Morning Live", "Events Manager", "Audience Notifications", "Beacon Supporter Boost"],
+    linkedObjects: ["Sunday Morning Live", "Events Manager", "Audience Notifications", "Revelight Supporter Boost"],
     legalCopyReady: true,
     accountabilityReady: true,
     statusHint: "This fund is healthy, highly trusted, and benefits from direct prompting inside regular Live Sessions.",
@@ -186,7 +186,7 @@ const RECORDS_SEED: GivingRecord[] = [
       live: 39,
       replay: 18,
       events: 21,
-      beacon: 22,
+      revelight: 22,
     },
     heroImageUrl: HERO_GENERAL,
     accent: "green",
@@ -210,15 +210,15 @@ const RECORDS_SEED: GivingRecord[] = [
     receiptLanguage: "Missions campaign receipt",
     confirmationJourney: "Same-day thank-you + field update sequence",
     defaultAmounts: [25, 50, 100, 250, 500],
-    linkedObjects: ["Sunday Outreach Live", "Missions Night Event", "Beacon Appeal Boost", "Replay Follow-up Journey"],
+    linkedObjects: ["Sunday Outreach Live", "Missions Night Event", "Revelight Appeal Boost", "Replay Follow-up Journey"],
     legalCopyReady: true,
     accountabilityReady: true,
-    statusHint: "Best driven through live storytelling, post-live updates, and Beacon-supported regional promotion.",
+    statusHint: "Best driven through live storytelling, post-live updates, and Revelight-supported regional promotion.",
     attribution: {
       live: 44,
       replay: 16,
       events: 18,
-      beacon: 22,
+      revelight: 22,
     },
     heroImageUrl: HERO_MISSIONS,
     accent: "orange",
@@ -242,7 +242,7 @@ const RECORDS_SEED: GivingRecord[] = [
     receiptLanguage: "Recurring partner receipt",
     confirmationJourney: "Partner welcome + monthly stewardship note",
     defaultAmounts: [10, 25, 50, 100, 250],
-    linkedObjects: ["Partner Webinar Live", "Audience Journey", "Beacon Retention Push"],
+    linkedObjects: ["Partner Webinar Live", "Audience Journey", "Revelight Retention Push"],
     legalCopyReady: true,
     accountabilityReady: true,
     statusHint: "The strongest retention engine in the ministry, with healthy repeat donor confidence and excellent confirmation flows.",
@@ -250,7 +250,7 @@ const RECORDS_SEED: GivingRecord[] = [
       live: 31,
       replay: 21,
       events: 14,
-      beacon: 34,
+      revelight: 34,
     },
     heroImageUrl: HERO_PARTNERS,
     accent: "navy",
@@ -274,7 +274,7 @@ const RECORDS_SEED: GivingRecord[] = [
     receiptLanguage: "Capital campaign receipt",
     confirmationJourney: "Launch-day thank-you + renovation milestone updates",
     defaultAmounts: [50, 100, 250, 500, 1000],
-    linkedObjects: ["Dedication Event", "Beacon Launch Campaign"],
+    linkedObjects: ["Dedication Event", "Revelight Launch Campaign"],
     legalCopyReady: true,
     accountabilityReady: false,
     statusHint: "Needs stronger accountability assets before launch so donors clearly understand what the campaign will fund.",
@@ -282,7 +282,7 @@ const RECORDS_SEED: GivingRecord[] = [
       live: 22,
       replay: 9,
       events: 31,
-      beacon: 38,
+      revelight: 38,
     },
     heroImageUrl: HERO_BUILDING,
     accent: "orange",
@@ -314,7 +314,7 @@ const RECORDS_SEED: GivingRecord[] = [
       live: 28,
       replay: 12,
       events: 35,
-      beacon: 25,
+      revelight: 25,
     },
     heroImageUrl: HERO_GENERAL,
     accent: "orange",
@@ -381,12 +381,12 @@ const BRIDGE_SEED: BridgeSurface[] = [
     ready: false,
   },
   {
-    id: "bridge_beacon",
+    id: "bridge_revelight",
     label: "Supporter retention booster",
-    surface: "Beacon",
+    surface: "Revelight",
     state: "Ready",
     value: "22% conversion share",
-    hint: "Active promotion path from donor page into a Beacon support campaign.",
+    hint: "Active promotion path from donor page into a Revelight support campaign.",
     ready: true,
   },
 ];
@@ -856,7 +856,7 @@ function CampaignComposer({
   const [goal, setGoal] = useState("25000");
   const [launchNow, setLaunchNow] = useState(mode !== "Fund");
   const [tieToLive, setTieToLive] = useState(true);
-  const [tieToBeacon, setTieToBeacon] = useState(mode !== "Fund");
+  const [tieToRevelight, setTieToRevelight] = useState(mode !== "Fund");
 
   return (
     <div className="space-y-5">
@@ -913,10 +913,10 @@ function CampaignComposer({
             </div>
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-sm font-semibold text-faith-ink dark:text-slate-50">Open Beacon bridge</div>
+                <div className="text-sm font-semibold text-faith-ink dark:text-slate-50">Open Revelight bridge</div>
                 <div className="text-xs text-faith-slate">Prepare a promotion path once the campaign is live.</div>
               </div>
-              <Toggle value={tieToBeacon} onChange={setTieToBeacon} />
+              <Toggle value={tieToRevelight} onChange={setTieToRevelight} />
             </div>
           </div>
         </div>
@@ -1030,7 +1030,7 @@ export default function DonationsAndFundsPage() {
       { label: "Live Sessions", value: selectedRecord.attribution.live, hint: "Donation moments inside live production" },
       { label: "Replays & clips", value: selectedRecord.attribution.replay, hint: "Post-live follow-up and replay CTAs" },
       { label: "Events", value: selectedRecord.attribution.events, hint: "Event registration and in-person giving moments" },
-      { label: "Beacon", value: selectedRecord.attribution.beacon, hint: "Promoted campaigns and support reminders" },
+      { label: "Revelight", value: selectedRecord.attribution.revelight, hint: "Promoted campaigns and support reminders" },
     ];
   }, [selectedRecord]);
 
@@ -1312,7 +1312,7 @@ export default function DonationsAndFundsPage() {
               <SectionTitle
                 icon={<MonitorPlay className="h-5 w-5" />}
                 title="Live and content bridge"
-                subtitle="Push donation prompts into Live Sessions, replays, events, and Beacon campaigns without losing context."
+                subtitle="Push donation prompts into Live Sessions, replays, events, and Revelight campaigns without losing context."
               />
               <div className="mt-4 space-y-3">
                 {BRIDGE_SEED.map((item) => (
@@ -1329,13 +1329,13 @@ export default function DonationsAndFundsPage() {
                       <button
                         type="button"
                         onClick={() => {
-                          const route = item.surface === "Live Session" ? ROUTES.liveBuilder : item.surface === "Beacon" ? ROUTES.beaconBuilder : item.surface === "Event" ? ROUTES.eventsManager : ROUTES.audienceNotifications;
+                          const route = item.surface === "Live Session" ? ROUTES.liveBuilder : item.surface === "Revelight" ? ROUTES.revelightBuilder : item.surface === "Event" ? ROUTES.eventsManager : ROUTES.audienceNotifications;
                           safeNav(route);
                         }}
                         className="rounded-full px-3 py-1 text-xs font-semibold text-white"
-                        style={{ background: item.surface === "Beacon" ? EV_ORANGE : EV_GREEN }}
+                        style={{ background: item.surface === "Revelight" ? EV_ORANGE : EV_GREEN }}
                       >
-                        {item.surface === "Beacon" ? "Configure" : "Open surface"}
+                        {item.surface === "Revelight" ? "Configure" : "Open surface"}
                       </button>
                     </div>
                   </div>
@@ -1400,8 +1400,8 @@ export default function DonationsAndFundsPage() {
                   <Btn tone="primary" onClick={() => setPreviewOpen(true)} left={<ExternalLink className="h-4 w-4" />}>
                     Open full preview
                   </Btn>
-                  <Btn tone="secondary" onClick={() => safeNav(ROUTES.beaconBuilder)} left={<Zap className="h-4 w-4" />}>
-                    Promote with Beacon
+                  <Btn tone="secondary" onClick={() => safeNav(ROUTES.revelightBuilder)} left={<Zap className="h-4 w-4" />}>
+                    Promote with Revelight
                   </Btn>
                 </div>
               </div>
@@ -1452,7 +1452,7 @@ export default function DonationsAndFundsPage() {
                       </div>
                       <div className="text-sm font-extrabold text-faith-ink dark:text-slate-50">{item.value}%</div>
                     </div>
-                    <div className="mt-2"><ProgressBar value={item.value} tone={item.label === "Beacon" ? "orange" : item.label === "Events" ? "navy" : "green"} /></div>
+                    <div className="mt-2"><ProgressBar value={item.value} tone={item.label === "Revelight" ? "orange" : item.label === "Events" ? "navy" : "green"} /></div>
                   </div>
                 ))}
               </div>
@@ -1615,7 +1615,7 @@ export default function DonationsAndFundsPage() {
                   Premium donor pages should feel warm and trustworthy, with clear evidence of where money goes and strong post-give reassurance.
                 </div>
                 <div className="rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                  Use Live Sessions, replay surfaces, events, and Beacon hooks to keep the giving journey connected to ministry moments.
+                  Use Live Sessions, replay surfaces, events, and Revelight hooks to keep the giving journey connected to ministry moments.
                 </div>
               </div>
             </div>
@@ -1623,8 +1623,8 @@ export default function DonationsAndFundsPage() {
               <Btn tone="primary" onClick={() => setToast("Published donor page")} left={<CheckCircle2 className="h-4 w-4" />}>
                 Publish donor page
               </Btn>
-              <Btn tone="secondary" onClick={() => safeNav(ROUTES.beaconBuilder)} left={<Zap className="h-4 w-4" />}>
-                Create Beacon boost
+              <Btn tone="secondary" onClick={() => safeNav(ROUTES.revelightBuilder)} left={<Zap className="h-4 w-4" />}>
+                Create Revelight boost
               </Btn>
               <Btn tone="ghost" onClick={() => safeNav(ROUTES.audienceNotifications)} left={<Bell className="h-4 w-4" />}>
                 Send donor follow-up
@@ -1646,7 +1646,7 @@ export default function DonationsAndFundsPage() {
               <MetricCard label="Net donor growth" value="+346" hint="Last 30 days" tone="green" />
               <MetricCard label="New recurring donors" value="+84" hint="Partner circle expansion" tone="orange" />
               <MetricCard label="Replay-influenced gifts" value="18%" hint="Post-live discovery contribution" tone="navy" />
-              <MetricCard label="Beacon conversions" value="22%" hint="Promotion-assisted giving share" tone="orange" />
+              <MetricCard label="Revelight conversions" value="22%" hint="Promotion-assisted giving share" tone="orange" />
             </div>
             <div className="rounded-[14px] bg-[var(--fh-surface)] dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
               <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Trend monitors</div>
@@ -1674,7 +1674,7 @@ export default function DonationsAndFundsPage() {
                 {[
                   ["First-time givers", 28, "Triggered by live giving moments and event entry points"],
                   ["Repeat donors", 41, "Strong response to follow-up journeys and replay reminders"],
-                  ["Recurring supporters", 22, "Best-performing retention group and Beacon audience"],
+                  ["Recurring supporters", 22, "Best-performing retention group and Revelight audience"],
                   ["High-intent viewers", 17, "Convert when replay and live prompts are both attached"],
                 ].map(([label, value, hint]) => (
                   <div key={label as string} className="rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">

@@ -78,7 +78,7 @@ const ROUTES = {
   liveBuilder: '/faithhub/provider/live-builder',
   liveStudio: '/faithhub/provider/live-studio',
   postLivePublishing: '/faithhub/provider/post-live-publishing',
-  beaconBuilder: '/faithhub/provider/beacon-builder',
+  revelightBuilder: '/faithhub/provider/revelight-builder',
 };
 
 const DEFAULT_SESSION_TITLE = 'Sunday Encounter Live · The Way of Grace';
@@ -186,7 +186,7 @@ type DistributionPreset = {
   languageTrack: string;
   crossPostRule: CrossPostRule;
   fallbackRule: FallbackRule;
-  beaconNote: string;
+  revelightNote: string;
 };
 
 function normalizeRouteOrders(destinations: Destination[]) {
@@ -445,7 +445,7 @@ const PRESETS: DistributionPreset[] = [
     languageTrack: 'English main + Swahili CC',
     crossPostRule: 'Replay only',
     fallbackRule: 'Keep Provider primary',
-    beaconNote: 'Boost replay after publishing if watch-through crosses target.',
+    revelightNote: 'Boost replay after publishing if watch-through crosses target.',
   },
   {
     id: 'translated-session',
@@ -457,7 +457,7 @@ const PRESETS: DistributionPreset[] = [
     languageTrack: 'English + French + Swahili',
     crossPostRule: 'Replay + clips',
     fallbackRule: 'Retry + backup RTMP',
-    beaconNote: 'Prepare translated replay tiles for Beacon after broadcast.',
+    revelightNote: 'Prepare translated replay tiles for Revelight after broadcast.',
   },
   {
     id: 'fundraiser',
@@ -469,7 +469,7 @@ const PRESETS: DistributionPreset[] = [
     languageTrack: 'English main track',
     crossPostRule: 'Replay + clips',
     fallbackRule: 'Keep Provider primary',
-    beaconNote: 'Send replay and short giving clips into Beacon for continued momentum.',
+    revelightNote: 'Send replay and short giving clips into Revelight for continued momentum.',
   },
   {
     id: 'internal-only',
@@ -481,7 +481,7 @@ const PRESETS: DistributionPreset[] = [
     languageTrack: 'Institution default',
     crossPostRule: 'Internal only',
     fallbackRule: 'Internal only if external fails',
-    beaconNote: 'Optionally create a standalone Beacon after replay is approved.',
+    revelightNote: 'Optionally create a standalone Revelight after replay is approved.',
   },
 ];
 
@@ -771,7 +771,7 @@ export default function StreamToPlatformsPage() {
   const [fallbackRule, setFallbackRule] = useState<FallbackRule>('Keep Provider primary');
   const [recordMaster, setRecordMaster] = useState(runtime?.recordingOn ?? true);
   const [protectIso, setProtectIso] = useState(true);
-  const [beaconBridge, setBeaconBridge] = useState(true);
+  const [revelightBridge, setRevelightBridge] = useState(true);
   const [destinations, setDestinations] = useState<Destination[]>(INITIAL_DESTINATIONS);
   const [profile, setProfile] = useState<OutputProfile>({
     orientation: 'Landscape',
@@ -1085,7 +1085,7 @@ export default function StreamToPlatformsPage() {
                 <Badge tone="green">EVzone Green primary</Badge>
               </div>
               <div className="mt-1 text-[10px] sm:text-xs text-faith-slate line-clamp-2 sm:line-clamp-1">
-                Single-source distribution planning for Live Sessions across internal EVzone surfaces and external destinations, with platform-safe metadata, fallback logic, archive rules, and Beacon bridge preparation.
+                Single-source distribution planning for Live Sessions across internal EVzone surfaces and external destinations, with platform-safe metadata, fallback logic, archive rules, and Revelight bridge preparation.
               </div>
             </div>
 
@@ -1141,7 +1141,7 @@ export default function StreamToPlatformsPage() {
             <Badge tone="green">{internalDestinations.length} internal surface{internalDestinations.length === 1 ? '' : 's'}</Badge>
             <Badge tone="blue">{externalDestinations.length} external destination{externalDestinations.length === 1 ? '' : 's'}</Badge>
             <Badge tone="orange">Preset · {selectedPreset.label}</Badge>
-            <Badge tone="purple">Beacon bridge {beaconBridge ? 'ready' : 'off'}</Badge>
+            <Badge tone="purple">Revelight bridge {revelightBridge ? 'ready' : 'off'}</Badge>
           </div>
         </div>
       </div>
@@ -1445,8 +1445,8 @@ export default function StreamToPlatformsPage() {
                     ))}
                   </div>
                   <div className="mt-3 rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900/80 p-3 ring-1 ring-slate-200 dark:ring-slate-800 transition">
-                    <div className="text-[10px] sm:text-xs font-bold text-slate-800 dark:text-slate-200">Beacon bridge note</div>
-                    <div className="mt-1 text-[10px] sm:text-xs text-faith-slate">{selectedPreset.beaconNote}</div>
+                    <div className="text-[10px] sm:text-xs font-bold text-slate-800 dark:text-slate-200">Revelight bridge note</div>
+                    <div className="mt-1 text-[10px] sm:text-xs text-faith-slate">{selectedPreset.revelightNote}</div>
                   </div>
                 </div>
 
@@ -1613,7 +1613,7 @@ export default function StreamToPlatformsPage() {
               <SectionTitle
                 icon={<PlayCircle className="h-5 w-5" />}
                 title="Cross-posting and archive rules"
-                subtitle="Decide what happens after the live event: which replay stays internal, what clips can auto-publish, and when Beacon should receive the post-live handoff."
+                subtitle="Decide what happens after the live event: which replay stays internal, what clips can auto-publish, and when Revelight should receive the post-live handoff."
                 right={<Badge tone="blue">Post-live intelligence</Badge>}
               />
 
@@ -1663,10 +1663,10 @@ export default function StreamToPlatformsPage() {
                     <div className="rounded-[14px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition">
                       <div className="flex items-start justify-between gap-3">
                         <div>
-                          <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Direct Beacon bridge</div>
-                          <div className="mt-1 text-[10px] sm:text-xs text-faith-slate">Open Beacon for replay or clip promotion immediately after broadcast.</div>
+                          <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Direct Revelight bridge</div>
+                          <div className="mt-1 text-[10px] sm:text-xs text-faith-slate">Open Revelight for replay or clip promotion immediately after broadcast.</div>
                         </div>
-                        <Toggle checked={beaconBridge} onChange={setBeaconBridge} />
+                        <Toggle checked={revelightBridge} onChange={setRevelightBridge} />
                       </div>
                     </div>
                     <div className="rounded-[14px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition">
@@ -1683,7 +1683,7 @@ export default function StreamToPlatformsPage() {
 
                 <div className="rounded-[14px] bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                   <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Approval and distribution summary</div>
-                  <div className="mt-1 text-[10px] sm:text-xs text-faith-slate">Final confirmation that shows exactly what will go live where, plus the cross-posting and Beacon handoff path.</div>
+                  <div className="mt-1 text-[10px] sm:text-xs text-faith-slate">Final confirmation that shows exactly what will go live where, plus the cross-posting and Revelight handoff path.</div>
 
                   <div className="mt-4 rounded-[14px] overflow-hidden ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft">
                     <div className="px-4 py-4 text-white" style={{ background: 'linear-gradient(135deg, var(--fh-brand) 0%, #0f766e 45%, var(--fh-accent) 100%)' }}>
@@ -1714,8 +1714,8 @@ export default function StreamToPlatformsPage() {
                           <div className="mt-1 text-sm font-bold text-faith-ink dark:text-slate-100">{fallbackRule}</div>
                         </div>
                         <div className="rounded-xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition">
-                          <div className="text-[10px] uppercase tracking-wider text-faith-slate">Beacon bridge</div>
-                          <div className="mt-1 text-sm font-bold text-faith-ink dark:text-slate-100">{beaconBridge ? 'Replay and clip boost ready' : 'Disabled for this session'}</div>
+                          <div className="text-[10px] uppercase tracking-wider text-faith-slate">Revelight bridge</div>
+                          <div className="mt-1 text-sm font-bold text-faith-ink dark:text-slate-100">{revelightBridge ? 'Replay and clip boost ready' : 'Disabled for this session'}</div>
                         </div>
                       </div>
 
@@ -1770,11 +1770,11 @@ export default function StreamToPlatformsPage() {
                           <Copy className="h-4 w-4" /> Copy plan link
                         </button>
                         <button
-                          onClick={() => safeNav(ROUTES.beaconBuilder)}
+                          onClick={() => safeNav(ROUTES.revelightBuilder)}
                           className="inline-flex h-10 items-center gap-2 rounded-xl px-4 text-sm font-semibold text-white shadow-soft hover:opacity-95 transition active:scale-[0.98]"
                           style={{ background: EV_ORANGE }}
                         >
-                          <Megaphone className="h-4 w-4" /> Open Beacon bridge
+                          <Megaphone className="h-4 w-4" /> Open Revelight bridge
                         </button>
                       </div>
                     </div>

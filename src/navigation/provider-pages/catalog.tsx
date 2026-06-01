@@ -1,4 +1,4 @@
-import { lazy, type LazyExoticComponent, type ComponentType } from 'react';
+﻿import { lazy, type LazyExoticComponent, type ComponentType } from 'react';
 import type { LucideIcon } from 'lucide-react';
 import {
   Bell,
@@ -39,7 +39,7 @@ export type ProviderPageSection =
   | 'Audience & Outreach'
   | 'Post-live & Trust'
   | 'Events & Giving'
-  | 'Beacon'
+  | 'Revelight'
   | 'Community & Care'
   | 'Leadership & Team'
   | 'Workspace Settings'
@@ -92,10 +92,10 @@ const DonationsAndFunds = lazyPage(() => import('@/pages/provider/raw/FH-P-060_D
 const CharityCrowdfundingWorkbench = lazyPage(() => import('@/pages/provider/raw/FH-P-061_CharityCrowdfundingWorkbench'));
 const WalletAndPayouts = lazyPage(() => import('@/pages/provider/raw/FH-P-062_WalletAndPayouts'));
 const ReviewsAndModeration = lazyPage(() => import('@/pages/provider/raw/FH-P-070_ReviewsAndModeration'));
-const BeaconDashboard = lazyPage(() => import('@/pages/provider/raw/FH-P-080_BeaconDashboard'));
-const BeaconMarketplace = lazyPage(() => import('@/pages/provider/raw/FH-P-081_BeaconMarketplace'));
-const BeaconManager = lazyPage(() => import('@/pages/provider/raw/FH-P-082_BeaconManager'));
-const BeaconBuilder = lazyPage(() => import('@/pages/provider/raw/FH-P-083_BeaconBuilder'));
+const RevelightDashboard = lazyPage(() => import('@/pages/provider/raw/FH-P-080_RevelightDashboard'));
+const RevelightMarketplace = lazyPage(() => import('@/pages/provider/raw/FH-P-081_RevelightMarketplace'));
+const RevelightManager = lazyPage(() => import('@/pages/provider/raw/FH-P-082_RevelightManager'));
+const RevelightBuilder = lazyPage(() => import('@/pages/provider/raw/FH-P-083_RevelightBuilder'));
 const CommunityGroups = lazyPage(() => import('@/pages/provider/raw/FH-P-100_CommunityGroups'));
 const PrayerRequests = lazyPage(() => import('@/pages/provider/raw/FH-P-101_PrayerRequests_regenerated'));
 const Testimonies = lazyPage(() => import('@/pages/provider/raw/FH-P-102_Testimonies'));
@@ -155,7 +155,7 @@ export const providerPageCatalog: ProviderPageMeta[] = [
     key: 'provider-dashboard',
     id: 'FH-P-010',
     title: 'FaithHub Provider Dashboard',
-    description: 'Premium provider-side mission control with live, content, audience, giving, and Beacon signals.',
+    description: 'Premium provider-side mission control with live, content, audience, giving, and Revelight signals.',
     path: '/faithhub/provider/dashboard',
     aliases: ['/faithhub/provider'],
     section: 'Foundation & Mission Control',
@@ -450,47 +450,47 @@ export const providerPageCatalog: ProviderPageMeta[] = [
     component: ReviewsAndModeration,
   },
   {
-    key: 'beacon-dashboard',
+    key: 'revelight-dashboard',
     id: 'FH-P-080',
-    title: 'Beacon Dashboard',
+    title: 'Revelight Dashboard',
     description: 'Executive promotional control center for spend, reach, conversions, and recommendations.',
-    path: '/faithhub/provider/beacon-dashboard',
-    section: 'Beacon',
+    path: '/faithhub/provider/revelight-dashboard',
+    section: 'Revelight',
     icon: Megaphone,
-    component: BeaconDashboard,
+    component: RevelightDashboard,
   },
   {
-    key: 'beacon-marketplace',
+    key: 'revelight-marketplace',
     id: 'FH-P-081',
-    title: 'Beacon Marketplace',
+    title: 'Revelight Marketplace',
     description: 'Browse and compare inventory, audience packages, and placement options before launch.',
-    path: '/faithhub/provider/beacon-marketplace',
-    section: 'Beacon',
+    path: '/faithhub/provider/revelight-marketplace',
+    section: 'Revelight',
     icon: ShoppingBag,
-    component: BeaconMarketplace,
+    component: RevelightMarketplace,
   },
   {
-    key: 'beacon-manager',
+    key: 'revelight-manager',
     id: 'FH-P-082',
-    title: 'Beacon Manager',
+    title: 'Revelight Manager',
     description: 'Monitor, optimize, approve, and steer campaigns after launch.',
-    path: '/faithhub/provider/beacon-manager',
-    section: 'Beacon',
+    path: '/faithhub/provider/revelight-manager',
+    section: 'Revelight',
     icon: Briefcase,
-    component: BeaconManager,
+    component: RevelightManager,
   },
   {
-    key: 'beacon-builder',
+    key: 'revelight-builder',
     id: 'FH-P-083',
-    title: 'Beacon Builder',
-    description: 'Create linked or standalone Beacon campaigns with previews, budget, and placements.',
-    path: '/faithhub/provider/beacon-builder',
-    section: 'Beacon',
+    title: 'Revelight Builder',
+    description: 'Create linked or standalone Revelight campaigns with previews, budget, and placements.',
+    path: '/faithhub/provider/revelight-builder',
+    section: 'Revelight',
     icon: FilePenLine,
     navPlacement: 'builder',
-    parentKey: 'beacon-manager',
+    parentKey: 'revelight-manager',
     quickAction: true,
-    component: BeaconBuilder,
+    component: RevelightBuilder,
   },
   {
     key: 'community-groups',

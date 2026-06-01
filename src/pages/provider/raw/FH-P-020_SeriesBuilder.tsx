@@ -73,7 +73,7 @@ const ROUTES = {
   episodeBuilder: "/faithhub/provider/episode-builder",
   liveBuilder: "/faithhub/provider/live-builder",
   audienceNotifications: "/faithhub/provider/audience-notifications",
-  beaconBuilder: "/faithhub/provider/beacon-builder",
+  revelightBuilder: "/faithhub/provider/revelight-builder",
 };
 
 const SERIES_TEMPLATES = [
@@ -225,7 +225,7 @@ type LocaleVariant = {
 
 type ResourceItem = {
   id: string;
-  type: "Reading plan" | "Discussion guide" | "Event link" | "Giving prompt" | "Beacon hook" | "Download";
+  type: "Reading plan" | "Discussion guide" | "Event link" | "Giving prompt" | "Revelight hook" | "Download";
   title: string;
   status: "Ready" | "Draft" | "Planned";
 };
@@ -260,7 +260,7 @@ type SeriesDraft = {
   episodeTarget: number;
   episodes: EpisodeItem[];
   abCreativeEnabled: boolean;
-  beaconHook: string;
+  revelightHook: string;
 };
 
 const DEFAULT_EPISODES: EpisodeItem[] = [
@@ -365,7 +365,7 @@ const DEFAULT_RESOURCES: ResourceItem[] = [
   },
   {
     id: "res-4",
-    type: "Beacon hook",
+    type: "Revelight hook",
     title: "Prelaunch teaser creative pack",
     status: "Planned",
   },
@@ -732,8 +732,8 @@ function StepRail({
           <SoftButton className="w-full justify-between" onClick={() => safeNav(ROUTES.audienceNotifications)}>
             Audience Notifications <ChevronRight className="h-4 w-4" />
           </SoftButton>
-          <SoftButton className="w-full justify-between" onClick={() => safeNav(ROUTES.beaconBuilder)}>
-            Beacon Builder <ChevronRight className="h-4 w-4" />
+          <SoftButton className="w-full justify-between" onClick={() => safeNav(ROUTES.revelightBuilder)}>
+            Revelight Builder <ChevronRight className="h-4 w-4" />
           </SoftButton>
         </div>
       </div>
@@ -949,11 +949,11 @@ export default function SeriesBuilderPage() {
     embargoRule: EMBARGO_RULES[1],
     approvalFlow: APPROVAL_FLOWS[0],
     notes:
-      "Keep Beacon teaser ready before episode one launches. Align all replays under the same visual treatment.",
+      "Keep Revelight teaser ready before episode one launches. Align all replays under the same visual treatment.",
     episodeTarget: 6,
     episodes: DEFAULT_EPISODES,
     abCreativeEnabled: true,
-    beaconHook: "Create a teaser Beacon campaign 10 days before launch using hero art and trailer.",
+    revelightHook: "Create a teaser Revelight campaign 10 days before launch using hero art and trailer.",
   });
 
   useEffect(() => {
@@ -1461,7 +1461,7 @@ export default function SeriesBuilderPage() {
 
             <Card
               title="Launch-ready media summary"
-              subtitle="See how the series brand package will travel into live overlays, replays, and Beacon prelaunch promotion."
+              subtitle="See how the series brand package will travel into live overlays, replays, and Revelight prelaunch promotion."
             >
               <div className="space-y-3">
                 <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3">
@@ -1474,7 +1474,7 @@ export default function SeriesBuilderPage() {
                   <div className="flex items-center gap-2 text-[12px] font-bold text-faith-ink">
                     <PlayCircle className="h-4 w-4" /> Trailer / teaser support
                   </div>
-                  <div className="mt-1 text-[11px] text-faith-slate">Perfect for prelaunch announcements and Beacon awareness campaigns.</div>
+                  <div className="mt-1 text-[11px] text-faith-slate">Perfect for prelaunch announcements and Revelight awareness campaigns.</div>
                 </div>
                 <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3">
                   <div className="flex items-center gap-2 text-[12px] font-bold text-faith-ink">
@@ -1787,7 +1787,7 @@ export default function SeriesBuilderPage() {
         <div className="space-y-4">
           <Card
             title="Series resources and CTAs"
-            subtitle="Attach reading plans, prompts, notes, event links, giving moments, and Beacon promotion hooks that travel with the full series."
+            subtitle="Attach reading plans, prompts, notes, event links, giving moments, and Revelight promotion hooks that travel with the full series."
             right={<PrimaryButton color="orange" onClick={addResource}><Plus className="h-4 w-4" /> Add resource</PrimaryButton>}
           >
             <div className="grid gap-4 xl:grid-cols-[1.15fr_0.85fr]">
@@ -1850,11 +1850,11 @@ export default function SeriesBuilderPage() {
                   </div>
                 </div>
                 <div className="rounded-[26px] border border-faith-line/70 bg-[var(--fh-surface)] p-4">
-                  <div className="text-[11px] font-black uppercase tracking-[0.16em] text-faith-slate">Beacon promotion hook</div>
+                  <div className="text-[11px] font-black uppercase tracking-[0.16em] text-faith-slate">Revelight promotion hook</div>
                   <div className="mt-2 text-[12px] font-bold text-faith-ink">Linked prelaunch campaign</div>
                   <TextArea
-                    value={draft.beaconHook}
-                    onChange={(beaconHook) => setDraft((current) => ({ ...current, beaconHook }))}
+                    value={draft.revelightHook}
+                    onChange={(revelightHook) => setDraft((current) => ({ ...current, revelightHook }))}
                     rows={4}
                   />
                 </div>
@@ -1994,7 +1994,7 @@ export default function SeriesBuilderPage() {
                     <div className="mt-1 text-[11px] text-faith-slate">Launch reminder journeys directly from the series identity and launch plan.</div>
                   </div>
                   <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3">
-                    <div className="text-[12px] font-bold text-faith-ink">Beacon Builder</div>
+                    <div className="text-[12px] font-bold text-faith-ink">Revelight Builder</div>
                     <div className="mt-1 text-[11px] text-faith-slate">Promote the series before the first replay is published using teaser creative and metadata.</div>
                   </div>
                 </div>
@@ -2031,13 +2031,13 @@ export default function SeriesBuilderPage() {
                 <ProviderPageTitle
                   icon={<Layers className="h-6 w-6" />}
                   title="Series Builder"
-                  subtitle="Premium provider teaching workflow inspired by the creator base layout — now rebuilt for Series, Episodes, linked Live Sessions, localized discovery, and Beacon-ready promotion."
+                  subtitle="Premium provider teaching workflow inspired by the creator base layout — now rebuilt for Series, Episodes, linked Live Sessions, localized discovery, and Revelight-ready promotion."
                 />
               </div>
               <div className="mt-4 flex flex-wrap gap-2">
                 <Pill tone="brand"><BookOpen className="h-3 w-3" /> Series engine</Pill>
                 <Pill tone="good"><BadgeCheck className="h-3 w-3" /> Multi-language ready</Pill>
-                <Pill tone="warn"><Megaphone className="h-3 w-3" /> Beacon-linked</Pill>
+                <Pill tone="warn"><Megaphone className="h-3 w-3" /> Revelight-linked</Pill>
               </div>
             </div>
 

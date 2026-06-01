@@ -1,11 +1,11 @@
-export type UserRole = 'admin' | 'leadership' | 'production' | 'outreach' | 'finance';
+﻿export type UserRole = 'admin' | 'leadership' | 'production' | 'outreach' | 'finance';
 export type Permission =
   | 'finance:read'
   | 'finance:manage'
   | 'content:manage'
   | 'live:operate'
   | 'audience:manage'
-  | 'beacon:manage'
+  | 'revelight:manage'
   | 'community:manage'
   | 'teams:manage'
   | 'workspace:admin'

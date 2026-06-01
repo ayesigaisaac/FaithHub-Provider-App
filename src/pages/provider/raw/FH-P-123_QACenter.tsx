@@ -1,4 +1,4 @@
-// @ts-nocheck
+﻿// @ts-nocheck
 "use client";
 
 import React, { useMemo, useState } from "react";
@@ -211,7 +211,7 @@ const QA_RESULTS_SEED: QAResult[] = [
     id: "qa_6",
     title: "Event registration journey passes linked-surface checks",
     summary:
-      "The event form, notification journey, and Beacon landing path all resolve correctly across the current preview states.",
+      "The event form, notification journey, and Revelight landing path all resolve correctly across the current preview states.",
     scope: "forms",
     severity: "Info",
     state: "Passing",
@@ -318,7 +318,7 @@ const SURFACE_COVERAGE_SEED: SurfaceCoverage[] = [
   },
   {
     id: "cv_5",
-    label: "Beacon destination preview",
+    label: "Revelight destination preview",
     scope: "Promotion surfaces",
     desktop: true,
     mobile: true,

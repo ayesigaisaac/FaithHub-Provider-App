@@ -408,7 +408,7 @@ const communityHubCards = [
 const footerCols = [
   {
     title: "Ecosystem",
-    links: ["Live Sessions", "Prayer Flows", "Worship Replays", "Events", "Beacon", "Community"],
+    links: ["Live Sessions", "Prayer Flows", "Worship Replays", "Events", "Revelight", "Community"],
   },
   {
     title: "For providers",
@@ -610,7 +610,7 @@ export default function FaithHubHomeLandingPageV3Fixed() {
     Teachings: "/faithhub/provider/teachings-dashboard",
     Giving: "/faithhub/provider/donations-and-funds",
     Events: "/faithhub/provider/events-manager",
-    Beacon: "/faithhub/provider/beacon-dashboard",
+    Revelight: "/faithhub/provider/revelight-dashboard",
     Community: "/faithhub/provider/community-groups",
     "FaithHub Provider onboarding": "/faithhub/provider/onboarding",
     "FaithHub Provider Dashboard": "/faithhub/provider/dashboard",

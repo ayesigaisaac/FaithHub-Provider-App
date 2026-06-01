@@ -1,4 +1,4 @@
-// @ts-nocheck
+﻿// @ts-nocheck
 
 "use client";
 
@@ -44,7 +44,7 @@ import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
  * - Keep the same premium creator-style language used across the Provider experience.
  * - Make Merchandise Manager the operational catalog page.
  * - Route creation into a dedicated + New Merchandise builder page.
- * - Keep live, events, giving, and Beacon links visible so merchandise can plug directly
+ * - Keep live, events, giving, and Revelight links visible so merchandise can plug directly
  *   into the wider Provider system.
  */
 
@@ -57,7 +57,7 @@ const EV_NAVY = "#0f172a";
 const ROUTES = {
   providerDashboard: "/faithhub/provider/dashboard",
   merchandiseBuilder: "/faithhub/provider/new-merchandise",
-  beaconBuilder: "/faithhub/provider/beacon-builder",
+  revelightBuilder: "/faithhub/provider/revelight-builder",
   liveBuilder: "/faithhub/provider/live-builder",
   eventsManager: "/faithhub/provider/events-manager",
   faithMartStorefront: "/faithmart/storefront",
@@ -151,7 +151,7 @@ type MerchandiseRecord = {
   fulfillmentReady: boolean;
   linkedLive: boolean;
   linkedEvents: number;
-  linkedBeacon: boolean;
+  linkedRevelight: boolean;
   linkedGiving: boolean;
   inventory: number;
   reserved: number;
@@ -187,7 +187,7 @@ const MERCHANDISE: MerchandiseRecord[] = [
     fulfillmentReady: true,
     linkedLive: true,
     linkedEvents: 2,
-    linkedBeacon: true,
+    linkedRevelight: true,
     linkedGiving: false,
     inventory: 28,
     reserved: 7,
@@ -199,7 +199,7 @@ const MERCHANDISE: MerchandiseRecord[] = [
     featured: true,
     hooks: [
       { id: "h1", label: "Live session merch CTA", hint: "Pinned in next Sunday live.", status: "Ready" },
-      { id: "h2", label: "Beacon lookbook card", hint: "Creative package already approved.", status: "Ready" },
+      { id: "h2", label: "Revelight lookbook card", hint: "Creative package already approved.", status: "Ready" },
       { id: "h3", label: "Event shelf placement", hint: "Attached to volunteer summit merch shelf.", status: "Ready" },
     ],
     quote:
@@ -226,7 +226,7 @@ const MERCHANDISE: MerchandiseRecord[] = [
     fulfillmentReady: false,
     linkedLive: false,
     linkedEvents: 1,
-    linkedBeacon: true,
+    linkedRevelight: true,
     linkedGiving: true,
     inventory: 16,
     reserved: 4,
@@ -265,7 +265,7 @@ const MERCHANDISE: MerchandiseRecord[] = [
     fulfillmentReady: true,
     linkedLive: false,
     linkedEvents: 0,
-    linkedBeacon: false,
+    linkedRevelight: false,
     linkedGiving: false,
     inventory: 44,
     reserved: 0,
@@ -303,7 +303,7 @@ const MERCHANDISE: MerchandiseRecord[] = [
     fulfillmentReady: true,
     linkedLive: true,
     linkedEvents: 3,
-    linkedBeacon: true,
+    linkedRevelight: true,
     linkedGiving: false,
     inventory: 62,
     reserved: 19,
@@ -316,7 +316,7 @@ const MERCHANDISE: MerchandiseRecord[] = [
     hooks: [
       { id: "h1", label: "Event registration tie-in", hint: "Pack is attached to conference registration flow.", status: "Ready" },
       { id: "h2", label: "Live mention insert", hint: "Scheduled in the conference opening live session.", status: "Ready" },
-      { id: "h3", label: "Beacon retargeting", hint: "Recovery campaign runs for incomplete registrants.", status: "Ready" },
+      { id: "h3", label: "Revelight retargeting", hint: "Recovery campaign runs for incomplete registrants.", status: "Ready" },
     ],
     quote:
       "A flagship events-linked merchandise bundle that feels premium both operationally and visually.",
@@ -342,7 +342,7 @@ const MERCHANDISE: MerchandiseRecord[] = [
     fulfillmentReady: true,
     linkedLive: true,
     linkedEvents: 1,
-    linkedBeacon: false,
+    linkedRevelight: false,
     linkedGiving: true,
     inventory: 9,
     reserved: 3,
@@ -380,7 +380,7 @@ const MERCHANDISE: MerchandiseRecord[] = [
     fulfillmentReady: true,
     linkedLive: false,
     linkedEvents: 2,
-    linkedBeacon: false,
+    linkedRevelight: false,
     linkedGiving: false,
     inventory: 0,
     reserved: 0,
@@ -421,7 +421,7 @@ const TEMPLATE_CARDS = [
   {
     id: "tpl-seasonal",
     title: "Seasonal essentials",
-    subtitle: "Create a timed seasonal product with supporter-first access and Beacon promotion hooks.",
+    subtitle: "Create a timed seasonal product with supporter-first access and Revelight promotion hooks.",
     accent: "green" as const,
   },
 ];
@@ -870,7 +870,7 @@ function MerchandiseCard({
             <Eye className="h-4 w-4" />
             Preview
           </SoftButton>
-          <SoftButton onClick={() => safeNav(ROUTES.beaconBuilder)}>
+          <SoftButton onClick={() => safeNav(ROUTES.revelightBuilder)}>
             <Megaphone className="h-4 w-4" />
             Promote
           </SoftButton>
@@ -1104,9 +1104,9 @@ function MerchandiseStorefrontPreview({
                       Events
                     </span>
                   ) : null}
-                  {item.linkedBeacon ? (
+                  {item.linkedRevelight ? (
                     <span className="rounded-full border border-faith-line/70 dark:border-slate-700 px-2.5 py-1 text-[10px] font-bold text-slate-700 dark:text-slate-300">
-                      Beacon
+                      Revelight
                     </span>
                   ) : null}
                   {item.linkedGiving ? (
@@ -1256,8 +1256,8 @@ function MerchandiseStorefrontPreview({
                 enabled: item.linkedEvents > 0,
               },
               {
-                label: "Beacon",
-                enabled: item.linkedBeacon,
+                label: "Revelight",
+                enabled: item.linkedRevelight,
               },
               {
                 label: "Giving",
@@ -1293,7 +1293,7 @@ function MerchandiseStorefrontPreview({
             </div>
             <div className="mt-1 text-[11px] leading-relaxed text-faith-slate">
               Merchandise behaves as a first-class provider object, so providers can place it
-              inside live sessions, event flows, supporter journeys, and Beacon promotion without
+              inside live sessions, event flows, supporter journeys, and Revelight promotion without
               duplicating setup.
             </div>
           </div>
@@ -1341,9 +1341,9 @@ export default function MerchandiseManagerPage() {
     const soldOut = MERCHANDISE.filter((item) => item.inventory <= 0).length;
     const published = MERCHANDISE.filter((item) => item.status === "Published").length;
     const liveLinked = MERCHANDISE.filter((item) => item.linkedLive).length;
-    const beaconLinked = MERCHANDISE.filter((item) => item.linkedBeacon).length;
+    const revelightLinked = MERCHANDISE.filter((item) => item.linkedRevelight).length;
     const revenue = MERCHANDISE.reduce((sum, item) => sum + item.revenue, 0);
-    return { lowStock, soldOut, published, liveLinked, beaconLinked, revenue };
+    return { lowStock, soldOut, published, liveLinked, revelightLinked, revenue };
   }, []);
 
   const filtered = useMemo(() => {
@@ -1467,13 +1467,13 @@ export default function MerchandiseManagerPage() {
               <ProviderPageTitle
                 icon={<Gift className="h-6 w-6" />}
                 title="Merchandise Manager"
-                subtitle="Run premium merchandise shelves, bundles, and live-linked FaithMart drops from one Provider-side surface connected to Live Sessions, events, giving journeys, and Beacon promotion."
+                subtitle="Run premium merchandise shelves, bundles, and live-linked FaithMart drops from one Provider-side surface connected to Live Sessions, events, giving journeys, and Revelight promotion."
               />
 
               <div className="mt-5 flex flex-wrap gap-2">
                 <Pill text="FaithMart merchandise" tone="good" icon={<BadgeCheck className="h-3.5 w-3.5" />} />
                 <Pill text="Quick-create everywhere" tone="warn" icon={<Zap className="h-3.5 w-3.5" />} />
-                <Pill text="Live + Event + Beacon hooks" tone="neutral" icon={<Link2 className="h-3.5 w-3.5" />} />
+                <Pill text="Live + Event + Revelight hooks" tone="neutral" icon={<Link2 className="h-3.5 w-3.5" />} />
               </div>
             </div>
 
@@ -1503,9 +1503,9 @@ export default function MerchandiseManagerPage() {
                   <ExternalLink className="h-4 w-4" />
                   Open FaithMart
                 </SoftButton>
-                <SoftButton className="h-10 px-4 justify-center" onClick={() => safeNav(ROUTES.beaconBuilder)}>
+                <SoftButton className="h-10 px-4 justify-center" onClick={() => safeNav(ROUTES.revelightBuilder)}>
                   <Megaphone className="h-4 w-4" />
-                  Promote with Beacon
+                  Promote with Revelight
                 </SoftButton>
               </div>
 
@@ -1521,7 +1521,7 @@ export default function MerchandiseManagerPage() {
                     },
                     {
                       label: "Conference Welcome Pack",
-                      hint: "Strong event performance - consider a new Beacon push.",
+                      hint: "Strong event performance - consider a new Revelight push.",
                     },
                     {
                       label: "Prayer Journal Gift Set",
@@ -1668,7 +1668,7 @@ export default function MerchandiseManagerPage() {
                           <Eye className="h-4 w-4" />
                           Open item
                         </SoftButton>
-                        <SoftButton onClick={() => safeNav(ROUTES.beaconBuilder)}>
+                        <SoftButton onClick={() => safeNav(ROUTES.revelightBuilder)}>
                           <Megaphone className="h-4 w-4" />
                           Promote
                         </SoftButton>
@@ -1862,9 +1862,9 @@ export default function MerchandiseManagerPage() {
               <ChevronRight className="h-4 w-4" />
               Edit merchandise
             </PrimaryButton>
-            <SoftButton onClick={() => safeNav(ROUTES.beaconBuilder)}>
+            <SoftButton onClick={() => safeNav(ROUTES.revelightBuilder)}>
               <Megaphone className="h-4 w-4" />
-              Promote with Beacon
+              Promote with Revelight
             </SoftButton>
             <SoftButton onClick={() => safeNav(ROUTES.liveBuilder)}>
               <Zap className="h-4 w-4" />
@@ -1990,10 +1990,10 @@ export default function MerchandiseManagerPage() {
                       : "No event attachment yet.",
                   },
                   {
-                    label: "Beacon",
-                    enabled: selected.linkedBeacon,
-                    hint: selected.linkedBeacon
-                      ? "Promotion-ready with Beacon."
+                    label: "Revelight",
+                    enabled: selected.linkedRevelight,
+                    hint: selected.linkedRevelight
+                      ? "Promotion-ready with Revelight."
                       : "No paid promotion link currently attached.",
                   },
                   {

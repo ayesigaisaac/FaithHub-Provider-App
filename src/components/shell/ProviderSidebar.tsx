@@ -1,4 +1,4 @@
-import {
+﻿import {
   Box,
   Collapse,
   Divider,
@@ -46,7 +46,7 @@ const sectionIconMap: Record<string, typeof GridViewRoundedIcon> = {
   'Audience & Outreach': CampaignRoundedIcon,
   'Post-live & Trust': MovieFilterRoundedIcon,
   'Events & Giving': VolunteerActivismRoundedIcon,
-  Beacon: BoltRoundedIcon,
+  Revelight: BoltRoundedIcon,
   'Community & Care': GroupsRoundedIcon,
   'Leadership & Team': SupervisorAccountRoundedIcon,
   'Workspace Settings': SettingsRoundedIcon,

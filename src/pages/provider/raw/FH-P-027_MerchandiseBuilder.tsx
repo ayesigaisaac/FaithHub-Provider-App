@@ -1,4 +1,4 @@
-// @ts-nocheck
+﻿// @ts-nocheck
 "use client";
 
 import React, { useMemo, useState } from "react";
@@ -46,7 +46,7 @@ import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
  * Product intent
  * - Build premium FaithMart-ready merchandise without leaving the Provider flow.
  * - Support apparel, journals, gifts, event kits, accessories, and merch bundles.
- * - Keep Live Sessions, Events, Giving, Audience journeys, and Beacon promotion close to
+ * - Keep Live Sessions, Events, Giving, Audience journeys, and Revelight promotion close to
  *   the merchandise object from day one.
  * - Provide a premium preview rail so a provider sees the storefront, live pin, and
  *   promotional surfaces before publishing.
@@ -62,7 +62,7 @@ const ROUTES = {
   merchandiseManager: "/faithhub/provider/merchandise-manager",
   liveBuilder: "/faithhub/provider/live-builder",
   eventsManager: "/faithhub/provider/events-manager",
-  beaconBuilder: "/faithhub/provider/beacon-builder",
+  revelightBuilder: "/faithhub/provider/revelight-builder",
   audienceNotifications: "/faithhub/provider/audience-notifications",
   faithMartStorefront: "/faithmart/storefront",
 };
@@ -184,7 +184,7 @@ type LocaleItem = {
 type HookToggle = {
   live: boolean;
   event: boolean;
-  beacon: boolean;
+  revelight: boolean;
   giving: boolean;
   notifications: boolean;
 };
@@ -228,7 +228,7 @@ type MerchandiseDraft = {
   linkedLive: string;
   linkedEvent: string;
   linkedFund: string;
-  linkedBeacon: string;
+  linkedRevelight: string;
   ctaText: string;
   merchAngle: string;
   localeItems: LocaleItem[];
@@ -297,7 +297,7 @@ const TEMPLATE_LIBRARY: Record<TemplateKey, TemplatePreset> = {
     accentTone: "Green",
     audience: "Regular attendees, volunteers, youth leaders, and supporters",
     summary:
-      "A premium apparel item designed to strengthen community identity while performing well in live pins, event shelves, and Beacon campaigns.",
+      "A premium apparel item designed to strengthen community identity while performing well in live pins, event shelves, and Revelight campaigns.",
     promise:
       "Turn a simple merch release into a premium faith-community product with strong storytelling and excellent conversion surfaces.",
     story:
@@ -428,14 +428,14 @@ const TEMPLATE_LIBRARY: Record<TemplateKey, TemplatePreset> = {
     story:
       "Bundles work best when paired with live product storytelling, event conversion, and supporter-first release windows.",
     themeLine: "More value. More story. One clean drop.",
-    quote: "A premium merch object for higher-value campaigns and sharp Beacon creative.",
+    quote: "A premium merch object for higher-value campaigns and sharp Revelight creative.",
     badge: "Bundle spotlight",
     basePrice: 62,
     compareAtPrice: 79,
     supporterPrice: 54,
     storefrontLabel: "Youth campaign bundle",
     ctaText: "Claim the bundle",
-    merchAngle: "Great for Beacon awareness pushes and timed replay follow-up offers.",
+    merchAngle: "Great for Revelight awareness pushes and timed replay follow-up offers.",
     variantSeed: [
       { id: "var-b1", label: "Core bundle", sku: "FH-BUNDLE-CORE", inventory: 20, priceDelta: 0, active: true },
       { id: "var-b2", label: "Supporter bundle", sku: "FH-BUNDLE-SUP", inventory: 9, priceDelta: 8, active: true },
@@ -485,14 +485,14 @@ function createDraftFromTemplate(templateId: TemplateKey): MerchandiseDraft {
     linkHooks: {
       live: true,
       event: preset.kind === "Event Kit" || preset.kind === "Bundle",
-      beacon: true,
+      revelight: true,
       giving: preset.kind === "Gift" || preset.kind === "Journal",
       notifications: true,
     },
     linkedLive: "Sunday evening service live",
     linkedEvent: preset.kind === "Event Kit" ? "Provider conference 2026" : "",
     linkedFund: preset.kind === "Gift" ? "Supporter thank-you journey" : "",
-    linkedBeacon: "Seasonal awareness campaign",
+    linkedRevelight: "Seasonal awareness campaign",
     ctaText: preset.ctaText,
     merchAngle: preset.merchAngle,
     localeItems: [
@@ -511,7 +511,7 @@ function createDraftFromTemplate(templateId: TemplateKey): MerchandiseDraft {
         status: "Draft",
       },
     ],
-    notes: "Use as a flagship premium merchandise release and keep the CTA consistent across live, events, and Beacon.",
+    notes: "Use as a flagship premium merchandise release and keep the CTA consistent across live, events, and Revelight.",
     approvals: {
       brand: true,
       policy: false,
@@ -1031,8 +1031,8 @@ function PreviewRail({
                     <div className="mt-1 text-[11px] text-faith-slate">{draft.linkedLive || "Attach this merch item to a live session pin."}</div>
                   </div>
                   <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3">
-                    <div className="text-[10px] uppercase tracking-[0.18em] text-faith-slate">Beacon card</div>
-                    <div className="mt-1 text-[12px] font-semibold text-faith-ink">{draft.linkedBeacon || "Seasonal awareness campaign"}</div>
+                    <div className="text-[10px] uppercase tracking-[0.18em] text-faith-slate">Revelight card</div>
+                    <div className="mt-1 text-[12px] font-semibold text-faith-ink">{draft.linkedRevelight || "Seasonal awareness campaign"}</div>
                     <div className="mt-1 text-[11px] text-faith-slate">{draft.merchAngle}</div>
                   </div>
                 </div>
@@ -1089,7 +1089,7 @@ function PreviewRail({
           <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3">
             <div className="text-[10px] uppercase tracking-[0.18em] text-faith-slate">Activation hooks</div>
             <div className="mt-1 text-[18px] font-black text-faith-ink">{liveHooksCount}</div>
-            <div className="text-[11px] text-faith-slate">Live, events, Beacon, giving, and notification journeys</div>
+            <div className="text-[11px] text-faith-slate">Live, events, Revelight, giving, and notification journeys</div>
           </div>
           <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3">
             <div className="text-[10px] uppercase tracking-[0.18em] text-faith-slate">Release</div>
@@ -1161,7 +1161,7 @@ export default function MerchandiseBuilderPage() {
       {
         label: "Activation hooks are connected",
         ok: liveHooksCount >= 2 && Boolean(draft.ctaText),
-        hint: "Link the merch item to live, events, Beacon, or notifications from the start.",
+        hint: "Link the merch item to live, events, Revelight, or notifications from the start.",
       },
       {
         label: "Approvals are complete",
@@ -1248,9 +1248,9 @@ export default function MerchandiseBuilderPage() {
       subtitle: "Show on event pages, check-in flows, welcome kits, and event follow-up.",
     },
     {
-      key: "beacon",
-      title: "Beacon promotion",
-      subtitle: "Use the merch object as a linked source inside premium Beacon campaigns.",
+      key: "revelight",
+      title: "Revelight promotion",
+      subtitle: "Use the merch object as a linked source inside premium Revelight campaigns.",
     },
     {
       key: "giving",
@@ -1274,7 +1274,7 @@ export default function MerchandiseBuilderPage() {
                 <ProviderPageTitle
                   icon={<ShoppingBag className="h-6 w-6" />}
                   title="Merchandise Builder"
-                  subtitle="Build a premium merchandise object that is storefront-ready for FaithMart, operationally ready for fulfillment, and fully connected to Live Sessions, events, giving journeys, notifications, and Beacon promotion."
+                  subtitle="Build a premium merchandise object that is storefront-ready for FaithMart, operationally ready for fulfillment, and fully connected to Live Sessions, events, giving journeys, notifications, and Revelight promotion."
                 />
                 <div className="mt-4 flex flex-wrap items-center gap-2">
                   <Pill text="FaithMart builder" tone="good" icon={<ShoppingBag className="h-3.5 w-3.5" />} />
@@ -1292,7 +1292,7 @@ export default function MerchandiseBuilderPage() {
                 <div className="rounded-3xl border border-faith-line/70 bg-[var(--fh-surface)] p-4">
                   <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">Connected surfaces</div>
                   <div className="mt-2 text-3xl font-black text-faith-ink">{commandStats.hooks}</div>
-                  <div className="mt-1 text-[11px] text-faith-slate">Live, event, giving, notification, and Beacon hooks enabled.</div>
+                  <div className="mt-1 text-[11px] text-faith-slate">Live, event, giving, notification, and Revelight hooks enabled.</div>
                 </div>
               </div>
             </div>
@@ -1479,7 +1479,7 @@ export default function MerchandiseBuilderPage() {
                         <div className="mt-1 text-[11px] text-faith-slate">Use the primary cover image as the FaithMart hero and category thumbnail source.</div>
                       </div>
                       <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3">
-                        <div className="text-[12px] font-semibold text-faith-ink">Beacon creative handoff</div>
+                        <div className="text-[12px] font-semibold text-faith-ink">Revelight creative handoff</div>
                         <div className="mt-1 text-[11px] text-faith-slate">Generate promotion variants without rebuilding the merch object from scratch.</div>
                       </div>
                     </div>
@@ -1654,7 +1654,7 @@ export default function MerchandiseBuilderPage() {
                 <>
                   <Card
                     title="Cross-links and growth activation"
-                    subtitle="Turn the merch item into a premium growth object that can surface in live sessions, events, giving, notifications, and Beacon."
+                    subtitle="Turn the merch item into a premium growth object that can surface in live sessions, events, giving, notifications, and Revelight."
                     right={<Pill text="Provider-connected" tone="good" icon={<Workflow className="h-3.5 w-3.5" />} />}
                   >
                     <div className="grid gap-3 md:grid-cols-2">
@@ -1688,8 +1688,8 @@ export default function MerchandiseBuilderPage() {
                         <Input value={draft.linkedFund} onChange={(value) => patchDraft("linkedFund", value)} placeholder="Supporter thank-you journey" />
                       </div>
                       <div>
-                        <Label>Linked Beacon campaign</Label>
-                        <Input value={draft.linkedBeacon} onChange={(value) => patchDraft("linkedBeacon", value)} placeholder="Seasonal awareness campaign" />
+                        <Label>Linked Revelight campaign</Label>
+                        <Input value={draft.linkedRevelight} onChange={(value) => patchDraft("linkedRevelight", value)} placeholder="Seasonal awareness campaign" />
                       </div>
                     </div>
 
@@ -1700,7 +1700,7 @@ export default function MerchandiseBuilderPage() {
                       </div>
                       <div>
                         <Label>Merchandising angle</Label>
-                        <Input value={draft.merchAngle} onChange={(value) => patchDraft("merchAngle", value)} placeholder="Pin in live and attach to Beacon follow-up" />
+                        <Input value={draft.merchAngle} onChange={(value) => patchDraft("merchAngle", value)} placeholder="Pin in live and attach to Revelight follow-up" />
                       </div>
                     </div>
                   </Card>
@@ -1818,8 +1818,8 @@ export default function MerchandiseBuilderPage() {
                 <SoftButton onClick={() => safeNav(ROUTES.eventsManager)}>
                   <CalendarClock className="h-4 w-4" /> Link to Events Manager
                 </SoftButton>
-                <SoftButton onClick={() => safeNav(ROUTES.beaconBuilder)}>
-                  <Megaphone className="h-4 w-4" /> Promote with Beacon
+                <SoftButton onClick={() => safeNav(ROUTES.revelightBuilder)}>
+                  <Megaphone className="h-4 w-4" /> Promote with Revelight
                 </SoftButton>
                 <SoftButton onClick={() => safeNav(ROUTES.audienceNotifications)}>
                   <Users className="h-4 w-4" /> Build launch journey

@@ -1,4 +1,4 @@
-// @ts-nocheck
+﻿// @ts-nocheck
 
 "use client";
 
@@ -426,7 +426,7 @@ const initialIntegrations: Integration[] = [
     category: "Analytics",
     status: "Connected",
     owner: "Leadership",
-    detail: "Content, giving, Beacon, and attendance rollups",
+    detail: "Content, giving, Revelight, and attendance rollups",
     health: "24h export active",
   },
   {
@@ -687,7 +687,7 @@ export default function WorkspaceSettingsPage() {
                 <div className="flex flex-wrap items-start justify-between gap-3">
                   <div>
                     <div className="text-[12px] font-extrabold text-faith-ink dark:text-slate-100">Brand voice notes</div>
-                    <div className="mt-1 text-[11px] text-faith-slate">Used by noticeboard, notifications, live intros, and Beacon copy suggestions.</div>
+                    <div className="mt-1 text-[11px] text-faith-slate">Used by noticeboard, notifications, live intros, and Revelight copy suggestions.</div>
                   </div>
                   <div className="flex gap-2">
                     <span className="h-8 w-8 rounded-full border border-white/50" style={{ background: GREEN }} />
@@ -729,7 +729,7 @@ export default function WorkspaceSettingsPage() {
                     <div className="flex items-center justify-between gap-3 rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2">
                       <div>
                         <div className="text-[12px] font-extrabold text-faith-ink dark:text-slate-100">Lock provider colour defaults</div>
-                        <div className="text-[11px] text-faith-slate">Applies to noticeboard, live overlays, and Beacon shells.</div>
+                        <div className="text-[11px] text-faith-slate">Applies to noticeboard, live overlays, and Revelight shells.</div>
                       </div>
                       <Toggle checked={true} onChange={() => undefined} />
                     </div>
@@ -1086,7 +1086,7 @@ export default function WorkspaceSettingsPage() {
             <div className="flex flex-wrap items-center gap-2">
               <Pill tone="brand">PREMIUM WORKSPACE DEFAULTS</Pill>
               <span className="text-[12px] text-faith-slate">
-                Brand, campus, and operations rules flow into Teachings, Live Sessions, Audience, Giving, Beacon, and community surfaces.
+                Brand, campus, and operations rules flow into Teachings, Live Sessions, Audience, Giving, Revelight, and community surfaces.
               </span>
             </div>
             <span className="text-[11px] font-extrabold uppercase tracking-[0.08em] text-faith-slate">

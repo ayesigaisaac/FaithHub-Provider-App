@@ -72,7 +72,7 @@ const EV_LIGHT = 'var(--fh-ev-light-grey)';
 const ROUTES = {
   replaysAndClips: '/faithhub/provider/replays-and-clips',
   audienceNotifications: '/faithhub/provider/audience-notifications',
-  beaconBuilder: '/faithhub/provider/beacon-builder',
+  revelightBuilder: '/faithhub/provider/revelight-builder',
   liveDashboard: '/faithhub/provider/live-dashboard',
 };
 
@@ -379,7 +379,7 @@ function BrowserPreview({
   notesAttached,
   resourcesEnabled,
   downloadsEnabled,
-  beaconReady,
+  revelightReady,
   scheduledLabel,
 }: {
   title: string;
@@ -388,7 +388,7 @@ function BrowserPreview({
   notesAttached: number;
   resourcesEnabled: number;
   downloadsEnabled: boolean;
-  beaconReady: boolean;
+  revelightReady: boolean;
   scheduledLabel: string;
 }) {
   return (
@@ -412,7 +412,7 @@ function BrowserPreview({
             <div className="mt-4 flex flex-wrap gap-2">
               <span className="rounded-full bg-[var(--fh-surface-bg)]/10 px-3 py-1 text-[11px] font-bold">Watch replay</span>
               <span className="rounded-full bg-[var(--fh-surface-bg)]/10 px-3 py-1 text-[11px] font-bold">Read notes</span>
-              {beaconReady ? <span className="rounded-full bg-[var(--fh-surface-bg)]/10 px-3 py-1 text-[11px] font-bold">Promoted replay</span> : null}
+              {revelightReady ? <span className="rounded-full bg-[var(--fh-surface-bg)]/10 px-3 py-1 text-[11px] font-bold">Promoted replay</span> : null}
             </div>
           </div>
           <div className="mt-3 grid grid-cols-3 gap-3 text-[11px]">
@@ -537,7 +537,7 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
   const [featuredPlacement, setFeaturedPlacement] = useState(true);
   const [queueExternalAssets, setQueueExternalAssets] = useState(true);
   const [sendReplayJourney, setSendReplayJourney] = useState(true);
-  const [beaconReady, setBeaconReady] = useState(true);
+  const [revelightReady, setRevelightReady] = useState(true);
   const [donationAsk, setDonationAsk] = useState(true);
   const [eventTieIn, setEventTieIn] = useState(false);
   const [campaignTieIn, setCampaignTieIn] = useState(true);
@@ -656,10 +656,10 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
       enabled: false,
     },
     {
-      id: 'beacon',
-      label: 'Beacon promo asset',
-      hint: 'Prepare the replay for a Beacon follow-up campaign.',
-      value: 'Grace Replay Booster - Beacon asset pack',
+      id: 'revelight',
+      label: 'Revelight promo asset',
+      hint: 'Prepare the replay for a Revelight follow-up campaign.',
+      value: 'Grace Replay Booster - Revelight asset pack',
       enabled: true,
     },
   ]);
@@ -720,8 +720,8 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
       },
       {
         label: 'Follow-up actions',
-        status: sendReplayJourney || beaconReady || donationAsk ? 'Pass' : 'Warn',
-        detail: `${sendReplayJourney ? 'Replay journey ready' : 'Journey off'} · ${beaconReady ? 'Beacon handoff ready' : 'Beacon off'} · ${donationAsk ? 'Giving prompt on' : 'Giving prompt off'}`,
+        status: sendReplayJourney || revelightReady || donationAsk ? 'Pass' : 'Warn',
+        detail: `${sendReplayJourney ? 'Replay journey ready' : 'Journey off'} · ${revelightReady ? 'Revelight handoff ready' : 'Revelight off'} · ${donationAsk ? 'Giving prompt on' : 'Giving prompt off'}`,
       },
     ];
   }, [
@@ -737,7 +737,7 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
     subtitleConfidence,
     moderationClear,
     sendReplayJourney,
-    beaconReady,
+    revelightReady,
     donationAsk,
     processingState,
     trimHeadSec,
@@ -851,7 +851,7 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
                     <CheckCircle2 className="h-3.5 w-3.5" /> {readinessLabel}
                   </Pill>
                   <Pill tone="accent">
-                    <Zap className="h-3.5 w-3.5" /> Beacon follow-up ready
+                    <Zap className="h-3.5 w-3.5" /> Revelight follow-up ready
                   </Pill>
                 </div>
               </div>
@@ -1040,7 +1040,7 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
                       <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
                         <div className="text-[10px] font-black uppercase tracking-[0.14em] text-faith-slate">Follow-up</div>
                         <div className="mt-1 text-lg font-black text-faith-ink dark:text-slate-50">{sendReplayJourney ? 'Journey armed' : 'Manual'}</div>
-                        <div className="mt-1 text-[11px] text-faith-slate">Beacon + replay handoff</div>
+                        <div className="mt-1 text-[11px] text-faith-slate">Revelight + replay handoff</div>
                       </div>
                     </div>
                     <div className="mt-3">
@@ -1298,7 +1298,7 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
             <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <SectionHead
                 title="Notes and resource panel"
-                subtitle="Attach sermon notes, study guides, reading plans, event links, giving prompts, charity crowdfund links, and FaithMart or Beacon assets."
+                subtitle="Attach sermon notes, study guides, reading plans, event links, giving prompts, charity crowdfund links, and FaithMart or Revelight assets."
                 right={<Pill tone="accent"><BookOpen className="h-3.5 w-3.5" /> Rich destination page</Pill>}
               />
 
@@ -1457,7 +1457,7 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
             <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <SectionHead
                 title="Follow-up actions block"
-                subtitle="Trigger replay notifications, create Beacon campaigns, surface donation asks, or tie the replay to an ongoing event or campaign while context is still fresh."
+                subtitle="Trigger replay notifications, create Revelight campaigns, surface donation asks, or tie the replay to an ongoing event or campaign while context is still fresh."
                 right={<Pill tone="accent"><ArrowRight className="h-3.5 w-3.5" /> Growth cycle ready</Pill>}
               />
 
@@ -1478,13 +1478,13 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
                   <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                     <div className="flex items-center justify-between gap-3">
                       <div>
-                        <div className="text-sm font-semibold text-faith-ink dark:text-slate-50">Beacon campaign handoff</div>
+                        <div className="text-sm font-semibold text-faith-ink dark:text-slate-50">Revelight campaign handoff</div>
                         <div className="mt-1 text-xs text-faith-slate">Create a replay booster or promotion campaign directly from the replay.</div>
                       </div>
-                      <Toggle checked={beaconReady} onChange={setBeaconReady} />
+                      <Toggle checked={revelightReady} onChange={setRevelightReady} />
                     </div>
                     <div className="mt-3 flex items-center gap-2 text-[11px] text-faith-slate">
-                      <Zap className="h-3.5 w-3.5" /> Beacon asset pack ready
+                      <Zap className="h-3.5 w-3.5" /> Revelight asset pack ready
                     </div>
                   </div>
                   <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
@@ -1549,8 +1549,8 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
                     <Btn tone="accent" onClick={() => showSuccess('Clip generation requested')} left={<Scissors className="h-4 w-4" />}>
                       Generate clips
                     </Btn>
-                    <Btn tone="neutral" onClick={() => safeNav(routeWithSession(ROUTES.beaconBuilder))} left={<Zap className="h-4 w-4" />}>
-                      Create Beacon booster
+                    <Btn tone="neutral" onClick={() => safeNav(routeWithSession(ROUTES.revelightBuilder))} left={<Zap className="h-4 w-4" />}>
+                      Create Revelight booster
                     </Btn>
                   </div>
                 </div>
@@ -1602,7 +1602,7 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
                     notesAttached={notesAttached}
                     resourcesEnabled={resources.filter((item) => item.enabled).length}
                     downloadsEnabled={downloadsEnabled}
-                    beaconReady={beaconReady}
+                    revelightReady={revelightReady}
                     scheduledLabel={scheduleRelease ? `Scheduled · ${releaseAt.replace('T', ' ')}` : 'Publishes immediately'}
                   />
                 ) : (
@@ -1689,15 +1689,15 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
                 <Btn tone="neutral" onClick={() => safeNav(routeWithSession(ROUTES.audienceNotifications))} left={<MessageCircle className="h-4 w-4" />}>
                   Audience Notifications
                 </Btn>
-                <Btn tone="neutral" onClick={() => safeNav(routeWithSession(ROUTES.beaconBuilder))} left={<Zap className="h-4 w-4" />}>
-                  Beacon Builder
+                <Btn tone="neutral" onClick={() => safeNav(routeWithSession(ROUTES.revelightBuilder))} left={<Zap className="h-4 w-4" />}>
+                  Revelight Builder
                 </Btn>
                 <Btn tone="ghost" onClick={() => safeNav(routeWithSession(ROUTES.liveDashboard))} left={<Radio className="h-4 w-4" />}>
                   Return to Live Dashboard
                 </Btn>
               </div>
               <div className="mt-3 rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-3 ring-1 ring-slate-200 dark:ring-slate-800 text-xs text-faith-slate transition">
-                Recommended flow: publish replay ? send replay-ready journey ? generate clips ? launch Beacon follow-up.
+                Recommended flow: publish replay ? send replay-ready journey ? generate clips ? launch Revelight follow-up.
               </div>
             </div>
           </div>
@@ -1720,7 +1720,7 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
               notesAttached={notesAttached}
               resourcesEnabled={resources.filter((item) => item.enabled).length}
               downloadsEnabled={downloadsEnabled}
-              beaconReady={beaconReady}
+              revelightReady={revelightReady}
               scheduledLabel={scheduleRelease ? `Scheduled · ${releaseAt.replace('T', ' ')}` : 'Publishes immediately'}
             />
             <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
@@ -1761,8 +1761,8 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
                   <Pill tone={scheduleRelease ? 'warn' : 'good'}>{scheduleRelease ? 'Scheduled' : 'Immediate'}</Pill>
                 </div>
                 <div className="flex items-center justify-between gap-2 rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
-                  <span className="text-slate-700 dark:text-slate-300">Beacon handoff</span>
-                  <Pill tone={beaconReady ? 'accent' : 'neutral'}>{beaconReady ? 'Ready' : 'Off'}</Pill>
+                  <span className="text-slate-700 dark:text-slate-300">Revelight handoff</span>
+                  <Pill tone={revelightReady ? 'accent' : 'neutral'}>{revelightReady ? 'Ready' : 'Off'}</Pill>
                 </div>
               </div>
             </div>

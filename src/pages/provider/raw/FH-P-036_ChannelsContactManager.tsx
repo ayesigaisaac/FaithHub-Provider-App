@@ -67,7 +67,7 @@ type TimelineEvent = {
   id: string;
   label: string;
   when: string;
-  type: "Live" | "Replay" | "Message" | "Donation" | "Event" | "Beacon";
+  type: "Live" | "Replay" | "Message" | "Donation" | "Event" | "Revelight";
   detail: string;
 };
 
@@ -93,7 +93,7 @@ type Contact = {
   replayCount: number;
   donations: string;
   eventCount: number;
-  beaconTouches: number;
+  revelightTouches: number;
   engagementScore: number;
   pastoralNote: string;
   timeline: TimelineEvent[];
@@ -110,7 +110,7 @@ type Segment = {
   health: "High" | "Watch" | "Needs work";
   growth: string;
   linkedJourneys: number;
-  linkedBeaconCampaigns: number;
+  linkedRevelightCampaigns: number;
   childSafeReady: boolean;
 };
 
@@ -549,14 +549,14 @@ const contacts: Contact[] = [
     replayCount: 9,
     donations: "$640",
     eventCount: 4,
-    beaconTouches: 7,
+    revelightTouches: 7,
     engagementScore: 94,
     pastoralNote: "Consistent attendee. Responds well to replay reminders and giving updates.",
     timeline: [
       { id: "1", label: "Sunday Live Session attended", when: "Today · 10:08", type: "Live", detail: "Joined via WhatsApp deep link and stayed 48 minutes." },
       { id: "2", label: "Replay follow-up opened", when: "Yesterday · 16:22", type: "Replay", detail: "Watched the prayer segment and shared the replay card." },
       { id: "3", label: "Charity campaign donation", when: "2 days ago", type: "Donation", detail: "Contributed to the school-feeding crowdfund after a reminder journey." },
-      { id: "4", label: "Beacon awareness touch", when: "4 days ago", type: "Beacon", detail: "Saw 3 community-service ads and tapped the giving campaign." },
+      { id: "4", label: "Revelight awareness touch", when: "4 days ago", type: "Revelight", detail: "Saw 3 community-service ads and tapped the giving campaign." },
     ],
     consentAudit: [
       { at: "14 Feb 2026", label: "WhatsApp opt-in", detail: "Joined after scanning the Sunday live QR card." },
@@ -586,13 +586,13 @@ const contacts: Contact[] = [
     replayCount: 3,
     donations: "$0",
     eventCount: 11,
-    beaconTouches: 2,
+    revelightTouches: 2,
     engagementScore: 81,
     pastoralNote: "Reliable on events. Prefers email planning updates and avoids late-night SMS.",
     timeline: [
       { id: "5", label: "Volunteer briefing opened", when: "Today · 08:14", type: "Message", detail: "Opened production call-sheet from Audience Notifications." },
       { id: "6", label: "Baptism event checked in", when: "Last Sunday", type: "Event", detail: "Registered early and completed volunteer duty." },
-      { id: "7", label: "Beacon click-through", when: "6 days ago", type: "Beacon", detail: "Tapped youth retreat promo but did not complete RSVP." },
+      { id: "7", label: "Revelight click-through", when: "6 days ago", type: "Revelight", detail: "Tapped youth retreat promo but did not complete RSVP." },
     ],
     consentAudit: [
       { at: "03 Jan 2026", label: "Email opt-in", detail: "Imported from volunteer roster with confirmation." },
@@ -622,7 +622,7 @@ const contacts: Contact[] = [
     replayCount: 1,
     donations: "$0",
     eventCount: 2,
-    beaconTouches: 1,
+    revelightTouches: 1,
     engagementScore: 63,
     pastoralNote: "Protected lane contact. Route all outbound messaging through parent-approved surfaces only.",
     timeline: [
@@ -657,13 +657,13 @@ const contacts: Contact[] = [
     replayCount: 17,
     donations: "$1,240",
     eventCount: 1,
-    beaconTouches: 9,
+    revelightTouches: 9,
     engagementScore: 92,
-    pastoralNote: "Global donor with strong replay affinity. Excellent candidate for Beacon replay boosts.",
+    pastoralNote: "Global donor with strong replay affinity. Excellent candidate for Revelight replay boosts.",
     timeline: [
       { id: "10", label: "Crowdfund donation completed", when: "Today · 06:42", type: "Donation", detail: "Responded to 'impact update' journey and completed donation." },
       { id: "11", label: "Replay binge", when: "Yesterday", type: "Replay", detail: "Watched 3 clips and 1 full replay from the prayer summit." },
-      { id: "12", label: "Beacon donation ad conversion", when: "1 week ago", type: "Beacon", detail: "Clicked a replay boost and completed a giving action." },
+      { id: "12", label: "Revelight donation ad conversion", when: "1 week ago", type: "Revelight", detail: "Clicked a replay boost and completed a giving action." },
     ],
     consentAudit: [
       { at: "12 Dec 2025", label: "Email + push approved", detail: "Completed bilingual opt-in flow." },
@@ -693,7 +693,7 @@ const contacts: Contact[] = [
     replayCount: 0,
     donations: "$0",
     eventCount: 1,
-    beaconTouches: 0,
+    revelightTouches: 0,
     engagementScore: 28,
     pastoralNote: "Needs hygiene review. SMS bounced and profile is marked for verification before the next reminder.",
     timeline: [
@@ -718,7 +718,7 @@ const segments: Segment[] = [
     health: "High",
     growth: "+8.4% in 30 days",
     linkedJourneys: 5,
-    linkedBeaconCampaigns: 2,
+    linkedRevelightCampaigns: 2,
     childSafeReady: false,
   },
   {
@@ -731,7 +731,7 @@ const segments: Segment[] = [
     health: "High",
     growth: "+4.1% in 30 days",
     linkedJourneys: 4,
-    linkedBeaconCampaigns: 3,
+    linkedRevelightCampaigns: 3,
     childSafeReady: false,
   },
   {
@@ -744,7 +744,7 @@ const segments: Segment[] = [
     health: "Watch",
     growth: "+1.7% in 30 days",
     linkedJourneys: 2,
-    linkedBeaconCampaigns: 0,
+    linkedRevelightCampaigns: 0,
     childSafeReady: true,
   },
   {
@@ -757,7 +757,7 @@ const segments: Segment[] = [
     health: "Needs work",
     growth: "-2.3% in 30 days",
     linkedJourneys: 3,
-    linkedBeaconCampaigns: 1,
+    linkedRevelightCampaigns: 1,
     childSafeReady: false,
   },
   {
@@ -770,7 +770,7 @@ const segments: Segment[] = [
     health: "High",
     growth: "+3.2% in 30 days",
     linkedJourneys: 2,
-    linkedBeaconCampaigns: 0,
+    linkedRevelightCampaigns: 0,
     childSafeReady: true,
   },
   {
@@ -783,7 +783,7 @@ const segments: Segment[] = [
     health: "High",
     growth: "+5.0% in 30 days",
     linkedJourneys: 4,
-    linkedBeaconCampaigns: 1,
+    linkedRevelightCampaigns: 1,
     childSafeReady: false,
   },
   {
@@ -796,7 +796,7 @@ const segments: Segment[] = [
     health: "High",
     growth: "+0.9% in 30 days",
     linkedJourneys: 2,
-    linkedBeaconCampaigns: 0,
+    linkedRevelightCampaigns: 0,
     childSafeReady: false,
   },
   {
@@ -809,7 +809,7 @@ const segments: Segment[] = [
     health: "High",
     growth: "+6.8% in 30 days",
     linkedJourneys: 3,
-    linkedBeaconCampaigns: 3,
+    linkedRevelightCampaigns: 3,
     childSafeReady: false,
   },
   {
@@ -822,7 +822,7 @@ const segments: Segment[] = [
     health: "Watch",
     growth: "+1.3% in 30 days",
     linkedJourneys: 4,
-    linkedBeaconCampaigns: 2,
+    linkedRevelightCampaigns: 2,
     childSafeReady: false,
   },
 ];
@@ -936,7 +936,7 @@ const hygieneTasks: HygieneTask[] = [
 const smartRuleSuggestions = [
   "Live attendance = 2 in 30 days",
   "Donated in last 90 days",
-  "Beacon click-through present",
+  "Revelight click-through present",
   "Replay watch time > 25 min",
   "Event RSVP intent started",
   "Language = English or Swahili",
@@ -1068,8 +1068,8 @@ function SegmentPreviewBoard({
                 <div className="mt-1 font-bold text-faith-ink dark:text-slate-50">{segment.linkedJourneys}</div>
               </div>
               <div className="rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-2 py-2 ring-1 ring-slate-200 dark:ring-slate-800">
-                <div className="text-faith-slate uppercase tracking-widest text-[10px] font-black">Beacon</div>
-                <div className="mt-1 font-bold text-faith-ink dark:text-slate-50">{segment.linkedBeaconCampaigns}</div>
+                <div className="text-faith-slate uppercase tracking-widest text-[10px] font-black">Revelight</div>
+                <div className="mt-1 font-bold text-faith-ink dark:text-slate-50">{segment.linkedRevelightCampaigns}</div>
               </div>
             </div>
           </div>
@@ -1508,7 +1508,7 @@ export default function ChannelsContactManagerPage() {
                 <div>
                   <div className="text-sm font-bold text-faith-ink dark:text-slate-50 uppercase tracking-tight">Segment builder</div>
                   <div className="mt-1 text-[11px] sm:text-xs text-faith-slate">
-                    Smart and manual segments for ministry groups, donor paths, event audiences, replay viewers, and Beacon responders.
+                    Smart and manual segments for ministry groups, donor paths, event audiences, replay viewers, and Revelight responders.
                   </div>
                 </div>
                 <div className="flex items-center gap-2 rounded-2xl bg-slate-100 dark:bg-slate-800/50 p-1 ring-1 ring-slate-200/60 dark:ring-slate-800/60">
@@ -1572,7 +1572,7 @@ export default function ChannelsContactManagerPage() {
 
                   <div className="mt-4 rounded-2xl bg-emerald-50 dark:bg-emerald-500/10 p-4 ring-1 ring-emerald-200 dark:ring-emerald-500/20 text-[12px] text-emerald-900 dark:text-emerald-300">
                     <div className="font-black uppercase tracking-widest text-[10px] mb-1">Premium differentiator</div>
-                    Deep links from every contact or segment into Live Session attendance, giving history, event response, and Beacon exposure without leaving the audience layer.
+                    Deep links from every contact or segment into Live Session attendance, giving history, event response, and Revelight exposure without leaving the audience layer.
                   </div>
                 </div>
 
@@ -1684,7 +1684,7 @@ export default function ChannelsContactManagerPage() {
                 <div>
                   <div className="text-sm font-bold text-faith-ink dark:text-slate-50 uppercase tracking-tight">Interaction timeline</div>
                   <div className="mt-1 text-[11px] sm:text-xs text-faith-slate">
-                    Deep linked history across live attendance, replays, messages, donations, events, and Beacon exposure.
+                    Deep linked history across live attendance, replays, messages, donations, events, and Revelight exposure.
                   </div>
                 </div>
                 <Btn tone="ghost" left={<ExternalLink className="h-4 w-4" />} onClick={() => setToast("Opened attendance and giving history")}>Deep links</Btn>
@@ -1698,7 +1698,7 @@ export default function ChannelsContactManagerPage() {
                         <div className="text-[12px] font-bold text-faith-ink dark:text-slate-50">{event.label}</div>
                         <div className="mt-1 text-[11px] text-faith-slate leading-relaxed">{event.detail}</div>
                       </div>
-                      <Pill tone={event.type === "Donation" ? "accent" : event.type === "Beacon" ? "brand" : "neutral"}>{event.type}</Pill>
+                      <Pill tone={event.type === "Donation" ? "accent" : event.type === "Revelight" ? "brand" : "neutral"}>{event.type}</Pill>
                     </div>
                     <div className="mt-2 text-[10px] font-black uppercase tracking-widest text-faith-slate">{event.when}</div>
                   </div>
@@ -1869,8 +1869,8 @@ export default function ChannelsContactManagerPage() {
                       <div className="mt-1 text-lg font-extrabold text-faith-ink dark:text-slate-50">{selectedContact.replayCount}</div>
                     </div>
                     <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
-                      <div className="text-faith-slate uppercase tracking-widest text-[10px] font-black">Beacon touches</div>
-                      <div className="mt-1 text-lg font-extrabold text-faith-ink dark:text-slate-50">{selectedContact.beaconTouches}</div>
+                      <div className="text-faith-slate uppercase tracking-widest text-[10px] font-black">Revelight touches</div>
+                      <div className="mt-1 text-lg font-extrabold text-faith-ink dark:text-slate-50">{selectedContact.revelightTouches}</div>
                     </div>
                   </div>
                 </div>
@@ -1960,7 +1960,7 @@ export default function ChannelsContactManagerPage() {
               <div className="mt-3 space-y-2 text-[12px] text-faith-slate leading-relaxed">
                 <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">A premium CRM feel without losing the warmth, context, and safeguarding needs of ministry work.</div>
                 <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">Consent audit trails and child-safe restrictions live directly in the audience layer, not as a disconnected compliance add-on.</div>
-                <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">Every contact and segment can deep-link into live attendance, replay behaviour, giving history, and Beacon campaign exposure.</div>
+                <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-800">Every contact and segment can deep-link into live attendance, replay behaviour, giving history, and Revelight campaign exposure.</div>
               </div>
             </div>
           </div>

@@ -367,7 +367,7 @@ const testimoniesSeed: TestimonyRecord[] = [
       },
       {
         id: "pl9",
-        label: "Beacon teaser",
+        label: "Revelight teaser",
         hint: "Optional promotion once public cutdown exists.",
         state: "Pending",
       },

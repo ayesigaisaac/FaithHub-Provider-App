@@ -62,7 +62,7 @@ const EV_NAVY = "#0f172a";
 const ROUTES = {
   providerDashboard: "/faithhub/provider/dashboard",
   audienceNotifications: "/faithhub/provider/audience-notifications",
-  beaconBuilder: "/faithhub/provider/beacon-builder",
+  revelightBuilder: "/faithhub/provider/revelight-builder",
   bookBuilder: "/faithhub/provider/book-builder",
 };
 
@@ -266,10 +266,10 @@ const BOOKS: BookRecord[] = [
     ],
     hooks: [
       { id: "h1", label: "Replay follow-up ready", hint: "Audience Notifications journey can send Day 1 after replay.", status: "Ready" },
-      { id: "h2", label: "Beacon promo card", hint: "Awareness and reading-start creative prepared.", status: "Ready" },
+      { id: "h2", label: "Revelight promo card", hint: "Awareness and reading-start creative prepared.", status: "Ready" },
       { id: "h3", label: "Reading plan import", hint: "Connected to devotional streak prompts.", status: "Ready" },
     ],
-    connectedTo: ["Prayer Week Live Session", "Morning devotion noticeboard", "Beacon: Renewal campaign"],
+    connectedTo: ["Prayer Week Live Session", "Morning devotion noticeboard", "Revelight: Renewal campaign"],
     updatedISO: new Date(Date.now() - 1000 * 60 * 58).toISOString(),
     coverAltReady: true,
     metadataReady: true,
@@ -310,7 +310,7 @@ const BOOKS: BookRecord[] = [
     ],
     hooks: [
       { id: "h1", label: "Donor follow-up pack", hint: "Can attach to Donations & Funds campaigns.", status: "Ready" },
-      { id: "h2", label: "Beacon creative pending", hint: "Cover variants still needed before promotion.", status: "Pending" },
+      { id: "h2", label: "Revelight creative pending", hint: "Cover variants still needed before promotion.", status: "Pending" },
       { id: "h3", label: "Live giveaway insert", hint: "Can be surfaced during generosity session.", status: "Draft" },
     ],
     connectedTo: ["Giving campaign: Build the Studio", "Leadership class series"],
@@ -398,11 +398,11 @@ const BOOKS: BookRecord[] = [
       { id: "v3", label: "Landing excerpt", type: "Web Reader", status: "Live", sizeLabel: "Sample chapter" },
     ],
     hooks: [
-      { id: "h1", label: "Beacon conversion card", hint: "Top-performing teaser already packaged for awareness.", status: "Ready" },
+      { id: "h1", label: "Revelight conversion card", hint: "Top-performing teaser already packaged for awareness.", status: "Ready" },
       { id: "h2", label: "Event tie-in", hint: "Can attach to the monthly dawn prayer event.", status: "Ready" },
       { id: "h3", label: "Replay CTA", hint: "Linked to post-live reflection package.", status: "Ready" },
     ],
-    connectedTo: ["Monthly Dawn Prayer", "Replay: Dawn Prayer gathering", "Beacon: Morning reader"],
+    connectedTo: ["Monthly Dawn Prayer", "Replay: Dawn Prayer gathering", "Revelight: Morning reader"],
     updatedISO: new Date(Date.now() - 1000 * 60 * 60 * 30).toISOString(),
     coverAltReady: true,
     metadataReady: true,
@@ -443,7 +443,7 @@ const BOOKS: BookRecord[] = [
     ],
     hooks: [
       { id: "h1", label: "Duplicate into new season", hint: "One-click duplication is available for the next youth cycle.", status: "Ready" },
-      { id: "h2", label: "Beacon disabled", hint: "Archived guides are not actively promoted.", status: "Pending" },
+      { id: "h2", label: "Revelight disabled", hint: "Archived guides are not actively promoted.", status: "Pending" },
     ],
     connectedTo: ["Archived youth live sessions", "Youth event follow-up"],
     updatedISO: new Date(Date.now() - 1000 * 60 * 60 * 72).toISOString(),
@@ -1097,7 +1097,7 @@ export default function BooksManagerPage() {
                 <div className="mt-3 flex flex-wrap items-center gap-2">
                   <Pill text="BOOK CATALOG" tone="good" icon={<BookOpen className="h-3.5 w-3.5" />} />
                   <Pill text="MULTI-FORMAT" tone="neutral" icon={<Layers className="h-3.5 w-3.5" />} />
-                  <Pill text="BEACON READY" tone="warn" icon={<Megaphone className="h-3.5 w-3.5" />} />
+                  <Pill text="REVELIGHT READY" tone="warn" icon={<Megaphone className="h-3.5 w-3.5" />} />
                 </div>
               </div>
 
@@ -1135,7 +1135,7 @@ export default function BooksManagerPage() {
           <div className="flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
             <div className="text-[13px] text-faith-slate">
               <span className="font-semibold text-faith-ink dark:text-slate-100">Books library pulse:</span>{" "}
-              2 books need translation review • 1 draft still needs cover alt text • 3 published books are ready for Audience Notifications and Beacon handoff.
+              2 books need translation review • 1 draft still needs cover alt text • 3 published books are ready for Audience Notifications and Revelight handoff.
             </div>
             <div className="text-[11px] uppercase tracking-[0.16em] text-faith-slate">
               Premium reading operations
@@ -1240,7 +1240,7 @@ export default function BooksManagerPage() {
                 <TagChip>Paid titles</TagChip>
                 <TagChip>Supporter resources</TagChip>
                 <TagChip>Translation due</TagChip>
-                <TagChip>Beacon-ready</TagChip>
+                <TagChip>Revelight-ready</TagChip>
               </div>
 
               <div className="space-y-3">
@@ -1349,7 +1349,7 @@ export default function BooksManagerPage() {
 
             <Card
               title="Promotion & distribution hooks"
-              subtitle="Direct bridges into notifications, Beacon, live follow-up, and reading plans."
+              subtitle="Direct bridges into notifications, Revelight, live follow-up, and reading plans."
               right={<Pill text="cross-object ready" tone="warn" icon={<Workflow className="h-3.5 w-3.5" />} />}
             >
               <div className="space-y-3">
@@ -1450,7 +1450,7 @@ export default function BooksManagerPage() {
                     {selectedBook.connectedTo.length}
                   </div>
                   <div className="mt-1 text-[11px] text-faith-slate">
-                    Live Sessions, events, Beacon, or funding hooks.
+                    Live Sessions, events, Revelight, or funding hooks.
                   </div>
                 </div>
                 <div className="rounded-[22px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-3 transition-colors">
@@ -1556,7 +1556,7 @@ export default function BooksManagerPage() {
                     Leadership Foundations Manual is waiting on French appendix review before the scheduled launch window opens.
                   </div>
                   <div className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] text-slate-700 dark:text-slate-300 transition-colors">
-                    Kingdom Stewardship Workbook needs cover alt text and a Beacon creative variant before promotion is unlocked.
+                    Kingdom Stewardship Workbook needs cover alt text and a Revelight creative variant before promotion is unlocked.
                   </div>
                   <div className="rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[12px] text-slate-700 dark:text-slate-300 transition-colors">
                     Prayer at Dawn Reader is fully clean and can be duplicated into a companion journal or new reading plan.
@@ -1585,7 +1585,7 @@ export default function BooksManagerPage() {
               <div className="mt-3 flex flex-wrap gap-2">
                 <TagChip>Book Builder</TagChip>
                 <TagChip>Audience Notifications</TagChip>
-                <TagChip>Beacon Builder</TagChip>
+                <TagChip>Revelight Builder</TagChip>
                 <TagChip>FaithHub Provider dashboard</TagChip>
               </div>
             </div>
@@ -1605,7 +1605,7 @@ export default function BooksManagerPage() {
                 </SoftButton>
                 <SoftButton>
                   <Megaphone className="h-4 w-4" />
-                  Boost with Beacon
+                  Boost with Revelight
                 </SoftButton>
               </div>
             </div>
@@ -1669,7 +1669,7 @@ export default function BooksManagerPage() {
                   </SoftButton>
                   <SoftButton>
                     <Megaphone className="h-4 w-4" />
-                    Push to Beacon
+                    Push to Revelight
                   </SoftButton>
                 </div>
               </div>

@@ -1,4 +1,4 @@
-// @ts-nocheck
+﻿// @ts-nocheck
 
 "use client";
 
@@ -821,24 +821,24 @@ const initialEvents: AuditEvent[] = [
     campus: "Global Digital Campus",
     surface: "Series Builder",
     summary:
-      "Primary cover art and thumbnail treatment were refreshed ahead of the next episode launch and Beacon promotion push.",
+      "Primary cover art and thumbnail treatment were refreshed ahead of the next episode launch and Revelight promotion push.",
     sessionLabel: "Series pack 5H1",
     ipLabel: "102.89.90.31 | Remote designer",
     deviceLabel: "Safari on macOS | Trusted device",
     approvalPath: "Designer - Pastor approval",
     linkedPage: "Series Builder",
     exportBundle: "Creative revision bundle",
-    tags: ["Series", "Artwork", "Beacon-ready"],
+    tags: ["Series", "Artwork", "Revelight-ready"],
     diff: [
       { field: "Hero artwork", before: "Blue dawn theme", after: "Warm sunrise theme" },
       { field: "CTA placement", before: "Lower shelf", after: "Primary hero area" },
     ],
     related: [
-      "AUD-88311 | Beacon recommendation created",
+      "AUD-88311 | Revelight recommendation created",
       "AUD-88302 | Episode summary approved",
     ],
     note:
-      "The change improved consistency across the series landing page, replay covers, and Beacon ad creative variants.",
+      "The change improved consistency across the series landing page, replay covers, and Revelight ad creative variants.",
   },
   {
     id: "AUD-88304",

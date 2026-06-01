@@ -833,7 +833,7 @@ function DetailDrawer({
           <div className="flex flex-wrap gap-2">
             <Btn tone="primary" left={<Eye className="h-4 w-4" />}>Open public detail</Btn>
             <Btn left={<Download className="h-4 w-4" />}>Download asset</Btn>
-            <Btn tone="secondary" left={<ExternalLink className="h-4 w-4" />}>Boost with Beacon</Btn>
+            <Btn tone="secondary" left={<ExternalLink className="h-4 w-4" />}>Boost with Revelight</Btn>
           </div>
         </div>
       </div>

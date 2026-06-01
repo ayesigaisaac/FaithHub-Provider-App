@@ -1,4 +1,4 @@
-import { providerPages } from '@/navigation/providerPages';
+﻿import { providerPages } from '@/navigation/providerPages';
 
 type ButtonActionKind = 'navigate' | 'copy_link' | 'preview_mode';
 
@@ -22,7 +22,7 @@ export const buttonActionRegistry = {
   open_events_manager: { kind: 'navigate', targetPath: '/faithhub/provider/events-manager', fallbackKeywords: ['event', 'ticket'] },
   open_noticeboard: { kind: 'navigate', targetPath: '/faithhub/provider/noticeboard', fallbackKeywords: ['noticeboard', 'notice', 'board'] },
   open_projects: { kind: 'navigate', targetPath: '/faithhub/provider/projects', fallbackKeywords: ['project', 'template'] },
-  open_beacon_dashboard: { kind: 'navigate', targetPath: '/faithhub/provider/beacon-dashboard', fallbackKeywords: ['beacon', 'campaign', 'cta'] },
+  open_revelight_dashboard: { kind: 'navigate', targetPath: '/faithhub/provider/revelight-dashboard', fallbackKeywords: ['revelight', 'campaign', 'cta'] },
   open_audience_notifications: { kind: 'navigate', targetPath: '/faithhub/provider/audience-notifications', fallbackKeywords: ['audience', 'notification', 'reminder', 'notify'] },
   open_wallet_payouts: { kind: 'navigate', targetPath: '/faithhub/provider/wallet-payouts', fallbackKeywords: ['wallet', 'payout', 'transfer'] },
   open_roles_permissions: { kind: 'navigate', targetPath: '/faithhub/provider/roles-permissions', fallbackKeywords: ['team', 'leadership', 'role', 'permission'] },
@@ -68,7 +68,7 @@ export function resolveActionFromLabel(label: string): ButtonActionId | null {
     'open_events_manager',
     'open_noticeboard',
     'open_projects',
-    'open_beacon_dashboard',
+    'open_revelight_dashboard',
     'open_audience_notifications',
     'open_roles_permissions',
     'open_community_groups',

@@ -1,4 +1,4 @@
-import type { Permission, UserRole } from './types';
+﻿import type { Permission, UserRole } from './types';
 
 const rolePermissions: Record<UserRole, Permission[]> = {
   admin: [
@@ -7,7 +7,7 @@ const rolePermissions: Record<UserRole, Permission[]> = {
     'content:manage',
     'live:operate',
     'audience:manage',
-    'beacon:manage',
+    'revelight:manage',
     'community:manage',
     'teams:manage',
     'workspace:admin',
@@ -18,13 +18,13 @@ const rolePermissions: Record<UserRole, Permission[]> = {
     'content:manage',
     'live:operate',
     'audience:manage',
-    'beacon:manage',
+    'revelight:manage',
     'community:manage',
     'teams:manage',
     'workspace:admin',
   ],
   finance: ['finance:read', 'finance:manage'],
-  production: ['content:manage', 'live:operate', 'beacon:manage'],
+  production: ['content:manage', 'live:operate', 'revelight:manage'],
   outreach: ['audience:manage', 'community:manage'],
 };
 

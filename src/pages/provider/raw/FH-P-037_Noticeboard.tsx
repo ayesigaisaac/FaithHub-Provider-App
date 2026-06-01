@@ -49,7 +49,7 @@ import { useAuth } from "@/auth/useAuth";
  *   command hero, KPI cards, filter rail, operational list, live composer, workflow hooks,
  *   governance signals, and a persistent preview surface.
  * - Treat notices as first-class provider objects that can be scheduled, pinned, localized,
- *   linked to Live Sessions / Events / Giving / Beacon, and previewed before publishing.
+ *   linked to Live Sessions / Events / Giving / Revelight, and previewed before publishing.
  *
  * Suggested placement
  * - Audience & Outreach section, directly after Channels & Contact Manager.
@@ -88,7 +88,7 @@ type Surface =
   | "Events"
   | "Giving"
   | "Notification"
-  | "Beacon";
+  | "Revelight";
 
 type NoticeItem = {
   id: string;
@@ -128,7 +128,7 @@ type ComposerState = {
   approvalRequired: boolean;
   commentsEnabled: boolean;
   sendToJourney: boolean;
-  boostWithBeacon: boolean;
+  boostWithRevelight: boolean;
   scheduledAt: string;
   expiresAt: string;
 };
@@ -175,7 +175,7 @@ const ALL_SURFACES: Surface[] = [
   "Events",
   "Giving",
   "Notification",
-  "Beacon",
+  "Revelight",
 ];
 
 const BOARD_METRICS: MetricCard[] = [
@@ -249,7 +249,7 @@ const INITIAL_NOTICES: NoticeItem[] = [
     language: "English",
     owner: "Outreach Desk",
     linkedTo: "Flood Relief Fund",
-    surfaces: ["Noticeboard", "Giving", "Notification", "Beacon"],
+    surfaces: ["Noticeboard", "Giving", "Notification", "Revelight"],
     pinned: true,
     approvalRequired: true,
     scheduledAt: "Today - 9:00 AM",
@@ -312,7 +312,7 @@ function makeBlankComposer(): ComposerState {
   return {
     title: "Board-wide reminder: watch night volunteers open at 5 PM",
     summary:
-      "Use one premium card to brief volunteers, guide attendees, and hand off into notifications or Beacon when needed.",
+      "Use one premium card to brief volunteers, guide attendees, and hand off into notifications or Revelight when needed.",
     body:
       "Add the final details here: arrival windows, what to bring, service adjustments, giving links, event directions, or safety notes. The preview updates live as the board item changes.",
     category: "Volunteer call",
@@ -326,7 +326,7 @@ function makeBlankComposer(): ComposerState {
     approvalRequired: true,
     commentsEnabled: false,
     sendToJourney: true,
-    boostWithBeacon: false,
+    boostWithRevelight: false,
     scheduledAt: "Today - 4:45 PM",
     expiresAt: "Tomorrow - 11:30 PM",
   };
@@ -840,7 +840,7 @@ function BoardPreviewDesktop({ draft }: { draft: ComposerState }) {
               label: "Response hooks",
               items: [
                 draft.sendToJourney ? "Notification journey armed" : "No journey",
-                draft.boostWithBeacon ? "Beacon boost ready" : "No boost",
+                draft.boostWithRevelight ? "Revelight boost ready" : "No boost",
                 draft.commentsEnabled ? "Comments enabled" : "Comments off",
               ],
             },
@@ -989,7 +989,7 @@ export default function FaithHubNoticeboardPage() {
       approvalRequired: seed.approvalRequired,
       commentsEnabled: false,
       sendToJourney: seed.surfaces.includes("Notification"),
-      boostWithBeacon: seed.surfaces.includes("Beacon"),
+      boostWithRevelight: seed.surfaces.includes("Revelight"),
       scheduledAt: seed.scheduledAt,
       expiresAt: seed.expiresAt,
     };
@@ -1077,7 +1077,7 @@ export default function FaithHubNoticeboardPage() {
       approvalRequired: notice.approvalRequired,
       commentsEnabled: false,
       sendToJourney: notice.surfaces.includes("Notification"),
-      boostWithBeacon: notice.surfaces.includes("Beacon"),
+      boostWithRevelight: notice.surfaces.includes("Revelight"),
       scheduledAt: notice.scheduledAt,
       expiresAt: notice.expiresAt,
     });
@@ -1170,7 +1170,7 @@ export default function FaithHubNoticeboardPage() {
               <ProviderPageTitle
                 icon={<Megaphone className="h-6 w-6" />}
                 title="Noticeboard"
-                subtitle="Run institution-wide announcements, campus updates, prayer alerts, volunteer calls, event reminders, and giving notices from one premium board — then route them into Live Sessions, notifications, events, giving, and Beacon without losing control."
+                subtitle="Run institution-wide announcements, campus updates, prayer alerts, volunteer calls, event reminders, and giving notices from one premium board — then route them into Live Sessions, notifications, events, giving, and Revelight without losing control."
               />
 
               <div className="mt-5 flex flex-wrap items-center gap-2">
@@ -1221,7 +1221,7 @@ export default function FaithHubNoticeboardPage() {
                   </SoftButton>
                   <SoftButton className="h-10 w-full justify-center px-4">
                     <Sparkles className="h-4 w-4" />
-                    Boost with Beacon
+                    Boost with Revelight
                   </SoftButton>
                 </div>
                 <div className="mt-4 text-[12px] text-faith-slate">
@@ -1624,11 +1624,11 @@ export default function FaithHubNoticeboardPage() {
                     hint="Create a reminder or follow-up flow from this notice."
                   />
                   <ToggleCard
-                    checked={composer.boostWithBeacon}
+                    checked={composer.boostWithRevelight}
                     onChange={(value) =>
-                      setComposer((prev) => ({ ...prev, boostWithBeacon: value }))
+                      setComposer((prev) => ({ ...prev, boostWithRevelight: value }))
                     }
-                    label="Promote with Beacon"
+                    label="Promote with Revelight"
                     hint="Boost major announcements, giving notices, and public campaigns."
                     accent="orange"
                   />
@@ -1666,7 +1666,7 @@ export default function FaithHubNoticeboardPage() {
                   },
                   {
                     icon: <Megaphone className="h-4 w-4" />,
-                    title: "Beacon handoff",
+                    title: "Revelight handoff",
                     detail:
                       "Boost high-priority announcements, charity alerts, or event notices with promotion.",
                   },
@@ -1827,10 +1827,10 @@ export default function FaithHubNoticeboardPage() {
               <div className="space-y-3">
                 {[
                   {
-                    title: "Promote high-response notices with Beacon",
+                    title: "Promote high-response notices with Revelight",
                     detail:
                       "The flood-relief and volunteer notices are showing the strongest tap rate today.",
-                    action: "Open Beacon",
+                    action: "Open Revelight",
                     accent: EV_ORANGE,
                   },
                   {

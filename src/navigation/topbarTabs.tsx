@@ -1,4 +1,4 @@
-import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded';
+﻿import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded';
 import PlayCircleOutlineRoundedIcon from '@mui/icons-material/PlayCircleOutlineRounded';
 import EventNoteRoundedIcon from '@mui/icons-material/EventNoteRounded';
 import GroupsRoundedIcon from '@mui/icons-material/GroupsRounded';
@@ -48,7 +48,7 @@ export const topbarTabs: TopbarTab[] = [
   {
     label: 'Reports',
     to: '/faithhub/provider/reviews-and-moderation',
-    sections: [category('Post-live'), category('Leadership'), category('Settings'), category('Beacon'), category('Previews')],
+    sections: [category('Post-live'), category('Leadership'), category('Settings'), category('Revelight'), category('Previews')],
     icon: <EventNoteRoundedIcon fontSize="small" />,
   },
 ];

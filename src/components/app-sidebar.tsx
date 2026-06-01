@@ -1,4 +1,4 @@
-import { ChevronDown, ChevronLeft, ChevronRight, HeartHandshake, Radio, Users, Zap } from 'lucide-react';
+﻿import { ChevronDown, ChevronLeft, ChevronRight, HeartHandshake, Radio, Users, Zap } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { BrandLogo } from '@/components/branding/BrandLogo';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -18,7 +18,7 @@ type SectionRow = {
 const sectionRows: SectionRow[] = [
   { id: 'giving', label: 'GIVING', icon: HeartHandshake },
   { id: 'post-live', label: 'POST-LIVE', icon: Radio },
-  { id: 'beacon', label: 'BEACON', icon: Zap },
+  { id: 'revelight', label: 'REVELIGHT', icon: Zap },
   { id: 'community', label: 'COMMUNITY', icon: Users },
 ];
 

@@ -161,7 +161,7 @@ const KPI_STRIP: KPI[] = [
     id: "plan",
     label: "Current plan",
     value: "Growth Workspace",
-    hint: "Premium FaithHub Provider workspace with Beacon, live ops, and team controls.",
+    hint: "Premium FaithHub Provider workspace with Revelight, live ops, and team controls.",
     tone: "good",
   },
   {
@@ -231,7 +231,7 @@ const SEAT_CLUSTERS: SeatCluster[] = [
     label: "Outreach + marketing",
     used: 7,
     total: 10,
-    hint: "Beacon, messaging, audience, and event promotion seats.",
+    hint: "Revelight, messaging, audience, and event promotion seats.",
     tone: "good",
   },
 ];
@@ -270,9 +270,9 @@ const ENTITLEMENTS: Entitlement[] = [
     tone: "good",
   },
   {
-    id: "beacon",
+    id: "revelight",
     group: "Promotion",
-    label: "Beacon campaign suite",
+    label: "Revelight campaign suite",
     state: "Included",
     hint: "Dashboard, marketplace, manager, and builder are active.",
     tone: "good",
@@ -844,7 +844,7 @@ export default function SubscriptionsPage() {
                       Growth Workspace
                     </div>
                     <div className="mt-1 text-[13px] text-white/75">
-                      Live Sessions + Audience + Giving + Beacon + Team governance
+                      Live Sessions + Audience + Giving + Revelight + Team governance
                     </div>
                   </div>
                   <StatusPill label="Healthy 96%" tone="good" />
@@ -1137,7 +1137,7 @@ export default function SubscriptionsPage() {
                   <div className="mt-3 grid gap-2">
                     {[
                       ["Live Sessions", "Included", "good"],
-                      ["Beacon", "Included", "good"],
+                      ["Revelight", "Included", "good"],
                       ["Translation tracks", "Limited", "warn"],
                       ["Extra brand workspace", "Upgrade", "pro"],
                       ["API exports", "Upgrade", "pro"],
@@ -1167,7 +1167,7 @@ export default function SubscriptionsPage() {
                       38 / 45 seats · renewal in 18 days
                     </div>
                     <div className="mt-3 space-y-2">
-                      {["Live Sessions", "Beacon", "Translation", "Invoices"].map((label, idx) => (
+                      {["Live Sessions", "Revelight", "Translation", "Invoices"].map((label, idx) => (
                         <div
                           key={label}
                           className="flex items-center justify-between rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-900 px-3 py-2 transition-colors"
@@ -1430,7 +1430,7 @@ export default function SubscriptionsPage() {
                 {
                   label: "Growth Workspace",
                   price: fmtMoney(780),
-                  hint: "Best for active live teams, Beacon usage, and outreach workflows.",
+                  hint: "Best for active live teams, Revelight usage, and outreach workflows.",
                   tone: "good" as Tone,
                 },
                 {

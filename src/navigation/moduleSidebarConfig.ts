@@ -1,4 +1,4 @@
-import type { LucideIcon } from 'lucide-react';
+﻿import type { LucideIcon } from 'lucide-react';
 import {
   Bell,
   BookOpen,
@@ -167,15 +167,15 @@ export const moduleSidebarConfig: SidebarModule[] = [
     icon: Sparkles,
     items: [
       {
-        label: 'Beacon Dashboard',
+        label: 'Revelight Dashboard',
         description: 'Control recommendation visibility and engagement performance trends.',
-        route: '/faithhub/provider/beacon-dashboard',
+        route: '/faithhub/provider/revelight-dashboard',
         icon: Sparkles,
       },
       {
-        label: 'Beacon Marketplace',
+        label: 'Revelight Marketplace',
         description: 'Manage discoverability assets, slots, and campaign experiments.',
-        route: '/faithhub/provider/beacon-marketplace',
+        route: '/faithhub/provider/revelight-marketplace',
         icon: Globe,
       },
     ],

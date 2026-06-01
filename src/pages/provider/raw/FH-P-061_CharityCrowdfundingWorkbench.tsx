@@ -67,7 +67,7 @@ const EV_NAVY = "#10235c";
 const ROUTES = {
   donationsFunds: "/faithhub/provider/donations-and-funds",
   audienceNotifications: "/faithhub/provider/audience-notifications",
-  beaconBuilder: "/faithhub/provider/beacon-builder",
+  revelightBuilder: "/faithhub/provider/revelight-builder",
   liveBuilder: "/faithhub/provider/live-builder",
 };
 
@@ -136,7 +136,7 @@ type VerificationState = "Verified" | "Review" | "Blocked";
 type Accent = "green" | "orange" | "navy";
 type UpdateKind = "Impact" | "Milestone" | "Need" | "Prayer" | "Thanks";
 type EvidenceKind = "Photo" | "Video" | "Field report" | "Beneficiary proof";
-type HookSurface = "Live Session" | "Replay" | "Clip" | "Notifications" | "Beacon" | "Event";
+type HookSurface = "Live Session" | "Replay" | "Clip" | "Notifications" | "Revelight" | "Event";
 type HookState = "Ready" | "Draft" | "Queued" | "Live";
 type GovernanceState = "Ready" | "Review" | "Blocked";
 
@@ -326,7 +326,7 @@ const SEED: CrowdfundRecord[] = [
         target: 60000,
         impact: "All four sites restored with hygiene packs and on-site verification.",
         unlocked: false,
-        nextFocus: "Drive final-week urgency through live, replay, and Beacon.",
+        nextFocus: "Drive final-week urgency through live, replay, and Revelight.",
       },
       {
         id: "m4",
@@ -371,7 +371,7 @@ const SEED: CrowdfundRecord[] = [
         kind: "Video",
         owner: "Media team",
         status: "Pending",
-        coverage: "Best suited for replay and Beacon follow-up",
+        coverage: "Best suited for replay and Revelight follow-up",
         imageUrl: EVIDENCE_TRUCK,
       },
     ],
@@ -437,12 +437,12 @@ const SEED: CrowdfundRecord[] = [
       },
       {
         id: "h4",
-        label: "Beacon supporter boost",
-        surface: "Beacon",
+        label: "Revelight supporter boost",
+        surface: "Revelight",
         state: "Ready",
         value: "Estimated +26k reach",
         ready: true,
-        hint: "Creative and destination plan already available in Beacon Builder.",
+        hint: "Creative and destination plan already available in Revelight Builder.",
       },
       {
         id: "h5",
@@ -548,7 +548,7 @@ const SEED: CrowdfundRecord[] = [
         target: 50000,
         impact: "Uniform assistance, books, and school re-entry support for children.",
         unlocked: false,
-        nextFocus: "Use Beacon to widen reach outside existing donor lists.",
+        nextFocus: "Use Revelight to widen reach outside existing donor lists.",
       },
     ],
     evidence: [
@@ -576,7 +576,7 @@ const SEED: CrowdfundRecord[] = [
         kind: "Video",
         owner: "Community partner",
         status: "Pending",
-        coverage: "To be used in replay and Beacon creative variants",
+        coverage: "To be used in replay and Revelight creative variants",
         imageUrl: EVIDENCE_TRUCK,
       },
       {
@@ -606,7 +606,7 @@ const SEED: CrowdfundRecord[] = [
         summary: "A second cluster of families now needs roof kits before the next storm cycle arrives.",
         kind: "Need",
         publishedISO: new Date(Date.now() - 1000 * 60 * 60 * 22).toISOString(),
-        linkedSurface: "Beacon boost",
+        linkedSurface: "Revelight boost",
         publicVisible: true,
         reachHint: "Urgency framing is lifting conversion rate on external promotion.",
       },
@@ -642,7 +642,7 @@ const SEED: CrowdfundRecord[] = [
       {
         id: "h4b",
         label: "Relief campaign booster",
-        surface: "Beacon",
+        surface: "Revelight",
         state: "Queued",
         value: "Awaiting creative approval",
         ready: true,
@@ -734,7 +734,7 @@ const SEED: CrowdfundRecord[] = [
         target: 30000,
         impact: "Adds student mentoring, school check-ins, and family support touchpoints.",
         unlocked: false,
-        nextFocus: "Prepare Beacon narrative around long-term transformation.",
+        nextFocus: "Prepare Revelight narrative around long-term transformation.",
       },
     ],
     evidence: [
@@ -771,7 +771,7 @@ const SEED: CrowdfundRecord[] = [
         kind: "Video",
         owner: "Post-live editor",
         status: "Pending",
-        coverage: "Planned for Beacon and replay inserts",
+        coverage: "Planned for Revelight and replay inserts",
         imageUrl: EVIDENCE_TRUCK,
       },
     ],
@@ -828,7 +828,7 @@ const SEED: CrowdfundRecord[] = [
       {
         id: "h4c",
         label: "Awareness clip boost",
-        surface: "Beacon",
+        surface: "Revelight",
         state: "Draft",
         value: "Creative in review",
         ready: false,
@@ -978,7 +978,7 @@ const SEED: CrowdfundRecord[] = [
         summary: "A full donor thank-you and impact summary is ready to send once the final route footage is approved.",
         kind: "Thanks",
         publishedISO: new Date(Date.now() - 1000 * 60 * 60 * 120).toISOString(),
-        linkedSurface: "Email and Beacon recap",
+        linkedSurface: "Email and Revelight recap",
         publicVisible: true,
         reachHint: "Best paired with the bus-delivery montage.",
       },
@@ -1014,7 +1014,7 @@ const SEED: CrowdfundRecord[] = [
       {
         id: "h4d",
         label: "Bus delivery promotion",
-        surface: "Beacon",
+        surface: "Revelight",
         state: "Ready",
         value: "Recap creative available",
         ready: true,
@@ -1571,7 +1571,7 @@ function NewCrowdfundComposer({
           <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Launch notes</div>
           <div className="mt-3 space-y-3 text-sm text-faith-slate dark:text-slate-300">
             <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">This starter setup creates the campaign shell, first milestone, first update slot, and standard governance checklist.</div>
-            <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">After creation, route the campaign into Live Sessions, Audience Notifications, and Beacon from the workbench.</div>
+            <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">After creation, route the campaign into Live Sessions, Audience Notifications, and Revelight from the workbench.</div>
           </div>
         </div>
         <div className="flex flex-wrap gap-2">
@@ -1629,7 +1629,7 @@ function UpdateComposer({
                 "Audience notifications",
                 "Live Session overlay",
                 "Replay follow-up",
-                "Beacon boost",
+                "Revelight boost",
                 "Event tie-in",
               ].map((surface) => (
                 <option key={surface}>{surface}</option>
@@ -1647,7 +1647,7 @@ function UpdateComposer({
           <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Posting guidance</div>
           <div className="mt-3 space-y-3 text-sm text-faith-slate dark:text-slate-300">
             <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">Use updates to show real proof, answered prayers, milestone movement, or urgent new needs.</div>
-            <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">Tie updates to Beacon and notifications while the context is still fresh and credible.</div>
+            <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">Tie updates to Revelight and notifications while the context is still fresh and credible.</div>
           </div>
         </div>
         <div className="flex flex-wrap gap-2">
@@ -1828,7 +1828,7 @@ export default function CharityCrowdfundingWorkbenchPage() {
           target: payload.stretchGoal || Math.round(payload.goal * 1.35),
           impact: "Adds long-tail support and resilience features.",
           unlocked: false,
-          nextFocus: "Align Beacon creative with stretch-goal proof.",
+          nextFocus: "Align Revelight creative with stretch-goal proof.",
         },
       ],
       evidence: [
@@ -1855,12 +1855,12 @@ export default function CharityCrowdfundingWorkbenchPage() {
         },
         {
           id: `hk_${Math.random().toString(16).slice(2, 6)}`,
-          label: "Beacon campaign",
-          surface: "Beacon",
+          label: "Revelight campaign",
+          surface: "Revelight",
           state: "Draft",
           value: "No creative linked",
           ready: false,
-          hint: "Promote with linked or standalone Beacon once assets are approved.",
+          hint: "Promote with linked or standalone Revelight once assets are approved.",
         },
       ],
       governance: [
@@ -1962,14 +1962,14 @@ export default function CharityCrowdfundingWorkbenchPage() {
                 </Pill>
               </div>
               <div className="mt-1 text-[10px] sm:text-xs text-faith-slate">
-                Premium charity campaign operations with goals, public momentum, proof of impact, updates, governance, and cross-links into live, notifications, and Beacon.
+                Premium charity campaign operations with goals, public momentum, proof of impact, updates, governance, and cross-links into live, notifications, and Revelight.
               </div>
             </div>
             <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 xl:flex xl:w-auto xl:flex-wrap xl:justify-end">
               <Btn tone="ghost" cls="h-10 px-4 justify-start sm:justify-center bg-[var(--fh-surface-bg)] dark:bg-slate-900 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800" onClick={() => setPreviewOpen(true)} left={<Eye className="h-4 w-4" />}>Preview</Btn>
               <Btn tone="primary" cls="h-10 px-4" onClick={() => setComposerOpen(true)} left={<Plus className="h-4 w-4" />}>New Crowdfund</Btn>
               <Btn tone="secondary" cls="h-10 px-4" onClick={() => setUpdateOpen(true)} left={<Send className="h-4 w-4" />}>Post campaign update</Btn>
-              <Btn tone="neutral" cls="h-10 px-4" onClick={() => safeNav(ROUTES.beaconBuilder)} left={<Zap className="h-4 w-4" />}>Promote with Beacon</Btn>
+              <Btn tone="neutral" cls="h-10 px-4" onClick={() => safeNav(ROUTES.revelightBuilder)} left={<Zap className="h-4 w-4" />}>Promote with Revelight</Btn>
             </div>
           </div>
         </div>
@@ -2287,7 +2287,7 @@ export default function CharityCrowdfundingWorkbenchPage() {
               <SectionTitle
                 icon={<Zap className="h-5 w-5" />}
                 title="Distribution and conversion hooks"
-                subtitle="Insert the crowdfund into live, replay, clip, notifications, events, and Beacon with purpose-built CTAs."
+                subtitle="Insert the crowdfund into live, replay, clip, notifications, events, and Revelight with purpose-built CTAs."
               />
               <div className="mt-4 space-y-3">
                 {selectedRecord.hooks.map((hook) => (
@@ -2317,7 +2317,7 @@ export default function CharityCrowdfundingWorkbenchPage() {
                 ))}
               </div>
               <div className="mt-4 flex flex-wrap gap-2">
-                <Btn tone="secondary" onClick={() => safeNav(ROUTES.beaconBuilder)} left={<Megaphone className="h-4 w-4" />}>Open Beacon Builder</Btn>
+                <Btn tone="secondary" onClick={() => safeNav(ROUTES.revelightBuilder)} left={<Megaphone className="h-4 w-4" />}>Open Revelight Builder</Btn>
                 <Btn tone="ghost" onClick={() => safeNav(ROUTES.liveBuilder)} left={<MonitorPlay className="h-4 w-4" />}>Insert into Live Session</Btn>
                 <Btn tone="ghost" onClick={() => safeNav(ROUTES.audienceNotifications)} left={<Bell className="h-4 w-4" />}>Create reminder journey</Btn>
               </div>
@@ -2379,7 +2379,7 @@ export default function CharityCrowdfundingWorkbenchPage() {
                 <div className="mt-4 space-y-2 text-sm text-faith-slate dark:text-slate-300">
                   <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800">Archive or repurpose old crowdfunds without losing proof and donor history.</div>
                   <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800">Transition high-trust campaigns into evergreen support funds where ministry leaders approve it.</div>
-                  <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800">Create donor thank-you follow-up, replay recap, and Beacon afterglow campaigns while context is still fresh.</div>
+                  <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 ring-1 ring-slate-200 dark:ring-slate-800">Create donor thank-you follow-up, replay recap, and Revelight afterglow campaigns while context is still fresh.</div>
                 </div>
               </div>
               <div className="mt-4 flex flex-wrap gap-2">
@@ -2432,12 +2432,12 @@ export default function CharityCrowdfundingWorkbenchPage() {
               <div className="mt-3 space-y-3 text-sm text-faith-slate dark:text-slate-300">
                 <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">This preview mirrors the premium public destination with goals, donors, milestones, updates, and direct giving CTA placement.</div>
                 <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">Campaign momentum should feel alive: social proof, urgency, proof of impact, and stretch-goal storytelling must all be visible without feeling exploitative.</div>
-                <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">After publish, route the same campaign into Live Sessions, replay follow-up, notifications, and Beacon while preserving governance context.</div>
+                <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">After publish, route the same campaign into Live Sessions, replay follow-up, notifications, and Revelight while preserving governance context.</div>
               </div>
             </div>
             <div className="flex flex-wrap gap-2">
               <Btn tone="primary" onClick={() => setToast("Public campaign published")} left={<CheckCircle2 className="h-4 w-4" />}>Publish campaign</Btn>
-              <Btn tone="secondary" onClick={() => safeNav(ROUTES.beaconBuilder)} left={<Megaphone className="h-4 w-4" />}>Create Beacon boost</Btn>
+              <Btn tone="secondary" onClick={() => safeNav(ROUTES.revelightBuilder)} left={<Megaphone className="h-4 w-4" />}>Create Revelight boost</Btn>
               <Btn tone="ghost" onClick={() => safeNav(ROUTES.audienceNotifications)} left={<Bell className="h-4 w-4" />}>Send campaign follow-up</Btn>
             </div>
           </div>

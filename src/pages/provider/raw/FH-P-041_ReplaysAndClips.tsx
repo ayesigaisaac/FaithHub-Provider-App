@@ -64,7 +64,7 @@ const EV_LIGHT = "var(--fh-ev-light-grey)";
 
 const ROUTES = {
   postLivePublishing: "/faithhub/provider/post-live-publishing",
-  beaconBuilder: "/faithhub/provider/beacon-builder",
+  revelightBuilder: "/faithhub/provider/revelight-builder",
   reviewsModeration: "/faithhub/provider/reviews-and-moderation",
   audienceNotifications: "/faithhub/provider/audience-notifications",
 };
@@ -99,7 +99,7 @@ type ReplayRecord = {
   donations: number;
   eventRegs: number;
   crowdfundMomentum: number;
-  beaconConversions: number;
+  revelightConversions: number;
   clipOpportunities: number;
   performanceSeries: number[];
   rightsState: string;
@@ -180,7 +180,7 @@ const REPLAYS_SEED: ReplayRecord[] = [
     donations: 148,
     eventRegs: 37,
     crowdfundMomentum: 23,
-    beaconConversions: 54,
+    revelightConversions: 54,
     clipOpportunities: 6,
     performanceSeries: [18, 24, 27, 31, 38, 40, 43, 47, 49, 53, 58, 60],
     rightsState: "Cleared for public replay and clip export",
@@ -206,7 +206,7 @@ const REPLAYS_SEED: ReplayRecord[] = [
     donations: 39,
     eventRegs: 9,
     crowdfundMomentum: 0,
-    beaconConversions: 17,
+    revelightConversions: 17,
     clipOpportunities: 4,
     performanceSeries: [6, 7, 9, 10, 13, 15, 17, 18, 21, 25, 27, 29],
     rightsState: "Thumbnail approval pending",
@@ -232,7 +232,7 @@ const REPLAYS_SEED: ReplayRecord[] = [
     donations: 51,
     eventRegs: 84,
     crowdfundMomentum: 12,
-    beaconConversions: 11,
+    revelightConversions: 11,
     clipOpportunities: 8,
     performanceSeries: [10, 12, 13, 14, 15, 16, 17, 17, 18, 18, 19, 20],
     rightsState: "Cleared with event footage permissions",
@@ -258,7 +258,7 @@ const REPLAYS_SEED: ReplayRecord[] = [
     donations: 73,
     eventRegs: 11,
     crowdfundMomentum: 47,
-    beaconConversions: 9,
+    revelightConversions: 9,
     clipOpportunities: 5,
     performanceSeries: [3, 4, 4, 5, 6, 7, 9, 11, 14, 17, 20, 24],
     rightsState: "Awaiting beneficiary image review",
@@ -295,7 +295,7 @@ const SMART_MOMENTS: Record<string, SmartMoment[]> = {
       endSec: 3635,
       reason: "High comment volume and prayer request surge.",
       confidence: 88,
-      tags: ["Prayer", "Response", "Beacon teaser"],
+      tags: ["Prayer", "Response", "Revelight teaser"],
       intentHint: "Watch replay",
     },
   ],
@@ -347,9 +347,9 @@ const SMART_MOMENTS: Record<string, SmartMoment[]> = {
       label: "Closing crowd moment",
       startSec: 4200,
       endSec: 4270,
-      reason: "Good teaser for Beacon awareness campaigns.",
+      reason: "Good teaser for Revelight awareness campaigns.",
       confidence: 87,
-      tags: ["Crowd", "Beacon", "Awareness"],
+      tags: ["Crowd", "Revelight", "Awareness"],
       intentHint: "Follow",
     },
   ],
@@ -401,7 +401,7 @@ const CLIP_RECIPES: ClipRecipe[] = [
   {
     id: "rcp-3",
     name: "Replay bridge landscape",
-    description: "Designed for in-app shelves and replay-to-Beacon follow-up.",
+    description: "Designed for in-app shelves and replay-to-Revelight follow-up.",
     variant: "16:9",
     captionStyle: "Minimal",
     ctaPlacement: "Lower third",
@@ -427,14 +427,14 @@ const COMMENTS_SEED: CommentItem[] = [
     id: "cm-2",
     author: "Ben · Outreach",
     time: "33 min ago",
-    body: "If we package this as a follow prompt, Beacon should land on the replay, not the institution homepage.",
+    body: "If we package this as a follow prompt, Revelight should land on the replay, not the institution homepage.",
   },
 ];
 
 const TASKS_SEED: TaskItem[] = [
   { id: "ts-1", label: "Approve subtitle pass for 9:16", owner: "Caption editor", due: "Today", status: "In review" },
   { id: "ts-2", label: "Confirm rights note for beneficiary footage", owner: "Compliance", due: "Tomorrow", status: "Open" },
-  { id: "ts-3", label: "Duplicate winning hook for Beacon", owner: "Growth lead", due: "Today", status: "Open" },
+  { id: "ts-3", label: "Duplicate winning hook for Revelight", owner: "Growth lead", due: "Today", status: "Open" },
 ];
 
 const cx = (...xs: Array<string | false | null | undefined>) => xs.filter(Boolean).join(" ");
@@ -1087,8 +1087,8 @@ export default function FaithHubReplaysAndClipsPage() {
               <Btn tone="neutral" className="h-10 px-4" onClick={downloadBatchPlan} left={<Copy className="h-4 w-4" />}>
                 Export plan
               </Btn>
-              <Btn tone="accent" className="h-10 px-4" onClick={() => setToast("Beacon handoff prepared.")} left={<Zap className="h-4 w-4" />}>
-                Boost with Beacon
+              <Btn tone="accent" className="h-10 px-4" onClick={() => setToast("Revelight handoff prepared.")} left={<Zap className="h-4 w-4" />}>
+                Boost with Revelight
               </Btn>
               <Btn tone="primary" className="h-10 px-4" onClick={createClip} left={<Scissors className="h-4 w-4" />} disabled={workingAction === "createClip"}>
                 {workingAction === "createClip" ? "Creating..." : "Create clip"}
@@ -1107,7 +1107,7 @@ export default function FaithHubReplaysAndClipsPage() {
               <Pill tone="good"><Sparkles className="h-3.5 w-3.5" /> Smart recipe assist on</Pill>
               <Pill tone="warn"><AlertTriangle className="h-3.5 w-3.5" /> 1 caption approval pending</Pill>
             </div>
-            <div className="text-faith-slate">Designed for replay discovery, retention, giving, events, and Beacon conversion.</div>
+            <div className="text-faith-slate">Designed for replay discovery, retention, giving, events, and Revelight conversion.</div>
           </div>
         </div>
       </div>
@@ -1342,7 +1342,7 @@ export default function FaithHubReplaysAndClipsPage() {
                     <div className="flex items-center justify-between gap-2">
                       <div>
                         <div className="text-xs font-bold uppercase tracking-[0.16em] text-faith-slate">Multi-clip batch queue</div>
-                        <div className="mt-1 text-sm font-bold text-faith-ink dark:text-slate-100">Build batches for reels, shelves, Beacon, and replay follow-up</div>
+                        <div className="mt-1 text-sm font-bold text-faith-ink dark:text-slate-100">Build batches for reels, shelves, Revelight, and replay follow-up</div>
                       </div>
                       <Btn tone="neutral" onClick={downloadBatchPlan} left={<Copy className="h-4 w-4" />} className="px-3 py-2 text-[12px]">
                         Export queue
@@ -1501,7 +1501,7 @@ export default function FaithHubReplaysAndClipsPage() {
                   <div>
                     <div className="text-sm font-bold text-faith-ink dark:text-slate-50 uppercase tracking-tight">Replay-to-promotion bridge</div>
                     <div className="mt-1 text-[11px] sm:text-xs text-faith-slate">
-                      Push a replay or clip into Beacon, notification journeys, event tie-ins, or giving follow-up while the context is still hot.
+                      Push a replay or clip into Revelight, notification journeys, event tie-ins, or giving follow-up while the context is still hot.
                     </div>
                   </div>
                   <Pill tone="brand"><Workflow className="h-3.5 w-3.5" /> Native promotion hooks</Pill>
@@ -1509,7 +1509,7 @@ export default function FaithHubReplaysAndClipsPage() {
 
                 <div className="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-4">
                   {[
-                    { title: "Boost with Beacon", hint: "Turn the current clip into a promotion-ready creative.", tone: "accent" as const, icon: Zap, action: () => setToast("Beacon campaign draft prepared from this clip.") },
+                    { title: "Boost with Revelight", hint: "Turn the current clip into a promotion-ready creative.", tone: "accent" as const, icon: Zap, action: () => setToast("Revelight campaign draft prepared from this clip.") },
                     { title: "Replay follow-up", hint: "Launch replay notifications to warm audiences immediately.", tone: "brand" as const, icon: Bell, action: () => safeNav(ROUTES.audienceNotifications) },
                     { title: "Event tie-in", hint: "Use this moment to point into an upcoming event or watch party.", tone: "neutral" as const, icon: Video, action: () => setToast("Event tie-in ready for review.") },
                     { title: "Giving follow-up", hint: "Connect the clip to a donation or crowdfund continuation moment.", tone: "neutral" as const, icon: HeartIconPlaceholder, action: () => setToast("Giving follow-up route armed.") },
@@ -1539,7 +1539,7 @@ export default function FaithHubReplaysAndClipsPage() {
                 <div>
                   <div className="text-sm font-bold text-faith-ink dark:text-slate-50 uppercase tracking-tight">Performance intelligence</div>
                   <div className="mt-1 text-[11px] sm:text-xs text-faith-slate">
-                    See which replays and clips are driving watch time, follows, donations, event registration, crowdfunding momentum, and Beacon conversions.
+                    See which replays and clips are driving watch time, follows, donations, event registration, crowdfunding momentum, and Revelight conversions.
                   </div>
                 </div>
                 <Pill tone={toneForStatus(selectedReplay.performance)}><BarChart3 className="h-3.5 w-3.5" /> {selectedReplay.performance}</Pill>
@@ -1565,7 +1565,7 @@ export default function FaithHubReplaysAndClipsPage() {
                       { label: "Follows", value: fmtInt(selectedReplay.follows) },
                       { label: "Donations", value: fmtInt(selectedReplay.donations) },
                       { label: "Event regs", value: fmtInt(selectedReplay.eventRegs) },
-                      { label: "Beacon conv.", value: fmtInt(selectedReplay.beaconConversions) },
+                      { label: "Revelight conv.", value: fmtInt(selectedReplay.revelightConversions) },
                       { label: "Crowdfund", value: `+${fmtInt(selectedReplay.crowdfundMomentum)}` },
                     ]}
                     progressLabel="Replay traction"
@@ -1695,7 +1695,7 @@ export default function FaithHubReplaysAndClipsPage() {
                   <div className="rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800/30 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
                     <div className="text-[10px] uppercase tracking-[0.14em] text-faith-slate">Destination fit</div>
                     <div className="mt-2 text-sm font-bold text-faith-ink dark:text-slate-100">{conversionIntent} intent armed</div>
-                    <div className="mt-1 text-[11px] text-faith-slate">Deep link and CTA framing are ready for replay follow-up, giving, events, or Beacon.</div>
+                    <div className="mt-1 text-[11px] text-faith-slate">Deep link and CTA framing are ready for replay follow-up, giving, events, or Revelight.</div>
                   </div>
                 </div>
 
@@ -1703,8 +1703,8 @@ export default function FaithHubReplaysAndClipsPage() {
                   <Btn tone="ghost" onClick={() => setPreviewOpen(true)} left={<MonitorPlay className="h-4 w-4" />}>
                     Open full preview
                   </Btn>
-                  <Btn tone="accent" onClick={() => setToast("Beacon boost draft prepared from current packaging.")} left={<Zap className="h-4 w-4" />}>
-                    Boost with Beacon
+                  <Btn tone="accent" onClick={() => setToast("Revelight boost draft prepared from current packaging.")} left={<Zap className="h-4 w-4" />}>
+                    Boost with Revelight
                   </Btn>
                 </div>
               </div>
@@ -1745,7 +1745,7 @@ export default function FaithHubReplaysAndClipsPage() {
               <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/30 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
                 <div className="text-xs font-bold uppercase tracking-[0.16em] text-faith-slate">Promotion handoff</div>
                 <div className="mt-3 space-y-2 text-sm text-faith-slate dark:text-slate-300">
-                  <div className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4" style={{ color: EV_GREEN }} /> Beacon-ready creative framing</div>
+                  <div className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4" style={{ color: EV_GREEN }} /> Revelight-ready creative framing</div>
                   <div className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4" style={{ color: EV_GREEN }} /> Notification deep link prepared</div>
                   <div className="flex items-center gap-2"><AlertTriangle className="h-4 w-4" style={{ color: EV_ORANGE }} /> Caption approval still required for 9:16</div>
                 </div>
@@ -1770,8 +1770,8 @@ export default function FaithHubReplaysAndClipsPage() {
                 <Btn tone="primary" onClick={createClip} left={<Scissors className="h-4 w-4" />}>
                   Create clip
                 </Btn>
-                <Btn tone="accent" onClick={() => setToast("Beacon boost prepared.")} left={<Zap className="h-4 w-4" />}>
-                  Boost with Beacon
+                <Btn tone="accent" onClick={() => setToast("Revelight boost prepared.")} left={<Zap className="h-4 w-4" />}>
+                  Boost with Revelight
                 </Btn>
                 <Btn tone="neutral" onClick={copyReplayLink} left={<Copy className="h-4 w-4" />}>
                   Copy link

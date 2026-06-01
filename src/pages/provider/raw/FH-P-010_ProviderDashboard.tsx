@@ -1,4 +1,4 @@
-// @ts-nocheck
+﻿// @ts-nocheck
 
 "use client";
 
@@ -62,7 +62,7 @@ import {
  * - Use EVzone Green as the primary accent and Orange as the secondary accent.
  * - Represent the full FaithHub Provider dashboard blueprint:
  *   executive command header, quick-create rail, live operations, content pipeline,
- *   audience summary, giving snapshot, Beacon performance, trust queue,
+ *   audience summary, giving snapshot, Revelight performance, trust queue,
  *   and role-aware insight cards.
  * - Keep the component self-contained and easy to adapt inside the FaithHub Provider shell.
  */
@@ -138,7 +138,7 @@ type CampaignSnapshot = {
   status: "Active" | "Urgent" | "Stable" | "Ending soon";
 };
 
-type BeaconItem = {
+type RevelightItem = {
   id: string;
   title: string;
   mode: "Linked" | "Standalone";
@@ -242,9 +242,9 @@ const ROUTES = {
   channelsContactManager: "/faithhub/provider/channels-contact-manager",
   donationsFunds: "/faithhub/provider/donations-and-funds",
   charityCrowdfund: "/faithhub/provider/charity-crowdfunding-workbench",
-  beaconDashboard: "/faithhub/provider/beacon-dashboard",
-  beaconBuilder: "/faithhub/provider/beacon-builder",
-  beaconManager: "/faithhub/provider/beacon-manager",
+  revelightDashboard: "/faithhub/provider/revelight-dashboard",
+  revelightBuilder: "/faithhub/provider/revelight-builder",
+  revelightManager: "/faithhub/provider/revelight-manager",
   replaysClips: "/faithhub/provider/replays-and-clips",
   reviewsModeration: "/faithhub/provider/reviews-and-moderation",
   eventsManager: "/faithhub/provider/events-manager",
@@ -376,10 +376,10 @@ const EXECUTIVE_METRICS: Record<RoleKey, MetricCard[]> = {
       accent: "navy",
     },
     {
-      id: "beacon",
-      label: "Beacon reach",
+      id: "revelight",
+      label: "Revelight reach",
       value: "186k",
-      hint: "Linked and standalone Beacon campaigns this week",
+      hint: "Linked and standalone Revelight campaigns this week",
       delta: "+8 campaigns",
       accent: "orange",
     },
@@ -537,7 +537,7 @@ const EXECUTIVE_METRICS: Record<RoleKey, MetricCard[]> = {
   Promotion: [
     {
       id: "active-campaigns",
-      label: "Active Beacon campaigns",
+      label: "Active Revelight campaigns",
       value: "8",
       hint: "Linked replay boosts, event pushes, giving, and standalone ads",
       delta: "2 learning",
@@ -545,7 +545,7 @@ const EXECUTIVE_METRICS: Record<RoleKey, MetricCard[]> = {
     },
     {
       id: "spend",
-      label: "Beacon spend",
+      label: "Revelight spend",
       value: "-3.9k",
       hint: "Current spend against plan and placement pacing",
       delta: "64% pace",
@@ -653,9 +653,9 @@ const NOTIFICATIONS: NotificationItem[] = [
   },
   {
     id: "n-3",
-    title: "Beacon approval needed",
+    title: "Revelight approval needed",
     detail: "Sunday Encounter replay boost has one pending copy review before launch.",
-    badge: "BEACON",
+    badge: "REVELIGHT",
     tone: "brand",
   },
 ];
@@ -681,9 +681,9 @@ const CONTINUE_ITEMS: ContinueItem[] = [
   },
   {
     id: "c-4",
-    label: "Beacon approvals",
+    label: "Revelight approvals",
     detail: "Two replay campaigns and one standalone awareness ad need approval routing.",
-    cta: "Open Beacon Manager",
+    cta: "Open Revelight Manager",
   },
 ];
 
@@ -719,7 +719,7 @@ const QUICK_ACTIONS: QuickCreateAction[] = [
   {
     id: "new-ad",
     label: "New Ad",
-    detail: "Start a linked or standalone Beacon promotion with premium inventory.",
+    detail: "Start a linked or standalone Revelight promotion with premium inventory.",
     icon: <Megaphone className="h-4 w-4" />,
     accent: "orange",
   },
@@ -863,7 +863,7 @@ const GIVING_CAMPAIGNS: CampaignSnapshot[] = [
   },
 ];
 
-const BEACON_ITEMS: BeaconItem[] = [
+const REVELIGHT_ITEMS: RevelightItem[] = [
   {
     id: "b-1",
     title: "Sunday Encounter replay boost",
@@ -936,9 +936,9 @@ const RECOMMENDATIONS_BY_ROLE: Record<
   Leadership: [
     {
       id: "r-1",
-      title: "Promote the Sunday replay with Beacon",
+      title: "Promote the Sunday replay with Revelight",
       detail: "Strong replay completion and positive reviews suggest it deserves wider promotion.",
-      cta: "Open Beacon Builder",
+      cta: "Open Revelight Builder",
       tone: "brand",
     },
     {
@@ -997,8 +997,8 @@ const RECOMMENDATIONS_BY_ROLE: Record<
     {
       id: "r-3",
       title: "Promote the camp registration reminder",
-      detail: "Beacon and notifications are aligned for a stronger event conversion push.",
-      cta: "Open Beacon Dashboard",
+      detail: "Revelight and notifications are aligned for a stronger event conversion push.",
+      cta: "Open Revelight Dashboard",
       tone: "brand",
     },
   ],
@@ -1030,21 +1030,21 @@ const RECOMMENDATIONS_BY_ROLE: Record<
       id: "r-1",
       title: "Duplicate the winning replay creative",
       detail: "The Sunday Encounter replay boost is outperforming other creative variants by 19%.",
-      cta: "Open Beacon Manager",
+      cta: "Open Revelight Manager",
       tone: "good",
     },
     {
       id: "r-2",
       title: "Pause one fatigued announcement ad",
       detail: "The Prayer Night standalone ad is softening and should be refreshed before more spend lands.",
-      cta: "Open Beacon Manager",
+      cta: "Open Revelight Manager",
       tone: "warn",
     },
     {
       id: "r-3",
       title: "Promote the crowdfund milestone",
-      detail: "Flood Relief crossed 70% and is ideal for a momentum-driven Beacon campaign.",
-      cta: "Open Beacon Builder",
+      detail: "Flood Relief crossed 70% and is ideal for a momentum-driven Revelight campaign.",
+      cta: "Open Revelight Builder",
       tone: "brand",
     },
   ],
@@ -1349,10 +1349,10 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
     const liveAnomalies = LIVE_SESSIONS.filter(
       (item) => item.readiness !== "Ready" || item.health !== "Healthy",
     ).length;
-    const beaconAnomalies = BEACON_ITEMS.filter(
+    const revelightAnomalies = REVELIGHT_ITEMS.filter(
       (item) => item.status === "Needs approval" || item.status === "Fatigue risk",
     ).length;
-    return liveAnomalies + beaconAnomalies + 1;
+    return liveAnomalies + revelightAnomalies + 1;
   }, []);
 
   const readinessSummary = useMemo(() => {
@@ -1368,7 +1368,7 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
       "new-teaching": ROUTES.teachingsDashboard,
       "new-event": ROUTES.eventsManager,
       "new-fund": ROUTES.donationsFunds,
-      "new-ad": ROUTES.beaconBuilder,
+      "new-ad": ROUTES.revelightBuilder,
     };
     safeNav(routeByAction[actionId] ?? ROUTES.providerDashboard);
   };
@@ -1378,24 +1378,24 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
       "Open content board": ROUTES.teachingsDashboard,
       "Open Events Manager": ROUTES.eventsManager,
       "Open Donations & Funds": ROUTES.donationsFunds,
-      "Open Beacon Manager": ROUTES.beaconManager,
+      "Open Revelight Manager": ROUTES.revelightManager,
     };
     safeNav(routeByCta[cta] ?? ROUTES.providerDashboard);
   };
 
   const openRecommendation = (cta: string) => {
     const routeByCta: Record<string, string> = {
-      "Open Beacon Builder": ROUTES.beaconBuilder,
+      "Open Revelight Builder": ROUTES.revelightBuilder,
       "Open Live Builder": ROUTES.liveBuilder,
       "Open Reviews & Moderation": ROUTES.reviewsModeration,
       "Open Live Dashboard": ROUTES.liveDashboard,
       "Open Replays & Clips": ROUTES.replaysClips,
       "Open Audience Notifications": ROUTES.audienceNotifications,
       "Open Channels & Contacts": ROUTES.channelsContactManager,
-      "Open Beacon Dashboard": ROUTES.beaconDashboard,
+      "Open Revelight Dashboard": ROUTES.revelightDashboard,
       "Open Crowdfunding Workbench": ROUTES.charityCrowdfund,
       "Open Donations & Funds": ROUTES.donationsFunds,
-      "Open Beacon Manager": ROUTES.beaconManager,
+      "Open Revelight Manager": ROUTES.revelightManager,
     };
     safeNav(routeByCta[cta] ?? ROUTES.providerDashboard);
   };

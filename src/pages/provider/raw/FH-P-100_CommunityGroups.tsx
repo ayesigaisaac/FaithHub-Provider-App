@@ -443,7 +443,7 @@ const GROUPS: GroupRecord[] = [
       { id: "rh-11", label: "Family reading plan setup", when: "Drafting", state: "Pending" },
     ],
     hooks: [
-      { id: "hk-10", label: "Beacon teaser option", hint: "Could be promoted once first meetup date is locked.", state: "Draft" },
+      { id: "hk-10", label: "Revelight teaser option", hint: "Could be promoted once first meetup date is locked.", state: "Draft" },
       { id: "hk-11", label: "Resource pack", hint: "Reading guide and family prompts still missing.", state: "Pending" },
     ],
   },

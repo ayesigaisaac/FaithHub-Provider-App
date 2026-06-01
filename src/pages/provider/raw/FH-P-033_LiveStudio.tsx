@@ -140,7 +140,7 @@ type CTAItem = {
     | "Donation"
     | "Crowdfund"
     | "Event"
-    | "Beacon"
+    | "Revelight"
     | "QR";
   tone: SceneTone;
 };
@@ -415,10 +415,10 @@ const CTA_ITEMS: CTAItem[] = [
     tone: "orange",
   },
   {
-    id: "beacon-teaser",
-    label: "Beacon teaser",
+    id: "revelight-teaser",
+    label: "Revelight teaser",
     desc: "Replay boost and clip promotion teaser.",
-    type: "Beacon",
+    type: "Revelight",
     tone: "green",
   },
   {
@@ -826,7 +826,7 @@ export default function FaithHubLiveStudioPage() {
   const donationTotal = 12680 + elapsedSec * 9;
   const crowdfundRaised = 8440 + elapsedSec * 5;
   const eventSignups = 91 + Math.min(34, Math.floor(elapsedSec / 25));
-  const beaconTeasers = 28 + Math.min(22, Math.floor(elapsedSec / 30));
+  const revelightTeasers = 28 + Math.min(22, Math.floor(elapsedSec / 30));
 
   const showToast = (message: string) => setToast(message);
 
@@ -1428,7 +1428,7 @@ export default function FaithHubLiveStudioPage() {
             <div className="grid gap-4 2xl:grid-cols-[minmax(0,1.12fr)_minmax(0,0.88fr)]">
               <CardShell
                 title="Graphics & CTA layer"
-                subtitle="Lower thirds, scripture callouts, donation banners, progress bars, QR prompts and Beacon teasers."
+                subtitle="Lower thirds, scripture callouts, donation banners, progress bars, QR prompts and Revelight teasers."
                 right={<Pill text={`${CTA_ITEMS.length} presets`} icon={<Sparkles className="h-3.5 w-3.5" />} />}
               >
                 <div className="grid gap-3 md:grid-cols-2">
@@ -1907,8 +1907,8 @@ export default function FaithHubLiveStudioPage() {
                   <div className="mt-1 text-faith-slate">Watching</div>
                 </div>
                 <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-3 text-center dark:border-slate-700 dark:bg-slate-950">
-                  <div className="font-black text-faith-ink dark:text-slate-100">{beaconTeasers}</div>
-                  <div className="mt-1 text-faith-slate">Beacon teasers</div>
+                  <div className="font-black text-faith-ink dark:text-slate-100">{revelightTeasers}</div>
+                  <div className="mt-1 text-faith-slate">Revelight teasers</div>
                 </div>
                 <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-3 text-center dark:border-slate-700 dark:bg-slate-950">
                   <div className="font-black text-faith-ink dark:text-slate-100">{SESSION.audience.prayerCount}</div>
@@ -1947,11 +1947,11 @@ export default function FaithHubLiveStudioPage() {
                 </button>
                 <button
                   type="button"
-                  onClick={() => showToast("Beacon teaser package prepared")}
+                  onClick={() => showToast("Revelight teaser package prepared")}
                   className="flex w-full items-center justify-between rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-4 py-3 text-left transition-colors hover:bg-[var(--fh-surface-bg)] dark:border-slate-700 dark:bg-slate-950 dark:hover:bg-slate-900"
                 >
                   <div>
-                    <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">Prepare Beacon replay teaser</div>
+                    <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100">Prepare Revelight replay teaser</div>
                     <div className="mt-1.5 text-[12px] leading-relaxed text-faith-slate">Use live-response signals to power promotion fast.</div>
                   </div>
                   <Zap className="h-4 w-4 text-faith-slate" />

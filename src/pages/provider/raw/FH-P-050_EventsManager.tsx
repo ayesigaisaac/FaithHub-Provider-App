@@ -63,7 +63,7 @@ const EV_NAVY = "#0b1d49";
 const ROUTES = {
   liveBuilder: "/faithhub/provider/live-builder",
   donationsFunds: "/faithhub/provider/donations-and-funds",
-  beaconBuilder: "/faithhub/provider/beacon-builder",
+  revelightBuilder: "/faithhub/provider/revelight-builder",
   liveDashboard: "/faithhub/provider/live-dashboard",
   postLivePublishing: "/faithhub/provider/post-live-publishing",
 };
@@ -230,7 +230,7 @@ type EventRecord = {
   linkedFund?: string;
   linkedCrowdfund?: string;
   linkedMerch?: string;
-  beaconReady: boolean;
+  revelightReady: boolean;
   sponsorMention: string;
   registrationSourceMix: Array<{ label: string; value: number }>;
   agenda: AgendaItem[];
@@ -282,11 +282,11 @@ const EVENTS_SEED: EventRecord[] = [
     linkedFund: "Missions Impact Fund",
     linkedCrowdfund: "Conference bursary crowdfund",
     linkedMerch: "Conference merch bundle",
-    beaconReady: true,
+    revelightReady: true,
     sponsorMention: "Partner mention reserved for sponsor reel + foyer signage.",
     registrationSourceMix: [
       { label: "Notifications", value: 368 },
-      { label: "Beacon", value: 221 },
+      { label: "Revelight", value: 221 },
       { label: "Organic", value: 179 },
       { label: "Partner links", value: 106 },
     ],
@@ -359,7 +359,7 @@ const EVENTS_SEED: EventRecord[] = [
     ],
     promotionChannels: [
       { id: "pc1", label: "Push + email reminder", hint: "T-24h and morning-of", enabled: true, health: "94% healthy" },
-      { id: "pc2", label: "Beacon awareness", hint: "Paid and house-inventory mix", enabled: true, health: "CTR 4.8%" },
+      { id: "pc2", label: "Revelight awareness", hint: "Paid and house-inventory mix", enabled: true, health: "CTR 4.8%" },
       { id: "pc3", label: "Volunteer segment journey", hint: "Ops briefings + arrival notes", enabled: true, health: "Ready" },
       { id: "pc4", label: "SMS recovery send", hint: "Late-fill seats if forecast dips", enabled: false, health: "Standby" },
     ],
@@ -409,11 +409,11 @@ const EVENTS_SEED: EventRecord[] = [
     linkedLive: "Pop-up marketplace live stream",
     linkedFund: "Community support basket",
     linkedMerch: "Vendor highlight strip",
-    beaconReady: true,
-    sponsorMention: "Vendor highlight carousel prepared for Beacon promotion.",
+    revelightReady: true,
+    sponsorMention: "Vendor highlight carousel prepared for Revelight promotion.",
     registrationSourceMix: [
       { label: "Organic", value: 92 },
-      { label: "Beacon", value: 37 },
+      { label: "Revelight", value: 37 },
       { label: "Notifications", value: 59 },
     ],
     agenda: [
@@ -448,7 +448,7 @@ const EVENTS_SEED: EventRecord[] = [
     ],
     promotionChannels: [
       { id: "pc1", label: "Community reminder", hint: "Push + email", enabled: true, health: "89% healthy" },
-      { id: "pc2", label: "Beacon vendor hype", hint: "Local reach + retargeting", enabled: true, health: "CTR 3.1%" },
+      { id: "pc2", label: "Revelight vendor hype", hint: "Local reach + retargeting", enabled: true, health: "CTR 3.1%" },
       { id: "pc3", label: "SMS recovery send", hint: "Morning-of fill", enabled: false, health: "Standby" },
     ],
     givingLines: [
@@ -494,7 +494,7 @@ const EVENTS_SEED: EventRecord[] = [
     linkedLive: "Baptism live stream",
     linkedReplay: "Baptism testimony replay set",
     linkedFund: "New believers support fund",
-    beaconReady: false,
+    revelightReady: false,
     sponsorMention: "No sponsor mentions on this event type.",
     registrationSourceMix: [
       { label: "Notifications", value: 116 },
@@ -574,11 +574,11 @@ const EVENTS_SEED: EventRecord[] = [
     linkedSeries: "Wholehearted",
     linkedReplay: "Retreat recap film",
     linkedCrowdfund: "Youth scholarship crowdfund",
-    beaconReady: true,
+    revelightReady: true,
     sponsorMention: "Partner thank-you slide already cleared.",
     registrationSourceMix: [
       { label: "Notifications", value: 98 },
-      { label: "Beacon", value: 54 },
+      { label: "Revelight", value: 54 },
       { label: "Parents + leaders", value: 62 },
     ],
     agenda: [
@@ -609,7 +609,7 @@ const EVENTS_SEED: EventRecord[] = [
     ],
     promotionChannels: [
       { id: "pc1", label: "Parent thank-you flow", hint: "Post-event care sequence", enabled: true, health: "Queued" },
-      { id: "pc2", label: "Scholarship crowdfund push", hint: "Replay + Beacon handoff", enabled: true, health: "Ready" },
+      { id: "pc2", label: "Scholarship crowdfund push", hint: "Replay + Revelight handoff", enabled: true, health: "Ready" },
     ],
     givingLines: [
       { id: "gv1", type: "Crowdfund", label: "Youth scholarship crowdfund", value: "88% to goal", status: "Active", enabled: true },
@@ -958,13 +958,13 @@ function EventListItem({
   selected,
   onSelect,
   onOpenCheckIn,
-  onBeacon,
+  onRevelight,
 }: {
   event: EventRecord;
   selected: boolean;
   onSelect: () => void;
   onOpenCheckIn: () => void;
-  onBeacon: () => void;
+  onRevelight: () => void;
 }) {
   const fillPct = pct(event.registrations, event.capacity);
 
@@ -1034,10 +1034,10 @@ function EventListItem({
           className="inline-flex items-center gap-1 rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[11px] font-bold text-faith-ink dark:text-slate-100"
           onClick={(e) => {
             e.stopPropagation();
-            onBeacon();
+            onRevelight();
           }}
         >
-          <Zap className="h-3.5 w-3.5" /> Beacon
+          <Zap className="h-3.5 w-3.5" /> Revelight
         </button>
       </div>
     </button>
@@ -1439,7 +1439,7 @@ export default function FaithHubEventsManagerPage() {
       id: `EV-${Math.random().toString(16).slice(2, 6).toUpperCase()}`,
       title: "New Faith Event",
       subtitle:
-        "Fresh event shell ready for agenda, logistics, giving, and Beacon setup.",
+        "Fresh event shell ready for agenda, logistics, giving, and Revelight setup.",
       status: "Draft",
       registrations: 0,
       waitlist: 0,
@@ -1472,9 +1472,9 @@ export default function FaithHubEventsManagerPage() {
     setToast("Event plan saved and marked ready for operations.");
   };
 
-  const promoteWithBeacon = () => {
+  const promoteWithRevelight = () => {
     if (!selectedEvent) return;
-    setToast(`Beacon handoff prepared for ${selectedEvent.title}.`);
+    setToast(`Revelight handoff prepared for ${selectedEvent.title}.`);
   };
 
   const openCheckInMode = () => {
@@ -1543,7 +1543,7 @@ export default function FaithHubEventsManagerPage() {
                   Events Manager
                 </div>
                 <Pill tone="brand">Premium event OS</Pill>
-                <Pill tone="accent">Live + giving + Beacon linked</Pill>
+                <Pill tone="accent">Live + giving + Revelight linked</Pill>
               </div>
 
               <div className="mt-2 flex flex-wrap items-center gap-2 text-[11px] sm:text-xs text-faith-slate">
@@ -1566,8 +1566,8 @@ export default function FaithHubEventsManagerPage() {
               <Btn tone="neutral" className="h-10 px-4" onClick={openCheckInMode} left={<QrCode className="h-4 w-4" />}>
                 Open check-in mode
               </Btn>
-              <Btn tone="accent" className="h-10 px-4" onClick={promoteWithBeacon} left={<Zap className="h-4 w-4" />}>
-                Promote with Beacon
+              <Btn tone="accent" className="h-10 px-4" onClick={promoteWithRevelight} left={<Zap className="h-4 w-4" />}>
+                Promote with Revelight
               </Btn>
               <Btn
                 tone="primary"
@@ -1690,7 +1690,7 @@ export default function FaithHubEventsManagerPage() {
                       selected={selectedEvent.id === event.id}
                       onSelect={() => setSelectedEventId(event.id)}
                       onOpenCheckIn={openCheckInMode}
-                      onBeacon={promoteWithBeacon}
+                      onRevelight={promoteWithRevelight}
                     />
                   ))}
                 </div>
@@ -1711,8 +1711,8 @@ export default function FaithHubEventsManagerPage() {
                   <div className="flex flex-wrap items-center gap-2">
                     <Pill tone="brand">{selectedEvent.category}</Pill>
                     <Pill tone="neutral">{selectedEvent.campus}</Pill>
-                    <Pill tone={selectedEvent.beaconReady ? "good" : "warn"}>
-                      {selectedEvent.beaconReady ? "Beacon-ready" : "Beacon setup pending"}
+                    <Pill tone={selectedEvent.revelightReady ? "good" : "warn"}>
+                      {selectedEvent.revelightReady ? "Revelight-ready" : "Revelight setup pending"}
                     </Pill>
                   </div>
                 </div>
@@ -2090,13 +2090,13 @@ export default function FaithHubEventsManagerPage() {
                     </div>
                   </div>
                   <div className="mt-2 text-[12px] text-faith-slate">
-                    Events can become content engines: tie them to a live session, turn the replay into clips, and route finished assets into Beacon or donor follow-up without re-entering metadata.
+                    Events can become content engines: tie them to a live session, turn the replay into clips, and route finished assets into Revelight or donor follow-up without re-entering metadata.
                   </div>
                   <div className="mt-3 flex flex-wrap items-center gap-2">
                     <Btn tone="neutral" className="px-3 py-2 text-[12px]" onClick={() => safeNav(ROUTES.liveBuilder)}>
                       Open Live Builder
                     </Btn>
-                    <Btn tone="accent" className="px-3 py-2 text-[12px]" onClick={promoteWithBeacon}>
+                    <Btn tone="accent" className="px-3 py-2 text-[12px]" onClick={promoteWithRevelight}>
                       Promote event flow
                     </Btn>
                   </div>
@@ -2211,11 +2211,11 @@ export default function FaithHubEventsManagerPage() {
                       Promotion and audience panel
                     </div>
                     <div className="mt-1 text-[11px] sm:text-xs text-faith-slate">
-                      Route the event into notifications, Beacon, and segment targeting with clear performance visibility.
+                      Route the event into notifications, Revelight, and segment targeting with clear performance visibility.
                     </div>
                   </div>
-                  <Pill tone={selectedEvent.beaconReady ? "good" : "warn"}>
-                    {selectedEvent.beaconReady ? "Promotion-ready" : "Needs promo setup"}
+                  <Pill tone={selectedEvent.revelightReady ? "good" : "warn"}>
+                    {selectedEvent.revelightReady ? "Promotion-ready" : "Needs promo setup"}
                   </Pill>
                 </div>
 
@@ -2433,9 +2433,9 @@ export default function FaithHubEventsManagerPage() {
                       tone="accent"
                       className="w-full"
                       left={<Zap className="h-4 w-4" />}
-                      onClick={promoteWithBeacon}
+                      onClick={promoteWithRevelight}
                     >
-                      Promote with Beacon
+                      Promote with Revelight
                     </Btn>
                   </div>
                   <div className="mt-3 text-[11px] text-faith-slate">
@@ -2567,12 +2567,12 @@ export default function FaithHubEventsManagerPage() {
                 </button>
                 <button
                   type="button"
-                  onClick={() => safeNav(ROUTES.beaconBuilder)}
+                  onClick={() => safeNav(ROUTES.revelightBuilder)}
                   className="w-full flex items-center justify-between gap-3 rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800/40 px-3 py-3 ring-1 ring-slate-200 dark:ring-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
                 >
                   <div className="flex items-center gap-3">
                     <Zap className="h-4 w-4 text-slate-700 dark:text-slate-300" />
-                    <div className="text-[12px] font-bold text-faith-ink dark:text-slate-100">Beacon Builder</div>
+                    <div className="text-[12px] font-bold text-faith-ink dark:text-slate-100">Revelight Builder</div>
                   </div>
                   <Pill tone="accent">Promote</Pill>
                 </button>
@@ -2632,7 +2632,7 @@ export default function FaithHubEventsManagerPage() {
                 <Btn tone="primary" left={<Ticket className="h-4 w-4" />} onClick={publishEventPlan}>
                   Publish event plan
                 </Btn>
-                <Btn tone="accent" left={<Zap className="h-4 w-4" />} onClick={promoteWithBeacon}>
+                <Btn tone="accent" left={<Zap className="h-4 w-4" />} onClick={promoteWithRevelight}>
                   Promote now
                 </Btn>
               </div>

@@ -1,4 +1,4 @@
-// @ts-nocheck
+﻿// @ts-nocheck
 "use client";
 
 import React, { useMemo, useState } from "react";
@@ -46,7 +46,7 @@ import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
  *   cross-object hooks, and a persistent desktop/mobile destination preview rail.
  * - Use EVzone Green as the primary accent and Orange as the secondary accent.
  * - Treat projects as first-class ministry objects that can connect to giving,
- *   charity crowdfunding, Live Sessions, Events, Noticeboard, Audience journeys, and Beacon.
+ *   charity crowdfunding, Live Sessions, Events, Noticeboard, Audience journeys, and Revelight.
  * - Surface the requested primary CTAs clearly:
  *   + New Project, Add Milestone, Recruit Team.
  */
@@ -61,7 +61,7 @@ const ROUTES = {
   providerDashboard: "/faithhub/provider/dashboard",
   noticeboard: "/faithhub/provider/noticeboard",
   audienceNotifications: "/faithhub/provider/audience-notifications",
-  beaconBuilder: "/faithhub/provider/beacon-builder",
+  revelightBuilder: "/faithhub/provider/revelight-builder",
   donationsFunds: "/faithhub/provider/donations-and-funds",
   charityCrowdfund: "/faithhub/provider/charity-crowdfunding-workbench",
   liveBuilder: "/faithhub/provider/live-builder",
@@ -192,7 +192,7 @@ type ProjectRecord = {
   linkedLive?: string;
   linkedEvent?: string;
   linkedCrowdfund?: string;
-  linkedBeacon?: string;
+  linkedRevelight?: string;
   tags: string[];
   signals: ProjectSignal[];
   milestones: ProjectMilestone[];
@@ -212,7 +212,7 @@ const TEMPLATE_CARDS = [
     id: "tpl-charity",
     title: "Charity action",
     subtitle:
-      "Story-first project tied to giving or crowdfunding, impact proof, and Beacon-ready promotion.",
+      "Story-first project tied to giving or crowdfunding, impact proof, and Revelight-ready promotion.",
     accent: "orange" as const,
   },
   {
@@ -289,7 +289,7 @@ const INITIAL_PROJECTS: ProjectRecord[] = [
     linkedLive: "Relief Prayer & Giving Moment",
     linkedEvent: "Weekend Distribution Run",
     linkedCrowdfund: "Flood Relief Fund",
-    linkedBeacon: "Relief Awareness Push",
+    linkedRevelight: "Relief Awareness Push",
     tags: ["relief", "families", "donation", "volunteer", "field updates"],
     signals: [
       {
@@ -379,7 +379,7 @@ const INITIAL_PROJECTS: ProjectRecord[] = [
       },
       {
         id: "hook-relief-3",
-        label: "Beacon promotion",
+        label: "Revelight promotion",
         hint: "Relief awareness campaign linked to the crowdfund destination.",
         state: "Ready",
       },
@@ -416,7 +416,7 @@ const INITIAL_PROJECTS: ProjectRecord[] = [
     prayerRequests: 9,
     linkedLive: "Youth Prayer Night",
     linkedEvent: "School Outreach Day",
-    linkedBeacon: "Youth Invitation Campaign",
+    linkedRevelight: "Youth Invitation Campaign",
     tags: ["schools", "youth", "invitations", "outreach", "follow-up"],
     signals: [
       {
@@ -493,7 +493,7 @@ const INITIAL_PROJECTS: ProjectRecord[] = [
       },
       {
         id: "hook-youth-2",
-        label: "Beacon",
+        label: "Revelight",
         hint: "Invitation creative exists but still needs budget approval.",
         state: "Pending",
       },
@@ -536,7 +536,7 @@ const INITIAL_PROJECTS: ProjectRecord[] = [
     prayerRequests: 3,
     linkedLive: "Studio Vision Live",
     linkedCrowdfund: "Studio Upgrade Push",
-    linkedBeacon: "Support the Studio Campaign",
+    linkedRevelight: "Support the Studio Campaign",
     tags: ["studio", "build", "equipment", "sound", "broadcast"],
     signals: [
       {
@@ -612,7 +612,7 @@ const INITIAL_PROJECTS: ProjectRecord[] = [
       },
       {
         id: "hook-studio-3",
-        label: "Beacon",
+        label: "Revelight",
         hint: "Promotion hooks are prepared for milestone achievements.",
         state: "Ready",
       },
@@ -1455,7 +1455,7 @@ function ProjectsPage() {
                     <div className="mt-1 max-w-3xl text-[14px] leading-6 text-faith-slate">
                       Premium command page for missions, outreach, volunteer drives, build projects,
                       charity actions, and impact progress - tightly linked to giving, audience journeys,
-                      Beacon promotion, Live Sessions, and events.
+                      Revelight promotion, Live Sessions, and events.
                     </div>
                   </div>
                 </div>
@@ -1463,7 +1463,7 @@ function ProjectsPage() {
                 <div className="mt-4 flex flex-wrap gap-2">
                   <Pill tone="brand">Community impact</Pill>
                   <Pill>Giving-linked</Pill>
-                  <Pill>Beacon-ready</Pill>
+                  <Pill>Revelight-ready</Pill>
                   <Pill>Volunteer-led</Pill>
                 </div>
               </div>
@@ -1508,7 +1508,7 @@ function ProjectsPage() {
                 </span>
                 <span>-</span>
                 <span>
-                  1 charity action is ready for Beacon amplification
+                  1 charity action is ready for Revelight amplification
                 </span>
                 <span>-</span>
                 <span>
@@ -1805,7 +1805,7 @@ function ProjectsPage() {
                       {totalHookReady}
                     </div>
                     <div className="mt-1 text-[12px] leading-5 text-faith-slate">
-                      Noticeboard, Audience, Live, Giving, and Beacon handoffs that can be used right now.
+                      Noticeboard, Audience, Live, Giving, and Revelight handoffs that can be used right now.
                     </div>
                   </div>
                 </div>
@@ -1894,11 +1894,11 @@ function ProjectsPage() {
                       {selectedProject.linkedLive ? <Pill>Live-linked</Pill> : null}
                       {selectedProject.linkedEvent ? <Pill>Event-linked</Pill> : null}
                       {selectedProject.linkedCrowdfund ? <Pill>Charity-linked</Pill> : null}
-                      {selectedProject.linkedBeacon ? <Pill>Beacon-ready</Pill> : null}
+                      {selectedProject.linkedRevelight ? <Pill>Revelight-ready</Pill> : null}
                       {!selectedProject.linkedLive &&
                       !selectedProject.linkedEvent &&
                       !selectedProject.linkedCrowdfund &&
-                      !selectedProject.linkedBeacon ? (
+                      !selectedProject.linkedRevelight ? (
                         <Pill tone="warn">Standalone project</Pill>
                       ) : null}
                     </div>
@@ -2026,9 +2026,9 @@ function ProjectsPage() {
                   <HeartHandshake className="h-4 w-4" />
                   Open Charity Crowdfunding
                 </SoftButton>
-                <PrimaryButton color={EV_ORANGE} onClick={() => safeNav(ROUTES.beaconBuilder)}>
+                <PrimaryButton color={EV_ORANGE} onClick={() => safeNav(ROUTES.revelightBuilder)}>
                   <Zap className="h-4 w-4" />
-                  Promote with Beacon
+                  Promote with Revelight
                 </PrimaryButton>
               </div>
             </Card>
@@ -2142,7 +2142,7 @@ function ProjectsPage() {
                 <div className="mt-2 space-y-2">
                   <Pill>Publish field update</Pill>
                   <Pill>Lock volunteer roster</Pill>
-                  <Pill>Launch Beacon push</Pill>
+                  <Pill>Launch Revelight push</Pill>
                   <Pill>Record live project update</Pill>
                 </div>
               </div>

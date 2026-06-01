@@ -199,7 +199,7 @@ type EpisodeDraft = {
   collaborators: Collaborator[];
   tags: string[];
   searchHints: string[];
-  beaconSnippet: string;
+  revelightSnippet: string;
   externalPromoSnippet: string;
   aiSummary: string[];
 };
@@ -797,7 +797,7 @@ function scoreReadiness(draft: EpisodeDraft) {
     draft.resources.length >= 2,
     draft.collaborators.length >= 1,
     draft.tags.length >= 3,
-    Boolean(draft.beaconSnippet),
+    Boolean(draft.revelightSnippet),
   ];
 
   const hits = checks.filter(Boolean).length;
@@ -908,7 +908,7 @@ export default function EpisodeBuilderPage() {
     collaborators: DEFAULT_COLLABORATORS,
     tags: ["hope", "wilderness", "endurance", "discipleship"],
     searchHints: ["week 2 hope", "wilderness teaching", "episode sermon", "faith in pressure"],
-    beaconSnippet:
+    revelightSnippet:
       "Week 2 explores how faith survives the wilderness. Promote as a replay teaser and reminder-driven episode launch.",
     externalPromoSnippet:
       "This episode moves from scripture into practical next steps, making it ideal for reminder campaigns and replay discovery.",
@@ -1221,7 +1221,7 @@ export default function EpisodeBuilderPage() {
     if (draft.resources.length >= 2) steps.add("resources");
     if (draft.accessModel && draft.releaseWindow) steps.add("access");
     if (draft.collaborators.length >= 1) steps.add("collaboration");
-    if (draft.tags.length >= 3 && Boolean(draft.beaconSnippet)) steps.add("discovery");
+    if (draft.tags.length >= 3 && Boolean(draft.revelightSnippet)) steps.add("discovery");
     if (readinessScore >= 85) steps.add("readiness");
     return steps;
   }, [
@@ -1236,7 +1236,7 @@ export default function EpisodeBuilderPage() {
     draft.releaseWindow,
     draft.collaborators.length,
     draft.tags.length,
-    draft.beaconSnippet,
+    draft.revelightSnippet,
     readinessScore,
   ]);
 
@@ -1248,7 +1248,7 @@ export default function EpisodeBuilderPage() {
     if (draft.resources.length < 2) steps.add("resources");
     if (!draft.accessModel || !draft.releaseWindow) steps.add("access");
     if (draft.collaborators.length < 1) steps.add("collaboration");
-    if (!(draft.tags.length >= 3 && Boolean(draft.beaconSnippet))) steps.add("discovery");
+    if (!(draft.tags.length >= 3 && Boolean(draft.revelightSnippet))) steps.add("discovery");
     if (readinessScore < 85) steps.add("readiness");
     return steps;
   }, [
@@ -1263,7 +1263,7 @@ export default function EpisodeBuilderPage() {
     draft.releaseWindow,
     draft.collaborators.length,
     draft.tags.length,
-    draft.beaconSnippet,
+    draft.revelightSnippet,
     readinessScore,
   ]);
 
@@ -1936,11 +1936,11 @@ export default function EpisodeBuilderPage() {
                       />
                     </div>
                     <div>
-                      <Label>Beacon / notification snippet</Label>
+                      <Label>Revelight / notification snippet</Label>
                       <TextArea
                         rows={4}
-                        value={draft.beaconSnippet}
-                        onChange={(value) => setDraft((current) => ({ ...current, beaconSnippet: value }))}
+                        value={draft.revelightSnippet}
+                        onChange={(value) => setDraft((current) => ({ ...current, revelightSnippet: value }))}
                       />
                     </div>
                   </div>
@@ -2020,7 +2020,7 @@ export default function EpisodeBuilderPage() {
                     },
                     {
                       label: "Discovery metadata set",
-                      ok: draft.tags.length >= 3 && Boolean(draft.beaconSnippet),
+                      ok: draft.tags.length >= 3 && Boolean(draft.revelightSnippet),
                     },
                     {
                       label: "Post-live handoff ready",

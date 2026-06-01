@@ -1,4 +1,4 @@
-// @ts-nocheck
+﻿// @ts-nocheck
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -75,7 +75,7 @@ const ROUTES = {
   liveBuilder: "/faithhub/provider/live-builder",
   postLivePublishing: "/faithhub/provider/post-live-publishing",
   replaysAndClips: "/faithhub/provider/replays-and-clips",
-  beaconBuilder: "/faithhub/provider/beacon-builder",
+  revelightBuilder: "/faithhub/provider/revelight-builder",
   audienceNotifications: "/faithhub/provider/audience-notifications",
 };
 
@@ -142,7 +142,7 @@ type FilterKey =
   | "standalone"
   | "drafts"
   | "live-linked"
-  | "beacon-ready";
+  | "revelight-ready";
 
 type TeachingRecord = {
   id: string;
@@ -167,7 +167,7 @@ type TeachingRecord = {
   watchStarts: number;
   followers: number;
   donationsInfluenced: number;
-  beaconReady: boolean;
+  revelightReady: boolean;
   translationDue: number;
   notesReady: boolean;
   artworkReady: boolean;
@@ -192,7 +192,7 @@ const TEMPLATE_CARDS: TemplateCard[] = [
     id: "tpl-standalone-sermon",
     title: "Standalone sermon",
     subtitle:
-      "One-off sermon or teaching with live, replay, notes, and Beacon hooks baked in.",
+      "One-off sermon or teaching with live, replay, notes, and Revelight hooks baked in.",
     accent: "green",
     cta: "+ New Teaching",
   },
@@ -245,7 +245,7 @@ const TEACHINGS: TeachingRecord[] = [
     watchStarts: 12840,
     followers: 4120,
     donationsInfluenced: 18600,
-    beaconReady: true,
+    revelightReady: true,
     translationDue: 1,
     notesReady: true,
     artworkReady: true,
@@ -254,7 +254,7 @@ const TEACHINGS: TeachingRecord[] = [
     updatedISO: "2026-04-10T10:15:00Z",
     owner: "Pastor Anna",
     topAction: "Promote Week 5",
-    topActionHint: "Reminder + Beacon teaser already ready.",
+    topActionHint: "Reminder + Revelight teaser already ready.",
   },
   {
     id: "teach-episode-week5",
@@ -280,7 +280,7 @@ const TEACHINGS: TeachingRecord[] = [
     watchStarts: 2140,
     followers: 980,
     donationsInfluenced: 2400,
-    beaconReady: false,
+    revelightReady: false,
     translationDue: 0,
     notesReady: true,
     artworkReady: false,
@@ -313,7 +313,7 @@ const TEACHINGS: TeachingRecord[] = [
     watchStarts: 0,
     followers: 0,
     donationsInfluenced: 0,
-    beaconReady: false,
+    revelightReady: false,
     translationDue: 0,
     notesReady: false,
     artworkReady: false,
@@ -345,7 +345,7 @@ const TEACHINGS: TeachingRecord[] = [
     watchStarts: 6420,
     followers: 1880,
     donationsInfluenced: 7400,
-    beaconReady: true,
+    revelightReady: true,
     translationDue: 0,
     notesReady: true,
     artworkReady: true,
@@ -353,7 +353,7 @@ const TEACHINGS: TeachingRecord[] = [
     updatedISO: "2026-04-09T16:05:00Z",
     owner: "Pastor Ruth",
     topAction: "Boost replay",
-    topActionHint: "Replay-ready, notifications-ready, and Beacon-ready.",
+    topActionHint: "Replay-ready, notifications-ready, and Revelight-ready.",
   },
   {
     id: "teach-series-family",
@@ -377,7 +377,7 @@ const TEACHINGS: TeachingRecord[] = [
     watchStarts: 5890,
     followers: 2260,
     donationsInfluenced: 3900,
-    beaconReady: true,
+    revelightReady: true,
     translationDue: 2,
     notesReady: true,
     artworkReady: true,
@@ -412,7 +412,7 @@ const TEACHINGS: TeachingRecord[] = [
     watchStarts: 980,
     followers: 370,
     donationsInfluenced: 550,
-    beaconReady: false,
+    revelightReady: false,
     translationDue: 1,
     notesReady: true,
     artworkReady: true,
@@ -675,7 +675,7 @@ function TeachingRow({
             <Pill tone={typeTone(teaching.type)}>{teaching.type}</Pill>
             <Pill tone={statusTone(teaching.status)}>{teaching.status}</Pill>
             <Pill tone={accessTone(teaching.access)}>{teaching.access}</Pill>
-            {teaching.beaconReady ? <Pill tone="good">Beacon-ready</Pill> : null}
+            {teaching.revelightReady ? <Pill tone="good">Revelight-ready</Pill> : null}
           </div>
 
           <div className="mt-2 text-[15px] font-bold leading-5 text-faith-ink">
@@ -793,7 +793,7 @@ function TeachingPreview({
         <div className="absolute left-4 top-4 flex flex-wrap gap-2">
           <Pill tone={typeTone(teaching.type)}>{teaching.type}</Pill>
           <Pill tone={accessTone(teaching.access)}>{teaching.access}</Pill>
-          {teaching.beaconReady ? <Pill tone="good">Beacon-ready</Pill> : null}
+          {teaching.revelightReady ? <Pill tone="good">Revelight-ready</Pill> : null}
         </div>
         <div className="absolute inset-x-0 bottom-0 p-4 text-white">
           <div className="text-[12px] font-semibold opacity-90">
@@ -973,7 +973,7 @@ export default function TeachingsDashboardPage() {
       watchStarts: 0,
       followers: 0,
       donationsInfluenced: 0,
-      beaconReady: series.publishingState === "Published",
+      revelightReady: series.publishingState === "Published",
       translationDue: 0,
       notesReady: true,
       artworkReady: true,
@@ -1010,7 +1010,7 @@ export default function TeachingsDashboardPage() {
       watchStarts: 0,
       followers: 0,
       donationsInfluenced: 0,
-      beaconReady: episode.publishingState === "Published",
+      revelightReady: episode.publishingState === "Published",
       translationDue: 0,
       notesReady: true,
       artworkReady: true,
@@ -1061,7 +1061,7 @@ export default function TeachingsDashboardPage() {
           ? teaching.status === "Draft"
           : filter === "live-linked"
           ? teaching.status === "Live-linked" || teaching.liveCount > 0
-          : teaching.beaconReady;
+          : teaching.revelightReady;
 
       return matchesQuery && matchesFilter;
     });
@@ -1093,7 +1093,7 @@ export default function TeachingsDashboardPage() {
       (t) => t.replayCount > 0 || t.status === "Published",
     ).length;
     const watchStarts = allTeachings.reduce((sum, t) => sum + t.watchStarts, 0);
-    const beaconReady = allTeachings.filter((t) => t.beaconReady).length;
+    const revelightReady = allTeachings.filter((t) => t.revelightReady).length;
 
     return {
       activeSeries,
@@ -1101,7 +1101,7 @@ export default function TeachingsDashboardPage() {
       liveLinked,
       replayReady,
       watchStarts,
-      beaconReady,
+      revelightReady,
     };
   }, [allTeachings]);
 
@@ -1109,12 +1109,12 @@ export default function TeachingsDashboardPage() {
     const missingArtwork = allTeachings.filter((t) => !t.artworkReady).length;
     const missingNotes = allTeachings.filter((t) => !t.notesReady).length;
     const translationDue = allTeachings.filter((t) => t.translationDue > 0).length;
-    const readyForBeacon = allTeachings.filter((t) => t.beaconReady).length;
+    const readyForRevelight = allTeachings.filter((t) => t.revelightReady).length;
     return [
       `${missingArtwork} teachings need artwork`,
       `${missingNotes} teachings need notes`,
       `${translationDue} teachings need translation review`,
-      `${readyForBeacon} teachings are ready for notifications and Beacon`,
+      `${readyForRevelight} teachings are ready for notifications and Revelight`,
     ];
   }, [allTeachings]);
 
@@ -1164,8 +1164,8 @@ export default function TeachingsDashboardPage() {
     const items: string[] = [];
     if (selectedTeaching.type !== "Series") items.push("Open the Standalone Teaching Builder and finish the viewer-facing package.");
     if (selectedTeaching.liveCount === 0) items.push("Create a linked Live Session so this teaching can enter the full live -> replay -> clips workflow.");
-    if (selectedTeaching.replayCount > 0) items.push("Open Replays & Clips to generate short discovery moments and push them into Beacon.");
-    if (selectedTeaching.beaconReady) items.push("Launch a Beacon campaign while the teaching is still fresh and conversion-ready.");
+    if (selectedTeaching.replayCount > 0) items.push("Open Replays & Clips to generate short discovery moments and push them into Revelight.");
+    if (selectedTeaching.revelightReady) items.push("Launch a Revelight campaign while the teaching is still fresh and conversion-ready.");
     if (selectedTeaching.translationDue > 0) items.push("Complete translation variants before the next outreach or replay reminder journey.");
     if (selectedTeaching.moderationBacklog > 0) items.push("Resolve trust and review items before sending wider promotion.");
     return items.slice(0, 4);
@@ -1211,7 +1211,7 @@ export default function TeachingsDashboardPage() {
                   <Pill tone="good">Standalone-first</Pill>
                   <Pill tone="navy">Series-aware</Pill>
                   <Pill tone="orange">Live-linked</Pill>
-                  <Pill tone="good">Replay + Beacon-ready</Pill>
+                  <Pill tone="good">Replay + Revelight-ready</Pill>
                 </div>
               </div>
             </div>
@@ -1279,8 +1279,8 @@ export default function TeachingsDashboardPage() {
             accent="orange"
           />
           <StatCard
-            label="Beacon-ready"
-            value={String(stats.beaconReady)}
+            label="Revelight-ready"
+            value={String(stats.revelightReady)}
             hint="Teachings that can move directly into premium promotion surfaces."
             accent="orange"
           />
@@ -1322,7 +1322,7 @@ export default function TeachingsDashboardPage() {
                   ["standalone", "Standalone"],
                   ["drafts", "Drafts"],
                   ["live-linked", "Live-linked"],
-                  ["beacon-ready", "Beacon-ready"],
+                  ["revelight-ready", "Revelight-ready"],
                 ].map(([key, label]) => (
                   <button
                     key={key}
@@ -1336,7 +1336,7 @@ export default function TeachingsDashboardPage() {
                         ? "border-transparent text-white"
                         : "border-faith-line bg-[var(--fh-surface-bg)] text-faith-slate hover:bg-[var(--fh-surface)]",
                     )}
-                    style={filter === key ? { background: key === "beacon-ready" ? EV_ORANGE : EV_GREEN } : undefined}
+                    style={filter === key ? { background: key === "revelight-ready" ? EV_ORANGE : EV_GREEN } : undefined}
                   >
                     {label}
                   </button>
@@ -1624,8 +1624,8 @@ export default function TeachingsDashboardPage() {
                 <SoftButton onClick={() => safeNav(ROUTES.liveBuilder)}>
                   <CalendarClock className="h-4 w-4" /> Live Builder
                 </SoftButton>
-                <PrimaryButton tone="orange" onClick={() => safeNav(ROUTES.beaconBuilder)}>
-                  <Megaphone className="h-4 w-4" /> Beacon Builder
+                <PrimaryButton tone="orange" onClick={() => safeNav(ROUTES.revelightBuilder)}>
+                  <Megaphone className="h-4 w-4" /> Revelight Builder
                 </PrimaryButton>
               </div>
             </Card>
@@ -1695,8 +1695,8 @@ export default function TeachingsDashboardPage() {
                   <SoftButton onClick={() => safeNav(ROUTES.replaysAndClips)}>
                     <PlayCircle className="h-4 w-4" /> Replays & Clips
                   </SoftButton>
-                  <PrimaryButton tone="orange" onClick={() => safeNav(ROUTES.beaconBuilder)}>
-                    <Megaphone className="h-4 w-4" /> Promote with Beacon
+                  <PrimaryButton tone="orange" onClick={() => safeNav(ROUTES.revelightBuilder)}>
+                    <Megaphone className="h-4 w-4" /> Promote with Revelight
                   </PrimaryButton>
                 </div>
               </Card>

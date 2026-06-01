@@ -77,7 +77,7 @@ const ROUTES = {
   audienceNotifications: "/faithhub/provider/audience-notifications",
   reviewsModeration: "/faithhub/provider/reviews-and-moderation",
   postLivePublishing: "/faithhub/provider/post-live-publishing",
-  beaconBuilder: "/faithhub/provider/beacon-builder",
+  revelightBuilder: "/faithhub/provider/revelight-builder",
 };
 
 type SessionState = "Upcoming" | "Live" | "Ended";
@@ -161,7 +161,7 @@ type SessionData = {
     crowdfundTarget: number;
     eventSignups: number;
     merchClicks: number;
-    beaconHandoffs: number;
+    revelightHandoffs: number;
     responseLabel: string;
   };
   alerts: AlertItem[];
@@ -258,7 +258,7 @@ const SESSIONS: SessionData[] = [
       crowdfundTarget: 15000,
       eventSignups: 46,
       merchClicks: 28,
-      beaconHandoffs: 3,
+      revelightHandoffs: 3,
       responseLabel: "Waiting-room arrival is tracking 76% of forecast - a last-minute reminder could push the room above baseline before start.",
     },
     alerts: [
@@ -287,7 +287,7 @@ const SESSIONS: SessionData[] = [
       nextActions: [
         "Auto-package replay artwork the moment the session ends.",
         "Queue follow-up to registrants who miss the live start.",
-        "Prepare a Beacon draft for the replay highlight card.",
+        "Prepare a Revelight draft for the replay highlight card.",
       ],
     },
     cover: {
@@ -363,8 +363,8 @@ const SESSIONS: SessionData[] = [
       crowdfundTarget: 18000,
       eventSignups: 203,
       merchClicks: 116,
-      beaconHandoffs: 11,
-      responseLabel: "Giving response is +18% above forecast, while Beacon-ready clip demand is spiking during testimony moments.",
+      revelightHandoffs: 11,
+      responseLabel: "Giving response is +18% above forecast, while Revelight-ready clip demand is spiking during testimony moments.",
     },
     alerts: [
       {
@@ -400,7 +400,7 @@ const SESSIONS: SessionData[] = [
       nextActions: [
         "Push the best testimony moment into the replay trailer stack.",
         "Follow up with youth attendees who clicked event sign-up but did not complete registration.",
-        "Open a Beacon handoff for post-event recap promotion.",
+        "Open a Revelight handoff for post-event recap promotion.",
       ],
     },
     cover: {
@@ -476,7 +476,7 @@ const SESSIONS: SessionData[] = [
       crowdfundTarget: 25000,
       eventSignups: 18,
       merchClicks: 0,
-      beaconHandoffs: 8,
+      revelightHandoffs: 8,
       responseLabel: "Crowdfund movement remained strong after the final prayer appeal - this session is ideal for replay plus campaign-update follow-up.",
     },
     alerts: [
@@ -505,7 +505,7 @@ const SESSIONS: SessionData[] = [
       nextActions: [
         "Publish replay with chapters and prayer-response notes.",
         "Create two short clips for the crowdfund update feed.",
-        "Launch a Beacon recap ad to supporters and replay viewers.",
+        "Launch a Revelight recap ad to supporters and replay viewers.",
       ],
     },
     cover: {
@@ -590,7 +590,7 @@ function mapLiveFlowRecordToDashboardSession(
       crowdfundTarget: 1,
       eventSignups: 0,
       merchClicks: 0,
-      beaconHandoffs: 0,
+      revelightHandoffs: 0,
       responseLabel: "Session saved from Live Builder and ready for live operations.",
     },
     alerts: [],
@@ -1162,8 +1162,8 @@ function PostLiveLaunchPad({ session }: { session: SessionData }) {
         <SoftButton onClick={() => safeNav(`${ROUTES.postLivePublishing}?sessionId=${encodeURIComponent(session.id)}&tab=clips`)}>
           <Wand2 className="h-4 w-4" /> Create clips
         </SoftButton>
-        <SoftButton onClick={() => safeNav(`${ROUTES.beaconBuilder}?sourceSessionId=${encodeURIComponent(session.id)}`)}>
-          <Sparkles className="h-4 w-4" /> Beacon handoff
+        <SoftButton onClick={() => safeNav(`${ROUTES.revelightBuilder}?sourceSessionId=${encodeURIComponent(session.id)}`)}>
+          <Sparkles className="h-4 w-4" /> Revelight handoff
         </SoftButton>
       </div>
     </Card>
@@ -1374,7 +1374,7 @@ export default function FaithHubLiveDashboardPage() {
           <RouteButton icon={<Video className="h-4 w-4" />} label="Live Studio" hint="Open scenes, sources, and stage controls" onClick={() => safeNav(`${ROUTES.liveStudio}?sessionId=${encodeURIComponent(session.id)}`)} />
           <RouteButton icon={<Bell className="h-4 w-4" />} label="Audience Notifications" hint="Send live and replay reminders" onClick={() => safeNav(`${ROUTES.audienceNotifications}?sessionId=${encodeURIComponent(session.id)}`)} />
           <RouteButton icon={<ShieldCheck className="h-4 w-4" />} label="Reviews & Moderation" hint="Open live moderation tools" onClick={() => safeNav(`${ROUTES.reviewsModeration}?sessionId=${encodeURIComponent(session.id)}`)} />
-          <RouteButton icon={<Sparkles className="h-4 w-4" />} label="Beacon Builder" hint="Promote the replay or recap with Beacon" onClick={() => safeNav(`${ROUTES.beaconBuilder}?sourceSessionId=${encodeURIComponent(session.id)}`)} />
+          <RouteButton icon={<Sparkles className="h-4 w-4" />} label="Revelight Builder" hint="Promote the replay or recap with Revelight" onClick={() => safeNav(`${ROUTES.revelightBuilder}?sourceSessionId=${encodeURIComponent(session.id)}`)} />
         </div>
       </Card>
     </div>
@@ -1692,15 +1692,15 @@ export default function FaithHubLiveDashboardPage() {
               </div>
             </Card>
 
-            <Card title="CTA and conversion strip" subtitle="Treat giving, event sign-up, merch clicks, and Beacon promotion as live-response signals."
-              right={<SoftButton onClick={() => safeNav(`${ROUTES.beaconBuilder}?sourceSessionId=${encodeURIComponent(session.id)}`)}><Sparkles className="h-4 w-4" /> Beacon handoff</SoftButton>}
+            <Card title="CTA and conversion strip" subtitle="Treat giving, event sign-up, merch clicks, and Revelight promotion as live-response signals."
+              right={<SoftButton onClick={() => safeNav(`${ROUTES.revelightBuilder}?sourceSessionId=${encodeURIComponent(session.id)}`)}><Sparkles className="h-4 w-4" /> Revelight handoff</SoftButton>}
             >
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-5 gap-3">
                 <MetricTile label="Live giving" value={formatMoney(session.conversion.donationTotal)} hint="Current response total" tone="orange" />
                 <MetricTile label="Crowdfund" value={formatMoney(session.conversion.crowdfundRaised)} hint={`of ${formatMoney(session.conversion.crowdfundTarget)}`} tone="green" />
                 <MetricTile label="Event sign-ups" value={session.conversion.eventSignups.toLocaleString()} hint="Live-response registrations" tone="green" />
                 <MetricTile label="Merch clicks" value={session.conversion.merchClicks.toLocaleString()} hint="Commerce engagement" tone="neutral" />
-                <MetricTile label="Beacon handoffs" value={session.conversion.beaconHandoffs.toLocaleString()} hint="Promotion-ready actions" tone="orange" />
+                <MetricTile label="Revelight handoffs" value={session.conversion.revelightHandoffs.toLocaleString()} hint="Promotion-ready actions" tone="orange" />
               </div>
 
               <div className="mt-4">
@@ -1817,7 +1817,7 @@ export default function FaithHubLiveDashboardPage() {
                   <RouteButton icon={<Bell className="h-4 w-4" />} label="Audience Notifications" hint="Live and replay reminder sends" onClick={() => safeNav(`${ROUTES.audienceNotifications}?sessionId=${encodeURIComponent(session.id)}`)} />
                   <RouteButton icon={<ShieldCheck className="h-4 w-4" />} label="Reviews & Moderation" hint="Open the live moderation surface" onClick={() => safeNav(`${ROUTES.reviewsModeration}?sessionId=${encodeURIComponent(session.id)}`)} />
                   <RouteButton icon={<PlayCircle className="h-4 w-4" />} label="Post-live Publishing" hint="Replay packaging and chapters" onClick={() => safeNav(`${ROUTES.postLivePublishing}?sessionId=${encodeURIComponent(session.id)}`)} />
-                  <RouteButton icon={<Sparkles className="h-4 w-4" />} label="Beacon Builder" hint="Promote the replay, recap, or campaign" onClick={() => safeNav(`${ROUTES.beaconBuilder}?sourceSessionId=${encodeURIComponent(session.id)}`)} />
+                  <RouteButton icon={<Sparkles className="h-4 w-4" />} label="Revelight Builder" hint="Promote the replay, recap, or campaign" onClick={() => safeNav(`${ROUTES.revelightBuilder}?sourceSessionId=${encodeURIComponent(session.id)}`)} />
                 </div>
               </Card>
 

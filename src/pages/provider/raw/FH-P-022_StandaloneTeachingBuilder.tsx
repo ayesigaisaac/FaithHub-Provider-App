@@ -44,12 +44,12 @@ import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
  * ------------------------------------------------
  * Premium creator-style page for building sermons/teachings that do not
  * belong to any Series or Episode while still supporting Live Sessions,
- * post-live packaging, clips, reviews, giving, and Beacon promotion.
+ * post-live packaging, clips, reviews, giving, and Revelight promotion.
  *
  * Key product rules represented here
  * - True no-Series / no-Episode publishing path.
  * - Live-first and upload-first creation can start from the same page.
- * - Cross-links to events, giving, charity crowdfunding, FaithMart, and Beacon
+ * - Cross-links to events, giving, charity crowdfunding, FaithMart, and Revelight
  *   remain optional and do not create a parent-content dependency.
  * - Standalone teachings can later migrate into a Series or become a new Series.
  */
@@ -67,7 +67,7 @@ const ROUTES = {
   resourcesManager: "/faithhub/provider/resources-manager",
   postLivePublishing: "/faithhub/provider/post-live-publishing",
   replaysAndClips: "/faithhub/provider/replays-and-clips",
-  beaconBuilder: "/faithhub/provider/beacon-builder",
+  revelightBuilder: "/faithhub/provider/revelight-builder",
 };
 
 const cx = (...parts: Array<string | false | null | undefined>) =>
@@ -199,7 +199,7 @@ const CROSS_LINK_TYPES = [
   { key: "giving", label: "Giving campaign", helper: "Surface a standard fund or special giving appeal." },
   { key: "crowdfund", label: "Charity crowdfund", helper: "Tie the teaching to a crowdfunding story and live progress." },
   { key: "faithmart", label: "FaithMart item", helper: "Attach a book, devotional pack, merch item, or bundle." },
-  { key: "beacon", label: "Beacon promotion", helper: "Prepare a teaser, replay boost, or awareness campaign." },
+  { key: "revelight", label: "Revelight promotion", helper: "Prepare a teaser, replay boost, or awareness campaign." },
 ] as const;
 
 const MIGRATION_MODES = [
@@ -350,7 +350,7 @@ const DEFAULT_CROSS_LINKS: TeachingDraft["crossLinks"] = {
   giving: { enabled: true, label: "Mercy Outreach Fund", status: "Ready" },
   crowdfund: { enabled: false, label: "Community relief campaign", status: "Planned" },
   faithmart: { enabled: true, label: "Teaching notes pack", status: "Draft" },
-  beacon: { enabled: true, label: "Beacon teaser campaign", status: "Draft" },
+  revelight: { enabled: true, label: "Revelight teaser campaign", status: "Draft" },
 };
 
 const DEFAULT_DRAFT: TeachingDraft = {
@@ -388,7 +388,7 @@ const DEFAULT_DRAFT: TeachingDraft = {
   migrationMode: "stay-standalone",
   migrationTargetSeries: "Practicing the Way of Hope",
   migrationNotes:
-    "Keep replay, clips, and Beacon metadata intact if the ministry decides to turn this teaching into a bigger campaign later.",
+    "Keep replay, clips, and Revelight metadata intact if the ministry decides to turn this teaching into a bigger campaign later.",
 };
 
 function accentColor(accent: Accent) {
@@ -718,8 +718,8 @@ function StepRail({
           <SoftButton className="w-full justify-between" onClick={() => safeNav(ROUTES.replaysAndClips)}>
             Replays & Clips <ChevronRight className="h-4 w-4" />
           </SoftButton>
-          <SoftButton className="w-full justify-between" onClick={() => safeNav(ROUTES.beaconBuilder)}>
-            Beacon Builder <ChevronRight className="h-4 w-4" />
+          <SoftButton className="w-full justify-between" onClick={() => safeNav(ROUTES.revelightBuilder)}>
+            Revelight Builder <ChevronRight className="h-4 w-4" />
           </SoftButton>
         </div>
       </div>
@@ -1271,7 +1271,7 @@ export default function StandaloneTeachingBuilderPage() {
                   </div>
                   <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-3">
                     <div className="text-[12px] font-bold text-faith-ink">Promotion continuity</div>
-                    <div className="mt-1 text-[11px] text-faith-slate">Beacon, giving, and events can attach even if no Series ever exists.</div>
+                    <div className="mt-1 text-[11px] text-faith-slate">Revelight, giving, and events can attach even if no Series ever exists.</div>
                   </div>
                 </div>
               </div>
@@ -1552,7 +1552,7 @@ export default function StandaloneTeachingBuilderPage() {
         <div className="space-y-4">
           <Card
             title="Cross-link panel"
-            subtitle="Connect the teaching to an event, giving campaign, crowdfund, FaithMart item, or Beacon promotion without turning it into a Series."
+            subtitle="Connect the teaching to an event, giving campaign, crowdfund, FaithMart item, or Revelight promotion without turning it into a Series."
             right={<Pill tone="brand">Independent linking</Pill>}
           >
             <SectionHeader
@@ -1592,12 +1592,12 @@ export default function StandaloneTeachingBuilderPage() {
           <div className="grid gap-4 lg:grid-cols-2">
             <Card
               title="Promotion hooks"
-              subtitle="Route this teaching into Beacon, notifications, giving, and event follow-up without waiting for a Series shell."
+              subtitle="Route this teaching into Revelight, notifications, giving, and event follow-up without waiting for a Series shell."
               right={<Pill tone="warn">Conversion-ready</Pill>}
             >
               <div className="grid gap-3 md:grid-cols-2">
                 <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3">
-                  <div className="text-[11px] font-black uppercase tracking-[0.16em] text-faith-slate">Beacon path</div>
+                  <div className="text-[11px] font-black uppercase tracking-[0.16em] text-faith-slate">Revelight path</div>
                   <div className="mt-2 text-[13px] font-semibold text-faith-ink">Create teaser, replay boost, or awareness ad</div>
                 </div>
                 <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3">
@@ -1614,7 +1614,7 @@ export default function StandaloneTeachingBuilderPage() {
             >
               <div className="space-y-3 text-[12px] text-faith-slate">
                 <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3">
-                  Linking an event, fund, crowdfund, FaithMart item, or Beacon campaign does <span className="font-semibold text-faith-ink">not</span> force a parent Series or Episode relationship.
+                  Linking an event, fund, crowdfund, FaithMart item, or Revelight campaign does <span className="font-semibold text-faith-ink">not</span> force a parent Series or Episode relationship.
                 </div>
                 <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3">
                   The teaching keeps its own replay, clips, reviews, analytics, and discovery identity no matter how many downstream connections it has.
@@ -1697,7 +1697,7 @@ export default function StandaloneTeachingBuilderPage() {
               <div className="space-y-3">
                 {[
                   "Replay, clip, and review history remain attached.",
-                  "Beacon promotions and campaign links survive the migration.",
+                  "Revelight promotions and campaign links survive the migration.",
                   "Teaching notes, transcript cleanup, and localization variants remain intact.",
                   "Analytics remain attributable to the original standalone message.",
                 ].map((item) => (
@@ -1779,7 +1779,7 @@ export default function StandaloneTeachingBuilderPage() {
           <div className="grid gap-3 lg:grid-cols-3">
             {[
               "Creates a complete teaching record with or without a linked Live Session.",
-              "Supports replay, clip, review, giving, event, and Beacon flows for one-off messages.",
+              "Supports replay, clip, review, giving, event, and Revelight flows for one-off messages.",
               "Preserves future flexibility for ministries that teach both inside and outside Series.",
             ].map((item) => (
               <div key={item} className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-4 text-[12px] leading-6 text-faith-slate">
@@ -1867,10 +1867,10 @@ export default function StandaloneTeachingBuilderPage() {
               <div className="text-[15px] font-black text-faith-ink">Premium notes</div>
               <div className="mt-3 space-y-3 text-[12px] leading-6 text-faith-slate">
                 <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3">
-                  The teaching remains a first-class standalone object even when it links to a live session, event, giving campaign, crowdfund, FaithMart item, or Beacon campaign.
+                  The teaching remains a first-class standalone object even when it links to a live session, event, giving campaign, crowdfund, FaithMart item, or Revelight campaign.
                 </div>
                 <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3">
-                  Live-first and upload-first are both premium paths. Teams can move from this page into Live Builder, Post-live Publishing, or Beacon without rebuilding the teaching record.
+                  Live-first and upload-first are both premium paths. Teams can move from this page into Live Builder, Post-live Publishing, or Revelight without rebuilding the teaching record.
                 </div>
                 <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3">
                   Convertible metadata keeps replays, clips, reviews, and promotions intact if the ministry later expands this one-off message into a bigger teaching campaign.
