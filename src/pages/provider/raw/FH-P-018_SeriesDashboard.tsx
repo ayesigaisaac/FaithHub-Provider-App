@@ -1407,9 +1407,9 @@ export default function SeriesDashboardPage() {
                     <div className="h-2 w-14 rounded-full" style={{ background: accentColor }} />
                     <div className="mt-3 text-[15px] font-black text-faith-ink dark:text-slate-100">{template.title}</div>
                     <div className="mt-2 text-[12px] leading-relaxed text-faith-slate">{template.subtitle}</div>
-                    <div className="mt-4 flex items-center justify-between gap-2">
-                      <span className="text-[12px] font-bold" style={{ color: accentColor }}>
-                        {template.cta}
+                    <div className="mt-4 flex flex-wrap items-center justify-between gap-2">
+                      <span className="text-[12px] font-bold whitespace-normal break-words [overflow-wrap:anywhere]" style={{ color: accentColor }}>
+                        Template ready
                       </span>
                       <SoftButton
                         onClick={() => {

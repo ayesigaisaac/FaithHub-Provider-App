@@ -1267,12 +1267,12 @@ export default function CommunityForumPage() {
                     <div className="mt-1 text-[13px] leading-snug text-faith-slate">
                       {template.subtitle}
                     </div>
-                    <div className="mt-4 flex items-center justify-between gap-2">
-                      <div className="text-[11px] text-faith-slate">Template loads into the leader composer.</div>
+                    <div className="mt-4 flex flex-wrap items-center justify-between gap-2">
+                      <div className="min-w-0 text-[11px] text-faith-slate whitespace-normal break-words [overflow-wrap:anywhere]">Template loads into the leader composer.</div>
                       <button
                         type="button"
                         onClick={() => quickApplyTemplate(template)}
-                        className="text-[13px] font-black text-[var(--fh-accent)]"
+                        className="text-[13px] font-black text-[var(--fh-accent)] whitespace-normal break-words [overflow-wrap:anywhere]"
                       >
                         Use template
                       </button>

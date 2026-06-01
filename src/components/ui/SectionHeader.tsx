@@ -13,7 +13,7 @@ export function SectionHeader({ title, subtitle, actions }: SectionHeaderProps) 
         <h2 className="text-2xl font-extrabold tracking-tight text-faith-ink sm:text-[28px]">{title}</h2>
         {subtitle ? <p className="mt-1.5 text-sm leading-6 text-faith-slate">{subtitle}</p> : null}
       </div>
-      {actions ? <div className="flex items-center gap-2">{actions}</div> : null}
+      {actions ? <div className="flex min-w-0 flex-wrap items-center gap-2">{actions}</div> : null}
     </div>
   );
 }

@@ -1649,13 +1649,13 @@ function ProjectsPage() {
                       <div className="mt-2 text-[12px] leading-5 text-faith-slate">
                         {template.subtitle}
                       </div>
-                      <div className="mt-4 flex items-center justify-between">
+                      <div className="mt-4 flex flex-wrap items-center justify-between gap-2">
                         <div className="text-[11px] font-bold text-faith-slate">
                           Premium starter
                         </div>
                         <button
                           type="button"
-                          className="inline-flex items-center gap-2 text-[12px] font-black"
+                          className="inline-flex items-center gap-2 text-[12px] font-black whitespace-normal break-words [overflow-wrap:anywhere]"
                           style={{ color: EV_ORANGE }}
                           onClick={() => safeNav("/faithhub/provider/projects")}>
                           Use template

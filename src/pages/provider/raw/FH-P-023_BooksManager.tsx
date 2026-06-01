@@ -527,7 +527,7 @@ function Pill({
   return (
     <span
       className={cx(
-        "inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border text-[11px] font-semibold",
+        "inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border text-[11px] font-semibold whitespace-normal break-words [overflow-wrap:anywhere]",
         toneCls,
       )}
     >
@@ -557,7 +557,7 @@ function SoftButton({
       onClick={onClick}
       disabled={disabled}
       className={cx(
-        "px-4 py-2 rounded-2xl text-[12px] font-semibold inline-flex items-center gap-2 border transition-colors",
+        "min-w-0 px-4 py-2 rounded-2xl text-[12px] font-semibold inline-flex items-center gap-2 border transition-colors whitespace-normal break-words [overflow-wrap:anywhere]",
         disabled
           ? "bg-[var(--fh-surface)] dark:bg-slate-900 border-faith-line dark:border-slate-800 text-faith-slate cursor-not-allowed"
           : "bg-[var(--fh-surface-bg)] dark:bg-slate-800 border-faith-line dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-[var(--fh-surface)] dark:hover:bg-slate-700",
@@ -1498,7 +1498,7 @@ export default function BooksManagerPage() {
                   <div className="mt-2 text-[12px] text-faith-slate leading-relaxed">
                     {template.subtitle}
                   </div>
-                  <div className="mt-4 flex items-center justify-between">
+                  <div className="mt-4 flex flex-wrap items-center justify-between gap-2">
                     <Pill
                       text="Template"
                       tone={template.accent === "green" ? "good" : template.accent === "orange" ? "warn" : "neutral"}
@@ -1533,7 +1533,7 @@ export default function BooksManagerPage() {
                   <div className="mt-2 text-[12px] text-faith-slate leading-relaxed">
                     {collection.subtitle}
                   </div>
-                  <div className="mt-4 flex items-center justify-between">
+                  <div className="mt-4 flex flex-wrap items-center justify-between gap-2">
                     <Pill text={`${collection.count} titles`} tone="neutral" icon={<Layers className="h-3.5 w-3.5" />} />
                     <Pill
                       text={collection.readiness}
