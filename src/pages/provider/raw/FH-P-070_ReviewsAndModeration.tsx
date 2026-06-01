@@ -1296,13 +1296,15 @@ export default function FaithHubReviewsAndModerationPage() {
                 />
               </div>
 
-              <div className="mt-4 grid grid-cols-1 gap-3 xl:grid-cols-[1.1fr_0.9fr]">
-                <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
-                  <div className="rounded-3xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
+              <div className="mt-4 grid grid-cols-1 gap-3 2xl:grid-cols-[1.1fr_0.9fr]">
+                <div className="grid grid-cols-1 gap-3 lg:grid-cols-2 2xl:grid-cols-3">
+                  <div className="min-w-0 rounded-3xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
                     <div className="flex items-start justify-between gap-2">
-                      <div>
+                      <div className="min-w-0">
                         <div className="text-[11px] uppercase tracking-[0.16em] text-faith-slate">Rating trend</div>
-                        <div className="mt-1 text-[13px] font-bold text-faith-ink dark:text-slate-100">Public sentiment is rising</div>
+                        <div className="mt-1 text-[13px] font-bold leading-tight text-faith-ink dark:text-slate-100 whitespace-normal break-words [overflow-wrap:anywhere]">
+                          Public sentiment is rising
+                        </div>
                       </div>
                       <Pill tone="good">+0.5 pts</Pill>
                     </div>
@@ -1311,11 +1313,13 @@ export default function FaithHubReviewsAndModerationPage() {
                     </div>
                   </div>
 
-                  <div className="rounded-3xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
+                  <div className="min-w-0 rounded-3xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
                     <div className="flex items-start justify-between gap-2">
-                      <div>
+                      <div className="min-w-0">
                         <div className="text-[11px] uppercase tracking-[0.16em] text-faith-slate">Open issues</div>
-                        <div className="mt-1 text-[13px] font-bold text-faith-ink dark:text-slate-100">Queue pressure is stabilizing</div>
+                        <div className="mt-1 text-[13px] font-bold leading-tight text-faith-ink dark:text-slate-100 whitespace-normal break-words [overflow-wrap:anywhere]">
+                          Queue pressure is stabilizing
+                        </div>
                       </div>
                       <Pill tone="warn">7 active</Pill>
                     </div>
@@ -1324,11 +1328,13 @@ export default function FaithHubReviewsAndModerationPage() {
                     </div>
                   </div>
 
-                  <div className="rounded-3xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
+                  <div className="min-w-0 rounded-3xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
                     <div className="flex items-start justify-between gap-2">
-                      <div>
+                      <div className="min-w-0">
                         <div className="text-[11px] uppercase tracking-[0.16em] text-faith-slate">Recovery confidence</div>
-                        <div className="mt-1 text-[13px] font-bold text-faith-ink dark:text-slate-100">Highest-impact fixes are clear</div>
+                        <div className="mt-1 text-[13px] font-bold leading-tight text-faith-ink dark:text-slate-100 whitespace-normal break-words [overflow-wrap:anywhere]">
+                          Highest-impact fixes are clear
+                        </div>
                       </div>
                       <Pill tone="brand">92 score</Pill>
                     </div>
@@ -1338,18 +1344,18 @@ export default function FaithHubReviewsAndModerationPage() {
                   </div>
                 </div>
 
-                <div className="rounded-3xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
+                <div className="min-w-0 rounded-3xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 p-4">
                   <div className="text-[11px] uppercase tracking-[0.16em] text-faith-slate">Sentiment distribution</div>
                   <div className="mt-3 grid grid-cols-3 gap-2">
-                    <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                    <div className="min-w-0 rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
                       <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">Positive</div>
                       <div className="mt-2 text-[22px] font-black text-faith-ink dark:text-slate-100">{reviewSentiment.positive}</div>
                     </div>
-                    <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                    <div className="min-w-0 rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
                       <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">Mixed</div>
                       <div className="mt-2 text-[22px] font-black text-faith-ink dark:text-slate-100">{reviewSentiment.mixed}</div>
                     </div>
-                    <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
+                    <div className="min-w-0 rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">
                       <div className="text-[10px] uppercase tracking-[0.16em] text-faith-slate">Negative</div>
                       <div className="mt-2 text-[22px] font-black text-faith-ink dark:text-slate-100">{reviewSentiment.negative}</div>
                     </div>
