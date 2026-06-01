@@ -59,6 +59,7 @@ const PRIORITY_SECTIONS = new Set<string>([
   'Audience & Outreach',
   'Events & Giving',
 ]);
+const EXTENDED_SECTIONS_KEY = 'faithhub.sidebar.showAllSections';
 
 function getSidebarPageLabel(input: { key: string; title: string; shortTitle?: string }) {
   if (input.shortTitle) return input.shortTitle;
@@ -82,22 +83,43 @@ function getSidebarPageLabel(input: { key: string; title: string; shortTitle?: s
 
 function getSidebarPageHint(input: { key: string; title: string }) {
   const explicit: Record<string, string> = {
-    'provider-dashboard': 'Overview, insights, and command actions',
-    'provider-onboarding': 'Setup, verification, and launch readiness',
-    'series-dashboard': 'Track series progress and publishing lanes',
-    'teachings-dashboard': 'Teachings workflow, drafts, and review',
-    'live-dashboard': 'Live sessions, stream health, and controls',
-    'audience-notifications': 'Targeted updates and audience outreach',
-    'reviews-and-moderation': 'Trust queue, reviews, and moderation tasks',
-    'events-manager': 'Event planning, schedule, and attendance',
-    'donations-and-funds': 'Giving health, campaigns, and fund tracking',
-    'profile-settings': 'Profile, workspace, and access preferences',
+    'provider-dashboard': 'Start here for key metrics and actions',
+    'provider-onboarding': 'Complete setup and launch checks',
+    'series-dashboard': 'Manage series and publishing status',
+    'teachings-dashboard': 'Create, review, and publish teachings',
+    'live-dashboard': 'Run live sessions and monitor health',
+    'audience-notifications': 'Send updates to the right audience',
+    'reviews-and-moderation': 'Handle reviews and moderation queue',
+    'events-manager': 'Plan and run events',
+    'donations-and-funds': 'Track giving and active campaigns',
+    'profile-settings': 'Update account and workspace preferences',
   };
   if (explicit[input.key]) return explicit[input.key];
 
   const cleaned = input.title.replace(/^FaithHub Provider\s+/i, '').trim();
   return `${cleaned} workspace tools`;
 }
+
+const quickStartItems = [
+  {
+    label: '1) Check Dashboard',
+    hint: 'See what needs attention first',
+    path: '/faithhub/provider/dashboard',
+    icon: HomeRoundedIcon,
+  },
+  {
+    label: '2) Open Teachings',
+    hint: 'Create or continue content',
+    path: '/faithhub/provider/teachings-dashboard',
+    icon: FolderRoundedIcon,
+  },
+  {
+    label: '3) Run Live Ops',
+    hint: 'Monitor and control live sessions',
+    path: '/faithhub/provider/live-dashboard',
+    icon: LiveTvRoundedIcon,
+  },
+] as const;
 
 function trackSidebarClick(payload: { section: string; label: string; route: string; level: 'primary' | 'secondary' }) {
   if (typeof window === 'undefined') return;
@@ -119,12 +141,14 @@ export function ProviderSidebar({
   onToggleCollapse?: () => void;
 }) {
   const location = useLocation();
-  const isWideSidebar = useMediaQuery('(min-width:1200px)');
   const isNarrowPhone = useMediaQuery('(max-width:390px)');
   const isDesktopSidebar = useMediaQuery('(min-width:900px)');
   const effectiveCollapsed = isDesktopSidebar ? collapsed : false;
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({});
-  const [showAllSections, setShowAllSections] = useState(false);
+  const [showAllSections, setShowAllSections] = useState<boolean>(() => {
+    if (typeof window === 'undefined') return false;
+    return window.localStorage.getItem(EXTENDED_SECTIONS_KEY) === 'true';
+  });
 
   const sections = providerSections
     .map((section) => ({
@@ -163,10 +187,9 @@ export function ProviderSidebar({
   }, [activeSection]);
 
   useEffect(() => {
-    if (isWideSidebar) {
-      setShowAllSections(true);
-    }
-  }, [isWideSidebar]);
+    if (typeof window === 'undefined') return;
+    window.localStorage.setItem(EXTENDED_SECTIONS_KEY, String(showAllSections));
+  }, [showAllSections]);
 
   const toggleSection = (section: string) => {
     setOpenSections((prev) => ({ ...prev, [section]: !prev[section] }));
@@ -234,6 +257,75 @@ export function ProviderSidebar({
           </Stack>
 
           <Divider />
+
+          {!effectiveCollapsed ? (
+            <>
+              <Box sx={{ px: 1.35, pt: 1.05, pb: 0.45 }}>
+                <Box
+                  sx={{
+                    borderRadius: '14px',
+                    border: '1px solid',
+                    borderColor: 'color-mix(in srgb, var(--fh-brand) 34%, var(--fh-line) 66%)',
+                    bgcolor: 'color-mix(in srgb, var(--fh-brand-soft) 58%, var(--fh-surface-bg) 42%)',
+                    p: 1,
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      fontSize: 10.5,
+                      letterSpacing: '0.1em',
+                      textTransform: 'uppercase',
+                      fontWeight: 800,
+                      color: 'var(--fh-slate)',
+                      mb: 0.7,
+                    }}
+                  >
+                    Start Here
+                  </Typography>
+                  <Stack spacing={0.55}>
+                    {quickStartItems.map((item) => {
+                      const Icon = item.icon;
+                      return (
+                        <ListItemButton
+                          key={item.path}
+                          component={RouterLink}
+                          to={item.path}
+                          onClick={onClose}
+                          sx={{
+                            px: 0.8,
+                            py: 0.55,
+                            minHeight: 44,
+                            borderRadius: '10px',
+                            border: '1px solid',
+                            borderColor: 'color-mix(in srgb, var(--fh-line) 54%, transparent)',
+                            bgcolor: 'var(--fh-surface-bg)',
+                            '&:hover': { bgcolor: 'var(--fh-surface)' },
+                          }}
+                        >
+                          <ListItemIcon sx={{ minWidth: 24, color: 'var(--fh-brand)' }}>
+                            <Icon sx={{ fontSize: 16 }} />
+                          </ListItemIcon>
+                          <ListItemText
+                            primary={
+                              <Typography sx={{ fontSize: 11.5, fontWeight: 700, lineHeight: 1.15, color: 'var(--fh-ink)' }}>
+                                {item.label}
+                              </Typography>
+                            }
+                            secondary={
+                              <Typography sx={{ fontSize: 10.5, fontWeight: 550, lineHeight: 1.2, color: 'var(--fh-slate)' }}>
+                                {item.hint}
+                              </Typography>
+                            }
+                          />
+                        </ListItemButton>
+                      );
+                    })}
+                  </Stack>
+                </Box>
+              </Box>
+              <Divider />
+            </>
+          ) : null}
 
           <List
             sx={{
@@ -655,7 +747,7 @@ export function ProviderSidebar({
                 })}
               </Box>
             ))}
-            {secondarySections.length > 0 && !isWideSidebar ? (
+            {secondarySections.length > 0 ? (
               <Box sx={{ pt: 1 }}>
                 <Box
                   sx={{
@@ -669,7 +761,7 @@ export function ProviderSidebar({
                 />
                 <ListItemButton
                   onClick={() => setShowAllSections((prev) => !prev)}
-                  aria-label={showAllSections ? 'Hide extended navigation sections' : `Explore additional navigation sections (${secondarySections.length})`}
+                  aria-label={showAllSections ? 'Hide advanced sections' : `Show advanced sections (${secondarySections.length})`}
                   aria-expanded={showAllSections}
                   sx={{
                     px: 1.15,
@@ -697,7 +789,7 @@ export function ProviderSidebar({
                           lineHeight: 1.15,
                         }}
                       >
-                        {showAllSections ? 'Core navigation' : 'Explore sections'}
+                        {showAllSections ? 'Show fewer sections' : 'Show more sections'}
                       </Typography>
                     }
                     secondary={
@@ -711,7 +803,7 @@ export function ProviderSidebar({
                           lineHeight: 1.2,
                         }}
                       >
-                        {showAllSections ? 'Showing all sections' : `${secondarySections.length} more sections`}
+                        {showAllSections ? 'Core + advanced sections visible' : `${secondarySections.length} advanced sections hidden`}
                       </Typography>
                     }
                   />

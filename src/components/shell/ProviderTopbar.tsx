@@ -157,7 +157,7 @@ export function ProviderTopbar({
                   onCloseSearch();
                 }
               }}
-              placeholder="Search provider pages..."
+              placeholder="Search pages or type a task..."
               size="small"
               inputProps={{ 'aria-label': 'Search provider pages' }}
               autoComplete="off"
@@ -214,7 +214,7 @@ export function ProviderTopbar({
                         }}
                       >
                         <Tooltip
-                          title={`Shortcuts: ${teachingsQuickActions.map((item) => item.shortcut).join(' · ')}`}
+                          title={`Shortcuts: ${teachingsQuickActions.map((item) => item.shortcut).join(' • ')}`}
                           arrow
                         >
                           <TuneRoundedIcon sx={{ fontSize: 16 }} />

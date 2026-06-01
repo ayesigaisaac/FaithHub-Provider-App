@@ -1,4 +1,4 @@
-import { Alert, Box, Button } from '@mui/material';
+import { Alert, Box, Button, Stack, Typography } from '@mui/material';
 import { Suspense, useEffect, useMemo, useRef, useState } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { findProviderPageByPath } from '@/navigation/providerPages';
@@ -14,6 +14,36 @@ import { useAuth } from '@/auth/useAuth';
 import { teachingsShortcutRouteMap } from '@/navigation/teachingsQuickActions';
 
 const ONBOARDING_BANNER_DISMISS_KEY = 'faithhub.onboarding.banner.dismissed';
+
+const QUICK_GUIDE_BY_PATH: Record<
+  string,
+  { title: string; description: string; primaryLabel: string; primaryPath: string; secondaryLabel: string; secondaryPath: string }
+> = {
+  '/faithhub/provider/dashboard': {
+    title: 'Start here',
+    description: 'Review priority alerts, then continue your active teaching workflow.',
+    primaryLabel: 'Open Teachings',
+    primaryPath: '/faithhub/provider/teachings-dashboard',
+    secondaryLabel: 'Open Live Ops',
+    secondaryPath: '/faithhub/provider/live-dashboard',
+  },
+  '/faithhub/provider/teachings-dashboard': {
+    title: 'Teachings workflow',
+    description: 'Continue drafts first, then publish and schedule distribution.',
+    primaryLabel: 'Go to Drafts',
+    primaryPath: '/faithhub/provider/teachings-dashboard',
+    secondaryLabel: 'Open Audience',
+    secondaryPath: '/faithhub/provider/audience-notifications',
+  },
+  '/faithhub/provider/live-dashboard': {
+    title: 'Live operations',
+    description: 'Check session health first, then open Studio for control.',
+    primaryLabel: 'Open Live Studio',
+    primaryPath: '/faithhub/provider/live-studio',
+    secondaryLabel: 'View Schedule',
+    secondaryPath: '/faithhub/provider/live-schedule',
+  },
+};
 
 function hasReactOnClickHandler(button: HTMLButtonElement): boolean {
   const keys = Object.keys(button as unknown as Record<string, unknown>);
@@ -47,6 +77,7 @@ export function ProviderShellLayout() {
     !onboardingBannerDismissed &&
     onboardingStatus !== 'approved' &&
     location.pathname !== '/faithhub/provider/onboarding';
+  const quickGuide = QUICK_GUIDE_BY_PATH[location.pathname];
 
   useEffect(() => {
     const handleKeydown = (event: KeyboardEvent) => {
@@ -198,6 +229,51 @@ export function ProviderShellLayout() {
             width: '100%',
           }}
         >
+          {quickGuide ? (
+            <Box sx={{ px: { xs: 1, md: 1.5 }, pt: 1 }}>
+              <Stack
+                direction={{ xs: 'column', sm: 'row' }}
+                spacing={1}
+                alignItems={{ xs: 'flex-start', sm: 'center' }}
+                justifyContent="space-between"
+                sx={{
+                  border: '1px solid',
+                  borderColor: 'var(--fh-line)',
+                  borderRadius: 2,
+                  bgcolor: 'color-mix(in srgb, var(--fh-surface) 72%, var(--fh-surface-bg) 28%)',
+                  px: 1.5,
+                  py: 1.1,
+                }}
+              >
+                <Box>
+                  <Typography sx={{ fontSize: 12.5, fontWeight: 800, color: 'var(--fh-ink)', lineHeight: 1.2 }}>
+                    {quickGuide.title}
+                  </Typography>
+                  <Typography sx={{ mt: 0.35, fontSize: 11.5, fontWeight: 550, color: 'var(--fh-slate)', lineHeight: 1.25 }}>
+                    {quickGuide.description}
+                  </Typography>
+                </Box>
+                <Stack direction="row" spacing={0.8} sx={{ width: { xs: '100%', sm: 'auto' } }}>
+                  <Button
+                    size="small"
+                    variant="contained"
+                    onClick={() => navigate(quickGuide.primaryPath)}
+                    sx={{ textTransform: 'none', fontWeight: 700, minHeight: 34, borderRadius: 1.6 }}
+                  >
+                    {quickGuide.primaryLabel}
+                  </Button>
+                  <Button
+                    size="small"
+                    variant="outlined"
+                    onClick={() => navigate(quickGuide.secondaryPath)}
+                    sx={{ textTransform: 'none', fontWeight: 700, minHeight: 34, borderRadius: 1.6 }}
+                  >
+                    {quickGuide.secondaryLabel}
+                  </Button>
+                </Stack>
+              </Stack>
+            </Box>
+          ) : null}
           <Box
             className="provider-shell-surface"
             sx={{
