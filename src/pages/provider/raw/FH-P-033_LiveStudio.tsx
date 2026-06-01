@@ -1425,7 +1425,7 @@ export default function FaithHubLiveStudioPage() {
               </div>
             </CardShell>
 
-            <div className="grid gap-4 xl:grid-cols-[1.12fr_0.88fr]">
+            <div className="grid gap-4 2xl:grid-cols-[minmax(0,1.12fr)_minmax(0,0.88fr)]">
               <CardShell
                 title="Graphics & CTA layer"
                 subtitle="Lower thirds, scripture callouts, donation banners, progress bars, QR prompts and Beacon teasers."
@@ -1585,7 +1585,7 @@ export default function FaithHubLiveStudioPage() {
               subtitle="Manage master recording, isolated tracks and fast post-live clip workflows."
               right={<Pill text={recordingOn ? "Recording on" : "Recording off"} tone={recordingOn ? "good" : "warn"} icon={<Clapperboard className="h-3.5 w-3.5" />} />}
             >
-              <div className="grid gap-4 lg:grid-cols-[0.8fr_1.2fr]">
+              <div className="grid gap-4 xl:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
                 <div className="space-y-3">
                   <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-4 dark:border-slate-700 dark:bg-slate-950">
                     <div className="flex items-center justify-between gap-2">

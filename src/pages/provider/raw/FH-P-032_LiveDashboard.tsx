@@ -962,7 +962,7 @@ function TimeBadge({
   return (
     <div className="rounded-lg border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 transition-colors">
       <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-faith-slate">{label}</div>
-      <div className="mt-1 whitespace-nowrap font-mono text-[clamp(1.02rem,2.2vw,1.45rem)] font-black leading-none tracking-tight tabular-nums text-faith-ink dark:text-slate-100">
+      <div className="mt-1 font-mono text-[clamp(1.02rem,2.2vw,1.45rem)] font-black leading-tight tracking-tight tabular-nums text-faith-ink dark:text-slate-100 whitespace-normal break-words [overflow-wrap:anywhere]">
         {pad(values.hours)}:{pad(values.minutes)}:{pad(values.seconds)}
       </div>
     </div>
@@ -1055,8 +1055,8 @@ function RouteButton({
             {icon}
           </div>
           <div className="min-w-0">
-            <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100 truncate">{label}</div>
-            <div className="text-[11px] leading-5 text-faith-slate truncate">{hint}</div>
+            <div className="text-[12px] font-semibold text-faith-ink dark:text-slate-100 whitespace-normal break-words [overflow-wrap:anywhere]">{label}</div>
+            <div className="text-[11px] leading-5 text-faith-slate whitespace-normal break-words [overflow-wrap:anywhere]">{hint}</div>
           </div>
         </div>
         <ArrowRight className="h-4 w-4 text-faith-slate" />
@@ -1114,7 +1114,7 @@ function ControlRoomPreview({
       <div className="mt-4 grid grid-cols-3 gap-2">
         {session.destinations.map((dest) => (
           <div key={dest.name} className="rounded-xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-2 text-center transition-colors">
-            <div className="text-[11px] font-semibold text-faith-ink dark:text-slate-100 truncate">{dest.name}</div>
+            <div className="text-[11px] font-semibold text-faith-ink dark:text-slate-100 whitespace-normal break-words [overflow-wrap:anywhere]">{dest.name}</div>
             <div className="mt-1 flex justify-center">
               <Pill text={dest.status} tone={destinationTone(dest.status)} />
             </div>
