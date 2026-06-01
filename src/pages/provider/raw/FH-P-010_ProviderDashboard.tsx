@@ -253,6 +253,14 @@ const ROUTES = {
 const WORKFLOW_SUMMARY_STORAGE_KEY = "fh.workflow.summary";
 const WORKFLOW_SUMMARY_EVENT = "fh:workflow-summary";
 const DASHBOARD_AUDIT_LOG_KEY = "fh.dashboard.actionAudit.v1";
+const ONBOARDING_CHECKLIST_DISMISSED_KEY = "faithhub.sidebar.onboardingDismissed";
+const ONBOARDING_CHECKLIST_PROGRESS_KEY = "faithhub.sidebar.onboardingProgress";
+
+const ONBOARDING_CHECKLIST_ITEMS = [
+  { label: "1) Check Dashboard", hint: "See what needs attention first", path: ROUTES.providerDashboard },
+  { label: "2) Open Teachings", hint: "Create or continue content", path: ROUTES.teachingsDashboard },
+  { label: "3) Run Live Ops", hint: "Monitor and control live sessions", path: ROUTES.liveDashboard },
+] as const;
 
 type DashboardActionKind = "publish" | "request_review" | "continue" | "open";
 type DashboardActionStatus = "pending" | "success" | "error";
@@ -1265,6 +1273,21 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
   const [, setAuditTrail] = useState<DashboardAuditEntry[]>([]);
   const [, setUsageMap] = useState<Record<string, number>>({});
   const [analyticsSnapshot, setAnalyticsSnapshot] = useState(() => readProviderAnalyticsSnapshot());
+  const [onboardingDismissed, setOnboardingDismissed] = useState<boolean>(() => {
+    if (typeof window === "undefined") return false;
+    return window.localStorage.getItem(ONBOARDING_CHECKLIST_DISMISSED_KEY) === "true";
+  });
+  const [onboardingCompletedPaths, setOnboardingCompletedPaths] = useState<string[]>(() => {
+    if (typeof window === "undefined") return [];
+    try {
+      const raw = window.localStorage.getItem(ONBOARDING_CHECKLIST_PROGRESS_KEY);
+      if (!raw) return [];
+      const parsed = JSON.parse(raw);
+      return Array.isArray(parsed) ? parsed.filter((item): item is string => typeof item === "string") : [];
+    } catch {
+      return [];
+    }
+  });
   const metrics = useMemo(() => EXECUTIVE_METRICS[role], [role]);
   const recommendations = useMemo(() => RECOMMENDATIONS_BY_ROLE[role], [role]);
   const primaryCtaLabel = "Create Teaching";
@@ -1645,6 +1668,19 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
     setAnalyticsSnapshot(next);
     saveProviderAnalyticsSnapshot(next);
   }, [metrics, needsReviewCount]);
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    window.localStorage.setItem(ONBOARDING_CHECKLIST_DISMISSED_KEY, String(onboardingDismissed));
+  }, [onboardingDismissed]);
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    window.localStorage.setItem(ONBOARDING_CHECKLIST_PROGRESS_KEY, JSON.stringify(onboardingCompletedPaths));
+  }, [onboardingCompletedPaths]);
+  useEffect(() => {
+    setOnboardingCompletedPaths((prev) => (prev.includes(ROUTES.providerDashboard) ? prev : [...prev, ROUTES.providerDashboard]));
+  }, []);
+
+  const onboardingCompletedCount = ONBOARDING_CHECKLIST_ITEMS.filter((item) => onboardingCompletedPaths.includes(item.path)).length;
 
   if (!hasDashboardData) {
     return (
@@ -1876,6 +1912,50 @@ export default function ProviderDashboardPage({ workflowItemsOverride }: Provide
                   </p>
                 </div>
               </div>
+              {!onboardingDismissed ? (
+                <div className="mt-5 rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-4">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-[var(--fh-slate)]">
+                      Getting Started ({onboardingCompletedCount}/3 Complete)
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setOnboardingDismissed(true)}
+                      className={`ds-btn ds-btn--outline h-8 rounded-lg px-3 text-[11px] font-bold ${cardFocusRingClass}`}
+                      aria-label="Dismiss onboarding checklist"
+                    >
+                      Dismiss
+                    </button>
+                  </div>
+                  <div className="mt-3 grid gap-2 sm:grid-cols-3">
+                    {ONBOARDING_CHECKLIST_ITEMS.map((item) => {
+                      const done = onboardingCompletedPaths.includes(item.path);
+                      return (
+                        <button
+                          key={item.path}
+                          type="button"
+                          onClick={() => {
+                            setOnboardingCompletedPaths((prev) => (prev.includes(item.path) ? prev : [...prev, item.path]));
+                            safeNav(item.path);
+                          }}
+                          className={cx(
+                            "rounded-xl border px-3 py-2 text-left transition",
+                            done
+                              ? "border-emerald-300 bg-emerald-50/70"
+                              : "border-faith-line/70 bg-[var(--fh-surface-bg)] hover:bg-[var(--fh-surface)]",
+                            cardFocusRingClass,
+                          )}
+                          aria-label={item.label}
+                        >
+                          <div className="text-[12px] font-bold text-faith-ink">{item.label}</div>
+                          <div className="mt-1 text-[11px] text-[var(--fh-slate)]">{item.hint}</div>
+                          {done ? <div className="mt-1 text-[10px] font-bold text-emerald-700">Done</div> : null}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              ) : null}
             </section>
 
             <SectionCard

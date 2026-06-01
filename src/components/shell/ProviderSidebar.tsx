@@ -60,6 +60,9 @@ const PRIORITY_SECTIONS = new Set<string>([
   'Events & Giving',
 ]);
 const EXTENDED_SECTIONS_KEY = 'faithhub.sidebar.showAllSections';
+const ONBOARDING_CHECKLIST_OPEN_KEY = 'faithhub.sidebar.onboardingChecklistOpen';
+const ONBOARDING_CHECKLIST_DISMISSED_KEY = 'faithhub.sidebar.onboardingDismissed';
+const ONBOARDING_CHECKLIST_PROGRESS_KEY = 'faithhub.sidebar.onboardingProgress';
 
 function getSidebarPageLabel(input: { key: string; title: string; shortTitle?: string }) {
   if (input.shortTitle) return input.shortTitle;
@@ -149,6 +152,25 @@ export function ProviderSidebar({
     if (typeof window === 'undefined') return false;
     return window.localStorage.getItem(EXTENDED_SECTIONS_KEY) === 'true';
   });
+  const [showOnboardingChecklist, setShowOnboardingChecklist] = useState<boolean>(() => {
+    if (typeof window === 'undefined') return false;
+    return window.localStorage.getItem(ONBOARDING_CHECKLIST_OPEN_KEY) === 'true';
+  });
+  const [onboardingDismissed, setOnboardingDismissed] = useState<boolean>(() => {
+    if (typeof window === 'undefined') return false;
+    return window.localStorage.getItem(ONBOARDING_CHECKLIST_DISMISSED_KEY) === 'true';
+  });
+  const [completedOnboardingPaths, setCompletedOnboardingPaths] = useState<string[]>(() => {
+    if (typeof window === 'undefined') return [];
+    try {
+      const raw = window.localStorage.getItem(ONBOARDING_CHECKLIST_PROGRESS_KEY);
+      if (!raw) return [];
+      const parsed = JSON.parse(raw);
+      return Array.isArray(parsed) ? parsed.filter((item): item is string => typeof item === 'string') : [];
+    } catch {
+      return [];
+    }
+  });
 
   const sections = providerSections
     .map((section) => ({
@@ -190,6 +212,29 @@ export function ProviderSidebar({
     if (typeof window === 'undefined') return;
     window.localStorage.setItem(EXTENDED_SECTIONS_KEY, String(showAllSections));
   }, [showAllSections]);
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    window.localStorage.setItem(ONBOARDING_CHECKLIST_OPEN_KEY, String(showOnboardingChecklist));
+  }, [showOnboardingChecklist]);
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    window.localStorage.setItem(ONBOARDING_CHECKLIST_DISMISSED_KEY, String(onboardingDismissed));
+  }, [onboardingDismissed]);
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    window.localStorage.setItem(ONBOARDING_CHECKLIST_PROGRESS_KEY, JSON.stringify(completedOnboardingPaths));
+  }, [completedOnboardingPaths]);
+  useEffect(() => {
+    if (!quickStartItems.some((item) => item.path === location.pathname)) return;
+    setCompletedOnboardingPaths((prev) => {
+      if (prev.includes(location.pathname)) return prev;
+      return [...prev, location.pathname];
+    });
+  }, [location.pathname]);
+  const onboardingCompletedCount = useMemo(
+    () => quickStartItems.filter((item) => completedOnboardingPaths.includes(item.path)).length,
+    [completedOnboardingPaths],
+  );
 
   const toggleSection = (section: string) => {
     setOpenSections((prev) => ({ ...prev, [section]: !prev[section] }));
@@ -265,69 +310,101 @@ export function ProviderSidebar({
 
           <Divider />
 
-          {!effectiveCollapsed ? (
+          {!effectiveCollapsed && !onboardingDismissed ? (
             <>
-              <Box sx={{ px: 1.35, pt: 1.05, pb: 0.45 }}>
+              <Box sx={{ px: 1.35, pt: 0.8, pb: 0.45 }}>
                 <Box
                   sx={{
-                    borderRadius: '14px',
+                    borderRadius: '12px',
                     border: '1px solid',
-                    borderColor: 'color-mix(in srgb, var(--fh-brand) 34%, var(--fh-line) 66%)',
-                    bgcolor: 'color-mix(in srgb, var(--fh-brand-soft) 58%, var(--fh-surface-bg) 42%)',
-                    p: 1,
+                    borderColor: 'color-mix(in srgb, var(--fh-line) 62%, transparent)',
+                    bgcolor: 'var(--fh-surface-bg)',
+                    p: 0.6,
                   }}
                 >
-                  <Typography
-                    sx={{
-                      fontSize: 10.5,
-                      letterSpacing: '0.1em',
-                      textTransform: 'uppercase',
-                      fontWeight: 800,
-                      color: 'var(--fh-slate)',
-                      mb: 0.7,
-                    }}
-                  >
-                    Start Here
-                  </Typography>
-                  <Stack spacing={0.55}>
-                    {quickStartItems.map((item) => {
-                      const Icon = item.icon;
-                      return (
-                        <ListItemButton
-                          key={item.path}
-                          component={RouterLink}
-                          to={item.path}
-                          onClick={onClose}
-                          sx={{
-                            px: 0.8,
-                            py: 0.55,
-                            minHeight: 44,
-                            borderRadius: '10px',
-                            border: '1px solid',
-                            borderColor: 'color-mix(in srgb, var(--fh-line) 54%, transparent)',
-                            bgcolor: 'var(--fh-surface-bg)',
-                            '&:hover': { bgcolor: 'var(--fh-surface)' },
-                          }}
-                        >
-                          <ListItemIcon sx={{ minWidth: 24, color: 'var(--fh-brand)' }}>
-                            <Icon sx={{ fontSize: 16 }} />
-                          </ListItemIcon>
-                          <ListItemText
-                            primary={
-                              <Typography sx={{ fontSize: 11.5, fontWeight: 700, lineHeight: 1.15, color: 'var(--fh-ink)' }}>
-                                {item.label}
-                              </Typography>
-                            }
-                            secondary={
-                              <Typography sx={{ fontSize: 10.5, fontWeight: 550, lineHeight: 1.2, color: 'var(--fh-slate)' }}>
-                                {item.hint}
-                              </Typography>
-                            }
-                          />
-                        </ListItemButton>
-                      );
-                    })}
+                  <Stack direction="row" alignItems="center" spacing={0.5}>
+                    <ListItemButton
+                      onClick={() => setShowOnboardingChecklist((prev) => !prev)}
+                      aria-expanded={showOnboardingChecklist}
+                      aria-controls="sidebar-onboarding-checklist"
+                      sx={{
+                        flex: 1,
+                        px: 0.8,
+                        py: 0.45,
+                        minHeight: 34,
+                        borderRadius: '9px',
+                        border: '1px solid',
+                        borderColor: 'color-mix(in srgb, var(--fh-line) 64%, transparent)',
+                        bgcolor: 'color-mix(in srgb, var(--fh-brand-soft) 26%, var(--fh-surface-bg) 74%)',
+                        '&:hover': { bgcolor: 'color-mix(in srgb, var(--fh-brand-soft) 34%, var(--fh-surface-bg) 66%)' },
+                      }}
+                    >
+                      <ListItemText
+                        primary={
+                          <Typography sx={{ fontSize: 11, fontWeight: 800, lineHeight: 1.1, color: 'var(--fh-ink)' }}>
+                            Getting Started ({onboardingCompletedCount}/3 Complete)
+                          </Typography>
+                        }
+                      />
+                      {showOnboardingChecklist ? (
+                        <KeyboardArrowDownRoundedIcon sx={{ fontSize: 18, color: 'var(--fh-slate)' }} />
+                      ) : (
+                        <KeyboardArrowRightRoundedIcon sx={{ fontSize: 18, color: 'var(--fh-slate)' }} />
+                      )}
+                    </ListItemButton>
+                    <Tooltip title="Dismiss onboarding">
+                      <IconButton
+                        aria-label="Dismiss onboarding"
+                        onClick={() => setOnboardingDismissed(true)}
+                        sx={{ width: 30, height: 30, color: 'var(--fh-slate)' }}
+                      >
+                        <KeyboardDoubleArrowLeftRoundedIcon sx={{ fontSize: 18, transform: 'rotate(90deg)' }} />
+                      </IconButton>
+                    </Tooltip>
                   </Stack>
+                  <Collapse in={showOnboardingChecklist} timeout="auto" unmountOnExit>
+                    <Stack id="sidebar-onboarding-checklist" spacing={0.55} sx={{ mt: 0.6 }}>
+                      {quickStartItems.map((item) => {
+                        const Icon = item.icon;
+                        const done = completedOnboardingPaths.includes(item.path);
+                        return (
+                          <ListItemButton
+                            key={item.path}
+                            component={RouterLink}
+                            to={item.path}
+                            onClick={() => {
+                              setCompletedOnboardingPaths((prev) => (prev.includes(item.path) ? prev : [...prev, item.path]));
+                              onClose();
+                            }}
+                            sx={{
+                              px: 0.8,
+                              py: 0.4,
+                              minHeight: 34,
+                              borderRadius: '9px',
+                              border: '1px solid',
+                              borderColor: done
+                                ? 'color-mix(in srgb, var(--fh-brand) 56%, var(--fh-line) 44%)'
+                                : 'color-mix(in srgb, var(--fh-line) 64%, transparent)',
+                              bgcolor: done ? 'color-mix(in srgb, var(--fh-brand-soft) 34%, var(--fh-surface-bg) 66%)' : 'var(--fh-surface-bg)',
+                              '&:hover': { bgcolor: 'var(--fh-surface)' },
+                            }}
+                          >
+                            <ListItemIcon sx={{ minWidth: 22, color: done ? 'var(--fh-brand)' : 'var(--fh-slate)' }}>
+                              <Icon sx={{ fontSize: 15 }} />
+                            </ListItemIcon>
+                            <ListItemText
+                              primary={
+                                <Typography sx={{ fontSize: 10.8, fontWeight: 700, color: 'var(--fh-ink)' }}>
+                                  {item.label}
+                                </Typography>
+                              }
+                            />
+                            {done ? <Typography sx={{ fontSize: 10.2, fontWeight: 700, color: 'var(--fh-brand)' }}>Done</Typography> : null}
+                          </ListItemButton>
+                        );
+                      })}
+                    </Stack>
+                  </Collapse>
                 </Box>
               </Box>
               <Divider />
