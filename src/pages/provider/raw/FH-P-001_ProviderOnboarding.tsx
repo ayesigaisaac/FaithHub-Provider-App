@@ -22,7 +22,7 @@ import {
   Typography,
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { ProviderPageTitle } from '@/components/provider/ProviderPageTitle';
+import { ProviderPageScaffold } from '@/components/provider/ProviderPageScaffold';
 import { useAuth } from '@/auth/useAuth';
 import type { ProviderOnboardingDraft } from '@/auth/types';
 
@@ -212,25 +212,20 @@ export default function ProviderOnboardingPage() {
   }
 
   return (
-    <Box sx={{ p: { xs: 1.5, md: 2.5 } }}>
+    <ProviderPageScaffold
+      icon={<BadgeCheck className="h-6 w-6" />}
+      title="Provider Onboarding"
+      subtitle="Complete a short setup flow, save progress anytime, and finish profile readiness in one pass."
+      tags={
+        <>
+          <Chip label={`Status: ${onboardingStatus.replace('_', ' ')}`} color={onboardingStatus === 'submitted' ? 'warning' : 'default'} />
+          <Chip label={`Completion: ${completion}%`} color={completion === 100 ? 'success' : 'primary'} />
+          <Chip label={`Resume step: ${STEPS[resumeStep]}`} />
+        </>
+      }
+      pulse={<Alert severity="info">{stepGuidance}</Alert>}
+    >
       <Stack spacing={2.5}>
-        <Card>
-          <CardContent>
-            <ProviderPageTitle
-              icon={<BadgeCheck className="h-6 w-6" />}
-              title="Provider Onboarding"
-              subtitle="Complete a short setup flow, save progress anytime, and finish profile readiness in one pass."
-            />
-            <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1} mt={2}>
-              <Chip label={`Status: ${onboardingStatus.replace('_', ' ')}`} color={onboardingStatus === 'submitted' ? 'warning' : 'default'} />
-              <Chip label={`Completion: ${completion}%`} color={completion === 100 ? 'success' : 'primary'} />
-              <Chip label={`Resume step: ${STEPS[resumeStep]}`} />
-            </Stack>
-            <Alert severity="info" sx={{ mt: 2 }}>
-              {stepGuidance}
-            </Alert>
-          </CardContent>
-        </Card>
 
         {notice ? <Alert severity="info">{notice}</Alert> : null}
 
@@ -470,6 +465,6 @@ export default function ProviderOnboardingPage() {
           </Card>
         )}
       </Stack>
-    </Box>
+    </ProviderPageScaffold>
   );
 }
