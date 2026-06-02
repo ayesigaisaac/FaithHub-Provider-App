@@ -697,14 +697,14 @@ function TemplateTile({
       >
         Template
       </div>
-      <div className="mt-3 text-[14px] font-bold text-faith-ink dark:text-slate-100">
+      <div className="mt-3 min-w-0 whitespace-normal break-words [overflow-wrap:anywhere] text-[14px] font-bold text-faith-ink dark:text-slate-100">
         {title}
       </div>
-      <div className="mt-2 text-[12px] leading-relaxed text-faith-slate">
+      <div className="mt-2 min-w-0 whitespace-normal break-words [overflow-wrap:anywhere] text-[12px] leading-relaxed text-faith-slate">
         {subtitle}
       </div>
-      <div className="mt-4">
-        <SoftButton onClick={() => safeNav(ROUTES.merchandiseBuilder)} className="px-3 py-1.5">
+      <div className="mt-4 flex flex-wrap items-center justify-end gap-2">
+        <SoftButton onClick={() => safeNav(ROUTES.merchandiseBuilder)} className="px-3 py-1.5 whitespace-normal break-words [overflow-wrap:anywhere]">
           <Plus className="h-4 w-4" />
           Use template
         </SoftButton>

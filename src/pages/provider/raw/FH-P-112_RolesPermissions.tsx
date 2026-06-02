@@ -683,12 +683,12 @@ function TemplateTile({ card }: { card: TemplateCard }) {
     <div className="rounded-[28px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 shadow-soft transition-colors dark:border-slate-800 dark:bg-slate-950">
       <div className="flex items-start justify-between gap-3">
         <div>
-          <div className="text-[14px] font-black text-faith-ink dark:text-slate-100">{card.title}</div>
-          <div className="mt-2 text-[12px] leading-6 text-faith-slate">{card.subtitle}</div>
+          <div className="min-w-0 whitespace-normal break-words [overflow-wrap:anywhere] text-[14px] font-black text-faith-ink dark:text-slate-100">{card.title}</div>
+          <div className="mt-2 min-w-0 whitespace-normal break-words [overflow-wrap:anywhere] text-[12px] leading-6 text-faith-slate">{card.subtitle}</div>
         </div>
         <div className="h-10 w-10 rounded-full" style={{ background: accent }} />
       </div>
-      <div className="mt-4 inline-flex items-center gap-2 text-[12px] font-black" style={{ color: accent }}>
+      <div className="mt-4 inline-flex min-w-0 items-center gap-2 whitespace-normal break-words [overflow-wrap:anywhere] text-[12px] font-black" style={{ color: accent }}>
         <Plus className="h-4 w-4" />
         Use template
       </div>

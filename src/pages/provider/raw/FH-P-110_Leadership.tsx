@@ -385,9 +385,9 @@ function TemplateCard({
       >
         Template
       </div>
-      <div className="mt-4 text-[15px] font-bold text-faith-ink dark:text-slate-100">{title}</div>
-      <div className="mt-1 text-[12px] leading-5 text-faith-slate">{subtitle}</div>
-      <div className="mt-4 inline-flex items-center gap-2 text-[12px] font-bold" style={{ color: bg }}>
+      <div className="mt-4 min-w-0 whitespace-normal break-words [overflow-wrap:anywhere] text-[15px] font-bold text-faith-ink dark:text-slate-100">{title}</div>
+      <div className="mt-1 min-w-0 whitespace-normal break-words [overflow-wrap:anywhere] text-[12px] leading-5 text-faith-slate">{subtitle}</div>
+      <div className="mt-4 inline-flex min-w-0 items-center gap-2 whitespace-normal break-words [overflow-wrap:anywhere] text-[12px] font-bold" style={{ color: bg }}>
         Open template <ChevronRight className="h-4 w-4" />
       </div>
     </button>
