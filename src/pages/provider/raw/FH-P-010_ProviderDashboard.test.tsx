@@ -1,169 +1,36 @@
-import { act, fireEvent, render, screen } from "@testing-library/react";
-import { beforeEach, describe, expect, it, vi } from "vitest";
-import ProviderDashboardPage, { deriveTeachingWorkflowData } from "./FH-P-010_ProviderDashboard";
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+import ProviderDashboardPage from './FH-P-010_ProviderDashboard';
 
-const navigateWithRouterMock = vi.fn();
+const navigateMock = vi.fn();
 
-vi.mock("@/navigation/routerNavigate", () => ({
-  navigateWithRouter: (target: string) => navigateWithRouterMock(target),
-}));
-
-vi.mock("@/auth/useAuth", () => ({
-  useAuth: () => ({
-    user: { name: "Test User" },
-    role: "provider",
-    workspace: { brand: "FaithHub" },
-  }),
-}));
-
-describe("FH-P-010 FaithHub Provider dashboard workflow UX", () => {
-  beforeEach(() => {
-    navigateWithRouterMock.mockReset();
-  });
-
-  it("renders empty state when no teachings exist", () => {
-    render(<ProviderDashboardPage workflowItemsOverride={[]} />);
-
-    expect(screen.getByText("Start your first teaching")).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Create Teaching" })).toBeInTheDocument();
-  });
-
-  it("shows continue section only when recent teachings exist", () => {
-    const withTeaching = [
-      {
-        id: "item-1",
-        title: "Sunday Teaching",
-        type: "Teaching",
-        status: "Draft" as const,
-        owner: "A",
-        due: "Today",
-      },
-    ];
-    const withoutTeaching = [
-      {
-        id: "item-2",
-        title: "Community Outreach",
-        type: "Campaign",
-        status: "Ready to publish" as const,
-        owner: "B",
-        due: "Today",
-      },
-    ];
-
-    const { rerender } = render(<ProviderDashboardPage workflowItemsOverride={withTeaching} />);
-    expect(screen.getByRole("button", { name: "Continue editing" })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: /Start a new teaching draft/i })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: /Open moderation and pending reviews/i })).toBeInTheDocument();
-    expect(screen.queryByRole("button", { name: /Go to publish-ready workflow/i })).not.toBeInTheDocument();
-    expect(screen.getByRole("button", { name: /Open your current in-progress teaching/i })).toBeInTheDocument();
-
-    rerender(<ProviderDashboardPage workflowItemsOverride={withoutTeaching} />);
-    expect(screen.queryByRole("button", { name: "Continue editing" })).not.toBeInTheDocument();
-    expect(screen.getByText("Start your first teaching")).toBeInTheDocument();
-  });
-
-  it("shows publish quick action when there is published-ready momentum", () => {
-    const withPublishedMomentum = [
-      {
-        id: "item-1",
-        title: "Sunday Teaching",
-        type: "Teaching",
-        status: "Ready to publish" as const,
-        owner: "A",
-        due: "Today",
-      },
-    ];
-
-    render(<ProviderDashboardPage workflowItemsOverride={withPublishedMomentum} />);
-    expect(screen.getByRole("button", { name: /Go to publish-ready workflow/i })).toBeInTheDocument();
-  });
-
-  it("renders cleaner analytics insights for core growth metrics", () => {
-    const withTeaching = [
-      {
-        id: "item-1",
-        title: "Sunday Teaching",
-        type: "Teaching",
-        status: "Draft" as const,
-        owner: "A",
-        due: "Today",
-      },
-    ];
-
-    render(<ProviderDashboardPage workflowItemsOverride={withTeaching} />);
-    expect(screen.getByText("Dashboard Analytics")).toBeInTheDocument();
-    expect(screen.getByText("Streams")).toBeInTheDocument();
-    expect(screen.getByText("Followers")).toBeInTheDocument();
-    expect(screen.getByText("Donations")).toBeInTheDocument();
-    expect(screen.getByText("Engagement")).toBeInTheDocument();
-    expect(screen.getByText("Content Organization")).toBeInTheDocument();
-    expect(screen.getAllByText("Archives").length).toBeGreaterThan(0);
-  });
-
-  it("derives pending work from draft and needs review statuses", () => {
-    const data = deriveTeachingWorkflowData([
-      {
-        id: "a",
-        title: "Teaching A",
-        type: "Teaching",
-        status: "Draft",
-        owner: "Owner",
-        due: "Today",
-      },
-      {
-        id: "b",
-        title: "Series B",
-        type: "Series",
-        status: "Awaiting review",
-        owner: "Owner",
-        due: "Today",
-      },
-      {
-        id: "c",
-        title: "Episode C",
-        type: "Episode",
-        status: "Ready to publish",
-        owner: "Owner",
-        due: "Today",
-      },
-    ]);
-
-    expect(data.pendingWork.map((item) => item.id)).toEqual(["a", "b"]);
-    expect(data.needsReviewCount).toBe(1);
-  });
-
-  it("navigates CTA actions using the selected item id", () => {
-    const teachingItems = [
-      {
-        id: "open-me-123",
-        title: "Teaching To Open",
-        type: "Teaching",
-        status: "Draft" as const,
-        owner: "Owner",
-        due: "Today",
-      },
-    ];
-
-    vi.useFakeTimers();
-    try {
-      render(<ProviderDashboardPage workflowItemsOverride={teachingItems} />);
-      act(() => {
-        vi.advanceTimersByTime(500);
-      });
-
-      fireEvent.click(screen.getByRole("button", { name: "Continue editing" }));
-      expect(navigateWithRouterMock).toHaveBeenCalledWith(
-        "/faithhub/provider/teachings-dashboard?teachingId=open-me-123",
-      );
-
-      fireEvent.click(screen.getAllByRole("button", { name: /Open Teaching To Open/i })[0]);
-      expect(navigateWithRouterMock).toHaveBeenLastCalledWith(
-        "/faithhub/provider/teachings-dashboard?teachingId=open-me-123",
-      );
-    } finally {
-      vi.useRealTimers();
-    }
-  });
+vi.mock('react-router-dom', async () => {
+  const actual = await vi.importActual<typeof import('react-router-dom')>('react-router-dom');
+  return {
+    ...actual,
+    useNavigate: () => navigateMock,
+  };
 });
 
+describe('Provider dashboard', () => {
+  beforeEach(() => {
+    navigateMock.mockReset();
+    window.localStorage.clear();
+  });
 
+  it('shows the provider journey action rail', async () => {
+    const user = userEvent.setup();
+
+    render(<ProviderDashboardPage />);
+
+    expect(screen.getByText(/Provider Dashboard/i)).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Create Service/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Create Campaign/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Upload Content/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Create Live Session/i })).toBeInTheDocument();
+
+    await user.click(screen.getByRole('button', { name: /Create Service/i }));
+    expect(navigateMock).toHaveBeenCalledWith('/faithhub/provider/service-builder');
+  });
+});

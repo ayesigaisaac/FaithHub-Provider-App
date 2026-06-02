@@ -8,6 +8,7 @@ export type ProviderCategoryMeta = {
 export const providerCategoryMeta: ProviderCategoryMeta[] = [
   { section: 'Foundation & Mission Control', navLabel: 'Foundation' },
   { section: 'Content Structure & Teaching Creation', navLabel: 'Content' },
+  { section: 'Provider Journey', navLabel: 'Journey' },
   { section: 'Live Sessions Operations', navLabel: 'Live Ops' },
   { section: 'Audience & Outreach', navLabel: 'Audience' },
   { section: 'Post-live & Trust', navLabel: 'Post-live' },
@@ -28,4 +29,3 @@ export const providerCategoryBySection = providerCategoryMeta.reduce<Record<Prov
   },
   {} as Record<ProviderPageSection, ProviderCategoryMeta>,
 );
-

@@ -30,7 +30,7 @@ export const topbarTabs: TopbarTab[] = [
   {
     label: 'Dashboard',
     to: '/faithhub/provider/dashboard',
-    sections: [category('Foundation'), category('Content')],
+    sections: [category('Foundation'), category('Journey'), category('Content')],
     icon: <DashboardRoundedIcon fontSize="small" />,
   },
   {

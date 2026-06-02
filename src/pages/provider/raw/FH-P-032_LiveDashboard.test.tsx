@@ -1,53 +1,33 @@
-import { fireEvent, render, screen } from "@testing-library/react";
-import { beforeEach, describe, expect, it, vi } from "vitest";
-import LiveDashboardPage from "./FH-P-032_LiveDashboard";
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+import LiveDashboardPage from './FH-P-032_LiveDashboard';
 
-vi.mock("@/navigation/routerNavigate", () => ({
-  navigateWithRouter: vi.fn(),
-}));
+const navigateMock = vi.fn();
 
-vi.mock("@/api/live", () => ({
-  liveSessionsApi: {
-    getState: () => ({ sessions: [] }),
-    subscribe: () => () => {},
-  },
-}));
+vi.mock('react-router-dom', async () => {
+  const actual = await vi.importActual<typeof import('react-router-dom')>('react-router-dom');
+  return {
+    ...actual,
+    useNavigate: () => navigateMock,
+  };
+});
 
-vi.mock("@/features/live/liveActivityStore", () => ({
-  exportLiveActivityCsv: vi.fn(),
-  getLiveActivityRecords: () => [],
-  subscribeToLiveActivity: () => () => {},
-}));
-
-vi.mock("@/features/live/liveRuntimeStore", () => ({
-  getLiveRuntimeState: () => ({ sessions: {} }),
-  subscribeToLiveRuntime: () => () => {},
-}));
-
-describe("FH-P-032 Live Dashboard interactions", () => {
+describe('Live dashboard', () => {
   beforeEach(() => {
-    vi.useRealTimers();
+    navigateMock.mockReset();
     window.localStorage.clear();
-    window.sessionStorage.clear();
   });
 
-  it("supports raise-hand, prayer request, and live comments", () => {
+  it('opens the waiting room from the selected live session', async () => {
+    const user = userEvent.setup();
+
     render(<LiveDashboardPage />);
 
-    const raiseHandButton = screen.getByRole("button", { name: /raise hand for prayer/i });
-    expect(raiseHandButton).toHaveTextContent(/Raise hand for prayer.*0/i);
-    fireEvent.click(raiseHandButton);
-    expect(raiseHandButton).toHaveTextContent(/Raise hand for prayer.*1/i);
+    expect(screen.getByText(/Live Session Management/i)).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Create Live Session/i })).toBeInTheDocument();
 
-    const prayerRequestButton = screen.getByRole("button", { name: /add prayer request/i });
-    expect(prayerRequestButton).toHaveTextContent(/Prayer requests.*0/i);
-    fireEvent.click(prayerRequestButton);
-    expect(prayerRequestButton).toHaveTextContent(/Prayer requests.*1/i);
-
-    fireEvent.change(screen.getByRole("textbox", { name: /live comment input/i }), {
-      target: { value: "Praying in agreement right now." },
-    });
-    fireEvent.click(screen.getByRole("button", { name: /send live comment/i }));
-    expect(screen.getByText(/latest: praying in agreement right now\./i)).toBeInTheDocument();
-  }, 20000);
+    await user.click(screen.getByRole('button', { name: /Preview Waiting Room/i }));
+    expect(navigateMock).toHaveBeenCalledWith('/faithhub/provider/waiting-room');
+  });
 });

@@ -4,6 +4,7 @@
   type ProviderPageSection,
 } from './provider-pages/catalog';
 import { getFoundationAndContentPages } from './provider-pages/sections/foundationAndContent';
+import { getProviderJourneyPages } from './provider-pages/sections/providerJourney';
 import { getLiveAndAudiencePages } from './provider-pages/sections/liveAndAudience';
 import { getGrowthAndCommunityPages } from './provider-pages/sections/growthAndCommunity';
 import { getSettingsAndPreviewPages } from './provider-pages/sections/settingsAndPreviews';
@@ -15,6 +16,7 @@ export const providerSections: ProviderPageSection[] = orderedProviderSections;
 
 export const providerPages: ProviderPageMeta[] = [
   ...getFoundationAndContentPages(providerPageCatalog),
+  ...getProviderJourneyPages(providerPageCatalog),
   ...getLiveAndAudiencePages(providerPageCatalog),
   ...getGrowthAndCommunityPages(providerPageCatalog),
   ...getSettingsAndPreviewPages(providerPageCatalog),

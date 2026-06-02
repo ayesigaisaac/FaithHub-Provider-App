@@ -42,6 +42,7 @@ const collapsedDrawerWidth = 88;
 const sectionIconMap: Record<string, typeof GridViewRoundedIcon> = {
   'Foundation & Mission Control': HomeRoundedIcon,
   'Content Structure & Teaching Creation': FolderRoundedIcon,
+  'Provider Journey': FolderRoundedIcon,
   'Live Sessions Operations': LiveTvRoundedIcon,
   'Audience & Outreach': CampaignRoundedIcon,
   'Post-live & Trust': MovieFilterRoundedIcon,
@@ -55,6 +56,7 @@ const sectionIconMap: Record<string, typeof GridViewRoundedIcon> = {
 const PRIORITY_SECTIONS = new Set<string>([
   'Foundation & Mission Control',
   'Content Structure & Teaching Creation',
+  'Provider Journey',
   'Live Sessions Operations',
   'Audience & Outreach',
   'Events & Giving',
@@ -69,11 +71,19 @@ function getSidebarPageLabel(input: { key: string; title: string; shortTitle?: s
 
   const explicit: Record<string, string> = {
     'provider-onboarding': 'Provider Onboarding',
+    'service-management': 'Services',
+    'service-builder': 'Create Service',
+    'campaign-management': 'Campaigns',
+    'campaign-builder': 'Create Campaign',
+    'content-upload': 'Content Upload',
+    'asset-library': 'Asset Library',
     'provider-dashboard': 'Provider Dashboard',
     'charity-crowdfunding-workbench': 'Charity Crowdfunding',
     'channels-contact-manager': 'Channels & Contacts',
     'standalone-teaching-builder': 'Standalone Builder',
     'stream-to-platforms': 'Stream to Platforms',
+    'live-session-details': 'Live Session Details',
+    'waiting-room': 'Waiting Room',
     'reviews-and-moderation': 'Reviews & Moderation',
   };
   if (explicit[input.key]) return explicit[input.key];
@@ -86,11 +96,19 @@ function getSidebarPageLabel(input: { key: string; title: string; shortTitle?: s
 
 function getSidebarPageHint(input: { key: string; title: string }) {
   const explicit: Record<string, string> = {
-    'provider-dashboard': 'Start here for key metrics and actions',
-    'provider-onboarding': 'Complete setup and launch checks',
+    'provider-dashboard': 'Start here for provider metrics and actions',
+    'provider-onboarding': 'Register and enter the provider journey',
+    'service-management': 'Review service cards and approval state',
+    'service-builder': 'Create a new faith-focused service',
+    'campaign-management': 'Track campaign windows and approvals',
+    'campaign-builder': 'Build a campaign around approved services',
+    'content-upload': 'Upload posters, videos, and banners',
+    'asset-library': 'Select approved assets for live sessions',
     'series-dashboard': 'Manage series and publishing status',
     'teachings-dashboard': 'Create, review, and publish teachings',
     'live-dashboard': 'Run live sessions and monitor health',
+    'live-session-details': 'Inspect the selected live session before previewing',
+    'waiting-room': 'Preview the audience waiting room',
     'audience-notifications': 'Send updates to the right audience',
     'reviews-and-moderation': 'Handle reviews and moderation queue',
     'events-manager': 'Plan and run events',
@@ -106,19 +124,19 @@ function getSidebarPageHint(input: { key: string; title: string }) {
 const quickStartItems = [
   {
     label: '1) Check Dashboard',
-    hint: 'See what needs attention first',
+    hint: 'See provider metrics and action items first',
     path: '/faithhub/provider/dashboard',
     icon: HomeRoundedIcon,
   },
   {
-    label: '2) Open Teachings',
-    hint: 'Create or continue content',
-    path: '/faithhub/provider/teachings-dashboard',
+    label: '2) Open Services',
+    hint: 'Create or review provider services',
+    path: '/faithhub/provider/services',
     icon: FolderRoundedIcon,
   },
   {
-    label: '3) Run Live Ops',
-    hint: 'Monitor and control live sessions',
+    label: '3) Go Live',
+    hint: 'Monitor and control the live studio',
     path: '/faithhub/provider/live-dashboard',
     icon: LiveTvRoundedIcon,
   },

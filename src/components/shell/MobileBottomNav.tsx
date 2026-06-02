@@ -5,14 +5,14 @@ import {
 } from '@mui/material';
 import { useMemo } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Bell, CalendarClock, LayoutDashboard, Radio } from 'lucide-react';
+import { BriefcaseBusiness, LayoutDashboard, Megaphone, Radio } from 'lucide-react';
 import { findProviderPageByPath } from '@/navigation/providerPages';
 
 const tabs = [
   { label: 'Dashboard', value: '/faithhub/provider/dashboard', icon: LayoutDashboard },
+  { label: 'Services', value: '/faithhub/provider/services', icon: BriefcaseBusiness },
+  { label: 'Campaigns', value: '/faithhub/provider/campaigns', icon: Megaphone },
   { label: 'Live', value: '/faithhub/provider/live-dashboard', icon: Radio },
-  { label: 'Audience', value: '/faithhub/provider/audience-notifications', icon: Bell },
-  { label: 'Events', value: '/faithhub/provider/events-manager', icon: CalendarClock },
 ];
 
 export function MobileBottomNav() {
@@ -24,9 +24,8 @@ export function MobileBottomNav() {
     if (!page) return tabs[0].value;
     const hit = tabs.find((tab) => page.path === tab.value || page.aliases?.includes(tab.value));
     if (hit) return hit.value;
+    if (page.section === 'Provider Journey') return '/faithhub/provider/services';
     if (page.section === 'Live Sessions Operations') return '/faithhub/provider/live-dashboard';
-    if (page.section === 'Audience & Outreach') return '/faithhub/provider/audience-notifications';
-    if (page.section === 'Events & Giving') return '/faithhub/provider/events-manager';
     return '/faithhub/provider/dashboard';
   }, [location.pathname]);
 

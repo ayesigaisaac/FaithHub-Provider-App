@@ -35,6 +35,7 @@ import {
 export type ProviderPageSection =
   | 'Foundation & Mission Control'
   | 'Content Structure & Teaching Creation'
+  | 'Provider Journey'
   | 'Live Sessions Operations'
   | 'Audience & Outreach'
   | 'Post-live & Trust'
@@ -116,6 +117,14 @@ const ProfileSettings = lazyPage(() => import('@/pages/provider/ProfileSettingsP
 const ProviderShellPreview = lazyPage(() => import('@/pages/provider/previews/FaithHubProviderShellLightV3'));
 const DesignSystemShowcase = lazyPage(() => import('@/pages/provider/previews/DesignSystemShowcase'));
 const AnalyticsEventHealthPreview = lazyPage(() => import('@/pages/provider/previews/AnalyticsEventHealthPreview'));
+const ServiceManagement = lazyPage(() => import('@/pages/provider/FaithHubProviderJourneyPages').then((module) => ({ default: module.ServiceManagementPage })));
+const ServiceBuilder = lazyPage(() => import('@/pages/provider/FaithHubProviderJourneyPages').then((module) => ({ default: module.ServiceBuilderPage })));
+const CampaignManagement = lazyPage(() => import('@/pages/provider/FaithHubProviderJourneyPages').then((module) => ({ default: module.CampaignManagementPage })));
+const CampaignBuilder = lazyPage(() => import('@/pages/provider/FaithHubProviderJourneyPages').then((module) => ({ default: module.CampaignBuilderPage })));
+const ContentUpload = lazyPage(() => import('@/pages/provider/FaithHubProviderJourneyPages').then((module) => ({ default: module.ContentUploadPage })));
+const AssetLibrary = lazyPage(() => import('@/pages/provider/FaithHubProviderJourneyPages').then((module) => ({ default: module.AssetLibraryPage })));
+const LiveSessionDetails = lazyPage(() => import('@/pages/provider/FaithHubProviderJourneyPages').then((module) => ({ default: module.LiveSessionDetailsPage })));
+const WaitingRoom = lazyPage(() => import('@/pages/provider/FaithHubProviderJourneyPages').then((module) => ({ default: module.WaitingRoomPage })));
 
 export const providerPageCatalog: ProviderPageMeta[] = [
   {
@@ -162,6 +171,74 @@ export const providerPageCatalog: ProviderPageMeta[] = [
     icon: Home,
     quickAction: true,
     component: ProviderDashboard,
+  },
+  {
+    key: 'service-management',
+    id: 'FH-P-014',
+    title: 'Service Management',
+    description: 'Track provider services, approval state, and the live-readiness of each offering.',
+    path: '/faithhub/provider/services',
+    section: 'Provider Journey',
+    icon: Briefcase,
+    component: ServiceManagement,
+  },
+  {
+    key: 'service-builder',
+    id: 'FH-P-015',
+    title: 'Create Service',
+    description: 'Build a provider service with pricing, media, and approval details.',
+    path: '/faithhub/provider/service-builder',
+    section: 'Provider Journey',
+    icon: Briefcase,
+    navPlacement: 'builder',
+    parentKey: 'service-management',
+    quickAction: true,
+    component: ServiceBuilder,
+  },
+  {
+    key: 'campaign-management',
+    id: 'FH-P-016',
+    title: 'Campaign Management',
+    description: 'Review campaign windows, status, and associated provider services.',
+    path: '/faithhub/provider/campaigns',
+    section: 'Provider Journey',
+    icon: Megaphone,
+    component: CampaignManagement,
+  },
+  {
+    key: 'campaign-builder',
+    id: 'FH-P-017',
+    title: 'Create Campaign',
+    description: 'Create a campaign around an objective, banner, and approved services.',
+    path: '/faithhub/provider/campaign-builder',
+    section: 'Provider Journey',
+    icon: Megaphone,
+    navPlacement: 'builder',
+    parentKey: 'campaign-management',
+    quickAction: true,
+    component: CampaignBuilder,
+  },
+  {
+    key: 'content-upload',
+    id: 'FH-P-028',
+    title: 'Content Upload',
+    description: 'Drag and drop posters, videos, banners, thumbnails, and flyers into review.',
+    path: '/faithhub/provider/content-upload',
+    section: 'Provider Journey',
+    icon: FolderKanban,
+    quickAction: true,
+    component: ContentUpload,
+  },
+  {
+    key: 'asset-library',
+    id: 'FH-P-029',
+    title: 'Asset Library',
+    description: 'Browse approved assets and select them for upcoming live sessions.',
+    path: '/faithhub/provider/asset-library',
+    section: 'Provider Journey',
+    icon: FolderKanban,
+    quickAction: true,
+    component: AssetLibrary,
   },
   {
     key: 'series-dashboard',
@@ -321,6 +398,26 @@ export const providerPageCatalog: ProviderPageMeta[] = [
     icon: MonitorPlay,
     quickAction: true,
     component: LiveDashboard,
+  },
+  {
+    key: 'live-session-details',
+    id: 'FH-P-032A',
+    title: 'Live Session Details',
+    description: 'Review the selected live session banner, host line-up, featured services, and preview entry.',
+    path: '/faithhub/provider/live-session-details',
+    section: 'Live Sessions Operations',
+    icon: MonitorPlay,
+    component: LiveSessionDetails,
+  },
+  {
+    key: 'waiting-room',
+    id: 'FH-P-032B',
+    title: 'Waiting Room Preview',
+    description: 'Preview the session waiting room with countdown, host information, and reminder actions.',
+    path: '/faithhub/provider/waiting-room',
+    section: 'Live Sessions Operations',
+    icon: CalendarClock,
+    component: WaitingRoom,
   },
   {
     key: 'live-studio',
