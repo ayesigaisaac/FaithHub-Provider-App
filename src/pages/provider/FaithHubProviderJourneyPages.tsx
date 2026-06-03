@@ -248,6 +248,72 @@ const DASHBOARD_PHASES = [
   },
 ] as const;
 
+const JOURNEY_PHASES = [
+  {
+    label: 'Phase 1 · Foundation & onboarding',
+    hint: 'Registration, profile completion, and approval review.',
+    path: ROUTES.profile,
+  },
+  {
+    label: 'Phase 2 · Dashboard & management',
+    hint: 'Services, campaigns, and the core provider workspace.',
+    path: ROUTES.services,
+  },
+  {
+    label: 'Phase 3 · Content & assets',
+    hint: 'Uploads, review queue, and approved asset library.',
+    path: ROUTES.contentUpload,
+  },
+  {
+    label: 'Phase 4 · Live session setup',
+    hint: 'Build, schedule, and review live sessions.',
+    path: ROUTES.liveBuilder,
+  },
+  {
+    label: 'Phase 5 · Waiting room & live',
+    hint: 'Preview the waiting room and launch the studio.',
+    path: ROUTES.waitingRoom,
+  },
+] as const;
+
+function JourneyPhaseCard({
+  activePath,
+  onNavigate,
+}: {
+  activePath?: string;
+  onNavigate: (path: string) => void;
+}) {
+  return (
+    <ProviderSectionCard title="Phase rollout" subtitle="Follow the implementation in the same order as the product roadmap.">
+      <div className="space-y-3">
+        {JOURNEY_PHASES.map((phase, index) => {
+          const isActive = activePath === phase.path;
+          const isCompleted = Boolean(activePath) && JOURNEY_PHASES.findIndex((item) => item.path === activePath) > index;
+          return (
+            <button
+              key={phase.label}
+              type="button"
+              onClick={() => onNavigate(phase.path)}
+              className={cx(
+                'flex w-full items-start justify-between gap-3 rounded-2xl border p-4 text-left transition-colors',
+                isActive ? 'border-emerald-300 bg-emerald-50' : 'border-faith-line/70 bg-[var(--fh-surface-bg)] hover:bg-[var(--fh-surface)]',
+              )}
+            >
+              <div className="min-w-0">
+                <div className="text-[13px] font-extrabold text-faith-ink">{phase.label}</div>
+                <div className="mt-1 text-[12px] text-faith-slate">{phase.hint}</div>
+              </div>
+              <ProviderStatusPill tone={isActive ? 'brand' : isCompleted ? 'good' : 'neutral'}>
+                {isActive ? 'Current' : isCompleted ? 'Done' : 'Next'}
+              </ProviderStatusPill>
+            </button>
+          );
+        })}
+      </div>
+    </ProviderSectionCard>
+  );
+}
+
 const SERVICE_CATEGORIES = [
   'Worship Support',
   'Teaching Support',
@@ -1188,6 +1254,7 @@ export function ServiceManagementPage() {
         </div>
 
         <div className="space-y-4 xl:col-span-4">
+          <JourneyPhaseCard activePath={ROUTES.services} onNavigate={(path) => navigate(path)} />
           <ProviderSectionCard title="Selected service" subtitle="Review the currently selected service card.">
             {selected ? (
               <div className="space-y-3">
@@ -1392,6 +1459,7 @@ export function CampaignManagementPage() {
         </div>
 
         <div className="space-y-4 xl:col-span-4">
+          <JourneyPhaseCard activePath={ROUTES.campaigns} onNavigate={(path) => navigate(path)} />
           <ProviderSectionCard title="Selected campaign" subtitle="The campaign preview mirrors the status cards used in the dashboard.">
             {selected ? (
               <div className="space-y-3">
@@ -1677,6 +1745,7 @@ export function ContentUploadPage() {
         </div>
 
         <div className="space-y-4 xl:col-span-4">
+          <JourneyPhaseCard activePath={ROUTES.contentUpload} onNavigate={(path) => navigate(path)} />
           <ProviderSectionCard title="Latest assets" subtitle="Recently uploaded items land in the library with approval labels.">
             <div className="space-y-2">
               {assets.slice(0, 4).map((asset) => (
@@ -1954,6 +2023,7 @@ export function LiveSessionBuilderPage() {
         </div>
 
         <div className="space-y-4 xl:col-span-4">
+          <JourneyPhaseCard activePath={ROUTES.liveBuilder} onNavigate={(path) => navigate(path)} />
           <ProviderSectionCard title="Live settings" subtitle="Waiting room and reminders are toggled here before submission.">
             <div className="space-y-3">
               <ToggleField label="Waiting Room Enabled" checked={draft.waitingRoomEnabled} onChange={(value) => update('waitingRoomEnabled', value)} detail="Enable the pre-live waiting room experience." />
@@ -2027,6 +2097,7 @@ export function LiveSchedulePage() {
         </div>
 
         <div className="space-y-4 xl:col-span-5">
+          <JourneyPhaseCard activePath={ROUTES.liveSchedule} onNavigate={(path) => navigate(path)} />
           <ProviderSectionCard title="Schedule details" subtitle="Keep the selected session visible while scheduling and waiting-room preparation happen.">
             {selected ? (
               <div className="space-y-3">
@@ -2115,6 +2186,7 @@ export function LiveDashboardPage() {
         </div>
 
         <div className="space-y-4 xl:col-span-4">
+          <JourneyPhaseCard activePath={ROUTES.liveDashboard} onNavigate={(path) => navigate(path)} />
           <ProviderSectionCard title="Selected session" subtitle="Open the details view or jump straight to the waiting room.">
             {selected ? (
               <div className="space-y-3">
@@ -2224,6 +2296,7 @@ export function LiveSessionDetailsPage() {
           </div>
 
           <div className="space-y-4 xl:col-span-4">
+            <JourneyPhaseCard activePath={ROUTES.liveSessionDetails} onNavigate={(path) => navigate(path)} />
             <ProviderSectionCard title="Preview action" subtitle="Use the waiting room button to move into the pre-live view.">
               <Button variant="primary" className="w-full" onClick={() => navigate(`${ROUTES.waitingRoom}?sessionId=${encodeURIComponent(selected?.id || '')}`)}>
                 Preview Waiting Room
@@ -2317,6 +2390,7 @@ export function WaitingRoomPage() {
           </div>
 
           <div className="space-y-4 xl:col-span-4">
+            <JourneyPhaseCard activePath={ROUTES.waitingRoom} onNavigate={(path) => navigate(path)} />
             <ProviderSectionCard title="Reminder action" subtitle="Send a reminder while the audience waits for the session to begin.">
               <Button
                 variant="secondary"
@@ -2444,6 +2518,7 @@ export function LiveStudioPage() {
           </div>
 
           <div className="space-y-4 xl:col-span-4">
+            <JourneyPhaseCard activePath={ROUTES.liveStudio} onNavigate={(path) => navigate(path)} />
             <ProviderSectionCard title="Controls" subtitle="Start or end the session from the studio control bar.">
               <div className="space-y-3">
                 <Button variant="primary" className="w-full" onClick={startSession} disabled={isLive}>
