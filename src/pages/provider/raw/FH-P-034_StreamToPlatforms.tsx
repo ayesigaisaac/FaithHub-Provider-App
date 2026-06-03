@@ -1193,7 +1193,7 @@ export default function StreamToPlatformsPage() {
                       <div className="flex items-start justify-between gap-3">
                         <div className="min-w-0">
                           <div className="flex items-center gap-2">
-                            <div className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-white shadow-soft" style={{ background: d.family === 'Provider Surface' ? EV_GREEN : d.family === 'Custom RTMP' ? '#312e81' : '#0f172a' }}>
+                            <div className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-white shadow-soft" style={{ background: d.family === 'Provider Surface' ? EV_GREEN : d.family === 'Custom RTMP' ? EV_ORANGE : EV_GREY }}>
                               {d.family === 'Provider Surface' ? <Globe2 className="h-5 w-5" /> : d.family === 'Custom RTMP' ? <Radio className="h-5 w-5" /> : <Video className="h-5 w-5" />}
                             </div>
                             <div className="min-w-0">

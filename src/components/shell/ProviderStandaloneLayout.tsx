@@ -56,11 +56,12 @@ export function ProviderStandaloneLayout({ children, pagePath, pageTitle }: Prov
             top: 12,
             left: 12,
             zIndex: 1200,
-            bgcolor: isDark ? '#0f172a' : '#ffffff',
-            border: `1px solid ${isDark ? '#334155' : '#dbe2ea'}`,
-            color: isDark ? '#e2e8f0' : 'inherit',
+            bgcolor: 'var(--fh-surface-bg)',
+            border: '1px solid',
+            borderColor: 'var(--fh-line)',
+            color: 'var(--fh-ink)',
             boxShadow: isDark ? '0 8px 16px -12px rgba(2, 6, 23, 0.9)' : '0 8px 16px -12px rgba(15, 23, 42, 0.45)',
-            '&:hover': { bgcolor: isDark ? '#1e293b' : '#f8fafc' },
+            '&:hover': { bgcolor: 'var(--fh-surface)' },
           }}
         >
           <MenuRoundedIcon />
