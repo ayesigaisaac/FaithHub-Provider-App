@@ -9,7 +9,6 @@ vi.mock('@/navigation/providerPages', () => {
     providerSections: ['Foundation & Mission Control'],
     providerPages: [
       { key: 'provider-dashboard', path: '/faithhub/provider/dashboard', aliases: [], icon: mockIcon },
-      { key: 'teachings-dashboard', path: '/faithhub/provider/teachings-dashboard', aliases: [], icon: mockIcon },
     ],
     getProviderSidebarGroupsBySection: () => [
       {
@@ -21,15 +20,7 @@ vi.mock('@/navigation/providerPages', () => {
           aliases: [],
           icon: mockIcon,
         },
-        children: [
-          {
-            key: 'teachings-dashboard',
-            title: 'Teachings Dashboard',
-            path: '/faithhub/provider/teachings-dashboard',
-            aliases: [],
-            icon: mockIcon,
-          },
-        ],
+        children: [],
       },
     ],
   };
@@ -48,11 +39,8 @@ describe('ProviderSidebar compact navigation', () => {
       </MemoryRouter>,
     );
 
-    expect(screen.queryByText('Workflow')).not.toBeInTheDocument();
-    expect(screen.getAllByText(/Foundation/i).length).toBeGreaterThan(0);
-
-    fireEvent.click(screen.getAllByRole('button', { name: /Foundation/i })[0]);
     expect(screen.getAllByRole('link', { name: /Dashboard/i }).length).toBeGreaterThan(0);
+    expect(screen.queryByRole('link', { name: /Teachings Dashboard/i })).not.toBeInTheDocument();
   });
 
   it('emits analytics payload for sidebar navigation click', () => {
@@ -62,8 +50,8 @@ describe('ProviderSidebar compact navigation', () => {
       </MemoryRouter>,
     );
 
-    fireEvent.click(screen.getAllByRole('button', { name: /Foundation/i })[0]);
-    fireEvent.click(screen.getAllByRole('link', { name: /Teachings Dashboard/i })[0]);
+    expect(screen.queryByRole('link', { name: /Teachings Dashboard/i })).not.toBeInTheDocument();
+    fireEvent.click(screen.getAllByRole('link', { name: /Dashboard/i })[0]);
 
     const dataLayer = (window as unknown as { dataLayer?: Array<Record<string, string>> }).dataLayer ?? [];
     expect(dataLayer.some((entry) => entry.event === 'sidebar_task_click')).toBe(true);
