@@ -367,7 +367,7 @@ export function ProviderSidebar({
               <Box
                 key={group.section}
                 sx={{
-                  mb: effectiveCollapsed ? 0.55 : 0.8,
+                  mb: effectiveCollapsed ? 0.45 : 0.6,
                 }}
               >
                 {group.groups.map(({ page }) => {
@@ -390,25 +390,25 @@ export function ProviderSidebar({
                           onClose();
                         }}
                         sx={{
-                          mb: 0.65,
-                          px: effectiveCollapsed ? 0 : 1,
-                          py: 0.7,
-                          minHeight: effectiveCollapsed ? 44 : 66,
-                          borderRadius: '12px',
+                          mb: 0.45,
+                          px: effectiveCollapsed ? 0.2 : 0.85,
+                          py: effectiveCollapsed ? 0.5 : 0.55,
+                          minHeight: effectiveCollapsed ? 42 : 58,
+                          borderRadius: '14px',
                           border: '1px solid',
-                          borderColor: active ? 'var(--fh-brand-dark)' : 'var(--fh-line)',
-                          bgcolor: active ? 'color-mix(in srgb, var(--fh-brand-soft) 40%, var(--fh-surface-bg) 60%)' : 'var(--fh-surface-bg)',
+                          borderColor: active ? 'color-mix(in srgb, var(--fh-brand) 60%, var(--fh-line) 40%)' : 'color-mix(in srgb, var(--fh-line) 72%, transparent)',
+                          bgcolor: active ? 'color-mix(in srgb, var(--fh-brand-soft) 28%, var(--fh-surface-bg) 72%)' : 'color-mix(in srgb, var(--fh-surface-bg) 92%, white 8%)',
                           justifyContent: effectiveCollapsed ? 'center' : 'flex-start',
                           transition:
                             'transform var(--fh-duration-base) var(--fh-ease-premium), background-color var(--fh-duration-fast) ease, border-color var(--fh-duration-fast) ease',
                           '&:hover': {
                             bgcolor: active
-                              ? 'color-mix(in srgb, var(--fh-brand-soft) 54%, var(--fh-surface-bg) 46%)'
+                              ? 'color-mix(in srgb, var(--fh-brand-soft) 36%, var(--fh-surface-bg) 64%)'
                               : 'var(--fh-surface)',
                             borderColor: active
-                              ? 'var(--fh-brand-dark)'
-                              : 'color-mix(in srgb, var(--fh-line) 72%, var(--fh-ink) 28%)',
-                            transform: 'translateY(-1px)',
+                              ? 'color-mix(in srgb, var(--fh-brand) 72%, var(--fh-brand-dark) 28%)'
+                              : 'color-mix(in srgb, var(--fh-line) 84%, var(--fh-ink) 16%)',
+                            transform: 'translateY(-0.5px)',
                           },
                         }}
                       >
@@ -416,19 +416,19 @@ export function ProviderSidebar({
                           sx={{
                             minWidth: 0,
                             m: 0,
-                            mr: effectiveCollapsed ? 0 : 1,
-                            width: effectiveCollapsed ? 20 : 34,
-                            height: effectiveCollapsed ? 20 : 34,
-                            borderRadius: '10px',
+                            mr: effectiveCollapsed ? 0 : 0.85,
+                            width: effectiveCollapsed ? 18 : 30,
+                            height: effectiveCollapsed ? 18 : 30,
+                            borderRadius: '9px',
                             display: 'grid',
                             placeItems: 'center',
                             color: active ? 'var(--fh-brand)' : 'var(--fh-slate)',
                             bgcolor: active
-                              ? 'color-mix(in srgb, var(--fh-brand-soft) 56%, var(--fh-surface-bg) 44%)'
-                              : 'color-mix(in srgb, var(--fh-line) 10%, transparent)',
+                              ? 'color-mix(in srgb, var(--fh-brand-soft) 44%, var(--fh-surface-bg) 56%)'
+                              : 'color-mix(in srgb, var(--fh-line) 8%, transparent)',
                           }}
                         >
-                          <PageIcon size={16} />
+                          <PageIcon size={15} />
                         </ListItemIcon>
                         {!effectiveCollapsed ? (
                           <ListItemText
@@ -437,10 +437,9 @@ export function ProviderSidebar({
                                 <Typography
                                   sx={{
                                     fontWeight: active ? 800 : 700,
-                                    fontSize: 13,
-                                    lineHeight: 1.15,
+                                    fontSize: 12.5,
+                                    lineHeight: 1.1,
                                     color: 'var(--fh-ink)',
-                                    mb: 0.2,
                                   }}
                                 >
                                   {getSidebarPageLabel(page)}
@@ -448,8 +447,8 @@ export function ProviderSidebar({
                                 <Typography
                                   sx={{
                                     fontWeight: 500,
-                                    fontSize: 11.5,
-                                    lineHeight: 1.25,
+                                    fontSize: 10.5,
+                                    lineHeight: 1.2,
                                     color: 'var(--fh-slate)',
                                   }}
                                 >
