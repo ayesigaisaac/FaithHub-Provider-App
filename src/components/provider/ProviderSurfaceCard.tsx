@@ -32,10 +32,11 @@ export function ProviderSurfaceCard({
   return (
     <div
       className={cx(
-        "fh-uplift-surface rounded-[28px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 shadow-soft transition-colors dark:border-slate-800 dark:bg-slate-900 sm:p-5 lg:p-6",
+        "fh-uplift-surface relative overflow-hidden rounded-[28px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 shadow-soft transition-colors dark:border-slate-800 dark:bg-slate-900 sm:p-5 lg:p-6",
         className,
       )}
     >
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-emerald-300 via-brand-300 to-orange-300 opacity-60" />
       {(title || subtitle || right) && (
         <div className={cx("flex flex-wrap items-start justify-between gap-3 sm:gap-4", headerClassName)}>
           <div className="min-w-0">

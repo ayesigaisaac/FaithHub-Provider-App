@@ -683,13 +683,14 @@ function EmptyState({
   action?: React.ReactNode;
 }) {
   return (
-    <div className="rounded-[28px] border border-dashed border-faith-line/70 bg-[var(--fh-surface-bg)] p-6 text-center">
-      <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-700">
+    <div className="rounded-[28px] border border-dashed border-faith-line/70 bg-gradient-to-br from-white via-[var(--fh-surface-bg)] to-[var(--fh-surface)] p-6 text-center shadow-soft">
+      <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-2xl border border-emerald-200 bg-emerald-50 text-emerald-700">
         <Sparkles size={20} />
       </div>
-      <div className="text-[15px] font-black text-faith-ink">{title}</div>
+      <div className="text-[11px] font-extrabold uppercase tracking-[0.14em] text-faith-slate">FaithHub Provider</div>
+      <div className="mt-2 text-[15px] font-black text-faith-ink">{title}</div>
       <p className="mx-auto mt-2 max-w-xl text-[13px] leading-6 text-faith-slate">{body}</p>
-      {action ? <div className="mt-4 flex justify-center">{action}</div> : null}
+      {action ? <div className="mt-5 flex justify-center">{action}</div> : null}
     </div>
   );
 }
