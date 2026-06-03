@@ -14,18 +14,20 @@ export function ModuleCard({ title, icon: Icon, isOpen, onToggle }: ModuleCardPr
       type="button"
       onClick={onToggle}
       aria-expanded={isOpen}
-      className={`flex w-full items-center justify-between rounded-xl border bg-[#ffffff] p-[14px] text-left transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--fh-brand)] focus-visible:ring-offset-2 dark:bg-slate-900 ${
-        isOpen ? 'border-2 border-black shadow-sm dark:border-slate-300' : 'border-slate-200 hover:shadow-md dark:border-slate-700'
+      className={`flex w-full items-center justify-between rounded-xl border bg-[var(--fh-surface)] p-[14px] text-left transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--fh-brand)] focus-visible:ring-offset-2 dark:bg-[var(--fh-surface)] ${
+        isOpen
+          ? 'border-2 border-[var(--fh-brand)] shadow-sm'
+          : 'border-[var(--fh-line)] hover:shadow-md dark:border-[var(--fh-line)]'
       }`}
     >
       <span className="flex items-center gap-3">
-        <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-200">
+        <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--fh-brand-soft)] text-[var(--fh-brand)] dark:bg-[var(--fh-surface)] dark:text-[var(--fh-brand)]">
           <Icon className="h-5 w-5" />
         </span>
-        <span className="text-sm font-semibold tracking-wide text-slate-900 dark:text-slate-100">{title}</span>
+        <span className="text-sm font-semibold tracking-wide text-[var(--fh-ink)] dark:text-[var(--fh-ink)]">{title}</span>
       </span>
       <ChevronRight
-        className={`h-5 w-5 text-slate-500 dark:text-slate-400 transition-transform duration-200 ${isOpen ? 'rotate-90 text-[var(--fh-brand)]' : ''}`}
+        className={`h-5 w-5 text-[var(--fh-slate)] dark:text-[var(--fh-muted)] transition-transform duration-200 ${isOpen ? 'rotate-90 text-[var(--fh-brand)]' : ''}`}
       />
     </button>
   );

@@ -30,25 +30,25 @@ const overviewCards: OverviewCard[] = [
     title: 'Active Members',
     value: '18,420',
     detail: '+6.2% vs last month',
-    icon: <Users className="h-5 w-5 text-emerald-600" />,
+    icon: <Users className="h-5 w-5 text-[var(--fh-brand)]" />,
   },
   {
     title: 'Scheduled Sessions',
     value: '27',
     detail: '8 happening this week',
-    icon: <CalendarClock className="h-5 w-5 text-emerald-600" />,
+    icon: <CalendarClock className="h-5 w-5 text-[var(--fh-brand)]" />,
   },
   {
     title: 'Monthly Revenue',
     value: '$42,900',
     detail: 'Projected +12% trend',
-    icon: <CreditCard className="h-5 w-5 text-emerald-600" />,
+    icon: <CreditCard className="h-5 w-5 text-[var(--fh-brand)]" />,
   },
   {
     title: 'Engagement Score',
     value: '91%',
     detail: 'High performer cohort',
-    icon: <BarChart3 className="h-5 w-5 text-emerald-600" />,
+    icon: <BarChart3 className="h-5 w-5 text-[var(--fh-brand)]" />,
   },
 ];
 
@@ -71,23 +71,23 @@ const pipelineCards: PipelineCard[] = [
 ];
 
 const badgeToneClass: Record<AlertBadge['tone'], string> = {
-  info: 'border-sky-200 bg-sky-50 text-sky-700',
-  success: 'border-emerald-200 bg-emerald-50 text-emerald-700',
-  warning: 'border-amber-200 bg-amber-50 text-amber-700',
+  info: 'border-[var(--fh-line)] bg-[var(--fh-surface)] text-[var(--fh-ink)]',
+  success: 'border-[var(--fh-brand)] bg-[var(--fh-brand-soft)] text-[var(--fh-brand)]',
+  warning: 'border-[var(--fh-line)] bg-[var(--fh-ev-light-grey)] text-[var(--fh-ev-medium-grey)]',
 };
 
 function DashboardHeader() {
   return (
-    <header className="flex flex-col gap-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_8px_24px_rgba(15,23,42,0.04)] sm:flex-row sm:items-end sm:justify-between">
+    <header className="flex flex-col gap-4 rounded-2xl border border-[var(--fh-line)] bg-[var(--fh-surface)] p-6 shadow-[0_8px_24px_rgba(15,23,42,0.04)] sm:flex-row sm:items-end sm:justify-between">
       <div>
-        <h1 className="text-2xl font-semibold tracking-tight text-slate-900">Overview Dashboard</h1>
-        <p className="mt-1 text-sm text-slate-500">
+        <h1 className="text-2xl font-semibold tracking-tight text-[var(--fh-ink)]">Overview Dashboard</h1>
+        <p className="mt-1 text-sm text-[var(--fh-slate)]">
           Monitor performance, content delivery, and revenue in one streamlined workspace.
         </p>
       </div>
       <button
         type="button"
-        className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-emerald-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2"
+        className="inline-flex items-center gap-2 rounded-xl bg-[var(--fh-brand)] px-4 py-2.5 text-sm font-medium text-white transition hover:bg-[var(--fh-brand)]/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--fh-brand)] focus-visible:ring-offset-2"
       >
         <Sparkles className="h-4 w-4" />
         Create Report
@@ -117,15 +117,15 @@ function OverviewGrid() {
       {overviewCards.map((card) => (
         <article
           key={card.title}
-          className="rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_8px_24px_rgba(15,23,42,0.04)] transition hover:-translate-y-0.5 hover:shadow-[0_16px_36px_rgba(15,23,42,0.08)]"
+          className="rounded-2xl border border-[var(--fh-line)] bg-[var(--fh-surface)] p-6 shadow-[0_8px_24px_rgba(15,23,42,0.04)] transition hover:-translate-y-0.5 hover:shadow-[0_16px_36px_rgba(15,23,42,0.08)]"
         >
           <div className="flex items-start justify-between gap-3">
             <div>
-              <p className="text-sm font-medium text-slate-500">{card.title}</p>
-              <p className="mt-2 text-3xl font-semibold tracking-tight text-slate-900">{card.value}</p>
-              <p className="mt-1 text-sm text-slate-500">{card.detail}</p>
+              <p className="text-sm font-medium text-[var(--fh-slate)]">{card.title}</p>
+              <p className="mt-2 text-3xl font-semibold tracking-tight text-[var(--fh-ink)]">{card.value}</p>
+              <p className="mt-1 text-sm text-[var(--fh-slate)]">{card.detail}</p>
             </div>
-            <span className="rounded-xl bg-emerald-50 p-2.5">{card.icon}</span>
+            <span className="rounded-xl bg-[var(--fh-brand-soft)] p-2.5">{card.icon}</span>
           </div>
         </article>
       ))}
@@ -139,14 +139,14 @@ function PipelineGrid() {
       {pipelineCards.map((card) => (
         <article
           key={card.title}
-          className="rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_8px_24px_rgba(15,23,42,0.04)] transition hover:-translate-y-0.5 hover:shadow-[0_16px_36px_rgba(15,23,42,0.08)]"
+          className="rounded-2xl border border-[var(--fh-line)] bg-[var(--fh-surface)] p-6 shadow-[0_8px_24px_rgba(15,23,42,0.04)] transition hover:-translate-y-0.5 hover:shadow-[0_16px_36px_rgba(15,23,42,0.08)]"
         >
-          <p className="text-sm font-medium text-slate-500">{card.caption}</p>
-          <h2 className="mt-2 text-lg font-semibold text-slate-900">{card.title}</h2>
-          <p className="mt-2 text-2xl font-semibold tracking-tight text-slate-900">{card.metric}</p>
+          <p className="text-sm font-medium text-[var(--fh-slate)]">{card.caption}</p>
+          <h2 className="mt-2 text-lg font-semibold text-[var(--fh-ink)]">{card.title}</h2>
+          <p className="mt-2 text-2xl font-semibold tracking-tight text-[var(--fh-ink)]">{card.metric}</p>
           <button
             type="button"
-            className="mt-5 inline-flex items-center gap-1 rounded-lg text-sm font-medium text-emerald-700 hover:text-emerald-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2"
+            className="mt-5 inline-flex items-center gap-1 rounded-lg text-sm font-medium text-[var(--fh-brand)] hover:text-[var(--fh-brand)]/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--fh-brand)] focus-visible:ring-offset-2"
           >
             View details
             <ArrowRight className="h-4 w-4" />

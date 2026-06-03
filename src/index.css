@@ -905,3 +905,149 @@ html.dark :is(.border-slate-200, .border-slate-300, .border-gray-200, .border-gr
 html.dark :is(input, select, textarea) {
   color: var(--fh-ink);
 }
+
+/* Global EV palette remap for legacy Tailwind color utilities. */
+:is(
+    [class*='text-emerald-'],
+    [class*='text-green-'],
+    [class*='text-teal-'],
+    [class*='text-cyan-'],
+    [class*='text-sky-'],
+    [class*='text-blue-']
+  ) {
+  color: var(--fh-brand) !important;
+}
+
+:is(
+    [class*='text-amber-'],
+    [class*='text-yellow-'],
+    [class*='text-orange-']
+  ) {
+  color: var(--fh-accent) !important;
+}
+
+:is(
+    [class*='text-violet-'],
+    [class*='text-purple-'],
+    [class*='text-fuchsia-'],
+    [class*='text-pink-'],
+    [class*='text-rose-'],
+    [class*='text-indigo-']
+  ) {
+  color: var(--fh-accent) !important;
+}
+
+:is(
+    [class*='bg-emerald-'],
+    [class*='bg-green-'],
+    [class*='bg-teal-'],
+    [class*='bg-cyan-'],
+    [class*='bg-sky-'],
+    [class*='bg-blue-']
+  ) {
+  background-color: color-mix(in srgb, var(--fh-brand) 14%, var(--fh-surface-bg)) !important;
+}
+
+:is(
+    [class*='bg-amber-'],
+    [class*='bg-yellow-'],
+    [class*='bg-orange-']
+  ) {
+  background-color: color-mix(in srgb, var(--fh-accent) 14%, var(--fh-surface-bg)) !important;
+}
+
+:is(
+    [class*='bg-violet-'],
+    [class*='bg-purple-'],
+    [class*='bg-fuchsia-'],
+    [class*='bg-pink-'],
+    [class*='bg-rose-'],
+    [class*='bg-indigo-']
+  ) {
+  background-color: color-mix(in srgb, var(--fh-accent) 12%, var(--fh-surface-bg)) !important;
+}
+
+:is(
+    [class*='border-emerald-'],
+    [class*='border-green-'],
+    [class*='border-teal-'],
+    [class*='border-cyan-'],
+    [class*='border-sky-'],
+    [class*='border-blue-']
+  ) {
+  border-color: var(--fh-brand) !important;
+}
+
+:is(
+    [class*='border-amber-'],
+    [class*='border-yellow-'],
+    [class*='border-orange-']
+  ) {
+  border-color: var(--fh-accent) !important;
+}
+
+:is(
+    [class*='border-violet-'],
+    [class*='border-purple-'],
+    [class*='border-fuchsia-'],
+    [class*='border-pink-'],
+    [class*='border-rose-'],
+    [class*='border-indigo-']
+  ) {
+  border-color: var(--fh-accent) !important;
+}
+
+:is(
+    [class*='ring-emerald-'],
+    [class*='ring-green-'],
+    [class*='ring-teal-'],
+    [class*='ring-cyan-'],
+    [class*='ring-sky-'],
+    [class*='ring-blue-']
+  ) {
+  --tw-ring-color: var(--fh-brand) !important;
+}
+
+:is(
+    [class*='ring-amber-'],
+    [class*='ring-yellow-'],
+    [class*='ring-orange-']
+  ) {
+  --tw-ring-color: var(--fh-accent) !important;
+}
+
+:is(
+    [class*='ring-violet-'],
+    [class*='ring-purple-'],
+    [class*='ring-fuchsia-'],
+    [class*='ring-pink-'],
+    [class*='ring-rose-'],
+    [class*='ring-indigo-']
+  ) {
+  --tw-ring-color: var(--fh-accent) !important;
+}
+
+:is(
+    [class*='shadow-emerald-'],
+    [class*='shadow-green-'],
+    [class*='shadow-teal-'],
+    [class*='shadow-cyan-'],
+    [class*='shadow-sky-'],
+    [class*='shadow-blue-']
+  ) {
+  box-shadow: 0 16px 36px -26px rgba(3, 205, 140, 0.5) !important;
+}
+
+:is(
+    [class*='shadow-amber-'],
+    [class*='shadow-yellow-'],
+    [class*='shadow-orange-'],
+    [class*='shadow-violet-'],
+    [class*='shadow-purple-'],
+    [class*='shadow-fuchsia-'],
+    [class*='shadow-pink-'],
+    [class*='shadow-rose-'],
+    [class*='shadow-indigo-']
+  ) {
+  box-shadow: 0 16px 36px -26px rgba(247, 127, 0, 0.42) !important;
+}
