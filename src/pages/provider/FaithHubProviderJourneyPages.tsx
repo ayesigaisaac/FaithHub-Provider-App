@@ -209,6 +209,45 @@ const JOURNEY_STEPS = [
   { label: 'Go Live', path: ROUTES.liveStudio, icon: Radio },
 ] as const;
 
+const DASHBOARD_PHASES = [
+  {
+    label: 'Phase 1 · Foundation & onboarding',
+    summary: 'Registration, profile completion, and approval review.',
+    route: ROUTES.profile,
+    icon: BadgeCheck,
+  },
+  {
+    label: 'Phase 2 · Dashboard & core management',
+    summary: 'Overview cards, service creation, and campaign setup.',
+    route: ROUTES.services,
+    icon: LayoutDashboard,
+  },
+  {
+    label: 'Phase 3 · Content & asset workflow',
+    summary: 'Uploads, previews, and approved asset selection.',
+    route: ROUTES.contentUpload,
+    icon: Upload,
+  },
+  {
+    label: 'Phase 4 · Live session creation',
+    summary: 'Draft, schedule, and approve provider live sessions.',
+    route: ROUTES.liveBuilder,
+    icon: MonitorPlay,
+  },
+  {
+    label: 'Phase 5 · Waiting room & go live',
+    summary: 'Preview the audience view and launch the live studio.',
+    route: ROUTES.waitingRoom,
+    icon: Clock3,
+  },
+  {
+    label: 'Phase 6 · UX polish & operations',
+    summary: 'Responsive states, approval indicators, and empty states.',
+    route: ROUTES.dashboard,
+    icon: Sparkles,
+  },
+] as const;
+
 const SERVICE_CATEGORIES = [
   'Worship Support',
   'Teaching Support',
@@ -945,6 +984,44 @@ export function ProviderDashboardPage() {
 
         <div className="grid gap-4 xl:grid-cols-12">
           <div className="space-y-4 xl:col-span-8">
+            <ProviderSectionCard title="Phased rollout" subtitle="Track the provider journey in the same order the project is being delivered.">
+              <div className="grid gap-3 md:grid-cols-2">
+                {DASHBOARD_PHASES.map((phase, index) => {
+                  const Icon = phase.icon;
+                  const phaseTone =
+                    index === 0 && profileStatus !== 'Approved'
+                      ? 'warn'
+                      : index < 3 && (services.length > 0 || campaigns.length > 0 || assets.length > 0)
+                        ? 'good'
+                        : index === 5
+                          ? 'brand'
+                          : 'neutral';
+
+                  return (
+                    <div key={phase.label} className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
+                      <div className="flex items-start justify-between gap-3">
+                        <div className="flex items-start gap-3">
+                          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-700">
+                            <Icon size={18} />
+                          </span>
+                          <div>
+                            <div className="text-[13px] font-extrabold text-faith-ink">{phase.label}</div>
+                            <div className="mt-1 text-[12px] text-faith-slate">{phase.summary}</div>
+                          </div>
+                        </div>
+                        <ProviderStatusPill tone={phaseTone}>
+                          {index === 0 && profileStatus !== 'Approved' ? 'In progress' : index === 5 ? 'Polish' : 'Ready'}
+                        </ProviderStatusPill>
+                      </div>
+                      <Button variant="outline" className="mt-4 w-full" onClick={() => navigate(phase.route)}>
+                        Open phase
+                      </Button>
+                    </div>
+                  );
+                })}
+              </div>
+            </ProviderSectionCard>
+
             <ProviderSectionCard title="Quick actions" subtitle="Move directly into the next part of the provider journey.">
               <div className="grid gap-3 md:grid-cols-2">
                 {[
