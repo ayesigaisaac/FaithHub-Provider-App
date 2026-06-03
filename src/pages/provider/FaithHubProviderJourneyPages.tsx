@@ -824,10 +824,11 @@ export function ProviderRegistrationPage() {
                 ))}
               </div>
             </ProviderSectionCard>
-          </div>
+        </div>
 
-          <div className="space-y-4 xl:col-span-4">
-            <ProviderSectionCard
+        <div className="space-y-4 xl:col-span-4">
+          <JourneyPhaseCard activePath={ROUTES.onboarding} onNavigate={(path) => navigate(path)} />
+          <ProviderSectionCard
               title="Next step"
               subtitle="Once registration is saved, the provider profile screen unlocks the approval journey."
             >
@@ -966,6 +967,7 @@ export function ProviderProfilePage() {
           </div>
 
           <div className="space-y-4 xl:col-span-4">
+            <JourneyPhaseCard activePath={ROUTES.profile} onNavigate={(path) => navigate(path)} />
             <ProviderSectionCard title="Approval banner" subtitle="The provider profile remains in review until the application is submitted.">
               <div className="space-y-3">
                 <ProviderStatusPill tone="warn" left={<Bell size={12} />}>Pending Review</ProviderStatusPill>
@@ -1371,6 +1373,7 @@ export function ServiceBuilderPage() {
         </div>
 
         <div className="space-y-4 xl:col-span-4">
+          <JourneyPhaseCard activePath={ROUTES.serviceBuilder} onNavigate={(path) => navigate(path)} />
           <ProviderSectionCard title="Status palette" subtitle="Service status states used throughout the provider journey.">
             <div className="flex flex-wrap gap-2">
               {(['Draft', 'Pending Review', 'Approved', 'Rejected', 'Published'] as const).map((state) => (
@@ -1585,6 +1588,7 @@ export function CampaignBuilderPage() {
         </div>
 
         <div className="space-y-4 xl:col-span-4">
+          <JourneyPhaseCard activePath={ROUTES.campaignBuilder} onNavigate={(path) => navigate(path)} />
           <ProviderSectionCard title="Preview card" subtitle="Campaign approval state and banner information at a glance.">
             <div className="space-y-3">
               <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-4">
