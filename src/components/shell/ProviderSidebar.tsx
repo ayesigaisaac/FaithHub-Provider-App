@@ -16,12 +16,21 @@
 import KeyboardDoubleArrowLeftRoundedIcon from '@mui/icons-material/KeyboardDoubleArrowLeftRounded';
 import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded';
 import KeyboardArrowRightRoundedIcon from '@mui/icons-material/KeyboardArrowRightRounded';
+import GridViewRoundedIcon from '@mui/icons-material/GridViewRounded';
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import LiveTvRoundedIcon from '@mui/icons-material/LiveTvRounded';
+import CampaignRoundedIcon from '@mui/icons-material/CampaignRounded';
+import MovieFilterRoundedIcon from '@mui/icons-material/MovieFilterRounded';
+import VolunteerActivismRoundedIcon from '@mui/icons-material/VolunteerActivismRounded';
+import BoltRoundedIcon from '@mui/icons-material/BoltRounded';
+import GroupsRoundedIcon from '@mui/icons-material/GroupsRounded';
+import SupervisorAccountRoundedIcon from '@mui/icons-material/SupervisorAccountRounded';
+import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 import FolderRoundedIcon from '@mui/icons-material/FolderRounded';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, type UIEvent } from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
-import { getProviderSidebarGroupsBySection, providerSections } from '@/navigation/providerPages';
+import { getProviderSidebarGroupsBySection, providerPages, providerSections } from '@/navigation/providerPages';
+import { providerCategoryBySection } from '@/navigation/providerCategories';
 
 const drawerWidth = 318;
 const topbarOffsetMobile = 110;
@@ -30,6 +39,29 @@ const topbarOffsetDesktop = 128;
 const expandedDrawerWidth = 318;
 const collapsedDrawerWidth = 88;
 
+const sectionIconMap: Record<string, typeof GridViewRoundedIcon> = {
+  'Foundation & Mission Control': HomeRoundedIcon,
+  'Content Structure & Teaching Creation': FolderRoundedIcon,
+  'Provider Journey': FolderRoundedIcon,
+  'Live Sessions Operations': LiveTvRoundedIcon,
+  'Audience & Outreach': CampaignRoundedIcon,
+  'Post-live & Trust': MovieFilterRoundedIcon,
+  'Events & Giving': VolunteerActivismRoundedIcon,
+  Revelight: BoltRoundedIcon,
+  'Community & Care': GroupsRoundedIcon,
+  'Leadership & Team': SupervisorAccountRoundedIcon,
+  'Workspace Settings': SettingsRoundedIcon,
+};
+
+const PRIORITY_SECTIONS = new Set<string>([
+  'Foundation & Mission Control',
+  'Content Structure & Teaching Creation',
+  'Provider Journey',
+  'Live Sessions Operations',
+  'Audience & Outreach',
+  'Events & Giving',
+]);
+const EXTENDED_SECTIONS_KEY = 'faithhub.sidebar.showAllSections';
 const ONBOARDING_CHECKLIST_OPEN_KEY = 'faithhub.sidebar.onboardingChecklistOpen';
 const ONBOARDING_CHECKLIST_DISMISSED_KEY = 'faithhub.sidebar.onboardingDismissed';
 const ONBOARDING_CHECKLIST_PROGRESS_KEY = 'faithhub.sidebar.onboardingProgress';
@@ -133,6 +165,11 @@ export function ProviderSidebar({
   const isNarrowPhone = useMediaQuery('(max-width:390px)');
   const isDesktopSidebar = useMediaQuery('(min-width:900px)');
   const effectiveCollapsed = isDesktopSidebar ? collapsed : false;
+  const [openSections, setOpenSections] = useState<Record<string, boolean>>({});
+  const [showAllSections, setShowAllSections] = useState<boolean>(() => {
+    if (typeof window === 'undefined') return false;
+    return window.localStorage.getItem(EXTENDED_SECTIONS_KEY) === 'true';
+  });
   const [showOnboardingChecklist, setShowOnboardingChecklist] = useState<boolean>(() => {
     if (typeof window === 'undefined') return false;
     return window.localStorage.getItem(ONBOARDING_CHECKLIST_OPEN_KEY) === 'true';
@@ -156,9 +193,30 @@ export function ProviderSidebar({
   const sections = providerSections
     .map((section) => ({
       section,
+      label: providerCategoryBySection[section].navLabel,
       groups: getProviderSidebarGroupsBySection(section),
     }))
     .filter((group) => group.groups.length > 0);
+  const primarySections = useMemo(
+    () => sections.filter((group) => PRIORITY_SECTIONS.has(group.section)),
+    [sections]
+  );
+  const secondarySections = useMemo(
+    () => sections.filter((group) => !PRIORITY_SECTIONS.has(group.section)),
+    [sections]
+  );
+  const activeSection = useMemo(() => {
+    const activePage = providerPages.find(
+      (page) => page.path === location.pathname || Boolean(page.aliases?.includes(location.pathname)),
+    );
+    return activePage?.section;
+  }, [location.pathname]);
+  const displayedSections = useMemo(() => {
+    if (showAllSections) return [...primarySections, ...secondarySections];
+    if (!activeSection || PRIORITY_SECTIONS.has(activeSection)) return primarySections;
+    const activeSecondary = secondarySections.find((group) => group.section === activeSection);
+    return activeSecondary ? [...primarySections, activeSecondary] : primarySections;
+  }, [activeSection, primarySections, secondarySections, showAllSections]);
   useEffect(() => {
     if (typeof window === 'undefined') return;
     window.localStorage.setItem(ONBOARDING_CHECKLIST_OPEN_KEY, String(showOnboardingChecklist));
@@ -178,10 +236,32 @@ export function ProviderSidebar({
       return [...prev, location.pathname];
     });
   }, [location.pathname]);
+  useEffect(() => {
+    if (!activeSection) return;
+    setOpenSections((prev) => {
+      if (prev[activeSection]) return prev;
+      return { ...prev, [activeSection]: true };
+    });
+  }, [activeSection]);
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    window.localStorage.setItem(EXTENDED_SECTIONS_KEY, String(showAllSections));
+  }, [showAllSections]);
   const onboardingCompletedCount = useMemo(
     () => quickStartItems.filter((item) => completedOnboardingPaths.includes(item.path)).length,
     [completedOnboardingPaths],
   );
+
+  const toggleSection = (section: string) => {
+    setOpenSections((prev) => ({ ...prev, [section]: !prev[section] }));
+  };
+  const handleSidebarScroll = (event: UIEvent<HTMLElement>) => {
+    if (showAllSections) return;
+    const target = event.currentTarget;
+    if (target.scrollTop >= 72) {
+      setShowAllSections(true);
+    }
+  };
 
   const content = (
     <Box
@@ -348,6 +428,7 @@ export function ProviderSidebar({
           ) : null}
 
           <List
+            onScroll={handleSidebarScroll}
             sx={{
               p: 1.35,
               flex: 1,
@@ -363,105 +444,337 @@ export function ProviderSidebar({
               '&::-webkit-scrollbar-track': { backgroundColor: 'transparent' },
             }}
           >
-            {sections.map((group) => (
+            {displayedSections.map((group) => (
               <Box
                 key={group.section}
                 sx={{
-                  mb: effectiveCollapsed ? 0.45 : 0.6,
+                  mb: effectiveCollapsed ? 0.75 : 1,
+                  borderRadius: '16px',
+                  border: '1px solid',
+                  borderColor: 'color-mix(in srgb, var(--fh-line) 56%, transparent)',
+                  bgcolor: 'color-mix(in srgb, var(--fh-surface-bg) 94%, white 6%)',
+                  overflow: 'hidden',
                 }}
               >
-                {group.groups.map(({ page }) => {
-                  const active = page.path === location.pathname || Boolean(page.aliases?.includes(location.pathname));
-                  const PageIcon = page.icon;
-
+                {(() => {
+                  const SectionIcon = sectionIconMap[group.section] ?? GridViewRoundedIcon;
+                  const sectionExpanded = Boolean(openSections[group.section]);
                   return (
-                    <Tooltip key={page.key} title={getSidebarPageLabel(page)} placement="right">
-                      <ListItemButton
-                        component={RouterLink}
-                        to={page.path}
-                        aria-current={active ? 'page' : undefined}
-                        onClick={() => {
-                          trackSidebarClick({
-                            section: group.section,
-                            label: getSidebarPageLabel(page),
-                            route: page.path,
-                            level: 'primary',
-                          });
-                          onClose();
-                        }}
+                    <ListItemButton
+                      onClick={() => toggleSection(group.section)}
+                      aria-label={`${sectionExpanded ? 'Collapse' : 'Expand'} ${group.label} section`}
+                      aria-expanded={sectionExpanded}
+                      title={effectiveCollapsed ? group.label : undefined}
+                      sx={{
+                        px: effectiveCollapsed ? 0.75 : 1,
+                        py: 0.5,
+                        minHeight: 44,
+                        borderRadius: 0,
+                        borderBottom: '1px solid',
+                        borderColor: 'color-mix(in srgb, var(--fh-line) 56%, transparent)',
+                        bgcolor: sectionExpanded ? 'color-mix(in srgb, var(--fh-surface) 88%, var(--fh-surface-bg) 12%)' : 'transparent',
+                        transition:
+                          'transform var(--fh-duration-base) var(--fh-ease-premium), background-color var(--fh-duration-fast) ease, border-color var(--fh-duration-fast) ease',
+                        '&:hover': {
+                          bgcolor: 'var(--fh-surface)',
+                          transform: 'translateY(-1px)',
+                        },
+                      }}
+                    >
+                      <ListItemIcon
                         sx={{
-                          mb: 0.4,
-                          px: effectiveCollapsed ? 0.2 : 0.8,
-                          py: effectiveCollapsed ? 0.45 : 0.5,
-                          minHeight: effectiveCollapsed ? 40 : 54,
-                          borderRadius: 999,
-                          border: '1px solid',
-                          borderColor: active ? 'color-mix(in srgb, var(--fh-brand) 58%, var(--fh-line) 42%)' : 'color-mix(in srgb, var(--fh-line) 66%, transparent)',
-                          bgcolor: active ? 'color-mix(in srgb, var(--fh-brand-soft) 24%, var(--fh-surface-bg) 76%)' : 'color-mix(in srgb, var(--fh-surface-bg) 96%, white 4%)',
-                          justifyContent: effectiveCollapsed ? 'center' : 'flex-start',
-                          transition:
-                            'transform var(--fh-duration-base) var(--fh-ease-premium), background-color var(--fh-duration-fast) ease, border-color var(--fh-duration-fast) ease',
-                          '&:hover': {
-                            bgcolor: active
-                              ? 'color-mix(in srgb, var(--fh-brand-soft) 30%, var(--fh-surface-bg) 70%)'
-                              : 'var(--fh-surface)',
-                            borderColor: active
-                              ? 'color-mix(in srgb, var(--fh-brand) 68%, var(--fh-brand-dark) 32%)'
-                              : 'color-mix(in srgb, var(--fh-line) 78%, var(--fh-ink) 22%)',
-                            transform: 'translateY(-1px)',
-                          },
+                          minWidth: 28,
+                          mr: effectiveCollapsed ? 0 : 0.5,
+                          color: sectionExpanded ? 'var(--fh-accent)' : 'var(--fh-slate)',
                         }}
                       >
-                        <ListItemIcon
-                          sx={{
-                            minWidth: 0,
-                            m: 0,
-                            mr: effectiveCollapsed ? 0 : 0.75,
-                            width: effectiveCollapsed ? 18 : 28,
-                            height: effectiveCollapsed ? 18 : 28,
-                            borderRadius: 999,
-                            display: 'grid',
-                            placeItems: 'center',
-                            color: active ? 'var(--fh-brand)' : 'var(--fh-slate)',
-                            bgcolor: active
-                              ? 'color-mix(in srgb, var(--fh-brand-soft) 38%, var(--fh-surface-bg) 62%)'
-                              : 'color-mix(in srgb, var(--fh-line) 6%, transparent)',
-                          }}
-                        >
-                          <PageIcon size={15} />
-                        </ListItemIcon>
-                        {!effectiveCollapsed ? (
-                          <ListItemText
-                            primary={
-                              <Box>
-                                <Typography
-                                  sx={{
-                                    fontWeight: active ? 800 : 700,
-                                    fontSize: 12.25,
-                                    lineHeight: 1.05,
-                                    color: 'var(--fh-ink)',
-                                  }}
-                                >
-                                  {getSidebarPageLabel(page)}
-                                </Typography>
-                                <Typography
-                                  sx={{
-                                    fontWeight: 500,
-                                    fontSize: 10.25,
-                                    lineHeight: 1.15,
-                                    color: 'var(--fh-slate)',
-                                  }}
-                                >
-                                  {getSidebarPageHint(page)}
-                                </Typography>
-                              </Box>
-                            }
-                          />
-                        ) : null}
-                      </ListItemButton>
-                    </Tooltip>
+                        <SectionIcon sx={{ fontSize: 18 }} />
+                      </ListItemIcon>
+                      {!effectiveCollapsed ? (
+                        <ListItemText
+                          primary={
+                            <Typography
+                              sx={{
+                                fontWeight: 700,
+                                fontSize: 11,
+                                letterSpacing: '0.12em',
+                                color: 'var(--fh-slate)',
+                                textTransform: 'uppercase',
+                                lineHeight: 1.2,
+                              }}
+                            >
+                              {group.label}
+                            </Typography>
+                          }
+                        />
+                      ) : null}
+                      {!effectiveCollapsed ? (
+                        sectionExpanded ? (
+                          <KeyboardArrowDownRoundedIcon sx={{ fontSize: 20, color: 'var(--fh-accent)' }} />
+                        ) : (
+                          <KeyboardArrowRightRoundedIcon sx={{ fontSize: 20, color: 'var(--fh-slate)' }} />
+                        )
+                      ) : null}
+                    </ListItemButton>
                   );
-                })}
+                })()}
+
+                {!effectiveCollapsed && (
+                  <Collapse in={Boolean(openSections[group.section])} timeout="auto" unmountOnExit>
+                    <Box sx={{ px: 0.9, pt: 0.75, pb: 0.9 }}>
+                      {group.groups.map(({ page, children }) => {
+                        const visibleChildren = children.filter((child) => child.key !== 'book-builder');
+                        const parentActive = page.path === location.pathname || Boolean(page.aliases?.includes(location.pathname));
+                        const activeChildKey = visibleChildren.find(
+                          (child) => child.path === location.pathname || Boolean(child.aliases?.includes(location.pathname))
+                        )?.key;
+                        const active = parentActive || Boolean(activeChildKey);
+                        return (
+                          <Box key={`${group.section}-${page.key}`} sx={{ mb: 0.45 }}>
+                            <ListItemButton
+                              component={RouterLink}
+                              to={page.path}
+                              aria-current={active ? 'page' : undefined}
+                              onClick={() => {
+                                trackSidebarClick({
+                                  section: group.label,
+                                  label: getSidebarPageLabel(page),
+                                  route: page.path,
+                                  level: 'primary',
+                                });
+                                onClose();
+                              }}
+                              sx={{
+                                mb: 0.5,
+                                px: 1,
+                                py: 0.9,
+                                minHeight: 74,
+                                borderRadius: '14px',
+                                border: '1px solid',
+                                borderColor: active
+                                  ? 'color-mix(in srgb, var(--fh-brand-dark) 86%, var(--fh-brand) 14%)'
+                                  : 'color-mix(in srgb, var(--fh-line) 58%, transparent)',
+                                bgcolor: active
+                                  ? 'var(--fh-brand)'
+                                  : 'color-mix(in srgb, var(--fh-surface) 88%, var(--fh-surface-bg) 12%)',
+                                transition:
+                                  'transform var(--fh-duration-base) var(--fh-ease-premium), background-color var(--fh-duration-fast) ease, border-color var(--fh-duration-fast) ease',
+                                '&:hover': {
+                                  bgcolor: active
+                                    ? 'color-mix(in srgb, var(--fh-brand-dark) 80%, var(--fh-brand) 20%)'
+                                    : 'color-mix(in srgb, var(--fh-surface) 96%, var(--fh-surface-bg) 4%)',
+                                  transform: 'translateY(-1px)',
+                                },
+                              }}
+                            >
+                              <ListItemIcon
+                                sx={{
+                                  minWidth: 0,
+                                  mr: 1.15,
+                                  width: 34,
+                                  height: 34,
+                                  borderRadius: '10px',
+                                  display: 'grid',
+                                  placeItems: 'center',
+                                  color: active ? 'var(--fh-surface-bg)' : 'var(--fh-brand)',
+                                  bgcolor: active
+                                    ? 'color-mix(in srgb, var(--fh-brand-dark) 70%, black 30%)'
+                                    : 'color-mix(in srgb, var(--fh-brand-soft) 56%, var(--fh-surface-bg) 44%)',
+                                }}
+                              >
+                                <page.icon size={16} />
+                              </ListItemIcon>
+                              <ListItemText
+                                primary={
+                                  <Box>
+                                    <Typography
+                                      sx={{
+                                        fontWeight: active ? 800 : 700,
+                                        fontSize: 13,
+                                        lineHeight: 1.15,
+                                        color: active ? 'var(--fh-surface-bg)' : 'var(--fh-ink)',
+                                        mb: 0.2,
+                                      }}
+                                    >
+                                      {getSidebarPageLabel(page)}
+                                    </Typography>
+                                    <Typography
+                                      sx={{
+                                        fontWeight: 500,
+                                        fontSize: 11.5,
+                                        lineHeight: 1.25,
+                                        color: active
+                                          ? 'color-mix(in srgb, var(--fh-surface-bg) 86%, transparent)'
+                                          : 'var(--fh-slate)',
+                                      }}
+                                    >
+                                      {getSidebarPageHint(page)}
+                                    </Typography>
+                                  </Box>
+                                }
+                              />
+                            </ListItemButton>
+                            {visibleChildren.length ? (
+                              <Box sx={{ pl: 1.2 }}>
+                                {visibleChildren.map((child) => {
+                                  const childActive =
+                                    child.path === location.pathname || Boolean(child.aliases?.includes(location.pathname));
+                                  return (
+                                    <ListItemButton
+                                      key={`${group.section}-${child.key}`}
+                                      component={RouterLink}
+                                      to={child.path}
+                                      aria-current={childActive ? 'page' : undefined}
+                                      onClick={() => {
+                                        trackSidebarClick({
+                                          section: group.label,
+                                          label: getSidebarPageLabel(child),
+                                          route: child.path,
+                                          level: 'secondary',
+                                        });
+                                        onClose();
+                                      }}
+                                      sx={{
+                                        mb: 0.4,
+                                        px: 0.9,
+                                        py: 0.7,
+                                        minHeight: 62,
+                                        borderRadius: '12px',
+                                        border: '1px solid',
+                                        borderColor: childActive
+                                          ? 'color-mix(in srgb, var(--fh-brand-dark) 74%, var(--fh-brand) 26%)'
+                                          : 'color-mix(in srgb, var(--fh-line) 52%, transparent)',
+                                        bgcolor: childActive
+                                          ? 'color-mix(in srgb, var(--fh-brand-soft) 62%, var(--fh-surface-bg) 38%)'
+                                          : 'color-mix(in srgb, var(--fh-surface) 76%, var(--fh-surface-bg) 24%)',
+                                        transition:
+                                          'transform var(--fh-duration-base) var(--fh-ease-premium), background-color var(--fh-duration-fast) ease, border-color var(--fh-duration-fast) ease',
+                                        '&:hover': {
+                                          bgcolor: childActive
+                                            ? 'color-mix(in srgb, var(--fh-brand-soft) 68%, var(--fh-surface-bg) 32%)'
+                                            : 'color-mix(in srgb, var(--fh-surface) 92%, var(--fh-surface-bg) 8%)',
+                                          transform: 'translateY(-1px)',
+                                        },
+                                      }}
+                                    >
+                                      <ListItemIcon
+                                        sx={{
+                                          minWidth: 0,
+                                          mr: 1,
+                                          width: 28,
+                                          height: 28,
+                                          borderRadius: '9px',
+                                          display: 'grid',
+                                          placeItems: 'center',
+                                          color: childActive ? 'var(--fh-brand-dark)' : 'var(--fh-slate)',
+                                          bgcolor: childActive
+                                            ? 'color-mix(in srgb, var(--fh-brand-soft) 68%, var(--fh-surface-bg) 32%)'
+                                            : 'color-mix(in srgb, var(--fh-line) 12%, transparent)',
+                                        }}
+                                      >
+                                        <child.icon size={14} />
+                                      </ListItemIcon>
+                                      <ListItemText
+                                        primary={
+                                          <Box>
+                                            <Typography
+                                              sx={{
+                                                fontWeight: childActive ? 750 : 650,
+                                                fontSize: 12,
+                                                lineHeight: 1.15,
+                                                color: childActive ? 'var(--fh-ink)' : 'var(--fh-ink)',
+                                                mb: 0.15,
+                                              }}
+                                            >
+                                              {getSidebarPageLabel(child)}
+                                            </Typography>
+                                            <Typography
+                                              sx={{
+                                                fontWeight: 500,
+                                                fontSize: 11,
+                                                lineHeight: 1.2,
+                                                color: 'var(--fh-slate)',
+                                              }}
+                                            >
+                                              {getSidebarPageHint(child)}
+                                            </Typography>
+                                          </Box>
+                                        }
+                                      />
+                                    </ListItemButton>
+                                  );
+                                })}
+                              </Box>
+                            ) : null}
+                          </Box>
+                        );
+                      })}
+                    </Box>
+                  </Collapse>
+                )}
+
+                {effectiveCollapsed ? (
+                  <Box sx={{ px: 0.65, py: 0.75 }}>
+                    {group.groups.map(({ page, children }) => {
+                      const visibleChildren = children.filter((child) => child.key !== 'book-builder');
+                      const parentActive = page.path === location.pathname || Boolean(page.aliases?.includes(location.pathname));
+                      const activeChildKey = visibleChildren.find(
+                        (child) => child.path === location.pathname || Boolean(child.aliases?.includes(location.pathname))
+                      )?.key;
+                      const active = parentActive || Boolean(activeChildKey);
+                      return (
+                        <Tooltip key={page.key} title={getSidebarPageLabel(page)} placement="right">
+                          <ListItemButton
+                            component={RouterLink}
+                            to={page.path}
+                            aria-current={active ? 'page' : undefined}
+                            onClick={() => {
+                              trackSidebarClick({
+                                section: group.label,
+                                label: getSidebarPageLabel(page),
+                                route: page.path,
+                                level: 'primary',
+                              });
+                              onClose();
+                            }}
+                            sx={{
+                              mb: 0.65,
+                              px: 0,
+                              py: 0.7,
+                              minHeight: 44,
+                              borderRadius: '12px',
+                              border: '1px solid',
+                              borderColor: active ? 'var(--fh-brand-dark)' : 'var(--fh-line)',
+                              bgcolor: active ? 'color-mix(in srgb, var(--fh-brand-soft) 40%, var(--fh-surface-bg) 60%)' : 'var(--fh-surface-bg)',
+                              justifyContent: 'center',
+                              transition:
+                                'transform var(--fh-duration-base) var(--fh-ease-premium), background-color var(--fh-duration-fast) ease, border-color var(--fh-duration-fast) ease',
+                              '&:hover': {
+                                bgcolor: active
+                                  ? 'color-mix(in srgb, var(--fh-brand-soft) 54%, var(--fh-surface-bg) 46%)'
+                                  : 'var(--fh-surface)',
+                                borderColor: active
+                                  ? 'var(--fh-brand-dark)'
+                                  : 'color-mix(in srgb, var(--fh-line) 72%, var(--fh-ink) 28%)',
+                                transform: 'translateY(-1px)',
+                              },
+                            }}
+                          >
+                            <ListItemIcon
+                              sx={{
+                                minWidth: 0,
+                                m: 0,
+                                color: active ? 'var(--fh-brand)' : 'var(--fh-slate)',
+                              }}
+                            >
+                              <page.icon size={16} />
+                            </ListItemIcon>
+                          </ListItemButton>
+                        </Tooltip>
+                      );
+                    })}
+                  </Box>
+                ) : null}
               </Box>
             ))}
           </List>
