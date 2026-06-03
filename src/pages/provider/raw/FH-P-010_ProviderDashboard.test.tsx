@@ -24,7 +24,7 @@ describe('Provider dashboard', () => {
 
     render(<ProviderDashboardPage />);
 
-    expect(screen.getByText(/Provider Dashboard/i)).toBeInTheDocument();
+    expect(screen.getByText(/FaithHub Dashboard/i)).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /Create Service/i })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /Create Campaign/i })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /Upload Content/i })).toBeInTheDocument();

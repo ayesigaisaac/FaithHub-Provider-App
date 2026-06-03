@@ -49,7 +49,7 @@ describe('ProviderSidebar compact navigation', () => {
     );
 
     expect(screen.queryByText('Workflow')).not.toBeInTheDocument();
-    expect(screen.getAllByText('Foundation').length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/Foundation/i).length).toBeGreaterThan(0);
 
     fireEvent.click(screen.getAllByRole('button', { name: /Foundation/i })[0]);
     expect(screen.getAllByRole('link', { name: /Dashboard/i }).length).toBeGreaterThan(0);

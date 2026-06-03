@@ -96,10 +96,10 @@ function getSidebarPageLabel(input: { key: string; title: string; shortTitle?: s
 
 function getSidebarPageHint(input: { key: string; title: string }) {
   const explicit: Record<string, string> = {
-    'provider-dashboard': 'Start here for provider metrics and actions',
-    'provider-onboarding': 'Register and enter the provider journey',
+    'provider-dashboard': 'Start here for FaithHub metrics and actions',
+    'provider-onboarding': 'Register and enter the FaithHub journey',
     'service-management': 'Review service cards and approval state',
-    'service-builder': 'Create a new faith-focused service',
+    'service-builder': 'Create a new FaithHub service',
     'campaign-management': 'Track campaign windows and approvals',
     'campaign-builder': 'Build a campaign around approved services',
     'content-upload': 'Upload posters, videos, and banners',
@@ -113,24 +113,24 @@ function getSidebarPageHint(input: { key: string; title: string }) {
     'reviews-and-moderation': 'Handle reviews and moderation queue',
     'events-manager': 'Plan and run events',
     'donations-and-funds': 'Track giving and active campaigns',
-    'profile-settings': 'Update account and workspace preferences',
+    'profile-settings': 'Update account and FaithHub workspace preferences',
   };
   if (explicit[input.key]) return explicit[input.key];
 
   const cleaned = input.title.replace(/^FaithHub Provider\s+/i, '').trim();
-  return `${cleaned} workspace tools`;
+  return `${cleaned} FaithHub tools`;
 }
 
 const quickStartItems = [
   {
     label: '1) Check Dashboard',
-    hint: 'See provider metrics and action items first',
+    hint: 'See FaithHub metrics and action items first',
     path: '/faithhub/provider/dashboard',
     icon: HomeRoundedIcon,
   },
   {
     label: '2) Open Services',
-    hint: 'Create or review provider services',
+    hint: 'Create or review FaithHub services',
     path: '/faithhub/provider/services',
     icon: FolderRoundedIcon,
   },

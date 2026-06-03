@@ -784,7 +784,7 @@ export function ProviderRegistrationPage() {
           <div className="space-y-4 xl:col-span-8">
             <ProviderSectionCard
               title="Organization and contact"
-              subtitle="Use a real provider identity so the dashboard, approvals, and live workflow feel connected from day one."
+              subtitle="Use a real FaithHub identity so the dashboard, approvals, and live workflow feel connected from day one."
               right={<ProviderStatusPill tone="neutral" left={<UserCircle2 size={12} />}>FaithHub Provider</ProviderStatusPill>}
             >
               <div className="grid gap-4 md:grid-cols-2">
@@ -830,26 +830,26 @@ export function ProviderRegistrationPage() {
         <div className="space-y-4 xl:col-span-4">
           <JourneyPhaseCard activePath={ROUTES.onboarding} onNavigate={(path) => navigate(path)} />
           <ProviderSectionCard
-              title="Next step"
-              subtitle="Once registration is saved, the provider profile screen unlocks the approval journey."
+              title="Your next step"
+              subtitle="Once registration is saved, the FaithHub profile flow unlocks the approval journey."
             >
               <div className="space-y-3">
                 <ProviderStatusPill tone="warn" left={<TimerReset size={12} />}>Pending Review</ProviderStatusPill>
                 <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-4">
-                  <div className="text-[12px] font-extrabold text-faith-ink">What happens next</div>
+                  <div className="text-[12px] font-extrabold text-faith-ink">Your next steps</div>
                   <ul className="mt-2 space-y-2 text-[12px] leading-6 text-faith-slate">
                     <li>Complete organization profile and verification files.</li>
                     <li>Submit the application for approval.</li>
-                    <li>Open the provider dashboard and start building services.</li>
+                    <li>Open the FaithHub dashboard and start building services.</li>
                   </ul>
                 </div>
                 <Button variant="secondary" className="w-full" onClick={() => navigate(ROUTES.profile)}>
-                  Continue to profile
+                  Complete profile
                 </Button>
               </div>
             </ProviderSectionCard>
 
-            <ProviderSectionCard title="Journey trail" subtitle="The app keeps the provider journey visible at every step.">
+            <ProviderSectionCard title="FaithHub route map" subtitle="The app keeps the provider journey visible at every step.">
               <div className="space-y-2">
                 {JOURNEY_STEPS.map((step, index) => (
                   <button
@@ -969,7 +969,7 @@ export function ProviderProfilePage() {
 
           <div className="space-y-4 xl:col-span-4">
             <JourneyPhaseCard activePath={ROUTES.profile} onNavigate={(path) => navigate(path)} />
-            <ProviderSectionCard title="Approval banner" subtitle="The provider profile remains in review until the application is submitted.">
+            <ProviderSectionCard title="Review banner" subtitle="The provider profile remains in review until the application is submitted.">
               <div className="space-y-3">
                 <ProviderStatusPill tone="warn" left={<Bell size={12} />}>Pending Review</ProviderStatusPill>
                 <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-4">
@@ -993,7 +993,7 @@ export function ProviderProfilePage() {
                   </div>
                 </div>
                 <Button variant="secondary" className="w-full" onClick={() => navigate(ROUTES.dashboard)}>
-                  Open dashboard
+                  Open FaithHub dashboard
                 </Button>
               </div>
             </ProviderSectionCard>
@@ -1022,8 +1022,8 @@ export function ProviderDashboardPage() {
   return (
     <ProviderPageScaffold
       icon={<LayoutDashboard className="h-6 w-6" />}
-      title="Provider Dashboard"
-      subtitle="Mission control for provider approvals, services, campaigns, content, and live session readiness."
+      title="FaithHub Dashboard"
+      subtitle="Mission control for FaithHub approvals, services, campaigns, content, and live session readiness."
       tags={
         <>
           <ProviderStatusPill tone={statusTone(profileStatus)} left={<ShieldCheck size={12} />}>{profileStatus}</ProviderStatusPill>
@@ -1031,16 +1031,16 @@ export function ProviderDashboardPage() {
           <ProviderStatusPill tone="neutral" left={<Bell size={12} />}>{notifications} notifications</ProviderStatusPill>
         </>
       }
-      pulse={<Alert severity="info">The new provider journey keeps registration, approvals, and live operations visible in one place.</Alert>}
+      pulse={<Alert severity="info">The FaithHub Provider journey keeps registration, approvals, and live operations visible in one place.</Alert>}
       actions={
         <>
           <Button variant="outline" onClick={() => navigate(ROUTES.profile)}>Complete profile</Button>
-          <Button variant="secondary" onClick={() => navigate(ROUTES.liveDashboard)}>Live sessions</Button>
+          <Button variant="secondary" onClick={() => navigate(ROUTES.liveDashboard)}>Go to live sessions</Button>
         </>
       }
       stats={
         <>
-          <KpiTile label="Profile status" value={profileStatus} hint="Approval gate for the workspace." tone={profileStatus === 'Approved' ? 'green' : 'orange'} />
+          <KpiTile label="Profile status" value={profileStatus} hint="Approval gate for the FaithHub workspace." tone={profileStatus === 'Approved' ? 'green' : 'orange'} />
           <KpiTile label="Services" value={services.length.toString()} hint={`${approvedServices} approved or published.`} tone="green" />
           <KpiTile label="Campaigns" value={campaigns.length.toString()} hint={`${activeCampaigns} active campaigns.`} tone="orange" />
           <KpiTile label="Live sessions" value={sessions.length.toString()} hint={`${liveSessions} scheduled or ready.`} tone="navy" />
@@ -1053,7 +1053,7 @@ export function ProviderDashboardPage() {
 
         <div className="grid gap-4 xl:grid-cols-12">
           <div className="space-y-4 xl:col-span-8">
-            <ProviderSectionCard title="Phased rollout" subtitle="Track the provider journey in the same order the project is being delivered.">
+            <ProviderSectionCard title="Phased rollout" subtitle="Track the FaithHub Provider journey in the same order the project is being delivered.">
               <div className="grid gap-3 md:grid-cols-2">
                 {DASHBOARD_PHASES.map((phase, index) => {
                   const Icon = phase.icon;
@@ -1091,7 +1091,7 @@ export function ProviderDashboardPage() {
               </div>
             </ProviderSectionCard>
 
-            <ProviderSectionCard title="Quick actions" subtitle="Move directly into the next part of the provider journey.">
+            <ProviderSectionCard title="Quick actions" subtitle="Move directly into the next part of the FaithHub Provider journey.">
               <div className="grid gap-3 md:grid-cols-2">
                 {[
                   { label: 'Create Service', icon: BriefcaseBusiness, path: ROUTES.serviceBuilder },
@@ -1113,7 +1113,7 @@ export function ProviderDashboardPage() {
                         </span>
                         <div>
                           <div className="text-[13px] font-extrabold text-faith-ink">{action.label}</div>
-                          <div className="text-[11px] text-faith-slate">Open the matching workspace</div>
+                          <div className="text-[11px] text-faith-slate">Open the matching FaithHub workspace</div>
                         </div>
                       </div>
                       <ArrowRight size={14} />
@@ -1123,7 +1123,7 @@ export function ProviderDashboardPage() {
               </div>
             </ProviderSectionCard>
 
-            <ProviderSectionCard title="Recent operations" subtitle="A compact overview of approvals, content, and live readiness.">
+            <ProviderSectionCard title="Recent operations" subtitle="A compact overview of approvals, content, and live readiness inside FaithHub.">
               <div className="grid gap-3 md:grid-cols-2">
                 <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-4">
                   <div className="text-[12px] font-extrabold text-faith-ink">Approval queue</div>
@@ -1157,12 +1157,12 @@ export function ProviderDashboardPage() {
           </div>
 
           <div className="space-y-4 xl:col-span-4">
-            <ProviderSectionCard title="Workspace summary" subtitle="A live snapshot of the provider brand and readiness.">
+            <ProviderSectionCard title="Workspace summary" subtitle="A live snapshot of the FaithHub brand and readiness.">
               <div className="space-y-3">
                 <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-4">
                   <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">Workspace</div>
                   <div className="mt-1 text-[16px] font-black text-faith-ink">{auth?.workspace?.brand || 'FaithHub Provider'}</div>
-                  <div className="mt-1 text-[12px] text-faith-slate">{auth?.workspace?.campus || 'Kampala'} campus - approval-driven operations</div>
+                  <div className="mt-1 text-[12px] text-faith-slate">{auth?.workspace?.campus || 'Kampala'} campus - approval-driven FaithHub operations</div>
                 </div>
                 <Button variant="outline" className="w-full" onClick={() => navigate(ROUTES.assetLibrary)}>
                   Open asset library
