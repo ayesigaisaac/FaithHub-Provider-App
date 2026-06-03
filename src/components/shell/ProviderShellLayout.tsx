@@ -80,7 +80,7 @@ const QUICK_GUIDE_BY_PATH: Record<
     description: 'Preview the audience experience before the live session begins.',
     primaryLabel: 'Go Live',
     primaryPath: '/faithhub/provider/live-studio',
-    secondaryLabel: 'Back to dashboard',
+    secondaryLabel: 'Back to Dashboard',
     secondaryPath: '/faithhub/provider/live-dashboard',
   },
 };

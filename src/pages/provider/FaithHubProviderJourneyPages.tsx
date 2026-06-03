@@ -1165,10 +1165,10 @@ export function ProviderDashboardPage() {
                   <div className="mt-1 text-[12px] text-faith-slate">{auth?.workspace?.campus || 'Kampala'} campus - approval-driven FaithHub operations</div>
                 </div>
                 <Button variant="outline" className="w-full" onClick={() => navigate(ROUTES.assetLibrary)}>
-                  Open asset library
+                  Open Asset Library
                 </Button>
                 <Button variant="secondary" className="w-full" onClick={() => navigate(ROUTES.liveStudio)}>
-                  Preview live studio
+                  Preview Live Studio
                 </Button>
               </div>
             </ProviderSectionCard>
@@ -1267,7 +1267,7 @@ export function ServiceManagementPage() {
                   <div className="mt-1 text-[12px] text-faith-slate">{selected.description}</div>
                 </div>
                 <Button variant="secondary" className="w-full" onClick={() => navigate(ROUTES.serviceBuilder)}>
-                  Open service builder
+                  Open Service Builder
                 </Button>
               </div>
             ) : (
@@ -1473,7 +1473,7 @@ export function CampaignManagementPage() {
                   <div className="mt-1 text-[12px] text-faith-slate">{selected.banner}</div>
                 </div>
                 <Button variant="secondary" className="w-full" onClick={() => navigate(ROUTES.campaignBuilder)}>
-                  Open campaign builder
+                  Open Campaign Builder
                 </Button>
               </div>
             ) : (
@@ -2040,7 +2040,7 @@ export function LiveSessionBuilderPage() {
           <ProviderSectionCard title="Approval preview" subtitle="Selected assets and services will be checked before the live session is approved.">
             <div className="space-y-2">
               <ProviderStatusPill tone="neutral">{selectedAssetIds.length} approved assets selected</ProviderStatusPill>
-              <Button variant="secondary" className="w-full" onClick={() => navigate(ROUTES.assetLibrary)}>Open asset library</Button>
+              <Button variant="secondary" className="w-full" onClick={() => navigate(ROUTES.assetLibrary)}>Open Asset Library</Button>
             </div>
           </ProviderSectionCard>
         </div>
@@ -2310,7 +2310,7 @@ export function LiveSessionDetailsPage() {
           </div>
         </div>
       ) : (
-        <EmptyState title="No session selected" body="Open the live dashboard and choose a session before reviewing details." action={<Button variant="primary" onClick={() => navigate(ROUTES.liveDashboard)}>Open live dashboard</Button>} />
+        <EmptyState title="No session selected" body="Open the live dashboard and choose a session before reviewing details." action={<Button variant="primary" onClick={() => navigate(ROUTES.liveDashboard)}>Open Live Dashboard</Button>} />
       )}
     </ProviderPageScaffold>
   );
@@ -2412,7 +2412,7 @@ export function WaitingRoomPage() {
           </div>
         </div>
       ) : (
-        <EmptyState title="No session selected" body="Choose a session from live management before previewing the waiting room." action={<Button variant="primary" onClick={() => navigate(ROUTES.liveDashboard)}>Open live dashboard</Button>} />
+        <EmptyState title="No session selected" body="Choose a session from live management before previewing the waiting room." action={<Button variant="primary" onClick={() => navigate(ROUTES.liveDashboard)}>Open Live Dashboard</Button>} />
       )}
     </ProviderPageScaffold>
   );
@@ -2466,7 +2466,7 @@ export function LiveStudioPage() {
       }
       actions={
         <>
-          <Button variant="outline" onClick={() => navigate(ROUTES.liveDashboard)}>Back to dashboard</Button>
+          <Button variant="outline" onClick={() => navigate(ROUTES.liveDashboard)}>Back to Dashboard</Button>
           <Button variant="secondary" onClick={() => navigate(`${ROUTES.waitingRoom}?sessionId=${encodeURIComponent(selected?.id || selectedId)}`)}>Preview FaithHub Waiting Room</Button>
           <Button variant="primary" onClick={() => navigate(`/faithhub/provider/stream-to-platforms?sessionId=${encodeURIComponent(selected?.id || selectedId)}`)}>
             Stream-to-Platforms
@@ -2537,7 +2537,7 @@ export function LiveStudioPage() {
           </div>
         </div>
       ) : (
-        <EmptyState title="No live session selected" body="Open the live dashboard and choose a session before launching the studio." action={<Button variant="primary" onClick={() => navigate(ROUTES.liveDashboard)}>Open live dashboard</Button>} />
+        <EmptyState title="No live session selected" body="Open the live dashboard and choose a session before launching the studio." action={<Button variant="primary" onClick={() => navigate(ROUTES.liveDashboard)}>Open Live Dashboard</Button>} />
       )}
     </ProviderPageScaffold>
   );
