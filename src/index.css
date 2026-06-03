@@ -346,13 +346,14 @@ video {
   align-items: center;
   justify-content: center;
   gap: var(--fh-space-2);
-  min-height: 40px;
-  border-radius: var(--fh-radius-md);
-  padding: 0 var(--fh-space-4);
+  min-height: 42px;
+  border-radius: 14px;
+  padding: 0 18px;
   border: 1px solid transparent;
   font-family: var(--fh-font-family-body);
   font-size: var(--fh-font-size-sm);
-  font-weight: 700;
+  font-weight: 800;
+  letter-spacing: -0.01em;
   line-height: 1;
   transition: background-color 170ms ease, color 170ms ease, border-color 170ms ease, box-shadow 170ms ease, transform 170ms ease;
 }
@@ -372,25 +373,27 @@ video {
 }
 
 .ds-btn--primary {
-  background: linear-gradient(90deg, var(--fh-brand-dark) 0%, var(--fh-brand) 100%);
+  background: linear-gradient(90deg, color-mix(in srgb, var(--fh-brand-dark) 90%, black 10%) 0%, var(--fh-brand) 100%);
   color: #ffffff;
-  box-shadow: var(--fh-shadow-sm);
+  box-shadow: var(--fh-shadow-sm), 0 0 0 1px color-mix(in srgb, var(--fh-brand) 24%, transparent);
 }
 
 .ds-btn--primary:hover:not(:disabled) {
-  box-shadow: var(--fh-shadow-md);
+  box-shadow: var(--fh-shadow-md), 0 0 0 1px color-mix(in srgb, var(--fh-brand) 34%, transparent);
 }
 
 .ds-btn--secondary {
-  background: color-mix(in srgb, var(--fh-brand-soft) 72%, white 28%);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--fh-brand-soft) 78%, white 22%) 0%, color-mix(in srgb, var(--fh-brand-soft) 66%, white 34%) 100%);
   color: var(--fh-brand-dark);
-  border-color: color-mix(in srgb, var(--fh-brand) 24%, var(--fh-line) 76%);
+  border-color: color-mix(in srgb, var(--fh-brand) 20%, var(--fh-line) 80%);
+  box-shadow: 0 1px 0 color-mix(in srgb, white 60%, transparent);
 }
 
 .ds-btn--outline {
-  background: var(--fh-surface-bg);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--fh-surface-bg) 96%, white 4%) 0%, var(--fh-surface-bg) 100%);
   color: var(--fh-ink);
   border-color: var(--fh-line);
+  box-shadow: 0 1px 0 color-mix(in srgb, white 58%, transparent);
 }
 
 .ds-icon {

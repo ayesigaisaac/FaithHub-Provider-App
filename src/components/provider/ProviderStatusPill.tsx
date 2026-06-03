@@ -45,7 +45,7 @@ export function ProviderStatusPill({
   return (
     <span
       className={cx(
-        "inline-flex min-h-9 items-center gap-1.5 rounded-full border px-3 py-1 text-[11px] font-semibold sm:text-[12px]",
+        "inline-flex min-h-9 items-center gap-1.5 whitespace-nowrap rounded-full border px-3 py-1 text-[10px] font-extrabold uppercase tracking-[0.09em] sm:text-[11px]",
         toneClasses[tone],
         className,
       )}
