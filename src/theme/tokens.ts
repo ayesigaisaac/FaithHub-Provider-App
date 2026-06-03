@@ -81,12 +81,12 @@ export const designTokens = {
       lightGrey: '#f2f2f2',
     },
     dark: {
-      ink: '#f8fafc',
-      slate: '#cbd5e1',
-      line: '#475569',
-      paper: '#101827',
-      pageBg: '#0a1020',
-      surface: '#16233a',
+      ink: '#f5f7fb',
+      slate: '#aabbd2',
+      line: '#2a3c57',
+      paper: '#0e172a',
+      pageBg: '#08111d',
+      surface: '#13253f',
     },
   },
 } as const;

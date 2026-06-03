@@ -28,13 +28,13 @@ export function createAppTheme(mode: PaletteMode) {
       main: brandTokens.orange,
     },
     text: {
-      primary: isDark ? '#f8fafc' : brandTokens.ink,
-      secondary: isDark ? '#cbd5e1' : brandTokens.slate,
+      primary: isDark ? '#f5f7fb' : brandTokens.ink,
+      secondary: isDark ? '#aabbd2' : brandTokens.slate,
     },
-    divider: alpha(isDark ? '#ffffff' : brandTokens.ink, isDark ? 0.18 : 0.08),
+    divider: alpha(isDark ? '#ffffff' : brandTokens.ink, isDark ? 0.16 : 0.08),
     background: {
-      default: isDark ? '#0b1220' : '#f4f8f6',
-      paper: isDark ? '#0f172a' : brandTokens.paper,
+      default: isDark ? '#08111d' : '#f4f8f6',
+      paper: isDark ? '#0e172a' : brandTokens.paper,
     },
   },
   shape: {
@@ -55,7 +55,7 @@ export function createAppTheme(mode: PaletteMode) {
         },
         body: {
           background: isDark
-            ? 'radial-gradient(circle at 0% 0%, rgba(3,205,140,0.16), transparent 24%), radial-gradient(circle at 100% 0%, rgba(247,127,0,0.12), transparent 22%), #0a1020'
+            ? 'radial-gradient(circle at 0% 0%, rgba(3,205,140,0.16), transparent 24%), radial-gradient(circle at 100% 0%, rgba(247,127,0,0.12), transparent 22%), linear-gradient(180deg, #08111d 0%, #0e172a 100%)'
             : 'radial-gradient(circle at 0% 0%, rgba(3,205,140,0.08), transparent 22%), radial-gradient(circle at 100% 0%, rgba(247,127,0,0.07), transparent 18%), #f4f8f6',
         },
         '#root': {

@@ -144,32 +144,32 @@ h6 {
 }
 
 html.dark body {
-  color: #f8fafc;
-  background-color: #0a1020;
+  color: #f5f7fb;
+  background-color: #08111d;
   background-image:
-    radial-gradient(circle at 8% 10%, rgba(3, 205, 140, 0.16) 0%, transparent 40%),
-    radial-gradient(circle at 90% 8%, rgba(247, 127, 0, 0.12) 0%, transparent 35%),
-    linear-gradient(180deg, #101827 0%, #0a1020 100%);
+    radial-gradient(circle at 8% 10%, rgba(3, 205, 140, 0.18) 0%, transparent 38%),
+    radial-gradient(circle at 90% 8%, rgba(247, 127, 0, 0.14) 0%, transparent 34%),
+    linear-gradient(180deg, #08111d 0%, #0e172a 100%);
 }
 
 html.dark {
   color-scheme: dark;
-  --fh-ink: #f8fafc;
-  --fh-slate: #cbd5e1;
-  --fh-muted: #cbd5e1;
-  --fh-muted-strong: #f8fafc;
-  --fh-line: #475569;
-  --fh-surface: #16233a;
-  --fh-page-bg: #0a1020;
-  --fh-surface-bg: #101827;
+  --fh-ink: #f5f7fb;
+  --fh-slate: #aabbd2;
+  --fh-muted: #aabbd2;
+  --fh-muted-strong: #f5f7fb;
+  --fh-line: #2a3c57;
+  --fh-surface: #13253f;
+  --fh-page-bg: #08111d;
+  --fh-surface-bg: #0e172a;
   --fh-aura-gradient: radial-gradient(circle at 12% 10%, rgba(3, 205, 140, 0.18), transparent 44%),
     radial-gradient(circle at 88% 14%, rgba(247, 127, 0, 0.12), transparent 40%),
-    linear-gradient(180deg, #101827 0%, #0a1020 100%);
+    linear-gradient(180deg, #08111d 0%, #0e172a 100%);
   --fh-brand-gradient-soft: linear-gradient(
     150deg,
     rgba(3, 205, 140, 0.1) 0%,
-    rgba(16, 24, 39, 0.92) 46%,
-    rgba(22, 35, 58, 0.96) 100%
+    rgba(8, 17, 29, 0.94) 46%,
+    rgba(19, 37, 63, 0.97) 100%
   );
 }
 
@@ -724,8 +724,8 @@ html.dark .fh-uplift-surface {
 
 /* Uniform dark skin for imported provider pages that still carry light-only styles. */
 html.dark .provider-page-density--compact > :is(div, main):is([class*='min-h-screen'], [class*='min-h-full']) {
-  background-color: #020617 !important;
-  color: #e2e8f0 !important;
+  background-color: #08111d !important;
+  color: #f5f7fb !important;
 }
 
 html.dark .provider-page-density--compact :is(
@@ -748,9 +748,9 @@ html.dark .provider-page-density--compact :is(
     [class*='bg-[#fbfbfd]'],
     [class*='bg-[#edf9f5]'],
     [class*='bg-[#e8f8f3]'],
-    [class*='bg-[#eef2ff]']
+  [class*='bg-[#eef2ff]']
   ) {
-  background-color: #0f172a !important;
+  background-color: #0e172a !important;
 }
 
 html.dark .provider-page-density--compact :is(
@@ -761,10 +761,10 @@ html.dark .provider-page-density--compact :is(
     [class*='text-gray-800'],
     [class*='text-gray-700'],
     [class*='text-neutral-900'],
-    [class*='text-neutral-800'],
+  [class*='text-neutral-800'],
     [class*='text-neutral-700']
   ) {
-  color: #e2e8f0 !important;
+  color: #f5f7fb !important;
 }
 
 html.dark .provider-page-density--compact :is(
@@ -776,18 +776,18 @@ html.dark .provider-page-density--compact :is(
     [class*='text-gray-400'],
     [class*='text-neutral-600'],
     [class*='text-neutral-500'],
-    [class*='text-neutral-400']
+  [class*='text-neutral-400']
   ) {
-  color: #94a3b8 !important;
+  color: #b6c2d1 !important;
 }
 
 html.dark .text-faith-slate {
-  color: #cbd5e1 !important;
+  color: #b6c2d1 !important;
 }
 
 html.dark .text-slate-500,
 html.dark .text-slate-400 {
-  color: #cbd5e1 !important;
+  color: #b6c2d1 !important;
 }
 
 html.dark .provider-page-density--compact :is(
@@ -801,9 +801,9 @@ html.dark .provider-page-density--compact :is(
     [class*='border-neutral-300'],
     [class*='ring-slate-200'],
     [class*='ring-gray-200'],
-    [class*='ring-neutral-200']
+  [class*='ring-neutral-200']
   ) {
-  border-color: #334155 !important;
+  border-color: #31415c !important;
 }
 
 html.dark .provider-page-density--compact :is(
@@ -813,21 +813,21 @@ html.dark .provider-page-density--compact :is(
 }
 
 html.dark .provider-page-density--compact :is(
-    [class*='bg-[#F']
+  [class*='bg-[#F']
   ):not([class*='bg-[#F77F00']) {
-  background-color: #0f172a !important;
+  background-color: #0e172a !important;
 }
 
 html.dark .provider-page-density--compact :is(
-    [class*='bg-[#e']
+  [class*='bg-[#e']
   ):not([class*='bg-[#03cd8c']):not([class*='bg-[#10b981']):not([class*='bg-[#0ea5e9']) {
-  background-color: #111b2f !important;
+  background-color: #13253f !important;
 }
 
 html.dark .provider-page-density--compact :is(
-    [class*='bg-[#E']
+  [class*='bg-[#E']
   ):not([class*='bg-[#03CD8C']) {
-  background-color: #111b2f !important;
+  background-color: #13253f !important;
 }
 
 html.dark .provider-page-density--compact :is(
@@ -836,26 +836,26 @@ html.dark .provider-page-density--compact :is(
     [class*='text-[#0b1d49]'],
     [class*='text-[#0B1D49]'],
     [class*='text-[#1e2b6d]'],
-    [class*='text-[#1E2B6D]']
+  [class*='text-[#1E2B6D]']
   ) {
-  color: #e2e8f0 !important;
+  color: #f5f7fb !important;
 }
 
 html.dark .provider-page-density--compact :is(input, select, textarea) {
-  background-color: #0b1220 !important;
-  color: #e2e8f0 !important;
-  border-color: #334155 !important;
+  background-color: #08111d !important;
+  color: #f5f7fb !important;
+  border-color: #2a3c57 !important;
 }
 
 html.dark .provider-page-density--compact :is(input, select, textarea)::placeholder {
-  color: #94a3b8 !important;
+  color: #aabbd2 !important;
 }
 
 html.dark .provider-page-density--compact :is(
     [class*='shadow'],
     [class*='shadow-sm'],
     [class*='shadow-md'],
-    [class*='shadow-lg']
+  [class*='shadow-lg']
   ) {
   box-shadow: 0 16px 36px -26px rgba(2, 6, 23, 0.86) !important;
 }
@@ -874,11 +874,11 @@ html.dark .provider-page-density--compact :is(
     [style*='#fdebd6'],
     [style*='#e6ebfb'],
     [style*='rgb(217, 247, 238)'],
-    [style*='rgb(255, 240, 223)'],
-    [style*='rgb(232, 238, 252)']
+  [style*='rgb(255, 240, 223)'],
+  [style*='rgb(232, 238, 252)']
   ) {
-  background-color: #111b2f !important;
-  color: #e2e8f0 !important;
+  background-color: #13253f !important;
+  color: #f5f7fb !important;
 }
 
 /* Global mode fallbacks for legacy utility classes used outside compact provider pages. */
