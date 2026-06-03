@@ -28,6 +28,6 @@ describe('Live dashboard', () => {
     expect(screen.getByRole('button', { name: /Create Live Session/i })).toBeInTheDocument();
 
     await user.click(screen.getByRole('button', { name: /Preview Waiting Room/i }));
-    expect(navigateMock).toHaveBeenCalledWith('/faithhub/provider/waiting-room');
+    expect(navigateMock).toHaveBeenCalledWith(expect.stringMatching(/^\/faithhub\/provider\/waiting-room/), undefined);
   });
 });

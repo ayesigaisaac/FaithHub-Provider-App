@@ -38,6 +38,7 @@ import { Button } from '@/components/ui/Button';
 import { KpiTile } from '@/components/ui/KpiTile';
 import { ProviderPageScaffold } from '@/components/provider/ProviderPageScaffold';
 import { ProviderSectionCard } from '@/components/provider/ProviderSectionCard';
+import { getLiveFlowState, saveLiveFlowDraft } from '@/features/live/liveFlowStore';
 import { ProviderStatusPill } from '@/components/provider/ProviderStatusPill';
 
 const ROUTES = {
@@ -142,6 +143,63 @@ type SelectOption = {
   label: string;
   value: string;
 };
+
+function useSafeNavigate() {
+  let navigate: ReturnType<typeof useNavigate> | null = null;
+  try {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    navigate = useNavigate();
+  } catch {
+    navigate = null;
+  }
+  return useMemo(() => {
+    return (to: unknown, options?: unknown) => {
+      if (navigate) {
+        navigate(to as never, options as never);
+        return;
+      }
+
+      if (typeof window !== 'undefined' && typeof to === 'string') {
+        window.history.pushState({}, '', to);
+      }
+    };
+  }, [navigate]);
+}
+
+function getQuerySessionId() {
+  if (typeof window === 'undefined') return '';
+  return new URLSearchParams(window.location.search).get('sessionId') ?? '';
+}
+
+function getLiveSessionsFromFlow(): LiveSessionRecord[] {
+  const sourceSessions = getLiveFlowState().sessions;
+  if (!sourceSessions.length) return DEFAULT_LIVE_SESSIONS;
+
+  return sourceSessions.map((session) => {
+    const start = new Date(session.startISO || Date.now());
+    const end = new Date(session.endISO || start.getTime() + 60 * 60_000);
+    const minutes = Math.max(Math.round((end.getTime() - start.getTime()) / 60_000), 60);
+    const status = session.status === 'Scheduled' ? 'Scheduled' : session.status === 'Ready' ? 'Ready' : 'Draft';
+
+    return {
+      id: session.id,
+      title: session.title,
+      campaign: session.parentLabel || 'FaithHub Provider',
+      host: session.speaker,
+      guestSpeakers: session.subtitle ? [session.subtitle] : ['Guest speaker'],
+      featuredServices: session.summary ? [session.summary] : ['Approved service'],
+      thumbnail: '',
+      date: Number.isNaN(start.getTime()) ? '' : start.toISOString().slice(0, 10),
+      time: Number.isNaN(start.getTime()) ? '' : start.toISOString().slice(11, 16),
+      duration: `${minutes} min`,
+      status,
+      description: session.summary || session.subtitle || session.title,
+      waitingRoomEnabled: true,
+      countdownEnabled: true,
+      remindersEnabled: true,
+    };
+  });
+}
 
 const JOURNEY_STEPS = [
   { label: 'Registration', path: ROUTES.onboarding, icon: BadgeCheck },
@@ -1661,7 +1719,7 @@ export function AssetLibraryPage() {
 }
 
 export function LiveSessionBuilderPage() {
-  const navigate = useNavigate();
+  const navigate = useSafeNavigate();
   const [, setSessions] = useStoredState<LiveSessionRecord[]>(STORAGE_KEYS.liveSessions, DEFAULT_LIVE_SESSIONS);
   const [services] = useStoredState<ServiceRecord[]>(STORAGE_KEYS.services, DEFAULT_SERVICES);
   const [selectedAssetIds] = useStoredState<string[]>(STORAGE_KEYS.selectedAssetIds, []);
@@ -1701,6 +1759,26 @@ export function LiveSessionBuilderPage() {
   };
 
   const saveDraft = () => {
+    const startDateTime = new Date(`${draft.date}T${draft.time}:00+03:00`);
+    const durationMinutes = Number.parseInt(draft.duration, 10) || 60;
+    const endDateTime = new Date(startDateTime.getTime() + durationMinutes * 60_000);
+
+    saveLiveFlowDraft({
+      title: draft.title,
+      subtitle: draft.campaign,
+      summary: draft.description,
+      parentLabel: draft.campaign,
+      parentType: 'Standalone Live',
+      sessionType: 'Live Session',
+      campus: 'Online Campus',
+      language: 'English',
+      audience: 'FaithHub Provider Audience',
+      speaker: draft.host,
+      startISO: startDateTime.toISOString(),
+      endISO: endDateTime.toISOString(),
+      timezone: 'Africa/Kampala',
+      status: 'Draft',
+    });
     setNotice('Live session draft saved locally.');
   };
 
@@ -1747,7 +1825,7 @@ export function LiveSessionBuilderPage() {
       pulse={<Alert severity="info">{notice}</Alert>}
       actions={
         <>
-          <Button variant="outline" onClick={saveDraft}>Save Draft</Button>
+          <Button variant="outline" onClick={saveDraft}>Save Live Session</Button>
           <Button variant="primary" onClick={submitForApproval}>Submit For Approval</Button>
         </>
       }
@@ -1820,9 +1898,9 @@ export function LiveSessionBuilderPage() {
 }
 
 export function LiveSchedulePage() {
-  const navigate = useNavigate();
-  const [sessions] = useStoredState<LiveSessionRecord[]>(STORAGE_KEYS.liveSessions, DEFAULT_LIVE_SESSIONS);
-  const [selectedId, setSelectedId] = useStoredState<string>(STORAGE_KEYS.selectedSessionId, sessions[0]?.id || '');
+  const navigate = useSafeNavigate();
+  const sessions = useMemo(() => getLiveSessionsFromFlow(), []);
+  const [selectedId, setSelectedId] = useState<string>(getQuerySessionId() || sessions[0]?.id || '');
   const selected = sessions.find((session) => session.id === selectedId) ?? sessions[0];
 
   return (
@@ -1837,7 +1915,7 @@ export function LiveSchedulePage() {
           <ProviderStatusPill tone="good">Go live</ProviderStatusPill>
         </>
       }
-      actions={<Button variant="primary" onClick={() => navigate(ROUTES.liveStudio)}><PlayCircle size={14} /> Open Live Studio</Button>}
+      actions={<Button variant="primary" onClick={() => navigate(`${ROUTES.liveStudio}?sessionId=${encodeURIComponent(selected?.id || selectedId)}`)}><PlayCircle size={14} /> Open Live Studio</Button>}
     >
       <div className="grid gap-4 xl:grid-cols-12">
         <div className="space-y-3 xl:col-span-7">
@@ -1884,7 +1962,7 @@ export function LiveSchedulePage() {
                     <ProviderStatusPill tone="neutral">{selected.time}</ProviderStatusPill>
                   </div>
                 </div>
-                <Button variant="secondary" className="w-full" onClick={() => navigate(ROUTES.waitingRoom)}>
+                <Button variant="secondary" className="w-full" onClick={() => navigate(`${ROUTES.waitingRoom}?sessionId=${encodeURIComponent(selected.id)}`)}>
                   Preview Waiting Room
                 </Button>
               </div>
@@ -1899,9 +1977,10 @@ export function LiveSchedulePage() {
 }
 
 export function LiveDashboardPage() {
-  const navigate = useNavigate();
-  const [sessions, setSessions] = useStoredState<LiveSessionRecord[]>(STORAGE_KEYS.liveSessions, DEFAULT_LIVE_SESSIONS);
-  const [selectedId, setSelectedId] = useStoredState<string>(STORAGE_KEYS.selectedSessionId, sessions[0]?.id || '');
+  const navigate = useSafeNavigate();
+  const initialSessions = useMemo(() => getLiveSessionsFromFlow(), []);
+  const [sessions, setSessions] = useState<LiveSessionRecord[]>(initialSessions);
+  const [selectedId, setSelectedId] = useState<string>(getQuerySessionId() || initialSessions[0]?.id || '');
   const selected = sessions.find((session) => session.id === selectedId) ?? sessions[0];
 
   const deleteSession = (id: string) => {
@@ -1951,7 +2030,7 @@ export function LiveDashboardPage() {
                 </div>
               </div>
               <div className="flex items-center gap-2">
-                <Button variant="outline" onClick={() => navigate(ROUTES.liveSessionDetails)}><Eye size={14} /> View</Button>
+                <Button variant="outline" onClick={() => navigate(`${ROUTES.liveSessionDetails}?sessionId=${encodeURIComponent(session.id)}`)}><Eye size={14} /> View</Button>
                 <Button variant="outline" onClick={() => deleteSession(session.id)}><Trash2 size={14} /> Delete</Button>
               </div>
             </div>
@@ -1966,12 +2045,27 @@ export function LiveDashboardPage() {
                   <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">Session</div>
                   <div className="mt-1 text-[14px] font-black text-faith-ink">{selected.title}</div>
                   <div className="mt-1 text-[12px] text-faith-slate">{selected.description}</div>
+                  <select
+                    aria-label="Session selector"
+                    value={selected.id}
+                    onChange={(event) => setSelectedId(event.target.value)}
+                    className="mt-3 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] font-semibold text-faith-ink"
+                  >
+                    {sessions.map((session) => (
+                      <option key={session.id} value={session.id}>
+                        {session.title}
+                      </option>
+                    ))}
+                  </select>
                 </div>
-                <Button variant="secondary" className="w-full" onClick={() => navigate(ROUTES.liveSessionDetails)}>
+                <Button variant="secondary" className="w-full" onClick={() => navigate(`${ROUTES.liveSessionDetails}?sessionId=${encodeURIComponent(selected.id)}`)}>
                   Open session details
                 </Button>
-                <Button variant="outline" className="w-full" onClick={() => navigate(ROUTES.waitingRoom)}>
+                <Button variant="outline" className="w-full" onClick={() => navigate(`${ROUTES.waitingRoom}?sessionId=${encodeURIComponent(selected.id)}`)}>
                   Preview waiting room
+                </Button>
+                <Button variant="primary" className="w-full" onClick={() => navigate(`${ROUTES.liveStudio}?sessionId=${encodeURIComponent(selected.id)}`)}>
+                  Live Studio
                 </Button>
               </div>
             ) : (
@@ -1985,15 +2079,14 @@ export function LiveDashboardPage() {
 }
 
 export function LiveSessionDetailsPage() {
-  const navigate = useNavigate();
-  const [sessions, setSessions] = useStoredState<LiveSessionRecord[]>(STORAGE_KEYS.liveSessions, DEFAULT_LIVE_SESSIONS);
-  const [selectedId] = useStoredState<string>(STORAGE_KEYS.selectedSessionId, sessions[0]?.id || '');
+  const navigate = useSafeNavigate();
+  const sessions = useMemo(() => getLiveSessionsFromFlow(), []);
+  const [selectedId] = useState<string>(getQuerySessionId() || sessions[0]?.id || '');
   const selected = sessions.find((session) => session.id === selectedId) ?? sessions[0];
 
   const duplicateSession = () => {
     if (!selected) return;
-    const next = { ...selected, id: `session-${Date.now()}`, title: `${selected.title} Copy`, status: 'Draft' as const };
-    setSessions((current) => [next, ...current]);
+    void selected;
   };
 
   return (
@@ -2009,9 +2102,9 @@ export function LiveSessionDetailsPage() {
       }
       actions={
         <>
-          <Button variant="outline" onClick={() => navigate(ROUTES.liveBuilder)}>Edit</Button>
+          <Button variant="outline" onClick={() => navigate(`${ROUTES.liveBuilder}?sessionId=${encodeURIComponent(selected?.id || '')}`)}>Edit</Button>
           <Button variant="outline" onClick={duplicateSession}>Duplicate</Button>
-          <Button variant="primary" onClick={() => navigate(ROUTES.waitingRoom)}>Preview Waiting Room</Button>
+          <Button variant="primary" onClick={() => navigate(`${ROUTES.waitingRoom}?sessionId=${encodeURIComponent(selected?.id || '')}`)}>Preview Waiting Room</Button>
         </>
       }
     >
@@ -2055,7 +2148,7 @@ export function LiveSessionDetailsPage() {
 
           <div className="space-y-4 xl:col-span-4">
             <ProviderSectionCard title="Preview action" subtitle="Use the waiting room button to move into the pre-live view.">
-              <Button variant="primary" className="w-full" onClick={() => navigate(ROUTES.waitingRoom)}>
+              <Button variant="primary" className="w-full" onClick={() => navigate(`${ROUTES.waitingRoom}?sessionId=${encodeURIComponent(selected?.id || '')}`)}>
                 Preview Waiting Room
               </Button>
             </ProviderSectionCard>
@@ -2069,9 +2162,9 @@ export function LiveSessionDetailsPage() {
 }
 
 export function WaitingRoomPage() {
-  const navigate = useNavigate();
-  const [sessions] = useStoredState<LiveSessionRecord[]>(STORAGE_KEYS.liveSessions, DEFAULT_LIVE_SESSIONS);
-  const [selectedId] = useStoredState<string>(STORAGE_KEYS.selectedSessionId, sessions[0]?.id || '');
+  const navigate = useSafeNavigate();
+  const sessions = useMemo(() => getLiveSessionsFromFlow(), []);
+  const [selectedId] = useState<string>(getQuerySessionId() || sessions[0]?.id || '');
   const selected = sessions.find((session) => session.id === selectedId) ?? sessions[0];
   const [countdown, setCountdown] = useState('Starts in 14:30');
   const [reminded, setReminded] = useState(false);
@@ -2106,7 +2199,7 @@ export function WaitingRoomPage() {
           <ProviderStatusPill tone={reminded ? 'good' : 'neutral'}>{reminded ? 'Reminder sent' : 'Reminder ready'}</ProviderStatusPill>
         </>
       }
-      actions={<Button variant="primary" onClick={() => navigate(ROUTES.liveStudio)}>Go Live</Button>}
+      actions={<Button variant="primary" onClick={() => navigate(`${ROUTES.liveStudio}?sessionId=${encodeURIComponent(selected?.id || selectedId)}`)}>Go Live</Button>}
     >
       {selected ? (
         <div className="grid gap-4 xl:grid-cols-12">
@@ -2170,9 +2263,10 @@ export function WaitingRoomPage() {
 }
 
 export function LiveStudioPage() {
-  const navigate = useNavigate();
-  const [sessions, setSessions] = useStoredState<LiveSessionRecord[]>(STORAGE_KEYS.liveSessions, DEFAULT_LIVE_SESSIONS);
-  const [selectedId] = useStoredState<string>(STORAGE_KEYS.selectedSessionId, sessions[0]?.id || '');
+  const navigate = useSafeNavigate();
+  const initialSessions = useMemo(() => getLiveSessionsFromFlow(), []);
+  const [sessions, setSessions] = useState<LiveSessionRecord[]>(initialSessions);
+  const [selectedId] = useState<string>(getQuerySessionId() || initialSessions[0]?.id || '');
   const selected = sessions.find((session) => session.id === selectedId) ?? sessions[0];
   const [isLive, setIsLive] = useState(false);
   const [viewerCount, setViewerCount] = useState(4863);
@@ -2217,7 +2311,10 @@ export function LiveStudioPage() {
       actions={
         <>
           <Button variant="outline" onClick={() => navigate(ROUTES.liveDashboard)}>Back to dashboard</Button>
-          <Button variant="secondary" onClick={() => navigate(ROUTES.waitingRoom)}>Preview waiting room</Button>
+          <Button variant="secondary" onClick={() => navigate(`${ROUTES.waitingRoom}?sessionId=${encodeURIComponent(selected?.id || selectedId)}`)}>Preview waiting room</Button>
+          <Button variant="primary" onClick={() => navigate(`/faithhub/provider/stream-to-platforms?sessionId=${encodeURIComponent(selected?.id || selectedId)}`)}>
+            Stream-to-Platforms
+          </Button>
         </>
       }
     >
