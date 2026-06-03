@@ -2067,7 +2067,7 @@ export function LiveSchedulePage() {
           <ProviderStatusPill tone="good">Go live</ProviderStatusPill>
         </>
       }
-      actions={<Button variant="primary" onClick={() => navigate(`${ROUTES.liveStudio}?sessionId=${encodeURIComponent(selected?.id || selectedId)}`)}><PlayCircle size={14} /> Open Live Studio</Button>}
+      actions={<Button variant="primary" onClick={() => navigate(`${ROUTES.liveStudio}?sessionId=${encodeURIComponent(selected?.id || selectedId)}`)}><PlayCircle size={14} /> Open FaithHub Live Studio</Button>}
     >
       <div className="grid gap-4 xl:grid-cols-12">
         <div className="space-y-3 xl:col-span-7">
@@ -2216,7 +2216,7 @@ export function LiveDashboardPage() {
                   Open session details
                 </Button>
                 <Button variant="outline" className="w-full" onClick={() => navigate(`${ROUTES.waitingRoom}?sessionId=${encodeURIComponent(selected.id)}`)}>
-                  Preview waiting room
+                  Preview FaithHub Waiting Room
                 </Button>
                 <Button variant="primary" className="w-full" onClick={() => navigate(`${ROUTES.liveStudio}?sessionId=${encodeURIComponent(selected.id)}`)}>
                   Live Studio
@@ -2467,7 +2467,7 @@ export function LiveStudioPage() {
       actions={
         <>
           <Button variant="outline" onClick={() => navigate(ROUTES.liveDashboard)}>Back to dashboard</Button>
-          <Button variant="secondary" onClick={() => navigate(`${ROUTES.waitingRoom}?sessionId=${encodeURIComponent(selected?.id || selectedId)}`)}>Preview waiting room</Button>
+          <Button variant="secondary" onClick={() => navigate(`${ROUTES.waitingRoom}?sessionId=${encodeURIComponent(selected?.id || selectedId)}`)}>Preview FaithHub Waiting Room</Button>
           <Button variant="primary" onClick={() => navigate(`/faithhub/provider/stream-to-platforms?sessionId=${encodeURIComponent(selected?.id || selectedId)}`)}>
             Stream-to-Platforms
           </Button>
