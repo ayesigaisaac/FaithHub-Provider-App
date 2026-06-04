@@ -69,4 +69,28 @@ describe('ProviderTopbar search trigger', () => {
     expect(onOpenSearch).toHaveBeenCalledTimes(1);
     expect(onOpenSearch.mock.calls[0][0]).toBe(button);
   });
+
+  it('mobile menu button calls onOpenSidebar', () => {
+    setScreenWidth(375);
+    const onOpenSidebar = vi.fn();
+
+    render(
+      <ThemeModeProvider>
+        <MemoryRouter>
+          <ProviderTopbar
+            onOpenSidebar={onOpenSidebar}
+            onOpenSearch={() => undefined}
+            onCloseSearch={() => undefined}
+            searchOpen={false}
+            searchQuery=""
+            onSearchQueryChange={() => undefined}
+          />
+        </MemoryRouter>
+      </ThemeModeProvider>,
+    );
+
+    fireEvent.click(screen.getByRole('button', { name: /open navigation menu/i }));
+
+    expect(onOpenSidebar).toHaveBeenCalledTimes(1);
+  });
 });
