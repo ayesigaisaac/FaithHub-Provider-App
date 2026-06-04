@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   Alert,
@@ -311,6 +311,17 @@ function JourneyPhaseCard({
         })}
       </div>
     </ProviderSectionCard>
+  );
+}
+
+function LiveWorkspaceSplit({ main, rail }: { main: ReactNode; rail: ReactNode }) {
+  return (
+    <div className="flex flex-col gap-4 xl:flex-row xl:items-start">
+      <div className="min-w-0 flex-1 space-y-4">{main}</div>
+      <div className="w-full space-y-4 xl:sticky xl:top-4 xl:w-[360px] xl:flex-none xl:self-start">
+        {rail}
+      </div>
+    </div>
   );
 }
 
@@ -2293,52 +2304,55 @@ export function LiveSessionDetailsPage() {
       }
     >
       {selected ? (
-        <div className="grid gap-4 xl:grid-cols-12">
-          <div className="space-y-4 xl:col-span-8">
-            <ProviderSectionCard title="Session banner" subtitle="This hero card is the first thing the audience sees in the waiting room.">
-              <div className="rounded-[28px] border border-faith-line/70 bg-[var(--fh-surface)] p-5">
-                <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">Campaign</div>
-                <div className="mt-2 text-[24px] font-black text-faith-ink">{selected.title}</div>
-                <div className="mt-2 text-[13px] text-faith-slate">{selected.description}</div>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  <ProviderStatusPill tone="neutral">{selected.host}</ProviderStatusPill>
-                  <ProviderStatusPill tone="neutral">{selected.date}</ProviderStatusPill>
-                  <ProviderStatusPill tone="neutral">{selected.time}</ProviderStatusPill>
-                </div>
-              </div>
-            </ProviderSectionCard>
-
-            <ProviderSectionCard title="Session details" subtitle="A compact summary of host, guest speakers, and featured services.">
-              <div className="grid gap-3 md:grid-cols-2">
-                <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
-                  <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">Host</div>
-                  <div className="mt-1 text-[13px] font-black text-faith-ink">{selected.host}</div>
-                </div>
-                <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
-                  <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">Guest speakers</div>
-                  <div className="mt-1 text-[13px] font-black text-faith-ink">{selected.guestSpeakers.join(', ')}</div>
-                </div>
-                <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
+        <LiveWorkspaceSplit
+          main={
+            <>
+              <ProviderSectionCard title="Session banner" subtitle="This hero card is the first thing the audience sees in the waiting room.">
+                <div className="rounded-[28px] border border-faith-line/70 bg-[var(--fh-surface)] p-5">
                   <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">Campaign</div>
-                  <div className="mt-1 text-[13px] font-black text-faith-ink">{selected.campaign}</div>
+                  <div className="mt-2 text-[24px] font-black text-faith-ink">{selected.title}</div>
+                  <div className="mt-2 text-[13px] text-faith-slate">{selected.description}</div>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    <ProviderStatusPill tone="neutral">{selected.host}</ProviderStatusPill>
+                    <ProviderStatusPill tone="neutral">{selected.date}</ProviderStatusPill>
+                    <ProviderStatusPill tone="neutral">{selected.time}</ProviderStatusPill>
+                  </div>
                 </div>
-                <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
-                  <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">Featured services</div>
-                  <div className="mt-1 text-[13px] font-black text-faith-ink">{selected.featuredServices.join(', ')}</div>
-                </div>
-              </div>
-            </ProviderSectionCard>
-          </div>
+              </ProviderSectionCard>
 
-          <div className="space-y-4 xl:col-span-4">
-            <JourneyPhaseCard activePath={ROUTES.liveSessionDetails} onNavigate={(path) => navigate(path)} />
-            <ProviderSectionCard title="Preview action" subtitle="Use the waiting room button to move into the pre-live view.">
-              <Button variant="primary" className="w-full" onClick={() => navigate(`${ROUTES.waitingRoom}?sessionId=${encodeURIComponent(selected?.id || '')}`)}>
-                Preview Waiting Room
-              </Button>
-            </ProviderSectionCard>
-          </div>
-        </div>
+              <ProviderSectionCard title="Session details" subtitle="A compact summary of host, guest speakers, and featured services.">
+                <div className="grid gap-3 md:grid-cols-2">
+                  <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
+                    <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">Host</div>
+                    <div className="mt-1 text-[13px] font-black text-faith-ink">{selected.host}</div>
+                  </div>
+                  <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
+                    <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">Guest speakers</div>
+                    <div className="mt-1 text-[13px] font-black text-faith-ink">{selected.guestSpeakers.join(', ')}</div>
+                  </div>
+                  <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
+                    <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">Campaign</div>
+                    <div className="mt-1 text-[13px] font-black text-faith-ink">{selected.campaign}</div>
+                  </div>
+                  <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
+                    <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">Featured services</div>
+                    <div className="mt-1 text-[13px] font-black text-faith-ink">{selected.featuredServices.join(', ')}</div>
+                  </div>
+                </div>
+              </ProviderSectionCard>
+            </>
+          }
+          rail={
+            <>
+              <JourneyPhaseCard activePath={ROUTES.liveSessionDetails} onNavigate={(path) => navigate(path)} />
+              <ProviderSectionCard title="Preview action" subtitle="Use the waiting room button to move into the pre-live view.">
+                <Button variant="primary" className="w-full" onClick={() => navigate(`${ROUTES.waitingRoom}?sessionId=${encodeURIComponent(selected?.id || '')}`)}>
+                  Preview Waiting Room
+                </Button>
+              </ProviderSectionCard>
+            </>
+          }
+        />
       ) : (
         <EmptyState title="No session selected" body="Open the live dashboard and choose a session before reviewing details." action={<Button variant="primary" onClick={() => navigate(ROUTES.liveDashboard)}>Open Live Dashboard</Button>} />
       )}
@@ -2387,60 +2401,63 @@ export function WaitingRoomPage() {
       actions={<Button variant="primary" onClick={() => navigate(`${ROUTES.liveStudio}?sessionId=${encodeURIComponent(selected?.id || selectedId)}`)}>Go Live</Button>}
     >
       {selected ? (
-        <div className="grid gap-4 xl:grid-cols-12">
-          <div className="space-y-4 xl:col-span-8">
-            <ProviderSectionCard title="Waiting room banner" subtitle="This mock area mirrors the public pre-live screen.">
-              <div className="rounded-[28px] border border-faith-line/70 bg-[var(--fh-surface)] p-6">
-                <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">Session banner</div>
-                <div className="mt-2 text-[26px] font-black text-faith-ink">{selected.title}</div>
-                <div className="mt-2 text-[13px] leading-6 text-faith-slate">{selected.description}</div>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  <ProviderStatusPill tone="neutral">{selected.host}</ProviderStatusPill>
-                  <ProviderStatusPill tone="neutral">{selected.campaign}</ProviderStatusPill>
-                  <ProviderStatusPill tone="neutral">{selected.duration}</ProviderStatusPill>
+        <LiveWorkspaceSplit
+          main={
+            <>
+              <ProviderSectionCard title="Waiting room banner" subtitle="This mock area mirrors the public pre-live screen.">
+                <div className="rounded-[28px] border border-faith-line/70 bg-[var(--fh-surface)] p-6">
+                  <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">Session banner</div>
+                  <div className="mt-2 text-[26px] font-black text-faith-ink">{selected.title}</div>
+                  <div className="mt-2 text-[13px] leading-6 text-faith-slate">{selected.description}</div>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    <ProviderStatusPill tone="neutral">{selected.host}</ProviderStatusPill>
+                    <ProviderStatusPill tone="neutral">{selected.campaign}</ProviderStatusPill>
+                    <ProviderStatusPill tone="neutral">{selected.duration}</ProviderStatusPill>
+                  </div>
                 </div>
-              </div>
-            </ProviderSectionCard>
+              </ProviderSectionCard>
 
-            <ProviderSectionCard title="Session information" subtitle="Countdown, host details, and featured services sit beside the reminder action.">
-              <div className="grid gap-3 md:grid-cols-2">
-                <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
-                  <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">Countdown</div>
-                  <div className="mt-1 text-[15px] font-black text-faith-ink">{countdown}</div>
+              <ProviderSectionCard title="Session information" subtitle="Countdown, host details, and featured services sit beside the reminder action.">
+                <div className="grid gap-3 md:grid-cols-2">
+                  <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
+                    <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">Countdown</div>
+                    <div className="mt-1 text-[15px] font-black text-faith-ink">{countdown}</div>
+                  </div>
+                  <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
+                    <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">Host information</div>
+                    <div className="mt-1 text-[15px] font-black text-faith-ink">{selected.host}</div>
+                  </div>
+                  <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
+                    <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">Description</div>
+                    <div className="mt-1 text-[13px] text-faith-ink">{selected.description}</div>
+                  </div>
+                  <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
+                    <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">Featured services</div>
+                    <div className="mt-1 text-[13px] text-faith-ink">{selected.featuredServices.join(', ')}</div>
+                  </div>
                 </div>
-                <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
-                  <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">Host information</div>
-                  <div className="mt-1 text-[15px] font-black text-faith-ink">{selected.host}</div>
+              </ProviderSectionCard>
+            </>
+          }
+          rail={
+            <>
+              <JourneyPhaseCard activePath={ROUTES.waitingRoom} onNavigate={(path) => navigate(path)} />
+              <ProviderSectionCard title="Reminder action" subtitle="Send a reminder while the audience waits for the session to begin.">
+                <Button
+                  variant="secondary"
+                  className="w-full"
+                  onClick={() => setReminded(true)}
+                >
+                  {reminded ? 'Reminder Sent' : 'Send Reminder'}
+                </Button>
+                <div className="mt-4 rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-4 text-center">
+                  <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">CTA</div>
+                  <div className="mt-1 text-[16px] font-black text-faith-ink">Session Starts Soon</div>
                 </div>
-                <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
-                  <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">Description</div>
-                  <div className="mt-1 text-[13px] text-faith-ink">{selected.description}</div>
-                </div>
-                <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
-                  <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">Featured services</div>
-                  <div className="mt-1 text-[13px] text-faith-ink">{selected.featuredServices.join(', ')}</div>
-                </div>
-              </div>
-            </ProviderSectionCard>
-          </div>
-
-          <div className="space-y-4 xl:col-span-4">
-            <JourneyPhaseCard activePath={ROUTES.waitingRoom} onNavigate={(path) => navigate(path)} />
-            <ProviderSectionCard title="Reminder action" subtitle="Send a reminder while the audience waits for the session to begin.">
-              <Button
-                variant="secondary"
-                className="w-full"
-                onClick={() => setReminded(true)}
-              >
-                {reminded ? 'Reminder Sent' : 'Send Reminder'}
-              </Button>
-              <div className="mt-4 rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-4 text-center">
-                <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">CTA</div>
-                <div className="mt-1 text-[16px] font-black text-faith-ink">Session Starts Soon</div>
-              </div>
-            </ProviderSectionCard>
-          </div>
-        </div>
+              </ProviderSectionCard>
+            </>
+          }
+        />
       ) : (
         <EmptyState title="No session selected" body="Choose a session from live management before previewing the waiting room." action={<Button variant="primary" onClick={() => navigate(ROUTES.liveDashboard)}>Open Live Dashboard</Button>} />
       )}
@@ -2505,67 +2522,70 @@ export function LiveStudioPage() {
       }
     >
       {selected ? (
-        <div className="grid gap-4 xl:grid-cols-12">
-          <div className="space-y-4 xl:col-span-8">
-            <ProviderSectionCard title="Program and preview" subtitle="The center stage stays focused on the live program while the audience chat sits nearby.">
-              <div className="rounded-[32px] border border-faith-line/70 bg-slate-950 p-5 text-white shadow-lg">
-                <div className="flex items-center justify-between gap-3">
-                  <div>
-                    <div className="text-[11px] font-extrabold uppercase tracking-[0.14em] text-emerald-300">Live studio</div>
-                    <div className="mt-1 text-[22px] font-black">{selected.title}</div>
-                    <div className="mt-1 text-[12px] text-slate-300">{selected.host} - {selected.campaign}</div>
-                  </div>
-                  <ProviderStatusPill tone={isLive ? 'good' : 'warn'}>{isLive ? 'LIVE NOW' : 'READY TO GO LIVE'}</ProviderStatusPill>
-                </div>
-                <div className="mt-5 grid gap-3 md:grid-cols-2">
-                  <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                    <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-slate-300">Host panel</div>
-                    <div className="mt-2 text-[15px] font-black">{selected.host}</div>
-                    <div className="mt-1 text-[12px] text-slate-300">Camera, mic, and production controls are ready.</div>
-                  </div>
-                  <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                    <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-slate-300">Guest speaker panel</div>
-                    <div className="mt-2 text-[15px] font-black">{selected.guestSpeakers.join(', ')}</div>
-                    <div className="mt-1 text-[12px] text-slate-300">Guest seats stay visible before and during the stream.</div>
-                  </div>
-                </div>
-              </div>
-            </ProviderSectionCard>
-
-            <div className="grid gap-4 md:grid-cols-2">
-              <ProviderSectionCard title="Live chat" subtitle="Mock chat messages update while the session is live.">
-                <div className="space-y-2">
-                  {chat.map((message, index) => (
-                    <div key={`${message}-${index}`} className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-2 text-[12px] text-faith-ink">
-                      {message}
+        <LiveWorkspaceSplit
+          main={
+            <>
+              <ProviderSectionCard title="Program and preview" subtitle="The center stage stays focused on the live program while the audience chat sits nearby.">
+                <div className="rounded-[32px] border border-faith-line/70 bg-slate-950 p-5 text-white shadow-lg">
+                  <div className="flex items-center justify-between gap-3">
+                    <div>
+                      <div className="text-[11px] font-extrabold uppercase tracking-[0.14em] text-emerald-300">Live studio</div>
+                      <div className="mt-1 text-[22px] font-black">{selected.title}</div>
+                      <div className="mt-1 text-[12px] text-slate-300">{selected.host} - {selected.campaign}</div>
                     </div>
-                  ))}
+                    <ProviderStatusPill tone={isLive ? 'good' : 'warn'}>{isLive ? 'LIVE NOW' : 'READY TO GO LIVE'}</ProviderStatusPill>
+                  </div>
+                  <div className="mt-5 grid gap-3 md:grid-cols-2">
+                    <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                      <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-slate-300">Host panel</div>
+                      <div className="mt-2 text-[15px] font-black">{selected.host}</div>
+                      <div className="mt-1 text-[12px] text-slate-300">Camera, mic, and production controls are ready.</div>
+                    </div>
+                    <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                      <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-slate-300">Guest speaker panel</div>
+                      <div className="mt-2 text-[15px] font-black">{selected.guestSpeakers.join(', ')}</div>
+                      <div className="mt-1 text-[12px] text-slate-300">Guest seats stay visible before and during the stream.</div>
+                    </div>
+                  </div>
                 </div>
               </ProviderSectionCard>
-              <ProviderSectionCard title="Viewer counter" subtitle="The counter moves upward during the live session to simulate audience growth.">
-                <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-4">
-                  <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">Viewers</div>
-                  <div className="mt-1 text-[28px] font-black text-faith-ink">{viewerCount.toLocaleString()}</div>
-                  <div className="mt-1 text-[12px] text-faith-slate">Audience visibility updates while live.</div>
-                </div>
-              </ProviderSectionCard>
-            </div>
-          </div>
 
-          <div className="space-y-4 xl:col-span-4">
-            <JourneyPhaseCard activePath={ROUTES.liveStudio} onNavigate={(path) => navigate(path)} />
-            <ProviderSectionCard title="Controls" subtitle="Start or end the session from the studio control bar.">
-              <div className="space-y-3">
-                <Button variant="primary" className="w-full" onClick={startSession} disabled={isLive}>
-                  Start Session
-                </Button>
-                <Button variant="outline" className="w-full" onClick={endSession} disabled={!isLive}>
-                  End Session
-                </Button>
+              <div className="grid gap-4 md:grid-cols-2">
+                <ProviderSectionCard title="Live chat" subtitle="Mock chat messages update while the session is live.">
+                  <div className="space-y-2">
+                    {chat.map((message, index) => (
+                      <div key={`${message}-${index}`} className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-3 py-2 text-[12px] text-faith-ink">
+                        {message}
+                      </div>
+                    ))}
+                  </div>
+                </ProviderSectionCard>
+                <ProviderSectionCard title="Viewer counter" subtitle="The counter moves upward during the live session to simulate audience growth.">
+                  <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-4">
+                    <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">Viewers</div>
+                    <div className="mt-1 text-[28px] font-black text-faith-ink">{viewerCount.toLocaleString()}</div>
+                    <div className="mt-1 text-[12px] text-faith-slate">Audience visibility updates while live.</div>
+                  </div>
+                </ProviderSectionCard>
               </div>
-            </ProviderSectionCard>
-          </div>
-        </div>
+            </>
+          }
+          rail={
+            <>
+              <JourneyPhaseCard activePath={ROUTES.liveStudio} onNavigate={(path) => navigate(path)} />
+              <ProviderSectionCard title="Controls" subtitle="Start or end the session from the studio control bar.">
+                <div className="space-y-3">
+                  <Button variant="primary" className="w-full" onClick={startSession} disabled={isLive}>
+                    Start Session
+                  </Button>
+                  <Button variant="outline" className="w-full" onClick={endSession} disabled={!isLive}>
+                    End Session
+                  </Button>
+                </div>
+              </ProviderSectionCard>
+            </>
+          }
+        />
       ) : (
         <EmptyState title="No live session selected" body="Open the live dashboard and choose a session before launching the studio." action={<Button variant="primary" onClick={() => navigate(ROUTES.liveDashboard)}>Open Live Dashboard</Button>} />
       )}
