@@ -989,8 +989,8 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
                 }
               />
 
-              <div className="mt-4 grid grid-cols-1 gap-4 xl:grid-cols-12">
-                <div className="xl:col-span-5">
+              <div className="mt-4 grid grid-cols-1 gap-4 xl:grid-cols-[minmax(0,1.08fr)_minmax(0,1fr)] xl:items-start">
+                <div className="min-w-0">
                   <div className="overflow-hidden rounded-3xl ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft">
                     <img src={session.coverUrl} alt="Replay cover" className="aspect-[4/3] w-full object-cover" />
                   </div>
@@ -1015,24 +1015,24 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
                   </div>
                 </div>
 
-                <div className="xl:col-span-7 space-y-3">
+                <div className="min-w-0 space-y-3">
                   <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
-                    <div className="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-4">
-                      <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
+                    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 2xl:grid-cols-4">
+                      <div className="min-h-[140px] rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
                         <div className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-faith-ink dark:text-slate-100 sm:text-[34px] lg:text-[40px]">{readinessScore}%</div>
                         <div className="mt-1.5 text-[14px] leading-6 text-faith-slate">Packaging confidence</div>
                       </div>
-                      <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
+                      <div className="min-h-[140px] rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
                         <div className="text-[10px] font-black uppercase tracking-[0.14em] text-faith-slate">Artwork status</div>
                         <div className="mt-1 text-lg font-black text-faith-ink dark:text-slate-50">Approved</div>
                         <div className="mt-1 text-[11px] text-faith-slate">Cover frame {coverFrame}</div>
                       </div>
-                      <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
+                      <div className="min-h-[140px] rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
                         <div className="text-[10px] font-black uppercase tracking-[0.14em] text-faith-slate">Chapter score</div>
                         <div className="mt-1 text-lg font-black text-faith-ink dark:text-slate-50">{chapters.length} markers</div>
                         <div className="mt-1 text-[11px] text-faith-slate">Search-ready transcript</div>
                       </div>
-                      <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
+                      <div className="min-h-[140px] rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
                         <div className="text-[10px] font-black uppercase tracking-[0.14em] text-faith-slate">Follow-up</div>
                         <div className="mt-1 text-lg font-black text-faith-ink dark:text-slate-50">{sendReplayJourney ? 'Journey armed' : 'Manual'}</div>
                         <div className="mt-1 text-[11px] text-faith-slate">Revelight + replay handoff</div>
@@ -1706,8 +1706,8 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
         title="Replay destination preview"
         subtitle="Provider desktop and mobile replay destination, reflecting your current packaging settings."
       >
-        <div className="grid grid-cols-1 gap-5 xl:grid-cols-12">
-          <div className="xl:col-span-8 space-y-4">
+        <div className="flex flex-col gap-5 xl:flex-row xl:items-start">
+          <div className="min-w-0 flex-1 space-y-4">
             <BrowserPreview
               title={title}
               description={description}
@@ -1736,7 +1736,7 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
               </div>
             </div>
           </div>
-          <div className="xl:col-span-4 space-y-4">
+          <div className="w-full space-y-4 xl:w-[360px] xl:flex-none">
             <PhonePreview
               title={title}
               accessLevel={accessLevel}
