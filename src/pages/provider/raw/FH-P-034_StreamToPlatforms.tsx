@@ -1154,8 +1154,8 @@ export default function StreamToPlatformsPage() {
       </div>
 
       <div className="flex-1 w-full px-4 sm:px-5 md:px-6 lg:px-8 py-6">
-        <div className="grid grid-cols-1 gap-5 lg:grid-cols-12 lg:items-start">
-          <div className="min-w-0 lg:col-span-8">
+        <div className="flex flex-col gap-5 lg:flex-row lg:items-start">
+          <div className="min-w-0 w-full lg:flex-1">
             <div className="rounded-[14px] bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <SectionTitle
                 icon={<MonitorPlay className="h-5 w-5" />}
@@ -1483,8 +1483,8 @@ export default function StreamToPlatformsPage() {
                 }
               />
 
-              <div className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-12 lg:items-start">
-                <div className="min-w-0 lg:col-span-5">
+              <div className="mt-4 flex flex-col gap-4 lg:flex-row lg:items-start">
+                <div className="min-w-0 w-full lg:flex-1">
                   <div className="rounded-[14px] bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                     <div className="flex items-start justify-between gap-3">
                       <div>
@@ -1560,7 +1560,7 @@ export default function StreamToPlatformsPage() {
                   </div>
                 </div>
 
-                <div className="min-w-0 lg:col-span-7">
+                <div className="min-w-0 w-full lg:w-[420px] lg:shrink-0">
                   <div className="overflow-hidden rounded-[14px] ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
                     <div className="bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4">
                       <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
@@ -1784,7 +1784,7 @@ export default function StreamToPlatformsPage() {
             </div>
           </div>
 
-          <div className="min-w-0 lg:col-span-4">
+          <div className="min-w-0 w-full lg:w-[420px] lg:shrink-0">
             <div className="space-y-5 lg:sticky lg:top-[104px]">
               <div className="rounded-[14px] bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
                 <SectionTitle
@@ -1988,8 +1988,8 @@ export default function StreamToPlatformsPage() {
         wide
       >
         {selectedDest ? (
-          <div className="grid grid-cols-1 gap-5 lg:grid-cols-12 lg:items-start">
-            <div className="min-w-0 lg:col-span-7 space-y-5">
+          <div className="flex flex-col gap-5 lg:flex-row lg:items-start">
+            <div className="min-w-0 w-full lg:flex-1 space-y-5">
               <div className="rounded-[14px] bg-[var(--fh-surface)] dark:bg-slate-800/40 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                   <div>
@@ -2134,7 +2134,7 @@ export default function StreamToPlatformsPage() {
               </div>
             </div>
 
-            <div className="min-w-0 lg:col-span-5 space-y-5">
+            <div className="min-w-0 w-full lg:w-[420px] lg:shrink-0 space-y-5">
               <div className="rounded-[14px] bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 transition overflow-hidden">
                 <div className="flex items-start justify-between gap-3">
                   <div>

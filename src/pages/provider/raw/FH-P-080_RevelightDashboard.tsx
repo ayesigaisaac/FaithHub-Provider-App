@@ -1329,8 +1329,8 @@ export default function RevelightDashboardPage() {
       </div>
 
       <div className="flex-1 w-full px-4 sm:px-5 md:px-6 lg:px-8 py-6">
-        <div className="grid grid-cols-1 gap-4 lg:grid-cols-12 lg:items-start">
-          <div className="min-w-0 lg:col-span-8 space-y-4">
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-start">
+          <div className="min-w-0 w-full lg:flex-1 space-y-4">
             <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <SectionTitle
                 icon={<TrendingUp className="h-5 w-5" />}
@@ -1628,7 +1628,7 @@ export default function RevelightDashboardPage() {
             </div>
           </div>
 
-          <div className="min-w-0 lg:col-span-4 space-y-4">
+          <div className="min-w-0 w-full lg:w-[420px] lg:shrink-0 space-y-4">
             <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition lg:sticky lg:top-24">
               <SectionTitle
                 icon={<Eye className="h-5 w-5" />}
