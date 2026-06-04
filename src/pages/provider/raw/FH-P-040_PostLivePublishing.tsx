@@ -974,9 +974,9 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
 
       {/* Body */}
       <div className="flex-1 w-full px-4 sm:px-5 md:px-6 lg:px-8 py-6">
-        <div className="grid grid-cols-1 gap-4 lg:grid-cols-12 lg:items-start">
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-start">
           {/* Left column */}
-          <div className="min-w-0 lg:col-span-8 space-y-4">
+          <div className="min-w-0 w-full lg:flex-1 space-y-4">
             {/* Replay packaging header */}
             <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <SectionHead
@@ -1074,8 +1074,8 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
                 right={<Pill tone="accent"><TimerReset className="h-3.5 w-3.5" /> Fast editorial polish</Pill>}
               />
 
-              <div className="mt-4 grid grid-cols-1 gap-4 xl:grid-cols-12">
-                <div className="xl:col-span-6 rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+              <div className="mt-4 flex flex-col gap-4 xl:flex-row xl:items-start">
+                <div className="w-full min-w-0 xl:flex-[1.1] rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                   <FieldLabel>Trim controls</FieldLabel>
                   <div className="mt-3 space-y-4">
                     <div>
@@ -1152,7 +1152,7 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
                   </div>
                 </div>
 
-                <div className="xl:col-span-6 space-y-4">
+                <div className="w-full min-w-0 xl:flex-1 space-y-4">
                   <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                     <FieldLabel>Replay copy</FieldLabel>
                     <TextInput value={title} onChange={setTitle} placeholder="Replay title" />
@@ -1197,8 +1197,8 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
                 right={<Pill tone="brand"><Search className="h-3.5 w-3.5" /> Searchable structure</Pill>}
               />
 
-              <div className="mt-4 grid grid-cols-1 gap-4 xl:grid-cols-12">
-                <div className="xl:col-span-8 rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+              <div className="mt-4 flex flex-col gap-4 xl:flex-row xl:items-start">
+                <div className="w-full min-w-0 xl:flex-[1.35] rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                   <div className="flex items-center justify-between gap-2">
                     <div>
                       <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Replay chapters</div>
@@ -1244,7 +1244,7 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
                   </div>
                 </div>
 
-                <div className="xl:col-span-4 space-y-3">
+                <div className="w-full xl:w-[360px] xl:shrink-0 space-y-3">
                   <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                     <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Transcript readiness</div>
                     <div className="mt-3 space-y-3">
@@ -1297,8 +1297,8 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
                 right={<Pill tone="accent"><BookOpen className="h-3.5 w-3.5" /> Rich destination page</Pill>}
               />
 
-              <div className="mt-4 grid grid-cols-1 gap-4 xl:grid-cols-12">
-                <div className="xl:col-span-5 rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+              <div className="mt-4 flex flex-col gap-4 xl:flex-row xl:items-start">
+                <div className="w-full xl:w-[360px] xl:shrink-0 rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                   <FieldLabel>Replay notes summary</FieldLabel>
                   <TextArea
                     value={notesText}
@@ -1311,7 +1311,7 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
                   </div>
                 </div>
 
-                <div className="xl:col-span-7 rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+                <div className="w-full min-w-0 xl:flex-1 rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                   <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
                     {resources.map((resource) => (
                       <div key={resource.id} className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700 transition">
@@ -1345,8 +1345,8 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
                 right={<Pill tone="brand"><Globe2 className="h-3.5 w-3.5" /> Discovery controls</Pill>}
               />
 
-              <div className="mt-4 grid grid-cols-1 gap-4 xl:grid-cols-12">
-                <div className="xl:col-span-4 rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+              <div className="mt-4 flex flex-col gap-4 xl:flex-row xl:items-start">
+                <div className="w-full xl:w-[360px] xl:shrink-0 rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                   <FieldLabel>Access level</FieldLabel>
                   <div className="mt-3 flex flex-wrap gap-2">
                     {(['Public', 'Members', 'Supporters'] as AccessLevel[]).map((level) => (
@@ -1396,7 +1396,7 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
                   </div>
                 </div>
 
-                <div className="xl:col-span-8 rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+                <div className="w-full min-w-0 xl:flex-1 rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                   <div className="flex items-center justify-between gap-2">
                     <div>
                       <FieldLabel>Surfaces</FieldLabel>
@@ -1456,8 +1456,8 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
                 right={<Pill tone="accent"><ArrowRight className="h-3.5 w-3.5" /> Growth cycle ready</Pill>}
               />
 
-              <div className="mt-4 grid grid-cols-1 gap-4 xl:grid-cols-12">
-                <div className="xl:col-span-7 grid grid-cols-1 gap-3 md:grid-cols-2">
+              <div className="mt-4 flex flex-col gap-4 xl:flex-row xl:items-start">
+                <div className="w-full min-w-0 xl:flex-1 grid grid-cols-1 gap-3 md:grid-cols-2">
                   <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                     <div className="flex items-center justify-between gap-3">
                       <div>
@@ -1513,7 +1513,7 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
                   </div>
                 </div>
 
-                <div className="xl:col-span-5 rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
+                <div className="w-full xl:w-[420px] xl:shrink-0 rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition">
                   <div className="flex items-center justify-between gap-2">
                     <div>
                       <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Clip opportunity queue</div>
@@ -1554,7 +1554,7 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
           </div>
 
           {/* Right rail */}
-          <div className="min-w-0 lg:col-span-4 space-y-4">
+          <div className="min-w-0 w-full lg:w-[420px] lg:shrink-0 space-y-4">
             {/* Replay preview */}
             <div className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <SectionHead
