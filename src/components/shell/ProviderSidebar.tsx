@@ -435,7 +435,7 @@ export function ProviderSidebar({
 
           <List
             sx={{
-              p: 1.35,
+              p: effectiveCollapsed ? 0.8 : 1.35,
               flex: 1,
               minHeight: 0,
               overflowY: 'auto',
@@ -453,7 +453,7 @@ export function ProviderSidebar({
               <Box
                 key={group.section}
                 sx={{
-                  mb: 1,
+                  mb: effectiveCollapsed ? 0.7 : 1,
                   borderRadius: '16px',
                   border: '1px solid',
                   borderColor: 'color-mix(in srgb, var(--fh-line) 56%, transparent)',
@@ -476,11 +476,11 @@ export function ProviderSidebar({
                             aria-label={group.label}
                             aria-expanded={sectionExpanded}
                             sx={{
-                              mb: 0.65,
+                              mb: 0.5,
                               px: 0,
-                              py: 0.7,
-                              minHeight: 44,
-                              borderRadius: '12px',
+                              py: 0.5,
+                              minHeight: 40,
+                              borderRadius: '14px',
                               border: '1px solid',
                               borderColor: sectionActive ? 'var(--fh-brand-dark)' : 'var(--fh-line)',
                               bgcolor: sectionActive ? 'color-mix(in srgb, var(--fh-brand-soft) 40%, var(--fh-surface-bg) 60%)' : 'var(--fh-surface-bg)',
@@ -509,7 +509,7 @@ export function ProviderSidebar({
                                 color: sectionActive ? 'var(--fh-brand)' : 'var(--fh-slate)',
                               }}
                             >
-                              <SectionIcon sx={{ fontSize: 16 }} />
+                              <SectionIcon sx={{ fontSize: 17 }} />
                             </ListItemIcon>
                           </ListItemButton>
                         </Tooltip>

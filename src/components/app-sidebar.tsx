@@ -93,19 +93,7 @@ export function AppSidebar() {
         </SidebarHeader>
 
         <SidebarContent className={collapsed ? 'p-2' : 'p-3'}>
-          {collapsed ? (
-            <button
-              type="button"
-              onClick={toggleSidebar}
-              className="mx-auto mt-1 inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-300 bg-white text-slate-700 shadow-sm hover:bg-slate-50"
-              aria-label="Expand sidebar"
-              title="Expand sidebar"
-            >
-              <ChevronRight className="h-5 w-5" />
-            </button>
-          ) : null}
-
-          <div className={`space-y-2 ${collapsed ? 'mt-3' : ''}`}>
+          <div className={`space-y-2 ${collapsed ? 'mt-1' : ''}`}>
             {sectionRows.map((row) => {
               const Icon = row.icon;
               const isOpen = openSectionId === row.id && !collapsed;
@@ -145,6 +133,7 @@ export function AppSidebar() {
                                 ? 'border-emerald-300 bg-emerald-50 text-emerald-900'
                                 : 'border-slate-300 bg-slate-50 text-slate-800 hover:bg-white'
                             }`}
+                            title={item.label}
                           >
                             <div className="text-lg font-semibold leading-6">{item.label}</div>
                             <div className="mt-1 text-base leading-5 text-slate-500">{item.hint}</div>
