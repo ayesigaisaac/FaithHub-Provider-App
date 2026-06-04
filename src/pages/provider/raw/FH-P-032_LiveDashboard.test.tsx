@@ -26,6 +26,8 @@ describe('Live dashboard', () => {
 
     expect(screen.getByText(/Live Session Management/i)).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /Create Live Session/i })).toBeInTheDocument();
+    expect(screen.getByText(/Live queue/i)).toBeInTheDocument();
+    expect(screen.getByText(/Live session summary/i)).toBeInTheDocument();
 
     await user.click(screen.getByRole('button', { name: /Preview FaithHub Waiting Room/i }));
     expect(navigateMock).toHaveBeenCalledWith(expect.stringMatching(/^\/faithhub\/provider\/waiting-room/), undefined);

@@ -372,7 +372,6 @@ export function ProviderTopbar({
                       borderRadius: '12px',
                       textTransform: 'none',
                       fontWeight: 800,
-                      minHeight: { xs: 38, md: 42 },
                       px: { xs: 1.2, md: 1.55 },
                       fontSize: { xs: 13, md: 15 },
                       borderWidth: 1,

@@ -24,7 +24,7 @@ export function ProviderPageScaffold({
 }: ProviderPageScaffoldProps) {
   return (
     <div className="min-h-full bg-[var(--fh-page-bg)] text-faith-ink">
-      <div className="mx-auto w-full max-w-[1600px] px-4 py-4 sm:px-5 sm:py-5 md:px-6 lg:px-8">
+      <div className="mx-auto w-full max-w-[1480px] px-4 py-4 sm:px-5 sm:py-5 md:px-6 lg:px-8">
         <section className="rounded-[34px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 shadow-soft md:p-5">
           <div className="rounded-[28px] border border-faith-line/50 bg-gradient-to-br from-white via-[var(--fh-surface-bg)] to-[var(--fh-surface)] p-4 md:p-5">
             <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">

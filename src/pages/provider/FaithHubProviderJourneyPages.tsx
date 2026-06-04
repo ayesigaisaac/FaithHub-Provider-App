@@ -2135,6 +2135,9 @@ export function LiveDashboardPage() {
   const [sessions, setSessions] = useState<LiveSessionRecord[]>(initialSessions);
   const [selectedId, setSelectedId] = useState<string>(getQuerySessionId() || initialSessions[0]?.id || '');
   const selected = sessions.find((session) => session.id === selectedId) ?? sessions[0];
+  const pendingSessions = sessions.filter((session) => session.status === 'Pending Approval').length;
+  const readySessions = sessions.filter((session) => session.status === 'Scheduled' || session.status === 'Ready').length;
+  const liveSessions = sessions.filter((session) => session.status === 'Live').length;
 
   const deleteSession = (id: string) => {
     setSessions((current) => current.filter((session) => session.id !== id));
@@ -2155,42 +2158,69 @@ export function LiveDashboardPage() {
       }
       actions={<Button variant="primary" onClick={() => navigate(ROUTES.liveBuilder)}><Plus size={14} /> Create Live Session</Button>}
     >
-      <div className="grid gap-4 xl:grid-cols-12">
-        <div className="space-y-3 xl:col-span-8">
-          {sessions.map((session) => (
-            <div
-              key={session.id}
-              role="button"
-              tabIndex={0}
-              onClick={() => setSelectedId(session.id)}
-              onKeyDown={(event) => {
-                if (event.key === 'Enter' || event.key === ' ') {
-                  event.preventDefault();
-                  setSelectedId(session.id);
-                }
-              }}
-              className={cx(
-                'flex w-full items-start justify-between rounded-[28px] border p-4 text-left transition-colors',
-                selected?.id === session.id ? 'border-emerald-300 bg-emerald-50' : 'border-faith-line/70 bg-[var(--fh-surface-bg)] hover:bg-[var(--fh-surface)]',
-              )}
-            >
-              <div>
-                <div className="text-[14px] font-black text-faith-ink">{session.title}</div>
-                <div className="mt-1 text-[12px] text-faith-slate">{session.campaign} - {session.date} - {session.time}</div>
-                <div className="mt-2 flex flex-wrap gap-2">
-                  <ProviderStatusPill tone={statusTone(session.status)}>{session.status}</ProviderStatusPill>
-                  <ProviderStatusPill tone="neutral">{session.duration}</ProviderStatusPill>
+      <div className="grid gap-4 xl:grid-cols-[minmax(0,1.45fr)_minmax(340px,0.82fr)] xl:items-start">
+        <div className="space-y-4">
+          <ProviderSectionCard title="Live queue" subtitle="Review sessions in a denser grid so the workspace stays visually active on wide screens.">
+            <div className="grid gap-3 sm:grid-cols-2">
+              {sessions.map((session) => (
+                <div
+                  key={session.id}
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => setSelectedId(session.id)}
+                  onKeyDown={(event) => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                      event.preventDefault();
+                      setSelectedId(session.id);
+                    }
+                  }}
+                  className={cx(
+                    'flex min-h-[168px] w-full flex-col justify-between rounded-[28px] border p-4 text-left transition-colors',
+                    selected?.id === session.id ? 'border-emerald-300 bg-emerald-50' : 'border-faith-line/70 bg-[var(--fh-surface-bg)] hover:bg-[var(--fh-surface)]',
+                  )}
+                >
+                  <div>
+                    <div className="text-[14px] font-black text-faith-ink">{session.title}</div>
+                    <div className="mt-1 text-[12px] text-faith-slate">
+                      {session.campaign} - {session.date} - {session.time}
+                    </div>
+                    <div className="mt-2 flex flex-wrap gap-2">
+                      <ProviderStatusPill tone={statusTone(session.status)}>{session.status}</ProviderStatusPill>
+                      <ProviderStatusPill tone="neutral">{session.duration}</ProviderStatusPill>
+                    </div>
+                  </div>
+                  <div className="mt-4 flex items-center gap-2">
+                    <Button variant="outline" className="flex-1" onClick={() => navigate(`${ROUTES.liveSessionDetails}?sessionId=${encodeURIComponent(session.id)}`)}>
+                      <Eye size={14} /> View
+                    </Button>
+                    <Button variant="outline" className="flex-1" onClick={() => deleteSession(session.id)}>
+                      <Trash2 size={14} /> Delete
+                    </Button>
+                  </div>
                 </div>
+              ))}
+            </div>
+          </ProviderSectionCard>
+
+          <ProviderSectionCard title="Live session summary" subtitle="A compact status strip keeps the page dense even when the session list is short.">
+            <div className="grid gap-3 sm:grid-cols-3">
+              <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
+                <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">Pending</div>
+                <div className="mt-1 text-[24px] font-black text-faith-ink">{pendingSessions}</div>
               </div>
-              <div className="flex items-center gap-2">
-                <Button variant="outline" onClick={() => navigate(`${ROUTES.liveSessionDetails}?sessionId=${encodeURIComponent(session.id)}`)}><Eye size={14} /> View</Button>
-                <Button variant="outline" onClick={() => deleteSession(session.id)}><Trash2 size={14} /> Delete</Button>
+              <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
+                <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">Ready</div>
+                <div className="mt-1 text-[24px] font-black text-faith-ink">{readySessions}</div>
+              </div>
+              <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
+                <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">Live</div>
+                <div className="mt-1 text-[24px] font-black text-faith-ink">{liveSessions}</div>
               </div>
             </div>
-          ))}
+          </ProviderSectionCard>
         </div>
 
-        <div className="space-y-4 xl:col-span-4">
+        <div className="space-y-4 xl:sticky xl:top-4">
           <JourneyPhaseCard activePath={ROUTES.liveDashboard} onNavigate={(path) => navigate(path)} />
           <ProviderSectionCard title="Selected session" subtitle="Open the details view or jump straight to the waiting room.">
             {selected ? (
