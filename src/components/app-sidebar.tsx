@@ -1,13 +1,8 @@
-﻿import { ChevronDown, ChevronLeft, ChevronRight, HeartHandshake, Radio, Users, Zap } from 'lucide-react';
-import { useMemo, useState } from 'react';
+import { ChevronDown, ChevronLeft, ChevronRight, HeartHandshake, Radio, Users, Zap } from 'lucide-react';
+import { useEffect, useMemo, useState } from 'react';
 import { BrandLogo } from '@/components/branding/BrandLogo';
 import { useLocation, useNavigate } from 'react-router-dom';
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarHeader,
-  useSidebar,
-} from '@/components/ui/sidebar';
+import { Sidebar, SidebarContent, SidebarHeader, useSidebar } from '@/components/ui/sidebar';
 
 type SectionRow = {
   id: string;
@@ -22,12 +17,17 @@ const sectionRows: SectionRow[] = [
   { id: 'community', label: 'COMMUNITY', icon: Users },
 ];
 
+const APP_SIDEBAR_ACTIVE_SECTION_KEY = 'faithhub.app.sidebar.activeSection';
+
 export function AppSidebar() {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const { setOpenMobile, isMobile, state, toggleSidebar } = useSidebar();
   const collapsed = state === 'collapsed';
-  const [openSectionId, setOpenSectionId] = useState('community');
+  const [openSectionId, setOpenSectionId] = useState(() => {
+    if (typeof window === 'undefined') return 'community';
+    return window.localStorage.getItem(APP_SIDEBAR_ACTIVE_SECTION_KEY) || 'community';
+  });
 
   const communityItems = useMemo(
     () => [
@@ -38,9 +38,23 @@ export function AppSidebar() {
     [],
   );
 
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    window.localStorage.setItem(APP_SIDEBAR_ACTIVE_SECTION_KEY, openSectionId);
+  }, [openSectionId]);
+
   const handleNavigate = (path: string) => {
     navigate(path);
     if (isMobile) setOpenMobile(false);
+  };
+
+  const handleSectionClick = (sectionId: string) => {
+    if (collapsed && !isMobile) {
+      setOpenSectionId(sectionId);
+      toggleSidebar();
+      return;
+    }
+    setOpenSectionId((prev) => (prev === sectionId ? '' : sectionId));
   };
 
   return (
@@ -60,11 +74,17 @@ export function AppSidebar() {
 
         <SidebarHeader className={`${collapsed ? 'px-2 py-4' : 'px-4 py-4'} border-b-slate-300`}>
           {collapsed ? (
-            <div className="flex items-center justify-center">
-              <div className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-100 text-emerald-700 text-sm font-bold">
-                F
-              </div>
-            </div>
+            <button
+              type="button"
+              onClick={() => {
+                if (!isMobile) toggleSidebar();
+              }}
+              className="mx-auto inline-flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-100 text-sm font-bold text-emerald-700 transition hover:bg-emerald-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2"
+              aria-label="Expand sidebar"
+              title="Expand sidebar"
+            >
+              F
+            </button>
           ) : (
             <div className="flex items-center gap-2">
               <BrandLogo variant="landscape" alt="FaithHub Provider" className="h-10 w-auto" />
@@ -79,6 +99,7 @@ export function AppSidebar() {
               onClick={toggleSidebar}
               className="mx-auto mt-1 inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-300 bg-white text-slate-700 shadow-sm hover:bg-slate-50"
               aria-label="Expand sidebar"
+              title="Expand sidebar"
             >
               <ChevronRight className="h-5 w-5" />
             </button>
@@ -88,14 +109,18 @@ export function AppSidebar() {
             {sectionRows.map((row) => {
               const Icon = row.icon;
               const isOpen = openSectionId === row.id && !collapsed;
+              const isActive = openSectionId === row.id;
               return (
                 <div key={row.id} className="space-y-2">
                   <button
                     type="button"
-                    onClick={() => setOpenSectionId((prev) => (prev === row.id ? '' : row.id))}
+                    onClick={() => handleSectionClick(row.id)}
                     className={`group flex w-full items-center rounded-2xl px-3 py-3 text-left transition ${
-                      isOpen ? 'bg-slate-200' : 'hover:bg-slate-200/70'
+                      isActive ? 'bg-slate-200' : 'hover:bg-slate-200/70'
                     }`}
+                    aria-label={row.label}
+                    aria-expanded={isOpen}
+                    title={collapsed ? row.label : undefined}
                   >
                     <Icon className={`h-4 w-4 ${isOpen ? 'text-amber-500' : 'text-slate-500 group-hover:text-slate-700'}`} />
                     {!collapsed ? (
