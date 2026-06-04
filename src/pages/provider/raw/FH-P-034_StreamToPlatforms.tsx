@@ -1136,7 +1136,7 @@ export default function StreamToPlatformsPage() {
             </div>
           </div>
 
-          <div className="mt-4 flex flex-wrap items-center gap-2 text-[11px] text-faith-slate dark:text-slate-300">
+          <div className="mt-4 grid grid-cols-2 gap-2 text-[11px] text-faith-slate dark:text-slate-300 sm:grid-cols-3 xl:grid-cols-5">
             <Badge tone="neutral">{sessionTitle}</Badge>
             <Badge tone="green">{internalDestinations.length} internal surface{internalDestinations.length === 1 ? '' : 's'}</Badge>
             <Badge tone="blue">{externalDestinations.length} external destination{externalDestinations.length === 1 ? '' : 's'}</Badge>
@@ -1175,7 +1175,7 @@ export default function StreamToPlatformsPage() {
                 }
               />
 
-              <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+              <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
                 {destinations.map((d) => {
                   const blocked = d.status === 'Blocked';
                   const needsFix = d.status === 'Needs re-auth' || d.status === 'Missing credentials' || d.status === 'Blocked';
@@ -1304,37 +1304,37 @@ export default function StreamToPlatformsPage() {
               />
 
               <div className="mt-4 hidden overflow-hidden rounded-[14px] ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft md:block">
-                <div className="grid grid-cols-12 gap-2 bg-[var(--fh-surface)] dark:bg-slate-900/50 px-4 py-3 text-[10px] font-bold text-faith-slate uppercase tracking-wider">
-                  <div className="col-span-1">Order</div>
-                  <div className="col-span-3">Destination</div>
-                  <div className="col-span-2">Variant</div>
-                  <div className="col-span-2">Language</div>
-                  <div className="col-span-2">Fallback</div>
-                  <div className="col-span-2 text-right">Actions</div>
+                <div className="grid grid-cols-[44px_minmax(180px,2fr)_minmax(140px,1fr)_minmax(130px,1fr)_minmax(130px,1fr)_minmax(120px,auto)] gap-2 bg-[var(--fh-surface)] dark:bg-slate-900/50 px-4 py-3 text-[10px] font-bold text-faith-slate uppercase tracking-wider">
+                  <div>Order</div>
+                  <div>Destination</div>
+                  <div>Variant</div>
+                  <div>Language</div>
+                  <div>Fallback</div>
+                  <div className="text-right">Actions</div>
                 </div>
 
                 <div className="divide-y divide-slate-200 dark:divide-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900">
                   {activeDestinations.map((d, index) => (
-                    <div key={d.id} className="grid grid-cols-12 gap-2 px-4 py-3 items-center text-[11px] sm:text-xs">
-                      <div className="col-span-1">
+                    <div key={d.id} className="grid grid-cols-[44px_minmax(180px,2fr)_minmax(140px,1fr)_minmax(130px,1fr)_minmax(130px,1fr)_minmax(120px,auto)] gap-2 px-4 py-3 items-center text-[11px] sm:text-xs">
+                      <div>
                         <div className="inline-flex h-8 w-8 items-center justify-center rounded-full text-[11px] font-black text-white" style={{ background: index === 0 ? EV_GREEN : EV_ORANGE }}>
                           {d.routeOrder}
                         </div>
                       </div>
-                      <div className="col-span-3 min-w-0">
+                      <div className="min-w-0">
                         <div className="font-bold text-faith-ink dark:text-slate-100 truncate">{d.name}</div>
                         <div className="text-[10px] text-faith-slate truncate">{d.family} · {prettyKbps(d.health.outBitrateKbps)}</div>
                       </div>
-                      <div className="col-span-2 min-w-0">
+                      <div className="min-w-0">
                         <div className="truncate text-slate-700 dark:text-slate-200 font-semibold">{d.creativeVariant}</div>
                       </div>
-                      <div className="col-span-2 min-w-0">
+                      <div className="min-w-0">
                         <div className="truncate text-slate-700 dark:text-slate-200">{d.settings.languageTrack || 'Default'}</div>
                       </div>
-                      <div className="col-span-2 min-w-0">
+                      <div className="min-w-0">
                         <div className="truncate text-slate-700 dark:text-slate-200">{d.fallbackRule}</div>
                       </div>
-                      <div className="col-span-2 flex items-center justify-end gap-2">
+                      <div className="flex items-center justify-end gap-2">
                         <button
                           onClick={() => moveRoute(d.id, -1)}
                           disabled={index === 0}
@@ -1576,24 +1576,24 @@ export default function StreamToPlatformsPage() {
                     </div>
 
                     <div className="bg-[var(--fh-surface)] dark:bg-slate-900/50">
-                      <div className="grid grid-cols-12 gap-2 border-t border-faith-line dark:border-slate-800 px-4 py-2 text-[10px] font-bold text-faith-slate uppercase tracking-wider">
-                        <div className="col-span-3">Destination</div>
-                        <div className="col-span-2 text-center">Viewers</div>
-                        <div className="col-span-2 text-center">Errors</div>
-                        <div className="col-span-2 text-center">ACK</div>
-                        <div className="col-span-3 text-right">Health</div>
+                      <div className="grid grid-cols-[minmax(180px,2fr)_minmax(90px,.8fr)_minmax(90px,.8fr)_minmax(90px,.8fr)_minmax(160px,1.2fr)] gap-2 border-t border-faith-line dark:border-slate-800 px-4 py-2 text-[10px] font-bold text-faith-slate uppercase tracking-wider">
+                        <div>Destination</div>
+                        <div className="text-center">Viewers</div>
+                        <div className="text-center">Errors</div>
+                        <div className="text-center">ACK</div>
+                        <div className="text-right">Health</div>
                       </div>
                       <div className="divide-y divide-slate-200 dark:divide-slate-800">
                         {activeDestinations.map((d) => (
-                          <div key={d.id} className="grid grid-cols-12 gap-2 px-4 py-3 items-center text-[11px] sm:text-xs">
-                            <div className="col-span-3 min-w-0">
+                          <div key={d.id} className="grid grid-cols-[minmax(180px,2fr)_minmax(90px,.8fr)_minmax(90px,.8fr)_minmax(90px,.8fr)_minmax(160px,1.2fr)] gap-2 px-4 py-3 items-center text-[11px] sm:text-xs">
+                            <div className="min-w-0">
                               <div className="font-bold text-faith-ink dark:text-slate-100 truncate">{d.name}</div>
                               <div className="text-[10px] text-faith-slate truncate">{d.settings.safeAreaMode}</div>
                             </div>
-                            <div className="col-span-2 text-center font-semibold text-slate-700 dark:text-slate-200">{d.health.viewers.toLocaleString()}</div>
-                            <div className="col-span-2 text-center font-semibold text-slate-700 dark:text-slate-200">{d.health.errors}</div>
-                            <div className="col-span-2 text-center font-semibold text-slate-700 dark:text-slate-200">{d.health.lastAckSec}s</div>
-                            <div className="col-span-3 flex items-center justify-end gap-2">
+                            <div className="text-center font-semibold text-slate-700 dark:text-slate-200">{d.health.viewers.toLocaleString()}</div>
+                            <div className="text-center font-semibold text-slate-700 dark:text-slate-200">{d.health.errors}</div>
+                            <div className="text-center font-semibold text-slate-700 dark:text-slate-200">{d.health.lastAckSec}s</div>
+                            <div className="flex items-center justify-end gap-2">
                               <Badge tone={statusTone(d.status)}>{statusLabel(d.status)}</Badge>
                               <MiniLine values={d.health.trend} tone={d.family === 'Provider Surface' ? 'green' : 'orange'} />
                             </div>
