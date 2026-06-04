@@ -825,22 +825,17 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
   };
 
   return (
-    <div className="min-h-full w-full flex flex-col bg-[var(--fh-page-bg)] dark:bg-slate-950 text-faith-ink dark:text-slate-50 transition-colors overflow-x-hidden">
-      {/* Sticky header */}
-      <div className="sticky top-0 z-40 border-b border-faith-line dark:border-slate-800 bg-[var(--fh-surface-bg)]/95 dark:bg-slate-900/95 backdrop-blur-md transition">
-        <div className="w-full px-4 sm:px-5 md:px-6 lg:px-8 py-4">
+    <div className="min-h-full w-full flex flex-col bg-[var(--fh-page-bg)] text-faith-ink transition-colors overflow-x-hidden dark:bg-slate-950 dark:text-slate-50">
+      <div className="sticky top-0 z-40 border-b border-faith-line bg-[color-mix(in_srgb,var(--fh-surface-bg)_94%,transparent)] backdrop-blur-md transition dark:border-slate-800 dark:bg-slate-900/95">
+        <div className="w-full px-4 py-4 sm:px-5 md:px-6 lg:px-8">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
             <div className="min-w-0">
-              <div className="flex flex-wrap items-center gap-2 text-[10px] font-black uppercase tracking-[0.14em] text-faith-slate">
-                    <span>Provider</span>
-                <span className="text-slate-300 dark:text-slate-700">/</span>
-                <span>Provider</span>
-                <span className="text-slate-300 dark:text-slate-700">/</span>
-                <span className="text-faith-ink dark:text-slate-100 italic">Post-live Publishing</span>
+              <div className="inline-flex items-center rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-[10px] font-black uppercase tracking-[0.16em] text-emerald-700 dark:border-emerald-900/60 dark:bg-emerald-950/40 dark:text-emerald-300">
+                FaithHub Provider · Post-live Publishing
               </div>
 
-              <div className="mt-2 flex flex-wrap items-center gap-3">
-                <div className="text-xl sm:text-2xl font-extrabold tracking-tight text-faith-ink dark:text-slate-50">
+              <div className="mt-3 flex flex-wrap items-center gap-3">
+                <div className="text-xl font-extrabold tracking-tight text-faith-ink dark:text-slate-50 sm:text-2xl">
                   Post-live Publishing
                 </div>
                 <div className="flex flex-wrap gap-2">
@@ -856,8 +851,8 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
                 </div>
               </div>
 
-              <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs font-semibold text-faith-slate">
-                <span>{session.title}</span>
+              <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-semibold text-faith-slate">
+                <span className="max-w-[28rem] truncate">{session.title}</span>
                 <span className="text-slate-300 dark:text-slate-700">•</span>
                 <span>{session.source}</span>
                 <span className="text-slate-300 dark:text-slate-700">•</span>
@@ -865,7 +860,7 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
               </div>
             </div>
 
-            <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 xl:flex xl:w-auto xl:flex-wrap xl:justify-end">
+            <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 xl:w-auto xl:grid-cols-4 xl:flex xl:flex-wrap xl:justify-end">
               <Btn tone="neutral" className="h-10 px-4" onClick={copyReplayLink} left={<Copy className="h-4 w-4" />}>
                 Copy replay link
               </Btn>
