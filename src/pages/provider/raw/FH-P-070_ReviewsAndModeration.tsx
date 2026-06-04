@@ -620,9 +620,9 @@ function Card({
       title={title}
       subtitle={subtitle}
       right={right}
-      className={cx("rounded-3xl border-0 ring-1 ring-slate-200 dark:ring-slate-800", className)}
+      className={cx("rounded-3xl border-0 ring-1 ring-faith-line/70 dark:ring-faith-line dark:bg-[var(--fh-surface-bg)]", className)}
       headerClassName="flex-wrap"
-      titleClassName="text-sm font-extrabold uppercase tracking-tight dark:text-slate-50"
+      titleClassName="text-sm font-extrabold uppercase tracking-tight dark:text-[var(--fh-ink)]"
       subtitleClassName="mt-1 text-[12px]"
     >
       {children}
@@ -657,12 +657,12 @@ function Modal({
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-end justify-center bg-black/40 backdrop-blur-sm p-0 sm:items-center sm:p-4">
+    <div className="fixed inset-0 z-[100] flex items-end justify-center bg-black/55 backdrop-blur-sm p-0 sm:items-center sm:p-4">
       <div className="absolute inset-0" onClick={onClose} />
-      <div className="relative w-full max-w-6xl rounded-t-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 shadow-medium ring-1 ring-slate-200 dark:ring-slate-800 sm:rounded-3xl max-h-[92vh] overflow-hidden">
-        <div className="flex items-start justify-between gap-3 border-b border-faith-line dark:border-slate-800 px-5 py-4">
+      <div className="relative w-full max-w-6xl rounded-t-3xl bg-[var(--fh-surface-bg)] dark:bg-[var(--fh-surface-bg)] shadow-medium ring-1 ring-faith-line/70 dark:ring-faith-line sm:rounded-3xl max-h-[92vh] overflow-hidden">
+        <div className="flex items-start justify-between gap-3 border-b border-faith-line dark:border-faith-line px-5 py-4">
           <div className="min-w-0">
-            <div className="text-base font-bold text-faith-ink dark:text-slate-50">{title}</div>
+            <div className="text-base font-bold text-faith-ink dark:text-[var(--fh-ink)]">{title}</div>
             {subtitle ? <div className="mt-1 text-sm text-faith-slate">{subtitle}</div> : null}
           </div>
           <div className="flex items-center gap-2">

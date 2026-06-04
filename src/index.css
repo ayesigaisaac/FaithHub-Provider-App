@@ -908,25 +908,30 @@ html.dark :is(input, select, textarea) {
 
 /* FaithHub Reviews & Moderation dark skin */
 html.dark .fh-reviews-moderation-page :is(
+    [class*='bg-slate-700'],
+    [class*='bg-slate-800'],
+    [class*='bg-slate-900'],
+    [class*='bg-slate-950'],
     [class*='bg-slate-50'],
     [class*='bg-slate-100'],
     [class*='bg-slate-200'],
-    [class*='bg-slate-300'],
-    [class*='bg-slate-800'],
-    [class*='bg-slate-900'],
-    [class*='bg-slate-950']
+    [class*='bg-slate-300']
   ) {
-  background-color: var(--fh-surface-bg) !important;
+  background-color: color-mix(in srgb, var(--fh-surface-bg) 82%, var(--fh-page-bg) 18%) !important;
 }
 
 html.dark .fh-reviews-moderation-page :is(
+    [class*='bg-gray-700'],
+    [class*='bg-gray-800'],
+    [class*='bg-gray-900'],
+    [class*='bg-gray-950'],
     [class*='bg-white'],
     [class*='bg-gray-50'],
     [class*='bg-gray-100'],
     [class*='bg-gray-200'],
     [class*='bg-gray-300']
   ) {
-  background-color: var(--fh-surface) !important;
+  background-color: color-mix(in srgb, var(--fh-surface) 86%, var(--fh-page-bg) 14%) !important;
 }
 
 html.dark .fh-reviews-moderation-page :is(
@@ -955,27 +960,55 @@ html.dark .fh-reviews-moderation-page :is(
 }
 
 html.dark .fh-reviews-moderation-page :is(
+    [class*='border-slate-50'],
+    [class*='border-slate-100'],
     [class*='border-slate-200'],
     [class*='border-slate-300'],
+    [class*='border-slate-400'],
+    [class*='border-slate-500'],
+    [class*='border-slate-600'],
     [class*='border-slate-700'],
     [class*='border-slate-800'],
+    [class*='border-slate-900'],
+    [class*='border-slate-950'],
+    [class*='border-gray-50'],
+    [class*='border-gray-100'],
     [class*='border-gray-200'],
     [class*='border-gray-300'],
+    [class*='border-gray-400'],
+    [class*='border-gray-500'],
+    [class*='border-gray-600'],
     [class*='border-gray-700'],
-    [class*='border-gray-800']
+    [class*='border-gray-800'],
+    [class*='border-gray-900'],
+    [class*='border-gray-950']
   ) {
   border-color: var(--fh-line) !important;
 }
 
 html.dark .fh-reviews-moderation-page :is(
+    [class*='ring-slate-50'],
+    [class*='ring-slate-100'],
     [class*='ring-slate-200'],
     [class*='ring-slate-300'],
+    [class*='ring-slate-400'],
+    [class*='ring-slate-500'],
+    [class*='ring-slate-600'],
     [class*='ring-slate-700'],
     [class*='ring-slate-800'],
+    [class*='ring-slate-900'],
+    [class*='ring-slate-950'],
+    [class*='ring-gray-50'],
+    [class*='ring-gray-100'],
     [class*='ring-gray-200'],
     [class*='ring-gray-300'],
+    [class*='ring-gray-400'],
+    [class*='ring-gray-500'],
+    [class*='ring-gray-600'],
     [class*='ring-gray-700'],
-    [class*='ring-gray-800']
+    [class*='ring-gray-800'],
+    [class*='ring-gray-900'],
+    [class*='ring-gray-950']
   ) {
   --tw-ring-color: var(--fh-line) !important;
 }
