@@ -2080,62 +2080,90 @@ export function LiveSchedulePage() {
       }
       actions={<Button variant="primary" onClick={() => navigate(`${ROUTES.liveStudio}?sessionId=${encodeURIComponent(selected?.id || selectedId)}`)}><PlayCircle size={14} /> Open FaithHub Live Studio</Button>}
     >
-      <div className="grid gap-4 xl:grid-cols-12">
-        <div className="space-y-3 xl:col-span-7">
-          {sessions.map((session) => (
-            <div
-              key={session.id}
-              onClick={() => setSelectedId(session.id)}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(event) => {
-                if (event.key === 'Enter' || event.key === ' ') {
-                  event.preventDefault();
-                  setSelectedId(session.id);
-                }
-              }}
-              className={cx(
-                'flex w-full items-start justify-between rounded-[28px] border p-4 text-left transition-colors',
-                selected?.id === session.id ? 'border-emerald-300 bg-emerald-50' : 'border-faith-line/70 bg-[var(--fh-surface-bg)] hover:bg-[var(--fh-surface)]',
-              )}
-            >
-              <div>
-                <div className="text-[14px] font-black text-faith-ink">{session.title}</div>
-                <div className="mt-1 text-[12px] text-faith-slate">{session.date} - {session.time} - {session.duration}</div>
-                <div className="mt-2 flex flex-wrap gap-2">
-                  <ProviderStatusPill tone={statusTone(session.status)}>{session.status}</ProviderStatusPill>
-                  <ProviderStatusPill tone="neutral">{session.campaign}</ProviderStatusPill>
-                </div>
-              </div>
-              <ArrowRight size={14} />
-            </div>
-          ))}
-        </div>
-
-        <div className="space-y-4 xl:col-span-5">
-          <JourneyPhaseCard activePath={ROUTES.liveSchedule} onNavigate={(path) => navigate(path)} />
-          <ProviderSectionCard title="Schedule details" subtitle="Keep the selected session visible while scheduling and waiting-room preparation happen.">
-            {selected ? (
+      <LiveWorkspaceSplit
+        main={
+          <>
+            <ProviderSectionCard title="Scheduled sessions" subtitle="Keep the schedule dense so the center of the workspace stays active on wide screens.">
               <div className="space-y-3">
-                <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-4">
-                  <div className="text-[12px] font-extrabold text-faith-ink">{selected.title}</div>
-                  <div className="mt-1 text-[11px] text-faith-slate">{selected.description}</div>
-                  <div className="mt-2 flex flex-wrap gap-2">
-                    <ProviderStatusPill tone="neutral">{selected.host}</ProviderStatusPill>
-                    <ProviderStatusPill tone="neutral">{selected.date}</ProviderStatusPill>
-                    <ProviderStatusPill tone="neutral">{selected.time}</ProviderStatusPill>
+                {sessions.map((session) => (
+                  <div
+                    key={session.id}
+                    onClick={() => setSelectedId(session.id)}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(event) => {
+                      if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        setSelectedId(session.id);
+                      }
+                    }}
+                    className={cx(
+                      'flex w-full items-start justify-between rounded-[28px] border p-4 text-left transition-colors',
+                      selected?.id === session.id ? 'border-emerald-300 bg-emerald-50' : 'border-faith-line/70 bg-[var(--fh-surface-bg)] hover:bg-[var(--fh-surface)]',
+                    )}
+                  >
+                    <div>
+                      <div className="text-[14px] font-black text-faith-ink">{session.title}</div>
+                      <div className="mt-1 text-[12px] text-faith-slate">{session.date} - {session.time} - {session.duration}</div>
+                      <div className="mt-2 flex flex-wrap gap-2">
+                        <ProviderStatusPill tone={statusTone(session.status)}>{session.status}</ProviderStatusPill>
+                        <ProviderStatusPill tone="neutral">{session.campaign}</ProviderStatusPill>
+                      </div>
+                    </div>
+                    <ArrowRight size={14} />
+                  </div>
+                ))}
+              </div>
+            </ProviderSectionCard>
+
+            <ProviderSectionCard title="Selected session summary" subtitle="A compact summary keeps the left column visually balanced.">
+              {selected ? (
+                <div className="grid gap-3 sm:grid-cols-3">
+                  <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
+                    <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">Host</div>
+                    <div className="mt-1 text-[13px] font-black text-faith-ink">{selected.host}</div>
+                  </div>
+                  <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
+                    <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">Time</div>
+                    <div className="mt-1 text-[13px] font-black text-faith-ink">{selected.time}</div>
+                  </div>
+                  <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
+                    <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">Duration</div>
+                    <div className="mt-1 text-[13px] font-black text-faith-ink">{selected.duration}</div>
                   </div>
                 </div>
-                <Button variant="secondary" className="w-full" onClick={() => navigate(`${ROUTES.waitingRoom}?sessionId=${encodeURIComponent(selected.id)}`)}>
-                  Preview Waiting Room
-                </Button>
-              </div>
-            ) : (
-              <EmptyState title="No scheduled session selected" body="Choose a session from the list to prepare the waiting room and studio handoff." />
-            )}
-          </ProviderSectionCard>
-        </div>
-      </div>
+              ) : (
+                <EmptyState title="No scheduled session selected" body="Choose a session from the list to prepare the waiting room and studio handoff." />
+              )}
+            </ProviderSectionCard>
+          </>
+        }
+        rail={
+          <>
+            <JourneyPhaseCard activePath={ROUTES.liveSchedule} onNavigate={(path) => navigate(path)} />
+            <ProviderSectionCard title="Schedule details" subtitle="Keep the selected session visible while scheduling and waiting-room preparation happen.">
+              {selected ? (
+                <div className="space-y-3">
+                  <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-4">
+                    <div className="text-[12px] font-extrabold text-faith-ink">{selected.title}</div>
+                    <div className="mt-1 text-[11px] text-faith-slate">{selected.description}</div>
+                    <div className="mt-2 flex flex-wrap gap-2">
+                      <ProviderStatusPill tone="neutral">{selected.host}</ProviderStatusPill>
+                      <ProviderStatusPill tone="neutral">{selected.date}</ProviderStatusPill>
+                      <ProviderStatusPill tone="neutral">{selected.time}</ProviderStatusPill>
+                    </div>
+                  </div>
+                  <Button variant="secondary" className="w-full" onClick={() => navigate(`${ROUTES.waitingRoom}?sessionId=${encodeURIComponent(selected.id)}`)}>
+                    Preview Waiting Room
+                  </Button>
+                </div>
+              ) : (
+                <EmptyState title="No scheduled session selected" body="Choose a session from the list to prepare the waiting room and studio handoff." />
+              )}
+            </ProviderSectionCard>
+          </>
+        }
+      />
     </ProviderPageScaffold>
   );
 }
