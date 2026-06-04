@@ -1529,9 +1529,9 @@ function ProjectsPage() {
           </div>
 
           {/* Main command layout */}
-          <div className="grid grid-cols-12 gap-4">
+          <div className="flex flex-col gap-4 xl:flex-row xl:items-start">
             {/* Left catalog */}
-            <div className="col-span-12 xl:col-span-6 space-y-4">
+            <div className="w-full min-w-0 xl:flex-[1.4] space-y-4">
               <Card
                 title="Projects command catalog"
                 subtitle="Search, filter, and operate every community project from one premium portfolio surface."
@@ -1669,7 +1669,7 @@ function ProjectsPage() {
             </div>
 
             {/* Middle lanes */}
-            <div className="col-span-12 xl:col-span-3 space-y-4">
+            <div className="w-full xl:w-[360px] xl:shrink-0 space-y-4">
               <Card
                 title="Milestone & progress lane"
                 subtitle="The operational rhythm that keeps the selected project moving with confidence."
@@ -1813,7 +1813,7 @@ function ProjectsPage() {
             </div>
 
             {/* Right preview rail */}
-            <div className="col-span-12 xl:col-span-3 space-y-4">
+            <div className="w-full xl:w-[360px] xl:shrink-0 space-y-4">
               <Card
                 title="Project destination preview"
                 subtitle="Persistent preview rail for the selected public-facing project page, volunteer CTA, and giving path."

@@ -1113,8 +1113,8 @@ export default function FaithHubReplaysAndClipsPage() {
       </div>
 
       <div className="flex-1 w-full px-4 sm:px-5 md:px-6 lg:px-8 py-6">
-        <div className="grid grid-cols-1 gap-4 lg:grid-cols-12 lg:items-start">
-          <div className="min-w-0 lg:col-span-8 space-y-4">
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-start">
+          <div className="min-w-0 w-full lg:flex-1 space-y-4">
             <section className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <div className="flex flex-col gap-4">
                 <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-3">
@@ -1170,8 +1170,8 @@ export default function FaithHubReplaysAndClipsPage() {
               </div>
             </section>
 
-            <div className="grid grid-cols-1 gap-4 xl:grid-cols-12">
-              <section className="xl:col-span-7 rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
+            <div className="flex flex-col gap-4 xl:flex-row xl:items-start">
+              <section className="w-full min-w-0 xl:flex-1 rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
                 <div className="flex flex-col gap-4">
                   <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-3">
                     <div>
@@ -1367,7 +1367,7 @@ export default function FaithHubReplaysAndClipsPage() {
                 </div>
               </section>
 
-              <section className="xl:col-span-5 rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
+              <section className="w-full xl:w-[420px] xl:shrink-0 rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
                 <div className="flex flex-col gap-4">
                   <div>
                     <div className="text-sm font-bold text-faith-ink dark:text-slate-50 uppercase tracking-tight">Format variants & clip packaging</div>
@@ -1533,7 +1533,7 @@ export default function FaithHubReplaysAndClipsPage() {
             </section>
           </div>
 
-          <div className="min-w-0 lg:col-span-4 space-y-4">
+          <div className="min-w-0 w-full lg:w-[420px] lg:shrink-0 space-y-4">
             <section className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
               <div className="flex items-start justify-between gap-3">
                 <div>
@@ -1719,8 +1719,8 @@ export default function FaithHubReplaysAndClipsPage() {
         title="Replay & clip preview"
         subtitle="Desktop and mobile packaging preview for the current clip, including CTA framing and quote-card treatment."
       >
-        <div className="grid grid-cols-1 gap-5 xl:grid-cols-12">
-          <div className="xl:col-span-7 space-y-4">
+        <div className="flex flex-col gap-5 xl:flex-row xl:items-start">
+          <div className="w-full min-w-0 xl:flex-1 space-y-4">
             <PreviewCanvas
               replay={selectedReplay}
               variant={selectedVariant}
@@ -1752,7 +1752,7 @@ export default function FaithHubReplaysAndClipsPage() {
               </div>
             </div>
           </div>
-          <div className="xl:col-span-5 space-y-4">
+          <div className="w-full xl:w-[420px] xl:shrink-0 space-y-4">
             <PreviewCanvas
               replay={selectedReplay}
               variant={selectedVariant}

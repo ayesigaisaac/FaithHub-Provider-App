@@ -1209,9 +1209,9 @@ export default function FaithHubAudienceNotificationsPage() {
 
       {/* Body */}
       <div className="flex-1 w-full px-4 sm:px-5 md:px-6 lg:px-8 py-6">
-        <div className="grid grid-cols-1 gap-4 xl:grid-cols-12">
+        <div className="flex flex-col gap-4 xl:flex-row xl:items-start">
           {/* Left rail */}
-          <div className="xl:col-span-3 space-y-4">
+          <div className="w-full xl:w-[320px] xl:shrink-0 space-y-4">
             <CardShell
               title="Journey builder"
               subtitle="Create notification journey, choose a linked source, and orchestrate a premium timeline."
@@ -1347,7 +1347,7 @@ export default function FaithHubAudienceNotificationsPage() {
           </div>
 
           {/* Main content */}
-          <div className="xl:col-span-6 space-y-4">
+          <div className="w-full min-w-0 xl:flex-1 space-y-4">
             <CardShell
               title="Audience selector"
               subtitle="Filter by followers, groups, language, region, engagement history, donor status, and prior interactions."
@@ -1863,7 +1863,7 @@ export default function FaithHubAudienceNotificationsPage() {
           </div>
 
           {/* Right rail */}
-          <div className="xl:col-span-3 space-y-4">
+          <div className="w-full xl:w-[320px] xl:shrink-0 space-y-4">
             <CardShell
               title="Notification preview"
               subtitle="Embedded audience preview updates as copy, channels, and lifecycle stage settings change."
