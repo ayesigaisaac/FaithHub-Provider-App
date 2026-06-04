@@ -42,10 +42,39 @@ export function MobileBottomNav() {
         borderTop: '1px solid',
         borderTopColor: 'divider',
         backdropFilter: 'blur(18px)',
+        boxShadow: '0 -10px 30px -24px rgba(15, 23, 42, 0.28)',
         bgcolor: (theme) => (theme.palette.mode === 'dark' ? 'rgba(15,23,42,0.94)' : 'rgba(255,255,255,0.94)'),
       }}
     >
-      <BottomNavigation aria-label="Primary mobile navigation" value={value} onChange={(_, nextValue) => navigate(nextValue)} showLabels>
+      <BottomNavigation
+        aria-label="Primary mobile navigation"
+        value={value}
+        onChange={(_, nextValue) => navigate(nextValue)}
+        showLabels
+        sx={{
+          minHeight: 64,
+          px: 0.5,
+          py: 0.35,
+          bgcolor: 'transparent',
+          '& .MuiBottomNavigationAction-root': {
+            minWidth: 0,
+            paddingTop: 0.5,
+            paddingBottom: 0.45,
+            color: 'var(--fh-slate)',
+            '&.Mui-selected': {
+              color: 'var(--fh-brand)',
+            },
+          },
+          '& .MuiBottomNavigationAction-label': {
+            fontSize: 11,
+            fontWeight: 700,
+            letterSpacing: '0.02em',
+            '&.Mui-selected': {
+              fontSize: 11.2,
+            },
+          },
+        }}
+      >
         {tabs.map((tab) => {
           const Icon = tab.icon;
           return (
@@ -54,7 +83,7 @@ export function MobileBottomNav() {
               value={tab.value}
               label={tab.label}
               aria-label={tab.label}
-              icon={<Icon size={18} />}
+              icon={<Icon size={17} />}
             />
           );
         })}

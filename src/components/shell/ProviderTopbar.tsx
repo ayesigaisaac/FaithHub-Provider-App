@@ -117,27 +117,27 @@ export function ProviderTopbar({
     >
       <Toolbar
         sx={{
-          minHeight: { xs: 60, md: 72 },
-          px: { xs: 1.25, md: 3 },
-          py: { xs: 0.25, md: 0.7 },
-          gap: { xs: 0.6, md: 1.1 },
+          minHeight: { xs: 56, md: 72 },
+          px: { xs: 1, md: 3 },
+          py: { xs: 0.15, md: 0.7 },
+          gap: { xs: 0.45, md: 1.1 },
           borderBottom: '1px solid',
           borderColor: 'var(--fh-line)',
         }}
       >
-        <Stack direction="row" alignItems="center" spacing={1.25} sx={{ flex: 1, minWidth: 0 }}>
+        <Stack direction="row" alignItems="center" spacing={{ xs: 0.75, md: 1.25 }} sx={{ flex: 1, minWidth: 0 }}>
           <IconButton aria-label="Open navigation menu" sx={{ display: { md: 'none' } }} onClick={onOpenSidebar}>
             <MenuRoundedIcon />
           </IconButton>
           <Box sx={{ display: { xs: 'block', sm: 'none' } }}>
-            <BrandLogo variant="symbol" alt="FaithHub Provider workspace" style={{ height: 34, width: 34 }} />
+            <BrandLogo variant="symbol" alt="FaithHub Provider workspace" style={{ height: 32, width: 32 }} />
           </Box>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             <BrandLogo variant="landscape" alt="FaithHub Provider workspace" style={{ height: 48, width: 'auto' }} />
           </Box>
         </Stack>
 
-        <Stack direction="row" spacing={{ xs: 0.5, md: 1.2 }} alignItems="center" sx={{ flexShrink: 0 }}>
+        <Stack direction="row" spacing={{ xs: 0.35, md: 1.2 }} alignItems="center" sx={{ flexShrink: 0 }}>
           {isMobileActions ? (
             <IconButton
               aria-label="Open search"
