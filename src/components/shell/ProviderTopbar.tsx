@@ -117,7 +117,7 @@ export function ProviderTopbar({
     >
       <Toolbar
         sx={{
-          minHeight: { xs: 56, md: 72 },
+          minHeight: { xs: 56, md: 68 },
           px: { xs: 1, md: 3 },
           py: { xs: 0.15, md: 0.7 },
           gap: { xs: 0.45, md: 1.1 },
@@ -291,9 +291,9 @@ export function ProviderTopbar({
 
       <Toolbar
         sx={{
-          minHeight: { xs: 50, md: 56 },
+          minHeight: { xs: 48, md: 52 },
           px: { xs: 1.25, md: 3 },
-          py: { xs: 0.2, md: 0.35 },
+          py: { xs: 0.15, md: 0.25 },
           mt: 0,
           bgcolor: 'var(--fh-page-bg)',
           borderTop: '1px solid',
@@ -330,15 +330,15 @@ export function ProviderTopbar({
             <>
               <Stack
                 direction="row"
-                spacing={1.25}
+                spacing={1}
                 alignItems="center"
                 sx={{
                   overflowX: 'auto',
-                  py: 0.2,
-                  pl: 0.4,
-                  pr: 0.4,
+                  py: 0.15,
+                  pl: 0.3,
+                  pr: 0.3,
                   border: '1px solid var(--fh-line)',
-                  borderRadius: '16px',
+                  borderRadius: '14px',
                   bgcolor: 'color-mix(in srgb, var(--fh-surface) 42%, var(--fh-surface-bg) 58%)',
                   '&::-webkit-scrollbar': { height: 7 },
                   '&::-webkit-scrollbar-thumb': { backgroundColor: 'var(--fh-line)', borderRadius: 10 },
@@ -350,9 +350,9 @@ export function ProviderTopbar({
                   bgcolor: 'var(--fh-brand)',
                   color: 'var(--fh-surface-bg)',
                   borderRadius: '12px',
-                  px: { xs: 1.35, md: 1.9 },
-                  py: { xs: 0.55, md: 0.75 },
-                    fontSize: { xs: 14, md: 17 },
+                  px: { xs: 1.35, md: 1.75 },
+                  py: { xs: 0.5, md: 0.65 },
+                    fontSize: { xs: 14, md: 16 },
                     fontWeight: 800,
                     lineHeight: 1,
                     border: '1px solid var(--fh-brand-dark)',
@@ -380,6 +380,7 @@ export function ProviderTopbar({
                       bgcolor: activeTopTab?.label === tab.label ? 'var(--fh-brand)' : 'color-mix(in srgb, var(--fh-surface) 45%, var(--fh-surface-bg) 55%)',
                       color: activeTopTab?.label === tab.label ? 'var(--fh-surface-bg)' : 'var(--fh-ink)',
                       whiteSpace: 'nowrap',
+                      minHeight: { xs: 38, md: 40 },
                       '& .MuiButton-startIcon': {
                         color: activeTopTab?.label === tab.label ? 'var(--fh-surface-bg)' : 'var(--fh-brand-dark)',
                         mr: 0.8,
