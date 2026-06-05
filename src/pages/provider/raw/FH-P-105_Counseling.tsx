@@ -2,7 +2,7 @@
 
 "use client";
 
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import {
   AlertTriangle,
   CalendarClock,
@@ -22,6 +22,7 @@ import {
   UserPlus,
   Users,
   Workflow,
+  Trash2,
   X,
 } from "lucide-react";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
@@ -78,6 +79,11 @@ function fmtLocal(iso?: string) {
   });
 }
 
+function toDateTimeLocalValue(date: Date) {
+  const pad = (value: number) => String(value).padStart(2, "0");
+  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}`;
+}
+
 type CaseStatus =
   | "New intake"
   | "Assigned"
@@ -95,6 +101,14 @@ type CaseSource =
   | "Event";
 type PrivacyMode = "Private" | "Restricted" | "Pastoral team";
 type PreviewMode = "desktop" | "mobile";
+type AvailabilityMode = "Chat" | "Video";
+
+type AvailabilitySlot = {
+  id: string;
+  mode: AvailabilityMode;
+  startsAt: string;
+  durationMinutes: number;
+};
 
 type Counselor = {
   id: string;
@@ -156,6 +170,63 @@ type PathwayTemplate = {
   hint: string;
   accent: "green" | "orange" | "navy";
 };
+
+const AVAILABILITY_STORAGE_KEY = "faithhub.provider.counseling.availability";
+
+function createAvailabilitySeed() {
+  const now = Date.now();
+  return {
+    "counselor-miriam": [
+      {
+        id: "slot-miriam-1",
+        mode: "Video" as const,
+        startsAt: new Date(now + 24 * 60 * 60 * 1000).toISOString(),
+        durationMinutes: 45,
+      },
+      {
+        id: "slot-miriam-2",
+        mode: "Chat" as const,
+        startsAt: new Date(now + 30 * 60 * 60 * 1000).toISOString(),
+        durationMinutes: 45,
+      },
+    ],
+    "counselor-daniel": [
+      {
+        id: "slot-daniel-1",
+        mode: "Chat" as const,
+        startsAt: new Date(now + 26 * 60 * 60 * 1000).toISOString(),
+        durationMinutes: 45,
+      },
+    ],
+    "counselor-ruth": [
+      {
+        id: "slot-ruth-1",
+        mode: "Video" as const,
+        startsAt: new Date(now + 48 * 60 * 60 * 1000).toISOString(),
+        durationMinutes: 45,
+      },
+    ],
+    "counselor-esther": [
+      {
+        id: "slot-esther-1",
+        mode: "Chat" as const,
+        startsAt: new Date(now + 20 * 60 * 60 * 1000).toISOString(),
+        durationMinutes: 45,
+      },
+    ],
+  };
+}
+
+function readAvailabilitySlots() {
+  if (typeof window === "undefined") return createAvailabilitySeed();
+  try {
+    const raw = window.localStorage.getItem(AVAILABILITY_STORAGE_KEY);
+    if (!raw) return createAvailabilitySeed();
+    return JSON.parse(raw) as Record<string, AvailabilitySlot[]>;
+  } catch {
+    return createAvailabilitySeed();
+  }
+}
 
 const counselorsSeed: Counselor[] = [
   {
@@ -782,6 +853,14 @@ export default function CounselingPage() {
   const [selectedCounselorId, setSelectedCounselorId] = useState<string>(
     casesSeed[0]?.counselorId || counselorsSeed[0]?.id || "",
   );
+  const [availabilitySlotsByCounselor, setAvailabilitySlotsByCounselor] = useState<Record<string, AvailabilitySlot[]>>(
+    () => readAvailabilitySlots(),
+  );
+  const [slotMode, setSlotMode] = useState<AvailabilityMode>("Chat");
+  const [slotStartsAt, setSlotStartsAt] = useState<string>(() =>
+    toDateTimeLocalValue(new Date(Date.now() + 60 * 60 * 1000)),
+  );
+  const [slotDurationMinutes, setSlotDurationMinutes] = useState<number>(45);
 
   const selectedCase = useMemo(
     () => cases.find((r) => r.id === selectedId) || cases[0],
@@ -844,6 +923,13 @@ export default function CounselingPage() {
       ) || counselorsSeed[0],
     [selectedCase?.counselorId, selectedCounselorId],
   );
+  const currentAvailabilitySlots = useMemo(() => {
+    const slots = availabilitySlotsByCounselor[selectedCounselor.id] || [];
+    return [...slots].sort(
+      (left, right) =>
+        new Date(left.startsAt).getTime() - new Date(right.startsAt).getTime(),
+    );
+  }, [availabilitySlotsByCounselor, selectedCounselor.id]);
 
   const activeCases = cases.filter((record) => record.status !== "Closed");
   const unassignedCases = cases.filter((record) => !record.counselorId);
@@ -866,6 +952,14 @@ export default function CounselingPage() {
     `${scheduledThisWeek.length} sessions are due this week`,
     `${safeguardFlags.length} safeguarding reviews need leadership visibility`,
   ];
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    window.localStorage.setItem(
+      AVAILABILITY_STORAGE_KEY,
+      JSON.stringify(availabilitySlotsByCounselor),
+    );
+  }, [availabilitySlotsByCounselor]);
 
   function handleCreateCase() {
     const newRecord: CounselingCaseRecord = {
@@ -946,8 +1040,48 @@ export default function CounselingPage() {
               counselorId: record.counselorId || selectedCounselor.id,
             }
           : record,
-      ),
+        ),
     );
+  }
+
+  function handleAddAvailabilitySlot() {
+    if (!selectedCounselor) return;
+    const parsedStartsAt = new Date(slotStartsAt);
+    if (Number.isNaN(parsedStartsAt.getTime())) return;
+
+    const nextSlot: AvailabilitySlot = {
+      id: `slot-${Date.now()}`,
+      mode: slotMode,
+      startsAt: parsedStartsAt.toISOString(),
+      durationMinutes: slotDurationMinutes,
+    };
+
+    setAvailabilitySlotsByCounselor((current) => {
+      const nextSlots = [...(current[selectedCounselor.id] || []), nextSlot].sort(
+        (left, right) =>
+          new Date(left.startsAt).getTime() - new Date(right.startsAt).getTime(),
+      );
+      return {
+        ...current,
+        [selectedCounselor.id]: nextSlots,
+      };
+    });
+  }
+
+  function handleRemoveAvailabilitySlot(slotId: string) {
+    if (typeof window !== "undefined") {
+      const confirmed = window.confirm(
+        "Remove this availability slot? This cannot be edited later.",
+      );
+      if (!confirmed) return;
+    }
+
+    setAvailabilitySlotsByCounselor((current) => ({
+      ...current,
+      [selectedCounselor.id]: (current[selectedCounselor.id] || []).filter(
+        (slot) => slot.id !== slotId,
+      ),
+    }));
   }
 
   const linkedHooks = [
@@ -1380,6 +1514,116 @@ export default function CounselingPage() {
                           </div>
                         </div>
                       </div>
+                    </div>
+                  </div>
+
+                  <div className="rounded-[24px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 transition-colors">
+                    <div className="flex flex-wrap items-start justify-between gap-3">
+                      <div className="min-w-0">
+                        <div className="text-[11px] font-black uppercase tracking-[0.14em] text-faith-slate">
+                          Availability feed
+                        </div>
+                        <div className="mt-1 text-[13px] leading-6 text-faith-slate">
+                          Add private chat or video slots for the selected counselor. Existing slots can be removed, but not edited.
+                        </div>
+                      </div>
+                      <Pill
+                        text={`${currentAvailabilitySlots.length} slots`}
+                        tone={currentAvailabilitySlots.length ? "good" : "warn"}
+                      />
+                    </div>
+
+                    <div className="mt-4 grid gap-3 xl:grid-cols-[1fr_1fr_140px_auto]">
+                      <div>
+                        <div className="mb-1 text-[11px] font-black uppercase tracking-[0.14em] text-faith-slate">
+                          Mode
+                        </div>
+                        <select
+                          value={slotMode}
+                          onChange={(event) =>
+                            setSlotMode(event.target.value as AvailabilityMode)
+                          }
+                          className="w-full rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-2.5 text-[12px] font-semibold text-slate-700 dark:text-slate-300 transition-colors"
+                        >
+                          <option value="Chat">Chat</option>
+                          <option value="Video">Video</option>
+                        </select>
+                      </div>
+
+                      <div>
+                        <div className="mb-1 text-[11px] font-black uppercase tracking-[0.14em] text-faith-slate">
+                          Start time
+                        </div>
+                        <input
+                          type="datetime-local"
+                          value={slotStartsAt}
+                          onChange={(event) => setSlotStartsAt(event.target.value)}
+                          className="w-full rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-2.5 text-[12px] font-semibold text-slate-700 dark:text-slate-300 transition-colors"
+                        />
+                      </div>
+
+                      <div>
+                        <div className="mb-1 text-[11px] font-black uppercase tracking-[0.14em] text-faith-slate">
+                          Duration
+                        </div>
+                        <select
+                          value={slotDurationMinutes}
+                          onChange={(event) =>
+                            setSlotDurationMinutes(Number(event.target.value))
+                          }
+                          className="w-full rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-3 py-2.5 text-[12px] font-semibold text-slate-700 dark:text-slate-300 transition-colors"
+                        >
+                          <option value={30}>30 min</option>
+                          <option value={45}>45 min</option>
+                          <option value={60}>60 min</option>
+                        </select>
+                      </div>
+
+                      <ActionButton
+                        tone="primary"
+                        left={<Plus className="h-4 w-4" />}
+                        onClick={handleAddAvailabilitySlot}
+                      >
+                        Add availability slot
+                      </ActionButton>
+                    </div>
+
+                    <div className="mt-4 space-y-3">
+                      {currentAvailabilitySlots.length ? (
+                        currentAvailabilitySlots.map((slot) => (
+                          <div
+                            key={slot.id}
+                            className="flex flex-col gap-3 rounded-2xl border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-3 transition-colors md:flex-row md:items-center md:justify-between"
+                          >
+                            <div className="min-w-0">
+                              <div className="flex flex-wrap items-center gap-2">
+                                <span className="rounded-full border border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-900/20 px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.14em] text-emerald-700 dark:text-emerald-300">
+                                  {slot.mode}
+                                </span>
+                                <span className="rounded-full border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 px-2.5 py-1 text-[10px] font-semibold text-faith-slate dark:text-slate-300">
+                                  {slot.durationMinutes} minutes
+                                </span>
+                              </div>
+                              <div className="mt-2 text-[13px] font-semibold text-faith-ink dark:text-slate-100">
+                                {fmtLocal(slot.startsAt)}
+                              </div>
+                            </div>
+
+                            <button
+                              type="button"
+                              onClick={() => handleRemoveAvailabilitySlot(slot.id)}
+                              className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 text-slate-700 dark:text-slate-200 transition-colors hover:bg-rose-50 dark:hover:bg-rose-900/20 hover:text-rose-600 dark:hover:text-rose-300"
+                              aria-label="Remove availability slot"
+                            >
+                              <Trash2 className="h-4 w-4" />
+                            </button>
+                          </div>
+                        ))
+                      ) : (
+                        <div className="rounded-2xl border border-dashed border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface)] dark:bg-slate-950 px-4 py-4 text-[12px] leading-6 text-faith-slate">
+                          No availability slots yet. Add one above to start the feed.
+                        </div>
+                      )}
                     </div>
                   </div>
 
