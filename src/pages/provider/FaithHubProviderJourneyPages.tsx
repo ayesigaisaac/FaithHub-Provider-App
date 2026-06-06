@@ -551,6 +551,8 @@ function Field({
   placeholder,
   type = 'text',
   rows = 1,
+  helperText,
+  errorMessage,
 }: {
   label: string;
   value: string;
@@ -558,19 +560,31 @@ function Field({
   placeholder?: string;
   type?: string;
   rows?: number;
+  helperText?: string;
+  errorMessage?: string;
 }) {
   const base =
-    'mt-1.5 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] font-semibold text-faith-ink outline-none transition-colors focus:ring-2 focus:ring-emerald-200';
+    'mt-1.5 w-full rounded-2xl border bg-[var(--fh-surface-bg)] px-3 py-2.5 text-[13px] font-semibold text-faith-ink outline-none transition-colors focus:ring-2';
+  const safeLabel = label.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+  const helperId = `${safeLabel}-helper`;
+  const errorId = `${safeLabel}-error`;
   return (
     <label className="block">
       <span className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">{label}</span>
+      {helperText ? <div id={helperId} className="mt-1 text-[11px] leading-5 text-faith-slate">{helperText}</div> : null}
       {rows > 1 ? (
         <textarea
           rows={rows}
           value={value}
           onChange={(event) => onChange(event.target.value)}
           placeholder={placeholder}
-          className={cx(base, 'min-h-[110px] resize-y')}
+          aria-describedby={[helperText ? helperId : null, errorMessage ? errorId : null].filter(Boolean).join(' ') || undefined}
+          aria-invalid={Boolean(errorMessage)}
+          className={cx(
+            base,
+            'min-h-[118px] resize-y',
+            errorMessage ? 'border-rose-300 focus:ring-rose-200' : 'border-faith-line/70 focus:ring-emerald-200',
+          )}
         />
       ) : (
         <input
@@ -578,9 +592,15 @@ function Field({
           value={value}
           onChange={(event) => onChange(event.target.value)}
           placeholder={placeholder}
-          className={base}
+          aria-describedby={[helperText ? helperId : null, errorMessage ? errorId : null].filter(Boolean).join(' ') || undefined}
+          aria-invalid={Boolean(errorMessage)}
+          className={cx(
+            base,
+            errorMessage ? 'border-rose-300 focus:ring-rose-200' : 'border-faith-line/70 focus:ring-emerald-200',
+          )}
         />
       )}
+      {errorMessage ? <div id={errorId} className="mt-1.5 text-[11px] font-semibold text-rose-600">{errorMessage}</div> : null}
     </label>
   );
 }
@@ -590,19 +610,24 @@ function SelectField({
   value,
   onChange,
   options,
+  helperText,
 }: {
   label: string;
   value: string;
   onChange: (next: string) => void;
   options: string[] | SelectOption[];
+  helperText?: string;
 }) {
+  const helperId = `${label.toLowerCase().replace(/[^a-z0-9]+/g, '-')}-helper`;
   return (
     <label className="block">
       <span className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">{label}</span>
+      {helperText ? <div id={helperId} className="mt-1 text-[11px] leading-5 text-faith-slate">{helperText}</div> : null}
       <select
         value={value}
         onChange={(event) => onChange(event.target.value)}
-        className="mt-1.5 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] font-semibold text-faith-ink outline-none transition-colors focus:ring-2 focus:ring-emerald-200"
+        aria-describedby={helperText ? helperId : undefined}
+        className="mt-1.5 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2.5 text-[13px] font-semibold text-faith-ink outline-none transition-colors focus:ring-2 focus:ring-emerald-200"
       >
         {options.map((option) => {
           const optionValue = typeof option === 'string' ? option : option.value;
@@ -648,8 +673,16 @@ function ToggleField({
       >
         {checked ? <CheckCircle2 size={13} /> : null}
       </span>
-      <span className="min-w-0">
-        <span className="block text-[12px] font-extrabold text-faith-ink">{label}</span>
+      <span className="min-w-0 flex-1">
+        <span className="flex items-center gap-2">
+          <span className="block text-[12px] font-extrabold text-faith-ink">{label}</span>
+          <span className={cx(
+            'rounded-full px-2 py-0.5 text-[10px] font-black uppercase tracking-[0.18em]',
+            checked ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-100 text-slate-500',
+          )}>
+            {checked ? 'On' : 'Off'}
+          </span>
+        </span>
         {detail ? <span className="mt-0.5 block text-[11px] leading-5 text-faith-slate">{detail}</span> : null}
       </span>
     </button>
@@ -799,20 +832,21 @@ export function ProviderRegistrationPage() {
               right={<ProviderStatusPill tone="neutral" left={<UserCircle2 size={12} />}>FaithHub Provider</ProviderStatusPill>}
             >
               <div className="grid gap-4 md:grid-cols-2">
-                <Field label="Organization Name" value={draft.organizationName} onChange={(value) => update('organizationName', value)} placeholder="FaithHub Renewal Ministry" />
+                <Field label="Organization Name" value={draft.organizationName} onChange={(value) => update('organizationName', value)} placeholder="FaithHub Renewal Ministry" helperText="This is the public ministry or organization name shown across provider surfaces." />
                 <SelectField
                   label="Provider Type"
                   value={draft.providerType}
                   onChange={(value) => update('providerType', value)}
                   options={['Ministry', 'Church', 'Creator', 'Agency']}
+                  helperText="Choose the closest operating model so the right onboarding prompts appear."
                 />
-                <Field label="Contact Person" value={draft.contactPerson} onChange={(value) => update('contactPerson', value)} placeholder="Pastor Miriam N." />
-                <Field label="Email" value={draft.email} onChange={(value) => update('email', value)} placeholder="hello@faithhub.org" type="email" />
-                <Field label="Phone Number" value={draft.phoneNumber} onChange={(value) => update('phoneNumber', value)} placeholder="+256 700 123 456" />
-                <Field label="Website" value={draft.website} onChange={(value) => update('website', value)} placeholder="faithhub.org" />
-                <Field label="Country" value={draft.country} onChange={(value) => update('country', value)} placeholder="Uganda" />
-                <Field label="City" value={draft.city} onChange={(value) => update('city', value)} placeholder="Kampala" />
-                <Field label="Password" value={draft.password} onChange={(value) => update('password', value)} placeholder="Create a secure password" type="password" />
+                <Field label="Contact Person" value={draft.contactPerson} onChange={(value) => update('contactPerson', value)} placeholder="Pastor Miriam N." helperText="Use the person who will receive approval and workflow notices." />
+                <Field label="Email" value={draft.email} onChange={(value) => update('email', value)} placeholder="hello@faithhub.org" type="email" helperText="This should be a monitored inbox for provider communication." />
+                <Field label="Phone Number" value={draft.phoneNumber} onChange={(value) => update('phoneNumber', value)} placeholder="+256 700 123 456" helperText="Include the country code so support can reach you quickly." />
+                <Field label="Website" value={draft.website} onChange={(value) => update('website', value)} placeholder="faithhub.org" helperText="Optional but recommended for brand trust and public discovery." />
+                <Field label="Country" value={draft.country} onChange={(value) => update('country', value)} placeholder="Uganda" helperText="This helps with localization and default region settings." />
+                <Field label="City" value={draft.city} onChange={(value) => update('city', value)} placeholder="Kampala" helperText="Use the primary city or base of operations." />
+                <Field label="Password" value={draft.password} onChange={(value) => update('password', value)} placeholder="Create a secure password" type="password" helperText="Create the initial password for this provider admin session." />
               </div>
             </ProviderSectionCard>
 
@@ -956,13 +990,13 @@ export function ProviderProfilePage() {
               subtitle="Use these assets across dashboard cards, approval banners, and live session previews."
             >
               <div className="grid gap-4 md:grid-cols-2">
-                <Field label="Logo" value={draft.logo} onChange={(value) => update('logo', value)} placeholder="Upload or paste logo path" />
-                <Field label="Cover Image" value={draft.coverImage} onChange={(value) => update('coverImage', value)} placeholder="Upload or paste cover image path" />
+                <Field label="Logo" value={draft.logo} onChange={(value) => update('logo', value)} placeholder="Upload or paste logo path" helperText="Use a square logo that reads cleanly in compact cards." />
+                <Field label="Cover Image" value={draft.coverImage} onChange={(value) => update('coverImage', value)} placeholder="Upload or paste cover image path" helperText="This appears in the profile header and should feel high quality." />
                 <div className="md:col-span-2">
-                  <Field label="Bio" value={draft.bio} onChange={(value) => update('bio', value)} placeholder="Write a short provider bio" rows={4} />
+                  <Field label="Bio" value={draft.bio} onChange={(value) => update('bio', value)} placeholder="Write a short provider bio" rows={4} helperText="Keep it concise and human. This shows up in approval and discovery surfaces." />
                 </div>
                 <div className="md:col-span-2">
-                  <Field label="Mission Statement" value={draft.missionStatement} onChange={(value) => update('missionStatement', value)} placeholder="Write the mission statement" rows={4} />
+                  <Field label="Mission Statement" value={draft.missionStatement} onChange={(value) => update('missionStatement', value)} placeholder="Write the mission statement" rows={4} helperText="Make the ministry purpose clear enough for onboarding and dashboard context." />
                 </div>
               </div>
             </ProviderSectionCard>
@@ -972,8 +1006,8 @@ export function ProviderProfilePage() {
               subtitle="Upload the documents that support FaithHub approval and profile trust."
             >
               <div className="grid gap-4 md:grid-cols-2">
-                <Field label="Registration Certificate" value={draft.registrationCertificate} onChange={(value) => update('registrationCertificate', value)} placeholder="Upload certificate file name" />
-                <Field label="Identity Document" value={draft.identityDocument} onChange={(value) => update('identityDocument', value)} placeholder="Upload ID file name" />
+                <Field label="Registration Certificate" value={draft.registrationCertificate} onChange={(value) => update('registrationCertificate', value)} placeholder="Upload certificate file name" helperText="Name the file clearly so reviewers know what they are approving." />
+                <Field label="Identity Document" value={draft.identityDocument} onChange={(value) => update('identityDocument', value)} placeholder="Upload ID file name" helperText="Add the primary identity file used for verification." />
               </div>
             </ProviderSectionCard>
           </div>
@@ -1572,15 +1606,15 @@ export function CampaignBuilderPage() {
       <div className="grid gap-4 xl:grid-cols-12">
         <div className="space-y-4 xl:col-span-8">
           <ProviderSectionCard title="Campaign details" subtitle="The details below shape the review card and campaign approval status.">
-            <div className="grid gap-4 md:grid-cols-2">
-              <Field label="Campaign Name" value={draft.name} onChange={(value) => update('name', value)} />
-              <SelectField label="Objective" value={draft.objective} onChange={(value) => update('objective', value)} options={CAMPAIGN_OBJECTIVES} />
-              <Field label="Start Date" value={draft.startDate} onChange={(value) => update('startDate', value)} type="date" />
-              <Field label="End Date" value={draft.endDate} onChange={(value) => update('endDate', value)} type="date" />
+              <div className="grid gap-4 md:grid-cols-2">
+              <Field label="Campaign Name" value={draft.name} onChange={(value) => update('name', value)} helperText="Use a clear campaign name that can appear in review and donor surfaces." />
+              <SelectField label="Objective" value={draft.objective} onChange={(value) => update('objective', value)} options={CAMPAIGN_OBJECTIVES} helperText="The objective drives the review summary and campaign positioning." />
+              <Field label="Start Date" value={draft.startDate} onChange={(value) => update('startDate', value)} type="date" helperText="Pick the date the campaign should become active." />
+              <Field label="End Date" value={draft.endDate} onChange={(value) => update('endDate', value)} type="date" helperText="Choose the final day the campaign should stay visible." />
               <div className="md:col-span-2">
-                <Field label="Description" value={draft.description} onChange={(value) => update('description', value)} rows={4} />
+                <Field label="Description" value={draft.description} onChange={(value) => update('description', value)} rows={4} helperText="Summarize the goal, the beneficiaries, and the expected impact." />
               </div>
-              <Field label="Banner" value={draft.banner} onChange={(value) => update('banner', value)} placeholder="Upload banner file name or image URL" />
+              <Field label="Banner" value={draft.banner} onChange={(value) => update('banner', value)} placeholder="Upload banner file name or image URL" helperText="A wide banner helps the campaign preview feel complete." />
             </div>
           </ProviderSectionCard>
 
@@ -1996,15 +2030,15 @@ export function LiveSessionBuilderPage() {
         <div className="space-y-4 xl:col-span-8">
           <ProviderSectionCard title="Session details" subtitle="The live session card follows the StreamYard/Riverside style briefing layout.">
             <div className="grid gap-4 md:grid-cols-2">
-              <Field label="Session Title" value={draft.title} onChange={(value) => update('title', value)} />
-              <Field label="Campaign" value={draft.campaign} onChange={(value) => update('campaign', value)} />
-              <Field label="Host" value={draft.host} onChange={(value) => update('host', value)} />
-              <Field label="Thumbnail" value={draft.thumbnail} onChange={(value) => update('thumbnail', value)} placeholder="Upload thumbnail file name or URL" />
-              <Field label="Date" value={draft.date} onChange={(value) => update('date', value)} type="date" />
-              <Field label="Time" value={draft.time} onChange={(value) => update('time', value)} type="time" />
-              <Field label="Duration" value={draft.duration} onChange={(value) => update('duration', value)} />
+              <Field label="Session Title" value={draft.title} onChange={(value) => update('title', value)} helperText="This will be the visible title in live dashboards and waiting room screens." />
+              <Field label="Campaign" value={draft.campaign} onChange={(value) => update('campaign', value)} helperText="Tie the session to the campaign or ministry series it supports." />
+              <Field label="Host" value={draft.host} onChange={(value) => update('host', value)} helperText="Use the primary ministry host or presenter name." />
+              <Field label="Thumbnail" value={draft.thumbnail} onChange={(value) => update('thumbnail', value)} placeholder="Upload thumbnail file name or URL" helperText="Use a high-contrast image that still reads at small size." />
+              <Field label="Date" value={draft.date} onChange={(value) => update('date', value)} type="date" helperText="Choose the service date before routing into the approval queue." />
+              <Field label="Time" value={draft.time} onChange={(value) => update('time', value)} type="time" helperText="Set the planned start time for the live studio handoff." />
+              <Field label="Duration" value={draft.duration} onChange={(value) => update('duration', value)} helperText="Example: 60 min or 1 hour 15 min." />
               <div className="md:col-span-2">
-                <Field label="Description" value={draft.description} onChange={(value) => update('description', value)} rows={4} />
+                <Field label="Description" value={draft.description} onChange={(value) => update('description', value)} rows={4} helperText="Give reviewers enough context to approve the session and its featured content." />
               </div>
             </div>
           </ProviderSectionCard>
