@@ -36,6 +36,7 @@ import {
   Zap,
 } from "lucide-react";
 import { KpiTile } from "../../../components/ui/KpiTile";
+import { ProviderEntryDialog } from "@/components/provider/ProviderEntryDialog";
 
 /**
  * FaithHub Provider - Channels & Contact Manager
@@ -1087,6 +1088,18 @@ export default function ChannelsContactManagerPage() {
   const [segmentMode, setSegmentMode] = useState<SegmentMode>("Smart");
   const [selectedPreviewTab, setSelectedPreviewTab] = useState<PreviewTab>("contact");
   const [previewOpen, setPreviewOpen] = useState(false);
+  const [importDialogOpen, setImportDialogOpen] = useState(false);
+  const [segmentDialogOpen, setSegmentDialogOpen] = useState(false);
+  const [channelDialogOpen, setChannelDialogOpen] = useState(false);
+  const [filtersDialogOpen, setFiltersDialogOpen] = useState(false);
+  const [filterSearchDraft, setFilterSearchDraft] = useState("");
+  const [filterCampusDraft, setFilterCampusDraft] = useState<CampusKey | "All">("All");
+  const [filterBrandDraft, setFilterBrandDraft] = useState<BrandKey | "All">("All");
+  const [importSourceDraft, setImportSourceDraft] = useState("CSV upload");
+  const [importNotesDraft, setImportNotesDraft] = useState("Map consent, language, and channel preferences during import.");
+  const [segmentNameDraft, setSegmentNameDraft] = useState("Warm replay viewers");
+  const [channelNameDraft, setChannelNameDraft] = useState("WhatsApp");
+  const [channelSenderDraft, setChannelSenderDraft] = useState("FaithHub Provider");
   const [toast, setToast] = useState<string | null>(null);
   const [channelQuietHours, setChannelQuietHours] = useState(true);
   const [childSafeLock, setChildSafeLock] = useState(true);
@@ -1098,6 +1111,36 @@ export default function ChannelsContactManagerPage() {
     const t = setTimeout(() => setToast(null), 2200);
     return () => clearTimeout(t);
   }, [toast]);
+
+  function openFiltersDialog() {
+    setFilterSearchDraft(search);
+    setFilterCampusDraft(campusScope);
+    setFilterBrandDraft(brandScope);
+    setFiltersDialogOpen(true);
+  }
+
+  function saveFilters() {
+    setSearch(filterSearchDraft);
+    setCampusScope(filterCampusDraft);
+    setBrandScope(filterBrandDraft);
+    setFiltersDialogOpen(false);
+    setToast("Audience filters updated");
+  }
+
+  function submitImportContacts() {
+    setImportDialogOpen(false);
+    setToast(`Import workflow opened for ${importSourceDraft}`);
+  }
+
+  function submitSegmentDraft() {
+    setSegmentDialogOpen(false);
+    setToast(`Segment draft saved: ${segmentNameDraft}`);
+  }
+
+  function submitChannelConnection() {
+    setChannelDialogOpen(false);
+    setToast(`${channelNameDraft} connection prepared`);
+  }
 
   const contactLookup = useMemo(() => new Map(contacts.map((contact) => [contact.id, contact])), []);
   const segmentLookup = useMemo(() => new Map(segments.map((segment) => [segment.id, segment])), []);
@@ -1286,13 +1329,13 @@ export default function ChannelsContactManagerPage() {
               >
                 Preview
               </Btn>
-              <Btn tone="primary" className="h-10 px-4" left={<Download className="h-4 w-4" />} onClick={() => setToast("Import workflow opened")}>
+              <Btn tone="primary" className="h-10 px-4" left={<Download className="h-4 w-4" />} onClick={() => setImportDialogOpen(true)}>
                 Import contacts
               </Btn>
-              <Btn tone="secondary" className="h-10 px-4" left={<Plus className="h-4 w-4" />} onClick={() => setToast("Segment builder focused")}>
+              <Btn tone="secondary" className="h-10 px-4" left={<Plus className="h-4 w-4" />} onClick={() => setSegmentDialogOpen(true)}>
                 Create segment
               </Btn>
-              <Btn tone="neutral" className="h-10 px-4" left={<Zap className="h-4 w-4" />} onClick={() => setToast("Channel connection flow opened")}>
+              <Btn tone="neutral" className="h-10 px-4" left={<Zap className="h-4 w-4" />} onClick={() => setChannelDialogOpen(true)}>
                 Connect channel
               </Btn>
             </div>
@@ -1397,7 +1440,7 @@ export default function ChannelsContactManagerPage() {
                       className="w-full h-11 rounded-xl bg-[var(--fh-surface)] dark:bg-slate-800/20 pl-10 pr-4 text-sm font-bold text-faith-ink dark:text-slate-100 ring-1 ring-slate-200 dark:ring-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-400 transition placeholder:text-faith-slate dark:placeholder:text-faith-slate"
                     />
                   </label>
-                  <Btn tone="ghost" left={<Filter className="h-4 w-4" />} onClick={() => setToast("Advanced directory filters opened")}>Filters</Btn>
+                  <Btn tone="ghost" left={<Filter className="h-4 w-4" />} onClick={openFiltersDialog}>Filters</Btn>
                 </div>
               </div>
 
@@ -1546,7 +1589,7 @@ export default function ChannelsContactManagerPage() {
                         {segmentMode === "Smart" ? "Smart rule recommendations" : "Manual ministry list builder"}
                       </div>
                     </div>
-                    <Btn tone="ghost" left={<SlidersHorizontal className="h-4 w-4" />} onClick={() => setToast("Advanced rule logic opened")}>Refine logic</Btn>
+                    <Btn tone="ghost" left={<SlidersHorizontal className="h-4 w-4" />} onClick={() => setSegmentDialogOpen(true)}>Refine logic</Btn>
                   </div>
 
                   {segmentMode === "Smart" ? (
@@ -1619,7 +1662,7 @@ export default function ChannelsContactManagerPage() {
                   </div>
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  <Btn tone="primary" left={<Download className="h-4 w-4" />} onClick={() => setToast("CSV import wizard opened")}>CSV import</Btn>
+                  <Btn tone="primary" left={<Download className="h-4 w-4" />} onClick={() => setImportDialogOpen(true)}>CSV import</Btn>
                   <Btn tone="secondary" left={<RefreshCw className="h-4 w-4" />} onClick={() => setToast("Platform sync started")}>Platform sync</Btn>
                 </div>
               </div>
@@ -1823,6 +1866,198 @@ export default function ChannelsContactManagerPage() {
           </div>
         </div>
       </div>
+
+      <ProviderEntryDialog
+        open={importDialogOpen}
+        onClose={() => setImportDialogOpen(false)}
+        title="Import contacts"
+        subtitle="Bring audience records into the provider system through a dedicated import session."
+        helperText="This keeps the import path obvious and makes it clear when you are feeding audience data into the system."
+        actions={
+          <>
+            <Btn tone="ghost" onClick={() => setImportDialogOpen(false)}>
+              Cancel
+            </Btn>
+            <Btn tone="primary" left={<Download className="h-4 w-4" />} onClick={submitImportContacts}>
+              Start import
+            </Btn>
+          </>
+        }
+      >
+        <div className="space-y-4">
+          <div>
+            <div className="mb-2 text-[10px] font-black uppercase tracking-widest text-faith-slate">
+              Import source
+            </div>
+            <input
+              value={importSourceDraft}
+              onChange={(e) => setImportSourceDraft(e.target.value)}
+              className="h-11 w-full rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 text-sm font-bold text-faith-ink dark:text-slate-100 ring-1 ring-slate-200 dark:ring-slate-800 outline-none"
+              placeholder="CSV upload, platform sync, or spreadsheet"
+            />
+          </div>
+          <div>
+            <div className="mb-2 text-[10px] font-black uppercase tracking-widest text-faith-slate">
+              Import notes
+            </div>
+            <textarea
+              value={importNotesDraft}
+              onChange={(e) => setImportNotesDraft(e.target.value)}
+              rows={4}
+              className="w-full rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 py-3 text-sm font-medium text-faith-ink dark:text-slate-100 ring-1 ring-slate-200 dark:ring-slate-800 outline-none"
+            />
+          </div>
+        </div>
+      </ProviderEntryDialog>
+
+      <ProviderEntryDialog
+        open={segmentDialogOpen}
+        onClose={() => setSegmentDialogOpen(false)}
+        title="Create segment"
+        subtitle="Define a new audience bucket inside a dedicated dialog."
+        helperText="Segment creation should feel like a deliberate setup step, not a silent inline change."
+        actions={
+          <>
+            <Btn tone="ghost" onClick={() => setSegmentDialogOpen(false)}>
+              Cancel
+            </Btn>
+            <Btn tone="primary" left={<Plus className="h-4 w-4" />} onClick={submitSegmentDraft}>
+              Save segment
+            </Btn>
+          </>
+        }
+      >
+        <div className="space-y-4">
+          <div>
+            <div className="mb-2 text-[10px] font-black uppercase tracking-widest text-faith-slate">
+              Segment name
+            </div>
+            <input
+              value={segmentNameDraft}
+              onChange={(e) => setSegmentNameDraft(e.target.value)}
+              className="h-11 w-full rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 text-sm font-bold text-faith-ink dark:text-slate-100 ring-1 ring-slate-200 dark:ring-slate-800 outline-none"
+            />
+          </div>
+          <div>
+            <div className="mb-2 text-[10px] font-black uppercase tracking-widest text-faith-slate">
+              Rule mode
+            </div>
+            <Select
+              value={segmentMode}
+              onChange={(v) => setSegmentMode(v as SegmentMode)}
+              options={[
+                { value: "Smart", label: "Smart", hint: "Recommended rule builder" },
+                { value: "Manual", label: "Manual", hint: "Direct audience control" },
+              ]}
+            />
+          </div>
+        </div>
+      </ProviderEntryDialog>
+
+      <ProviderEntryDialog
+        open={channelDialogOpen}
+        onClose={() => setChannelDialogOpen(false)}
+        title="Connect channel"
+        subtitle="Set up a messaging connection in a clear guided form."
+        helperText="Channel setup is isolated so the user knows they are editing delivery infrastructure."
+        actions={
+          <>
+            <Btn tone="ghost" onClick={() => setChannelDialogOpen(false)}>
+              Cancel
+            </Btn>
+            <Btn tone="primary" left={<Zap className="h-4 w-4" />} onClick={submitChannelConnection}>
+              Connect channel
+            </Btn>
+          </>
+        }
+      >
+        <div className="grid gap-4">
+          <div>
+            <div className="mb-2 text-[10px] font-black uppercase tracking-widest text-faith-slate">
+              Channel type
+            </div>
+            <input
+              value={channelNameDraft}
+              onChange={(e) => setChannelNameDraft(e.target.value)}
+              className="h-11 w-full rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 text-sm font-bold text-faith-ink dark:text-slate-100 ring-1 ring-slate-200 dark:ring-slate-800 outline-none"
+              placeholder="WhatsApp, Email, SMS, Telegram"
+            />
+          </div>
+          <div>
+            <div className="mb-2 text-[10px] font-black uppercase tracking-widest text-faith-slate">
+              Sender / owner
+            </div>
+            <input
+              value={channelSenderDraft}
+              onChange={(e) => setChannelSenderDraft(e.target.value)}
+              className="h-11 w-full rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 text-sm font-bold text-faith-ink dark:text-slate-100 ring-1 ring-slate-200 dark:ring-slate-800 outline-none"
+            />
+          </div>
+        </div>
+      </ProviderEntryDialog>
+
+      <ProviderEntryDialog
+        open={filtersDialogOpen}
+        onClose={() => setFiltersDialogOpen(false)}
+        title="Refine audience filters"
+        subtitle="Set the directory filters in a deliberate modal session."
+        helperText="Filtering is a data shaping action, so it should be explicit instead of hidden in the background."
+        actions={
+          <>
+            <Btn tone="ghost" onClick={() => setFiltersDialogOpen(false)}>
+              Cancel
+            </Btn>
+            <Btn tone="primary" left={<Filter className="h-4 w-4" />} onClick={saveFilters}>
+              Apply filters
+            </Btn>
+          </>
+        }
+      >
+        <div className="grid gap-4">
+          <div>
+            <div className="mb-2 text-[10px] font-black uppercase tracking-widest text-faith-slate">
+              Search term
+            </div>
+            <input
+              value={filterSearchDraft}
+              onChange={(e) => setFilterSearchDraft(e.target.value)}
+              className="h-11 w-full rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 text-sm font-bold text-faith-ink dark:text-slate-100 ring-1 ring-slate-200 dark:ring-slate-800 outline-none"
+              placeholder="Audience, segment, language, or channel"
+            />
+          </div>
+          <div>
+            <div className="mb-2 text-[10px] font-black uppercase tracking-widest text-faith-slate">
+              Campus scope
+            </div>
+            <Select
+              value={filterCampusDraft}
+              onChange={(v) => setFilterCampusDraft(v as CampusKey | "All")}
+              options={[
+                { value: "All", label: "All campuses", hint: "Provider-wide view" },
+                { value: "Global", label: "Global", hint: "Cross-region audience" },
+                { value: "Downtown", label: "Downtown", hint: "Main service lane" },
+                { value: "East Campus", label: "East Campus", hint: "Mid-week community" },
+                { value: "Youth Chapel", label: "Youth Chapel", hint: "Protected youth lane" },
+              ]}
+            />
+          </div>
+          <div>
+            <div className="mb-2 text-[10px] font-black uppercase tracking-widest text-faith-slate">
+              Brand scope
+            </div>
+            <Select
+              value={filterBrandDraft}
+              onChange={(v) => setFilterBrandDraft(v as BrandKey | "All")}
+              options={[
+                { value: "All", label: "All brands", hint: "Organization-wide" },
+                { value: "Main Ministry", label: "Main Ministry", hint: "Default public brand" },
+                { value: "Young Adults", label: "Young Adults", hint: "Youth / YA lane" },
+                { value: "Outreach Nights", label: "Outreach Nights", hint: "Events and promos" },
+              ]}
+            />
+          </div>
+        </div>
+      </ProviderEntryDialog>
 
       <Drawer open={previewOpen} onClose={() => setPreviewOpen(false)} title="Channels & Contact Manager Preview">
         <div className="grid gap-6 2xl:grid-cols-[minmax(0,1.15fr)_minmax(0,.85fr)]">

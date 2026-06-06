@@ -30,6 +30,7 @@ import {
   X,
 } from "lucide-react";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderEntryDialog } from "@/components/provider/ProviderEntryDialog";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
@@ -1036,6 +1037,7 @@ export default function ResourcesManagerPage() {
   const [selectedResourceId, setSelectedResourceId] = useState(INITIAL_RESOURCES[0]?.id || "");
   const [detailResourceId, setDetailResourceId] = useState<string | null>(null);
   const [uploadNotice, setUploadNotice] = useState<string | null>(null);
+  const [uploadDialogOpen, setUploadDialogOpen] = useState(false);
 
   const [formTitle, setFormTitle] = useState("");
   const [formSummary, setFormSummary] = useState("");
@@ -1242,6 +1244,7 @@ export default function ResourcesManagerPage() {
     setFormDenominations("Anglican, Catholic");
     setFormAudiences("Youth, Couples");
     setFormAgeGroups("13-17, 18-25");
+    setUploadDialogOpen(false);
   }
 
   return (
@@ -1455,82 +1458,39 @@ export default function ResourcesManagerPage() {
                   subtitle="Upload free resources for the community and tag them for clean discovery across the Provider library."
                 />
 
-                <div className="mt-5 grid gap-3 md:grid-cols-2">
-                  <div className="md:col-span-2">
-                    <Label>Title</Label>
-                    <input
-                      value={formTitle}
-                      onChange={(e) => setFormTitle(e.target.value)}
-                      placeholder="Resource title"
-                      className="mt-1 h-11 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 text-sm font-semibold text-slate-800 outline-none transition focus:border-transparent focus:ring-2 focus:ring-[rgba(3,205,140,0.25)]"
-                    />
+                <div className="mt-5 rounded-[28px] border border-dashed border-faith-line/70 bg-[var(--fh-surface)] px-4 py-4">
+                  <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                    <div className="min-w-0">
+                      <div className="text-sm font-bold text-faith-ink">Entry session locked to a dialog.</div>
+                      <div className="mt-1 text-sm text-faith-slate">
+                        Open the upload dialog to enter the title, summary, file link, and classification fields in one focused session.
+                      </div>
+                    </div>
+                    <Btn
+                      tone="primary"
+                      left={<Upload className="h-4 w-4" />}
+                      onClick={() => setUploadDialogOpen(true)}
+                    >
+                      Open upload dialog
+                    </Btn>
                   </div>
-                  <div className="md:col-span-2">
-                    <Label>Description</Label>
-                    <textarea
-                      value={formSummary}
-                      onChange={(e) => setFormSummary(e.target.value)}
-                      placeholder="Short summary"
-                      rows={4}
-                      className="mt-1 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 py-3 text-sm font-semibold text-slate-800 outline-none transition focus:border-transparent focus:ring-2 focus:ring-[rgba(3,205,140,0.25)]"
-                    />
-                  </div>
-                  <div>
-                    <Label>Type</Label>
-                    <SelectField
-                      value={formType}
-                      onChange={(value) => setFormType(value as ResourceType)}
-                      options={["PDF", "Audio", "Devotional", "Study Guide", "Prayer Guide", "Reading Plan"]}
-                    />
-                  </div>
-                  <div>
-                    <Label>Category</Label>
-                    <SelectField
-                      value={formCategory}
-                      onChange={(value) => setFormCategory(value as ResourceCategory)}
-                      options={["Books", "Prayer", "Devotionals", "Leadership", "Family", "Youth", "Study"]}
-                    />
-                  </div>
-                  <div className="md:col-span-2">
-                    <Label>File URL</Label>
-                    <input
-                      value={formFileUrl}
-                      onChange={(e) => setFormFileUrl(e.target.value)}
-                      placeholder="https://..."
-                      className="mt-1 h-11 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 text-sm font-semibold text-slate-800 outline-none transition focus:border-transparent focus:ring-2 focus:ring-[rgba(3,205,140,0.25)]"
-                    />
-                  </div>
-                  <div className="md:col-span-2">
-                    <Label>Tags (comma separated)</Label>
-                    <input
-                      value={formTags}
-                      onChange={(e) => setFormTags(e.target.value)}
-                      className="mt-1 h-11 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 text-sm font-semibold text-slate-800 outline-none transition focus:border-transparent focus:ring-2 focus:ring-[rgba(3,205,140,0.25)]"
-                    />
-                  </div>
-                  <div>
-                    <Label>Denominations (comma separated)</Label>
-                    <input
-                      value={formDenominations}
-                      onChange={(e) => setFormDenominations(e.target.value)}
-                      className="mt-1 h-11 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 text-sm font-semibold text-slate-800 outline-none transition focus:border-transparent focus:ring-2 focus:ring-[rgba(3,205,140,0.25)]"
-                    />
-                  </div>
-                  <div>
-                    <Label>Audience groups</Label>
-                    <input
-                      value={formAudiences}
-                      onChange={(e) => setFormAudiences(e.target.value)}
-                      className="mt-1 h-11 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 text-sm font-semibold text-slate-800 outline-none transition focus:border-transparent focus:ring-2 focus:ring-[rgba(3,205,140,0.25)]"
-                    />
-                  </div>
-                  <div className="md:col-span-2">
-                    <Label>Age groups</Label>
-                    <input
-                      value={formAgeGroups}
-                      onChange={(e) => setFormAgeGroups(e.target.value)}
-                      className="mt-1 h-11 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 text-sm font-semibold text-slate-800 outline-none transition focus:border-transparent focus:ring-2 focus:ring-[rgba(3,205,140,0.25)]"
-                    />
+                  <div className="mt-4 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+                    <div className="rounded-2xl bg-[var(--fh-surface-bg)] px-3 py-3">
+                      <div className="text-[10px] font-black uppercase tracking-widest text-faith-slate">Title</div>
+                      <div className="mt-1 text-sm font-bold text-faith-ink">{formTitle.trim() || 'Not set yet'}</div>
+                    </div>
+                    <div className="rounded-2xl bg-[var(--fh-surface-bg)] px-3 py-3">
+                      <div className="text-[10px] font-black uppercase tracking-widest text-faith-slate">Type</div>
+                      <div className="mt-1 text-sm font-bold text-faith-ink">{formType}</div>
+                    </div>
+                    <div className="rounded-2xl bg-[var(--fh-surface-bg)] px-3 py-3">
+                      <div className="text-[10px] font-black uppercase tracking-widest text-faith-slate">Category</div>
+                      <div className="mt-1 text-sm font-bold text-faith-ink">{formCategory}</div>
+                    </div>
+                    <div className="rounded-2xl bg-[var(--fh-surface-bg)] px-3 py-3">
+                      <div className="text-[10px] font-black uppercase tracking-widest text-faith-slate">Visibility</div>
+                      <div className="mt-1 text-sm font-bold text-faith-ink">Provider upload</div>
+                    </div>
                   </div>
                 </div>
 
@@ -1538,7 +1498,7 @@ export default function ResourcesManagerPage() {
                   <div className="text-sm text-faith-slate">
                     Free resources stay here. Premium and paid assets should move through FaithMart.
                   </div>
-                  <Btn tone="primary" left={<Upload className="h-4 w-4" />} onClick={publishResource}>
+                  <Btn tone="primary" left={<Upload className="h-4 w-4" />} onClick={() => setUploadDialogOpen(true)}>
                     Publish free resource
                   </Btn>
                 </div>
@@ -1586,6 +1546,103 @@ export default function ResourcesManagerPage() {
           </div>
         </div>
       ) : null}
+
+      <ProviderEntryDialog
+        open={uploadDialogOpen}
+        onClose={() => setUploadDialogOpen(false)}
+        title="Publish a free resource"
+        subtitle="Enter the resource details in one focused session before it appears in the provider library."
+        helperText="This dialog is the only place to feed the system with the new resource record, so the user always knows they are in creation mode."
+        actions={
+          <>
+            <Btn tone="ghost" onClick={() => setUploadDialogOpen(false)}>
+              Cancel
+            </Btn>
+            <Btn tone="primary" left={<Upload className="h-4 w-4" />} onClick={publishResource}>
+              Publish free resource
+            </Btn>
+          </>
+        }
+      >
+        <div className="grid gap-4 md:grid-cols-2">
+          <div className="md:col-span-2">
+            <Label>Title</Label>
+            <input
+              value={formTitle}
+              onChange={(e) => setFormTitle(e.target.value)}
+              placeholder="Resource title"
+              className="mt-1 h-11 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 text-sm font-semibold text-slate-800 outline-none transition focus:border-transparent focus:ring-2 focus:ring-[rgba(3,205,140,0.25)]"
+            />
+          </div>
+          <div className="md:col-span-2">
+            <Label>Description</Label>
+            <textarea
+              value={formSummary}
+              onChange={(e) => setFormSummary(e.target.value)}
+              placeholder="Short summary"
+              rows={4}
+              className="mt-1 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 py-3 text-sm font-semibold text-slate-800 outline-none transition focus:border-transparent focus:ring-2 focus:ring-[rgba(3,205,140,0.25)]"
+            />
+          </div>
+          <div>
+            <Label>Type</Label>
+            <SelectField
+              value={formType}
+              onChange={(value) => setFormType(value as ResourceType)}
+              options={["PDF", "Audio", "Devotional", "Study Guide", "Prayer Guide", "Reading Plan"]}
+            />
+          </div>
+          <div>
+            <Label>Category</Label>
+            <SelectField
+              value={formCategory}
+              onChange={(value) => setFormCategory(value as ResourceCategory)}
+              options={["Books", "Prayer", "Devotionals", "Leadership", "Family", "Youth", "Study"]}
+            />
+          </div>
+          <div className="md:col-span-2">
+            <Label>File URL</Label>
+            <input
+              value={formFileUrl}
+              onChange={(e) => setFormFileUrl(e.target.value)}
+              placeholder="https://..."
+              className="mt-1 h-11 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 text-sm font-semibold text-slate-800 outline-none transition focus:border-transparent focus:ring-2 focus:ring-[rgba(3,205,140,0.25)]"
+            />
+          </div>
+          <div className="md:col-span-2">
+            <Label>Tags (comma separated)</Label>
+            <input
+              value={formTags}
+              onChange={(e) => setFormTags(e.target.value)}
+              className="mt-1 h-11 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 text-sm font-semibold text-slate-800 outline-none transition focus:border-transparent focus:ring-2 focus:ring-[rgba(3,205,140,0.25)]"
+            />
+          </div>
+          <div>
+            <Label>Denominations (comma separated)</Label>
+            <input
+              value={formDenominations}
+              onChange={(e) => setFormDenominations(e.target.value)}
+              className="mt-1 h-11 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 text-sm font-semibold text-slate-800 outline-none transition focus:border-transparent focus:ring-2 focus:ring-[rgba(3,205,140,0.25)]"
+            />
+          </div>
+          <div>
+            <Label>Audience groups</Label>
+            <input
+              value={formAudiences}
+              onChange={(e) => setFormAudiences(e.target.value)}
+              className="mt-1 h-11 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 text-sm font-semibold text-slate-800 outline-none transition focus:border-transparent focus:ring-2 focus:ring-[rgba(3,205,140,0.25)]"
+            />
+          </div>
+          <div className="md:col-span-2">
+            <Label>Age groups</Label>
+            <input
+              value={formAgeGroups}
+              onChange={(e) => setFormAgeGroups(e.target.value)}
+              className="mt-1 h-11 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 text-sm font-semibold text-slate-800 outline-none transition focus:border-transparent focus:ring-2 focus:ring-[rgba(3,205,140,0.25)]"
+            />
+          </div>
+        </div>
+      </ProviderEntryDialog>
 
       <DetailDrawer
         resource={detailResource}

@@ -40,6 +40,7 @@ import {
   Zap,
 } from "lucide-react";
 import { KpiTile } from "../../../components/ui/KpiTile";
+import { ProviderEntryDialog } from "@/components/provider/ProviderEntryDialog";
 
 /**
  * FaithHub Provider - Audience Notifications
@@ -944,6 +945,8 @@ export default function FaithHubAudienceNotificationsPage() {
   const [quietHours, setQuietHours] = useState(true);
   const [lastMinuteRecovery, setLastMinuteRecovery] = useState(true);
   const [approvalRequired, setApprovalRequired] = useState(true);
+  const [journeySetupOpen, setJourneySetupOpen] = useState(false);
+  const [logicDialogOpen, setLogicDialogOpen] = useState(false);
   const [previewOpen, setPreviewOpen] = useState(false);
   const [previewTab, setPreviewTab] = useState<PreviewTab>("push");
   const [toast, setToast] = useState<string | null>(null);
@@ -957,6 +960,26 @@ export default function FaithHubAudienceNotificationsPage() {
     const t = setTimeout(() => setToast(null), 2200);
     return () => clearTimeout(t);
   }, [toast]);
+
+  function createJourneyDraft() {
+    if (!journeyName.trim()) {
+      setToast("Add a journey name before creating the draft");
+      return;
+    }
+
+    setToast("New notification journey draft created");
+    setJourneySetupOpen(false);
+  }
+
+  function saveInteractionLogic() {
+    if (!priorInteractionTarget.trim()) {
+      setToast("Add an interaction rule before saving");
+      return;
+    }
+
+    setToast("Audience interaction logic updated");
+    setLogicDialogOpen(false);
+  }
 
   const activeNode = useMemo(
     () => journeyBlueprint.find((node) => node.key === selectedNode) ?? journeyBlueprint[0],
@@ -1227,25 +1250,19 @@ export default function FaithHubAudienceNotificationsPage() {
                   <div className="text-[10px] font-black uppercase tracking-widest text-faith-slate">
                     Journey name
                   </div>
-                  <input
-                    value={journeyName}
-                    onChange={(e) => setJourneyName(e.target.value)}
-                    className="mt-2 h-11 w-full rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 text-sm font-bold text-faith-ink dark:text-slate-100 ring-1 ring-slate-200 dark:ring-slate-800 outline-none"
-                    placeholder="Enter journey name"
-                  />
-                  <div className="mt-3">
-                    <div className="text-[10px] font-black uppercase tracking-widest text-faith-slate mb-2">
-                      Linked object
-                    </div>
-                    <Select
-                      value={sourceType}
-                      onChange={(v) => setSourceType(v as SourceType)}
-                      options={sourceTypeOptions as unknown as Array<{ value: string; label: string; hint?: string }>}
-                    />
+                  <div className="mt-2 rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 py-3 text-sm font-bold text-faith-ink dark:text-slate-100 ring-1 ring-slate-200 dark:ring-slate-800">
+                    {journeyName}
+                  </div>
+                  <div className="mt-3 text-[11px] font-semibold text-faith-slate">
+                    Linked object: {sourceType}
                   </div>
                   <div className="mt-3">
-                    <Btn tone="primary" onClick={() => setToast("New notification journey draft created")} left={<Sparkles className="h-4 w-4" />}>
-                      Create notification journey
+                    <Btn
+                      tone="primary"
+                      onClick={() => setJourneySetupOpen(true)}
+                      left={<Sparkles className="h-4 w-4" />}
+                    >
+                      Open journey setup
                     </Btn>
                   </div>
                 </div>
@@ -1477,14 +1494,14 @@ export default function FaithHubAudienceNotificationsPage() {
                     </div>
                     <button
                       type="button"
-                      onClick={() => setPriorInteractionTarget("Live viewers + clip engagers + event registrants")}
+                      onClick={() => setLogicDialogOpen(true)}
                       className="inline-flex items-center gap-2 rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-3 py-2 text-[11px] font-black text-slate-700 dark:text-slate-200 ring-1 ring-slate-200 dark:ring-slate-800"
                     >
                       <Filter className="h-4 w-4" />
                       Refine logic
                     </button>
                   </div>
-                  <div className="mt-3 text-[11px] font-semibold text-faith-slate">
+                    <div className="mt-3 text-[11px] font-semibold text-faith-slate">
                     This audience selector can blend audience groups, behavioural segments, giving data, and prior session interactions into one launch-ready cohort.
                   </div>
                 </div>
@@ -2085,6 +2102,84 @@ export default function FaithHubAudienceNotificationsPage() {
           </div>
         </div>
       </div>
+
+      <ProviderEntryDialog
+        open={journeySetupOpen}
+        onClose={() => setJourneySetupOpen(false)}
+        title="Create notification journey"
+        subtitle="Define the source, naming, and lifecycle context in one focused dialog."
+        helperText="The journey setup form is isolated so the user clearly knows they are entering a data-feed session for the notification system."
+        actions={
+          <>
+            <Btn tone="ghost" onClick={() => setJourneySetupOpen(false)}>
+              Cancel
+            </Btn>
+            <Btn tone="primary" onClick={createJourneyDraft} left={<Sparkles className="h-4 w-4" />}>
+              Create journey
+            </Btn>
+          </>
+        }
+      >
+        <div className="grid gap-4">
+          <div>
+            <div className="mb-2 text-[10px] font-black uppercase tracking-widest text-faith-slate">
+              Journey name
+            </div>
+            <input
+              value={journeyName}
+              onChange={(e) => setJourneyName(e.target.value)}
+              placeholder="Enter journey name"
+              className="h-11 w-full rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 text-sm font-bold text-faith-ink dark:text-slate-100 ring-1 ring-slate-200 dark:ring-slate-800 outline-none"
+            />
+          </div>
+          <div>
+            <div className="mb-2 text-[10px] font-black uppercase tracking-widest text-faith-slate">
+              Linked object
+            </div>
+            <Select
+              value={sourceType}
+              onChange={(v) => setSourceType(v as SourceType)}
+              options={sourceTypeOptions as unknown as Array<{ value: string; label: string; hint?: string }>}
+            />
+          </div>
+          <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-4 py-3 text-sm text-faith-slate">
+            Use this dialog to initialize the journey record before you shape channels, localization, and approvals.
+          </div>
+        </div>
+      </ProviderEntryDialog>
+
+      <ProviderEntryDialog
+        open={logicDialogOpen}
+        onClose={() => setLogicDialogOpen(false)}
+        title="Refine audience logic"
+        subtitle="Edit the prior-interaction rule in a dedicated modal rather than a hidden inline field."
+        helperText="This keeps audience targeting changes obvious and traceable while you are in a data-entry session."
+        actions={
+          <>
+            <Btn tone="ghost" onClick={() => setLogicDialogOpen(false)}>
+              Cancel
+            </Btn>
+            <Btn tone="primary" onClick={saveInteractionLogic} left={<Filter className="h-4 w-4" />}>
+              Save logic
+            </Btn>
+          </>
+        }
+      >
+        <div>
+          <div className="mb-2 text-[10px] font-black uppercase tracking-widest text-faith-slate">
+            Prior content interactions
+          </div>
+          <input
+            value={priorInteractionTarget}
+            onChange={(e) => setPriorInteractionTarget(e.target.value)}
+            className="h-11 w-full rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 text-sm font-bold text-faith-ink dark:text-slate-100 ring-1 ring-slate-200 dark:ring-slate-800 outline-none"
+            placeholder="Live viewers + replay starters"
+          />
+          <div className="mt-3 rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] px-4 py-3 text-sm text-faith-slate">
+            Keep this rule explicit so future sends, reports, and previews all reflect the same audience logic.
+          </div>
+        </div>
+      </ProviderEntryDialog>
 
       {/* Preview drawer */}
       <Drawer

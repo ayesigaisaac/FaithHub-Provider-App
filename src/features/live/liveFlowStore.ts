@@ -30,7 +30,7 @@ export type LiveFlowState = {
   sessions: LiveFlowRecord[];
 };
 
-export type LiveFlowDraftInput = Omit<LiveFlowRecord, "updatedAtISO"> & {
+export type LiveFlowDraftInput = Omit<LiveFlowRecord, "id" | "updatedAtISO"> & {
   id?: string;
 };
 
