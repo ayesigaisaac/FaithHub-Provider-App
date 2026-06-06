@@ -40,6 +40,13 @@ import {
 } from "lucide-react";
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { ProviderEntryDialog } from "@/components/provider/ProviderEntryDialog";
+import {
+  ProviderFormActions,
+  ProviderFormField,
+  ProviderFormInput,
+  ProviderFormSelect,
+  ProviderFormTextArea,
+} from "@/components/provider/ProviderForm";
 import { ProviderJourneyStepper } from "../FaithHubProviderJourneyPages";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
@@ -1504,89 +1511,104 @@ function NewCrowdfundComposer({
   const canCreate = title.trim().length >= 3 && beneficiary.trim().length >= 3 && Number(goal) > 0;
 
   return (
-    <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.8fr)]">
-      <div className="space-y-4">
-        <div className="grid gap-4 md:grid-cols-2">
-          <label className="block">
-            <div className="text-[11px] font-semibold uppercase tracking-wide text-faith-slate">Campaign title</div>
-            <input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Example: Emergency Food Relief" className="mt-1 w-full rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none" />
-          </label>
-          <label className="block">
-            <div className="text-[11px] font-semibold uppercase tracking-wide text-faith-slate">Beneficiary</div>
-            <input value={beneficiary} onChange={(e) => setBeneficiary(e.target.value)} placeholder="Organization or community" className="mt-1 w-full rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none" />
-          </label>
-          <label className="block">
-            <div className="text-[11px] font-semibold uppercase tracking-wide text-faith-slate">Primary goal</div>
-            <input value={goal} onChange={(e) => setGoal(e.target.value.replace(/[^\d]/g, ""))} className="mt-1 w-full rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none" />
-          </label>
-          <label className="block">
-            <div className="text-[11px] font-semibold uppercase tracking-wide text-faith-slate">Stretch goal</div>
-            <input value={stretchGoal} onChange={(e) => setStretchGoal(e.target.value.replace(/[^\d]/g, ""))} className="mt-1 w-full rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none" />
-          </label>
-          <label className="block">
-            <div className="text-[11px] font-semibold uppercase tracking-wide text-faith-slate">Region</div>
-            <input value={region} onChange={(e) => setRegion(e.target.value)} className="mt-1 w-full rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none" />
-          </label>
-          <label className="block">
-            <div className="text-[11px] font-semibold uppercase tracking-wide text-faith-slate">Deadline</div>
-            <input type="date" value={deadlineISO} onChange={(e) => setDeadlineISO(e.target.value)} className="mt-1 w-full rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none" />
-          </label>
+    <div className="space-y-6">
+      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.8fr)]">
+        <div className="space-y-5">
+          <div className="grid gap-4 md:grid-cols-2">
+            <ProviderFormField label="Campaign title" helperText="Use a clear public-facing title for this crowdfund.">
+              <ProviderFormInput value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Example: Emergency Food Relief" />
+            </ProviderFormField>
+            <ProviderFormField label="Beneficiary" helperText="Name the community, ministry, or group that will receive support.">
+              <ProviderFormInput value={beneficiary} onChange={(e) => setBeneficiary(e.target.value)} placeholder="Organization or community" />
+            </ProviderFormField>
+            <ProviderFormField label="Primary goal" helperText="Use a single clear fundraising target.">
+              <ProviderFormInput value={goal} onChange={(e) => setGoal(e.target.value.replace(/[^\d]/g, ""))} />
+            </ProviderFormField>
+            <ProviderFormField label="Stretch goal" helperText="Optional higher target for extended momentum.">
+              <ProviderFormInput value={stretchGoal} onChange={(e) => setStretchGoal(e.target.value.replace(/[^\d]/g, ""))} />
+            </ProviderFormField>
+            <ProviderFormField label="Region" helperText="Where the campaign is anchored or delivered.">
+              <ProviderFormInput value={region} onChange={(e) => setRegion(e.target.value)} />
+            </ProviderFormField>
+            <ProviderFormField label="Deadline" helperText="Choose the end date the campaign should remain active.">
+              <ProviderFormInput type="date" value={deadlineISO} onChange={(e) => setDeadlineISO(e.target.value)} />
+            </ProviderFormField>
+          </div>
+          <ProviderFormField label="Cause story" helperText="Describe the need, the outcome, and why this campaign matters now.">
+            <ProviderFormTextArea
+              value={story}
+              onChange={(e) => setStory(e.target.value)}
+              rows={6}
+              placeholder="Tell the story, the need, and the outcome this campaign will make possible."
+            />
+          </ProviderFormField>
+          <ProviderFormField label="Urgency framing" helperText="Explain any timing pressure, public moment, or immediate need.">
+            <ProviderFormTextArea
+              value={urgency}
+              onChange={(e) => setUrgency(e.target.value)}
+              rows={3}
+              placeholder="What timing or public urgency should the audience understand?"
+            />
+          </ProviderFormField>
         </div>
-        <label className="block">
-          <div className="text-[11px] font-semibold uppercase tracking-wide text-faith-slate">Cause story</div>
-          <textarea value={story} onChange={(e) => setStory(e.target.value)} rows={6} placeholder="Tell the story, the need, and the outcome this campaign will make possible." className="mt-1 w-full rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none" />
-        </label>
-        <label className="block">
-          <div className="text-[11px] font-semibold uppercase tracking-wide text-faith-slate">Urgency framing</div>
-          <textarea value={urgency} onChange={(e) => setUrgency(e.target.value)} rows={3} placeholder="What timing or public urgency should the audience understand?" className="mt-1 w-full rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none" />
-        </label>
-      </div>
-      <div className="space-y-4">
-        <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-          <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Campaign style</div>
-          <div className="mt-3 flex flex-wrap gap-2">
-            {[
-              ["green", "Trust-led"],
-              ["orange", "Urgency-led"],
-              ["navy", "Institution-led"],
-            ].map(([value, label]) => (
-              <button
-                key={value}
-                type="button"
-                onClick={() => setAccent(value as Accent)}
-                className={cx(
-                  "rounded-full px-3 py-2 text-xs font-semibold transition-colors",
-                  accent === value ? "text-white" : "bg-[var(--fh-surface-bg)] dark:bg-slate-900 text-slate-700 dark:text-slate-300 ring-1 ring-slate-200 dark:ring-slate-700"
-                )}
-                style={accent === value ? { background: accentColor(value as Accent) } : undefined}
-              >
-                {label}
-              </button>
-            ))}
+        <div className="space-y-4">
+          <div className="rounded-3xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
+            <div className="text-[13px] font-extrabold uppercase tracking-[0.14em] text-faith-slate">Campaign style</div>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {[
+                ["green", "Trust-led"],
+                ["orange", "Urgency-led"],
+                ["navy", "Institution-led"],
+              ].map(([value, label]) => (
+                <button
+                  key={value}
+                  type="button"
+                  onClick={() => setAccent(value as Accent)}
+                  className={cx(
+                    "rounded-full px-3 py-2 text-xs font-semibold transition-colors",
+                    accent === value ? "text-white" : "bg-[var(--fh-surface-bg)] text-slate-700 ring-1 ring-slate-200 hover:bg-[var(--fh-surface)]",
+                  )}
+                  style={accent === value ? { background: accentColor(value as Accent) } : undefined}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+          </div>
+          <div className="rounded-3xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
+            <div className="text-[13px] font-extrabold uppercase tracking-[0.14em] text-faith-slate">Launch notes</div>
+            <div className="mt-3 space-y-3 text-sm text-faith-slate">
+              <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3">This starter setup creates the campaign shell, first milestone, first update slot, and standard governance checklist.</div>
+              <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3">After creation, route the campaign into Live Sessions, Audience Notifications, and Revelight from the workbench.</div>
+            </div>
           </div>
         </div>
-        <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-          <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Launch notes</div>
-          <div className="mt-3 space-y-3 text-sm text-faith-slate dark:text-slate-300">
-            <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">This starter setup creates the campaign shell, first milestone, first update slot, and standard governance checklist.</div>
-            <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">After creation, route the campaign into Live Sessions, Audience Notifications, and Revelight from the workbench.</div>
-          </div>
-        </div>
-        <div className="flex flex-wrap gap-2">
-          <Btn tone="primary" disabled={!canCreate} onClick={() => onCreate({
-            title,
-            beneficiary,
-            goal: Number(goal || 0),
-            stretchGoal: Number(stretchGoal || 0),
-            region,
-            deadlineISO: new Date(`${deadlineISO}T12:00:00`).toISOString(),
-            story,
-            urgency,
-            accent,
-          })} left={<Plus className="h-4 w-4" />}>Create crowdfund</Btn>
-          <Btn tone="ghost" onClick={onClose}>Cancel</Btn>
-        </div>
       </div>
+      <ProviderFormActions>
+        <Btn tone="ghost" onClick={onClose}>
+          Cancel
+        </Btn>
+        <Btn
+          tone="primary"
+          disabled={!canCreate}
+          onClick={() =>
+            onCreate({
+              title,
+              beneficiary,
+              goal: Number(goal || 0),
+              stretchGoal: Number(stretchGoal || 0),
+              region,
+              deadlineISO: new Date(`${deadlineISO}T12:00:00`).toISOString(),
+              story,
+              urgency,
+              accent,
+            })
+          }
+          left={<Plus className="h-4 w-4" />}
+        >
+          Create crowdfund
+        </Btn>
+      </ProviderFormActions>
     </div>
   );
 }
@@ -1605,53 +1627,88 @@ function UpdateComposer({
   const canPost = title.trim().length >= 3 && summary.trim().length >= 10;
 
   return (
-    <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.8fr)]">
-      <div className="space-y-4">
-        <label className="block">
-          <div className="text-[11px] font-semibold uppercase tracking-wide text-faith-slate">Update title</div>
-          <input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Example: First relief packs delivered" className="mt-1 w-full rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none" />
-        </label>
+    <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.82fr)]">
+      <div className="space-y-5">
+        <ProviderFormField
+          label="Update title"
+          helperText="Use a short headline that tells supporters exactly what changed."
+        >
+          <ProviderFormInput
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder="Example: First relief packs delivered"
+          />
+        </ProviderFormField>
+
         <div className="grid gap-4 md:grid-cols-2">
-          <label className="block">
-            <div className="text-[11px] font-semibold uppercase tracking-wide text-faith-slate">Update type</div>
-            <select value={kind} onChange={(e) => setKind(e.target.value as UpdateKind)} className="mt-1 w-full rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none">
-              {["Impact", "Milestone", "Need", "Prayer", "Thanks"].map((type) => (
-                <option key={type} value={type}>{type}</option>
-              ))}
-            </select>
-          </label>
-          <label className="block">
-            <div className="text-[11px] font-semibold uppercase tracking-wide text-faith-slate">Linked surface</div>
-            <select value={linkedSurface} onChange={(e) => setLinkedSurface(e.target.value)} className="mt-1 w-full rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none">
-              {[
+          <ProviderFormField
+            label="Update type"
+            helperText="Choose the tone that best matches the post."
+          >
+            <ProviderFormSelect
+              value={kind}
+              onChange={(e) => setKind(e.target.value as UpdateKind)}
+              options={["Impact", "Milestone", "Need", "Prayer", "Thanks"]}
+            />
+          </ProviderFormField>
+
+          <ProviderFormField
+            label="Linked surface"
+            helperText="Pick where this update should appear next."
+          >
+            <ProviderFormSelect
+              value={linkedSurface}
+              onChange={(e) => setLinkedSurface(e.target.value)}
+              options={[
                 "Audience notifications",
                 "Live Session overlay",
                 "Replay follow-up",
                 "Revelight boost",
                 "Event tie-in",
-              ].map((surface) => (
-                <option key={surface}>{surface}</option>
-              ))}
-            </select>
-          </label>
+              ]}
+            />
+          </ProviderFormField>
         </div>
-        <label className="block">
-          <div className="text-[11px] font-semibold uppercase tracking-wide text-faith-slate">Public summary</div>
-          <textarea value={summary} onChange={(e) => setSummary(e.target.value)} rows={6} placeholder="Write the public update exactly as supporters should see it." className="mt-1 w-full rounded-2xl bg-[var(--fh-surface)] dark:bg-slate-800 px-3 py-3 text-sm ring-1 ring-slate-200 dark:ring-slate-800 outline-none" />
-        </label>
+
+        <ProviderFormField
+          label="Public summary"
+          helperText="Write the exact supporter-facing version of the update."
+        >
+          <ProviderFormTextArea
+            value={summary}
+            onChange={(e) => setSummary(e.target.value)}
+            rows={7}
+            placeholder="Write the public update exactly as supporters should see it."
+          />
+        </ProviderFormField>
       </div>
-      <div className="space-y-4">
-        <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
-          <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Posting guidance</div>
-          <div className="mt-3 space-y-3 text-sm text-faith-slate dark:text-slate-300">
-            <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">Use updates to show real proof, answered prayers, milestone movement, or urgent new needs.</div>
-            <div className="rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-800">Tie updates to Revelight and notifications while the context is still fresh and credible.</div>
+
+      <div className="space-y-4 rounded-[28px] border border-faith-line/70 bg-[var(--fh-surface)] p-5">
+        <div className="text-[11px] font-extrabold uppercase tracking-[0.16em] text-faith-slate">
+          Posting guidance
+        </div>
+        <div className="space-y-3 text-[13px] leading-6 text-faith-slate">
+          <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
+            Use updates to show real proof, answered prayers, milestone movement, or urgent new needs.
+          </div>
+          <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
+            Tie updates to Revelight and notifications while the context is still fresh and credible.
           </div>
         </div>
-        <div className="flex flex-wrap gap-2">
-          <Btn tone="primary" disabled={!canPost} onClick={() => onPost({ title, summary, kind, linkedSurface })} left={<Send className="h-4 w-4" />}>Post update</Btn>
-          <Btn tone="ghost" onClick={onClose}>Cancel</Btn>
-        </div>
+
+        <ProviderFormActions className="pt-2">
+          <Btn tone="ghost" onClick={onClose}>
+            Cancel
+          </Btn>
+          <Btn
+            tone="primary"
+            disabled={!canPost}
+            onClick={() => onPost({ title, summary, kind, linkedSurface })}
+            left={<Send className="h-4 w-4" />}
+          >
+            Post update
+          </Btn>
+        </ProviderFormActions>
       </div>
     </div>
   );

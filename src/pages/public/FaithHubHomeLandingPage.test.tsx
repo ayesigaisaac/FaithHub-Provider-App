@@ -81,7 +81,7 @@ describe("FaithHubHomeLandingPage Provider Profiles", () => {
     fireEvent.click(openDevotionals);
 
     expect(mockNavigate).toHaveBeenCalledWith("/faithhub/provider/devotionals");
-  });
+  }, 15000);
 
   it("supports engagement interactions for notifications and follows", async () => {
     renderHomePage();

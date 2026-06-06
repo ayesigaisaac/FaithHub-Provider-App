@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
+import { useEffect, useId, useMemo, useRef, useState, type ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   Alert,
@@ -41,6 +41,13 @@ import { ProviderPageScaffold } from '@/components/provider/ProviderPageScaffold
 import { ProviderSectionCard } from '@/components/provider/ProviderSectionCard';
 import { getLiveFlowState, saveLiveFlowDraft } from '@/features/live/liveFlowStore';
 import { ProviderStatusPill, type ProviderStatusTone } from '@/components/provider/ProviderStatusPill';
+import {
+  ProviderFormField,
+  ProviderFormInput,
+  ProviderFormSelect,
+  ProviderFormTextArea,
+  ProviderFormToggle,
+} from '@/components/provider/ProviderForm';
 
 const ROUTES = {
   onboarding: '/faithhub/provider/onboarding',
@@ -701,45 +708,30 @@ function Field({
   helperText?: string;
   errorMessage?: string;
 }) {
-  const base =
-    'mt-1.5 w-full rounded-2xl border bg-[var(--fh-surface-bg)] px-3 py-2.5 text-[13px] font-semibold text-faith-ink outline-none transition-colors focus:ring-2';
-  const safeLabel = label.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-  const helperId = `${safeLabel}-helper`;
-  const errorId = `${safeLabel}-error`;
+  const fieldId = useId();
   return (
-    <label className="block">
-      <span className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">{label}</span>
-      {helperText ? <div id={helperId} className="mt-1 text-[11px] leading-5 text-faith-slate">{helperText}</div> : null}
+    <ProviderFormField label={label} helperText={helperText} errorText={errorMessage} htmlFor={fieldId}>
       {rows > 1 ? (
-        <textarea
+        <ProviderFormTextArea
+          id={fieldId}
           rows={rows}
           value={value}
           onChange={(event) => onChange(event.target.value)}
           placeholder={placeholder}
-          aria-describedby={[helperText ? helperId : null, errorMessage ? errorId : null].filter(Boolean).join(' ') || undefined}
-          aria-invalid={Boolean(errorMessage)}
-          className={cx(
-            base,
-            'min-h-[118px] resize-y',
-            errorMessage ? 'border-rose-300 focus:ring-rose-200' : 'border-faith-line/70 focus:ring-emerald-200',
-          )}
+          error={Boolean(errorMessage)}
+          className="min-h-[120px] resize-y"
         />
       ) : (
-        <input
+        <ProviderFormInput
+          id={fieldId}
           type={type}
           value={value}
           onChange={(event) => onChange(event.target.value)}
           placeholder={placeholder}
-          aria-describedby={[helperText ? helperId : null, errorMessage ? errorId : null].filter(Boolean).join(' ') || undefined}
-          aria-invalid={Boolean(errorMessage)}
-          className={cx(
-            base,
-            errorMessage ? 'border-rose-300 focus:ring-rose-200' : 'border-faith-line/70 focus:ring-emerald-200',
-          )}
+          error={Boolean(errorMessage)}
         />
       )}
-      {errorMessage ? <div id={errorId} className="mt-1.5 text-[11px] font-semibold text-rose-600">{errorMessage}</div> : null}
-    </label>
+    </ProviderFormField>
   );
 }
 
@@ -756,28 +748,11 @@ function SelectField({
   options: string[] | SelectOption[];
   helperText?: string;
 }) {
-  const helperId = `${label.toLowerCase().replace(/[^a-z0-9]+/g, '-')}-helper`;
+  const fieldId = useId();
   return (
-    <label className="block">
-      <span className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-faith-slate">{label}</span>
-      {helperText ? <div id={helperId} className="mt-1 text-[11px] leading-5 text-faith-slate">{helperText}</div> : null}
-      <select
-        value={value}
-        onChange={(event) => onChange(event.target.value)}
-        aria-describedby={helperText ? helperId : undefined}
-        className="mt-1.5 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2.5 text-[13px] font-semibold text-faith-ink outline-none transition-colors focus:ring-2 focus:ring-emerald-200"
-      >
-        {options.map((option) => {
-          const optionValue = typeof option === 'string' ? option : option.value;
-          const optionLabel = typeof option === 'string' ? option : option.label;
-          return (
-            <option key={optionValue} value={optionValue}>
-              {optionLabel}
-            </option>
-          );
-        })}
-      </select>
-    </label>
+    <ProviderFormField label={label} helperText={helperText} htmlFor={fieldId}>
+      <ProviderFormSelect id={fieldId} value={value} onChange={(event) => onChange(event.target.value)} options={options} />
+    </ProviderFormField>
   );
 }
 
@@ -792,39 +767,7 @@ function ToggleField({
   onChange: (next: boolean) => void;
   detail?: string;
 }) {
-  return (
-    <button
-      type="button"
-      onClick={() => onChange(!checked)}
-      className={cx(
-        'flex w-full items-start gap-3 rounded-2xl border px-4 py-3 text-left transition-colors',
-        checked
-          ? 'border-emerald-300 bg-emerald-50'
-          : 'border-faith-line/70 bg-[var(--fh-surface-bg)] hover:bg-[var(--fh-surface)]',
-      )}
-    >
-      <span
-        className={cx(
-          'mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border',
-          checked ? 'border-emerald-500 bg-emerald-500 text-white' : 'border-faith-line bg-white',
-        )}
-      >
-        {checked ? <CheckCircle2 size={13} /> : null}
-      </span>
-      <span className="min-w-0 flex-1">
-        <span className="flex items-center gap-2">
-          <span className="block text-[12px] font-extrabold text-faith-ink">{label}</span>
-          <span className={cx(
-            'rounded-full px-2 py-0.5 text-[10px] font-black uppercase tracking-[0.18em]',
-            checked ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-100 text-slate-500',
-          )}>
-            {checked ? 'On' : 'Off'}
-          </span>
-        </span>
-        {detail ? <span className="mt-0.5 block text-[11px] leading-5 text-faith-slate">{detail}</span> : null}
-      </span>
-    </button>
-  );
+  return <ProviderFormToggle label={label} checked={checked} onChange={onChange} detail={detail} />;
 }
 
 function JourneyRail({ currentPath }: { currentPath: string }) {

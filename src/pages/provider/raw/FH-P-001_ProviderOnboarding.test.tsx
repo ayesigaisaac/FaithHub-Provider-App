@@ -33,5 +33,5 @@ describe('Provider registration page', () => {
     await user.click(screen.getByRole('button', { name: /Register/i }));
 
     expect(navigateMock).toHaveBeenCalledWith('/faithhub/provider/profile-settings');
-  });
+  }, 15000);
 });

@@ -31,6 +31,13 @@ import {
 } from "lucide-react";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderEntryDialog } from "@/components/provider/ProviderEntryDialog";
+import {
+  ProviderFormActions,
+  ProviderFormField,
+  ProviderFormInput,
+  ProviderFormSelect,
+  ProviderFormTextArea,
+} from "@/components/provider/ProviderForm";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { ProviderJourneyStepper } from "../FaithHubProviderJourneyPages";
 
@@ -1573,82 +1580,50 @@ export default function ResourcesManagerPage() {
         }
       >
         <div className="grid gap-4 md:grid-cols-2">
-          <div className="md:col-span-2">
-            <Label>Title</Label>
-            <input
-              value={formTitle}
-              onChange={(e) => setFormTitle(e.target.value)}
-              placeholder="Resource title"
-              className="mt-1 h-11 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 text-sm font-semibold text-slate-800 outline-none transition focus:border-transparent focus:ring-2 focus:ring-[rgba(3,205,140,0.25)]"
-            />
-          </div>
-          <div className="md:col-span-2">
-            <Label>Description</Label>
-            <textarea
+          <ProviderFormField label="Title" helperText="Use the resource title that should appear in the library.">
+            <ProviderFormInput value={formTitle} onChange={(e) => setFormTitle(e.target.value)} placeholder="Resource title" />
+          </ProviderFormField>
+          <ProviderFormField
+            label="Description"
+            helperText="Keep it short and clear so the resource reads well in the library."
+            className="md:col-span-2"
+          >
+            <ProviderFormTextArea
               value={formSummary}
               onChange={(e) => setFormSummary(e.target.value)}
               placeholder="Short summary"
               rows={4}
-              className="mt-1 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 py-3 text-sm font-semibold text-slate-800 outline-none transition focus:border-transparent focus:ring-2 focus:ring-[rgba(3,205,140,0.25)]"
             />
-          </div>
-          <div>
-            <Label>Type</Label>
-            <SelectField
+          </ProviderFormField>
+          <ProviderFormField label="Type" helperText="Choose the resource format.">
+            <ProviderFormSelect
               value={formType}
               onChange={(value) => setFormType(value as ResourceType)}
               options={["PDF", "Audio", "Devotional", "Study Guide", "Prayer Guide", "Reading Plan"]}
             />
-          </div>
-          <div>
-            <Label>Category</Label>
-            <SelectField
+          </ProviderFormField>
+          <ProviderFormField label="Category" helperText="Choose the resource library grouping.">
+            <ProviderFormSelect
               value={formCategory}
               onChange={(value) => setFormCategory(value as ResourceCategory)}
               options={["Books", "Prayer", "Devotionals", "Leadership", "Family", "Youth", "Study"]}
             />
-          </div>
-          <div className="md:col-span-2">
-            <Label>File URL</Label>
-            <input
-              value={formFileUrl}
-              onChange={(e) => setFormFileUrl(e.target.value)}
-              placeholder="https://..."
-              className="mt-1 h-11 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 text-sm font-semibold text-slate-800 outline-none transition focus:border-transparent focus:ring-2 focus:ring-[rgba(3,205,140,0.25)]"
-            />
-          </div>
-          <div className="md:col-span-2">
-            <Label>Tags (comma separated)</Label>
-            <input
-              value={formTags}
-              onChange={(e) => setFormTags(e.target.value)}
-              className="mt-1 h-11 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 text-sm font-semibold text-slate-800 outline-none transition focus:border-transparent focus:ring-2 focus:ring-[rgba(3,205,140,0.25)]"
-            />
-          </div>
-          <div>
-            <Label>Denominations (comma separated)</Label>
-            <input
-              value={formDenominations}
-              onChange={(e) => setFormDenominations(e.target.value)}
-              className="mt-1 h-11 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 text-sm font-semibold text-slate-800 outline-none transition focus:border-transparent focus:ring-2 focus:ring-[rgba(3,205,140,0.25)]"
-            />
-          </div>
-          <div>
-            <Label>Audience groups</Label>
-            <input
-              value={formAudiences}
-              onChange={(e) => setFormAudiences(e.target.value)}
-              className="mt-1 h-11 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 text-sm font-semibold text-slate-800 outline-none transition focus:border-transparent focus:ring-2 focus:ring-[rgba(3,205,140,0.25)]"
-            />
-          </div>
-          <div className="md:col-span-2">
-            <Label>Age groups</Label>
-            <input
-              value={formAgeGroups}
-              onChange={(e) => setFormAgeGroups(e.target.value)}
-              className="mt-1 h-11 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 text-sm font-semibold text-slate-800 outline-none transition focus:border-transparent focus:ring-2 focus:ring-[rgba(3,205,140,0.25)]"
-            />
-          </div>
+          </ProviderFormField>
+          <ProviderFormField label="File URL" helperText="Paste the downloadable file or hosted asset URL." className="md:col-span-2">
+            <ProviderFormInput value={formFileUrl} onChange={(e) => setFormFileUrl(e.target.value)} placeholder="https://..." />
+          </ProviderFormField>
+          <ProviderFormField label="Tags (comma separated)" helperText="Add search tags that help users find the resource." className="md:col-span-2">
+            <ProviderFormInput value={formTags} onChange={(e) => setFormTags(e.target.value)} />
+          </ProviderFormField>
+          <ProviderFormField label="Denominations (comma separated)" helperText="Optional audience or denomination targeting.">
+            <ProviderFormInput value={formDenominations} onChange={(e) => setFormDenominations(e.target.value)} />
+          </ProviderFormField>
+          <ProviderFormField label="Audience groups" helperText="Who this resource is intended for.">
+            <ProviderFormInput value={formAudiences} onChange={(e) => setFormAudiences(e.target.value)} />
+          </ProviderFormField>
+          <ProviderFormField label="Age groups" helperText="Optional age targeting for this resource." className="md:col-span-2">
+            <ProviderFormInput value={formAgeGroups} onChange={(e) => setFormAgeGroups(e.target.value)} />
+          </ProviderFormField>
         </div>
       </ProviderEntryDialog>
 

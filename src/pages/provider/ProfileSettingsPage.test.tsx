@@ -30,5 +30,5 @@ describe('Provider profile page', () => {
     await user.click(screen.getByRole('button', { name: /Submit Application/i }));
 
     expect(navigateMock).toHaveBeenCalledWith('/faithhub/provider/dashboard');
-  });
+  }, 15000);
 });

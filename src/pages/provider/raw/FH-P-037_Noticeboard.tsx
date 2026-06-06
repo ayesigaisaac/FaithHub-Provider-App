@@ -33,6 +33,14 @@ import {
 } from "lucide-react";
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import {
+  ProviderFormActions,
+  ProviderFormField,
+  ProviderFormInput,
+  ProviderFormSelect,
+  ProviderFormTextArea,
+  ProviderFormToggle,
+} from "@/components/provider/ProviderForm";
 import { ProviderJourneyStepper } from "../FaithHubProviderJourneyPages";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
@@ -1439,224 +1447,262 @@ export default function FaithHubNoticeboardPage() {
                 </div>
               }
             >
-              <div className="grid gap-4">
-                <div>
-                  <FieldLabel>Notice title</FieldLabel>
-                  <Input
-                    value={composer.title}
-                    onChange={(value) =>
-                      setComposer((prev) => ({ ...prev, title: value }))
-                    }
-                    placeholder="Write the board headline"
-                  />
+              <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.82fr)]">
+                <div className="space-y-5">
+                  <ProviderFormField
+                    label="Notice title"
+                    helperText="Write the headline people will see first across the board."
+                  >
+                    <ProviderFormInput
+                      value={composer.title}
+                      onChange={(e) =>
+                        setComposer((prev) => ({ ...prev, title: e.target.value }))
+                      }
+                      placeholder="Write the board headline"
+                    />
+                  </ProviderFormField>
+
+                  <div className="grid gap-4 md:grid-cols-2">
+                    <ProviderFormField
+                      label="Category"
+                      helperText="Choose the notice type that best fits the message."
+                    >
+                      <ProviderFormSelect
+                        value={composer.category}
+                        onChange={(e) =>
+                          setComposer((prev) => ({
+                            ...prev,
+                            category: e.target.value as Category,
+                          }))
+                        }
+                        options={[
+                          "Service update",
+                          "Prayer alert",
+                          "Volunteer call",
+                          "Event notice",
+                          "Giving update",
+                          "Community reminder",
+                          "Safety notice",
+                        ]}
+                      />
+                    </ProviderFormField>
+
+                    <ProviderFormField
+                      label="Priority"
+                      helperText="Use urgent sparingly so it still stands out."
+                    >
+                      <ProviderFormSelect
+                        value={composer.priority}
+                        onChange={(e) =>
+                          setComposer((prev) => ({
+                            ...prev,
+                            priority: e.target.value as Priority,
+                          }))
+                        }
+                        options={["Routine", "Important", "Urgent"]}
+                      />
+                    </ProviderFormField>
+                  </div>
+
+                  <ProviderFormField
+                    label="Summary"
+                    helperText="Keep this short for cards, feeds, and previews."
+                  >
+                    <ProviderFormTextArea
+                      value={composer.summary}
+                      onChange={(e) =>
+                        setComposer((prev) => ({ ...prev, summary: e.target.value }))
+                      }
+                      rows={3}
+                      placeholder="Short summary for cards, feeds, and previews"
+                    />
+                  </ProviderFormField>
+
+                  <ProviderFormField
+                    label="Full notice body"
+                    helperText="Use the longer body for directions, context, or escalation details."
+                  >
+                    <ProviderFormTextArea
+                      value={composer.body}
+                      onChange={(e) =>
+                        setComposer((prev) => ({ ...prev, body: e.target.value }))
+                      }
+                      rows={6}
+                      placeholder="Full board message, pastoral note, directions, or escalation details"
+                    />
+                  </ProviderFormField>
+
+                  <div className="grid gap-4 md:grid-cols-2">
+                    <ProviderFormField
+                      label="Campus"
+                      helperText="Choose the campus or channel that should carry the notice."
+                    >
+                      <ProviderFormSelect
+                        value={composer.campus}
+                        onChange={(e) =>
+                          setComposer((prev) => ({ ...prev, campus: e.target.value }))
+                        }
+                        options={CAMPUSES.slice(1)}
+                      />
+                    </ProviderFormField>
+
+                    <ProviderFormField
+                      label="Audience"
+                      helperText="Pick the people group this notice should reach."
+                    >
+                      <ProviderFormSelect
+                        value={composer.audience}
+                        onChange={(e) =>
+                          setComposer((prev) => ({ ...prev, audience: e.target.value }))
+                        }
+                        options={AUDIENCES}
+                      />
+                    </ProviderFormField>
+
+                    <ProviderFormField
+                      label="Language"
+                      helperText="Select the language for the published version."
+                    >
+                      <ProviderFormSelect
+                        value={composer.language}
+                        onChange={(e) =>
+                          setComposer((prev) => ({ ...prev, language: e.target.value }))
+                        }
+                        options={LANGUAGES}
+                      />
+                    </ProviderFormField>
+
+                    <ProviderFormField
+                      label="Linked object"
+                      helperText="Connect this notice to a live event, giving flow, or series."
+                    >
+                      <ProviderFormSelect
+                        value={composer.linkedTo}
+                        onChange={(e) =>
+                          setComposer((prev) => ({ ...prev, linkedTo: e.target.value }))
+                        }
+                        options={LINKED_OBJECTS}
+                      />
+                    </ProviderFormField>
+                  </div>
+
+                  <ProviderFormField
+                    label="Surfaces"
+                    helperText="Choose every surface that should receive the message."
+                  >
+                    <div className="flex flex-wrap gap-2">
+                      {ALL_SURFACES.map((surface) => {
+                        const active = composer.surfaces.includes(surface);
+                        return (
+                          <button
+                            key={surface}
+                            type="button"
+                            onClick={() => toggleSurface(surface)}
+                            className={cx(
+                              "rounded-full border px-3 py-2 text-[11px] font-semibold transition-colors",
+                              active
+                                ? "border-emerald-200 bg-emerald-50 text-emerald-800"
+                                : "border-faith-line bg-[var(--fh-surface-bg)] text-faith-slate hover:bg-[var(--fh-surface)]",
+                            )}
+                          >
+                            {surface}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </ProviderFormField>
+
+                  <div className="grid gap-4 md:grid-cols-2">
+                    <ProviderFormField
+                      label="Publish window start"
+                      helperText="When should this notice go live?"
+                    >
+                      <ProviderFormInput
+                        value={composer.scheduledAt}
+                        onChange={(e) =>
+                          setComposer((prev) => ({
+                            ...prev,
+                            scheduledAt: e.target.value,
+                          }))
+                        }
+                        placeholder="Today - 4:45 PM"
+                      />
+                    </ProviderFormField>
+                    <ProviderFormField
+                      label="Expiry / unpin time"
+                      helperText="Set when the notice should fade out or unpin."
+                    >
+                      <ProviderFormInput
+                        value={composer.expiresAt}
+                        onChange={(e) =>
+                          setComposer((prev) => ({
+                            ...prev,
+                            expiresAt: e.target.value,
+                          }))
+                        }
+                        placeholder="Tomorrow - 11:30 PM"
+                      />
+                    </ProviderFormField>
+                  </div>
                 </div>
 
-                <div>
-                  <FieldLabel>Summary</FieldLabel>
-                  <TextArea
-                    value={composer.summary}
-                    onChange={(value) =>
-                      setComposer((prev) => ({ ...prev, summary: value }))
-                    }
-                    rows={3}
-                    placeholder="Short summary for cards, feeds, and previews"
-                  />
-                </div>
-
-                <div>
-                  <FieldLabel>Full notice body</FieldLabel>
-                  <TextArea
-                    value={composer.body}
-                    onChange={(value) =>
-                      setComposer((prev) => ({ ...prev, body: value }))
-                    }
-                    rows={5}
-                    placeholder="Full board message, pastoral note, directions, or escalation details"
-                  />
-                </div>
-
-                <div className="grid gap-3 sm:grid-cols-2">
-                  <div>
-                    <FieldLabel>Category</FieldLabel>
-                    <SelectField
-                      value={composer.category}
+                <div className="space-y-4 rounded-[28px] border border-faith-line/70 bg-[var(--fh-surface)] p-5">
+                  <div className="text-[11px] font-extrabold uppercase tracking-[0.16em] text-faith-slate">
+                    Notice options
+                  </div>
+                  <div className="space-y-3">
+                    <ProviderFormToggle
+                      checked={composer.pinned}
+                      onChange={(value) =>
+                        setComposer((prev) => ({ ...prev, pinned: value }))
+                      }
+                      label="Pin to spotlight lane"
+                      detail="Places the notice in the board header and important surfaces."
+                    />
+                    <ProviderFormToggle
+                      checked={composer.approvalRequired}
                       onChange={(value) =>
                         setComposer((prev) => ({
                           ...prev,
-                          category: value as Category,
+                          approvalRequired: value,
                         }))
                       }
-                      options={[
-                        "Service update",
-                        "Prayer alert",
-                        "Volunteer call",
-                        "Event notice",
-                        "Giving update",
-                        "Community reminder",
-                        "Safety notice",
-                      ]}
+                      label="Approval & audit routing"
+                      detail="Keep leadership, moderators, or safeguarding leads in the loop."
                     />
-                  </div>
-
-                  <div>
-                    <FieldLabel>Priority</FieldLabel>
-                    <SelectField
-                      value={composer.priority}
+                    <ProviderFormToggle
+                      checked={composer.sendToJourney}
                       onChange={(value) =>
-                        setComposer((prev) => ({
-                          ...prev,
-                          priority: value as Priority,
-                        }))
+                        setComposer((prev) => ({ ...prev, sendToJourney: value }))
                       }
-                      options={["Routine", "Important", "Urgent"]}
+                      label="Hand off to notification journey"
+                      detail="Create a reminder or follow-up flow from this notice."
                     />
-                  </div>
-
-                  <div>
-                    <FieldLabel>Campus</FieldLabel>
-                    <SelectField
-                      value={composer.campus}
+                    <ProviderFormToggle
+                      checked={composer.boostWithRevelight}
                       onChange={(value) =>
-                        setComposer((prev) => ({ ...prev, campus: value }))
+                        setComposer((prev) => ({ ...prev, boostWithRevelight: value }))
                       }
-                      options={CAMPUSES.slice(1)}
+                      label="Boost with Revelight"
+                      detail="Create a dynamic promo pack automatically after publish."
                     />
                   </div>
 
-                  <div>
-                    <FieldLabel>Audience</FieldLabel>
-                    <SelectField
-                      value={composer.audience}
-                      onChange={(value) =>
-                        setComposer((prev) => ({ ...prev, audience: value }))
-                      }
-                      options={AUDIENCES}
-                    />
+                  <div className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 text-[13px] leading-6 text-faith-slate">
+                    Notices can be routed to live sessions, events, giving, and the
+                    provider journey after publish.
                   </div>
 
-                  <div>
-                    <FieldLabel>Language</FieldLabel>
-                    <SelectField
-                      value={composer.language}
-                      onChange={(value) =>
-                        setComposer((prev) => ({ ...prev, language: value }))
-                      }
-                      options={LANGUAGES}
-                    />
-                  </div>
-
-                  <div>
-                    <FieldLabel>Linked object</FieldLabel>
-                    <SelectField
-                      value={composer.linkedTo}
-                      onChange={(value) =>
-                        setComposer((prev) => ({ ...prev, linkedTo: value }))
-                      }
-                      options={LINKED_OBJECTS}
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <FieldLabel>Surfaces</FieldLabel>
-                  <div className="mt-2 flex flex-wrap gap-2">
-                    {ALL_SURFACES.map((surface) => {
-                      const active = composer.surfaces.includes(surface);
-                      return (
-                        <button
-                          key={surface}
-                          type="button"
-                          onClick={() => toggleSurface(surface)}
-                          className={cx(
-                            "rounded-full border px-3 py-2 text-[11px] font-semibold transition-colors",
-                            active
-                              ? "border-emerald-200 bg-emerald-50 text-emerald-800"
-                              : "border-faith-line bg-[var(--fh-surface-bg)] text-faith-slate hover:bg-[var(--fh-surface)]",
-                          )}
-                        >
-                          {surface}
-                        </button>
-                      );
-                    })}
-                  </div>
-                </div>
-
-                <div className="grid gap-3 sm:grid-cols-2">
-                  <div>
-                    <FieldLabel>Publish window start</FieldLabel>
-                    <Input
-                      value={composer.scheduledAt}
-                      onChange={(value) =>
-                        setComposer((prev) => ({ ...prev, scheduledAt: value }))
-                      }
-                      placeholder="Today - 4:45 PM"
-                    />
-                  </div>
-                  <div>
-                    <FieldLabel>Expiry / unpin time</FieldLabel>
-                    <Input
-                      value={composer.expiresAt}
-                      onChange={(value) =>
-                        setComposer((prev) => ({ ...prev, expiresAt: value }))
-                      }
-                      placeholder="Tomorrow - 11:30 PM"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid gap-3 sm:grid-cols-2">
-                  <ToggleCard
-                    checked={composer.pinned}
-                    onChange={(value) =>
-                      setComposer((prev) => ({ ...prev, pinned: value }))
-                    }
-                    label="Pin to spotlight lane"
-                    hint="Places the notice in the board header and important surfaces."
-                    accent="orange"
-                  />
-                  <ToggleCard
-                    checked={composer.approvalRequired}
-                    onChange={(value) =>
-                      setComposer((prev) => ({
-                        ...prev,
-                        approvalRequired: value,
-                      }))
-                    }
-                    label="Approval & audit routing"
-                    hint="Keep leadership, moderators, or safeguarding leads in the loop."
-                  />
-                  <ToggleCard
-                    checked={composer.sendToJourney}
-                    onChange={(value) =>
-                      setComposer((prev) => ({ ...prev, sendToJourney: value }))
-                    }
-                    label="Hand off to notification journey"
-                    hint="Create a reminder or follow-up flow from this notice."
-                  />
-                  <ToggleCard
-                    checked={composer.boostWithRevelight}
-                    onChange={(value) =>
-                      setComposer((prev) => ({ ...prev, boostWithRevelight: value }))
-                    }
-                    label="Promote with Revelight"
-                    hint="Boost major announcements, giving notices, and public campaigns."
-                    accent="orange"
-                  />
-                </div>
-
-                <div className="grid w-full grid-cols-1 gap-2 border-t border-slate-100 pt-2 sm:grid-cols-2 xl:grid-cols-3">
-                  <SoftButton className="h-10 w-full justify-center px-4" onClick={() => saveNotice("Draft")}>
-                    <CheckCircle2 className="h-4 w-4" />
-                    Save draft
-                  </SoftButton>
-                  <SoftButton className="h-10 w-full justify-center px-4" onClick={() => saveNotice("Scheduled")}>
-                    <CalendarClock className="h-4 w-4" />
-                    Schedule notice
-                  </SoftButton>
-                  <SoftButton className="h-10 w-full justify-center px-4">
-                    <Workflow className="h-4 w-4" />
-                    Open audience sync
-                  </SoftButton>
+                  <ProviderFormActions className="pt-2">
+                    <SoftButton onClick={createNewNotice}>
+                      <Plus className="h-4 w-4" />
+                      New
+                    </SoftButton>
+                    <PrimaryButton onClick={() => saveNotice("Live")}>
+                      <Send className="h-4 w-4" />
+                      Publish
+                    </PrimaryButton>
+                  </ProviderFormActions>
                 </div>
               </div>
             </Card>
