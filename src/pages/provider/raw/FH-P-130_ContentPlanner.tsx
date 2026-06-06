@@ -2,6 +2,7 @@ import { CalendarCheck2, CheckCircle2, Clock3, Sparkles } from 'lucide-react';
 import { ProviderPageScaffold } from '@/components/provider/ProviderPageScaffold';
 import { ProviderSurfaceCard } from '@/components/provider/ProviderSurfaceCard';
 import { ProviderStatusPill } from '@/components/provider/ProviderStatusPill';
+import { ProviderJourneyStepper } from "../FaithHubProviderJourneyPages";
 
 const planningSteps = [
   {
@@ -65,8 +66,13 @@ export default function FHP130ContentPlanner() {
         </>
       }
     >
+      <ProviderJourneyStepper
+        currentStepIndex={5}
+        title="Guide the publishing plan"
+        subtitle="Keep planning, ownership, and readiness inside one clean step-by-step flow."
+      />
 
-        <ProviderSurfaceCard className="mt-4" title="Execution Checklist" subtitle="Core flow to move from planning to publish.">
+      <ProviderSurfaceCard className="mt-4" title="Execution Checklist" subtitle="Core flow to move from planning to publish.">
           <div className="space-y-3">
             {planningSteps.map((step, index) => (
               <div key={step.title} className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-4">

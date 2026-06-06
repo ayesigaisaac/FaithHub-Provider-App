@@ -3,6 +3,7 @@ import { navigateWithRouter } from '@/navigation/routerNavigate';
 import { ProviderPageScaffold } from '@/components/provider/ProviderPageScaffold';
 import { ProviderSectionCard } from '@/components/provider/ProviderSectionCard';
 import { ProviderStatusPill } from '@/components/provider/ProviderStatusPill';
+import { ProviderJourneyStepper } from "../FaithHubProviderJourneyPages";
 
 type DevotionalPlan = {
   id: string;
@@ -46,6 +47,11 @@ export default function FH_P_107_Devotionals() {
         </div>
       }
     >
+      <ProviderJourneyStepper
+        currentStepIndex={5}
+        title="Guide the devotional flow"
+        subtitle="Move from plan to schedule to live delivery inside one clear provider journey."
+      />
 
       <ProviderSectionCard
         title="Community devotional lanes"

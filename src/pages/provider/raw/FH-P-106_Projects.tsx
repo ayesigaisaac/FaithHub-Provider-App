@@ -33,6 +33,7 @@ import {
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
+import { ProviderJourneyStepper } from "../FaithHubProviderJourneyPages";
 
 /**
  * Provider - Projects
@@ -1465,6 +1466,14 @@ function ProjectsPage() {
                   <Pill>Giving-linked</Pill>
                   <Pill>Revelight-ready</Pill>
                   <Pill>Volunteer-led</Pill>
+                </div>
+
+                <div className="mt-5">
+                  <ProviderJourneyStepper
+                    currentStepIndex={6}
+                    title="Guide the project from setup to activation"
+                    subtitle="Keep outreach, recruitment, funding, and launch actions in one clear provider path."
+                  />
                 </div>
               </div>
 
