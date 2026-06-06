@@ -325,6 +325,139 @@ function LiveWorkspaceSplit({ main, rail }: { main: ReactNode; rail: ReactNode }
   );
 }
 
+type GuidedJourneyStepState = 'completed' | 'current' | 'locked';
+
+const GUIDED_JOURNEY_STEPS = [
+  {
+    label: 'Step 1 of 6',
+    title: 'Create account',
+    hint: 'Capture the provider basics and save the first draft.',
+    path: ROUTES.onboarding,
+  },
+  {
+    label: 'Step 2 of 6',
+    title: 'Complete profile',
+    hint: 'Add the brand, mission, and verification files.',
+    path: ROUTES.profile,
+  },
+  {
+    label: 'Step 3 of 6',
+    title: 'Open dashboard',
+    hint: 'Review approvals and choose the next recommended action.',
+    path: ROUTES.dashboard,
+  },
+  {
+    label: 'Step 4 of 6',
+    title: 'Create first offering',
+    hint: 'Build a service, campaign, or teaching item.',
+    path: ROUTES.serviceBuilder,
+  },
+  {
+    label: 'Step 5 of 6',
+    title: 'Prepare content and live',
+    hint: 'Upload assets, then set up the first live session.',
+    path: ROUTES.contentUpload,
+  },
+  {
+    label: 'Step 6 of 6',
+    title: 'Review and manage',
+    hint: 'Check activation status and keep the workspace moving.',
+    path: ROUTES.dashboard,
+  },
+] as const;
+
+function getJourneyProgressIndex({
+  onboardingStatus,
+  services,
+  campaigns,
+  assets,
+  sessions,
+}: {
+  onboardingStatus?: string;
+  services: number;
+  campaigns: number;
+  assets: number;
+  sessions: number;
+}) {
+  if (onboardingStatus === 'not_started' || onboardingStatus === 'in_progress') return 0;
+  if (onboardingStatus === 'submitted') return 1;
+  if (onboardingStatus === 'approved' && services === 0 && campaigns === 0 && assets === 0 && sessions === 0) return 2;
+  if (services > 0 || campaigns > 0) return 3;
+  if (assets > 0 || sessions > 0) return 4;
+  return 5;
+}
+
+function ProviderJourneyStepper({
+  currentStepIndex,
+  onNavigate,
+  title = 'Guided provider journey',
+  subtitle = 'Follow one clear setup path from account creation to activation.',
+}: {
+  currentStepIndex: number;
+  onNavigate: (path: string) => void;
+  title?: string;
+  subtitle?: string;
+}) {
+  const safeIndex = Math.max(0, Math.min(GUIDED_JOURNEY_STEPS.length - 1, currentStepIndex));
+  const currentStep = GUIDED_JOURNEY_STEPS[safeIndex];
+  const progress = Math.round((safeIndex / (GUIDED_JOURNEY_STEPS.length - 1)) * 100);
+
+  return (
+    <ProviderSectionCard title={title} subtitle={subtitle}>
+      <div className="space-y-4">
+        <div className="rounded-3xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <ProviderStatusPill tone="brand">{currentStep.label}</ProviderStatusPill>
+            <ProviderStatusPill tone={progress === 100 ? 'good' : 'neutral'}>{progress}% complete</ProviderStatusPill>
+          </div>
+          <div className="mt-3 text-[15px] font-black text-faith-ink">{currentStep.title}</div>
+          <div className="mt-1 text-[12px] leading-6 text-faith-slate">{currentStep.hint}</div>
+          <div className="mt-4">
+            <LinearProgress variant="determinate" value={progress} sx={{ height: 8, borderRadius: 999 }} />
+          </div>
+          <div className="mt-3 text-[11px] font-semibold text-faith-slate">
+            Continue with the step that is currently open. Later steps stay visible but quiet until this one is complete.
+          </div>
+          <Button variant="primary" className="mt-4 w-full" onClick={() => onNavigate(currentStep.path)}>
+            Open current step
+          </Button>
+        </div>
+
+        <div className="space-y-2">
+          {GUIDED_JOURNEY_STEPS.map((step, index) => {
+            const state: GuidedJourneyStepState = index < safeIndex ? 'completed' : index === safeIndex ? 'current' : 'locked';
+            return (
+              <button
+                key={step.label}
+                type="button"
+                onClick={() => onNavigate(step.path)}
+                className={cx(
+                  'flex w-full items-start justify-between gap-3 rounded-2xl border p-4 text-left transition-colors',
+                  state === 'current'
+                    ? 'border-emerald-300 bg-emerald-50'
+                    : state === 'completed'
+                      ? 'border-faith-line/70 bg-[var(--fh-surface-bg)] hover:bg-[var(--fh-surface)]'
+                      : 'border-dashed border-faith-line/70 bg-[var(--fh-surface-bg)] opacity-75 hover:bg-[var(--fh-surface)]',
+                )}
+                disabled={state === 'locked'}
+              >
+                <div className="min-w-0">
+                  <div className="text-[11px] font-black uppercase tracking-[0.16em] text-faith-slate">{step.label}</div>
+                  <div className="mt-1 text-[13px] font-extrabold text-faith-ink">{step.title}</div>
+                  <div className="mt-1 text-[12px] leading-5 text-faith-slate">{step.hint}</div>
+                </div>
+                <ProviderStatusPill tone={state === 'current' ? 'brand' : state === 'completed' ? 'good' : 'neutral'}>
+                  {state === 'current' ? 'Current' : state === 'completed' ? 'Done' : 'Locked'}
+                </ProviderStatusPill>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    </ProviderSectionCard>
+  );
+}
+
 const SERVICE_CATEGORIES = [
   'Worship Support',
   'Teaching Support',
@@ -823,6 +956,12 @@ export function ProviderRegistrationPage() {
     >
       <Box className="space-y-4">
         <JourneyRail currentPath={ROUTES.onboarding} />
+        <ProviderJourneyStepper
+          currentStepIndex={0}
+          onNavigate={(path) => navigate(path)}
+          title="Start here"
+          subtitle="The provider journey begins with one simple step: registration, then profile, then activation."
+        />
 
         <div className="grid gap-4 xl:grid-cols-12">
           <div className="space-y-4 xl:col-span-8">
@@ -873,7 +1012,6 @@ export function ProviderRegistrationPage() {
         </div>
 
         <div className="space-y-4 xl:col-span-4">
-          <JourneyPhaseCard activePath={ROUTES.onboarding} onNavigate={(path) => navigate(path)} />
           <ProviderSectionCard
               title="Your next step"
               subtitle="Once registration is saved, the FaithHub profile flow unlocks the approval journey."
@@ -891,30 +1029,6 @@ export function ProviderRegistrationPage() {
                 <Button variant="secondary" className="w-full" onClick={() => navigate(ROUTES.profile)}>
                   Complete profile
                 </Button>
-              </div>
-            </ProviderSectionCard>
-
-            <ProviderSectionCard title="FaithHub route map" subtitle="The app keeps the provider journey visible at every step.">
-              <div className="space-y-2">
-                {JOURNEY_STEPS.map((step, index) => (
-                  <button
-                    key={step.path}
-                    type="button"
-                    onClick={() => navigate(step.path)}
-                    className={cx(
-                      'flex w-full items-center justify-between rounded-2xl border px-4 py-3 text-left transition-colors',
-                      step.path === ROUTES.onboarding
-                        ? 'border-emerald-300 bg-emerald-50'
-                        : 'border-faith-line/70 bg-[var(--fh-surface-bg)] hover:bg-[var(--fh-surface)]',
-                    )}
-                  >
-                    <div>
-                      <div className="text-[12px] font-extrabold text-faith-ink">{index + 1}. {step.label}</div>
-                      <div className="text-[11px] text-faith-slate">{step.path.replace('/faithhub/provider/', '')}</div>
-                    </div>
-                    <ArrowRight size={14} />
-                  </button>
-                ))}
               </div>
             </ProviderSectionCard>
           </div>
@@ -983,6 +1097,12 @@ export function ProviderProfilePage() {
     >
       <Box className="space-y-4">
         <JourneyRail currentPath={ROUTES.profile} />
+        <ProviderJourneyStepper
+          currentStepIndex={1}
+          onNavigate={(path) => navigate(path)}
+          title="Keep the setup moving"
+          subtitle="Profile and verification are the bridge between registration and the dashboard."
+        />
         <div className="grid gap-4 xl:grid-cols-12">
           <div className="space-y-4 xl:col-span-8">
             <ProviderSectionCard
@@ -1013,7 +1133,6 @@ export function ProviderProfilePage() {
           </div>
 
           <div className="space-y-4 xl:col-span-4">
-            <JourneyPhaseCard activePath={ROUTES.profile} onNavigate={(path) => navigate(path)} />
             <ProviderSectionCard title="Review banner" subtitle="The provider profile remains in review until the application is submitted.">
               <div className="space-y-3">
                 <ProviderStatusPill tone="warn" left={<Bell size={12} />}>Pending Review</ProviderStatusPill>
@@ -1063,6 +1182,13 @@ export function ProviderDashboardPage() {
   const activeCampaigns = campaigns.filter((campaign) => campaign.status === 'Active').length;
   const liveSessions = sessions.filter((session) => session.status === 'Scheduled' || session.status === 'Ready' || session.status === 'Live').length;
   const approvedAssets = assets.filter((asset) => asset.status === 'Approved').length;
+  const journeyStepIndex = getJourneyProgressIndex({
+    onboardingStatus: auth?.onboardingStatus,
+    services: services.length,
+    campaigns: campaigns.length,
+    assets: assets.length,
+    sessions: sessions.length,
+  });
 
   return (
     <ProviderPageScaffold
@@ -1095,44 +1221,36 @@ export function ProviderDashboardPage() {
     >
       <Box className="space-y-4">
         <JourneyRail currentPath={ROUTES.dashboard} />
+        <ProviderJourneyStepper
+          currentStepIndex={journeyStepIndex}
+          onNavigate={(path) => navigate(path)}
+          title="Your provider setup journey"
+          subtitle="The dashboard keeps the journey visible so the next action is always obvious."
+        />
 
         <div className="grid gap-4 xl:grid-cols-12">
           <div className="space-y-4 xl:col-span-8">
-            <ProviderSectionCard title="Phased rollout" subtitle="Track the FaithHub Provider journey in the same order the project is being delivered.">
+            <ProviderSectionCard title="Next recommended actions" subtitle="Keep the setup moving by focusing on the next clear task.">
               <div className="grid gap-3 md:grid-cols-2">
-                {DASHBOARD_PHASES.map((phase, index) => {
-                  const Icon = phase.icon;
-                  const phaseTone =
-                    index === 0 && profileStatus !== 'Approved'
-                      ? 'warn'
-                      : index < 3 && (services.length > 0 || campaigns.length > 0 || assets.length > 0)
-                        ? 'good'
-                        : index === 5
-                          ? 'brand'
-                          : 'neutral';
-
-                  return (
-                    <div key={phase.label} className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
-                      <div className="flex items-start justify-between gap-3">
-                        <div className="flex items-start gap-3">
-                          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-700">
-                            <Icon size={18} />
-                          </span>
-                          <div>
-                            <div className="text-[13px] font-extrabold text-faith-ink">{phase.label}</div>
-                            <div className="mt-1 text-[12px] text-faith-slate">{phase.summary}</div>
-                          </div>
-                        </div>
-                        <ProviderStatusPill tone={phaseTone}>
-                          {index === 0 && profileStatus !== 'Approved' ? 'In progress' : index === 5 ? 'Polish' : 'Ready'}
-                        </ProviderStatusPill>
+                {[
+                  { label: 'Complete profile', hint: 'Add brand and verification files.', route: ROUTES.profile, tone: profileStatus === 'Approved' ? 'good' : 'warn' as const },
+                  { label: 'Create a service', hint: 'Start the first offering that will appear in the dashboard.', route: ROUTES.serviceBuilder, tone: services.length > 0 ? 'good' : 'brand' as const },
+                  { label: 'Upload content', hint: 'Prepare approved assets for live and campaign use.', route: ROUTES.contentUpload, tone: assets.length > 0 ? 'good' : 'neutral' as const },
+                  { label: 'Set up live', hint: 'Draft the next live session and waiting room.', route: ROUTES.liveBuilder, tone: liveSessions > 0 ? 'good' : 'neutral' as const },
+                ].map((item) => (
+                  <div key={item.label} className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="min-w-0">
+                        <div className="text-[13px] font-extrabold text-faith-ink">{item.label}</div>
+                        <div className="mt-1 text-[12px] text-faith-slate">{item.hint}</div>
                       </div>
-                      <Button variant="outline" className="mt-4 w-full" onClick={() => navigate(phase.route)}>
-                        Open phase
-                      </Button>
+                      <ProviderStatusPill tone={item.tone}>{item.tone === 'good' ? 'Done' : 'Next'}</ProviderStatusPill>
                     </div>
-                  );
-                })}
+                    <Button variant="outline" className="mt-4 w-full" onClick={() => navigate(item.route)}>
+                      Open step
+                    </Button>
+                  </div>
+                ))}
               </div>
             </ProviderSectionCard>
 
