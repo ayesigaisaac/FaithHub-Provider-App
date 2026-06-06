@@ -28,6 +28,7 @@ import {
 } from "lucide-react";
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderJourneyStepper } from "../FaithHubProviderJourneyPages";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
@@ -1303,6 +1304,14 @@ export default function RevelightDashboardPage() {
                 title="Revelight Dashboard"
                 subtitle="Premium control center for promotion, spend, reach, conversions, creative health, and recommendations across active and past Revelight campaigns."
               />
+              <div className="mt-4">
+                <ProviderJourneyStepper
+                  currentStepIndex={4}
+                  onNavigate={(path) => navigateWithRouter(path)}
+                  title="Plan promotion after setup"
+                  subtitle="Revelight works best after the provider has content, live, and follow-up workflows in place."
+                />
+              </div>
               <div className="mt-3 flex flex-wrap items-center gap-3">
                 <Pill tone="pro">
                   <Sparkles className="h-3.5 w-3.5" /> Premium promotion engine

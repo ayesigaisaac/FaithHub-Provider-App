@@ -24,6 +24,7 @@ import {
   X,
 } from "lucide-react";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderJourneyStepper } from "../FaithHubProviderJourneyPages";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
@@ -1068,6 +1069,14 @@ export default function TestimoniesPage() {
                 title="Testimonies"
                 subtitle="Premium collection, review, approval, publication, and featuring workspace for testimonies across live sessions, community groups, events, counseling follow-up, prayer journeys, and institution-wide storytelling surfaces."
               />
+              <div className="mt-4">
+                <ProviderJourneyStepper
+                  currentStepIndex={6}
+                  onNavigate={(path) => navigateWithRouter(path)}
+                  title="Publish the story carefully"
+                  subtitle="Testimonies follow the care and approval path, then move into the wider provider story system."
+                />
+              </div>
               <div className="mt-5 flex flex-wrap items-center gap-2">
                 <Pill text="Consent-led publishing" tone="good" />
                 <Pill text="Review + feature board" tone="navy" />

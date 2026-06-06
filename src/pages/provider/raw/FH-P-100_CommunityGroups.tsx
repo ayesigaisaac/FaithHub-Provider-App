@@ -34,6 +34,7 @@ import {
 } from "lucide-react";
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderJourneyStepper } from "../FaithHubProviderJourneyPages";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
@@ -1018,6 +1019,14 @@ export default function CommunityGroupsPage() {
               title="Community Groups"
               subtitle="Community group operating system for multi-campus ministry teams."
             />
+            <div className="mt-4">
+              <ProviderJourneyStepper
+                currentStepIndex={6}
+                onNavigate={(path) => navigateWithRouter(path)}
+                title="Guide the community flow"
+                subtitle="Community groups sit after the provider foundation and connect into care, testimonies, and live follow-up."
+              />
+            </div>
 
             <div className="w-full max-w-[620px] space-y-2">
               <div className="flex flex-wrap items-center gap-2">

@@ -24,6 +24,7 @@ import {
   Zap,
 } from "lucide-react";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderJourneyStepper } from "../FaithHubProviderJourneyPages";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 
@@ -757,6 +758,14 @@ function PrayerRequestsPage() {
                 title="Prayer Requests"
                 subtitle="Prayer intake and care-routing command center for providers."
               />
+              <div className="mt-4">
+                <ProviderJourneyStepper
+                  currentStepIndex={6}
+                  onNavigate={(path) => navigateWithRouter(path)}
+                  title="Route prayer care"
+                  subtitle="Prayer intake belongs in the care stage, after setup and before follow-up review."
+                />
+              </div>
             </div>
 
             <div className="flex flex-col items-start gap-3 xl:items-end">

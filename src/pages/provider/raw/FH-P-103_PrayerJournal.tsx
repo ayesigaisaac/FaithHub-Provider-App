@@ -25,6 +25,7 @@ import {
 } from "lucide-react";
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderJourneyStepper } from "../FaithHubProviderJourneyPages";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
@@ -591,6 +592,14 @@ export default function PrayerJournalPage() {
                 title="Prayer Journal"
                 subtitle="Provider-managed guided journaling for daily prompts, shared reflections, care-aware privacy, and premium public or private prayer journeys."
               />
+              <div className="mt-4">
+                <ProviderJourneyStepper
+                  currentStepIndex={5}
+                  onNavigate={(path) => navigateWithRouter(path)}
+                  title="Guide the prayer rhythm"
+                  subtitle="Prayer journaling sits in the care and reflection stage, where prompts and sharing rules matter most."
+                />
+              </div>
               <div className="mt-4 flex flex-wrap items-center gap-2"><Pill tone="good"><BookOpen className="h-3.5 w-3.5" /> Guided rhythms</Pill><Pill><Lock className="h-3.5 w-3.5" /> Private + public flows</Pill><Pill tone="warn"><HeartHandshake className="h-3.5 w-3.5" /> Care-aware reflection sharing</Pill></div>
             </div>
             <div className="flex w-full flex-col gap-2 xl:w-[320px]"><ActionButton tone="primary" onClick={handleCreateJournal} left={<Plus className="h-4 w-4" />}>New Journal</ActionButton><ActionButton onClick={() => handleAddPrompt()} left={<Plus className="h-4 w-4" />}>Add Prompt</ActionButton><ActionButton onClick={handleShareReflection} left={<Share2 className="h-4 w-4" />}>Share Reflection</ActionButton><ActionButton onClick={() => setPreviewOpen(true)} left={<Eye className="h-4 w-4" />}>Preview</ActionButton></div>
