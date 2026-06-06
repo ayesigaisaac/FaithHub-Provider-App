@@ -26,6 +26,7 @@ import {
   X,
 } from "lucide-react";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderJourneyStepper } from "../FaithHubProviderJourneyPages";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
@@ -1113,6 +1114,14 @@ export default function CounselingPage() {
                 title="Counseling"
                 subtitle="Private-first pastoral care and counseling workspace for cases, intake, scheduling, counselor assignment, notes, and safeguarding across the institution."
               />
+              <div className="mt-4">
+                <ProviderJourneyStepper
+                  currentStepIndex={6}
+                  onNavigate={(path) => navigateWithRouter(path)}
+                  title="Route pastoral care"
+                  subtitle="Counseling belongs after the provider setup and before follow-up reporting or review."
+                />
+              </div>
 
               <div className="mt-4 flex flex-wrap items-center gap-3">
                 <Pill text="Private-first care" tone="good" />

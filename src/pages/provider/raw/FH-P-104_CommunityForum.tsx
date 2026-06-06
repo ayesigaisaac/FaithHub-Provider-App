@@ -31,6 +31,7 @@ import {
 } from "lucide-react";
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderJourneyStepper } from "../FaithHubProviderJourneyPages";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
@@ -1052,11 +1053,19 @@ export default function CommunityForumPage() {
         <div className="rounded-[34px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-5 shadow-soft">
           <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
             <div className="min-w-0">
-              <ProviderPageTitle
-                icon={<MessageSquare className="h-6 w-6" />}
-                title="Community Forum"
-                subtitle="Moderated discussion hub for threads, leader posts, and community engagement."
+            <ProviderPageTitle
+              icon={<MessageSquare className="h-6 w-6" />}
+              title="Community Forum"
+              subtitle="Moderated discussion hub for threads, leader posts, and community engagement."
+            />
+            <div className="mt-4">
+              <ProviderJourneyStepper
+                currentStepIndex={6}
+                onNavigate={(path) => navigateWithRouter(path)}
+                title="Guide the forum flow"
+                subtitle="The forum sits in the care and engagement layer after the provider foundation is complete."
               />
+            </div>
             </div>
 
             <div className="flex flex-col gap-3 xl:items-end">

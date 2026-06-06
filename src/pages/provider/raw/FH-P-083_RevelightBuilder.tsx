@@ -38,6 +38,7 @@ import {
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { type ButtonActionId, resolveActionFromLabel } from "@/navigation/buttonActions";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderJourneyStepper } from "../FaithHubProviderJourneyPages";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 
@@ -2627,6 +2628,14 @@ export default function RevelightBuilderPage({
                 title="Revelight Builder"
                 subtitle="Create a premium Revelight campaign from scratch - linked to platform content or fully standalone - with rich creative, audience logic, placement planning, and a launch-ready review flow."
               />
+              <div className="mt-4">
+                <ProviderJourneyStepper
+                  currentStepIndex={4}
+                  onNavigate={(path) => navigateWithRouter(path)}
+                  title="Build the promotion"
+                  subtitle="This builder belongs after the provider basics and before the campaign enters review or launch."
+                />
+              </div>
               <div className="mt-3 flex flex-wrap items-center gap-2">
                 <Pill tone="brand"><Zap className="h-3.5 w-3.5" /> Revelight</Pill>
                 <Pill tone="good">{builder.sourceMode}</Pill>

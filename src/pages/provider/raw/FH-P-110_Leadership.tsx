@@ -3,6 +3,7 @@
 
 import React, { useMemo, useState } from "react";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderJourneyStepper } from "../FaithHubProviderJourneyPages";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { ProviderPageFrame } from "@/components/provider/ProviderPageFrame";
 import {
@@ -608,6 +609,14 @@ export default function FaithHubLeadershipPage() {
                   title="Leadership"
                   subtitle="Manage leadership profiles, offices, and succession from one premium team command surface with clear ownership, visibility rules, coverage planning, and publish-ready leadership cards."
                 />
+                <div className="mt-4">
+                  <ProviderJourneyStepper
+                    currentStepIndex={7}
+                    onNavigate={(path) => navigateWithRouter(path)}
+                    title="Set leadership ownership"
+                    subtitle="Leadership is a governance step that comes after the core provider workflow is already established."
+                  />
+                </div>
               </div>
 
               <div className="mt-5 flex flex-wrap items-center gap-2">

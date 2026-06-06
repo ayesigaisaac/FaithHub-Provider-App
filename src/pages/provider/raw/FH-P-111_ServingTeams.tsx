@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderJourneyStepper } from "../FaithHubProviderJourneyPages";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { ProviderPageFrame } from "@/components/provider/ProviderPageFrame";
 
@@ -897,6 +898,14 @@ export default function FH_P_111_ServingTeamsPage() {
                 title="Serving Teams"
                 subtitle="Premium volunteer and service-team operating system for ushers, media, worship, care, outreach, hospitality, and event/live support."
               />
+              <div className="mt-4">
+                <ProviderJourneyStepper
+                  currentStepIndex={6}
+                  onNavigate={(path) => navigateWithRouter(path)}
+                  title="Plan serving coverage"
+                  subtitle="Teams come in after setup so service roles, shifts, and volunteer readiness stay clear."
+                />
+              </div>
 
               <div className="mt-5 flex flex-wrap items-center gap-3">
                 <TonePill tone="accent">Serving coverage pulse 5</TonePill>

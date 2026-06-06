@@ -35,6 +35,7 @@ import {
 } from "lucide-react";
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderJourneyStepper } from "../FaithHubProviderJourneyPages";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 
@@ -2119,6 +2120,14 @@ Outcome: ${selectedCampaign.primaryOutcome}`,
                 title="Revelight Manager"
                 subtitle="Manage every Revelight campaign after creation, including budget controls, approvals, creative versions, performance drill-downs, optimization rules, and campaign lifecycle decisions."
               />
+              <div className="mt-4">
+                <ProviderJourneyStepper
+                  currentStepIndex={4}
+                  onNavigate={(path) => navigateWithRouter(path)}
+                  title="Manage active campaigns"
+                  subtitle="Revelight management follows the setup step and leads into performance and adjustment work."
+                />
+              </div>
               <div className="mt-3 flex flex-wrap items-center gap-3">
                 <Pill
                   text="Premium campaign operations"

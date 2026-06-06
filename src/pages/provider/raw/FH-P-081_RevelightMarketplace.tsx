@@ -3,6 +3,7 @@
 
 import React, { useMemo, useState } from "react";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderJourneyStepper } from "../FaithHubProviderJourneyPages";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import {
   AlertTriangle,
@@ -865,6 +866,14 @@ export default function RevelightMarketplacePage() {
                 title="Revelight Marketplace"
                 subtitle="Premium inventory, audience packages, and media-plan building for Revelight campaigns across surfaces."
               />
+              <div className="mt-4">
+                <ProviderJourneyStepper
+                  currentStepIndex={4}
+                  onNavigate={(path) => navigateWithRouter(path)}
+                  title="Choose the promotion path"
+                  subtitle="Marketplace planning comes after the core provider setup and before campaign optimization."
+                />
+              </div>
               <div className="mt-4 flex flex-wrap items-center gap-2">
                 <Pill tone="green">Inventory planning</Pill>
                 <Pill tone="orange">Premium media plans</Pill>
