@@ -537,12 +537,11 @@ export default function FH_P_121_ModerationSettings() {
                 subtitle="Institution-wide policy rules, filters, defaults, thresholds, child-safe settings, and automation rules. This page governs rule definitions that feed live chat, community, prayer, counseling, reviews, and all linked trust surfaces."
               />
               <div className="mt-4">
-                <ProviderJourneyStepper
-                  currentStepIndex={7}
-                  onNavigate={(path) => navigateWithRouter(path)}
-                  title="Tune moderation policy"
-                  subtitle="Policy work is a governance step that sits after the provider has core workflows in place."
-                />
+              <ProviderJourneyStepper
+                currentStepIndex={7}
+                title="Tune moderation policy"
+                subtitle="Policy work is a governance step that sits after the provider has core workflows in place."
+              />
               </div>
               <div className="mt-3 flex flex-wrap items-center gap-2">
                   <Pill tone="good">FaithHub Provider governance active</Pill>

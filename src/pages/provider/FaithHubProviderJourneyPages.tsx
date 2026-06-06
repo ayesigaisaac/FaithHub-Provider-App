@@ -34,12 +34,13 @@ import {
   UserCircle2,
 } from 'lucide-react';
 import { useOptionalAuth } from '@/auth/useAuth';
+import { navigateWithRouter } from '@/navigation/routerNavigate';
 import { Button } from '@/components/ui/Button';
 import { KpiTile } from '@/components/ui/KpiTile';
 import { ProviderPageScaffold } from '@/components/provider/ProviderPageScaffold';
 import { ProviderSectionCard } from '@/components/provider/ProviderSectionCard';
 import { getLiveFlowState, saveLiveFlowDraft } from '@/features/live/liveFlowStore';
-import { ProviderStatusPill } from '@/components/provider/ProviderStatusPill';
+import { ProviderStatusPill, type ProviderStatusTone } from '@/components/provider/ProviderStatusPill';
 
 const ROUTES = {
   onboarding: '/faithhub/provider/onboarding',
@@ -209,7 +210,7 @@ const JOURNEY_STEPS = [
   { label: 'Go Live', path: ROUTES.liveStudio, icon: Radio },
 ] as const;
 
-const DASHBOARD_PHASES = [
+export const DASHBOARD_PHASES = [
   {
     label: 'Phase 1 · Foundation & onboarding',
     summary: 'Registration, profile completion, and approval review.',
@@ -394,7 +395,7 @@ export function ProviderJourneyStepper({
   subtitle = 'Follow one clear setup path from account creation to activation.',
 }: {
   currentStepIndex: number;
-  onNavigate: (path: string) => void;
+  onNavigate?: (path: string) => void;
   title?: string;
   subtitle?: string;
 }) {
@@ -408,7 +409,7 @@ export function ProviderJourneyStepper({
         <div className="rounded-3xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <ProviderStatusPill tone="brand">{currentStep.label}</ProviderStatusPill>
-            <ProviderStatusPill tone={progress === 100 ? 'good' : 'neutral'}>{progress}% complete</ProviderStatusPill>
+            <ProviderStatusPill tone={progress === 100 ? 'good' : 'brand'}>{progress}% complete</ProviderStatusPill>
           </div>
           <div className="mt-3 text-[15px] font-black text-faith-ink">{currentStep.title}</div>
           <div className="mt-1 text-[12px] leading-6 text-faith-slate">{currentStep.hint}</div>
@@ -418,7 +419,11 @@ export function ProviderJourneyStepper({
           <div className="mt-3 text-[11px] font-semibold text-faith-slate">
             Continue with the step that is currently open. Later steps stay visible but quiet until this one is complete.
           </div>
-          <Button variant="primary" className="mt-4 w-full" onClick={() => onNavigate(currentStep.path)}>
+          <Button
+            variant="primary"
+            className="mt-4 w-full"
+            onClick={() => (onNavigate ? onNavigate(currentStep.path) : navigateWithRouter(currentStep.path))}
+          >
             Open current step
           </Button>
         </div>
@@ -1232,12 +1237,39 @@ export function ProviderDashboardPage() {
           <div className="space-y-4 xl:col-span-8">
             <ProviderSectionCard title="Next recommended actions" subtitle="Keep the setup moving by focusing on the next clear task.">
               <div className="grid gap-3 md:grid-cols-2">
-                {[
-                  { label: 'Complete profile', hint: 'Add brand and verification files.', route: ROUTES.profile, tone: profileStatus === 'Approved' ? 'good' : 'warn' as const },
-                  { label: 'Create a service', hint: 'Start the first offering that will appear in the dashboard.', route: ROUTES.serviceBuilder, tone: services.length > 0 ? 'good' : 'brand' as const },
-                  { label: 'Upload content', hint: 'Prepare approved assets for live and campaign use.', route: ROUTES.contentUpload, tone: assets.length > 0 ? 'good' : 'neutral' as const },
-                  { label: 'Set up live', hint: 'Draft the next live session and waiting room.', route: ROUTES.liveBuilder, tone: liveSessions > 0 ? 'good' : 'neutral' as const },
-                ].map((item) => (
+                {(
+                  [
+                    {
+                      label: 'Complete profile',
+                      hint: 'Add brand and verification files.',
+                      route: ROUTES.profile,
+                      tone: profileStatus === 'Approved' ? 'good' : 'warn',
+                    },
+                    {
+                      label: 'Create a service',
+                      hint: 'Start the first offering that will appear in the dashboard.',
+                      route: ROUTES.serviceBuilder,
+                      tone: services.length > 0 ? 'good' : 'brand',
+                    },
+                    {
+                      label: 'Upload content',
+                      hint: 'Prepare approved assets for live and campaign use.',
+                      route: ROUTES.contentUpload,
+                      tone: assets.length > 0 ? 'good' : 'neutral',
+                    },
+                    {
+                      label: 'Set up live',
+                      hint: 'Draft the next live session and waiting room.',
+                      route: ROUTES.liveBuilder,
+                      tone: liveSessions > 0 ? 'good' : 'neutral',
+                    },
+                  ] satisfies Array<{
+                    label: string;
+                    hint: string;
+                    route: string;
+                    tone: ProviderStatusTone;
+                  }>
+                ).map((item) => (
                   <div key={item.label} className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0">
