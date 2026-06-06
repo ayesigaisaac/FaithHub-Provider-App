@@ -36,6 +36,12 @@ import {
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { CompactStatsGroup } from "@/components/ui/CompactStatsGroup";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import {
+  ProviderFormField,
+  ProviderFormInput,
+  ProviderFormSelect,
+  ProviderFormTextArea,
+} from "@/components/provider/ProviderForm";
 import { ProviderJourneyStepper } from "../FaithHubProviderJourneyPages";
 
 /**
@@ -941,6 +947,22 @@ function SelectField({
   );
 }
 
+function FormField({
+  label,
+  helperText,
+  children,
+}: {
+  label: string;
+  helperText?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <ProviderFormField label={label} helperText={helperText}>
+      {children}
+    </ProviderFormField>
+  );
+}
+
 function statusToneForEvent(status: EventStatus) {
   if (status === "Live now") return "good" as const;
   if (status === "Draft") return "warn" as const;
@@ -1729,92 +1751,89 @@ export default function FaithHubEventsManagerPage() {
 
                 <div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
                   <div className="rounded-3xl bg-[var(--fh-surface)] dark:bg-slate-800/40 p-4 ring-1 ring-slate-200 dark:ring-slate-800 transition-colors">
-                    <FieldLabel>Event title</FieldLabel>
-                    <Input
-                      value={selectedEvent.title}
-                      onChange={(value) =>
-                        mutateSelectedEvent((event) => ({ ...event, title: value }))
-                      }
-                    />
+                    <div className="grid gap-4">
+                      <FormField label="Event title" helperText="Use the working title people will see first.">
+                        <ProviderFormInput
+                          value={selectedEvent.title}
+                          onChange={(e) =>
+                            mutateSelectedEvent((event) => ({ ...event, title: e.target.value }))
+                          }
+                        />
+                      </FormField>
 
-                    <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
-                      <label className="block">
-                        <FieldLabel>Category</FieldLabel>
-                        <SelectField
-                          value={selectedEvent.category}
-                          onChange={(value) =>
+                      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                        <FormField label="Category" helperText="Choose the event type that matches the setup.">
+                          <ProviderFormSelect
+                            value={selectedEvent.category}
+                            onChange={(e) =>
+                              mutateSelectedEvent((event) => ({
+                                ...event,
+                                category: e.target.value as EventCategory,
+                              }))
+                            }
+                            options={[
+                              "Conference",
+                              "Service",
+                              "Retreat",
+                              "Outreach day",
+                              "Trip",
+                              "Baptism",
+                              "Marketplace day",
+                              "Class",
+                            ]}
+                          />
+                        </FormField>
+                        <FormField label="Campus" helperText="Enter or confirm the campus for this event.">
+                          <ProviderFormInput
+                            value={selectedEvent.campus}
+                            onChange={(e) =>
+                              mutateSelectedEvent((event) => ({ ...event, campus: e.target.value }))
+                            }
+                          />
+                        </FormField>
+                      </div>
+
+                      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                        <FormField label="Event owner" helperText="Who is responsible for this event?">
+                          <ProviderFormInput
+                            value={selectedEvent.owner}
+                            onChange={(e) =>
+                              mutateSelectedEvent((event) => ({ ...event, owner: e.target.value }))
+                            }
+                          />
+                        </FormField>
+                        <FormField label="Language" helperText="Set the main publishing language.">
+                          <ProviderFormInput
+                            value={selectedEvent.language}
+                            onChange={(e) =>
+                              mutateSelectedEvent((event) => ({ ...event, language: e.target.value }))
+                            }
+                          />
+                        </FormField>
+                      </div>
+
+                      <FormField label="Subtitle / public promise" helperText="Keep this short and clear for discovery cards.">
+                        <ProviderFormTextArea
+                          value={selectedEvent.subtitle}
+                          onChange={(e) =>
+                            mutateSelectedEvent((event) => ({ ...event, subtitle: e.target.value }))
+                          }
+                          rows={2}
+                        />
+                      </FormField>
+
+                      <FormField label="Event description" helperText="Use this space for the fuller public description.">
+                        <ProviderFormTextArea
+                          value={selectedEvent.description}
+                          onChange={(e) =>
                             mutateSelectedEvent((event) => ({
                               ...event,
-                              category: value as EventCategory,
+                              description: e.target.value,
                             }))
                           }
-                          options={[
-                            "Conference",
-                            "Service",
-                            "Retreat",
-                            "Outreach day",
-                            "Trip",
-                            "Baptism",
-                            "Marketplace day",
-                            "Class",
-                          ]}
+                          rows={4}
                         />
-                      </label>
-                      <label className="block">
-                        <FieldLabel>Campus</FieldLabel>
-                        <Input
-                          value={selectedEvent.campus}
-                          onChange={(value) =>
-                            mutateSelectedEvent((event) => ({ ...event, campus: value }))
-                          }
-                        />
-                      </label>
-                    </div>
-
-                    <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
-                      <label className="block">
-                        <FieldLabel>Event owner</FieldLabel>
-                        <Input
-                          value={selectedEvent.owner}
-                          onChange={(value) =>
-                            mutateSelectedEvent((event) => ({ ...event, owner: value }))
-                          }
-                        />
-                      </label>
-                      <label className="block">
-                        <FieldLabel>Language</FieldLabel>
-                        <Input
-                          value={selectedEvent.language}
-                          onChange={(value) =>
-                            mutateSelectedEvent((event) => ({ ...event, language: value }))
-                          }
-                        />
-                      </label>
-                    </div>
-
-                    <div className="mt-3">
-                      <FieldLabel>Subtitle / public promise</FieldLabel>
-                      <TextArea
-                        value={selectedEvent.subtitle}
-                        onChange={(value) =>
-                          mutateSelectedEvent((event) => ({ ...event, subtitle: value }))
-                        }
-                        rows={2}
-                      />
-                    </div>
-
-                    <div className="mt-3">
-                      <FieldLabel>Event description</FieldLabel>
-                      <TextArea
-                        value={selectedEvent.description}
-                        onChange={(value) =>
-                          mutateSelectedEvent((event) => ({
-                            ...event,
-                            description: value,
-                          }))
-                        }
-                        rows={4}
-                      />
+                      </FormField>
                     </div>
 
                     <div className="mt-3 rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-3 ring-1 ring-slate-200 dark:ring-slate-700">
@@ -1958,31 +1977,29 @@ export default function FaithHubEventsManagerPage() {
                 </div>
 
                 <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
-                  <label className="block">
-                    <FieldLabel>Ticketing state</FieldLabel>
-                    <SelectField
+                  <FormField label="Ticketing state" helperText="Choose how people will register or request access.">
+                    <ProviderFormSelect
                       value={selectedEvent.ticketingState}
-                      onChange={(value) =>
+                      onChange={(e) =>
                         mutateSelectedEvent((event) => ({
                           ...event,
-                          ticketingState: value as TicketingState,
+                          ticketingState: e.target.value as TicketingState,
                         }))
                       }
                       options={["RSVP only", "Free ticket", "Paid ticket", "Invite only"]}
                     />
-                  </label>
-                  <label className="block">
-                    <FieldLabel>Capacity</FieldLabel>
-                    <Input
+                  </FormField>
+                  <FormField label="Capacity" helperText="Set the maximum attendance target for the event.">
+                    <ProviderFormInput
                       value={selectedEvent.capacity}
-                      onChange={(value) =>
+                      onChange={(e) =>
                         mutateSelectedEvent((event) => ({
                           ...event,
-                          capacity: Math.max(0, Number(value) || 0),
+                          capacity: Math.max(0, Number(e.target.value) || 0),
                         }))
                       }
                     />
-                  </label>
+                  </FormField>
                 </div>
 
                 <div className="mt-4">

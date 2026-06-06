@@ -37,6 +37,13 @@ import {
 } from "lucide-react";
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { ProviderEntryDialog } from "@/components/provider/ProviderEntryDialog";
+import {
+  ProviderFormActions,
+  ProviderFormField,
+  ProviderFormInput,
+  ProviderFormSelect,
+  ProviderFormTextArea,
+} from "@/components/provider/ProviderForm";
 import { ProviderJourneyStepper } from "../FaithHubProviderJourneyPages";
 
 /**
@@ -1880,41 +1887,39 @@ export default function ChannelsContactManagerPage() {
         onClose={() => setImportDialogOpen(false)}
         title="Import contacts"
         subtitle="Bring audience records into the provider system through a dedicated import session."
-        helperText="This keeps the import path obvious and makes it clear when you are feeding audience data into the system."
-        actions={
-          <>
+      helperText="This keeps the import path obvious and makes it clear when you are feeding audience data into the system."
+      actions={
+          <ProviderFormActions>
             <Btn tone="ghost" onClick={() => setImportDialogOpen(false)}>
               Cancel
             </Btn>
             <Btn tone="primary" left={<Download className="h-4 w-4" />} onClick={submitImportContacts}>
               Start import
             </Btn>
-          </>
-        }
-      >
+          </ProviderFormActions>
+      }
+    >
         <div className="space-y-4">
-          <div>
-            <div className="mb-2 text-[10px] font-black uppercase tracking-widest text-faith-slate">
-              Import source
-            </div>
-            <input
+          <ProviderFormField
+            label="Import source"
+            helperText="CSV upload, platform sync, or spreadsheet import."
+          >
+            <ProviderFormInput
               value={importSourceDraft}
               onChange={(e) => setImportSourceDraft(e.target.value)}
-              className="h-11 w-full rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 text-sm font-bold text-faith-ink dark:text-slate-100 ring-1 ring-slate-200 dark:ring-slate-800 outline-none"
               placeholder="CSV upload, platform sync, or spreadsheet"
             />
-          </div>
-          <div>
-            <div className="mb-2 text-[10px] font-black uppercase tracking-widest text-faith-slate">
-              Import notes
-            </div>
-            <textarea
+          </ProviderFormField>
+          <ProviderFormField
+            label="Import notes"
+            helperText="Add any mapping or cleanup notes for the audience import."
+          >
+            <ProviderFormTextArea
               value={importNotesDraft}
               onChange={(e) => setImportNotesDraft(e.target.value)}
               rows={4}
-              className="w-full rounded-2xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 py-3 text-sm font-medium text-faith-ink dark:text-slate-100 ring-1 ring-slate-200 dark:ring-slate-800 outline-none"
             />
-          </div>
+          </ProviderFormField>
         </div>
       </ProviderEntryDialog>
 
@@ -1923,42 +1928,38 @@ export default function ChannelsContactManagerPage() {
         onClose={() => setSegmentDialogOpen(false)}
         title="Create segment"
         subtitle="Define a new audience bucket inside a dedicated dialog."
-        helperText="Segment creation should feel like a deliberate setup step, not a silent inline change."
-        actions={
-          <>
+      helperText="Segment creation should feel like a deliberate setup step, not a silent inline change."
+      actions={
+          <ProviderFormActions>
             <Btn tone="ghost" onClick={() => setSegmentDialogOpen(false)}>
               Cancel
             </Btn>
             <Btn tone="primary" left={<Plus className="h-4 w-4" />} onClick={submitSegmentDraft}>
               Save segment
             </Btn>
-          </>
-        }
-      >
+          </ProviderFormActions>
+      }
+    >
         <div className="space-y-4">
-          <div>
-            <div className="mb-2 text-[10px] font-black uppercase tracking-widest text-faith-slate">
-              Segment name
-            </div>
-            <input
+          <ProviderFormField
+            label="Segment name"
+            helperText="Give the audience bucket a clear and reusable name."
+          >
+            <ProviderFormInput
               value={segmentNameDraft}
               onChange={(e) => setSegmentNameDraft(e.target.value)}
-              className="h-11 w-full rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 text-sm font-bold text-faith-ink dark:text-slate-100 ring-1 ring-slate-200 dark:ring-slate-800 outline-none"
             />
-          </div>
-          <div>
-            <div className="mb-2 text-[10px] font-black uppercase tracking-widest text-faith-slate">
-              Rule mode
-            </div>
-            <Select
+          </ProviderFormField>
+          <ProviderFormField
+            label="Rule mode"
+            helperText="Pick smart rules or direct manual control."
+          >
+            <ProviderFormSelect
               value={segmentMode}
-              onChange={(v) => setSegmentMode(v as SegmentMode)}
-              options={[
-                { value: "Smart", label: "Smart", hint: "Recommended rule builder" },
-                { value: "Manual", label: "Manual", hint: "Direct audience control" },
-              ]}
+              onChange={(e) => setSegmentMode(e.target.value as SegmentMode)}
+              options={["Smart", "Manual"]}
             />
-          </div>
+          </ProviderFormField>
         </div>
       </ProviderEntryDialog>
 
@@ -1967,40 +1968,38 @@ export default function ChannelsContactManagerPage() {
         onClose={() => setChannelDialogOpen(false)}
         title="Connect channel"
         subtitle="Set up a messaging connection in a clear guided form."
-        helperText="Channel setup is isolated so the user knows they are editing delivery infrastructure."
-        actions={
-          <>
+      helperText="Channel setup is isolated so the user knows they are editing delivery infrastructure."
+      actions={
+          <ProviderFormActions>
             <Btn tone="ghost" onClick={() => setChannelDialogOpen(false)}>
               Cancel
             </Btn>
             <Btn tone="primary" left={<Zap className="h-4 w-4" />} onClick={submitChannelConnection}>
               Connect channel
             </Btn>
-          </>
-        }
-      >
+          </ProviderFormActions>
+      }
+    >
         <div className="grid gap-4">
-          <div>
-            <div className="mb-2 text-[10px] font-black uppercase tracking-widest text-faith-slate">
-              Channel type
-            </div>
-            <input
+          <ProviderFormField
+            label="Channel type"
+            helperText="WhatsApp, Email, SMS, Telegram, or another delivery route."
+          >
+            <ProviderFormInput
               value={channelNameDraft}
               onChange={(e) => setChannelNameDraft(e.target.value)}
-              className="h-11 w-full rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 text-sm font-bold text-faith-ink dark:text-slate-100 ring-1 ring-slate-200 dark:ring-slate-800 outline-none"
               placeholder="WhatsApp, Email, SMS, Telegram"
             />
-          </div>
-          <div>
-            <div className="mb-2 text-[10px] font-black uppercase tracking-widest text-faith-slate">
-              Sender / owner
-            </div>
-            <input
+          </ProviderFormField>
+          <ProviderFormField
+            label="Sender / owner"
+            helperText="Who owns and sends from this channel?"
+          >
+            <ProviderFormInput
               value={channelSenderDraft}
               onChange={(e) => setChannelSenderDraft(e.target.value)}
-              className="h-11 w-full rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 text-sm font-bold text-faith-ink dark:text-slate-100 ring-1 ring-slate-200 dark:ring-slate-800 outline-none"
             />
-          </div>
+          </ProviderFormField>
         </div>
       </ProviderEntryDialog>
 
@@ -2009,61 +2008,49 @@ export default function ChannelsContactManagerPage() {
         onClose={() => setFiltersDialogOpen(false)}
         title="Refine audience filters"
         subtitle="Set the directory filters in a deliberate modal session."
-        helperText="Filtering is a data shaping action, so it should be explicit instead of hidden in the background."
-        actions={
-          <>
+      helperText="Filtering is a data shaping action, so it should be explicit instead of hidden in the background."
+      actions={
+          <ProviderFormActions>
             <Btn tone="ghost" onClick={() => setFiltersDialogOpen(false)}>
               Cancel
             </Btn>
             <Btn tone="primary" left={<Filter className="h-4 w-4" />} onClick={saveFilters}>
               Apply filters
             </Btn>
-          </>
-        }
-      >
+          </ProviderFormActions>
+      }
+    >
         <div className="grid gap-4">
-          <div>
-            <div className="mb-2 text-[10px] font-black uppercase tracking-widest text-faith-slate">
-              Search term
-            </div>
-            <input
+          <ProviderFormField
+            label="Search term"
+            helperText="Search by audience, segment, language, or channel."
+          >
+            <ProviderFormInput
               value={filterSearchDraft}
               onChange={(e) => setFilterSearchDraft(e.target.value)}
-              className="h-11 w-full rounded-xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 px-4 text-sm font-bold text-faith-ink dark:text-slate-100 ring-1 ring-slate-200 dark:ring-slate-800 outline-none"
               placeholder="Audience, segment, language, or channel"
             />
-          </div>
-          <div>
-            <div className="mb-2 text-[10px] font-black uppercase tracking-widest text-faith-slate">
-              Campus scope
-            </div>
-            <Select
+          </ProviderFormField>
+          <ProviderFormField
+            label="Campus scope"
+            helperText="Choose the campus lens for the audience view."
+          >
+            <ProviderFormSelect
               value={filterCampusDraft}
-              onChange={(v) => setFilterCampusDraft(v as CampusKey | "All")}
-              options={[
-                { value: "All", label: "All campuses", hint: "Provider-wide view" },
-                { value: "Global", label: "Global", hint: "Cross-region audience" },
-                { value: "Downtown", label: "Downtown", hint: "Main service lane" },
-                { value: "East Campus", label: "East Campus", hint: "Mid-week community" },
-                { value: "Youth Chapel", label: "Youth Chapel", hint: "Protected youth lane" },
-              ]}
+              onChange={(e) => setFilterCampusDraft(e.target.value as CampusKey | "All")}
+              options={["All", "Global", "Downtown", "East Campus", "Youth Chapel"]}
             />
-          </div>
-          <div>
-            <div className="mb-2 text-[10px] font-black uppercase tracking-widest text-faith-slate">
-              Brand scope
-            </div>
-            <Select
+          </ProviderFormField>
+          <ProviderFormField
+            label="Brand scope"
+            helperText="Choose the brand lane for the filter set."
+          >
+            <ProviderFormSelect
               value={filterBrandDraft}
-              onChange={(v) => setFilterBrandDraft(v as BrandKey | "All")}
-              options={[
-                { value: "All", label: "All brands", hint: "Organization-wide" },
-                { value: "Main Ministry", label: "Main Ministry", hint: "Default public brand" },
-                { value: "Young Adults", label: "Young Adults", hint: "Youth / YA lane" },
-                { value: "Outreach Nights", label: "Outreach Nights", hint: "Events and promos" },
-              ]}
+              onChange={(e) => setFilterBrandDraft(e.target.value as BrandKey | "All")}
+              options={["All", "Main Ministry", "Young Adults", "Outreach Nights"]}
             />
-          </div>
+          </ProviderFormField>
         </div>
       </ProviderEntryDialog>
 
