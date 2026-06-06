@@ -32,6 +32,7 @@ import {
   Wallet,
 } from "lucide-react";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderJourneyStepper } from "../FaithHubProviderJourneyPages";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 import { useAuth } from "@/auth/useAuth";
@@ -936,6 +937,14 @@ export default function WalletAndPayoutsPage() {
                 title="Wallet & Payouts"
                 subtitle="Move ministry funds, reserves, and payouts with premium financial control across donations, crowdfunding, event registrations, supporter memberships, and FaithMart-linked revenue."
               />
+              <div className="mt-4">
+                <ProviderJourneyStepper
+                  currentStepIndex={6}
+                  onNavigate={(path) => navigateWithRouter(path)}
+                  title="Manage the payout layer"
+                  subtitle="Wallet work happens after the provider is set up and ready to govern finance safely."
+                />
+              </div>
               <p className="mt-3 max-w-[900px] text-[15px] leading-7 text-faith-slate">
                 A dedicated wallet and payouts command surface for donations, charity crowdfunding, event registrations,
                 supporter memberships, and FaithMart-linked revenue — with finance trust, payout readiness, and reconciliation all in one place.

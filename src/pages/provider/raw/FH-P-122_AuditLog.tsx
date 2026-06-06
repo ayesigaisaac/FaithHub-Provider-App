@@ -22,6 +22,8 @@ import {
   X,
 } from "lucide-react";
 import { KpiTile } from "../../../components/ui/KpiTile";
+import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderJourneyStepper } from "../FaithHubProviderJourneyPages";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 
@@ -1072,6 +1074,15 @@ export default function AuditLogPage() {
                 title="Audit Log"
                 subtitle="Immutable-style operational history for role changes, publishing actions, moderation actions, finance changes, and admin events. Use this page to filter activity, verify evidence trails, and investigate high-signal changes without losing institutional context."
               />
+
+              <div className="mt-4">
+                <ProviderJourneyStepper
+                  currentStepIndex={7}
+                  onNavigate={(path) => navigateWithRouter(path)}
+                  title="Review the history trail"
+                  subtitle="Audit comes after actions are in motion, so the provider can inspect what changed and why."
+                />
+              </div>
 
               <div className="mt-4 flex flex-wrap items-center gap-2">
                 <Pill tone="good">Signed event chain active</Pill>

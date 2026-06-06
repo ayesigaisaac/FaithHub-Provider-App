@@ -29,6 +29,7 @@ import {
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { CompactStatsGroup } from "@/components/ui/CompactStatsGroup";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderJourneyStepper } from "../FaithHubProviderJourneyPages";
 
 /**
  * Provider — Donations & Funds
@@ -1228,6 +1229,14 @@ export default function DonationsAndFundsPage() {
                 title="Giving experience settings"
                 subtitle="Configure suggested amounts, recurring defaults, donor-visible copy, receipts, and privacy options."
               />
+              <div className="mt-4">
+                <ProviderJourneyStepper
+                  currentStepIndex={6}
+                  onNavigate={(path) => navigateWithRouter(path)}
+                  title="Set up the giving layer"
+                  subtitle="Giving belongs after the provider basics are in place, so the finance flow stays clear."
+                />
+              </div>
               <div className="mt-4 space-y-4">
                 <div className="rounded-[14px] bg-[var(--fh-surface)] dark:bg-slate-800/50 p-4 ring-1 ring-slate-200 dark:ring-slate-800">
                   <div className="text-sm font-bold text-faith-ink dark:text-slate-50">Suggested amounts</div>

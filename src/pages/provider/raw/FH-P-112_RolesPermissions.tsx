@@ -32,6 +32,7 @@ import {
 } from "lucide-react";
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderJourneyStepper } from "../FaithHubProviderJourneyPages";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { ProviderPageFrame } from "@/components/provider/ProviderPageFrame";
 import { useAuth } from "@/auth/useAuth";
@@ -1291,6 +1292,15 @@ export default function FH_P_112_RolesPermissionsPage() {
                 title="Roles & Permissions"
                 subtitle="Premium Provider RBAC surface for workspace access, role templates, approval paths, scope control, and sensitive-action permissions."
               />
+
+              <div className="mt-4">
+                <ProviderJourneyStepper
+                  currentStepIndex={6}
+                  onNavigate={(path) => navigateWithRouter(path)}
+                  title="Set the access rules"
+                  subtitle="Roles come after core setup, and they control who can touch settings, finance, and launch actions."
+                />
+              </div>
 
               <div className="mt-5 flex flex-wrap items-center gap-3">
                 <TonePill tone="accent">Sensitive gates {stats.sensitiveGates}</TonePill>

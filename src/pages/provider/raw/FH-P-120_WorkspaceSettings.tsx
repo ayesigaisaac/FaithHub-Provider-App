@@ -32,6 +32,7 @@ import {
 } from "lucide-react";
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { ProviderEntryDialog } from "@/components/provider/ProviderEntryDialog";
+import { ProviderJourneyStepper } from "../FaithHubProviderJourneyPages";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 import { useAuth } from "@/auth/useAuth";
@@ -1049,6 +1050,14 @@ export default function WorkspaceSettingsPage() {
                     icon={<Settings className="h-6 w-6" />}
                     title="Workspace Settings"
                     subtitle="Institution-wide defaults for branding, campuses, localization, workspace identity, integrations, and operational preferences."
+                  />
+                </div>
+                <div className="mt-4">
+                  <ProviderJourneyStepper
+                    currentStepIndex={2}
+                    onNavigate={(path) => navigateWithRouter(path)}
+                    title="Complete workspace setup"
+                    subtitle="These defaults shape the provider foundation before content, live, and finance work expands."
                   />
                 </div>
                 <div className="mt-4 flex flex-wrap gap-2">

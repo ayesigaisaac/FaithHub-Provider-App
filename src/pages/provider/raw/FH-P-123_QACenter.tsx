@@ -24,6 +24,8 @@ import {
   XCircle,
 } from "lucide-react";
 import { KpiTile } from "../../../components/ui/KpiTile";
+import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderJourneyStepper } from "../FaithHubProviderJourneyPages";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 
@@ -678,6 +680,14 @@ export default function FHP123QACenter() {
                 title="QA Center"
                 subtitle="Internal quality-assurance surface for stream checks, content package validation, page and form review, and premium preflight sign-off before launch."
               />
+              <div className="mt-4">
+                <ProviderJourneyStepper
+                  currentStepIndex={7}
+                  onNavigate={(path) => navigateWithRouter(path)}
+                  title="Run launch checks"
+                  subtitle="QA sits near the end of the journey so the provider can verify readiness before the final review."
+                />
+              </div>
               <div className="mt-4 flex flex-wrap gap-2">
                 <Pill tone="good">{metrics.passing} surfaces passing</Pill>
                 <Pill tone="warn">{metrics.needsReview} checks need review</Pill>

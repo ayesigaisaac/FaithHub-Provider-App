@@ -387,7 +387,7 @@ function getJourneyProgressIndex({
   return 5;
 }
 
-function ProviderJourneyStepper({
+export function ProviderJourneyStepper({
   currentStepIndex,
   onNavigate,
   title = 'Guided provider journey',
@@ -2767,6 +2767,12 @@ export function LiveStudioPage() {
         </>
       }
     >
+      <ProviderJourneyStepper
+        currentStepIndex={5}
+        onNavigate={(path) => navigate(path)}
+        title="Go live with confidence"
+        subtitle="The studio is the execution step after scheduling, waiting room, and readiness checks."
+      />
       {selected ? (
         <LiveWorkspaceSplit
           main={
