@@ -35,6 +35,7 @@ import {
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderDrawer } from "@/components/provider/ProviderDrawer";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
+import { ProviderJourneyStepper } from "../FaithHubProviderJourneyPages";
 import { ProviderStatusPill } from "@/components/provider/ProviderStatusPill";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 import {
@@ -1207,6 +1208,13 @@ export default function TeachingsDashboardPage() {
                   title="Teachings Dashboard"
                   subtitle="Premium operating surface for Series, Episodes, and Standalone teachings - built to keep structured journeys and one-off sermons in one calm, world-class control center."
                 />
+                <div className="mt-4">
+                  <ProviderJourneyStepper
+                    currentStepIndex={4}
+                    title="Guide the teaching workflow"
+                    subtitle="Keep series, episodes, and standalone teachings inside one readable provider path."
+                  />
+                </div>
                 <div className="mt-3 flex flex-wrap gap-2">
                   <Pill tone="good">Standalone-first</Pill>
                   <Pill tone="navy">Series-aware</Pill>

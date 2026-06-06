@@ -31,6 +31,7 @@ import {
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderSectionCard } from "@/components/provider/ProviderSectionCard";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
+import { ProviderJourneyStepper } from "../FaithHubProviderJourneyPages";
 import { ProviderStatusPill } from "@/components/provider/ProviderStatusPill";
 
 /**
@@ -962,6 +963,13 @@ export default function SeriesDashboardPage() {
                 subtitle="Structured series command center for episodes, publishing, and linked live journeys."
                 iconClassName="shadow-soft"
               />
+              <div className="mt-4">
+                <ProviderJourneyStepper
+                  currentStepIndex={4}
+                  title="Guide the series workflow"
+                  subtitle="Keep series setup, episodes, and launch actions inside one clear provider path."
+                />
+              </div>
 
               <div className="mt-5 flex flex-wrap items-center gap-2">
                 <Pill text="Series-aware" tone="good" />

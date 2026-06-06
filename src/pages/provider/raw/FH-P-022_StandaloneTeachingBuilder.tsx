@@ -38,6 +38,7 @@ import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { useOptionalAuth } from "@/auth/useAuth";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
+import { ProviderJourneyStepper } from "../FaithHubProviderJourneyPages";
 
 /**
  * Provider — Standalone Teaching Builder
@@ -1805,6 +1806,13 @@ export default function StandaloneTeachingBuilderPage() {
                   title="Standalone Teaching Builder"
                   subtitle="Premium creator-style page for shaping a sermon or teaching that lives outside any Series or Episode while still supporting live delivery, replay packaging, clips, reviews, giving, and promotion."
                 />
+                <div className="mt-4">
+                  <ProviderJourneyStepper
+                    currentStepIndex={4}
+                    title="Guide the standalone teaching flow"
+                    subtitle="Keep creation, packaging, and launch follow-up inside one clear provider path."
+                  />
+                </div>
                 <Pill tone="good">Standalone-first</Pill>
               </div>
             </div>

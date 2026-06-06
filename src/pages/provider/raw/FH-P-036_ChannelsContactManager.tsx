@@ -37,6 +37,7 @@ import {
 } from "lucide-react";
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { ProviderEntryDialog } from "@/components/provider/ProviderEntryDialog";
+import { ProviderJourneyStepper } from "../FaithHubProviderJourneyPages";
 
 /**
  * FaithHub Provider - Channels & Contact Manager
@@ -1292,6 +1293,13 @@ export default function ChannelsContactManagerPage() {
                 <ShieldCheck className="h-3.5 w-3.5 text-faith-slate" />
                 Child-safe protections embedded
               </span>
+            </div>
+            <div className="mt-4">
+              <ProviderJourneyStepper
+                currentStepIndex={6}
+                title="Guide the contact workflow"
+                subtitle="Keep imports, segments, consent, and channel actions in one clear provider path."
+              />
             </div>
           </div>
 

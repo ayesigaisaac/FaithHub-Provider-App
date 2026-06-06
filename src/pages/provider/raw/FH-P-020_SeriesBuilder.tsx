@@ -39,6 +39,7 @@ import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { useOptionalAuth } from "@/auth/useAuth";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
+import { ProviderJourneyStepper } from "../FaithHubProviderJourneyPages";
 import {
   getTeachingFlowState,
   publishSeries,
@@ -2040,6 +2041,13 @@ export default function SeriesBuilderPage() {
                   title="Series Builder"
                   subtitle="Premium provider teaching workflow inspired by the creator base layout — now rebuilt for Series, Episodes, linked Live Sessions, localized discovery, and Revelight-ready promotion."
                 />
+                <div className="mt-4">
+                  <ProviderJourneyStepper
+                    currentStepIndex={4}
+                    title="Guide the series build"
+                    subtitle="Keep setup, content structure, and publish readiness inside one clear step-by-step flow."
+                  />
+                </div>
               </div>
               <div className="mt-4 flex flex-wrap gap-2">
                 <Pill tone="brand"><BookOpen className="h-3 w-3" /> Series engine</Pill>

@@ -36,6 +36,7 @@ import {
 } from "lucide-react";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
+import { ProviderJourneyStepper } from "../FaithHubProviderJourneyPages";
 
 /**
  * Provider - Merchandise Builder
@@ -1276,6 +1277,13 @@ export default function MerchandiseBuilderPage() {
                   title="Merchandise Builder"
                   subtitle="Build a premium merchandise object that is storefront-ready for FaithMart, operationally ready for fulfillment, and fully connected to Live Sessions, events, giving journeys, notifications, and Revelight promotion."
                 />
+                <div className="mt-4">
+                  <ProviderJourneyStepper
+                    currentStepIndex={5}
+                    title="Guide the merchandise flow"
+                    subtitle="Keep product setup, fulfillment details, and launch promotion in one clear provider path."
+                  />
+                </div>
                 <div className="mt-4 flex flex-wrap items-center gap-2">
                   <Pill text="FaithMart builder" tone="good" icon={<ShoppingBag className="h-3.5 w-3.5" />} />
                   <Pill text="EVzone green primary" tone="neutral" icon={<Palette className="h-3.5 w-3.5" />} />

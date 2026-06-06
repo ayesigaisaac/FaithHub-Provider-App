@@ -32,6 +32,7 @@ import {
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderEntryDialog } from "@/components/provider/ProviderEntryDialog";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
+import { ProviderJourneyStepper } from "../FaithHubProviderJourneyPages";
 
 /**
  * Provider — Resources Manager
@@ -1262,6 +1263,13 @@ export default function ResourcesManagerPage() {
                       title="Free Learning Resources"
                       subtitle="Explore free books, PDFs, audio teachings, devotionals, study packs, and prayer guides. Paid resources remain in FaithMart."
                     />
+                    <div className="mt-4">
+                      <ProviderJourneyStepper
+                        currentStepIndex={5}
+                        title="Guide the resource flow"
+                        subtitle="Keep upload, review, publishing, and distribution inside one simple provider path."
+                      />
+                    </div>
                   </div>
                   <div className="mt-5 flex flex-wrap gap-2">
                     <Pill tone="brand">{stats.total} free resources</Pill>

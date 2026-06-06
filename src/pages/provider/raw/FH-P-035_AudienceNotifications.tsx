@@ -41,6 +41,7 @@ import {
 } from "lucide-react";
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { ProviderEntryDialog } from "@/components/provider/ProviderEntryDialog";
+import { ProviderJourneyStepper } from "../FaithHubProviderJourneyPages";
 
 /**
  * FaithHub Provider - Audience Notifications
@@ -1165,6 +1166,13 @@ export default function FaithHubAudienceNotificationsPage() {
                 <Activity className="h-3.5 w-3.5 text-faith-slate" />
                 Health score {healthScore}%
               </span>
+            </div>
+            <div className="mt-4">
+              <ProviderJourneyStepper
+                currentStepIndex={6}
+                title="Guide the audience follow-up"
+                subtitle="Keep notification setup, scheduling, and send actions inside one clear provider path."
+              />
             </div>
           </div>
 

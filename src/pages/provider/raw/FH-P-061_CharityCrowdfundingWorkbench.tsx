@@ -40,6 +40,7 @@ import {
 } from "lucide-react";
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { ProviderEntryDialog } from "@/components/provider/ProviderEntryDialog";
+import { ProviderJourneyStepper } from "../FaithHubProviderJourneyPages";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
@@ -1961,6 +1962,13 @@ export default function CharityCrowdfundingWorkbenchPage() {
               <div className="mt-1 text-[10px] sm:text-xs text-faith-slate">
                 Premium charity campaign operations with goals, public momentum, proof of impact, updates, governance, and cross-links into live, notifications, and Revelight.
               </div>
+            </div>
+            <div className="mt-4">
+              <ProviderJourneyStepper
+                currentStepIndex={6}
+                title="Guide the charity campaign flow"
+                subtitle="Keep story setup, evidence, momentum, and launch follow-up inside one clear provider path."
+              />
             </div>
             <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 xl:flex xl:w-auto xl:flex-wrap xl:justify-end">
               <Btn tone="ghost" cls="h-10 px-4 justify-start sm:justify-center bg-[var(--fh-surface-bg)] dark:bg-slate-900 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft hover:bg-[var(--fh-surface)] dark:hover:bg-slate-800" onClick={() => setPreviewOpen(true)} left={<Eye className="h-4 w-4" />}>Preview</Btn>
