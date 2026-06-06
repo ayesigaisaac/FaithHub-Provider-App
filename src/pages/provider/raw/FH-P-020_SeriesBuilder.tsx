@@ -544,7 +544,11 @@ function Card({
 }
 
 function FieldLabel({ children }: { children: React.ReactNode }) {
-  return <div className="text-[11px] font-semibold text-slate-700">{children}</div>;
+  return (
+    <div className="text-[11px] font-extrabold uppercase tracking-[0.14em] text-faith-slate">
+      {children}
+    </div>
+  );
 }
 
 function TextInput({
@@ -574,7 +578,7 @@ function TextInput({
         placeholder={placeholder}
         aria-invalid={error || undefined}
         className={cx(
-          "mt-1 w-full rounded-2xl border bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] text-faith-ink outline-none transition-colors",
+          "mt-1.5 w-full rounded-2xl border bg-[var(--fh-surface-bg)] px-3 py-2.5 text-[13px] font-semibold text-faith-ink outline-none transition-colors",
           error
             ? "border-rose-300 focus:ring-2 focus:ring-rose-200"
             : "border-faith-line/70 focus:ring-2 focus:ring-[rgba(3,205,140,0.18)]",
@@ -614,7 +618,7 @@ function TextArea({
         rows={rows}
         aria-invalid={error || undefined}
         className={cx(
-          "mt-1 w-full rounded-2xl border bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] text-faith-ink outline-none transition-colors",
+          "mt-1.5 w-full rounded-2xl border bg-[var(--fh-surface-bg)] px-3 py-2.5 text-[13px] font-semibold text-faith-ink outline-none transition-colors",
           error
             ? "border-rose-300 focus:ring-2 focus:ring-rose-200"
             : "border-faith-line/70 focus:ring-2 focus:ring-[rgba(3,205,140,0.18)]",
@@ -1237,7 +1241,7 @@ export default function SeriesBuilderPage() {
                   onBlur={() => setIdentityTouched((current) => ({ ...current, title: true }))}
                   onChange={(title) => setDraft((current) => ({ ...current, title }))}
                   error={identityTouched.title && titleInvalid}
-                  helperText={identityTouched.title && titleInvalid ? "Series title must be at least 4 characters." : " "}
+                  helperText={identityTouched.title && titleInvalid ? "Series title must be at least 4 characters." : "Use the public title that will show in dashboards, cards, and live surfaces."}
                 />
               </div>
               <div>
@@ -1247,7 +1251,7 @@ export default function SeriesBuilderPage() {
                   onBlur={() => setIdentityTouched((current) => ({ ...current, subtitle: true }))}
                   onChange={(subtitle) => setDraft((current) => ({ ...current, subtitle }))}
                   error={identityTouched.subtitle && subtitleInvalid}
-                  helperText={identityTouched.subtitle && subtitleInvalid ? "Series subtitle must be at least 8 characters." : " "}
+                  helperText={identityTouched.subtitle && subtitleInvalid ? "Series subtitle must be at least 8 characters." : "Add a short supporting line that explains the series shape or journey."}
                 />
               </div>
               <div className="lg:col-span-2">
@@ -1258,7 +1262,7 @@ export default function SeriesBuilderPage() {
                   onChange={(description) => setDraft((current) => ({ ...current, description }))}
                   rows={4}
                   error={identityTouched.description && descriptionInvalid}
-                  helperText={identityTouched.description && descriptionInvalid ? "Series description must be at least 20 characters." : " "}
+                  helperText={identityTouched.description && descriptionInvalid ? "Series description must be at least 20 characters." : "Describe the purpose, transformation, and expected reader or viewer outcome."}
                 />
               </div>
               <div>
@@ -1267,6 +1271,7 @@ export default function SeriesBuilderPage() {
                   value={draft.scriptureTheme}
                   onChange={(scriptureTheme) => setDraft((current) => ({ ...current, scriptureTheme }))}
                   placeholder="Romans 12 · Isaiah 61 · Matthew 5"
+                  helperText="Use a scripture reference or a theme phrase that can anchor the entire sequence."
                 />
               </div>
               <div>
@@ -1275,15 +1280,16 @@ export default function SeriesBuilderPage() {
                   value={draft.promise}
                   onChange={(promise) => setDraft((current) => ({ ...current, promise }))}
                   placeholder="What transformation or value does the series promise?"
+                  helperText="Keep this short and concrete so it works in preview cards and promotion rails."
                 />
               </div>
               <div>
                 <FieldLabel>Duration window</FieldLabel>
-                <TextInput value={draft.durationWindow} onChange={(durationWindow) => setDraft((current) => ({ ...current, durationWindow }))} />
+                <TextInput value={draft.durationWindow} onChange={(durationWindow) => setDraft((current) => ({ ...current, durationWindow }))} helperText="Example: 4 weeks, 8 sessions, or a 30-day reading path." />
               </div>
               <div>
                 <FieldLabel>Audience fit</FieldLabel>
-                <TextInput value={draft.audienceFit} onChange={(audienceFit) => setDraft((current) => ({ ...current, audienceFit }))} />
+                <TextInput value={draft.audienceFit} onChange={(audienceFit) => setDraft((current) => ({ ...current, audienceFit }))} helperText="Name the primary group this builder is written for." />
               </div>
             </div>
           </Card>
@@ -1323,9 +1329,10 @@ export default function SeriesBuilderPage() {
                     value={seriesSearch}
                     onChange={(e) => setSeriesSearch(e.target.value)}
                     placeholder="Search speakers"
-                    className="w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] py-2 pl-9 pr-3 text-[12px] text-faith-ink outline-none"
+                    className="w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] py-2.5 pl-9 pr-3 text-[13px] font-semibold text-faith-ink outline-none focus:ring-2 focus:ring-[rgba(3,205,140,0.18)]"
                   />
                 </div>
+                <div className="mt-1 text-[11px] text-faith-slate">Add speakers who will recur across episodes or live session handoffs.</div>
                 <div className="mt-2 flex max-h-[180px] flex-col gap-2 overflow-y-auto pr-1">
                   {filteredSpeakers.map((speaker) => {
                     const active = draft.speakers.includes(speaker);
@@ -1897,7 +1904,7 @@ export default function SeriesBuilderPage() {
               </div>
               <div>
                 <FieldLabel>Launch date</FieldLabel>
-                <TextInput value={draft.launchDate} onChange={(launchDate) => setDraft((current) => ({ ...current, launchDate }))} />
+                <TextInput value={draft.launchDate} onChange={(launchDate) => setDraft((current) => ({ ...current, launchDate }))} helperText="Choose the date this series should become available to readers or followers." />
               </div>
               <div>
                 <FieldLabel>Embargo rule</FieldLabel>
@@ -1905,7 +1912,7 @@ export default function SeriesBuilderPage() {
                   value={draft.embargoRule}
                   onChange={(e) => setDraft((current) => ({ ...current, embargoRule: e.target.value }))}
                   aria-label="Embargo rule"
-                  className="mt-1 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] font-medium text-faith-ink outline-none"
+                  className="mt-1.5 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2.5 text-[13px] font-semibold text-faith-ink outline-none"
                 >
                   {EMBARGO_RULES.map((rule) => (
                     <option key={rule} value={rule}>{rule}</option>
@@ -1918,7 +1925,7 @@ export default function SeriesBuilderPage() {
                   value={draft.approvalFlow}
                   onChange={(e) => setDraft((current) => ({ ...current, approvalFlow: e.target.value }))}
                   aria-label="Approval flow"
-                  className="mt-1 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2 text-[12px] font-medium text-faith-ink outline-none"
+                  className="mt-1.5 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2.5 text-[13px] font-semibold text-faith-ink outline-none"
                 >
                   {APPROVAL_FLOWS.map((flow) => (
                     <option key={flow} value={flow}>{flow}</option>
@@ -1927,7 +1934,7 @@ export default function SeriesBuilderPage() {
               </div>
               <div className="lg:col-span-2">
                 <FieldLabel>Internal notes</FieldLabel>
-                <TextArea value={draft.notes} onChange={(notes) => setDraft((current) => ({ ...current, notes }))} rows={4} />
+                <TextArea value={draft.notes} onChange={(notes) => setDraft((current) => ({ ...current, notes }))} rows={4} helperText="Leave reviewer context, release dependencies, or any special launch instructions." />
               </div>
             </div>
           </Card>

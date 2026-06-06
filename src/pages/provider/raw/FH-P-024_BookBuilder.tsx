@@ -701,7 +701,7 @@ function Card({
 
 function Label({ children }: { children: React.ReactNode }) {
   return (
-    <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-faith-slate">
+    <div className="text-[11px] font-extrabold uppercase tracking-[0.14em] text-faith-slate">
       {children}
     </div>
   );
@@ -712,20 +712,27 @@ function Input({
   onChange,
   placeholder,
   type = "text",
+  helperText,
 }: {
   value: string | number;
   onChange: (v: string) => void;
   placeholder?: string;
   type?: "text" | "number";
+  helperText?: string;
 }) {
   return (
-    <input
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-      placeholder={placeholder}
-      type={type}
-      className="mt-1.5 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2.5 text-[13px] text-faith-ink outline-none transition focus:ring-2 focus:ring-emerald-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:focus:ring-emerald-900/30"
-    />
+    <div>
+      <input
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder}
+        type={type}
+        className="mt-1.5 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2.5 text-[13px] font-semibold text-faith-ink outline-none transition focus:ring-2 focus:ring-emerald-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:focus:ring-emerald-900/30"
+      />
+      {helperText ? (
+        <div className="mt-1 text-[11px] leading-5 text-faith-slate">{helperText}</div>
+      ) : null}
+    </div>
   );
 }
 
@@ -734,20 +741,27 @@ function TextArea({
   onChange,
   rows = 4,
   placeholder,
+  helperText,
 }: {
   value: string;
   onChange: (v: string) => void;
   rows?: number;
   placeholder?: string;
+  helperText?: string;
 }) {
   return (
-    <textarea
-      rows={rows}
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-      placeholder={placeholder}
-      className="mt-1.5 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2.5 text-[13px] text-faith-ink outline-none transition focus:ring-2 focus:ring-emerald-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:focus:ring-emerald-900/30"
-    />
+    <div>
+      <textarea
+        rows={rows}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder}
+        className="mt-1.5 w-full rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-3 py-2.5 text-[13px] font-semibold text-faith-ink outline-none transition focus:ring-2 focus:ring-emerald-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:focus:ring-emerald-900/30"
+      />
+      {helperText ? (
+        <div className="mt-1 text-[11px] leading-5 text-faith-slate">{helperText}</div>
+      ) : null}
+    </div>
   );
 }
 
@@ -1349,15 +1363,15 @@ export default function FaithHubBookBuilderPage() {
             <div className="mt-5 grid gap-4 xl:grid-cols-2">
               <div>
                 <Label>Book title</Label>
-                <Input value={draft.title} onChange={(value) => update("title", value)} />
+                <Input value={draft.title} onChange={(value) => update("title", value)} helperText="Use the title that should surface in previews and the reader header." />
               </div>
               <div>
                 <Label>Subtitle</Label>
-                <Input value={draft.subtitle} onChange={(value) => update("subtitle", value)} />
+                <Input value={draft.subtitle} onChange={(value) => update("subtitle", value)} helperText="Support the title with a concise promise or reading angle." />
               </div>
               <div>
                 <Label>Author / editor</Label>
-                <Input value={draft.author} onChange={(value) => update("author", value)} />
+                <Input value={draft.author} onChange={(value) => update("author", value)} helperText="Use the primary author or editorial owner for the book." />
               </div>
               <div>
                 <Label>Book kind</Label>
@@ -1379,6 +1393,7 @@ export default function FaithHubBookBuilderPage() {
                   value={draft.audienceFit}
                   onChange={(value) => update("audienceFit", value)}
                   placeholder="Who is this book for?"
+                  helperText="Name the reader group in plain language so the preview rail stays useful."
                 />
               </div>
               <div>
@@ -1386,11 +1401,12 @@ export default function FaithHubBookBuilderPage() {
                 <Input
                   value={draft.themeScripture}
                   onChange={(value) => update("themeScripture", value)}
+                  helperText="Use the anchor verse or theme that shapes the whole reading experience."
                 />
               </div>
               <div>
                 <Label>Editorial tone</Label>
-                <Input value={draft.tone} onChange={(value) => update("tone", value)} />
+                <Input value={draft.tone} onChange={(value) => update("tone", value)} helperText="State the tone in one line: warm, teaching-focused, reflective, and so on." />
               </div>
               <div className="xl:col-span-2">
                 <Label>Reader promise</Label>
@@ -1398,6 +1414,7 @@ export default function FaithHubBookBuilderPage() {
                   value={draft.promise}
                   onChange={(value) => update("promise", value)}
                   rows={3}
+                  helperText="Explain the change the reader should feel after finishing the book."
                 />
               </div>
               <div className="xl:col-span-2">
@@ -1406,6 +1423,7 @@ export default function FaithHubBookBuilderPage() {
                   value={draft.description}
                   onChange={(value) => update("description", value)}
                   rows={5}
+                  helperText="Add enough detail for approvers, promo surfaces, and downstream cards."
                 />
               </div>
             </div>
@@ -1774,6 +1792,7 @@ export default function FaithHubBookBuilderPage() {
                   type="number"
                   value={draft.price}
                   onChange={(value) => update("price", Number(value || 0))}
+                  helperText="Use the final visible price before the book is published."
                 />
               </div>
               <div>
@@ -1798,11 +1817,12 @@ export default function FaithHubBookBuilderPage() {
                   value={draft.scheduledAt}
                   onChange={(value) => update("scheduledAt", value)}
                   placeholder="Next Thursday - 7:30 PM"
+                  helperText="Set the moment the launch should go live to readers."
                 />
               </div>
               <div>
                 <Label>Public slug</Label>
-                <Input value={draft.slug} onChange={(value) => update("slug", value)} />
+                <Input value={draft.slug} onChange={(value) => update("slug", value)} helperText="Keep the slug short and readable for sharing and routing." />
               </div>
             </div>
 
@@ -1887,6 +1907,7 @@ export default function FaithHubBookBuilderPage() {
                             ),
                           }))
                         }
+                        helperText="Translate the title naturally for the selected language or region."
                       />
                     </div>
                     <div>
@@ -1921,6 +1942,7 @@ export default function FaithHubBookBuilderPage() {
                           }))
                         }
                         rows={2}
+                        helperText="Keep the supporting line readable and faithful to the original promise."
                       />
                     </div>
                   </div>
@@ -1934,6 +1956,7 @@ export default function FaithHubBookBuilderPage() {
                 value={draft.ctaText}
                 onChange={(value) => update("ctaText", value)}
                 placeholder="Read now"
+                helperText="Use a direct action that works on the cover, product card, and call-to-action rail."
               />
             </div>
           </Card>
@@ -1981,6 +2004,7 @@ export default function FaithHubBookBuilderPage() {
                   value={draft.linkedEvent}
                   onChange={(value) => update("linkedEvent", value)}
                   placeholder="e.g. Discipleship class kickoff"
+                  helperText="Attach the book to a live event or teaching moment when relevant."
                 />
               </div>
               <div>
@@ -1989,6 +2013,7 @@ export default function FaithHubBookBuilderPage() {
                   value={draft.linkedFund}
                   onChange={(value) => update("linkedFund", value)}
                   placeholder="e.g. Scholarship fund"
+                  helperText="Use this when the book helps drive a giving journey or linked support campaign."
                 />
               </div>
             </div>
