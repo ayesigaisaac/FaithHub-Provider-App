@@ -1372,6 +1372,12 @@ export function ServiceManagementPage() {
       }
       actions={<Button variant="primary" onClick={() => navigate(ROUTES.serviceBuilder)}><Plus size={14} /> Create Service</Button>}
     >
+      <ProviderJourneyStepper
+        currentStepIndex={3}
+        onNavigate={(path) => navigate(path)}
+        title="Create your first offering"
+        subtitle="Use this step to shape the first service, campaign, or teaching item after setup."
+      />
       <div className="grid gap-4 xl:grid-cols-12">
         <div className="space-y-3 xl:col-span-8">
           {services.length ? services.map((service) => (
@@ -1508,6 +1514,12 @@ export function ServiceBuilderPage() {
         </>
       }
     >
+      <ProviderJourneyStepper
+        currentStepIndex={3}
+        onNavigate={(path) => navigate(path)}
+        title="Create the first approved service"
+        subtitle="This is the first guided offering the provider submits after setup is complete."
+      />
       <div className="grid gap-4 xl:grid-cols-12">
         <div className="space-y-4 xl:col-span-8">
           <ProviderSectionCard title="Service details" subtitle="Describe the service in a way that is clear for the provider dashboard and campaign flow.">
@@ -1590,6 +1602,12 @@ export function CampaignManagementPage() {
       }
       actions={<Button variant="primary" onClick={() => navigate(ROUTES.campaignBuilder)}><Plus size={14} /> Create Campaign</Button>}
     >
+      <ProviderJourneyStepper
+        currentStepIndex={4}
+        onNavigate={(path) => navigate(path)}
+        title="Plan the campaign follow-up"
+        subtitle="Campaigns make more sense after the first approved service exists."
+      />
       <div className="grid gap-4 xl:grid-cols-12">
         <div className="space-y-3 xl:col-span-8">
           {campaigns.map((campaign) => (
@@ -1721,10 +1739,16 @@ export function CampaignBuilderPage() {
         </>
       }
     >
+      <ProviderJourneyStepper
+        currentStepIndex={4}
+        onNavigate={(path) => navigate(path)}
+        title="Shape the campaign details"
+        subtitle="Use the approved service, dates, and banner art to prepare the campaign for review."
+      />
       <div className="grid gap-4 xl:grid-cols-12">
         <div className="space-y-4 xl:col-span-8">
           <ProviderSectionCard title="Campaign details" subtitle="The details below shape the review card and campaign approval status.">
-              <div className="grid gap-4 md:grid-cols-2">
+            <div className="grid gap-4 md:grid-cols-2">
               <Field label="Campaign Name" value={draft.name} onChange={(value) => update('name', value)} helperText="Use a clear campaign name that can appear in review and donor surfaces." />
               <SelectField label="Objective" value={draft.objective} onChange={(value) => update('objective', value)} options={CAMPAIGN_OBJECTIVES} helperText="The objective drives the review summary and campaign positioning." />
               <Field label="Start Date" value={draft.startDate} onChange={(value) => update('startDate', value)} type="date" helperText="Pick the date the campaign should become active." />
@@ -1845,6 +1869,12 @@ export function ContentUploadPage() {
         </>
       }
     >
+      <ProviderJourneyStepper
+        currentStepIndex={4}
+        onNavigate={(path) => navigate(path)}
+        title="Upload content for approval"
+        subtitle="Add the posters, videos, banners, and flyers the provider will use later in the journey."
+      />
       <div className="grid gap-4 xl:grid-cols-12">
         <div className="space-y-4 xl:col-span-8">
           <ProviderSectionCard title="Upload area" subtitle="Drop content in the box below and let the mock upload progress run.">
@@ -2144,6 +2174,12 @@ export function LiveSessionBuilderPage() {
         </>
       }
     >
+      <ProviderJourneyStepper
+        currentStepIndex={4}
+        onNavigate={(path) => navigate(path)}
+        title="Prepare the live session"
+        subtitle="Use approved services and assets to assemble the session before scheduling."
+      />
       <div className="grid gap-4 xl:grid-cols-12">
         <div className="space-y-4 xl:col-span-8">
           <ProviderSectionCard title="Session details" subtitle="The live session card follows the StreamYard/Riverside style briefing layout.">
@@ -2232,6 +2268,12 @@ export function LiveSchedulePage() {
       }
       actions={<Button variant="primary" onClick={() => navigate(`${ROUTES.liveStudio}?sessionId=${encodeURIComponent(selected?.id || selectedId)}`)}><PlayCircle size={14} /> Open FaithHub Live Studio</Button>}
     >
+      <ProviderJourneyStepper
+        currentStepIndex={5}
+        onNavigate={(path) => navigate(path)}
+        title="Review the schedule"
+        subtitle="The schedule is the final bridge between setup and the live studio."
+      />
       <LiveWorkspaceSplit
         main={
           <>
