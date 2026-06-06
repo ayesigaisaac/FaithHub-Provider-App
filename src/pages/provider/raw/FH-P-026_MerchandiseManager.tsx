@@ -31,6 +31,7 @@ import {
 } from "lucide-react";
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderJourneyStepper } from "../FaithHubProviderJourneyPages";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 
@@ -1469,6 +1470,15 @@ export default function MerchandiseManagerPage() {
                 title="Merchandise Manager"
                 subtitle="Run premium merchandise shelves, bundles, and live-linked FaithMart drops from one Provider-side surface connected to Live Sessions, events, giving journeys, and Revelight promotion."
               />
+
+              <div className="mt-4">
+                <ProviderJourneyStepper
+                  currentStepIndex={6}
+                  onNavigate={(path) => navigateWithRouter(path)}
+                  title="Prepare the merchandise path"
+                  subtitle="Merchandise follows the core provider setup and sits alongside giving and event revenue."
+                />
+              </div>
 
               <div className="mt-5 flex flex-wrap gap-2">
                 <Pill text="FaithMart merchandise" tone="good" icon={<BadgeCheck className="h-3.5 w-3.5" />} />

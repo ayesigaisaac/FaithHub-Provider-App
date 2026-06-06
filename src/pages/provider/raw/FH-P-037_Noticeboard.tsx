@@ -33,6 +33,7 @@ import {
 } from "lucide-react";
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderJourneyStepper } from "../FaithHubProviderJourneyPages";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 import { useAuth } from "@/auth/useAuth";
@@ -1172,6 +1173,15 @@ export default function FaithHubNoticeboardPage() {
                 title="Noticeboard"
                 subtitle="Run institution-wide announcements, campus updates, prayer alerts, volunteer calls, event reminders, and giving notices from one premium board — then route them into Live Sessions, notifications, events, giving, and Revelight without losing control."
               />
+
+              <div className="mt-4">
+                <ProviderJourneyStepper
+                  currentStepIndex={5}
+                  onNavigate={(path) => navigateWithRouter(path)}
+                  title="Publish a clear notice"
+                  subtitle="Noticeboard work comes after setup and before the wider audience and event handoff."
+                />
+              </div>
 
               <div className="mt-5 flex flex-wrap items-center gap-2">
                 <Pill tone="good">

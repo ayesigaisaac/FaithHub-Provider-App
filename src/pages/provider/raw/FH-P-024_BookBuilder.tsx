@@ -37,6 +37,7 @@ import {
   Zap,
 } from "lucide-react";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderJourneyStepper } from "../FaithHubProviderJourneyPages";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 
@@ -2182,6 +2183,15 @@ export default function FaithHubBookBuilderPage() {
                 title="Book Builder"
                 subtitle="Build a premium devotional, study guide, manual, or course reader with storefront-ready packaging, structured chapters, access rules, localization, and linked promotion hooks."
               />
+
+              <div className="mt-4">
+                <ProviderJourneyStepper
+                  currentStepIndex={4}
+                  onNavigate={(path) => navigateWithRouter(path)}
+                  title="Build the book"
+                  subtitle="This is the detailed creation step that follows the catalog and setup path."
+                />
+              </div>
 
               <div className="mt-4 flex flex-wrap gap-2">
                 <Pill text={template.title} tone="good" icon={<Sparkles className="h-3.5 w-3.5" />} />

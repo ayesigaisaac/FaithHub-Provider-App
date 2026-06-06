@@ -36,6 +36,7 @@ import {
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { CompactStatsGroup } from "@/components/ui/CompactStatsGroup";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderJourneyStepper } from "../FaithHubProviderJourneyPages";
 
 /**
  * Provider — Events Manager
@@ -1606,6 +1607,15 @@ export default function FaithHubEventsManagerPage() {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="w-full px-4 sm:px-5 md:px-6 lg:px-8 pt-4">
+        <ProviderJourneyStepper
+          currentStepIndex={6}
+          onNavigate={(path) => safeNav(path)}
+          title="Plan the event journey"
+          subtitle="Events sit after the provider foundation and before post-event publishing and review."
+        />
       </div>
 
       <div className="flex-1 w-full px-4 sm:px-5 md:px-6 lg:px-8 py-6">

@@ -36,6 +36,7 @@ import {
 } from "lucide-react";
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderJourneyStepper } from "../FaithHubProviderJourneyPages";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 
@@ -1094,6 +1095,14 @@ export default function BooksManagerPage() {
                   title="Books Manager"
                   subtitle="Manage devotionals, eBooks, study guides, manuals, and reading resources from one premium publishing surface. Track readiness, formats, access, translations, promotion hooks, and storefront quality without leaving the FaithHub Provider workspace."
                 />
+                <div className="mt-4">
+                  <ProviderJourneyStepper
+                    currentStepIndex={4}
+                    onNavigate={(path) => navigateWithRouter(path)}
+                    title="Manage the book catalog"
+                    subtitle="Books come after the provider basics and before the detailed builder workflow."
+                  />
+                </div>
                 <div className="mt-3 flex flex-wrap items-center gap-2">
                   <Pill text="BOOK CATALOG" tone="good" icon={<BookOpen className="h-3.5 w-3.5" />} />
                   <Pill text="MULTI-FORMAT" tone="neutral" icon={<Layers className="h-3.5 w-3.5" />} />
