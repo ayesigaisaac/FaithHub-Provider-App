@@ -4,6 +4,7 @@
 
 import React, { useEffect, useMemo, useState } from 'react';
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderJourneyStepper } from "../FaithHubProviderJourneyPages";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 import {
@@ -1194,6 +1195,14 @@ export default function FaithHubReviewsAndModerationPage() {
                 title="Reviews & Moderation"
                 subtitle="Protect institution trust across Live Sessions, replays, clips, events, campaigns, and public reviews without losing context."
               />
+              <div className="mt-4">
+                <ProviderJourneyStepper
+                  currentStepIndex={7}
+                  onNavigate={(path) => navigateWithRouter(path)}
+                  title="Review trust and safety cases"
+                  subtitle="This work happens after content and publishing, when the provider is checking what needs response or resolution."
+                />
+              </div>
               <div className="mt-3 flex flex-wrap items-center gap-3">
                 <Pill tone="brand">
                   <ShieldCheck className="h-3.5 w-3.5" />

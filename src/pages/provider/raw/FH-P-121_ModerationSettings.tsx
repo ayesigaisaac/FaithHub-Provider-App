@@ -2,6 +2,7 @@
 
 import React, { useMemo, useState } from "react";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
+import { ProviderJourneyStepper } from "../FaithHubProviderJourneyPages";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 import {
   Bot,
@@ -530,12 +531,20 @@ export default function FH_P_121_ModerationSettings() {
           <div className="flex flex-col gap-5 xl:flex-row xl:items-start xl:justify-between">
             <div className="flex items-start gap-4 min-w-0">
               <div className="min-w-0">
-                <ProviderPageTitle
-                  icon={<ShieldCheck className="h-6 w-6" />}
-                  title="Moderation Settings"
-                  subtitle="Institution-wide policy rules, filters, defaults, thresholds, child-safe settings, and automation rules. This page governs rule definitions that feed live chat, community, prayer, counseling, reviews, and all linked trust surfaces."
+              <ProviderPageTitle
+                icon={<ShieldCheck className="h-6 w-6" />}
+                title="Moderation Settings"
+                subtitle="Institution-wide policy rules, filters, defaults, thresholds, child-safe settings, and automation rules. This page governs rule definitions that feed live chat, community, prayer, counseling, reviews, and all linked trust surfaces."
+              />
+              <div className="mt-4">
+                <ProviderJourneyStepper
+                  currentStepIndex={7}
+                  onNavigate={(path) => navigateWithRouter(path)}
+                  title="Tune moderation policy"
+                  subtitle="Policy work is a governance step that sits after the provider has core workflows in place."
                 />
-                <div className="mt-3 flex flex-wrap items-center gap-2">
+              </div>
+              <div className="mt-3 flex flex-wrap items-center gap-2">
                   <Pill tone="good">FaithHub Provider governance active</Pill>
                   <Pill>Feeds </Pill>
                   <Pill tone="warn">3 policy changes pending save</Pill>

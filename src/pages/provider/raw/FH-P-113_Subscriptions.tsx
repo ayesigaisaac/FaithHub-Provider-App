@@ -26,6 +26,7 @@ import {
 } from "lucide-react";
 import { KpiTile } from "../../../components/ui/KpiTile";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderJourneyStepper } from "../FaithHubProviderJourneyPages";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 
 /**
@@ -716,6 +717,14 @@ export default function SubscriptionsPage() {
                     title="Subscriptions"
                     subtitle="Manage plans, seats, and premium access without losing control across billing plans, entitlements, renewals, invoices, and workspace feature access."
                   />
+                  <div className="mt-4">
+                    <ProviderJourneyStepper
+                      currentStepIndex={6}
+                      onNavigate={(path) => navigateWithRouter(path)}
+                      title="Manage subscriptions"
+                      subtitle="Plan and seat work belongs after the provider basics and before governance review."
+                    />
+                  </div>
                   <p className="mt-3 max-w-[980px] text-[18px] leading-snug text-faith-slate">
                     Workspace/team subscriptions for providers — covering billing plans,
                     seats, entitlements, add-ons, renewals, invoices, and feature access in one premium surface.

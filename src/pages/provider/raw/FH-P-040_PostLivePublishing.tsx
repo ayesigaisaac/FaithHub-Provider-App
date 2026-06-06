@@ -11,6 +11,7 @@ import { getStudioOpsSummary, subscribeToStudioOps } from '@/features/live/liveS
 import { recordLiveActivity } from '@/features/live/liveActivityStore';
 import { LiveFlowProgressRibbon } from '@/features/live/LiveFlowProgressRibbon';
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderJourneyStepper } from "../FaithHubProviderJourneyPages";
 import { AuthContext } from '@/auth/AuthContext';
 import {
   AlertTriangle,
@@ -969,6 +970,15 @@ const [accessLevel, setAccessLevel] = useState<AccessLevel>('Public');
                     ? "Scheduled"
                     : "Ended"
           }
+          />
+      </div>
+
+      <div className="w-full px-4 sm:px-5 md:px-6 lg:px-8 pt-4">
+        <ProviderJourneyStepper
+          currentStepIndex={6}
+          onNavigate={(path) => navigateWithRouter(path)}
+          title="Package the post-live follow-up"
+          subtitle="This is the final step where the provider turns the live session into replay, clips, and follow-up actions."
         />
       </div>
 

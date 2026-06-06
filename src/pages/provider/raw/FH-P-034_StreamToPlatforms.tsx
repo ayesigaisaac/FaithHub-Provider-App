@@ -16,6 +16,7 @@ import {
 import { CircularProgress } from '@mui/material';
 import { CompactStatsGroup } from "@/components/ui/CompactStatsGroup";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderJourneyStepper } from "../FaithHubProviderJourneyPages";
 import {
   Activity,
   AlertTriangle,
@@ -1150,6 +1151,15 @@ export default function StreamToPlatformsPage() {
           currentStep="stream"
           sessionId={sessionId || undefined}
           status={sessionStatus}
+        />
+      </div>
+
+      <div className="w-full px-4 sm:px-5 md:px-6 lg:px-8 pt-4">
+        <ProviderJourneyStepper
+          currentStepIndex={5}
+          onNavigate={(path) => navigateWithRouter(path)}
+          title="Distribute the live session"
+          subtitle="This is the handoff step after the live session is approved and ready to send out."
         />
       </div>
 

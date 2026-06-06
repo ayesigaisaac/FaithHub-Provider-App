@@ -38,6 +38,7 @@ import {
 } from "lucide-react";
 import { CompactStatsGroup } from "@/components/ui/CompactStatsGroup";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
+import { ProviderJourneyStepper } from "../FaithHubProviderJourneyPages";
 
 /**
  * Provider — Replays & Clips
@@ -1113,6 +1114,12 @@ export default function FaithHubReplaysAndClipsPage() {
       </div>
 
       <div className="flex-1 w-full px-4 sm:px-5 md:px-6 lg:px-8 py-6">
+        <ProviderJourneyStepper
+          currentStepIndex={6}
+          onNavigate={(path) => navigateWithRouter(path)}
+          title="Shape replay and clip follow-up"
+          subtitle="Replay and clip packaging comes after the live event has ended and needs a clear next action."
+        />
         <div className="flex flex-col gap-4 lg:flex-row lg:items-start">
           <div className="min-w-0 w-full lg:flex-1 space-y-4">
             <section className="rounded-3xl bg-[var(--fh-surface-bg)] dark:bg-slate-900 p-4 sm:p-5 ring-1 ring-slate-200 dark:ring-slate-800 shadow-soft transition">
