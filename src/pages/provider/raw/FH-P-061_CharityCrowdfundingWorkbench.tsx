@@ -39,6 +39,7 @@ import {
   Zap,
 } from "lucide-react";
 import { KpiTile } from "../../../components/ui/KpiTile";
+import { ProviderEntryDialog } from "@/components/provider/ProviderEntryDialog";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 
 /**
@@ -1139,21 +1140,17 @@ function Modal({
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-[90] flex items-end justify-center sm:items-center p-0 sm:p-4">
-      <div className="absolute inset-0 bg-black/40 dark:bg-black/60 backdrop-blur-sm transition-opacity" onClick={onClose} />
-      <div className="relative flex w-full max-w-5xl flex-col bg-[var(--fh-surface-bg)] dark:bg-slate-900 shadow-medium transition-all h-[94vh] sm:h-auto sm:max-h-[92vh] rounded-t-3xl sm:rounded-3xl overflow-hidden ring-1 ring-slate-200 dark:ring-slate-800">
-        <div className="flex items-center justify-between gap-2 border-b border-faith-line dark:border-slate-800 px-4 py-3">
-          <div>
-            <div className="text-base font-semibold text-faith-ink dark:text-slate-50">{title}</div>
-            {subtitle ? <div className="mt-0.5 text-xs text-faith-slate">{subtitle}</div> : null}
-          </div>
-          <Btn tone="ghost" onClick={onClose} left={<X className="h-4 w-4" />}>
-            Close
-          </Btn>
-        </div>
-        <div className="flex-1 overflow-auto p-4 sm:p-6">{children}</div>
-      </div>
-    </div>
+    <ProviderEntryDialog
+      open={open}
+      onClose={onClose}
+      title={title}
+      subtitle={subtitle}
+      helperText="This campaign workflow is a structured data-entry session with the full record and call to action visible."
+      maxWidthClassName="max-w-5xl"
+      zIndex={120}
+    >
+      {children}
+    </ProviderEntryDialog>
   );
 }
 

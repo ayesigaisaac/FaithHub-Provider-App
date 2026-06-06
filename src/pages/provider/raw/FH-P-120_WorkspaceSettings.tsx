@@ -31,6 +31,7 @@ import {
   X,
 } from "lucide-react";
 import { KpiTile } from "../../../components/ui/KpiTile";
+import { ProviderEntryDialog } from "@/components/provider/ProviderEntryDialog";
 import { ProviderPageTitle } from "@/components/provider/ProviderPageTitle";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
 import { useAuth } from "@/auth/useAuth";
@@ -296,25 +297,17 @@ function Modal({
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-[120] flex items-end justify-center p-0 md:items-center md:p-4">
-      <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={onClose} />
-      <div className="relative w-full max-w-3xl rounded-t-[28px] md:rounded-[28px] border border-faith-line/70 dark:border-slate-800 bg-[var(--fh-surface-bg)] dark:bg-slate-900 shadow-medium transition-colors overflow-hidden">
-        <div className="flex items-start justify-between gap-3 border-b border-faith-line dark:border-slate-800 px-4 py-3">
-          <div>
-            <div className="text-[13px] font-extrabold text-faith-ink dark:text-slate-100">{title}</div>
-            {subtitle ? <div className="mt-0.5 text-[11px] text-faith-slate">{subtitle}</div> : null}
-          </div>
-          <button
-            type="button"
-            onClick={onClose}
-            className="h-9 w-9 rounded-2xl border border-faith-line/70 dark:border-slate-700 bg-[var(--fh-surface-bg)] dark:bg-slate-800 grid place-items-center hover:bg-[var(--fh-surface)] dark:hover:bg-slate-700 transition-colors"
-          >
-            <X className="h-4 w-4 text-slate-700 dark:text-slate-300" />
-          </button>
-        </div>
-        <div className="p-4 max-h-[85vh] overflow-y-auto">{children}</div>
-      </div>
-    </div>
+    <ProviderEntryDialog
+      open={open}
+      onClose={onClose}
+      title={title}
+      subtitle={subtitle}
+      helperText="This workspace form is a focused data-entry session with clear save behavior and scoped fields."
+      maxWidthClassName="max-w-5xl"
+      zIndex={120}
+    >
+      {children}
+    </ProviderEntryDialog>
   );
 }
 
