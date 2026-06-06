@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 import { navigateWithRouter } from "@/navigation/routerNavigate";
 import { ProviderSurfaceCard } from "@/components/provider/ProviderSurfaceCard";
+import { ProviderJourneyStepper } from "../FaithHubProviderJourneyPages";
 import {
   getTeachingFlowState,
   publishEpisode,
@@ -1284,8 +1285,15 @@ export default function EpisodeBuilderPage() {
                     ? "Saving..."
                     : saveState === "unsaved"
                       ? "Unsaved changes"
-                      : `Saved ${lastSavedAt.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`}
+                  : `Saved ${lastSavedAt.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`}
                 </span>
+              </div>
+              <div className="mt-4 max-w-[920px]">
+                <ProviderJourneyStepper
+                  currentStepIndex={4}
+                  title="Guide the episode build"
+                  subtitle="Keep the episode on one clear provider path from outline to publish and follow-up."
+                />
               </div>
             </div>
 
