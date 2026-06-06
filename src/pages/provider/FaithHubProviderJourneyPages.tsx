@@ -1375,8 +1375,8 @@ export function ServiceManagementPage() {
       <ProviderJourneyStepper
         currentStepIndex={3}
         onNavigate={(path) => navigate(path)}
-        title="Create your first offering"
-        subtitle="Use this step to shape the first service, campaign, or teaching item after setup."
+        title="Review the first approved service"
+        subtitle="This page shows the service that is ready to move into campaign and live work."
       />
       <div className="grid gap-4 xl:grid-cols-12">
         <div className="space-y-3 xl:col-span-8">
@@ -1995,6 +1995,12 @@ export function AssetLibraryPage() {
       }
       actions={<Button variant="secondary" onClick={() => navigate(ROUTES.liveBuilder)}>Use in live session</Button>}
     >
+      <ProviderJourneyStepper
+        currentStepIndex={4}
+        onNavigate={(path) => navigate(path)}
+        title="Select approved media"
+        subtitle="The asset library sits between uploads and live setup, so only approved items are available."
+      />
       <ProviderSectionCard title="Filters" subtitle="Choose the asset type that should show in the grid.">
         <div className="flex flex-wrap gap-2">
           {(['All', 'Image', 'Video', 'Poster', 'Banner', 'Thumbnail'] as const).map((item) => (
@@ -2391,6 +2397,12 @@ export function LiveDashboardPage() {
       }
       actions={<Button variant="primary" onClick={() => navigate(ROUTES.liveBuilder)}><Plus size={14} /> Create Live Session</Button>}
     >
+      <ProviderJourneyStepper
+        currentStepIndex={5}
+        onNavigate={(path) => navigate(path)}
+        title="Review live readiness"
+        subtitle="Live management is the final guided step before the waiting room and studio handoff."
+      />
       <div className="grid gap-4 xl:grid-cols-[minmax(0,1.45fr)_minmax(340px,0.82fr)] xl:items-start">
         <div className="space-y-4">
           <ProviderSectionCard title="Live queue" subtitle="Review sessions in a denser grid so the workspace stays visually active on wide screens.">
@@ -2525,6 +2537,12 @@ export function LiveSessionDetailsPage() {
         </>
       }
     >
+      <ProviderJourneyStepper
+        currentStepIndex={5}
+        onNavigate={(path) => navigate(path)}
+        title="Review the live session"
+        subtitle="This view confirms the details before the audience moves into the waiting room."
+      />
       {selected ? (
         <LiveWorkspaceSplit
           main={
@@ -2622,6 +2640,12 @@ export function WaitingRoomPage() {
       }
       actions={<Button variant="primary" onClick={() => navigate(`${ROUTES.liveStudio}?sessionId=${encodeURIComponent(selected?.id || selectedId)}`)}>Go Live</Button>}
     >
+      <ProviderJourneyStepper
+        currentStepIndex={5}
+        onNavigate={(path) => navigate(path)}
+        title="Waiting room preview"
+        subtitle="This is the final pause before the host moves into the live studio."
+      />
       {selected ? (
         <LiveWorkspaceSplit
           main={
