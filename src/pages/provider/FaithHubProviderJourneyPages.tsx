@@ -820,6 +820,88 @@ function EmptyState({
   );
 }
 
+type DashboardTaskItem = {
+  label: string;
+  detail: string;
+  tone: ProviderStatusTone;
+  action: string;
+  actionLabel: string;
+};
+
+function buildDashboardTasks({
+  profileStatus,
+  services,
+  campaigns,
+  approvedAssets,
+  sessions,
+}: {
+  profileStatus: string;
+  services: ServiceRecord[];
+  campaigns: CampaignRecord[];
+  approvedAssets: number;
+  sessions: LiveSessionRecord[];
+}): DashboardTaskItem[] {
+  const approvedServiceCount = services.filter((service) => service.status === 'Approved' || service.status === 'Published').length;
+  const pendingServiceCount = services.filter((service) => service.status === 'Pending Review').length;
+  const activeCampaignCount = campaigns.filter((campaign) => campaign.status === 'Active').length;
+  const pendingCampaignCount = campaigns.filter((campaign) => campaign.status === 'Pending Review').length;
+  const readySessionCount = sessions.filter((session) => session.status === 'Scheduled' || session.status === 'Ready' || session.status === 'Live').length;
+  const pendingAssetCount = Math.max(0, services.length + campaigns.length + sessions.length - approvedAssets);
+
+  return [
+    {
+      label: 'Complete profile review',
+      detail:
+        profileStatus === 'Approved'
+          ? 'The provider profile is approved and ready for the workspace.'
+          : 'Finish the provider profile and verification files so the workspace can move forward.',
+      tone: profileStatus === 'Approved' ? 'good' : 'warn',
+      action: ROUTES.profile,
+      actionLabel: profileStatus === 'Approved' ? 'View profile' : 'Open profile',
+    },
+    {
+      label: 'Manage services',
+      detail:
+        services.length > 0
+          ? `${services.length} service${services.length === 1 ? '' : 's'} are available, with ${approvedServiceCount} approved or published and ${pendingServiceCount} awaiting review.`
+          : 'Create the first offering so the dashboard starts to reflect live provider activity.',
+      tone: services.length > 0 ? 'good' : 'brand',
+      action: ROUTES.serviceBuilder,
+      actionLabel: services.length > 0 ? 'Create another service' : 'Open service builder',
+    },
+    {
+      label: 'Review campaigns',
+      detail:
+        campaigns.length > 0
+          ? `${campaigns.length} campaign${campaigns.length === 1 ? '' : 's'} are in the workspace, including ${activeCampaignCount} active and ${pendingCampaignCount} pending.`
+          : 'Add a campaign so your services can be promoted from the dashboard.',
+      tone: campaigns.length > 0 ? 'good' : 'neutral',
+      action: ROUTES.campaignBuilder,
+      actionLabel: campaigns.length > 0 ? 'Create another campaign' : 'Open campaign builder',
+    },
+    {
+      label: 'Finish content assets',
+      detail:
+        approvedAssets > 0
+          ? `${approvedAssets} approved asset${approvedAssets === 1 ? '' : 's'} are ready for live and campaign use.`
+          : `Upload approved assets so the service and live workflows are ready. ${pendingAssetCount > 0 ? `${pendingAssetCount} item${pendingAssetCount === 1 ? '' : 's'} still need review.` : ''}`.trim(),
+      tone: approvedAssets > 0 ? 'good' : 'neutral',
+      action: ROUTES.contentUpload,
+      actionLabel: approvedAssets > 0 ? 'Open content upload' : 'Upload assets',
+    },
+    {
+      label: 'Prepare live sessions',
+      detail:
+        readySessionCount > 0
+          ? `${readySessionCount} live session${readySessionCount === 1 ? '' : 's'} are scheduled, ready, or live.`
+          : 'Prepare the next live session, waiting room, and broadcast controls from the dashboard.',
+      tone: readySessionCount > 0 ? 'good' : 'neutral',
+      action: ROUTES.liveBuilder,
+      actionLabel: readySessionCount > 0 ? 'Open live session' : 'Open live builder',
+    },
+  ];
+}
+
 export function ProviderRegistrationPage() {
   const navigate = useNavigate();
   const auth = useOptionalAuth();
@@ -1137,6 +1219,14 @@ export function ProviderDashboardPage() {
     assets: assets.length,
     sessions: sessions.length,
   });
+  const serviceList = services;
+  const taskQueue = buildDashboardTasks({
+    profileStatus,
+    services,
+    campaigns,
+    approvedAssets,
+    sessions,
+  });
 
   return (
     <ProviderPageScaffold
@@ -1178,51 +1268,19 @@ export function ProviderDashboardPage() {
 
         <div className="grid gap-4 xl:grid-cols-12">
           <div className="space-y-4 xl:col-span-8">
-            <ProviderSectionCard title="Next recommended actions" subtitle="Keep the setup moving by focusing on the next clear task.">
+            <ProviderSectionCard title="Priority actions" subtitle="The same task queue powers the landing page and the action rail.">
               <div className="grid gap-3 md:grid-cols-2">
-                {(
-                  [
-                    {
-                      label: 'Complete profile',
-                      hint: 'Add brand and verification files.',
-                      route: ROUTES.profile,
-                      tone: profileStatus === 'Approved' ? 'good' : 'warn',
-                    },
-                    {
-                      label: 'Create a service',
-                      hint: 'Start the first offering that will appear in the dashboard.',
-                      route: ROUTES.serviceBuilder,
-                      tone: services.length > 0 ? 'good' : 'brand',
-                    },
-                    {
-                      label: 'Upload content',
-                      hint: 'Prepare approved assets for live and campaign use.',
-                      route: ROUTES.contentUpload,
-                      tone: assets.length > 0 ? 'good' : 'neutral',
-                    },
-                    {
-                      label: 'Set up live',
-                      hint: 'Draft the next live session and waiting room.',
-                      route: ROUTES.liveBuilder,
-                      tone: liveSessions > 0 ? 'good' : 'neutral',
-                    },
-                  ] satisfies Array<{
-                    label: string;
-                    hint: string;
-                    route: string;
-                    tone: ProviderStatusTone;
-                  }>
-                ).map((item) => (
+                {taskQueue.slice(0, 4).map((item) => (
                   <div key={item.label} className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0">
                         <div className="text-[13px] font-extrabold text-faith-ink">{item.label}</div>
-                        <div className="mt-1 text-[12px] text-faith-slate">{item.hint}</div>
+                        <div className="mt-1 text-[12px] text-faith-slate">{item.detail}</div>
                       </div>
                       <ProviderStatusPill tone={item.tone}>{item.tone === 'good' ? 'Done' : 'Next'}</ProviderStatusPill>
                     </div>
-                    <Button variant="outline" className="mt-4 w-full" onClick={() => navigate(item.route)}>
-                      Open step
+                    <Button variant="outline" className="mt-4 w-full" onClick={() => navigate(item.action)}>
+                      {item.actionLabel}
                     </Button>
                   </div>
                 ))}
@@ -1258,6 +1316,70 @@ export function ProviderDashboardPage() {
                     </button>
                   );
                 })}
+              </div>
+            </ProviderSectionCard>
+
+            <ProviderSectionCard title="Services on the dashboard" subtitle="All services stay visible here so the landing page doubles as the workspace command center.">
+              {serviceList.length ? (
+                <div className="max-h-[420px] space-y-3 overflow-y-auto pr-1">
+                  {serviceList.map((service) => (
+                    <div
+                      key={service.id}
+                      className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4"
+                    >
+                      <div className="flex items-start justify-between gap-3">
+                        <div className="min-w-0">
+                          <div className="text-[13px] font-extrabold text-faith-ink">{service.name}</div>
+                          <div className="mt-1 text-[12px] text-faith-slate">
+                            {service.category} · {service.location}
+                          </div>
+                        </div>
+                        <ProviderStatusPill tone={statusTone(service.status)}>{service.status}</ProviderStatusPill>
+                      </div>
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        <ProviderStatusPill tone="neutral">{service.price}</ProviderStatusPill>
+                        <ProviderStatusPill tone="neutral">{service.duration}</ProviderStatusPill>
+                        <ProviderStatusPill tone="neutral">{service.createdDate}</ProviderStatusPill>
+                      </div>
+                    </div>
+                  ))}
+                  <div className="flex flex-wrap gap-2 pt-1">
+                    <Button variant="outline" onClick={() => navigate(ROUTES.services)}>
+                      View service list
+                    </Button>
+                    <Button variant="primary" onClick={() => navigate(ROUTES.serviceBuilder)}>
+                      Start service builder
+                    </Button>
+                  </div>
+                </div>
+              ) : (
+                <EmptyState
+                  title="No services yet"
+                  body="Create the first provider service so it can appear directly on the dashboard."
+                  action={<Button variant="primary" onClick={() => navigate(ROUTES.serviceBuilder)}>Start service builder</Button>}
+                />
+              )}
+            </ProviderSectionCard>
+
+            <ProviderSectionCard title="Task queue" subtitle="These are the next actions that should be completed from the landing page.">
+              <div className="space-y-3">
+                {taskQueue.map((task) => (
+                  <div
+                    key={task.label}
+                    className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4"
+                  >
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="min-w-0">
+                        <div className="text-[13px] font-extrabold text-faith-ink">{task.label}</div>
+                        <div className="mt-1 text-[12px] text-faith-slate">{task.detail}</div>
+                      </div>
+                      <ProviderStatusPill tone={task.tone}>{task.tone === 'good' ? 'Done' : 'Next'}</ProviderStatusPill>
+                    </div>
+                    <Button variant="outline" className="mt-4 w-full" onClick={() => navigate(task.action)}>
+                      {task.actionLabel}
+                    </Button>
+                  </div>
+                ))}
               </div>
             </ProviderSectionCard>
 
