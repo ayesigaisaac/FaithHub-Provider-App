@@ -122,7 +122,7 @@ const moduleGroups: SidebarModuleGroup[] = [
     label: 'Workspace',
     items: [
       { label: 'Workspace settings', hint: 'Brand and environment', path: '/faithhub/provider/workspace-settings', icon: <Settings className="h-5 w-5" /> },
-      { label: 'Support', hint: 'Help and landing page', path: '/faithhub/home-landing', icon: <LifeBuoy className="h-5 w-5" /> },
+      { label: 'Dashboard', hint: 'Main workspace overview', path: '/faithhub/provider/dashboard', icon: <LifeBuoy className="h-5 w-5" /> },
     ],
   },
 ];

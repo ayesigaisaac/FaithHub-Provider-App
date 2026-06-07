@@ -3,7 +3,6 @@ import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { ProviderShellLayout } from '@/components/shell/ProviderShellLayout';
 import { findProviderPageByPath, providerPages, type ProviderPageMeta } from '@/navigation/providerPages';
 import NotFoundPage from '@/pages/public/NotFoundPage';
-import FaithHubHomeLandingPage from '@/pages/public/FaithHubHomeLandingPage';
 import { usePageTitle } from '@/hooks/usePageTitle';
 import Dashboard from '@/pages/Dashboard';
 import LoginPage from '@/pages/public/LoginPage';
@@ -25,11 +24,6 @@ function ProviderPageMount({ page }: { page: ProviderPageMeta }) {
       <Component />
     </div>
   );
-}
-
-function LandingMount() {
-  usePageTitle('FaithHub Home');
-  return <FaithHubHomeLandingPage />;
 }
 
 function ProviderAliasRedirect({ to }: { to: string }) {
@@ -61,7 +55,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/faithhub/provider/dashboard" replace />} />
         <Route path="/faithhub/home" element={<Navigate to="/faithhub/provider/dashboard" replace />} />
-        <Route path="/faithhub/home-landing" element={<LandingMount />} />
+        <Route path="/faithhub/home-landing" element={<Navigate to="/faithhub/provider/dashboard" replace />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/dashboard-ui" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
         <Route

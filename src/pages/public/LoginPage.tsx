@@ -34,7 +34,8 @@ function resolveSafeRedirect(input?: string) {
     const suffix = `${parsed.search}${parsed.hash}`;
 
     if (path === '/faithhub/provider') return `${fallback}${suffix}`;
-    if (path === '/dashboard-ui' || path === '/faithhub/home-landing') return `${path}${suffix}`;
+    if (path === '/dashboard-ui') return `${path}${suffix}`;
+    if (path === '/faithhub/home-landing') return `/faithhub/provider/dashboard${suffix}`;
     if (isKnownProviderPath(path)) return `${path}${suffix}`;
   } catch {
     return fallback;

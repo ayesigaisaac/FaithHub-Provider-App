@@ -41,7 +41,7 @@ export const sidebarSections: SidebarSection[] = [
     title: 'WORKSPACE',
     items: [
       { label: 'Workspace Settings', path: '/faithhub/provider/workspace-settings' },
-      { label: 'Support Home', path: '/faithhub/home-landing' },
+      { label: 'Dashboard', path: '/faithhub/provider/dashboard' },
     ],
   },
 ];

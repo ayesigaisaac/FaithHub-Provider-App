@@ -90,8 +90,8 @@ export function resolveActionFromLabel(label: string): ButtonActionId | null {
 
 function validateButtonActionTargets(): void {
   const knownPaths = new Set<string>([
-    '/faithhub/home-landing',
     '/faithhub/provider',
+    '/faithhub/provider/dashboard',
     '/dashboard-ui',
   ]);
 
