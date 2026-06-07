@@ -1227,6 +1227,7 @@ export function ProviderDashboardPage() {
     approvedAssets,
     sessions,
   });
+  const nextAction = taskQueue[0];
 
   return (
     <ProviderPageScaffold
@@ -1268,54 +1269,48 @@ export function ProviderDashboardPage() {
 
         <div className="grid gap-4 xl:grid-cols-12">
           <div className="space-y-4 xl:col-span-8">
-            <ProviderSectionCard title="Priority actions" subtitle="The same task queue powers the landing page and the action rail.">
-              <div className="grid gap-3 md:grid-cols-2">
-                {taskQueue.slice(0, 4).map((item) => (
-                  <div key={item.label} className="rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4">
-                    <div className="flex items-start justify-between gap-3">
-                      <div className="min-w-0">
-                        <div className="text-[13px] font-extrabold text-faith-ink">{item.label}</div>
-                        <div className="mt-1 text-[12px] text-faith-slate">{item.detail}</div>
-                      </div>
-                      <ProviderStatusPill tone={item.tone}>{item.tone === 'good' ? 'Done' : 'Next'}</ProviderStatusPill>
-                    </div>
-                    <Button variant="outline" className="mt-4 w-full" onClick={() => navigate(item.action)}>
-                      {item.actionLabel}
+            <ProviderSectionCard title="Start here" subtitle="Begin with the top priority so the next step is never hidden.">
+              {nextAction ? (
+                <div className="rounded-[28px] border border-emerald-200 bg-emerald-50 p-5">
+                  <div className="flex flex-wrap items-center justify-between gap-3">
+                    <ProviderStatusPill tone={nextAction.tone}>{nextAction.tone === 'good' ? 'Ready' : 'Next'}</ProviderStatusPill>
+                    <div className="text-[11px] font-extrabold uppercase tracking-[0.14em] text-emerald-700">Top priority</div>
+                  </div>
+                  <div className="mt-3 text-[18px] font-black text-faith-ink">{nextAction.label}</div>
+                  <div className="mt-2 text-[13px] leading-6 text-faith-slate">{nextAction.detail}</div>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    <Button variant="primary" onClick={() => navigate(nextAction.action)}>
+                      {nextAction.actionLabel}
+                    </Button>
+                    <Button variant="outline" onClick={() => navigate(ROUTES.services)}>
+                      View services
                     </Button>
                   </div>
-                ))}
-              </div>
+                </div>
+              ) : null}
             </ProviderSectionCard>
 
-            <ProviderSectionCard title="Quick actions" subtitle="Move directly into the next part of the FaithHub Provider journey.">
+            <ProviderSectionCard title="Priority actions" subtitle="Follow these in order to keep the workspace moving.">
               <div className="grid gap-3 md:grid-cols-2">
-                {[
-                  { label: 'Create Service', icon: BriefcaseBusiness, path: ROUTES.serviceBuilder },
-                  { label: 'Create Campaign', icon: Megaphone, path: ROUTES.campaignBuilder },
-                  { label: 'Upload Content', icon: Upload, path: ROUTES.contentUpload },
-                  { label: 'Create Live Session', icon: Radio, path: ROUTES.liveBuilder },
-                ].map((action) => {
-                  const Icon = action.icon;
-                  return (
-                    <button
-                      key={action.label}
-                      type="button"
-                      onClick={() => navigate(action.path)}
-                      className="flex items-center justify-between rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 py-4 text-left transition-colors hover:bg-[var(--fh-surface)]"
-                    >
-                      <div className="flex items-center gap-3">
-                        <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-700">
-                          <Icon size={18} />
-                        </span>
-                        <div>
-                          <div className="text-[13px] font-extrabold text-faith-ink">{action.label}</div>
-                          <div className="text-[11px] text-faith-slate">Open the matching FaithHub workspace</div>
-                        </div>
+                {taskQueue.slice(1, 5).map((item) => (
+                  <button
+                    key={item.label}
+                    type="button"
+                    onClick={() => navigate(item.action)}
+                    className="flex items-center justify-between rounded-2xl border border-faith-line/70 bg-[var(--fh-surface-bg)] px-4 py-4 text-left transition-colors hover:bg-[var(--fh-surface)]"
+                  >
+                    <div className="flex items-center gap-3">
+                      <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-700">
+                        <ArrowRight size={18} />
+                      </span>
+                      <div>
+                        <div className="text-[13px] font-extrabold text-faith-ink">{item.label}</div>
+                        <div className="text-[11px] text-faith-slate">{item.detail}</div>
                       </div>
-                      <ArrowRight size={14} />
-                    </button>
-                  );
-                })}
+                    </div>
+                    <ArrowRight size={14} />
+                  </button>
+                ))}
               </div>
             </ProviderSectionCard>
 
@@ -1331,7 +1326,7 @@ export function ProviderDashboardPage() {
                         <div className="min-w-0">
                           <div className="text-[13px] font-extrabold text-faith-ink">{service.name}</div>
                           <div className="mt-1 text-[12px] text-faith-slate">
-                            {service.category} · {service.location}
+                            {service.category} - {service.location}
                           </div>
                         </div>
                         <ProviderStatusPill tone={statusTone(service.status)}>{service.status}</ProviderStatusPill>
@@ -1361,7 +1356,7 @@ export function ProviderDashboardPage() {
               )}
             </ProviderSectionCard>
 
-            <ProviderSectionCard title="Task queue" subtitle="These are the next actions that should be completed from the landing page.">
+            <ProviderSectionCard title="Task queue" subtitle="These actions are sorted from the most important next step downward.">
               <div className="space-y-3">
                 {taskQueue.map((task) => (
                   <div

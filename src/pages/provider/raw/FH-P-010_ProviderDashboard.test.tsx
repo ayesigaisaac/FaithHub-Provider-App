@@ -25,15 +25,17 @@ describe('Provider dashboard', () => {
     render(<ProviderDashboardPage />);
 
     expect(screen.getByText(/FaithHub Dashboard/i)).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /Start here/i })).toBeInTheDocument();
     expect(screen.getByText(/Services on the dashboard/i)).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: /Task queue/i })).toBeInTheDocument();
     expect(screen.getByText(/Sunday Worship Livestream Support/i)).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /Create Service/i })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /Create Campaign/i })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /Upload Content/i })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /Create Live Session/i })).toBeInTheDocument();
+    expect(screen.getAllByRole('button', { name: /Open profile/i }).length).toBeGreaterThan(0);
+    expect(screen.getByRole('button', { name: /Create another service/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Create another campaign/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Open content upload/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Open live session/i })).toBeInTheDocument();
 
-    await user.click(screen.getByRole('button', { name: /Create Service/i }));
-    expect(navigateMock).toHaveBeenCalledWith('/faithhub/provider/service-builder');
+    await user.click(screen.getAllByRole('button', { name: /Open profile/i })[0]);
+    expect(navigateMock).toHaveBeenCalledWith('/faithhub/provider/profile-settings');
   });
 });
