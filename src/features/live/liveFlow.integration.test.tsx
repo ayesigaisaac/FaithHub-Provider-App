@@ -1,9 +1,9 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
-import FaithHubLiveBuilderPage from "@/pages/provider/raw/FH-P-030_LiveBuilder";
-import FaithHubLiveSchedulePage from "@/pages/provider/raw/FH-P-031_LiveSchedule";
-import FaithHubLiveDashboardPage from "@/pages/provider/raw/FH-P-032_LiveDashboard";
-import FaithHubLiveStudioPage from "@/pages/provider/raw/FH-P-033_LiveStudio";
-import StreamToPlatformsPage from "@/pages/provider/raw/FH-P-034_StreamToPlatforms";
+import FaithHubLiveBuilderPage from "@/pages/provider/raw/LiveBuilder";
+import FaithHubLiveSchedulePage from "@/pages/provider/raw/LiveSchedule";
+import FaithHubLiveDashboardPage from "@/pages/provider/raw/LiveDashboard";
+import FaithHubLiveStudioPage from "@/pages/provider/raw/LiveStudio";
+import StreamToPlatformsPage from "@/pages/provider/raw/StreamToPlatforms";
 import { getLiveFlowState } from "./liveFlowStore";
 import { getLiveRuntimeBySessionId } from "./liveRuntimeStore";
 import { NotificationProvider } from "@/contexts/NotificationContext";
@@ -123,3 +123,4 @@ describe("Live flow integration", () => {
     20000,
   );
 });
+

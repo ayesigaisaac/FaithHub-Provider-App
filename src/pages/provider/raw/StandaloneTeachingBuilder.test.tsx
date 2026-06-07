@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
-import StandaloneTeachingBuilderPage from "./FH-P-022_StandaloneTeachingBuilder";
+import StandaloneTeachingBuilderPage from "./StandaloneTeachingBuilder";
 
 const navigateWithRouterMock = vi.fn();
 
@@ -32,3 +32,4 @@ describe("FH-P-022 Standalone Teaching Builder button wiring", () => {
     expect(navigateWithRouterMock).toHaveBeenCalledWith("/faithhub/provider/post-live-publishing");
   });
 });
+

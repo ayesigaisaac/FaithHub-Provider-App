@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import TeachingsDashboardPage from '@/pages/provider/raw/FH-P-019_TeachingsDashboard';
+import TeachingsDashboardPage from '@/pages/provider/raw/TeachingsDashboard';
 import {
   publishEpisode,
   saveSeriesDraft,
@@ -43,3 +43,4 @@ describe('Teachings dashboard integration', () => {
     expect(episodeMatches.length).toBeGreaterThan(0);
   }, 15000);
 });
+

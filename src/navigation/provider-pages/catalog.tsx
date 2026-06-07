@@ -1,4 +1,4 @@
-﻿import { lazy, type LazyExoticComponent, type ComponentType } from 'react';
+import { lazy, type LazyExoticComponent, type ComponentType } from 'react';
 import type { LucideIcon } from 'lucide-react';
 import {
   Bell,
@@ -65,54 +65,54 @@ export type ProviderPageMeta = {
 
 const lazyPage = (loader: Parameters<typeof lazy>[0]) => lazy(loader);
 
-const ProviderOnboarding = lazyPage(() => import('@/pages/provider/raw/FH-P-001_ProviderOnboarding'));
-const ProviderDashboard = lazyPage(() => import('@/pages/provider/raw/FH-P-010_ProviderDashboard'));
-const SeriesDashboard = lazyPage(() => import('@/pages/provider/raw/FH-P-018_SeriesDashboard'));
-const TeachingsDashboard = lazyPage(() => import('@/pages/provider/raw/FH-P-019_TeachingsDashboard'));
-const SeriesBuilder = lazyPage(() => import('@/pages/provider/raw/FH-P-020_SeriesBuilder'));
-const EpisodeBuilder = lazyPage(() => import('@/pages/provider/raw/FH-P-021_EpisodeBuilder'));
-const StandaloneTeachingBuilder = lazyPage(() => import('@/pages/provider/raw/FH-P-022_StandaloneTeachingBuilder'));
-const BooksManager = lazyPage(() => import('@/pages/provider/raw/FH-P-023_BooksManager'));
-const BookBuilder = lazyPage(() => import('@/pages/provider/raw/FH-P-024_BookBuilder'));
-const ResourcesManager = lazyPage(() => import('@/pages/provider/raw/FH-P-025_ResourcesManager'));
-const ContentPlanner = lazyPage(() => import('@/pages/provider/raw/FH-P-130_ContentPlanner'));
-const MerchandiseManager = lazyPage(() => import('@/pages/provider/raw/FH-P-026_MerchandiseManager'));
-const MerchandiseBuilder = lazyPage(() => import('@/pages/provider/raw/FH-P-027_MerchandiseBuilder'));
-const LiveBuilder = lazyPage(() => import('@/pages/provider/raw/FH-P-030_LiveBuilder'));
-const LiveSchedule = lazyPage(() => import('@/pages/provider/raw/FH-P-031_LiveSchedule'));
-const LiveDashboard = lazyPage(() => import('@/pages/provider/raw/FH-P-032_LiveDashboard'));
-const LiveStudio = lazyPage(() => import('@/pages/provider/raw/FH-P-033_LiveStudio'));
-const StreamToPlatforms = lazyPage(() => import('@/pages/provider/raw/FH-P-034_StreamToPlatforms'));
-const AudienceNotifications = lazyPage(() => import('@/pages/provider/raw/FH-P-035_AudienceNotifications'));
-const ChannelsContactManager = lazyPage(() => import('@/pages/provider/raw/FH-P-036_ChannelsContactManager'));
-const Noticeboard = lazyPage(() => import('@/pages/provider/raw/FH-P-037_Noticeboard'));
-const PostLivePublishing = lazyPage(() => import('@/pages/provider/raw/FH-P-040_PostLivePublishing'));
-const ReplaysAndClips = lazyPage(() => import('@/pages/provider/raw/FH-P-041_ReplaysAndClips'));
-const EventsManager = lazyPage(() => import('@/pages/provider/raw/FH-P-050_EventsManager'));
-const DonationsAndFunds = lazyPage(() => import('@/pages/provider/raw/FH-P-060_DonationsAndFunds'));
-const CharityCrowdfundingWorkbench = lazyPage(() => import('@/pages/provider/raw/FH-P-061_CharityCrowdfundingWorkbench'));
-const WalletAndPayouts = lazyPage(() => import('@/pages/provider/raw/FH-P-062_WalletAndPayouts'));
-const ReviewsAndModeration = lazyPage(() => import('@/pages/provider/raw/FH-P-070_ReviewsAndModeration'));
-const RevelightDashboard = lazyPage(() => import('@/pages/provider/raw/FH-P-080_RevelightDashboard'));
-const RevelightMarketplace = lazyPage(() => import('@/pages/provider/raw/FH-P-081_RevelightMarketplace'));
-const RevelightManager = lazyPage(() => import('@/pages/provider/raw/FH-P-082_RevelightManager'));
-const RevelightBuilder = lazyPage(() => import('@/pages/provider/raw/FH-P-083_RevelightBuilder'));
-const CommunityGroups = lazyPage(() => import('@/pages/provider/raw/FH-P-100_CommunityGroups'));
-const PrayerRequests = lazyPage(() => import('@/pages/provider/raw/FH-P-101_PrayerRequests_regenerated'));
-const Testimonies = lazyPage(() => import('@/pages/provider/raw/FH-P-102_Testimonies'));
-const PrayerJournal = lazyPage(() => import('@/pages/provider/raw/FH-P-103_PrayerJournal'));
-const CommunityForum = lazyPage(() => import('@/pages/provider/raw/FH-P-104_CommunityForum'));
-const Counseling = lazyPage(() => import('@/pages/provider/raw/FH-P-105_Counseling'));
-const Projects = lazyPage(() => import('@/pages/provider/raw/FH-P-106_Projects'));
-const Devotionals = lazyPage(() => import('@/pages/provider/raw/FH-P-107_Devotionals'));
-const Leadership = lazyPage(() => import('@/pages/provider/raw/FH-P-110_Leadership'));
-const ServingTeams = lazyPage(() => import('@/pages/provider/raw/FH-P-111_ServingTeams'));
-const RolesPermissions = lazyPage(() => import('@/pages/provider/raw/FH-P-112_RolesPermissions'));
-const Subscriptions = lazyPage(() => import('@/pages/provider/raw/FH-P-113_Subscriptions'));
-const WorkspaceSettings = lazyPage(() => import('@/pages/provider/raw/FH-P-120_WorkspaceSettings'));
-const ModerationSettings = lazyPage(() => import('@/pages/provider/raw/FH-P-121_ModerationSettings'));
-const AuditLog = lazyPage(() => import('@/pages/provider/raw/FH-P-122_AuditLog'));
-const QACenter = lazyPage(() => import('@/pages/provider/raw/FH-P-123_QACenter'));
+const ProviderOnboarding = lazyPage(() => import('@/pages/provider/raw/ProviderOnboarding'));
+const ProviderDashboard = lazyPage(() => import('@/pages/provider/raw/ProviderDashboard'));
+const SeriesDashboard = lazyPage(() => import('@/pages/provider/raw/SeriesDashboard'));
+const TeachingsDashboard = lazyPage(() => import('@/pages/provider/raw/TeachingsDashboard'));
+const SeriesBuilder = lazyPage(() => import('@/pages/provider/raw/SeriesBuilder'));
+const EpisodeBuilder = lazyPage(() => import('@/pages/provider/raw/EpisodeBuilder'));
+const StandaloneTeachingBuilder = lazyPage(() => import('@/pages/provider/raw/StandaloneTeachingBuilder'));
+const BooksManager = lazyPage(() => import('@/pages/provider/raw/BooksManager'));
+const BookBuilder = lazyPage(() => import('@/pages/provider/raw/BookBuilder'));
+const ResourcesManager = lazyPage(() => import('@/pages/provider/raw/ResourcesManager'));
+const ContentPlanner = lazyPage(() => import('@/pages/provider/raw/ContentPlanner'));
+const MerchandiseManager = lazyPage(() => import('@/pages/provider/raw/MerchandiseManager'));
+const MerchandiseBuilder = lazyPage(() => import('@/pages/provider/raw/MerchandiseBuilder'));
+const LiveBuilder = lazyPage(() => import('@/pages/provider/raw/LiveBuilder'));
+const LiveSchedule = lazyPage(() => import('@/pages/provider/raw/LiveSchedule'));
+const LiveDashboard = lazyPage(() => import('@/pages/provider/raw/LiveDashboard'));
+const LiveStudio = lazyPage(() => import('@/pages/provider/raw/LiveStudio'));
+const StreamToPlatforms = lazyPage(() => import('@/pages/provider/raw/StreamToPlatforms'));
+const AudienceNotifications = lazyPage(() => import('@/pages/provider/raw/AudienceNotifications'));
+const ChannelsContactManager = lazyPage(() => import('@/pages/provider/raw/ChannelsContactManager'));
+const Noticeboard = lazyPage(() => import('@/pages/provider/raw/Noticeboard'));
+const PostLivePublishing = lazyPage(() => import('@/pages/provider/raw/PostLivePublishing'));
+const ReplaysAndClips = lazyPage(() => import('@/pages/provider/raw/ReplaysAndClips'));
+const EventsManager = lazyPage(() => import('@/pages/provider/raw/EventsManager'));
+const DonationsAndFunds = lazyPage(() => import('@/pages/provider/raw/DonationsAndFunds'));
+const CharityCrowdfundingWorkbench = lazyPage(() => import('@/pages/provider/raw/CharityCrowdfundingWorkbench'));
+const WalletAndPayouts = lazyPage(() => import('@/pages/provider/raw/WalletAndPayouts'));
+const ReviewsAndModeration = lazyPage(() => import('@/pages/provider/raw/ReviewsAndModeration'));
+const RevelightDashboard = lazyPage(() => import('@/pages/provider/raw/RevelightDashboard'));
+const RevelightMarketplace = lazyPage(() => import('@/pages/provider/raw/RevelightMarketplace'));
+const RevelightManager = lazyPage(() => import('@/pages/provider/raw/RevelightManager'));
+const RevelightBuilder = lazyPage(() => import('@/pages/provider/raw/RevelightBuilder'));
+const CommunityGroups = lazyPage(() => import('@/pages/provider/raw/CommunityGroups'));
+const PrayerRequests = lazyPage(() => import('@/pages/provider/raw/PrayerRequests'));
+const Testimonies = lazyPage(() => import('@/pages/provider/raw/Testimonies'));
+const PrayerJournal = lazyPage(() => import('@/pages/provider/raw/PrayerJournal'));
+const CommunityForum = lazyPage(() => import('@/pages/provider/raw/CommunityForum'));
+const Counseling = lazyPage(() => import('@/pages/provider/raw/Counseling'));
+const Projects = lazyPage(() => import('@/pages/provider/raw/Projects'));
+const Devotionals = lazyPage(() => import('@/pages/provider/raw/Devotionals'));
+const Leadership = lazyPage(() => import('@/pages/provider/raw/Leadership'));
+const ServingTeams = lazyPage(() => import('@/pages/provider/raw/ServingTeams'));
+const RolesPermissions = lazyPage(() => import('@/pages/provider/raw/RolesPermissions'));
+const Subscriptions = lazyPage(() => import('@/pages/provider/raw/Subscriptions'));
+const WorkspaceSettings = lazyPage(() => import('@/pages/provider/raw/WorkspaceSettings'));
+const ModerationSettings = lazyPage(() => import('@/pages/provider/raw/ModerationSettings'));
+const AuditLog = lazyPage(() => import('@/pages/provider/raw/AuditLog'));
+const QACenter = lazyPage(() => import('@/pages/provider/raw/QACenter'));
 const ProfileSettings = lazyPage(() => import('@/pages/provider/ProfileSettingsPage'));
 const ProviderShellPreview = lazyPage(() => import('@/pages/provider/previews/FaithHubProviderShellLightV3'));
 const DesignSystemShowcase = lazyPage(() => import('@/pages/provider/previews/DesignSystemShowcase'));
@@ -792,5 +792,6 @@ export const providerPageCatalog: ProviderPageMeta[] = [
     component: ProviderShellPreview,
   },
 ];
+
 
 

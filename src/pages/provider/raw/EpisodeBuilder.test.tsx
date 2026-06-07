@@ -1,5 +1,5 @@
-﻿import { render, screen } from '@testing-library/react';
-import EpisodeBuilderPage from './FH-P-021_EpisodeBuilder';
+import { render, screen } from '@testing-library/react';
+import EpisodeBuilderPage from './EpisodeBuilder';
 
 describe('Episode Builder', () => {
   it('renders without crashing', () => {
@@ -7,4 +7,5 @@ describe('Episode Builder', () => {
     expect(screen.getAllByText(/Episode Builder/i).length).toBeGreaterThan(0);
   });
 });
+
 

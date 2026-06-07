@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from '@testing-library/react';
-import SeriesBuilderPage from '@/pages/provider/raw/FH-P-020_SeriesBuilder';
-import EpisodeBuilderPage from '@/pages/provider/raw/FH-P-021_EpisodeBuilder';
+import SeriesBuilderPage from '@/pages/provider/raw/SeriesBuilder';
+import EpisodeBuilderPage from '@/pages/provider/raw/EpisodeBuilder';
 import {
   saveEpisodeDraft,
   saveSeriesDraft,
@@ -60,3 +60,4 @@ describe('Builder URL preload', () => {
     });
   });
 });
+

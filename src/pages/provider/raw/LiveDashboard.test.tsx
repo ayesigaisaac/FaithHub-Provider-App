@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import LiveDashboardPage from './FH-P-032_LiveDashboard';
+import LiveDashboardPage from './LiveDashboard';
 
 const navigateMock = vi.fn();
 
@@ -33,3 +33,4 @@ describe('Live dashboard', () => {
     expect(navigateMock).toHaveBeenCalledWith(expect.stringMatching(/^\/faithhub\/provider\/waiting-room/), undefined);
   });
 });
+

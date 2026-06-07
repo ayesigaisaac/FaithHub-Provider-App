@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
-import SeriesBuilderPage from "./FH-P-020_SeriesBuilder";
+import SeriesBuilderPage from "./SeriesBuilder";
 
 vi.mock("@/navigation/routerNavigate", () => ({
   navigateWithRouter: vi.fn(),
@@ -21,3 +21,4 @@ describe("FH-P-020 Series Builder button wiring", () => {
     expect(screen.getByText("Series draft duplicated.")).toBeInTheDocument();
   });
 });
+

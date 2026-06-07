@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import ProviderDashboardPage from './FH-P-010_ProviderDashboard';
+import ProviderDashboardPage from './ProviderDashboard';
 
 const navigateMock = vi.fn();
 
@@ -39,3 +39,4 @@ describe('Provider dashboard', () => {
     expect(navigateMock).toHaveBeenCalledWith('/faithhub/provider/profile-settings');
   });
 });
+
