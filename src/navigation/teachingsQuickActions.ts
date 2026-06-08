@@ -1,3 +1,5 @@
+import { providerRoutes } from './providerRoutes';
+
 export type TeachingsQuickActionKey =
   | 'continue-editing'
   | 'create-teaching'
@@ -18,28 +20,28 @@ export const teachingsQuickActions: TeachingsQuickActionMeta[] = [
     label: 'Continue Editing',
     shortcut: 'G D',
     hint: 'Open your current in-progress teaching',
-    route: '/faithhub/provider/dashboard',
+    route: providerRoutes.dashboard,
   },
   {
     key: 'create-teaching',
     label: 'Create Teaching',
     shortcut: 'C T',
     hint: 'Start a new teaching draft',
-    route: '/faithhub/provider/teachings-dashboard',
+    route: providerRoutes.teachingsDashboard,
   },
   {
     key: 'review',
     label: 'Review',
     shortcut: 'G R',
     hint: 'Open moderation and pending reviews',
-    route: '/faithhub/provider/reviews-and-moderation',
+    route: providerRoutes.reviewsAndModeration,
   },
   {
     key: 'publish',
     label: 'Publish',
     shortcut: 'G P',
     hint: 'Go to publish-ready workflow',
-    route: '/faithhub/provider/live-builder',
+    route: providerRoutes.liveBuilder,
   },
 ];
 
@@ -50,4 +52,3 @@ export const teachingsShortcutRouteMap: Record<string, string> = teachingsQuickA
   },
   {} as Record<string, string>,
 );
-

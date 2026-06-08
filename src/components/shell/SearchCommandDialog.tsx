@@ -23,6 +23,7 @@ import { providerPages } from '@/navigation/providerPages';
 import { teachingsQuickActions } from '@/navigation/teachingsQuickActions';
 import { readSafeStorageValue, writeSafeStorageValue } from './safeStorage';
 import { getProviderPageSearchTitle } from '@/navigation/providerPageDisplay';
+import { providerRoutes } from '@/navigation/providerRoutes';
 
 const RECENT_COMMANDS_KEY = 'fh.provider.search.recents.v1';
 
@@ -87,7 +88,7 @@ export function SearchCommandDialog({
         section: 'Actions',
         description: 'Start a new teaching workflow',
         keywords: 'new teaching create sermon',
-        onSelect: () => navigateWithRouter('/faithhub/provider/teachings-dashboard'),
+        onSelect: () => navigateWithRouter(providerRoutes.teachingsDashboard),
       },
       {
         id: 'open-last-draft',
@@ -98,7 +99,7 @@ export function SearchCommandDialog({
         section: 'Actions',
         description: 'Jump back to your most recent draft',
         keywords: 'draft continue edit',
-        onSelect: () => navigateWithRouter('/faithhub/provider/dashboard'),
+        onSelect: () => navigateWithRouter(providerRoutes.dashboard),
       },
       {
         id: 'search-teachings',
@@ -109,7 +110,7 @@ export function SearchCommandDialog({
         section: 'Actions',
         description: 'Search teachings by title',
         keywords: 'search find title teachings',
-        onSelect: () => navigateWithRouter('/faithhub/provider/teachings-dashboard'),
+        onSelect: () => navigateWithRouter(providerRoutes.teachingsDashboard),
       },
       {
         id: 'open-workflow',
@@ -120,7 +121,7 @@ export function SearchCommandDialog({
         section: 'Actions',
         description: 'Continue editing, drafts, and publishing',
         keywords: 'workflow dashboard pending published',
-        onSelect: () => navigateWithRouter('/faithhub/provider/dashboard'),
+        onSelect: () => navigateWithRouter(providerRoutes.dashboard),
       },
     ];
 
@@ -193,7 +194,7 @@ export function SearchCommandDialog({
         subtitle: 'Open provider mission control',
         icon: <AutoAwesomeRoundedIcon fontSize="small" />,
         group: 'Action',
-        onSelect: () => navigateWithRouter('/faithhub/provider/dashboard'),
+        onSelect: () => navigateWithRouter(providerRoutes.dashboard),
       },
       {
         id: 'quick-live',
@@ -201,7 +202,7 @@ export function SearchCommandDialog({
         subtitle: 'Open active stream operations',
         icon: <SearchRoundedIcon fontSize="small" />,
         group: 'Action',
-        onSelect: () => navigateWithRouter('/faithhub/provider/live-dashboard'),
+        onSelect: () => navigateWithRouter(providerRoutes.liveDashboard),
       },
       {
         id: 'quick-teachings',
@@ -209,7 +210,7 @@ export function SearchCommandDialog({
         subtitle: 'Open teachings workflow board',
         icon: <AutoStoriesRoundedIcon fontSize="small" />,
         group: 'Action',
-        onSelect: () => navigateWithRouter('/faithhub/provider/teachings-dashboard'),
+        onSelect: () => navigateWithRouter(providerRoutes.teachingsDashboard),
       },
       {
         id: 'quick-profile',
@@ -217,7 +218,7 @@ export function SearchCommandDialog({
         subtitle: 'Open workspace and profile setup',
         icon: <EditNoteRoundedIcon fontSize="small" />,
         group: 'Action',
-        onSelect: () => navigateWithRouter('/faithhub/provider/profile-settings'),
+        onSelect: () => navigateWithRouter(providerRoutes.profileSettings),
       },
     ],
     [],

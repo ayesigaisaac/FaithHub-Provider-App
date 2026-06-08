@@ -31,6 +31,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { getProviderSidebarGroupsBySection, providerPages, providerSections, type ProviderPageSection } from '@/navigation/providerPages';
 import { providerCategoryBySection } from '@/navigation/providerCategories';
+import { providerRoutes } from '@/navigation/providerRoutes';
 import { readSafeStorageValue, removeSafeStorageValue, writeSafeStorageValue } from './safeStorage';
 import { getProviderPageSidebarHint, getProviderPageSidebarLabel } from '@/navigation/providerPageDisplay';
 
@@ -80,19 +81,19 @@ const quickStartItems = [
   {
     label: '1) Check Dashboard',
     hint: 'See FaithHub metrics and action items first',
-    path: '/faithhub/provider/dashboard',
+    path: providerRoutes.dashboard,
     icon: HomeRoundedIcon,
   },
   {
     label: '2) Open Services',
     hint: 'Create or review FaithHub services',
-    path: '/faithhub/provider/services',
+    path: providerRoutes.services,
     icon: FolderRoundedIcon,
   },
   {
     label: '3) Go Live',
     hint: 'Monitor and control the live studio',
-    path: '/faithhub/provider/live-dashboard',
+    path: providerRoutes.liveDashboard,
     icon: LiveTvRoundedIcon,
   },
 ] as const;

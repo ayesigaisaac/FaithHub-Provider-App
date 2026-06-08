@@ -1,4 +1,5 @@
-import { getKnownProviderPaths, providerPages } from '@/navigation/providerPages';
+import { getKnownProviderPaths } from '@/navigation/providerPages';
+import { providerRoutes } from './providerRoutes';
 
 type ButtonActionKind = 'navigate' | 'copy_link' | 'preview_mode';
 
@@ -10,27 +11,27 @@ type ButtonActionDefinition = {
 };
 
 export const buttonActionRegistry = {
-  open_provider_dashboard: { kind: 'navigate', targetPath: '/faithhub/provider/dashboard', fallbackKeywords: ['dashboard', 'overview'] },
-  open_live_dashboard: { kind: 'navigate', targetPath: '/faithhub/provider/live-dashboard', fallbackKeywords: ['live', 'watch', 'trailer', 'join', 'preview'] },
-  open_live_builder: { kind: 'navigate', targetPath: '/faithhub/provider/live-builder', fallbackKeywords: ['live builder', 'build live'] },
-  open_donations_funds: { kind: 'navigate', targetPath: '/faithhub/provider/donations-and-funds', fallbackKeywords: ['give', 'giving', 'donat', 'support', 'complete donation'] },
-  open_charity_crowdfunding: { kind: 'navigate', targetPath: '/faithhub/provider/charity-crowdfunding-workbench', fallbackKeywords: ['crowdfund'] },
-  open_prayer_requests: { kind: 'navigate', targetPath: '/faithhub/provider/prayer-requests', fallbackKeywords: ['pray', 'prayer', 'circle'] },
-  open_resources_manager: { kind: 'navigate', targetPath: '/faithhub/provider/resources-manager', fallbackKeywords: ['resource', 'note', 'book', 'download'] },
-  open_standalone_teaching_builder: { kind: 'navigate', targetPath: '/faithhub/provider/standalone-teaching-builder', fallbackKeywords: ['standalone teaching'] },
-  open_merchandise_builder: { kind: 'navigate', targetPath: '/faithhub/provider/merchandise-builder', fallbackKeywords: ['merchandise', 'store', 'item'] },
-  open_events_manager: { kind: 'navigate', targetPath: '/faithhub/provider/events-manager', fallbackKeywords: ['event', 'ticket'] },
-  open_noticeboard: { kind: 'navigate', targetPath: '/faithhub/provider/noticeboard', fallbackKeywords: ['noticeboard', 'notice', 'board'] },
-  open_projects: { kind: 'navigate', targetPath: '/faithhub/provider/projects', fallbackKeywords: ['project', 'template'] },
-  open_revelight_dashboard: { kind: 'navigate', targetPath: '/faithhub/provider/revelight-dashboard', fallbackKeywords: ['revelight', 'campaign', 'cta'] },
-  open_audience_notifications: { kind: 'navigate', targetPath: '/faithhub/provider/audience-notifications', fallbackKeywords: ['audience', 'notification', 'reminder', 'notify'] },
-  open_wallet_payouts: { kind: 'navigate', targetPath: '/faithhub/provider/wallet-payouts', fallbackKeywords: ['wallet', 'payout', 'transfer'] },
-  open_roles_permissions: { kind: 'navigate', targetPath: '/faithhub/provider/roles-permissions', fallbackKeywords: ['team', 'leadership', 'role', 'permission'] },
-  open_community_groups: { kind: 'navigate', targetPath: '/faithhub/provider/community-groups', fallbackKeywords: ['follow', 'story', 'community'] },
-  open_testimonies: { kind: 'navigate', targetPath: '/faithhub/provider/testimonies', fallbackKeywords: ['testimony'] },
-  open_counseling: { kind: 'navigate', targetPath: '/faithhub/provider/counseling', fallbackKeywords: ['counsel', 'encouragement', 'follow-up', 'secure note'] },
-  open_teachings_dashboard: { kind: 'navigate', targetPath: '/faithhub/provider/teachings-dashboard', fallbackKeywords: ['teaching'] },
-  open_series_dashboard: { kind: 'navigate', targetPath: '/faithhub/provider/series-dashboard', fallbackKeywords: ['series', 'episode'] },
+  open_provider_dashboard: { kind: 'navigate', targetPath: providerRoutes.dashboard, fallbackKeywords: ['dashboard', 'overview'] },
+  open_live_dashboard: { kind: 'navigate', targetPath: providerRoutes.liveDashboard, fallbackKeywords: ['live', 'watch', 'trailer', 'join', 'preview'] },
+  open_live_builder: { kind: 'navigate', targetPath: providerRoutes.liveBuilder, fallbackKeywords: ['live builder', 'build live'] },
+  open_donations_funds: { kind: 'navigate', targetPath: providerRoutes.donationsAndFunds, fallbackKeywords: ['give', 'giving', 'donat', 'support', 'complete donation'] },
+  open_charity_crowdfunding: { kind: 'navigate', targetPath: providerRoutes.charityCrowdfundingWorkbench, fallbackKeywords: ['crowdfund'] },
+  open_prayer_requests: { kind: 'navigate', targetPath: providerRoutes.prayerRequests, fallbackKeywords: ['pray', 'prayer', 'circle'] },
+  open_resources_manager: { kind: 'navigate', targetPath: providerRoutes.resourcesManager, fallbackKeywords: ['resource', 'note', 'book', 'download'] },
+  open_standalone_teaching_builder: { kind: 'navigate', targetPath: providerRoutes.standaloneTeachingBuilder, fallbackKeywords: ['standalone teaching'] },
+  open_merchandise_builder: { kind: 'navigate', targetPath: providerRoutes.merchandiseBuilder, fallbackKeywords: ['merchandise', 'store', 'item'] },
+  open_events_manager: { kind: 'navigate', targetPath: providerRoutes.eventsManager, fallbackKeywords: ['event', 'ticket'] },
+  open_noticeboard: { kind: 'navigate', targetPath: providerRoutes.noticeboard, fallbackKeywords: ['noticeboard', 'notice', 'board'] },
+  open_projects: { kind: 'navigate', targetPath: providerRoutes.projects, fallbackKeywords: ['project', 'template'] },
+  open_revelight_dashboard: { kind: 'navigate', targetPath: providerRoutes.revelightDashboard, fallbackKeywords: ['revelight', 'campaign', 'cta'] },
+  open_audience_notifications: { kind: 'navigate', targetPath: providerRoutes.audienceNotifications, fallbackKeywords: ['audience', 'notification', 'reminder', 'notify'] },
+  open_wallet_payouts: { kind: 'navigate', targetPath: providerRoutes.walletPayouts, fallbackKeywords: ['wallet', 'payout', 'transfer'] },
+  open_roles_permissions: { kind: 'navigate', targetPath: providerRoutes.rolesPermissions, fallbackKeywords: ['team', 'leadership', 'role', 'permission'] },
+  open_community_groups: { kind: 'navigate', targetPath: providerRoutes.communityGroups, fallbackKeywords: ['follow', 'story', 'community'] },
+  open_testimonies: { kind: 'navigate', targetPath: providerRoutes.testimonies, fallbackKeywords: ['testimony'] },
+  open_counseling: { kind: 'navigate', targetPath: providerRoutes.counseling, fallbackKeywords: ['counsel', 'encouragement', 'follow-up', 'secure note'] },
+  open_teachings_dashboard: { kind: 'navigate', targetPath: providerRoutes.teachingsDashboard, fallbackKeywords: ['teaching'] },
+  open_series_dashboard: { kind: 'navigate', targetPath: providerRoutes.seriesDashboard, fallbackKeywords: ['series', 'episode'] },
   copy_current_link: { kind: 'copy_link', fallbackKeywords: ['share'] },
   set_preview_desktop: { kind: 'preview_mode', previewMode: 'desktop', fallbackKeywords: ['desktop'] },
   set_preview_mobile: { kind: 'preview_mode', previewMode: 'mobile', fallbackKeywords: ['mobile'] },
@@ -90,8 +91,8 @@ export function resolveActionFromLabel(label: string): ButtonActionId | null {
 
 function validateButtonActionTargets(): void {
   const knownPaths = getKnownProviderPaths();
-  knownPaths.add('/faithhub/provider');
-  knownPaths.add('/dashboard-ui');
+  knownPaths.add(providerRoutes.root);
+  knownPaths.add(providerRoutes.dashboardUi);
 
   (Object.keys(buttonActionRegistry) as ButtonActionId[]).forEach((actionId) => {
     const action = buttonActionRegistry[actionId];

@@ -22,6 +22,7 @@ import {
   Video,
   Wallet,
 } from 'lucide-react';
+import { providerRoutes } from './providerRoutes';
 
 export interface ModuleSubItem {
   label: string;
@@ -51,11 +52,11 @@ export const moduleSidebarConfig: SidebarModule[] = [
     title: 'CONTINUE',
     icon: LayoutDashboard,
     items: [
-      { label: 'Continue Editing', description: 'Jump back into your active teaching workflow immediately.', route: '/dashboard-ui', icon: Gauge },
+      { label: 'Continue Editing', description: 'Jump back into your active teaching workflow immediately.', route: providerRoutes.dashboardUi, icon: Gauge },
       {
         label: 'Workflow Dashboard',
         description: 'Action-first dashboard for creating, editing, and publishing teachings.',
-        route: '/faithhub/provider/dashboard',
+        route: providerRoutes.dashboard,
         icon: LayoutDashboard,
       },
     ],
@@ -67,19 +68,19 @@ export const moduleSidebarConfig: SidebarModule[] = [
       {
         label: 'All Teachings',
         description: 'View all teachings by state and take the next action quickly.',
-        route: '/faithhub/provider/teachings-dashboard',
+        route: providerRoutes.teachingsDashboard,
         icon: BookOpen,
       },
       {
         label: 'Manage Content',
         description: 'Organize series, episodes, and draft structure for publishing.',
-        route: '/faithhub/provider/series-dashboard',
+        route: providerRoutes.seriesDashboard,
         icon: FileText,
       },
       {
         label: 'Create Teaching Assets',
         description: 'Prepare notes, files, and support material for active teachings.',
-        route: '/faithhub/provider/resources-manager',
+        route: providerRoutes.resourcesManager,
         icon: FileText,
       },
     ],
@@ -91,19 +92,19 @@ export const moduleSidebarConfig: SidebarModule[] = [
       {
         label: 'Create Teaching Live',
         description: 'Prepare live teaching sessions and publishing metadata.',
-        route: '/faithhub/provider/live-builder',
+        route: providerRoutes.liveBuilder,
         icon: Video,
       },
       {
         label: 'Publish Schedule',
         description: 'Plan publish windows, reminders, and broadcast timing.',
-        route: '/faithhub/provider/live-schedule',
+        route: providerRoutes.liveSchedule,
         icon: CalendarDays,
       },
       {
         label: 'Publishing Monitor',
         description: 'Monitor delivery health and publishing outcomes in real time.',
-        route: '/faithhub/provider/live-dashboard',
+        route: providerRoutes.liveDashboard,
         icon: RadioTower,
       },
     ],
@@ -115,13 +116,13 @@ export const moduleSidebarConfig: SidebarModule[] = [
       {
         label: 'Audience Notifications',
         description: 'Deliver targeted notices for devotionals, launches, and live moments.',
-        route: '/faithhub/provider/audience-notifications',
+        route: providerRoutes.audienceNotifications,
         icon: Bell,
       },
       {
         label: 'Noticeboard',
         description: 'Publish broad community announcements and organizational alerts.',
-        route: '/faithhub/provider/noticeboard',
+        route: providerRoutes.noticeboard,
         icon: Megaphone,
       },
     ],
@@ -133,13 +134,13 @@ export const moduleSidebarConfig: SidebarModule[] = [
       {
         label: 'Post Live Publishing',
         description: 'Convert live sessions into polished replay-ready content packages.',
-        route: '/faithhub/provider/post-live-publishing',
+        route: providerRoutes.postLivePublishing,
         icon: PlayCircle,
       },
       {
         label: 'Replays & Clips',
         description: 'Edit highlights and archive broadcasts for long-tail engagement.',
-        route: '/faithhub/provider/replays-and-clips',
+        route: providerRoutes.replaysAndClips,
         icon: ChevronRight,
       },
     ],
@@ -151,13 +152,13 @@ export const moduleSidebarConfig: SidebarModule[] = [
       {
         label: 'Donations & Funds',
         description: 'Track campaigns, giving channels, and donation allocation status.',
-        route: '/faithhub/provider/donations-and-funds',
+        route: providerRoutes.donationsAndFunds,
         icon: CircleDollarSign,
       },
       {
         label: 'Wallet & Payouts',
         description: 'Review balances, payout schedules, and transaction settlements.',
-        route: '/faithhub/provider/wallet-payouts',
+        route: providerRoutes.walletPayouts,
         icon: Wallet,
       },
     ],
@@ -169,13 +170,13 @@ export const moduleSidebarConfig: SidebarModule[] = [
       {
         label: 'Revelight Dashboard',
         description: 'Control recommendation visibility and engagement performance trends.',
-        route: '/faithhub/provider/revelight-dashboard',
+        route: providerRoutes.revelightDashboard,
         icon: Sparkles,
       },
       {
         label: 'Revelight Marketplace',
         description: 'Manage discoverability assets, slots, and campaign experiments.',
-        route: '/faithhub/provider/revelight-marketplace',
+        route: providerRoutes.revelightMarketplace,
         icon: Globe,
       },
     ],
@@ -187,31 +188,31 @@ export const moduleSidebarConfig: SidebarModule[] = [
       {
         label: 'Community Groups',
         description: 'Coordinate member groups, hosts, and participation activity.',
-        route: '/faithhub/provider/community-groups',
+        route: providerRoutes.communityGroups,
         icon: Users,
       },
       {
         label: 'Prayer Wall',
         description: 'Receive and triage prayer requests with trusted pastoral follow-up.',
-        route: '/faithhub/provider/prayer-requests',
+        route: providerRoutes.prayerRequests,
         icon: HeartHandshake,
       },
       {
         label: 'Testimonies',
         description: 'Review and publish approved testimony stories safely and consistently.',
-        route: '/faithhub/provider/testimonies',
+        route: providerRoutes.testimonies,
         icon: Sparkles,
       },
       {
         label: 'Devotionals',
         description: 'Run devotional rhythms that connect livestream, prayer, and community.',
-        route: '/faithhub/provider/devotionals',
+        route: providerRoutes.devotionals,
         icon: BookOpen,
       },
       {
         label: 'Counseling',
         description: 'Support care journeys with guided follow-up and case visibility.',
-        route: '/faithhub/provider/counseling',
+        route: providerRoutes.counseling,
         icon: HeartHandshake,
       },
     ],
@@ -223,13 +224,13 @@ export const moduleSidebarConfig: SidebarModule[] = [
       {
         label: 'Roles & Permissions',
         description: 'Assign secure team access with role-based governance controls.',
-        route: '/faithhub/provider/roles-permissions',
+        route: providerRoutes.rolesPermissions,
         icon: ShieldCheck,
       },
       {
         label: 'Serving Teams',
         description: 'Organize volunteer structures, rosters, and ministry ownership.',
-        route: '/faithhub/provider/serving-teams',
+        route: providerRoutes.servingTeams,
         icon: Users,
       },
     ],
@@ -241,13 +242,13 @@ export const moduleSidebarConfig: SidebarModule[] = [
       {
         label: 'Workspace Settings',
         description: 'Configure branding, preferences, and provider-level defaults.',
-        route: '/faithhub/provider/workspace-settings',
+        route: providerRoutes.workspaceSettings,
         icon: Settings,
       },
       {
         label: 'Moderation Settings',
         description: 'Control safety filters, moderation queues, and trust policies.',
-        route: '/faithhub/provider/moderation-settings',
+        route: providerRoutes.moderationSettings,
         icon: MessageSquare,
       },
     ],

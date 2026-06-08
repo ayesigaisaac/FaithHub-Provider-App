@@ -12,6 +12,7 @@ import { MediaFallbackContainer } from '@/components/MediaFallbackContainer';
 import { runRawPlaceholderActionForElement } from '@/pages/provider/raw/placeholderActions';
 import { useAuth } from '@/auth/useAuth';
 import { teachingsShortcutRouteMap } from '@/navigation/teachingsQuickActions';
+import { providerRoutes } from '@/navigation/providerRoutes';
 import { readSafeStorageValue, writeSafeStorageValue } from './safeStorage';
 
 const ONBOARDING_BANNER_DISMISS_KEY = 'faithhub.onboarding.banner.dismissed';
@@ -20,69 +21,69 @@ const QUICK_GUIDE_BY_PATH: Record<
   string,
   { title: string; description: string; primaryLabel: string; primaryPath: string; secondaryLabel: string; secondaryPath: string }
 > = {
-  '/faithhub/provider/onboarding': {
+  [providerRoutes.onboarding]: {
     title: 'FaithHub registration',
     description: 'Register the provider, then move into profile completion.',
     primaryLabel: 'Open FaithHub Profile',
-    primaryPath: '/faithhub/provider/profile-settings',
+    primaryPath: providerRoutes.profileSettings,
     secondaryLabel: 'Open FaithHub Dashboard',
-    secondaryPath: '/faithhub/provider/dashboard',
+    secondaryPath: providerRoutes.dashboard,
   },
-  '/faithhub/provider/profile-settings': {
+  [providerRoutes.profileSettings]: {
     title: 'FaithHub profile completion',
     description: 'Finish verification and submit the provider application.',
     primaryLabel: 'Open FaithHub Dashboard',
-    primaryPath: '/faithhub/provider/dashboard',
+    primaryPath: providerRoutes.dashboard,
     secondaryLabel: 'Open FaithHub Services',
-    secondaryPath: '/faithhub/provider/services',
+    secondaryPath: providerRoutes.services,
   },
-  '/faithhub/provider/dashboard': {
+  [providerRoutes.dashboard]: {
     title: 'FaithHub dashboard',
     description: 'Review provider status, then continue into services, campaigns, or live sessions.',
     primaryLabel: 'Open FaithHub Services',
-    primaryPath: '/faithhub/provider/services',
+    primaryPath: providerRoutes.services,
     secondaryLabel: 'Open FaithHub Live Ops',
-    secondaryPath: '/faithhub/provider/live-dashboard',
+    secondaryPath: providerRoutes.liveDashboard,
   },
-  '/faithhub/provider/services': {
+  [providerRoutes.services]: {
     title: 'FaithHub service workflow',
     description: 'Manage services first, then use campaigns and live sessions.',
     primaryLabel: 'Create Service',
-    primaryPath: '/faithhub/provider/service-builder',
+    primaryPath: providerRoutes.serviceBuilder,
     secondaryLabel: 'Open FaithHub Campaigns',
-    secondaryPath: '/faithhub/provider/campaigns',
+    secondaryPath: providerRoutes.campaigns,
   },
-  '/faithhub/provider/campaigns': {
+  [providerRoutes.campaigns]: {
     title: 'FaithHub campaign workflow',
     description: 'Connect a campaign to approved services and review its approval state.',
     primaryLabel: 'Create Campaign',
-    primaryPath: '/faithhub/provider/campaign-builder',
+    primaryPath: providerRoutes.campaignBuilder,
     secondaryLabel: 'Open FaithHub Content',
-    secondaryPath: '/faithhub/provider/content-upload',
+    secondaryPath: providerRoutes.contentUpload,
   },
-  '/faithhub/provider/live-dashboard': {
+  [providerRoutes.liveDashboard]: {
     title: 'FaithHub live operations',
     description: 'Check the session list, then move into waiting room or studio.',
     primaryLabel: 'Open FaithHub Live Studio',
-    primaryPath: '/faithhub/provider/live-studio',
+    primaryPath: providerRoutes.liveStudio,
     secondaryLabel: 'View FaithHub Waiting Room',
-    secondaryPath: '/faithhub/provider/waiting-room',
+    secondaryPath: providerRoutes.waitingRoom,
   },
-  '/faithhub/provider/live-session-details': {
+  [providerRoutes.liveSessionDetails]: {
     title: 'FaithHub live session details',
     description: 'Review the selected session before previewing the waiting room.',
     primaryLabel: 'Preview FaithHub Waiting Room',
-    primaryPath: '/faithhub/provider/waiting-room',
+    primaryPath: providerRoutes.waitingRoom,
     secondaryLabel: 'Open FaithHub Live Studio',
-    secondaryPath: '/faithhub/provider/live-studio',
+    secondaryPath: providerRoutes.liveStudio,
   },
-  '/faithhub/provider/waiting-room': {
+  [providerRoutes.waitingRoom]: {
     title: 'FaithHub waiting room',
     description: 'Preview the audience experience before the live session begins.',
     primaryLabel: 'Go Live',
-    primaryPath: '/faithhub/provider/live-studio',
+    primaryPath: providerRoutes.liveStudio,
     secondaryLabel: 'Back to Dashboard',
-    secondaryPath: '/faithhub/provider/live-dashboard',
+    secondaryPath: providerRoutes.liveDashboard,
   },
 };
 
@@ -116,7 +117,7 @@ export function ProviderShellLayout() {
   const showOnboardingReminder =
     !onboardingBannerDismissed &&
     onboardingStatus !== 'approved' &&
-    location.pathname !== '/faithhub/provider/onboarding';
+    location.pathname !== providerRoutes.onboarding;
   const quickGuide = QUICK_GUIDE_BY_PATH[location.pathname];
 
   useEffect(() => {
@@ -225,7 +226,7 @@ export function ProviderShellLayout() {
               <Button
                 color="inherit"
                 size="small"
-                onClick={() => navigate('/faithhub/provider/onboarding')}
+                onClick={() => navigate(providerRoutes.onboarding)}
               >
                 Continue onboarding
               </Button>

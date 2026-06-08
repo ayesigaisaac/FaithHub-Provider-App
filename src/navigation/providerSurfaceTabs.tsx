@@ -8,6 +8,7 @@ import RadioRoundedIcon from '@mui/icons-material/RadioRounded';
 import type { ElementType, ReactNode } from 'react';
 import type { ProviderPageSection } from './providerPages';
 import { providerCategoryMeta } from './providerCategories';
+import { providerRoutes } from './providerRoutes';
 
 export type TopbarTab = {
   label: string;
@@ -38,35 +39,35 @@ function category(navLabel: string): ProviderPageSection {
 export const topbarTabs: TopbarTab[] = [
   {
     label: 'Dashboard',
-    to: '/faithhub/provider/dashboard',
+    to: providerRoutes.dashboard,
     sections: [category('Foundation'), category('Journey'), category('Content')],
     icon: <DashboardRoundedIcon fontSize="small" />,
   },
   {
     label: 'Streams',
-    to: '/faithhub/provider/live-dashboard',
+    to: providerRoutes.liveDashboard,
     sections: [category('Live Ops')],
     icon: <PlayCircleOutlineRoundedIcon fontSize="small" />,
   },
   {
     label: 'Community',
-    to: '/faithhub/provider/community-groups',
+    to: providerRoutes.communityGroups,
     sections: [category('Audience'), category('Community')],
     icon: <GroupsRoundedIcon fontSize="small" />,
   },
   {
     label: 'Reports',
-    to: '/faithhub/provider/reviews-and-moderation',
+    to: providerRoutes.reviewsAndModeration,
     sections: [category('Post-live'), category('Leadership'), category('Settings'), category('Revelight'), category('Previews')],
     icon: <EventNoteRoundedIcon fontSize="small" />,
   },
 ];
 
 export const mobileBottomNavTabs: MobileBottomNavTab[] = [
-  { label: 'Dashboard', value: '/faithhub/provider/dashboard', icon: DashboardRoundedIcon },
-  { label: 'Services', value: '/faithhub/provider/services', icon: BusinessCenterRoundedIcon },
-  { label: 'Campaigns', value: '/faithhub/provider/campaigns', icon: CampaignRoundedIcon },
-  { label: 'Live', value: '/faithhub/provider/live-dashboard', icon: RadioRoundedIcon },
+  { label: 'Dashboard', value: providerRoutes.dashboard, icon: DashboardRoundedIcon },
+  { label: 'Services', value: providerRoutes.services, icon: BusinessCenterRoundedIcon },
+  { label: 'Campaigns', value: providerRoutes.campaigns, icon: CampaignRoundedIcon },
+  { label: 'Live', value: providerRoutes.liveDashboard, icon: RadioRoundedIcon },
 ];
 
 export function resolveMobileBottomNavValue(input: {
@@ -79,7 +80,7 @@ export function resolveMobileBottomNavValue(input: {
   if (!page) return fallback;
   const hit = mobileBottomNavTabs.find((tab) => page.path === tab.value || page.aliases?.includes(tab.value));
   if (hit) return hit.value;
-  if (page.section === 'Provider Journey') return '/faithhub/provider/services';
-  if (page.section === 'Live Sessions Operations') return '/faithhub/provider/live-dashboard';
+  if (page.section === 'Provider Journey') return providerRoutes.services;
+  if (page.section === 'Live Sessions Operations') return providerRoutes.liveDashboard;
   return fallback;
 }

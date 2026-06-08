@@ -31,6 +31,7 @@ import type { ProviderPageMeta } from '@/navigation/providerPages';
 import { resolveKnownProviderPath } from '@/navigation/providerPages';
 import { ThemeModeToggle } from '@/components/theme/ThemeModeToggle';
 import { teachingsQuickActions } from '@/navigation/teachingsQuickActions';
+import { providerRoutes } from '@/navigation/providerRoutes';
 import { ProviderVerificationBadge } from '@/components/provider/ProviderVerificationBadge';
 import { providerCategoryBySection } from '@/navigation/providerCategories';
 
@@ -481,7 +482,7 @@ export function ProviderTopbar({
         <MenuItem
           onClick={() => {
             closeUserMenu();
-            navigate('/faithhub/provider/profile-settings');
+            navigate(providerRoutes.profileSettings);
           }}
         >
           Profile settings
@@ -489,7 +490,7 @@ export function ProviderTopbar({
         <MenuItem
           onClick={() => {
             closeUserMenu();
-            navigate('/faithhub/provider/dashboard');
+            navigate(providerRoutes.dashboard);
           }}
         >
           Provider dashboard
@@ -497,7 +498,7 @@ export function ProviderTopbar({
         <MenuItem
           onClick={() => {
             closeUserMenu();
-            navigate('/faithhub/provider/teachings-dashboard');
+            navigate(providerRoutes.teachingsDashboard);
           }}
         >
           Teachings workspace
@@ -505,7 +506,7 @@ export function ProviderTopbar({
         <MenuItem
           onClick={() => {
             closeUserMenu();
-            navigate('/faithhub/provider/live-dashboard');
+            navigate(providerRoutes.liveDashboard);
           }}
         >
           Live operations

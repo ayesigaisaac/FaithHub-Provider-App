@@ -1,6 +1,7 @@
 import { SpeedDial, SpeedDialAction, SpeedDialIcon, useMediaQuery, useTheme } from '@mui/material';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { providerPages } from '@/navigation/providerPages';
+import { providerRoutes } from '@/navigation/providerRoutes';
 
 const quickActions = providerPages.filter((page) => page.quickAction && !page.hidden);
 
@@ -9,7 +10,7 @@ export function QuickCreateDial() {
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const location = useLocation();
   const navigate = useNavigate();
-  const isProviderDashboard = location.pathname === '/faithhub/provider/dashboard';
+  const isProviderDashboard = location.pathname === providerRoutes.dashboard;
 
   if (isProviderDashboard && !isMobile) {
     return null;

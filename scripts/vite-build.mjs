@@ -1,6 +1,7 @@
 import process from 'node:process';
 import path from 'node:path';
 import { build } from 'vite';
+import { filterKnownBuildWarnings } from './vite-warn-filter.mjs';
 
 await build({
   configFile: false,
@@ -14,6 +15,9 @@ await build({
     sourcemap: true,
     chunkSizeWarningLimit: 650,
     rollupOptions: {
+      onwarn(warning, defaultHandler) {
+        filterKnownBuildWarnings(warning, defaultHandler);
+      },
       output: {
         manualChunks(id) {
           if (id.includes('node_modules')) {
