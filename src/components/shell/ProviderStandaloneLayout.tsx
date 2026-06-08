@@ -9,6 +9,7 @@ import { MobileBottomNav } from './MobileBottomNav';
 import { SearchCommandDialog } from './SearchCommandDialog';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { MediaFallbackContainer } from '@/components/MediaFallbackContainer';
+import { readSafeStorageValue, writeSafeStorageValue } from './safeStorage';
 
 type ProviderStandaloneLayoutProps = {
   children: ReactNode;
@@ -24,8 +25,7 @@ export function ProviderStandaloneLayout({ children, pagePath, pageTitle }: Prov
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [sidebarCollapsed, setSidebarCollapsed] = useState<boolean>(() => {
-    if (typeof window === 'undefined') return false;
-    return window.localStorage.getItem('faithhub.sidebar.collapsed') === 'true';
+    return readSafeStorageValue('faithhub.sidebar.collapsed') === 'true';
   });
 
   const current = useMemo(() => {
@@ -34,7 +34,7 @@ export function ProviderStandaloneLayout({ children, pagePath, pageTitle }: Prov
   }, [location.pathname, pagePath]);
 
   useEffect(() => {
-    window.localStorage.setItem('faithhub.sidebar.collapsed', String(sidebarCollapsed));
+    writeSafeStorageValue('faithhub.sidebar.collapsed', String(sidebarCollapsed));
   }, [sidebarCollapsed]);
 
   return (

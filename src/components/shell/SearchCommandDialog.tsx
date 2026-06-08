@@ -21,6 +21,7 @@ import type { ReactNode } from 'react';
 import { navigateWithRouter } from '@/navigation/routerNavigate';
 import { providerPages } from '@/navigation/providerPages';
 import { teachingsQuickActions } from '@/navigation/teachingsQuickActions';
+import { readSafeStorageValue, writeSafeStorageValue } from './safeStorage';
 
 const RECENT_COMMANDS_KEY = 'fh.provider.search.recents.v1';
 
@@ -265,9 +266,8 @@ export function SearchCommandDialog({
   }, [activeFilter, normalizedQuery, open]);
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
     try {
-      const raw = window.localStorage.getItem(RECENT_COMMANDS_KEY);
+      const raw = readSafeStorageValue(RECENT_COMMANDS_KEY);
       if (!raw) return;
       const parsed = JSON.parse(raw) as string[];
       if (Array.isArray(parsed)) setRecentIds(parsed.filter((item) => typeof item === 'string').slice(0, 5));
@@ -306,9 +306,7 @@ export function SearchCommandDialog({
   const rememberRecent = (id: string) => {
     setRecentIds((prev) => {
       const next = [id, ...prev.filter((entry) => entry !== id)].slice(0, 5);
-      if (typeof window !== 'undefined') {
-        window.localStorage.setItem(RECENT_COMMANDS_KEY, JSON.stringify(next));
-      }
+      writeSafeStorageValue(RECENT_COMMANDS_KEY, JSON.stringify(next));
       return next;
     });
   };

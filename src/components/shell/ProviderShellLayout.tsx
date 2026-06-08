@@ -12,6 +12,7 @@ import { MediaFallbackContainer } from '@/components/MediaFallbackContainer';
 import { runRawPlaceholderActionForElement } from '@/pages/provider/raw/placeholderActions';
 import { useAuth } from '@/auth/useAuth';
 import { teachingsShortcutRouteMap } from '@/navigation/teachingsQuickActions';
+import { readSafeStorageValue, writeSafeStorageValue } from './safeStorage';
 
 const ONBOARDING_BANNER_DISMISS_KEY = 'faithhub.onboarding.banner.dismissed';
 
@@ -103,8 +104,7 @@ export function ProviderShellLayout() {
   const [searchAnchorEl, setSearchAnchorEl] = useState<HTMLElement | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [sidebarCollapsed, setSidebarCollapsed] = useState<boolean>(() => {
-    if (typeof window === 'undefined') return false;
-    return window.localStorage.getItem('faithhub.sidebar.collapsed') === 'true';
+    return readSafeStorageValue('faithhub.sidebar.collapsed') === 'true';
   });
   const [onboardingBannerDismissed, setOnboardingBannerDismissed] = useState<boolean>(() => {
     if (typeof window === 'undefined') return false;
@@ -154,7 +154,7 @@ export function ProviderShellLayout() {
   }, [navigate]);
 
   useEffect(() => {
-    window.localStorage.setItem('faithhub.sidebar.collapsed', String(sidebarCollapsed));
+    writeSafeStorageValue('faithhub.sidebar.collapsed', String(sidebarCollapsed));
   }, [sidebarCollapsed]);
 
   useEffect(() => {

@@ -68,6 +68,10 @@ describe('ProviderSidebar collapsed dock', () => {
     })) as unknown as typeof window.matchMedia;
   });
 
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
   it('renders an icon-only dock when collapsed', () => {
     render(
       <MemoryRouter initialEntries={['/faithhub/provider/dashboard']}>
@@ -104,5 +108,25 @@ describe('ProviderSidebar collapsed dock', () => {
 
     const dataLayer = (window as unknown as { dataLayer?: Array<Record<string, string>> }).dataLayer ?? [];
     expect(dataLayer.some((entry) => entry.event === 'sidebar_task_click')).toBe(true);
+  });
+
+  it('does not crash when localStorage is unavailable', () => {
+    vi.spyOn(Storage.prototype, 'getItem').mockImplementation(() => {
+      throw new Error('blocked');
+    });
+    vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => {
+      throw new Error('blocked');
+    });
+    vi.spyOn(Storage.prototype, 'removeItem').mockImplementation(() => {
+      throw new Error('blocked');
+    });
+
+    render(
+      <MemoryRouter initialEntries={['/faithhub/provider/dashboard']}>
+        <ProviderSidebar open={false} onClose={() => undefined} collapsed={false} />
+      </MemoryRouter>,
+    );
+
+    expect(screen.getByRole('button', { name: /collapse foundation section/i })).toBeInTheDocument();
   });
 });

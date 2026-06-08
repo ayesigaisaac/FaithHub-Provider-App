@@ -58,6 +58,10 @@ describe('ProviderStandaloneLayout', () => {
     sidebarSpy.mockClear();
   });
 
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
   it('restores the collapsed state and expands the sidebar from the mobile entry point', async () => {
     const user = userEvent.setup();
     window.localStorage.setItem('faithhub.sidebar.collapsed', 'true');
@@ -71,5 +75,18 @@ describe('ProviderStandaloneLayout', () => {
     await user.click(screen.getByRole('button', { name: /open navigation/i }));
 
     expect(screen.getByTestId('provider-sidebar')).toHaveAttribute('data-open', 'true');
+  });
+
+  it('renders even when localStorage is unavailable', () => {
+    vi.spyOn(Storage.prototype, 'getItem').mockImplementation(() => {
+      throw new Error('blocked');
+    });
+    vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => {
+      throw new Error('blocked');
+    });
+
+    renderLayout();
+
+    expect(screen.getByText(/workspace content/i)).toBeInTheDocument();
   });
 });

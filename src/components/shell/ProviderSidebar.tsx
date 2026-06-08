@@ -31,6 +31,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { getProviderSidebarGroupsBySection, providerPages, providerSections, type ProviderPageSection } from '@/navigation/providerPages';
 import { providerCategoryBySection } from '@/navigation/providerCategories';
+import { readSafeStorageValue, removeSafeStorageValue, writeSafeStorageValue } from './safeStorage';
 
 const drawerWidth = 320;
 const topbarOffsetMobile = 110;
@@ -61,19 +62,17 @@ const ONBOARDING_CHECKLIST_DISMISSED_KEY = 'faithhub.sidebar.onboardingDismissed
 const ONBOARDING_CHECKLIST_PROGRESS_KEY = 'faithhub.sidebar.onboardingProgress';
 
 function readStoredSidebarSection(key: string): ProviderPageSection | null {
-  if (typeof window === 'undefined') return null;
-  const value = window.localStorage.getItem(key);
+  const value = readSafeStorageValue(key);
   if (!value) return null;
   return providerSections.includes(value as ProviderPageSection) ? (value as ProviderPageSection) : null;
 }
 
 function writeStoredSidebarSection(key: string, value: ProviderPageSection | null) {
-  if (typeof window === 'undefined') return;
   if (value) {
-    window.localStorage.setItem(key, value);
+    writeSafeStorageValue(key, value);
     return;
   }
-  window.localStorage.removeItem(key);
+  removeSafeStorageValue(key);
 }
 
 function getSidebarPageLabel(input: { key: string; title: string; shortTitle?: string }) {
@@ -187,17 +186,14 @@ export function ProviderSidebar({
     return readStoredSidebarSection(LAST_EXPANDED_SECTION_KEY) ?? currentPage?.section ?? null;
   });
   const [showOnboardingChecklist, setShowOnboardingChecklist] = useState<boolean>(() => {
-    if (typeof window === 'undefined') return false;
-    return window.localStorage.getItem(ONBOARDING_CHECKLIST_OPEN_KEY) === 'true';
+    return readSafeStorageValue(ONBOARDING_CHECKLIST_OPEN_KEY) === 'true';
   });
   const [onboardingDismissed, setOnboardingDismissed] = useState<boolean>(() => {
-    if (typeof window === 'undefined') return false;
-    return window.localStorage.getItem(ONBOARDING_CHECKLIST_DISMISSED_KEY) === 'true';
+    return readSafeStorageValue(ONBOARDING_CHECKLIST_DISMISSED_KEY) === 'true';
   });
   const [completedOnboardingPaths, setCompletedOnboardingPaths] = useState<string[]>(() => {
-    if (typeof window === 'undefined') return [];
     try {
-      const raw = window.localStorage.getItem(ONBOARDING_CHECKLIST_PROGRESS_KEY);
+      const raw = readSafeStorageValue(ONBOARDING_CHECKLIST_PROGRESS_KEY);
       if (!raw) return [];
       const parsed = JSON.parse(raw);
       return Array.isArray(parsed) ? parsed.filter((item): item is string => typeof item === 'string') : [];
@@ -214,16 +210,13 @@ export function ProviderSidebar({
     }))
     .filter((group) => group.groups.length > 0);
   useEffect(() => {
-    if (typeof window === 'undefined') return;
-    window.localStorage.setItem(ONBOARDING_CHECKLIST_OPEN_KEY, String(showOnboardingChecklist));
+    writeSafeStorageValue(ONBOARDING_CHECKLIST_OPEN_KEY, String(showOnboardingChecklist));
   }, [showOnboardingChecklist]);
   useEffect(() => {
-    if (typeof window === 'undefined') return;
-    window.localStorage.setItem(ONBOARDING_CHECKLIST_DISMISSED_KEY, String(onboardingDismissed));
+    writeSafeStorageValue(ONBOARDING_CHECKLIST_DISMISSED_KEY, String(onboardingDismissed));
   }, [onboardingDismissed]);
   useEffect(() => {
-    if (typeof window === 'undefined') return;
-    window.localStorage.setItem(ONBOARDING_CHECKLIST_PROGRESS_KEY, JSON.stringify(completedOnboardingPaths));
+    writeSafeStorageValue(ONBOARDING_CHECKLIST_PROGRESS_KEY, JSON.stringify(completedOnboardingPaths));
   }, [completedOnboardingPaths]);
   useEffect(() => {
     if (!quickStartItems.some((item) => item.path === location.pathname)) return;
