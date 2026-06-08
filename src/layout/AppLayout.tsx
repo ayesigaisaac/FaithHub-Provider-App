@@ -19,7 +19,7 @@ function AppLayoutShell({ children }: AppLayoutProps) {
   const isCollapsed = state === 'collapsed';
 
   return (
-    <div className="h-screen overflow-hidden bg-[linear-gradient(180deg,rgba(248,250,252,1)_0%,rgba(241,245,249,1)_100%)] text-slate-900 dark:bg-slate-950 dark:text-slate-100">
+    <div className="min-h-dvh overflow-hidden bg-[linear-gradient(180deg,rgba(248,250,252,1)_0%,rgba(241,245,249,1)_100%)] text-slate-900 dark:bg-slate-950 dark:text-slate-100">
       <a
         href="#app-layout-main"
         className="sr-only z-[70] rounded-lg bg-white px-3 py-2 text-xs font-semibold text-slate-900 shadow dark:bg-slate-900 dark:text-slate-100 focus:not-sr-only focus:absolute focus:left-4 focus:top-4"
@@ -29,7 +29,7 @@ function AppLayoutShell({ children }: AppLayoutProps) {
 
       <AppSidebar />
 
-      <main id="app-layout-main" className={`h-full overflow-y-auto transition-[padding] ${isCollapsed ? 'lg:pl-20' : 'lg:pl-72'}`}>
+      <main id="app-layout-main" className={`min-h-dvh overflow-y-auto transition-[padding] ${isCollapsed ? 'lg:pl-20' : 'lg:pl-72'}`}>
         <div className="sticky top-0 z-20 border-b border-[var(--fh-line)] bg-[color-mix(in_srgb,var(--fh-surface-bg)_90%,transparent)] px-4 py-3 backdrop-blur-xl sm:px-6">
           <div className="flex items-center justify-between gap-4">
             <div className="flex items-center gap-3">

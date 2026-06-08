@@ -16,21 +16,24 @@ describe('Sidebar', () => {
     localStorage.clear();
   });
 
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
   it('renders Provider Modules dropdown with grouped navigation', () => {
     renderSidebar();
 
     expect(screen.getByRole('button', { name: /provider modules/i })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: /core/i })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: /content/i })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /overview/i })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /teachings dashboard/i })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /live studio/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /continue/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /community/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /continue editing/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /workflow dashboard/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /community groups/i })).toBeInTheDocument();
   });
 
   it('marks current route as active', () => {
     renderSidebar('/faithhub/provider/live-schedule');
-    const liveScheduleItems = screen.getAllByRole('button', { name: /live schedule/i });
-    expect(liveScheduleItems.some((item) => item.getAttribute('aria-current') === 'page')).toBe(true);
+    expect(screen.getByRole('link', { name: /publish schedule/i })).toHaveAttribute('aria-current', 'page');
   });
 
   it('navigates and closes mobile sidebar callback on selection', async () => {
@@ -38,9 +41,9 @@ describe('Sidebar', () => {
     const onClose = vi.fn();
     renderSidebar('/dashboard-ui', onClose);
 
-    await user.click(screen.getByRole('button', { name: /events manager/i }));
+    await user.click(screen.getByRole('link', { name: /community groups/i }));
     expect(onClose).toHaveBeenCalledTimes(1);
-    expect(screen.getByRole('button', { name: /events manager/i })).toHaveAttribute('aria-current', 'page');
+    expect(screen.getByRole('link', { name: /community groups/i })).toHaveAttribute('aria-current', 'page');
   });
 
   it('collapses and expands provider modules list', async () => {
@@ -54,5 +57,18 @@ describe('Sidebar', () => {
 
     await user.click(trigger);
     expect(trigger).toHaveAttribute('aria-expanded', 'true');
+  });
+
+  it('does not crash when localStorage is unavailable', () => {
+    vi.spyOn(Storage.prototype, 'getItem').mockImplementation(() => {
+      throw new Error('blocked');
+    });
+    vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => {
+      throw new Error('blocked');
+    });
+
+    renderSidebar('/dashboard-ui');
+
+    expect(screen.getByRole('button', { name: /provider modules/i })).toBeInTheDocument();
   });
 });
