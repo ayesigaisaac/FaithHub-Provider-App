@@ -1,5 +1,6 @@
-import type { InputHTMLAttributes, ReactNode, SelectHTMLAttributes, TextareaHTMLAttributes } from "react";
-import { CheckCircle2 } from "lucide-react";
+import type { InputHTMLAttributes, ReactNode, SelectHTMLAttributes, TextareaHTMLAttributes } from 'react';
+import { CheckCircle2 } from 'lucide-react';
+import { cx } from '@/components/cx';
 
 type ProviderFormFieldProps = {
   label: string;
@@ -43,8 +44,6 @@ type ProviderFormErrorSummaryProps = {
   className?: string;
 };
 
-const cx = (...parts: Array<string | false | null | undefined>) => parts.filter(Boolean).join(" ");
-
 export function ProviderFormField({
   label,
   helperText,
@@ -56,10 +55,10 @@ export function ProviderFormField({
 }: ProviderFormFieldProps) {
   const LabelTag = htmlFor ? "label" : "div";
   return (
-    <div className={cx("block", className)}>
+    <div className={cx('block', className)}>
       <LabelTag
         {...(htmlFor ? { htmlFor } : {})}
-        className={cx("text-[11px] font-extrabold uppercase tracking-[0.14em] text-faith-slate", labelClassName)}
+        className={cx('text-[11px] font-extrabold uppercase tracking-[0.14em] text-faith-slate', labelClassName)}
       >
         {label}
       </LabelTag>
@@ -75,8 +74,8 @@ export function ProviderFormInput({ className, error, ...props }: ProviderFormIn
     <input
       {...props}
       className={cx(
-        "h-11 w-full rounded-2xl border bg-[var(--fh-surface-bg)] px-4 text-[13px] font-semibold text-faith-ink outline-none transition focus:ring-2",
-        error ? "border-rose-300 focus:ring-rose-200" : "border-faith-line/70 focus:ring-[rgba(3,205,140,0.2)]",
+        'h-11 w-full rounded-2xl border bg-[var(--fh-surface-bg)] px-4 text-[13px] font-semibold text-faith-ink outline-none transition focus:ring-2',
+        error ? 'border-rose-300 focus:ring-rose-200' : 'border-faith-line/70 focus:ring-[rgba(3,205,140,0.2)]',
         className,
       )}
     />
@@ -88,8 +87,8 @@ export function ProviderFormTextArea({ className, error, ...props }: ProviderFor
     <textarea
       {...props}
       className={cx(
-        "w-full rounded-2xl border bg-[var(--fh-surface-bg)] px-4 py-3 text-[13px] font-semibold text-faith-ink outline-none transition focus:ring-2",
-        error ? "border-rose-300 focus:ring-rose-200" : "border-faith-line/70 focus:ring-[rgba(3,205,140,0.2)]",
+        'w-full rounded-2xl border bg-[var(--fh-surface-bg)] px-4 py-3 text-[13px] font-semibold text-faith-ink outline-none transition focus:ring-2',
+        error ? 'border-rose-300 focus:ring-rose-200' : 'border-faith-line/70 focus:ring-[rgba(3,205,140,0.2)]',
         className,
       )}
     />
@@ -101,8 +100,8 @@ export function ProviderFormSelect({ className, error, options, ...props }: Prov
     <select
       {...props}
       className={cx(
-        "h-11 w-full rounded-2xl border bg-[var(--fh-surface-bg)] px-4 text-[13px] font-semibold text-faith-ink outline-none transition focus:ring-2",
-        error ? "border-rose-300 focus:ring-rose-200" : "border-faith-line/70 focus:ring-[rgba(3,205,140,0.2)]",
+        'h-11 w-full rounded-2xl border bg-[var(--fh-surface-bg)] px-4 text-[13px] font-semibold text-faith-ink outline-none transition focus:ring-2',
+        error ? 'border-rose-300 focus:ring-rose-200' : 'border-faith-line/70 focus:ring-[rgba(3,205,140,0.2)]',
         className,
       )}
     >

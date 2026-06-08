@@ -1,4 +1,5 @@
-import type { ReactNode } from "react";
+import type { ReactNode } from 'react';
+import { cx } from '@/components/cx';
 
 type ProviderSurfaceCardProps = {
   title?: ReactNode;
@@ -13,8 +14,6 @@ type ProviderSurfaceCardProps = {
   rightClassName?: string;
   titleId?: string;
 };
-
-const cx = (...parts: Array<string | false | null | undefined>) => parts.filter(Boolean).join(" ");
 
 export function ProviderSurfaceCard({
   title,
@@ -32,19 +31,19 @@ export function ProviderSurfaceCard({
   return (
     <div
       className={cx(
-        "fh-uplift-surface relative overflow-hidden rounded-[28px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 shadow-soft transition-colors dark:border-faith-line dark:bg-[var(--fh-surface-bg)] sm:p-5 lg:p-6",
+        'fh-uplift-surface relative overflow-hidden rounded-[28px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 shadow-soft transition-colors dark:border-faith-line dark:bg-[var(--fh-surface-bg)] sm:p-5 lg:p-6',
         className,
       )}
     >
       <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-emerald-300 via-brand-300 to-orange-300 opacity-60" />
       {(title || subtitle || right) && (
-        <div className={cx("flex flex-wrap items-start justify-between gap-3 sm:gap-4", headerClassName)}>
+        <div className={cx('flex flex-wrap items-start justify-between gap-3 sm:gap-4', headerClassName)}>
           <div className="min-w-0">
             {title ? (
               <div
                 id={titleId}
                 className={cx(
-                  "break-words text-[15px] font-semibold leading-6 text-faith-ink dark:text-slate-100 sm:text-base",
+                  'break-words text-[15px] font-semibold leading-6 text-faith-ink dark:text-slate-100 sm:text-base',
                   titleClassName,
                 )}
               >
@@ -52,15 +51,15 @@ export function ProviderSurfaceCard({
               </div>
             ) : null}
             {subtitle ? (
-              <div className={cx("mt-1.5 break-words text-[12px] leading-5 text-faith-slate", subtitleClassName)}>
+              <div className={cx('mt-1.5 break-words text-[12px] leading-5 text-faith-slate', subtitleClassName)}>
                 {subtitle}
               </div>
             ) : null}
           </div>
-          {right ? <div className={cx("w-full sm:w-auto sm:shrink-0", rightClassName)}>{right}</div> : null}
+          {right ? <div className={cx('w-full sm:w-auto sm:shrink-0', rightClassName)}>{right}</div> : null}
         </div>
       )}
-      {children ? <div className={cx("mt-4 min-w-0 sm:mt-5", bodyClassName)}>{children}</div> : null}
+      {children ? <div className={cx('mt-4 min-w-0 sm:mt-5', bodyClassName)}>{children}</div> : null}
     </div>
   );
 }

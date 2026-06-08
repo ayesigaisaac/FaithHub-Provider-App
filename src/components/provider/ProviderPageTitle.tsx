@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { cx } from '@/components/cx';
 
 type ProviderPageTitleProps = {
   icon: ReactNode;
@@ -7,8 +8,6 @@ type ProviderPageTitleProps = {
   className?: string;
   iconClassName?: string;
 };
-
-const cx = (...xs: Array<string | false | null | undefined>) => xs.filter(Boolean).join(' ');
 
 export function ProviderPageTitle({
   icon,

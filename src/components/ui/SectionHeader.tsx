@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { cx } from '@/components/cx';
 
 interface SectionHeaderProps {
   title: string;
@@ -8,7 +9,7 @@ interface SectionHeaderProps {
 
 export function SectionHeader({ title, subtitle, actions }: SectionHeaderProps) {
   return (
-    <div className="flex flex-col gap-3 border-b border-faith-line pb-4 sm:gap-4 sm:pb-5 sm:flex-row sm:items-end sm:justify-between">
+    <div className={cx('flex flex-col gap-3 border-b border-faith-line pb-4 sm:gap-4 sm:pb-5 sm:flex-row sm:items-end sm:justify-between')}>
       <div>
         <h2 className="text-2xl font-extrabold tracking-tight text-faith-ink sm:text-[28px]">{title}</h2>
         {subtitle ? <p className="mt-1.5 text-sm leading-6 text-faith-slate">{subtitle}</p> : null}

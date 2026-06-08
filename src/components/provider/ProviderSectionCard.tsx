@@ -1,5 +1,5 @@
-import type { ReactNode } from "react";
-import { ProviderSurfaceCard } from "./ProviderSurfaceCard";
+import type { ReactNode } from 'react';
+import { ProviderSurfaceCard } from './ProviderSurfaceCard';
 
 type ProviderSectionCardProps = {
   title: ReactNode;
@@ -8,7 +8,7 @@ type ProviderSectionCardProps = {
   children: ReactNode;
   className?: string;
   bodyClassName?: string;
-  titleTag?: "h2" | "h3";
+  titleTag?: 'h2' | 'h3';
 };
 
 export function ProviderSectionCard({
@@ -18,7 +18,7 @@ export function ProviderSectionCard({
   children,
   className,
   bodyClassName,
-  titleTag = "h2",
+  titleTag = 'h2',
 }: ProviderSectionCardProps) {
   const TitleTag = titleTag;
 
@@ -30,7 +30,7 @@ export function ProviderSectionCard({
       className={className}
       headerClassName="flex items-start justify-between gap-3"
       rightClassName="w-full sm:w-auto sm:shrink-0"
-      bodyClassName={bodyClassName ?? "mt-4 sm:mt-5"}
+      bodyClassName={bodyClassName ?? 'mt-4 sm:mt-5'}
     >
       {children}
     </ProviderSurfaceCard>

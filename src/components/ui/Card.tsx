@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { cx } from '@/components/cx';
 
 interface CardProps {
   title?: string;
@@ -9,7 +10,7 @@ interface CardProps {
 
 export function Card({ title, subtitle, children, className = '' }: CardProps) {
   return (
-    <section className={`ds-card p-4 sm:p-5 ${className}`.trim()}>
+    <section className={cx('ds-card p-4 sm:p-5', className)}>
       {(title || subtitle) && (
         <header className="mb-4 sm:mb-5">
           {title ? <h3 className="text-[15px] sm:text-base font-semibold text-faith-ink">{title}</h3> : null}

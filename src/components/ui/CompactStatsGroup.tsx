@@ -1,4 +1,5 @@
-import type { ReactNode } from "react";
+import type { ReactNode } from 'react';
+import { cx } from '@/components/cx';
 
 type SecondaryStat = {
   label: string;
@@ -15,10 +16,6 @@ interface CompactStatsGroupProps {
   className?: string;
 }
 
-function cx(...parts: Array<string | false | null | undefined>) {
-  return parts.filter(Boolean).join(" ");
-}
-
 export function CompactStatsGroup({
   primaryValue,
   primaryLabel,
@@ -33,7 +30,7 @@ export function CompactStatsGroup({
   return (
     <section
       className={cx(
-        "rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3.5 dark:border-slate-800 dark:bg-slate-950",
+        'rounded-2xl border border-faith-line/70 bg-[var(--fh-surface)] p-3.5 dark:border-slate-800 dark:bg-slate-950',
         className,
       )}
     >
@@ -67,7 +64,7 @@ export function CompactStatsGroup({
       {progressValue !== undefined ? (
         <div className="mt-3">
           <div className="mb-1.5 flex items-center justify-between text-[11px] text-faith-slate">
-            <span>{progressLabel || "Progress"}</span>
+            <span>{progressLabel || 'Progress'}</span>
             <span>{clampedProgress}%</span>
           </div>
           <div className="h-2 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-800">

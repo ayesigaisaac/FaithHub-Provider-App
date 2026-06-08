@@ -1,4 +1,5 @@
-import type { ReactNode } from "react";
+import type { ReactNode } from 'react';
+import { cx } from '@/components/cx';
 
 type ProviderPageFrameProps = {
   children: ReactNode;
@@ -6,11 +7,9 @@ type ProviderPageFrameProps = {
   maxWidthClassName?: string;
 };
 
-const cx = (...parts: Array<string | false | null | undefined>) => parts.filter(Boolean).join(" ");
-
 export function ProviderPageFrame({ children, className, maxWidthClassName }: ProviderPageFrameProps) {
   return (
-    <div className={cx("fh-page-frame fh-grid-start", maxWidthClassName, className)}>
+    <div className={cx('fh-page-frame fh-grid-start', maxWidthClassName, className)}>
       {children}
     </div>
   );
