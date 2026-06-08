@@ -28,6 +28,10 @@ providerPages.forEach((page) => {
   page.aliases?.forEach((alias) => knownProviderPaths.add(alias));
 });
 
+export function getKnownProviderPaths(): Set<string> {
+  return new Set(knownProviderPaths);
+}
+
 export function findProviderPageByPath(pathname: string) {
   return providerPages.find((page) => page.path === pathname || page.aliases?.includes(pathname));
 }

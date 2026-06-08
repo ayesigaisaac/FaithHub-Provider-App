@@ -1,4 +1,4 @@
-﻿import { providerPages } from '@/navigation/providerPages';
+import { getKnownProviderPaths, providerPages } from '@/navigation/providerPages';
 
 type ButtonActionKind = 'navigate' | 'copy_link' | 'preview_mode';
 
@@ -89,16 +89,9 @@ export function resolveActionFromLabel(label: string): ButtonActionId | null {
 }
 
 function validateButtonActionTargets(): void {
-  const knownPaths = new Set<string>([
-    '/faithhub/provider',
-    '/faithhub/provider/dashboard',
-    '/dashboard-ui',
-  ]);
-
-  providerPages.forEach((page) => {
-    knownPaths.add(page.path);
-    page.aliases?.forEach((alias) => knownPaths.add(alias));
-  });
+  const knownPaths = getKnownProviderPaths();
+  knownPaths.add('/faithhub/provider');
+  knownPaths.add('/dashboard-ui');
 
   (Object.keys(buttonActionRegistry) as ButtonActionId[]).forEach((actionId) => {
     const action = buttonActionRegistry[actionId];

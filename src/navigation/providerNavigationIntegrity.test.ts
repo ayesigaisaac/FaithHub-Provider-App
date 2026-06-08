@@ -1,16 +1,6 @@
 import { buttonActionRegistry } from '@/navigation/buttonActions';
-import { providerPages } from '@/navigation/providerPages';
+import { getKnownProviderPaths, providerPages } from '@/navigation/providerPages';
 import { topbarTabs } from '@/navigation/topbarTabs';
-
-function knownProviderPaths() {
-  const paths = new Set<string>();
-  providerPages.forEach((page) => {
-    paths.add(page.path);
-    page.aliases?.forEach((alias) => paths.add(alias));
-  });
-  paths.add('/faithhub/provider');
-  return paths;
-}
 
 describe('provider navigation integrity', () => {
   it('includes Content Planner in provider navigation metadata', () => {
@@ -21,14 +11,16 @@ describe('provider navigation integrity', () => {
   });
 
   it('ensures topbar tabs point to registered provider routes', () => {
-    const knownPaths = knownProviderPaths();
+    const knownPaths = getKnownProviderPaths();
+    knownPaths.add('/faithhub/provider');
     topbarTabs.forEach((tab) => {
       expect(knownPaths.has(tab.to)).toBe(true);
     });
   });
 
   it('ensures button action navigate targets resolve to registered provider routes', () => {
-    const knownPaths = knownProviderPaths();
+    const knownPaths = getKnownProviderPaths();
+    knownPaths.add('/faithhub/provider');
     Object.entries(buttonActionRegistry).forEach(([actionId, action]) => {
       if (action.kind !== 'navigate') return;
       expect(knownPaths.has(action.targetPath)).toBe(true);
