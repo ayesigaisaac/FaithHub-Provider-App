@@ -70,7 +70,7 @@ export function MobileBottomNav() {
               value={tab.value}
               label={tab.label}
               aria-label={tab.label}
-              icon={<Icon size={17} />}
+              icon={<Icon fontSize="small" />}
             />
           );
         })}

@@ -67,6 +67,45 @@ const ROUTES = {
   liveStudio: '/faithhub/provider/live-studio',
 } as const;
 
+type JourneyPageShellProps = {
+  icon: ReactNode;
+  title: string;
+  subtitle: string;
+  eyebrow?: ReactNode;
+  actions?: ReactNode;
+  tags?: ReactNode;
+  pulse?: ReactNode;
+  stats?: ReactNode;
+  children: ReactNode;
+};
+
+function JourneyPageShell({
+  icon,
+  title,
+  subtitle,
+  eyebrow,
+  actions,
+  tags,
+  pulse,
+  stats,
+  children,
+}: JourneyPageShellProps) {
+  return (
+    <JourneyPageShell
+      icon={icon}
+      title={title}
+      subtitle={subtitle}
+      eyebrow={eyebrow}
+      actions={actions}
+      tags={tags}
+      pulse={pulse}
+      stats={stats}
+    >
+      {children}
+    </JourneyPageShell>
+  );
+}
+
 type ProviderStateTone = 'neutral' | 'good' | 'warn' | 'brand' | 'danger';
 
 type RegistrationDraft = {
@@ -965,7 +1004,7 @@ export function ProviderRegistrationPage() {
   };
 
   return (
-    <ProviderPageScaffold
+    <JourneyPageShell
       icon={<BadgeCheck className="h-6 w-6" />}
       title="Provider Registration"
       subtitle="Capture the provider basics, save a local draft, and move into profile completion without leaving the FaithHub shell."
@@ -1064,7 +1103,7 @@ export function ProviderRegistrationPage() {
           </div>
         </div>
       </Box>
-    </ProviderPageScaffold>
+    </JourneyPageShell>
   );
 }
 
@@ -1106,7 +1145,7 @@ export function ProviderProfilePage() {
   };
 
   return (
-    <ProviderPageScaffold
+    <JourneyPageShell
       icon={<UserCircle2 className="h-6 w-6" />}
       title="Complete Provider Profile"
       subtitle="Add the visual identity, bio, mission, and verification files that carry the FaithHub provider brand into review."
@@ -1194,7 +1233,7 @@ export function ProviderProfilePage() {
           </div>
         </div>
       </Box>
-    </ProviderPageScaffold>
+    </JourneyPageShell>
   );
 }
 

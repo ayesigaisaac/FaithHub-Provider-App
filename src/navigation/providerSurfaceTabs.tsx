@@ -5,7 +5,7 @@ import GroupsRoundedIcon from '@mui/icons-material/GroupsRounded';
 import BusinessCenterRoundedIcon from '@mui/icons-material/BusinessCenterRounded';
 import CampaignRoundedIcon from '@mui/icons-material/CampaignRounded';
 import RadioRoundedIcon from '@mui/icons-material/RadioRounded';
-import type { ReactNode } from 'react';
+import type { ElementType, ReactNode } from 'react';
 import type { ProviderPageSection } from './providerPages';
 import { providerCategoryMeta } from './providerCategories';
 
@@ -19,7 +19,7 @@ export type TopbarTab = {
 export type MobileBottomNavTab = {
   label: string;
   value: string;
-  icon: ReactNode;
+  icon: ElementType<{ fontSize?: 'small' }>;
 };
 
 const sectionByNavLabel = providerCategoryMeta.reduce<Record<string, ProviderPageSection>>((acc, item) => {

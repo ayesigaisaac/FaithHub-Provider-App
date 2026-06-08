@@ -11,7 +11,7 @@
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "eslint . --ext .ts,.tsx --fix",
     "format": "prettier --write .",
-    "test": "vitest run",
+    "test": "node scripts/run-vitest.mjs",
     "test:visual": "playwright test",
     "test:visual:update": "playwright test --update-snapshots",
     "quality": "npm run lint && npm run check && npm run test",
