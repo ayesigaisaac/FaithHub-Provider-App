@@ -10,7 +10,7 @@ vi.mock("@/auth/useAuth", () => ({
   useOptionalAuth: () => ({ role: "leadership" }),
 }));
 
-describe("FH-P-020 Series Builder button wiring", () => {
+describe("Series Builder button wiring", () => {
   it("duplicates the active draft when duplicate is clicked", () => {
     render(<SeriesBuilderPage />);
 

@@ -132,7 +132,7 @@ export function SearchCommandDialog({
         group: 'Page',
         section: page.section,
         description: page.description,
-        keywords: `${page.title} ${page.shortTitle ?? ''} ${page.description} ${page.id ?? ''} ${page.path} ${(page.aliases ?? []).join(' ')}`,
+        keywords: `${page.title} ${page.shortTitle ?? ''} ${page.description} ${page.path} ${(page.aliases ?? []).join(' ')}`,
         onSelect: () => navigateWithRouter(page.path),
       }));
 

@@ -12,7 +12,7 @@ vi.mock("@/auth/useAuth", () => ({
   useOptionalAuth: () => ({ role: "leadership" }),
 }));
 
-describe("FH-P-022 Standalone Teaching Builder button wiring", () => {
+describe("Standalone Teaching Builder button wiring", () => {
   it("opens live builder when create live session is clicked", () => {
     render(<StandaloneTeachingBuilderPage />);
 
