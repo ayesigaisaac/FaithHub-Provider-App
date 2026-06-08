@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { cx } from '@/components/cx';
+import { ProviderHeroActions } from './ProviderHeroActions';
 import { ProviderPageTitle } from './ProviderPageTitle';
 
 type ProviderPageScaffoldProps = {
@@ -44,7 +45,7 @@ export function ProviderPageScaffold({
                 <ProviderPageTitle icon={icon} title={title} subtitle={subtitle} />
                 {tags ? <div className="mt-3 flex flex-wrap gap-2">{tags}</div> : null}
               </div>
-              {actions ? <div className="flex flex-wrap items-center gap-2 xl:justify-end">{actions}</div> : null}
+              {actions ? <ProviderHeroActions>{actions}</ProviderHeroActions> : null}
             </div>
           </div>
         </section>
