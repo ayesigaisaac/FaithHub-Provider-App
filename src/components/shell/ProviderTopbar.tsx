@@ -26,7 +26,7 @@ import { useMemo, useState, type MouseEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/auth/useAuth';
 import { BrandLogo } from '@/components/branding/BrandLogo';
-import { topbarTabs } from '@/navigation/topbarTabs';
+import { topbarTabs } from '@/navigation/providerSurfaceTabs';
 import type { ProviderPageMeta } from '@/navigation/providerPages';
 import { resolveKnownProviderPath } from '@/navigation/providerPages';
 import { ThemeModeToggle } from '@/components/theme/ThemeModeToggle';
