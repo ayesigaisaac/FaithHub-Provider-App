@@ -2,7 +2,7 @@ import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded';
 import PlayCircleOutlineRoundedIcon from '@mui/icons-material/PlayCircleOutlineRounded';
 import EventNoteRoundedIcon from '@mui/icons-material/EventNoteRounded';
 import GroupsRoundedIcon from '@mui/icons-material/GroupsRounded';
-import BriefcaseBusinessRoundedIcon from '@mui/icons-material/BriefcaseBusinessRounded';
+import BusinessCenterRoundedIcon from '@mui/icons-material/BusinessCenterRounded';
 import CampaignRoundedIcon from '@mui/icons-material/CampaignRounded';
 import RadioRoundedIcon from '@mui/icons-material/RadioRounded';
 import type { ReactNode } from 'react';
@@ -64,7 +64,7 @@ export const topbarTabs: TopbarTab[] = [
 
 export const mobileBottomNavTabs: MobileBottomNavTab[] = [
   { label: 'Dashboard', value: '/faithhub/provider/dashboard', icon: DashboardRoundedIcon },
-  { label: 'Services', value: '/faithhub/provider/services', icon: BriefcaseBusinessRoundedIcon },
+  { label: 'Services', value: '/faithhub/provider/services', icon: BusinessCenterRoundedIcon },
   { label: 'Campaigns', value: '/faithhub/provider/campaigns', icon: CampaignRoundedIcon },
   { label: 'Live', value: '/faithhub/provider/live-dashboard', icon: RadioRoundedIcon },
 ];
