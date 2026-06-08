@@ -32,6 +32,7 @@ import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { getProviderSidebarGroupsBySection, providerPages, providerSections, type ProviderPageSection } from '@/navigation/providerPages';
 import { providerCategoryBySection } from '@/navigation/providerCategories';
 import { readSafeStorageValue, removeSafeStorageValue, writeSafeStorageValue } from './safeStorage';
+import { getProviderPageSidebarHint, getProviderPageSidebarLabel } from '@/navigation/providerPageDisplay';
 
 const drawerWidth = 320;
 const topbarOffsetMobile = 110;
@@ -73,61 +74,6 @@ function writeStoredSidebarSection(key: string, value: ProviderPageSection | nul
     return;
   }
   removeSafeStorageValue(key);
-}
-
-function getSidebarPageLabel(input: { key: string; title: string; shortTitle?: string }) {
-  if (input.shortTitle) return input.shortTitle;
-
-  const explicit: Record<string, string> = {
-    'provider-onboarding': 'Provider Onboarding',
-    'service-management': 'Services',
-    'service-builder': 'Create Service',
-    'campaign-management': 'Campaigns',
-    'campaign-builder': 'Create Campaign',
-    'content-upload': 'Content Upload',
-    'asset-library': 'Asset Library',
-    'provider-dashboard': 'Provider Dashboard',
-    'charity-crowdfunding-workbench': 'Charity Crowdfunding',
-    'channels-contact-manager': 'Channels & Contacts',
-    'standalone-teaching-builder': 'Standalone Builder',
-    'stream-to-platforms': 'Stream to Platforms',
-    'live-session-details': 'Live Session Details',
-    'waiting-room': 'Waiting Room',
-    'reviews-and-moderation': 'Reviews & Moderation',
-  };
-  if (explicit[input.key]) return explicit[input.key];
-
-  return input.title
-    .replace(/^FaithHub Provider\s+/i, '')
-    .replace(/\s+Workbench$/i, '')
-    .trim();
-}
-
-function getSidebarPageHint(input: { key: string; title: string }) {
-  const explicit: Record<string, string> = {
-    'provider-dashboard': 'Start here for FaithHub metrics and actions',
-    'provider-onboarding': 'Register and enter the FaithHub journey',
-    'service-management': 'Review service cards and approval state',
-    'service-builder': 'Create a new FaithHub service',
-    'campaign-management': 'Track campaign windows and approvals',
-    'campaign-builder': 'Build a campaign around approved services',
-    'content-upload': 'Upload posters, videos, and banners',
-    'asset-library': 'Select approved assets for live sessions',
-    'series-dashboard': 'Manage series and publishing status',
-    'teachings-dashboard': 'Create, review, and publish teachings',
-    'live-dashboard': 'Run live sessions and monitor health',
-    'live-session-details': 'Inspect the selected live session before previewing',
-    'waiting-room': 'Preview the audience waiting room',
-    'audience-notifications': 'Send updates to the right audience',
-    'reviews-and-moderation': 'Handle reviews and moderation queue',
-    'events-manager': 'Plan and run events',
-    'donations-and-funds': 'Track giving and active campaigns',
-    'profile-settings': 'Update account and FaithHub workspace preferences',
-  };
-  if (explicit[input.key]) return explicit[input.key];
-
-  const cleaned = input.title.replace(/^FaithHub Provider\s+/i, '').trim();
-  return `${cleaned} FaithHub tools`;
 }
 
 const quickStartItems = [
@@ -586,7 +532,7 @@ export function ProviderSidebar({
                                   onClick={() => {
                                     trackSidebarClick({
                                       section: group.label,
-                                      label: getSidebarPageLabel(page),
+                                      label: getProviderPageSidebarLabel(page),
                                       route: page.path,
                                       level: 'primary',
                                     });
@@ -644,7 +590,7 @@ export function ProviderSidebar({
                                             mb: 0.2,
                                           }}
                                         >
-                                          {getSidebarPageLabel(page)}
+                                          {getProviderPageSidebarLabel(page)}
                                         </Typography>
                                         <Typography
                                           sx={{
@@ -656,7 +602,7 @@ export function ProviderSidebar({
                                               : 'var(--fh-slate)',
                                           }}
                                         >
-                                          {getSidebarPageHint(page)}
+                                          {getProviderPageSidebarHint(page)}
                                         </Typography>
                                       </Box>
                                     }
@@ -676,7 +622,7 @@ export function ProviderSidebar({
                                           onClick={() => {
                                             trackSidebarClick({
                                               section: group.label,
-                                              label: getSidebarPageLabel(child),
+                                              label: getProviderPageSidebarLabel(child),
                                               route: child.path,
                                               level: 'secondary',
                                             });
@@ -734,7 +680,7 @@ export function ProviderSidebar({
                                                     mb: 0.15,
                                                   }}
                                                 >
-                                                  {getSidebarPageLabel(child)}
+                                                  {getProviderPageSidebarLabel(child)}
                                                 </Typography>
                                                 <Typography
                                                   sx={{
@@ -744,7 +690,7 @@ export function ProviderSidebar({
                                                     color: 'var(--fh-slate)',
                                                   }}
                                                 >
-                                                  {getSidebarPageHint(child)}
+                                                  {getProviderPageSidebarHint(child)}
                                                 </Typography>
                                               </Box>
                                             }

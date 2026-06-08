@@ -22,6 +22,7 @@ import { navigateWithRouter } from '@/navigation/routerNavigate';
 import { providerPages } from '@/navigation/providerPages';
 import { teachingsQuickActions } from '@/navigation/teachingsQuickActions';
 import { readSafeStorageValue, writeSafeStorageValue } from './safeStorage';
+import { getProviderPageSearchTitle } from '@/navigation/providerPageDisplay';
 
 const RECENT_COMMANDS_KEY = 'fh.provider.search.recents.v1';
 
@@ -127,7 +128,7 @@ export function SearchCommandDialog({
       .filter((page) => !page.hidden)
       .map((page) => ({
         id: `page-${page.key}`,
-        title: page.shortTitle || page.title,
+        title: getProviderPageSearchTitle(page),
         subtitle: `${page.section} - ${page.description}`,
         icon: <page.icon size={16} strokeWidth={2.2} />,
         group: 'Page',
