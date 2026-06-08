@@ -1,37 +1,46 @@
 import type { ReactNode } from 'react';
+import { cx } from '@/components/cx';
 import { ProviderPageTitle } from './ProviderPageTitle';
 
 type ProviderPageScaffoldProps = {
   icon: ReactNode;
   title: string;
   subtitle: string;
+  eyebrow?: ReactNode;
   actions?: ReactNode;
   tags?: ReactNode;
   pulse?: ReactNode;
   stats?: ReactNode;
   children: ReactNode;
+  className?: string;
+  containerClassName?: string;
 };
 
 export function ProviderPageScaffold({
   icon,
   title,
   subtitle,
+  eyebrow = 'FaithHub Provider',
   actions,
   tags,
   pulse,
   stats,
   children,
+  className,
+  containerClassName,
 }: ProviderPageScaffoldProps) {
   return (
-    <div className="min-h-full bg-[var(--fh-page-bg)] text-faith-ink">
-      <div className="mx-auto w-full max-w-[1480px] px-4 py-4 sm:px-5 sm:py-5 md:px-6 lg:px-8">
+    <div className={cx('min-h-full bg-[var(--fh-page-bg)] text-faith-ink', className)}>
+      <div className={cx('mx-auto w-full max-w-[1480px] px-4 py-4 sm:px-5 sm:py-5 md:px-6 lg:px-8', containerClassName)}>
         <section className="rounded-[34px] border border-faith-line/70 bg-[var(--fh-surface-bg)] p-4 shadow-soft md:p-5">
           <div className="rounded-[28px] border border-faith-line/50 bg-gradient-to-br from-white via-[var(--fh-surface-bg)] to-[var(--fh-surface)] p-4 md:p-5">
             <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
               <div className="min-w-0">
-                <div className="mb-3 inline-flex items-center rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-[10px] font-extrabold uppercase tracking-[0.14em] text-emerald-700">
-                  FaithHub Provider journey
-                </div>
+                {eyebrow ? (
+                  <div className="mb-3 inline-flex items-center rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-[10px] font-extrabold uppercase tracking-[0.14em] text-emerald-700">
+                    {eyebrow}
+                  </div>
+                ) : null}
                 <ProviderPageTitle icon={icon} title={title} subtitle={subtitle} />
                 {tags ? <div className="mt-3 flex flex-wrap gap-2">{tags}</div> : null}
               </div>
